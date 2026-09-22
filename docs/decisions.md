@@ -32,7 +32,7 @@ TextInput: distinguish disabled from readonly. Field owns surrounding label, hel
 
 1. Final component catalog, dependency graph and v1 scope.
 2. Full semantic token inventory, names and values; viewport mapping; composite typography and motion exports.
-3. Contract JSON Schema and exact representations of properties, events, slots and state combinations.
+3. Review the [Button contract and schema candidate](button-contract-review.md); representations of future types/events remain open. The candidate has automated structural checks, not user approval.
 4. Svelte version, headless dependency strategy, package structure and target-specific conventions.
 5. Testing tools and measurable accessibility / visual acceptance criteria.
 6. Figma naming and page layout details, publishing mechanism, stable identity storage and migration policy.

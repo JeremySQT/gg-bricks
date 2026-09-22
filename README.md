@@ -14,7 +14,7 @@ Start with [AGENTS.md](AGENTS.md). This kit records the agreed architecture and 
 - [Pilot evidence](docs/pilot-evidence.md): tested scope and limits.
 - [Skills](docs/skills.md): implemented skills and planned capabilities.
 
-This is an architecture baseline, not a production component library. Template fields and the proposed tracking format are implementation proposals; they have not received a separate user review. The final token catalog, contract JSON Schema, catalog of components, Svelte conventions and publication infrastructure remain open.
+This is an architecture baseline, not a production component library. Template fields and the proposed tracking format are implementation proposals; they have not received a separate user review. A [Button contract and schema candidate](docs/button-contract-review.md) is now available with a Node validator (npm ci, npm test, npm run validate). Its encoding still awaits review. The final token catalog, other components, Svelte conventions and publication infrastructure remain open.
 
 The existing ds-token-pilot archive remains a separate experimental artifact. Do not treat its reduced Button contract or experimental values as the final DS.
 

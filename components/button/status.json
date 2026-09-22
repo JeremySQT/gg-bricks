@@ -1,0 +1,46 @@
+{
+  "formatStatus": "proposed",
+  "componentId": "button",
+  "phase": "contract",
+  "dependencies": [
+    "icon",
+    "counter",
+    "shortcut"
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "contracts/actions/button.contract.json",
+      "sha256": "10aedb950e1bec1b9161358d68d0a0964a44cba0372a2e77d0163f4131d370ca"
+    },
+    "tokens": [],
+    "figma": null,
+    "svelte": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "design": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "schema-and-consistency",
+      "result": "passed",
+      "report": "reports/button-contract-validation.json"
+    },
+    {
+      "kind": "token-and-dependency-coverage",
+      "result": "not-provided"
+    },
+    {
+      "kind": "intrinsic-rules",
+      "result": "manual-review-required"
+    }
+  ],
+  "openDecisions": [
+    "Approve candidate JSON notation and parameterized token paths",
+    "Confirm exact semantic token bindings and coverage"
+  ],
+  "nextAction": "Review contract encoding and token bindings; complete actual token/dependency coverage before design."
+}

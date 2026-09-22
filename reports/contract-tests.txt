@@ -1,0 +1,16 @@
+✔ candidate validates without claiming token or rule coverage (5.012975ms)
+✔ rejects misspelled fields and wrong boolean defaults (0.44719ms)
+✔ rejects defaults outside enum values and contradictory required defaults (0.871325ms)
+✔ rejects ambiguous, unknown and non-enum token parameters (0.95608ms)
+✔ expands enum products and repeats a parameter consistently (1.264545ms)
+✔ requires every expanded path when an inventory is supplied (1.845903ms)
+✔ rejects invalid slot cardinality and missing accepted components (0.712181ms)
+✔ rejects primitive bindings and malformed token templates (0.404617ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 177.58627

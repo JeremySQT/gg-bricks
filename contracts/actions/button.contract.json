@@ -1,0 +1,107 @@
+{
+  "$schema": "../../schemas/component-contract.schema.json",
+  "id": "button",
+  "props": {
+    "intent": {
+      "values": [
+        "accent",
+        "neutral",
+        "danger"
+      ],
+      "default": "accent"
+    },
+    "appearance": {
+      "values": [
+        "solid",
+        "outline",
+        "ghost",
+        "link"
+      ],
+      "default": "solid"
+    },
+    "size": {
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md"
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "loading": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "container": {},
+    "label": {},
+    "leading": {
+      "accepts": [
+        "icon"
+      ],
+      "max": 1
+    },
+    "trailing": {
+      "accepts": [
+        "icon",
+        "counter",
+        "shortcut"
+      ],
+      "max": 1
+    },
+    "loadingIndicator": {}
+  },
+  "states": {
+    "interaction": {
+      "values": [
+        "default",
+        "hover",
+        "pressed",
+        "loading",
+        "disabled"
+      ],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "tokens": {
+    "surface": "color.action.{intent}.{appearance}.{interaction}.surface",
+    "content": "color.action.{intent}.{appearance}.{interaction}.content",
+    "border": "color.action.{intent}.outline.{interaction}.border",
+    "minHeight": "size.control.{size}",
+    "minTarget": "size.target.min",
+    "paddingInline": "space.control.padding-inline.{size}",
+    "paddingBlock": "space.control.padding-block.{size}",
+    "gap": "space.control.gap.{size}",
+    "radius": "radius.control",
+    "typography": "typography.label.{size}",
+    "iconSize": "size.icon.{size}",
+    "borderWidth": "border.width.default",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "border.focus.width",
+    "focusOffset": "border.focus.offset"
+  },
+  "rules": [
+    "Arrange leading, label and trailing in that order inside container; label uses the required non-empty label prop.",
+    "Use content width up to available width; keep label on one line, then truncate with an ellipsis while preserving the full accessible name.",
+    "Use the greater of minHeight and content height plus vertical padding; meet minTarget without requiring the visible container to grow.",
+    "Emit an activation only when neither disabled nor loading.",
+    "Resolve interaction colors in this order: disabled, loading, pressed, hover, default. Focus is independent.",
+    "While loading, center loadingIndicator over container; hide leading, label and trailing visually while preserving their layout and the accessible name.",
+    "Keep loadingIndicator visible when loading and disabled are both true; use resolved content color.",
+    "Draw the container border only for outline; it must not change the outer dimensions.",
+    "Use focusColor, focusWidth and focusOffset for a visible focus indicator when focus is true.",
+    "Loading animation belongs to the component implementation."
+  ]
+}

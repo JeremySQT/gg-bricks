@@ -1,0 +1,15 @@
+{
+  "name": "ds-architecture",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "validate": "node tools/validate-contract.mjs contracts/actions/button.contract.json",
+    "test": "node --test tests/contracts.test.mjs"
+  },
+  "devDependencies": {
+    "ajv": "8.17.1"
+  }
+}

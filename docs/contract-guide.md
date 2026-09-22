@@ -9,7 +9,7 @@ Use five substantive blocks:
 - tokens: visual roles mapped to token paths.
 - rules: short English statements for intrinsic invariants not captured structurally.
 
-An id field identifies the component. Exact nested JSON notation and JSON Schema are still open; templates/component-contract.json is a skeleton, not an approved schema or complete component.
+An id field identifies the component. A concrete encoding and JSON Schema are now available for review in [contract-format.md](contract-format.md). They are a candidate, not yet user-approved. templates/component-contract.json remains an intentionally incomplete skeleton; complete its anatomy before schema validation.
 
 ## Boundaries
 
