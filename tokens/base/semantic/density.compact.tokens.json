@@ -1,0 +1,64 @@
+{
+  "size": {
+    "control": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v28}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v32}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v40}"
+      }
+    }
+  },
+  "space": {
+    "control": {
+      "padding-inline": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v8}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v12}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v16}"
+        }
+      },
+      "padding-block": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v4}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v6}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v8}"
+        }
+      },
+      "gap": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v4}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v6}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v8}"
+        }
+      }
+    }
+  }
+}

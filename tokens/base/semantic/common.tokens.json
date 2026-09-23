@@ -1,0 +1,100 @@
+{
+  "radius": {
+    "control": {
+      "$type": "dimension",
+      "$value": "{primitive.radius.control}"
+    }
+  },
+  "border": {
+    "width": {
+      "default": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v1}"
+      }
+    }
+  },
+  "focus": {
+    "width": {
+      "$type": "dimension",
+      "$value": "{primitive.dimension.v2}"
+    },
+    "offset": {
+      "$type": "dimension",
+      "$value": "{primitive.dimension.v2}"
+    }
+  },
+  "size": {
+    "target": {
+      "min": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v44}"
+      }
+    },
+    "icon": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v16}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v20}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v24}"
+      }
+    }
+  },
+  "typography": {
+    "label": {
+      "sm": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{primitive.font.family}",
+          "fontWeight": "{primitive.font.weight}",
+          "fontSize": {
+            "value": 14,
+            "unit": "px"
+          },
+          "letterSpacing": {
+            "value": 0,
+            "unit": "px"
+          },
+          "lineHeight": 1.4285714285714286
+        }
+      },
+      "md": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{primitive.font.family}",
+          "fontWeight": "{primitive.font.weight}",
+          "fontSize": {
+            "value": 14,
+            "unit": "px"
+          },
+          "letterSpacing": {
+            "value": 0,
+            "unit": "px"
+          },
+          "lineHeight": 1.4285714285714286
+        }
+      },
+      "lg": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{primitive.font.family}",
+          "fontWeight": "{primitive.font.weight}",
+          "fontSize": {
+            "value": 16,
+            "unit": "px"
+          },
+          "letterSpacing": {
+            "value": 0,
+            "unit": "px"
+          },
+          "lineHeight": 1.5
+        }
+      }
+    }
+  }
+}

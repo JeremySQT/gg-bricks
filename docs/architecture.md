@@ -63,3 +63,11 @@ Maintain one content source with human-readable prose and stable section heading
 Generate API facts from both the contract and actual target API. Do not invent imports or event syntax from the platform-independent contract. Import examples should come from verified executable examples.
 
 Consumer discovery must be explicit: provide a small integration instruction pointing the project's agent to the installed index. Do not load all component documents automatically. Figma anatomy illustrations need text equivalents in local documentation.
+
+## Button reference batch
+
+The token subset required by Button now exists in tokens/. Empty shadow or motion files are deliberately absent. This is not the full semantic catalog for all future components.
+
+Run `npm run build:tokens` to regenerate resolved tokens, CSS, provenance traces and the Figma adapter manifest. Source aliases resolve after sparse overlays. The adapter currently compiles scalar theme routing into Brand, Appearance and Density; generated technical variables are not a new source layer.
+
+No desktop/mobile variable collection is present. Application layout chooses composition and may select an explicit density, but does not mutate the definitions.

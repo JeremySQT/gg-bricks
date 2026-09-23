@@ -29,7 +29,7 @@ test('rejects ambiguous, unknown and non-enum token parameters',()=>{
 });
 test('expands enum products and repeats a parameter consistently',()=>{
   const c=copy();const e=expandTokenPaths(c);
-  assert.equal(e.surface.length,60);
+  assert.equal(e.surface.length,45);
   assert.ok(e.surface.includes('color.action.danger.outline.disabled.surface'));
   c.tokens.repeat='color.{intent}.{intent}';
   assert.deepEqual(expandTokenPaths(c).repeat,['color.accent.accent','color.neutral.neutral','color.danger.danger']);
@@ -41,8 +41,8 @@ test('requires every expanded path when an inventory is supplied',()=>{
   const paths=Object.values(expandTokenPaths(source)).flat();
   const tokens=Object.fromEntries(paths.map(p=>[p,{$type:'number',$value:0}]));
   assert.equal(checkContract(source,{tokens}).checks.tokenCoverage,'passed');
-  delete tokens['color.action.neutral.link.loading.content'];
-  assert.ok(checkContract(source,{tokens}).errors.some(e=>e.path==='color.action.neutral.link.loading.content'));
+  delete tokens['color.action.neutral.ghost.loading.content'];
+  assert.ok(checkContract(source,{tokens}).errors.some(e=>e.path==='color.action.neutral.ghost.loading.content'));
 });
 test('rejects invalid slot cardinality and missing accepted components',()=>{
   const c=copy();c.parts.trailing.max=0;

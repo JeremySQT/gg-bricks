@@ -41,3 +41,16 @@ TextInput: distinguish disabled from readonly. Field owns surrounding label, hel
 9. Exact approval/status schema and how Figma revisions are captured.
 
 Resolve only decisions that block the current phase. Do not silently mark proposals as accepted.
+
+## Consolidation after the initial contract candidate
+
+These entries supersede earlier open items in this document where they overlap.
+
+- The compact contract notation, slot notation and parameterized token paths were accepted in the conversation.
+- Button appearances are solid / outline / ghost. There is no link appearance. A Button may navigate; visual treatment does not determine native behavior.
+- V1 has no desktop/mobile token axis, no viewport-driven density and no layout rewriting of token values.
+- Focus bindings are color.focus.ring, focus.width and focus.offset.
+- Button sizes and density spacing use the agreed table documented in docs/button-contract-review.md and the JSON sources. Font and icon sizes do not shrink with density. The target minimum is 44 in both dimensions.
+- This batch was authorized as a whole: consolidate sources, complete Button tokens, run checks and prepare the Figma design review. Reversible palette and typography choices are review candidates, not user-approved final visuals.
+- Base uses blue, slate neutrals, red and Inter. Brand A overrides radius only; Brand B overrides radius and accent colors. Both inherit all remaining values. No brand must author a fixed number of distinct primitive values.
+- Figma review is complete enough to assess design; the component is not Done until code and version-aligned documentation are usable.

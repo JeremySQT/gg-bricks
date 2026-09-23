@@ -1,0 +1,3 @@
+import fs from 'node:fs';
+const root=new URL('../',import.meta.url);const config=JSON.parse(fs.readFileSync(new URL('config.json',root)));const out={};for(const b of config.brands){out[b]={};for(const a of config.appearances)for(const d of config.densities){const t=JSON.parse(fs.readFileSync(new URL(`dist/resolved/${b}-${a}-${d}.json`,root)));out[b][a+'-'+d]=Object.fromEntries(Object.entries(t).filter(([p,v])=>!p.startsWith('primitive.')&&['color','dimension'].includes(v.$type)).map(([p,v])=>[p.replaceAll('.','/'),v.$type==='color'?{r:v.$value.components[0],g:v.$value.components[1],b:v.$value.components[2],a:v.$value.alpha??1}:v.$value.value]));}}
+fs.writeFileSync(new URL('dist/figma-expectations.json',root),JSON.stringify(out));

@@ -1,7 +1,7 @@
 {
   "formatStatus": "proposed",
   "componentId": "button",
-  "phase": "contract",
+  "phase": "design-review",
   "dependencies": [
     "icon",
     "counter",
@@ -10,37 +10,74 @@
   "artifacts": {
     "contract": {
       "path": "contracts/actions/button.contract.json",
-      "sha256": "10aedb950e1bec1b9161358d68d0a0964a44cba0372a2e77d0163f4131d370ca"
+      "sha256": "3e6eabad7ad457a6148000ec21c192368f11c33779c7a01b58464ab937e90345"
     },
-    "tokens": [],
-    "figma": null,
+    "tokens": [
+      "tokens/base",
+      "tokens/brand-a",
+      "tokens/brand-b"
+    ],
+    "figma": {
+      "fileKey": "vytcT4Uq6pdroelPdNLFcR",
+      "componentSetId": "11:74",
+      "reviewEntryNodeId": "12:56",
+      "ledger": "reports/figma/ledger.json",
+      "immutableRevision": null
+    },
     "svelte": null,
     "humanDocs": null,
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Compact encoding, slot constraints, parameterized paths and subsequent explicit Button decisions",
+      "provenance": "Conversation: user accepted notation and parameterized paths, then removed link appearance and approved the larger Button batch.",
+      "note": "This records the decisions accepted in conversation; it does not claim approval of new palette values or the current visual revision."
+    },
     "design": null,
     "delivery": null
   },
   "checks": [
     {
-      "kind": "schema-and-consistency",
+      "kind": "schema-and-resolver",
       "result": "passed",
-      "report": "reports/button-contract-validation.json"
+      "report": "reports/contract-tests.txt"
     },
     {
-      "kind": "token-and-dependency-coverage",
-      "result": "not-provided"
+      "kind": "token-coverage",
+      "result": "passed",
+      "report": "reports/button-token-coverage.json"
     },
     {
-      "kind": "intrinsic-rules",
-      "result": "manual-review-required"
+      "kind": "contrast",
+      "result": "passed-with-disabled-informational",
+      "report": "reports/button-contrast.json"
+    },
+    {
+      "kind": "native-figma-token-resolution",
+      "result": "passed",
+      "report": "reports/figma/token-parity.json"
+    },
+    {
+      "kind": "figma-structure-and-intrinsic-visual-rules",
+      "result": "passed",
+      "report": "reports/figma/structure.json"
+    },
+    {
+      "kind": "visual-review",
+      "result": "agent-checked-user-review-pending",
+      "report": "docs/button-contract-review.md"
+    },
+    {
+      "kind": "runtime-behavior-and-accessibility",
+      "result": "not-implemented"
     }
   ],
   "openDecisions": [
-    "Approve candidate JSON notation and parameterized token paths",
-    "Confirm exact semantic token bindings and coverage"
+    "Visual approval and adjustments",
+    "Complete counter / shortcut / icon dependency contracts",
+    "Svelte implementation and headless dependency strategy",
+    "Documentation publishing, package distribution and release"
   ],
-  "nextAction": "Review contract encoding and token bindings; complete actual token/dependency coverage before design."
+  "nextAction": "Review the Button in Figma, reconcile any token/contract changes, then start the Svelte implementation phase."
 }

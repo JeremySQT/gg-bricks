@@ -14,7 +14,7 @@ Start with [AGENTS.md](AGENTS.md). This kit records the agreed architecture and 
 - [Pilot evidence](docs/pilot-evidence.md): tested scope and limits.
 - [Skills](docs/skills.md): implemented skills and planned capabilities.
 
-This is an architecture baseline, not a production component library. Template fields and the proposed tracking format are implementation proposals; they have not received a separate user review. A [Button contract and schema candidate](docs/button-contract-review.md) is now available with a Node validator (npm ci, npm test, npm run validate). Its encoding still awaits review. The final token catalog, other components, Svelte conventions and publication infrastructure remain open.
+This is an architecture baseline, not a production component library. Template fields and the proposed tracking format are implementation proposals; they have not received a separate user review. A [Button contract and schema candidate](docs/button-contract-review.md) is now available with a Node validator (npm ci, npm test, npm run validate). Its compact encoding was accepted; the full Button design candidate is now available for visual review. The final token catalog, other components, Svelte conventions and publication infrastructure remain open.
 
 The existing ds-token-pilot archive remains a separate experimental artifact. Do not treat its reduced Button contract or experimental values as the final DS.
 
@@ -26,3 +26,7 @@ A complete Git snapshot is supplied as history.bundle. To restore it outside the
 git clone /path/to/ds-architecture/history.bundle ds-architecture
 
 No remote repository is configured. Do not mistake a local commit for a remote publication.
+
+## Current Button batch
+
+Read [the review and adapter notes](docs/button-contract-review.md). Run `npm ci`, `npm test`, and `npm run build:tokens`. The package contains JSON sources, deterministic generators, validation evidence and Figma screenshots. Svelte and release publication are not included in this batch.

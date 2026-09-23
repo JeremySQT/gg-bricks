@@ -14,8 +14,7 @@
       "values": [
         "solid",
         "outline",
-        "ghost",
-        "link"
+        "ghost"
       ],
       "default": "solid"
     },
@@ -89,8 +88,8 @@
     "iconSize": "size.icon.{size}",
     "borderWidth": "border.width.default",
     "focusColor": "color.focus.ring",
-    "focusWidth": "border.focus.width",
-    "focusOffset": "border.focus.offset"
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset"
   },
   "rules": [
     "Arrange leading, label and trailing in that order inside container; label uses the required non-empty label prop.",

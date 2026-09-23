@@ -1,16 +1,25 @@
-✔ candidate validates without claiming token or rule coverage (5.012975ms)
-✔ rejects misspelled fields and wrong boolean defaults (0.44719ms)
-✔ rejects defaults outside enum values and contradictory required defaults (0.871325ms)
-✔ rejects ambiguous, unknown and non-enum token parameters (0.95608ms)
-✔ expands enum products and repeats a parameter consistently (1.264545ms)
-✔ requires every expanded path when an inventory is supplied (1.845903ms)
-✔ rejects invalid slot cardinality and missing accepted components (0.712181ms)
-✔ rejects primitive bindings and malformed token templates (0.404617ms)
-ℹ tests 8
+
+> test
+> node --test tests/*.test.mjs
+
+✔ candidate validates without claiming token or rule coverage (3.61999ms)
+✔ rejects misspelled fields and wrong boolean defaults (0.402366ms)
+✔ rejects defaults outside enum values and contradictory required defaults (0.527811ms)
+✔ rejects ambiguous, unknown and non-enum token parameters (0.731003ms)
+✔ expands enum products and repeats a parameter consistently (1.049714ms)
+✔ requires every expanded path when an inventory is supplied (1.437338ms)
+✔ rejects invalid slot cardinality and missing accepted components (0.469535ms)
+✔ rejects primitive bindings and malformed token templates (0.299343ms)
+✔ rejects missing, cyclic and differently typed aliases (1.169111ms)
+✔ sparse brand inherits complete colors while overriding radius (3.762812ms)
+✔ density affects spacing without altering typography, icons or target (2.993273ms)
+✔ loading aliases default and remains independent of disabled values (0.825062ms)
+✔ unknown configuration fails before reading overlays (0.244252ms)
+ℹ tests 13
 ℹ suites 0
-ℹ pass 8
+ℹ pass 13
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 177.58627
+ℹ duration_ms 168.262568

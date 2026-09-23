@@ -1,6 +1,6 @@
-# Component contract format — candidate v1
+# Component contract format — v1
 
-Status: concrete encoding proposal, awaiting user review. The five substantive blocks are agreed; this schema is deliberately limited to the types currently required by Button.
+Status: compact encoding accepted during the design discussion; future component types may extend it. The five substantive blocks are agreed; this schema is deliberately limited to the types currently required by Button.
 
 ## Representation
 
