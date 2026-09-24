@@ -2,7 +2,7 @@
 await figma.setCurrentPageAsync(await figma.getNodeByIdAsync('2:7'));
 const setName='.Button/'+intent+'/'+appearance;
 if(figma.currentPage.children.some(n=>n.name===setName))throw Error('Already exists: '+setName);
-const icon=await figma.importComponentByKeyAsync('afef62430a3011f42389d0b20fada3c93a0b0684');
+const icon=await figma.getNodeByIdAsync(fixtures.icon); // Current compatible fixture: 20:2; do not use the imported Plus directly.
 const counter=await figma.getNodeByIdAsync(fixtures.counter);
 const shortcut=await figma.getNodeByIdAsync(fixtures.shortcut);
 const c=track(figma.createComponent());c.name='size=md, state=default';c.layoutMode='HORIZONTAL';c.primaryAxisSizingMode='AUTO';c.counterAxisSizingMode='AUTO';c.counterAxisAlignItems='CENTER';c.primaryAxisAlignItems='CENTER';c.clipsContent=false;c.strokeAlign='INSIDE';c.strokesIncludedInLayout=false;

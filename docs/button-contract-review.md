@@ -62,3 +62,13 @@ Focus offset is used when building the geometry. Changing that token requires re
 ## Next gate
 
 Review overall appearance, visual emphasis, density, focus and loading. Consolidate any edits into token / contract sources before the Svelte phase. After that phase, produce runtime accessibility, keyboard and visual parity evidence and executable documentation. Publication and a complete component catalog remain separate decisions.
+
+## Slot color follow-up — 2026-09-24
+
+The user approved the overall visual direction but identified dark shortcut text on the accent solid surface after an instance swap. Leading and trailing foreground content must use the same resolved content color as the label.
+
+The original Plus fixture was replaced in verified original master slots by a local compatible icon fixture (20:2). All three fixtures now contain a `content` text layer and a `glyph` vector layer; their visibility depends on the fixture. Both layers receive state-specific foreground bindings in Button masters. Existing counter/shortcut component IDs remain 7:9 / 7:11.
+
+A fresh shortcut swap correctly follows default, hover and disabled in light and dark. Repeated swaps between different fixtures after changing intent or appearance can still restore stale per-component overrides in Figma. This correction is partial; do not report complete slot parity.
+
+Proposed next step: test and adopt a single compatible fixture variant family, keeping icon/counter/shortcut as the allowed content choices. Automatic approval review rejected regrouping the existing components because it changes their structure and might affect existing references. That regrouping was not executed. Explicit user authorization is needed before changing those existing components. Evidence: reports/figma/slot-color-review.json. The isolated regression example is node 22:2334.

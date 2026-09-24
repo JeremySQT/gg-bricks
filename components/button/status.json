@@ -10,7 +10,7 @@
   "artifacts": {
     "contract": {
       "path": "contracts/actions/button.contract.json",
-      "sha256": "3e6eabad7ad457a6148000ec21c192368f11c33779c7a01b58464ab937e90345"
+      "sha256": "4967f201461db34e8b2ba22facae751df61258134f4506d27940795bf526898c"
     },
     "tokens": [
       "tokens/base",
@@ -71,13 +71,19 @@
     {
       "kind": "runtime-behavior-and-accessibility",
       "result": "not-implemented"
+    },
+    {
+      "kind": "slot-color-after-repeated-swaps",
+      "result": "failed",
+      "report": "reports/figma/slot-color-review.json"
     }
   ],
   "openDecisions": [
+    "Authorize grouping icon/counter/shortcut fixtures into a compatible variant family; automatic approval review blocked changing existing component structure.",
     "Visual approval and adjustments",
     "Complete counter / shortcut / icon dependency contracts",
     "Svelte implementation and headless dependency strategy",
     "Documentation publishing, package distribution and release"
   ],
-  "nextAction": "Review the Button in Figma, reconcile any token/contract changes, then start the Svelte implementation phase."
+  "nextAction": "Resolve repeated slot-swap color restoration before treating the Figma design as ready for implementation."
 }
