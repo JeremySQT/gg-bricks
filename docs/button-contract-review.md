@@ -72,3 +72,15 @@ The original Plus fixture was replaced in verified original master slots by a lo
 A fresh shortcut swap correctly follows default, hover and disabled in light and dark. Repeated swaps between different fixtures after changing intent or appearance can still restore stale per-component overrides in Figma. This correction is partial; do not report complete slot parity.
 
 Proposed next step: test and adopt a single compatible fixture variant family, keeping icon/counter/shortcut as the allowed content choices. Automatic approval review rejected regrouping the existing components because it changes their structure and might affect existing references. That regrouping was not executed. Explicit user authorization is needed before changing those existing components. Evidence: reports/figma/slot-color-review.json. The isolated regression example is node 22:2334.
+
+## Slot foreground follow-up resolved — 2026-09-24
+
+The user explicitly authorized restructuring the fixtures. Grouping alone retained stale colors during repeated swaps, so the final adapter uses an inherited foreground alias, selected by the Button surface's style and state context. All values resolve the existing content tokens; no source tokens or public Button options were added.
+
+The fixtures are grouped in `_Slot fixture/Content` (24:2), with distinct Counter value and Shortcut value properties. Their existing component IDs remain intact. Both slot foregrounds bind the shared context. Generated review examples were migrated while preserving their slot selections. Construction and review scripts now follow the same binding model.
+
+Validation: 1,296 repeated-swap comparisons passed across three brands, light/dark, nine intent/appearance pairs and six states at md. A further 648 comparisons passed on the previously failing migrated instance, checking both leading/trailing, sm/md/lg, all intent/appearance pairs and default/hover/disabled. These are permutations of the same fixtures, not new tokens or components. The final visual board shows icon, counter and shortcut content in light/dark plus disabled examples.
+
+Review: https://www.figma.com/design/vytcT4Uq6pdroelPdNLFcR?node-id=22-2334
+
+See `reports/figma/slot-context-regression.json`, `reports/figma/slot-context.png` and the adapter README. The old failure report remains historical. This fixes the compatible local fixtures; arbitrary external components require the binding convention. Full dependency components, Svelte, runtime accessibility and publication are still pending. The additional internal mode counts were verified only in this file.

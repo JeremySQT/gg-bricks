@@ -54,3 +54,9 @@ These entries supersede earlier open items in this document where they overlap.
 - This batch was authorized as a whole: consolidate sources, complete Button tokens, run checks and prepare the Figma design review. Reversible palette and typography choices are review candidates, not user-approved final visuals.
 - Base uses blue, slate neutrals, red and Inter. Brand A overrides radius only; Brand B overrides radius and accent colors. Both inherit all remaining values. No brand must author a fixed number of distinct primitive values.
 - Figma review is complete enough to assess design; the component is not Done until code and version-aligned documentation are usable.
+
+## Button slot foreground correction — 2026-09-24
+
+- Leading/trailing foreground uses the resolved Button content color, as recorded in the component rule.
+- The user authorized fixture restructuring after the initial direct-override approach failed repeated swaps.
+- The Figma reference uses compatible local fixtures and generated inherited color-context aliases. This is an adapter decision, not a new source-token family or public theme axis. See adapters/figma/README.md for reconstruction, scope and evidence.

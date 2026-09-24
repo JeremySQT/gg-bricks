@@ -25,3 +25,28 @@ Read reports/figma/ledger.json, then inspect the actual file before editing. Per
 - Review containers must not clip a focus outline. Only adjust containers owned by the review.
 - Imported Plus is from Figma Simple Design System, component key afef62430a3011f42389d0b20fada3c93a0b0684. The broader icon strategy and distribution license review belong to the implementation/release phase.
 - No Code Connect association is emitted: there is no actual Svelte component to map yet.
+
+## Slot foreground inheritance — corrected reference
+
+The Button rule is: leading and trailing foreground uses the resolved Button content color. A direct paint override on a swapped instance is insufficient: repeated swaps restored stale per-component colors in this reference file, even after grouping compatible components into a variant family.
+
+The Figma adapter therefore supplies two internal context collections:
+
+- `_Button content/Style`: nine intent/appearance modes and one foreground alias.
+- `_Button content/State`: five resolved states and nine style-specific aliases.
+
+The foreground alias points to a style alias, which points to the existing `color/action/{intent}/{appearance}/{state}/content` variable. Existing Appearance and Brand modes still resolve that source variable. Disabled-loading selects disabled colors. Each internal Button surface sets its own two context modes; fixtures inherit them. All fixtures bind the same foreground alias, so swapping does not restore a stale intent/state-specific paint.
+
+These ten generated aliases are Figma implementation machinery, not additional JSON tokens, public customization axes or a new semantic layer. The file now has 466 variables: 456 existing variables and 10 adapter aliases. Collections have nine and five modes in this tested file; portability to other files/plans must be checked before replication. Adapter variables are hidden from publishing and have `currentColor` code syntax; publishing/distribution remains unvalidated.
+
+Reference migration order:
+
+1. `configure-slot-context.plugin.js`: create/reuse aliases and bind known fixture children.
+2. `group-slot-fixtures.plugin.js`: retain fixture component IDs, group them and separate Counter value / Shortcut value defaults.
+3. `migrate-button-slot-context.plugin.js`: set inherited context on the 162 existing surface variants and bind both slots.
+4. Migrate owned review examples by preserving slot property values, resetting stale slot overrides, then restoring properties. Do not reset unrelated user overrides globally.
+5. `verify-button-slot-context.plugin.js`: exercise repeated swaps on the recorded regression instance; inspect the screenshot too.
+
+For new internal surfaces, `build-button-skin.plugin.js` now sets the context modes and binds slots to the shared alias. `review-helpers.plugin.js` no longer adds contextual per-example paint overrides. Fixture family `24:2` keeps components icon `20:2`, counter `7:9`, shortcut `7:11`. Do not infer support for arbitrary imported components: their foreground must conform to this adapter binding. Complete dependency contracts are still pending.
+
+Evidence: `reports/figma/slot-context-regression.json` and `slot-context.png`. The earlier slot-color-review report records a failed intermediate approach, superseded by this correction. The mutation ledger is supplemental to the original build ledger.

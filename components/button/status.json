@@ -22,7 +22,9 @@
       "componentSetId": "11:74",
       "reviewEntryNodeId": "12:56",
       "ledger": "reports/figma/ledger.json",
-      "immutableRevision": null
+      "immutableRevision": null,
+      "slotReviewNodeId": "22:2334",
+      "slotContextLedger": "reports/figma/slot-context-ledger.json"
     },
     "svelte": null,
     "humanDocs": null,
@@ -74,16 +76,15 @@
     },
     {
       "kind": "slot-color-after-repeated-swaps",
-      "result": "failed",
-      "report": "reports/figma/slot-color-review.json"
+      "result": "passed",
+      "report": "reports/figma/slot-context-regression.json"
     }
   ],
   "openDecisions": [
-    "Authorize grouping icon/counter/shortcut fixtures into a compatible variant family; automatic approval review blocked changing existing component structure.",
     "Visual approval and adjustments",
     "Complete counter / shortcut / icon dependency contracts",
     "Svelte implementation and headless dependency strategy",
     "Documentation publishing, package distribution and release"
   ],
-  "nextAction": "Resolve repeated slot-swap color restoration before treating the Figma design as ready for implementation."
+  "nextAction": "Review the corrected Figma Button and slot-color board, then implement Svelte after design approval."
 }
