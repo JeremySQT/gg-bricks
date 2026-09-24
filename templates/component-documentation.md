@@ -4,15 +4,15 @@
 
 ## Overview
 
-Write a short human-readable introduction: purpose, principal forms and capabilities. Several informative sentences, not only an API summary.
+Write a short human-readable introduction: purpose, principal forms and capabilities. Several informative sentences, not only an API summary. Start with what the component lets the user do. Keep framework names, versions, HTML mappings and adapter mechanics in API or implementation references.
 
 ## When to use
 
-Describe the situations where this component is a suitable choice.
+Start with the general purpose, then list representative situations where this component is a suitable choice. Do not lead with a narrow example or implementation detail.
 
 ## When not to use
 
-State unsuitable situations and name/link the appropriate component or pattern.
+List unsuitable situations and name/link the appropriate component or pattern. Distinguish planned alternatives from currently available exports.
 
 ## Anatomy
 
@@ -32,4 +32,4 @@ Document exact target import, properties, types, defaults, exposed composition p
 
 ## Accessibility
 
-Explain guarantees, interaction behavior and integration responsibilities. Link related guidelines instead of duplicating them. Do not claim accessibility conformance solely from automated checks.
+Explain guarantees, interaction behavior and integration responsibilities. Link related guidelines instead of duplicating them. List the relevant WCAG success criteria with their number, name, level, official W3C link and concrete relevance to this component. Distinguish component support, integration responsibilities and checks still pending. Keep AAA objectives separate from A/AA requirements, and do not imply that every listed criterion has passed. Do not claim accessibility conformance solely from automated checks.

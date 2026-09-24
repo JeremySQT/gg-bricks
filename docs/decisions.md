@@ -69,3 +69,9 @@ These entries supersede earlier open items in this document where they overlap.
 - The first Svelte adapter uses named snippets for leading/trailing. Their contents must obey the contract, but Svelte does not statically enforce the permitted component identities. This limitation is explicit; a stricter slot API remains a review decision, not a fabricated guarantee.
 - During loading, an available control retains its focus and geometry while activation is guarded. Disabled uses native unavailable behavior and wins color precedence.
 - The implementation ships as a local installable package with Markdown documentation and a small agent catalog. Hosting, public publishing, final dependency contracts and full DS delivery are still separate work.
+
+## Documentation editorial review — 2026-09-24
+
+- Introduce the component through its user-facing purpose. Framework names, versions and native HTML mappings belong in the API, not the overview.
+- Start use guidance broadly and list representative use cases and alternatives.
+- Accessibility documentation identifies relevant WCAG 2.2 criteria, levels and official links, with component versus application responsibilities and honest validation status. Listed criteria are not a blanket compliance claim.
