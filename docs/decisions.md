@@ -60,3 +60,12 @@ These entries supersede earlier open items in this document where they overlap.
 - Leading/trailing foreground uses the resolved Button content color, as recorded in the component rule.
 - The user authorized fixture restructuring after the initial direct-override approach failed repeated swaps.
 - The Figma reference uses compatible local fixtures and generated inherited color-context aliases. This is an adapter decision, not a new source-token family or public theme axis. See adapters/figma/README.md for reconstruction, scope and evidence.
+
+## Svelte reference implementation — 2026-09-24
+
+- The user authorized completing the Svelte implementation and selected Bits UI primitives. The reference pins Svelte 5.57.1 and Bits UI 2.19.3; native Button/anchor behavior uses Bits UI Button.Root.
+- Figma implementation details must not become shared tokens, shared contract fields or mandatory code structures. Agents follow the contract and anatomy; they must justify any target-specific layers independently.
+- The Button uses CSS color inheritance and currentColor for compatible slot content. No Figma context collections or aliases are exported to code.
+- The first Svelte adapter uses named snippets for leading/trailing. Their contents must obey the contract, but Svelte does not statically enforce the permitted component identities. This limitation is explicit; a stricter slot API remains a review decision, not a fabricated guarantee.
+- During loading, an available control retains its focus and geometry while activation is guarded. Disabled uses native unavailable behavior and wins color precedence.
+- The implementation ships as a local installable package with Markdown documentation and a small agent catalog. Hosting, public publishing, final dependency contracts and full DS delivery are still separate work.

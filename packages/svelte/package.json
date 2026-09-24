@@ -1,0 +1,18 @@
+{
+  "name": "@ds-reference/svelte",
+  "version": "0.1.0",
+  "description": "Svelte reference implementation of the JSON-owned design system",
+  "type": "module",
+  "private": true,
+  "svelte": "./src/index.ts",
+  "exports": {
+    ".": { "types": "./src/index.ts", "svelte": "./src/index.ts", "default": "./src/index.ts" },
+    "./tokens.css": "./tokens.css",
+    "./docs/*": "./docs/*",
+    "./contracts/*": "./contracts/*"
+  },
+  "files": ["src", "tokens.css", "docs", "contracts", "README.md"],
+  "sideEffects": ["**/*.css"],
+  "peerDependencies": { "svelte": "^5.57.1" },
+  "dependencies": { "bits-ui": "2.19.3" }
+}

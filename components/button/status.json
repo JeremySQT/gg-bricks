@@ -1,7 +1,7 @@
 {
   "formatStatus": "proposed",
   "componentId": "button",
-  "phase": "design-review",
+  "phase": "implementation-review",
   "dependencies": [
     "icon",
     "counter",
@@ -26,9 +26,25 @@
       "slotReviewNodeId": "22:2334",
       "slotContextLedger": "reports/figma/slot-context-ledger.json"
     },
-    "svelte": null,
-    "humanDocs": null,
-    "agentDocs": null
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/button/Button.svelte",
+      "demo": "examples/button/App.svelte",
+      "preview": "button-preview.html",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3"
+      }
+    },
+    "humanDocs": {
+      "path": "packages/svelte/docs/button.md",
+      "hosting": "local Markdown; public site not deployed"
+    },
+    "agentDocs": {
+      "catalog": "packages/svelte/docs/index.json",
+      "guide": "packages/svelte/docs/AGENTS.md",
+      "content": "packages/svelte/docs/button.md"
+    }
   },
   "approvals": {
     "contract": {
@@ -36,7 +52,11 @@
       "provenance": "Conversation: user accepted notation and parameterized paths, then removed link appearance and approved the larger Button batch.",
       "note": "This records the decisions accepted in conversation; it does not claim approval of new palette values or the current visual revision."
     },
-    "design": null,
+    "design": {
+      "scope": "Current Button reference as the basis for Svelte implementation",
+      "provenance": "User tested the slot correction and explicitly instructed completion of the Svelte implementation using Bits UI.",
+      "note": "This is authorization to implement the current reference, not final delivery approval or an immutable Figma revision."
+    },
     "delivery": null
   },
   "checks": [
@@ -72,19 +92,31 @@
     },
     {
       "kind": "runtime-behavior-and-accessibility",
-      "result": "not-implemented"
+      "result": "passed-automated-chromium-manual-assistive-technology-pending",
+      "report": "reports/svelte/browser-results.json"
     },
     {
       "kind": "slot-color-after-repeated-swaps",
       "result": "passed",
       "report": "reports/figma/slot-context-regression.json"
+    },
+    {
+      "kind": "svelte-typecheck-and-production-build",
+      "result": "passed",
+      "report": "reports/svelte/implementation.md"
+    },
+    {
+      "kind": "server-rendering",
+      "result": "passed",
+      "report": "reports/svelte/ssr.json"
     }
   ],
   "openDecisions": [
-    "Visual approval and adjustments",
+    "Review the Svelte implementation and snippet content constraints",
+    "Expose fixture properties from the public Figma Button",
     "Complete counter / shortcut / icon dependency contracts",
-    "Svelte implementation and headless dependency strategy",
+    "Cross-browser and assistive-technology release validation",
     "Documentation publishing, package distribution and release"
   ],
-  "nextAction": "Review the corrected Figma Button and slot-color board, then implement Svelte after design approval."
+  "nextAction": "Review the runnable Svelte Button, then finish Figma property exposure and dependency/consumer documentation before delivery."
 }

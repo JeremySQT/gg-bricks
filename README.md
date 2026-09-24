@@ -30,3 +30,23 @@ No remote repository is configured. Do not mistake a local commit for a remote p
 ## Current Button batch
 
 Read [the review and adapter notes](docs/button-contract-review.md). Run `npm ci`, `npm test`, and `npm run build:tokens`. The package contains JSON sources, deterministic generators, validation evidence and Figma screenshots. Svelte and release publication are not included in this batch.
+
+## Svelte Button implementation
+
+This section supersedes the earlier batch's statement that Svelte is not included. The reference now uses Svelte 5.57.1 and Bits UI 2.19.3.
+
+```sh
+npm ci
+npm run dev
+```
+
+Open the local URL printed by Vite. No backend or credentials are required. `button-preview.html` is a self-contained production build that can also be opened directly in a browser.
+
+- Source/package: [packages/svelte](packages/svelte/README.md).
+- Human and agent guide: [Button](packages/svelte/docs/button.md).
+- Agent discovery: [catalog](packages/svelte/docs/index.json).
+- Verification: `npm run check`, `npm test`, `npm run test:ssr`, `npm run build`.
+- Browser checks: install Chromium with `npx playwright install chromium`, then `npm run test:browser`. A local browser may be selected through `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`.
+- Local installation artifact: `npm run pack:svelte` writes `dist/ds-reference-svelte-0.1.0.tgz`.
+
+The live demo and its screenshots are implementation review aids. The Figma fixture properties still need exposure from the public Button, and complete dependency components and final distribution remain open. Do not mark the entire DS Done from this implementation.
