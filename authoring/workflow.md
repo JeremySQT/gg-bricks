@@ -12,7 +12,7 @@ The skills in `.claude/skills/` are the executable form of these procedures; the
 
 ## Batch authoring
 
-The roadmap groups components into waves so that the user is interrupted only at gates. The `gg-component` skill runs it. For a wave:
+The roadmap groups components into waves so that the user is interrupted only at gates. The `ggb-component` skill runs it. For a wave:
 
 1. **Scope and contracts.** Follow Create steps 1–2 for every component of the wave, including the foundation tokens the wave needs. Run `npm run validate`. Present one contract review: a table per component (options, parts, states, rules), the token additions, the decisions taken within conventions and the grouped open questions. Stop for the contract gate.
 2. **Figma design.** Follow Create steps 3–4 for every component. Present one design review with file/node references. Stop for the design gate.

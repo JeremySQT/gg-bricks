@@ -1,6 +1,6 @@
 # Foundations specification
 
-The foundations are defined once, generously, before components. Semantic roles then pick from the primitives; unused primitives are expected and are not a defect. This document is the target inventory for the `gg-foundations` skill. Exact values are proposed by that task and approved at the foundations gate; the structure below is settled.
+The foundations are defined once, generously, before components. Semantic roles then pick from the primitives; unused primitives are expected and are not a defect. This document is the target inventory for the `ggb-foundations` skill. Exact values are proposed by that task and approved at the foundations gate; the structure below is settled.
 
 ## Files
 

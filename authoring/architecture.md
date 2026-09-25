@@ -19,7 +19,7 @@ If a visual iteration changes an intrinsic rule or option, reconcile the contrac
 
 1. Resolves every brand × appearance × density context (`tooling/lib/tokens.mjs`): merge the ordered source files (see decisions for precedence), keep a provenance trace, resolve aliases atomically, validate types.
 2. Validates every discovered contract against every context (token presence and role type).
-3. Writes `packages/tokens/resolved/<context>.json`, `reports/tokens/traces/<context>.json`, `packages/tokens/tokens.css` (one rule per context selected by the three `data-gg-*` attributes; every token becomes `--<path-with-dashes>`; typography also exposes `.fontSize` and `.lineHeight`).
+3. Writes `packages/tokens/resolved/<context>.json`, `reports/tokens/traces/<context>.json`, `packages/tokens/tokens.css` (one rule per context selected by the three `data-ggb-*` attributes; every token becomes `--ggb-<path-with-dashes>`; typography also exposes `.fontSize` and `.lineHeight`).
 4. Writes per-component evidence in `reports/components/<id>/`: token requirements, coverage, contract validation, and contrast against every `color.surface.*` backdrop for contracts exposing `surface`/`content` (`border` and `focusColor` when present; a parameter valued `disabled` is informational).
 5. Writes the Figma manifest and expectations. Axis routing is derived from the source file that defines each token (appearance.* → Appearance, density.* → Density, otherwise Brand). Technical `_resolved/*` variables are compilation detail for the Figma model, not a source layer.
 
@@ -28,7 +28,7 @@ If a visual iteration changes an intrinsic rule or option, reconcile the contrac
 `npm run build:svelte` (`tooling/build-svelte.mjs`), for each contract that has a `packages/svelte/src/<id>/` folder:
 
 - `contract.generated.ts`: one TypeScript union per enum prop (`<Id><Prop>`) and a `defaults` object.
-- `tokens.generated.css`: enum **props** become `[data-<prop>="<value>"]` selectors on `.gg-<id>`; enum **states** become suffixes of `--<id>-<role>`. Handwritten CSS selects the state (`:hover`, `[data-loading]`…) and applies conditional rules (for example a border only for the outline appearance).
+- `tokens.generated.css`: enum **props** become `[data-<prop>="<value>"]` selectors on `.ggb-<id>`; enum **states** become suffixes of `--ggb-<id>-<role>`. Handwritten CSS selects the state (`:hover`, `[data-loading]`…) and applies conditional rules (for example a border only for the outline appearance).
 - Copies `packages/tokens/tokens.css`, the contracts and `documentation/` into the package (ignored by git) and checks `documentation/index.json` against the discovered contracts and implementations.
 
 ## Component folder rule

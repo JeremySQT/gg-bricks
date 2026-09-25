@@ -1,5 +1,5 @@
 ---
-name: gg-maintain
+name: ggb-maintain
 description: Modify an existing ggbrick component, token or Figma master (including Figma-to-source reconciliation and incompatible changes), audit consistency and readiness read-only, or deliver a version (package, Figma library, docs). Use for "change", "fix", "reconcile Figma", "audit", "release", "publish".
 ---
 
@@ -15,7 +15,7 @@ Read `AGENTS.md`, `authoring/decisions.md` and the status files of the affected 
 
 ## Modify
 
-Identify the change and the baseline; analyze impact (consumers, contexts, API, docs, compatibility); update the authoritative source first; `npm run generate`; propagate what cannot be generated (Figma masters via `gg-figma`, code via `gg-svelte`, docs via `gg-docs`); rerun checks proportionate to the risk; reopen only the affected gates (a shared token change needs a representative visual review of affected components); record old/new references, approvals retained or reopened, evidence and limitations in the status and a change record.
+Identify the change and the baseline; analyze impact (consumers, contexts, API, docs, compatibility); update the authoritative source first; `npm run generate`; propagate what cannot be generated (Figma masters via `ggb-figma`, code via `ggb-svelte`, docs via `ggb-docs`); rerun checks proportionate to the risk; reopen only the affected gates (a shared token change needs a representative visual review of affected components); record old/new references, approvals retained or reopened, evidence and limitations in the status and a change record.
 
 ## Audit
 

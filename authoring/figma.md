@@ -9,7 +9,7 @@ Figma is the validated visual representation of ggbrick. It is operated through 
 - Component masters are built per contract: enum props become variant properties or booleans by meaning (do not multiply variants for optional children), parts become named layers, slot parts become instance-swap properties limited to compatible fixtures, tokens become variable bindings. Explanatory instances live in specification frames, not inside the master set.
 - Record every node ID the design system owns in `reports/components/<id>/figma/ledger.json` (masters, variant sets, fixtures, specification frames) and the file key in the component status. Never guess an ID; read it from the file.
 
-## Procedure for a component (gg-component, design phase)
+## Procedure for a component (ggb-component, design phase)
 
 1. Read the contract, the tokens it requires and `authoring/templates/figma-specification.md`.
 2. Inspect the destination: existing pages, variables, masters and the ledger. Reuse existing fixtures and variables.

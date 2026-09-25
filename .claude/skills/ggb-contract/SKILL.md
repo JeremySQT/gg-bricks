@@ -1,6 +1,6 @@
 ---
-name: gg-contract
-description: Draft or revise the compact platform-independent JSON contract of a ggbrick component (props, parts, states, token roles, intrinsic rules) and the token additions it needs, then validate it. Used by gg-component before design; use directly when only the contract changes.
+name: ggb-contract
+description: Draft or revise the compact platform-independent JSON contract of a ggbrick component (props, parts, states, token roles, intrinsic rules) and the token additions it needs, then validate it. Used by ggb-component before design; use directly when only the contract changes.
 ---
 
 # Component contract
@@ -17,4 +17,4 @@ Read `authoring/contract-guide.md`, `authoring/contract-format.md`, the schema i
 3. Reuse semantic roles. When a role is missing, add it to `foundations/tokens/base/semantic/*` with coverage in every context (and brand overlays if the brands differ); this is a foundation change to list at the gate.
 4. `npm run validate` and `npm run build:tokens`. Fix every error; do not manufacture tokens to satisfy the checker.
 5. Check portability: could a non-Svelte target implement the same component from these facts? Move anything target-specific to the implementation notes in the status.
-6. Update the status (`artifacts.contract` with digest, `openDecisions`) and hand back to `gg-component` for the contract gate. Never approve your own draft.
+6. Update the status (`artifacts.contract` with digest, `openDecisions`) and hand back to `ggb-component` for the contract gate. Never approve your own draft.

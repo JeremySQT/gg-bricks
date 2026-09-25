@@ -23,7 +23,7 @@ export function generateTypes(contract) {
 /**
  * CSS bindings for one contract. Enum *props* become data-attribute selectors;
  * enum *states* become suffixes of the custom property, so handwritten CSS
- * selects the state (hover, pressed, loading…) and reads `--<id>-<role>-<state>`.
+ * selects the state (hover, pressed, loading…) and reads `--ggb-<id>-<role>-<state>`.
  */
 export function generateCss(contract) {
   const id = contract.id;
@@ -34,8 +34,8 @@ export function generateCss(contract) {
     const propParams = params.filter((p) => props.includes(p));
     const stateParams = params.filter((p) => !props.includes(p));
     for (const { params: values, path } of list) {
-      const selector = `.gg-${id}` + propParams.map((p) => `[data-${p}="${values[p]}"]`).join('');
-      const variable = [`--${id}-${role}`, ...stateParams.map((p) => values[p])].join('-');
+      const selector = `.ggb-${id}` + propParams.map((p) => `[data-${p}="${values[p]}"]`).join('');
+      const variable = [`--ggb-${id}-${role}`, ...stateParams.map((p) => values[p])].join('-');
       if (!blocks.has(selector)) blocks.set(selector, []);
       blocks.get(selector).push(`  ${variable}: var(${cssVariable(path)});`);
     }

@@ -46,7 +46,7 @@ for (const ctx of contexts) {
   write(`${paths.tokensPackage}/resolved/${ctx.id}.json`, ctx.tokens);
   write(`${paths.reports}/tokens/traces/${ctx.id}.json`, ctx.trace);
   const flat = flatten(ctx.tokens);
-  css += `[data-gg-brand="${ctx.brand}"][data-gg-appearance="${ctx.appearance}"][data-gg-density="${ctx.density}"] {\n` +
+  css += `[data-ggb-brand="${ctx.brand}"][data-ggb-appearance="${ctx.appearance}"][data-ggb-density="${ctx.density}"] {\n` +
     Object.entries(flat).map(([p, v]) => `  ${cssVariable(p)}: ${cssValue(v)};`).join('\n') + '\n}\n';
 }
 write(`${paths.tokensPackage}/tokens.css`, css);

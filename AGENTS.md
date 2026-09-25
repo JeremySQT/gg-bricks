@@ -6,11 +6,11 @@ ggbrick is a design system delivered as a Figma library, a Svelte 5 package buil
 
 | Request | Do this |
 | --- | --- |
-| "Define / extend the foundations", primitives, palette, semantic tokens | Skill `gg-foundations` |
-| "Build / do / create <component>" (Button, InputText, Textarea…) or "build wave N" | Skill `gg-component` (it chains `gg-contract`, `gg-figma`, `gg-svelte`, `gg-docs`) |
-| Change an existing component, token or Figma master; reconcile Figma with sources | Skill `gg-maintain`, procedure Modify |
-| Check consistency or readiness without changing anything | Skill `gg-maintain`, procedure Audit |
-| Prepare or publish a version (package, Figma library, docs site) | Skill `gg-maintain`, procedure Deliver |
+| "Define / extend the foundations", primitives, palette, semantic tokens | Skill `ggb-foundations` |
+| "Build / do / create <component>" (Button, InputText, Textarea…) or "build wave N" | Skill `ggb-component` (it chains `ggb-contract`, `ggb-figma`, `ggb-svelte`, `ggb-docs`) |
+| Change an existing component, token or Figma master; reconcile Figma with sources | Skill `ggb-maintain`, procedure Modify |
+| Check consistency or readiness without changing anything | Skill `ggb-maintain`, procedure Audit |
+| Prepare or publish a version (package, Figma library, docs site) | Skill `ggb-maintain`, procedure Deliver |
 | Documentation site, marketing site, theme builder, Figma plugin | See `authoring/roadmap.md`; these are products with their own tasks, not component work |
 
 Skills live in `.claude/skills/<name>/SKILL.md`. Each one says which `authoring/` documents to read for the phase; read only those.
@@ -26,7 +26,7 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Each one says which `authoring/
 - Sources are authoritative and platform independent: tokens and contracts. Figma is the validated visual representation; Svelte is the target implementation. Change the source first, then regenerate (`npm run generate`), then reconcile outputs.
 - Never hand-edit generated files (`packages/tokens/*`, `packages/svelte/src/*/*.generated.*`, `reports/**/*.json` written by tooling). Commit them together with the source change.
 - Every component must be **self-contained and copyable**: `packages/svelte/src/<id>/` plus `tokens.css`, Bits UI and the internal dependencies its status declares are all a consumer needs. No other shared runtime code without a decision.
-- Naming: package scope `@ggbrick/*`, CSS classes `gg-<id>` and `gg-<id>__<part>`, theme attributes `data-gg-brand`, `data-gg-appearance`, `data-gg-density`, custom properties `--<token-path-with-dashes>`. English identifiers, rules and maintained docs; gate summaries and questions in the user's language.
+- Naming: package scope `@ggbrick/*`, CSS classes `ggb-<id>` and `ggb-<id>__<part>`, theme attributes `data-ggb-brand`, `data-ggb-appearance`, `data-ggb-density`, custom properties `--ggb-<token-path-with-dashes>`. English identifiers, rules and maintained docs; gate summaries and questions in the user's language.
 - Human review gates are the only mandatory interruptions: foundations review; per component contract, Figma design and interactive implementation; delivery approval. Group every other consequential question and present it at the next gate. Complete routine, unblocked work autonomously and record the choices you made.
 - A passing check is not an approval; an approval covers exactly the recorded revision and scope. Record evidence paths and digests in status files.
 - Publication (npm, Figma library, site) needs explicit authorization for that destination and version. Never modify Figma objects the design system does not own.

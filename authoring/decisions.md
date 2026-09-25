@@ -4,7 +4,7 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 
 ## Identity and delivery
 
-- Name: **ggbrick**; domain target ggbrick.design; npm scope `@ggbrick`; CSS prefix `gg-`; theme attributes `data-gg-*`.
+- Name: **ggbrick**; domain target ggbrick.design; npm scope `@ggbrick`; prefix `ggb-` for CSS classes (`ggb-<id>`, `ggb-<id>__<part>`), theme attributes (`data-ggb-*`) and custom properties (`--ggb-*`). `gg-` was rejected as too common; `ggb-` is short and collision-free. Skills are named `ggb-*`.
 - Three deliverables from the same sources: Figma library, Svelte 5 package on Bits UI, documentation (local Markdown shipped with the package, and a site).
 - Distribution: the npm package is the tested unit. Consumers may also copy a component's source folder into their project or download the whole `packages/svelte` source; every component folder is therefore self-contained (see AGENTS.md). No compatibility with any third-party registry or CLI is pursued. Bits UI is the only runtime dependency allowed besides Svelte. shadcn-svelte may be consulted as an implementation reference, never as a dependency or a format.
 - Documentation site: Astro with Starlight in `apps/docs`, reading `documentation/` and embedding live Svelte examples. Marketing site: Astro in `apps/site`.

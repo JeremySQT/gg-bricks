@@ -6,12 +6,12 @@ Validated by the user on 2026-09-25 (waves), amended for the foundations-first o
 
 | Task | Skill | Gate | State |
 | --- | --- | --- | --- |
-| 0 · Foundations: generous primitives, full semantic inventory, Figma variables | `gg-foundations` | Foundations review | **Next** (tokens are still the reference-kit seed) |
-| 1 · Wave 1 components | `gg-component` | Contract, design, implementation | Not started |
-| 2 · Wave 2 … 6 | `gg-component` | Same | Not started |
+| 0 · Foundations: generous primitives, full semantic inventory, Figma variables | `ggb-foundations` | Foundations review | **Next** (tokens are still the reference-kit seed) |
+| 1 · Wave 1 components | `ggb-component` | Contract, design, implementation | Not started |
+| 2 · Wave 2 … 6 | `ggb-component` | Same | Not started |
 | 3 · Documentation site (`apps/docs`, Astro + Starlight) | dedicated task | Site review | Not started; start once wave 1 is documented |
 | 4 · Marketing site (`apps/site`, Astro) | dedicated task | Site review | Not started |
-| 5 · First release (package, Figma library, docs) | `gg-maintain` Deliver | Delivery approval | Not started |
+| 5 · First release (package, Figma library, docs) | `ggb-maintain` Deliver | Delivery approval | Not started |
 
 ## Phase 2: customization
 

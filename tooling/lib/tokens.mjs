@@ -130,4 +130,4 @@ export function cssValue(t) {
   }
 }
 
-export const cssVariable = (path) => `--${path.replaceAll('.', '-')}`;
+export const cssVariable = (path) => `--ggb-${path.replaceAll('.', '-')}`;

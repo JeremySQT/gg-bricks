@@ -16,12 +16,12 @@ npm install /absolute/path/to/ggbrick-svelte-<version>.tgz
   // import { Button } from '@ggbrick/svelte';
 </script>
 
-<div data-gg-brand="base" data-gg-appearance="light" data-gg-density="standard">
+<div data-ggb-brand="base" data-ggb-appearance="light" data-ggb-density="standard">
   <!-- components -->
 </div>
 ```
 
-Set all three `data-gg-*` attributes on the same ancestor; they select one generated context. A nested override repeats all three. Fonts are loaded by your application, not by the components.
+Set all three `data-ggb-*` attributes on the same ancestor; they select one generated context. A nested override repeats all three. Fonts are loaded by your application, not by the components.
 
 ## Copy instead of installing
 

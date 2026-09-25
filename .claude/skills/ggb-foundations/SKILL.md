@@ -1,5 +1,5 @@
 ---
-name: gg-foundations
+name: ggb-foundations
 description: Define or extend the ggbrick foundations - generous primitive token ramps and scales, the full semantic inventory, default brands, generated CSS and Figma variables - and stop at the foundations review gate. Use for "define the foundations", "the palette", "primitives", "semantic tokens", or when a component needs a new token family.
 ---
 
@@ -22,4 +22,4 @@ Read `AGENTS.md`, `authoring/decisions.md` (Sources and tokens), `authoring/foun
 
 - Values are proposals until approved; do not describe them as final. Do not shrink the inventory to what a known component needs.
 - Never create empty files. Every semantic file holds real definitions.
-- Changing an approved foundation later goes through `gg-maintain` Modify with a representative visual review of affected components.
+- Changing an approved foundation later goes through `ggb-maintain` Modify with a representative visual review of affected components.

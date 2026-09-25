@@ -5,7 +5,7 @@ The design-system root is the repository root. All agent instructions resolve pa
 | Path | Responsibility |
 | --- | --- |
 | `AGENTS.md`, `CLAUDE.md` | Authoring entry point and task routing |
-| `.claude/skills/gg-*/SKILL.md` | Repository skills: foundations, component, contract, figma, svelte, docs, maintain |
+| `.claude/skills/ggb-*/SKILL.md` | Repository skills: foundations, component, contract, figma, svelte, docs, maintain |
 | `package.json` | npm workspaces (`packages/*`) and scripts |
 | `foundations/config.json` | Brands, appearances, densities |
 | `foundations/tokens/{base,<brand>}/` | Authoritative DTCG token sources |

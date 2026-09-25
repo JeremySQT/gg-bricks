@@ -1,6 +1,6 @@
 ---
-name: gg-figma
-description: Build or update ggbrick's Figma library through the Figma MCP server - variables from the token manifest, component masters from a contract, specification pages - and prepare the design review. Used by gg-component and gg-foundations; use directly for Figma-only tasks.
+name: ggb-figma
+description: Build or update ggbrick's Figma library through the Figma MCP server - variables from the token manifest, component masters from a contract, specification pages - and prepare the design review. Used by ggb-component and ggb-foundations; use directly for Figma-only tasks.
 ---
 
 # Figma
@@ -21,7 +21,7 @@ Read `authoring/figma.md` and `authoring/templates/figma-specification.md`. Insp
 3. Build in small verified batches with screenshots; keep each variant set under about 30 variants by nesting an internal set when the matrix is large. Reserve the minimum interaction target around the visible surface. Bind every visual property to a variable.
 4. Build the specification page from the template with explanatory instances. Check difficult cases: long labels, empty optional slots, constrained width, all states in light and dark, each brand and density.
 5. Write `components/<family>/<id>/figma-spec.md`, the ledger `reports/components/<id>/figma/ledger.json` (every owned node ID) and screenshots. Update the status (`artifacts.figma`).
-6. Hand back to `gg-component` for the design gate with file and node links, screenshots and the checked cases.
+6. Hand back to `ggb-component` for the design gate with file and node links, screenshots and the checked cases.
 
 ## Rules
 

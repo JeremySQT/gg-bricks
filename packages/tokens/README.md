@@ -4,7 +4,7 @@ Generated outputs of the authoritative token sources in `foundations/tokens`. Do
 
 | File | Content |
 | --- | --- |
-| `tokens.css` | One rule per brand × appearance × density context, selected by `data-gg-brand`, `data-gg-appearance` and `data-gg-density` on a common ancestor. Every semantic token becomes `--<path-with-dashes>`. |
+| `tokens.css` | One rule per brand × appearance × density context, selected by `data-ggb-brand`, `data-ggb-appearance` and `data-ggb-density` on a common ancestor. Every semantic token becomes `--ggb-<path-with-dashes>`. |
 | `resolved/<brand>-<appearance>-<density>.json` | Flat resolved DTCG map for one context (aliases resolved after sparse overlays). |
 | `figma-manifest.json` | Variable collections, routing and values for the Figma adapter. |
 | `figma-expectations.json` | Expected native Figma resolution per brand and mode pair, used by the verification scripts. |
@@ -16,7 +16,7 @@ Provenance traces (which source file set each value) are written to `reports/tok
 ```
 
 ```html
-<body data-gg-brand="base" data-gg-appearance="light" data-gg-density="standard">
+<body data-ggb-brand="base" data-ggb-appearance="light" data-ggb-density="standard">
 ```
 
 Set all three attributes on the same element. A nested override repeats all three.

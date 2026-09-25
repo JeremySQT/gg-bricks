@@ -18,10 +18,10 @@ Follow `figma.md`. Complete `components/<family>/<id>/figma-spec.md` from `templ
 
 ## Svelte implementation
 
-Follow the `gg-svelte` skill. Conventions:
+Follow the `ggb-svelte` skill. Conventions:
 
 - Folder `packages/svelte/src/<id>/` with `<Name>.svelte`, `types.ts`, `<id>.css`, generated `contract.generated.ts` and `tokens.generated.css` (`npm run build:svelte`). Export from `src/index.ts`.
-- Root class `gg-<id>`, parts `gg-<id>__<part>`, enum props as `data-<prop>` attributes, boolean states as `data-<state>` presence.
+- Root class `ggb-<id>`, parts `ggb-<id>__<part>`, enum props as `data-<prop>` attributes, boolean states as `data-<state>` presence.
 - Use the Bits UI primitive that owns the native semantics; verify its actual API in `node_modules/bits-ui` before relying on it. Add ggbrick's anatomy, guards and styles on top; do not re-implement what the primitive provides.
 - Slot content inherits `color`; icons use `currentColor`. Handle `prefers-reduced-motion` and `forced-colors`. Respect `size.target.min` without forcing the visible surface to grow.
 - Add `examples/<id>/` (index.html, main.ts, App.svelte) with brand/appearance/density selectors, every option, states, difficult cases (long content, empty slots, constrained width, async states) and instrumented controls for tests. Add the page to `examples/index.html`.
@@ -34,7 +34,7 @@ Give the user: the preview page, the exact revision, an exercise list (mouse, to
 
 ## Documentation
 
-Follow the `gg-docs` skill and `templates/component-documentation.md`. One page in `documentation/components/<id>.md`; entry in `documentation/index.json`; `npm run build:svelte` validates the index. Import examples must come from `examples/<id>/`. Accessibility lists relevant WCAG 2.2 criteria with number, name, level, link and the component/integration split, plus the actual validation status.
+Follow the `ggb-docs` skill and `templates/component-documentation.md`. One page in `documentation/components/<id>.md`; entry in `documentation/index.json`; `npm run build:svelte` validates the index. Import examples must come from `examples/<id>/`. Accessibility lists relevant WCAG 2.2 criteria with number, name, level, link and the component/integration split, plus the actual validation status.
 
 ## Final consistency
 
