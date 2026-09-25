@@ -1,41 +1,49 @@
-# Component lifecycle
+# Authoring workflows
 
-## Phases and outputs
+Read only the procedure needed for the task:
 
-| Phase | Required work | Exit |
-| --- | --- | --- |
-| Scope | Read catalog, dependencies and conventions; identify missing product decisions | Scope clear; material unknowns resolved |
-| Contract | Draft compact contract and justified token additions; identify legal states and content | User approval tied to exact contract and relevant token revisions |
-| Design | Build Figma component and reviewable variants, states and difficult cases | User approves the identified design revision |
-| Specifications | Complete Figma template and reconcile any source changes | Contract and visual specifications coherent |
-| Implementation | Implement Svelte behavior, accessibility and visual parity; produce evidence | Relevant automated checks pass and reviewable implementation exists |
-| Documentation | Complete shared usage page, runnable examples, catalog entry and local discovery | Documents agree with actual artifacts and version |
-| Delivery | Review readiness and make artifacts available through authorized release mechanisms | User delivery approval and all completion conditions met |
+| Request | Procedure |
+| --- | --- |
+| Add a component | [Create](workflows/create.md) |
+| Change a component, tokens, foundations or reconcile Figma | [Modify](workflows/modify.md) |
+| Inspect consistency and readiness | [Audit](workflows/audit.md) |
+| Prepare and distribute a version | [Deliver](workflows/deliver.md) |
 
-Within established conventions, proceed autonomously. Do not ask for each routine implementation decision. Ask when a missing decision changes scope, public API, intrinsic behavior or a previously approved design.
+## Shared operating rules
 
-User approvals are the three agreed workflow gates, not invented tool permissions. A user can approve several stages explicitly; record that scope and do not ask again for unchanged revisions. A ready artifact is not authorization to publish or message others.
+- Repository JSON tokens and compact contracts are authoritative. Reconcile an accepted Figma edit into those sources before propagating it.
+- Use deterministic Node scripts for mechanical transformations. Design and implementation still require judgment; a compact contract cannot generate all behavior by itself.
+- Preserve parity of options, anatomy, rules and results. Platform-specific implementation details stay in the relevant adapter.
+- Check shared dependencies and resolved contexts before editing. Reuse existing primitives and semantic roles.
+- Complete authorized routine work autonomously. Group consequential unresolved choices into one review.
+- Record actual artifacts and evidence. A planned check is not a passed check; a missing capability is not proof of correctness.
+- Preserve valid approvals. Invalidate only the affected scope when sources or outputs change.
+- Publication needs authorization for its destination and version. A review approval is not publication authorization.
 
-## Done
+## Human review gates
 
-All must hold:
-- Figma component is usable from the intended library, with options and specifications.
-- Code component is usable through the intended package and import path.
-- Human documentation is consultable.
-- Agent documentation is discoverable and aligned with the installed package.
-- Contract, relevant tokens, Figma and implementation correspond.
-- Agreed behavior, composition, accessibility and visual cases are checked.
-- Known limitations and supported contexts are documented.
-- Delivery approval references the reviewed artifact revisions.
+Creation has three review gates: **contract**, **Figma design**, and **interactive implementation**. Delivery has a separate approval for the concrete release and intended destinations. Explicit approval already given in the session remains valid for its recorded scope.
 
-A draft Figma component, passing token tests, or a visual approval alone does not imply Done. If hosting or publication infrastructure is unresolved, report ready artifacts separately from actual availability.
+Run technical checks before presenting the interactive implementation. Wait for the user's review of interactions and feel before finalizing documentation. Apply requested adjustments and recheck their impact; do not infer approval from passing tests.
 
-## Resume and invalidation
+For modifications, reopen only affected gates. Documentation-only corrections do not require design or interaction review. Shared token changes can affect many components and require a representative visual review.
 
-Read the component status, latest artifacts and evidence before doing work. Confirm recorded references still exist. Capture exact file digests or commit IDs, plus a precise Figma reference and revision/export evidence where available. Never claim an unavailable immutable Figma revision identifier.
+## Definition of Done
 
-Contract changes require impact analysis for design, implementation and docs. Visual changes require parity review and possibly contract revision. Code API changes require API/example updates. Pure prose corrections need not invalidate unrelated approvals.
+All must hold within the declared supported scope:
 
-Mark only impacted approvals stale. Preserve the historical approval record and its source; never invent reviewer names, timestamps or acceptance.
+- The Figma component is usable through the intended library, with exposed options and specifications.
+- The code component is usable through the intended package and import path.
+- Human documentation is consultable; local Markdown is a valid format when accepted as the delivery channel.
+- Agent documentation is discoverable locally and matches the installed package version.
+- Contract, tokens, Figma, implementation and documentation correspond.
+- Relevant behavior, composition, accessibility and visual cases have evidence; limitations are explicit.
+- Required approvals cover the delivered revisions and actual availability has been checked.
 
-Use templates/component-status.json as a proposed starting representation. Null means unrecorded, not approved. Fill the records from actual work. Do not overwrite later user edits when resuming.
+Distinguish reference-kit readiness, component completion and published release availability. An implementation example can be useful while release work remains open.
+
+## Evidence and approval records
+
+Use [the status template](../templates/component-status.json). Null means unrecorded. The optional documentation approval records editorial feedback when given; it is not an additional mandatory creation gate. Each approval records scope, provenance and identifiable artifacts (paths plus digests or commits; Figma nodes plus review/export evidence when available). Do not invent an immutable Figma revision, reviewer or timestamp. Historical conversational approvals may have weaker provenance; retain that limitation.
+
+Read current status and relevant sources at task start. This is ordinary workflow entry, not a separate interruption-recovery procedure. Keep decisions and evidence together so a new agent can proceed without the conversation.

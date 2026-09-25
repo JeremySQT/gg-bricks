@@ -42,19 +42,9 @@ The tested Brand collection stores per-brand common values and technical appeara
 
 Those technical variables are generated adapter output, not another handwritten source hierarchy. Preserve existing IDs during value synchronization. Type changes, renames, removals, concurrency and structural changes are not covered by the pilot.
 
-## Proposed remaining repository paths
+## Repository integration
 
-- contracts/{family}/{component}.contract.json
-- components/{component}/status.json
-- implementations/svelte/
-- docs/components/{component}.md
-- docs/catalog.json
-- examples/svelte/{component}/
-- tools/
-- templates/
-- skills/{skill-name}/SKILL.md
-
-These paths are a working proposal to keep references concrete, not a finalized package/build architecture.
+See [the reference repository layout](repository-reference.md) for the target structure inside a larger project root and its mapping to current paths. This is a documented direction, not an executed migration. Current Svelte sources live in packages/svelte/ and maintained usage content in packages/svelte/docs/.
 
 ## Documentation distribution
 

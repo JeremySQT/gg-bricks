@@ -24,7 +24,7 @@ Read reports/figma/ledger.json, then inspect the actual file before editing. Per
 - Use resolved fallback paints when assigning an already-bound paint after cloning; the reference run exposed stale fallback rendering otherwise.
 - Review containers must not clip a focus outline. Only adjust containers owned by the review.
 - Imported Plus is from Figma Simple Design System, component key afef62430a3011f42389d0b20fada3c93a0b0684. The broader icon strategy and distribution license review belong to the implementation/release phase.
-- No Code Connect association is emitted: there is no actual Svelte component to map yet.
+- No Code Connect association is emitted. A Svelte implementation now exists in packages/svelte/, but Code Connect mapping has not been added.
 
 ## Slot foreground inheritance — corrected reference
 

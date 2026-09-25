@@ -1,52 +1,39 @@
 # Design system architecture kit
 
-Start with [AGENTS.md](AGENTS.md). This kit records the agreed architecture and provides two repository-scoped authoring skills. All maintained source content is English.
+An authoring reference for an AI-assisted design system: JSON tokens and compact component contracts, Figma representation, Svelte/Bits UI implementation, and documentation for humans and agents. Button is the worked example. This is not a complete production component library.
 
-## Read progressively
+## Start
 
-- [Decisions](docs/decisions.md): agreed principles and open decisions.
-- [Architecture](docs/architecture.md): ownership, tokens, proposed repository layout.
-- [Workflow](docs/workflow.md): lifecycle, approvals, completion and resumption.
-- [Contract guide](docs/contract-guide.md): minimal platform-independent contracts.
-- [Documentation template](templates/component-documentation.md).
-- [Figma specification template](templates/figma-specification.md).
-- [Component status template](templates/component-status.json): proposed operational format.
-- [Pilot evidence](docs/pilot-evidence.md): tested scope and limits.
-- [Skills](docs/skills.md): implemented skills and planned capabilities.
+Read [AGENTS.md](AGENTS.md), then [the handoff](docs/handoff.md) for current artifacts, accepted direction and remaining work. All maintained content is English.
 
-This is an architecture baseline, not a production component library. Template fields and the proposed tracking format are implementation proposals; they have not received a separate user review. A [Button contract and schema candidate](docs/button-contract-review.md) is now available with a Node validator (npm ci, npm test, npm run validate). Its compact encoding was accepted; the full Button design candidate is now available for visual review. The final token catalog, other components, Svelte conventions and publication infrastructure remain open.
+- [Workflows](docs/workflow.md): Create, Modify, Audit, Deliver and review gates.
+- [Decisions](docs/decisions.md): settled principles and remaining choices.
+- [Architecture](docs/architecture.md): source ownership and token resolution.
+- [Repository reference](docs/repository-reference.md): target integration inside a larger project, mapped to current paths.
+- [Component catalog](docs/component-catalog.md): proposed future scope; not available exports.
+- [Authoring playbook](docs/authoring-playbook.md): phase-specific execution guidance.
+- [Contract guide](docs/contract-guide.md), [documentation template](templates/component-documentation.md), [Figma specification template](templates/figma-specification.md).
+- [Status template](templates/component-status.json) and [repo-scoped skills](docs/skills.md).
 
-The existing ds-token-pilot archive remains a separate experimental artifact. Do not treat its reduced Button contract or experimental values as the final DS.
+## Button reference
 
-## Use in a future repository
-
-Merge this kit into the DS repository, preserving its relative paths. Explicitly direct an agent to skills/ds-component-workflow/SKILL.md or expose these directories through the agent's supported skill discovery mechanism. These files are not automatically installed by this archive.
-
-A complete Git snapshot is supplied as history.bundle. To restore it outside the unpacked kit, run:
-git clone /path/to/ds-architecture/history.bundle ds-architecture
-
-No remote repository is configured. Do not mistake a local commit for a remote publication.
-
-## Current Button batch
-
-Read [the review and adapter notes](docs/button-contract-review.md). Run `npm ci`, `npm test`, and `npm run build:tokens`. The package contains JSON sources, deterministic generators, validation evidence and Figma screenshots. Svelte and release publication are not included in this batch.
-
-## Svelte Button implementation
-
-This section supersedes the earlier batch's statement that Svelte is not included. The reference now uses Svelte 5.57.1 and Bits UI 2.19.3.
+- [Validated usage documentation](packages/svelte/docs/button.md).
+- [Implementation package](packages/svelte/README.md) and [local agent index](packages/svelte/docs/index.json).
+- [Status](components/button/status.json), [Figma review notes](docs/button-contract-review.md) and [consolidation audit](reports/architecture-consolidation.md).
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open the local URL printed by Vite. No backend or credentials are required. `button-preview.html` is a self-contained production build that can also be opened directly in a browser.
+Open the Vite URL. The self-contained button-preview.html also opens directly in a browser. The reference pins Svelte 5.57.1 and Bits UI 2.19.3.
 
-- Source/package: [packages/svelte](packages/svelte/README.md).
-- Human and agent guide: [Button](packages/svelte/docs/button.md).
-- Agent discovery: [catalog](packages/svelte/docs/index.json).
-- Verification: `npm run check`, `npm test`, `npm run test:ssr`, `npm run build`.
-- Browser checks: install Chromium with `npx playwright install chromium`, then `npm run test:browser`. A local browser may be selected through `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`.
-- Local installation artifact: `npm run pack:svelte` writes `dist/ds-reference-svelte-0.1.0.tgz`.
+Relevant checks: npm test, npm run validate, npm run check, npm run test:ssr, npm run build. Browser checks require Chromium (npx playwright install chromium), then npm run test:browser. An existing browser may be selected through PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH. These tests currently cover Button, not all catalog candidates.
 
-The live demo and its screenshots are implementation review aids. The Figma fixture properties still need exposure from the public Button, and complete dependency components and final distribution remain open. Do not mark the entire DS Done from this implementation.
+npm run pack:svelte produces dist/ds-reference-svelte-0.1.0.tgz for local installation. A local artifact is not public publication. Final Figma fixture property exposure, dependency scope, support validation and release channels remain open; see the handoff.
+
+## Use in a larger project
+
+Preserve current relative paths when embedding the kit, or perform the complete migration described in the repository reference. Direct the agent to this root's AGENTS.md. Repo skills are supplied as files, not installed globally. Consumer instructions live with the package.
+
+A complete local Git snapshot is supplied as history.bundle. Restore separately with git clone /path/to/ds-architecture/history.bundle ds-architecture. No remote is configured.

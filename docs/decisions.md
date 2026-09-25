@@ -17,7 +17,7 @@
 - Human documentation and local agent documentation share maintained content. An economical catalog leads agents to individual component sections.
 - Documentation order: Overview, When to use, When not to use, Anatomy, Usage guidelines, Examples, API, Accessibility.
 - Figma sections: Overview, Anatomy, Variants, States, Behavior & sizing, Usage examples. Master components are distinguished from explanatory instances.
-- Lifecycle: scope, contract, design, specifications, implementation, documentation and delivery. Principal human approvals: contract, design, delivery.
+- Lifecycle: scope, contract, design, specifications, implementation, implementation review, documentation and delivery. Creation gates: contract, design, interactive implementation. Delivery approval is separate.
 - Done means usable in Figma and code with accessible, version-aligned human and agent documentation.
 - Authoring skills live with the DS. Consumer instructions accompany the installed package.
 - Define individual contracts as components are addressed; settle the shared catalog and conventions before expanding heavily.
@@ -75,3 +75,15 @@ These entries supersede earlier open items in this document where they overlap.
 - Introduce the component through its user-facing purpose. Framework names, versions and native HTML mappings belong in the API, not the overview.
 - Start use guidance broadly and list representative use cases and alternatives.
 - Accessibility documentation identifies relevant WCAG 2.2 criteria, levels and official links, with component versus application responsibilities and honest validation status. Listed criteria are not a blanket compliance claim.
+
+## Workflow and reference-kit consolidation — 2026-09-25
+
+- The goal is a reusable authoring pattern with Button as the worked example, not immediate implementation of the whole design system.
+- Four procedures: Create, Modify, Audit and Deliver. Foundation changes and Figma reconciliation are included in Modify; incompatible evolution is its migration branch. No separate interruption-recovery process is needed.
+- Technical checks precede a human interactive implementation review. Review behavior, focus, animation, micro-interactions and feel before finalizing documentation. Reconcile any resulting source/specification changes and rerun affected checks.
+- Modify reopens only affected gates. Preserve approvals for unchanged scope. Group consequential questions rather than asking for each routine step.
+- The user validated the revised Button documentation. The earlier implementation feedback accepted continuing with the reference while noting typography softness and subtle neutral hover; it is not an exhaustive accessibility/release approval.
+- The reference repository layout is recorded separately with current-to-target paths; no migration is performed in this consolidation.
+- The component catalog is a planning proposal, not approved scope or available exports. Draft individual contracts when each component is addressed.
+
+Current outstanding decisions supersede stale items above: final catalog/v1 scope; broader semantic inventory and composite exports; final parent-package layout; Figma property exposure and publication; support matrix and remaining manual checks; docs hosting; release destinations/version policy; optional stricter Svelte slot API. Svelte/Bits UI choice, Button documentation structure and absence of a viewport axis are settled.

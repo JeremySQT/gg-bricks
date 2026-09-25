@@ -1,7 +1,7 @@
 {
   "formatStatus": "proposed",
   "componentId": "button",
-  "phase": "implementation-review",
+  "phase": "reference-consolidation",
   "dependencies": [
     "icon",
     "counter",
@@ -57,7 +57,18 @@
       "provenance": "User tested the slot correction and explicitly instructed completion of the Svelte implementation using Bits UI.",
       "note": "This is authorization to implement the current reference, not final delivery approval or an immutable Figma revision."
     },
-    "delivery": null
+    "delivery": null,
+    "implementation": {
+      "scope": "User reviewed the HTML reference and accepted proceeding to documentation and architecture consolidation.",
+      "provenance": "Conversation: user tested the HTML, described it as good, noted typography softness and subtle neutral hover, then prioritized completing the Button reference.",
+      "note": "Acceptance to continue as a reference; not a claim of exhaustive interaction, browser or assistive-technology approval. Exact tested HTML digest was not captured."
+    },
+    "documentation": {
+      "scope": "Revised Button usage documentation",
+      "provenance": "Conversation: user confirmed the revised documentation was better and subsequently explicitly stated that documentation was validated.",
+      "path": "packages/svelte/docs/button.md",
+      "sha256": "59a200a2c55d0dbd4fc877977252c5d3ee70585034a4c56fcaeb48762ed941b3"
+    }
   },
   "checks": [
     {
@@ -87,8 +98,9 @@
     },
     {
       "kind": "visual-review",
-      "result": "agent-checked-user-review-pending",
-      "report": "docs/button-contract-review.md"
+      "result": "reference-accepted-for-implementation-final-release-review-open",
+      "report": "docs/button-contract-review.md",
+      "note": "Historical review report retained. Later conversation authorized implementation and accepted continuing the reference; this is not final release approval."
     },
     {
       "kind": "runtime-behavior-and-accessibility",
@@ -112,12 +124,12 @@
     }
   ],
   "openDecisions": [
-    "Review the Svelte implementation and snippet content constraints",
+    "Whether to tighten Svelte snippet identity constraints; current documented contract-based restriction is not statically enforced",
     "Expose fixture properties from the public Figma Button",
     "Complete counter / shortcut / icon dependency contracts",
     "Cross-browser and assistive-technology release validation",
     "Documentation publishing, package distribution and release",
     "Validate text enlargement, reflow and text spacing, including constrained labels"
   ],
-  "nextAction": "Review the runnable Svelte Button, then finish Figma property exposure and dependency/consumer documentation before delivery."
+  "nextAction": "Use docs/handoff.md for reference-kit scope and remaining delivery work; do not start another component automatically."
 }
