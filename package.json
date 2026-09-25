@@ -25,18 +25,27 @@
     "pack:tokens": "npm run build:tokens && npm pack --workspace packages/tokens --pack-destination ./dist",
     "new:component": "node tooling/new-component.mjs",
     "digest": "node tooling/digest.mjs",
-    "verify": "npm run generate && npm run validate && npm test && npm run check && npm run test:ssr && npm run build",
-    "verify:generated": "npm run generate && git diff --exit-code --stat -- packages reports/components"
+    "verify": "npm run generate && npm run lint && npm run validate && npm test && npm run check && npm run test:ssr && npm run build",
+    "verify:generated": "npm run generate && git diff --exit-code --stat -- packages reports/components",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
+    "@eslint/js": "9.39.5",
     "@fontsource/inter": "5.3.0",
     "@playwright/test": "1.63.0",
     "@sveltejs/vite-plugin-svelte": "6.2.4",
     "@types/node": "22.20.4",
     "ajv": "8.17.1",
+    "eslint": "9.39.5",
+    "eslint-plugin-svelte": "3.23.0",
+    "globals": "16.5.0",
+    "prettier": "3.9.9",
+    "prettier-plugin-svelte": "3.5.2",
     "svelte-check": "4.7.6",
     "typescript": "6.0.3",
+    "typescript-eslint": "8.70.1",
     "vite": "7.3.6"
   },
   "dependencies": {

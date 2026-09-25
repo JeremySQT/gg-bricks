@@ -6,7 +6,7 @@
 - Not inspected:
 
 | Finding | Classification | Severity | Location | Expected / observed | Impact | Evidence | Correction |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| ------- | -------------- | -------- | -------- | ------------------- | ------ | -------- | ---------- |
 
 ## Recommended next batch
 

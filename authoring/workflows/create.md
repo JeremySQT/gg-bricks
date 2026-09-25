@@ -1,24 +1,29 @@
 # Create a component
 
+The executable form of this procedure is the `ggb-component` skill; this page records the rationale and the checks of each step.
+
 ## Inputs
 
-Read the decision register, component catalog, relevant existing contracts and target status. Use the most recently completed component as the example of artifact structure (before any exists, the archived reference kit at tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history)), not as a universal behavior specification. Resolve the requested scope and actual dependencies before work.
+Read the decision register, the roadmap, the component catalog, relevant existing contracts and the target status. Use the most recently completed component as the example of artifact structure (before any exists, the archived reference kit), never as a universal behavior specification. Resolve the requested scope and actual dependencies before work.
 
-## Procedure
+## Steps
 
-1. **Scope.** State purpose, alternatives, supported use cases and exclusions. Separate reusable dependencies from explanatory fixtures. Group decisions that materially affect API or behavior.
-2. **Contract.** Draft the minimal platform-independent JSON contract and justified token additions. Define intrinsic rules and state combinations; keep platform mechanics in adapter notes. Run schema and token-reference checks. Present the contract and record approval before design.
-3. **Figma design.** Inspect the destination and existing resources. Build reusable masters with appropriate properties, slots, variable bindings and constraints. Explore the states and difficult cases that can affect construction. Present a concrete design review and record approval.
-4. **Figma specifications.** Complete the specification template: Overview, Anatomy, Variants, States, Behavior & sizing, Usage examples. Distinguish explanatory instances from masters. Reconcile any approved source changes before implementation.
-5. **Implementation and technical checks.** Use the target's conventions and existing primitives. Implement behavior, accessibility, composition and styling. Generate mechanical artifacts from sources. Check legal states, theme/density coverage, keyboard behavior, loading or other applicable transitions, and package imports. Prepare an interactive demo and state untested contexts.
-6. **Implementation review — stop here.** Give the user the runnable demo, reviewed revision, brief exercise list and test/limitation summary. Ask them to assess actual behavior and feel: mouse/touch/keyboard as applicable, focus, feedback, transitions, animation timing and interruptions, and micro-interactions. Wait for approval before finalizing documentation. Apply feedback, reconcile affected sources/Figma, rerun affected checks and present changed behavior when needed. Preserve unaffected approvals.
-7. **Documentation.** Document the approved implementation using the shared template. Keep one maintained usage source for humans and agents, an economical local index, accurate API facts and verified examples. List applicable accessibility criteria and actual evidence. An early outline is allowed; final content must describe approved behavior.
-8. **Final consistency.** Check links, API examples, source/output parity and availability of required artifacts. Update status and record limitations. Hand off to Deliver when distribution is requested; do not silently publish.
+1. **Scope.** Purpose, alternatives, supported use cases and exclusions. Separate reusable dependencies from explanatory fixtures. Group decisions that materially affect API or behavior.
+2. **Contract.** Minimal platform-independent JSON contract and justified token additions. Intrinsic rules and state combinations in the contract; platform mechanics in implementation notes. Schema, consistency and token-coverage checks pass. **Contract gate.**
+3. **Implementation and technical checks.** Target conventions and existing primitives; behavior, accessibility, composition and styling; mechanical artifacts generated from sources. Legal states, theme/density coverage, keyboard behavior, transitions, package imports checked. Interactive example, SSR and browser tests, computed-value report, self-contained preview.
+4. **Implementation review.** The reviewer exercises the real rendering: mouse, touch, keyboard, focus, feedback, transitions, difficult cases, and judges the visual result, which comes from approved tokens. Feedback is applied; a changed contract fact is reconciled in the source first. **Implementation gate.** This review replaces a separate design review.
+5. **Figma parity.** Masters bound to variables reproduce the approved implementation; specification page from the template; parity report comparing Figma resolution with the browser's computed values for every option and state. **Figma parity gate.** When no Figma tool is connected, the phase is recorded as pending and completed in a later session.
+6. **Documentation.** Shared template; one maintained source for humans and agents; economical index; accurate API facts and verified examples; applicable accessibility criteria with actual evidence.
+7. **Final consistency.** Links, API examples, source/output parity, availability of required artifacts. Status and limitations updated. Hand off to Deliver when distribution is requested; never publish silently.
+
+## Why implementation before Figma
+
+Tokens already fix the visual language, and the reviewer judges the interactive rendering anyway. Reviewing once on the real component avoids a double visual review and lets Figma be built against validated, measurable values, which turns Figma construction into a reproducible parity task instead of an exploration.
 
 ## Outputs
 
-Contract, token changes if needed, usable Figma component and specifications, target implementation, runnable examples, human/agent documentation, evidence and status. At a review gate, provide the complete review material and the exact decision needed; continue other independent authorized work when useful.
+Contract, token changes if needed, implementation, examples, tests and evidence, Figma masters and specification with a parity report, human/agent documentation, status. At a gate, provide the complete review material and the exact decision needed.
 
 ## Completion
 
-The component is Done only when the shared definition of Done is met. A reviewed design or working demo alone is insufficient.
+The component is Done only when the shared definition of Done is met. A reviewed implementation or a Figma master alone is insufficient.

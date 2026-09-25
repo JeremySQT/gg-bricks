@@ -7,11 +7,11 @@ description: Modify an existing ggbrick component, token or Figma master (includ
 
 Read `AGENTS.md`, `authoring/decisions.md` and the status files of the affected scope. Then read only the procedure you need:
 
-| Request | Procedure |
-| --- | --- |
-| Change a component, token, foundation or Figma master; reconcile a Figma edit into sources; incompatible evolution | `authoring/workflows/modify.md` (+ `templates/change-record.md`) |
-| Inspect consistency or readiness without changing anything | `authoring/workflows/audit.md` (+ `templates/audit-report.md`) |
-| Prepare or distribute a version | `authoring/workflows/deliver.md` (+ `templates/release-record.md`) |
+| Request                                                                                                            | Procedure                                                          |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| Change a component, token, foundation or Figma master; reconcile a Figma edit into sources; incompatible evolution | `authoring/workflows/modify.md` (+ `templates/change-record.md`)   |
+| Inspect consistency or readiness without changing anything                                                         | `authoring/workflows/audit.md` (+ `templates/audit-report.md`)     |
+| Prepare or distribute a version                                                                                    | `authoring/workflows/deliver.md` (+ `templates/release-record.md`) |
 
 ## Modify
 

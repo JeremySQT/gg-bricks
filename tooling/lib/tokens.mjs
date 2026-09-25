@@ -46,7 +46,10 @@ export function config() {
 function files(dir) {
   const full = abs(dir);
   if (!existsSync(full)) return [];
-  return readdirSync(full).filter((f) => f.endsWith('.tokens.json')).sort().map((f) => dir + '/' + f);
+  return readdirSync(full)
+    .filter((f) => f.endsWith('.tokens.json'))
+    .sort()
+    .map((f) => dir + '/' + f);
 }
 
 /**
@@ -123,7 +126,12 @@ export function cssValue(t) {
       return `${v.fontWeight} ${v.fontSize.value}${v.fontSize.unit}/${v.lineHeight} ${v.fontFamily.map((x) => JSON.stringify(x)).join(', ')}`;
     case 'shadow': {
       const list = Array.isArray(v) ? v : [v];
-      return list.map((s) => `${s.inset ? 'inset ' : ''}${s.offsetX.value}${s.offsetX.unit} ${s.offsetY.value}${s.offsetY.unit} ${s.blur.value}${s.blur.unit} ${s.spread.value}${s.spread.unit} ${cssValue({ $type: 'color', $value: s.color })}`).join(', ');
+      return list
+        .map(
+          (s) =>
+            `${s.inset ? 'inset ' : ''}${s.offsetX.value}${s.offsetX.unit} ${s.offsetY.value}${s.offsetY.unit} ${s.blur.value}${s.blur.unit} ${s.spread.value}${s.spread.unit} ${cssValue({ $type: 'color', $value: s.color })}`
+        )
+        .join(', ');
     }
     default:
       throw Error('Unsupported CSS type: ' + t.$type);

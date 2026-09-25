@@ -14,10 +14,18 @@ const generated = [];
 export function generateTypes(contract) {
   const name = pascal(contract.id);
   const enums = Object.entries(contract.props).filter(([, p]) => Array.isArray(p.values));
-  const defaults = Object.fromEntries(Object.entries(contract.props).filter(([, p]) => 'default' in p).map(([k, p]) => [k, p.default]));
-  return `// Generated from components/*/${contract.id}/contract.json. Do not edit.\n` +
-    enums.map(([key, p]) => `export type ${name}${pascal(key)} = ${p.values.map((v) => JSON.stringify(v)).join(' | ')};`).join('\n') +
-    `\nexport const defaults = ${JSON.stringify(defaults, null, 2)} as const;\n`;
+  const defaults = Object.fromEntries(
+    Object.entries(contract.props)
+      .filter(([, p]) => 'default' in p)
+      .map(([k, p]) => [k, p.default])
+  );
+  return (
+    `// Generated from components/*/${contract.id}/contract.json. Do not edit.\n` +
+    enums
+      .map(([key, p]) => `export type ${name}${pascal(key)} = ${p.values.map((v) => JSON.stringify(v)).join(' | ')};`)
+      .join('\n') +
+    `\nexport const defaults = ${JSON.stringify(defaults, null, 2)} as const;\n`
+  );
 }
 
 /**
@@ -46,6 +54,7 @@ export function generateCss(contract) {
 }
 
 const components = listComponents();
+fs.rmSync(abs(pkg, 'contracts'), { recursive: true, force: true }); // stale consumer copies never survive a rebuild
 for (const c of components) {
   const dir = `${pkg}/src/${c.id}`;
   if (!exists(dir)) continue; // Contract without an implementation yet: nothing to generate.
@@ -64,8 +73,10 @@ const packageJson = readJson(`${pkg}/package.json`);
 if (index.package !== packageJson.name || index.version !== packageJson.version)
   throw Error(`documentation/index.json must name ${packageJson.name}@${packageJson.version}`);
 for (const entry of index.components) {
-  if (!components.some((c) => c.id === entry.id)) throw Error(`documentation/index.json lists unknown component ${entry.id}`);
-  if (!generated.includes(entry.id)) throw Error(`documentation/index.json lists ${entry.id} but packages/svelte/src/${entry.id} does not exist`);
+  if (!components.some((c) => c.id === entry.id))
+    throw Error(`documentation/index.json lists unknown component ${entry.id}`);
+  if (!generated.includes(entry.id))
+    throw Error(`documentation/index.json lists ${entry.id} but packages/svelte/src/${entry.id} does not exist`);
   const doc = `${paths.documentation}/components/${entry.documentation}`;
   if (!exists(doc)) throw Error(`Missing documentation page ${doc}`);
   write(`${pkg}/docs/${entry.documentation}`, readText(doc));

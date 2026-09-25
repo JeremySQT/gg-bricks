@@ -9,14 +9,14 @@ Figma is the validated visual representation of ggbrick. It is operated through 
 - Component masters are built per contract: enum props become variant properties or booleans by meaning (do not multiply variants for optional children), parts become named layers, slot parts become instance-swap properties limited to compatible fixtures, tokens become variable bindings. Explanatory instances live in specification frames, not inside the master set.
 - Record every node ID the design system owns in `reports/components/<id>/figma/ledger.json` (masters, variant sets, fixtures, specification frames) and the file key in the component status. Never guess an ID; read it from the file.
 
-## Procedure for a component (ggb-component, design phase)
+## Procedure for a component (ggb-component, parity phase)
 
-1. Read the contract, the tokens it requires and `authoring/templates/figma-specification.md`.
+1. Read the contract, the approved implementation, its computed-value report (`reports/components/<id>/svelte/computed.json`) and `authoring/templates/figma-specification.md`.
 2. Inspect the destination: existing pages, variables, masters and the ledger. Reuse existing fixtures and variables.
 3. Build masters with the Plugin API through the MCP code-execution tool, in small batches you verify visually (screenshot) after each batch. Preserve existing IDs. Bind every visual property to a variable; no hard-coded colors or sizes in masters.
 4. Build the specification page: Overview, Anatomy, Variants, States, Behavior & sizing, Usage examples, with explanatory instances of the master.
-5. Verify: native variable resolution against `figma-expectations.json` in each brand and mode pair; public property exposure on the master; difficult cases (long labels, empty optional slots, constrained width, all states in light and dark).
-6. Present the design review with file and node links, screenshots and the list of difficult cases checked. Stop for the design gate.
+5. Verify parity: Figma resolution against the computed values for every option and state in each brand and mode pair; public property exposure on the master; difficult cases (long labels, empty optional slots, constrained width, all states in light and dark). Write `reports/components/<id>/figma/parity.json`.
+6. Present the parity review with file and node links, screenshots and the parity report. Stop for the Figma parity gate.
 
 ## Reference scripts
 

@@ -2,7 +2,6 @@
 
 These Plugin API script bodies were written for the reference kit's Button file (tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history)). They are models to adapt through the Figma MCP server, not scripts to run as is: their node and component IDs belong to that file. Read `authoring/figma.md` for the ggbrick operating mode. The notes below are kept for the mechanics they document. File paths mentioned below (`components/actions/button/figma-review.md`, `reports/components/button/figma/…`) exist only in that tag: `git show reference-kit-2026-09:<path>`.
 
-
 The archived `components/actions/button/figma-review.md` (in the tag) describes the mapping and known limitations. This folder contains reusable Plugin API script bodies, not a packaged Figma plugin or a one-click CLI importer.
 
 ## Inputs and execution
@@ -26,7 +25,7 @@ Read reports/components/button/figma/ledger.json, then inspect the actual file b
 - Hidden instance children must be traversed for icon color binding (`skipInvisibleInstanceChildren = false`).
 - Use resolved fallback paints when assigning an already-bound paint after cloning; the reference run exposed stale fallback rendering otherwise.
 - Review containers must not clip a focus outline. Only adjust containers owned by the review.
-- Imported Plus is from Figma Simple Design System, component key afef62430a3011f42389d0b20fada3c93a0b0684. The broader icon strategy and distribution license review belong to the implementation/release phase.
+- Imported Plus is from Figma Simple Design System, component key afef62430a3011f42389d0b20fada3c93a0b0684. (ggbrick decides its icon set at the foundations gate; see decisions.md.)
 - No Code Connect association is emitted. A Svelte implementation now exists in packages/svelte/, but Code Connect mapping has not been added.
 
 ## Slot foreground inheritance — corrected reference

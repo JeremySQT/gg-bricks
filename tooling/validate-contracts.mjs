@@ -11,7 +11,15 @@ const unknown = [...flags].filter((f) => !['--tokens', '--dependencies'].include
 if (unknown.length) throw Error('Unknown option: ' + unknown.join(' '));
 const ids = args.filter((a) => !a.startsWith('--'));
 const all = listComponents();
-const selected = ids.length ? ids.map((id) => all.find((c) => c.id === id) ?? (() => { throw Error('Unknown component: ' + id); })()) : all;
+const selected = ids.length
+  ? ids.map(
+      (id) =>
+        all.find((c) => c.id === id) ??
+        (() => {
+          throw Error('Unknown component: ' + id);
+        })()
+    )
+  : all;
 const catalog = flags.has('--dependencies') ? all.map((c) => c.id) : undefined;
 const contexts = flags.has('--tokens') ? resolveAllContexts() : null;
 
@@ -19,8 +27,12 @@ const report = {};
 let valid = true;
 for (const c of selected) {
   const base = checkContract(c.contract, { components: catalog });
-  const perContext = contexts ? Object.fromEntries(contexts.map((ctx) => [ctx.id, checkContract(c.contract, { tokens: ctx.tokens })])) : null;
-  const contextErrors = perContext ? Object.entries(perContext).flatMap(([id, r]) => r.errors.map((e) => ({ context: id, ...e }))) : [];
+  const perContext = contexts
+    ? Object.fromEntries(contexts.map((ctx) => [ctx.id, checkContract(c.contract, { tokens: ctx.tokens })]))
+    : null;
+  const contextErrors = perContext
+    ? Object.entries(perContext).flatMap(([id, r]) => r.errors.map((e) => ({ context: id, ...e })))
+    : [];
   const ok = base.valid && contextErrors.length === 0;
   valid &&= ok;
   report[c.id] = {

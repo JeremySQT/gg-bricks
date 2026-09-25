@@ -2,14 +2,14 @@
 
 ## Ownership
 
-| Source | Owns |
-| --- | --- |
-| Token JSON (`foundations/tokens`) | Values, types, aliases and variation inputs |
-| Component contract (`components/<family>/<id>/contract.json`) | Public conceptual options, parts, states, token roles and intrinsic rules |
-| Approved Figma representation | Visual construction and reviewed renderings |
-| Svelte implementation (`packages/svelte/src/<id>`) | Platform behavior and concrete public API |
-| Documentation (`documentation/`) | Choice and usage guidance; explanations linked to authoritative facts |
-| Status files | Current phase, artifact references, revision-specific approvals and evidence |
+| Source                                                        | Owns                                                                         |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Token JSON (`foundations/tokens`)                             | Values, types, aliases and variation inputs                                  |
+| Component contract (`components/<family>/<id>/contract.json`) | Public conceptual options, parts, states, token roles and intrinsic rules    |
+| Approved Figma representation                                 | Visual construction and reviewed renderings                                  |
+| Svelte implementation (`packages/svelte/src/<id>`)            | Platform behavior and concrete public API                                    |
+| Documentation (`documentation/`)                              | Choice and usage guidance; explanations linked to authoritative facts        |
+| Status files                                                  | Current phase, artifact references, revision-specific approvals and evidence |
 
 If a visual iteration changes an intrinsic rule or option, reconcile the contract before coding. Essential behavior cannot exist only in a screenshot.
 
@@ -19,7 +19,7 @@ If a visual iteration changes an intrinsic rule or option, reconcile the contrac
 
 1. Resolves every brand × appearance × density context (`tooling/lib/tokens.mjs`): merge the ordered source files (see decisions for precedence), keep a provenance trace, resolve aliases atomically, validate types.
 2. Validates every discovered contract against every context (token presence and role type).
-3. Writes `packages/tokens/resolved/<context>.json`, `reports/tokens/traces/<context>.json`, `packages/tokens/tokens.css` (one rule per context selected by the three `data-ggb-*` attributes; every token becomes `--ggb-<path-with-dashes>`; typography also exposes `.fontSize` and `.lineHeight`).
+3. Writes `packages/tokens/resolved/<context>.json`, `reports/tokens/traces/<context>.json` and `packages/tokens/tokens.css` (`tooling/lib/css.mjs`): layered rules mirroring the sources (base layers under `[data-ggb-brand]`, `[data-ggb-appearance=…]`, `[data-ggb-density=…]`; sparse brand overrides under combined selectors), aliases emitted as `var()`, every token as `--ggb-<path-with-dashes>`, typography also exposing `.fontSize` and `.lineHeight`. A unit test resolves the cascade for every context and checks it against the resolved maps.
 4. Writes per-component evidence in `reports/components/<id>/`: token requirements, coverage, contract validation, and contrast against every `color.surface.*` backdrop for contracts exposing `surface`/`content` (`border` and `focusColor` when present; a parameter valued `disabled` is informational).
 5. Writes the Figma manifest and expectations. Axis routing is derived from the source file that defines each token (appearance.* → Appearance, density.* → Density, otherwise Brand). Technical `_resolved/*` variables are compilation detail for the Figma model, not a source layer.
 
@@ -37,7 +37,7 @@ A consumer must be able to copy `packages/svelte/src/<id>/` into a Svelte 5 proj
 
 ## Documentation distribution
 
-One maintained source per component with stable section headings. Installed packages expose `docs/index.json`, `docs/AGENTS.md` and per-component pages aligned to the installed version. The site (`apps/docs`) renders the same Markdown and adds live examples. API facts come from the contract and the actual Svelte API; import examples come from verified executable examples in `examples/<id>/`.
+One maintained source per component with stable section headings. Installed packages expose `docs/index.json`, `docs/AGENTS.md` and per-component pages aligned to the installed version. The site (`apps/site`, docs under `/docs`) renders the same Markdown and adds live examples. API facts come from the contract and the actual Svelte API; import examples come from verified executable examples in `examples/<id>/`.
 
 ## Evidence
 

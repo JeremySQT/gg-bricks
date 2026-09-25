@@ -3,6 +3,7 @@
 A contract is a compact, platform-independent description sufficient to preserve the component's identity and essential behavior across targets. It is not an implementation tutorial.
 
 Use five substantive blocks:
+
 - props: conceptual input options, types, allowed values and defaults.
 - parts: structural parts and constrained composition points.
 - states: relevant state axes and allowed combinations.

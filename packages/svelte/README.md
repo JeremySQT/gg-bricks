@@ -21,7 +21,7 @@ npm install /absolute/path/to/ggbrick-svelte-<version>.tgz
 </div>
 ```
 
-Set all three `data-ggb-*` attributes on the same ancestor; they select one generated context. A nested override repeats all three. Fonts are loaded by your application, not by the components.
+Set the three `data-ggb-*` attributes on one ancestor; a subtree may override any one of them alone. Fonts are loaded by your application, not by the components.
 
 ## Copy instead of installing
 

@@ -26,7 +26,8 @@ export function expandCombinations(contract) {
     for (const name of names) {
       const domain = declarations[name]?.values;
       if (!Array.isArray(domain)) throw Error('Token parameter must reference an enum prop or state: ' + name);
-      if (combinations.length * domain.length > 10000) throw Error('Token expansion exceeds 10000 paths for role: ' + role);
+      if (combinations.length * domain.length > 10000)
+        throw Error('Token expansion exceeds 10000 paths for role: ' + role);
       combinations = combinations.flatMap((c) => domain.map((value) => ({ ...c, [name]: value })));
     }
     result[role] = combinations.map((params) => ({ params, path: template.replace(PARAM, (_, name) => params[name]) }));
@@ -35,7 +36,9 @@ export function expandCombinations(contract) {
 }
 
 export function expandTokenPaths(contract) {
-  return Object.fromEntries(Object.entries(expandCombinations(contract)).map(([role, list]) => [role, list.map((x) => x.path)]));
+  return Object.fromEntries(
+    Object.entries(expandCombinations(contract)).map(([role, list]) => [role, list.map((x) => x.path)])
+  );
 }
 
 /** Substitute concrete parameter values into a role template. */
@@ -71,24 +74,62 @@ export function checkContract(contract, { tokens, components } = {}) {
   };
   if (!validateSchema(contract)) {
     checks.schema = 'failed';
-    return { valid: false, checks, errors: validateSchema.errors.map((e) => ({ code: 'schema', path: e.instancePath, message: e.message, details: e.params })) };
+    return {
+      valid: false,
+      checks,
+      errors: validateSchema.errors.map((e) => ({
+        code: 'schema',
+        path: e.instancePath,
+        message: e.message,
+        details: e.params
+      }))
+    };
   }
   for (const group of ['props', 'states']) {
     for (const [name, decl] of Object.entries(contract[group])) {
       if (decl.values && !decl.values.includes(decl.default))
         errors.push({ code: 'default', path: group + '.' + name, message: 'Default is not an allowed value.' });
       if (decl.required === true && has(decl, 'default'))
-        errors.push({ code: 'required-default', path: group + '.' + name, message: 'Required inputs cannot also have a fallback default in this format.' });
+        errors.push({
+          code: 'required-default',
+          path: group + '.' + name,
+          message: 'Required inputs cannot also have a fallback default in this format.'
+        });
+      if (
+        decl.type === 'number' &&
+        ((has(decl, 'min') && decl.default < decl.min) ||
+          (has(decl, 'max') && decl.default > decl.max) ||
+          (has(decl, 'min') && has(decl, 'max') && decl.min > decl.max))
+      )
+        errors.push({
+          code: 'number-range',
+          path: group + '.' + name,
+          message: 'Number default must lie within min and max, and min must not exceed max.'
+        });
+      if (group === 'states' && decl.bindable)
+        errors.push({ code: 'state-bindable', path: group + '.' + name, message: 'Only props can be bindable.' });
     }
   }
   for (const name of Object.keys(contract.props))
-    if (has(contract.states, name)) errors.push({ code: 'ambiguous-name', path: name, message: 'Prop and state names must be distinct.' });
+    if (has(contract.states, name))
+      errors.push({ code: 'ambiguous-name', path: name, message: 'Prop and state names must be distinct.' });
+  for (const [name, part] of Object.entries(contract.parts))
+    if (has(part, 'min') && has(part, 'max') && part.min > part.max)
+      errors.push({ code: 'part-cardinality', path: 'parts.' + name, message: 'min must not exceed max.' });
   for (const [role, ref] of Object.entries(contract.tokens))
-    if (ref.startsWith('primitive.')) errors.push({ code: 'primitive-binding', path: 'tokens.' + role, message: 'Bind a semantic or component token, not a primitive.' });
+    if (ref.startsWith('primitive.'))
+      errors.push({
+        code: 'primitive-binding',
+        path: 'tokens.' + role,
+        message: 'Bind a semantic or component token, not a primitive.'
+      });
   let expanded = {};
   if (!errors.length) {
-    try { expanded = expandTokenPaths(contract); }
-    catch (e) { errors.push({ code: 'token-parameter', message: e.message }); }
+    try {
+      expanded = expandTokenPaths(contract);
+    } catch (e) {
+      errors.push({ code: 'token-parameter', message: e.message });
+    }
   }
   checks.consistency = errors.length ? 'failed' : 'passed';
   const paths = [...new Set(Object.values(expanded).flat())];
@@ -102,17 +143,31 @@ export function checkContract(contract, { tokens, components } = {}) {
       for (const [role, list] of Object.entries(expanded))
         for (const p of list)
           if (tokens[p] && has(tokens[p], '$type') && tokens[p].$type !== expectedRoleType(role))
-            errors.push({ code: 'role-type', path: p, message: `Role ${role} expects ${expectedRoleType(role)}, token is ${tokens[p].$type}.` });
+            errors.push({
+              code: 'role-type',
+              path: p,
+              message: `Role ${role} expects ${expectedRoleType(role)}, token is ${tokens[p].$type}.`
+            });
     }
-    checks.tokenCoverage = errors.some((e) => ['missing-token', 'token-input', 'role-type'].includes(e.code)) ? 'failed' : 'passed';
+    checks.tokenCoverage = errors.some((e) => ['missing-token', 'token-input', 'role-type'].includes(e.code))
+      ? 'failed'
+      : 'passed';
   }
   const dependencies = [...new Set(Object.values(contract.parts).flatMap((part) => part.accepts ?? []))];
   if (components) {
     if (!Array.isArray(components) || components.some((id) => typeof id !== 'string'))
       errors.push({ code: 'catalog-input', message: 'Expected an array of available component IDs.' });
-    else for (const id of dependencies)
-      if (!components.includes(id)) errors.push({ code: 'missing-component', path: id, message: 'Accepted content component is not in the supplied catalog.' });
-    checks.dependencies = errors.some((e) => ['missing-component', 'catalog-input'].includes(e.code)) ? 'failed' : 'passed';
+    else
+      for (const id of dependencies)
+        if (!components.includes(id))
+          errors.push({
+            code: 'missing-component',
+            path: id,
+            message: 'Accepted content component is not in the supplied catalog.'
+          });
+    checks.dependencies = errors.some((e) => ['missing-component', 'catalog-input'].includes(e.code))
+      ? 'failed'
+      : 'passed';
   }
   return { valid: errors.length === 0, checks, errors, requiredTokenPaths: paths, dependencies };
 }

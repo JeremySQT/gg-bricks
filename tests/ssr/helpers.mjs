@@ -7,7 +7,12 @@ const root = path.resolve(import.meta.dirname, '..', '..');
 let serverPromise;
 
 async function server() {
-  serverPromise ??= createServer({ configFile: path.join(root, 'vite.config.ts'), server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' });
+  serverPromise ??= createServer({
+    configFile: path.join(root, 'vite.config.ts'),
+    server: { middlewareMode: true },
+    appType: 'custom',
+    logLevel: 'error'
+  });
   return serverPromise;
 }
 

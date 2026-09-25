@@ -3,27 +3,15 @@
   "id": "button",
   "props": {
     "intent": {
-      "values": [
-        "accent",
-        "neutral",
-        "danger"
-      ],
+      "values": ["accent", "neutral", "danger"],
       "default": "accent"
     },
     "appearance": {
-      "values": [
-        "solid",
-        "outline",
-        "ghost"
-      ],
+      "values": ["solid", "outline", "ghost"],
       "default": "solid"
     },
     "size": {
-      "values": [
-        "sm",
-        "md",
-        "lg"
-      ],
+      "values": ["sm", "md", "lg"],
       "default": "md"
     },
     "label": {
@@ -43,30 +31,18 @@
     "container": {},
     "label": {},
     "leading": {
-      "accepts": [
-        "icon"
-      ],
+      "accepts": ["icon"],
       "max": 1
     },
     "trailing": {
-      "accepts": [
-        "icon",
-        "counter",
-        "shortcut"
-      ],
+      "accepts": ["icon", "counter", "shortcut"],
       "max": 1
     },
     "loadingIndicator": {}
   },
   "states": {
     "interaction": {
-      "values": [
-        "default",
-        "hover",
-        "pressed",
-        "loading",
-        "disabled"
-      ],
+      "values": ["default", "hover", "pressed", "loading", "disabled"],
       "default": "default"
     },
     "focus": {

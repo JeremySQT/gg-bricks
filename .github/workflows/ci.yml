@@ -17,6 +17,7 @@ jobs:
       - run: npm ci
       - name: Generated outputs match sources
         run: npm run verify:generated
+      - run: npm run lint
       - run: npm run validate
       - run: npm test
       - run: npm run check

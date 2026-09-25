@@ -1,17 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "DS component contract — candidate v1",
-  "description": "Structural schema for the compact contract candidate. Semantic consistency and source token coverage are separate checks.",
+  "title": "ggbrick component contract \u2014 v1",
+  "description": "Structural schema for the compact contract. Semantic consistency and source token coverage are separate checks (tooling/lib/contract.mjs).",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "id",
-    "props",
-    "parts",
-    "states",
-    "tokens",
-    "rules"
-  ],
+  "required": ["id", "props", "parts", "states", "tokens", "rules"],
   "properties": {
     "$schema": {
       "type": "string",
@@ -71,16 +64,23 @@
         "minLength": 1,
         "pattern": "\\S"
       }
+    },
+    "events": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z][a-zA-Z0-9]*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/event"
+      }
     }
   },
   "$defs": {
     "enum": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "values",
-        "default"
-      ],
+      "required": ["values", "default"],
       "properties": {
         "values": {
           "type": "array",
@@ -93,21 +93,24 @@
         },
         "default": {
           "type": "string"
+        },
+        "bindable": {
+          "type": "boolean"
         }
       }
     },
     "boolean": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "type",
-        "default"
-      ],
+      "required": ["type", "default"],
       "properties": {
         "type": {
           "const": "boolean"
         },
         "default": {
+          "type": "boolean"
+        },
+        "bindable": {
           "type": "boolean"
         }
       }
@@ -115,9 +118,7 @@
     "string": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "type"
-      ],
+      "required": ["type"],
       "properties": {
         "type": {
           "const": "string"
@@ -127,6 +128,9 @@
         },
         "default": {
           "type": "string"
+        },
+        "bindable": {
+          "type": "boolean"
         }
       }
     },
@@ -140,6 +144,9 @@
         },
         {
           "$ref": "#/$defs/string"
+        },
+        {
+          "$ref": "#/$defs/number"
         }
       ]
     },
@@ -162,10 +169,7 @@
         {
           "type": "object",
           "additionalProperties": false,
-          "required": [
-            "accepts",
-            "max"
-          ],
+          "required": ["accepts"],
           "properties": {
             "accepts": {
               "type": "array",
@@ -176,6 +180,10 @@
                 "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
               }
             },
+            "min": {
+              "type": "integer",
+              "minimum": 0
+            },
             "max": {
               "type": "integer",
               "minimum": 1
@@ -183,6 +191,43 @@
           }
         }
       ]
+    },
+    "number": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "default"],
+      "properties": {
+        "type": {
+          "const": "number"
+        },
+        "default": {
+          "type": "number"
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "bindable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["when"],
+      "properties": {
+        "when": {
+          "type": "string",
+          "minLength": 1
+        },
+        "payload": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
     }
   }
 }

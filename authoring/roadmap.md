@@ -4,45 +4,45 @@ Validated by the user on 2026-09-25 (waves), amended for the foundations-first o
 
 ## Phase 1: the design system
 
-| Task | Skill | Gate | State |
-| --- | --- | --- | --- |
-| 0 · Foundations: generous primitives, full semantic inventory, Figma variables | `ggb-foundations` | Foundations review | **Next** (tokens are still the reference-kit seed) |
-| 1 · Wave 1 components | `ggb-component` | Contract, design, implementation | Not started |
-| 2 · Wave 2 … 6 | `ggb-component` | Same | Not started |
-| 3 · Documentation site (`apps/docs`, Astro + Starlight) | dedicated task | Site review | Not started; start once wave 1 is documented |
-| 4 · Marketing site (`apps/site`, Astro) | dedicated task | Site review | Not started |
-| 5 · First release (package, Figma library, docs) | `ggb-maintain` Deliver | Delivery approval | Not started |
+| Task                                                                              | Skill                  | Gate                                   | State                                              |
+| --------------------------------------------------------------------------------- | ---------------------- | -------------------------------------- | -------------------------------------------------- |
+| 0 · Foundations: generous primitives, full semantic inventory, Figma variables    | `ggb-foundations`      | Foundations review                     | **Next** (tokens are still the reference-kit seed) |
+| 1 · Wave 1 components                                                             | `ggb-component`        | Contract, implementation, Figma parity | Not started                                        |
+| 2 · Wave 2 … 6                                                                    | `ggb-component`        | Same                                   | Not started                                        |
+| 3 · Site `apps/site` (Astro: marketing at the root, Starlight docs under `/docs`) | dedicated task         | Site review                            | Not started; start once wave 1 is documented       |
+| 4 · (merged into 3)                                                               |                        |                                        |                                                    |
+| 5 · First release (package, Figma library, docs)                                  | `ggb-maintain` Deliver | Delivery approval                      | Not started                                        |
 
 ## Phase 2: customization
 
-| Task | Notes |
-| --- | --- |
-| Theme builder (`apps/theme-builder`) | Web form producing a brand overlay (`foundations/tokens/<brand>/…` + config entry) and a preview |
-| Figma import (`apps/figma-plugin` and/or a Claude skill) | Applies an overlay through the token manifest and the variable sync scripts |
+| Task                                                     | Notes                                                                                            |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Theme builder (`apps/theme-builder`)                     | Web form producing a brand overlay (`foundations/tokens/<brand>/…` + config entry) and a preview |
+| Figma import (`apps/figma-plugin` and/or a Claude skill) | Applies an overlay through the token manifest and the variable sync scripts                      |
 
 ## Component waves
 
-Each wave passes the three creation gates together (all contracts, then all Figma designs, then one interactive implementation review), followed by documentation. A single component can also be requested on its own: it then follows the same gates alone. Dependencies come before dependents. Names remain proposals until each contract is reviewed; see `component-catalog.md` for scope notes.
+Each wave passes the three creation gates together (all contracts, then one interactive implementation review, then Figma parity), followed by documentation. A single component can also be requested on its own: it then follows the same gates alone. Dependencies come before dependents. Names remain proposals until each contract is reviewed; see `component-catalog.md` for scope notes.
 
-| Wave | Components | Notes |
-| --- | --- | --- |
-| 1 · Actions and small content | Button, Icon, IconButton, Link, Badge, Counter, Shortcut | Button first: it fixes the pattern (contract, Figma, Svelte, docs) that the others follow. Icon/Counter/Shortcut are Button's slot contents |
-| 2 · Form foundations | Field, InputText, Textarea, Checkbox, Switch, RadioGroup | Uses the field, validation and readonly semantic families defined in the foundations |
-| 3 · Feedback and overlays | Spinner, Progress, Skeleton, Alert, Toast, Tooltip, Popover, Dialog, Menu | Uses elevation, motion and layer tokens; Popover and Dialog are dependencies of wave 4 |
-| 4 · Choice and navigation | Select, Combobox, Tabs, Breadcrumb, Pagination, Accordion | Built on wave 2 fields and wave 3 surfaces |
-| 5 · Data and structure | Avatar, DataField, Divider, Table | Table starts as a semantic table |
-| 6 · Complex inputs | DatePicker, TimeInput, NumberInput, Slider | Each needs its own scoping decision (locale, data model) before its contract |
-| Later | FileUpload, MultiSelect, TreeView, SegmentedControl, DateRangePicker, Drawer, Sidebar, NavigationRail, DataGrid, Chart | On product demand |
+| Wave                          | Components                                                                                                             | Notes                                                                                                                                       |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1 · Actions and small content | Button, Icon, IconButton, Link, Badge, Counter, Shortcut                                                               | Button first: it fixes the pattern (contract, Figma, Svelte, docs) that the others follow. Icon/Counter/Shortcut are Button's slot contents |
+| 2 · Form foundations          | Field, InputText, Textarea, Checkbox, Switch, RadioGroup                                                               | Uses the field, validation and readonly semantic families defined in the foundations                                                        |
+| 3 · Feedback and overlays     | Spinner, Progress, Skeleton, Alert, Toast, Tooltip, Popover, Dialog, Menu                                              | Uses elevation, motion and layer tokens; Popover and Dialog are dependencies of wave 4                                                      |
+| 4 · Choice and navigation     | Select, Combobox, Tabs, Breadcrumb, Pagination, Accordion                                                              | Built on wave 2 fields and wave 3 surfaces                                                                                                  |
+| 5 · Data and structure        | Avatar, DataField, Divider, Table                                                                                      | Table starts as a semantic table                                                                                                            |
+| 6 · Complex inputs            | DatePicker, TimeInput, NumberInput, Slider                                                                             | Each needs its own scoping decision (locale, data model) before its contract                                                                |
+| Later                         | FileUpload, MultiSelect, TreeView, SegmentedControl, DateRangePicker, Drawer, Sidebar, NavigationRail, DataGrid, Chart | On product demand                                                                                                                           |
 
 Composition patterns (toolbar, form section, action group, empty state, page header, card, app shell, bulk actions) are documented as examples, not components, unless repeated behavior justifies promotion.
 
 ## Component progress
 
-One row per component once its scope phase starts. Phase values: scope, contract, design, implementation, documentation, done; append "(gate pending)" while waiting for the reviewer.
+One row per component once its scope phase starts. Phase values: scope, contract, implementation, figma, documentation, done; append "(gate pending)" while waiting for the reviewer.
 
-| Component | Family | Wave | Phase | Status file |
-| --- | --- | --- | --- | --- |
-| (none yet) | | | | |
+| Component  | Family | Wave | Phase | Status file |
+| ---------- | ------ | ---- | ----- | ----------- |
+| (none yet) |        |      |       |             |
 
 ## How a fresh session starts a task
 

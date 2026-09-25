@@ -7,7 +7,7 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 - Name: **ggbrick**; domain target ggbrick.design; npm scope `@ggbrick`; prefix `ggb-` for CSS classes (`ggb-<id>`, `ggb-<id>__<part>`), theme attributes (`data-ggb-*`) and custom properties (`--ggb-*`). `gg-` was rejected as too common; `ggb-` is short and collision-free. Skills are named `ggb-*`.
 - Three deliverables from the same sources: Figma library, Svelte 5 package on Bits UI, documentation (local Markdown shipped with the package, and a site).
 - Distribution: the npm package is the tested unit. Consumers may also copy a component's source folder into their project or download the whole `packages/svelte` source; every component folder is therefore self-contained (see AGENTS.md). No compatibility with any third-party registry or CLI is pursued. Bits UI is the only runtime dependency allowed besides Svelte. shadcn-svelte may be consulted as an implementation reference, never as a dependency or a format.
-- Documentation site: Astro with Starlight in `apps/docs`, reading `documentation/` and embedding live Svelte examples. Marketing site: Astro in `apps/site`.
+- One site, `apps/site`, in Astro for ggbrick.design: marketing pages at the root and the documentation under `/docs` with Starlight, reading `documentation/` and embedding live Svelte examples.
 - Phase 1 delivers the design system (foundations, components, Figma library, docs, marketing site). Phase 2 delivers the theme builder (a web form producing a brand overlay) and the Figma import (plugin and/or Claude skill). The overlay format is the sparse brand folder already defined by the token architecture.
 - Versioning proposal (adopt at first Deliver): semantic versioning, one version shared by tokens, Svelte package and Figma library; 0.x while the catalog grows.
 - License: not decided; ask at the first Deliver.
@@ -15,6 +15,7 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 ## Sources and tokens
 
 - The repository owns DTCG JSON tokens and compact JSON component contracts. Figma, code and documentation derive from or conform to them.
+- Generated CSS is layered like the sources: base primitives/common under `[data-ggb-brand]`, appearance roles under `[data-ggb-appearance]`, density roles under `[data-ggb-density]`, sparse brand overrides under combined selectors; aliases become `var()` references. Any one attribute can be overridden alone in a subtree.
 - Token layers: primitives, semantic, and component tokens only where justified. Primitives are **generous**: full ramps and scales are defined up front so that semantic roles pick from them; unused primitives are expected (see `authoring/foundations.md`).
 - Base is complete and usable alone. Brands are sparse overrides with matching file names and token paths. Every brand supports light and dark by inheritance or explicit values.
 - Brand, appearance (light/dark) and density (compact/standard/comfortable) are independent axes selected on one ancestor. No viewport token axis: layout chooses composition; it does not rewrite token values.
@@ -24,9 +25,9 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 
 ## Contracts and implementation
 
-- A contract has `id`, `props`, `parts`, `states`, `tokens`, `rules` (format in `authoring/contract-format.md`). Intrinsic behavior lives in rules; platform mechanics stay in adapters. Figma and code must offer corresponding options; a Figma boolean need not become a variant.
+- A contract has `id`, `props` (enum, boolean, string, number; `bindable` for two-way values), `parts` (with slot cardinality), `states`, optional `events`, `tokens`, `rules` (format in `authoring/contract-format.md`). Intrinsic behavior lives in rules; platform mechanics stay in adapters. Figma and code must offer corresponding options; a Figma boolean need not become a variant.
 - Token roles use parameterized paths; enum props become `data-*` selectors, enum states become custom-property suffixes in generated CSS; role types follow the naming convention.
-- Svelte 5 with runes and snippets; Bits UI primitives for native semantics; CSS inheritance and `currentColor` for slot content; `prefers-reduced-motion` and `forced-colors` handled in every component with motion or borders.
+- Svelte 5 with runes and snippets; Bits UI primitives for native semantics; CSS inheritance and `currentColor` for slot content; logical CSS properties; `prefers-reduced-motion` and `forced-colors` handled in every component with motion or borders. Prettier and ESLint enforce formatting and lint rules across sessions.
 - Snippet slots cannot statically enforce component identity; allowed content is a contract rule documented in usage docs.
 
 ## Documentation
@@ -37,10 +38,10 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 
 ## Process
 
-- Lifecycle: scope, contract, design, specifications, implementation, implementation review, documentation, delivery. Gates: foundations review (once per foundations change), then per component contract, Figma design, interactive implementation; delivery approval is separate.
+- Lifecycle: scope, contract, implementation, implementation review, Figma parity, documentation, delivery. Gates: foundations review (once per foundations change), then per component contract, interactive implementation (which is the design review) and Figma parity; delivery approval is separate. Implementation precedes Figma because tokens fix the visual language and the reviewer judges the real rendering; Figma then reproduces validated, measurable values (decided 2026-09-25).
 - Waves group components so gates are batched (see roadmap). Modify reopens only affected gates. Audit is read-only. Figma reconciliation and foundation changes belong to Modify.
 - Done means usable in Figma and code with accessible, version-aligned human and agent documentation and recorded evidence.
-- Figma is operated through the Figma MCP server. Reconstruction scripts are Plugin API bodies kept in `authoring/adapters/figma`; IDs are read from the destination file, never guessed.
+- Figma is operated through the Figma MCP server. Reconstruction scripts are Plugin API bodies kept in `authoring/adapters/figma`; IDs are read from the destination file, never guessed. Skills in `.claude/skills` are the executable procedures; `authoring/workflows/*.md` hold the rationale and checks.
 - The pre-ggbrick reference kit (tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history)) is a model of artifact structure only. ggbrick starts from zero, Button included, so that everything is unified.
 
 ## Open decisions
@@ -48,4 +49,4 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 1. License for code and Figma library (first Deliver).
 2. Icon set and its license (foundations task).
 3. Figma library file organization and publishing mechanism (first Figma task).
-4. Exact hosting for the docs and marketing sites (when `apps/docs` starts).
+4. Exact hosting for ggbrick.design (when `apps/site` starts).

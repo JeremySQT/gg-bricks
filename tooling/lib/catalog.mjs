@@ -31,4 +31,8 @@ export function getComponent(id) {
   return found;
 }
 
-export const pascal = (s) => s.split(/[-_]/).map((x) => x[0].toUpperCase() + x.slice(1)).join('');
+export const pascal = (s) =>
+  s
+    .split(/[-_]/)
+    .map((x) => x[0].toUpperCase() + x.slice(1))
+    .join('');

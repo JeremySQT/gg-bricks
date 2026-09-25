@@ -11,7 +11,9 @@ export default defineConfig({
     viewport: { width: 1280, height: 1000 },
     launchOptions: {
       executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,
-      args: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ? ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--no-zygote'] : []
+      args: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
+        ? ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--no-zygote']
+        : []
     }
   },
   webServer: { command: 'npm run dev', url: 'http://127.0.0.1:5173', reuseExistingServer: !process.env.CI }
