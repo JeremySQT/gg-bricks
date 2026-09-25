@@ -31,6 +31,6 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Each one says which `authoring/
 - A passing check is not an approval; an approval covers exactly the recorded revision and scope. Record evidence paths and digests in status files.
 - Publication (npm, Figma library, site) needs explicit authorization for that destination and version. Never modify Figma objects the design system does not own.
 - Until a ggbrick component is done, the archived kit shows the artifact structure; afterwards the most recently completed component is the example. Use the deterministic scripts in `tooling/`. Extend them generically; no component-specific branches in shared tooling.
-- The pre-ggbrick reference kit is archived at git tag `reference-kit-2026-09`. Consult it only when a skill says so; nothing from it is a decision for ggbrick.
+- The pre-ggbrick reference kit is archived at git tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history). Consult it only when a skill says so; nothing from it is a decision for ggbrick.
 
 Finish every batch with `npm run verify`, updated status files, and a concise summary: completed work, evidence, open decisions, next phase.

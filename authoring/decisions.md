@@ -41,7 +41,7 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 - Waves group components so gates are batched (see roadmap). Modify reopens only affected gates. Audit is read-only. Figma reconciliation and foundation changes belong to Modify.
 - Done means usable in Figma and code with accessible, version-aligned human and agent documentation and recorded evidence.
 - Figma is operated through the Figma MCP server. Reconstruction scripts are Plugin API bodies kept in `authoring/adapters/figma`; IDs are read from the destination file, never guessed.
-- The pre-ggbrick reference kit (tag `reference-kit-2026-09`) is a model of artifact structure only. ggbrick starts from zero, Button included, so that everything is unified.
+- The pre-ggbrick reference kit (tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history)) is a model of artifact structure only. ggbrick starts from zero, Button included, so that everything is unified.
 
 ## Open decisions
 

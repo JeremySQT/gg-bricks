@@ -5,7 +5,7 @@
 - Repository structure, generic tooling, procedures and skills are in place (2026-09-25).
 - Tokens are still the seed inherited from the reference kit. The **Foundations task** (`gg-foundations`) is the next step; no component may start before its gate passes.
 - No component exists yet. Button is rebuilt from zero in wave 1 as the pattern for the others.
-- The pre-ggbrick kit is archived at tag `reference-kit-2026-09` (Button worked example, Figma evidence, adapter scripts). It is a model of artifact structure only.
+- The pre-ggbrick kit is archived at tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history) (Button worked example, Figma evidence, adapter scripts). It is a model of artifact structure only.
 
 ## Entry points
 
