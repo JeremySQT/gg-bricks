@@ -1,24 +1,36 @@
-# DS authoring entry point
+# ggbrick authoring entry point
 
-This repository defines how the design system is built. It is not the consumer guide for using components inside an application; that guide ships with the package (`documentation/`).
+ggbrick is a design system delivered as a Figma library, a Svelte 5 package built on Bits UI, and documentation, all generated from or checked against JSON sources: DTCG tokens in `foundations/tokens` and one compact contract per component in `components/`. This file routes every authoring task. It is not the consumer guide (that ships in `documentation/`).
 
-## Read first
+## Route the request
 
-1. [authoring/decisions.md](authoring/decisions.md): settled principles and open choices. Do not reopen settled ones.
-2. [authoring/roadmap.md](authoring/roadmap.md): the component waves, their order and the current wave.
-3. The target component's `components/<family>/<id>/status.json`, then only the sources it references.
+| Request | Do this |
+| --- | --- |
+| "Define / extend the foundations", primitives, palette, semantic tokens | Skill `gg-foundations` |
+| "Build / do / create <component>" (Button, InputText, Textarea…) or "build wave N" | Skill `gg-component` (it chains `gg-contract`, `gg-figma`, `gg-svelte`, `gg-docs`) |
+| Change an existing component, token or Figma master; reconcile Figma with sources | Skill `gg-maintain`, procedure Modify |
+| Check consistency or readiness without changing anything | Skill `gg-maintain`, procedure Audit |
+| Prepare or publish a version (package, Figma library, docs site) | Skill `gg-maintain`, procedure Deliver |
+| Documentation site, marketing site, theme builder, Figma plugin | See `authoring/roadmap.md`; these are products with their own tasks, not component work |
 
-Route the task through [authoring/workflow.md](authoring/workflow.md): Create, Modify, Audit, Deliver, or the batch procedure for a whole wave. Follow [authoring/skills/ds-component-workflow/SKILL.md](authoring/skills/ds-component-workflow/SKILL.md); for contract work follow [authoring/skills/ds-component-contract/SKILL.md](authoring/skills/ds-component-contract/SKILL.md). Load the relevant section of [authoring/authoring-playbook.md](authoring/authoring-playbook.md) only for the current phase.
+Skills live in `.claude/skills/<name>/SKILL.md`. Each one says which `authoring/` documents to read for the phase; read only those.
 
-## Rules
+## Before any work
 
-- Tokens (`foundations/tokens`) and contracts (`components/*/*/contract.json`) are authoritative and platform independent. Figma is the validated visual representation; Svelte (`packages/svelte`) is the target implementation. Update sources before reconciling diverging outputs.
-- Generated files (`packages/tokens`, `packages/svelte/src/*/*.generated.*`, `reports/components/*/…json`) are produced by `npm run generate`; never edit them by hand. Commit them with the source change that caused them.
-- Use English for identifiers, rules and maintained documentation. Communicate with the user in their language.
-- Use the deterministic scripts in `tooling/` for transformations and checks. Extend them generically; do not add component-specific branches to shared tooling.
-- Follow recorded approvals for their exact revision and scope; do not re-request valid approvals. Never infer completion from a passing check or a visual approval alone. Record unresolved decisions in status instead of guessing product behavior.
-- Review gates (contract, Figma design, interactive implementation) and delivery approval are the only mandatory interruptions. Group other consequential questions into one message at the next gate; complete routine, unblocked work autonomously.
-- Skills and templates describe outputs, not permissions. Do not publish (registry, Figma library, site) without explicit authorization for that destination and version. Do not modify unrelated user-owned Figma objects.
-- Use Button (`components/actions/button`, `packages/svelte/src/button`, `examples/button`) as the example of artifact structure, not as a universal interaction model.
+1. `authoring/decisions.md`: settled principles. Do not reopen them; record a new question in the relevant status file instead.
+2. `authoring/roadmap.md`: waves, current wave, and what must be done before a component can start (foundations first).
+3. `foundations/status.json` and, for a component, `components/<family>/<id>/status.json`. A missing status means the component has not started. `null` never means approved.
 
-Before finishing any batch: `npm run verify`, update the affected `status.json` files, and record evidence paths.
+## Rules that apply everywhere
+
+- Sources are authoritative and platform independent: tokens and contracts. Figma is the validated visual representation; Svelte is the target implementation. Change the source first, then regenerate (`npm run generate`), then reconcile outputs.
+- Never hand-edit generated files (`packages/tokens/*`, `packages/svelte/src/*/*.generated.*`, `reports/**/*.json` written by tooling). Commit them together with the source change.
+- Every component must be **self-contained and copyable**: `packages/svelte/src/<id>/` plus `tokens.css`, Bits UI and the internal dependencies its status declares are all a consumer needs. No other shared runtime code without a decision.
+- Naming: package scope `@ggbrick/*`, CSS classes `gg-<id>` and `gg-<id>__<part>`, theme attributes `data-gg-brand`, `data-gg-appearance`, `data-gg-density`, custom properties `--<token-path-with-dashes>`. English identifiers, rules and maintained docs; gate summaries and questions in the user's language.
+- Human review gates are the only mandatory interruptions: foundations review; per component contract, Figma design and interactive implementation; delivery approval. Group every other consequential question and present it at the next gate. Complete routine, unblocked work autonomously and record the choices you made.
+- A passing check is not an approval; an approval covers exactly the recorded revision and scope. Record evidence paths and digests in status files.
+- Publication (npm, Figma library, site) needs explicit authorization for that destination and version. Never modify Figma objects the design system does not own.
+- Until a ggbrick component is done, the archived kit shows the artifact structure; afterwards the most recently completed component is the example. Use the deterministic scripts in `tooling/`. Extend them generically; no component-specific branches in shared tooling.
+- The pre-ggbrick reference kit is archived at git tag `reference-kit-2026-09`. Consult it only when a skill says so; nothing from it is a decision for ggbrick.
+
+Finish every batch with `npm run verify`, updated status files, and a concise summary: completed work, evidence, open decisions, next phase.

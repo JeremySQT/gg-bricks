@@ -1,13 +1,25 @@
 {
-  "formatStatus": "proposed",
+  "formatStatus": "v1",
   "componentId": null,
+  "family": null,
+  "wave": null,
   "phase": "scope",
+  "scope": {
+    "purpose": null,
+    "useCases": [],
+    "exclusions": [],
+    "alternatives": []
+  },
   "dependencies": [],
+  "fixtures": [],
   "artifacts": {
     "contract": null,
     "tokens": [],
     "figma": null,
+    "figmaSpec": null,
     "svelte": null,
+    "examples": null,
+    "tests": null,
     "humanDocs": null,
     "agentDocs": null
   },
@@ -19,6 +31,7 @@
     "delivery": null
   },
   "checks": [],
+  "decisionsTaken": [],
   "openDecisions": [],
   "nextAction": null
 }

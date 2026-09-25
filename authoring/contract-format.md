@@ -1,6 +1,6 @@
 # Component contract format — v1
 
-Status: compact encoding accepted during the design discussion; future component types may extend it. The five substantive blocks are agreed; this schema is deliberately limited to the types currently required by Button.
+Status: compact encoding accepted during the design discussion; future component types may extend it. The five substantive blocks are agreed; this schema is deliberately limited to enum, boolean and string inputs; extend it through a reviewed schema change when a component needs more.
 
 ## Representation
 
@@ -22,7 +22,7 @@ Each brace name references an enum prop or state. Parameters occupy complete pat
 
 This is a contract convention, NOT DTCG alias syntax. The contract references paths in a resolved token set for one brand/appearance/density configuration. Run reference coverage against every supported configuration.
 
-Reference only necessary combinations. Button's border path fixes appearance to outline because other treatments do not draw a border. Avoid adding unused requirements merely to complete a matrix.
+Reference only necessary combinations. A border path may fix the appearance segment to `outline` when other treatments draw no border. Avoid adding unused requirements merely to complete a matrix. `tests/fixtures/button.contract.json` is a complete sample of the notation.
 
 ## Validation
 
@@ -44,7 +44,7 @@ Generic checks infer the expected token type from the role name: `surface`, `con
 npm ci
 npm test
 npm run validate                                  # all contracts, schema + consistency + token coverage in every context
-node tooling/validate-contracts.mjs button        # one contract, schema + consistency only
+node tooling/validate-contracts.mjs <id>          # one contract, schema + consistency only
 node tooling/validate-contracts.mjs --tokens --dependencies   # also check accepted part contents against the local catalog
 
 The dependency check uses the ids of discovered contracts; presence does not prove dependency readiness. The validator uses Ajv's 2020 entry point, strict checks and no input coercion/default injection. CLI failures use a nonzero exit status.

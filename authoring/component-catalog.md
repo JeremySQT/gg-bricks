@@ -1,10 +1,26 @@
 # Component catalog — planning proposal
 
-This catalog organizes future scope; it does not authorize implementation or promise exports. Only Button has an implemented reference in this kit. Names and boundaries below are proposals until each contract is reviewed. Do not create empty component folders or placeholder contracts for these candidates.
+This catalog organizes scope and dependency notes per component family; the order of work is in roadmap.md. Names and boundaries are proposals until each contract is reviewed. Do not create empty component folders or placeholder contracts for these candidates.
+
+## Families (folder names under `components/`)
+
+| Folder | Contents |
+| --- | --- |
+| `actions` | Button, IconButton, Link |
+| `content` | Icon, Badge, Counter, Shortcut, Avatar, Divider |
+| `forms` | Field, FieldGroup, TextField, InputText, Textarea, Checkbox, RadioGroup, Switch, Select, Combobox, NumberInput, Slider, FileUpload, DatePicker, TimeInput |
+| `feedback` | Alert, Toast, Progress, Spinner, Skeleton |
+| `overlays` | Dialog, Popover, Tooltip, Menu, Drawer |
+| `navigation` | Tabs, Breadcrumb, Pagination, Accordion, Sidebar, NavigationRail |
+| `data` | Table, DataField, DataGrid, Chart |
+
+Default composition rule for form controls: entry controls (InputText, Textarea, Checkbox, Switch, RadioGroup, Select…) are standalone and own only their control; `Field` wraps any control with label, help and validation message and is composed by the consumer; `TextField` is the convenience composition of Field + InputText. A control therefore does not depend on Field.
+
+Dependency rule: a component requested on its own needs only the dependencies its status declares (for example Icon for a component with icon slots), not the whole previous wave.
 
 ## Priorities
 
-- **Reference:** Button; consolidate and use as the worked example.
+- **Wave 1 starts with Button**, which fixes the pattern the other components follow.
 - **Core candidates:** common SaaS/business-app building blocks to address when requested.
 - **Later candidates:** add only when product use cases justify the cost.
 - **Patterns:** compositions documented with examples, not necessarily package components.
@@ -14,7 +30,7 @@ This catalog organizes future scope; it does not authorize implementation or pro
 | Family | Candidates | Scope and dependency notes |
 | --- | --- | --- |
 | Actions | Button, IconButton, Link | Button may navigate to a task; Link supports navigation in prose. IconButton needs an explicit accessible name. |
-| Small content | Icon, Counter, Shortcut, Badge | Icon/Counter/Shortcut currently exist as Button fixtures/examples, not completed public DS dependencies. Badge conveys status/category; Counter conveys quantity. |
+| Small content | Icon, Counter, Shortcut, Badge | Icon, Counter and Shortcut are Button's slot contents and are built in the same wave. Badge conveys status/category; Counter conveys quantity. |
 | Form structure | Field, FieldGroup, TextField | Field owns label/help/validation; FieldGroup composes controls/actions; TextField may offer a common composition. Set exact public boundaries in contracts. |
 | Text entry | InputText, Textarea | InputText owns entry behavior; distinguish readonly, disabled and validation. |
 | Choice | Checkbox, RadioGroup, Switch, Select | Distinguish selection from a persistent setting. Decide group/option subparts before creating standalone exports. |

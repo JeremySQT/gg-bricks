@@ -1,5 +1,5 @@
 {
-  "name": "design-system",
+  "name": "ggbrick",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -16,7 +16,7 @@
     "validate": "node tooling/validate-contracts.mjs --tokens",
     "test": "node --test tests/*.test.mjs",
     "test:ssr": "node --test tests/ssr/*.test.mjs",
-    "test:browser": "playwright test",
+    "test:browser": "node tooling/test-browser.mjs",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "dev": "vite --host 127.0.0.1",
     "build": "npm run generate && vite build",
@@ -24,6 +24,7 @@
     "pack:svelte": "npm run generate && npm pack --workspace packages/svelte --pack-destination ./dist",
     "pack:tokens": "npm run build:tokens && npm pack --workspace packages/tokens --pack-destination ./dist",
     "new:component": "node tooling/new-component.mjs",
+    "digest": "node tooling/digest.mjs",
     "verify": "npm run generate && npm run validate && npm test && npm run check && npm run test:ssr && npm run build",
     "verify:generated": "npm run generate && git diff --exit-code --stat -- packages reports/components"
   },

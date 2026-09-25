@@ -1,0 +1,18 @@
+{
+  "phase": "seed",
+  "note": "The current token files are the seed inherited from the reference kit (Button subset). The Foundations task replaces them with the generous primitive inventory and the full semantic inventory described in authoring/foundations.md.",
+  "artifacts": {
+    "config": "foundations/config.json",
+    "tokens": "foundations/tokens",
+    "generated": "packages/tokens",
+    "figma": null
+  },
+  "approvals": {
+    "primitives": null,
+    "semantic": null,
+    "figmaVariables": null
+  },
+  "checks": [],
+  "openDecisions": [],
+  "nextAction": "Run the gg-foundations skill: propose the primitive and semantic inventories, then stop for the foundations gate."
+}

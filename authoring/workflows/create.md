@@ -2,7 +2,7 @@
 
 ## Inputs
 
-Read the decision register, component catalog, relevant existing contracts and target status. Use Button as a worked example of the workflow, not a universal behavior specification. Resolve the requested scope and actual dependencies before work.
+Read the decision register, component catalog, relevant existing contracts and target status. Use the most recently completed component as the example of artifact structure (before any exists, the archived reference kit at tag `reference-kit-2026-09`), not as a universal behavior specification. Resolve the requested scope and actual dependencies before work.
 
 ## Procedure
 

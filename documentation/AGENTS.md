@@ -1,7 +1,8 @@
 # Consumer entry point
 
-Read index.json, then only the relevant sections of button.md. Prefer exported DS components over rebuilding their appearance. The local contract records platform-independent options and rules; the Markdown documents the actual Svelte API.
+You are working in an application that uses `@ggbrick/svelte`. Read `index.json`, then only the relevant sections of the component page you need. Prefer exported ggbrick components over rebuilding their appearance; the page's API section documents the actual Svelte API, the contract records platform-independent options and rules.
 
-Import tokens.css once and set the three theme attributes on one ancestor. Do not copy Figma internal collections, variant scaffolding or fixture implementation into application code. Slots inherit color; icons use currentColor. Use snippets only for allowed non-interactive contents. Do not assume snippets enforce component identity.
-
-Button is currently the only implementation. Alternative components named in the guide are planned, not exports. No component or documentation is publicly released by this package.
+- Import `tokens.css` once and set `data-gg-brand`, `data-gg-appearance` and `data-gg-density` on one ancestor.
+- Slot content inherits `color`; icons use `currentColor`. Snippets accept only the contents the page allows; the framework does not enforce this.
+- Do not copy Figma internal structures, variant scaffolding or fixtures into application code.
+- Components named as alternatives but absent from `index.json` are planned, not exports.

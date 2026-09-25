@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {checkContract,expandTokenPaths,expandCombinations,expectedRoleType} from '../tooling/lib/contract.mjs';
-const source=JSON.parse(fs.readFileSync(new URL('../components/actions/button/contract.json',import.meta.url),'utf8'));
+const source=JSON.parse(fs.readFileSync(new URL('./fixtures/button.contract.json',import.meta.url),'utf8'));
 const copy=()=>structuredClone(source);
 test('candidate validates without claiming token or rule coverage',()=>{
   const c=copy(),before=JSON.stringify(c),r=checkContract(c);

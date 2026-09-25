@@ -1,6 +1,6 @@
 # Authoring workflows
 
-Read only the procedure needed for the task:
+The skills in `.claude/skills/` are the executable form of these procedures; the documents here give the rationale and the details. Where wording differs, the skill's phase order wins and the procedure supplies the checks. Read only the procedure needed for the task:
 
 | Request | Procedure |
 | --- | --- |
@@ -12,7 +12,7 @@ Read only the procedure needed for the task:
 
 ## Batch authoring
 
-The roadmap groups components into waves so that the user is interrupted only at gates. For a wave:
+The roadmap groups components into waves so that the user is interrupted only at gates. The `gg-component` skill runs it. For a wave:
 
 1. **Scope and contracts.** Follow Create steps 1–2 for every component of the wave, including the foundation tokens the wave needs. Run `npm run validate`. Present one contract review: a table per component (options, parts, states, rules), the token additions, the decisions taken within conventions and the grouped open questions. Stop for the contract gate.
 2. **Figma design.** Follow Create steps 3–4 for every component. Present one design review with file/node references. Stop for the design gate.
@@ -55,6 +55,26 @@ All must hold within the declared supported scope:
 Distinguish reference-kit readiness, component completion and published release availability. An implementation example can be useful while release work remains open.
 
 ## Evidence and approval records
+
+An approval entry in a status file has this shape:
+
+```json
+{
+  "scope": "what exactly was approved",
+  "revision": { "paths": ["components/forms/textarea/contract.json"], "sha256": { "components/forms/textarea/contract.json": "…" } },
+  "provenance": "who approved, where (session, comment, review), when",
+  "note": "limits of the approval, if any"
+}
+```
+
+Digests come from `npm run digest -- <paths>`. Figma approvals record file key, node IDs and the evidence files instead of digests. An approval is invalidated when any listed path changes; record the change and re-present only the affected gate.
+
+Artifacts, identifiers and maintained documents are in English. Gate summaries and questions are written in the user's language.
+
+A request that cannot start (a pending gate, a missing dependency) is answered with the blocker and the next step; it creates no status file and does not change the roadmap.
+
+When no Figma tool is connected in the session, a component may continue to implementation after the contract gate: record `artifacts.figma: "pending"` and the reason in the status, keep the design gate open, and the design phase runs as a follow-up task in a session with Figma. The implementation gate still takes place; documentation waits for both gates.
+
 
 Use [the status template](templates/component-status.json). Null means unrecorded. The optional documentation approval records editorial feedback when given; it is not an additional mandatory creation gate. Each approval records scope, provenance and identifiable artifacts (paths plus digests or commits; Figma nodes plus review/export evidence when available). Do not invent an immutable Figma revision, reviewer or timestamp. Historical conversational approvals may have weaker provenance; retain that limitation.
 

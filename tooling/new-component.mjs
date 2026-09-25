@@ -15,6 +15,7 @@ contract.$schema = '../../../authoring/schemas/component-contract.schema.json';
 contract.id = id;
 const status = readJson(`${paths.templates}/component-status.json`);
 status.componentId = id;
+status.family = family;
 status.phase = 'scope';
 status.artifacts.contract = { path: `${dir}/contract.json`, sha256: null };
 status.nextAction = 'Complete the scope, then draft the contract and present it for the contract gate.';

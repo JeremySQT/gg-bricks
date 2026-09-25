@@ -1,3 +1,2 @@
-export { default as Button } from './button/Button.svelte';
-export type { ButtonProps } from './button/types.js';
-export type { ButtonIntent, ButtonAppearance, ButtonSize } from './button/contract.generated.js';
+// Public exports of @ggbrick/svelte. One line per component, added when its implementation gate passes.
+export {};

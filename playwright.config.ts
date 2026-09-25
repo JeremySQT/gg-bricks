@@ -4,7 +4,7 @@ export default defineConfig({
   fullyParallel: false,
   workers: 1,
   timeout: 30000,
-  reporter: [['list'], ['json', { outputFile: 'reports/components/button/svelte/browser-results.json' }]],
+  reporter: [['list'], ['json', { outputFile: 'reports/browser-results.json' }]],
   use: {
     baseURL: 'http://127.0.0.1:5173',
     browserName: 'chromium',

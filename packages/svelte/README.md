@@ -1,38 +1,38 @@
-# @ds/svelte
+# @ggbrick/svelte
 
-Svelte 5 implementation of the design system, built on Bits UI primitives. Button is available; the catalog grows wave by wave (see the repository roadmap). The package name is a placeholder until the design system is named.
+Svelte 5 components of the ggbrick design system, built on Bits UI primitives. Components are added as they pass their implementation gate; `docs/index.json` lists what is available in the installed version.
 
-## Install and use
+## Install
 
-From the repository: `npm ci`, `npm run pack:svelte`. In a Svelte 5 application:
+From the repository: `npm ci`, `npm run pack:svelte`, then in a Svelte 5 application:
 
 ```sh
-npm install /absolute/path/to/ds-svelte-0.1.0.tgz
+npm install /absolute/path/to/ggbrick-svelte-<version>.tgz
 ```
 
 ```svelte
 <script lang="ts">
-  import { Button } from '@ds/svelte';
-  import '@ds/svelte/tokens.css';
+  import '@ggbrick/svelte/tokens.css';
+  // import { Button } from '@ggbrick/svelte';
 </script>
 
-<div data-ds-brand="base" data-ds-appearance="light" data-ds-density="standard">
-  <Button label="Save changes" onclick={() => console.log('save')} />
+<div data-gg-brand="base" data-gg-appearance="light" data-gg-density="standard">
+  <!-- components -->
 </div>
 ```
 
-Load Inter 400/600 through your application's font pipeline. Fonts are not imposed or downloaded by the components.
+Set all three `data-gg-*` attributes on the same ancestor; they select one generated context. A nested override repeats all three. Fonts are loaded by your application, not by the components.
 
-Set all three data attributes on the same ancestor. They select one complete generated context. A nested override must repeat all three attributes.
+## Copy instead of installing
+
+Every component folder in `src/<id>/` is self-contained: copy it, add `tokens.css`, install `bits-ui`, and copy the internal dependencies listed in the component's documentation page. Generated files inside the folder (`contract.generated.ts`, `tokens.generated.css`) are part of the copy.
 
 ## Documentation
 
-Read `docs/index.json` first for economical discovery, then the component page (for example `docs/button.md`). The same maintained Markdown is intended for humans and agents. Each component's platform-independent contract is in `contracts/<id>.json`.
+Read `docs/index.json` first, then the component page (`docs/<id>.md`). `docs/AGENTS.md` is the entry point for an agent working in your application. Each component's platform-independent contract is in `contracts/<id>.json`.
 
 ## Package layout
 
 - `src/index.ts`: public exports.
-- `src/<id>/`: one folder per component. `contract.generated.ts` and `tokens.generated.css` are generated from the shared contract; the `.svelte`, `types.ts` and handwritten `.css` files hold behavior and styling.
+- `src/<id>/`: `<Name>.svelte`, `types.ts`, `<id>.css`, generated `contract.generated.ts` and `tokens.generated.css`.
 - `tokens.css`, `contracts/`, `docs/`: copies generated at build time from `packages/tokens` and `documentation/`.
-
-No registry publication, public documentation hosting or Figma publishing is performed by this package.

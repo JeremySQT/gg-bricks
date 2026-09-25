@@ -1,54 +1,56 @@
-# Design system
+# ggbrick
 
-An AI-authorable, portable design system with three deliverables built from the same sources:
+ggbrick is a design system built for AI-assisted authoring and delivered as three products generated from the same JSON sources:
 
 1. **Figma library**: the validated visual representation, driven by generated variables.
-2. **Svelte components** (`packages/svelte`): the reference implementation on Svelte 5 and Bits UI.
-3. **Documentation**: one maintained source (`documentation/`) for humans and agents, shipped with the package and, later, published as a site.
+2. **Svelte 5 components** (`@ggbrick/svelte`, built on Bits UI): install the package or copy a component's source folder into your project.
+3. **Documentation**: one maintained source for humans and agents, shipped with the package and published as a site.
 
-Authoritative sources are JSON: DTCG tokens in `foundations/tokens` and one compact contract per component in `components/`. Everything else is generated from them or reviewed against them. Button is the worked reference; the catalog is being built component by component through the procedures in `authoring/`.
+Sources of truth: DTCG tokens in `foundations/tokens` and one compact contract per component in `components/`. Everything else is generated from them or reviewed against them. Target domain: ggbrick.design.
+
+## Status
+
+The repository structure, tooling, procedures and skills are in place. Foundations (primitives and semantic tokens) are the next task, then components are built wave by wave. See [authoring/roadmap.md](authoring/roadmap.md).
 
 ## Layout
 
 | Path | Role |
 | --- | --- |
-| `AGENTS.md` | Authoring entry point for agents (task routing, rules) |
-| `foundations/` | `config.json` (brands, appearances, densities) and `tokens/{base,brand-*}` DTCG sources |
-| `components/<family>/<id>/` | `contract.json`, `status.json` and component-level review notes |
-| `documentation/` | Maintained consumer docs: `index.json`, `AGENTS.md`, `components/*.md` |
-| `packages/tokens/` | Generated token outputs (CSS, resolved JSON, Figma manifest) |
-| `packages/svelte/` | Svelte package: `src/<id>/` per component plus generated bindings and consumer copies |
-| `authoring/` | Decisions, workflows, playbook, roadmap, skills, schemas, templates, Figma adapter scripts |
-| `tooling/` | Deterministic Node generators and validators |
+| `AGENTS.md`, `CLAUDE.md`, `.claude/skills/` | Authoring entry point, routing and skills |
+| `foundations/` | Token sources, config and foundations status |
+| `components/<family>/<id>/` | Contract, status and Figma specification per component |
+| `documentation/` | Maintained consumer docs: index, agent guide, component pages |
+| `packages/tokens/`, `packages/svelte/` | Generated token outputs; Svelte package |
+| `authoring/` | Decisions, roadmap, workflows, playbook, foundations and Figma specs, schemas, templates |
+| `tooling/` | Deterministic generators and validators |
 | `examples/` | Vite review app, one page per component |
-| `tests/` | Contract/token unit tests, SSR tests, Playwright browser tests |
-| `reports/` | Revision-bound evidence per component and for tokens |
-| `apps/` | Reserved for the documentation site, marketing site, theme builder and Figma plugin (see the roadmap) |
+| `tests/` | Tooling unit tests, SSR tests, Playwright tests |
+| `reports/` | Revision-bound evidence |
+| `apps/` | Reserved for the docs site, marketing site, theme builder and Figma plugin |
+
+Full description: [authoring/layout.md](authoring/layout.md).
 
 ## Commands
 
 ```sh
 npm ci
-npm run generate        # tokens + Svelte bindings + consumer copies (run after editing sources)
+npm run generate        # tokens + Svelte bindings + consumer copies
 npm run validate        # every contract: schema, consistency, token coverage in all contexts
-npm test                # contract and token resolver unit tests
+npm test                # tooling unit tests
 npm run check           # svelte-check
 npm run test:ssr        # server rendering per component
-npm run dev             # review app at http://127.0.0.1:5173 (examples/<id>/)
-npm run build           # generate + production build of the review app into dist/examples
-npm run build:preview button   # self-contained dist/previews/button.html for review outside the repo
-npm run test:browser    # Playwright (Chromium). Set PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH to reuse a local Chromium.
+npm run dev             # review app at http://127.0.0.1:5173
+npm run build           # generate + production build of the review app
+npm run build:preview <id>     # self-contained dist/previews/<id>.html
+npm run test:browser    # Playwright (Chromium); PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH reuses a local browser
 npm run verify          # generate, validate, test, check, ssr, build
-npm run pack:svelte     # dist/ds-svelte-<version>.tgz for isolated consumer checks
-npm run new:component -- <family> <id>   # scaffold contract + status for a component being addressed
+npm run verify:generated       # fails when generated outputs drift from sources
+npm run pack:svelte     # dist/ggbrick-svelte-<version>.tgz
+npm run new:component -- <family> <id>
 ```
 
-Node 22.12 or newer. The reference pins Svelte 5.57.1 and Bits UI 2.19.3.
+Node 22.12 or newer. Svelte 5.57.1 and Bits UI 2.19.3 are pinned.
 
-## Start here
+## Working with agents
 
-- Agents: read [AGENTS.md](AGENTS.md), then [the handoff](authoring/handoff.md) and [the roadmap](authoring/roadmap.md).
-- Consumers of the package: read [packages/svelte/README.md](packages/svelte/README.md) and the local `docs/index.json` shipped with it.
-- Decisions: [authoring/decisions.md](authoring/decisions.md). Procedures: [authoring/workflow.md](authoring/workflow.md).
-
-Generated files are committed so that token, binding and evidence changes are reviewable in diffs. `npm run verify:generated` fails when sources and generated outputs drift.
+Open the repository with Claude Code and ask for a task in plain words ("define the foundations", "do the Button", "build wave 2"). `AGENTS.md` routes the request to a skill; the skill stops at the review gates listed in [authoring/workflow.md](authoring/workflow.md) and records approvals and evidence in status files. The pre-ggbrick reference kit is archived at git tag `reference-kit-2026-09`.

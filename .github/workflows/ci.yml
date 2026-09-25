@@ -30,8 +30,8 @@ jobs:
           npm run pack:svelte
           mkdir -p /tmp/consumer && cd /tmp/consumer
           npm init -y >/dev/null
-          npm install --no-audit --no-fund svelte@5.57.1 "$GITHUB_WORKSPACE"/dist/ds-svelte-*.tgz
-          node -e "const {compile}=require('svelte/compiler');const r=compile('<script>import {Button} from \"@ds/svelte\";</script><Button label=\"Save\" />',{generate:'server'});if(r.warnings.length)throw new Error(JSON.stringify(r.warnings));console.log('consumer ok')"
+          npm install --no-audit --no-fund svelte@5.57.1 "$GITHUB_WORKSPACE"/dist/ggbrick-svelte-*.tgz
+          node -e "const fs=require('fs');const idx=JSON.parse(fs.readFileSync('node_modules/@ggbrick/svelte/docs/index.json'));const {compile}=require('svelte/compiler');const imports=idx.components.map(c=>c.import).join(', ');const r=compile('<script>import {'+imports+'} from \"@ggbrick/svelte\";</script>',{generate:'server'});if(r.warnings.length)throw new Error(JSON.stringify(r.warnings));console.log('consumer ok:',idx.components.length,'components')"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -1,6 +1,9 @@
-# Figma reference adapter
+# Figma reference scripts (from the archived kit)
 
-Read components/actions/button/figma-review.md for the mapping and known limitations. This folder contains reusable Plugin API script bodies, not a packaged Figma plugin or a one-click CLI importer.
+These Plugin API script bodies were written for the reference kit's Button file (tag `reference-kit-2026-09`). They are models to adapt through the Figma MCP server, not scripts to run as is: their node and component IDs belong to that file. Read `authoring/figma.md` for the ggbrick operating mode. The notes below are kept for the mechanics they document. File paths mentioned below (`components/actions/button/figma-review.md`, `reports/components/button/figma/…`) exist only in that tag: `git show reference-kit-2026-09:<path>`.
+
+
+The archived `components/actions/button/figma-review.md` (in the tag) describes the mapping and known limitations. This folder contains reusable Plugin API script bodies, not a packaged Figma plugin or a one-click CLI importer.
 
 ## Inputs and execution
 

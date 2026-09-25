@@ -32,4 +32,4 @@ Separate independent state axes. A validation result is not the same kind of sta
 7. Run the agreed schema and semantic checks when available. Before a schema exists, report a manual structural review; JSON parsing alone is not contract validation.
 8. Present a concise change summary and record approval for the exact reviewed revision.
 
-Never approve your own draft. A pilot contract marked partial does not define the complete production component.
+Never approve your own draft.
