@@ -1,6 +1,8 @@
-history.bundle
 node_modules/
+dist/
 test-results/
 playwright-report/
-dist/button-demo/
-dist/*.tgz
+# Consumer copies generated into the Svelte package by `npm run build:svelte`
+packages/svelte/docs/
+packages/svelte/contracts/
+packages/svelte/tokens.css

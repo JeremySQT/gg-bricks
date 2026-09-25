@@ -1,8 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {checkContract,expandTokenPaths} from '../tools/validate-contract.mjs';
-const source=JSON.parse(fs.readFileSync(new URL('../contracts/actions/button.contract.json',import.meta.url),'utf8'));
+import {checkContract,expandTokenPaths,expandCombinations,expectedRoleType} from '../tooling/lib/contract.mjs';
+const source=JSON.parse(fs.readFileSync(new URL('../components/actions/button/contract.json',import.meta.url),'utf8'));
 const copy=()=>structuredClone(source);
 test('candidate validates without claiming token or rule coverage',()=>{
   const c=copy(),before=JSON.stringify(c),r=checkContract(c);
@@ -38,11 +38,13 @@ test('requires every expanded path when an inventory is supplied',()=>{
   const r=checkContract(source,{tokens:{}});
   assert.equal(r.valid,false);assert.equal(r.checks.tokenCoverage,'failed');
   // Synthetic presence fixture, not production token validation.
-  const paths=Object.values(expandTokenPaths(source)).flat();
-  const tokens=Object.fromEntries(paths.map(p=>[p,{$type:'number',$value:0}]));
+  const tokens={};
+  for(const [role,list] of Object.entries(expandCombinations(source)))for(const {path} of list)tokens[path]={$type:expectedRoleType(role),$value:0};
   assert.equal(checkContract(source,{tokens}).checks.tokenCoverage,'passed');
   delete tokens['color.action.neutral.ghost.loading.content'];
   assert.ok(checkContract(source,{tokens}).errors.some(e=>e.path==='color.action.neutral.ghost.loading.content'));
+  tokens['color.action.neutral.ghost.loading.content']={$type:'dimension',$value:0};
+  assert.ok(checkContract(source,{tokens}).errors.some(e=>e.code==='role-type'));
 });
 test('rejects invalid slot cardinality and missing accepted components',()=>{
   const c=copy();c.parts.trailing.max=0;

@@ -40,8 +40,8 @@
   padding: var(--button-paddingBlock) var(--button-paddingInline);
   border-radius: var(--button-radius);
   background: var(--_surface);
-  box-shadow: inset 0 0 0 var(--button-borderWidth) var(--_border);
 }
+.ds-button[data-appearance="outline"] .ds-button__surface { box-shadow: inset 0 0 0 var(--button-borderWidth) var(--_border); }
 .ds-button__content { display: flex; align-items: center; gap: var(--button-gap); min-inline-size: 0; max-inline-size: 100%; }
 .ds-button__label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; min-inline-size: 0; }
 .ds-button__slot { display: inline-flex; align-items: center; justify-content: center; flex: none; color: inherit; }

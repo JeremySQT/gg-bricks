@@ -35,4 +35,4 @@ This is a dry run of agent instruction routing, not proof that another component
 
 ## Outcome
 
-The kit has a coherent handoff and operating procedures for another agent. It remains a reference kit, not a declaration that the whole DS or Button's production distribution is Done. See docs/handoff.md for the actionable remaining scope.
+The kit has a coherent handoff and operating procedures for another agent. It remains a reference kit, not a declaration that the whole DS or Button's production distribution is Done. See authoring/handoff.md for the actionable remaining scope.

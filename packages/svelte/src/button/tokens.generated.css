@@ -1,156 +1,132 @@
-/* Generated token bindings from button.contract.json. No Figma adapter variables. */
+/* Generated token bindings from the button contract. Do not edit. */
 .ds-button[data-intent="accent"][data-appearance="solid"] {
   --button-surface-default: var(--color-action-accent-solid-default-surface);
-  --button-content-default: var(--color-action-accent-solid-default-content);
-  --button-border-default: transparent;
   --button-surface-hover: var(--color-action-accent-solid-hover-surface);
-  --button-content-hover: var(--color-action-accent-solid-hover-content);
-  --button-border-hover: transparent;
   --button-surface-pressed: var(--color-action-accent-solid-pressed-surface);
-  --button-content-pressed: var(--color-action-accent-solid-pressed-content);
-  --button-border-pressed: transparent;
   --button-surface-loading: var(--color-action-accent-solid-loading-surface);
-  --button-content-loading: var(--color-action-accent-solid-loading-content);
-  --button-border-loading: transparent;
   --button-surface-disabled: var(--color-action-accent-solid-disabled-surface);
+  --button-content-default: var(--color-action-accent-solid-default-content);
+  --button-content-hover: var(--color-action-accent-solid-hover-content);
+  --button-content-pressed: var(--color-action-accent-solid-pressed-content);
+  --button-content-loading: var(--color-action-accent-solid-loading-content);
   --button-content-disabled: var(--color-action-accent-solid-disabled-content);
-  --button-border-disabled: transparent;
 }
 .ds-button[data-intent="accent"][data-appearance="outline"] {
   --button-surface-default: var(--color-action-accent-outline-default-surface);
-  --button-content-default: var(--color-action-accent-outline-default-content);
-  --button-border-default: var(--color-action-accent-outline-default-border);
   --button-surface-hover: var(--color-action-accent-outline-hover-surface);
-  --button-content-hover: var(--color-action-accent-outline-hover-content);
-  --button-border-hover: var(--color-action-accent-outline-hover-border);
   --button-surface-pressed: var(--color-action-accent-outline-pressed-surface);
-  --button-content-pressed: var(--color-action-accent-outline-pressed-content);
-  --button-border-pressed: var(--color-action-accent-outline-pressed-border);
   --button-surface-loading: var(--color-action-accent-outline-loading-surface);
-  --button-content-loading: var(--color-action-accent-outline-loading-content);
-  --button-border-loading: var(--color-action-accent-outline-loading-border);
   --button-surface-disabled: var(--color-action-accent-outline-disabled-surface);
+  --button-content-default: var(--color-action-accent-outline-default-content);
+  --button-content-hover: var(--color-action-accent-outline-hover-content);
+  --button-content-pressed: var(--color-action-accent-outline-pressed-content);
+  --button-content-loading: var(--color-action-accent-outline-loading-content);
   --button-content-disabled: var(--color-action-accent-outline-disabled-content);
-  --button-border-disabled: var(--color-action-accent-outline-disabled-border);
 }
 .ds-button[data-intent="accent"][data-appearance="ghost"] {
   --button-surface-default: var(--color-action-accent-ghost-default-surface);
-  --button-content-default: var(--color-action-accent-ghost-default-content);
-  --button-border-default: transparent;
   --button-surface-hover: var(--color-action-accent-ghost-hover-surface);
-  --button-content-hover: var(--color-action-accent-ghost-hover-content);
-  --button-border-hover: transparent;
   --button-surface-pressed: var(--color-action-accent-ghost-pressed-surface);
-  --button-content-pressed: var(--color-action-accent-ghost-pressed-content);
-  --button-border-pressed: transparent;
   --button-surface-loading: var(--color-action-accent-ghost-loading-surface);
-  --button-content-loading: var(--color-action-accent-ghost-loading-content);
-  --button-border-loading: transparent;
   --button-surface-disabled: var(--color-action-accent-ghost-disabled-surface);
+  --button-content-default: var(--color-action-accent-ghost-default-content);
+  --button-content-hover: var(--color-action-accent-ghost-hover-content);
+  --button-content-pressed: var(--color-action-accent-ghost-pressed-content);
+  --button-content-loading: var(--color-action-accent-ghost-loading-content);
   --button-content-disabled: var(--color-action-accent-ghost-disabled-content);
-  --button-border-disabled: transparent;
 }
 .ds-button[data-intent="neutral"][data-appearance="solid"] {
   --button-surface-default: var(--color-action-neutral-solid-default-surface);
-  --button-content-default: var(--color-action-neutral-solid-default-content);
-  --button-border-default: transparent;
   --button-surface-hover: var(--color-action-neutral-solid-hover-surface);
-  --button-content-hover: var(--color-action-neutral-solid-hover-content);
-  --button-border-hover: transparent;
   --button-surface-pressed: var(--color-action-neutral-solid-pressed-surface);
-  --button-content-pressed: var(--color-action-neutral-solid-pressed-content);
-  --button-border-pressed: transparent;
   --button-surface-loading: var(--color-action-neutral-solid-loading-surface);
-  --button-content-loading: var(--color-action-neutral-solid-loading-content);
-  --button-border-loading: transparent;
   --button-surface-disabled: var(--color-action-neutral-solid-disabled-surface);
+  --button-content-default: var(--color-action-neutral-solid-default-content);
+  --button-content-hover: var(--color-action-neutral-solid-hover-content);
+  --button-content-pressed: var(--color-action-neutral-solid-pressed-content);
+  --button-content-loading: var(--color-action-neutral-solid-loading-content);
   --button-content-disabled: var(--color-action-neutral-solid-disabled-content);
-  --button-border-disabled: transparent;
 }
 .ds-button[data-intent="neutral"][data-appearance="outline"] {
   --button-surface-default: var(--color-action-neutral-outline-default-surface);
-  --button-content-default: var(--color-action-neutral-outline-default-content);
-  --button-border-default: var(--color-action-neutral-outline-default-border);
   --button-surface-hover: var(--color-action-neutral-outline-hover-surface);
-  --button-content-hover: var(--color-action-neutral-outline-hover-content);
-  --button-border-hover: var(--color-action-neutral-outline-hover-border);
   --button-surface-pressed: var(--color-action-neutral-outline-pressed-surface);
-  --button-content-pressed: var(--color-action-neutral-outline-pressed-content);
-  --button-border-pressed: var(--color-action-neutral-outline-pressed-border);
   --button-surface-loading: var(--color-action-neutral-outline-loading-surface);
-  --button-content-loading: var(--color-action-neutral-outline-loading-content);
-  --button-border-loading: var(--color-action-neutral-outline-loading-border);
   --button-surface-disabled: var(--color-action-neutral-outline-disabled-surface);
+  --button-content-default: var(--color-action-neutral-outline-default-content);
+  --button-content-hover: var(--color-action-neutral-outline-hover-content);
+  --button-content-pressed: var(--color-action-neutral-outline-pressed-content);
+  --button-content-loading: var(--color-action-neutral-outline-loading-content);
   --button-content-disabled: var(--color-action-neutral-outline-disabled-content);
-  --button-border-disabled: var(--color-action-neutral-outline-disabled-border);
 }
 .ds-button[data-intent="neutral"][data-appearance="ghost"] {
   --button-surface-default: var(--color-action-neutral-ghost-default-surface);
-  --button-content-default: var(--color-action-neutral-ghost-default-content);
-  --button-border-default: transparent;
   --button-surface-hover: var(--color-action-neutral-ghost-hover-surface);
-  --button-content-hover: var(--color-action-neutral-ghost-hover-content);
-  --button-border-hover: transparent;
   --button-surface-pressed: var(--color-action-neutral-ghost-pressed-surface);
-  --button-content-pressed: var(--color-action-neutral-ghost-pressed-content);
-  --button-border-pressed: transparent;
   --button-surface-loading: var(--color-action-neutral-ghost-loading-surface);
-  --button-content-loading: var(--color-action-neutral-ghost-loading-content);
-  --button-border-loading: transparent;
   --button-surface-disabled: var(--color-action-neutral-ghost-disabled-surface);
+  --button-content-default: var(--color-action-neutral-ghost-default-content);
+  --button-content-hover: var(--color-action-neutral-ghost-hover-content);
+  --button-content-pressed: var(--color-action-neutral-ghost-pressed-content);
+  --button-content-loading: var(--color-action-neutral-ghost-loading-content);
   --button-content-disabled: var(--color-action-neutral-ghost-disabled-content);
-  --button-border-disabled: transparent;
 }
 .ds-button[data-intent="danger"][data-appearance="solid"] {
   --button-surface-default: var(--color-action-danger-solid-default-surface);
-  --button-content-default: var(--color-action-danger-solid-default-content);
-  --button-border-default: transparent;
   --button-surface-hover: var(--color-action-danger-solid-hover-surface);
-  --button-content-hover: var(--color-action-danger-solid-hover-content);
-  --button-border-hover: transparent;
   --button-surface-pressed: var(--color-action-danger-solid-pressed-surface);
-  --button-content-pressed: var(--color-action-danger-solid-pressed-content);
-  --button-border-pressed: transparent;
   --button-surface-loading: var(--color-action-danger-solid-loading-surface);
-  --button-content-loading: var(--color-action-danger-solid-loading-content);
-  --button-border-loading: transparent;
   --button-surface-disabled: var(--color-action-danger-solid-disabled-surface);
+  --button-content-default: var(--color-action-danger-solid-default-content);
+  --button-content-hover: var(--color-action-danger-solid-hover-content);
+  --button-content-pressed: var(--color-action-danger-solid-pressed-content);
+  --button-content-loading: var(--color-action-danger-solid-loading-content);
   --button-content-disabled: var(--color-action-danger-solid-disabled-content);
-  --button-border-disabled: transparent;
 }
 .ds-button[data-intent="danger"][data-appearance="outline"] {
   --button-surface-default: var(--color-action-danger-outline-default-surface);
-  --button-content-default: var(--color-action-danger-outline-default-content);
-  --button-border-default: var(--color-action-danger-outline-default-border);
   --button-surface-hover: var(--color-action-danger-outline-hover-surface);
-  --button-content-hover: var(--color-action-danger-outline-hover-content);
-  --button-border-hover: var(--color-action-danger-outline-hover-border);
   --button-surface-pressed: var(--color-action-danger-outline-pressed-surface);
-  --button-content-pressed: var(--color-action-danger-outline-pressed-content);
-  --button-border-pressed: var(--color-action-danger-outline-pressed-border);
   --button-surface-loading: var(--color-action-danger-outline-loading-surface);
-  --button-content-loading: var(--color-action-danger-outline-loading-content);
-  --button-border-loading: var(--color-action-danger-outline-loading-border);
   --button-surface-disabled: var(--color-action-danger-outline-disabled-surface);
+  --button-content-default: var(--color-action-danger-outline-default-content);
+  --button-content-hover: var(--color-action-danger-outline-hover-content);
+  --button-content-pressed: var(--color-action-danger-outline-pressed-content);
+  --button-content-loading: var(--color-action-danger-outline-loading-content);
   --button-content-disabled: var(--color-action-danger-outline-disabled-content);
-  --button-border-disabled: var(--color-action-danger-outline-disabled-border);
 }
 .ds-button[data-intent="danger"][data-appearance="ghost"] {
   --button-surface-default: var(--color-action-danger-ghost-default-surface);
-  --button-content-default: var(--color-action-danger-ghost-default-content);
-  --button-border-default: transparent;
   --button-surface-hover: var(--color-action-danger-ghost-hover-surface);
-  --button-content-hover: var(--color-action-danger-ghost-hover-content);
-  --button-border-hover: transparent;
   --button-surface-pressed: var(--color-action-danger-ghost-pressed-surface);
-  --button-content-pressed: var(--color-action-danger-ghost-pressed-content);
-  --button-border-pressed: transparent;
   --button-surface-loading: var(--color-action-danger-ghost-loading-surface);
-  --button-content-loading: var(--color-action-danger-ghost-loading-content);
-  --button-border-loading: transparent;
   --button-surface-disabled: var(--color-action-danger-ghost-disabled-surface);
+  --button-content-default: var(--color-action-danger-ghost-default-content);
+  --button-content-hover: var(--color-action-danger-ghost-hover-content);
+  --button-content-pressed: var(--color-action-danger-ghost-pressed-content);
+  --button-content-loading: var(--color-action-danger-ghost-loading-content);
   --button-content-disabled: var(--color-action-danger-ghost-disabled-content);
-  --button-border-disabled: transparent;
+}
+.ds-button[data-intent="accent"] {
+  --button-border-default: var(--color-action-accent-outline-default-border);
+  --button-border-hover: var(--color-action-accent-outline-hover-border);
+  --button-border-pressed: var(--color-action-accent-outline-pressed-border);
+  --button-border-loading: var(--color-action-accent-outline-loading-border);
+  --button-border-disabled: var(--color-action-accent-outline-disabled-border);
+}
+.ds-button[data-intent="neutral"] {
+  --button-border-default: var(--color-action-neutral-outline-default-border);
+  --button-border-hover: var(--color-action-neutral-outline-hover-border);
+  --button-border-pressed: var(--color-action-neutral-outline-pressed-border);
+  --button-border-loading: var(--color-action-neutral-outline-loading-border);
+  --button-border-disabled: var(--color-action-neutral-outline-disabled-border);
+}
+.ds-button[data-intent="danger"] {
+  --button-border-default: var(--color-action-danger-outline-default-border);
+  --button-border-hover: var(--color-action-danger-outline-hover-border);
+  --button-border-pressed: var(--color-action-danger-outline-pressed-border);
+  --button-border-loading: var(--color-action-danger-outline-loading-border);
+  --button-border-disabled: var(--color-action-danger-outline-disabled-border);
 }
 .ds-button[data-size="sm"] {
   --button-minHeight: var(--size-control-sm);

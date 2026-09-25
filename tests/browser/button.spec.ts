@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import fs from 'node:fs';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/button/');
   await page.evaluate(() => document.fonts.ready);
 });
 
@@ -53,7 +53,7 @@ test('navigation keeps native link semantics and disabled blocks programmatic cl
   await expect(navigation).toHaveRole('link');
   await navigation.press('Enter');
   expect(new URL(page.url()).hash).toBe('#new-item');
-  await page.goto('/');
+  await page.goto('/button/');
   await page.getByLabel('Disabled', { exact: true }).check();
   await expect(page.locator('#play-navigation')).toHaveAttribute('aria-disabled', 'true');
   await expect(page.locator('#play-navigation')).not.toHaveAttribute('href');
@@ -85,7 +85,7 @@ test('computed colors and geometry match JSON across brands, themes and densitie
     await page.getByLabel('Theme', { exact: true }).selectOption(theme);
     await page.getByLabel('Density', { exact: true }).selectOption(density);
     await page.mouse.move(0, 0);
-    const tokens = JSON.parse(fs.readFileSync(`dist/resolved/${brand}-${theme}-${density}.json`, 'utf8'));
+    const tokens = JSON.parse(fs.readFileSync(`packages/tokens/resolved/${brand}-${theme}-${density}.json`, 'utf8'));
     for (const intent of ['accent', 'neutral', 'danger']) for (const appearance of ['solid', 'outline', 'ghost']) {
       const actual = await page.locator(`#matrix-${intent}-${appearance}`).evaluate(el => {
         const root = getComputedStyle(el), surface = getComputedStyle(el.querySelector('.ds-button__surface')!);
@@ -149,10 +149,10 @@ test('automated accessibility audit and desktop/mobile render', async ({ page })
     await page.getByLabel('Theme', { exact: true }).selectOption(theme);
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
     expect(results.violations).toEqual([]);
-    await page.screenshot({ path: `reports/svelte/button-${theme}.png`, fullPage: true });
+    await page.screenshot({ path: `reports/components/button/svelte/button-${theme}.png`, fullPage: true });
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByLabel('Theme', { exact: true }).selectOption('light');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
-  await page.screenshot({ path: 'reports/svelte/button-mobile.png', fullPage: true });
+  await page.screenshot({ path: 'reports/components/button/svelte/button-mobile.png', fullPage: true });
 });

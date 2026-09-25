@@ -1,39 +1,54 @@
-# Design system architecture kit
+# Design system
 
-An authoring reference for an AI-assisted design system: JSON tokens and compact component contracts, Figma representation, Svelte/Bits UI implementation, and documentation for humans and agents. Button is the worked example. This is not a complete production component library.
+An AI-authorable, portable design system with three deliverables built from the same sources:
 
-## Start
+1. **Figma library**: the validated visual representation, driven by generated variables.
+2. **Svelte components** (`packages/svelte`): the reference implementation on Svelte 5 and Bits UI.
+3. **Documentation**: one maintained source (`documentation/`) for humans and agents, shipped with the package and, later, published as a site.
 
-Read [AGENTS.md](AGENTS.md), then [the handoff](docs/handoff.md) for current artifacts, accepted direction and remaining work. All maintained content is English.
+Authoritative sources are JSON: DTCG tokens in `foundations/tokens` and one compact contract per component in `components/`. Everything else is generated from them or reviewed against them. Button is the worked reference; the catalog is being built component by component through the procedures in `authoring/`.
 
-- [Workflows](docs/workflow.md): Create, Modify, Audit, Deliver and review gates.
-- [Decisions](docs/decisions.md): settled principles and remaining choices.
-- [Architecture](docs/architecture.md): source ownership and token resolution.
-- [Repository reference](docs/repository-reference.md): target integration inside a larger project, mapped to current paths.
-- [Component catalog](docs/component-catalog.md): proposed future scope; not available exports.
-- [Authoring playbook](docs/authoring-playbook.md): phase-specific execution guidance.
-- [Contract guide](docs/contract-guide.md), [documentation template](templates/component-documentation.md), [Figma specification template](templates/figma-specification.md).
-- [Status template](templates/component-status.json) and [repo-scoped skills](docs/skills.md).
+## Layout
 
-## Button reference
+| Path | Role |
+| --- | --- |
+| `AGENTS.md` | Authoring entry point for agents (task routing, rules) |
+| `foundations/` | `config.json` (brands, appearances, densities) and `tokens/{base,brand-*}` DTCG sources |
+| `components/<family>/<id>/` | `contract.json`, `status.json` and component-level review notes |
+| `documentation/` | Maintained consumer docs: `index.json`, `AGENTS.md`, `components/*.md` |
+| `packages/tokens/` | Generated token outputs (CSS, resolved JSON, Figma manifest) |
+| `packages/svelte/` | Svelte package: `src/<id>/` per component plus generated bindings and consumer copies |
+| `authoring/` | Decisions, workflows, playbook, roadmap, skills, schemas, templates, Figma adapter scripts |
+| `tooling/` | Deterministic Node generators and validators |
+| `examples/` | Vite review app, one page per component |
+| `tests/` | Contract/token unit tests, SSR tests, Playwright browser tests |
+| `reports/` | Revision-bound evidence per component and for tokens |
+| `apps/` | Reserved for the documentation site, marketing site, theme builder and Figma plugin (see the roadmap) |
 
-- [Validated usage documentation](packages/svelte/docs/button.md).
-- [Implementation package](packages/svelte/README.md) and [local agent index](packages/svelte/docs/index.json).
-- [Status](components/button/status.json), [Figma review notes](docs/button-contract-review.md) and [consolidation audit](reports/architecture-consolidation.md).
+## Commands
 
 ```sh
 npm ci
-npm run dev
+npm run generate        # tokens + Svelte bindings + consumer copies (run after editing sources)
+npm run validate        # every contract: schema, consistency, token coverage in all contexts
+npm test                # contract and token resolver unit tests
+npm run check           # svelte-check
+npm run test:ssr        # server rendering per component
+npm run dev             # review app at http://127.0.0.1:5173 (examples/<id>/)
+npm run build           # generate + production build of the review app into dist/examples
+npm run build:preview button   # self-contained dist/previews/button.html for review outside the repo
+npm run test:browser    # Playwright (Chromium). Set PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH to reuse a local Chromium.
+npm run verify          # generate, validate, test, check, ssr, build
+npm run pack:svelte     # dist/ds-svelte-<version>.tgz for isolated consumer checks
+npm run new:component -- <family> <id>   # scaffold contract + status for a component being addressed
 ```
 
-Open the Vite URL. The self-contained button-preview.html also opens directly in a browser. The reference pins Svelte 5.57.1 and Bits UI 2.19.3.
+Node 22.12 or newer. The reference pins Svelte 5.57.1 and Bits UI 2.19.3.
 
-Relevant checks: npm test, npm run validate, npm run check, npm run test:ssr, npm run build. Browser checks require Chromium (npx playwright install chromium), then npm run test:browser. An existing browser may be selected through PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH. These tests currently cover Button, not all catalog candidates.
+## Start here
 
-npm run pack:svelte produces dist/ds-reference-svelte-0.1.0.tgz for local installation. A local artifact is not public publication. Final Figma fixture property exposure, dependency scope, support validation and release channels remain open; see the handoff.
+- Agents: read [AGENTS.md](AGENTS.md), then [the handoff](authoring/handoff.md) and [the roadmap](authoring/roadmap.md).
+- Consumers of the package: read [packages/svelte/README.md](packages/svelte/README.md) and the local `docs/index.json` shipped with it.
+- Decisions: [authoring/decisions.md](authoring/decisions.md). Procedures: [authoring/workflow.md](authoring/workflow.md).
 
-## Use in a larger project
-
-Preserve current relative paths when embedding the kit, or perform the complete migration described in the repository reference. Direct the agent to this root's AGENTS.md. Repo skills are supplied as files, not installed globally. Consumer instructions live with the package.
-
-A complete local Git snapshot is supplied as history.bundle. Restore separately with git clone /path/to/ds-architecture/history.bundle ds-architecture. No remote is configured.
+Generated files are committed so that token, binding and evidence changes are reviewable in diffs. `npm run verify:generated` fails when sources and generated outputs drift.

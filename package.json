@@ -1,28 +1,38 @@
 {
-  "name": "ds-architecture",
+  "name": "design-system",
   "private": true,
+  "version": "0.1.0",
   "type": "module",
   "engines": {
     "node": ">=22.12.0"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "validate": "node tools/validate-contract.mjs contracts/actions/button.contract.json",
+    "generate": "npm run build:tokens && npm run build:svelte",
+    "build:tokens": "node tooling/build-tokens.mjs",
+    "build:svelte": "node tooling/build-svelte.mjs",
+    "validate": "node tooling/validate-contracts.mjs --tokens",
     "test": "node --test tests/*.test.mjs",
-    "build:tokens": "node tools/build-tokens.mjs && node tools/figma-expectations.mjs",
-    "build:svelte": "node tools/build-svelte.mjs",
-    "dev": "vite --host 127.0.0.1",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "build": "npm run build:tokens && npm run build:svelte && vite build",
+    "test:ssr": "node --test tests/ssr/*.test.mjs",
     "test:browser": "playwright test",
-    "pack:svelte": "npm pack ./packages/svelte --pack-destination ./dist",
-    "test:ssr": "node tools/test-svelte-ssr.mjs",
-    "build:preview": "node tools/build-preview.mjs"
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "dev": "vite --host 127.0.0.1",
+    "build": "npm run generate && vite build",
+    "build:preview": "node tooling/build-preview.mjs",
+    "pack:svelte": "npm run generate && npm pack --workspace packages/svelte --pack-destination ./dist",
+    "pack:tokens": "npm run build:tokens && npm pack --workspace packages/tokens --pack-destination ./dist",
+    "new:component": "node tooling/new-component.mjs",
+    "verify": "npm run generate && npm run validate && npm test && npm run check && npm run test:ssr && npm run build",
+    "verify:generated": "npm run generate && git diff --exit-code --stat -- packages reports/components"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
     "@fontsource/inter": "5.3.0",
     "@playwright/test": "1.63.0",
     "@sveltejs/vite-plugin-svelte": "6.2.4",
+    "@types/node": "22.20.4",
     "ajv": "8.17.1",
     "svelte-check": "4.7.6",
     "typescript": "6.0.3",
@@ -31,6 +41,5 @@
   "dependencies": {
     "bits-ui": "2.19.3",
     "svelte": "5.57.1"
-  },
-  "version": "0.1.0"
+  }
 }

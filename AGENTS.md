@@ -1,15 +1,24 @@
 # DS authoring entry point
 
-This repository defines how to build the DS. It is not the consumer guide for using components inside an application.
+This repository defines how the design system is built. It is not the consumer guide for using components inside an application; that guide ships with the package (`documentation/`).
 
-Read docs/decisions.md and the target component's status first. For creation, modification, auditing or delivery, follow skills/ds-component-workflow/SKILL.md. For contract work, follow skills/ds-component-contract/SKILL.md. Load other references only for the current phase.
+## Read first
 
-Tokens and contracts in the repository are authoritative. Preserve their platform independence. Figma is the validated visual representation; Svelte is the target implementation. Update source decisions before reconciling diverging outputs.
+1. [authoring/decisions.md](authoring/decisions.md): settled principles and open choices. Do not reopen settled ones.
+2. [authoring/roadmap.md](authoring/roadmap.md): the component waves, their order and the current wave.
+3. The target component's `components/<family>/<id>/status.json`, then only the sources it references.
 
-Use English for identifiers, rules and maintained documentation. Communicate with the user in their language. Prefer deterministic Node scripts for transformations and checks.
+Route the task through [authoring/workflow.md](authoring/workflow.md): Create, Modify, Audit, Deliver, or the batch procedure for a whole wave. Follow [authoring/skills/ds-component-workflow/SKILL.md](authoring/skills/ds-component-workflow/SKILL.md); for contract work follow [authoring/skills/ds-component-contract/SKILL.md](authoring/skills/ds-component-contract/SKILL.md). Load the relevant section of [authoring/authoring-playbook.md](authoring/authoring-playbook.md) only for the current phase.
 
-Follow recorded approvals for their exact revision and scope; do not re-request valid approvals. Never infer component completion from a token pilot or visual approval alone. Record unresolved decisions rather than guessing product behavior.
+## Rules
 
-Repository skills and templates describe outputs, not permissions. Do not infer publication authorization from artifact readiness. Do not modify unrelated user-owned Figma objects.
+- Tokens (`foundations/tokens`) and contracts (`components/*/*/contract.json`) are authoritative and platform independent. Figma is the validated visual representation; Svelte (`packages/svelte`) is the target implementation. Update sources before reconciling diverging outputs.
+- Generated files (`packages/tokens`, `packages/svelte/src/*/*.generated.*`, `reports/components/*/…json`) are produced by `npm run generate`; never edit them by hand. Commit them with the source change that caused them.
+- Use English for identifiers, rules and maintained documentation. Communicate with the user in their language.
+- Use the deterministic scripts in `tooling/` for transformations and checks. Extend them generically; do not add component-specific branches to shared tooling.
+- Follow recorded approvals for their exact revision and scope; do not re-request valid approvals. Never infer completion from a passing check or a visual approval alone. Record unresolved decisions in status instead of guessing product behavior.
+- Review gates (contract, Figma design, interactive implementation) and delivery approval are the only mandatory interruptions. Group other consequential questions into one message at the next gate; complete routine, unblocked work autonomously.
+- Skills and templates describe outputs, not permissions. Do not publish (registry, Figma library, site) without explicit authorization for that destination and version. Do not modify unrelated user-owned Figma objects.
+- Use Button (`components/actions/button`, `packages/svelte/src/button`, `examples/button`) as the example of artifact structure, not as a universal interaction model.
 
-For task routing and reference-kit handoff, read docs/handoff.md. Use docs/component-catalog.md only to select scope or dependencies; listed candidates are not available exports. Before final documentation, obtain the agreed interactive implementation review. Load only the relevant procedure and phase references.
+Before finishing any batch: `npm run verify`, update the affected `status.json` files, and record evidence paths.
