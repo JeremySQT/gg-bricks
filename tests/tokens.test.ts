@@ -16,23 +16,25 @@ test('rejects missing, cyclic and differently typed aliases', () => {
     /type mismatch/
   );
 });
-test('sparse brand inherits complete colors while overriding radius', () => {
+test('sparse brand inherits complete colors while overriding radius and accent ramp', () => {
   const base = resolveSources(sources('base', 'dark', 'compact')).tokens;
-  const brand = resolveSources(sources('brand-a', 'dark', 'compact')).tokens;
-  assert.equal((brand['radius.control'].$value as { value: number }).value, 8);
+  const brand = resolveSources(sources('orchid', 'dark', 'compact')).tokens;
+  assert.equal((brand['radius.control'].$value as { value: number }).value, 12);
   assert.deepEqual(
     brand['color.action.danger.ghost.pressed.content'],
     base['color.action.danger.ghost.pressed.content']
   );
+  assert.deepEqual(brand['color.action.accent.solid.default.surface'], base['primitive.color.violet.600']);
+  assert.deepEqual(base['color.action.accent.solid.default.surface'], base['primitive.color.blue.600']);
 });
 test('density affects spacing without altering typography, icons or target', () => {
-  const a = resolveSources(sources('brand-b', 'light', 'compact')).tokens,
-    b = resolveSources(sources('brand-b', 'light', 'comfortable')).tokens;
+  const a = resolveSources(sources('brick', 'light', 'compact')).tokens,
+    b = resolveSources(sources('brick', 'light', 'comfortable')).tokens;
   assert.notDeepEqual(a['size.control.md'], b['size.control.md']);
   for (const p of ['size.target.min', 'size.icon.md', 'typography.label.md']) assert.deepEqual(a[p], b[p]);
 });
 test('loading aliases default and remains independent of disabled values', () => {
-  const t = resolveSources(sources('brand-b', 'dark', 'standard')).tokens;
+  const t = resolveSources(sources('orchid', 'dark', 'standard')).tokens;
   assert.deepEqual(
     t['color.action.accent.solid.loading.content'].$value,
     t['color.action.accent.solid.default.content'].$value
@@ -98,4 +100,36 @@ test('a single overridden attribute changes only its layer', () => {
     cssSourceValue({ $type: 'dimension', $value: '{primitive.dimension.v4}' }),
     'var(--ggb-primitive-dimension-v4)'
   );
+});
+
+// Palette generation and color math used by the foundations check.
+import { contrast, luminance, oklchToSrgb, toHex } from '../tooling/lib/color.ts';
+import { generatePalette } from '../tooling/generate-palette.ts';
+import { readJson } from '../tooling/lib/paths.ts';
+import fs from 'node:fs';
+test('OKLCH conversion hits sRGB anchors and stays in gamut', () => {
+  assert.equal(toHex(oklchToSrgb(1, 0, 0)), '#ffffff');
+  assert.equal(toHex(oklchToSrgb(0, 0, 0)), '#000000');
+  assert.equal(toHex(oklchToSrgb(0.5, 0, 0)), '#636363');
+  for (const c of [oklchToSrgb(0.7, 0.4, 30), oklchToSrgb(0.9, 0.3, 120)]) assert.ok(c.every((x) => x >= 0 && x <= 1));
+  assert.equal(Math.round(contrast([1, 1, 1], [0, 0, 0])), 21);
+  assert.equal(Math.round(luminance([1, 1, 1])), 1);
+});
+test('the committed palette is exactly what the committed parameters generate', () => {
+  const generated = JSON.stringify(generatePalette(readJson('foundations/palette.config.json')), null, 2) + '\n';
+  const committed = fs.readFileSync(
+    new URL('../foundations/tokens/base/primitives/colors.tokens.json', import.meta.url),
+    'utf8'
+  );
+  assert.equal(generated, committed);
+});
+test('every hue ramp shares the lightness steps so one index has comparable contrast', () => {
+  const colors = resolveSources(sources('base', 'light', 'standard')).tokens;
+  const hues = ['red', 'orange', 'amber', 'yellow', 'green', 'teal', 'cyan', 'blue', 'violet', 'pink'];
+  for (const hue of hues) {
+    const c600 = (colors[`primitive.color.${hue}.600`].$value as { components: [number, number, number] }).components;
+    const c500 = (colors[`primitive.color.${hue}.500`].$value as { components: [number, number, number] }).components;
+    assert.ok(contrast(c600, [1, 1, 1]) >= 4.5, `${hue}.600 on white`);
+    assert.ok(contrast(c500, [1, 1, 1]) >= 3, `${hue}.500 on white`);
+  }
 });

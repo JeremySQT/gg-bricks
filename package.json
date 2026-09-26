@@ -10,10 +10,11 @@
     "packages/*"
   ],
   "scripts": {
-    "generate": "npm run build:tokens && npm run build:svelte",
+    "generate": "npm run build:palette && npm run build:tokens && npm run build:svelte",
+    "build:palette": "node tooling/generate-palette.ts",
     "build:tokens": "node tooling/build-tokens.ts",
     "build:svelte": "node tooling/build-svelte.ts",
-    "validate": "node tooling/validate-contracts.ts --tokens",
+    "validate": "node tooling/validate-contracts.ts --tokens && node tooling/check-foundations.ts",
     "test": "node --test tests/*.test.ts",
     "test:ssr": "node --test tests/ssr/*.test.ts",
     "test:browser": "node tooling/test-browser.ts",
@@ -25,14 +26,17 @@
     "pack:tokens": "npm run build:tokens && npm pack --workspace packages/tokens --pack-destination ./dist",
     "new:component": "node tooling/new-component.ts",
     "digest": "node tooling/digest.ts",
+    "figma:batches": "node tooling/figma-batches.ts",
+    "figma:check": "node tooling/check-figma.ts",
     "verify": "npm run generate && npm run lint && npm run validate && npm test && npm run check && npm run test:ssr && npm run build",
-    "verify:generated": "npm run generate && git diff --exit-code --stat -- packages reports/components",
+    "verify:generated": "npm run generate && npm run validate && git diff --exit-code --stat -- packages reports foundations/tokens/base/primitives/colors.tokens.json",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write ."
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
     "@eslint/js": "9.39.5",
+    "@fontsource/ibm-plex-mono": "5.3.0",
     "@fontsource/inter": "5.3.0",
     "@playwright/test": "1.63.0",
     "@sveltejs/vite-plugin-svelte": "6.2.4",

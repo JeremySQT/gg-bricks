@@ -14,6 +14,9 @@ export interface Typography {
   fontWeight: number | string;
   fontSize: Dimension | string;
   lineHeight: number | string;
+  letterSpacing?: Dimension | string;
+  /** OpenType feature tags applied with the role (for example tnum for tabular figures). */
+  fontFeatures?: string[];
 }
 export interface Shadow {
   inset?: boolean;

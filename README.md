@@ -10,7 +10,7 @@ Sources of truth: DTCG tokens in `foundations/tokens` and one compact contract p
 
 ## Status
 
-The repository structure, tooling, procedures and skills are in place. Foundations (primitives and semantic tokens) are the next task, then components are built wave by wave. See [authoring/roadmap.md](authoring/roadmap.md).
+The repository structure, tooling, procedures and skills are in place. The foundations (primitives, semantic tokens, two demonstration brands) are approved and synced to the Figma library. Components are built wave by wave. See [authoring/roadmap.md](authoring/roadmap.md).
 
 ## Layout
 
@@ -34,14 +34,16 @@ Full description: [authoring/layout.md](authoring/layout.md).
 
 ```sh
 npm ci
-npm run generate        # tokens + Svelte bindings + consumer copies
-npm run validate        # every contract: schema, consistency, token coverage in all contexts
+npm run generate        # palette + tokens + Svelte bindings + consumer copies
+npm run validate        # every contract: schema, consistency, token coverage; foundations inventory and contrast
 npm test                # tooling unit tests
 npm run check           # svelte-check
 npm run test:ssr        # server rendering per component
 npm run dev             # review app at http://127.0.0.1:5173
 npm run build           # generate + production build of the review app
 npm run build:preview <id>     # self-contained dist/previews/<id>.html
+npm run figma:batches   # dist/figma/*.js scripts for the Figma MCP server (variables, styles, verification)
+npm run figma:check -- <result.json>   # compare a verification result with figma-expectations.json
 npm run test:browser    # Playwright (Chromium); PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH reuses a local browser
 npm run verify          # generate, validate, test, check, ssr, build
 npm run verify:generated       # fails when generated outputs drift from sources

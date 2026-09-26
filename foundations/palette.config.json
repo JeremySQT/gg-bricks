@@ -1,0 +1,63 @@
+{
+  "$description": "Parameters of tooling/generate-palette.ts. Lightness is OKLCH L per ramp step (shared by every hue so that one step index has comparable contrast across hues); chroma is the hue's peak chroma multiplied by the shape at that step, then reduced into the sRGB gamut. Hue angles are OKLCH degrees.",
+  "steps": {
+    "neutral": {
+      "0": 1,
+      "50": 0.984,
+      "100": 0.958,
+      "200": 0.915,
+      "300": 0.855,
+      "400": 0.715,
+      "500": 0.585,
+      "600": 0.5,
+      "700": 0.415,
+      "800": 0.315,
+      "900": 0.225,
+      "950": 0.155,
+      "1000": 0
+    },
+    "hue": {
+      "50": 0.975,
+      "100": 0.945,
+      "200": 0.89,
+      "300": 0.82,
+      "400": 0.72,
+      "500": 0.625,
+      "600": 0.535,
+      "700": 0.47,
+      "800": 0.4,
+      "900": 0.335,
+      "950": 0.25
+    }
+  },
+  "chromaShape": {
+    "50": 0.12,
+    "100": 0.25,
+    "200": 0.45,
+    "300": 0.65,
+    "400": 0.85,
+    "500": 1,
+    "600": 1,
+    "700": 0.9,
+    "800": 0.78,
+    "900": 0.62,
+    "950": 0.45
+  },
+  "neutral": { "hue": 255, "chroma": 0.012 },
+  "hues": {
+    "red": { "hue": 25, "chroma": 0.22 },
+    "orange": { "hue": 50, "chroma": 0.19 },
+    "amber": { "hue": 72, "chroma": 0.17 },
+    "yellow": { "hue": 95, "chroma": 0.16 },
+    "green": { "hue": 148, "chroma": 0.18 },
+    "teal": { "hue": 178, "chroma": 0.13 },
+    "cyan": { "hue": 218, "chroma": 0.14 },
+    "blue": { "hue": 258, "chroma": 0.2 },
+    "violet": { "hue": 295, "chroma": 0.2 },
+    "pink": { "hue": 350, "chroma": 0.2 }
+  },
+  "alpha": {
+    "black": [5, 10, 20, 30, 40, 50, 60, 70, 80, 90],
+    "white": [5, 10, 20, 30, 40, 50, 60, 70, 80, 90]
+  }
+}

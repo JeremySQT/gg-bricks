@@ -1,0 +1,5496 @@
+{
+  "primitive.border.0": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.border.1": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 1,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.border.2": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 2,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.border.3": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 3,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.border.4": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 4,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.radius.none": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.radius.xs": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 2,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.radius.sm": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 4,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.radius.md": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 6,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.radius.lg": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 8,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.radius.xl": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 12,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.radius.2xl": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 16,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.radius.full": [
+    {
+      "source": "foundations/tokens/base/primitives/borders.tokens.json",
+      "value": {
+        "value": 9999,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.color.transparent": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0
+      }
+    }
+  ],
+  "primitive.color.neutral.0": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.neutral.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.966165,
+          0.980825,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.neutral.100": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.924907,
+          0.947795,
+          0.977703
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.neutral.200": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.869346,
+          0.891973,
+          0.921536
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.neutral.300": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.792926,
+          0.815173,
+          0.844235
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.neutral.400": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.620009,
+          0.641284,
+          0.669061
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.neutral.500": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.466998,
+          0.487234,
+          0.513635
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.neutral.600": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.371466,
+          0.390923,
+          0.416295
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.neutral.700": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.280035,
+          0.29861,
+          0.32281
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.neutral.800": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.178601,
+          0.195946,
+          0.21851
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.neutral.900": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.094231,
+          0.110192,
+          0.13091
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.neutral.950": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.034582,
+          0.048994,
+          0.067856
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.neutral.1000": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.000007,
+          0,
+          0.000069
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.red.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.956182,
+          0.951374
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.red.100": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.902986,
+          0.892568
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.red.200": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.803067,
+          0.783149
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.red.300": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.668711,
+          0.639683
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.red.400": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.444769,
+          0.419716
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.red.500": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.939094,
+          0.212503,
+          0.235601
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.red.600": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.805103,
+          0,
+          0.128352
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.red.700": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.676528,
+          0,
+          0.100942
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.red.800": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.542977,
+          0,
+          0.07247
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.red.900": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.42409,
+          0,
+          0.047124
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.red.950": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.274509,
+          0.005497,
+          0.022763
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.orange.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.958308,
+          0.936271
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.orange.100": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.907671,
+          0.858449
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.orange.200": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.812461,
+          0.710697
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.orange.300": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.684188,
+          0.506484
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.orange.400": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.950978,
+          0.508696,
+          0.223899
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.orange.500": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.827434,
+          0.386624,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.orange.600": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.671566,
+          0.308617,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.orange.700": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.562953,
+          0.254259,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.orange.800": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.450137,
+          0.197798,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.orange.900": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.349709,
+          0.147536,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.orange.950": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.225717,
+          0.085478,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.amber.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.961145,
+          0.915527
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.amber.100": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.913693,
+          0.811355
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.amber.200": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.983638,
+          0.828428,
+          0.640009
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.amber.300": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.943447,
+          0.722855,
+          0.441459
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.amber.400": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.860568,
+          0.578402,
+          0.136822
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.amber.500": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.723259,
+          0.470315,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.amber.600": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.585791,
+          0.377526,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.amber.700": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.490001,
+          0.312868,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.amber.800": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.390503,
+          0.245707,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.amber.900": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.30193,
+          0.18592,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.amber.950": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.192575,
+          0.112105,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.yellow.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.982818,
+          0.968493,
+          0.912477
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.yellow.100": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.96056,
+          0.930102,
+          0.813146
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.yellow.200": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.915208,
+          0.858764,
+          0.646128
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.yellow.300": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.851207,
+          0.767487,
+          0.450875
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.yellow.400": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.750485,
+          0.638429,
+          0.15932
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.yellow.500": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.627752,
+          0.524299,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.yellow.600": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.507154,
+          0.421974,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.yellow.700": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.423119,
+          0.350672,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.yellow.800": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.335831,
+          0.27661,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.yellow.900": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.258127,
+          0.21068,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.yellow.950": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.162192,
+          0.129279,
+          0
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.green.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.931669,
+          0.984763,
+          0.93639
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.green.100": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.852867,
+          0.963676,
+          0.863768
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.green.200": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.717445,
+          0.918216,
+          0.740887
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.green.300": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.556859,
+          0.851665,
+          0.599277
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.green.400": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.33971,
+          0.745389,
+          0.420077
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.green.500": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.014634,
+          0.640195,
+          0.255037
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.green.600": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.517766,
+          0.198689
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.green.700": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.432144,
+          0.160764
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.green.800": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.343208,
+          0.121372
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.green.900": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.264038,
+          0.086304
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.green.950": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.166291,
+          0.043005
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.teal.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.927075,
+          0.982201,
+          0.96723
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.teal.100": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.842764,
+          0.958641,
+          0.928168
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.teal.200": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.697162,
+          0.910006,
+          0.857321
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.teal.300": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.521959,
+          0.841126,
+          0.768677
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.teal.400": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.269586,
+          0.733662,
+          0.645247
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.teal.500": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.618774,
+          0.531796
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.teal.600": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.499761,
+          0.428147
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.teal.700": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.416831,
+          0.355922
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.teal.800": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.330691,
+          0.280901
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.teal.900": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.254009,
+          0.214118
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.teal.950": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.159334,
+          0.131665
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.cyan.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.921603,
+          0.979812,
+          0.997664
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.cyan.100": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.831,
+          0.953517,
+          0.990738
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.cyan.200": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.674373,
+          0.900372,
+          0.967363
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.cyan.300": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.483801,
+          0.826578,
+          0.923101
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.cyan.400": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.181069,
+          0.7137,
+          0.838895
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.cyan.500": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.592993,
+          0.707773
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.cyan.600": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.478535,
+          0.573041
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.cyan.700": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.398778,
+          0.479156
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.cyan.800": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.315933,
+          0.381638
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.cyan.900": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.242185,
+          0.294828
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.cyan.950": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.151133,
+          0.187648
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.blue.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.948725,
+          0.969415,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.blue.100": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.887029,
+          0.932644,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.blue.200": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.773266,
+          0.864861,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.blue.300": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.626495,
+          0.777282,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.blue.400": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.407847,
+          0.647015,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.blue.500": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.167071,
+          0.512851,
+          0.992205
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.blue.600": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.400403,
+          0.86493
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.blue.700": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.332325,
+          0.727412
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.blue.800": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.261612,
+          0.584573
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.blue.900": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.00005,
+          0.198674,
+          0.457372
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.blue.950": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.003785,
+          0.122005,
+          0.295884
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.violet.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.968978,
+          0.961572,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.violet.100": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.932241,
+          0.915317,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.violet.200": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.86641,
+          0.829877,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.violet.300": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.785882,
+          0.719041,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.violet.400": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.678682,
+          0.551962,
+          1
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.violet.500": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.57798,
+          0.400389,
+          0.945016
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.violet.600": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.476281,
+          0.286397,
+          0.823371
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.violet.700": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.398407,
+          0.229804,
+          0.700001
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.violet.800": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.316614,
+          0.174185,
+          0.567143
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.violet.900": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.240526,
+          0.136584,
+          0.432169
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.violet.950": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.149221,
+          0.080521,
+          0.278906
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.pink.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.95309,
+          0.972702
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.pink.100": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.89594,
+          0.940415
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.pink.200": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.787857,
+          0.882622
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.pink.300": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.640258,
+          0.811877
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.pink.400": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.942498,
+          0.448488,
+          0.703632
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.pink.500": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.853412,
+          0.272716,
+          0.597389
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.pink.600": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.729267,
+          0.138629,
+          0.490845
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.pink.700": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.617161,
+          0.094324,
+          0.410494
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.pink.800": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.497651,
+          0.055995,
+          0.326291
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.pink.900": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.380486,
+          0.056544,
+          0.248713
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.pink.950": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.244449,
+          0.029646,
+          0.15503
+        ],
+        "alpha": 1
+      }
+    }
+  ],
+  "primitive.color.alpha.black.5": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05
+      }
+    }
+  ],
+  "primitive.color.alpha.black.10": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.1
+      }
+    }
+  ],
+  "primitive.color.alpha.black.20": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.2
+      }
+    }
+  ],
+  "primitive.color.alpha.black.30": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.3
+      }
+    }
+  ],
+  "primitive.color.alpha.black.40": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.4
+      }
+    }
+  ],
+  "primitive.color.alpha.black.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.5
+      }
+    }
+  ],
+  "primitive.color.alpha.black.60": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6
+      }
+    }
+  ],
+  "primitive.color.alpha.black.70": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.7
+      }
+    }
+  ],
+  "primitive.color.alpha.black.80": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.8
+      }
+    }
+  ],
+  "primitive.color.alpha.black.90": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.9
+      }
+    }
+  ],
+  "primitive.color.alpha.white.5": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.05
+      }
+    }
+  ],
+  "primitive.color.alpha.white.10": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.1
+      }
+    }
+  ],
+  "primitive.color.alpha.white.20": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.2
+      }
+    }
+  ],
+  "primitive.color.alpha.white.30": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.3
+      }
+    }
+  ],
+  "primitive.color.alpha.white.40": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.4
+      }
+    }
+  ],
+  "primitive.color.alpha.white.50": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.5
+      }
+    }
+  ],
+  "primitive.color.alpha.white.60": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.6
+      }
+    }
+  ],
+  "primitive.color.alpha.white.70": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.7
+      }
+    }
+  ],
+  "primitive.color.alpha.white.80": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.8
+      }
+    }
+  ],
+  "primitive.color.alpha.white.90": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.9
+      }
+    }
+  ],
+  "primitive.dimension.v0": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v1": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 1,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v2": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 2,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v4": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 4,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v6": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 6,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v8": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 8,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v10": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 10,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v12": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 12,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v14": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 14,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v16": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 16,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v20": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 20,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v24": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 24,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v28": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 28,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v32": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 32,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v36": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 36,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v40": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 40,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v44": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 44,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v48": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 48,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v56": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 56,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v64": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 64,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v80": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 80,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v96": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 96,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v128": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 128,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v160": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 160,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v192": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 192,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v256": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 256,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.layer.base": [
+    {
+      "source": "foundations/tokens/base/primitives/layers.tokens.json",
+      "value": 0
+    }
+  ],
+  "primitive.layer.raised": [
+    {
+      "source": "foundations/tokens/base/primitives/layers.tokens.json",
+      "value": 10
+    }
+  ],
+  "primitive.layer.dropdown": [
+    {
+      "source": "foundations/tokens/base/primitives/layers.tokens.json",
+      "value": 1000
+    }
+  ],
+  "primitive.layer.sticky": [
+    {
+      "source": "foundations/tokens/base/primitives/layers.tokens.json",
+      "value": 1100
+    }
+  ],
+  "primitive.layer.overlay": [
+    {
+      "source": "foundations/tokens/base/primitives/layers.tokens.json",
+      "value": 1200
+    }
+  ],
+  "primitive.layer.modal": [
+    {
+      "source": "foundations/tokens/base/primitives/layers.tokens.json",
+      "value": 1300
+    }
+  ],
+  "primitive.layer.toast": [
+    {
+      "source": "foundations/tokens/base/primitives/layers.tokens.json",
+      "value": 1400
+    }
+  ],
+  "primitive.layer.tooltip": [
+    {
+      "source": "foundations/tokens/base/primitives/layers.tokens.json",
+      "value": 1500
+    }
+  ],
+  "primitive.duration.50": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": {
+        "value": 50,
+        "unit": "ms"
+      }
+    }
+  ],
+  "primitive.duration.100": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": {
+        "value": 100,
+        "unit": "ms"
+      }
+    }
+  ],
+  "primitive.duration.150": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": {
+        "value": 150,
+        "unit": "ms"
+      }
+    }
+  ],
+  "primitive.duration.200": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": {
+        "value": 200,
+        "unit": "ms"
+      }
+    }
+  ],
+  "primitive.duration.300": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": {
+        "value": 300,
+        "unit": "ms"
+      }
+    }
+  ],
+  "primitive.duration.500": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": {
+        "value": 500,
+        "unit": "ms"
+      }
+    }
+  ],
+  "primitive.duration.700": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": {
+        "value": 700,
+        "unit": "ms"
+      }
+    }
+  ],
+  "primitive.easing.linear": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": [
+        0,
+        0,
+        1,
+        1
+      ]
+    }
+  ],
+  "primitive.easing.standard": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": [
+        0.4,
+        0,
+        0.2,
+        1
+      ]
+    }
+  ],
+  "primitive.easing.emphasized": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": [
+        0.2,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "primitive.easing.decelerate": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": [
+        0,
+        0,
+        0.2,
+        1
+      ]
+    }
+  ],
+  "primitive.easing.accelerate": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": [
+        0.4,
+        0,
+        1,
+        1
+      ]
+    }
+  ],
+  "primitive.opacity.0": [
+    {
+      "source": "foundations/tokens/base/primitives/opacity.tokens.json",
+      "value": 0
+    }
+  ],
+  "primitive.opacity.5": [
+    {
+      "source": "foundations/tokens/base/primitives/opacity.tokens.json",
+      "value": 0.05
+    }
+  ],
+  "primitive.opacity.10": [
+    {
+      "source": "foundations/tokens/base/primitives/opacity.tokens.json",
+      "value": 0.1
+    }
+  ],
+  "primitive.opacity.20": [
+    {
+      "source": "foundations/tokens/base/primitives/opacity.tokens.json",
+      "value": 0.2
+    }
+  ],
+  "primitive.opacity.40": [
+    {
+      "source": "foundations/tokens/base/primitives/opacity.tokens.json",
+      "value": 0.4
+    }
+  ],
+  "primitive.opacity.60": [
+    {
+      "source": "foundations/tokens/base/primitives/opacity.tokens.json",
+      "value": 0.6
+    }
+  ],
+  "primitive.opacity.80": [
+    {
+      "source": "foundations/tokens/base/primitives/opacity.tokens.json",
+      "value": 0.8
+    }
+  ],
+  "primitive.opacity.90": [
+    {
+      "source": "foundations/tokens/base/primitives/opacity.tokens.json",
+      "value": 0.9
+    }
+  ],
+  "primitive.opacity.100": [
+    {
+      "source": "foundations/tokens/base/primitives/opacity.tokens.json",
+      "value": 1
+    }
+  ],
+  "primitive.shadow.1": [
+    {
+      "source": "foundations/tokens/base/primitives/shadows.tokens.json",
+      "value": [
+        {
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 2,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          },
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "alpha": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "primitive.shadow.2": [
+    {
+      "source": "foundations/tokens/base/primitives/shadows.tokens.json",
+      "value": [
+        {
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 2,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          },
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "alpha": 0.05
+          }
+        },
+        {
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 2,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 6,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -1,
+            "unit": "px"
+          },
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "alpha": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "primitive.shadow.3": [
+    {
+      "source": "foundations/tokens/base/primitives/shadows.tokens.json",
+      "value": [
+        {
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 2,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 4,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -1,
+            "unit": "px"
+          },
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "alpha": 0.05
+          }
+        },
+        {
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 8,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 16,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -4,
+            "unit": "px"
+          },
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "alpha": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "primitive.shadow.4": [
+    {
+      "source": "foundations/tokens/base/primitives/shadows.tokens.json",
+      "value": [
+        {
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 4,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 6,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -2,
+            "unit": "px"
+          },
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "alpha": 0.05
+          }
+        },
+        {
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 16,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 32,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -8,
+            "unit": "px"
+          },
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "alpha": 0.2
+          }
+        }
+      ]
+    }
+  ],
+  "primitive.shadow.5": [
+    {
+      "source": "foundations/tokens/base/primitives/shadows.tokens.json",
+      "value": [
+        {
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 8,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 12,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -4,
+            "unit": "px"
+          },
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "alpha": 0.1
+          }
+        },
+        {
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 32,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 64,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -12,
+            "unit": "px"
+          },
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0,
+              0
+            ],
+            "alpha": 0.3
+          }
+        }
+      ]
+    }
+  ],
+  "primitive.font.family.sans": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": [
+        "Inter",
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "Roboto",
+        "sans-serif"
+      ]
+    }
+  ],
+  "primitive.font.family.mono": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": [
+        "IBM Plex Mono",
+        "ui-monospace",
+        "SFMono-Regular",
+        "Menlo",
+        "Consolas",
+        "monospace"
+      ]
+    }
+  ],
+  "primitive.font.weight.400": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": 400
+    }
+  ],
+  "primitive.font.weight.500": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": 500
+    }
+  ],
+  "primitive.font.weight.600": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": 600
+    }
+  ],
+  "primitive.font.weight.700": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": 700
+    }
+  ],
+  "primitive.font.size.11": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 11,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.12": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 12,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.13": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 13,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.14": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 14,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.16": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 16,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.18": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 18,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.20": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 20,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.24": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 24,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.28": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 28,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.32": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 32,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.40": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 40,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.48": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 48,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.56": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 56,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.size.64": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 64,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.lineHeight.none": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": 1
+    }
+  ],
+  "primitive.font.lineHeight.tight": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": 1.2
+    }
+  ],
+  "primitive.font.lineHeight.snug": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": 1.3
+    }
+  ],
+  "primitive.font.lineHeight.normal": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": 1.4
+    }
+  ],
+  "primitive.font.lineHeight.relaxed": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": 1.5
+    }
+  ],
+  "primitive.font.lineHeight.loose": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": 1.6
+    }
+  ],
+  "primitive.font.tracking.tighter": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": -1,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.tracking.tight": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": -0.5,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.tracking.normal": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.font.tracking.wide": [
+    {
+      "source": "foundations/tokens/base/primitives/typography.tokens.json",
+      "value": {
+        "value": 0.5,
+        "unit": "px"
+      }
+    }
+  ],
+  "color.palette.neutral.0": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.0}"
+    }
+  ],
+  "color.palette.neutral.50": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.50}"
+    }
+  ],
+  "color.palette.neutral.100": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.100}"
+    }
+  ],
+  "color.palette.neutral.200": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.200}"
+    }
+  ],
+  "color.palette.neutral.300": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.300}"
+    }
+  ],
+  "color.palette.neutral.400": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.400}"
+    }
+  ],
+  "color.palette.neutral.500": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.500}"
+    }
+  ],
+  "color.palette.neutral.600": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.600}"
+    }
+  ],
+  "color.palette.neutral.700": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.700}"
+    }
+  ],
+  "color.palette.neutral.800": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.800}"
+    }
+  ],
+  "color.palette.neutral.900": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.900}"
+    }
+  ],
+  "color.palette.neutral.950": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.950}"
+    }
+  ],
+  "color.palette.neutral.1000": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.1000}"
+    }
+  ],
+  "color.palette.accent.50": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.50}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.color.orange.50}"
+    }
+  ],
+  "color.palette.accent.100": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.100}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.color.orange.100}"
+    }
+  ],
+  "color.palette.accent.200": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.200}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.color.orange.200}"
+    }
+  ],
+  "color.palette.accent.300": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.300}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.color.orange.300}"
+    }
+  ],
+  "color.palette.accent.400": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.400}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.color.orange.400}"
+    }
+  ],
+  "color.palette.accent.500": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.500}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.color.orange.500}"
+    }
+  ],
+  "color.palette.accent.600": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.600}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.color.orange.600}"
+    }
+  ],
+  "color.palette.accent.700": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.700}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.color.orange.700}"
+    }
+  ],
+  "color.palette.accent.800": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.800}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.color.orange.800}"
+    }
+  ],
+  "color.palette.accent.900": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.900}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.color.orange.900}"
+    }
+  ],
+  "color.palette.accent.950": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.950}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.color.orange.950}"
+    }
+  ],
+  "color.palette.info.50": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.50}"
+    }
+  ],
+  "color.palette.info.100": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.100}"
+    }
+  ],
+  "color.palette.info.200": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.200}"
+    }
+  ],
+  "color.palette.info.300": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.300}"
+    }
+  ],
+  "color.palette.info.400": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.400}"
+    }
+  ],
+  "color.palette.info.500": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.500}"
+    }
+  ],
+  "color.palette.info.600": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.600}"
+    }
+  ],
+  "color.palette.info.700": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.700}"
+    }
+  ],
+  "color.palette.info.800": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.800}"
+    }
+  ],
+  "color.palette.info.900": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.900}"
+    }
+  ],
+  "color.palette.info.950": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.blue.950}"
+    }
+  ],
+  "color.palette.success.50": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.green.50}"
+    }
+  ],
+  "color.palette.success.100": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.green.100}"
+    }
+  ],
+  "color.palette.success.200": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.green.200}"
+    }
+  ],
+  "color.palette.success.300": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.green.300}"
+    }
+  ],
+  "color.palette.success.400": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.green.400}"
+    }
+  ],
+  "color.palette.success.500": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.green.500}"
+    }
+  ],
+  "color.palette.success.600": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.green.600}"
+    }
+  ],
+  "color.palette.success.700": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.green.700}"
+    }
+  ],
+  "color.palette.success.800": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.green.800}"
+    }
+  ],
+  "color.palette.success.900": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.green.900}"
+    }
+  ],
+  "color.palette.success.950": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.green.950}"
+    }
+  ],
+  "color.palette.warning.50": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.amber.50}"
+    }
+  ],
+  "color.palette.warning.100": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.amber.100}"
+    }
+  ],
+  "color.palette.warning.200": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.amber.200}"
+    }
+  ],
+  "color.palette.warning.300": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.amber.300}"
+    }
+  ],
+  "color.palette.warning.400": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.amber.400}"
+    }
+  ],
+  "color.palette.warning.500": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.amber.500}"
+    }
+  ],
+  "color.palette.warning.600": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.amber.600}"
+    }
+  ],
+  "color.palette.warning.700": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.amber.700}"
+    }
+  ],
+  "color.palette.warning.800": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.amber.800}"
+    }
+  ],
+  "color.palette.warning.900": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.amber.900}"
+    }
+  ],
+  "color.palette.warning.950": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.amber.950}"
+    }
+  ],
+  "color.palette.danger.50": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.red.50}"
+    }
+  ],
+  "color.palette.danger.100": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.red.100}"
+    }
+  ],
+  "color.palette.danger.200": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.red.200}"
+    }
+  ],
+  "color.palette.danger.300": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.red.300}"
+    }
+  ],
+  "color.palette.danger.400": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.red.400}"
+    }
+  ],
+  "color.palette.danger.500": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.red.500}"
+    }
+  ],
+  "color.palette.danger.600": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.red.600}"
+    }
+  ],
+  "color.palette.danger.700": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.red.700}"
+    }
+  ],
+  "color.palette.danger.800": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.red.800}"
+    }
+  ],
+  "color.palette.danger.900": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.red.900}"
+    }
+  ],
+  "color.palette.danger.950": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.red.950}"
+    }
+  ],
+  "radius.control": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.radius.md}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.radius.xs}"
+    }
+  ],
+  "radius.container": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.radius.lg}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.radius.sm}"
+    }
+  ],
+  "radius.overlay": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.radius.xl}"
+    },
+    {
+      "source": "foundations/tokens/brick/semantic/common.tokens.json",
+      "value": "{primitive.radius.md}"
+    }
+  ],
+  "radius.full": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.radius.full}"
+    }
+  ],
+  "border.width.default": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.border.1}"
+    }
+  ],
+  "border.width.strong": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.border.2}"
+    }
+  ],
+  "focus.width": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.border.2}"
+    }
+  ],
+  "focus.offset": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v2}"
+    }
+  ],
+  "size.target.min": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v44}"
+    }
+  ],
+  "size.icon.xs": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v12}"
+    }
+  ],
+  "size.icon.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v16}"
+    }
+  ],
+  "size.icon.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v20}"
+    }
+  ],
+  "size.icon.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v24}"
+    }
+  ],
+  "size.icon.xl": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v32}"
+    }
+  ],
+  "size.avatar.xs": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v24}"
+    }
+  ],
+  "size.avatar.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v32}"
+    }
+  ],
+  "size.avatar.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v40}"
+    }
+  ],
+  "size.avatar.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v48}"
+    }
+  ],
+  "size.avatar.xl": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v64}"
+    }
+  ],
+  "typography.display.xl": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.700}",
+        "fontSize": "{primitive.font.size.64}",
+        "lineHeight": "{primitive.font.lineHeight.none}",
+        "letterSpacing": "{primitive.font.tracking.tighter}"
+      }
+    }
+  ],
+  "typography.display.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.700}",
+        "fontSize": "{primitive.font.size.56}",
+        "lineHeight": "{primitive.font.lineHeight.none}",
+        "letterSpacing": "{primitive.font.tracking.tighter}"
+      }
+    }
+  ],
+  "typography.display.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.700}",
+        "fontSize": "{primitive.font.size.48}",
+        "lineHeight": "{primitive.font.lineHeight.tight}",
+        "letterSpacing": "{primitive.font.tracking.tighter}"
+      }
+    }
+  ],
+  "typography.display.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.700}",
+        "fontSize": "{primitive.font.size.40}",
+        "lineHeight": "{primitive.font.lineHeight.tight}",
+        "letterSpacing": "{primitive.font.tracking.tight}"
+      }
+    }
+  ],
+  "typography.display.xs": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.700}",
+        "fontSize": "{primitive.font.size.32}",
+        "lineHeight": "{primitive.font.lineHeight.tight}",
+        "letterSpacing": "{primitive.font.tracking.tight}"
+      }
+    }
+  ],
+  "typography.heading.xl": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.600}",
+        "fontSize": "{primitive.font.size.28}",
+        "lineHeight": "{primitive.font.lineHeight.snug}",
+        "letterSpacing": "{primitive.font.tracking.tight}"
+      }
+    }
+  ],
+  "typography.heading.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.600}",
+        "fontSize": "{primitive.font.size.24}",
+        "lineHeight": "{primitive.font.lineHeight.snug}",
+        "letterSpacing": "{primitive.font.tracking.tight}"
+      }
+    }
+  ],
+  "typography.heading.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.600}",
+        "fontSize": "{primitive.font.size.20}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.heading.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.600}",
+        "fontSize": "{primitive.font.size.18}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.heading.xs": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.600}",
+        "fontSize": "{primitive.font.size.16}",
+        "lineHeight": "{primitive.font.lineHeight.relaxed}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.body.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.400}",
+        "fontSize": "{primitive.font.size.18}",
+        "lineHeight": "{primitive.font.lineHeight.loose}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.body.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.400}",
+        "fontSize": "{primitive.font.size.16}",
+        "lineHeight": "{primitive.font.lineHeight.relaxed}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.body.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.400}",
+        "fontSize": "{primitive.font.size.14}",
+        "lineHeight": "{primitive.font.lineHeight.relaxed}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.label.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.500}",
+        "fontSize": "{primitive.font.size.16}",
+        "lineHeight": "{primitive.font.lineHeight.relaxed}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.label.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.500}",
+        "fontSize": "{primitive.font.size.14}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.label.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.500}",
+        "fontSize": "{primitive.font.size.12}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.wide}"
+      }
+    }
+  ],
+  "typography.caption.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.400}",
+        "fontSize": "{primitive.font.size.12}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.caption.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.400}",
+        "fontSize": "{primitive.font.size.11}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.overline.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.600}",
+        "fontSize": "{primitive.font.size.12}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.wide}"
+      }
+    }
+  ],
+  "typography.overline.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.600}",
+        "fontSize": "{primitive.font.size.11}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.wide}"
+      }
+    }
+  ],
+  "typography.numeral.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.600}",
+        "fontSize": "{primitive.font.size.24}",
+        "lineHeight": "{primitive.font.lineHeight.tight}",
+        "letterSpacing": "{primitive.font.tracking.tight}",
+        "fontFeatures": [
+          "tnum"
+        ]
+      }
+    }
+  ],
+  "typography.numeral.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.500}",
+        "fontSize": "{primitive.font.size.16}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.normal}",
+        "fontFeatures": [
+          "tnum"
+        ]
+      }
+    }
+  ],
+  "typography.numeral.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.500}",
+        "fontSize": "{primitive.font.size.14}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.normal}",
+        "fontFeatures": [
+          "tnum"
+        ]
+      }
+    }
+  ],
+  "typography.code.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.mono}",
+        "fontWeight": "{primitive.font.weight.400}",
+        "fontSize": "{primitive.font.size.14}",
+        "lineHeight": "{primitive.font.lineHeight.relaxed}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.code.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.mono}",
+        "fontWeight": "{primitive.font.weight.400}",
+        "fontSize": "{primitive.font.size.12}",
+        "lineHeight": "{primitive.font.lineHeight.relaxed}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "shadow.raised": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.shadow.2}"
+    }
+  ],
+  "shadow.overlay": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.shadow.3}"
+    }
+  ],
+  "shadow.modal": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.shadow.5}"
+    }
+  ],
+  "motion.duration.fast": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.duration.100}"
+    }
+  ],
+  "motion.duration.base": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.duration.200}"
+    }
+  ],
+  "motion.duration.slow": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.duration.300}"
+    }
+  ],
+  "motion.easing.standard": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.easing.standard}"
+    }
+  ],
+  "motion.easing.emphasized": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.easing.emphasized}"
+    }
+  ],
+  "motion.easing.enter": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.easing.decelerate}"
+    }
+  ],
+  "motion.easing.exit": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.easing.accelerate}"
+    }
+  ],
+  "layer.base": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.layer.base}"
+    }
+  ],
+  "layer.raised": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.layer.raised}"
+    }
+  ],
+  "layer.dropdown": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.layer.dropdown}"
+    }
+  ],
+  "layer.sticky": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.layer.sticky}"
+    }
+  ],
+  "layer.overlay": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.layer.overlay}"
+    }
+  ],
+  "layer.modal": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.layer.modal}"
+    }
+  ],
+  "layer.toast": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.layer.toast}"
+    }
+  ],
+  "layer.tooltip": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.layer.tooltip}"
+    }
+  ],
+  "opacity.disabled": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.opacity.40}"
+    }
+  ],
+  "opacity.scrim": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.opacity.60}"
+    }
+  ],
+  "color.surface.canvas": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.surface.default": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.surface.subtle": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.50}"
+    }
+  ],
+  "color.surface.muted": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.surface.raised": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.surface.overlay": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.surface.inverse": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.surface.scrim": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.alpha.black.50}"
+    }
+  ],
+  "color.content.primary": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.content.secondary": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.700}"
+    }
+  ],
+  "color.content.tertiary": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.content.disabled": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.content.inverse": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.content.link": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.700}"
+    }
+  ],
+  "color.content.onAccent": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.border.default": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.200}"
+    }
+  ],
+  "color.border.subtle": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.border.strong": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.500}"
+    }
+  ],
+  "color.border.disabled": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.200}"
+    }
+  ],
+  "color.border.focus": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.focus.ring}"
+    }
+  ],
+  "color.focus.ring": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.600}"
+    }
+  ],
+  "color.selection.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.100}"
+    }
+  ],
+  "color.selection.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.action.accent.solid.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.600}"
+    }
+  ],
+  "color.action.accent.solid.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.accent.solid.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.600}"
+    }
+  ],
+  "color.action.accent.solid.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.700}"
+    }
+  ],
+  "color.action.accent.solid.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.accent.solid.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.700}"
+    }
+  ],
+  "color.action.accent.solid.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.800}"
+    }
+  ],
+  "color.action.accent.solid.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.accent.solid.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.800}"
+    }
+  ],
+  "color.action.accent.solid.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.accent.solid.default.surface}"
+    }
+  ],
+  "color.action.accent.solid.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.accent.solid.default.content}"
+    }
+  ],
+  "color.action.accent.solid.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.accent.solid.default.border}"
+    }
+  ],
+  "color.action.accent.solid.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.action.accent.solid.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.action.accent.solid.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.action.accent.outline.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.accent.outline.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.700}"
+    }
+  ],
+  "color.action.accent.outline.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.500}"
+    }
+  ],
+  "color.action.accent.outline.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.50}"
+    }
+  ],
+  "color.action.accent.outline.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.700}"
+    }
+  ],
+  "color.action.accent.outline.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.600}"
+    }
+  ],
+  "color.action.accent.outline.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.100}"
+    }
+  ],
+  "color.action.accent.outline.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.800}"
+    }
+  ],
+  "color.action.accent.outline.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.600}"
+    }
+  ],
+  "color.action.accent.outline.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.accent.outline.default.surface}"
+    }
+  ],
+  "color.action.accent.outline.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.accent.outline.default.content}"
+    }
+  ],
+  "color.action.accent.outline.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.accent.outline.default.border}"
+    }
+  ],
+  "color.action.accent.outline.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.accent.outline.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.action.accent.outline.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.200}"
+    }
+  ],
+  "color.action.accent.ghost.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.accent.ghost.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.700}"
+    }
+  ],
+  "color.action.accent.ghost.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.accent.ghost.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.50}"
+    }
+  ],
+  "color.action.accent.ghost.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.700}"
+    }
+  ],
+  "color.action.accent.ghost.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.accent.ghost.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.100}"
+    }
+  ],
+  "color.action.accent.ghost.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.800}"
+    }
+  ],
+  "color.action.accent.ghost.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.accent.ghost.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.accent.ghost.default.surface}"
+    }
+  ],
+  "color.action.accent.ghost.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.accent.ghost.default.content}"
+    }
+  ],
+  "color.action.accent.ghost.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.accent.ghost.default.border}"
+    }
+  ],
+  "color.action.accent.ghost.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.accent.ghost.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.action.accent.ghost.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.danger.solid.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.600}"
+    }
+  ],
+  "color.action.danger.solid.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.danger.solid.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.600}"
+    }
+  ],
+  "color.action.danger.solid.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.700}"
+    }
+  ],
+  "color.action.danger.solid.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.danger.solid.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.700}"
+    }
+  ],
+  "color.action.danger.solid.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.800}"
+    }
+  ],
+  "color.action.danger.solid.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.danger.solid.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.800}"
+    }
+  ],
+  "color.action.danger.solid.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.danger.solid.default.surface}"
+    }
+  ],
+  "color.action.danger.solid.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.danger.solid.default.content}"
+    }
+  ],
+  "color.action.danger.solid.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.danger.solid.default.border}"
+    }
+  ],
+  "color.action.danger.solid.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.action.danger.solid.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.action.danger.solid.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.action.danger.outline.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.danger.outline.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.700}"
+    }
+  ],
+  "color.action.danger.outline.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.500}"
+    }
+  ],
+  "color.action.danger.outline.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.50}"
+    }
+  ],
+  "color.action.danger.outline.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.700}"
+    }
+  ],
+  "color.action.danger.outline.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.600}"
+    }
+  ],
+  "color.action.danger.outline.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.100}"
+    }
+  ],
+  "color.action.danger.outline.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.800}"
+    }
+  ],
+  "color.action.danger.outline.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.600}"
+    }
+  ],
+  "color.action.danger.outline.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.danger.outline.default.surface}"
+    }
+  ],
+  "color.action.danger.outline.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.danger.outline.default.content}"
+    }
+  ],
+  "color.action.danger.outline.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.danger.outline.default.border}"
+    }
+  ],
+  "color.action.danger.outline.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.danger.outline.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.action.danger.outline.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.200}"
+    }
+  ],
+  "color.action.danger.ghost.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.danger.ghost.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.700}"
+    }
+  ],
+  "color.action.danger.ghost.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.danger.ghost.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.50}"
+    }
+  ],
+  "color.action.danger.ghost.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.700}"
+    }
+  ],
+  "color.action.danger.ghost.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.danger.ghost.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.100}"
+    }
+  ],
+  "color.action.danger.ghost.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.800}"
+    }
+  ],
+  "color.action.danger.ghost.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.danger.ghost.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.danger.ghost.default.surface}"
+    }
+  ],
+  "color.action.danger.ghost.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.danger.ghost.default.content}"
+    }
+  ],
+  "color.action.danger.ghost.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.danger.ghost.default.border}"
+    }
+  ],
+  "color.action.danger.ghost.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.danger.ghost.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.action.danger.ghost.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.neutral.solid.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.700}"
+    }
+  ],
+  "color.action.neutral.solid.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.neutral.solid.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.700}"
+    }
+  ],
+  "color.action.neutral.solid.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.800}"
+    }
+  ],
+  "color.action.neutral.solid.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.neutral.solid.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.800}"
+    }
+  ],
+  "color.action.neutral.solid.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.action.neutral.solid.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.neutral.solid.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.action.neutral.solid.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.neutral.solid.default.surface}"
+    }
+  ],
+  "color.action.neutral.solid.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.neutral.solid.default.content}"
+    }
+  ],
+  "color.action.neutral.solid.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.neutral.solid.default.border}"
+    }
+  ],
+  "color.action.neutral.solid.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.action.neutral.solid.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.action.neutral.solid.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.action.neutral.outline.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.neutral.outline.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.700}"
+    }
+  ],
+  "color.action.neutral.outline.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.500}"
+    }
+  ],
+  "color.action.neutral.outline.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.50}"
+    }
+  ],
+  "color.action.neutral.outline.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.700}"
+    }
+  ],
+  "color.action.neutral.outline.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.action.neutral.outline.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.action.neutral.outline.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.800}"
+    }
+  ],
+  "color.action.neutral.outline.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.action.neutral.outline.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.neutral.outline.default.surface}"
+    }
+  ],
+  "color.action.neutral.outline.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.neutral.outline.default.content}"
+    }
+  ],
+  "color.action.neutral.outline.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.neutral.outline.default.border}"
+    }
+  ],
+  "color.action.neutral.outline.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.neutral.outline.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.action.neutral.outline.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.200}"
+    }
+  ],
+  "color.action.neutral.ghost.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.neutral.ghost.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.700}"
+    }
+  ],
+  "color.action.neutral.ghost.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.neutral.ghost.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.50}"
+    }
+  ],
+  "color.action.neutral.ghost.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.700}"
+    }
+  ],
+  "color.action.neutral.ghost.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.neutral.ghost.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.action.neutral.ghost.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.800}"
+    }
+  ],
+  "color.action.neutral.ghost.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.neutral.ghost.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.neutral.ghost.default.surface}"
+    }
+  ],
+  "color.action.neutral.ghost.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.neutral.ghost.default.content}"
+    }
+  ],
+  "color.action.neutral.ghost.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.action.neutral.ghost.default.border}"
+    }
+  ],
+  "color.action.neutral.ghost.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.neutral.ghost.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.action.neutral.ghost.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.field.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.field.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.field.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.500}"
+    }
+  ],
+  "color.field.default.placeholder": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.field.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.field.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.field.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.field.hover.placeholder": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.field.focus.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.field.focus.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.field.focus.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.600}"
+    }
+  ],
+  "color.field.focus.placeholder": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.field.readonly.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.50}"
+    }
+  ],
+  "color.field.readonly.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.field.readonly.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.200}"
+    }
+  ],
+  "color.field.readonly.placeholder": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.field.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.field.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.field.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.200}"
+    }
+  ],
+  "color.field.disabled.placeholder": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.field.invalid.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.field.invalid.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.field.invalid.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.600}"
+    }
+  ],
+  "color.field.invalid.placeholder": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.status.info.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.info.50}"
+    }
+  ],
+  "color.status.info.surfaceStrong": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.info.600}"
+    }
+  ],
+  "color.status.info.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.info.800}"
+    }
+  ],
+  "color.status.info.contentStrong": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.status.info.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.info.300}"
+    }
+  ],
+  "color.status.info.icon": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.info.600}"
+    }
+  ],
+  "color.status.success.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.success.50}"
+    }
+  ],
+  "color.status.success.surfaceStrong": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.success.600}"
+    }
+  ],
+  "color.status.success.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.success.800}"
+    }
+  ],
+  "color.status.success.contentStrong": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.status.success.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.success.300}"
+    }
+  ],
+  "color.status.success.icon": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.success.600}"
+    }
+  ],
+  "color.status.warning.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.warning.50}"
+    }
+  ],
+  "color.status.warning.surfaceStrong": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.warning.400}"
+    }
+  ],
+  "color.status.warning.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.warning.800}"
+    }
+  ],
+  "color.status.warning.contentStrong": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.950}"
+    }
+  ],
+  "color.status.warning.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.warning.300}"
+    }
+  ],
+  "color.status.warning.icon": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.warning.600}"
+    }
+  ],
+  "color.status.danger.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.50}"
+    }
+  ],
+  "color.status.danger.surfaceStrong": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.600}"
+    }
+  ],
+  "color.status.danger.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.800}"
+    }
+  ],
+  "color.status.danger.contentStrong": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.status.danger.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.300}"
+    }
+  ],
+  "color.status.danger.icon": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.danger.600}"
+    }
+  ],
+  "size.control.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v28}"
+    }
+  ],
+  "size.control.md": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v32}"
+    }
+  ],
+  "size.control.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v40}"
+    }
+  ],
+  "space.control.padding-inline.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v8}"
+    }
+  ],
+  "space.control.padding-inline.md": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v12}"
+    }
+  ],
+  "space.control.padding-inline.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v16}"
+    }
+  ],
+  "space.control.padding-block.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v4}"
+    }
+  ],
+  "space.control.padding-block.md": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v6}"
+    }
+  ],
+  "space.control.padding-block.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v8}"
+    }
+  ],
+  "space.control.gap.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v4}"
+    }
+  ],
+  "space.control.gap.md": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v6}"
+    }
+  ],
+  "space.control.gap.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v8}"
+    }
+  ],
+  "space.content.xs": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v2}"
+    }
+  ],
+  "space.content.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v4}"
+    }
+  ],
+  "space.content.md": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v8}"
+    }
+  ],
+  "space.content.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v12}"
+    }
+  ],
+  "space.content.xl": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v16}"
+    }
+  ],
+  "space.layout.xs": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v4}"
+    }
+  ],
+  "space.layout.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v8}"
+    }
+  ],
+  "space.layout.md": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v16}"
+    }
+  ],
+  "space.layout.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v24}"
+    }
+  ],
+  "space.layout.xl": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v32}"
+    }
+  ],
+  "space.layout.2xl": [
+    {
+      "source": "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "value": "{primitive.dimension.v48}"
+    }
+  ]
+}
