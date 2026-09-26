@@ -1,9 +1,9 @@
 // Validate every component contract (schema + consistency), optionally with token coverage
 // across all configured contexts and dependency presence in the local catalog.
-//   node tooling/validate-contracts.mjs [component-id ...] [--tokens] [--dependencies]
-import { checkContract } from './lib/contract.mjs';
-import { listComponents } from './lib/catalog.mjs';
-import { resolveAllContexts } from './lib/tokens.mjs';
+//   node tooling/validate-contracts.ts [component-id ...] [--tokens] [--dependencies]
+import { checkContract } from './lib/contract.ts';
+import { listComponents } from './lib/catalog.ts';
+import { resolveAllContexts } from './lib/tokens.ts';
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter((a) => a.startsWith('--')));
@@ -23,7 +23,7 @@ const selected = ids.length
 const catalog = flags.has('--dependencies') ? all.map((c) => c.id) : undefined;
 const contexts = flags.has('--tokens') ? resolveAllContexts() : null;
 
-const report = {};
+const report: Record<string, unknown> = {};
 let valid = true;
 for (const c of selected) {
   const base = checkContract(c.contract, { components: catalog });

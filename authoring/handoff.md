@@ -18,7 +18,7 @@
 | Procedures and gates         | `.claude/skills/ggb-*/SKILL.md` (executable), `authoring/workflow.md`, `authoring/workflows/*.md` (rationale) |
 | Contract format              | `authoring/contract-format.md`, `authoring/contract-guide.md`, `authoring/schemas/`                           |
 | Figma operating mode         | `authoring/figma.md`, `authoring/adapters/figma/`                                                             |
-| Tooling                      | `tooling/*.mjs`, `npm run` scripts in `package.json`                                                          |
+| Tooling                      | `tooling/*.ts`, `npm run` scripts in `package.json`                                                           |
 | Evidence                     | `reports/`, status files                                                                                      |
 
 ## Example requests and what happens

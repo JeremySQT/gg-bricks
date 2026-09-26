@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { resolveAliases, resolveSources, sources } from '../tooling/lib/tokens.mjs';
+import { resolveAliases, resolveSources, sources } from '../tooling/lib/tokens.ts';
 test('rejects missing, cyclic and differently typed aliases', () => {
   assert.throws(() => resolveAliases({ a: { $type: 'color', $value: '{missing}' } }), /Missing token/);
   assert.throws(
@@ -19,7 +19,7 @@ test('rejects missing, cyclic and differently typed aliases', () => {
 test('sparse brand inherits complete colors while overriding radius', () => {
   const base = resolveSources(sources('base', 'dark', 'compact')).tokens;
   const brand = resolveSources(sources('brand-a', 'dark', 'compact')).tokens;
-  assert.equal(brand['radius.control'].$value.value, 8);
+  assert.equal((brand['radius.control'].$value as { value: number }).value, 8);
   assert.deepEqual(
     brand['color.action.danger.ghost.pressed.content'],
     base['color.action.danger.ghost.pressed.content']
@@ -48,21 +48,22 @@ test('unknown configuration fails before reading overlays', () => {
 
 // Layered CSS parity: applying the cascade for a context and resolving var() must give the
 // same literal values as the resolved JSON map. A minimal resolver, not a CSS engine.
-import { buildLayeredCss, cssSourceValue } from '../tooling/lib/css.mjs';
-import { config, cssValue } from '../tooling/lib/tokens.mjs';
-function cascade(css, attrs) {
-  const vars = {};
+import { buildLayeredCss, cssSourceValue } from '../tooling/lib/css.ts';
+import { config, cssValue } from '../tooling/lib/tokens.ts';
+function cascade(css: string, attrs: Record<string, string>): Record<string, string> {
+  const vars: Record<string, string> = {};
   for (const m of css.matchAll(/^([^{\n]+) \{\n([\s\S]*?)\n\}/gm)) {
     const selectors = [...m[1].matchAll(/\[data-ggb-(\w+)(?:="([^"]+)")?\]/g)];
     if (!selectors.every(([, k, v]) => (v === undefined ? k in attrs : attrs[k] === v))) continue;
     for (const line of m[2].split('\n')) {
-      const [, name, value] = line.match(/^\s*(--[^:]+): (.+);$/);
-      vars[name] = value;
+      const match = line.match(/^\s*(--[^:]+): (.+);$/);
+      if (!match) throw Error('Unexpected line: ' + line);
+      vars[match[1]] = match[2];
     }
   }
-  const resolve = (v, depth = 0) => {
+  const resolve = (v: string, depth = 0): string => {
     if (depth > 20) throw Error('deep');
-    return v.replace(/var\((--[^)]+)\)/g, (_, n) => {
+    return v.replace(/var\((--[^)]+)\)/g, (_, n: string) => {
       if (!(n in vars)) throw Error('unset ' + n);
       return resolve(vars[n], depth + 1);
     });

@@ -30,6 +30,8 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 - Svelte 5 with runes and snippets; Bits UI primitives for native semantics; CSS inheritance and `currentColor` for slot content; logical CSS properties; `prefers-reduced-motion` and `forced-colors` handled in every component with motion or borders. Prettier and ESLint enforce formatting and lint rules across sessions.
 - Snippet slots cannot statically enforce component identity; allowed content is a contract rule documented in usage docs.
 
+- The whole repository is TypeScript: components and package in strict TypeScript, tooling and tests in TypeScript executed natively by Node (type stripping, Node 22.18 or newer, erasable syntax only: no enums, namespaces or parameter properties). Shared tooling types live in `tooling/lib/types.ts`. No build step for scripts.
+
 ## Documentation
 
 - One maintained source per component in `documentation/components/<id>.md`, sections in this order: Overview, When to use, When not to use, Anatomy, Usage guidelines, Examples, API, Accessibility. `documentation/index.json` is the economical agent index.

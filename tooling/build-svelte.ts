@@ -2,27 +2,37 @@
 // enum types + defaults, CSS custom-property bindings, and the consumer copies
 // (tokens.css, contracts/, docs/) shipped inside packages/svelte.
 import fs from 'node:fs';
-import { abs, paths, write, readJson, readText, exists } from './lib/paths.mjs';
-import { cssVariable } from './lib/tokens.mjs';
-import { expandCombinations, templateParameters } from './lib/contract.mjs';
-import { listComponents, pascal } from './lib/catalog.mjs';
+import { abs, paths, write, readJson, readText, exists } from './lib/paths.ts';
+import { cssVariable } from './lib/tokens.ts';
+import { expandCombinations, templateParameters } from './lib/contract.ts';
+import { listComponents, pascal } from './lib/catalog.ts';
+import { isEnum, type Contract } from './lib/types.ts';
+
+interface DocIndex {
+  package: string;
+  version: string;
+  components: { id: string; documentation: string; [key: string]: unknown }[];
+}
 
 const pkg = paths.sveltePackage;
-const generated = [];
+const generated: string[] = [];
 
 /** Enum types and defaults for one contract. */
-export function generateTypes(contract) {
+export function generateTypes(contract: Contract): string {
   const name = pascal(contract.id);
-  const enums = Object.entries(contract.props).filter(([, p]) => Array.isArray(p.values));
+  const enums = Object.entries(contract.props).filter(([, p]) => isEnum(p));
   const defaults = Object.fromEntries(
     Object.entries(contract.props)
       .filter(([, p]) => 'default' in p)
-      .map(([k, p]) => [k, p.default])
+      .map(([k, p]) => [k, (p as { default: unknown }).default])
   );
   return (
     `// Generated from components/*/${contract.id}/contract.json. Do not edit.\n` +
     enums
-      .map(([key, p]) => `export type ${name}${pascal(key)} = ${p.values.map((v) => JSON.stringify(v)).join(' | ')};`)
+      .map(
+        ([key, p]) =>
+          `export type ${name}${pascal(key)} = ${(p as { values: string[] }).values.map((v) => JSON.stringify(v)).join(' | ')};`
+      )
       .join('\n') +
     `\nexport const defaults = ${JSON.stringify(defaults, null, 2)} as const;\n`
   );
@@ -33,10 +43,10 @@ export function generateTypes(contract) {
  * enum *states* become suffixes of the custom property, so handwritten CSS
  * selects the state (hover, pressed, loading…) and reads `--ggb-<id>-<role>-<state>`.
  */
-export function generateCss(contract) {
+export function generateCss(contract: Contract): string {
   const id = contract.id;
   const props = Object.keys(contract.props);
-  const blocks = new Map();
+  const blocks = new Map<string, string[]>();
   for (const [role, list] of Object.entries(expandCombinations(contract))) {
     const params = templateParameters(contract.tokens[role]);
     const propParams = params.filter((p) => props.includes(p));
@@ -45,7 +55,7 @@ export function generateCss(contract) {
       const selector = `.ggb-${id}` + propParams.map((p) => `[data-${p}="${values[p]}"]`).join('');
       const variable = [`--ggb-${id}-${role}`, ...stateParams.map((p) => values[p])].join('-');
       if (!blocks.has(selector)) blocks.set(selector, []);
-      blocks.get(selector).push(`  ${variable}: var(${cssVariable(path)});`);
+      blocks.get(selector)?.push(`  ${variable}: var(${cssVariable(path)});`);
     }
   }
   let css = `/* Generated token bindings from the ${id} contract. Do not edit. */\n`;
@@ -68,8 +78,8 @@ for (const c of components) {
 fs.copyFileSync(abs(paths.tokensPackage, 'tokens.css'), abs(pkg, 'tokens.css'));
 fs.rmSync(abs(pkg, 'docs'), { recursive: true, force: true });
 fs.mkdirSync(abs(pkg, 'docs'), { recursive: true });
-const index = readJson(`${paths.documentation}/index.json`);
-const packageJson = readJson(`${pkg}/package.json`);
+const index = readJson<DocIndex>(`${paths.documentation}/index.json`);
+const packageJson = readJson<{ name: string; version: string }>(`${pkg}/package.json`);
 if (index.package !== packageJson.name || index.version !== packageJson.version)
   throw Error(`documentation/index.json must name ${packageJson.name}@${packageJson.version}`);
 for (const entry of index.components) {

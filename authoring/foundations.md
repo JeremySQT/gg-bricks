@@ -71,7 +71,7 @@ Density roles (density files):
 - `size.control.{sm,md,lg}`, `space.control.{padding-inline,padding-block,gap}.{sm,md,lg}`
 - `space.content.{xs,sm,md,lg,xl}` (inside components) and `space.layout.{xs,sm,md,lg,xl,2xl}` (between blocks)
 
-Every role must exist in every configured context after sparse overlays; `npm run build:tokens` enforces this once contracts reference them, and the foundations task adds a dedicated coverage check for the whole semantic inventory (`tooling/check-foundations.mjs`, written by that task, driven by `foundations/inventory.json`).
+Every role must exist in every configured context after sparse overlays; `npm run build:tokens` enforces this once contracts reference them, and the foundations task adds a dedicated coverage check for the whole semantic inventory (`tooling/check-foundations.ts`, written by that task, driven by `foundations/inventory.json`).
 
 `foundations/inventory.json` holds two lists: `roles` (`path`, `type`, and `axis`: common, appearance or density) and `contrast` pairs (`content`, `surface`, `minimum`), which the check uses to write `reports/tokens/contrast.json`. Pairs are explicit so that roles designed for a specific backdrop (`content.onAccent` on accent surfaces, status content on status surfaces) are tested where they are used.
 

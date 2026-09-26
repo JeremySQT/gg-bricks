@@ -1,9 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { checkContract, expandTokenPaths, expandCombinations, expectedRoleType } from '../tooling/lib/contract.mjs';
-const source = JSON.parse(fs.readFileSync(new URL('./fixtures/button.contract.json', import.meta.url), 'utf8'));
-const copy = () => structuredClone(source);
+import { checkContract, expandTokenPaths, expandCombinations, expectedRoleType } from '../tooling/lib/contract.ts';
+import type { Contract, TokenMap } from '../tooling/lib/types.ts';
+const source: Contract = JSON.parse(
+  fs.readFileSync(new URL('./fixtures/button.contract.json', import.meta.url), 'utf8')
+);
+// Tests mutate copies freely to build invalid shapes, hence the loose type.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const copy = (): any => structuredClone(source);
 test('candidate validates without claiming token or rule coverage', () => {
   const c = copy(),
     before = JSON.stringify(c),
@@ -50,7 +55,7 @@ test('requires every expanded path when an inventory is supplied', () => {
   assert.equal(r.valid, false);
   assert.equal(r.checks.tokenCoverage, 'failed');
   // Synthetic presence fixture, not production token validation.
-  const tokens = {};
+  const tokens: TokenMap = {};
   for (const [role, list] of Object.entries(expandCombinations(source)))
     for (const { path } of list) tokens[path] = { $type: expectedRoleType(role), $value: 0 };
   assert.equal(checkContract(source, { tokens }).checks.tokenCoverage, 'passed');

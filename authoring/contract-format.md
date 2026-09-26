@@ -45,8 +45,8 @@ Generic checks infer the expected token type from the role name: `surface`, `con
 npm ci
 npm test
 npm run validate # all contracts, schema + consistency + token coverage in every context
-node tooling/validate-contracts.mjs <id> # one contract, schema + consistency only
-node tooling/validate-contracts.mjs --tokens --dependencies # also check accepted part contents against the local catalog
+node tooling/validate-contracts.ts <id> # one contract, schema + consistency only
+node tooling/validate-contracts.ts --tokens --dependencies # also check accepted part contents against the local catalog
 
 The dependency check uses the ids of discovered contracts; presence does not prove dependency readiness. The validator uses Ajv's 2020 entry point, strict checks and no input coercion/default injection. CLI failures use a nonzero exit status.
 

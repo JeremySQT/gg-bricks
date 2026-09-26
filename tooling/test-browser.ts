@@ -2,7 +2,7 @@
 // component has none). Reuses PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH when set.
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
-import { abs } from './lib/paths.mjs';
+import { abs } from './lib/paths.ts';
 const specs = fs.existsSync(abs('tests/browser'))
   ? fs.readdirSync(abs('tests/browser')).filter((f) => f.endsWith('.spec.ts'))
   : [];

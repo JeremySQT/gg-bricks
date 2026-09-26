@@ -1,41 +1,67 @@
 // Generate distributable token outputs and per-component token evidence from the JSON sources.
 // Outputs: packages/tokens/* (resolved maps, CSS, Figma manifest and expectations),
 // reports/tokens/traces/* and reports/components/<id>/* for every component contract.
-import { paths, write } from './lib/paths.mjs';
-import { resolveAllContexts, config } from './lib/tokens.mjs';
-import { buildLayeredCss } from './lib/css.mjs';
-import { checkContract, expandCombinations, resolveTemplate } from './lib/contract.mjs';
-import { listComponents } from './lib/catalog.mjs';
+import { paths, write } from './lib/paths.ts';
+import { resolveAllContexts, config } from './lib/tokens.ts';
+import { buildLayeredCss } from './lib/css.ts';
+import { checkContract, expandCombinations, resolveTemplate } from './lib/contract.ts';
+import { listComponents } from './lib/catalog.ts';
+import type { Color, Dimension, ResolvedToken, TokenMap, Typography } from './lib/types.ts';
 
-const round = (n) => Math.round(n * 1e6) / 1e6;
-const lum = (c) =>
+type Rgb = [number, number, number];
+interface ContrastRecord {
+  context: string;
+  backdrop: string;
+  role: 'content' | 'border' | 'focus';
+  ratio: number;
+  minimum: number | null;
+  passed: boolean;
+  [param: string]: string | number | boolean | null;
+}
+type FigmaValue = { r: number; g: number; b: number; a: number } | number | { alias: string };
+interface FigmaVariable {
+  collection: string;
+  name: string;
+  path: string;
+  type: 'COLOR' | 'FLOAT';
+  scopes: string[];
+  values: Record<string, FigmaValue>;
+}
+
+const round = (n: number) => Math.round(n * 1e6) / 1e6;
+const lum = (c: Rgb) =>
   c.reduce(
     (sum, x, i) => sum + [0.2126, 0.7152, 0.0722][i] * (x <= 0.04045 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4),
     0
   );
-const ratio = (a, b) => round((Math.max(lum(a), lum(b)) + 0.05) / (Math.min(lum(a), lum(b)) + 0.05));
-const blend = (f, b) => f.components.map((v, i) => v * (f.alpha ?? 1) + b[i] * (1 - (f.alpha ?? 1)));
+const ratio = (a: Rgb, b: Rgb) => round((Math.max(lum(a), lum(b)) + 0.05) / (Math.min(lum(a), lum(b)) + 0.05));
+const blend = (f: Color, b: Rgb): Rgb =>
+  f.components.map((v, i) => v * (f.alpha ?? 1) + b[i] * (1 - (f.alpha ?? 1))) as Rgb;
+const colorOf = (t: ResolvedToken) => t.$value as Color;
+const dimOf = (t: ResolvedToken) => t.$value as Dimension;
 
 const cfg = config();
 const contexts = resolveAllContexts();
 const components = listComponents();
-const reportFor = (id) => `${paths.reports}/components/${id}`;
+const reportFor = (id: string) => `${paths.reports}/components/${id}`;
 
 // 1. Validate every source token and every contract against every context.
 for (const ctx of contexts) {
   for (const [p, v] of Object.entries(ctx.tokens)) {
-    const x = v.$value;
-    if (v.$type === 'dimension' && (!Number.isFinite(x.value) || x.value < 0 || x.unit !== 'px'))
-      throw Error('Invalid dimension ' + p);
-    if (
-      v.$type === 'color' &&
-      (x.colorSpace !== 'srgb' ||
+    if (v.$type === 'dimension') {
+      const x = dimOf(v);
+      if (!Number.isFinite(x.value) || x.value < 0 || x.unit !== 'px') throw Error('Invalid dimension ' + p);
+    }
+    if (v.$type === 'color') {
+      const x = colorOf(v);
+      if (
+        x.colorSpace !== 'srgb' ||
         x.components.length !== 3 ||
         x.components.some((c) => c < 0 || c > 1) ||
-        x.alpha < 0 ||
-        x.alpha > 1)
-    )
-      throw Error('Invalid color ' + p);
+        (x.alpha !== undefined && (x.alpha < 0 || x.alpha > 1))
+      )
+        throw Error('Invalid color ' + p);
+    }
   }
   for (const c of components) {
     const check = checkContract(c.contract, { tokens: ctx.tokens });
@@ -43,15 +69,17 @@ for (const ctx of contexts) {
   }
 }
 
-// 2. Resolved maps, provenance traces and the layered CSS (see tooling/lib/css.mjs).
-const flatten = (tokens) => {
-  const flat = {};
+// 2. Resolved maps, provenance traces and the layered CSS (see tooling/lib/css.ts).
+const flatten = (tokens: TokenMap): TokenMap => {
+  const flat: TokenMap = {};
   for (const [p, v] of Object.entries(tokens)) {
     if (v.$type === 'typography') {
-      flat[p + '.fontSize'] = { $type: 'dimension', $value: v.$value.fontSize };
+      const ty = v.$value as Typography;
+      const fontSize = ty.fontSize as Dimension;
+      flat[p + '.fontSize'] = { $type: 'dimension', $value: fontSize };
       flat[p + '.lineHeight'] = {
         $type: 'dimension',
-        $value: { value: v.$value.lineHeight * v.$value.fontSize.value, unit: 'px' }
+        $value: { value: (ty.lineHeight as number) * fontSize.value, unit: 'px' }
       };
     }
     flat[p] = v;
@@ -65,27 +93,27 @@ for (const ctx of contexts) {
 write(`${paths.tokensPackage}/tokens.css`, buildLayeredCss(cfg));
 
 // 3. Per-component evidence: coverage, contrast on documented backdrops, minimum target.
-const summary = {};
+const summary: Record<string, { requiredPaths: number; contrastChecks: number; contrastFailures: number }> = {};
 for (const c of components) {
   const contract = c.contract;
   const requirements = checkContract(contract).requiredTokenPaths;
   const combos = expandCombinations(contract);
-  const coverage = [];
-  const contrast = [];
+  const coverage: { context: string; coverage: string }[] = [];
+  const contrast: ContrastRecord[] = [];
   for (const ctx of contexts) {
     const t = ctx.tokens;
     coverage.push({ context: ctx.id, coverage: checkContract(contract, { tokens: t }).checks.tokenCoverage });
-    if ('minTarget' in contract.tokens && t[resolveTemplate(contract, 'minTarget', {})].$value.value < 44)
+    if ('minTarget' in contract.tokens && dimOf(t[resolveTemplate(contract, 'minTarget', {})]).value < 44)
       throw Error(`${c.id}: minimum target below 44 in ${ctx.id}`);
     const backdrops = Object.entries(t)
       .filter(([p, v]) => /^color\.surface\.[a-z-]+$/.test(p) && v.$type === 'color')
-      .map(([p, v]) => [p.split('.').pop(), v.$value.components]);
+      .map(([p, v]): [string, Rgb] => [p.split('.').pop() ?? p, colorOf(v).components]);
     for (const [backdrop, bg] of backdrops) {
       if (combos.surface && combos.content) {
         for (const { params, path } of combos.content) {
-          const surface = blend(t[resolveTemplate(contract, 'surface', params)].$value, bg);
+          const surface = blend(colorOf(t[resolveTemplate(contract, 'surface', params)]), bg);
           const informational = Object.values(params).includes('disabled');
-          const r = ratio(blend(t[path].$value, surface), surface);
+          const r = ratio(blend(colorOf(t[path]), surface), surface);
           contrast.push({
             context: ctx.id,
             backdrop,
@@ -100,12 +128,12 @@ for (const c of components) {
       if (combos.border) {
         for (const { params, path } of combos.border) {
           if (Object.values(params).includes('disabled')) continue;
-          const r = ratio(t[path].$value.components, bg);
+          const r = ratio(colorOf(t[path]).components, bg);
           contrast.push({ context: ctx.id, backdrop, ...params, role: 'border', ratio: r, minimum: 3, passed: r >= 3 });
         }
       }
       if (combos.focusColor) {
-        const r = ratio(t[combos.focusColor[0].path].$value.components, bg);
+        const r = ratio(colorOf(t[combos.focusColor[0].path]).components, bg);
         contrast.push({ context: ctx.id, backdrop, role: 'focus', ratio: r, minimum: 3, passed: r >= 3 });
       }
     }
@@ -142,17 +170,18 @@ for (const c of components) {
 // (appearance.* → Appearance, density.* → Density, otherwise Brand). Technical `_resolved` variables
 // are compilation detail for the tested Figma model, not a source layer.
 const base = contexts.find((c) => c.id === `base-${cfg.appearances[0]}-${cfg.densities[0]}`);
-const flatByContext = Object.fromEntries(
+if (!base) throw Error('Base context missing');
+const flatByContext: Record<string, TokenMap> = Object.fromEntries(
   contexts.map((c) => [
     c.id,
     Object.fromEntries(Object.entries(flatten(c.tokens)).filter(([, v]) => ['color', 'dimension'].includes(v.$type)))
   ])
 );
-const axisOf = (p) => {
+const axisOf = (p: string): 'Appearance' | 'Density' | 'Brand' => {
   const source = (base.trace[p] ?? base.trace[p.replace(/\.(fontSize|lineHeight)$/, '')] ?? []).at(-1)?.source ?? '';
   return /\/appearance\./.test(source) ? 'Appearance' : /\/density\./.test(source) ? 'Density' : 'Brand';
 };
-const scopes = (p) =>
+const scopes = (p: string): string[] =>
   p.startsWith('primitive.')
     ? []
     : p.includes('radius')
@@ -172,12 +201,19 @@ const scopes = (p) =>
                   : p.includes('width')
                     ? ['STROKE_FLOAT']
                     : ['WIDTH_HEIGHT'];
-const convert = (t) =>
-  t.$type === 'color'
-    ? { r: t.$value.components[0], g: t.$value.components[1], b: t.$value.components[2], a: t.$value.alpha ?? 1 }
-    : t.$value.value;
-const figmaName = (p) => p.replaceAll('.', '/');
-const manifest = {
+const convert = (t: ResolvedToken): FigmaValue => {
+  if (t.$type === 'color') {
+    const c = colorOf(t);
+    return { r: c.components[0], g: c.components[1], b: c.components[2], a: c.alpha ?? 1 };
+  }
+  return dimOf(t).value;
+};
+const figmaName = (p: string) => p.replaceAll('.', '/');
+const manifest: {
+  collections: Record<string, string[]>;
+  variables: FigmaVariable[];
+  typography: { name: string; family: string; style: string; size: number; lineHeight: number }[];
+} = {
   collections: { Brand: cfg.brands, Appearance: cfg.appearances, Density: cfg.densities },
   variables: [],
   typography: []
@@ -185,7 +221,8 @@ const manifest = {
 for (const p of Object.keys(flatByContext[base.id])) {
   const type = flatByContext[base.id][p].$type === 'color' ? 'COLOR' : 'FLOAT';
   const axis = axisOf(p);
-  const at = (brand, appearance, density) => convert(flatByContext[`${brand}-${appearance}-${density}`][p]);
+  const at = (brand: string, appearance: string, density: string) =>
+    convert(flatByContext[`${brand}-${appearance}-${density}`][p]);
   if (axis === 'Brand') {
     manifest.variables.push({
       collection: 'Brand',
@@ -222,30 +259,31 @@ for (const p of Object.keys(flatByContext[base.id])) {
     )
   });
 }
-const styleOf = (weight) =>
-  ({
-    100: 'Thin',
-    200: 'Extra Light',
-    300: 'Light',
-    400: 'Regular',
-    500: 'Medium',
-    600: 'Semi Bold',
-    700: 'Bold',
-    800: 'Extra Bold',
-    900: 'Black'
-  })[weight] ?? String(weight);
+const styleNames: Record<number, string> = {
+  100: 'Thin',
+  200: 'Extra Light',
+  300: 'Light',
+  400: 'Regular',
+  500: 'Medium',
+  600: 'Semi Bold',
+  700: 'Bold',
+  800: 'Extra Bold',
+  900: 'Black'
+};
 for (const [p, v] of Object.entries(base.tokens)) {
   if (v.$type !== 'typography') continue;
+  const ty = v.$value as Typography;
+  const fontSize = ty.fontSize as Dimension;
   manifest.typography.push({
     name: figmaName(p),
-    family: v.$value.fontFamily[0],
-    style: styleOf(v.$value.fontWeight),
-    size: v.$value.fontSize.value,
-    lineHeight: v.$value.lineHeight * v.$value.fontSize.value
+    family: (ty.fontFamily as string[])[0],
+    style: styleNames[ty.fontWeight as number] ?? String(ty.fontWeight),
+    size: fontSize.value,
+    lineHeight: (ty.lineHeight as number) * fontSize.value
   });
 }
 write(`${paths.tokensPackage}/figma-manifest.json`, manifest);
-const expectations = {};
+const expectations: Record<string, Record<string, Record<string, FigmaValue>>> = {};
 for (const ctx of contexts) {
   (expectations[ctx.brand] ??= {})[`${ctx.appearance}-${ctx.density}`] = Object.fromEntries(
     Object.entries(flatByContext[ctx.id])

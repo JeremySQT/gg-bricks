@@ -16,25 +16,25 @@ export const paths = {
   reports: 'reports',
   examples: 'examples',
   dist: 'dist'
-};
+} as const;
 
-export const abs = (...segments) => path.join(root, ...segments);
-export const rel = (p) => path.relative(root, p).split(path.sep).join('/');
+export const abs = (...segments: string[]): string => path.join(root, ...segments);
+export const rel = (p: string): string => path.relative(root, p).split(path.sep).join('/');
 
-export function readJson(p) {
-  return JSON.parse(fs.readFileSync(abs(p), 'utf8'));
+export function readJson<T = unknown>(p: string): T {
+  return JSON.parse(fs.readFileSync(abs(p), 'utf8')) as T;
 }
 
-export function readText(p) {
+export function readText(p: string): string {
   return fs.readFileSync(abs(p), 'utf8');
 }
 
-export function write(p, content) {
+export function write(p: string, content: unknown): void {
   const target = abs(p);
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, typeof content === 'string' ? content : JSON.stringify(content, null, 2) + '\n');
 }
 
-export function exists(p) {
+export function exists(p: string): boolean {
   return fs.existsSync(abs(p));
 }
