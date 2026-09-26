@@ -1,0 +1,86 @@
+{
+  "formatStatus": "v1",
+  "componentId": "button",
+  "family": "actions",
+  "wave": 1,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Trigger an action or move to the next step of a task with a short visible label.",
+    "useCases": [
+      "Primary, secondary and tertiary actions in forms, dialogs, toolbars and page headers (intent x appearance hierarchy).",
+      "Destructive actions (intent danger).",
+      "Asynchronous actions with a loading state that keeps the width and focus.",
+      "A task-oriented navigation that looks like an action (href, e.g. Create project).",
+      "Optional leading icon; optional trailing icon, counter or keyboard shortcut."
+    ],
+    "exclusions": [
+      "Icon-only buttons (IconButton, wave 1).",
+      "Navigation inside prose (Link, wave 1).",
+      "Toggle buttons with a pressed state (aria-pressed): SegmentedControl or a future ToggleButton.",
+      "Split buttons and menu triggers with an integrated chevron (Menu, wave 3).",
+      "Button groups and toolbars: composition patterns.",
+      "Full-width stretching as a prop: layout decides the width (open decision 1)."
+    ],
+    "alternatives": [
+      "IconButton for an action without visible text.",
+      "Link for navigation inside text.",
+      "Menu for a list of actions behind one trigger."
+    ]
+  },
+  "dependencies": ["icon", "counter", "shortcut"],
+  "fixtures": [
+    "Local inline SVG icons (Phosphor paths) in examples and tests, standing in for Icon.",
+    "Local counter and shortcut fixtures in examples and tests, standing in for Counter and Shortcut."
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "components/actions/button/contract.json",
+      "sha256": "4986b264dd0bcc6549d2e577b48806303909055c5b17a989c7b7f6febae44c8c"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate",
+      "report": "reports/components/button/contract-validation.json",
+      "note": "Schema, consistency and token coverage (131 paths) in 18 contexts."
+    },
+    {
+      "kind": "contrast",
+      "result": "passed-on-documented-backdrops",
+      "report": "reports/components/button/contrast.json",
+      "note": "All content, border and focus pairs pass on canvas, default, subtle, raised and overlay in 18 contexts. Failures are on inverse and scrim (not Button backdrops) and outline borders on muted in dark appearances (2.06 to 2.37, open decision 2)."
+    }
+  ],
+  "decisionsTaken": [
+    "No token additions: every role reuses the approved semantic inventory (color.action.*, size.control.*, space.control.*, typography.label.*, size.icon.*, focus.*, motion.*).",
+    "Icon size follows the button size (sm 16, md 20, lg 24 px) through size.icon.{size}.",
+    "href turns the button into a link with identical appearance, because the catalog allows Button to navigate to a task; disabled or loading never navigates.",
+    "Loading keeps the button focusable and busy (label kept as accessible name); disabled removes it from focus.",
+    "Label is a required plain string (one line, truncated visually) rather than free content, to guarantee an accessible name.",
+    "Form submission type (submit/reset) is an implementation mechanic passed through to the native element, not a contract option.",
+    "Documented backdrops for Button: canvas, default, subtle, raised, overlay and muted; inverse and scrim are not supported backdrops."
+  ],
+  "openDecisions": [
+    "1. Width: no fullWidth prop; the consumer stretches the button with layout (e.g. a container style). Confirm, or add a width option (hug | fill).",
+    "2. Outline border on color.surface.muted in dark appearances reaches 2.06 to 2.37 (target 3). The label identifies the button, so WCAG 1.4.11 does not require the border; proposal: accept, and revisit in a foundations change if needed."
+  ],
+  "nextAction": "Contract gate: present the contract to the user and record the approval, then implement (ggb-svelte).",
+  "implementationNotes": []
+}
