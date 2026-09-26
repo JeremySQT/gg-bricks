@@ -51,6 +51,10 @@ npm run new:component -- <family> <id>
 
 Node 22.12 or newer. Svelte 5.57.1 and Bits UI 2.19.3 are pinned.
 
+## Branches
+
+`main` is production. Each task lives on its own branch from `main` (`component/<id>`, `foundations/<topic>`, `docs/<topic>`, `site/<topic>`, `fix/<topic>`) and ends with one pull request when the work is complete. See `authoring/decisions.md`, Branches.
+
 ## Working with agents
 
 Open the repository with Claude Code and ask for a task in plain words ("define the foundations", "do the Button", "build wave 2"). `AGENTS.md` routes the request to a skill; the skill stops at the review gates listed in [authoring/workflow.md](authoring/workflow.md) and records approvals and evidence in status files. The pre-ggbrick reference kit is archived at git tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history).

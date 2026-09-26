@@ -18,6 +18,8 @@ Read `AGENTS.md`, `authoring/decisions.md` (Sources and tokens), `authoring/foun
 7. **Figma variables.** If the Figma MCP server is available, follow `authoring/figma.md` to create or sync the three collections and the text and effect styles in the library file, then verify resolution against `packages/tokens/figma-expectations.json`. Record file key and evidence. If no Figma tool is available, say so in the status and leave `approvals.figmaVariables` null.
 8. **Gate.** Present: preview page, palette and contrast summary, semantic role table, brands, the choices you made (hue names, scale values, fonts) and grouped open questions (icon set and license among them). Stop. On approval record `approvals.primitives` and `approvals.semantic` (format in `authoring/workflow.md`, digests of the token files), set `phase` to `approved`, and update the roadmap state. `approvals.figmaVariables` is recorded separately when step 7 has been verified, in this session or a later one; it does not block components.
 
+9. **Pull request.** After the gate approval is recorded, push the branch and open one pull request to `main` with the repository template. The user merges.
+
 ## Rules
 
 - Values are proposals until approved; do not describe them as final. Do not shrink the inventory to what a known component needs.

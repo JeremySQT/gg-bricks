@@ -36,6 +36,13 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 - Introduce a component by its user-facing purpose; framework names and native mappings belong in API. Accessibility lists relevant WCAG 2.2 criteria with level, link and the component/integration split; listing is not a conformance claim.
 - Figma specification sections: Overview, Anatomy, Variants, States, Behavior & sizing, Usage examples. Masters are distinguished from explanatory instances.
 
+## Branches and delivery to production
+
+- `main` is production: what it contains is released or releasable. Nothing is committed to it directly.
+- Every task runs on its own branch created from `main`: `component/<id>`, `wave/<n>`, `foundations/<topic>`, `docs/<topic>`, `site/<topic>`, `fix/<topic>`, `chore/<topic>`. A session works and pushes on its branch as often as it likes; commits are not PRs.
+- A pull request to `main` is opened when a unit of work is complete: a component that meets the definition of Done (or whose only pending gate is Figma parity, stated in the PR), an approved foundations change, a finished site task, a fix. The PR follows `.github/pull_request_template.md`, CI must be green, and the user merges it. Merge commits, no force-push on shared branches.
+- GitHub branch protection on `main` (PR required, CI required) is configured by the user in the repository settings.
+
 ## Process
 
 - Lifecycle: scope, contract, implementation, implementation review, Figma parity, documentation, delivery. Gates: foundations review (once per foundations change), then per component contract, interactive implementation (which is the design review) and Figma parity; delivery approval is separate. Implementation precedes Figma because tokens fix the visual language and the reviewer judges the real rendering; Figma then reproduces validated, measurable values (decided 2026-09-25).

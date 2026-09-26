@@ -6,4 +6,5 @@ Read `AGENTS.md` first: it routes every request to a skill in `.claude/skills/`.
 - `npm run verify` before finishing a batch. Browser tests: `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser` when a local Chromium exists, otherwise `npx playwright install chromium` first.
 - Interactive reviews: `npm run build && npm run build:preview <id>` writes `dist/previews/<id>.html`, a self-contained page. Publish it as an artifact when the user reviews remotely.
 - Figma work uses the Figma MCP server; see `.claude/skills/ggb-figma/SKILL.md`.
-- Never hand-edit generated files. Never push to a branch other than the one assigned for the task. Never publish without explicit authorization.
+- `main` is production. Work and push on the task's branch; never commit to `main`. Open a pull request to `main` only when the unit of work is complete (component Done, foundations approved, site task finished), with `.github/pull_request_template.md`.
+- Never hand-edit generated files. Never publish without explicit authorization.

@@ -23,6 +23,7 @@ Order: **contract → implementation → Figma parity → documentation**. The i
 4. **Figma parity** (skill `ggb-figma`). Reproduce the approved implementation as masters bound to variables, build the specification page, verify parity (computed values from the browser versus Figma resolution, all options and states). **Stop: Figma parity gate.** Present file and node links, screenshots and the parity report. If no Figma tool is connected, record `artifacts.figma: "pending"` with the reason, leave this gate open for a follow-up session, and continue.
 5. **Documentation** (skill `ggb-docs`). Page, index entry, `npm run build:svelte`. Optional editorial feedback is recorded, not a gate.
 6. **Final consistency.** Check links, API facts, `npm run verify:generated`, availability of every artifact the status references. Set `phase: done` only when the definition of Done in `authoring/workflow.md` holds within the declared scope. Update the status (phase, approvals, checks, decisions taken, open decisions, next action) and the roadmap.
+7. **Pull request.** Push the branch and open one pull request to `main` with the repository template (gates, evidence, checks, what is left out). Do this once per component or wave, when the work is complete or when only the Figma parity gate is pending and stated as such. The user merges.
 
 For a wave, run each phase for all components of the wave, then stop once at that gate with one grouped review. A component blocked on a decision does not block the others; record it and raise it at the gate.
 

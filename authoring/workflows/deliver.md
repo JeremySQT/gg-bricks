@@ -1,5 +1,7 @@
 # Deliver a version
 
+Merging a component or foundations pull request into `main` is not a release: Deliver publishes what `main` contains to its destinations (npm, Figma library, docs site) with a version.
+
 ## Procedure
 
 1. **Scope the release.** Identify included components, source revisions, supported targets/contexts and intended destinations. Distinguish sharing a reference kit from publishing a production library.

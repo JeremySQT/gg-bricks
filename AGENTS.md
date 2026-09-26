@@ -33,4 +33,8 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Each one says which `authoring/
 - Until a ggbrick component is done, the archived kit shows the artifact structure; afterwards the most recently completed component is the example. Use the deterministic scripts in `tooling/`. Extend them generically; no component-specific branches in shared tooling.
 - The pre-ggbrick reference kit is archived at git tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history). Read it with `git show cd0a2a2:<path>`; useful paths: `packages/svelte/src/button/`, `examples/button/App.svelte`, `tests/browser/button.spec.ts`, `documentation/components/button.md`, `components/actions/button/status.json`. Nothing from it is a decision for ggbrick.
 
+## Branches
+
+`main` is production. Work on the branch assigned to the session (created from `main`, named `component/<id>`, `wave/<n>`, `foundations/<topic>`, `docs/<topic>`, `site/<topic>`, `fix/<topic>` or `chore/<topic>`); push there freely. Never commit to `main` directly. When the unit of work is complete (see decisions.md, Branches), open one pull request to `main` using the repository template; the user merges it. A gate summary is not a PR.
+
 Finish every batch with `npm run lint`, `npm run verify`, updated status files, and a concise summary: completed work, evidence, open decisions, next phase.
