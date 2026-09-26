@@ -184,7 +184,9 @@ for (const c of components) {
 }
 
 // 4. Figma adapter manifest. Axis routing is derived from the source file that defines each token
-// (appearance.* → Appearance, density.* → Density, otherwise Brand). Values mirror the source aliases:
+// (appearance.* → Appearance, density.* → Density, otherwise Brand). A primitive whose value is the same
+// for every brand goes to the single-mode Primitives collection; a primitive a brand overrides stays in
+// Brand with one value per brand mode. Values mirror the source aliases:
 // a semantic variable aliases the palette or primitive variable it references, so the Figma chain reads
 // like the token files. A technical `_resolved/*` variable (Brand collection, hidden) is emitted only when
 // a token cannot be expressed as one alias per mode (a brand overlay of an appearance or density file,
@@ -251,6 +253,7 @@ const convert = (t: ResolvedToken): FigmaValue => {
   return dimOf(t).value;
 };
 const figmaName = (p: string) => p.replaceAll('.', '/');
+const primitivesMode = 'default';
 const manifest: {
   collections: Record<string, string[]>;
   variables: FigmaVariable[];
@@ -265,19 +268,34 @@ const manifest: {
   }[];
   effects: { name: string; layers: FigmaEffect[] }[];
 } = {
-  collections: { Brand: cfg.brands, Appearance: cfg.appearances, Density: cfg.densities },
+  collections: {
+    Primitives: [primitivesMode],
+    Brand: cfg.brands,
+    Appearance: cfg.appearances,
+    Density: cfg.densities
+  },
   variables: [],
   typography: [],
   effects: []
 };
 const isVariable = (p: string) => p in flatByContext[base.id];
+/** Primitives shared by every brand live in the Primitives collection; brand-specific ones stay in Brand. */
+const sharedPrimitive = (p: string): boolean =>
+  p.startsWith('primitive.') &&
+  axisOf(p) === 'Brand' &&
+  cfg.brands.every(
+    (b) =>
+      JSON.stringify(convert(flatByContext[`${b}-${base.appearance}-${base.density}`][p])) ===
+      JSON.stringify(convert(flatByContext[`${cfg.brands[0]}-${base.appearance}-${base.density}`][p]))
+  );
+const collectionOf = (p: string): string => (sharedPrimitive(p) ? 'Primitives' : axisOf(p));
 /** Alias target expressed for Figma, or null when the source alias cannot be one Figma alias for this axis. */
 const aliasFor = (raw: unknown, axis: Axis): FigmaValue | null => {
   if (typeof raw !== 'string' || !/^\{[^{}]+\}$/.test(raw)) return null;
   const q = raw.slice(1, -1);
   if (!isVariable(q)) return null;
-  const target = axisOf(q);
-  if (target === 'Brand' || target === axis) return { alias: `${target}:${figmaName(q)}` };
+  const target = collectionOf(q);
+  if (target === 'Primitives' || target === 'Brand' || target === axis) return { alias: `${target}:${figmaName(q)}` };
   return null;
 };
 const isAliasString = (raw: unknown) => typeof raw === 'string' && /^\{[^{}]+\}$/.test(raw);
@@ -287,6 +305,18 @@ for (const p of Object.keys(flatByContext[base.id])) {
   const codeSyntax = { WEB: `var(${cssVariable(p)})` };
   const at = (brand: string, appearance: string, density: string) =>
     convert(flatByContext[`${brand}-${appearance}-${density}`][p]);
+  if (sharedPrimitive(p)) {
+    manifest.variables.push({
+      collection: 'Primitives',
+      name: figmaName(p),
+      path: p,
+      type,
+      scopes: scopes(p),
+      codeSyntax,
+      values: { [primitivesMode]: at(cfg.brands[0], base.appearance, base.density) }
+    });
+    continue;
+  }
   if (axis === 'Brand') {
     manifest.variables.push({
       collection: 'Brand',

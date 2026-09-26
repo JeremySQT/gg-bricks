@@ -1,6 +1,7 @@
 // Write ready-to-run Plugin API scripts for the Figma MCP server from the generated manifest:
 //   dist/figma/variables-<n>.js   sync batches (collections + a slice of variables, primitives first)
 //   dist/figma/styles.js          text and effect styles
+//   dist/figma/prune.js           explicit migration: list or remove variables absent from the manifest
 //   dist/figma/verify.js          native resolution hashes per brand × appearance × density (tooling/check-figma.ts)
 // Each file is the adapter body from authoring/adapters/figma/ with its data prepended, sized under the
 // tool's code limit. Run them in order (variables-1 … n, then styles, then verify).
@@ -19,11 +20,19 @@ const manifest = readJson<Manifest>(`${paths.tokensPackage}/figma-manifest.json`
 const adapters = 'authoring/adapters/figma';
 const out = `${paths.dist}/figma`;
 
-// Order: Brand primitives, Brand semantic, Appearance, Density; inside a rank, alias targets of the same
-// collection precede the variables that reference them (stable topological order).
+// Order: Primitives, Brand primitives, Brand semantic, Appearance, Density; inside a rank, alias targets of
+// the same collection precede the variables that reference them (stable topological order).
 type Variable = Manifest['variables'][number] & { values: Record<string, unknown> };
 const rank = (v: Variable) =>
-  v.collection === 'Brand' ? (v.name.startsWith('primitive/') ? 0 : 1) : v.collection === 'Appearance' ? 2 : 3;
+  v.collection === 'Primitives'
+    ? 0
+    : v.collection === 'Brand'
+      ? v.name.startsWith('primitive/')
+        ? 1
+        : 2
+      : v.collection === 'Appearance'
+        ? 3
+        : 4;
 const key = (v: Variable) => `${v.collection}:${v.name}`;
 const deps = (v: Variable): string[] =>
   Object.values(v.values)
@@ -48,7 +57,7 @@ const topo = (list: Variable[]): Variable[] => {
   for (const v of list) visit(v, []);
   return out;
 };
-const ranks = [0, 1, 2, 3].map((r) => topo((manifest.variables as Variable[]).filter((v) => rank(v) === r)));
+const ranks = [0, 1, 2, 3, 4].map((r) => topo((manifest.variables as Variable[]).filter((v) => rank(v) === r)));
 const ordered = ranks.flat();
 /** Compact tuple: [collection, name, type, scopes, values]; identical values across modes collapse to one. */
 const compact = (v: Variable): string => {
@@ -88,6 +97,11 @@ write(
   `${out}/styles.js`,
   `const defs = ${JSON.stringify({ typography: manifest.typography, effects: manifest.effects })};\n` +
     readText(`${adapters}/sync-styles.plugin.js`)
+);
+write(
+  `${out}/prune.js`,
+  `const defs = ${JSON.stringify({ keep: manifest.variables.map((v) => `${v.collection}:${v.name}`) })};\n` +
+    readText(`${adapters}/prune-variables.plugin.js`)
 );
 const cfg = readJson<{ brands: string[]; appearances: string[]; densities: string[] }>(paths.config);
 write(

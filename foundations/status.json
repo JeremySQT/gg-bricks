@@ -77,17 +77,18 @@
       "note": "color.surface.muted in dark is tested with primary and secondary content only. Figma variables pending (approvals.figmaVariables)."
     },
     "figmaVariables": {
-      "scope": "Figma library variables and styles generated from packages/tokens/figma-manifest.json: collections Brand (base, brick, orchid), Appearance (light, dark), Density (compact, standard, comfortable); 625 variables (224 primitives, 172 Brand semantic, 206 Appearance, 23 Density) with source-mirroring aliases, scopes and WEB code syntax; 25 text styles; 3 effect styles; library pages created.",
+      "scope": "Figma library variables and styles generated from packages/tokens/figma-manifest.json: collections Primitives (default), Brand (base, brick, orchid), Appearance (light, dark), Density (compact, standard, comfortable); 625 variables (224 Primitives, 172 Brand semantic, 206 Appearance, 23 Density) with source-mirroring aliases, scopes and WEB code syntax; 25 text styles; 3 effect styles; library pages created.",
       "revision": {
         "paths": ["packages/tokens/figma-manifest.json", "packages/tokens/figma-expectations.json"],
         "figma": {
           "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
           "collections": {
+            "Primitives": "VariableCollectionId:14:2",
             "Brand": "VariableCollectionId:4:2",
             "Appearance": "VariableCollectionId:4:3",
             "Density": "VariableCollectionId:4:4"
           },
-          "variableIds": "VariableID:4:5 to 4:228, 5:2 to 5:173, 6:2 to 6:24, 7:2 to 7:207"
+          "variableIds": "Primitives VariableID:14:3 to 14:226; Brand 5:2 to 5:173; Density 6:2 to 6:24; Appearance 7:2 to 7:207"
         }
       },
       "evidence": [
@@ -95,7 +96,7 @@
         "reports/foundations/figma/native-resolution.json",
         "reports/foundations/figma/verification.json"
       ],
-      "provenance": "Synced and verified through the Figma MCP server in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8) on the user's file. Verification: native resolveForConsumer of the 401 semantic variables in the 18 brand × appearance × density contexts, hashed and compared with figma-expectations.json, 0 failures. Technical verification only; the user has not visually reviewed the Figma file in this session.",
+      "provenance": "Synced and verified through the Figma MCP server in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8) on the user's file. Verification: native resolveForConsumer of the 401 semantic variables in the 18 brand × appearance × density contexts, hashed and compared with figma-expectations.json, 0 failures; re-run after moving the primitives to their own collection (user review of the Figma file, 2026-09-26), 0 failures. Technical verification only; the user has not visually reviewed the Figma file in this session.",
       "note": "OpenType features (tnum) cannot be applied to text styles through the Plugin API; numeral styles carry the note in their description. The Foundations page exists but holds no specification frames yet."
     }
   },
@@ -152,6 +153,7 @@
     "color.palette.* indirection kept (round 2).",
     "Warning strong surface: amber 400 with neutral 950 content in both appearances, 7.68:1 (round 2).",
     "Icon method: Phosphor Icons as reference set, no bundled set, intrinsic glyphs inline per component and overridable; recorded in decisions.md (round 2).",
-    "Purge of the reference-kit leftovers: seed brands, stale generated outputs, handoff note and Figma script bodies removed; adapter README keeps the known mechanics (round 2)."
+    "Purge of the reference-kit leftovers: seed brands, stale generated outputs, handoff note and Figma script bodies removed; adapter README keeps the known mechanics (round 2).",
+    "Figma collections: Primitives (single mode) for primitives shared by every brand, Brand only for brand-dependent semantic tokens; component tokens go to Brand under component/<id> (user review of the Figma file, 2026-09-26)."
   ]
 }

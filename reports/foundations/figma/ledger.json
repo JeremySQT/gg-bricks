@@ -4,7 +4,7 @@
     "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
     "plan": "team::1308046554739244831 (Jeremy SQT, pro)"
   },
-  "syncedOn": "2026-09-26",
+  "syncedOn": "2026-09-26 (primitives moved to their own collection the same day)",
   "source": {
     "manifest": "packages/tokens/figma-manifest.json",
     "expectations": "packages/tokens/figma-expectations.json",
@@ -23,20 +23,73 @@
     "Utilities": "8:10"
   },
   "collections": {
-    "Brand": { "id": "VariableCollectionId:4:2", "modes": { "base": "4:0", "brick": "4:1", "orchid": "4:2" } },
-    "Appearance": { "id": "VariableCollectionId:4:3", "modes": { "light": "4:3", "dark": "4:4" } },
+    "Primitives": {
+      "id": "VariableCollectionId:14:2",
+      "modes": {
+        "default": "14:0"
+      }
+    },
+    "Brand": {
+      "id": "VariableCollectionId:4:2",
+      "modes": {
+        "base": "4:0",
+        "brick": "4:1",
+        "orchid": "4:2"
+      }
+    },
+    "Appearance": {
+      "id": "VariableCollectionId:4:3",
+      "modes": {
+        "light": "4:3",
+        "dark": "4:4"
+      }
+    },
     "Density": {
       "id": "VariableCollectionId:4:4",
-      "modes": { "compact": "4:5", "standard": "4:6", "comfortable": "4:7" }
+      "modes": {
+        "compact": "4:5",
+        "standard": "4:6",
+        "comfortable": "4:7"
+      }
     }
   },
   "variables": {
     "total": 625,
     "batches": [
-      { "batch": 1, "collection": "Brand", "content": "primitive/*", "count": 224, "ids": "VariableID:4:5 to VariableID:4:228" },
-      { "batch": 2, "collection": "Brand", "content": "color/palette, radius, border, focus, size, typography dimensions, layer, opacity", "count": 172, "ids": "VariableID:5:2 to VariableID:5:173" },
-      { "batch": 3, "collection": "Appearance", "content": "color roles", "count": 206, "ids": "VariableID:7:2 to VariableID:7:207" },
-      { "batch": 4, "collection": "Density", "content": "size/control, space", "count": 23, "ids": "VariableID:6:2 to VariableID:6:24" }
+      {
+        "batch": 1,
+        "collection": "Primitives",
+        "content": "primitive/*",
+        "count": 224,
+        "ids": "VariableID:14:3 to VariableID:14:226"
+      },
+      {
+        "batch": 2,
+        "collection": "Brand",
+        "content": "color/palette, radius, border, focus, size, typography dimensions, layer, opacity",
+        "count": 172,
+        "ids": "VariableID:5:2 to VariableID:5:173"
+      },
+      {
+        "batch": 3,
+        "collection": "Appearance",
+        "content": "color roles",
+        "count": 206,
+        "ids": "VariableID:7:2 to VariableID:7:207"
+      },
+      {
+        "batch": 4,
+        "collection": "Density",
+        "content": "size/control, space",
+        "count": 23,
+        "ids": "VariableID:6:2 to VariableID:6:24"
+      }
+    ],
+    "migrations": [
+      {
+        "date": "2026-09-26",
+        "change": "Primitives moved from the Brand collection (VariableID:4:5 to 4:228, removed) to the new Primitives collection (VariableID:14:3 to 14:226); 560 aliases re-pointed by name; no node was bound to the old variables."
+      }
     ],
     "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change)."
   },
