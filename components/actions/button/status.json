@@ -3,7 +3,7 @@
   "componentId": "button",
   "family": "actions",
   "wave": 1,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Trigger an action or move to the next step of a task with a short visible label.",
     "useCases": [
@@ -47,7 +47,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Button contract: props, parts, states, activate event, token roles and rules as drafted, with no token additions; open decisions 1 (no width option, layout stretches the button) and 2 (accept outline border contrast 2.06 to 2.37 on surface.muted in dark) resolved as proposed.",
+      "revision": {
+        "paths": ["components/actions/button/contract.json"],
+        "sha256": {
+          "components/actions/button/contract.json": "4986b264dd0bcc6549d2e577b48806303909055c5b17a989c7b7f6febae44c8c"
+        }
+      },
+      "provenance": "User in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds), replying to the contract gate: \"je pense qu on est bon, je valide le contrat\". The acceptance of the two proposals is inferred from that reply; the user may object to the record.",
+      "note": "Covers the contract only; the implementation gate remains the design review."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -75,12 +85,11 @@
     "Loading keeps the button focusable and busy (label kept as accessible name); disabled removes it from focus.",
     "Label is a required plain string (one line, truncated visually) rather than free content, to guarantee an accessible name.",
     "Form submission type (submit/reset) is an implementation mechanic passed through to the native element, not a contract option.",
-    "Documented backdrops for Button: canvas, default, subtle, raised, overlay and muted; inverse and scrim are not supported backdrops."
+    "Documented backdrops for Button: canvas, default, subtle, raised, overlay and muted; inverse and scrim are not supported backdrops.",
+    "No width option: layout stretches the button (open decision 1, accepted at the contract gate).",
+    "Outline border contrast on surface.muted in dark appearances accepted (open decision 2, accepted at the contract gate): the label identifies the button."
   ],
-  "openDecisions": [
-    "1. Width: no fullWidth prop; the consumer stretches the button with layout (e.g. a container style). Confirm, or add a width option (hug | fill).",
-    "2. Outline border on color.surface.muted in dark appearances reaches 2.06 to 2.37 (target 3). The label identifies the button, so WCAG 1.4.11 does not require the border; proposal: accept, and revisit in a foundations change if needed."
-  ],
-  "nextAction": "Contract gate: present the contract to the user and record the approval, then implement (ggb-svelte).",
+  "openDecisions": [],
+  "nextAction": "Implement in Svelte (ggb-svelte), then present the interactive implementation review.",
   "implementationNotes": []
 }
