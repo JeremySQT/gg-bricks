@@ -116,9 +116,20 @@ export interface Contract {
 
 export const isEnum = (d: PropDecl | StateDecl): d is EnumDecl => Array.isArray((d as EnumDecl).values);
 
+/**
+ * Backdrops a component is designed for, recorded in its status at the contract gate. Without it,
+ * contrast is measured on every color.surface.* backdrop. `informational` pairs are reported but
+ * carry no minimum (an accepted, documented exception).
+ */
+export interface ContrastScope {
+  backdrops: string[];
+  informational?: { role: 'content' | 'border' | 'focus'; backdrop: string; appearance?: string; reason: string }[];
+}
+
 export interface ComponentStatus {
   componentId: string | null;
   phase: string;
+  contrastScope?: ContrastScope;
   [key: string]: unknown;
 }
 

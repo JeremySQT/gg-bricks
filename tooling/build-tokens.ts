@@ -122,14 +122,23 @@ for (const c of components) {
     coverage.push({ context: ctx.id, coverage: checkContract(contract, { tokens: t }).checks.tokenCoverage });
     if ('minTarget' in contract.tokens && dimOf(t[resolveTemplate(contract, 'minTarget', {})]).value < 44)
       throw Error(`${c.id}: minimum target below 44 in ${ctx.id}`);
+    const scope = c.status?.contrastScope;
     const backdrops = Object.entries(t)
       .filter(([p, v]) => /^color\.surface\.[a-z-]+$/.test(p) && v.$type === 'color')
-      .map(([p, v]): [string, Rgb] => [p.split('.').pop() ?? p, colorOf(v).components]);
+      .map(([p, v]): [string, Rgb] => [p.split('.').pop() ?? p, colorOf(v).components])
+      .filter(([name]) => !scope || scope.backdrops.includes(name));
+    if (scope && backdrops.length !== scope.backdrops.length)
+      throw Error(`${c.id}: contrastScope names a backdrop that is not a color.surface.* role in ${ctx.id}`);
+    const appearance = ctx.id.split('-')[1];
+    const exempt = (role: string, backdrop: string) =>
+      (scope?.informational ?? []).some(
+        (x) => x.role === role && x.backdrop === backdrop && (!x.appearance || x.appearance === appearance)
+      );
     for (const [backdrop, bg] of backdrops) {
       if (combos.surface && combos.content) {
         for (const { params, path } of combos.content) {
           const surface = blend(colorOf(t[resolveTemplate(contract, 'surface', params)]), bg);
-          const informational = Object.values(params).includes('disabled');
+          const informational = Object.values(params).includes('disabled') || exempt('content', backdrop);
           const r = ratio(blend(colorOf(t[path]), surface), surface);
           contrast.push({
             context: ctx.id,
@@ -146,12 +155,29 @@ for (const c of components) {
         for (const { params, path } of combos.border) {
           if (Object.values(params).includes('disabled')) continue;
           const r = ratio(colorOf(t[path]).components, bg);
-          contrast.push({ context: ctx.id, backdrop, ...params, role: 'border', ratio: r, minimum: 3, passed: r >= 3 });
+          const minimum = exempt('border', backdrop) ? null : 3;
+          contrast.push({
+            context: ctx.id,
+            backdrop,
+            ...params,
+            role: 'border',
+            ratio: r,
+            minimum,
+            passed: minimum === null || r >= minimum
+          });
         }
       }
       if (combos.focusColor) {
         const r = ratio(colorOf(t[combos.focusColor[0].path]).components, bg);
-        contrast.push({ context: ctx.id, backdrop, role: 'focus', ratio: r, minimum: 3, passed: r >= 3 });
+        const minimum = exempt('focus', backdrop) ? null : 3;
+        contrast.push({
+          context: ctx.id,
+          backdrop,
+          role: 'focus',
+          ratio: r,
+          minimum,
+          passed: minimum === null || r >= minimum
+        });
       }
     }
   }
@@ -166,7 +192,7 @@ for (const c of components) {
     const failures = contrast.filter((x) => !x.passed);
     write(`${reportFor(c.id)}/contrast.json`, {
       method:
-        'WCAG relative luminance; alpha composited on every color.surface.* backdrop. Parameters valued "disabled" are informational, not a conformance claim.',
+        'WCAG relative luminance; alpha composited on each color.surface.* backdrop of the status contrastScope (all of them when absent). Parameters valued "disabled" and contrastScope.informational pairs are informational (minimum null), not a conformance claim.',
       checks: contrast.length,
       failures,
       minimumActiveText: Math.min(

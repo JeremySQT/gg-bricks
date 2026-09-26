@@ -40,9 +40,26 @@
     "tokens": [],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/button/Button.svelte",
+      "folder": "packages/svelte/src/button",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3"
+      },
+      "report": "reports/components/button/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/button",
+      "preview": "dist/previews/button.html (npm run build && npm run build:preview button)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/button.test.ts",
+      "browser": "tests/browser/button.spec.ts",
+      "computed": "reports/components/button/svelte/computed.json",
+      "screenshots": "reports/components/button/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -73,9 +90,28 @@
     },
     {
       "kind": "contrast",
-      "result": "passed-on-documented-backdrops",
+      "result": "passed",
       "report": "reports/components/button/contrast.json",
-      "note": "All content, border and focus pairs pass on canvas, default, subtle, raised and overlay in 18 contexts. Failures are on inverse and scrim (not Button backdrops) and outline borders on muted in dark appearances (2.06 to 2.37, open decision 2)."
+      "note": "6264 checks, 0 failures on the contrastScope backdrops (canvas, default, subtle, muted, raised, overlay) in 18 contexts; outline border on muted in dark is informational (contract gate decision)."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-09-26"
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/button/svelte/ssr.json"
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "npm run test:browser",
+      "report": "reports/browser-results.json",
+      "note": "8 Chromium tests: behavior, keyboard, forms, links, slots, truncation and targets, computed values (8658 records), motion, forced colors, axe light and dark, mobile width."
     }
   ],
   "decisionsTaken": [
@@ -87,9 +123,32 @@
     "Form submission type (submit/reset) is an implementation mechanic passed through to the native element, not a contract option.",
     "Documented backdrops for Button: canvas, default, subtle, raised, overlay and muted; inverse and scrim are not supported backdrops.",
     "No width option: layout stretches the button (open decision 1, accepted at the contract gate).",
-    "Outline border contrast on surface.muted in dark appearances accepted (open decision 2, accepted at the contract gate): the label identifies the button."
+    "Outline border contrast on surface.muted in dark appearances accepted (open decision 2, accepted at the contract gate): the label identifies the button.",
+    "Contract event activate is exposed as the onactivate callback prop; a native onclick passed through is guarded the same way.",
+    "type defaults to button so that a Button never submits a form by accident; submit and reset are passed through.",
+    "Leading and trailing content is hidden from assistive technology: the label is the whole accessible name.",
+    "Loading sets aria-busy and aria-disabled but not the native disabled attribute, so focus stays on the button.",
+    "The root element is the 44 px interaction target (block size) and a centered pseudo-element extends it to 44 px wide; the visible container fills the root, so a layout that stretches the button stretches its surface.",
+    "The loading indicator is an inline SVG spinner in the content color (800 ms turn, slowed to 2.4 s under reduced motion).",
+    "Contrast is checked on the backdrops declared in status contrastScope (a generic tooling addition, documented in authoring/architecture.md).",
+    "Typography roles now also bind letterSpacing and fontFeatureSettings helpers in generated component CSS (generic build-svelte addition)."
   ],
   "openDecisions": [],
-  "nextAction": "Implement in Svelte (ggb-svelte), then present the interactive implementation review.",
-  "implementationNotes": []
+  "nextAction": "Implementation gate: the user reviews the preview (dist/previews/button.html, published as an artifact) and approves or requests changes; then Figma parity (ggb-figma).",
+  "implementationNotes": [
+    "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
+    "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",
+    "The horizontal target pseudo-element uses physical left + translateX(-50%) on purpose: centering is symmetric in both writing directions."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Accepted at the contract gate (2026-09-26): outline border reaches 2.06 to 2.37 on surface.muted in dark; the label identifies the button, WCAG 1.4.11 does not require the boundary."
+      }
+    ]
+  }
 }

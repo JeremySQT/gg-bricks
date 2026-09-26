@@ -1,0 +1,175 @@
+/*
+ * Button structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * The root element is the interaction target: at least size.target.min high, and a centered
+ * pseudo-element extends it to size.target.min wide without taking layout space. The container
+ * is the visible surface and fills the root, so a layout that stretches the root stretches the
+ * visible button, while small sizes keep a 44px target without growing the visible button.
+ */
+.ggb-button {
+  --_surface: var(--ggb-button-surface-default);
+  --_content: var(--ggb-button-content-default);
+  --_border: var(--ggb-button-border-default);
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  min-block-size: var(--ggb-button-minTarget);
+  max-inline-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--_content);
+  font: var(--ggb-button-typography);
+  letter-spacing: var(--ggb-button-typography-letterSpacing, normal);
+  font-feature-settings: var(--ggb-button-typography-fontFeatureSettings, normal);
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  outline: none;
+}
+
+.ggb-button::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: 50%; /* physical on purpose: centering is symmetric in both directions */
+  inline-size: 100%;
+  min-inline-size: var(--ggb-button-minTarget);
+  transform: translateX(-50%);
+}
+
+/* Interaction state, lowest precedence first: hover, pressed, loading, disabled. */
+@media (hover: hover) {
+  .ggb-button:hover {
+    --_surface: var(--ggb-button-surface-hover);
+    --_content: var(--ggb-button-content-hover);
+    --_border: var(--ggb-button-border-hover);
+  }
+}
+.ggb-button:active {
+  --_surface: var(--ggb-button-surface-pressed);
+  --_content: var(--ggb-button-content-pressed);
+  --_border: var(--ggb-button-border-pressed);
+}
+.ggb-button[data-loading] {
+  --_surface: var(--ggb-button-surface-loading);
+  --_content: var(--ggb-button-content-loading);
+  --_border: var(--ggb-button-border-loading);
+  cursor: progress;
+}
+.ggb-button[data-disabled] {
+  --_surface: var(--ggb-button-surface-disabled);
+  --_content: var(--ggb-button-content-disabled);
+  --_border: var(--ggb-button-border-disabled);
+  cursor: not-allowed;
+}
+
+.ggb-button__container {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  flex: 1 1 auto;
+  justify-content: center;
+  gap: var(--ggb-button-gap);
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  min-block-size: var(--ggb-button-minHeight);
+  padding-block: var(--ggb-button-paddingBlock);
+  padding-inline: var(--ggb-button-paddingInline);
+  border-radius: var(--ggb-button-radius);
+  background-color: var(--_surface);
+  /* Transparent outline: invisible normally, drawn by the system in forced-colors mode. */
+  outline: var(--ggb-button-borderWidth) solid transparent;
+  outline-offset: calc(-1 * var(--ggb-button-borderWidth));
+  transition-property: background-color, color, box-shadow;
+  transition-duration: var(--ggb-button-motionDuration);
+  transition-timing-function: var(--ggb-button-easingStandard);
+}
+
+/* The border is drawn inside the container so that it never changes the outer dimensions. */
+.ggb-button[data-appearance='outline'] .ggb-button__container {
+  box-shadow: inset 0 0 0 var(--ggb-button-borderWidth) var(--_border);
+}
+
+.ggb-button__label {
+  min-inline-size: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ggb-button__leading,
+.ggb-button__trailing {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  min-block-size: var(--ggb-button-iconSize);
+  color: inherit;
+}
+.ggb-button__leading > svg,
+.ggb-button__trailing > svg,
+.ggb-button__loadingIndicator > svg {
+  display: block;
+  inline-size: var(--ggb-button-iconSize);
+  block-size: var(--ggb-button-iconSize);
+  flex: none;
+}
+
+/* Loading: content keeps its layout (so the width does not change) and stays in the accessibility tree. */
+.ggb-button[data-loading] :is(.ggb-button__leading, .ggb-button__label, .ggb-button__trailing) {
+  opacity: 0;
+}
+.ggb-button__loadingIndicator {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.ggb-button__loadingIndicator > svg {
+  animation: ggb-button-spin 800ms linear infinite;
+}
+@keyframes ggb-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ggb-button:focus-visible .ggb-button__container {
+  outline: var(--ggb-button-focusWidth) solid var(--ggb-button-focusColor);
+  outline-offset: var(--ggb-button-focusOffset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ggb-button__container {
+    transition: none;
+  }
+  .ggb-button__loadingIndicator > svg {
+    animation-duration: 2400ms;
+  }
+}
+
+@media (forced-colors: active) {
+  .ggb-button__container {
+    box-shadow: none;
+    outline-color: ButtonText;
+  }
+  .ggb-button[data-disabled] {
+    color: GrayText;
+  }
+  .ggb-button[data-disabled] .ggb-button__container {
+    outline-color: GrayText;
+  }
+  .ggb-button:focus-visible .ggb-button__container {
+    outline-color: Highlight;
+  }
+}

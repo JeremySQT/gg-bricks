@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import { abs, paths, write, readJson, readText, exists } from './lib/paths.ts';
 import { cssVariable } from './lib/tokens.ts';
-import { expandCombinations, templateParameters } from './lib/contract.ts';
+import { expandCombinations, expectedRoleType, templateParameters } from './lib/contract.ts';
 import { listComponents, pascal } from './lib/catalog.ts';
 import { isEnum, type Contract } from './lib/types.ts';
 
@@ -42,6 +42,9 @@ export function generateTypes(contract: Contract): string {
  * CSS bindings for one contract. Enum *props* become data-attribute selectors;
  * enum *states* become suffixes of the custom property, so handwritten CSS
  * selects the state (hover, pressed, loading…) and reads `--ggb-<id>-<role>-<state>`.
+ * Typography roles also bind the letter-spacing and font-feature helpers that the
+ * font shorthand cannot carry (`--ggb-<id>-<role>-letterSpacing`…); they are unset
+ * when the token defines none, so handwritten CSS reads them with a fallback.
  */
 export function generateCss(contract: Contract): string {
   const id = contract.id;
@@ -56,6 +59,9 @@ export function generateCss(contract: Contract): string {
       const variable = [`--ggb-${id}-${role}`, ...stateParams.map((p) => values[p])].join('-');
       if (!blocks.has(selector)) blocks.set(selector, []);
       blocks.get(selector)?.push(`  ${variable}: var(${cssVariable(path)});`);
+      if (expectedRoleType(role) === 'typography')
+        for (const helper of ['letterSpacing', 'fontFeatureSettings'])
+          blocks.get(selector)?.push(`  ${variable}-${helper}: var(${cssVariable(`${path}.${helper}`)});`);
     }
   }
   let css = `/* Generated token bindings from the ${id} contract. Do not edit. */\n`;
