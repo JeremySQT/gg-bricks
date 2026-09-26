@@ -368,10 +368,7 @@
             >
               <span class="dot" style:background="var(--ggb-color-status-warning-icon)"></span>
               <span
-                >A (proposed) · amber 600 + white · {contrastOf(
-                  'primitive.color.amber.600',
-                  'primitive.color.neutral.0'
-                )}:1</span
+                >A · amber 600 + white · {contrastOf('primitive.color.amber.600', 'primitive.color.neutral.0')}:1</span
               >
               <span
                 class="strong"
@@ -387,7 +384,7 @@
             >
               <span class="dot" style:background="var(--ggb-color-status-warning-icon)"></span>
               <span
-                >B · amber 400 + neutral 950 · {contrastOf(
+                >B (chosen) · amber 400 + neutral 950 · {contrastOf(
                   'primitive.color.amber.400',
                   'primitive.color.neutral.950'
                 )}:1</span
@@ -436,8 +433,15 @@
           <p
             style:font={`var(--ggb-${k.replaceAll('.', '-')})`}
             style:letter-spacing={`var(--ggb-${k.replaceAll('.', '-')}-letterSpacing)`}
+            style:font-feature-settings={`var(--ggb-${k.replaceAll('.', '-')}-fontFeatureSettings, normal)`}
           >
-            {k.includes('code') ? 'const ratio = contrast(a, b);' : sample}
+            {k.includes('code')
+              ? 'const ratio = contrast(a, b);'
+              : k.includes('numeral')
+                ? '1 234 567,89 · 0123456789 · 42 %'
+                : k.includes('overline')
+                  ? sample.toUpperCase()
+                  : sample}
           </p>
         </div>
       {/each}

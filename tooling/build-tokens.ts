@@ -242,6 +242,7 @@ const manifest: {
     size: number;
     lineHeight: number;
     letterSpacing: number;
+    features: string[];
   }[];
   effects: { name: string; layers: FigmaEffect[] }[];
 } = {
@@ -312,7 +313,8 @@ for (const [p, v] of Object.entries(base.tokens)) {
     style: styleNames[ty.fontWeight as number] ?? String(ty.fontWeight),
     size: fontSize.value,
     lineHeight: (ty.lineHeight as number) * fontSize.value,
-    letterSpacing: (ty.letterSpacing as Dimension | undefined)?.value ?? 0
+    letterSpacing: (ty.letterSpacing as Dimension | undefined)?.value ?? 0,
+    features: ty.fontFeatures ?? []
   });
 }
 // Semantic shadow roles become effect styles (one drop-shadow layer per composed shadow).

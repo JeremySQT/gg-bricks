@@ -69,6 +69,10 @@ function declarations(file: string): string[] {
       lines.push(`  ${cssVariable(p + '.fontSize')}: ${dim(ty.fontSize)};`);
       lines.push(`  ${cssVariable(p + '.lineHeight')}: calc(${num(ty.lineHeight)} * ${dim(ty.fontSize)});`);
       if (ty.letterSpacing) lines.push(`  ${cssVariable(p + '.letterSpacing')}: ${dim(ty.letterSpacing)};`);
+      if (ty.fontFeatures?.length)
+        lines.push(
+          `  ${cssVariable(p + '.fontFeatureSettings')}: ${ty.fontFeatures.map((f) => JSON.stringify(f)).join(', ')};`
+        );
     }
   }
   return lines;

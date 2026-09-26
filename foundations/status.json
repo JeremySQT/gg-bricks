@@ -1,6 +1,6 @@
 {
   "phase": "review",
-  "note": "Foundations proposed on 2026-09-26, revised after the first review round (color.palette naming, IBM Plex Mono, Inter for every brand, warning comparison). Waiting for the foundations review gate. Values are proposals until approvals.primitives and approvals.semantic are recorded.",
+  "note": "Foundations proposed on 2026-09-26, revised after two review rounds. Remaining before approval: the caption, overline and numeral typography roles added in round 2 are to be confirmed. Values are proposals until approvals.primitives and approvals.semantic are recorded.",
   "artifacts": {
     "config": "foundations/config.json",
     "paletteConfig": "foundations/palette.config.json",
@@ -20,12 +20,12 @@
     {
       "name": "generate",
       "command": "npm run generate",
-      "result": "18 contexts, 601 tokens per context, 1085 Figma variables, 18 text styles, 3 effect styles"
+      "result": "18 contexts, 608 tokens per context, 1106 Figma variables, 25 text styles, 3 effect styles"
     },
     {
       "name": "foundations coverage and contrast",
       "command": "node tooling/check-foundations.ts",
-      "result": "354 roles present with the declared type and axis in 18 contexts; 98 contrast pairs × 18 contexts = 1764 checks, 0 failures",
+      "result": "361 roles present with the declared type and axis in 18 contexts; 98 contrast pairs × 18 contexts = 1764 checks, 0 failures",
       "evidence": "reports/tokens/contrast.json"
     },
     {
@@ -41,8 +41,7 @@
   ],
   "figmaNote": "No Figma MCP server was connected in the session that proposed the foundations; the three collections, text styles and effect styles are described by packages/tokens/figma-manifest.json and remain to be created and verified with the ggb-figma skill. Components do not wait for it.",
   "openDecisions": [
-    "Warning strong surface: A amber 600 + white (proposed, consistent with the other statuses) versus B amber 400 + neutral 950; both rendered in the review page section Choices to compare.",
-    "Icon method (set chosen: Phosphor Icons, MIT). Proposal: ggbrick never bundles an icon set; slot content receives icons from the application (any set, currentColor); the few intrinsic glyphs a component needs (chevron, check, close…) are inline SVG paths copied into the component folder, attributed to Phosphor, and overridable through a snippet prop. Figma uses the Phosphor community library through instance-swap properties. To confirm at this gate, then recorded in decisions.md.",
+    "Typography roles added in review round 2, to confirm: caption.{md,sm} (12/11 px, 400) for helper text, legends and timestamps; overline.{md,sm} (12/11 px, 600, wide tracking; uppercase is applied by the component, DTCG has no text transform) for eyebrows and group headers; numeral.{lg,md,sm} (24/16/14 px, tabular figures through fontFeatures tnum) for counters, tables and data fields.",
     "color.surface.muted in dark (neutral 700) is tested with primary and secondary content only."
   ],
   "choices": [
@@ -51,16 +50,20 @@
     "Semantic palette color.palette.{neutral,accent,info,success,warning,danger}.<step> in common.tokens.json: the six ramps the roles reference, each an alias to a primitive ramp, so a brand changes its accent with 11 aliases (the theme-builder overlay format). Renamed from color.ramp after review round 1.",
     "Primitives are literal (radius and shadows included); semantic colors are aliases only; both enforced by tooling/check-foundations.ts.",
     "Line-height primitives are named (none, tight, snug, normal, relaxed, loose) because dotted numbers cannot be path segments; tracking adds tighter (-1px) for display sizes and is the only negative dimension family.",
-    "Typography composites carry letterSpacing; CSS exposes --ggb-typography-<role>-letterSpacing; the Figma manifest carries it.",
     "Labels use weight 500; headings 600; display 700.",
     "Dark mode expresses elevation with lighter neutrals (canvas 950, default 900, subtle 800, muted 700, overlay 800); neutral solid actions invert (light surface, dark content).",
     "Field borders use neutral 500 so that they reach 3:1 on the default surface.",
-    "Brands: brick (orange accent, radii xs/sm/md) and orchid (violet accent, radii xl/2xl/2xl)."
+    "Brands: brick (orange accent, radii xs/sm/md) and orchid (violet accent, radii xl/2xl/2xl).",
+    "Typography composites carry letterSpacing and optional fontFeatures (OpenType tags); CSS exposes --ggb-typography-<role>-letterSpacing and -fontFeatureSettings; the Figma manifest carries both."
   ],
   "nextAction": "Foundations review gate: inspect dist/previews/foundations.html, reports/tokens/contrast.json and the role table; on approval record approvals.primitives and approvals.semantic with digests (npm run digest -- foundations/tokens/base/...), set phase to approved, update the roadmap, then open the pull request.",
   "decided": [
-    "Brand names brick and orchid (review round 1).",
-    "Fonts: Inter for every brand (orchid no longer overrides the sans stack); IBM Plex Mono for code roles (review round 1).",
-    "Shadow roles stay appearance independent; dark elevation is carried by lighter surfaces (review round 1, explained)."
+    "Brand names brick and orchid (round 1).",
+    "Fonts: Inter for every brand, IBM Plex Mono for code roles (round 1).",
+    "Shadow roles stay appearance independent; dark elevation is carried by lighter surfaces (round 1).",
+    "color.palette.* indirection kept (round 2).",
+    "Warning strong surface: amber 400 with neutral 950 content in both appearances, 7.68:1 (round 2).",
+    "Icon method: Phosphor Icons as reference set, no bundled set, intrinsic glyphs inline per component and overridable; recorded in decisions.md (round 2).",
+    "Purge of the reference-kit leftovers: seed brands, stale generated outputs, handoff note and Figma script bodies removed; adapter README keeps the known mechanics (round 2)."
   ]
 }

@@ -3826,6 +3826,99 @@
       }
     }
   ],
+  "typography.caption.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.400}",
+        "fontSize": "{primitive.font.size.12}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.caption.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.400}",
+        "fontSize": "{primitive.font.size.11}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.normal}"
+      }
+    }
+  ],
+  "typography.overline.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.600}",
+        "fontSize": "{primitive.font.size.12}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.wide}"
+      }
+    }
+  ],
+  "typography.overline.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.600}",
+        "fontSize": "{primitive.font.size.11}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.wide}"
+      }
+    }
+  ],
+  "typography.numeral.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.600}",
+        "fontSize": "{primitive.font.size.24}",
+        "lineHeight": "{primitive.font.lineHeight.tight}",
+        "letterSpacing": "{primitive.font.tracking.tight}",
+        "fontFeatures": [
+          "tnum"
+        ]
+      }
+    }
+  ],
+  "typography.numeral.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.500}",
+        "fontSize": "{primitive.font.size.16}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.normal}",
+        "fontFeatures": [
+          "tnum"
+        ]
+      }
+    }
+  ],
+  "typography.numeral.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": {
+        "fontFamily": "{primitive.font.family.sans}",
+        "fontWeight": "{primitive.font.weight.500}",
+        "fontSize": "{primitive.font.size.14}",
+        "lineHeight": "{primitive.font.lineHeight.normal}",
+        "letterSpacing": "{primitive.font.tracking.normal}",
+        "fontFeatures": [
+          "tnum"
+        ]
+      }
+    }
+  ],
   "typography.code.md": [
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
@@ -5143,7 +5236,7 @@
   "color.status.warning.surfaceStrong": [
     {
       "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
-      "value": "{color.palette.warning.600}"
+      "value": "{color.palette.warning.400}"
     }
   ],
   "color.status.warning.content": [
@@ -5155,7 +5248,7 @@
   "color.status.warning.contentStrong": [
     {
       "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
-      "value": "{color.palette.neutral.0}"
+      "value": "{color.palette.neutral.950}"
     }
   ],
   "color.status.warning.border": [

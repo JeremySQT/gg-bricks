@@ -22,6 +22,9 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 - Precedence: base primitives, brand primitives, base common, base appearance, base density, base components, brand common, brand appearance, brand density, brand components. Aliases resolve after merging.
 - Spacing families: layout, content and control. Visible dimensions are distinct from interaction targets. Minimum interaction target 44 × 44 CSS px.
 - Font and icon sizes do not shrink with density; spacing and control heights do.
+- Color primitives are generated in OKLCH from `foundations/palette.config.json` (one lightness per step index across hues). The semantic layer starts with `color.palette.{neutral,accent,info,success,warning,danger}.<step>`, six ramps aliasing primitive ramps; every color role references a palette ramp, so a brand changes an accent with eleven aliases. This is the brand overlay format the theme builder produces (foundations review, 2026-09-26).
+- Fonts: Inter for interface text in every brand, IBM Plex Mono for code roles (foundations review, 2026-09-26).
+- Icons: Phosphor Icons (MIT) is the reference set. ggbrick bundles no icon set: slot content receives icons from the application in `currentColor`; the few intrinsic glyphs a component needs (chevron, check, close…) are inline SVG paths copied into the component folder, attributed to Phosphor, and overridable through a snippet prop. Figma masters use the Phosphor community library through instance-swap properties (foundations review, 2026-09-26).
 
 ## Contracts and implementation
 
@@ -50,12 +53,11 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 - Lifecycle: scope, contract, implementation, implementation review, Figma parity, documentation, delivery. Gates: foundations review (once per foundations change), then per component contract, interactive implementation (which is the design review) and Figma parity; delivery approval is separate. Implementation precedes Figma because tokens fix the visual language and the reviewer judges the real rendering; Figma then reproduces validated, measurable values (decided 2026-09-25).
 - Waves group components so gates are batched (see roadmap). Modify reopens only affected gates. Audit is read-only. Figma reconciliation and foundation changes belong to Modify.
 - Done means usable in Figma and code with accessible, version-aligned human and agent documentation and recorded evidence.
-- Figma is operated through the Figma MCP server. Reconstruction scripts are Plugin API bodies kept in `authoring/adapters/figma`; IDs are read from the destination file, never guessed. Skills in `.claude/skills` are the executable procedures; `authoring/workflows/*.md` hold the rationale and checks.
+- Figma is operated through the Figma MCP server. Reconstruction scripts are Plugin API bodies written per task (reusable ones kept in `authoring/adapters/figma`); IDs are read from the destination file, never guessed. Skills in `.claude/skills` are the executable procedures; `authoring/workflows/*.md` hold the rationale and checks.
 - The pre-ggbrick reference kit (tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history)) is a model of artifact structure only. ggbrick starts from zero, Button included, so that everything is unified.
 
 ## Open decisions
 
 1. License for code and Figma library (first Deliver).
-2. Icon set and its license (foundations task).
-3. Figma library file organization and publishing mechanism (first Figma task).
-4. Exact hosting for ggbrick.design and docs.ggbrick.design (when `apps/docs` starts).
+2. Figma library file organization and publishing mechanism (first Figma task).
+3. Exact hosting for ggbrick.design and docs.ggbrick.design (when `apps/docs` starts).

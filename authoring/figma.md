@@ -20,7 +20,7 @@ Figma is the validated visual representation of ggbrick. It is operated through 
 
 ## Reference scripts
 
-`authoring/adapters/figma/` contains Plugin API script bodies inherited from the reference kit (variable sync preserving IDs, component construction, slot color inheritance, resolution verification). They encode the kit's Button IDs and are **models to adapt**, not scripts to run as is. Known mechanics worth reusing: traverse hidden instance children when binding icon colors; assign resolved fallback paints when re-binding cloned paints; a swapped slot instance may restore stale per-component paints, which is solved by an inherited foreground alias set by the parent surface's context.
+`authoring/adapters/figma/README.md` lists the mechanics learned with the reference kit (ID-preserving variable sync, native resolution verification, hidden instance children, fallback paints, slot foreground inheritance). The kit's own script bodies stay readable at tag `reference-kit-2026-09`; scripts for ggbrick are written per task and, when reusable, kept in that folder.
 
 ## Publication
 
