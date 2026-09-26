@@ -10,7 +10,7 @@ Sources of truth: DTCG tokens in `foundations/tokens` and one compact contract p
 
 ## Status
 
-The repository structure, tooling, procedures and skills are in place. Foundations (primitives and semantic tokens) are the next task, then components are built wave by wave. See [authoring/roadmap.md](authoring/roadmap.md).
+The repository structure, tooling, procedures and skills are in place. The foundations (primitives, semantic tokens, two demonstration brands) are proposed and waiting for their review gate; then components are built wave by wave. See [authoring/roadmap.md](authoring/roadmap.md).
 
 ## Layout
 
@@ -34,8 +34,8 @@ Full description: [authoring/layout.md](authoring/layout.md).
 
 ```sh
 npm ci
-npm run generate        # tokens + Svelte bindings + consumer copies
-npm run validate        # every contract: schema, consistency, token coverage in all contexts
+npm run generate        # palette + tokens + Svelte bindings + consumer copies
+npm run validate        # every contract: schema, consistency, token coverage; foundations inventory and contrast
 npm test                # tooling unit tests
 npm run check           # svelte-check
 npm run test:ssr        # server rendering per component

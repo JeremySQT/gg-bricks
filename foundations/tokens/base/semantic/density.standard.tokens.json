@@ -56,8 +56,56 @@
         },
         "lg": {
           "$type": "dimension",
-          "$value": "{primitive.dimension.v8}"
+          "$value": "{primitive.dimension.v10}"
         }
+      }
+    },
+    "content": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v4}"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v8}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v12}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v16}"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v24}"
+      }
+    },
+    "layout": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v8}"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v16}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v24}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v32}"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v48}"
+      },
+      "2xl": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v64}"
       }
     }
   }

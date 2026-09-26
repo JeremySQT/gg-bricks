@@ -1,0 +1,2267 @@
+{
+  "$description": "Semantic inventory checked by tooling/check-foundations.ts in every brand × appearance × density context: every role must exist with its type on its axis (the file layer that defines it), and every contrast pair must reach its WCAG minimum (4.5 text, 3 borders, icons and focus). Translucent surfaces are composited on color.surface.default before measuring. Pairs are explicit: a role is tested on the backdrops it is designed for. color.surface.muted is a de-emphasized backdrop and is tested with primary and secondary content only; color.status.*.border is decorative (the tinted surface identifies the status) and is not tested.",
+  "roles": [
+    {
+      "path": "color.ramp.neutral.0",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.neutral.50",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.neutral.100",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.neutral.200",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.neutral.300",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.neutral.400",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.neutral.500",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.neutral.600",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.neutral.700",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.neutral.800",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.neutral.900",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.neutral.950",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.neutral.1000",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.accent.50",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.accent.100",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.accent.200",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.accent.300",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.accent.400",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.accent.500",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.accent.600",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.accent.700",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.accent.800",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.accent.900",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.accent.950",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.info.50",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.info.100",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.info.200",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.info.300",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.info.400",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.info.500",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.info.600",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.info.700",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.info.800",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.info.900",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.info.950",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.success.50",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.success.100",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.success.200",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.success.300",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.success.400",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.success.500",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.success.600",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.success.700",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.success.800",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.success.900",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.success.950",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.warning.50",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.warning.100",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.warning.200",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.warning.300",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.warning.400",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.warning.500",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.warning.600",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.warning.700",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.warning.800",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.warning.900",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.warning.950",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.danger.50",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.danger.100",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.danger.200",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.danger.300",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.danger.400",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.danger.500",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.danger.600",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.danger.700",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.danger.800",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.danger.900",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "color.ramp.danger.950",
+      "type": "color",
+      "axis": "common"
+    },
+    {
+      "path": "radius.control",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "radius.container",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "radius.overlay",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "radius.full",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "border.width.default",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "border.width.strong",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "focus.width",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "focus.offset",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.target.min",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.icon.xs",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.icon.sm",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.icon.md",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.icon.lg",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.icon.xl",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.avatar.xs",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.avatar.sm",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.avatar.md",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.avatar.lg",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.avatar.xl",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "typography.display.xl",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.display.lg",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.display.md",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.display.sm",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.display.xs",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.heading.xl",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.heading.lg",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.heading.md",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.heading.sm",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.heading.xs",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.body.lg",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.body.md",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.body.sm",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.label.lg",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.label.md",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.label.sm",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.code.md",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.code.sm",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "shadow.raised",
+      "type": "shadow",
+      "axis": "common"
+    },
+    {
+      "path": "shadow.overlay",
+      "type": "shadow",
+      "axis": "common"
+    },
+    {
+      "path": "shadow.modal",
+      "type": "shadow",
+      "axis": "common"
+    },
+    {
+      "path": "motion.duration.fast",
+      "type": "duration",
+      "axis": "common"
+    },
+    {
+      "path": "motion.duration.base",
+      "type": "duration",
+      "axis": "common"
+    },
+    {
+      "path": "motion.duration.slow",
+      "type": "duration",
+      "axis": "common"
+    },
+    {
+      "path": "motion.easing.standard",
+      "type": "cubicBezier",
+      "axis": "common"
+    },
+    {
+      "path": "motion.easing.emphasized",
+      "type": "cubicBezier",
+      "axis": "common"
+    },
+    {
+      "path": "motion.easing.enter",
+      "type": "cubicBezier",
+      "axis": "common"
+    },
+    {
+      "path": "motion.easing.exit",
+      "type": "cubicBezier",
+      "axis": "common"
+    },
+    {
+      "path": "layer.base",
+      "type": "number",
+      "axis": "common"
+    },
+    {
+      "path": "layer.raised",
+      "type": "number",
+      "axis": "common"
+    },
+    {
+      "path": "layer.dropdown",
+      "type": "number",
+      "axis": "common"
+    },
+    {
+      "path": "layer.sticky",
+      "type": "number",
+      "axis": "common"
+    },
+    {
+      "path": "layer.overlay",
+      "type": "number",
+      "axis": "common"
+    },
+    {
+      "path": "layer.modal",
+      "type": "number",
+      "axis": "common"
+    },
+    {
+      "path": "layer.toast",
+      "type": "number",
+      "axis": "common"
+    },
+    {
+      "path": "layer.tooltip",
+      "type": "number",
+      "axis": "common"
+    },
+    {
+      "path": "opacity.disabled",
+      "type": "number",
+      "axis": "common"
+    },
+    {
+      "path": "opacity.scrim",
+      "type": "number",
+      "axis": "common"
+    },
+    {
+      "path": "color.surface.canvas",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.surface.default",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.surface.subtle",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.surface.muted",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.surface.raised",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.surface.overlay",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.surface.inverse",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.surface.scrim",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.content.primary",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.content.secondary",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.content.tertiary",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.content.disabled",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.content.inverse",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.content.link",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.content.onAccent",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.border.default",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.border.subtle",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.border.strong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.border.disabled",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.border.focus",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.solid.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.outline.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.accent.ghost.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.solid.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.outline.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.neutral.ghost.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.solid.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.outline.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.danger.ghost.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.default.placeholder",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.hover.placeholder",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.focus.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.focus.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.focus.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.focus.placeholder",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.readonly.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.readonly.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.readonly.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.readonly.placeholder",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.disabled.placeholder",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.invalid.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.invalid.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.invalid.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.field.invalid.placeholder",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.info.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.info.surfaceStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.info.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.info.contentStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.info.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.info.icon",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.success.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.success.surfaceStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.success.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.success.contentStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.success.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.success.icon",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.warning.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.warning.surfaceStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.warning.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.warning.contentStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.warning.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.warning.icon",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.danger.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.danger.surfaceStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.danger.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.danger.contentStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.danger.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.danger.icon",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.selection.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.selection.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.focus.ring",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "size.control.sm",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "size.control.md",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "size.control.lg",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.control.padding-inline.sm",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.control.padding-inline.md",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.control.padding-inline.lg",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.control.padding-block.sm",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.control.padding-block.md",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.control.padding-block.lg",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.control.gap.sm",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.control.gap.md",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.control.gap.lg",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.content.xs",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.content.sm",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.content.md",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.content.lg",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.content.xl",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.layout.xs",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.layout.sm",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.layout.md",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.layout.lg",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.layout.xl",
+      "type": "dimension",
+      "axis": "density"
+    },
+    {
+      "path": "space.layout.2xl",
+      "type": "dimension",
+      "axis": "density"
+    }
+  ],
+  "contrast": [
+    {
+      "content": "color.content.primary",
+      "surface": "color.surface.canvas",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.primary",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.primary",
+      "surface": "color.surface.subtle",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.primary",
+      "surface": "color.surface.raised",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.primary",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.secondary",
+      "surface": "color.surface.canvas",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.secondary",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.secondary",
+      "surface": "color.surface.subtle",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.secondary",
+      "surface": "color.surface.raised",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.secondary",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.tertiary",
+      "surface": "color.surface.canvas",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.tertiary",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.tertiary",
+      "surface": "color.surface.subtle",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.tertiary",
+      "surface": "color.surface.raised",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.tertiary",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.primary",
+      "surface": "color.surface.muted",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.secondary",
+      "surface": "color.surface.muted",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.link",
+      "surface": "color.surface.canvas",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.link",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.link",
+      "surface": "color.surface.subtle",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.inverse",
+      "surface": "color.surface.inverse",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.onAccent",
+      "surface": "color.action.accent.solid.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.onAccent",
+      "surface": "color.action.accent.solid.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.onAccent",
+      "surface": "color.action.accent.solid.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.accent.solid.default.content",
+      "surface": "color.action.accent.solid.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.accent.solid.hover.content",
+      "surface": "color.action.accent.solid.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.accent.solid.pressed.content",
+      "surface": "color.action.accent.solid.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.accent.outline.default.content",
+      "surface": "color.action.accent.outline.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.accent.outline.default.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.accent.outline.hover.content",
+      "surface": "color.action.accent.outline.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.accent.outline.hover.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.accent.outline.pressed.content",
+      "surface": "color.action.accent.outline.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.accent.outline.pressed.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.accent.ghost.default.content",
+      "surface": "color.action.accent.ghost.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.accent.ghost.hover.content",
+      "surface": "color.action.accent.ghost.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.accent.ghost.pressed.content",
+      "surface": "color.action.accent.ghost.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.neutral.solid.default.content",
+      "surface": "color.action.neutral.solid.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.neutral.solid.hover.content",
+      "surface": "color.action.neutral.solid.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.neutral.solid.pressed.content",
+      "surface": "color.action.neutral.solid.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.neutral.outline.default.content",
+      "surface": "color.action.neutral.outline.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.neutral.outline.default.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.neutral.outline.hover.content",
+      "surface": "color.action.neutral.outline.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.neutral.outline.hover.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.neutral.outline.pressed.content",
+      "surface": "color.action.neutral.outline.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.neutral.outline.pressed.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.neutral.ghost.default.content",
+      "surface": "color.action.neutral.ghost.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.neutral.ghost.hover.content",
+      "surface": "color.action.neutral.ghost.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.neutral.ghost.pressed.content",
+      "surface": "color.action.neutral.ghost.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.danger.solid.default.content",
+      "surface": "color.action.danger.solid.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.danger.solid.hover.content",
+      "surface": "color.action.danger.solid.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.danger.solid.pressed.content",
+      "surface": "color.action.danger.solid.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.danger.outline.default.content",
+      "surface": "color.action.danger.outline.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.danger.outline.default.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.danger.outline.hover.content",
+      "surface": "color.action.danger.outline.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.danger.outline.hover.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.danger.outline.pressed.content",
+      "surface": "color.action.danger.outline.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.danger.outline.pressed.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.danger.ghost.default.content",
+      "surface": "color.action.danger.ghost.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.danger.ghost.hover.content",
+      "surface": "color.action.danger.ghost.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.danger.ghost.pressed.content",
+      "surface": "color.action.danger.ghost.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.field.default.content",
+      "surface": "color.field.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.field.default.placeholder",
+      "surface": "color.field.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.field.default.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.field.hover.content",
+      "surface": "color.field.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.field.hover.placeholder",
+      "surface": "color.field.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.field.hover.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.field.focus.content",
+      "surface": "color.field.focus.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.field.focus.placeholder",
+      "surface": "color.field.focus.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.field.focus.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.field.readonly.content",
+      "surface": "color.field.readonly.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.field.readonly.placeholder",
+      "surface": "color.field.readonly.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.field.invalid.content",
+      "surface": "color.field.invalid.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.field.invalid.placeholder",
+      "surface": "color.field.invalid.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.field.invalid.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.info.content",
+      "surface": "color.status.info.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.info.contentStrong",
+      "surface": "color.status.info.surfaceStrong",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.info.icon",
+      "surface": "color.status.info.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.info.icon",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.success.content",
+      "surface": "color.status.success.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.success.contentStrong",
+      "surface": "color.status.success.surfaceStrong",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.success.icon",
+      "surface": "color.status.success.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.success.icon",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.warning.content",
+      "surface": "color.status.warning.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.warning.contentStrong",
+      "surface": "color.status.warning.surfaceStrong",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.warning.icon",
+      "surface": "color.status.warning.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.warning.icon",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.danger.content",
+      "surface": "color.status.danger.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.danger.contentStrong",
+      "surface": "color.status.danger.surfaceStrong",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.danger.icon",
+      "surface": "color.status.danger.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.danger.icon",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.selection.content",
+      "surface": "color.selection.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.focus.ring",
+      "surface": "color.surface.canvas",
+      "minimum": 3
+    },
+    {
+      "content": "color.focus.ring",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.focus.ring",
+      "surface": "color.surface.subtle",
+      "minimum": 3
+    },
+    {
+      "content": "color.focus.ring",
+      "surface": "color.surface.muted",
+      "minimum": 3
+    },
+    {
+      "content": "color.border.strong",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.border.strong",
+      "surface": "color.surface.subtle",
+      "minimum": 3
+    },
+    {
+      "content": "color.border.focus",
+      "surface": "color.surface.default",
+      "minimum": 3
+    }
+  ]
+}

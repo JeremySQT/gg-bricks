@@ -24,7 +24,7 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Each one says which `authoring/
 ## Rules that apply everywhere
 
 - Sources are authoritative and platform independent: tokens and contracts. Figma is the validated visual representation; Svelte is the target implementation. Change the source first, then regenerate (`npm run generate`), then reconcile outputs.
-- Never hand-edit generated files (`packages/tokens/*`, `packages/svelte/src/*/*.generated.*`, `reports/**/*.json` written by tooling). Commit them together with the source change.
+- Never hand-edit generated files (`packages/tokens/*`, `packages/svelte/src/*/*.generated.*`, `reports/**/*.json` written by tooling, `foundations/tokens/base/primitives/colors.tokens.json` written from `foundations/palette.config.json`). Commit them together with the source change.
 - Every component must be **self-contained and copyable**: `packages/svelte/src/<id>/` plus `tokens.css`, Bits UI and the internal dependencies its status declares are all a consumer needs. No other shared runtime code without a decision.
 - Naming: package scope `@ggbrick/*`, CSS classes `ggb-<id>` and `ggb-<id>__<part>`, theme attributes `data-ggb-brand`, `data-ggb-appearance`, `data-ggb-density`, custom properties `--ggb-<token-path-with-dashes>`. English identifiers, rules and maintained docs; gate summaries and questions in the user's language.
 - Human review gates are the only mandatory interruptions: foundations review; per component contract, interactive implementation (which is the design review) and Figma parity; delivery approval. Group every other consequential question and present it at the next gate. Complete routine, unblocked work autonomously and record the choices you made.

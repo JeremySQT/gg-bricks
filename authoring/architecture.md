@@ -15,13 +15,15 @@ If a visual iteration changes an intrinsic rule or option, reconcile the contrac
 
 ## Token pipeline
 
-`npm run build:tokens` (`tooling/build-tokens.ts`):
+`npm run build:palette` (`tooling/generate-palette.ts`) writes the color primitives from `foundations/palette.config.json` (OKLCH ramps, deterministic). `npm run build:tokens` (`tooling/build-tokens.ts`):
 
 1. Resolves every brand × appearance × density context (`tooling/lib/tokens.ts`): merge the ordered source files (see decisions for precedence), keep a provenance trace, resolve aliases atomically, validate types.
 2. Validates every discovered contract against every context (token presence and role type).
 3. Writes `packages/tokens/resolved/<context>.json`, `reports/tokens/traces/<context>.json` and `packages/tokens/tokens.css` (`tooling/lib/css.ts`): layered rules mirroring the sources (base layers under `[data-ggb-brand]`, `[data-ggb-appearance=…]`, `[data-ggb-density=…]`; sparse brand overrides under combined selectors), aliases emitted as `var()`, every token as `--ggb-<path-with-dashes>`, typography also exposing `.fontSize` and `.lineHeight`. A unit test resolves the cascade for every context and checks it against the resolved maps.
 4. Writes per-component evidence in `reports/components/<id>/`: token requirements, coverage, contract validation, and contrast against every `color.surface.*` backdrop for contracts exposing `surface`/`content` (`border` and `focusColor` when present; a parameter valued `disabled` is informational).
-5. Writes the Figma manifest and expectations. Axis routing is derived from the source file that defines each token (appearance.* → Appearance, density.* → Density, otherwise Brand). Technical `_resolved/*` variables are compilation detail for the Figma model, not a source layer.
+5. Writes the Figma manifest (variables, text styles with letter spacing, effect styles from the semantic shadows) and expectations. Axis routing is derived from the source file that defines each token (appearance.* → Appearance, density.* → Density, otherwise Brand). Technical `_resolved/*` variables are compilation detail for the Figma model, not a source layer.
+
+`npm run validate` also runs `tooling/check-foundations.ts`: every role of `foundations/inventory.json` must exist with its type on its axis in every context, no semantic token may be undeclared, primitives hold no aliases, semantic colors are aliases only, and the declared contrast pairs are measured into `reports/tokens/contrast.json`.
 
 ## Svelte adapter generation
 

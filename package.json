@@ -10,10 +10,11 @@
     "packages/*"
   ],
   "scripts": {
-    "generate": "npm run build:tokens && npm run build:svelte",
+    "generate": "npm run build:palette && npm run build:tokens && npm run build:svelte",
+    "build:palette": "node tooling/generate-palette.ts",
     "build:tokens": "node tooling/build-tokens.ts",
     "build:svelte": "node tooling/build-svelte.ts",
-    "validate": "node tooling/validate-contracts.ts --tokens",
+    "validate": "node tooling/validate-contracts.ts --tokens && node tooling/check-foundations.ts",
     "test": "node --test tests/*.test.ts",
     "test:ssr": "node --test tests/ssr/*.test.ts",
     "test:browser": "node tooling/test-browser.ts",
@@ -26,7 +27,7 @@
     "new:component": "node tooling/new-component.ts",
     "digest": "node tooling/digest.ts",
     "verify": "npm run generate && npm run lint && npm run validate && npm test && npm run check && npm run test:ssr && npm run build",
-    "verify:generated": "npm run generate && git diff --exit-code --stat -- packages reports/components",
+    "verify:generated": "npm run generate && npm run validate && git diff --exit-code --stat -- packages reports foundations/tokens/base/primitives/colors.tokens.json",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write ."
   },

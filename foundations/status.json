@@ -1,18 +1,64 @@
 {
-  "phase": "seed",
-  "note": "The current token files are the seed inherited from the reference kit (Button subset). The Foundations task replaces them with the generous primitive inventory and the full semantic inventory described in authoring/foundations.md.",
+  "phase": "review",
+  "note": "Foundations proposed on 2026-09-26 and waiting for the foundations review gate. Values are proposals until approvals.primitives and approvals.semantic are recorded.",
   "artifacts": {
     "config": "foundations/config.json",
+    "paletteConfig": "foundations/palette.config.json",
+    "inventory": "foundations/inventory.json",
     "tokens": "foundations/tokens",
     "generated": "packages/tokens",
-    "figma": null
+    "reviewPage": "examples/foundations",
+    "preview": "dist/previews/foundations.html (npm run build && npm run build:preview foundations)",
+    "figma": "pending"
   },
   "approvals": {
     "primitives": null,
     "semantic": null,
     "figmaVariables": null
   },
-  "checks": [],
-  "openDecisions": [],
-  "nextAction": "Run the ggb-foundations skill: propose the primitive and semantic inventories, then stop for the foundations gate."
+  "checks": [
+    {
+      "name": "generate",
+      "command": "npm run generate",
+      "result": "18 contexts, 601 tokens per context, 1085 Figma variables, 18 text styles, 3 effect styles"
+    },
+    {
+      "name": "foundations coverage and contrast",
+      "command": "node tooling/check-foundations.ts",
+      "result": "354 roles present with the declared type and axis in 18 contexts; 98 contrast pairs × 18 contexts = 1764 checks, 0 failures",
+      "evidence": "reports/tokens/contrast.json"
+    },
+    {
+      "name": "unit tests",
+      "command": "npm test",
+      "result": "19 passing (alias resolution, layered CSS parity in every context, palette determinism, ramp contrast floors)"
+    },
+    {
+      "name": "review page",
+      "command": "npm run build && npm run build:preview foundations",
+      "result": "dist/previews/foundations.html rendered in Chromium 1280 px wide, light and dark, without console errors"
+    }
+  ],
+  "figmaNote": "No Figma MCP server was connected in the session that proposed the foundations; the three collections, text styles and effect styles are described by packages/tokens/figma-manifest.json and remain to be created and verified with the ggb-figma skill. Components do not wait for it.",
+  "openDecisions": [
+    "Icon set and its license (decision register item 2).",
+    "Monospace font: the code roles use a system monospace stack (ui-monospace first); Figma text styles need a named font.",
+    "Demonstration brand names brick and orchid, and orchid's system-ui font stack (Figma needs a named font).",
+    "Warning strong surface: amber 600 with white content (consistent with the other statuses, 5.29:1) versus amber 400 with dark content (brighter yellow).",
+    "Dark-mode shadows: shadow roles are appearance independent as specified; a stronger dark variant would move them to the appearance files.",
+    "color.surface.muted in dark (neutral 700) is tested with primary and secondary content only."
+  ],
+  "choices": [
+    "Ramps generated in OKLCH from foundations/palette.config.json; step 600 reaches 4.5:1 with white on every hue, step 500 reaches 3:1 on white.",
+    "Neutral is a slate (OKLCH hue 255, chroma 0.012). Accent is blue; info blue, success green, warning amber, danger red.",
+    "Semantic indirection color.ramp.{neutral,accent,info,success,warning,danger}.<step> in common.tokens.json: appearance roles alias the ramps, so a brand changes its accent with 11 aliases (the theme-builder overlay format).",
+    "Primitives are literal (radius and shadows included); semantic colors are aliases only; both enforced by tooling/check-foundations.ts.",
+    "Line-height primitives are named (none, tight, snug, normal, relaxed, loose) because dotted numbers cannot be path segments; tracking adds tighter (-1px) for display sizes and is the only negative dimension family.",
+    "Typography composites carry letterSpacing; CSS exposes --ggb-typography-<role>-letterSpacing; the Figma manifest carries it.",
+    "Labels use weight 500; headings 600; display 700.",
+    "Dark mode expresses elevation with lighter neutrals (canvas 950, default 900, subtle 800, muted 700, overlay 800); neutral solid actions invert (light surface, dark content).",
+    "Field borders use neutral 500 so that they reach 3:1 on the default surface.",
+    "Brands: brick (orange accent, radii xs/sm/md) and orchid (violet accent, radii xl/2xl/2xl, system-ui sans stack)."
+  ],
+  "nextAction": "Foundations review gate: inspect dist/previews/foundations.html, reports/tokens/contrast.json and the role table; on approval record approvals.primitives and approvals.semantic with digests (npm run digest -- foundations/tokens/base/...), set phase to approved, update the roadmap, then open the pull request."
 }

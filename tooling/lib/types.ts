@@ -14,6 +14,7 @@ export interface Typography {
   fontWeight: number | string;
   fontSize: Dimension | string;
   lineHeight: number | string;
+  letterSpacing?: Dimension | string;
 }
 export interface Shadow {
   inset?: boolean;

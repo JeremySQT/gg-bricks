@@ -6,7 +6,7 @@ import { resolveAllContexts, config } from './lib/tokens.ts';
 import { buildLayeredCss } from './lib/css.ts';
 import { checkContract, expandCombinations, resolveTemplate } from './lib/contract.ts';
 import { listComponents } from './lib/catalog.ts';
-import type { Color, Dimension, ResolvedToken, TokenMap, Typography } from './lib/types.ts';
+import type { Color, Dimension, ResolvedToken, Shadow, TokenMap, Typography } from './lib/types.ts';
 
 type Rgb = [number, number, number];
 interface ContrastRecord {
@@ -19,6 +19,13 @@ interface ContrastRecord {
   [param: string]: string | number | boolean | null;
 }
 type FigmaValue = { r: number; g: number; b: number; a: number } | number | { alias: string };
+interface FigmaEffect {
+  type: 'DROP_SHADOW' | 'INNER_SHADOW';
+  color: { r: number; g: number; b: number; a: number };
+  offset: { x: number; y: number };
+  radius: number;
+  spread: number;
+}
 interface FigmaVariable {
   collection: string;
   name: string;
@@ -50,8 +57,16 @@ for (const ctx of contexts) {
   for (const [p, v] of Object.entries(ctx.tokens)) {
     if (v.$type === 'dimension') {
       const x = dimOf(v);
-      if (!Number.isFinite(x.value) || x.value < 0 || x.unit !== 'px') throw Error('Invalid dimension ' + p);
+      // Letter-spacing (tracking) is the one dimension family allowed to be negative.
+      const negativeAllowed = /\.tracking\./.test(p);
+      if (!Number.isFinite(x.value) || (x.value < 0 && !negativeAllowed) || x.unit !== 'px')
+        throw Error('Invalid dimension ' + p);
     }
+    if (v.$type === 'duration') {
+      const x = dimOf(v);
+      if (!Number.isFinite(x.value) || x.value < 0 || x.unit !== 'ms') throw Error('Invalid duration ' + p);
+    }
+    if (v.$type === 'number' && !Number.isFinite(v.$value as number)) throw Error('Invalid number ' + p);
     if (v.$type === 'color') {
       const x = colorOf(v);
       if (
@@ -81,6 +96,7 @@ const flatten = (tokens: TokenMap): TokenMap => {
         $type: 'dimension',
         $value: { value: (ty.lineHeight as number) * fontSize.value, unit: 'px' }
       };
+      if (ty.letterSpacing) flat[p + '.letterSpacing'] = { $type: 'dimension', $value: ty.letterSpacing as Dimension };
     }
     flat[p] = v;
   }
@@ -174,7 +190,9 @@ if (!base) throw Error('Base context missing');
 const flatByContext: Record<string, TokenMap> = Object.fromEntries(
   contexts.map((c) => [
     c.id,
-    Object.fromEntries(Object.entries(flatten(c.tokens)).filter(([, v]) => ['color', 'dimension'].includes(v.$type)))
+    Object.fromEntries(
+      Object.entries(flatten(c.tokens)).filter(([, v]) => ['color', 'dimension', 'number'].includes(v.$type))
+    )
   ])
 );
 const axisOf = (p: string): 'Appearance' | 'Density' | 'Brand' => {
@@ -184,39 +202,53 @@ const axisOf = (p: string): 'Appearance' | 'Density' | 'Brand' => {
 const scopes = (p: string): string[] =>
   p.startsWith('primitive.')
     ? []
-    : p.includes('radius')
-      ? ['CORNER_RADIUS']
-      : p.includes('padding') || p.includes('gap')
-        ? ['GAP']
-        : p.endsWith('fontSize')
-          ? ['FONT_SIZE']
-          : p.endsWith('lineHeight')
-            ? ['LINE_HEIGHT']
-            : p.endsWith('.content') || p.startsWith('color.content')
-              ? ['TEXT_FILL', 'SHAPE_FILL', 'STROKE_COLOR']
-              : p.includes('focus.ring') || p.endsWith('.border')
-                ? ['STROKE_COLOR']
-                : p.startsWith('color.')
-                  ? ['FRAME_FILL', 'SHAPE_FILL']
-                  : p.includes('width')
-                    ? ['STROKE_FLOAT']
-                    : ['WIDTH_HEIGHT'];
+    : p.startsWith('opacity.')
+      ? ['OPACITY']
+      : p.startsWith('layer.')
+        ? []
+        : p.includes('radius')
+          ? ['CORNER_RADIUS']
+          : p.includes('padding') || p.includes('gap')
+            ? ['GAP']
+            : p.endsWith('fontSize')
+              ? ['FONT_SIZE']
+              : p.endsWith('lineHeight')
+                ? ['LINE_HEIGHT']
+                : p.endsWith('.content') || p.startsWith('color.content')
+                  ? ['TEXT_FILL', 'SHAPE_FILL', 'STROKE_COLOR']
+                  : p.includes('focus.ring') || p.endsWith('.border')
+                    ? ['STROKE_COLOR']
+                    : p.startsWith('color.')
+                      ? ['FRAME_FILL', 'SHAPE_FILL']
+                      : p.includes('width')
+                        ? ['STROKE_FLOAT']
+                        : ['WIDTH_HEIGHT'];
 const convert = (t: ResolvedToken): FigmaValue => {
   if (t.$type === 'color') {
     const c = colorOf(t);
     return { r: c.components[0], g: c.components[1], b: c.components[2], a: c.alpha ?? 1 };
   }
+  if (t.$type === 'number') return t.$value as number;
   return dimOf(t).value;
 };
 const figmaName = (p: string) => p.replaceAll('.', '/');
 const manifest: {
   collections: Record<string, string[]>;
   variables: FigmaVariable[];
-  typography: { name: string; family: string; style: string; size: number; lineHeight: number }[];
+  typography: {
+    name: string;
+    family: string;
+    style: string;
+    size: number;
+    lineHeight: number;
+    letterSpacing: number;
+  }[];
+  effects: { name: string; layers: FigmaEffect[] }[];
 } = {
   collections: { Brand: cfg.brands, Appearance: cfg.appearances, Density: cfg.densities },
   variables: [],
-  typography: []
+  typography: [],
+  effects: []
 };
 for (const p of Object.keys(flatByContext[base.id])) {
   const type = flatByContext[base.id][p].$type === 'color' ? 'COLOR' : 'FLOAT';
@@ -279,7 +311,23 @@ for (const [p, v] of Object.entries(base.tokens)) {
     family: (ty.fontFamily as string[])[0],
     style: styleNames[ty.fontWeight as number] ?? String(ty.fontWeight),
     size: fontSize.value,
-    lineHeight: (ty.lineHeight as number) * fontSize.value
+    lineHeight: (ty.lineHeight as number) * fontSize.value,
+    letterSpacing: (ty.letterSpacing as Dimension | undefined)?.value ?? 0
+  });
+}
+// Semantic shadow roles become effect styles (one drop-shadow layer per composed shadow).
+for (const [p, v] of Object.entries(base.tokens)) {
+  if (v.$type !== 'shadow' || p.startsWith('primitive.')) continue;
+  const list = (Array.isArray(v.$value) ? v.$value : [v.$value]) as Shadow[];
+  manifest.effects.push({
+    name: figmaName(p),
+    layers: list.map((s) => ({
+      type: s.inset ? 'INNER_SHADOW' : 'DROP_SHADOW',
+      color: convert({ $type: 'color', $value: s.color as Color }) as { r: number; g: number; b: number; a: number },
+      offset: { x: (s.offsetX as Dimension).value, y: (s.offsetY as Dimension).value },
+      radius: (s.blur as Dimension).value,
+      spread: (s.spread as Dimension).value
+    }))
   });
 }
 write(`${paths.tokensPackage}/figma-manifest.json`, manifest);

@@ -3,11 +3,11 @@
     "control": {
       "sm": {
         "$type": "dimension",
-        "$value": "{primitive.dimension.v40}"
+        "$value": "{primitive.dimension.v36}"
       },
       "md": {
         "$type": "dimension",
-        "$value": "{primitive.dimension.v48}"
+        "$value": "{primitive.dimension.v44}"
       },
       "lg": {
         "$type": "dimension",
@@ -34,11 +34,11 @@
       "padding-block": {
         "sm": {
           "$type": "dimension",
-          "$value": "{primitive.dimension.v10}"
+          "$value": "{primitive.dimension.v8}"
         },
         "md": {
           "$type": "dimension",
-          "$value": "{primitive.dimension.v14}"
+          "$value": "{primitive.dimension.v12}"
         },
         "lg": {
           "$type": "dimension",
@@ -58,6 +58,54 @@
           "$type": "dimension",
           "$value": "{primitive.dimension.v12}"
         }
+      }
+    },
+    "content": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v6}"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v12}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v16}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v24}"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v32}"
+      }
+    },
+    "layout": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v12}"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v24}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v32}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v48}"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v64}"
+      },
+      "2xl": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v96}"
       }
     }
   }
