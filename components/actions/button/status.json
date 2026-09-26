@@ -27,7 +27,11 @@
       "Menu for a list of actions behind one trigger."
     ]
   },
-  "dependencies": ["icon", "counter", "shortcut"],
+  "dependencies": [
+    "icon",
+    "counter",
+    "shortcut"
+  ],
   "fixtures": [
     "Local inline SVG icons (Phosphor paths) in examples and tests, standing in for Icon.",
     "Local counter and shortcut fixtures in examples and tests, standing in for Counter and Shortcut."
@@ -52,7 +56,8 @@
     },
     "examples": {
       "page": "examples/button",
-      "preview": "dist/previews/button.html (npm run build && npm run build:preview button)"
+      "preview": "dist/previews/button.html (npm run build && npm run build:preview button)",
+      "artifact": "https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK (version 1, commit acd9444)"
     },
     "tests": {
       "ssr": "tests/ssr/button.test.ts",
@@ -67,7 +72,9 @@
     "contract": {
       "scope": "Button contract: props, parts, states, activate event, token roles and rules as drafted, with no token additions; open decisions 1 (no width option, layout stretches the button) and 2 (accept outline border contrast 2.06 to 2.37 on surface.muted in dark) resolved as proposed.",
       "revision": {
-        "paths": ["components/actions/button/contract.json"],
+        "paths": [
+          "components/actions/button/contract.json"
+        ],
         "sha256": {
           "components/actions/button/contract.json": "4986b264dd0bcc6549d2e577b48806303909055c5b17a989c7b7f6febae44c8c"
         }
@@ -141,7 +148,14 @@
     "The horizontal target pseudo-element uses physical left + translateX(-50%) on purpose: centering is symmetric in both writing directions."
   ],
   "contrastScope": {
-    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "backdrops": [
+      "canvas",
+      "default",
+      "subtle",
+      "muted",
+      "raised",
+      "overlay"
+    ],
     "informational": [
       {
         "role": "border",
