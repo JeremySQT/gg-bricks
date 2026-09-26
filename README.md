@@ -10,7 +10,7 @@ Sources of truth: DTCG tokens in `foundations/tokens` and one compact contract p
 
 ## Status
 
-The repository structure, tooling, procedures and skills are in place. The foundations (primitives, semantic tokens, two demonstration brands) are proposed and waiting for their review gate; then components are built wave by wave. See [authoring/roadmap.md](authoring/roadmap.md).
+The repository structure, tooling, procedures and skills are in place. The foundations (primitives, semantic tokens, two demonstration brands) are approved; Figma variables follow in a session with the Figma connector. Components are built wave by wave. See [authoring/roadmap.md](authoring/roadmap.md).
 
 ## Layout
 

@@ -1,6 +1,6 @@
 {
-  "phase": "review",
-  "note": "Foundations proposed on 2026-09-26, revised after two review rounds. Remaining before approval: the caption, overline and numeral typography roles added in round 2 are to be confirmed. Values are proposals until approvals.primitives and approvals.semantic are recorded.",
+  "phase": "approved",
+  "note": "Primitives and semantic tokens approved on 2026-09-26 after three review rounds. Figma variables pending: no Figma connector was available in the session; see figmaNote.",
   "artifacts": {
     "config": "foundations/config.json",
     "paletteConfig": "foundations/palette.config.json",
@@ -9,11 +9,69 @@
     "generated": "packages/tokens",
     "reviewPage": "examples/foundations",
     "preview": "dist/previews/foundations.html (npm run build && npm run build:preview foundations)",
-    "figma": "pending"
+    "figma": "pending: library file https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system (no connector in the approving session)"
   },
   "approvals": {
-    "primitives": null,
-    "semantic": null,
+    "primitives": {
+      "scope": "Primitive inventory: OKLCH palette parameters and generated ramps, dimensions, radii, borders, typography primitives, shadows, motion, opacity, layers (commit 7232b4e).",
+      "revision": {
+        "paths": [
+          "foundations/palette.config.json",
+          "foundations/tokens/base/primitives/borders.tokens.json",
+          "foundations/tokens/base/primitives/colors.tokens.json",
+          "foundations/tokens/base/primitives/dimensions.tokens.json",
+          "foundations/tokens/base/primitives/layers.tokens.json",
+          "foundations/tokens/base/primitives/motion.tokens.json",
+          "foundations/tokens/base/primitives/opacity.tokens.json",
+          "foundations/tokens/base/primitives/shadows.tokens.json",
+          "foundations/tokens/base/primitives/typography.tokens.json"
+        ],
+        "sha256": {
+          "foundations/palette.config.json": "286973c8ad15aacd9ea421f6c2b1a455be99a6be088626318520dd42ff230ff8",
+          "foundations/tokens/base/primitives/borders.tokens.json": "6ade44355e3fbeab94d2931b364044dce6423880f6b292d77be2d5b68afc2dc4",
+          "foundations/tokens/base/primitives/colors.tokens.json": "7d75a61419a1c8ea5786f6b516faf3b02e52cf0a8a9a925f41be884c6823a027",
+          "foundations/tokens/base/primitives/dimensions.tokens.json": "3cf30ef0e5ea0bbf63df9e0571caf8cdc742c336a46e7ac8258c2414d7893807",
+          "foundations/tokens/base/primitives/layers.tokens.json": "01f303b575528089608b86f9ff2241716b77570e51a34f7cf748f4a99ffea3ec",
+          "foundations/tokens/base/primitives/motion.tokens.json": "de6f6d25e050c9809c75fe6c9eb653b8ed0be9161fbdde3dd05ee4ac3571da35",
+          "foundations/tokens/base/primitives/opacity.tokens.json": "ead888676631ca59afe41cadd53a7852006f07400a1dde6f47f78714daa0f6fa",
+          "foundations/tokens/base/primitives/shadows.tokens.json": "cdf808e7764b1adcb9b3a2d6a4c91968e42c532492f6165e6157036cde6eed10",
+          "foundations/tokens/base/primitives/typography.tokens.json": "f0f7178da7112b31d6922095736ff7122347e576b9eae77bd7eed94424d4a166"
+        }
+      },
+      "provenance": "Foundations review in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8), three rounds on the review page dist/previews/foundations.html (artifact https://claude.ai/artifact/FXSaVj9UCJhHQr3T7M8omk, version 3). The user arbitrated every open point in chat (color.palette kept, warning B, icon method, fonts, brand names, purge) and confirmed the last addition (caption, overline, numeral roles) with 'Parfait pour les styles de textes'; approval is recorded on that basis and the user may object to the record.",
+      "note": "Values may still change through ggb-maintain Modify with a representative visual review; Figma variables are approved separately."
+    },
+    "semantic": {
+      "scope": "Semantic inventory (361 roles) across base, brick and orchid in light and dark and three densities, with the contrast pairs of foundations/inventory.json (commit 7232b4e).",
+      "revision": {
+        "paths": [
+          "foundations/config.json",
+          "foundations/inventory.json",
+          "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+          "foundations/tokens/base/semantic/appearance.light.tokens.json",
+          "foundations/tokens/base/semantic/common.tokens.json",
+          "foundations/tokens/base/semantic/density.comfortable.tokens.json",
+          "foundations/tokens/base/semantic/density.compact.tokens.json",
+          "foundations/tokens/base/semantic/density.standard.tokens.json",
+          "foundations/tokens/brick/semantic/common.tokens.json",
+          "foundations/tokens/orchid/semantic/common.tokens.json"
+        ],
+        "sha256": {
+          "foundations/config.json": "3b7d532bc0e96576ca73b8199f4c6e380a5f36432969b58a0180ff7b3a2233a4",
+          "foundations/inventory.json": "10bf5f61f870d2633c461032bd33ab5a9c647d8960eebbaba2c175237aa31e5e",
+          "foundations/tokens/base/semantic/appearance.dark.tokens.json": "548523cf1726df867458b9c54a4dccbcd7213f7580d5ff559ab8cc93b93b6081",
+          "foundations/tokens/base/semantic/appearance.light.tokens.json": "75909e6f22e53adcb7122c2581debcfc83130cffa24d4621b7dc05b24242a19e",
+          "foundations/tokens/base/semantic/common.tokens.json": "f09e08c2ab42c7dca5b09fd725512abcb746c01fe731ff9b2811b93c7e9db2b7",
+          "foundations/tokens/base/semantic/density.comfortable.tokens.json": "a233af877c44c0cc74376cbc04253fa462d00e3f85e69f455659d0e6a0d02b6a",
+          "foundations/tokens/base/semantic/density.compact.tokens.json": "e203169357c5bf587d3ce0f00dc88a128fc109d237382cd654a8a2b3fe56e032",
+          "foundations/tokens/base/semantic/density.standard.tokens.json": "391584801e920c006779762645b7ae5591558fa7e94007a5bef799baa5044f18",
+          "foundations/tokens/brick/semantic/common.tokens.json": "bb256192041f662b056152f8d6b22b58b6843629147f579e6d8eca8d3eec0911",
+          "foundations/tokens/orchid/semantic/common.tokens.json": "41a059e936d4b2b3d5863e959b52dfc103cb59eee077aa02cb47c3eab383679e"
+        }
+      },
+      "provenance": "Foundations review in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8), three rounds on the review page dist/previews/foundations.html (artifact https://claude.ai/artifact/FXSaVj9UCJhHQr3T7M8omk, version 3). The user arbitrated every open point in chat (color.palette kept, warning B, icon method, fonts, brand names, purge) and confirmed the last addition (caption, overline, numeral roles) with 'Parfait pour les styles de textes'; approval is recorded on that basis and the user may object to the record.",
+      "note": "color.surface.muted in dark is tested with primary and secondary content only. Figma variables pending (approvals.figmaVariables)."
+    },
     "figmaVariables": null
   },
   "checks": [
@@ -41,8 +99,7 @@
   ],
   "figmaNote": "No Figma MCP server was connected in the session that proposed the foundations; the three collections, text styles and effect styles are described by packages/tokens/figma-manifest.json and remain to be created and verified with the ggb-figma skill. Components do not wait for it.",
   "openDecisions": [
-    "Typography roles added in review round 2, to confirm: caption.{md,sm} (12/11 px, 400) for helper text, legends and timestamps; overline.{md,sm} (12/11 px, 600, wide tracking; uppercase is applied by the component, DTCG has no text transform) for eyebrows and group headers; numeral.{lg,md,sm} (24/16/14 px, tabular figures through fontFeatures tnum) for counters, tables and data fields.",
-    "color.surface.muted in dark (neutral 700) is tested with primary and secondary content only."
+    "color.surface.muted in dark (neutral 700) is tested with primary and secondary content only; revisit if a component needs tertiary text on it."
   ],
   "choices": [
     "Ramps generated in OKLCH from foundations/palette.config.json; step 600 reaches 4.5:1 with white on every hue, step 500 reaches 3:1 on white.",
@@ -56,7 +113,7 @@
     "Brands: brick (orange accent, radii xs/sm/md) and orchid (violet accent, radii xl/2xl/2xl).",
     "Typography composites carry letterSpacing and optional fontFeatures (OpenType tags); CSS exposes --ggb-typography-<role>-letterSpacing and -fontFeatureSettings; the Figma manifest carries both."
   ],
-  "nextAction": "Foundations review gate: inspect dist/previews/foundations.html, reports/tokens/contrast.json and the role table; on approval record approvals.primitives and approvals.semantic with digests (npm run digest -- foundations/tokens/base/...), set phase to approved, update the roadmap, then open the pull request.",
+  "nextAction": "Open the pull request foundations/initial -> main with the repository template. Then, in a session with the Figma connector, run ggb-figma on the library file https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC (collections Brand/Appearance/Density, text and effect styles from packages/tokens/figma-manifest.json, verification against figma-expectations.json) and record approvals.figmaVariables. Components may start.",
   "decided": [
     "Brand names brick and orchid (round 1).",
     "Fonts: Inter for every brand, IBM Plex Mono for code roles (round 1).",
