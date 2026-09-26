@@ -3,31 +3,31 @@
     "surface": {
       "canvas": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.950}"
+        "$value": "{color.palette.neutral.950}"
       },
       "default": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.900}"
+        "$value": "{color.palette.neutral.900}"
       },
       "subtle": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.800}"
+        "$value": "{color.palette.neutral.800}"
       },
       "muted": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.700}"
+        "$value": "{color.palette.neutral.700}"
       },
       "raised": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.900}"
+        "$value": "{color.palette.neutral.900}"
       },
       "overlay": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.800}"
+        "$value": "{color.palette.neutral.800}"
       },
       "inverse": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.50}"
+        "$value": "{color.palette.neutral.50}"
       },
       "scrim": {
         "$type": "color",
@@ -37,49 +37,49 @@
     "content": {
       "primary": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.100}"
+        "$value": "{color.palette.neutral.100}"
       },
       "secondary": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.300}"
+        "$value": "{color.palette.neutral.300}"
       },
       "tertiary": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.400}"
+        "$value": "{color.palette.neutral.400}"
       },
       "disabled": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.600}"
+        "$value": "{color.palette.neutral.600}"
       },
       "inverse": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.900}"
+        "$value": "{color.palette.neutral.900}"
       },
       "link": {
         "$type": "color",
-        "$value": "{color.ramp.accent.400}"
+        "$value": "{color.palette.accent.400}"
       },
       "onAccent": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.0}"
+        "$value": "{color.palette.neutral.0}"
       }
     },
     "border": {
       "default": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.700}"
+        "$value": "{color.palette.neutral.700}"
       },
       "subtle": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.800}"
+        "$value": "{color.palette.neutral.800}"
       },
       "strong": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.500}"
+        "$value": "{color.palette.neutral.500}"
       },
       "disabled": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.700}"
+        "$value": "{color.palette.neutral.700}"
       },
       "focus": {
         "$type": "color",
@@ -89,17 +89,17 @@
     "focus": {
       "ring": {
         "$type": "color",
-        "$value": "{color.ramp.accent.400}"
+        "$value": "{color.palette.accent.400}"
       }
     },
     "selection": {
       "surface": {
         "$type": "color",
-        "$value": "{color.ramp.accent.900}"
+        "$value": "{color.palette.accent.900}"
       },
       "content": {
         "$type": "color",
-        "$value": "{color.ramp.neutral.100}"
+        "$value": "{color.palette.neutral.100}"
       }
     },
     "action": {
@@ -108,43 +108,43 @@
           "default": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.accent.600}"
+              "$value": "{color.palette.accent.600}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.0}"
+              "$value": "{color.palette.neutral.0}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.accent.600}"
+              "$value": "{color.palette.accent.600}"
             }
           },
           "hover": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.accent.700}"
+              "$value": "{color.palette.accent.700}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.0}"
+              "$value": "{color.palette.neutral.0}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.accent.700}"
+              "$value": "{color.palette.accent.700}"
             }
           },
           "pressed": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.accent.800}"
+              "$value": "{color.palette.accent.800}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.0}"
+              "$value": "{color.palette.neutral.0}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.accent.800}"
+              "$value": "{color.palette.accent.800}"
             }
           },
           "loading": {
@@ -164,15 +164,15 @@
           "disabled": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.800}"
+              "$value": "{color.palette.neutral.800}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.600}"
+              "$value": "{color.palette.neutral.600}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.800}"
+              "$value": "{color.palette.neutral.800}"
             }
           }
         },
@@ -184,39 +184,39 @@
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.accent.300}"
+              "$value": "{color.palette.accent.300}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.accent.500}"
+              "$value": "{color.palette.accent.500}"
             }
           },
           "hover": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.accent.950}"
+              "$value": "{color.palette.accent.950}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.accent.300}"
+              "$value": "{color.palette.accent.300}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.accent.400}"
+              "$value": "{color.palette.accent.400}"
             }
           },
           "pressed": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.accent.900}"
+              "$value": "{color.palette.accent.900}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.accent.200}"
+              "$value": "{color.palette.accent.200}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.accent.400}"
+              "$value": "{color.palette.accent.400}"
             }
           },
           "loading": {
@@ -240,11 +240,11 @@
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.600}"
+              "$value": "{color.palette.neutral.600}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.700}"
+              "$value": "{color.palette.neutral.700}"
             }
           }
         },
@@ -256,7 +256,7 @@
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.accent.300}"
+              "$value": "{color.palette.accent.300}"
             },
             "border": {
               "$type": "color",
@@ -266,11 +266,11 @@
           "hover": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.accent.950}"
+              "$value": "{color.palette.accent.950}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.accent.300}"
+              "$value": "{color.palette.accent.300}"
             },
             "border": {
               "$type": "color",
@@ -280,11 +280,11 @@
           "pressed": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.accent.900}"
+              "$value": "{color.palette.accent.900}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.accent.200}"
+              "$value": "{color.palette.accent.200}"
             },
             "border": {
               "$type": "color",
@@ -312,7 +312,7 @@
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.600}"
+              "$value": "{color.palette.neutral.600}"
             },
             "border": {
               "$type": "color",
@@ -326,43 +326,43 @@
           "default": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.danger.600}"
+              "$value": "{color.palette.danger.600}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.0}"
+              "$value": "{color.palette.neutral.0}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.danger.600}"
+              "$value": "{color.palette.danger.600}"
             }
           },
           "hover": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.danger.700}"
+              "$value": "{color.palette.danger.700}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.0}"
+              "$value": "{color.palette.neutral.0}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.danger.700}"
+              "$value": "{color.palette.danger.700}"
             }
           },
           "pressed": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.danger.800}"
+              "$value": "{color.palette.danger.800}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.0}"
+              "$value": "{color.palette.neutral.0}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.danger.800}"
+              "$value": "{color.palette.danger.800}"
             }
           },
           "loading": {
@@ -382,15 +382,15 @@
           "disabled": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.800}"
+              "$value": "{color.palette.neutral.800}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.600}"
+              "$value": "{color.palette.neutral.600}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.800}"
+              "$value": "{color.palette.neutral.800}"
             }
           }
         },
@@ -402,39 +402,39 @@
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.danger.300}"
+              "$value": "{color.palette.danger.300}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.danger.500}"
+              "$value": "{color.palette.danger.500}"
             }
           },
           "hover": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.danger.950}"
+              "$value": "{color.palette.danger.950}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.danger.300}"
+              "$value": "{color.palette.danger.300}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.danger.400}"
+              "$value": "{color.palette.danger.400}"
             }
           },
           "pressed": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.danger.900}"
+              "$value": "{color.palette.danger.900}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.danger.200}"
+              "$value": "{color.palette.danger.200}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.danger.400}"
+              "$value": "{color.palette.danger.400}"
             }
           },
           "loading": {
@@ -458,11 +458,11 @@
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.600}"
+              "$value": "{color.palette.neutral.600}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.700}"
+              "$value": "{color.palette.neutral.700}"
             }
           }
         },
@@ -474,7 +474,7 @@
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.danger.300}"
+              "$value": "{color.palette.danger.300}"
             },
             "border": {
               "$type": "color",
@@ -484,11 +484,11 @@
           "hover": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.danger.950}"
+              "$value": "{color.palette.danger.950}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.danger.300}"
+              "$value": "{color.palette.danger.300}"
             },
             "border": {
               "$type": "color",
@@ -498,11 +498,11 @@
           "pressed": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.danger.900}"
+              "$value": "{color.palette.danger.900}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.danger.200}"
+              "$value": "{color.palette.danger.200}"
             },
             "border": {
               "$type": "color",
@@ -530,7 +530,7 @@
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.600}"
+              "$value": "{color.palette.neutral.600}"
             },
             "border": {
               "$type": "color",
@@ -544,43 +544,43 @@
           "default": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.200}"
+              "$value": "{color.palette.neutral.200}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.900}"
+              "$value": "{color.palette.neutral.900}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.200}"
+              "$value": "{color.palette.neutral.200}"
             }
           },
           "hover": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.300}"
+              "$value": "{color.palette.neutral.300}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.900}"
+              "$value": "{color.palette.neutral.900}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.300}"
+              "$value": "{color.palette.neutral.300}"
             }
           },
           "pressed": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.400}"
+              "$value": "{color.palette.neutral.400}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.900}"
+              "$value": "{color.palette.neutral.900}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.400}"
+              "$value": "{color.palette.neutral.400}"
             }
           },
           "loading": {
@@ -600,15 +600,15 @@
           "disabled": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.800}"
+              "$value": "{color.palette.neutral.800}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.600}"
+              "$value": "{color.palette.neutral.600}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.800}"
+              "$value": "{color.palette.neutral.800}"
             }
           }
         },
@@ -620,39 +620,39 @@
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.200}"
+              "$value": "{color.palette.neutral.200}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.500}"
+              "$value": "{color.palette.neutral.500}"
             }
           },
           "hover": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.800}"
+              "$value": "{color.palette.neutral.800}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.200}"
+              "$value": "{color.palette.neutral.200}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.400}"
+              "$value": "{color.palette.neutral.400}"
             }
           },
           "pressed": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.700}"
+              "$value": "{color.palette.neutral.700}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.100}"
+              "$value": "{color.palette.neutral.100}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.400}"
+              "$value": "{color.palette.neutral.400}"
             }
           },
           "loading": {
@@ -676,11 +676,11 @@
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.600}"
+              "$value": "{color.palette.neutral.600}"
             },
             "border": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.700}"
+              "$value": "{color.palette.neutral.700}"
             }
           }
         },
@@ -692,7 +692,7 @@
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.200}"
+              "$value": "{color.palette.neutral.200}"
             },
             "border": {
               "$type": "color",
@@ -702,11 +702,11 @@
           "hover": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.800}"
+              "$value": "{color.palette.neutral.800}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.200}"
+              "$value": "{color.palette.neutral.200}"
             },
             "border": {
               "$type": "color",
@@ -716,11 +716,11 @@
           "pressed": {
             "surface": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.700}"
+              "$value": "{color.palette.neutral.700}"
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.100}"
+              "$value": "{color.palette.neutral.100}"
             },
             "border": {
               "$type": "color",
@@ -748,7 +748,7 @@
             },
             "content": {
               "$type": "color",
-              "$value": "{color.ramp.neutral.600}"
+              "$value": "{color.palette.neutral.600}"
             },
             "border": {
               "$type": "color",
@@ -762,109 +762,109 @@
       "default": {
         "surface": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.900}"
+          "$value": "{color.palette.neutral.900}"
         },
         "content": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.100}"
+          "$value": "{color.palette.neutral.100}"
         },
         "border": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.500}"
+          "$value": "{color.palette.neutral.500}"
         },
         "placeholder": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.400}"
+          "$value": "{color.palette.neutral.400}"
         }
       },
       "hover": {
         "surface": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.900}"
+          "$value": "{color.palette.neutral.900}"
         },
         "content": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.100}"
+          "$value": "{color.palette.neutral.100}"
         },
         "border": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.400}"
+          "$value": "{color.palette.neutral.400}"
         },
         "placeholder": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.400}"
+          "$value": "{color.palette.neutral.400}"
         }
       },
       "focus": {
         "surface": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.900}"
+          "$value": "{color.palette.neutral.900}"
         },
         "content": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.100}"
+          "$value": "{color.palette.neutral.100}"
         },
         "border": {
           "$type": "color",
-          "$value": "{color.ramp.accent.400}"
+          "$value": "{color.palette.accent.400}"
         },
         "placeholder": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.400}"
+          "$value": "{color.palette.neutral.400}"
         }
       },
       "readonly": {
         "surface": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.800}"
+          "$value": "{color.palette.neutral.800}"
         },
         "content": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.100}"
+          "$value": "{color.palette.neutral.100}"
         },
         "border": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.700}"
+          "$value": "{color.palette.neutral.700}"
         },
         "placeholder": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.400}"
+          "$value": "{color.palette.neutral.400}"
         }
       },
       "disabled": {
         "surface": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.800}"
+          "$value": "{color.palette.neutral.800}"
         },
         "content": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.600}"
+          "$value": "{color.palette.neutral.600}"
         },
         "border": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.700}"
+          "$value": "{color.palette.neutral.700}"
         },
         "placeholder": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.600}"
+          "$value": "{color.palette.neutral.600}"
         }
       },
       "invalid": {
         "surface": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.900}"
+          "$value": "{color.palette.neutral.900}"
         },
         "content": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.100}"
+          "$value": "{color.palette.neutral.100}"
         },
         "border": {
           "$type": "color",
-          "$value": "{color.ramp.danger.400}"
+          "$value": "{color.palette.danger.400}"
         },
         "placeholder": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.400}"
+          "$value": "{color.palette.neutral.400}"
         }
       }
     },
@@ -872,105 +872,105 @@
       "info": {
         "surface": {
           "$type": "color",
-          "$value": "{color.ramp.info.950}"
+          "$value": "{color.palette.info.950}"
         },
         "surfaceStrong": {
           "$type": "color",
-          "$value": "{color.ramp.info.600}"
+          "$value": "{color.palette.info.600}"
         },
         "content": {
           "$type": "color",
-          "$value": "{color.ramp.info.200}"
+          "$value": "{color.palette.info.200}"
         },
         "contentStrong": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.0}"
+          "$value": "{color.palette.neutral.0}"
         },
         "border": {
           "$type": "color",
-          "$value": "{color.ramp.info.800}"
+          "$value": "{color.palette.info.800}"
         },
         "icon": {
           "$type": "color",
-          "$value": "{color.ramp.info.400}"
+          "$value": "{color.palette.info.400}"
         }
       },
       "success": {
         "surface": {
           "$type": "color",
-          "$value": "{color.ramp.success.950}"
+          "$value": "{color.palette.success.950}"
         },
         "surfaceStrong": {
           "$type": "color",
-          "$value": "{color.ramp.success.600}"
+          "$value": "{color.palette.success.600}"
         },
         "content": {
           "$type": "color",
-          "$value": "{color.ramp.success.200}"
+          "$value": "{color.palette.success.200}"
         },
         "contentStrong": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.0}"
+          "$value": "{color.palette.neutral.0}"
         },
         "border": {
           "$type": "color",
-          "$value": "{color.ramp.success.800}"
+          "$value": "{color.palette.success.800}"
         },
         "icon": {
           "$type": "color",
-          "$value": "{color.ramp.success.400}"
+          "$value": "{color.palette.success.400}"
         }
       },
       "warning": {
         "surface": {
           "$type": "color",
-          "$value": "{color.ramp.warning.950}"
+          "$value": "{color.palette.warning.950}"
         },
         "surfaceStrong": {
           "$type": "color",
-          "$value": "{color.ramp.warning.600}"
+          "$value": "{color.palette.warning.600}"
         },
         "content": {
           "$type": "color",
-          "$value": "{color.ramp.warning.200}"
+          "$value": "{color.palette.warning.200}"
         },
         "contentStrong": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.0}"
+          "$value": "{color.palette.neutral.0}"
         },
         "border": {
           "$type": "color",
-          "$value": "{color.ramp.warning.800}"
+          "$value": "{color.palette.warning.800}"
         },
         "icon": {
           "$type": "color",
-          "$value": "{color.ramp.warning.400}"
+          "$value": "{color.palette.warning.400}"
         }
       },
       "danger": {
         "surface": {
           "$type": "color",
-          "$value": "{color.ramp.danger.950}"
+          "$value": "{color.palette.danger.950}"
         },
         "surfaceStrong": {
           "$type": "color",
-          "$value": "{color.ramp.danger.600}"
+          "$value": "{color.palette.danger.600}"
         },
         "content": {
           "$type": "color",
-          "$value": "{color.ramp.danger.200}"
+          "$value": "{color.palette.danger.200}"
         },
         "contentStrong": {
           "$type": "color",
-          "$value": "{color.ramp.neutral.0}"
+          "$value": "{color.palette.neutral.0}"
         },
         "border": {
           "$type": "color",
-          "$value": "{color.ramp.danger.800}"
+          "$value": "{color.palette.danger.800}"
         },
         "icon": {
           "$type": "color",
-          "$value": "{color.ramp.danger.400}"
+          "$value": "{color.palette.danger.400}"
         }
       }
     }

@@ -1,6 +1,6 @@
 {
   "phase": "review",
-  "note": "Foundations proposed on 2026-09-26 and waiting for the foundations review gate. Values are proposals until approvals.primitives and approvals.semantic are recorded.",
+  "note": "Foundations proposed on 2026-09-26, revised after the first review round (color.palette naming, IBM Plex Mono, Inter for every brand, warning comparison). Waiting for the foundations review gate. Values are proposals until approvals.primitives and approvals.semantic are recorded.",
   "artifacts": {
     "config": "foundations/config.json",
     "paletteConfig": "foundations/palette.config.json",
@@ -36,29 +36,31 @@
     {
       "name": "review page",
       "command": "npm run build && npm run build:preview foundations",
-      "result": "dist/previews/foundations.html rendered in Chromium 1280 px wide, light and dark, without console errors"
+      "result": "dist/previews/foundations.html rendered in Chromium 1280 px wide, light and dark, without console errors; includes the Choices to compare section"
     }
   ],
   "figmaNote": "No Figma MCP server was connected in the session that proposed the foundations; the three collections, text styles and effect styles are described by packages/tokens/figma-manifest.json and remain to be created and verified with the ggb-figma skill. Components do not wait for it.",
   "openDecisions": [
-    "Icon set and its license (decision register item 2).",
-    "Monospace font: the code roles use a system monospace stack (ui-monospace first); Figma text styles need a named font.",
-    "Demonstration brand names brick and orchid, and orchid's system-ui font stack (Figma needs a named font).",
-    "Warning strong surface: amber 600 with white content (consistent with the other statuses, 5.29:1) versus amber 400 with dark content (brighter yellow).",
-    "Dark-mode shadows: shadow roles are appearance independent as specified; a stronger dark variant would move them to the appearance files.",
+    "Warning strong surface: A amber 600 + white (proposed, consistent with the other statuses) versus B amber 400 + neutral 950; both rendered in the review page section Choices to compare.",
+    "Icon method (set chosen: Phosphor Icons, MIT). Proposal: ggbrick never bundles an icon set; slot content receives icons from the application (any set, currentColor); the few intrinsic glyphs a component needs (chevron, check, close…) are inline SVG paths copied into the component folder, attributed to Phosphor, and overridable through a snippet prop. Figma uses the Phosphor community library through instance-swap properties. To confirm at this gate, then recorded in decisions.md.",
     "color.surface.muted in dark (neutral 700) is tested with primary and secondary content only."
   ],
   "choices": [
     "Ramps generated in OKLCH from foundations/palette.config.json; step 600 reaches 4.5:1 with white on every hue, step 500 reaches 3:1 on white.",
     "Neutral is a slate (OKLCH hue 255, chroma 0.012). Accent is blue; info blue, success green, warning amber, danger red.",
-    "Semantic indirection color.ramp.{neutral,accent,info,success,warning,danger}.<step> in common.tokens.json: appearance roles alias the ramps, so a brand changes its accent with 11 aliases (the theme-builder overlay format).",
+    "Semantic palette color.palette.{neutral,accent,info,success,warning,danger}.<step> in common.tokens.json: the six ramps the roles reference, each an alias to a primitive ramp, so a brand changes its accent with 11 aliases (the theme-builder overlay format). Renamed from color.ramp after review round 1.",
     "Primitives are literal (radius and shadows included); semantic colors are aliases only; both enforced by tooling/check-foundations.ts.",
     "Line-height primitives are named (none, tight, snug, normal, relaxed, loose) because dotted numbers cannot be path segments; tracking adds tighter (-1px) for display sizes and is the only negative dimension family.",
     "Typography composites carry letterSpacing; CSS exposes --ggb-typography-<role>-letterSpacing; the Figma manifest carries it.",
     "Labels use weight 500; headings 600; display 700.",
     "Dark mode expresses elevation with lighter neutrals (canvas 950, default 900, subtle 800, muted 700, overlay 800); neutral solid actions invert (light surface, dark content).",
     "Field borders use neutral 500 so that they reach 3:1 on the default surface.",
-    "Brands: brick (orange accent, radii xs/sm/md) and orchid (violet accent, radii xl/2xl/2xl, system-ui sans stack)."
+    "Brands: brick (orange accent, radii xs/sm/md) and orchid (violet accent, radii xl/2xl/2xl)."
   ],
-  "nextAction": "Foundations review gate: inspect dist/previews/foundations.html, reports/tokens/contrast.json and the role table; on approval record approvals.primitives and approvals.semantic with digests (npm run digest -- foundations/tokens/base/...), set phase to approved, update the roadmap, then open the pull request."
+  "nextAction": "Foundations review gate: inspect dist/previews/foundations.html, reports/tokens/contrast.json and the role table; on approval record approvals.primitives and approvals.semantic with digests (npm run digest -- foundations/tokens/base/...), set phase to approved, update the roadmap, then open the pull request.",
+  "decided": [
+    "Brand names brick and orchid (review round 1).",
+    "Fonts: Inter for every brand (orchid no longer overrides the sans stack); IBM Plex Mono for code roles (review round 1).",
+    "Shadow roles stay appearance independent; dark elevation is carried by lighter surfaces (review round 1, explained)."
+  ]
 }

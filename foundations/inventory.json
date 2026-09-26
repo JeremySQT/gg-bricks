@@ -2,342 +2,342 @@
   "$description": "Semantic inventory checked by tooling/check-foundations.ts in every brand × appearance × density context: every role must exist with its type on its axis (the file layer that defines it), and every contrast pair must reach its WCAG minimum (4.5 text, 3 borders, icons and focus). Translucent surfaces are composited on color.surface.default before measuring. Pairs are explicit: a role is tested on the backdrops it is designed for. color.surface.muted is a de-emphasized backdrop and is tested with primary and secondary content only; color.status.*.border is decorative (the tinted surface identifies the status) and is not tested.",
   "roles": [
     {
-      "path": "color.ramp.neutral.0",
+      "path": "color.palette.neutral.0",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.neutral.50",
+      "path": "color.palette.neutral.50",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.neutral.100",
+      "path": "color.palette.neutral.100",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.neutral.200",
+      "path": "color.palette.neutral.200",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.neutral.300",
+      "path": "color.palette.neutral.300",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.neutral.400",
+      "path": "color.palette.neutral.400",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.neutral.500",
+      "path": "color.palette.neutral.500",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.neutral.600",
+      "path": "color.palette.neutral.600",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.neutral.700",
+      "path": "color.palette.neutral.700",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.neutral.800",
+      "path": "color.palette.neutral.800",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.neutral.900",
+      "path": "color.palette.neutral.900",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.neutral.950",
+      "path": "color.palette.neutral.950",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.neutral.1000",
+      "path": "color.palette.neutral.1000",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.accent.50",
+      "path": "color.palette.accent.50",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.accent.100",
+      "path": "color.palette.accent.100",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.accent.200",
+      "path": "color.palette.accent.200",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.accent.300",
+      "path": "color.palette.accent.300",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.accent.400",
+      "path": "color.palette.accent.400",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.accent.500",
+      "path": "color.palette.accent.500",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.accent.600",
+      "path": "color.palette.accent.600",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.accent.700",
+      "path": "color.palette.accent.700",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.accent.800",
+      "path": "color.palette.accent.800",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.accent.900",
+      "path": "color.palette.accent.900",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.accent.950",
+      "path": "color.palette.accent.950",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.info.50",
+      "path": "color.palette.info.50",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.info.100",
+      "path": "color.palette.info.100",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.info.200",
+      "path": "color.palette.info.200",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.info.300",
+      "path": "color.palette.info.300",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.info.400",
+      "path": "color.palette.info.400",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.info.500",
+      "path": "color.palette.info.500",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.info.600",
+      "path": "color.palette.info.600",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.info.700",
+      "path": "color.palette.info.700",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.info.800",
+      "path": "color.palette.info.800",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.info.900",
+      "path": "color.palette.info.900",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.info.950",
+      "path": "color.palette.info.950",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.success.50",
+      "path": "color.palette.success.50",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.success.100",
+      "path": "color.palette.success.100",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.success.200",
+      "path": "color.palette.success.200",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.success.300",
+      "path": "color.palette.success.300",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.success.400",
+      "path": "color.palette.success.400",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.success.500",
+      "path": "color.palette.success.500",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.success.600",
+      "path": "color.palette.success.600",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.success.700",
+      "path": "color.palette.success.700",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.success.800",
+      "path": "color.palette.success.800",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.success.900",
+      "path": "color.palette.success.900",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.success.950",
+      "path": "color.palette.success.950",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.warning.50",
+      "path": "color.palette.warning.50",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.warning.100",
+      "path": "color.palette.warning.100",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.warning.200",
+      "path": "color.palette.warning.200",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.warning.300",
+      "path": "color.palette.warning.300",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.warning.400",
+      "path": "color.palette.warning.400",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.warning.500",
+      "path": "color.palette.warning.500",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.warning.600",
+      "path": "color.palette.warning.600",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.warning.700",
+      "path": "color.palette.warning.700",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.warning.800",
+      "path": "color.palette.warning.800",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.warning.900",
+      "path": "color.palette.warning.900",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.warning.950",
+      "path": "color.palette.warning.950",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.danger.50",
+      "path": "color.palette.danger.50",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.danger.100",
+      "path": "color.palette.danger.100",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.danger.200",
+      "path": "color.palette.danger.200",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.danger.300",
+      "path": "color.palette.danger.300",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.danger.400",
+      "path": "color.palette.danger.400",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.danger.500",
+      "path": "color.palette.danger.500",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.danger.600",
+      "path": "color.palette.danger.600",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.danger.700",
+      "path": "color.palette.danger.700",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.danger.800",
+      "path": "color.palette.danger.800",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.danger.900",
+      "path": "color.palette.danger.900",
       "type": "color",
       "axis": "common"
     },
     {
-      "path": "color.ramp.danger.950",
+      "path": "color.palette.danger.950",
       "type": "color",
       "axis": "common"
     },

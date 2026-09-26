@@ -101,7 +101,12 @@
     )
   );
   const ramp = (name: string) => keys(`primitive.color.${name}.`);
-  const semanticRamps = $derived(Array.from(new Set(keys('color.ramp.').map((k) => k.split('.')[2]))));
+  const paletteRoles = $derived(Array.from(new Set(keys('color.palette.').map((k) => k.split('.')[2]))));
+  const contrastOf = (a: string, b: string): string => {
+    const la = luminance(tokens[a].$value as Color),
+      lb = luminance(tokens[b].$value as Color);
+    return ((Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05)).toFixed(2);
+  };
 
   const surfaces = ['canvas', 'default', 'subtle', 'muted', 'raised', 'overlay', 'inverse'];
   const contents = ['primary', 'secondary', 'tertiary', 'disabled', 'link'];
@@ -156,7 +161,7 @@
   </header>
 
   <nav class="toc" aria-label="Sections">
-    {#each ['palette', 'surfaces', 'actions', 'fields', 'status', 'typography', 'density', 'shape', 'elevation', 'motion', 'contrast', 'brands'] as id (id)}
+    {#each ['palette', 'surfaces', 'actions', 'fields', 'status', 'choices', 'typography', 'density', 'shape', 'elevation', 'motion', 'contrast', 'brands'] as id (id)}
       <a href={'#' + id}>{id}</a>
     {/each}
   </nav>
@@ -164,12 +169,17 @@
   <section id="palette">
     <h2>Palette</h2>
     <p>
-      Neutral (13 steps) and ten hue ramps (11 steps), generated in OKLCH: one lightness per step index for every hue,
-      chroma reduced into sRGB. Step 600 passes 4.5:1 with white text on every hue; step 500 passes 3:1 as a border.
+      Three layers. <strong>Primitives</strong> (<code>primitive.color.*</code>, below): the generous raw material,
+      neutral (13 steps) and ten hue ramps (11 steps) generated in OKLCH with one lightness per step index, so that one
+      index has comparable contrast on every hue (step 600 passes 4.5:1 with white, step 500 passes 3:1 as a border).
+      Most steps are unused today; that is expected. <strong>Semantic</strong> (<code>color.palette.*</code> then
+      <code>color.surface.*</code>, <code>color.action.*</code>…): the six ramps a brand actually uses, each an alias to
+      a primitive ramp, and the roles that pick from them. <strong>Component</strong> tokens come later, only when justified.
     </p>
+    <h3>Primitive ramps</h3>
     {#each rampNames as name (name)}
       <div class="ramp">
-        <span class="ramp-name">{name}</span>
+        <span class="ramp-name"><small>primitive.color.</small>{name}</span>
         <div class="swatches">
           {#each ramp(name) as k (k)}
             <div
@@ -185,7 +195,7 @@
       </div>
     {/each}
     <div class="ramp">
-      <span class="ramp-name">alpha</span>
+      <span class="ramp-name"><small>primitive.color.</small>alpha</span>
       <div class="swatches checker">
         {#each keys('primitive.color.alpha.') as k (k)}
           <div class="swatch" style:background={hex(tokens[k])} class:on-light={k.includes('white')} title={k}>
@@ -194,16 +204,16 @@
         {/each}
       </div>
     </div>
-    <h3>Semantic ramps for {brand}</h3>
+    <h3>Semantic palette of {brand}: <code>color.palette.*</code></h3>
     <p>
-      Appearance roles pick from <code>color.ramp.*</code>; a brand overrides a ramp (11 aliases) to change its accent,
-      status hue or neutral.
+      The only ramps the roles reference. Each one aliases a primitive ramp (base: neutral, blue, blue, green, amber,
+      red). A brand overrides one of them with 11 aliases: brick and orchid override <code>accent</code>.
     </p>
-    {#each semanticRamps as name (name)}
+    {#each paletteRoles as name (name)}
       <div class="ramp">
-        <span class="ramp-name">{name}</span>
+        <span class="ramp-name"><small>color.palette.</small>{name}</span>
         <div class="swatches">
-          {#each keys(`color.ramp.${name}.`) as k (k)}
+          {#each keys(`color.palette.${name}.`) as k (k)}
             <div class="swatch" style:background={hex(tokens[k])} class:on-light={onLight(tokens[k])} title={k}>
               <span>{last(k)}</span>
             </div>
@@ -335,6 +345,81 @@
                 >
               </div>
             {/each}
+          </div>
+        </div>
+      {/each}
+    </div>
+  </section>
+
+  <section id="choices">
+    <h2>Choices to compare</h2>
+    <p>Open questions rendered side by side; the current proposal is marked.</p>
+    <h3>Warning strong surface</h3>
+    <div class="pair">
+      {#each appearances as a (a)}
+        <div class="panel" data-ggb-appearance={a}>
+          <p class="panel-title">{a}</p>
+          <div class="statuses">
+            <div
+              class="alert"
+              style:background="var(--ggb-color-status-warning-surface)"
+              style:color="var(--ggb-color-status-warning-content)"
+              style:border-color="var(--ggb-color-status-warning-border)"
+            >
+              <span class="dot" style:background="var(--ggb-color-status-warning-icon)"></span>
+              <span
+                >A (proposed) · amber 600 + white · {contrastOf(
+                  'primitive.color.amber.600',
+                  'primitive.color.neutral.0'
+                )}:1</span
+              >
+              <span
+                class="strong"
+                style:background="var(--ggb-primitive-color-amber-600)"
+                style:color="var(--ggb-primitive-color-neutral-0)">3 warnings</span
+              >
+            </div>
+            <div
+              class="alert"
+              style:background="var(--ggb-color-status-warning-surface)"
+              style:color="var(--ggb-color-status-warning-content)"
+              style:border-color="var(--ggb-color-status-warning-border)"
+            >
+              <span class="dot" style:background="var(--ggb-color-status-warning-icon)"></span>
+              <span
+                >B · amber 400 + neutral 950 · {contrastOf(
+                  'primitive.color.amber.400',
+                  'primitive.color.neutral.950'
+                )}:1</span
+              >
+              <span
+                class="strong"
+                style:background="var(--ggb-primitive-color-amber-400)"
+                style:color="var(--ggb-primitive-color-neutral-950)">3 warnings</span
+              >
+            </div>
+            <div class="row wrap">
+              <span
+                class="chip"
+                style:background="var(--ggb-primitive-color-amber-600)"
+                style:color="var(--ggb-primitive-color-neutral-0)">A · Toast banner</span
+              >
+              <span
+                class="chip"
+                style:background="var(--ggb-primitive-color-amber-400)"
+                style:color="var(--ggb-primitive-color-neutral-950)">B · Toast banner</span
+              >
+              <span
+                class="chip"
+                style:background="var(--ggb-primitive-color-green-600)"
+                style:color="var(--ggb-primitive-color-neutral-0)">success, for scale</span
+              >
+              <span
+                class="chip"
+                style:background="var(--ggb-primitive-color-red-600)"
+                style:color="var(--ggb-primitive-color-neutral-0)">danger, for scale</span
+              >
+            </div>
           </div>
         </div>
       {/each}
@@ -635,13 +720,17 @@
   }
   .ramp {
     display: grid;
-    grid-template-columns: 6rem 1fr;
+    grid-template-columns: 8rem 1fr;
     align-items: center;
     gap: var(--ggb-space-content-md);
     margin-bottom: var(--ggb-space-content-sm);
   }
   .ramp-name {
     font: var(--ggb-typography-label-md);
+  }
+  .ramp-name small {
+    display: block;
+    font-size: 10px;
   }
   .swatches {
     display: flex;
