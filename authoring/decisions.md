@@ -7,7 +7,7 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 - Name: **ggbrick**; domain target ggbrick.design; npm scope `@ggbrick`; prefix `ggb-` for CSS classes (`ggb-<id>`, `ggb-<id>__<part>`), theme attributes (`data-ggb-*`) and custom properties (`--ggb-*`). `gg-` was rejected as too common; `ggb-` is short and collision-free. Skills are named `ggb-*`.
 - Three deliverables from the same sources: Figma library, Svelte 5 package on Bits UI, documentation (local Markdown shipped with the package, and a site).
 - Distribution: the npm package is the tested unit. Consumers may also copy a component's source folder into their project or download the whole `packages/svelte` source; every component folder is therefore self-contained (see AGENTS.md). No compatibility with any third-party registry or CLI is pursued. Bits UI is the only runtime dependency allowed besides Svelte. shadcn-svelte may be consulted as an implementation reference, never as a dependency or a format.
-- One site, `apps/site`, in Astro for ggbrick.design: marketing pages at the root and the documentation under `/docs` with Starlight, reading `documentation/` and embedding live Svelte examples.
+- Two Astro apps deployed on their own domains: `apps/docs` (Starlight at the root, docs.ggbrick.design, reading `documentation/` and embedding live Svelte examples) and `apps/site` (marketing, ggbrick.design). Both consume `@ggbrick/svelte` and `@ggbrick/tokens`; shared navigation lives as design-system components. A single app with docs under a sub-path was considered and rejected: a sub-domain needs no base path or host rewrites (2026-09-26).
 - Phase 1 delivers the design system (foundations, components, Figma library, docs, marketing site). Phase 2 delivers the theme builder (a web form producing a brand overlay) and the Figma import (plugin and/or Claude skill). The overlay format is the sparse brand folder already defined by the token architecture.
 - Versioning proposal (adopt at first Deliver): semantic versioning, one version shared by tokens, Svelte package and Figma library; 0.x while the catalog grows.
 - License: not decided; ask at the first Deliver.
@@ -49,4 +49,4 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 1. License for code and Figma library (first Deliver).
 2. Icon set and its license (foundations task).
 3. Figma library file organization and publishing mechanism (first Figma task).
-4. Exact hosting for ggbrick.design (when `apps/site` starts).
+4. Exact hosting for ggbrick.design and docs.ggbrick.design (when `apps/docs` starts).

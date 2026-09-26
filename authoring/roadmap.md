@@ -4,14 +4,14 @@ Validated by the user on 2026-09-25 (waves), amended for the foundations-first o
 
 ## Phase 1: the design system
 
-| Task                                                                              | Skill                  | Gate                                   | State                                              |
-| --------------------------------------------------------------------------------- | ---------------------- | -------------------------------------- | -------------------------------------------------- |
-| 0 · Foundations: generous primitives, full semantic inventory, Figma variables    | `ggb-foundations`      | Foundations review                     | **Next** (tokens are still the reference-kit seed) |
-| 1 · Wave 1 components                                                             | `ggb-component`        | Contract, implementation, Figma parity | Not started                                        |
-| 2 · Wave 2 … 6                                                                    | `ggb-component`        | Same                                   | Not started                                        |
-| 3 · Site `apps/site` (Astro: marketing at the root, Starlight docs under `/docs`) | dedicated task         | Site review                            | Not started; start once wave 1 is documented       |
-| 4 · (merged into 3)                                                               |                        |                                        |                                                    |
-| 5 · First release (package, Figma library, docs)                                  | `ggb-maintain` Deliver | Delivery approval                      | Not started                                        |
+| Task                                                                           | Skill                  | Gate                                   | State                                              |
+| ------------------------------------------------------------------------------ | ---------------------- | -------------------------------------- | -------------------------------------------------- |
+| 0 · Foundations: generous primitives, full semantic inventory, Figma variables | `ggb-foundations`      | Foundations review                     | **Next** (tokens are still the reference-kit seed) |
+| 1 · Wave 1 components                                                          | `ggb-component`        | Contract, implementation, Figma parity | Not started                                        |
+| 2 · Wave 2 … 6                                                                 | `ggb-component`        | Same                                   | Not started                                        |
+| 3 · Documentation site `apps/docs` (Astro + Starlight, docs.ggbrick.design)    | dedicated task         | Site review                            | Not started; start once wave 1 is documented       |
+| 4 · Marketing site `apps/site` (Astro, ggbrick.design)                         | dedicated task         | Site review                            | Not started                                        |
+| 5 · First release (package, Figma library, docs)                               | `ggb-maintain` Deliver | Delivery approval                      | Not started                                        |
 
 ## Phase 2: customization
 

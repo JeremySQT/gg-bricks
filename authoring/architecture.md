@@ -37,7 +37,7 @@ A consumer must be able to copy `packages/svelte/src/<id>/` into a Svelte 5 proj
 
 ## Documentation distribution
 
-One maintained source per component with stable section headings. Installed packages expose `docs/index.json`, `docs/AGENTS.md` and per-component pages aligned to the installed version. The site (`apps/site`, docs under `/docs`) renders the same Markdown and adds live examples. API facts come from the contract and the actual Svelte API; import examples come from verified executable examples in `examples/<id>/`.
+One maintained source per component with stable section headings. Installed packages expose `docs/index.json`, `docs/AGENTS.md` and per-component pages aligned to the installed version. The documentation site (`apps/docs`, docs.ggbrick.design) renders the same Markdown and adds live examples. API facts come from the contract and the actual Svelte API; import examples come from verified executable examples in `examples/<id>/`.
 
 ## Evidence
 

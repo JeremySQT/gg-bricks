@@ -26,7 +26,7 @@ The repository structure, tooling, procedures and skills are in place. Foundatio
 | `examples/`                                 | Vite review app, one page per component                                                    |
 | `tests/`                                    | Tooling unit tests, SSR tests, Playwright tests                                            |
 | `reports/`                                  | Revision-bound evidence                                                                    |
-| `apps/`                                     | Reserved for the site (marketing + docs), theme builder and Figma plugin                   |
+| `apps/`                                     | Reserved for the docs site, marketing site, theme builder and Figma plugin                 |
 
 Full description: [authoring/layout.md](authoring/layout.md).
 

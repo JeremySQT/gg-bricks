@@ -11,7 +11,7 @@ ggbrick is a design system delivered as a Figma library, a Svelte 5 package buil
 | Change an existing component, token or Figma master; reconcile Figma with sources  | Skill `ggb-maintain`, procedure Modify                                                  |
 | Check consistency or readiness without changing anything                           | Skill `ggb-maintain`, procedure Audit                                                   |
 | Prepare or publish a version (package, Figma library, docs site)                   | Skill `ggb-maintain`, procedure Deliver                                                 |
-| Site (marketing + docs), theme builder, Figma plugin                               | See `authoring/roadmap.md`; these are products with their own tasks, not component work |
+| Docs site, marketing site, theme builder, Figma plugin                             | See `authoring/roadmap.md`; these are products with their own tasks, not component work |
 
 Skills live in `.claude/skills/<name>/SKILL.md`. Each one says which `authoring/` documents to read for the phase; read only those.
 
