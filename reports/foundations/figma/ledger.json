@@ -1,0 +1,49 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "plan": "team::1308046554739244831 (Jeremy SQT, pro)"
+  },
+  "syncedOn": "2026-09-26",
+  "source": {
+    "manifest": "packages/tokens/figma-manifest.json",
+    "expectations": "packages/tokens/figma-expectations.json",
+    "commit": "foundations/initial, see foundations/status.json approvals.figmaVariables"
+  },
+  "pages": {
+    "Cover": "0:1",
+    "Getting started": "8:2",
+    "Foundations": "8:3",
+    "Actions": "8:4",
+    "Forms": "8:5",
+    "Feedback": "8:6",
+    "Overlays": "8:7",
+    "Navigation": "8:8",
+    "Data": "8:9",
+    "Utilities": "8:10"
+  },
+  "collections": {
+    "Brand": { "id": "VariableCollectionId:4:2", "modes": { "base": "4:0", "brick": "4:1", "orchid": "4:2" } },
+    "Appearance": { "id": "VariableCollectionId:4:3", "modes": { "light": "4:3", "dark": "4:4" } },
+    "Density": {
+      "id": "VariableCollectionId:4:4",
+      "modes": { "compact": "4:5", "standard": "4:6", "comfortable": "4:7" }
+    }
+  },
+  "variables": {
+    "total": 625,
+    "batches": [
+      { "batch": 1, "collection": "Brand", "content": "primitive/*", "count": 224, "ids": "VariableID:4:5 to VariableID:4:228" },
+      { "batch": 2, "collection": "Brand", "content": "color/palette, radius, border, focus, size, typography dimensions, layer, opacity", "count": 172, "ids": "VariableID:5:2 to VariableID:5:173" },
+      { "batch": 3, "collection": "Appearance", "content": "color roles", "count": 206, "ids": "VariableID:7:2 to VariableID:7:207" },
+      { "batch": 4, "collection": "Density", "content": "size/control, space", "count": 23, "ids": "VariableID:6:2 to VariableID:6:24" }
+    ],
+    "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change)."
+  },
+  "textStyles": 25,
+  "effectStyles": 3,
+  "limitations": [
+    "OpenType features (tnum on typography/numeral/*) cannot be set on text styles through the Plugin API; the style description records them and the text layer sets them.",
+    "Style IDs are file-local (S:… keys) and are read from the file when needed."
+  ]
+}

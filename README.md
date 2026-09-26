@@ -10,7 +10,7 @@ Sources of truth: DTCG tokens in `foundations/tokens` and one compact contract p
 
 ## Status
 
-The repository structure, tooling, procedures and skills are in place. The foundations (primitives, semantic tokens, two demonstration brands) are approved; Figma variables follow in a session with the Figma connector. Components are built wave by wave. See [authoring/roadmap.md](authoring/roadmap.md).
+The repository structure, tooling, procedures and skills are in place. The foundations (primitives, semantic tokens, two demonstration brands) are approved and synced to the Figma library. Components are built wave by wave. See [authoring/roadmap.md](authoring/roadmap.md).
 
 ## Layout
 
@@ -42,6 +42,8 @@ npm run test:ssr        # server rendering per component
 npm run dev             # review app at http://127.0.0.1:5173
 npm run build           # generate + production build of the review app
 npm run build:preview <id>     # self-contained dist/previews/<id>.html
+npm run figma:batches   # dist/figma/*.js scripts for the Figma MCP server (variables, styles, verification)
+npm run figma:check -- <result.json>   # compare a verification result with figma-expectations.json
 npm run test:browser    # Playwright (Chromium); PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH reuses a local browser
 npm run verify          # generate, validate, test, check, ssr, build
 npm run verify:generated       # fails when generated outputs drift from sources

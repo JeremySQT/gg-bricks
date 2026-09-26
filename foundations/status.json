@@ -1,6 +1,6 @@
 {
   "phase": "approved",
-  "note": "Primitives and semantic tokens approved on 2026-09-26 after three review rounds. Figma variables pending: no Figma connector was available in the session; see figmaNote.",
+  "note": "Foundations approved on 2026-09-26 (primitives, semantic) and Figma variables synced and verified the same day. Unit of work complete; pull request pending.",
   "artifacts": {
     "config": "foundations/config.json",
     "paletteConfig": "foundations/palette.config.json",
@@ -9,7 +9,11 @@
     "generated": "packages/tokens",
     "reviewPage": "examples/foundations",
     "preview": "dist/previews/foundations.html (npm run build && npm run build:preview foundations)",
-    "figma": "pending: library file https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system (no connector in the approving session)"
+    "figma": {
+      "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+      "ledger": "reports/foundations/figma/ledger.json"
+    }
   },
   "approvals": {
     "primitives": {
@@ -72,7 +76,28 @@
       "provenance": "Foundations review in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8), three rounds on the review page dist/previews/foundations.html (artifact https://claude.ai/artifact/FXSaVj9UCJhHQr3T7M8omk, version 3). The user arbitrated every open point in chat (color.palette kept, warning B, icon method, fonts, brand names, purge) and confirmed the last addition (caption, overline, numeral roles) with 'Parfait pour les styles de textes'; approval is recorded on that basis and the user may object to the record.",
       "note": "color.surface.muted in dark is tested with primary and secondary content only. Figma variables pending (approvals.figmaVariables)."
     },
-    "figmaVariables": null
+    "figmaVariables": {
+      "scope": "Figma library variables and styles generated from packages/tokens/figma-manifest.json: collections Brand (base, brick, orchid), Appearance (light, dark), Density (compact, standard, comfortable); 625 variables (224 primitives, 172 Brand semantic, 206 Appearance, 23 Density) with source-mirroring aliases, scopes and WEB code syntax; 25 text styles; 3 effect styles; library pages created.",
+      "revision": {
+        "paths": ["packages/tokens/figma-manifest.json", "packages/tokens/figma-expectations.json"],
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "collections": {
+            "Brand": "VariableCollectionId:4:2",
+            "Appearance": "VariableCollectionId:4:3",
+            "Density": "VariableCollectionId:4:4"
+          },
+          "variableIds": "VariableID:4:5 to 4:228, 5:2 to 5:173, 6:2 to 6:24, 7:2 to 7:207"
+        }
+      },
+      "evidence": [
+        "reports/foundations/figma/ledger.json",
+        "reports/foundations/figma/native-resolution.json",
+        "reports/foundations/figma/verification.json"
+      ],
+      "provenance": "Synced and verified through the Figma MCP server in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8) on the user's file. Verification: native resolveForConsumer of the 401 semantic variables in the 18 brand × appearance × density contexts, hashed and compared with figma-expectations.json, 0 failures. Technical verification only; the user has not visually reviewed the Figma file in this session.",
+      "note": "OpenType features (tnum) cannot be applied to text styles through the Plugin API; numeral styles carry the note in their description. The Foundations page exists but holds no specification frames yet."
+    }
   },
   "checks": [
     {
@@ -95,9 +120,15 @@
       "name": "review page",
       "command": "npm run build && npm run build:preview foundations",
       "result": "dist/previews/foundations.html rendered in Chromium 1280 px wide, light and dark, without console errors; includes the Choices to compare section"
+    },
+    {
+      "name": "Figma native resolution",
+      "command": "node tooling/figma-batches.ts, batches run through use_figma, node tooling/check-figma.ts reports/foundations/figma/native-resolution.json",
+      "result": "401 semantic variables × 18 contexts: 18 hashes equal to the expectations, 0 failures",
+      "evidence": "reports/foundations/figma/verification.json"
     }
   ],
-  "figmaNote": "No Figma MCP server was connected in the session that proposed the foundations; the three collections, text styles and effect styles are described by packages/tokens/figma-manifest.json and remain to be created and verified with the ggb-figma skill. Components do not wait for it.",
+  "figmaNote": "Figma variables, text styles and effect styles were created and verified through the Figma MCP server on 2026-09-26; see approvals.figmaVariables and reports/foundations/figma/.",
   "openDecisions": [
     "color.surface.muted in dark (neutral 700) is tested with primary and secondary content only; revisit if a component needs tertiary text on it."
   ],
@@ -113,7 +144,7 @@
     "Brands: brick (orange accent, radii xs/sm/md) and orchid (violet accent, radii xl/2xl/2xl).",
     "Typography composites carry letterSpacing and optional fontFeatures (OpenType tags); CSS exposes --ggb-typography-<role>-letterSpacing and -fontFeatureSettings; the Figma manifest carries both."
   ],
-  "nextAction": "Open the pull request foundations/initial -> main with the repository template. Then, in a session with the Figma connector, run ggb-figma on the library file https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC (collections Brand/Appearance/Density, text and effect styles from packages/tokens/figma-manifest.json, verification against figma-expectations.json) and record approvals.figmaVariables. Components may start.",
+  "nextAction": "Open the pull request foundations/initial -> main with the repository template (the user merges). Components may start (wave 1, Button first).",
   "decided": [
     "Brand names brick and orchid (round 1).",
     "Fonts: Inter for every brand, IBM Plex Mono for code roles (round 1).",

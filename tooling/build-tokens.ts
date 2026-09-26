@@ -2,7 +2,7 @@
 // Outputs: packages/tokens/* (resolved maps, CSS, Figma manifest and expectations),
 // reports/tokens/traces/* and reports/components/<id>/* for every component contract.
 import { paths, write } from './lib/paths.ts';
-import { resolveAllContexts, config } from './lib/tokens.ts';
+import { resolveAllContexts, config, cssVariable } from './lib/tokens.ts';
 import { buildLayeredCss } from './lib/css.ts';
 import { checkContract, expandCombinations, resolveTemplate } from './lib/contract.ts';
 import { listComponents } from './lib/catalog.ts';
@@ -32,6 +32,7 @@ interface FigmaVariable {
   path: string;
   type: 'COLOR' | 'FLOAT';
   scopes: string[];
+  codeSyntax?: { WEB: string };
   values: Record<string, FigmaValue>;
 }
 
@@ -183,10 +184,14 @@ for (const c of components) {
 }
 
 // 4. Figma adapter manifest. Axis routing is derived from the source file that defines each token
-// (appearance.* → Appearance, density.* → Density, otherwise Brand). Technical `_resolved` variables
-// are compilation detail for the tested Figma model, not a source layer.
+// (appearance.* → Appearance, density.* → Density, otherwise Brand). Values mirror the source aliases:
+// a semantic variable aliases the palette or primitive variable it references, so the Figma chain reads
+// like the token files. A technical `_resolved/*` variable (Brand collection, hidden) is emitted only when
+// a token cannot be expressed as one alias per mode (a brand overlay of an appearance or density file,
+// or an alias across the Appearance and Density axes); it is compilation detail, not a source layer.
 const base = contexts.find((c) => c.id === `base-${cfg.appearances[0]}-${cfg.densities[0]}`);
 if (!base) throw Error('Base context missing');
+const ctxById = Object.fromEntries(contexts.map((c) => [c.id, c]));
 const flatByContext: Record<string, TokenMap> = Object.fromEntries(
   contexts.map((c) => [
     c.id,
@@ -195,9 +200,21 @@ const flatByContext: Record<string, TokenMap> = Object.fromEntries(
     )
   ])
 );
-const axisOf = (p: string): 'Appearance' | 'Density' | 'Brand' => {
-  const source = (base.trace[p] ?? base.trace[p.replace(/\.(fontSize|lineHeight)$/, '')] ?? []).at(-1)?.source ?? '';
+type Axis = 'Appearance' | 'Density' | 'Brand';
+const derived = /\.(fontSize|lineHeight|letterSpacing)$/;
+const axisOf = (p: string): Axis => {
+  const source = (base.trace[p] ?? base.trace[p.replace(derived, '')] ?? []).at(-1)?.source ?? '';
   return /\/appearance\./.test(source) ? 'Appearance' : /\/density\./.test(source) ? 'Density' : 'Brand';
+};
+/** Raw source value of a flat token path in one context (an alias string, a literal, or a derived value). */
+const rawIn = (ctxId: string, p: string): unknown => {
+  const ctx = ctxById[ctxId];
+  const m = p.match(derived);
+  if (!m) return ctx.trace[p].at(-1)?.value;
+  const ty = (ctx.trace[p.replace(derived, '')].at(-1)?.value ?? {}) as Typography;
+  if (m[1] === 'fontSize') return ty.fontSize;
+  if (m[1] === 'letterSpacing') return ty.letterSpacing;
+  return convert(flatByContext[ctxId][p]); // line height in px is computed, never an alias
 };
 const scopes = (p: string): string[] =>
   p.startsWith('primitive.')
@@ -214,15 +231,17 @@ const scopes = (p: string): string[] =>
               ? ['FONT_SIZE']
               : p.endsWith('lineHeight')
                 ? ['LINE_HEIGHT']
-                : p.endsWith('.content') || p.startsWith('color.content')
-                  ? ['TEXT_FILL', 'SHAPE_FILL', 'STROKE_COLOR']
-                  : p.includes('focus.ring') || p.endsWith('.border')
-                    ? ['STROKE_COLOR']
-                    : p.startsWith('color.')
-                      ? ['FRAME_FILL', 'SHAPE_FILL']
-                      : p.includes('width')
-                        ? ['STROKE_FLOAT']
-                        : ['WIDTH_HEIGHT'];
+                : p.endsWith('letterSpacing')
+                  ? ['LETTER_SPACING']
+                  : /\.(content|contentStrong|placeholder|link|onAccent)$/.test(p) || p.startsWith('color.content')
+                    ? ['TEXT_FILL', 'SHAPE_FILL', 'STROKE_COLOR']
+                    : p.includes('focus.ring') || p.endsWith('.border') || p.startsWith('color.border.')
+                      ? ['STROKE_COLOR']
+                      : p.startsWith('color.')
+                        ? ['FRAME_FILL', 'SHAPE_FILL']
+                        : p.includes('width')
+                          ? ['STROKE_FLOAT']
+                          : ['WIDTH_HEIGHT'];
 const convert = (t: ResolvedToken): FigmaValue => {
   if (t.$type === 'color') {
     const c = colorOf(t);
@@ -251,9 +270,21 @@ const manifest: {
   typography: [],
   effects: []
 };
+const isVariable = (p: string) => p in flatByContext[base.id];
+/** Alias target expressed for Figma, or null when the source alias cannot be one Figma alias for this axis. */
+const aliasFor = (raw: unknown, axis: Axis): FigmaValue | null => {
+  if (typeof raw !== 'string' || !/^\{[^{}]+\}$/.test(raw)) return null;
+  const q = raw.slice(1, -1);
+  if (!isVariable(q)) return null;
+  const target = axisOf(q);
+  if (target === 'Brand' || target === axis) return { alias: `${target}:${figmaName(q)}` };
+  return null;
+};
+const isAliasString = (raw: unknown) => typeof raw === 'string' && /^\{[^{}]+\}$/.test(raw);
 for (const p of Object.keys(flatByContext[base.id])) {
   const type = flatByContext[base.id][p].$type === 'color' ? 'COLOR' : 'FLOAT';
   const axis = axisOf(p);
+  const codeSyntax = { WEB: `var(${cssVariable(p)})` };
   const at = (brand: string, appearance: string, density: string) =>
     convert(flatByContext[`${brand}-${appearance}-${density}`][p]);
   if (axis === 'Brand') {
@@ -263,23 +294,50 @@ for (const p of Object.keys(flatByContext[base.id])) {
       path: p,
       type,
       scopes: scopes(p),
-      values: Object.fromEntries(cfg.brands.map((b) => [b, at(b, base.appearance, base.density)]))
+      codeSyntax,
+      values: Object.fromEntries(
+        cfg.brands.map((b) => {
+          const raw = rawIn(`${b}-${base.appearance}-${base.density}`, p);
+          return [b, aliasFor(raw, 'Brand') ?? at(b, base.appearance, base.density)];
+        })
+      )
     });
     continue;
   }
   const modes = axis === 'Appearance' ? cfg.appearances : cfg.densities;
+  const ctxOf = (b: string, m: string) =>
+    axis === 'Appearance' ? `${b}-${m}-${base.density}` : `${b}-${base.appearance}-${m}`;
+  const values: Record<string, FigmaValue> = {};
+  let expressible = true;
   for (const mode of modes) {
-    const name = `_resolved/${axis.toLowerCase()}/${mode}/${figmaName(p)}`;
-    manifest.variables.push({
-      collection: 'Brand',
-      name,
-      path: p,
-      type,
-      scopes: [],
-      values: Object.fromEntries(
-        cfg.brands.map((b) => [b, axis === 'Appearance' ? at(b, mode, base.density) : at(b, base.appearance, mode)])
-      )
-    });
+    const raws = cfg.brands.map((b) => JSON.stringify(rawIn(ctxOf(b, mode), p) ?? null));
+    const raw = rawIn(ctxOf(cfg.brands[0], mode), p);
+    const sameAcrossBrands = raws.every((r) => r === raws[0]);
+    const alias = aliasFor(raw, axis);
+    if (!sameAcrossBrands || (isAliasString(raw) && !alias)) {
+      expressible = false;
+      break;
+    }
+    values[mode] =
+      alias ??
+      at(
+        cfg.brands[0],
+        ...((axis === 'Appearance' ? [mode, base.density] : [base.appearance, mode]) as [string, string])
+      );
+  }
+  if (!expressible) {
+    for (const mode of modes) {
+      const name = `_resolved/${axis.toLowerCase()}/${mode}/${figmaName(p)}`;
+      manifest.variables.push({
+        collection: 'Brand',
+        name,
+        path: p,
+        type,
+        scopes: [],
+        values: Object.fromEntries(cfg.brands.map((b) => [b, convert(flatByContext[ctxOf(b, mode)][p])]))
+      });
+      values[mode] = { alias: `Brand:${name}` };
+    }
   }
   manifest.variables.push({
     collection: axis,
@@ -287,9 +345,8 @@ for (const p of Object.keys(flatByContext[base.id])) {
     path: p,
     type,
     scopes: scopes(p),
-    values: Object.fromEntries(
-      modes.map((m) => [m, { alias: `Brand:_resolved/${axis.toLowerCase()}/${m}/${figmaName(p)}` }])
-    )
+    codeSyntax,
+    values
   });
 }
 const styleNames: Record<number, string> = {

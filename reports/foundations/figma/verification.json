@@ -1,0 +1,152 @@
+{
+  "method": "Native Figma resolution (resolveForConsumer on a frame with explicit Brand, Appearance and Density modes) of every semantic variable, in deterministic order, hashed with FNV-1a over canonical values (8-digit hex colors from float32 channels, as Figma stores them; 4-decimal numbers) and compared with the same hash of packages/tokens/figma-expectations.json.",
+  "variables": 401,
+  "contexts": 18,
+  "failures": 0,
+  "records": [
+    {
+      "context": "base-light-compact",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "891e30d5",
+      "observedHash": "891e30d5",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "a0de23fa",
+      "observedHash": "a0de23fa",
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "cef6babb",
+      "observedHash": "cef6babb",
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "61641b28",
+      "observedHash": "61641b28",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "d9216f5f",
+      "observedHash": "d9216f5f",
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "344c7078",
+      "observedHash": "344c7078",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "6c9082e9",
+      "observedHash": "6c9082e9",
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "1c4091a6",
+      "observedHash": "1c4091a6",
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "0d690f67",
+      "observedHash": "0d690f67",
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "a02454c7",
+      "observedHash": "a02454c7",
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "02b499b4",
+      "observedHash": "02b499b4",
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "3ff9bd05",
+      "observedHash": "3ff9bd05",
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "ba4e17f5",
+      "observedHash": "ba4e17f5",
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "0aafe69a",
+      "observedHash": "0aafe69a",
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "4276d55b",
+      "observedHash": "4276d55b",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "0480b0a0",
+      "observedHash": "0480b0a0",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "c7c05df7",
+      "observedHash": "c7c05df7",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "expectedCount": 401,
+      "observedCount": 401,
+      "expectedHash": "dd838e90",
+      "observedHash": "dd838e90",
+      "passed": true
+    }
+  ]
+}
