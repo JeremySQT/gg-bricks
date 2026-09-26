@@ -142,7 +142,25 @@ test('disabled leaves the tab order and never navigates; links keep link semanti
   await expect(disabledLink).toHaveAttribute('aria-disabled', 'true');
   await expect(disabledLink).toHaveAttribute('tabindex', '-1');
 
+  // Real keyboard walk from the control before the playground to the first option after it.
+  const tabWalk = async () => {
+    await page.locator('#ctx-targets').focus();
+    const visited: string[] = [];
+    for (let i = 0; i < 10; i++) {
+      await page.keyboard.press('Tab');
+      const id = await page.evaluate(() => document.activeElement?.id ?? '');
+      if (id === 'opt-intent') return visited;
+      visited.push(id);
+    }
+    throw Error(`Tab never reached the options: ${visited.join(', ')}`);
+  };
+  expect(await tabWalk()).toEqual(['play-action', 'play-link']);
+  await page.check('#opt-loading');
+  expect(await tabWalk()).toEqual(['play-action', 'play-link']); // loading stays in the tab order
+  await page.uncheck('#opt-loading');
   await page.check('#opt-disabled');
+  expect(await tabWalk()).toEqual([]); // disabled leaves it, for the button and the link
+
   // A disabled button cannot take focus at all; a disabled link leaves the sequential focus order.
   await page.locator('#play-action').evaluate((el: HTMLElement) => el.focus());
   expect(await page.evaluate(() => document.activeElement?.id)).not.toBe('play-action');

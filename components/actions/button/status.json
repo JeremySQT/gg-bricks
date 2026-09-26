@@ -27,11 +27,7 @@
       "Menu for a list of actions behind one trigger."
     ]
   },
-  "dependencies": [
-    "icon",
-    "counter",
-    "shortcut"
-  ],
+  "dependencies": ["icon", "counter", "shortcut"],
   "fixtures": [
     "Local inline SVG icons (Phosphor paths) in examples and tests, standing in for Icon.",
     "Local counter and shortcut fixtures in examples and tests, standing in for Counter and Shortcut."
@@ -57,7 +53,7 @@
     "examples": {
       "page": "examples/button",
       "preview": "dist/previews/button.html (npm run build && npm run build:preview button)",
-      "artifact": "https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK (version 1, commit acd9444)"
+      "artifact": "https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK (version 2; version 1 was blank)"
     },
     "tests": {
       "ssr": "tests/ssr/button.test.ts",
@@ -72,9 +68,7 @@
     "contract": {
       "scope": "Button contract: props, parts, states, activate event, token roles and rules as drafted, with no token additions; open decisions 1 (no width option, layout stretches the button) and 2 (accept outline border contrast 2.06 to 2.37 on surface.muted in dark) resolved as proposed.",
       "revision": {
-        "paths": [
-          "components/actions/button/contract.json"
-        ],
+        "paths": ["components/actions/button/contract.json"],
         "sha256": {
           "components/actions/button/contract.json": "4986b264dd0bcc6549d2e577b48806303909055c5b17a989c7b7f6febae44c8c"
         }
@@ -119,6 +113,12 @@
       "command": "npm run test:browser",
       "report": "reports/browser-results.json",
       "note": "8 Chromium tests: behavior, keyboard, forms, links, slots, truncation and targets, computed values (8658 records), motion, forced colors, axe light and dark, mobile width."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build:preview button",
+      "note": "Rebuilt as a single bundle and smoke-checked from file:// in Chromium. The first published preview (artifact version 1) was blank: it referenced a chunk shared with the foundations page that was not inlined."
     }
   ],
   "decisionsTaken": [
@@ -148,14 +148,7 @@
     "The horizontal target pseudo-element uses physical left + translateX(-50%) on purpose: centering is symmetric in both writing directions."
   ],
   "contrastScope": {
-    "backdrops": [
-      "canvas",
-      "default",
-      "subtle",
-      "muted",
-      "raised",
-      "overlay"
-    ],
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
     "informational": [
       {
         "role": "border",
