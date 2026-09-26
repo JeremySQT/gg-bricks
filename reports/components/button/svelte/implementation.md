@@ -34,6 +34,7 @@ Component: `packages/svelte/src/button/` (Svelte 5.57.1, Bits UI 2.19.3 `Button.
 - `npm run test:browser`: 8 tests passed in Chromium (`reports/browser-results.json`): behavior, keyboard, forms, links, slots, truncation and targets, computed values, motion and forced colors, axe (WCAG 2.0/2.1/2.2 A and AA tags) in light and dark, mobile width without horizontal overflow.
 - Computed values: `reports/components/button/svelte/computed.json`, 8 658 records. Default state for 27 intent × appearance × size combinations in all 18 contexts (colors, border, radius, padding, gap, font size, weight, letter spacing, height); hover, pressed, focus, loading and disabled for 9 intent × appearance combinations in base-light-standard, base-dark-standard, brick-light-compact and orchid-dark-comfortable. All match the resolved tokens.
 - Contrast (`reports/components/button/contrast.json`): 6 264 checks, 0 failures on the declared backdrops (status `contrastScope`); outline border on `surface.muted` in dark is informational as accepted at the contract gate.
+- Preview: `npm run build:preview button` now rebuilds the page as one bundle (the multi-page build shared a chunk that the first published preview could not load: blank page) and fails unless the file mounts from `file://` without errors in Chromium.
 - Screenshots: `review-light.png`, `review-dark.png`, `review-mobile.png`, `forced-colors.png`.
 
 ## Limitations
