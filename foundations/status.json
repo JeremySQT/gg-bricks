@@ -1,6 +1,6 @@
 {
   "phase": "approved",
-  "note": "Foundations approved on 2026-09-26 (primitives, semantic) and Figma variables synced and verified the same day. Unit of work complete; pull request pending.",
+  "note": "Foundations approved on 2026-09-26 (primitives, semantic) and Figma variables synced and verified the same day. Pull request open: https://github.com/JeremySQT/design-system/pull/1 (the user merges).",
   "artifacts": {
     "config": "foundations/config.json",
     "paletteConfig": "foundations/palette.config.json",
@@ -145,7 +145,7 @@
     "Brands: brick (orange accent, radii xs/sm/md) and orchid (violet accent, radii xl/2xl/2xl).",
     "Typography composites carry letterSpacing and optional fontFeatures (OpenType tags); CSS exposes --ggb-typography-<role>-letterSpacing and -fontFeatureSettings; the Figma manifest carries both."
   ],
-  "nextAction": "Open the pull request foundations/initial -> main with the repository template (the user merges). Components may start (wave 1, Button first).",
+  "nextAction": "Merge the pull request (user). Then wave 1 components, Button first (ggb-component).",
   "decided": [
     "Brand names brick and orchid (round 1).",
     "Fonts: Inter for every brand, IBM Plex Mono for code roles (round 1).",
@@ -155,5 +155,6 @@
     "Icon method: Phosphor Icons as reference set, no bundled set, intrinsic glyphs inline per component and overridable; recorded in decisions.md (round 2).",
     "Purge of the reference-kit leftovers: seed brands, stale generated outputs, handoff note and Figma script bodies removed; adapter README keeps the known mechanics (round 2).",
     "Figma collections: Primitives (single mode) for primitives shared by every brand, Brand only for brand-dependent semantic tokens; component tokens go to Brand under component/<id> (user review of the Figma file, 2026-09-26)."
-  ]
+  ],
+  "pullRequest": "https://github.com/JeremySQT/design-system/pull/1"
 }
