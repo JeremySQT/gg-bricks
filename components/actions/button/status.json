@@ -3,7 +3,7 @@
   "componentId": "button",
   "family": "actions",
   "wave": 1,
-  "phase": "implementation",
+  "phase": "contract",
   "scope": {
     "purpose": "Trigger an action or move to the next step of a task with a short visible label.",
     "useCases": [
@@ -35,9 +35,14 @@
   "artifacts": {
     "contract": {
       "path": "components/actions/button/contract.json",
-      "sha256": "4986b264dd0bcc6549d2e577b48806303909055c5b17a989c7b7f6febae44c8c"
+      "sha256": "e66de605745de64d31be89be8679a5ce82636de28ec364de54dbf79beaf4996c"
     },
-    "tokens": [],
+    "tokens": [
+      "foundations/tokens/base/semantic/density.compact.tokens.json",
+      "foundations/tokens/base/semantic/density.standard.tokens.json",
+      "foundations/tokens/base/semantic/density.comfortable.tokens.json",
+      "foundations/inventory.json"
+    ],
     "figma": null,
     "figmaSpec": null,
     "svelte": {
@@ -53,7 +58,7 @@
     "examples": {
       "page": "examples/button",
       "preview": "dist/previews/button.html (npm run build && npm run build:preview button)",
-      "artifact": "https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK (version 2; version 1 was blank)"
+      "artifact": "https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK (version 3: thirds spacing)"
     },
     "tests": {
       "ssr": "tests/ssr/button.test.ts",
@@ -74,7 +79,7 @@
         }
       },
       "provenance": "User in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds), replying to the contract gate: \"je pense qu on est bon, je valide le contrat\". The acceptance of the two proposals is inferred from that reply; the user may object to the record.",
-      "note": "Covers the contract only; the implementation gate remains the design review."
+      "note": "Covers the contract only. Invalidated on 2026-09-27 for one fact: horizontal spacing (edgeInline and labelInline replace paddingInline and gap, new spacing rule), following the implementation review; the rest of the contract is unchanged and re-presented for that fact only."
     },
     "implementation": null,
     "figmaParity": null,
@@ -138,13 +143,15 @@
     "The root element is the 44 px interaction target (block size) and a centered pseudo-element extends it to 44 px wide; the visible container fills the root, so a layout that stretches the button stretches its surface.",
     "The loading indicator is an inline SVG spinner in the content color (800 ms turn, slowed to 2.4 s under reduced motion).",
     "Contrast is checked on the backdrops declared in status contrastScope (a generic tooling addition, documented in authoring/architecture.md).",
-    "Typography roles now also bind letterSpacing and fontFeatureSettings helpers in generated component CSS (generic build-svelte addition)."
+    "Typography roles now also bind letterSpacing and fontFeatureSettings helpers in generated component CSS (generic build-svelte addition).",
+    "Spacing variant F chosen by the user at the implementation review (2026-09-27): side spacing split in thirds, two parts edge padding, one part label margin, on existing primitives. Comparison page examples/button-spacing (commit cf0c477, artifact https://claude.ai/artifact/7PPpXnsQav9VsAuv4FR7DW v2), removed after the choice.",
+    "New semantic roles space.control.edge-inline.{sm,md,lg} and space.control.label-inline.{sm,md,lg} (density axis) rather than changing padding-inline and gap, which other controls (fields) will keep using. Values: compact 4+2, 8+4, 12+6; standard 8+4, 12+6, 16+8; comfortable 12+6, 16+8, 20+10."
   ],
   "openDecisions": [
-    "Implementation review feedback (2026-09-27): the label should stay visually centered when leading or trailing content is present. Five spacing variants compared in examples/button-spacing (A current, B split padding with current totals, C split 12 + 12, D reserved symmetric space, E split + reserved). The chosen variant changes the spacing rule of the contract (and, for C, the token values), which returns to the contract gate for that fact only.",
+    "Approve the spacing fact of the contract and the six new semantic roles (values per density), in particular compact sm (icon 4 px from the edge, 2 px from the label).",
     "aria-disabled while loading (in addition to aria-busy): keep or expose only the busy state."
   ],
-  "nextAction": "Wait for the spacing variant choice and the aria-disabled decision, update the contract rule (and tokens if needed), apply to the component, re-run the checks and re-present the implementation gate.",
+  "nextAction": "Contract gate for the spacing fact and token additions, then implementation gate on the updated preview (artifact version 3).",
   "implementationNotes": [
     "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
     "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",

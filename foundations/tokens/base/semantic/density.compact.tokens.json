@@ -58,6 +58,34 @@
           "$type": "dimension",
           "$value": "{primitive.dimension.v8}"
         }
+      },
+      "edge-inline": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v4}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v8}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v12}"
+        }
+      },
+      "label-inline": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v2}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v4}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v6}"
+        }
       }
     },
     "content": {

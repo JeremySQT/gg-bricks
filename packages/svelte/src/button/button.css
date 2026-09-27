@@ -78,12 +78,12 @@
   align-items: center;
   flex: 1 1 auto;
   justify-content: center;
-  gap: var(--ggb-button-gap);
   min-inline-size: 0;
   max-inline-size: 100%;
   min-block-size: var(--ggb-button-minHeight);
   padding-block: var(--ggb-button-paddingBlock);
-  padding-inline: var(--ggb-button-paddingInline);
+  /* Edge padding (two parts) plus label margin (one part): slots sit closer to the edge than the label. */
+  padding-inline: var(--ggb-button-edgeInline);
   border-radius: var(--ggb-button-radius);
   background-color: var(--_surface);
   /* Transparent outline: invisible normally, drawn by the system in forced-colors mode. */
@@ -100,6 +100,7 @@
 }
 
 .ggb-button__label {
+  margin-inline: var(--ggb-button-labelInline);
   min-inline-size: 0;
   overflow: hidden;
   white-space: nowrap;

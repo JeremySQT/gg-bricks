@@ -66,9 +66,9 @@
     "radius": "radius.control",
     "minHeight": "size.control.{size}",
     "minTarget": "size.target.min",
-    "paddingInline": "space.control.padding-inline.{size}",
+    "edgeInline": "space.control.edge-inline.{size}",
     "paddingBlock": "space.control.padding-block.{size}",
-    "gap": "space.control.gap.{size}",
+    "labelInline": "space.control.label-inline.{size}",
     "typography": "typography.label.{size}",
     "iconSize": "size.icon.{size}",
     "focusColor": "color.focus.ring",
@@ -78,7 +78,8 @@
     "easingStandard": "motion.easing.standard"
   },
   "rules": [
-    "Arrange leading, label and trailing in that order inside container, separated by gap; label shows the required non-empty label prop and is the accessible name.",
+    "Arrange leading, label and trailing in that order inside container; label shows the required non-empty label prop and is the accessible name.",
+    "Horizontal spacing: container has edgeInline inline padding and label has labelInline on both inline sides; leading and trailing sit directly against the padding edge and against the label spacing. Without leading or trailing, the label is edgeInline + labelInline from the container edge (edgeInline is twice labelInline).",
     "Size to content up to the available width; keep the label on one line and truncate it with an ellipsis, never truncating the accessible name.",
     "The container height is the greater of minHeight and content height plus paddingBlock; the interaction target meets minTarget in both dimensions without enlarging the visible container.",
     "Leading and trailing content renders at iconSize and inherits the resolved content color.",

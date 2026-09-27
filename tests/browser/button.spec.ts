@@ -52,6 +52,7 @@ async function measure(page: Page, selector: string) {
       paddingInline: c.paddingInlineStart,
       paddingBlock: c.paddingBlockStart,
       gap: c.columnGap,
+      labelMargin: getComputedStyle(el.querySelector('.ggb-button__label')!).marginInlineStart,
       fontSize: getComputedStyle(el).fontSize,
       fontWeight: getComputedStyle(el).fontWeight,
       letterSpacing: getComputedStyle(el).letterSpacing,
@@ -188,6 +189,26 @@ test('slot content is decorative, inherits the content color and uses the icon s
     expect(icon.stroke).toBe(color);
     await expect(b.locator('[data-testid="fixture-counter"]')).toHaveCSS('color', color);
   }
+  // Spacing: the icon sits at edgeInline from the edge and labelInline from the label; without slots the
+  // label is edgeInline + labelInline from both edges.
+  for (const size of sizes) {
+    const edge = px(tokens[`space.control.edge-inline.${size}`]);
+    const label = px(tokens[`space.control.label-inline.${size}`]);
+    const g = await page.locator(`#slot-size-${size}`).evaluate((el) => {
+      const c = el.querySelector('.ggb-button__container')!.getBoundingClientRect();
+      const lead = el.querySelector('.ggb-button__leading')!.getBoundingClientRect();
+      const text = el.querySelector('.ggb-button__label')!.getBoundingClientRect();
+      const trail = el.querySelector('.ggb-button__trailing')!.getBoundingClientRect();
+      return [lead.left - c.left, text.left - lead.right, trail.left - text.right, c.right - trail.right];
+    });
+    expect(g).toEqual([edge, label, label, edge]);
+    const plain = await page.locator(`#short-${size}`).evaluate((el) => {
+      const c = el.querySelector('.ggb-button__container')!.getBoundingClientRect();
+      const text = el.querySelector('.ggb-button__label')!.getBoundingClientRect();
+      return [text.left - c.left, c.right - text.right];
+    });
+    expect(plain).toEqual([edge + label, edge + label]);
+  }
   // Order: leading, label, trailing, in both directions.
   for (const id of ['#slot-both', '#rtl']) {
     const order = await page.locator(id).evaluate((el) => {
@@ -295,9 +316,14 @@ test('computed values match the resolved tokens for every option, state and cont
                 letterSpacing?: { value: number };
               };
               expect(m.radius).toBe(`${px(tokens['radius.control'])}px`);
-              expect(m.paddingInline).toBe(`${px(tokens[`space.control.padding-inline.${size}`])}px`);
+              expect(m.paddingInline).toBe(`${px(tokens[`space.control.edge-inline.${size}`])}px`);
               expect(m.paddingBlock).toBe(`${px(tokens[`space.control.padding-block.${size}`])}px`);
-              expect(m.gap).toBe(`${px(tokens[`space.control.gap.${size}`])}px`);
+              expect(m.gap).toBe('normal');
+              expect(m.labelMargin).toBe(`${px(tokens[`space.control.label-inline.${size}`])}px`);
+              // Thirds: the edge padding is twice the label margin.
+              expect(px(tokens[`space.control.edge-inline.${size}`])).toBe(
+                2 * px(tokens[`space.control.label-inline.${size}`])
+              );
               expect(m.fontSize).toBe(`${font.fontSize.value}px`);
               expect(m.fontWeight).toBe(String(font.fontWeight));
               expect(m.letterSpacing).toBe(font.letterSpacing?.value ? `${font.letterSpacing.value}px` : 'normal');

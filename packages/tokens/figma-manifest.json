@@ -12125,6 +12125,144 @@
     },
     {
       "collection": "Density",
+      "name": "space/control/edge-inline/sm",
+      "path": "space.control.edge-inline.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-edge-inline-sm)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v4"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v8"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v12"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/edge-inline/md",
+      "path": "space.control.edge-inline.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-edge-inline-md)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v8"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v12"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v16"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/edge-inline/lg",
+      "path": "space.control.edge-inline.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-edge-inline-lg)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v12"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v16"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v20"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/label-inline/sm",
+      "path": "space.control.label-inline.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-label-inline-sm)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v2"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v4"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v6"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/label-inline/md",
+      "path": "space.control.label-inline.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-label-inline-md)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v4"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v6"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v8"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/label-inline/lg",
+      "path": "space.control.label-inline.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-label-inline-lg)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v6"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v8"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v10"
+        }
+      }
+    },
+    {
+      "collection": "Density",
       "name": "space/content/xs",
       "path": "space.content.xs",
       "type": "FLOAT",

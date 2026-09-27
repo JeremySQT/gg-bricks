@@ -156,5 +156,19 @@
     "Purge of the reference-kit leftovers: seed brands, stale generated outputs, handoff note and Figma script bodies removed; adapter README keeps the known mechanics (round 2).",
     "Figma collections: Primitives (single mode) for primitives shared by every brand, Brand only for brand-dependent semantic tokens; component tokens go to Brand under component/<id> (user review of the Figma file, 2026-09-26)."
   ],
-  "pullRequest": "https://github.com/JeremySQT/design-system/pull/1"
+  "pullRequest": "https://github.com/JeremySQT/design-system/pull/1",
+  "pendingChanges": [
+    {
+      "date": "2026-09-27",
+      "change": "Six semantic roles added for the Button spacing: space.control.edge-inline.{sm,md,lg} and space.control.label-inline.{sm,md,lg} in the three density files, with inventory entries. Existing roles unchanged.",
+      "invalidates": "approvals.semantic for foundations/inventory.json and foundations/tokens/base/semantic/density.*.tokens.json (the listed digests no longer match); Figma variables not yet synced for the new roles.",
+      "sha256": {
+        "foundations/inventory.json": "218238ab0d1a1e49034e4bb951fd4361ca2d13582186463ab9215c88a4fdccb9",
+        "foundations/tokens/base/semantic/density.compact.tokens.json": "ab95524cce023a3fd26e54244f49062984b28541fb234a307c71ebbb77e9e8c5",
+        "foundations/tokens/base/semantic/density.standard.tokens.json": "4fa7c561a561a5a4f0a110f3a4924900cf7a1667b63e9ce9c5a342c7c4d3fffe",
+        "foundations/tokens/base/semantic/density.comfortable.tokens.json": "37067a939875c16a7dc6eafa6f318113c7b2b29cfe917df9f24e124c57465e84"
+      },
+      "review": "Presented at the Button contract gate (spacing fact)."
+    }
+  ]
 }

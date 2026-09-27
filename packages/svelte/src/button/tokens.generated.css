@@ -140,9 +140,9 @@
 }
 .ggb-button[data-size="sm"] {
   --ggb-button-minHeight: var(--ggb-size-control-sm);
-  --ggb-button-paddingInline: var(--ggb-space-control-padding-inline-sm);
+  --ggb-button-edgeInline: var(--ggb-space-control-edge-inline-sm);
   --ggb-button-paddingBlock: var(--ggb-space-control-padding-block-sm);
-  --ggb-button-gap: var(--ggb-space-control-gap-sm);
+  --ggb-button-labelInline: var(--ggb-space-control-label-inline-sm);
   --ggb-button-typography: var(--ggb-typography-label-sm);
   --ggb-button-typography-letterSpacing: var(--ggb-typography-label-sm-letterSpacing);
   --ggb-button-typography-fontFeatureSettings: var(--ggb-typography-label-sm-fontFeatureSettings);
@@ -150,9 +150,9 @@
 }
 .ggb-button[data-size="md"] {
   --ggb-button-minHeight: var(--ggb-size-control-md);
-  --ggb-button-paddingInline: var(--ggb-space-control-padding-inline-md);
+  --ggb-button-edgeInline: var(--ggb-space-control-edge-inline-md);
   --ggb-button-paddingBlock: var(--ggb-space-control-padding-block-md);
-  --ggb-button-gap: var(--ggb-space-control-gap-md);
+  --ggb-button-labelInline: var(--ggb-space-control-label-inline-md);
   --ggb-button-typography: var(--ggb-typography-label-md);
   --ggb-button-typography-letterSpacing: var(--ggb-typography-label-md-letterSpacing);
   --ggb-button-typography-fontFeatureSettings: var(--ggb-typography-label-md-fontFeatureSettings);
@@ -160,9 +160,9 @@
 }
 .ggb-button[data-size="lg"] {
   --ggb-button-minHeight: var(--ggb-size-control-lg);
-  --ggb-button-paddingInline: var(--ggb-space-control-padding-inline-lg);
+  --ggb-button-edgeInline: var(--ggb-space-control-edge-inline-lg);
   --ggb-button-paddingBlock: var(--ggb-space-control-padding-block-lg);
-  --ggb-button-gap: var(--ggb-space-control-gap-lg);
+  --ggb-button-labelInline: var(--ggb-space-control-label-inline-lg);
   --ggb-button-typography: var(--ggb-typography-label-lg);
   --ggb-button-typography-letterSpacing: var(--ggb-typography-label-lg-letterSpacing);
   --ggb-button-typography-fontFeatureSettings: var(--ggb-typography-label-lg-fontFeatureSettings);
