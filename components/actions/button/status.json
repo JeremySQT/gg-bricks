@@ -140,8 +140,11 @@
     "Contrast is checked on the backdrops declared in status contrastScope (a generic tooling addition, documented in authoring/architecture.md).",
     "Typography roles now also bind letterSpacing and fontFeatureSettings helpers in generated component CSS (generic build-svelte addition)."
   ],
-  "openDecisions": [],
-  "nextAction": "Implementation gate: the user reviews the preview (dist/previews/button.html, published as an artifact) and approves or requests changes; then Figma parity (ggb-figma).",
+  "openDecisions": [
+    "Implementation review feedback (2026-09-27): the label should stay visually centered when leading or trailing content is present. Five spacing variants compared in examples/button-spacing (A current, B split padding with current totals, C split 12 + 12, D reserved symmetric space, E split + reserved). The chosen variant changes the spacing rule of the contract (and, for C, the token values), which returns to the contract gate for that fact only.",
+    "aria-disabled while loading (in addition to aria-busy): keep or expose only the busy state."
+  ],
+  "nextAction": "Wait for the spacing variant choice and the aria-disabled decision, update the contract rule (and tokens if needed), apply to the component, re-run the checks and re-present the implementation gate.",
   "implementationNotes": [
     "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
     "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",
