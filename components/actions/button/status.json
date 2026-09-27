@@ -151,7 +151,7 @@
     "Review fixtures now use real Phosphor 2.1.1 regular icons (MIT) instead of hand-drawn stroke icons, so the review shows the reference geometry."
   ],
   "openDecisions": [
-    "Approve the two spacing facts of the contract (thirds rule with the six semantic roles and their values per density, and the optical icon rule), in particular compact sm (icon 4 px from the edge, 2 px from the label).",
+    "Visual balance (implementation review 2026-09-27): tune per size in examples/button-balance (artifact https://claude.ai/artifact/2 pending) the edge padding and label margin (proposal: lg label 8 -> 10), vertical centering on capital letters (text-box trim, measured 0 px offset in all sizes versus up to 0.5 px too high without), and tight ellipsis (label box fitted to the visible text by script; native CSS leaves 1.4 to 13.4 px after the ellipsis). The chosen settings change contract spacing facts and possibly token values; values for compact and comfortable follow once standard is chosen.",
     "aria-disabled while loading (in addition to aria-busy): keep or expose only the busy state."
   ],
   "nextAction": "Contract gate for the spacing fact and token additions, then implementation gate on the updated preview (artifact version 3).",
