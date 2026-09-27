@@ -14,6 +14,16 @@
       text: 'Uniform padding on both sides (sm 12, md 16, lg 20), gap between items (6, 8, 10).'
     },
     {
+      id: 'f',
+      name: 'F · Thirds (new)',
+      text: 'The side spacing (sm 12, md 16, lg 20) is split in three: two thirds as edge padding, one third as label margin (sm 8 + 4, md 10.7 + 5.3, lg 13.3 + 6.7). Without slots nothing changes; an icon sits at two thirds from the edge and one third from the label.'
+    },
+    {
+      id: 'g',
+      name: 'G · Thirds + reserved space (new)',
+      text: 'F, plus the symmetric reservation of D: the side without content reserves the same width as the other side, so the label is exactly centered.'
+    },
+    {
       id: 'b',
       name: 'B · Split padding, same totals',
       text: 'Your proposal with the current tokens: edge padding = padding − gap (6, 8, 10), label margin = gap (6, 8, 10). Without slots nothing changes (12, 16, 20); an icon moves closer to the edge.'
@@ -78,7 +88,7 @@
     <p class="eyebrow">ggbrick · button spacing test</p>
     <h1>Label balance</h1>
     <p>
-      Five ways to distribute the horizontal spacing when leading or trailing content is present. The number under each
+      Seven ways to distribute the horizontal spacing when leading or trailing content is present. The number under each
       button is the distance between the label center and the button center (0 = perfectly centered). The dashed line
       marks the button center.
     </p>
@@ -212,6 +222,32 @@
     left: 50%;
     border-left: 1px dashed var(--ggb-color-border-strong);
     pointer-events: none;
+  }
+
+  /* F and G: edge padding = 2/3 of the side spacing, label margin = 1/3, no flex gap. */
+  .variant-f :global(.ggb-button__container),
+  .variant-g :global(.ggb-button__container) {
+    gap: 0;
+    padding-inline: calc(var(--ggb-button-paddingInline) * 2 / 3);
+  }
+  .variant-f :global(.ggb-button__label),
+  .variant-g :global(.ggb-button__label) {
+    margin-inline: calc(var(--ggb-button-paddingInline) / 3);
+  }
+  .variant-g :global(.ggb-button__container) {
+    display: inline-grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(0, 1fr);
+  }
+  .variant-g :global(.ggb-button__leading) {
+    grid-column: 1;
+    justify-self: end;
+  }
+  .variant-g :global(.ggb-button__label) {
+    grid-column: 2;
+  }
+  .variant-g :global(.ggb-button__trailing) {
+    grid-column: 3;
+    justify-self: start;
   }
 
   /* B: edge padding = padding − gap, label margin = gap, no flex gap. */
