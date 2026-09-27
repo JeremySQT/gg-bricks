@@ -80,6 +80,7 @@
   "rules": [
     "Arrange leading, label and trailing in that order inside container; label shows the required non-empty label prop and is the accessible name.",
     "Horizontal spacing: container has edgeInline inline padding and label has labelInline on both inline sides; leading and trailing sit directly against the padding edge and against the label spacing. Without leading or trailing, the label is edgeInline + labelInline from the container edge (edgeInline is twice labelInline).",
+    "Spacing is optical: an icon in leading or trailing is placed by its drawing, not its box. Icons of the reference set draw 1/8 of iconSize inside their box on each side, so the icon box overlaps edgeInline and labelInline by that amount; text-like content (counter, shortcut) is placed by its box.",
     "Size to content up to the available width; keep the label on one line and truncate it with an ellipsis, never truncating the accessible name.",
     "The container height is the greater of minHeight and content height plus paddingBlock; the interaction target meets minTarget in both dimensions without enlarging the visible container.",
     "Leading and trailing content renders at iconSize and inherits the resolved content color.",

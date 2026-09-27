@@ -116,6 +116,15 @@
   min-block-size: var(--ggb-button-iconSize);
   color: inherit;
 }
+/*
+ * Optical alignment: icons of the reference set (Phosphor) draw 1/8 inside their box on each side, so the
+ * box overlaps the spacing by that inset and the drawing, not the box, sits at edgeInline and labelInline.
+ * Text-like content (counter, shortcut) draws to its box edge and needs no compensation.
+ */
+.ggb-button__leading > svg,
+.ggb-button__trailing > svg {
+  margin-inline: calc(var(--ggb-button-iconSize) / -8);
+}
 .ggb-button__leading > svg,
 .ggb-button__trailing > svg,
 .ggb-button__loadingIndicator > svg {

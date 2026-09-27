@@ -182,11 +182,11 @@ test('slot content is decorative, inherits the content color and uses the icon s
     const color = await b.evaluate((el) => getComputedStyle(el).color);
     const icon = await b.locator('.ggb-button__leading svg').evaluate((el) => {
       const r = el.getBoundingClientRect();
-      return { w: r.width, h: r.height, stroke: getComputedStyle(el).stroke };
+      return { w: r.width, h: r.height, fill: getComputedStyle(el).fill };
     });
     expect(icon.w).toBe(px(tokens[`size.icon.${size}`]));
     expect(icon.h).toBe(px(tokens[`size.icon.${size}`]));
-    expect(icon.stroke).toBe(color);
+    expect(icon.fill).toBe(color);
     await expect(b.locator('[data-testid="fixture-counter"]')).toHaveCSS('color', color);
   }
   // Spacing: the icon sits at edgeInline from the edge and labelInline from the label; without slots the
@@ -196,7 +196,8 @@ test('slot content is decorative, inherits the content color and uses the icon s
     const label = px(tokens[`space.control.label-inline.${size}`]);
     const g = await page.locator(`#slot-size-${size}`).evaluate((el) => {
       const c = el.querySelector('.ggb-button__container')!.getBoundingClientRect();
-      const lead = el.querySelector('.ggb-button__leading')!.getBoundingClientRect();
+      // The drawing (path bounds), not the svg box: spacing is optical.
+      const lead = el.querySelector('.ggb-button__leading path')!.getBoundingClientRect();
       const text = el.querySelector('.ggb-button__label')!.getBoundingClientRect();
       const trail = el.querySelector('.ggb-button__trailing')!.getBoundingClientRect();
       return [lead.left - c.left, text.left - lead.right, trail.left - text.right, c.right - trail.right];

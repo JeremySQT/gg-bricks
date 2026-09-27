@@ -35,7 +35,7 @@
   "artifacts": {
     "contract": {
       "path": "components/actions/button/contract.json",
-      "sha256": "e66de605745de64d31be89be8679a5ce82636de28ec364de54dbf79beaf4996c"
+      "sha256": "67eae86915edce2df00e88e4c3ff804304fce6120c3b45c9687b0618b0f314f8"
     },
     "tokens": [
       "foundations/tokens/base/semantic/density.compact.tokens.json",
@@ -58,7 +58,7 @@
     "examples": {
       "page": "examples/button",
       "preview": "dist/previews/button.html (npm run build && npm run build:preview button)",
-      "artifact": "https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK (version 3: thirds spacing)"
+      "artifact": "https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK (version 4: thirds spacing, optical icon alignment, Phosphor fixtures)"
     },
     "tests": {
       "ssr": "tests/ssr/button.test.ts",
@@ -145,10 +145,13 @@
     "Contrast is checked on the backdrops declared in status contrastScope (a generic tooling addition, documented in authoring/architecture.md).",
     "Typography roles now also bind letterSpacing and fontFeatureSettings helpers in generated component CSS (generic build-svelte addition).",
     "Spacing variant F chosen by the user at the implementation review (2026-09-27): side spacing split in thirds, two parts edge padding, one part label margin, on existing primitives. Comparison page examples/button-spacing (commit cf0c477, artifact https://claude.ai/artifact/7PPpXnsQav9VsAuv4FR7DW v2), removed after the choice.",
-    "New semantic roles space.control.edge-inline.{sm,md,lg} and space.control.label-inline.{sm,md,lg} (density axis) rather than changing padding-inline and gap, which other controls (fields) will keep using. Values: compact 4+2, 8+4, 12+6; standard 8+4, 12+6, 16+8; comfortable 12+6, 16+8, 20+10."
+    "New semantic roles space.control.edge-inline.{sm,md,lg} and space.control.label-inline.{sm,md,lg} (density axis) rather than changing padding-inline and gap, which other controls (fields) will keep using. Values: compact 4+2, 8+4, 12+6; standard 8+4, 12+6, 16+8; comfortable 12+6, 16+8, 20+10.",
+    "Semantic roles kept for the spacing (option 1, user 2026-09-27): values vary by density, which component tokens cannot do in the current architecture.",
+    "Optical spacing (2026-09-27, after the user noticed leading icons looked farther from the label than trailing counters and shortcuts): icons are placed by their drawing. Phosphor icons draw 1/8 of their box inside on each side, so icon boxes overlap edgeInline and labelInline by iconSize/8. Measured visible gaps in md: edge to icon 12.5, icon to label 6.5, label to counter 7.25, counter to edge 13 (before: 15.25, 10.25, 6.25, 12).",
+    "Review fixtures now use real Phosphor 2.1.1 regular icons (MIT) instead of hand-drawn stroke icons, so the review shows the reference geometry."
   ],
   "openDecisions": [
-    "Approve the spacing fact of the contract and the six new semantic roles (values per density), in particular compact sm (icon 4 px from the edge, 2 px from the label).",
+    "Approve the two spacing facts of the contract (thirds rule with the six semantic roles and their values per density, and the optical icon rule), in particular compact sm (icon 4 px from the edge, 2 px from the label).",
     "aria-disabled while loading (in addition to aria-busy): keep or expose only the busy state."
   ],
   "nextAction": "Contract gate for the spacing fact and token additions, then implementation gate on the updated preview (artifact version 3).",
