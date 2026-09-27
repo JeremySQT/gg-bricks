@@ -8,11 +8,26 @@
   import Fixture from '../button/Fixtures.svelte';
   import { tick } from 'svelte';
 
-  type Spacing = Record<ButtonSize, { edge: number; label: number }>;
+  type Spacing = Record<ButtonSize, { edge: number; label: number; slot: number }>;
   const sizes: ButtonSize[] = ['sm', 'md', 'lg'];
-  const primitives = [0, 2, 4, 6, 8, 10, 12, 14, 16, 20, 24];
-  const current: Spacing = { sm: { edge: 8, label: 4 }, md: { edge: 12, label: 6 }, lg: { edge: 16, label: 8 } };
-  const proposal: Spacing = { sm: { edge: 8, label: 4 }, md: { edge: 12, label: 6 }, lg: { edge: 16, label: 10 } };
+  const primitives = [0, 1, 2, 4, 6, 8, 10, 12, 14, 16, 20, 24];
+  const current: Spacing = {
+    sm: { edge: 8, label: 4, slot: 0 },
+    md: { edge: 12, label: 6, slot: 0 },
+    lg: { edge: 16, label: 8, slot: 0 }
+  };
+  const proposal: Spacing = {
+    sm: { edge: 8, label: 4, slot: 0 },
+    md: { edge: 12, label: 6, slot: 0 },
+    lg: { edge: 16, label: 10, slot: 0 }
+  };
+  // B: the edge padding is the existing control padding (12, 16, 20); leading and trailing carry their own
+  // margin on both sides (2), the label a smaller one. md is the user's example: 16 + 4 + 2.
+  const proposalB: Spacing = {
+    sm: { edge: 12, label: 2, slot: 2 },
+    md: { edge: 16, label: 4, slot: 2 },
+    lg: { edge: 20, label: 8, slot: 2 }
+  };
   const truncWidth: Record<ButtonSize, number> = { sm: 150, md: 190, lg: 230 };
 
   let spacing = $state<Spacing>(structuredClone(proposal));
@@ -32,8 +47,8 @@
       spacing = structuredClone(current);
       trim = false;
       tight = false;
-    } else if (name === 'proposal') {
-      spacing = structuredClone(proposal);
+    } else if (name === 'proposal' || name === 'proposalB') {
+      spacing = structuredClone(name === 'proposal' ? proposal : proposalB);
       trim = true;
       tight = true;
     }
@@ -178,6 +193,9 @@
         >Current (review v4)</button
       >
       <button class="chip" class:on={preset === 'proposal'} onclick={() => applyPreset('proposal')}>Proposal</button>
+      <button class="chip" class:on={preset === 'proposalB'} onclick={() => applyPreset('proposalB')}
+        >Proposal B (slot margin)</button
+      >
     </div>
     <div class="grid3">
       {#each sizes as s (s)}
@@ -193,7 +211,15 @@
               >{#each primitives as v (v)}<option value={v}>{v}</option>{/each}</select
             ></label
           >
-          <small>No slot: {spacing[s].edge + spacing[s].label} px from the edge</small>
+          <label
+            >Slot <select bind:value={spacing[s].slot} onchange={() => (preset = 'custom')}
+              >{#each primitives as v (v)}<option value={v}>{v}</option>{/each}</select
+            ></label
+          >
+          <small
+            >Box spacing: edge → slot {spacing[s].edge + spacing[s].slot} · slot → label {spacing[s].slot +
+              spacing[s].label} · no slot {spacing[s].edge + spacing[s].label}</small
+          >
         </fieldset>
       {/each}
     </div>
@@ -241,6 +267,9 @@
     style:--md-label={`${spacing.md.label}px`}
     style:--lg-edge={`${spacing.lg.edge}px`}
     style:--lg-label={`${spacing.lg.label}px`}
+    style:--sm-slot={`${spacing.sm.slot}px`}
+    style:--md-slot={`${spacing.md.slot}px`}
+    style:--lg-slot={`${spacing.lg.slot}px`}
   >
     {#each sizes as s (s)}
       <section class="panel">
@@ -387,16 +416,23 @@
   .lab :global(.ggb-button[data-size='sm']) {
     --ggb-button-edgeInline: var(--sm-edge);
     --ggb-button-labelInline: var(--sm-label);
+    --slot: var(--sm-slot);
   }
   .lab :global(.ggb-button[data-size='md']) {
     --ggb-button-edgeInline: var(--md-edge);
     --ggb-button-labelInline: var(--md-label);
+    --slot: var(--md-slot);
   }
   .lab :global(.ggb-button[data-size='lg']) {
     --ggb-button-edgeInline: var(--lg-edge);
     --ggb-button-labelInline: var(--lg-label);
+    --slot: var(--lg-slot);
   }
   /* Trimmed to cap height and baseline; the clip margin keeps descenders visible while the ellipsis still works. */
+  .lab :global(.ggb-button__leading),
+  .lab :global(.ggb-button__trailing) {
+    margin-inline: var(--slot);
+  }
   .lab.trim :global(.ggb-button__label) {
     text-box: trim-both cap alphabetic;
     overflow: clip;
