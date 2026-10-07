@@ -1,0 +1,307 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "Actions",
+      "id": "8:4"
+    }
+  },
+  "recordedOn": "2026-10-07",
+  "componentSet": {
+    "id": "48:1586",
+    "name": "Button",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=48-1586"
+  },
+  "properties": {
+    "Label#48:360": {
+      "type": "TEXT",
+      "default": "Button"
+    },
+    "Show leading#48:361": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Leading icon#48:362": {
+      "type": "INSTANCE_SWAP",
+      "default": "42:7",
+      "preferred": [
+        "12a89c03c2325076a713748b7e611277946700d7",
+        "60f8d1f2beafd9db764cfed5b36b8b27319560c3",
+        "1b8d13ae746a9c6fdb869180bba757a1c68aa324",
+        "accac31493a4b0c09a6835a611e1ae5dae55566c",
+        "3b8a918e7cba1d71239231d9ad7e130e107aebe9"
+      ]
+    },
+    "Show trailing icon#48:363": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Trailing icon#48:364": {
+      "type": "INSTANCE_SWAP",
+      "default": "42:10",
+      "preferred": [
+        "12a89c03c2325076a713748b7e611277946700d7",
+        "60f8d1f2beafd9db764cfed5b36b8b27319560c3",
+        "1b8d13ae746a9c6fdb869180bba757a1c68aa324",
+        "accac31493a4b0c09a6835a611e1ae5dae55566c",
+        "3b8a918e7cba1d71239231d9ad7e130e107aebe9"
+      ]
+    },
+    "Show trailing content#48:365": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Trailing content#48:366": {
+      "type": "INSTANCE_SWAP",
+      "default": "42:20",
+      "preferred": [
+        "00a60fc790a3a7aed4d4524fc16992d830932960",
+        "fffb9e457bdbf32f420376b50f350a6fecb5ce85"
+      ]
+    },
+    "Focus#48:367": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Intent": {
+      "type": "VARIANT",
+      "default": "accent",
+      "options": [
+        "accent",
+        "neutral",
+        "danger"
+      ]
+    },
+    "Appearance": {
+      "type": "VARIANT",
+      "default": "solid",
+      "options": [
+        "solid",
+        "outline",
+        "ghost"
+      ]
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "sm",
+        "md",
+        "lg"
+      ]
+    },
+    "State": {
+      "type": "VARIANT",
+      "default": "default",
+      "options": [
+        "default",
+        "hover",
+        "pressed",
+        "loading",
+        "disabled"
+      ]
+    }
+  },
+  "variants": {
+    "Intent=accent, Appearance=solid, Size=sm, State=default": "43:6",
+    "Intent=accent, Appearance=solid, Size=sm, State=hover": "43:25",
+    "Intent=accent, Appearance=solid, Size=sm, State=pressed": "43:44",
+    "Intent=accent, Appearance=solid, Size=sm, State=loading": "43:63",
+    "Intent=accent, Appearance=solid, Size=sm, State=disabled": "43:82",
+    "Intent=accent, Appearance=solid, Size=md, State=hover": "43:120",
+    "Intent=accent, Appearance=solid, Size=md, State=pressed": "43:139",
+    "Intent=accent, Appearance=solid, Size=md, State=loading": "43:158",
+    "Intent=accent, Appearance=solid, Size=md, State=disabled": "43:177",
+    "Intent=accent, Appearance=solid, Size=lg, State=default": "43:196",
+    "Intent=accent, Appearance=solid, Size=lg, State=hover": "43:215",
+    "Intent=accent, Appearance=solid, Size=lg, State=pressed": "43:234",
+    "Intent=accent, Appearance=solid, Size=lg, State=loading": "43:253",
+    "Intent=accent, Appearance=solid, Size=lg, State=disabled": "43:272",
+    "Intent=accent, Appearance=outline, Size=sm, State=default": "43:291",
+    "Intent=accent, Appearance=outline, Size=sm, State=hover": "43:310",
+    "Intent=accent, Appearance=outline, Size=sm, State=pressed": "43:329",
+    "Intent=accent, Appearance=outline, Size=sm, State=loading": "43:348",
+    "Intent=accent, Appearance=outline, Size=sm, State=disabled": "43:367",
+    "Intent=accent, Appearance=outline, Size=md, State=default": "43:386",
+    "Intent=accent, Appearance=outline, Size=md, State=hover": "43:405",
+    "Intent=accent, Appearance=outline, Size=md, State=pressed": "43:424",
+    "Intent=accent, Appearance=outline, Size=md, State=loading": "43:443",
+    "Intent=accent, Appearance=outline, Size=md, State=disabled": "43:462",
+    "Intent=accent, Appearance=outline, Size=lg, State=default": "43:481",
+    "Intent=accent, Appearance=outline, Size=lg, State=hover": "43:500",
+    "Intent=accent, Appearance=outline, Size=lg, State=pressed": "43:519",
+    "Intent=accent, Appearance=outline, Size=lg, State=loading": "43:538",
+    "Intent=accent, Appearance=outline, Size=lg, State=disabled": "43:557",
+    "Intent=accent, Appearance=ghost, Size=sm, State=default": "43:576",
+    "Intent=accent, Appearance=ghost, Size=sm, State=hover": "43:595",
+    "Intent=accent, Appearance=ghost, Size=sm, State=pressed": "43:614",
+    "Intent=accent, Appearance=ghost, Size=sm, State=loading": "43:633",
+    "Intent=accent, Appearance=ghost, Size=sm, State=disabled": "43:652",
+    "Intent=accent, Appearance=ghost, Size=md, State=default": "43:671",
+    "Intent=accent, Appearance=ghost, Size=md, State=hover": "43:690",
+    "Intent=accent, Appearance=ghost, Size=md, State=pressed": "43:709",
+    "Intent=accent, Appearance=ghost, Size=md, State=loading": "43:728",
+    "Intent=accent, Appearance=ghost, Size=md, State=disabled": "43:747",
+    "Intent=accent, Appearance=ghost, Size=lg, State=default": "43:766",
+    "Intent=accent, Appearance=ghost, Size=lg, State=hover": "43:785",
+    "Intent=accent, Appearance=ghost, Size=lg, State=pressed": "43:804",
+    "Intent=accent, Appearance=ghost, Size=lg, State=loading": "43:823",
+    "Intent=accent, Appearance=ghost, Size=lg, State=disabled": "43:842",
+    "Intent=neutral, Appearance=solid, Size=sm, State=default": "47:713",
+    "Intent=neutral, Appearance=solid, Size=sm, State=hover": "47:732",
+    "Intent=neutral, Appearance=solid, Size=sm, State=pressed": "47:751",
+    "Intent=neutral, Appearance=solid, Size=sm, State=loading": "47:770",
+    "Intent=neutral, Appearance=solid, Size=sm, State=disabled": "47:789",
+    "Intent=neutral, Appearance=solid, Size=md, State=default": "47:808",
+    "Intent=neutral, Appearance=solid, Size=md, State=hover": "47:827",
+    "Intent=neutral, Appearance=solid, Size=md, State=pressed": "47:846",
+    "Intent=neutral, Appearance=solid, Size=md, State=loading": "47:865",
+    "Intent=neutral, Appearance=solid, Size=md, State=disabled": "47:884",
+    "Intent=neutral, Appearance=solid, Size=lg, State=default": "47:903",
+    "Intent=neutral, Appearance=solid, Size=lg, State=hover": "47:922",
+    "Intent=neutral, Appearance=solid, Size=lg, State=pressed": "47:941",
+    "Intent=neutral, Appearance=solid, Size=lg, State=loading": "47:960",
+    "Intent=neutral, Appearance=solid, Size=lg, State=disabled": "47:979",
+    "Intent=neutral, Appearance=outline, Size=sm, State=default": "47:998",
+    "Intent=neutral, Appearance=outline, Size=sm, State=hover": "47:1017",
+    "Intent=neutral, Appearance=outline, Size=sm, State=pressed": "47:1036",
+    "Intent=neutral, Appearance=outline, Size=sm, State=loading": "47:1055",
+    "Intent=neutral, Appearance=outline, Size=sm, State=disabled": "47:1074",
+    "Intent=neutral, Appearance=outline, Size=md, State=default": "47:1093",
+    "Intent=neutral, Appearance=outline, Size=md, State=hover": "47:1112",
+    "Intent=neutral, Appearance=outline, Size=md, State=pressed": "47:1131",
+    "Intent=neutral, Appearance=outline, Size=md, State=loading": "47:1150",
+    "Intent=neutral, Appearance=outline, Size=md, State=disabled": "47:1169",
+    "Intent=neutral, Appearance=outline, Size=lg, State=default": "47:1188",
+    "Intent=neutral, Appearance=outline, Size=lg, State=hover": "47:1207",
+    "Intent=neutral, Appearance=outline, Size=lg, State=pressed": "47:1226",
+    "Intent=neutral, Appearance=outline, Size=lg, State=loading": "47:1245",
+    "Intent=neutral, Appearance=outline, Size=lg, State=disabled": "47:1264",
+    "Intent=neutral, Appearance=ghost, Size=sm, State=default": "47:1283",
+    "Intent=neutral, Appearance=ghost, Size=sm, State=hover": "47:1302",
+    "Intent=neutral, Appearance=ghost, Size=sm, State=pressed": "47:1321",
+    "Intent=neutral, Appearance=ghost, Size=sm, State=loading": "47:1340",
+    "Intent=neutral, Appearance=ghost, Size=sm, State=disabled": "47:1359",
+    "Intent=neutral, Appearance=ghost, Size=md, State=default": "47:1378",
+    "Intent=neutral, Appearance=ghost, Size=md, State=hover": "47:1397",
+    "Intent=neutral, Appearance=ghost, Size=md, State=pressed": "47:1416",
+    "Intent=neutral, Appearance=ghost, Size=md, State=loading": "47:1435",
+    "Intent=neutral, Appearance=ghost, Size=md, State=disabled": "47:1454",
+    "Intent=neutral, Appearance=ghost, Size=lg, State=default": "47:1473",
+    "Intent=neutral, Appearance=ghost, Size=lg, State=hover": "47:1492",
+    "Intent=neutral, Appearance=ghost, Size=lg, State=pressed": "47:1511",
+    "Intent=neutral, Appearance=ghost, Size=lg, State=loading": "47:1530",
+    "Intent=neutral, Appearance=ghost, Size=lg, State=disabled": "47:1549",
+    "Intent=danger, Appearance=solid, Size=sm, State=default": "48:731",
+    "Intent=danger, Appearance=solid, Size=sm, State=hover": "48:750",
+    "Intent=danger, Appearance=solid, Size=sm, State=pressed": "48:769",
+    "Intent=danger, Appearance=solid, Size=sm, State=loading": "48:788",
+    "Intent=danger, Appearance=solid, Size=sm, State=disabled": "48:807",
+    "Intent=danger, Appearance=solid, Size=md, State=default": "48:826",
+    "Intent=danger, Appearance=solid, Size=md, State=hover": "48:845",
+    "Intent=danger, Appearance=solid, Size=md, State=pressed": "48:864",
+    "Intent=danger, Appearance=solid, Size=md, State=loading": "48:883",
+    "Intent=danger, Appearance=solid, Size=md, State=disabled": "48:902",
+    "Intent=danger, Appearance=solid, Size=lg, State=default": "48:921",
+    "Intent=danger, Appearance=solid, Size=lg, State=hover": "48:940",
+    "Intent=danger, Appearance=solid, Size=lg, State=pressed": "48:959",
+    "Intent=danger, Appearance=solid, Size=lg, State=loading": "48:978",
+    "Intent=danger, Appearance=solid, Size=lg, State=disabled": "48:997",
+    "Intent=danger, Appearance=outline, Size=sm, State=default": "48:1016",
+    "Intent=danger, Appearance=outline, Size=sm, State=hover": "48:1035",
+    "Intent=danger, Appearance=outline, Size=sm, State=pressed": "48:1054",
+    "Intent=danger, Appearance=outline, Size=sm, State=loading": "48:1073",
+    "Intent=danger, Appearance=outline, Size=sm, State=disabled": "48:1092",
+    "Intent=danger, Appearance=outline, Size=md, State=default": "48:1111",
+    "Intent=danger, Appearance=outline, Size=md, State=hover": "48:1130",
+    "Intent=danger, Appearance=outline, Size=md, State=pressed": "48:1149",
+    "Intent=danger, Appearance=outline, Size=md, State=loading": "48:1168",
+    "Intent=danger, Appearance=outline, Size=md, State=disabled": "48:1187",
+    "Intent=danger, Appearance=outline, Size=lg, State=default": "48:1206",
+    "Intent=danger, Appearance=outline, Size=lg, State=hover": "48:1225",
+    "Intent=danger, Appearance=outline, Size=lg, State=pressed": "48:1244",
+    "Intent=danger, Appearance=outline, Size=lg, State=loading": "48:1263",
+    "Intent=danger, Appearance=outline, Size=lg, State=disabled": "48:1282",
+    "Intent=danger, Appearance=ghost, Size=sm, State=default": "48:1301",
+    "Intent=danger, Appearance=ghost, Size=sm, State=hover": "48:1320",
+    "Intent=danger, Appearance=ghost, Size=sm, State=pressed": "48:1339",
+    "Intent=danger, Appearance=ghost, Size=sm, State=loading": "48:1358",
+    "Intent=danger, Appearance=ghost, Size=sm, State=disabled": "48:1377",
+    "Intent=danger, Appearance=ghost, Size=md, State=default": "48:1396",
+    "Intent=danger, Appearance=ghost, Size=md, State=hover": "48:1415",
+    "Intent=danger, Appearance=ghost, Size=md, State=pressed": "48:1434",
+    "Intent=danger, Appearance=ghost, Size=md, State=loading": "48:1453",
+    "Intent=danger, Appearance=ghost, Size=md, State=disabled": "48:1472",
+    "Intent=danger, Appearance=ghost, Size=lg, State=default": "48:1491",
+    "Intent=danger, Appearance=ghost, Size=lg, State=hover": "48:1510",
+    "Intent=danger, Appearance=ghost, Size=lg, State=pressed": "48:1529",
+    "Intent=danger, Appearance=ghost, Size=lg, State=loading": "48:1548",
+    "Intent=danger, Appearance=ghost, Size=lg, State=disabled": "48:1567",
+    "Intent=accent, Appearance=solid, Size=md, State=default": "43:101"
+  },
+  "layers": [
+    "Container",
+    "Leading",
+    "Leading/Drawing box",
+    "Label",
+    "Label/Text",
+    "Trailing icon",
+    "Trailing icon/Drawing box",
+    "Trailing content",
+    "Loading indicator",
+    "Focus ring"
+  ],
+  "fixtures": {
+    "page": {
+      "name": "Utilities",
+      "id": "8:10"
+    },
+    "_Fixtures (review only, not part of the library API)": "42:2",
+    "_Fixture/Icon/plus": "42:7",
+    "_Fixture/Icon/arrow-right": "42:10",
+    "_Fixture/Icon/trash": "42:13",
+    "_Fixture/Icon/download-simple": "42:16",
+    "_Fixture/Icon/check": "42:19",
+    "_Fixture/Counter": "42:20",
+    "_Fixture/Shortcut": "42:22",
+    "_Button/Loading indicator": "42:28"
+  },
+  "adapterVariables": {
+    "collection": "VariableCollectionId:43:2",
+    "mode": "43:0",
+    "variables": {
+      "button/icon-drawing/sm": {
+        "id": "VariableID:43:3",
+        "type": "FLOAT",
+        "value": 12
+      },
+      "button/icon-drawing/md": {
+        "id": "VariableID:43:4",
+        "type": "FLOAT",
+        "value": 15
+      },
+      "button/icon-drawing/lg": {
+        "id": "VariableID:43:5",
+        "type": "FLOAT",
+        "value": 18
+      }
+    }
+  },
+  "specification": {
+    "frame": {
+      "id": "66:56",
+      "name": "Button — Specification",
+      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=66-56"
+    },
+    "sections": {
+      "Overview": "66:57",
+      "Anatomy": "66:159",
+      "Variants": "66:282",
+      "States": "67:818",
+      "Behavior & sizing": "67:3255",
+      "Usage examples": "67:3722"
+    }
+  },
+  "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run; none remain."
+}

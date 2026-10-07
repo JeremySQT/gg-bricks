@@ -43,8 +43,21 @@
       "foundations/tokens/base/semantic/density.comfortable.tokens.json",
       "foundations/inventory.json"
     ],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=48-1586",
+      "page": "Actions (8:4)",
+      "componentSet": "48:1586",
+      "specificationFrame": "66:56",
+      "ledger": "reports/components/button/figma/ledger.json",
+      "parity": "reports/components/button/figma/parity.json",
+      "screenshots": [
+        "reports/components/button/figma/master-set.png",
+        "reports/components/button/figma/specification.png"
+      ],
+      "published": false
+    },
+    "figmaSpec": "components/actions/button/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "entry": "packages/svelte/src/button/Button.svelte",
@@ -139,13 +152,20 @@
       "result": "passed",
       "command": "npm run test:browser",
       "report": "reports/browser-results.json",
-      "note": "8 Chromium tests: behavior, keyboard, forms, links, slots, truncation and targets, computed values (8658 records), motion, forced colors, axe light and dark, mobile width."
+      "note": "9 Chromium tests: behavior, keyboard, forms, links, slots, truncation and targets, computed values (9324 records), motion, forced colors, axe light and dark, mobile width."
     },
     {
       "kind": "preview",
       "result": "passed",
       "command": "npm run build:preview button",
       "note": "Rebuilt as a single bundle and smoke-checked from file:// in Chromium. The first published preview (artifact version 1) was blank: it referenced a chunk shared with the foundations page that was not inlined."
+    },
+    {
+      "kind": "figma-parity",
+      "result": "passed",
+      "report": "reports/components/button/figma/parity.json",
+      "date": "2026-10-07",
+      "note": "9324 records (one per computed record, 18 contexts, 5 states in 4 representative contexts), 0 failures; 630 justified differences (forced-colors outline, loading keeps focus); widths within ±1.5 px (measured 0.13 to 1.06 px). Difficult cases checked in the specification: constrained width truncation with slots, empty slots, all states in light and dark, six brand and appearance pairs."
     }
   ],
   "decisionsTaken": [
@@ -175,12 +195,13 @@
     "Vertical centering on capital letters (text-box: trim-both cap alphabetic, overflow clip with a 0.3em clip margin so descenders stay visible). Measured offset at most 0.5 px at 1x (pixel rounding), versus 0.5 px too high in sm and md before. Browsers without text-box support (Firefox today) keep line-box centering.",
     "Tight ellipsis: the component renders the truncated text itself (2 px safety margin) and keeps the whole label visually hidden as the accessible name, because the native cut point cannot be predicted to the pixel (a box-narrowing variant left up to 12 px in 58 of 351 widths). Swept over 351 widths at 1x and 2x: at most 1.33 px after the ellipsis at 1x, 1.66 px once at 2x (100 px). Without script the native ellipsis applies.",
     "Balance lab examples/button-balance removed after the choice (commits 863f736 to e59986e, artifact https://claude.ai/artifact/7RRUe8DJHJ7VcaFoutJDKT v2).",
-    "aria-disabled is kept while loading, together with aria-busy (user, 2026-10-07)."
+    "aria-disabled is kept while loading, together with aria-busy (user, 2026-10-07).",
+    "Figma focus ring (2026-10-07): outside stroke 2 px from the container with its corner bound to radius/control, so it follows each brand's radius; the CSS outline corner (radius + offset) cannot be computed in Figma and is about 2 px rounder (justified difference in figma-spec.md)."
   ],
   "openDecisions": [
     "Repository structure (2026-10-07, after the Button pull request, branch chore/repo-structure): user proposal foundations/contracts beside foundations/tokens; packages/svelte/src/components/<id>; category folders inside semantic tokens."
   ],
-  "nextAction": "Figma parity (ggb-figma): masters bound to variables, specification page, parity report; then documentation and the pull request.",
+  "nextAction": "Figma parity gate (user review of the masters, the specification frame and the parity report); then documentation (ggb-docs) and the pull request.",
   "implementationNotes": [
     "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
     "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",
