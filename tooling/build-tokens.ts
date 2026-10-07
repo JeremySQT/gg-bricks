@@ -253,7 +253,7 @@ const scopes = (p: string): string[] =>
         ? []
         : p.includes('radius')
           ? ['CORNER_RADIUS']
-          : p.includes('padding') || p.includes('gap')
+          : p.includes('padding') || p.includes('gap') || p.startsWith('space.control.')
             ? ['GAP']
             : p.endsWith('fontSize')
               ? ['FONT_SIZE']
