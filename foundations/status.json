@@ -159,14 +159,14 @@
   "pullRequest": "https://github.com/JeremySQT/design-system/pull/1",
   "pendingChanges": [
     {
-      "date": "2026-09-27",
-      "change": "Six semantic roles added for the Button spacing: space.control.edge-inline.{sm,md,lg} and space.control.label-inline.{sm,md,lg} in the three density files, with inventory entries. Existing roles unchanged.",
+      "date": "2026-10-07",
+      "change": "Nine semantic roles added for the Button spacing: space.control.edge-inline, label-inline and slot-inline (sm, md, lg) in the three density files, with inventory entries; edge-inline + label-inline equals padding-inline in every density. Existing roles unchanged.",
       "invalidates": "approvals.semantic for foundations/inventory.json and foundations/tokens/base/semantic/density.*.tokens.json (the listed digests no longer match); Figma variables not yet synced for the new roles.",
       "sha256": {
-        "foundations/inventory.json": "218238ab0d1a1e49034e4bb951fd4361ca2d13582186463ab9215c88a4fdccb9",
-        "foundations/tokens/base/semantic/density.compact.tokens.json": "ab95524cce023a3fd26e54244f49062984b28541fb234a307c71ebbb77e9e8c5",
-        "foundations/tokens/base/semantic/density.standard.tokens.json": "4fa7c561a561a5a4f0a110f3a4924900cf7a1667b63e9ce9c5a342c7c4d3fffe",
-        "foundations/tokens/base/semantic/density.comfortable.tokens.json": "37067a939875c16a7dc6eafa6f318113c7b2b29cfe917df9f24e124c57465e84"
+        "foundations/inventory.json": "39727240b553c6853661ca31ca9250ebd8e68d9b0ee829f98a379adb46ff1dd0",
+        "foundations/tokens/base/semantic/density.compact.tokens.json": "f9f1c703c7fc735816637cc2b45f2b8473e1353832183a99983d01574d005030",
+        "foundations/tokens/base/semantic/density.standard.tokens.json": "160578c8145c1127c64c8e5fd315e923cbff8ab0a851c244128aa48b3343e6d8",
+        "foundations/tokens/base/semantic/density.comfortable.tokens.json": "1d639da1a714cd86d8e20048a588af431e1ded0eb088ffddef3cbaa1a466f863"
       },
       "review": "Presented at the Button contract gate (spacing fact)."
     }

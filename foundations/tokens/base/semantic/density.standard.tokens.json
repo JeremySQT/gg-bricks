@@ -66,11 +66,11 @@
         },
         "md": {
           "$type": "dimension",
-          "$value": "{primitive.dimension.v12}"
+          "$value": "{primitive.dimension.v10}"
         },
         "lg": {
           "$type": "dimension",
-          "$value": "{primitive.dimension.v16}"
+          "$value": "{primitive.dimension.v12}"
         }
       },
       "label-inline": {
@@ -85,6 +85,20 @@
         "lg": {
           "$type": "dimension",
           "$value": "{primitive.dimension.v8}"
+        }
+      },
+      "slot-inline": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v0}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v2}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v2}"
         }
       }
     },

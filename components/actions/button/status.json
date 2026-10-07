@@ -35,7 +35,7 @@
   "artifacts": {
     "contract": {
       "path": "components/actions/button/contract.json",
-      "sha256": "67eae86915edce2df00e88e4c3ff804304fce6120c3b45c9687b0618b0f314f8"
+      "sha256": "0144dc9a71506260962a06769156beff3d463ce1f9788267aceaa60d2541413e"
     },
     "tokens": [
       "foundations/tokens/base/semantic/density.compact.tokens.json",
@@ -58,7 +58,7 @@
     "examples": {
       "page": "examples/button",
       "preview": "dist/previews/button.html (npm run build && npm run build:preview button)",
-      "artifact": "https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK (version 4: thirds spacing, optical icon alignment, Phosphor fixtures)"
+      "artifact": "https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK (version 5: tuned spacing, cap-height centering, tight ellipsis)"
     },
     "tests": {
       "ssr": "tests/ssr/button.test.ts",
@@ -148,13 +148,17 @@
     "New semantic roles space.control.edge-inline.{sm,md,lg} and space.control.label-inline.{sm,md,lg} (density axis) rather than changing padding-inline and gap, which other controls (fields) will keep using. Values: compact 4+2, 8+4, 12+6; standard 8+4, 12+6, 16+8; comfortable 12+6, 16+8, 20+10.",
     "Semantic roles kept for the spacing (option 1, user 2026-09-27): values vary by density, which component tokens cannot do in the current architecture.",
     "Optical spacing (2026-09-27, after the user noticed leading icons looked farther from the label than trailing counters and shortcuts): icons are placed by their drawing. Phosphor icons draw 1/8 of their box inside on each side, so icon boxes overlap edgeInline and labelInline by iconSize/8. Measured visible gaps in md: edge to icon 12.5, icon to label 6.5, label to counter 7.25, counter to edge 13 (before: 15.25, 10.25, 6.25, 12).",
-    "Review fixtures now use real Phosphor 2.1.1 regular icons (MIT) instead of hand-drawn stroke icons, so the review shows the reference geometry."
+    "Review fixtures now use real Phosphor 2.1.1 regular icons (MIT) instead of hand-drawn stroke icons, so the review shows the reference geometry.",
+    "Spacing tuned by the user in the balance lab (2026-10-07, standard density): sm edge 8 / label 4 / slot 0, md 10 / 6 / 2, lg 12 / 8 / 2. New role space.control.slot-inline (margin on both sides of leading and trailing). Compact and comfortable follow the same ladder shifted by one step: (6,2,0) (8,4,0) (10,6,2) (12,8,2) (14,10,2); edge + label equals the existing padding-inline in every density.",
+    "Vertical centering on capital letters (text-box: trim-both cap alphabetic, overflow clip with a 0.3em clip margin so descenders stay visible). Measured offset at most 0.5 px at 1x (pixel rounding), versus 0.5 px too high in sm and md before. Browsers without text-box support (Firefox today) keep line-box centering.",
+    "Tight ellipsis: the component renders the truncated text itself (2 px safety margin) and keeps the whole label visually hidden as the accessible name, because the native cut point cannot be predicted to the pixel (a box-narrowing variant left up to 12 px in 58 of 351 widths). Swept over 351 widths at 1x and 2x: at most 1.33 px after the ellipsis at 1x, 1.66 px once at 2x (100 px). Without script the native ellipsis applies.",
+    "Balance lab examples/button-balance removed after the choice (commits 863f736 to e59986e, artifact https://claude.ai/artifact/7RRUe8DJHJ7VcaFoutJDKT v2)."
   ],
   "openDecisions": [
-    "Visual balance (implementation review 2026-09-27): tune per size in examples/button-balance (artifact https://claude.ai/artifact/7RRUe8DJHJ7VcaFoutJDKT) the edge padding and label margin (proposal: lg label 8 -> 10), vertical centering on capital letters (text-box trim, measured 0 px offset in all sizes versus up to 0.5 px too high without), and tight ellipsis (label box fitted to the visible text by script; native CSS leaves 1.4 to 13.4 px after the ellipsis). The chosen settings change contract spacing facts and possibly token values; values for compact and comfortable follow once standard is chosen.",
+    "Approve the updated contract facts (spacing with edge, label and slot roles and their values per density, optical icon rule, cap-height centering, tight ellipsis) and the implementation.",
     "aria-disabled while loading (in addition to aria-busy): keep or expose only the busy state."
   ],
-  "nextAction": "Contract gate for the spacing fact and token additions, then implementation gate on the updated preview (artifact version 3).",
+  "nextAction": "Contract and implementation gates on the updated preview; then Figma parity.",
   "implementationNotes": [
     "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
     "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",

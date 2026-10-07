@@ -189,11 +189,12 @@ test('slot content is decorative, inherits the content color and uses the icon s
     expect(icon.fill).toBe(color);
     await expect(b.locator('[data-testid="fixture-counter"]')).toHaveCSS('color', color);
   }
-  // Spacing: the icon sits at edgeInline from the edge and labelInline from the label; without slots the
-  // label is edgeInline + labelInline from both edges.
+  // Spacing: the icon drawing sits at edgeInline + slotInline from the edge and slotInline + labelInline from
+  // the label; without slots the label is edgeInline + labelInline from both edges.
   for (const size of sizes) {
     const edge = px(tokens[`space.control.edge-inline.${size}`]);
     const label = px(tokens[`space.control.label-inline.${size}`]);
+    const slot = px(tokens[`space.control.slot-inline.${size}`]);
     const g = await page.locator(`#slot-size-${size}`).evaluate((el) => {
       const c = el.querySelector('.ggb-button__container')!.getBoundingClientRect();
       // The drawing (path bounds), not the svg box: spacing is optical.
@@ -202,7 +203,7 @@ test('slot content is decorative, inherits the content color and uses the icon s
       const trail = el.querySelector('.ggb-button__trailing')!.getBoundingClientRect();
       return [lead.left - c.left, text.left - lead.right, trail.left - text.right, c.right - trail.right];
     });
-    expect(g).toEqual([edge, label, label, edge]);
+    expect(g).toEqual([edge + slot, slot + label, label + slot, slot + edge]);
     const plain = await page.locator(`#short-${size}`).evaluate((el) => {
       const c = el.querySelector('.ggb-button__container')!.getBoundingClientRect();
       const text = el.querySelector('.ggb-button__label')!.getBoundingClientRect();
@@ -228,12 +229,17 @@ test('long labels truncate without losing the name; targets reach 44 px without 
   const button = page.locator('#truncated');
   await expect(button).toHaveAccessibleName(long);
   const label = await button.locator('.ggb-button__label').evaluate((el) => ({
-    client: el.clientWidth,
-    scroll: el.scrollWidth,
+    visible: el.querySelector('[aria-hidden="true"]')?.textContent ?? '',
+    hidden: el.querySelector('.ggb-button__name')?.textContent ?? '',
     whiteSpace: getComputedStyle(el).whiteSpace,
     textOverflow: getComputedStyle(el).textOverflow
   }));
-  expect(label.scroll).toBeGreaterThan(label.client);
+  // The component renders the truncated text (ending with an ellipsis) and keeps the whole label, visually
+  // hidden, as the accessible name; the native one-line ellipsis stays as the no-script fallback.
+  expect(label.visible.endsWith('…')).toBe(true);
+  expect(long.startsWith(label.visible.slice(0, -1).trimEnd())).toBe(true);
+  expect(label.visible.length).toBeLessThan(long.length);
+  expect(label.hidden).toBe(long);
   expect(label.whiteSpace).toBe('nowrap');
   expect(label.textOverflow).toBe('ellipsis');
   const box = await button.boundingBox();
@@ -272,6 +278,124 @@ test('long labels truncate without losing the name; targets reach 44 px without 
     ]);
   expect(stretched[0]).toBeCloseTo(stretched[2], 0);
   expect(stretched[1]).toBeCloseTo(stretched[0], 1);
+});
+
+/**
+ * Ink extent of a button's rendered pixels, in CSS px relative to its container: rows and columns whose
+ * color differs from the container surface. Decoded in the page from a 4x screenshot.
+ */
+async function ink(page: Page, selector: string, region: 'label' | 'container' = 'container') {
+  const box = await page.locator(selector).evaluate((el, region) => {
+    const c = el.querySelector('.ggb-button__container')!.getBoundingClientRect();
+    const l = el.querySelector('.ggb-button__label')!.getBoundingClientRect();
+    const bg = getComputedStyle(el.querySelector('.ggb-button__container')!).backgroundColor;
+    const r = region === 'label' ? l : c;
+    return { x: r.left - c.left, w: r.width, h: c.height, labelBottom: l.bottom - c.top, bg };
+  }, region);
+  const shot = await page.locator(`${selector} .ggb-button__container`).screenshot();
+  return page.evaluate(
+    async ({ b64, box }) => {
+      const img = new Image();
+      img.src = 'data:image/png;base64,' + b64;
+      await img.decode();
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const g = canvas.getContext('2d')!;
+      g.drawImage(img, 0, 0);
+      const s = Math.round(img.height / box.h); // device pixel ratio; the captured box may round up a row
+      const data = g.getImageData(0, 0, img.width, img.height).data;
+      const bg = box.bg.match(/\d+/g)!.slice(0, 3).map(Number);
+      const on = (x: number, y: number) => {
+        const i = (y * img.width + x) * 4;
+        return Math.abs(data[i] - bg[0]) + Math.abs(data[i + 1] - bg[1]) + Math.abs(data[i + 2] - bg[2]) > 150;
+      };
+      const x0 = Math.floor(box.x * s);
+      const x1 = Math.min(img.width, Math.ceil((box.x + box.w) * s));
+      // The capture box is rounded to whole pixels and may add a partial row: locate the surface rows in
+      // the image (a column just inside the container edge, outside the text) instead of assuming row 0.
+      const xs = Math.max(0, Math.floor(Math.min(box.x - 2, 4) * s));
+      const surface = (y: number) => !on(xs, y);
+      let first = -1;
+      let last = -1;
+      for (let y = 0; y < img.height; y++)
+        if (surface(y)) {
+          if (first < 0) first = y;
+          last = y;
+        }
+      let top = -1;
+      let bottom = -1;
+      let left = -1;
+      let right = -1;
+      for (let y = first + Math.ceil(2 * s); y < last - 2 * s; y++)
+        for (let x = x0; x < x1; x++)
+          if (on(x, y)) {
+            if (top < 0) top = y;
+            bottom = y;
+            if (left < 0 || x < left) left = x;
+            if (x > right) right = x;
+          }
+      return {
+        top: (top - first) / s,
+        bottom: (bottom + 1 - first) / s,
+        left: left / s,
+        right: (right + 1) / s,
+        height: (last + 1 - first) / s,
+        labelBottom: box.labelBottom
+      };
+    },
+    { b64: shot.toString('base64'), box }
+  );
+}
+
+test('the label is centered on its capital letters, keeps descenders and ends at the ellipsis', async ({ page }) => {
+  // Capital letters (no overshoot) centered in the surface, measured on pixels.
+  for (const [size, id] of [
+    ['sm', '#matrix-accent-solid-sm'],
+    ['md', '#state-default-solid'],
+    ['lg', '#matrix-accent-solid-lg']
+  ]) {
+    await page.locator(id).evaluate((el) => (el.querySelector('.ggb-button__label')!.textContent = 'HEH'));
+    const m = await ink(page, id, 'label');
+    expect(Math.abs((m.top + m.bottom) / 2 - m.height / 2), `${size} capital letters centered`).toBeLessThanOrEqual(
+      0.5
+    );
+  }
+  // Descenders below the trimmed label box are painted, not clipped.
+  const d = await ink(page, '#slot-leading', 'label');
+  await expect(page.locator('#slot-leading .ggb-button__label')).toHaveText('New project');
+  expect(d.bottom).toBeGreaterThan(d.labelBottom + 1);
+
+  // Tight ellipsis: the label box ends at the visible ellipsis and trailing keeps its spacing, at any width.
+  const tokens = tokensFor('base-light-standard');
+  const gap = px(tokens['space.control.label-inline.md']) + px(tokens['space.control.slot-inline.md']);
+  const label = page.locator('#truncated .ggb-button__label');
+  for (const width of [150, 175, 200, 225, 250, 300]) {
+    await page.locator('#width').evaluate((el: HTMLInputElement, w) => {
+      el.value = String(w);
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+    }, width);
+    await expect.poll(() => label.evaluate((el) => !!el.querySelector('[aria-hidden="true"]'))).toBe(true);
+    const truncated = await label.evaluate((el) => !!el.querySelector('[aria-hidden="true"]'));
+    expect(truncated, `${width}px truncates`).toBe(true);
+    const m = await ink(page, '#truncated', 'label');
+    const box = await page.locator('#truncated').evaluate((el) => {
+      const l = el.querySelector('.ggb-button__label')!.getBoundingClientRect();
+      const tr = el.querySelector('.ggb-button__trailing')!.getBoundingClientRect();
+      const c = el.querySelector('.ggb-button__container')!.getBoundingClientRect();
+      return { labelRight: l.right - c.left, trailingLeft: tr.left - c.left };
+    });
+    expect(box.labelRight - m.right, `${width}px: space after the ellipsis`).toBeLessThanOrEqual(1.5);
+    expect(box.trailingLeft - box.labelRight).toBeCloseTo(gap, 1);
+    await expect(page.locator('#truncated')).toHaveAccessibleName(
+      'Create a new item with a deliberately long action label'
+    );
+  }
+  // With enough room the label is whole again and the box constraint is released.
+  await page.locator('.constrained').evaluate((el: HTMLElement) => (el.style.inlineSize = '700px'));
+  await expect.poll(() => label.evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(true);
+  expect(await label.evaluate((el) => !!el.querySelector('[aria-hidden="true"]'))).toBe(false);
+  await expect(label).toHaveText('Create a new item with a deliberately long action label');
 });
 
 test('computed values match the resolved tokens for every option, state and context', async ({ page }) => {
@@ -321,10 +445,6 @@ test('computed values match the resolved tokens for every option, state and cont
               expect(m.paddingBlock).toBe(`${px(tokens[`space.control.padding-block.${size}`])}px`);
               expect(m.gap).toBe('normal');
               expect(m.labelMargin).toBe(`${px(tokens[`space.control.label-inline.${size}`])}px`);
-              // Thirds: the edge padding is twice the label margin.
-              expect(px(tokens[`space.control.edge-inline.${size}`])).toBe(
-                2 * px(tokens[`space.control.label-inline.${size}`])
-              );
               expect(m.fontSize).toBe(`${font.fontSize.value}px`);
               expect(m.fontWeight).toBe(String(font.fontWeight));
               expect(m.letterSpacing).toBe(font.letterSpacing?.value ? `${font.letterSpacing.value}px` : 'normal');

@@ -62,15 +62,15 @@
       "edge-inline": {
         "sm": {
           "$type": "dimension",
-          "$value": "{primitive.dimension.v12}"
+          "$value": "{primitive.dimension.v10}"
         },
         "md": {
           "$type": "dimension",
-          "$value": "{primitive.dimension.v16}"
+          "$value": "{primitive.dimension.v12}"
         },
         "lg": {
           "$type": "dimension",
-          "$value": "{primitive.dimension.v20}"
+          "$value": "{primitive.dimension.v14}"
         }
       },
       "label-inline": {
@@ -85,6 +85,20 @@
         "lg": {
           "$type": "dimension",
           "$value": "{primitive.dimension.v10}"
+        }
+      },
+      "slot-inline": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v2}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v2}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v2}"
         }
       }
     },

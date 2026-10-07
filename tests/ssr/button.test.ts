@@ -18,7 +18,8 @@ test('renders a native button with defaults, anatomy and the label as content', 
   assert.match(html, /data-appearance="solid"/);
   assert.match(html, /data-size="md"/);
   assert.match(html, /<span class="ggb-button__container">/);
-  assert.match(html, /<span class="ggb-button__label">Save changes<\/span>/);
+  // Hydration markers (<!--…-->) may surround the text.
+  assert.match(html, /<span class="ggb-button__label">(<!--[^>]*-->)*Save changes(<!--[^>]*-->)*<\/span>/);
   assert.doesNotMatch(html, /data-disabled|data-loading|aria-busy|aria-disabled|ggb-button__loadingIndicator/);
   checks.push('default button: element, type, class, enum data attributes, anatomy, label');
 });
@@ -47,7 +48,7 @@ test('disabled is native, loading stays focusable and busy, disabled wins over l
   assert.match(loading, /aria-busy="true"/);
   assert.match(loading, /aria-disabled="true"/);
   assert.match(loading, /ggb-button__loadingIndicator/);
-  assert.match(loading, /ggb-button__label">Save</);
+  assert.match(loading, /ggb-button__label">(<!--[^>]*-->)*Save(<!--[^>]*-->)*</);
 
   const both = await render({ label: 'Save', loading: true, disabled: true });
   assert.match(both, /data-disabled=""/);
