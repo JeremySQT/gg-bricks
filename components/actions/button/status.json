@@ -71,15 +71,15 @@
   },
   "approvals": {
     "contract": {
-      "scope": "Button contract: props, parts, states, activate event, token roles and rules as drafted, with no token additions; open decisions 1 (no width option, layout stretches the button) and 2 (accept outline border contrast 2.06 to 2.37 on surface.muted in dark) resolved as proposed.",
+      "scope": "Button contract as revised after the implementation review: props, parts, states, activate event, token roles including edgeInline, labelInline and slotInline (space.control.edge-inline, label-inline, slot-inline per density), and rules including optical icon spacing, cap-height centering and the tight ellipsis.",
       "revision": {
         "paths": ["components/actions/button/contract.json"],
         "sha256": {
-          "components/actions/button/contract.json": "4986b264dd0bcc6549d2e577b48806303909055c5b17a989c7b7f6febae44c8c"
+          "components/actions/button/contract.json": "0144dc9a71506260962a06769156beff3d463ce1f9788267aceaa60d2541413e"
         }
       },
-      "provenance": "User in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds), replying to the contract gate: \"je pense qu on est bon, je valide le contrat\". The acceptance of the two proposals is inferred from that reply; the user may object to the record.",
-      "note": "Covers the contract only. Invalidated on 2026-09-27 for one fact: horizontal spacing (edgeInline and labelInline replace paddingInline and gap, new spacing rule), following the implementation review; the rest of the contract is unchanged and re-presented for that fact only."
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"le contrat mis à jour me semble bon au regard de l implémentation sur la page\" (preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5). Supersedes the approval of 2026-09-26.",
+      "note": "Covers the contract; the six-plus-three new semantic roles are recorded as a pending foundations change in foundations/status.json. Implementation approval recorded separately."
     },
     "implementation": null,
     "figmaParity": null,
@@ -152,11 +152,12 @@
     "Spacing tuned by the user in the balance lab (2026-10-07, standard density): sm edge 8 / label 4 / slot 0, md 10 / 6 / 2, lg 12 / 8 / 2. New role space.control.slot-inline (margin on both sides of leading and trailing). Compact and comfortable follow the same ladder shifted by one step: (6,2,0) (8,4,0) (10,6,2) (12,8,2) (14,10,2); edge + label equals the existing padding-inline in every density.",
     "Vertical centering on capital letters (text-box: trim-both cap alphabetic, overflow clip with a 0.3em clip margin so descenders stay visible). Measured offset at most 0.5 px at 1x (pixel rounding), versus 0.5 px too high in sm and md before. Browsers without text-box support (Firefox today) keep line-box centering.",
     "Tight ellipsis: the component renders the truncated text itself (2 px safety margin) and keeps the whole label visually hidden as the accessible name, because the native cut point cannot be predicted to the pixel (a box-narrowing variant left up to 12 px in 58 of 351 widths). Swept over 351 widths at 1x and 2x: at most 1.33 px after the ellipsis at 1x, 1.66 px once at 2x (100 px). Without script the native ellipsis applies.",
-    "Balance lab examples/button-balance removed after the choice (commits 863f736 to e59986e, artifact https://claude.ai/artifact/7RRUe8DJHJ7VcaFoutJDKT v2)."
+    "Balance lab examples/button-balance removed after the choice (commits 863f736 to e59986e, artifact https://claude.ai/artifact/7RRUe8DJHJ7VcaFoutJDKT v2).",
+    "aria-disabled is kept while loading, together with aria-busy (user, 2026-10-07)."
   ],
   "openDecisions": [
-    "Approve the updated contract facts (spacing with edge, label and slot roles and their values per density, optical icon rule, cap-height centering, tight ellipsis) and the implementation.",
-    "aria-disabled while loading (in addition to aria-busy): keep or expose only the busy state."
+    "Implementation approval of the preview version 5 (the user approved the contract against it; explicit implementation approval to confirm).",
+    "Repository structure questions raised on 2026-10-07 (components/ naming, packages/svelte/src layout, token folder organisation): to settle in a separate chore before or after the Button pull request."
   ],
   "nextAction": "Contract and implementation gates on the updated preview; then Figma parity.",
   "implementationNotes": [
