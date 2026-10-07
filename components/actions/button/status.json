@@ -3,7 +3,7 @@
   "componentId": "button",
   "family": "actions",
   "wave": 1,
-  "phase": "contract",
+  "phase": "figma",
   "scope": {
     "purpose": "Trigger an action or move to the next step of a task with a short visible label.",
     "useCases": [
@@ -81,7 +81,29 @@
       "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"le contrat mis à jour me semble bon au regard de l implémentation sur la page\" (preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5). Supersedes the approval of 2026-09-26.",
       "note": "Covers the contract; the six-plus-three new semantic roles are recorded as a pending foundations change in foundations/status.json. Implementation approval recorded separately."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Svelte implementation of the Button (interactive implementation review, which is also the design review): rendering on the approved tokens, interactions, tuned spacing, optical icon alignment, cap-height centering, tight ellipsis, aria-disabled while loading.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/button/Button.svelte",
+          "packages/svelte/src/button/types.ts",
+          "packages/svelte/src/button/button.css",
+          "packages/svelte/src/button/contract.generated.ts",
+          "packages/svelte/src/button/tokens.generated.css",
+          "examples/button/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/button/Button.svelte": "75fbe9f88e18f2b51c0a1c7640b2ccae5391661ac5e0a3f5061430e184257630",
+          "packages/svelte/src/button/types.ts": "c3c6580c46b473c50bde0cf33d13ba402e9a97799235fb4b947b92c571921b22",
+          "packages/svelte/src/button/button.css": "563045047bf931c3c4a00caab864400c346a9e3a38a56dbc24515a23b640098f",
+          "packages/svelte/src/button/contract.generated.ts": "f90148d9d8581c1dac118f222abea993c429a7817fa3ff46e3111da610b3ff12",
+          "packages/svelte/src/button/tokens.generated.css": "3556d66ff1d4f864d9b48262c1edb93d10a9ee0c13b5e5efc5a4fa075f276c80",
+          "examples/button/App.svelte": "ca80916d651c71be4b9488fd9ac39179c0874a4daf27dcdcbae3c25638118272"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"L implémentation du Button est bien validée\", after reviewing the preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5 (commit 2c362f9).",
+      "note": "Automated evidence: Chromium only (9 browser tests, 6 SSR tests). Icon, Counter and Shortcut are fixtures; Done waits for them and for Figma parity."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -156,10 +178,9 @@
     "aria-disabled is kept while loading, together with aria-busy (user, 2026-10-07)."
   ],
   "openDecisions": [
-    "Implementation approval of the preview version 5 (the user approved the contract against it; explicit implementation approval to confirm).",
-    "Repository structure questions raised on 2026-10-07 (components/ naming, packages/svelte/src layout, token folder organisation): to settle in a separate chore before or after the Button pull request."
+    "Repository structure (2026-10-07, after the Button pull request, branch chore/repo-structure): user proposal foundations/contracts beside foundations/tokens; packages/svelte/src/components/<id>; category folders inside semantic tokens."
   ],
-  "nextAction": "Contract and implementation gates on the updated preview; then Figma parity.",
+  "nextAction": "Figma parity (ggb-figma): masters bound to variables, specification page, parity report; then documentation and the pull request.",
   "implementationNotes": [
     "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
     "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",

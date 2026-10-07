@@ -7,7 +7,7 @@ Validated by the user on 2026-09-25 (waves), amended for the foundations-first o
 | Task                                                                           | Skill                  | Gate                                   | State                                                 |
 | ------------------------------------------------------------------------------ | ---------------------- | -------------------------------------- | ----------------------------------------------------- |
 | 0 · Foundations: generous primitives, full semantic inventory, Figma variables | `ggb-foundations`      | Foundations review                     | Done: approved 2026-09-26 (JeremySQT/design-system#1) |
-| 1 · Wave 1 components                                                          | `ggb-component`        | Contract, implementation, Figma parity | In progress: Button implementation (gate pending)     |
+| 1 · Wave 1 components                                                          | `ggb-component`        | Contract, implementation, Figma parity | In progress: Button Figma parity                      |
 | 2 · Wave 2 … 6                                                                 | `ggb-component`        | Same                                   | Not started                                           |
 | 3 · Documentation site `apps/docs` (Astro + Starlight, docs.ggbrick.design)    | dedicated task         | Site review                            | Not started; start once wave 1 is documented          |
 | 4 · Marketing site `apps/site` (Astro, ggbrick.design)                         | dedicated task         | Site review                            | Not started                                           |
