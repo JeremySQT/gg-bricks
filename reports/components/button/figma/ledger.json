@@ -7,7 +7,7 @@
       "id": "8:4"
     }
   },
-  "recordedOn": "2026-10-07",
+  "recordedOn": "2026-10-10",
   "componentSet": {
     "id": "48:1586",
     "name": "Button",
@@ -22,43 +22,9 @@
       "type": "BOOLEAN",
       "default": false
     },
-    "Leading icon#48:362": {
-      "type": "INSTANCE_SWAP",
-      "default": "42:7",
-      "preferred": [
-        "12a89c03c2325076a713748b7e611277946700d7",
-        "60f8d1f2beafd9db764cfed5b36b8b27319560c3",
-        "1b8d13ae746a9c6fdb869180bba757a1c68aa324",
-        "accac31493a4b0c09a6835a611e1ae5dae55566c",
-        "3b8a918e7cba1d71239231d9ad7e130e107aebe9"
-      ]
-    },
-    "Show trailing icon#48:363": {
+    "Show trailing#76:0": {
       "type": "BOOLEAN",
       "default": false
-    },
-    "Trailing icon#48:364": {
-      "type": "INSTANCE_SWAP",
-      "default": "42:10",
-      "preferred": [
-        "12a89c03c2325076a713748b7e611277946700d7",
-        "60f8d1f2beafd9db764cfed5b36b8b27319560c3",
-        "1b8d13ae746a9c6fdb869180bba757a1c68aa324",
-        "accac31493a4b0c09a6835a611e1ae5dae55566c",
-        "3b8a918e7cba1d71239231d9ad7e130e107aebe9"
-      ]
-    },
-    "Show trailing content#48:365": {
-      "type": "BOOLEAN",
-      "default": false
-    },
-    "Trailing content#48:366": {
-      "type": "INSTANCE_SWAP",
-      "default": "42:20",
-      "preferred": [
-        "00a60fc790a3a7aed4d4524fc16992d830932960",
-        "fffb9e457bdbf32f420376b50f350a6fecb5ce85"
-      ]
     },
     "Focus#48:367": {
       "type": "BOOLEAN",
@@ -244,11 +210,11 @@
     "Container",
     "Leading",
     "Leading/Drawing box",
+    "Leading/Drawing box/Leading icon",
     "Label",
     "Label/Text",
-    "Trailing icon",
-    "Trailing icon/Drawing box",
-    "Trailing content",
+    "Trailing",
+    "Trailing/Trailing item",
     "Loading indicator",
     "Focus ring"
   ],
@@ -258,50 +224,80 @@
       "id": "8:10"
     },
     "_Fixtures (review only, not part of the library API)": "42:2",
-    "_Fixture/Icon/plus": "42:7",
-    "_Fixture/Icon/arrow-right": "42:10",
-    "_Fixture/Icon/trash": "42:13",
-    "_Fixture/Icon/download-simple": "42:16",
-    "_Fixture/Icon/check": "42:19",
     "_Fixture/Counter": "42:20",
     "_Fixture/Shortcut": "42:22",
-    "_Button/Loading indicator": "42:28"
-  },
-  "adapterVariables": {
-    "collection": "VariableCollectionId:43:2",
-    "mode": "43:0",
-    "variables": {
-      "button/icon-drawing/sm": {
-        "id": "VariableID:43:3",
-        "type": "FLOAT",
-        "value": 12
-      },
-      "button/icon-drawing/md": {
-        "id": "VariableID:43:4",
-        "type": "FLOAT",
-        "value": 15
-      },
-      "button/icon-drawing/lg": {
-        "id": "VariableID:43:5",
-        "type": "FLOAT",
-        "value": 18
+    "_Button/Loading indicator": "42:28",
+    "_Fixture/Icon": {
+      "set": "74:2",
+      "variants": {
+        "Name=plus": "42:7",
+        "Name=arrow-right": "42:10",
+        "Name=trash": "42:13",
+        "Name=download-simple": "42:16",
+        "Name=check": "42:19"
       }
     }
   },
+  "adapterVariables": {
+    "collection": "VariableCollectionId:74:3",
+    "name": "_ggbrick button size",
+    "modes": {
+      "sm": "74:0",
+      "md": "74:1",
+      "lg": "74:2"
+    },
+    "variables": {
+      "button/icon-drawing": {
+        "id": "VariableID:74:4",
+        "type": "FLOAT",
+        "values": {
+          "sm": 12,
+          "md": 15,
+          "lg": 18
+        }
+      },
+      "button/icon-size": {
+        "id": "VariableID:74:5",
+        "type": "FLOAT",
+        "values": "alias size/icon/{sm,md,lg}"
+      }
+    },
+    "assignment": "Each Button variant sets the mode matching its Size explicitly.",
+    "removed": "Collection _ggbrick adapter (VariableCollectionId:43:2, button/icon-drawing/{sm,md,lg}) deleted on 2026-10-10 after migration; no remaining bindings."
+  },
   "specification": {
     "frame": {
-      "id": "66:56",
+      "id": "78:1449",
       "name": "Button — Specification",
-      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=66-56"
+      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=78-1449"
     },
     "sections": {
-      "Overview": "66:57",
-      "Anatomy": "66:159",
-      "Variants": "66:282",
-      "States": "67:818",
-      "Behavior & sizing": "67:3255",
-      "Usage examples": "67:3722"
-    }
+      "Overview": "78:1450",
+      "Anatomy": "78:1564",
+      "Variants": "78:1734",
+      "States": "79:407",
+      "Behavior & sizing": "79:3016",
+      "Usage examples": "79:3555"
+    },
+    "replaces": "66:56 (removed 2026-10-10 when the trailing slot was merged)"
   },
-  "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run; none remain."
+  "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run; none remain.",
+  "exposedInstances": {
+    "Leading icon": "instance of _Fixture/Icon (property Name)",
+    "Trailing item": "instance of _Button/Trailing (properties Type, Content; nested exposed Icon with Name)"
+  },
+  "internalComponents": {
+    "_Button/Trailing": {
+      "page": "Utilities (8:10)",
+      "set": "75:14",
+      "variants": {
+        "Type=Icon": "75:2",
+        "Type=Content": "75:8"
+      },
+      "properties": {
+        "Type": "VARIANT",
+        "Content#75:0": "INSTANCE_SWAP (Counter, Shortcut)"
+      }
+    }
+  }
 }

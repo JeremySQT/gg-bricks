@@ -48,7 +48,7 @@
       "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=48-1586",
       "page": "Actions (8:4)",
       "componentSet": "48:1586",
-      "specificationFrame": "66:56",
+      "specificationFrame": "78:1449",
       "ledger": "reports/components/button/figma/ledger.json",
       "parity": "reports/components/button/figma/parity.json",
       "screenshots": [
@@ -164,8 +164,8 @@
       "kind": "figma-parity",
       "result": "passed",
       "report": "reports/components/button/figma/parity.json",
-      "date": "2026-10-07",
-      "note": "9324 records (one per computed record, 18 contexts, 5 states in 4 representative contexts), 0 failures; 630 justified differences (forced-colors outline, loading keeps focus); widths within ±1.5 px (measured 0.13 to 1.06 px). Difficult cases checked in the specification: constrained width truncation with slots, empty slots, all states in light and dark, six brand and appearance pairs."
+      "date": "2026-10-10",
+      "note": "9324 records (one per computed record, 18 contexts, 5 states in 4 representative contexts), 0 failures (re-measured after the single trailing slot, 2026-10-10); 630 justified differences (forced-colors outline, loading keeps focus); widths within ±1.5 px (measured 0.13 to 1.06 px). Difficult cases checked in the specification: constrained width truncation with slots, empty slots, all states in light and dark, six brand and appearance pairs."
     }
   ],
   "decisionsTaken": [
@@ -196,10 +196,12 @@
     "Tight ellipsis: the component renders the truncated text itself (2 px safety margin) and keeps the whole label visually hidden as the accessible name, because the native cut point cannot be predicted to the pixel (a box-narrowing variant left up to 12 px in 58 of 351 widths). Swept over 351 widths at 1x and 2x: at most 1.33 px after the ellipsis at 1x, 1.66 px once at 2x (100 px). Without script the native ellipsis applies.",
     "Balance lab examples/button-balance removed after the choice (commits 863f736 to e59986e, artifact https://claude.ai/artifact/7RRUe8DJHJ7VcaFoutJDKT v2).",
     "aria-disabled is kept while loading, together with aria-busy (user, 2026-10-07).",
-    "Figma focus ring (2026-10-07): outside stroke 2 px from the container with its corner bound to radius/control, so it follows each brand's radius; the CSS outline corner (radius + offset) cannot be computed in Figma and is about 2 px rounder (justified difference in figma-spec.md)."
+    "Figma focus ring (2026-10-07): outside stroke 2 px from the container with its corner bound to radius/control, so it follows each brand's radius; the CSS outline corner (radius + offset) cannot be computed in Figma and is about 2 px rounder (justified difference in figma-spec.md).",
+    "Figma single trailing slot (user, 2026-10-10, option A): Show trailing + an exposed internal instance _Button/Trailing with Type = Icon (placed by its drawing, nested exposed Icon with a Name property) or Content (Counter or Shortcut, placed by its box), so at most one trailing item as in the contract. Icon fixtures grouped into a _Fixture/Icon variant set standing in for the future Icon component; the optical drawing box stays in Button, Icon stays neutral. Icon sizes come from the adapter collection _ggbrick button size (modes sm, md, lg set on each variant)."
   ],
   "openDecisions": [
-    "Repository structure (2026-10-07, after the Button pull request, branch chore/repo-structure): user proposal foundations/contracts beside foundations/tokens; packages/svelte/src/components/<id>; category folders inside semantic tokens."
+    "Repository structure (2026-10-07, after the Button pull request, branch chore/repo-structure): user proposal foundations/contracts beside foundations/tokens; packages/svelte/src/components/<id>; category folders inside semantic tokens.",
+    "Default density (2026-10-10): the Figma file's default Density mode is compact (first mode, from the order in foundations/config.json), so a Button dropped on a frame without modes shows the compact heights (28/32/40) while the review page uses standard (32/40/48); the code has no default density (data-ggb-density must be set). Proposed: declare standard as the default density for code and Figma (foundations change)."
   ],
   "nextAction": "Figma parity gate (user review of the masters, the specification frame and the parity report); then documentation (ggb-docs) and the pull request.",
   "implementationNotes": [

@@ -95,7 +95,7 @@ for (const ap of APS)
       for (const [k, inst] of made) {
         const c = inst.findOne((n) => n.name === 'Container');
         const lw = inst.findOne((n) => n.name === 'Label');
-        const t = inst.findOne((n) => n.type === 'TEXT' && n.name === 'Text');
+        const t = lw.findOne((n) => n.type === 'TEXT' && n.name === 'Text');
         const ring = inst.findOne((n) => n.name === 'Focus ring');
         const rw = await res(ring, 'strokeTopWeight');
         out[`${ctx}|${k.i}|${k.a}|${k.s}|${k.st}`] = [

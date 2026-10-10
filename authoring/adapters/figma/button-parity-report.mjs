@@ -161,7 +161,7 @@ const meta = {
     computed: 'reports/components/button/svelte/computed.json',
     method:
       'Instances of each variant in temporary frames with explicit Brand, Appearance and Density modes; bound variables resolved with resolveForConsumer; geometry read from the laid-out instance.',
-    measuredAt: '2026-10-07'
+    measuredAt: '2026-10-10'
   },
   summary: {
     records: out.length,
