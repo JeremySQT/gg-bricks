@@ -48,7 +48,7 @@
       "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=48-1586",
       "page": "Actions (8:4)",
       "componentSet": "48:1586",
-      "specificationFrame": "92:1503",
+      "specificationFrame": "105:1579",
       "ledger": "reports/components/button/figma/ledger.json",
       "parity": "reports/components/button/figma/parity.json",
       "screenshots": [
@@ -164,8 +164,8 @@
       "kind": "figma-parity",
       "result": "passed",
       "report": "reports/components/button/figma/parity.json",
-      "date": "2026-10-10",
-      "note": "9324 records (one per computed record, 18 contexts, 5 states in 4 representative contexts), 0 failures (re-measured after the single trailing slot, 2026-10-10); 630 justified differences (forced-colors outline, loading keeps focus); widths within ±1.5 px (measured 0.13 to 1.06 px). Difficult cases checked in the specification: constrained width truncation with slots, empty slots, all states in light and dark, six brand and appearance pairs."
+      "date": "2026-10-12",
+      "note": "9324 records (one per computed record, 18 contexts, 5 states in 4 representative contexts), 0 failures; 630 justified differences (forced-colors outline, loading keeps focus); widths within ±1.5 px (measured 0.13 to 1.06 px). Slot geometry (added 2026-10-12 after the user spotted a trailing icon 2 px low): 108 records in 18 contexts × 3 sizes × icon/counter against the contract spacing rule, 0 failures. Difficult cases checked in the specification: constrained width truncation with slots, empty slots, all states in light and dark, six brand and appearance pairs."
     }
   ],
   "decisionsTaken": [
@@ -199,7 +199,9 @@
     "Figma focus ring (2026-10-07): outside stroke 2 px from the container with its corner bound to radius/control, so it follows each brand's radius; the CSS outline corner (radius + offset) cannot be computed in Figma and is about 2 px rounder (justified difference in figma-spec.md).",
     "Figma single trailing slot (user, 2026-10-10, option A): Show trailing + an exposed internal instance _Button/Trailing with Type = Icon (placed by its drawing, nested exposed Icon with a Name property) or Content (Counter or Shortcut, placed by its box), so at most one trailing item as in the contract. Icon fixtures grouped into a _Fixture/Icon variant set standing in for the future Icon component; the optical drawing box stays in Button, Icon stays neutral. Icon sizes come from the adapter collection _ggbrick button size (modes sm, md, lg set on each variant).",
     "Figma trailing part simplified (user, 2026-10-12): _Button/Trailing has one variant per allowed type (Icon, Counter, Shortcut), each holding only its own content. Slot content takes the button content color through button/foreground (adapter collections _ggbrick button style and _ggbrick button state, modes set on each variant) instead of per-variant overrides; checked on all 135 variants and three trailing types in base light, orchid dark and brick dark (2160 checks, 0 differences). Control parity run in orchid dark identical to the 2026-10-10 measurement.",
-    "Native Figma slots (checked 2026-10-12): the Plugin API accepts a SLOT component property with preferred components but offers no way to create or bind the slot layer, so slots cannot be built or verified by script yet; the Button keeps the internal part. To revisit when the API supports slot layers."
+    "Native Figma slots (checked 2026-10-12): the Plugin API accepts a SLOT component property with preferred components but offers no way to create or bind the slot layer, so slots cannot be built or verified by script yet; the Button keeps the internal part. To revisit when the API supports slot layers.",
+    "Trailing icon vertical offset (user, 2026-10-12): the shared _Button/Trailing part positioned its icon in absolute coordinates for one size, so the icon sat 2 px low in md and 4 px in lg; the drawing box now centers the icon with auto layout. The parity measurement did not cover slot geometry; it now does (button-parity-slots.plugin.js, 108 records, 0 failures).",
+    "Specification page rewritten in plain language (user, 2026-10-12): full sentences, no token paths or abbreviations on the page (they stay in figma-spec.md). Anatomy uses a grayscale structure diagram and a zoomed spacing diagram whose grays come from a Figma-only Wireframe collection aliased to the neutral primitives; the diagram is not to scale (the root is drawn taller than it is so that its outline stays visible next to the focus ring)."
   ],
   "openDecisions": [
     "Repository structure (2026-10-07, after the Button pull request, branch chore/repo-structure): user proposal foundations/contracts beside foundations/tokens; packages/svelte/src/components/<id>; category folders inside semantic tokens.",

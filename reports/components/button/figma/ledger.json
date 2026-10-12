@@ -300,19 +300,24 @@
   },
   "specification": {
     "frame": {
-      "id": "92:1503",
+      "id": "105:1579",
       "name": "Button — Specification",
-      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=92-1503"
+      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=105-1579"
     },
     "sections": {
-      "Overview": "92:1504",
-      "Anatomy": "92:1596",
-      "Variants": "92:1740",
-      "States": "93:393",
-      "Behavior & sizing": "93:2713",
-      "Usage examples": "93:3169"
+      "Overview": "105:1580",
+      "Anatomy": "105:1670",
+      "Variants": "105:1876",
+      "States": "107:433",
+      "Behavior & sizing": "107:2753",
+      "Usage examples": "107:3209"
     },
-    "replaces": "78:1449 (2026-10-12)"
+    "diagrams": {
+      "Anatomy diagram": "106:808",
+      "Spacing diagram": "106:834"
+    },
+    "replaces": "92:1503 (2026-10-12, plain-language rewrite with the wireframe diagrams)",
+    "builder": "authoring/adapters/figma/button-spec.plugin.js"
   },
   "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run; none remain.",
   "exposedInstances": {
@@ -331,7 +336,30 @@
       "properties": {
         "Type": "VARIANT"
       },
-      "note": "One variant per allowed trailing type, each holding only its own content; colors bound to button/foreground."
+      "note": "One variant per allowed trailing type, each holding only its own content; colors bound to button/foreground. Type=Icon centers the icon in its drawing box with auto layout, so the box can follow the size modes (fixed 2026-10-12: absolute positioning left the icon 2 px low in md and 4 px in lg)."
     }
+  },
+  "wireframe": {
+    "collection": {
+      "name": "Wireframe",
+      "id": "VariableCollectionId:105:1565",
+      "mode": "default"
+    },
+    "variables": {
+      "wireframe/canvas": "neutral/0",
+      "wireframe/root": "neutral/50",
+      "wireframe/container": "neutral/200",
+      "wireframe/icon-box": "neutral/300",
+      "wireframe/slot": "neutral/500",
+      "wireframe/label": "neutral/600",
+      "wireframe/outline": "neutral/700",
+      "wireframe/overlay": "neutral/900",
+      "wireframe/annotation": "neutral/900",
+      "wireframe/on-dark": "neutral/0",
+      "wireframe/spacing/edge": "neutral/300",
+      "wireframe/spacing/label": "neutral/400",
+      "wireframe/spacing/slot": "neutral/700"
+    },
+    "note": "Grays for anatomy diagrams of specification pages, aliased to primitive/color/neutral/*. Documentation tooling only: not a source token, not used by masters."
   }
 }

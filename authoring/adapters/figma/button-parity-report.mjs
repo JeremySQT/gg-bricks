@@ -2,7 +2,10 @@ import fs from 'node:fs';
 // Usage: node authoring/adapters/figma/button-parity-report.mjs <folder of saved measurement results (*.json)>
 const SP = process.argv[2].replace(/\/?$/, '/');
 const obs = {};
-for (const f of fs.readdirSync(SP)) Object.assign(obs, JSON.parse(fs.readFileSync(SP + f, 'utf8')));
+for (const f of fs.readdirSync(SP))
+  if (f !== 'slots.json') Object.assign(obs, JSON.parse(fs.readFileSync(SP + f, 'utf8')));
+// Optional slot geometry measurements (button-parity-slots.plugin.js), keyed context|size|trailing type.
+const slotsRaw = fs.existsSync(SP + 'slots.json') ? JSON.parse(fs.readFileSync(SP + 'slots.json', 'utf8')) : null;
 const { records } = JSON.parse(fs.readFileSync('reports/components/button/svelte/computed.json', 'utf8'));
 const toHex = (v) => {
   const m = String(v).match(/rgba?\(([^)]+)\)/);
@@ -154,6 +157,21 @@ if (missing.length) {
   process.exit(1);
 }
 const failed = out.filter((r) => !r.passed);
+const slots = slotsRaw
+  ? Object.entries(slotsRaw).map(([k, v]) => {
+      const [context, size, trailing] = k.split('|');
+      const [got, exp, vert, vexp, ok] = v.split('|');
+      return {
+        context,
+        props: { intent: 'accent', appearance: 'solid', size },
+        trailing,
+        horizontal: { observed: got.split(',').map(Number), expected: exp.split(',').map(Number) },
+        vertical: { observed: vert.split(',').map(Number), expected: vexp.split(',').map(Number) },
+        passed: ok === 'ok',
+        rule: 'Leading drawing at edge + slot from the container edge, slot + label from the label text; trailing symmetric; icons centered vertically at the icon size (contract spacing rule, asserted by tests/browser/button.spec.ts).'
+      };
+    })
+  : [];
 const meta = {
   source: {
     figmaFile: 'TDPqojP4KvbWJlKSYc4zKC',
@@ -161,13 +179,14 @@ const meta = {
     computed: 'reports/components/button/svelte/computed.json',
     method:
       'Instances of each variant in temporary frames with explicit Brand, Appearance and Density modes; bound variables resolved with resolveForConsumer; geometry read from the laid-out instance.',
-    measuredAt: '2026-10-10'
+    measuredAt: '2026-10-12'
   },
   summary: {
     records: out.length,
     passed: out.length - failed.length,
     failed: failed.length,
-    justified: out.filter((r) => r.passed && r.note && r.note.startsWith('Justified')).length
+    justified: out.filter((r) => r.passed && r.note && r.note.startsWith('Justified')).length,
+    slotGeometry: slots.length ? { records: slots.length, failed: slots.filter((r) => !r.passed).length } : undefined
   }
 };
 // One record per line keeps the report diffable.
@@ -175,9 +194,21 @@ fs.writeFileSync(
   'reports/components/button/figma/parity.json',
   JSON.stringify(meta, null, 2).replace(/\n}$/, ',\n  "records": [\n') +
     out.map((r) => '    ' + JSON.stringify(r)).join(',\n') +
-    '\n  ]\n}\n'
+    '\n  ]' +
+    (slots.length
+      ? ',\n  "slotGeometry": [\n' + slots.map((r) => '    ' + JSON.stringify(r)).join(',\n') + '\n  ]'
+      : '') +
+    '\n}\n'
 );
-console.log(out.length, 'failed', failed.length);
+console.log(
+  out.length,
+  'failed',
+  failed.length,
+  'slot records',
+  slots.length,
+  'failed',
+  slots.filter((r) => !r.passed).length
+);
 const byProp = {};
 for (const r of failed) (byProp[r.property] ||= []).push(r);
 for (const [p, rs] of Object.entries(byProp))

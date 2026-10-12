@@ -4,7 +4,7 @@
 
 - File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), page **Actions** (`8:4`).
 - Master: component set **Button** ([`48:1586`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=48-1586)), 135 variants.
-- Specification frame: **Button — Specification** ([`92:1503`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=92-1503)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples. Its instances are explanatory, never masters.
+- Specification frame: **Button — Specification** ([`105:1579`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=105-1579)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples, written in plain sentences for designers; token paths and mechanics stay in this file. Its instances are explanatory, never masters. Built by `authoring/adapters/figma/button-spec.plugin.js`.
 - Reproduces: contract `components/actions/button/contract.json` (sha256 `0144dc9a…413e`) and the implementation approved on 2026-10-07 (`packages/svelte/src/button`).
 - Node and variable IDs: `reports/components/button/figma/ledger.json`. Parity: `reports/components/button/figma/parity.json` (9324 records, 0 failures). Screenshots: `reports/components/button/figma/master-set.png`, `specification.png`.
 - The library is not published (publication needs explicit authorization).
@@ -29,7 +29,7 @@ Every color, dimension, radius, padding, margin, stroke and typography value of 
 - **Root** reserves the 44px interaction height (`size/target/min`) around the container; the container keeps the size height.
 - **Container** padding is `space/control/edge-inline/{size}` and `space/control/padding-block/{size}`; **Label** carries `space/control/label-inline/{size}` on both sides; **Leading** and **Trailing** carry `space/control/slot-inline/{size}`.
 - **Optical icon spacing**: icons sit in a _Drawing box_ sized to the icon's drawing (iconSize × 3/4), so the box overlaps the slot spacing by 1/8 of the icon size on each side, like the CSS negative margin. The compensation belongs to Button (Leading, and Type=Icon of `_Button/Trailing`); the icon component itself stays neutral.
-- **Trailing**: one frame carrying the slot margin, holding an exposed instance of the internal `_Button/Trailing` set (Utilities page), with one variant per allowed type, each holding only its own content: Icon (drawing box with the icon, placed by its drawing), Counter and Shortcut (placed by their box).
+- **Trailing**: one frame carrying the slot margin, holding an exposed instance of the internal `_Button/Trailing` set (Utilities page), with one variant per allowed type, each holding only its own content: Icon (drawing box with the icon, placed by its drawing), Counter and Shortcut (placed by their box). The drawing box centers the icon with auto layout: the part is shared by the three sizes through modes, so an absolute position would be right for one size only (it left the icon 2 px low in md and 4 px in lg before 2026-10-12).
 - **Slot color**: slot content (leading glyph, Icon, Counter, Shortcut) is bound to `button/foreground`, which resolves to the content color of the variant's intent, appearance and state through the modes each variant sets (see Adapter mechanics), like `currentColor` in the code. No per-variant color override is needed, so switching Type or Name keeps the right color.
 - **Cap-height centering**: the label text uses vertical trim (leading trim to cap height), the Figma equivalent of `text-box: trim-both cap alphabetic`.
 - **Loading**: the Loading indicator is centered over the container (absolute); Leading, Label and Trailing are kept in the layout at opacity 0, so the width does not change.
@@ -51,6 +51,10 @@ Recorded as such in `parity.json`; none hides a defect of the masters.
 9. **Spinner rotation, color transitions and reduced motion** are code-only.
 10. **Fixtures.** The Phosphor library is not attached to the file: icons are local fixtures (variant set `_Fixture/Icon`, property Name, Phosphor 2.1.1 paths) with literal vector sizes, and Counter and Shortcut are local fixtures on the Utilities page, standing in for the future Icon, Counter and Shortcut components.
 
+## Anatomy diagrams
+
+The Anatomy section shows a grayscale structure diagram (root, container, leading, label, trailing, loading indicator, focus ring, numbered) and a zoomed spacing diagram (edge padding, label margin, slot margin, icon drawing versus icon box). Their grays are variables of the Figma-only **Wireframe** collection (`wireframe/*`, aliases of `primitive/color/neutral/*`), so every specification page can reuse the same levels. The structure diagram is not to scale: the root is drawn taller than it is, otherwise its outline merges with the focus ring, which really sits on the root boundary. The Wireframe collection is documentation tooling, not a source token.
+
 ## Adapter mechanics
 
 - Collection `_ggbrick button size` (modes sm, md, lg; each Button variant sets the mode of its Size) holds `button/icon-drawing` = 12, 15, 18, the optical drawing box (3/4 of `size/icon/{size}`, because Figma cannot compute a fraction of a variable), and `button/icon-size`, an alias of `size/icon/{size}`. The modes let the shared `_Button/Trailing` part follow the button size without a Size property. These are not source tokens, contract fields or code requirements.
@@ -59,5 +63,7 @@ Recorded as such in `parity.json`; none hides a defect of the masters.
 - `figma.skipInvisibleInstanceChildren = false` is required when scripts read hidden slot layers of instances.
 
 ## Parity method
+
+Slot geometry is measured separately (`button-parity-slots.plugin.js`): in every context and size, with a trailing icon and with a counter, the leading drawing must sit at edge + slot from the container edge and slot + label from the label text, the trailing item symmetrically, and icons must be centered vertically at the icon size. The report lists these 108 records under `slotGeometry`.
 
 For each of the 18 contexts (brand × appearance × density) a temporary frame with explicit modes holds instances of the 27 default cases (label Continue or Delete, leading icon on md) and, in base-light-standard, base-dark-standard, brick-light-compact and orchid-dark-comfortable, the 45 md state cases (label "Save changes"). Bound variables are resolved with `resolveForConsumer`, geometry is read from the laid-out instances, the frame is removed, and each value is compared with the matching record of `reports/components/button/svelte/computed.json`.
