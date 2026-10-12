@@ -48,7 +48,7 @@
       "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=48-1586",
       "page": "Actions (8:4)",
       "componentSet": "48:1586",
-      "specificationFrame": "78:1449",
+      "specificationFrame": "92:1503",
       "ledger": "reports/components/button/figma/ledger.json",
       "parity": "reports/components/button/figma/parity.json",
       "screenshots": [
@@ -197,11 +197,14 @@
     "Balance lab examples/button-balance removed after the choice (commits 863f736 to e59986e, artifact https://claude.ai/artifact/7RRUe8DJHJ7VcaFoutJDKT v2).",
     "aria-disabled is kept while loading, together with aria-busy (user, 2026-10-07).",
     "Figma focus ring (2026-10-07): outside stroke 2 px from the container with its corner bound to radius/control, so it follows each brand's radius; the CSS outline corner (radius + offset) cannot be computed in Figma and is about 2 px rounder (justified difference in figma-spec.md).",
-    "Figma single trailing slot (user, 2026-10-10, option A): Show trailing + an exposed internal instance _Button/Trailing with Type = Icon (placed by its drawing, nested exposed Icon with a Name property) or Content (Counter or Shortcut, placed by its box), so at most one trailing item as in the contract. Icon fixtures grouped into a _Fixture/Icon variant set standing in for the future Icon component; the optical drawing box stays in Button, Icon stays neutral. Icon sizes come from the adapter collection _ggbrick button size (modes sm, md, lg set on each variant)."
+    "Figma single trailing slot (user, 2026-10-10, option A): Show trailing + an exposed internal instance _Button/Trailing with Type = Icon (placed by its drawing, nested exposed Icon with a Name property) or Content (Counter or Shortcut, placed by its box), so at most one trailing item as in the contract. Icon fixtures grouped into a _Fixture/Icon variant set standing in for the future Icon component; the optical drawing box stays in Button, Icon stays neutral. Icon sizes come from the adapter collection _ggbrick button size (modes sm, md, lg set on each variant).",
+    "Figma trailing part simplified (user, 2026-10-12): _Button/Trailing has one variant per allowed type (Icon, Counter, Shortcut), each holding only its own content. Slot content takes the button content color through button/foreground (adapter collections _ggbrick button style and _ggbrick button state, modes set on each variant) instead of per-variant overrides; checked on all 135 variants and three trailing types in base light, orchid dark and brick dark (2160 checks, 0 differences). Control parity run in orchid dark identical to the 2026-10-10 measurement.",
+    "Native Figma slots (checked 2026-10-12): the Plugin API accepts a SLOT component property with preferred components but offers no way to create or bind the slot layer, so slots cannot be built or verified by script yet; the Button keeps the internal part. To revisit when the API supports slot layers."
   ],
   "openDecisions": [
     "Repository structure (2026-10-07, after the Button pull request, branch chore/repo-structure): user proposal foundations/contracts beside foundations/tokens; packages/svelte/src/components/<id>; category folders inside semantic tokens.",
-    "Default density (2026-10-10): the Figma file's default Density mode is compact (first mode, from the order in foundations/config.json), so a Button dropped on a frame without modes shows the compact heights (28/32/40) while the review page uses standard (32/40/48); the code has no default density (data-ggb-density must be set). Proposed: declare standard as the default density for code and Figma (foundations change)."
+    "Default density (2026-10-10): the Figma file's default Density mode is compact (first mode, from the order in foundations/config.json), so a Button dropped on a frame without modes shows the compact heights (28/32/40) while the review page uses standard (32/40/48); the code has no default density (data-ggb-density must be set). Proposed: declare standard as the default density for code and Figma (foundations change).",
+    "Figma file structure (user proposal, 2026-10-12): one page per component, named by its repository path (e.g. actions/button), holding the master, its internal parts and its specification; family pages replaced. Changes authoring/figma.md; to settle with the repository structure work."
   ],
   "nextAction": "Figma parity gate (user review of the masters, the specification frame and the parity report); then documentation (ggb-docs) and the pull request.",
   "implementationNotes": [

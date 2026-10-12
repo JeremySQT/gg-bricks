@@ -7,7 +7,7 @@
       "id": "8:4"
     }
   },
-  "recordedOn": "2026-10-10",
+  "recordedOn": "2026-10-12",
   "componentSet": {
     "id": "48:1586",
     "name": "Button",
@@ -239,52 +239,85 @@
     }
   },
   "adapterVariables": {
-    "collection": "VariableCollectionId:74:3",
-    "name": "_ggbrick button size",
-    "modes": {
-      "sm": "74:0",
-      "md": "74:1",
-      "lg": "74:2"
-    },
-    "variables": {
-      "button/icon-drawing": {
-        "id": "VariableID:74:4",
-        "type": "FLOAT",
-        "values": {
-          "sm": 12,
-          "md": 15,
-          "lg": 18
+    "size": {
+      "collection": "VariableCollectionId:74:3",
+      "name": "_ggbrick button size",
+      "modes": {
+        "sm": "74:0",
+        "md": "74:1",
+        "lg": "74:2"
+      },
+      "variables": {
+        "button/icon-drawing": {
+          "id": "VariableID:74:4",
+          "type": "FLOAT",
+          "values": {
+            "sm": 12,
+            "md": 15,
+            "lg": 18
+          }
+        },
+        "button/icon-size": {
+          "id": "VariableID:74:5",
+          "type": "FLOAT",
+          "values": "alias size/icon/{sm,md,lg}"
         }
       },
-      "button/icon-size": {
-        "id": "VariableID:74:5",
-        "type": "FLOAT",
-        "values": "alias size/icon/{sm,md,lg}"
-      }
+      "assignment": "Each Button variant sets the mode matching its Size explicitly.",
+      "removed": "Collection _ggbrick adapter (VariableCollectionId:43:2, button/icon-drawing/{sm,md,lg}) deleted on 2026-10-10 after migration; no remaining bindings."
     },
-    "assignment": "Each Button variant sets the mode matching its Size explicitly.",
-    "removed": "Collection _ggbrick adapter (VariableCollectionId:43:2, button/icon-drawing/{sm,md,lg}) deleted on 2026-10-10 after migration; no remaining bindings."
+    "foreground": {
+      "collections": {
+        "_ggbrick button style": {
+          "id": "VariableCollectionId:90:12",
+          "modes": "accent-solid … danger-ghost (9)"
+        },
+        "_ggbrick button state": {
+          "id": "VariableCollectionId:90:2",
+          "modes": {
+            "default": "90:0",
+            "hover": "90:1",
+            "pressed": "90:2",
+            "loading": "90:3",
+            "disabled": "90:4"
+          }
+        }
+      },
+      "variables": {
+        "button/foreground": {
+          "id": "VariableID:90:13",
+          "collection": "_ggbrick button style",
+          "value": "alias button/{intent}-{appearance}/foreground per mode"
+        },
+        "button/{intent}-{appearance}/foreground": {
+          "collection": "_ggbrick button state",
+          "count": 9,
+          "value": "alias color/action/{intent}/{appearance}/{state}/content per mode"
+        }
+      },
+      "assignment": "Each Button variant sets the style mode of its Intent and Appearance and the state mode of its State; slot content (leading glyph, Icon, Counter, Shortcut) is bound to button/foreground."
+    }
   },
   "specification": {
     "frame": {
-      "id": "78:1449",
+      "id": "92:1503",
       "name": "Button — Specification",
-      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=78-1449"
+      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=92-1503"
     },
     "sections": {
-      "Overview": "78:1450",
-      "Anatomy": "78:1564",
-      "Variants": "78:1734",
-      "States": "79:407",
-      "Behavior & sizing": "79:3016",
-      "Usage examples": "79:3555"
+      "Overview": "92:1504",
+      "Anatomy": "92:1596",
+      "Variants": "92:1740",
+      "States": "93:393",
+      "Behavior & sizing": "93:2713",
+      "Usage examples": "93:3169"
     },
-    "replaces": "66:56 (removed 2026-10-10 when the trailing slot was merged)"
+    "replaces": "78:1449 (2026-10-12)"
   },
   "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run; none remain.",
   "exposedInstances": {
     "Leading icon": "instance of _Fixture/Icon (property Name)",
-    "Trailing item": "instance of _Button/Trailing (properties Type, Content; nested exposed Icon with Name)"
+    "Trailing item": "instance of _Button/Trailing (property Type: Icon | Counter | Shortcut; Type=Icon exposes a nested Icon with Name)"
   },
   "internalComponents": {
     "_Button/Trailing": {
@@ -292,12 +325,13 @@
       "set": "75:14",
       "variants": {
         "Type=Icon": "75:2",
-        "Type=Content": "75:8"
+        "Type=Counter": "75:8",
+        "Type=Shortcut": "91:7"
       },
       "properties": {
-        "Type": "VARIANT",
-        "Content#75:0": "INSTANCE_SWAP (Counter, Shortcut)"
-      }
+        "Type": "VARIANT"
+      },
+      "note": "One variant per allowed trailing type, each holding only its own content; colors bound to button/foreground."
     }
   }
 }
