@@ -370,14 +370,18 @@ test('the label is centered on its capital letters, keeps descenders and ends at
   const tokens = tokensFor('base-light-standard');
   const gap = px(tokens['space.control.label-inline.md']) + px(tokens['space.control.slot-inline.md']);
   const label = page.locator('#truncated .ggb-button__label');
+  const shownText = () => label.evaluate((el) => el.querySelector('[aria-hidden="true"]')?.textContent ?? null);
+  let previous = await shownText();
   for (const width of [150, 175, 200, 225, 250, 300]) {
     await page.locator('#width').evaluate((el: HTMLInputElement, w) => {
       el.value = String(w);
       el.dispatchEvent(new Event('input', { bubbles: true }));
     }, width);
-    await expect.poll(() => label.evaluate((el) => !!el.querySelector('[aria-hidden="true"]'))).toBe(true);
-    const truncated = await label.evaluate((el) => !!el.querySelector('[aria-hidden="true"]'));
-    expect(truncated, `${width}px truncates`).toBe(true);
+    // The component re-fits after the ResizeObserver fires: wait for the new truncated copy (each width
+    // fits a different number of characters), not just for any truncated copy left from the previous width.
+    await expect.poll(shownText, { message: `${width}px: refitted` }).not.toBe(previous);
+    previous = await shownText();
+    expect(previous, `${width}px truncates`).not.toBeNull();
     const m = await ink(page, '#truncated', 'label');
     const box = await page.locator('#truncated').evaluate((el) => {
       const l = el.querySelector('.ggb-button__label')!.getBoundingClientRect();
@@ -393,8 +397,9 @@ test('the label is centered on its capital letters, keeps descenders and ends at
   }
   // With enough room the label is whole again and the box constraint is released.
   await page.locator('.constrained').evaluate((el: HTMLElement) => (el.style.inlineSize = '700px'));
-  await expect.poll(() => label.evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(true);
-  expect(await label.evaluate((el) => !!el.querySelector('[aria-hidden="true"]'))).toBe(false);
+  // Same refit timing: the truncated copy disappears one frame after the layout grows, so wait for that.
+  await expect.poll(shownText, { message: '700px: truncated copy released' }).toBeNull();
+  expect(await label.evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(true);
   await expect(label).toHaveText('Create a new item with a deliberately long action label');
 });
 
