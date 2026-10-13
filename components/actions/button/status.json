@@ -82,8 +82,25 @@
       "computed": "reports/components/button/svelte/computed.json",
       "screenshots": "reports/components/button/svelte/*.png"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": {
+      "path": "documentation/components/button.md",
+      "sha256": "d9d52510fa6022b9c961da4385c2e64a637cf4cf084d1d61b8bf391b070e06e4",
+      "sections": [
+        "Overview",
+        "When to use",
+        "When not to use",
+        "Anatomy",
+        "Usage guidelines",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    "agentDocs": {
+      "index": "documentation/index.json",
+      "entry": "button",
+      "packageCopy": "packages/svelte/docs/button.md (npm run build:svelte)"
+    }
   },
   "approvals": {
     "contract": {
@@ -230,14 +247,15 @@
     "Focus ring corners (user, 2026-10-13): new semantic role radius.focus = radius.control + focus.offset per brand (8, 4, 14), contract role focusRadius. The CSS outline already renders concentric corners natively; the token makes the rule explicit and lets Figma bind the ring radius, removing the former justified difference.",
     "Spacing model kept (user, 2026-10-13): margins on the label and on the slots rather than a gap, because a gap cannot make a lone label sit further from the edge than a lone icon; a gap could only replace the slot margin, at the cost of moving a text-only button by 2 px in md and lg.",
     "Specification page style (user, 2026-10-13, after three page proposals and two rounds of diagram treatments): layout of proposal P3 with a light header band (breadcrumb, title, summary, hero buttons, reference note, Anatomy) and a white body with soft gray panels and bullet headings; anatomy and spacing diagrams in blueprint treatment C3, blue/800 board with a white 16 px grid at 10% and white ink with alpha tints. Wireframe collection reworked with light and blueprint modes.",
-    "Specification page finalized by the user by hand (2026-10-13): gray page with a white header (breadcrumb, title, summary, hero card with a white 8 px border and a soft shadow, reference note, divider, Anatomy with the blueprint boards as cards), white body cards with a light border, 72 px side padding. The builder script was updated to reproduce it and checked side by side; the user's frame is the reference."
+    "Specification page finalized by the user by hand (2026-10-13): gray page with a white header (breadcrumb, title, summary, hero card with a white 8 px border and a soft shadow, reference note, divider, Anatomy with the blueprint boards as cards), white body cards with a light border, 72 px side padding. The builder script was updated to reproduce it and checked side by side; the user's frame is the reference.",
+    "Documentation (2026-10-13): one page in documentation/components/button.md following the template, plain language, examples referencing examples/button/App.svelte, API from types.ts, WCAG 2.2 criteria with the component/integration split and the real validation status (automated Chromium checks only, no assistive-technology test). Alternatives IconButton, Link, SegmentedControl and Menu are marked planned."
   ],
   "openDecisions": [
     "Repository structure (2026-10-07, after the Button pull request, branch chore/repo-structure): user proposal foundations/contracts beside foundations/tokens; packages/svelte/src/components/<id>; category folders inside semantic tokens.",
     "Default density (2026-10-10): the Figma file's default Density mode is compact (first mode, from the order in foundations/config.json), so a Button dropped on a frame without modes shows the compact heights (28/32/40) while the review page uses standard (32/40/48); the code has no default density (data-ggb-density must be set). Proposed: declare standard as the default density for code and Figma (foundations change).",
     "Figma file structure (user proposal, 2026-10-12): one page per component, named by its repository path (e.g. actions/button), holding the master, its internal parts and its specification; family pages replaced. Changes authoring/figma.md; to settle with the repository structure work."
   ],
-  "nextAction": "Documentation (ggb-docs): documentation/components/button.md, documentation/index.json entry, status artifacts; then final consistency and the pull request to main.",
+  "nextAction": "Documentation written (user editorial feedback welcome; approvals.documentation stays empty until given). Final consistency check, then the pull request to main with .github/pull_request_template.md; Done waits for Icon, Counter and Shortcut (fixtures today).",
   "implementationNotes": [
     "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
     "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",
