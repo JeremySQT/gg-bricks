@@ -7,7 +7,7 @@ Validated by the user on 2026-09-25 (waves), amended for the foundations-first o
 | Task                                                                           | Skill                  | Gate                                   | State                                                 |
 | ------------------------------------------------------------------------------ | ---------------------- | -------------------------------------- | ----------------------------------------------------- |
 | 0 · Foundations: generous primitives, full semantic inventory, Figma variables | `ggb-foundations`      | Foundations review                     | Done: approved 2026-09-26 (JeremySQT/design-system#1) |
-| 1 · Wave 1 components                                                          | `ggb-component`        | Contract, implementation, Figma parity | In progress: Button Figma parity                      |
+| 1 · Wave 1 components                                                          | `ggb-component`        | Contract, implementation, Figma parity | In progress: Button documented, pull request to open  |
 | 2 · Wave 2 … 6                                                                 | `ggb-component`        | Same                                   | Not started                                           |
 | 3 · Documentation site `apps/docs` (Astro + Starlight, docs.ggbrick.design)    | dedicated task         | Site review                            | Not started; start once wave 1 is documented          |
 | 4 · Marketing site `apps/site` (Astro, ggbrick.design)                         | dedicated task         | Site review                            | Not started                                           |
@@ -40,9 +40,9 @@ Composition patterns (toolbar, form section, action group, empty state, page hea
 
 One row per component once its scope phase starts. Phase values: scope, contract, implementation, figma, documentation, done; append "(gate pending)" while waiting for the reviewer.
 
-| Component | Family  | Wave | Phase                   | Status file                             |
-| --------- | ------- | ---- | ----------------------- | --------------------------------------- |
-| Button    | actions | 1    | contract (gate pending) | `components/actions/button/status.json` |
+| Component | Family  | Wave | Phase                                                                                                   | Status file                             |
+| --------- | ------- | ---- | ------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| Button    | actions | 1    | documented (contract, implementation and Figma parity approved; Done waits for Icon, Counter, Shortcut) | `components/actions/button/status.json` |
 
 ## How a fresh session starts a task
 

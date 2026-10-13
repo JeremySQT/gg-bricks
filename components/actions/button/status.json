@@ -180,7 +180,7 @@
       "kind": "verify",
       "result": "passed",
       "command": "npm run verify",
-      "date": "2026-09-26"
+      "date": "2026-10-13"
     },
     {
       "kind": "ssr",
@@ -193,7 +193,8 @@
       "result": "passed",
       "command": "npm run test:browser",
       "report": "reports/browser-results.json",
-      "note": "9 Chromium tests: behavior, keyboard, forms, links, slots, truncation and targets, computed values (9324 records), motion, forced colors, axe light and dark, mobile width."
+      "note": "9 Chromium tests: behavior, keyboard, forms, links, slots, truncation and targets, computed values (9324 records), motion, forced colors, axe light and dark, mobile width. Re-run after the documentation; the truncation test was made to wait for the component's refit (see decisionsTaken, 2026-10-13).",
+      "date": "2026-10-13"
     },
     {
       "kind": "preview",
@@ -248,7 +249,8 @@
     "Spacing model kept (user, 2026-10-13): margins on the label and on the slots rather than a gap, because a gap cannot make a lone label sit further from the edge than a lone icon; a gap could only replace the slot margin, at the cost of moving a text-only button by 2 px in md and lg.",
     "Specification page style (user, 2026-10-13, after three page proposals and two rounds of diagram treatments): layout of proposal P3 with a light header band (breadcrumb, title, summary, hero buttons, reference note, Anatomy) and a white body with soft gray panels and bullet headings; anatomy and spacing diagrams in blueprint treatment C3, blue/800 board with a white 16 px grid at 10% and white ink with alpha tints. Wireframe collection reworked with light and blueprint modes.",
     "Specification page finalized by the user by hand (2026-10-13): gray page with a white header (breadcrumb, title, summary, hero card with a white 8 px border and a soft shadow, reference note, divider, Anatomy with the blueprint boards as cards), white body cards with a light border, 72 px side padding. The builder script was updated to reproduce it and checked side by side; the user's frame is the reference.",
-    "Documentation (2026-10-13): one page in documentation/components/button.md following the template, plain language, examples referencing examples/button/App.svelte, API from types.ts, WCAG 2.2 criteria with the component/integration split and the real validation status (automated Chromium checks only, no assistive-technology test). Alternatives IconButton, Link, SegmentedControl and Menu are marked planned."
+    "Documentation (2026-10-13): one page in documentation/components/button.md following the template, plain language, examples referencing examples/button/App.svelte, API from types.ts, WCAG 2.2 criteria with the component/integration split and the real validation status (automated Chromium checks only, no assistive-technology test). Alternatives IconButton, Link, SegmentedControl and Menu are marked planned.",
+    "Test change disclosed (2026-10-13): the browser test 'the label is centered on its capital letters, keeps descenders and ends at the ellipsis' failed once at 200 px (17.7 px after the ellipsis) and, repeated, at the 700 px release step. Cause: the test measured right after changing the width while the component refits one frame later (ResizeObserver), so it read the previous width's truncated copy; it had passed by timing before. The test now waits for the new truncated copy at each width and for the copy to disappear when room is back. Same assertions, same tolerances; the component is unchanged. Verified by repeating the test six times and the full suite."
   ],
   "openDecisions": [
     "Repository structure (2026-10-07, after the Button pull request, branch chore/repo-structure): user proposal foundations/contracts beside foundations/tokens; packages/svelte/src/components/<id>; category folders inside semantic tokens.",
