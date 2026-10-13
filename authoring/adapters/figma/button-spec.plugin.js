@@ -1,80 +1,61 @@
 // Button specification page builder (use_figma bodies), 2026-10-13. Run the parts in order.
-// Part 0 creates or updates the Wireframe collection (pink ink, alpha tints, dot canvas) and the _Spec/Canvas
-// component with the tiled dot image (16 px tile, one dot); keep its image hash for the other parts (DOT).
-// Part 1 creates _Spec/Callout and _Spec/Marker and the frame “Button — Specification” with Overview and
-// Anatomy (structure and spacing diagrams on dotted boards). Part 2 adds Variants, States, Behavior & sizing and
-// Usage examples (replace the root id with the one part 1 returned).
-// IDs (page 8:4, set 48:1586, property keys, fixture icon names) come from reports/components/button/figma/ledger.json.
-
-// ---- Part 0 ----
-const vars = await figma.variables.getLocalVariablesAsync();
-const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const wf = cols.find((c) => c.name === 'Wireframe');
-const m = wf.modes[0].modeId;
-const P = (n) => vars.find((v) => v.name === 'primitive/color/' + n);
-const pinks = vars
-  .filter((v) => v.name.startsWith('primitive/color/pink/'))
-  .map((v) => [v.name, v.valuesByMode[Object.keys(v.valuesByMode)[0]]]);
-const ink = P('pink/600').valuesByMode[Object.keys(P('pink/600').valuesByMode)[0]];
-const withA = (a) => ({ r: ink.r, g: ink.g, b: ink.b, a });
-const get = (n) => vars.find((v) => v.name === n) || figma.variables.createVariable(n, wf, 'COLOR');
-const defs = {
-  'wireframe/canvas': { alias: 'neutral/0' },
-  'wireframe/dot': { alias: 'neutral/300' },
-  'wireframe/panel': { alias: 'neutral/50' },
-  'wireframe/divider': { alias: 'neutral/200' },
-  'wireframe/ink': { alias: 'pink/600' },
-  'wireframe/on-ink': { alias: 'neutral/0' },
-  'wireframe/text': { alias: 'neutral/700' },
-  'wireframe/tint/4': { a: 0.04 },
-  'wireframe/tint/8': { a: 0.08 },
-  'wireframe/tint/16': { a: 0.16 },
-  'wireframe/tint/28': { a: 0.28 },
-  'wireframe/tint/48': { a: 0.48 }
-};
-for (const [n, d] of Object.entries(defs)) {
-  const v = get(n);
-  v.scopes = ['ALL_FILLS', 'STROKE_COLOR'];
-  v.setValueForMode(m, d.alias ? figma.variables.createVariableAlias(P(d.alias)) : withA(d.a));
-}
-for (const v of vars.filter((v) => v.variableCollectionId === wf.id && !(v.name in defs))) v.remove();
-// tiled dot image test
-const bytes = figma.base64Decode(
-  'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAF0lEQVR4nGNgGAUjAPyH4oEzYBQMCQAAFm4D/TfYeeYAAAAASUVORK5CYII='
-);
-const img = figma.createImage(bytes);
-const util = await figma.getNodeByIdAsync('8:10');
-await figma.setCurrentPageAsync(util);
-for (const n of util.children.filter((n) => n.name === '_Spec/Canvas')) n.remove();
-const c = figma.createComponent();
-c.name = '_Spec/Canvas';
-c.resize(240, 120);
-c.x = 0;
-c.y = 700;
-c.fills = [
-  figma.variables.setBoundVariableForPaint(
-    { type: 'SOLID', color: { r: 1, g: 1, b: 1 } },
-    'color',
-    get('wireframe/canvas')
-  ),
-  { type: 'IMAGE', scaleMode: 'TILE', imageHash: img.hash, scalingFactor: 1, opacity: 0.35 }
-];
-c.cornerRadius = 12;
-c.description =
-  'Dotted canvas for specification diagrams and examples. Documentation tooling, not part of the library API.';
-return { pinks: pinks.map((p) => p[0]), canvas: c.id, hash: img.hash };
+// Part 1 creates or updates the Wireframe collection (modes light and blueprint), updates the documentation
+// components _Spec/Board, _Spec/Callout and _Spec/Marker, and builds the frame “Button — Specification”: light
+// header band (breadcrumb, title, summary, hero, reference note) and the Anatomy section with its blueprint
+// boards (structure and spacing diagrams, legends, real parts). Part 2 adds the body: Variants, States,
+// Behavior & sizing and Usage examples (replace the root id with the one part 1 returned).
+// The grid tile is a 16 px PNG with one white line on its top and left edges (hash GRID); the tiles are listed in
+// reports/components/button/figma/ledger.json with the node ids and property keys the scripts rely on.
 
 // ---- Part 1 ----
 figma.skipInvisibleInstanceChildren = false;
-const vars = await figma.variables.getLocalVariablesAsync();
-const V = (name) => vars.find((v) => v.name === name);
+let vars = await figma.variables.getLocalVariablesAsync();
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
 const col = (n) => cols.find((c) => c.name === n);
 const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
-const styles = await figma.getLocalTextStylesAsync();
-const S = (n) => styles.find((s) => s.name === 'typography/' + n);
-for (const s of styles) await figma.loadFontAsync(s.fontName);
-for (const st of ['Medium', 'Semi Bold', 'Regular']) await figma.loadFontAsync({ family: 'Inter', style: st });
+const PR = (n) => vars.find((v) => v.name === 'primitive/color/' + n);
+const wf = col('Wireframe');
+if (wf.modes.length === 1) {
+  wf.renameMode(wf.modes[0].modeId, 'light');
+  wf.addMode('blueprint');
+}
+const L = mode(wf, 'light'),
+  B = mode(wf, 'blueprint');
+const WHITE = { r: 1, g: 1, b: 1 };
+const b800 = PR('blue/800').valuesByMode[Object.keys(PR('blue/800').valuesByMode)[0]];
+const withA = (c, a) => ({ r: c.r, g: c.g, b: c.b, a });
+const defs = {
+  'wireframe/board': { light: 'neutral/50', blueprint: 'blue/800' },
+  'wireframe/grid': { light: 'blue/600', blueprint: 'neutral/0' },
+  'wireframe/ink': { light: 'blue/800', blueprint: 'neutral/0' },
+  'wireframe/on-ink': { light: 'neutral/0', blueprint: 'blue/800' },
+  'wireframe/panel': { light: 'neutral/50', blueprint: 'neutral/50' },
+  'wireframe/divider': { light: 'neutral/200', blueprint: 'neutral/200' },
+  'wireframe/text': { light: 'neutral/700', blueprint: 'neutral/0' },
+  'wireframe/canvas': { light: 'neutral/0', blueprint: 'neutral/0' },
+  'wireframe/tint/4': 0.04,
+  'wireframe/tint/8': 0.08,
+  'wireframe/tint/16': 0.16,
+  'wireframe/tint/28': 0.28,
+  'wireframe/tint/48': 0.48
+};
+for (const [n, d] of Object.entries(defs)) {
+  const v =
+    vars.find((x) => x.name === n && x.variableCollectionId === wf.id) ||
+    figma.variables.createVariable(n, wf, 'COLOR');
+  v.scopes = ['ALL_FILLS', 'STROKE_COLOR'];
+  if (typeof d === 'number') {
+    v.setValueForMode(L, withA(b800, d));
+    v.setValueForMode(B, withA(WHITE, d));
+  } else {
+    v.setValueForMode(L, figma.variables.createVariableAlias(PR(d.light)));
+    v.setValueForMode(B, figma.variables.createVariableAlias(PR(d.blueprint)));
+  }
+}
+for (const v of vars.filter((v) => v.variableCollectionId === wf.id && !(v.name in defs))) v.remove();
+vars = await figma.variables.getLocalVariablesAsync();
+const V = (name) =>
+  vars.find((v) => v.name === name && v.variableCollectionId === wf.id) || vars.find((v) => v.name === name);
 const paint = (name) =>
   figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', V(name));
 const fill = (node, name) => {
@@ -85,40 +66,30 @@ const stroke = (node, name, w = 1, dash) => {
   node.strokeWeight = w;
   node.dashPattern = dash || [];
 };
-const DOT = 'c9dee906f4f65bf308a0ed88d781bd98b2235220';
+const GRID = '349e013eedf533dd9a34627a53f989e11cc9a869';
+// documentation components
 const util = await figma.getNodeByIdAsync('8:10');
 await figma.setCurrentPageAsync(util);
-for (const n of util.children.filter((n) => ['_Spec/Callout', '_Spec/Marker'].includes(n.name))) n.remove();
-const callC = figma.createComponent();
-callC.name = '_Spec/Callout';
-callC.x = 260;
-callC.y = 700;
-callC.resize(22, 22);
-callC.cornerRadius = 11;
+const canvasC = await figma.getNodeByIdAsync('113:17');
+canvasC.fills = [
+  paint('wireframe/board'),
+  { type: 'IMAGE', scaleMode: 'TILE', imageHash: GRID, scalingFactor: 1, opacity: 0.1 }
+];
+canvasC.setExplicitVariableModeForCollection(wf, B);
+canvasC.name = '_Spec/Board';
+canvasC.description =
+  'Blueprint board for specification diagrams: Wireframe collection in blueprint mode, white grid tile at 10%. Documentation tooling, not part of the library API.';
+const callC = await figma.getNodeByIdAsync('115:6');
 fill(callC, 'wireframe/ink');
-callC.layoutMode = 'HORIZONTAL';
-callC.primaryAxisAlignItems = 'CENTER';
-callC.counterAxisAlignItems = 'CENTER';
-callC.primaryAxisSizingMode = 'FIXED';
-callC.counterAxisSizingMode = 'FIXED';
-const ct = figma.createText();
-ct.fontName = { family: 'Inter', style: 'Semi Bold' };
-ct.fontSize = 12;
-ct.characters = '1';
-fill(ct, 'wireframe/on-ink');
-callC.appendChild(ct);
-const numKey = callC.addComponentProperty('Number', 'TEXT', '1');
-ct.componentPropertyReferences = { characters: numKey };
-callC.description = 'Numbered callout for specification diagrams. Documentation tooling.';
-const markC = figma.createComponent();
-markC.name = '_Spec/Marker';
-markC.x = 300;
-markC.y = 700;
-markC.resize(8, 8);
-markC.cornerRadius = 4;
-fill(markC, 'wireframe/canvas');
+fill(
+  callC.findOne((n) => n.type === 'TEXT'),
+  'wireframe/on-ink'
+);
+const markC = await figma.getNodeByIdAsync('115:8');
+fill(markC, 'wireframe/board');
 stroke(markC, 'wireframe/ink', 1.5);
-markC.description = 'Anchor dot at the end of a callout leader line. Documentation tooling.';
+const numKey = Object.keys(callC.componentPropertyDefinitions)[0];
+// page
 const page = await figma.getNodeByIdAsync('8:4');
 await figma.setCurrentPageAsync(page);
 for (const n of page.children.filter(
@@ -126,6 +97,10 @@ for (const n of page.children.filter(
 ))
   n.remove();
 const set = await figma.getNodeByIdAsync('48:1586');
+const styles = await figma.getLocalTextStylesAsync();
+const S = (n) => styles.find((s) => s.name === 'typography/' + n);
+for (const s of styles) await figma.loadFontAsync(s.fontName);
+for (const st of ['Medium', 'Semi Bold']) await figma.loadFontAsync({ family: 'Inter', style: st });
 const text = (chars, style = 'body/md', color = 'color/content/primary', width) => {
   const t = figma.createText();
   t.textStyleId = S(style).id;
@@ -146,26 +121,22 @@ const stack = (name, dir = 'VERTICAL', gap = 16, pad = 0) => {
   f.clipsContent = false;
   return f;
 };
-const dotted = (f) => {
-  f.fills = [
-    paint('wireframe/canvas'),
-    { type: 'IMAGE', scaleMode: 'TILE', imageHash: DOT, scalingFactor: 1, opacity: 0.35 }
-  ];
-  f.cornerRadius = 12;
-  stroke(f, 'wireframe/divider', 1);
-  return f;
-};
-const canvas = (name, dir = 'HORIZONTAL', gap = 24, pad = 32) => dotted(stack(name, dir, gap, pad));
 const board = (name, w, h) => {
   const f = figma.createFrame();
   f.name = name;
   f.resize(w, h);
   f.clipsContent = false;
-  return dotted(f);
+  f.cornerRadius = 12;
+  f.fills = [
+    paint('wireframe/board'),
+    { type: 'IMAGE', scaleMode: 'TILE', imageHash: GRID, scalingFactor: 1, opacity: 0.1 }
+  ];
+  f.setExplicitVariableModeForCollection(wf, B);
+  return f;
 };
-const card = (name, dir = 'VERTICAL', gap = 12, pad = 24) => {
+const panel = (name, dir = 'HORIZONTAL', gap = 24, pad = 28, fillName = 'wireframe/canvas') => {
   const f = stack(name, dir, gap, pad);
-  fill(f, 'wireframe/panel');
+  fill(f, fillName);
   f.cornerRadius = 12;
   return f;
 };
@@ -189,37 +160,21 @@ const btn = (o = {}) => {
   }
   return inst;
 };
+const chip = (chars) => {
+  const c = stack('Caption', 'HORIZONTAL', 0);
+  c.paddingLeft = c.paddingRight = 8;
+  c.paddingTop = c.paddingBottom = 3;
+  c.cornerRadius = 6;
+  fill(c, 'wireframe/panel');
+  c.appendChild(text(chars, 'caption/md', 'color/content/secondary'));
+  return c;
+};
 const caption = (inst, cap) => {
-  const f = stack('Example', 'VERTICAL', 8);
+  const f = stack('Example', 'VERTICAL', 10);
+  f.counterAxisAlignItems = 'MIN';
   f.appendChild(inst);
-  f.appendChild(text(cap, 'caption/md', 'color/content/secondary'));
+  f.appendChild(chip(cap));
   return f;
-};
-const root = stack('Button — Specification', 'VERTICAL', 48, 64);
-root.x = 0;
-root.y = 2900;
-fill(root, 'wireframe/canvas');
-for (const [c, m] of [
-  ['Brand', 'base'],
-  ['Appearance', 'light'],
-  ['Density', 'standard']
-])
-  root.setExplicitVariableModeForCollection(col(c), mode(col(c), m));
-const divider = () => {
-  const d = figma.createFrame();
-  d.name = 'Divider';
-  d.resize(100, 1);
-  fill(d, 'wireframe/divider');
-  root.appendChild(d);
-  d.layoutSizingHorizontal = 'FILL';
-};
-const section = (title, intro) => {
-  if (root.children.length) divider();
-  const s = stack(title, 'VERTICAL', 20);
-  s.appendChild(text(title, 'heading/lg'));
-  if (intro) s.appendChild(text(intro, 'body/md', 'color/content/secondary', 1000));
-  root.appendChild(s);
-  return s;
 };
 const callout = (n, parent, cx, cy) => {
   const i = callC.createInstance();
@@ -240,57 +195,93 @@ const marker = (parent, cx, cy) => {
 };
 const leader = (parent, x1, y1, x2, y2) => {
   const l = figma.createLine();
-  const len = Math.hypot(x2 - x1, y2 - y1);
-  l.resize(len, 0);
+  l.resize(Math.hypot(x2 - x1, y2 - y1), 0);
   l.rotation = (-Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI;
   l.x = x1;
   l.y = y1;
   stroke(l, 'wireframe/ink', 1, [3, 3]);
   l.opacity = 0.7;
   parent.appendChild(l);
-  return l;
 };
 const pin = (parent, n, cx, cy, tx, ty) => {
-  const dy = Math.sign(ty - cy);
-  leader(parent, cx, cy + dy * 11, tx, ty);
+  leader(parent, cx, cy + Math.sign(ty - cy) * 11, tx, ty);
   marker(parent, tx, ty);
   callout(n, parent, cx, cy);
 };
+const heading = (parent, title, intro) => {
+  const s = stack(title, 'VERTICAL', 10);
+  const h = stack('Heading', 'HORIZONTAL', 12);
+  h.counterAxisAlignItems = 'CENTER';
+  const dot = figma.createFrame();
+  dot.name = 'Bullet';
+  dot.resize(8, 8);
+  dot.cornerRadius = 4;
+  fill(dot, 'wireframe/ink');
+  h.appendChild(dot);
+  h.appendChild(text(title, 'heading/lg'));
+  s.appendChild(h);
+  if (intro) s.appendChild(text(intro, 'body/md', 'color/content/secondary', 1000));
+  parent.appendChild(s);
+  return s;
+};
 
-const ov = section('Overview');
-ov.appendChild(text('Button', 'display/sm'));
-ov.appendChild(
+const root = stack('Button — Specification', 'VERTICAL', 0, 0);
+root.x = 0;
+root.y = 2900;
+fill(root, 'wireframe/canvas');
+root.resize(1232, 100);
+root.layoutSizingHorizontal = 'FIXED';
+for (const [c, m] of [
+  ['Brand', 'base'],
+  ['Appearance', 'light'],
+  ['Density', 'standard']
+])
+  root.setExplicitVariableModeForCollection(col(c), mode(col(c), m));
+root.setExplicitVariableModeForCollection(wf, L);
+// Header band
+const band = stack('Header', 'VERTICAL', 28, 64);
+fill(band, 'wireframe/panel');
+root.appendChild(band);
+band.layoutSizingHorizontal = 'FILL';
+const crumb = text('ACTIONS / BUTTON', 'label/sm', 'color/content/tertiary');
+band.appendChild(crumb);
+band.appendChild(text('Button', 'display/md'));
+band.appendChild(
   text(
     'A button starts an action or moves the user to the next step of a task. It shows a short text label, with an optional icon before it and an optional icon, counter or keyboard shortcut after it. When the button leads to another page, the same component is rendered as a link.',
     'body/lg',
     'color/content/secondary',
-    1000
+    900
   )
 );
-const hero = canvas('Hero', 'HORIZONTAL', 12);
+const hero = panel('Hero', 'HORIZONTAL', 12, 28);
 hero.counterAxisAlignItems = 'CENTER';
 hero.appendChild(btn({ label: 'Create project', lead: true }));
 hero.appendChild(btn({ a: 'outline', i: 'neutral', label: 'Cancel' }));
 hero.appendChild(btn({ a: 'ghost', label: 'Learn more', trail: 'icon' }));
 hero.appendChild(btn({ i: 'danger', label: 'Delete', lead: true, leadIcon: 'trash' }));
-ov.appendChild(hero);
+band.appendChild(hero);
 hero.layoutSizingHorizontal = 'FILL';
-ov.appendChild(
+band.appendChild(
   text(
-    'The contract and the code in the ggbrick repository (components/actions/button) are the reference. This page documents the Figma component set “Button” on this page; every button shown here is an instance, not a master. Unless a frame says otherwise, the examples use the base brand, the light appearance and the standard density.',
+    'The contract and the code in the ggbrick repository (components/actions/button) are the reference. This page documents the Figma component set “Button”; every button shown here is an instance, not a master. Unless a frame says otherwise, the examples use the base brand, the light appearance and the standard density.',
     'body/sm',
     'color/content/tertiary',
-    1000
+    900
   )
 );
-
-const an = section(
+// Anatomy inside the band
+const an = stack('Anatomy', 'VERTICAL', 20);
+band.appendChild(an);
+an.layoutSizingHorizontal = 'FILL';
+heading(
+  an,
   'Anatomy',
   'How a button is built. The drawing is simplified and not to scale; the real button is shown underneath.'
 );
 const anRow = stack('Anatomy row', 'HORIZONTAL', 24);
 anRow.counterAxisAlignItems = 'MIN';
-const dg = board('Anatomy diagram', 760, 376);
+const dg = board('Anatomy diagram', 700, 352);
 const rect = (name, x, y, w, h, fillName, r = 0, parent = dg) => {
   const f = figma.createFrame();
   f.name = name;
@@ -304,49 +295,55 @@ const rect = (name, x, y, w, h, fillName, r = 0, parent = dg) => {
   parent.appendChild(f);
   return f;
 };
-const OX = 149,
-  OY = 104;
-const rootR = rect('1 Root', OX, OY, 462, 168, 'wireframe/tint/4', 6);
+const k = 2.5,
+  OX = 158,
+  OY = 98,
+  CW = 154 * k,
+  CH = 40 * k;
+const rootR = rect('1 Root', OX, OY, CW, CH + 40, 'wireframe/tint/4', 6);
 stroke(rootR, 'wireframe/ink', 1.5, [6, 4]);
-const ring = rect('7 Focus ring', OX - 6, OY + 18, 474, 132, null, 24);
-stroke(ring, 'wireframe/tint/48', 6);
+rootR.opacity = 0.9;
+const ring = rect('7 Focus ring', OX - 5, OY + 15, CW + 10, CH + 10, null, 20);
+stroke(ring, 'wireframe/tint/48', 5);
 ring.strokeAlign = 'OUTSIDE';
-const cont = rect('2 Container', OX, OY + 24, 462, 120, 'wireframe/tint/8', 18);
+const cont = rect('2 Container', OX, OY + 20, CW, CH, 'wireframe/tint/8', 15);
 stroke(cont, 'wireframe/tint/48', 1.5);
 const slot = (name, x) => {
-  const b = rect(name + ' (icon box)', OX + x - 7.5, OY + 54, 60, 60, null, 6);
+  const b = rect(name + ' (icon box)', OX + x - 2.5 * k, OY + 20 + 10 * k, 20 * k, 20 * k, null, 5);
   stroke(b, 'wireframe/ink', 1, [4, 3]);
   b.opacity = 0.6;
-  rect(name + ' (drawing)', OX + x, OY + 54, 45, 60, 'wireframe/tint/28', 4);
+  rect(name + ' (drawing)', OX + x, OY + 20 + 10 * k, 15 * k, 20 * k, 'wireframe/tint/28', 3);
 };
-slot('3 Leading', 36);
-slot('5 Trailing', 381);
-const lab = rect('4 Label', OX + 105, OY + 54, 252, 60, 'wireframe/tint/16', 6);
+slot('3 Leading', 12 * k);
+slot('5 Trailing', 127 * k);
+const lab = rect('4 Label', OX + 35 * k, OY + 20 + 10 * k, 84 * k, 20 * k, 'wireframe/tint/16', 5);
 const lt = figma.createText();
 lt.fontName = { family: 'Inter', style: 'Medium' };
-lt.fontSize = 24;
+lt.fontSize = 20;
 lt.characters = 'Label';
 fill(lt, 'wireframe/ink');
 lab.appendChild(lt);
-lt.x = 20;
-lt.y = (60 - lt.height) / 2;
+lt.x = 16;
+lt.y = (20 * k - lt.height) / 2;
 const ld = figma.createEllipse();
 ld.name = '6 Loading indicator';
-ld.x = OX + 201;
-ld.y = OY + 54;
-ld.resize(60, 60);
-fill(ld, 'wireframe/canvas');
-stroke(ld, 'wireframe/ink', 3, [8, 6]);
+ld.x = OX + CW / 2 - 10 * k;
+ld.y = OY + 20 + 10 * k;
+ld.resize(20 * k, 20 * k);
+fill(ld, 'wireframe/board');
+stroke(ld, 'wireframe/ink', 2.5, [7, 5]);
 dg.appendChild(ld);
-pin(dg, 2, OX + 100, 40, OX + 100, OY + 24);
-pin(dg, 6, OX + 231, 40, OX + 231, OY + 54);
-pin(dg, 7, OX + 420, 40, OX + 420, OY + 12);
-pin(dg, 1, OX + 231, 336, OX + 231, OY + 168);
-pin(dg, 3, OX + 58, 336, OX + 58, OY + 114);
-pin(dg, 4, OX + 330, 336, OX + 330, OY + 114);
-pin(dg, 5, OX + 403, 336, OX + 403, OY + 114);
+const top = 40,
+  bottom = 312;
+pin(dg, 2, OX + 80, top, OX + 80, OY + 20);
+pin(dg, 6, OX + CW / 2, top, OX + CW / 2, OY + 20 + 10 * k);
+pin(dg, 7, OX + CW - 40, top, OX + CW - 40, OY + 10);
+pin(dg, 1, OX + CW / 2, bottom, OX + CW / 2, OY + CH + 40);
+pin(dg, 3, OX + 19.5 * k, bottom, OX + 19.5 * k, OY + 20 + 30 * k);
+pin(dg, 4, OX + 100 * k, bottom, OX + 100 * k, OY + 20 + 30 * k);
+pin(dg, 5, OX + 134.5 * k, bottom, OX + 134.5 * k, OY + 20 + 30 * k);
 anRow.appendChild(dg);
-const legend = card('Legend');
+const legend = panel('Legend', 'VERTICAL', 12, 24);
 const items = [
   'Root: the area that reacts to clicks and taps. It is at least 44 px tall, even when the visible button is smaller.',
   'Container: the visible button, with its background, border, corner radius and side padding.',
@@ -356,11 +353,11 @@ const items = [
   'Loading indicator: shown in the middle while the action runs. The other content is hidden but keeps its place, so the width does not change.',
   'Focus ring: drawn just outside the container when the button is focused with the keyboard.'
 ];
-items.forEach((s, k) => {
+items.forEach((s, i) => {
   const r = stack('Legend item', 'HORIZONTAL', 10);
   r.counterAxisAlignItems = 'MIN';
-  callout(k + 1, r);
-  r.appendChild(text(s, 'body/sm', 'color/content/secondary', 340));
+  callout(i + 1, r);
+  r.appendChild(text(s, 'body/sm', 'color/content/secondary', 316));
   legend.appendChild(r);
 });
 anRow.appendChild(legend);
@@ -368,7 +365,7 @@ legend.layoutSizingVertical = 'FILL';
 an.appendChild(anRow);
 const spRow = stack('Spacing row', 'HORIZONTAL', 24);
 spRow.counterAxisAlignItems = 'MIN';
-const sd = board('Spacing diagram', 760, 236);
+const sd = board('Spacing diagram', 700, 236);
 sd.clipsContent = true;
 const SX = 40,
   SY = 40;
@@ -411,7 +408,7 @@ dim('C', 40, 8);
 dim('C', 108, 8);
 dim('B', 116, 24);
 spRow.appendChild(sd);
-const spCard = card('Spacing legend');
+const spCard = panel('Spacing legend', 'VERTICAL', 12, 24);
 for (const [ch, s] of [
   ['A', 'Side padding of the container.'],
   ['B', 'Margin on each side of the label.'],
@@ -420,7 +417,7 @@ for (const [ch, s] of [
   const r = stack('Legend item', 'HORIZONTAL', 10);
   r.counterAxisAlignItems = 'MIN';
   callout(ch, r);
-  r.appendChild(text(s, 'body/sm', 'color/content/secondary', 340));
+  r.appendChild(text(s, 'body/sm', 'color/content/secondary', 316));
   spCard.appendChild(r);
 }
 spCard.appendChild(
@@ -428,178 +425,13 @@ spCard.appendChild(
     'An icon is placed by its drawing (filled box) rather than by its full square (dashed box), so it looks as close to the text as a counter would. The right side mirrors the left side. Zoomed in four times.',
     'body/sm',
     'color/content/secondary',
-    372
+    348
   )
 );
 spRow.appendChild(spCard);
 spCard.layoutSizingVertical = 'FILL';
 an.appendChild(spRow);
-const real = canvas('Real parts', 'HORIZONTAL', 16);
-real.counterAxisAlignItems = 'MAX';
-real.appendChild(
-  caption(
-    btn({
-      s: 'lg',
-      a: 'outline',
-      label: 'Download report',
-      lead: true,
-      leadIcon: 'download-simple',
-      trail: 'icon',
-      focus: true
-    }),
-    'the real button, with a leading icon, a trailing icon and the focus ring'
-  )
-);
-real.appendChild(caption(btn({ label: 'Continue' }), 'label only'));
-real.appendChild(caption(btn({ label: 'Add item', lead: true }), 'with a leading icon'));
-real.appendChild(
-  caption(
-    btn({ a: 'outline', i: 'neutral', label: 'Inbox', lead: true, leadIcon: 'check', trail: 'counter' }),
-    'with a leading icon and a counter'
-  )
-);
-real.appendChild(
-  caption(btn({ a: 'ghost', i: 'neutral', label: 'Search', trail: 'shortcut' }), 'with a keyboard shortcut')
-);
-an.appendChild(real);
-real.layoutSizingHorizontal = 'FILL';
-an.appendChild(
-  text(
-    'In Figma, the label is a text property. “Show leading” and “Show trailing” add the optional parts; the leading icon is chosen by its name, and the trailing item has a type: Icon, Counter or Shortcut. Intent, Appearance, Size and State are variants, and Focus is a separate switch.',
-    'body/md',
-    'color/content/secondary',
-    1000
-  )
-);
-return { root: root.id, dg: dg.id, sd: sd.id, callout: callC.id, marker: markC.id, numKey };
-
-// ---- Part 2 ----
-figma.skipInvisibleInstanceChildren = false;
-const page = await figma.getNodeByIdAsync('8:4');
-await figma.setCurrentPageAsync(page);
-const root = await figma.getNodeByIdAsync('115:1569');
-for (const n of root.children.filter((n) =>
-  ['Variants', 'States', 'Behavior & sizing', 'Usage examples'].includes(n.name)
-))
-  n.remove();
-while (root.children.length && root.children[root.children.length - 1].name === 'Divider')
-  root.children[root.children.length - 1].remove();
-const vars = await figma.variables.getLocalVariablesAsync();
-const V = (name) => vars.find((v) => v.name === name);
-const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const col = (n) => cols.find((c) => c.name === n);
-const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
-const styles = await figma.getLocalTextStylesAsync();
-const S = (n) => styles.find((s) => s.name === 'typography/' + n);
-for (const s of styles) await figma.loadFontAsync(s.fontName);
-await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
-const DOT = 'c9dee906f4f65bf308a0ed88d781bd98b2235220';
-const set = await figma.getNodeByIdAsync('48:1586');
-const paint = (name) =>
-  figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', V(name));
-const fill = (node, name) => {
-  node.fills = [paint(name)];
-};
-const stroke = (node, name, w = 1, dash) => {
-  node.strokes = [paint(name)];
-  node.strokeWeight = w;
-  node.dashPattern = dash || [];
-};
-const text = (chars, style = 'body/md', color = 'color/content/primary', width) => {
-  const t = figma.createText();
-  t.textStyleId = S(style).id;
-  t.characters = chars;
-  fill(t, color);
-  if (width) {
-    t.textAutoResize = 'HEIGHT';
-    t.resize(width, t.height);
-  }
-  return t;
-};
-const stack = (name, dir = 'VERTICAL', gap = 16, pad = 0) => {
-  const f = figma.createAutoLayout(dir, { name, itemSpacing: gap });
-  f.fills = [];
-  if (pad) {
-    f.paddingLeft = f.paddingRight = f.paddingTop = f.paddingBottom = pad;
-  }
-  f.clipsContent = false;
-  return f;
-};
-const dotted = (f) => {
-  f.fills = [
-    paint('wireframe/canvas'),
-    { type: 'IMAGE', scaleMode: 'TILE', imageHash: DOT, scalingFactor: 1, opacity: 0.35 }
-  ];
-  f.cornerRadius = 12;
-  stroke(f, 'wireframe/divider', 1);
-  return f;
-};
-const canvas = (name, dir = 'HORIZONTAL', gap = 24, pad = 32) => dotted(stack(name, dir, gap, pad));
-const chip = (chars) => {
-  const c = stack('Caption', 'HORIZONTAL', 0);
-  c.paddingLeft = c.paddingRight = 8;
-  c.paddingTop = c.paddingBottom = 3;
-  c.cornerRadius = 6;
-  fill(c, 'wireframe/canvas');
-  stroke(c, 'wireframe/divider', 1);
-  c.appendChild(text(chars, 'caption/md', 'color/content/secondary'));
-  return c;
-};
-const variant = (i, a, s, t) =>
-  set.children.find((c) => c.name === `Intent=${i}, Appearance=${a}, Size=${s}, State=${t}`);
-const btn = (o = {}) => {
-  const inst = variant(o.i || 'accent', o.a || 'solid', o.s || 'md', o.t || 'default').createInstance();
-  inst.setProperties({
-    'Label#48:360': o.label || 'Save changes',
-    'Show leading#48:361': !!o.lead,
-    'Show trailing#76:0': !!o.trail,
-    'Focus#48:367': !!o.focus
-  });
-  if (o.lead && o.leadIcon)
-    inst.exposedInstances.find((e) => e.name === 'Leading icon').setProperties({ Name: o.leadIcon });
-  if (o.trail) {
-    const t = inst.exposedInstances.find((e) => e.name === 'Trailing item');
-    if (o.trail === 'icon') {
-      if (o.trailIcon) t.findOne((n) => n.name === 'Icon').setProperties({ Name: o.trailIcon });
-    } else t.setProperties({ Type: o.trail === 'counter' ? 'Counter' : 'Shortcut' });
-  }
-  return inst;
-};
-const caption = (inst, cap) => {
-  const f = stack('Example', 'VERTICAL', 10);
-  f.counterAxisAlignItems = 'MIN';
-  f.appendChild(inst);
-  f.appendChild(chip(cap));
-  return f;
-};
-const divider = () => {
-  const d = figma.createFrame();
-  d.name = 'Divider';
-  d.resize(100, 1);
-  fill(d, 'wireframe/divider');
-  root.appendChild(d);
-  d.layoutSizingHorizontal = 'FILL';
-};
-const section = (title, intro) => {
-  divider();
-  const s = stack(title, 'VERTICAL', 20);
-  s.appendChild(text(title, 'heading/lg'));
-  if (intro) s.appendChild(text(intro, 'body/md', 'color/content/secondary', 1000));
-  root.appendChild(s);
-  return s;
-};
-const label = (s, w = 80, color = 'color/content/secondary') => {
-  const l = text(s, 'label/md', color);
-  l.textAutoResize = 'NONE';
-  l.resize(w, l.height);
-  return l;
-};
-// Real parts with chips
-const an = root.findOne((n) => n.name === 'Anatomy');
-const oldReal = an.findOne((n) => n.name === 'Real parts');
-const idx = an.children.indexOf(oldReal);
-oldReal.remove();
-const real = canvas('Real parts', 'HORIZONTAL', 32);
+const real = panel('Real parts', 'HORIZONTAL', 32, 28);
 real.counterAxisAlignItems = 'MAX';
 real.appendChild(
   caption(
@@ -624,17 +456,143 @@ real.appendChild(
   )
 );
 real.appendChild(caption(btn({ a: 'ghost', i: 'neutral', label: 'Search', trail: 'shortcut' }), 'keyboard shortcut'));
-an.insertChild(idx, real);
+an.appendChild(real);
 real.layoutSizingHorizontal = 'FILL';
+an.appendChild(
+  text(
+    'In Figma, the label is a text property. “Show leading” and “Show trailing” add the optional parts; the leading icon is chosen by its name, and the trailing item has a type: Icon, Counter or Shortcut. Intent, Appearance, Size and State are variants, and Focus is a separate switch.',
+    'body/md',
+    'color/content/secondary',
+    1000
+  )
+);
+return { root: root.id, dg: dg.id, sd: sd.id, modes: { L, B } };
 
-// Variants
+// ---- Part 2 ----
+figma.skipInvisibleInstanceChildren = false;
+const page = await figma.getNodeByIdAsync('8:4');
+await figma.setCurrentPageAsync(page);
+const root = await figma.getNodeByIdAsync('126:1904');
+for (const n of root.children.filter((n) => n.name === 'Body')) n.remove();
+const vars = await figma.variables.getLocalVariablesAsync();
+const cols = await figma.variables.getLocalVariableCollectionsAsync();
+const col = (n) => cols.find((c) => c.name === n);
+const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
+const wf = col('Wireframe');
+const V = (name) =>
+  vars.find((v) => v.name === name && v.variableCollectionId === wf.id) || vars.find((v) => v.name === name);
+const paint = (name) =>
+  figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', V(name));
+const fill = (node, name) => {
+  node.fills = [paint(name)];
+};
+const stroke = (node, name, w = 1, dash) => {
+  node.strokes = [paint(name)];
+  node.strokeWeight = w;
+  node.dashPattern = dash || [];
+};
+const set = await figma.getNodeByIdAsync('48:1586');
+const styles = await figma.getLocalTextStylesAsync();
+const S = (n) => styles.find((s) => s.name === 'typography/' + n);
+for (const s of styles) await figma.loadFontAsync(s.fontName);
+await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
+const text = (chars, style = 'body/md', color = 'color/content/primary', width) => {
+  const t = figma.createText();
+  t.textStyleId = S(style).id;
+  t.characters = chars;
+  fill(t, color);
+  if (width) {
+    t.textAutoResize = 'HEIGHT';
+    t.resize(width, t.height);
+  }
+  return t;
+};
+const stack = (name, dir = 'VERTICAL', gap = 16, pad = 0) => {
+  const f = figma.createAutoLayout(dir, { name, itemSpacing: gap });
+  f.fills = [];
+  if (pad) {
+    f.paddingLeft = f.paddingRight = f.paddingTop = f.paddingBottom = pad;
+  }
+  f.clipsContent = false;
+  return f;
+};
+const panel = (name, dir = 'HORIZONTAL', gap = 24, pad = 28) => {
+  const f = stack(name, dir, gap, pad);
+  fill(f, 'wireframe/panel');
+  f.cornerRadius = 12;
+  return f;
+};
+const variant = (i, a, s, t) =>
+  set.children.find((c) => c.name === `Intent=${i}, Appearance=${a}, Size=${s}, State=${t}`);
+const btn = (o = {}) => {
+  const inst = variant(o.i || 'accent', o.a || 'solid', o.s || 'md', o.t || 'default').createInstance();
+  inst.setProperties({
+    'Label#48:360': o.label || 'Save changes',
+    'Show leading#48:361': !!o.lead,
+    'Show trailing#76:0': !!o.trail,
+    'Focus#48:367': !!o.focus
+  });
+  if (o.lead && o.leadIcon)
+    inst.exposedInstances.find((e) => e.name === 'Leading icon').setProperties({ Name: o.leadIcon });
+  if (o.trail) {
+    const t = inst.exposedInstances.find((e) => e.name === 'Trailing item');
+    if (o.trail === 'icon') {
+      if (o.trailIcon) t.findOne((n) => n.name === 'Icon').setProperties({ Name: o.trailIcon });
+    } else t.setProperties({ Type: o.trail === 'counter' ? 'Counter' : 'Shortcut' });
+  }
+  return inst;
+};
+const chip = (chars) => {
+  const c = stack('Caption', 'HORIZONTAL', 0);
+  c.paddingLeft = c.paddingRight = 8;
+  c.paddingTop = c.paddingBottom = 3;
+  c.cornerRadius = 6;
+  fill(c, 'wireframe/canvas');
+  stroke(c, 'wireframe/divider', 1);
+  c.appendChild(text(chars, 'caption/md', 'color/content/secondary'));
+  return c;
+};
+const caption = (inst, cap) => {
+  const f = stack('Example', 'VERTICAL', 10);
+  f.counterAxisAlignItems = 'MIN';
+  f.appendChild(inst);
+  f.appendChild(chip(cap));
+  return f;
+};
+const label = (s, w = 80, color = 'color/content/secondary') => {
+  const l = text(s, 'label/md', color);
+  l.textAutoResize = 'NONE';
+  l.resize(w, l.height);
+  return l;
+};
+const body = stack('Body', 'VERTICAL', 48, 64);
+root.appendChild(body);
+body.layoutSizingHorizontal = 'FILL';
+const section = (title, intro) => {
+  const s = stack(title, 'VERTICAL', 20);
+  const hd = stack('Heading', 'HORIZONTAL', 12);
+  hd.counterAxisAlignItems = 'CENTER';
+  const dot = figma.createFrame();
+  dot.name = 'Bullet';
+  dot.resize(8, 8);
+  dot.cornerRadius = 4;
+  fill(dot, 'wireframe/ink');
+  hd.appendChild(dot);
+  hd.appendChild(text(title, 'heading/lg'));
+  s.appendChild(hd);
+  if (intro) s.appendChild(text(intro, 'body/md', 'color/content/secondary', 1000));
+  body.appendChild(s);
+  s.layoutSizingHorizontal = 'FILL';
+  return s;
+};
+
 const va = section(
   'Variants',
   'Intent says what the action means: accent for the main action, neutral for secondary actions, danger for actions that delete or cannot be undone. Appearance sets the visual weight: solid, outline or ghost. Size follows the density of the surrounding interface. The brand, the light or dark appearance and the density come from the modes of the frame, not from the component.'
 );
 const vrow = stack('Variants row', 'HORIZONTAL', 24);
 vrow.counterAxisAlignItems = 'MIN';
-const grid = canvas('Intent × appearance', 'VERTICAL', 12);
+const grid = panel('Intent × appearance', 'VERTICAL', 12);
 const head = stack('Header', 'HORIZONTAL', 16);
 head.appendChild(label('', 80));
 for (const a of ['solid', 'outline', 'ghost']) head.appendChild(label(a, 104, 'color/content/tertiary'));
@@ -653,11 +611,10 @@ for (const i of ['accent', 'neutral', 'danger']) {
   grid.appendChild(r);
 }
 vrow.appendChild(grid);
-const sizes = canvas('Sizes', 'HORIZONTAL', 24);
+const sizes = panel('Sizes', 'HORIZONTAL', 24);
 sizes.counterAxisAlignItems = 'MAX';
 for (const s of ['sm', 'md', 'lg']) sizes.appendChild(caption(btn({ s, label: 'Continue', lead: true }), `size ${s}`));
 vrow.appendChild(sizes);
-sizes.layoutSizingVertical = 'FILL';
 va.appendChild(vrow);
 const ctx = stack('Contexts', 'HORIZONTAL', 12);
 for (const [b, a] of [
@@ -680,14 +637,13 @@ for (const [b, a] of [
 }
 va.appendChild(ctx);
 
-// States
 const st = section(
   'States',
   'A button has five states: default, hover, pressed, loading and disabled. Focus is a separate switch that can be combined with any state. While loading, the button keeps its width and can still receive focus. When disabled, it cannot be focused or activated. If a button is both loading and disabled, it looks disabled and keeps its loading indicator.'
 );
 const states = ['default', 'hover', 'pressed', 'focus', 'loading', 'disabled'];
 for (const ap of ['light', 'dark']) {
-  const block = ap === 'light' ? canvas(`States ${ap}`, 'VERTICAL', 12, 32) : stack(`States ${ap}`, 'VERTICAL', 12, 32);
+  const block = ap === 'light' ? panel(`States ${ap}`, 'VERTICAL', 12, 32) : stack(`States ${ap}`, 'VERTICAL', 12, 32);
   if (ap === 'dark') {
     fill(block, 'color/surface/canvas');
     block.cornerRadius = 12;
@@ -723,7 +679,7 @@ for (const ap of ['light', 'dark']) {
   st.appendChild(block);
   block.layoutSizingHorizontal = 'FILL';
 }
-const combo = canvas('Combinations', 'HORIZONTAL', 32);
+const combo = panel('Combinations', 'HORIZONTAL', 32);
 combo.counterAxisAlignItems = 'MAX';
 combo.appendChild(caption(btn({ t: 'hover', focus: true, label: 'Save' }), 'hover with focus'));
 combo.appendChild(caption(btn({ t: 'loading', focus: true, label: 'Save' }), 'loading with focus'));
@@ -740,14 +696,13 @@ combo.appendChild(
 st.appendChild(combo);
 combo.layoutSizingHorizontal = 'FILL';
 
-// Behavior & sizing
 const bs = section(
   'Behavior & sizing',
   'A button is as wide as its content. When there is not enough room, the label is shortened with an ellipsis and the icons keep their place. To try this in Figma, give the instance a fixed width, then set Container, Label and Text to “Fill”. The height depends on the size and on the density of the frame: compact, standard or comfortable.'
 );
 const dens = stack('Density × size', 'HORIZONTAL', 12);
 for (const d of ['compact', 'standard', 'comfortable']) {
-  const f = canvas(d, 'VERTICAL', 12, 24);
+  const f = panel(d, 'VERTICAL', 12, 24);
   f.setExplicitVariableModeForCollection(col('Density'), mode(col('Density'), d));
   f.appendChild(text(d + ' density', 'label/sm', 'color/content/secondary'));
   for (const s of ['sm', 'md', 'lg']) {
@@ -763,7 +718,7 @@ for (const d of ['compact', 'standard', 'comfortable']) {
 bs.appendChild(dens);
 const brow = stack('Behavior row', 'HORIZONTAL', 24);
 brow.counterAxisAlignItems = 'MIN';
-const tr = canvas('Truncation', 'VERTICAL', 20);
+const tr = panel('Truncation', 'VERTICAL', 20);
 for (const [w, o] of [
   [180, { label: 'Export all selected invoices as PDF', lead: true, leadIcon: 'download-simple' }],
   [180, { a: 'outline', i: 'neutral', label: 'Notifications from every project', trail: 'counter' }],
@@ -777,7 +732,7 @@ for (const [w, o] of [
   b.findOne((x) => x.type === 'TEXT' && x.name === 'Text').layoutSizingHorizontal = 'FILL';
 }
 brow.appendChild(tr);
-const tgt = canvas('Target', 'HORIZONTAL', 24);
+const tgt = panel('Target', 'HORIZONTAL', 24);
 tgt.counterAxisAlignItems = 'CENTER';
 const wrap = stack('Target outline', 'HORIZONTAL', 0);
 wrap.appendChild(btn({ s: 'sm', label: 'Edit' }));
@@ -794,12 +749,11 @@ brow.appendChild(tgt);
 tgt.layoutSizingVertical = 'FILL';
 bs.appendChild(brow);
 
-// Usage examples
 const ue = section(
   'Usage examples',
   'Use one solid accent button per area for the main action. Use outline or ghost neutral buttons for secondary actions. Use the danger intent for actions that delete something or cannot be undone. Keep labels short and start them with a verb. The full guidance will be in the documentation page of the component.'
 );
-const ex = canvas('Examples', 'HORIZONTAL', 32);
+const ex = panel('Examples', 'HORIZONTAL', 32);
 ex.counterAxisAlignItems = 'MIN';
 const dialog = stack('Dialog footer', 'VERTICAL', 16, 24);
 fill(dialog, 'color/surface/raised');
@@ -842,4 +796,9 @@ right.appendChild(caption(dark, 'a page header in the orchid brand, dark appeara
 ex.appendChild(right);
 ue.appendChild(ex);
 ex.layoutSizingHorizontal = 'FILL';
-return root.children.map((n) => [n.id, n.name]);
+return {
+  body: body.id,
+  sections: body.children.map((n) => [n.id, n.name]),
+  header: root.children[0].id,
+  anatomy: root.children[0].findOne((n) => n.name === 'Anatomy').id
+};

@@ -20,5 +20,5 @@ The Plugin API script bodies inherited from the reference kit were removed after
 
 - `button-parity.plugin.js`: `use_figma` body measuring the Button masters for one brand and its appearances (set `BRAND` and `APS`); save each returned object as `<brand>-<appearance>.json` in one folder.
 - `button-parity-slots.plugin.js`: `use_figma` body checking leading and trailing slot geometry against the contract spacing rule in every context and size; save its `all` object as `slots.json` in the same folder.
-- `button-spec.plugin.js`: the `use_figma` bodies that build the Button specification page (Wireframe collection and documentation components, then the sections with their diagrams).
+- `button-spec.plugin.js`: the two `use_figma` bodies that build the Button specification page (Wireframe collection with its light and blueprint modes, documentation components, header band with the Anatomy diagrams, then the body sections).
 - `button-parity-report.mjs <folder>`: compares the saved measurements with `reports/components/button/svelte/computed.json` and writes `reports/components/button/figma/parity.json` (one record per computed record, justified differences noted, slot geometry records when `slots.json` is present).

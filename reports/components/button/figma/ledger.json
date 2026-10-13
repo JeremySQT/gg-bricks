@@ -300,23 +300,24 @@
   },
   "specification": {
     "frame": {
-      "id": "115:1569",
+      "id": "126:1904",
       "name": "Button — Specification",
-      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=115-1569"
+      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=126-1904"
     },
     "sections": {
-      "Overview": "115:1570",
-      "Anatomy": "115:1661",
-      "Variants": "116:405",
-      "States": "116:1001",
-      "Behavior & sizing": "116:3287",
-      "Usage examples": "116:3739"
+      "Header (title, summary, hero, Anatomy)": "126:1905",
+      "Anatomy": "126:2000",
+      "Body": "127:556",
+      "Variants": "127:557",
+      "States": "127:1179",
+      "Behavior & sizing": "127:3466",
+      "Usage examples": "127:3919"
     },
     "diagrams": {
-      "Anatomy diagram": "115:1665",
-      "Spacing diagram": "115:1734"
+      "Anatomy diagram": "126:2007",
+      "Spacing diagram": "126:2076"
     },
-    "replaces": "105:1579 (2026-10-13, visual redesign: dotted boards, pink tints, leader lines)",
+    "replaces": "115:1569 (2026-10-13, blueprint treatment chosen by the user)",
     "builder": "authoring/adapters/figma/button-spec.plugin.js"
   },
   "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run; none remain.",
@@ -343,29 +344,47 @@
     "collection": {
       "name": "Wireframe",
       "id": "VariableCollectionId:105:1565",
-      "mode": "default"
+      "modes": {
+        "light": "105:0",
+        "blueprint": "126:0"
+      }
     },
     "variables": {
-      "wireframe/canvas": "neutral/0",
-      "wireframe/dot": "neutral/300",
+      "wireframe/board": {
+        "light": "neutral/50",
+        "blueprint": "blue/800"
+      },
+      "wireframe/grid": {
+        "light": "blue/600",
+        "blueprint": "neutral/0"
+      },
+      "wireframe/ink": {
+        "light": "blue/800",
+        "blueprint": "neutral/0"
+      },
+      "wireframe/on-ink": {
+        "light": "neutral/0",
+        "blueprint": "blue/800"
+      },
       "wireframe/panel": "neutral/50",
       "wireframe/divider": "neutral/200",
-      "wireframe/ink": "pink/600",
-      "wireframe/on-ink": "neutral/0",
-      "wireframe/text": "neutral/700",
-      "wireframe/tint/4": "pink/600 at 4% alpha",
-      "wireframe/tint/8": "pink/600 at 8%",
-      "wireframe/tint/16": "pink/600 at 16%",
-      "wireframe/tint/28": "pink/600 at 28%",
-      "wireframe/tint/48": "pink/600 at 48%"
+      "wireframe/text": {
+        "light": "neutral/700",
+        "blueprint": "neutral/0"
+      },
+      "wireframe/canvas": "neutral/0",
+      "wireframe/tint/{4,8,16,28,48}": {
+        "light": "blue/800 with alpha",
+        "blueprint": "white with alpha"
+      }
     },
-    "note": "Colors for specification diagrams and panels, aliased to primitives (the tints are the pink primitive with alpha). Documentation tooling only: not a source token, not used by masters."
+    "note": "Colors for specification diagrams (blueprint mode, set explicitly on the boards) and legends (light mode, the page default). Aliases of primitives; the tints are literal RGBA. Documentation tooling only: not a source token, not used by masters."
   },
   "documentationComponents": {
     "page": "Utilities (8:10)",
-    "_Spec/Canvas": {
+    "_Spec/Board": {
       "id": "113:17",
-      "note": "Dotted board: canvas fill plus a tiled 16 px image with one dot (hash c9dee906f4f65bf308a0ed88d781bd98b2235220) at 35% opacity; the builder reproduces the same fills on frames."
+      "note": "Blueprint board: wireframe/board fill plus a tiled 16 px grid image (one white line on the top and left edges, hash 349e013eedf533dd9a34627a53f989e11cc9a869) at 10% opacity, Wireframe mode blueprint. The dot tile (hash c9dee906f4f65bf308a0ed88d781bd98b2235220) is no longer used."
     },
     "_Spec/Callout": {
       "id": "115:6",
