@@ -398,5 +398,11 @@
     "_Spec/Marker": {
       "id": "115:8"
     }
-  }
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-13",
+      "change": "Audit of the Figma file (read-only scripts): 635 variables match packages/tokens/figma-manifest.json by collection and name; native resolution of the 411 semantic variables re-verified in 18 contexts (reports/foundations/figma/verification.json, 0 failures); every fill, stroke, radius, padding and margin of the 135 variants is bound to a variable (the only literal is the 2.5 px stroke of the loading indicator glyph, which mirrors the SVG stroke-width in code). Cleanup: a stray _Fixture/Counter instance (89:1528) left at the root of the Utilities page was removed; the Wireframe collection was hidden from publishing."
+    }
+  ]
 }

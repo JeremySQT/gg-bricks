@@ -29,15 +29,15 @@ Use a button whenever the user triggers something: submitting, confirming, cance
 
 The annotated anatomy lives on the Figma specification page of the component (frame “Button — Specification”, `components/actions/button/figma-spec.md` gives the links; a capture is kept in `reports/components/button/figma/specification.png`). Text equivalent, from the outside in:
 
-| #   | Part              | Required | Role                                                                                                                                                                                                                      |
-| --- | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Root              | yes      | The element that reacts to clicks, taps and keys: a native `button`, or `a` when `href` is set. It reserves an interaction target of at least 44 × 44 CSS px around the visible button, without enlarging it.             |
-| 2   | Container         | yes      | The visible button: background, border (outline appearance only), corner radius, side padding and height. It fills the root, so a container that stretches the button stretches its surface.                              |
-| 3   | Leading           | no       | One icon before the label, rendered at the button's icon size in the current text color. Decorative: hidden from assistive technology.                                                                                    |
-| 4   | Label             | yes      | The text of the button, on one line. It is the accessible name. When space runs short it is shortened with an ellipsis; the full text stays available to assistive technology.                                            |
-| 5   | Trailing          | no       | One element after the label: an icon, a counter or a keyboard shortcut, in the current text color. Decorative: hidden from assistive technology, so a counter's value must not be the only place that information exists. |
-| 6   | Loading indicator | state    | A spinner centered over the container while `loading` is true. The other content is hidden but keeps its place, so the button keeps its width.                                                                            |
-| 7   | Focus ring        | state    | Drawn just outside the container, with concentric corners, when the button is focused with the keyboard.                                                                                                                  |
+| #   | Part              | Required | Role                                                                                                                                                                                                                                                                                               |
+| --- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Root              | yes      | The element that reacts to clicks, taps and keys: a native `button`, or `a` when `href` is set. It reserves an interaction target of at least 44 × 44 CSS px around the visible button, without enlarging it: its layout box is at least 44 px tall, and it extends sideways without taking space. |
+| 2   | Container         | yes      | The visible button: background, border (outline appearance only), corner radius, side padding and height. It fills the root, so a container that stretches the button stretches its surface.                                                                                                       |
+| 3   | Leading           | no       | One icon before the label, rendered at the button's icon size in the current text color. Decorative: hidden from assistive technology.                                                                                                                                                             |
+| 4   | Label             | yes      | The text of the button, on one line. It is the accessible name. When space runs short it is shortened with an ellipsis; the full text stays available to assistive technology.                                                                                                                     |
+| 5   | Trailing          | no       | One element after the label: an icon, a counter or a keyboard shortcut, in the current text color. Decorative: hidden from assistive technology, so a counter's value must not be the only place that information exists.                                                                          |
+| 6   | Loading indicator | state    | A spinner centered over the container while `loading` is true. The other content is hidden but keeps its place, so the button keeps its width.                                                                                                                                                     |
+| 7   | Focus ring        | state    | Drawn just outside the container, with concentric corners, when the button is focused with the keyboard.                                                                                                                                                                                           |
 
 Spacing follows one rule in every size and density: the container has side padding, the label has a margin on each side, and an icon, counter or shortcut has a smaller margin on each side. An icon is placed by its drawing rather than by its square, so it looks as close to the text as a counter does.
 
@@ -146,7 +146,7 @@ With `href`, the button renders as a link. A disabled link keeps the appearance 
 
 - A long label in a narrow container is shortened with an ellipsis; trailing content stays next to the visible text, and the full label remains the accessible name (`#truncated` on the review page).
 - A button stretched by its container keeps its height and centers its content (`#stretched`).
-- A small button (28 to 36 px tall depending on density) still offers a 44 px interaction target.
+- A small button (28 to 36 px tall depending on density) still offers a 44 px interaction target, so a row of small buttons is at least 44 px tall; the visible surface keeps the size height.
 
 ## API
 
@@ -166,23 +166,23 @@ import type {
 
 Renders a native `<button>` or, when `href` is set, an `<a>`. The root element carries `class="ggb-button"` plus any class you pass, and the data attributes `data-intent`, `data-appearance`, `data-size`, `data-disabled` and `data-loading`.
 
-| Prop         | Type                                | Default    | Description                                                                                                                                                   |
-| ------------ | ----------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `label`      | `string`                            | required   | Visible text and accessible name. Must be non-empty: an empty or blank label throws, on the server and in the browser.                                        |
-| `intent`     | `'accent' \| 'neutral' \| 'danger'` | `'accent'` | What the action means.                                                                                                                                        |
-| `appearance` | `'solid' \| 'outline' \| 'ghost'`   | `'solid'`  | Visual weight.                                                                                                                                                |
-| `size`       | `'sm' \| 'md' \| 'lg'`              | `'md'`     | Height, padding, label size and icon size; each size follows the density of the ancestor.                                                                     |
-| `disabled`   | `boolean`                           | `false`    | Not focusable and not activatable (native `disabled` on a button; no `href`, `aria-disabled` and `tabindex="-1"` on a link). Takes precedence over `loading`. |
-| `loading`    | `boolean`                           | `false`    | Shows the loading indicator, sets `aria-busy` and `aria-disabled`, keeps the width and the focus, blocks activation and navigation.                           |
-| `href`       | `string`                            | —          | Renders a link instead of a button. `type` is then not allowed.                                                                                               |
-| `type`       | `'button' \| 'submit' \| 'reset'`   | `'button'` | Native button type (button only).                                                                                                                             |
-| `onactivate` | `(event: MouseEvent) => void`       | —          | Called when the button is activated by click, Enter or Space while neither disabled nor loading. A native `onclick` you pass is guarded the same way.         |
-| `leading`    | `Snippet`                           | —          | One decorative icon before the label.                                                                                                                         |
-| `trailing`   | `Snippet`                           | —          | One decorative icon, counter or shortcut after the label.                                                                                                     |
-| `ref`        | `HTMLElement \| null` (bindable)    | `null`     | The rendered element.                                                                                                                                         |
-| `class`      | `string`                            | —          | Merged with `ggb-button`.                                                                                                                                     |
+| Prop         | Type                                | Default    | Description                                                                                                                                                                          |
+| ------------ | ----------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `label`      | `string`                            | required   | Visible text and accessible name. Must be non-empty: an empty or blank label throws, on the server and in the browser.                                                               |
+| `intent`     | `'accent' \| 'neutral' \| 'danger'` | `'accent'` | What the action means.                                                                                                                                                               |
+| `appearance` | `'solid' \| 'outline' \| 'ghost'`   | `'solid'`  | Visual weight.                                                                                                                                                                       |
+| `size`       | `'sm' \| 'md' \| 'lg'`              | `'md'`     | Height, padding, label size and icon size; each size follows the density of the ancestor.                                                                                            |
+| `disabled`   | `boolean`                           | `false`    | Not focusable and not activatable (native `disabled` on a button; no `href`, `aria-disabled` and `tabindex="-1"` on a link). Takes precedence over `loading`.                        |
+| `loading`    | `boolean`                           | `false`    | Shows the loading indicator, sets `aria-busy` and `aria-disabled`, keeps the width and the focus, blocks activation and navigation (including a middle or modified click on a link). |
+| `href`       | `string`                            | —          | Renders a link instead of a button. `type` is then not allowed.                                                                                                                      |
+| `type`       | `'button' \| 'submit' \| 'reset'`   | `'button'` | Native button type (button only).                                                                                                                                                    |
+| `onactivate` | `(event: MouseEvent) => void`       | —          | Called when the button is activated by click, Enter or Space while neither disabled nor loading. A native `onclick` or `onauxclick` you pass is guarded the same way.                |
+| `leading`    | `Snippet`                           | —          | One decorative icon before the label.                                                                                                                                                |
+| `trailing`   | `Snippet`                           | —          | One decorative icon, counter or shortcut after the label.                                                                                                                            |
+| `ref`        | `HTMLElement \| null` (bindable)    | `null`     | The rendered element.                                                                                                                                                                |
+| `class`      | `string`                            | —          | Merged with `ggb-button`.                                                                                                                                                            |
 
-Every other attribute of `HTMLButtonAttributes` (or `HTMLAnchorAttributes` with `href`) is forwarded to the element, except those the component owns: `children`, `href`, `type`, `disabled`, `aria-busy`, `aria-disabled`, `role` and `onclick` (guarded as described above).
+Every other attribute of `HTMLButtonAttributes` (or `HTMLAnchorAttributes` with `href`) is forwarded to the element, except those the component owns: `children`, `href`, `type`, `disabled`, `aria-busy`, `aria-disabled` and `role`. `onclick` and `onauxclick` are forwarded but guarded as described above.
 
 `ButtonProps` is the union of `ButtonAsButton` and `ButtonAsLink`; TypeScript rejects `type` together with `href`. The platform-independent options and rules are in `components/actions/button/contract.json`; the Figma master exposes the same options as variants and properties.
 
@@ -197,7 +197,7 @@ What the component guarantees:
 - `loading` exposes `aria-busy="true"` and `aria-disabled="true"` and keeps the button focusable, so focus does not jump away during an asynchronous action; presses are ignored.
 - `disabled` removes the button from the tab order (native `disabled`; on a link, no `href` and `tabindex="-1"`).
 - A visible focus ring, drawn only for keyboard focus (`:focus-visible`), 2 px wide at 2 px outside the container.
-- An interaction target of at least 44 × 44 CSS px in every size and density.
+- An interaction target of at least 44 × 44 CSS px in every size and density: the button's layout box is at least 44 px tall and its hit area at least 44 px wide, while the visible surface keeps the size height.
 - Color transitions respect `prefers-reduced-motion`; the loading spinner slows down under it. In forced-colors mode the container keeps a visible boundary and the focus ring stays visible.
 
 What the integration must provide:

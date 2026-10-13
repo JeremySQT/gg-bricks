@@ -2,8 +2,11 @@ import type { Snippet } from 'svelte';
 import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 import type { ButtonAppearance, ButtonIntent, ButtonSize } from './contract.generated.js';
 
-/** Attributes the component owns: they follow from the contract props and states. */
-type Owned = 'children' | 'href' | 'type' | 'disabled' | 'aria-busy' | 'aria-disabled' | 'role' | 'onclick';
+/**
+ * Attributes the component owns: they follow from the contract props and states. A native `onclick` or
+ * `onauxclick` may still be passed: the component calls it only while neither disabled nor loading.
+ */
+type Owned = 'children' | 'href' | 'type' | 'disabled' | 'aria-busy' | 'aria-disabled' | 'role';
 
 interface ButtonOptions {
   /** Visible text and accessible name. Required and non-empty; one line, truncated visually when space is short. */

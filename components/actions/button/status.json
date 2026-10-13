@@ -84,7 +84,7 @@
     },
     "humanDocs": {
       "path": "documentation/components/button.md",
-      "sha256": "d9d52510fa6022b9c961da4385c2e64a637cf4cf084d1d61b8bf391b070e06e4",
+      "sha256": "eb8578b5625de0073615549ab1d13f62dcdac9fd510d809adebd2fff8a20d851",
       "sections": [
         "Overview",
         "When to use",
@@ -115,7 +115,7 @@
       "note": "Covers the contract; the six-plus-three new semantic roles are recorded as a pending foundations change in foundations/status.json. Implementation approval recorded separately."
     },
     "implementation": {
-      "scope": "Svelte implementation of the Button (interactive implementation review, which is also the design review): rendering on the approved tokens, interactions, tuned spacing, optical icon alignment, cap-height centering, tight ellipsis, aria-disabled while loading.",
+      "scope": "Svelte implementation of the Button (interactive implementation review, which is also the design review): rendering on the approved tokens, interactions, tuned spacing, optical icon alignment, cap-height centering, tight ellipsis, aria-disabled while loading. Amendments: focusRadius binding and its comment (2026-10-13, radius.focus); auxclick guard so that a loading link never opens its destination from a middle or modified click, and onclick/onauxclick typed as forwarded, guarded attributes (2026-10-13, audit correction batch).",
       "revision": {
         "paths": [
           "packages/svelte/src/button/Button.svelte",
@@ -126,15 +126,15 @@
           "examples/button/App.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/button/Button.svelte": "75fbe9f88e18f2b51c0a1c7640b2ccae5391661ac5e0a3f5061430e184257630",
-          "packages/svelte/src/button/types.ts": "c3c6580c46b473c50bde0cf33d13ba402e9a97799235fb4b947b92c571921b22",
-          "packages/svelte/src/button/button.css": "563045047bf931c3c4a00caab864400c346a9e3a38a56dbc24515a23b640098f",
+          "packages/svelte/src/button/Button.svelte": "cf8ce1cf7953268e5bcd08a529270ad5bb25c9274e9400ed6a29f2944430466a",
+          "packages/svelte/src/button/types.ts": "9f7140afe278eba5828b37c890f0fcc6f35209c276008519401721bb4cba8472",
+          "packages/svelte/src/button/button.css": "3a555a2464201303fa7e699c8ac636db292836904069807b0f1627b2b704787b",
           "packages/svelte/src/button/contract.generated.ts": "f90148d9d8581c1dac118f222abea993c429a7817fa3ff46e3111da610b3ff12",
-          "packages/svelte/src/button/tokens.generated.css": "3556d66ff1d4f864d9b48262c1edb93d10a9ee0c13b5e5efc5a4fa075f276c80",
+          "packages/svelte/src/button/tokens.generated.css": "95984070b62c3e306fff311d23234f97a9a9d7d7ddc886e7dbec18f59320bf4a",
           "examples/button/App.svelte": "ca80916d651c71be4b9488fd9ac39179c0874a4daf27dcdcbae3c25638118272"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"L implémentation du Button est bien validée\", after reviewing the preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5 (commit 2c362f9).",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"L implémentation du Button est bien validée\", after reviewing the preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5 (commit 2c362f9). Amendment of 2026-10-13 (focusRadius): user, same session, \"Ok pour le token radius.focus\". Amendment of 2026-10-13 (auxclick guard, onclick types): user in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, authorizing the before-merge correction batch proposed by the audit (\"applique les correctifs proposés avant le merge. Je te fais confiance\"); digests re-recorded in that session. No separate interactive review of the guard: it changes no rendering, and the browser test covers it.",
       "note": "Automated evidence: Chromium only (9 browser tests, 6 SSR tests). Icon, Counter and Shortcut are fixtures; Done waits for them and for Figma parity."
     },
     "figmaParity": {
@@ -146,9 +146,9 @@
           "reports/components/button/figma/ledger.json"
         ],
         "sha256": {
-          "components/actions/button/figma-spec.md": "845c965c5f998bb716172d90daa776c505c2ea449830200cf066c6bc09a1e6b7",
+          "components/actions/button/figma-spec.md": "c3cf6ff6a401ab2bdbf2ae0f6705ea7cfa1579793416426be0dd52be7f290f00",
           "reports/components/button/figma/parity.json": "0cc7343db7cb4c4d29d4f725ba353e3ab77dc1cf5c914a6b30034832ecc86948",
-          "reports/components/button/figma/ledger.json": "8427198535d3b425d5fa65fd61d591150cff9d16662df4104e6db09cf0050793"
+          "reports/components/button/figma/ledger.json": "072a7da949095d2fdf36f517d4968e891e6afae6a62be36d6947d75195575cba"
         },
         "figma": {
           "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
@@ -156,7 +156,7 @@
           "specificationFrame": "126:1904"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-13: \"je valide la parité Figma ! Tu peux tout cleaner et enchaîner sur la documentation\", after reviewing the masters and refining the specification page by hand.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-13: \"je valide la parité Figma ! Tu peux tout cleaner et enchaîner sur la documentation\", after reviewing the masters and refining the specification page by hand. Records re-digested on 2026-10-13 in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: figma-spec.md now cites the current contract digest and the Wireframe collection's publishing flag; ledger.json records the audit cleanup (stray fixture instance removed, Wireframe hidden from publishing). Masters and specification frame unchanged.",
       "note": "Library not published (publication needs explicit authorization). Explorations and the previous specification copy removed from the Actions page."
     },
     "documentation": null,
@@ -168,7 +168,7 @@
       "result": "passed",
       "command": "npm run validate",
       "report": "reports/components/button/contract-validation.json",
-      "note": "Schema, consistency and token coverage (131 paths) in 18 contexts."
+      "note": "Schema, consistency and token coverage (135 paths) in 18 contexts."
     },
     {
       "kind": "contrast",
@@ -180,7 +180,8 @@
       "kind": "verify",
       "result": "passed",
       "command": "npm run verify",
-      "date": "2026-10-13"
+      "date": "2026-10-13",
+      "note": "Re-run after the audit correction batch."
     },
     {
       "kind": "ssr",
@@ -193,7 +194,7 @@
       "result": "passed",
       "command": "npm run test:browser",
       "report": "reports/browser-results.json",
-      "note": "9 Chromium tests: behavior, keyboard, forms, links, slots, truncation and targets, computed values (9324 records), motion, forced colors, axe light and dark, mobile width. Re-run after the documentation; the truncation test was made to wait for the component's refit (see decisionsTaken, 2026-10-13).",
+      "note": "9 Chromium tests: behavior, keyboard, forms, links (including middle and Ctrl click while loading), slots, truncation and targets, computed values (9324 records), motion, forced colors, axe light and dark, mobile width. Re-run after the audit correction batch of 2026-10-13 (middle-click assertion added, failing before the auxclick guard and passing after).",
       "date": "2026-10-13"
     },
     {
@@ -208,6 +209,12 @@
       "report": "reports/components/button/figma/parity.json",
       "date": "2026-10-12",
       "note": "9324 records (one per computed record, 18 contexts, 5 states in 4 representative contexts), 0 failures; 630 justified differences (forced-colors outline, loading keeps focus); widths within ±1.5 px (measured 0.13 to 1.06 px). Slot geometry (added 2026-10-12 after the user spotted a trailing icon 2 px low): 108 records in 18 contexts × 3 sizes × icon/counter against the contract spacing rule, 0 failures. Difficult cases checked in the specification: constrained width truncation with slots, empty slots, all states in light and dark, six brand and appearance pairs."
+    },
+    {
+      "kind": "audit",
+      "result": "corrected",
+      "date": "2026-10-13",
+      "note": "Read-only audit of the pull request, the repository architecture and the Figma file (session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH), then the before-merge correction batch authorized by the user: auxclick guard, onclick/onauxclick types, approvals re-digested (implementation, Figma parity, foundations semantic and Figma variables), implementation report refreshed, documentation clarified (layout height of the 44 px target, guarded handlers), Figma cleanup. Remaining improvements are listed in nextAction."
     }
   ],
   "decisionsTaken": [
@@ -250,18 +257,23 @@
     "Specification page style (user, 2026-10-13, after three page proposals and two rounds of diagram treatments): layout of proposal P3 with a light header band (breadcrumb, title, summary, hero buttons, reference note, Anatomy) and a white body with soft gray panels and bullet headings; anatomy and spacing diagrams in blueprint treatment C3, blue/800 board with a white 16 px grid at 10% and white ink with alpha tints. Wireframe collection reworked with light and blueprint modes.",
     "Specification page finalized by the user by hand (2026-10-13): gray page with a white header (breadcrumb, title, summary, hero card with a white 8 px border and a soft shadow, reference note, divider, Anatomy with the blueprint boards as cards), white body cards with a light border, 72 px side padding. The builder script was updated to reproduce it and checked side by side; the user's frame is the reference.",
     "Documentation (2026-10-13): one page in documentation/components/button.md following the template, plain language, examples referencing examples/button/App.svelte, API from types.ts, WCAG 2.2 criteria with the component/integration split and the real validation status (automated Chromium checks only, no assistive-technology test). Alternatives IconButton, Link, SegmentedControl and Menu are marked planned.",
-    "Test change disclosed (2026-10-13): the browser test 'the label is centered on its capital letters, keeps descenders and ends at the ellipsis' failed once at 200 px (17.7 px after the ellipsis) and, repeated, at the 700 px release step. Cause: the test measured right after changing the width while the component refits one frame later (ResizeObserver), so it read the previous width's truncated copy; it had passed by timing before. The test now waits for the new truncated copy at each width and for the copy to disappear when room is back. Same assertions, same tolerances; the component is unchanged. Verified by repeating the test six times and the full suite."
+    "Test change disclosed (2026-10-13): the browser test 'the label is centered on its capital letters, keeps descenders and ends at the ellipsis' failed once at 200 px (17.7 px after the ellipsis) and, repeated, at the 700 px release step. Cause: the test measured right after changing the width while the component refits one frame later (ResizeObserver), so it read the previous width's truncated copy; it had passed by timing before. The test now waits for the new truncated copy at each width and for the copy to disappear when room is back. Same assertions, same tolerances; the component is unchanged. Verified by repeating the test six times and the full suite.",
+    "Audit correction batch (user authorization, 2026-10-13, session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH): a loading link blocked click but not auxclick, so a middle click opened its destination in a new tab (reproduced in Chromium); the component now guards auxclick the same way and forwards a consumer's onclick and onauxclick through the guard (types.ts no longer omits onclick, which the documentation already described as forwarded).",
+    "Audit correction batch: approvals whose listed paths had changed (implementation after the radius.focus commit, Figma parity after figma-spec.md cited a superseded contract digest, foundations semantic after the two pending changes) were re-recorded with the current digests and the amendments' provenance, per the rule added to authoring/workflow.md.",
+    "Audit correction batch: documentation states that the root's layout box is at least 44 px tall (the visible surface keeps the size height), a consequence of the target rule that matters in compact tables.",
+    "Audit of the Figma file (2026-10-13): variables and masters consistent with the manifest and the contract; a stray _Fixture/Counter instance at the Utilities page root was removed and the Wireframe collection hidden from publishing (reports/components/button/figma/ledger.json, maintenance)."
   ],
   "openDecisions": [
     "Repository structure (2026-10-07, after the Button pull request, branch chore/repo-structure): user proposal foundations/contracts beside foundations/tokens; packages/svelte/src/components/<id>; category folders inside semantic tokens.",
     "Default density (2026-10-10): the Figma file's default Density mode is compact (first mode, from the order in foundations/config.json), so a Button dropped on a frame without modes shows the compact heights (28/32/40) while the review page uses standard (32/40/48); the code has no default density (data-ggb-density must be set). Proposed: declare standard as the default density for code and Figma (foundations change).",
     "Figma file structure (user proposal, 2026-10-12): one page per component, named by its repository path (e.g. actions/button), holding the master, its internal parts and its specification; family pages replaced. Changes authoring/figma.md; to settle with the repository structure work."
   ],
-  "nextAction": "Pull request https://github.com/JeremySQT/design-system/pull/2 open for user review and merge. Then: chore/repo-structure (repository and Figma organization, default density), then the documentation site with the Button as the first page; Done when Icon, Counter and Shortcut exist.",
+  "nextAction": "Pull request https://github.com/JeremySQT/design-system/pull/2 open for user merge after the audit correction batch of 2026-10-13. Improvements proposed by the audit for later branches: default appearance and density in tokens.css and in the Figma default modes (chore/foundations-defaults, with the invariants radius.focus = radius.control + focus.offset and edge-inline + label-inline = padding-inline checked by tooling); package shape and a real consumer render before the first Deliver; $extensions for fontFeatures; grapheme-safe truncation; CI concurrency and computed.json drift check; Cover, Getting started and Foundations pages of the Figma file are still empty. Then chore/repo-structure, the documentation site, and Done when Icon, Counter and Shortcut exist.",
   "implementationNotes": [
     "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
     "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",
-    "The horizontal target pseudo-element uses physical left + translateX(-50%) on purpose: centering is symmetric in both writing directions."
+    "The horizontal target pseudo-element uses physical left + translateX(-50%) on purpose: centering is symmetric in both writing directions.",
+    "auxclick is guarded like click: a middle click on a link opens it in a new tab through auxclick, and a loading link keeps its href to stay focusable. The context menu (open in new tab) cannot be intercepted and remains the documented limitation."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

@@ -32,6 +32,9 @@
   // Contract precedence: disabled wins over loading; both block activation and navigation.
   const blocked = $derived(disabled || loading);
 
+  type Handler = (event: MouseEvent) => void;
+  const handlers = $derived(rest as { onclick?: Handler; onauxclick?: Handler });
+
   function handleClick(event: MouseEvent) {
     if (blocked) {
       // Cancels navigation and form submission; loading keeps focus, so keyboard presses land here.
@@ -39,8 +42,19 @@
       event.stopImmediatePropagation();
       return;
     }
-    (rest as { onclick?: (event: MouseEvent) => void }).onclick?.(event);
+    handlers.onclick?.(event);
     onactivate?.(event);
+  }
+
+  // A middle click on a link opens it in a new tab through auxclick, not click: a loading link keeps
+  // its href (to stay focusable), so that path is guarded too. Disabled links have no href.
+  function handleAuxclick(event: MouseEvent) {
+    if (blocked) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return;
+    }
+    handlers.onauxclick?.(event);
   }
 
   // Tight ellipsis (contract: a truncated label ends at the ellipsis). Native text-overflow drops whole
@@ -111,7 +125,8 @@
     'data-loading': loading ? '' : undefined,
     'aria-busy': loading && !disabled ? 'true' : undefined,
     'aria-disabled': blocked ? 'true' : undefined,
-    onclick: handleClick
+    onclick: handleClick,
+    onauxclick: handleAuxclick
   } as Primitive.RootProps);
 </script>
 

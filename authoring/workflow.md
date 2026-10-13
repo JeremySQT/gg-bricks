@@ -74,6 +74,8 @@ An approval entry in a status file has this shape:
 
 Digests come from `npm run digest -- <paths>`. Figma approvals record file key, node IDs and the evidence files instead of digests. An approval is invalidated when any listed path changes; record the change and re-present only the affected gate.
 
+When the user accepts such a change at a later gate (a foundations change presented at a component's contract gate, a one-line amendment confirmed in chat), re-record the approval in the same session: new digests, the original provenance kept, and the amendment's provenance appended. A change log such as `pendingChanges` in `foundations/status.json` records the change until the approval is re-recorded; it never replaces the re-recording, because a fresh session checks digests, not logs.
+
 Artifacts, identifiers and maintained documents are in English. Gate summaries and questions are written in the user's language.
 
 A request that cannot start (a pending gate, a missing dependency) is answered with the blocker and the next step; it creates no status file and does not change the roadmap.

@@ -113,6 +113,14 @@ test('loading keeps focus, name and width, and blocks activation, submission and
   await link.press('Enter');
   await link.click({ force: true }); // aria-disabled makes Playwright wait for an enabled element
   expect(new URL(page.url()).hash).toBe('');
+  // A middle click (auxclick) and a modified click open a link in a new tab; a loading link must not.
+  const opened: string[] = [];
+  page.context().on('page', (p) => opened.push(p.url()));
+  await link.click({ button: 'middle', force: true });
+  await link.click({ modifiers: ['Control'], force: true });
+  await page.waitForTimeout(300);
+  expect(opened).toEqual([]);
+  expect(new URL(page.url()).hash).toBe('');
 
   // Asynchronous example: repeated presses while busy are ignored.
   const async = page.locator('#async');
