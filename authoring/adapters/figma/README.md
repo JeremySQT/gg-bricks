@@ -15,3 +15,10 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - A swapped slot instance may restore stale per-component paints; an inherited foreground alias set by the parent surface's context solves it.
 - Review containers must not clip a focus outline; only adjust containers the review owns.
 - Never use a broad name prefix to delete or modify content the design system does not own; read IDs from the file and persist them in the ledger after each batch.
+
+## Component parity scripts
+
+- `button-parity.plugin.js`: `use_figma` body measuring the Button masters for one brand and its appearances (set `BRAND` and `APS`); save each returned object as `<brand>-<appearance>.json` in one folder.
+- `button-parity-slots.plugin.js`: `use_figma` body checking leading and trailing slot geometry against the contract spacing rule in every context and size; save its `all` object as `slots.json` in the same folder.
+- `button-spec.plugin.js`: the two `use_figma` bodies that build the Button specification page (Wireframe collection with its light and blueprint modes, documentation components, header band with the Anatomy diagrams, then the body sections).
+- `button-parity-report.mjs <folder>`: compares the saved measurements with `reports/components/button/svelte/computed.json` and writes `reports/components/button/figma/parity.json` (one record per computed record, justified differences noted, slot geometry records when `slots.json` is present).

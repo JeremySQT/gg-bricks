@@ -1,5 +1,25 @@
 {
   "package": "@ggbrick/svelte",
   "version": "0.1.0",
-  "components": []
+  "components": [
+    {
+      "id": "button",
+      "import": "Button",
+      "from": "@ggbrick/svelte",
+      "purpose": "Starts an action or moves to the next step of a task with a short text label; optional leading icon and trailing icon, counter or shortcut; loading and disabled states; renders as a link with href.",
+      "whenNotToUse": "Icon-only actions (IconButton, planned), navigation inside text (Link, planned), toggles with a pressed state (SegmentedControl, planned), menu triggers (Menu, planned), button groups and toolbars (composition), width as a prop (layout decides).",
+      "documentation": "button.md",
+      "contract": "components/actions/button/contract.json",
+      "sections": [
+        "Overview",
+        "When to use",
+        "When not to use",
+        "Anatomy",
+        "Usage guidelines",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    }
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "phase": "approved",
-  "note": "Foundations approved on 2026-09-26 (primitives, semantic) and Figma variables synced and verified the same day. Pull request open: https://github.com/JeremySQT/design-system/pull/1 (the user merges).",
+  "note": "Foundations approved on 2026-09-26 (primitives, semantic) and Figma variables synced and verified the same day; pull request JeremySQT/design-system#1 merged. Semantic inventory amended twice at the Button gates (pendingChanges) and the approval re-recorded on 2026-10-13.",
   "artifacts": {
     "config": "foundations/config.json",
     "paletteConfig": "foundations/palette.config.json",
@@ -46,7 +46,7 @@
       "note": "Values may still change through ggb-maintain Modify with a representative visual review; Figma variables are approved separately."
     },
     "semantic": {
-      "scope": "Semantic inventory (361 roles) across base, brick and orchid in light and dark and three densities, with the contrast pairs of foundations/inventory.json (commit 7232b4e).",
+      "scope": "Semantic inventory (361 roles at the review; 371 after the amendments below) across base, brick and orchid in light and dark and three densities, with the contrast pairs of foundations/inventory.json (commit 7232b4e).",
       "revision": {
         "paths": [
           "foundations/config.json",
@@ -62,22 +62,22 @@
         ],
         "sha256": {
           "foundations/config.json": "3b7d532bc0e96576ca73b8199f4c6e380a5f36432969b58a0180ff7b3a2233a4",
-          "foundations/inventory.json": "10bf5f61f870d2633c461032bd33ab5a9c647d8960eebbaba2c175237aa31e5e",
+          "foundations/inventory.json": "210243e6f5131d8359ffcbaf64b6282e4e1613206eca596d37a21f2a75f5bcf4",
           "foundations/tokens/base/semantic/appearance.dark.tokens.json": "548523cf1726df867458b9c54a4dccbcd7213f7580d5ff559ab8cc93b93b6081",
           "foundations/tokens/base/semantic/appearance.light.tokens.json": "75909e6f22e53adcb7122c2581debcfc83130cffa24d4621b7dc05b24242a19e",
-          "foundations/tokens/base/semantic/common.tokens.json": "f09e08c2ab42c7dca5b09fd725512abcb746c01fe731ff9b2811b93c7e9db2b7",
-          "foundations/tokens/base/semantic/density.comfortable.tokens.json": "a233af877c44c0cc74376cbc04253fa462d00e3f85e69f455659d0e6a0d02b6a",
-          "foundations/tokens/base/semantic/density.compact.tokens.json": "e203169357c5bf587d3ce0f00dc88a128fc109d237382cd654a8a2b3fe56e032",
-          "foundations/tokens/base/semantic/density.standard.tokens.json": "391584801e920c006779762645b7ae5591558fa7e94007a5bef799baa5044f18",
-          "foundations/tokens/brick/semantic/common.tokens.json": "bb256192041f662b056152f8d6b22b58b6843629147f579e6d8eca8d3eec0911",
-          "foundations/tokens/orchid/semantic/common.tokens.json": "41a059e936d4b2b3d5863e959b52dfc103cb59eee077aa02cb47c3eab383679e"
+          "foundations/tokens/base/semantic/common.tokens.json": "587e3ae7e5205e7041f34d851613e7681c17bb7932501d47a21ddcf51685d78b",
+          "foundations/tokens/base/semantic/density.comfortable.tokens.json": "1d639da1a714cd86d8e20048a588af431e1ded0eb088ffddef3cbaa1a466f863",
+          "foundations/tokens/base/semantic/density.compact.tokens.json": "f9f1c703c7fc735816637cc2b45f2b8473e1353832183a99983d01574d005030",
+          "foundations/tokens/base/semantic/density.standard.tokens.json": "160578c8145c1127c64c8e5fd315e923cbff8ab0a851c244128aa48b3343e6d8",
+          "foundations/tokens/brick/semantic/common.tokens.json": "df785f028b7c884fe7b653f6ce2a2b497d54bde8265058d678b3c1c58d29fb3e",
+          "foundations/tokens/orchid/semantic/common.tokens.json": "5de6c880874ad0e61d821f9279ab92417032333fc41d14577f74d453fc6eca51"
         }
       },
-      "provenance": "Foundations review in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8), three rounds on the review page dist/previews/foundations.html (artifact https://claude.ai/artifact/FXSaVj9UCJhHQr3T7M8omk, version 3). The user arbitrated every open point in chat (color.palette kept, warning B, icon method, fonts, brand names, purge) and confirmed the last addition (caption, overline, numeral roles) with 'Parfait pour les styles de textes'; approval is recorded on that basis and the user may object to the record.",
+      "provenance": "Foundations review in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8), three rounds on the review page dist/previews/foundations.html (artifact https://claude.ai/artifact/FXSaVj9UCJhHQr3T7M8omk, version 3). The user arbitrated every open point in chat (color.palette kept, warning B, icon method, fonts, brand names, purge) and confirmed the last addition (caption, overline, numeral roles) with 'Parfait pour les styles de textes'; approval is recorded on that basis and the user may object to the record. Amendments accepted by the user at the Button gates: nine space.control.{edge-inline,label-inline,slot-inline}.{sm,md,lg} density roles (Button contract gate, 2026-10-07) and radius.focus per brand (Button Figma parity review, 2026-10-13), see pendingChanges. Digests re-recorded on 2026-10-13 in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH (user authorization of the correction batch).",
       "note": "color.surface.muted in dark is tested with primary and secondary content only. Figma variables pending (approvals.figmaVariables)."
     },
     "figmaVariables": {
-      "scope": "Figma library variables and styles generated from packages/tokens/figma-manifest.json: collections Primitives (default), Brand (base, brick, orchid), Appearance (light, dark), Density (compact, standard, comfortable); 625 variables (224 Primitives, 172 Brand semantic, 206 Appearance, 23 Density) with source-mirroring aliases, scopes and WEB code syntax; 25 text styles; 3 effect styles; library pages created.",
+      "scope": "Figma library variables and styles generated from packages/tokens/figma-manifest.json: collections Primitives (default), Brand (base, brick, orchid), Appearance (light, dark), Density (compact, standard, comfortable); 635 variables (224 Primitives, 173 Brand semantic, 206 Appearance, 32 Density) with source-mirroring aliases, scopes and WEB code syntax; 25 text styles; 3 effect styles; library pages created.",
       "revision": {
         "paths": ["packages/tokens/figma-manifest.json", "packages/tokens/figma-expectations.json"],
         "figma": {
@@ -96,7 +96,7 @@
         "reports/foundations/figma/native-resolution.json",
         "reports/foundations/figma/verification.json"
       ],
-      "provenance": "Synced and verified through the Figma MCP server in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8) on the user's file. Verification: native resolveForConsumer of the 401 semantic variables in the 18 brand × appearance × density contexts, hashed and compared with figma-expectations.json, 0 failures; re-run after moving the primitives to their own collection (user review of the Figma file, 2026-09-26), 0 failures. Technical verification only; the user has not visually reviewed the Figma file in this session.",
+      "provenance": "Synced and verified through the Figma MCP server in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8) on the user's file. Verification: native resolveForConsumer of the 401 semantic variables in the 18 brand × appearance × density contexts, hashed and compared with figma-expectations.json, 0 failures; re-run after moving the primitives to their own collection (user review of the Figma file, 2026-09-26), 0 failures. Technical verification only; the user has not visually reviewed the Figma file in this session. Re-verified on 2026-10-13 in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: 635 variables match the manifest by collection and name; native resolution of the 411 semantic variables in the 18 contexts, 0 failures (reports/foundations/figma/verification.json).",
       "note": "OpenType features (tnum) cannot be applied to text styles through the Plugin API; numeral styles carry the note in their description. The Foundations page exists but holds no specification frames yet."
     }
   },
@@ -104,12 +104,12 @@
     {
       "name": "generate",
       "command": "npm run generate",
-      "result": "18 contexts, 608 tokens per context, 1106 Figma variables, 25 text styles, 3 effect styles"
+      "result": "18 contexts, 618 tokens per context, 635 Figma variables, 25 text styles, 3 effect styles (2026-10-13)"
     },
     {
       "name": "foundations coverage and contrast",
       "command": "node tooling/check-foundations.ts",
-      "result": "361 roles present with the declared type and axis in 18 contexts; 98 contrast pairs × 18 contexts = 1764 checks, 0 failures",
+      "result": "371 roles present with the declared type and axis in 18 contexts; 98 contrast pairs × 18 contexts = 1764 checks, 0 failures (2026-10-13)",
       "evidence": "reports/tokens/contrast.json"
     },
     {
@@ -125,7 +125,7 @@
     {
       "name": "Figma native resolution",
       "command": "node tooling/figma-batches.ts, batches run through use_figma, node tooling/check-figma.ts reports/foundations/figma/native-resolution.json",
-      "result": "401 semantic variables × 18 contexts: 18 hashes equal to the expectations, 0 failures",
+      "result": "411 semantic variables × 18 contexts: 18 hashes equal to the expectations, 0 failures (2026-10-13; 401 variables at the foundations review)",
       "evidence": "reports/foundations/figma/verification.json"
     }
   ],
@@ -145,7 +145,7 @@
     "Brands: brick (orange accent, radii xs/sm/md) and orchid (violet accent, radii xl/2xl/2xl).",
     "Typography composites carry letterSpacing and optional fontFeatures (OpenType tags); CSS exposes --ggb-typography-<role>-letterSpacing and -fontFeatureSettings; the Figma manifest carries both."
   ],
-  "nextAction": "Merge the pull request (user). Then wave 1 components, Button first (ggb-component).",
+  "nextAction": "Wave 1 components (Button in review, JeremySQT/design-system#2). Proposed foundations change for a later branch: default appearance (light) and density (standard) declared in tokens.css and as the Figma default modes, with the token invariants checked by tooling/check-foundations.ts.",
   "decided": [
     "Brand names brick and orchid (round 1).",
     "Fonts: Inter for every brand, IBM Plex Mono for code roles (round 1).",
@@ -156,5 +156,35 @@
     "Purge of the reference-kit leftovers: seed brands, stale generated outputs, handoff note and Figma script bodies removed; adapter README keeps the known mechanics (round 2).",
     "Figma collections: Primitives (single mode) for primitives shared by every brand, Brand only for brand-dependent semantic tokens; component tokens go to Brand under component/<id> (user review of the Figma file, 2026-09-26)."
   ],
-  "pullRequest": "https://github.com/JeremySQT/design-system/pull/1"
+  "pullRequest": "https://github.com/JeremySQT/design-system/pull/1",
+  "pendingChanges": [
+    {
+      "date": "2026-10-07",
+      "change": "Nine semantic roles added for the Button spacing: space.control.edge-inline, label-inline and slot-inline (sm, md, lg) in the three density files, with inventory entries; edge-inline + label-inline equals padding-inline in every density. Existing roles unchanged.",
+      "invalidates": "approvals.semantic for foundations/inventory.json and foundations/tokens/base/semantic/density.*.tokens.json (the listed digests no longer match); Figma variables not yet synced for the new roles.",
+      "sha256": {
+        "foundations/inventory.json": "39727240b553c6853661ca31ca9250ebd8e68d9b0ee829f98a379adb46ff1dd0",
+        "foundations/tokens/base/semantic/density.compact.tokens.json": "f9f1c703c7fc735816637cc2b45f2b8473e1353832183a99983d01574d005030",
+        "foundations/tokens/base/semantic/density.standard.tokens.json": "160578c8145c1127c64c8e5fd315e923cbff8ab0a851c244128aa48b3343e6d8",
+        "foundations/tokens/base/semantic/density.comfortable.tokens.json": "1d639da1a714cd86d8e20048a588af431e1ded0eb088ffddef3cbaa1a466f863"
+      },
+      "review": "Presented at the Button contract gate (spacing fact).",
+      "figma": "Synced on 2026-10-07: 9 Density variables created (IDs in reports/foundations/figma/ledger.json), scope GAP; native resolution re-verified for 410 semantic variables in 18 contexts, 0 failures (reports/foundations/figma/verification.json).",
+      "recorded": "approvals.semantic re-recorded with this change on 2026-10-13 (audit correction batch)."
+    },
+    {
+      "date": "2026-10-13",
+      "change": "Semantic role radius.focus (common axis, per brand): corner radius of a focus ring drawn at focus.offset outside a control, equal to radius.control + focus.offset so that the ring stays concentric. base aliases primitive.radius.lg (8), brick primitive.radius.sm (4), orchid holds the literal 14 px because 12 + 2 is not in the primitive ramp. Inventory entry added.",
+      "invalidates": "approvals.semantic for foundations/inventory.json and the three semantic common files (digests no longer match).",
+      "sha256": {
+        "foundations/inventory.json": "210243e6f5131d8359ffcbaf64b6282e4e1613206eca596d37a21f2a75f5bcf4",
+        "foundations/tokens/base/semantic/common.tokens.json": "587e3ae7e5205e7041f34d851613e7681c17bb7932501d47a21ddcf51685d78b",
+        "foundations/tokens/brick/semantic/common.tokens.json": "df785f028b7c884fe7b653f6ce2a2b497d54bde8265058d678b3c1c58d29fb3e",
+        "foundations/tokens/orchid/semantic/common.tokens.json": "5de6c880874ad0e61d821f9279ab92417032333fc41d14577f74d453fc6eca51"
+      },
+      "review": "Asked by the user at the Button Figma parity review (concentric focus ring corners), accepted 2026-10-13.",
+      "figma": "Synced on 2026-10-13: Brand variable radius/focus created and bound to the Button focus ring corners.",
+      "recorded": "approvals.semantic re-recorded with this change on 2026-10-13 (audit correction batch)."
+    }
+  ]
 }

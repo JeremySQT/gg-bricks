@@ -54,7 +54,7 @@
     }
   },
   "variables": {
-    "total": 625,
+    "total": 635,
     "batches": [
       {
         "batch": 1,
@@ -91,7 +91,33 @@
         "change": "Primitives moved from the Brand collection (VariableID:4:5 to 4:228, removed) to the new Primitives collection (VariableID:14:3 to 14:226); 560 aliases re-pointed by name; no node was bound to the old variables."
       }
     ],
-    "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change)."
+    "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change).",
+    "additions": [
+      {
+        "date": "2026-10-07",
+        "reason": "Button spacing roles (pending foundations change)",
+        "collection": "Density",
+        "ids": {
+          "space/control/edge-inline/sm": "VariableID:39:2",
+          "space/control/edge-inline/md": "VariableID:39:3",
+          "space/control/edge-inline/lg": "VariableID:39:4",
+          "space/control/label-inline/sm": "VariableID:39:5",
+          "space/control/label-inline/md": "VariableID:39:6",
+          "space/control/label-inline/lg": "VariableID:39:7",
+          "space/control/slot-inline/sm": "VariableID:39:8",
+          "space/control/slot-inline/md": "VariableID:39:9",
+          "space/control/slot-inline/lg": "VariableID:39:10"
+        }
+      },
+      {
+        "date": "2026-10-13",
+        "collection": "Brand",
+        "variables": {
+          "radius/focus": "VariableID:119:2"
+        },
+        "note": "radius.focus (base alias primitive/radius/lg, brick primitive/radius/sm, orchid literal 14), scope CORNER_RADIUS, code syntax var(--ggb-radius-focus); resolution checked in the three brands (8, 4, 14)."
+      }
+    ]
   },
   "textStyles": 25,
   "effectStyles": 3,

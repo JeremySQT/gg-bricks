@@ -5308,6 +5308,27 @@
     },
     {
       "collection": "Brand",
+      "name": "radius/focus",
+      "path": "radius.focus",
+      "type": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-radius-focus)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/radius/lg"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/radius/sm"
+        },
+        "orchid": 14
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "radius/container",
       "path": "radius.container",
       "type": "FLOAT",
@@ -12120,6 +12141,213 @@
         },
         "comfortable": {
           "alias": "Primitives:primitive/dimension/v12"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/edge-inline/sm",
+      "path": "space.control.edge-inline.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-edge-inline-sm)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v6"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v8"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v10"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/edge-inline/md",
+      "path": "space.control.edge-inline.md",
+      "type": "FLOAT",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-edge-inline-md)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v8"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v10"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v12"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/edge-inline/lg",
+      "path": "space.control.edge-inline.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-edge-inline-lg)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v10"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v12"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v14"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/label-inline/sm",
+      "path": "space.control.label-inline.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-label-inline-sm)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v2"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v4"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v6"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/label-inline/md",
+      "path": "space.control.label-inline.md",
+      "type": "FLOAT",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-label-inline-md)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v4"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v6"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v8"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/label-inline/lg",
+      "path": "space.control.label-inline.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-label-inline-lg)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v6"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v8"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v10"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/slot-inline/sm",
+      "path": "space.control.slot-inline.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-slot-inline-sm)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v0"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v0"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v2"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/slot-inline/md",
+      "path": "space.control.slot-inline.md",
+      "type": "FLOAT",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-slot-inline-md)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v0"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v2"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v2"
+        }
+      }
+    },
+    {
+      "collection": "Density",
+      "name": "space/control/slot-inline/lg",
+      "path": "space.control.slot-inline.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-control-slot-inline-lg)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Primitives:primitive/dimension/v2"
+        },
+        "standard": {
+          "alias": "Primitives:primitive/dimension/v2"
+        },
+        "comfortable": {
+          "alias": "Primitives:primitive/dimension/v2"
         }
       }
     },

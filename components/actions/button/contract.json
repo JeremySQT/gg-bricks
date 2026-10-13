@@ -1,0 +1,101 @@
+{
+  "$schema": "../../../authoring/schemas/component-contract.schema.json",
+  "id": "button",
+  "props": {
+    "intent": {
+      "values": ["accent", "neutral", "danger"],
+      "default": "accent"
+    },
+    "appearance": {
+      "values": ["solid", "outline", "ghost"],
+      "default": "solid"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "loading": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "container": {},
+    "leading": {
+      "accepts": ["icon"],
+      "max": 1
+    },
+    "label": {},
+    "trailing": {
+      "accepts": ["icon", "counter", "shortcut"],
+      "max": 1
+    },
+    "loadingIndicator": {}
+  },
+  "states": {
+    "interaction": {
+      "values": ["default", "hover", "pressed", "loading", "disabled"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "events": {
+    "activate": {
+      "when": "The user activates the button (pointer click, Enter or Space) while it is neither disabled nor loading."
+    }
+  },
+  "tokens": {
+    "surface": "color.action.{intent}.{appearance}.{interaction}.surface",
+    "content": "color.action.{intent}.{appearance}.{interaction}.content",
+    "border": "color.action.{intent}.outline.{interaction}.border",
+    "borderWidth": "border.width.default",
+    "radius": "radius.control",
+    "minHeight": "size.control.{size}",
+    "minTarget": "size.target.min",
+    "edgeInline": "space.control.edge-inline.{size}",
+    "paddingBlock": "space.control.padding-block.{size}",
+    "labelInline": "space.control.label-inline.{size}",
+    "slotInline": "space.control.slot-inline.{size}",
+    "typography": "typography.label.{size}",
+    "iconSize": "size.icon.{size}",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "focusRadius": "radius.focus",
+    "motionDuration": "motion.duration.fast",
+    "easingStandard": "motion.easing.standard"
+  },
+  "rules": [
+    "Arrange leading, label and trailing in that order inside container; label shows the required non-empty label prop and is the accessible name.",
+    "Horizontal spacing: container has edgeInline inline padding, label has labelInline on both inline sides, and leading and trailing have slotInline on both inline sides. Without leading or trailing, the label is edgeInline + labelInline from the container edge.",
+    "Spacing is optical: an icon in leading or trailing is placed by its drawing, not its box. Icons of the reference set draw 1/8 of iconSize inside their box on each side, so the icon box overlaps the spacing by that amount; text-like content (counter, shortcut) is placed by its box.",
+    "Size to content up to the available width; keep the label on one line and truncate it with an ellipsis, never truncating the accessible name. When truncated, the label ends at the ellipsis, so trailing content keeps its spacing from the visible text.",
+    "Center the label vertically on its capital letters (cap height to baseline) rather than its line box; descenders and accents stay visible.",
+    "The container height is the greater of minHeight and content height plus paddingBlock; the interaction target meets minTarget in both dimensions without enlarging the visible container.",
+    "Leading and trailing content renders at iconSize and inherits the resolved content color.",
+    "Resolve the interaction state in this order: disabled, loading, pressed, hover, default. Focus is an independent axis.",
+    "Emit activate only when neither disabled nor loading; a disabled or loading button never navigates.",
+    "When href is set and the button is not disabled, it navigates to href as a link; otherwise it is a button. Appearance and states are identical in both roles.",
+    "Disabled removes the button from sequential focus; loading keeps it focusable, exposes a busy state and keeps the label as the accessible name.",
+    "While loading, center loadingIndicator over container and hide leading, label and trailing visually while preserving their layout, so the width does not change.",
+    "When loading and disabled are both true, interaction resolves to disabled and loadingIndicator stays visible in the resolved content color.",
+    "Draw border only for the outline appearance; it never changes the outer dimensions.",
+    "When focus is true and was reached by keyboard, draw a focus indicator of focusWidth in focusColor at focusOffset outside the container, with corners of focusRadius so that the indicator stays concentric with the container (focusRadius equals radius plus focusOffset).",
+    "Color changes between interaction states transition over motionDuration with easingStandard; no transition when reduced motion is requested. The loadingIndicator animation is implementation-defined and slowed or stopped under reduced motion.",
+    "In forced-colors mode the container keeps a visible boundary and the focus indicator stays visible."
+  ]
+}

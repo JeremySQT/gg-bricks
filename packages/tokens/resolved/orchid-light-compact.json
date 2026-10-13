@@ -3441,6 +3441,14 @@
       "unit": "px"
     }
   },
+  "radius.focus": {
+    "$type": "dimension",
+    "$value": {
+      "value": 14,
+      "unit": "px"
+    },
+    "$description": "Corner radius of the focus ring: radius.control + focus.offset, so the ring stays concentric with the control."
+  },
   "radius.container": {
     "$type": "dimension",
     "$value": {
@@ -6978,6 +6986,69 @@
     "$type": "dimension",
     "$value": {
       "value": 8,
+      "unit": "px"
+    }
+  },
+  "space.control.edge-inline.sm": {
+    "$type": "dimension",
+    "$value": {
+      "value": 6,
+      "unit": "px"
+    }
+  },
+  "space.control.edge-inline.md": {
+    "$type": "dimension",
+    "$value": {
+      "value": 8,
+      "unit": "px"
+    }
+  },
+  "space.control.edge-inline.lg": {
+    "$type": "dimension",
+    "$value": {
+      "value": 10,
+      "unit": "px"
+    }
+  },
+  "space.control.label-inline.sm": {
+    "$type": "dimension",
+    "$value": {
+      "value": 2,
+      "unit": "px"
+    }
+  },
+  "space.control.label-inline.md": {
+    "$type": "dimension",
+    "$value": {
+      "value": 4,
+      "unit": "px"
+    }
+  },
+  "space.control.label-inline.lg": {
+    "$type": "dimension",
+    "$value": {
+      "value": 6,
+      "unit": "px"
+    }
+  },
+  "space.control.slot-inline.sm": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "space.control.slot-inline.md": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "space.control.slot-inline.lg": {
+    "$type": "dimension",
+    "$value": {
+      "value": 2,
       "unit": "px"
     }
   },
