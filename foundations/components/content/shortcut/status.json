@@ -1,0 +1,143 @@
+{
+  "formatStatus": "v1",
+  "componentId": "shortcut",
+  "family": "content",
+  "wave": 1,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Show a keyboard shortcut hint (⌘K, Ctrl+Shift+P) as a sequence of keys, written once in a platform-neutral notation and rendered in the conventions of the user's platform, with a spoken equivalent for assistive technology.",
+    "useCases": [
+      "Shortcut hint after a menu item, a command palette entry or a list action, in the text color of the item.",
+      "Trailing content of a Button (plain appearance, sized one step below the button), taking the button's resolved content color.",
+      "Shortcut mentioned in a tooltip or an inline help text (plain appearance).",
+      "Keys shown as keycaps in a help page, a cheat sheet or documentation (keycap appearance on a neutral surface).",
+      "One notation for every platform (Mod+K): Command on Apple platforms, Control elsewhere, resolved automatically or forced by the author to show both forms side by side."
+    ],
+    "exclusions": [
+      "Key sequences (G then I, Ctrl+K Ctrl+S): compose two Shortcut instances; a sequence notation may come later if products need it.",
+      "Capturing or handling the keyboard shortcut: the component only displays it; the application binds the keys.",
+      "Localized spoken equivalents: the generated words are English; a consumer passes label for another language.",
+      "Keyboard legends for keys that have no shared name (media keys, Fn, international layouts): written as literal keys.",
+      "Mouse or touch gestures (click, drag, swipe): not keyboard input.",
+      "A format override (symbols versus words) independent of the platform: the rendering follows the conventions of the resolved platform (open decision 3)."
+    ],
+    "alternatives": [
+      "Plain text for a shortcut quoted in a sentence where no visual distinction is wanted.",
+      "Counter for a quantity (Inbox 8).",
+      "Badge (planned) for a status or a category."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": [
+    "Button (actions, implemented) in examples and tests to show the trailing-slot context; it is an existing component used for demonstration, not a dependency of Shortcut."
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/content/shortcut/contract.json",
+      "sha256": "605d79a53155fc5521bc6a4b8b3bfbacc4a6b5fcd68fe03fcf489611f157046f"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate",
+      "report": "reports/components/shortcut/contract-validation.json",
+      "date": "2026-10-13",
+      "note": "Schema, consistency and token coverage (8 paths) in 18 contexts. No dependency check: the contract accepts no component."
+    },
+    {
+      "kind": "contrast",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/shortcut/contrast.json",
+      "date": "2026-10-13",
+      "note": "No content role (the text inherits the context color, which owns its legibility). The border role (color.border.default) is informational on the six contrastScope backdrops: a keycap outline is decorative framing; without the exemption it measures 1.14 to 2.26 across the 18 contexts. See decisionsTaken and open decision 1."
+    }
+  ],
+  "decisionsTaken": [
+    "Input notation: one required string keys in a platform-neutral notation (Mod+Shift+P), rather than explicit key props or an array, so that a shortcut is written once and reads the same in code, Figma text and documentation; + joins simultaneous keys and a closed vocabulary names modifiers and special keys, every other token being a literal key.",
+    "Mod is the only platform-dependent name: it resolves to Meta (Command) on Apple platforms and to Ctrl elsewhere. Ctrl, Alt and Meta written explicitly keep their meaning everywhere; they only change glyph.",
+    "Platform resolution is a prop (platform: auto, mac, other) defaulting to auto, so that the implementation detects the platform in the common case and an author can force one form (documentation showing both, screenshots, tests). Detection is an implementation mechanic recorded in implementationNotes.",
+    "Rendering follows the conventions of the resolved platform with no separate format prop: on mac the Apple glyphs (⌃ ⌥ ⇧ ⌘, ↩ ⎋ ⇥ ⌫ ⌦ ↖ ↘ ⇞ ⇟) juxtaposed with no separator, as in macOS menus; on other platforms short names (Ctrl, Alt, Shift, Win, Enter, Esc, Tab, Space, Backspace, Del, Home, End, PgUp, PgDn) joined by +, as in Windows and Linux applications. Arrows are glyphs everywhere. A format override was left out until a product asks for it (open decision 3).",
+    "Modifiers are reordered to the canonical order of the resolved platform (mac: Ctrl, Alt, Shift, Meta, from the Apple Human Interface Guidelines; other: Meta, Ctrl, Alt, Shift, the common Windows order) so that authors need not know the conventions.",
+    "Accessible name: the component guarantees a spoken equivalent in words (Command K, Control Shift P) and never exposes the glyphs or separators to assistive technology, because ⌘ ⇧ ⌥ ⌃ are read inconsistently. An optional label string replaces the generated words (localization, a product-specific wording). Inside a Button trailing slot this is moot: the Button hides its trailing content from assistive technology by its own decision.",
+    "Colors: no content role. The shortcut takes the content color of its context in both appearances, which is the requirement of the Button trailing slot (currentColor) and the natural behavior in menu items, tooltips and disabled parents. The context therefore owns the text contrast; the contrast report of Shortcut checks nothing for text.",
+    "Typography: typography.label.{size} with sizes sm, md, lg (12, 14, 16 px, weight 500), the same ladder and roles as Button; a shortcut inside a control uses the size one step below the control (Button md pairs with Shortcut sm, the 0.85 ratio of the review fixture). Default sm, because 12 px is the shortcut size of the common contexts (14 px menu items, tooltips, Button md). Monospace (typography.code.*) was rejected: a shortcut is interface text, and the symbols fall back to the system font in any family.",
+    "Appearances: plain (text placed by its box, the review fixture) and keycap (one cap per key). The keycap appearance is drafted in wave 1 because help pages and documentation are in the purpose, the existing roles cover it (color.surface.subtle, color.border.default, border.width.default, radius.control, space.content.xs) and adding it later would reopen three gates; it costs two Figma variant columns. Default plain, the only appearance valid inside a Button (open decision 1).",
+    "Keycap roles: surface color.surface.subtle (a faint tint, legible by its border, like the keycaps of GitHub documentation), border color.border.default rather than color.border.strong, which looks heavy on a 19 px cap and still fails 3:1 on the subtle, muted, raised and overlay backdrops in dark; the outline is decorative framing, so the border role is informational on the six neutral backdrops (contrastScope). Corners radius.control follow each brand (6, 2, 12 px; orchid caps are pill-shaped like its controls). Inline padding and gap between caps space.content.xs, which follows density (2, 4, 6 px) as spacing does; no block padding, so a cap is the line height plus two borders tall (sm 19, md 22, lg 26 px) and single characters are square.",
+    "No states and no events: a shortcut has no interaction of its own; a disabled parent dims it through the inherited color.",
+    "Parts: container, key (one per resolved key) and separator (between keys on other platforms); all internal, no slot. The accepted content of a Button trailing slot is the Shortcut itself.",
+    "No dependency: Shortcut composes nothing. The Button appears in examples only as the demonstration of the trailing-slot context.",
+    "No token addition: every role reuses the approved semantic inventory. A smaller text role (typography.label.xs, 11 px) would only serve Button sm, where the shortcut is otherwise as large as the label; proposed as open decision 2, not created.",
+    "Key sequences, a format override and localized spoken words are excluded from wave 1 and recorded as exclusions, so that the contract stays a display of one combination."
+  ],
+  "openDecisions": [
+    "1. Keycap appearance in wave 1: keep it (drafted: color.surface.subtle, color.border.default informational on the six neutral backdrops, radius.control, space.content.xs) or defer it to a documentation wave and ship plain only. If kept, confirm color.border.default over color.border.strong (3.1 to 4.3 in light and on the dark canvas, 1.9 to 2.7 on the other dark backdrops).",
+    "2. Size ladder: sm, md, lg on typography.label.{size} with default sm. In a Button sm the shortcut is then 12 px, the label size; options are to accept it (12 px is the smallest label role) or to add typography.label.xs (proposal: common axis, Inter 500, 11 px, line height 1.4, letter spacing 0.5 px, identical in the 18 contexts since fonts do not follow density) and shift the ladder to xs, sm, md. Counter's ladder and default should match whichever is chosen.",
+    "3. Platform-driven rendering with no format prop: Apple glyphs without separator on mac, short names joined by + elsewhere, arrows as glyphs everywhere. Confirm, or ask for a format override (symbols or words) independent of the platform, and confirm the short names of other platforms (Ctrl, Alt, Shift, Win for Meta, Esc, Del, PgUp, PgDn).",
+    "4. Platform values auto, mac, other: confirm the naming (mac covers macOS, iPadOS and iOS; other covers Windows, Linux and ChromeOS). In Figma only mac and other exist; auto is a code-only value."
+  ],
+  "nextAction": "Contract gate (grouped with Icon and Counter). After approval: record the approval with the contract digest, then implementation (ggb-svelte).",
+  "implementationNotes": [
+    "Markup: a kbd root (container) holding one nested kbd per key, which is the HTML pattern for a combination; separators are plain text spans. kbd has no implicit ARIA role, so the spoken equivalent is carried by a visually hidden span inside the root (aria-label on a generic element is unreliable), and the visible key parts and separators are aria-hidden.",
+    "Platform detection for auto: navigator.userAgentData.platform when available, otherwise navigator.platform, matched against Mac, iPhone, iPad and iPod. Server rendering cannot know the platform: render the other form on the server and correct after hydration (one-paint flip, acceptable for a hint), or let the application force platform from its own detection or a user preference. Consider a Svelte context so that an app sets the platform once.",
+    "Parsing is done once from keys: split on +, map aliases case-insensitively, uppercase single letters in the parsed model (not with CSS text-transform), so that the visible key and the spoken word come from the same model. An empty or unknown token is shown as written; the component never throws on content.",
+    "Glyphs: Inter covers ⌘ ⇧ ⌥ ⌃ and the arrows; ↩ ⎋ ⇥ ⌫ ⌦ ↖ ↘ ⇞ ⇟ come from the system fallback of the typography font stack. Keep the token font stack; do not switch to a monospace family. Check the vertical alignment of fallback glyphs in the implementation review.",
+    "Plain appearance: display inline (or inline-flex for alignment) with the typography token, white-space nowrap, color inherit, no font-size override from the context (the size prop fixes it). Inside the Button trailing slot the slot is a flex container with min-block-size iconSize that centers the shortcut box; no compensation like the icon's optical margin.",
+    "Keycap appearance: each key is inline-flex, box-sizing border-box, min-inline-size equal to its computed block size (square single characters), border borderWidth solid border, border-radius radius, padding-inline keyPaddingInline, background surface; container is inline-flex with gap keyGap and the separator as a flex item. Logical properties throughout. forced-colors: border-color CanvasText and background Canvas.",
+    "Inside Button: the consumer passes size one step below the button size (sm for md, md for lg). A later Button change could set it automatically through a context; not in the Button contract today.",
+    "Figma: a component set with Appearance (Plain, Keycap), Size (sm, md, lg) and Platform (Mac, Other) properties; Auto has no Figma meaning. Keys are text properties on nested _Shortcut/Key instances (Figma cannot parse keys): the master shows a representative combination (⌘K and Ctrl+K) and the specification page documents the glyph tables. Once the master exists it replaces the shortcut fixture of _Button/Trailing in the Button library (Button Done).",
+    "Tests: SSR renders the other form; browser tests force platform mac and other and check the parsed order, glyphs, separators, the spoken text, the uppercase literal, the square keycaps (inline size at least block size), the inherited color inside a Button in every intent and appearance, nowrap, forced-colors, and axe in light and dark."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "canvas",
+        "reason": "Keycap outline is decorative framing: the key text, in the inherited content color, carries the meaning; WCAG 1.4.11 does not require a decorative boundary. color.border.default measures 1.29 in light and 2.26 in dark."
+      },
+      {
+        "role": "border",
+        "backdrop": "default",
+        "reason": "Same as canvas: decorative framing. 1.29 in light, 1.98 in dark."
+      },
+      {
+        "role": "border",
+        "backdrop": "subtle",
+        "reason": "Same as canvas: decorative framing; the cap surface equals this backdrop, the border alone separates them. 1.23 in light, 1.5 in dark."
+      },
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "reason": "Same as canvas: decorative framing. 1.14 in light, 1.0 in dark (border and backdrop coincide; the cap surface, darker than the backdrop, remains visible)."
+      },
+      {
+        "role": "border",
+        "backdrop": "raised",
+        "reason": "Same as canvas: decorative framing. 1.29 in light, 1.98 in dark."
+      },
+      {
+        "role": "border",
+        "backdrop": "overlay",
+        "reason": "Same as canvas: decorative framing. 1.29 in light, 1.5 in dark."
+      }
+    ]
+  }
+}
