@@ -27,7 +27,7 @@ Use a button whenever the user triggers something: submitting, confirming, cance
 
 ## Anatomy
 
-The annotated anatomy lives on the Figma specification page of the component (frame “Button — Specification”, `components/actions/button/figma-spec.md` gives the links; a capture is kept in `reports/components/button/figma/specification.png`). Text equivalent, from the outside in:
+The annotated anatomy lives on the Figma specification page of the component (frame “Button — Specification”, `foundations/components/actions/button/figma-spec.md` gives the links; a capture is kept in `reports/components/button/figma/specification.png`). Text equivalent, from the outside in:
 
 | #   | Part              | Required | Role                                                                                                                                                                                                                                                                                               |
 | --- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -184,7 +184,7 @@ Renders a native `<button>` or, when `href` is set, an `<a>`. The root element c
 
 Every other attribute of `HTMLButtonAttributes` (or `HTMLAnchorAttributes` with `href`) is forwarded to the element, except those the component owns: `children`, `href`, `type`, `disabled`, `aria-busy`, `aria-disabled` and `role`. `onclick` and `onauxclick` are forwarded but guarded as described above.
 
-`ButtonProps` is the union of `ButtonAsButton` and `ButtonAsLink`; TypeScript rejects `type` together with `href`. The platform-independent options and rules are in `components/actions/button/contract.json`; the Figma master exposes the same options as variants and properties.
+`ButtonProps` is the union of `ButtonAsButton` and `ButtonAsLink`; TypeScript rejects `type` together with `href`. The platform-independent options and rules are in `foundations/components/actions/button/contract.json`; the Figma master exposes the same options as variants and properties.
 
 Visual tokens: the button reads its colors, radius, spacing and typography from the semantic roles listed in the contract (`color.action.*`, `size.control.*`, `space.control.*`, `typography.label.*`, `size.icon.*`, `radius.control`, `radius.focus`, `focus.*`, `motion.*`), so brands, appearances and densities apply without any prop.
 

@@ -254,7 +254,7 @@ intro.appendChild(hero);
 hero.layoutSizingHorizontal = 'FILL';
 intro.appendChild(
   text(
-    'The contract and the code in the ggbrick repository (components/actions/button) are the reference. This page documents the Figma component set “Button”; every button shown here is an instance, not a master. Unless a frame says otherwise, the examples use the base brand, the light appearance and the standard density.',
+    'The contract and the code in the ggbrick repository (foundations/components/actions/button) are the reference. This page documents the Figma component set “Button”; every button shown here is an instance, not a master. Unless a frame says otherwise, the examples use the base brand, the light appearance and the standard density.',
     'body/sm',
     'color/content/tertiary',
     900

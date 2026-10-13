@@ -9,9 +9,9 @@ Read `AGENTS.md`, `authoring/roadmap.md`, `authoring/decisions.md`, `authoring/w
 
 ## Prerequisites
 
-- `foundations/status.json` must have `phase: "approved"` with non-null `approvals.primitives` and `approvals.semantic`. Otherwise answer with the blocker and the next step (`ggb-foundations`); create nothing.
+- `foundations/tokens/status.json` must have `phase: "approved"` with non-null `approvals.primitives` and `approvals.semantic`. Otherwise answer with the blocker and the next step (`ggb-foundations`); create nothing.
 - Dependencies declared for the component must have passed their implementation gate, or be planned in the same wave. A slot may accept a component that is not built yet (Button accepts `icon` before Icon exists): declare it in `dependencies`, use a local fixture in examples and tests, and note in the status that Done waits for that dependency. Fixtures used only in examples are not dependencies.
-- If `components/<family>/<id>/status.json` exists, resume at the earliest incomplete or invalidated phase it records; do not redo approved phases.
+- If `foundations/components/<family>/<id>/status.json` exists, resume at the earliest incomplete or invalidated phase it records; do not redo approved phases.
 
 ## Phases and gates
 

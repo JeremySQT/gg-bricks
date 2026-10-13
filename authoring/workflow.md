@@ -17,7 +17,7 @@ Phase order for a component: contract → implementation (interactive review, wh
 The roadmap groups components into waves so that the user is interrupted only at gates. The `ggb-component` skill runs it. For a wave:
 
 1. **Scope and contracts.** Create steps 1–2 for every component of the wave, including the foundation tokens the wave needs. `npm run validate`. Present one contract review: a table per component (options, parts, states, events, rules), the token additions, the decisions taken within conventions and the grouped open questions. Stop for the contract gate.
-2. **Implementation.** Create steps 3–4 for every component: `packages/svelte/src/<id>/`, `examples/<id>/`, SSR and browser tests, `npm run verify`. Present one implementation review: the preview pages, an exercise list per component, the test/limitation summary. Stop for the implementation gate.
+2. **Implementation.** Create steps 3–4 for every component: `packages/svelte/src/components/<id>/`, `examples/<id>/`, SSR and browser tests, `npm run verify`. Present one implementation review: the preview pages, an exercise list per component, the test/limitation summary. Stop for the implementation gate.
 3. **Figma parity.** Create step 5 for every component. Present one parity review with file/node references, screenshots and parity reports. Stop for the Figma parity gate.
 4. **Documentation and consistency.** Create steps 6–7 for every component. Update `documentation/index.json`, statuses and evidence. Hand off to Deliver when a release is requested.
 
@@ -64,8 +64,8 @@ An approval entry in a status file has this shape:
 {
   "scope": "what exactly was approved",
   "revision": {
-    "paths": ["components/forms/textarea/contract.json"],
-    "sha256": { "components/forms/textarea/contract.json": "…" }
+    "paths": ["foundations/components/forms/textarea/contract.json"],
+    "sha256": { "foundations/components/forms/textarea/contract.json": "…" }
   },
   "provenance": "who approved, where (session, comment, review), when",
   "note": "limits of the approval, if any"
@@ -74,7 +74,7 @@ An approval entry in a status file has this shape:
 
 Digests come from `npm run digest -- <paths>`. Figma approvals record file key, node IDs and the evidence files instead of digests. An approval is invalidated when any listed path changes; record the change and re-present only the affected gate.
 
-When the user accepts such a change at a later gate (a foundations change presented at a component's contract gate, a one-line amendment confirmed in chat), re-record the approval in the same session: new digests, the original provenance kept, and the amendment's provenance appended. A change log such as `pendingChanges` in `foundations/status.json` records the change until the approval is re-recorded; it never replaces the re-recording, because a fresh session checks digests, not logs.
+When the user accepts such a change at a later gate (a foundations change presented at a component's contract gate, a one-line amendment confirmed in chat), re-record the approval in the same session: new digests, the original provenance kept, and the amendment's provenance appended. A change log such as `pendingChanges` in `foundations/tokens/status.json` records the change until the approval is re-recorded; it never replaces the re-recording, because a fresh session checks digests, not logs.
 
 Artifacts, identifiers and maintained documents are in English. Gate summaries and questions are written in the user's language.
 

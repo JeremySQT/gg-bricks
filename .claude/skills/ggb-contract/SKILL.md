@@ -13,7 +13,7 @@ State purpose, alternatives, supported use cases and exclusions in the status `s
 
 ## Contract
 
-1. Draft the blocks in `components/<family>/<id>/contract.json`:
+1. Draft the blocks in `foundations/components/<family>/<id>/contract.json`:
    - `props`: enum (`values` + `default`), boolean, string (`required` or `default`), number (`default`, optional `min`/`max`); `bindable: true` for two-way values. Conceptual options only; no DOM, Svelte or Figma mechanics.
    - `parts`: anatomy; `{}` for an internal part; `{ "accepts": [ids], "min", "max" }` for a slot or compound child.
    - `states`: observed or derived axes (interaction, validation…), names distinct from props.

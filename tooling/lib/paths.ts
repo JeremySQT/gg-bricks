@@ -5,9 +5,9 @@ import path from 'node:path';
 export const root = path.resolve(import.meta.dirname, '..', '..');
 
 export const paths = {
-  config: 'foundations/config.json',
+  config: 'foundations/tokens/config.json',
   tokens: 'foundations/tokens',
-  components: 'components',
+  components: 'foundations/components',
   documentation: 'documentation',
   schemas: 'authoring/schemas',
   templates: 'authoring/templates',

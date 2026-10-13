@@ -1,6 +1,6 @@
 // Generate the Svelte adapter's mechanical artifacts from every component contract:
 // enum types + defaults, CSS custom-property bindings, and the consumer copies
-// (tokens.css, contracts/, docs/) shipped inside packages/svelte.
+// (tokens.css, contracts/, docs/) shipped inside packages/svelte. Implementations live in packages/svelte/src/components/<id>/.
 import fs from 'node:fs';
 import { abs, paths, write, readJson, readText, exists } from './lib/paths.ts';
 import { cssVariable } from './lib/tokens.ts';
@@ -27,7 +27,7 @@ export function generateTypes(contract: Contract): string {
       .map(([k, p]) => [k, (p as { default: unknown }).default])
   );
   return (
-    `// Generated from components/*/${contract.id}/contract.json. Do not edit.\n` +
+    `// Generated from foundations/components/<family>/${contract.id}/contract.json. Do not edit.\n` +
     enums
       .map(
         ([key, p]) =>
@@ -72,7 +72,7 @@ export function generateCss(contract: Contract): string {
 const components = listComponents();
 fs.rmSync(abs(pkg, 'contracts'), { recursive: true, force: true }); // stale consumer copies never survive a rebuild
 for (const c of components) {
-  const dir = `${pkg}/src/${c.id}`;
+  const dir = `${pkg}/src/components/${c.id}`;
   if (!exists(dir)) continue; // Contract without an implementation yet: nothing to generate.
   write(`${dir}/contract.generated.ts`, generateTypes(c.contract));
   write(`${dir}/tokens.generated.css`, generateCss(c.contract));
@@ -92,7 +92,9 @@ for (const entry of index.components) {
   if (!components.some((c) => c.id === entry.id))
     throw Error(`documentation/index.json lists unknown component ${entry.id}`);
   if (!generated.includes(entry.id))
-    throw Error(`documentation/index.json lists ${entry.id} but packages/svelte/src/${entry.id} does not exist`);
+    throw Error(
+      `documentation/index.json lists ${entry.id} but packages/svelte/src/components/${entry.id} does not exist`
+    );
   const doc = `${paths.documentation}/components/${entry.documentation}`;
   if (!exists(doc)) throw Error(`Missing documentation page ${doc}`);
   write(`${pkg}/docs/${entry.documentation}`, readText(doc));

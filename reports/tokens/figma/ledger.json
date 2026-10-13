@@ -8,18 +8,14 @@
   "source": {
     "manifest": "packages/tokens/figma-manifest.json",
     "expectations": "packages/tokens/figma-expectations.json",
-    "commit": "foundations/initial, see foundations/status.json approvals.figmaVariables"
+    "commit": "foundations/initial, see foundations/tokens/status.json approvals.figmaVariables"
   },
   "pages": {
     "Cover": "0:1",
     "Getting started": "8:2",
+    "--- (divider)": "20:2",
     "Foundations": "8:3",
-    "Actions": "8:4",
-    "Forms": "8:5",
-    "Feedback": "8:6",
-    "Overlays": "8:7",
-    "Navigation": "8:8",
-    "Data": "8:9",
+    "actions/button": "144:2",
     "Utilities": "8:10"
   },
   "collections": {
@@ -92,7 +88,11 @@
       },
       {
         "date": "2026-10-13",
-        "change": "Density collection default mode set to standard (mode 4:6) with setDefaultMode; the mode order became standard, compact, comfortable. Appearance already defaulted to light, Brand to base. Matches the defaults of foundations/config.json; the sync script now sets default modes from the manifest."
+        "change": "Density collection default mode set to standard (mode 4:6) with setDefaultMode; the mode order became standard, compact, comfortable. Appearance already defaulted to light, Brand to base. Matches the defaults of foundations/tokens/config.json; the sync script now sets default modes from the manifest."
+      },
+      {
+        "date": "2026-10-13",
+        "change": "Pages: family pages (Actions 8:4, Forms 8:5, Feedback 8:6, Overlays 8:7, Navigation 8:8, Data 8:9) removed; one page per component named by its repository path (actions/button 144:2). Variables untouched."
       }
     ],
     "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change).",

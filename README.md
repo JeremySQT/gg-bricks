@@ -6,7 +6,7 @@ ggbrick is a design system built for AI-assisted authoring and delivered as thre
 2. **Svelte 5 components** (`@ggbrick/svelte`, built on Bits UI): install the package or copy a component's source folder into your project.
 3. **Documentation**: one maintained source for humans and agents, shipped with the package and published as a site.
 
-Sources of truth: DTCG tokens in `foundations/tokens` and one compact contract per component in `components/`. Everything else is generated from them or reviewed against them. Target domain: ggbrick.design.
+Sources of truth: DTCG tokens in `foundations/tokens` and one compact contract per component in `foundations/components/`. Everything else is generated from them or reviewed against them. Target domain: ggbrick.design.
 
 ## Status
 
@@ -14,19 +14,19 @@ The repository structure, tooling, procedures and skills are in place. The found
 
 ## Layout
 
-| Path                                        | Role                                                                                       |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `AGENTS.md`, `CLAUDE.md`, `.claude/skills/` | Authoring entry point, routing and skills                                                  |
-| `foundations/`                              | Token sources, config and foundations status                                               |
-| `components/<family>/<id>/`                 | Contract, status and Figma specification per component                                     |
-| `documentation/`                            | Maintained consumer docs: index, agent guide, component pages                              |
-| `packages/tokens/`, `packages/svelte/`      | Generated token outputs; Svelte package                                                    |
-| `authoring/`                                | Decisions, roadmap, workflows (rationale), foundations and Figma specs, schemas, templates |
-| `tooling/`                                  | Deterministic generators and validators                                                    |
-| `examples/`                                 | Vite review app, one page per component                                                    |
-| `tests/`                                    | Tooling unit tests, SSR tests, Playwright tests                                            |
-| `reports/`                                  | Revision-bound evidence                                                                    |
-| `apps/`                                     | Reserved for the docs site, marketing site, theme builder and Figma plugin                 |
+| Path                                        | Role                                                                                                                                                                |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AGENTS.md`, `CLAUDE.md`, `.claude/skills/` | Authoring entry point, routing and skills                                                                                                                           |
+| `foundations/`                              | Sources of truth: `tokens/` (DTCG tokens, config, inventory, palette config, tokens status) and `components/<family>/<id>/` (contract, status, Figma specification) |
+| `foundations/components/<family>/<id>/`     | Contract, status and Figma specification per component                                                                                                              |
+| `documentation/`                            | Maintained consumer docs: index, agent guide, component pages                                                                                                       |
+| `packages/tokens/`, `packages/svelte/`      | Generated token outputs; Svelte package                                                                                                                             |
+| `authoring/`                                | Decisions, roadmap, workflows (rationale), foundations and Figma specs, schemas, templates                                                                          |
+| `tooling/`                                  | Deterministic generators and validators                                                                                                                             |
+| `examples/`                                 | Vite review app, one page per component                                                                                                                             |
+| `tests/`                                    | Tooling unit tests, SSR tests, Playwright tests                                                                                                                     |
+| `reports/`                                  | Revision-bound evidence                                                                                                                                             |
+| `apps/`                                     | Reserved for the docs site, marketing site, theme builder and Figma plugin                                                                                          |
 
 Full description: [authoring/layout.md](authoring/layout.md).
 

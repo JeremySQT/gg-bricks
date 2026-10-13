@@ -34,11 +34,11 @@
   ],
   "artifacts": {
     "contract": {
-      "path": "components/actions/button/contract.json",
-      "sha256": "6e15acb0733ffc15e3be08e2f910f4d877ac27dc9fce3b83bfea0ce3881947ca"
+      "path": "foundations/components/actions/button/contract.json",
+      "sha256": "49ef863145fa06f3e0783023e615c24f0e30266837fbe4029acd755b71a8c243"
     },
     "tokens": [
-      "foundations/inventory.json",
+      "foundations/tokens/inventory.json",
       "foundations/tokens/base/semantic/common.tokens.json",
       "foundations/tokens/base/semantic/density.comfortable.tokens.json",
       "foundations/tokens/base/semantic/density.compact.tokens.json",
@@ -49,7 +49,7 @@
     "figma": {
       "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
       "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=48-1586",
-      "page": "Actions (8:4)",
+      "page": "actions/button (144:2)",
       "componentSet": "48:1586",
       "specificationFrame": "126:1904",
       "ledger": "reports/components/button/figma/ledger.json",
@@ -60,11 +60,11 @@
       ],
       "published": false
     },
-    "figmaSpec": "components/actions/button/figma-spec.md",
+    "figmaSpec": "foundations/components/actions/button/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
-      "entry": "packages/svelte/src/button/Button.svelte",
-      "folder": "packages/svelte/src/button",
+      "entry": "packages/svelte/src/components/button/Button.svelte",
+      "folder": "packages/svelte/src/components/button",
       "versions": {
         "svelte": "5.57.1",
         "bitsUi": "2.19.3"
@@ -84,7 +84,7 @@
     },
     "humanDocs": {
       "path": "documentation/components/button.md",
-      "sha256": "4c50b8292d5b9de68240669551d014b29022abde47018d3f4154bc4abceeb633",
+      "sha256": "ef4f824733fe183f03f848db42268d9fe6f1adab91cbe48d8e745a9a63f46b4d",
       "sections": [
         "Overview",
         "When to use",
@@ -106,49 +106,49 @@
     "contract": {
       "scope": "Button contract as revised after the implementation review: props, parts, states, activate event, token roles including edgeInline, labelInline and slotInline (space.control.edge-inline, label-inline, slot-inline per density), the focusRadius role (radius.focus, added 2026-10-13), and rules including optical icon spacing, cap-height centering and the tight ellipsis.",
       "revision": {
-        "paths": ["components/actions/button/contract.json"],
+        "paths": ["foundations/components/actions/button/contract.json"],
         "sha256": {
-          "components/actions/button/contract.json": "6e15acb0733ffc15e3be08e2f910f4d877ac27dc9fce3b83bfea0ce3881947ca"
+          "foundations/components/actions/button/contract.json": "49ef863145fa06f3e0783023e615c24f0e30266837fbe4029acd755b71a8c243"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"le contrat mis à jour me semble bon au regard de l implémentation sur la page\" (preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5). Supersedes the approval of 2026-09-26. Revision of 2026-10-13 (focusRadius role and the concentric focus ring rule): user, same session, \"Ok pour le token radius.focus\".",
-      "note": "Covers the contract; the six-plus-three new semantic roles are recorded as a pending foundations change in foundations/status.json. Implementation approval recorded separately."
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"le contrat mis à jour me semble bon au regard de l implémentation sur la page\" (preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5). Supersedes the approval of 2026-09-26. Revision of 2026-10-13 (focusRadius role and the concentric focus ring rule): user, same session, \"Ok pour le token radius.focus\". Re-digested on 2026-10-13 for the repository structure change (branch chore/repo-structure, user decision in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: \"tu peux partir là dessus\"): files moved, only path references changed in their content; behavior, values and rendering unchanged.",
+      "note": "Covers the contract; the six-plus-three new semantic roles are recorded as a pending foundations change in foundations/tokens/status.json. Implementation approval recorded separately."
     },
     "implementation": {
       "scope": "Svelte implementation of the Button (interactive implementation review, which is also the design review): rendering on the approved tokens, interactions, tuned spacing, optical icon alignment, cap-height centering, tight ellipsis, aria-disabled while loading. Amendments: focusRadius binding and its comment (2026-10-13, radius.focus); auxclick guard so that a loading link never opens its destination from a middle or modified click, and onclick/onauxclick typed as forwarded, guarded attributes (2026-10-13, audit correction batch).",
       "revision": {
         "paths": [
-          "packages/svelte/src/button/Button.svelte",
-          "packages/svelte/src/button/types.ts",
-          "packages/svelte/src/button/button.css",
-          "packages/svelte/src/button/contract.generated.ts",
-          "packages/svelte/src/button/tokens.generated.css",
+          "packages/svelte/src/components/button/Button.svelte",
+          "packages/svelte/src/components/button/types.ts",
+          "packages/svelte/src/components/button/button.css",
+          "packages/svelte/src/components/button/contract.generated.ts",
+          "packages/svelte/src/components/button/tokens.generated.css",
           "examples/button/App.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/button/Button.svelte": "cf8ce1cf7953268e5bcd08a529270ad5bb25c9274e9400ed6a29f2944430466a",
-          "packages/svelte/src/button/types.ts": "9f7140afe278eba5828b37c890f0fcc6f35209c276008519401721bb4cba8472",
-          "packages/svelte/src/button/button.css": "3a555a2464201303fa7e699c8ac636db292836904069807b0f1627b2b704787b",
-          "packages/svelte/src/button/contract.generated.ts": "f90148d9d8581c1dac118f222abea993c429a7817fa3ff46e3111da610b3ff12",
-          "packages/svelte/src/button/tokens.generated.css": "95984070b62c3e306fff311d23234f97a9a9d7d7ddc886e7dbec18f59320bf4a",
+          "packages/svelte/src/components/button/Button.svelte": "cf8ce1cf7953268e5bcd08a529270ad5bb25c9274e9400ed6a29f2944430466a",
+          "packages/svelte/src/components/button/types.ts": "9f7140afe278eba5828b37c890f0fcc6f35209c276008519401721bb4cba8472",
+          "packages/svelte/src/components/button/button.css": "3a555a2464201303fa7e699c8ac636db292836904069807b0f1627b2b704787b",
+          "packages/svelte/src/components/button/contract.generated.ts": "17c57d1cc7c5cc5b8587ea9d517397b9cf1833a652caaf7da859ff0afc68b0ae",
+          "packages/svelte/src/components/button/tokens.generated.css": "95984070b62c3e306fff311d23234f97a9a9d7d7ddc886e7dbec18f59320bf4a",
           "examples/button/App.svelte": "ca80916d651c71be4b9488fd9ac39179c0874a4daf27dcdcbae3c25638118272"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"L implémentation du Button est bien validée\", after reviewing the preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5 (commit 2c362f9). Amendment of 2026-10-13 (focusRadius): user, same session, \"Ok pour le token radius.focus\". Amendment of 2026-10-13 (auxclick guard, onclick types): user in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, authorizing the before-merge correction batch proposed by the audit (\"applique les correctifs proposés avant le merge. Je te fais confiance\"); digests re-recorded in that session. No separate interactive review of the guard: it changes no rendering, and the browser test covers it.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"L implémentation du Button est bien validée\", after reviewing the preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5 (commit 2c362f9). Amendment of 2026-10-13 (focusRadius): user, same session, \"Ok pour le token radius.focus\". Amendment of 2026-10-13 (auxclick guard, onclick types): user in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, authorizing the before-merge correction batch proposed by the audit (\"applique les correctifs proposés avant le merge. Je te fais confiance\"); digests re-recorded in that session. No separate interactive review of the guard: it changes no rendering, and the browser test covers it. Re-digested on 2026-10-13 for the repository structure change (branch chore/repo-structure, user decision in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: \"tu peux partir là dessus\"): files moved, only path references changed in their content; behavior, values and rendering unchanged.",
       "note": "Automated evidence: Chromium only (9 browser tests, 6 SSR tests). Icon, Counter and Shortcut are fixtures; Done waits for them and for Figma parity."
     },
     "figmaParity": {
       "scope": "Figma component set Button (48:1586, 135 variants, one trailing slot with an internal _Button/Trailing part), specification frame 126:1904 (layout tuned by the user), parity report (9324 records and 108 slot geometry records, 0 failures, 630 justified differences: forced-colors outline and loading keeps focus), focus ring corners on radius.focus.",
       "revision": {
         "paths": [
-          "components/actions/button/figma-spec.md",
+          "foundations/components/actions/button/figma-spec.md",
           "reports/components/button/figma/parity.json",
           "reports/components/button/figma/ledger.json"
         ],
         "sha256": {
-          "components/actions/button/figma-spec.md": "c3cf6ff6a401ab2bdbf2ae0f6705ea7cfa1579793416426be0dd52be7f290f00",
+          "foundations/components/actions/button/figma-spec.md": "43d4ae5075ab62e8fd71b9ada1a80350eebbef01e434b8a8607a68155083f502",
           "reports/components/button/figma/parity.json": "0cc7343db7cb4c4d29d4f725ba353e3ab77dc1cf5c914a6b30034832ecc86948",
-          "reports/components/button/figma/ledger.json": "072a7da949095d2fdf36f517d4968e891e6afae6a62be36d6947d75195575cba"
+          "reports/components/button/figma/ledger.json": "76283a3280c7bc6c913a3326b4b74c263969f539de95d414d4fbe30c96587dd8"
         },
         "figma": {
           "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
@@ -156,7 +156,7 @@
           "specificationFrame": "126:1904"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-13: \"je valide la parité Figma ! Tu peux tout cleaner et enchaîner sur la documentation\", after reviewing the masters and refining the specification page by hand. Records re-digested on 2026-10-13 in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: figma-spec.md now cites the current contract digest and the Wireframe collection's publishing flag; ledger.json records the audit cleanup (stray fixture instance removed, Wireframe hidden from publishing). Masters and specification frame unchanged.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-13: \"je valide la parité Figma ! Tu peux tout cleaner et enchaîner sur la documentation\", after reviewing the masters and refining the specification page by hand. Records re-digested on 2026-10-13 in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: figma-spec.md now cites the current contract digest and the Wireframe collection's publishing flag; ledger.json records the audit cleanup (stray fixture instance removed, Wireframe hidden from publishing). Masters and specification frame unchanged. Re-digested on 2026-10-13 for the repository structure change (branch chore/repo-structure, user decision in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: \"tu peux partir là dessus\"): files moved, only path references changed in their content; behavior, values and rendering unchanged.",
       "note": "Library not published (publication needs explicit authorization). Explorations and the previous specification copy removed from the Actions page."
     },
     "documentation": null,
@@ -262,13 +262,11 @@
     "Audit correction batch: approvals whose listed paths had changed (implementation after the radius.focus commit, Figma parity after figma-spec.md cited a superseded contract digest, foundations semantic after the two pending changes) were re-recorded with the current digests and the amendments' provenance, per the rule added to authoring/workflow.md.",
     "Audit correction batch: documentation states that the root's layout box is at least 44 px tall (the visible surface keeps the size height), a consequence of the target rule that matters in compact tables.",
     "Audit of the Figma file (2026-10-13): variables and masters consistent with the manifest and the contract; a stray _Fixture/Counter instance at the Utilities page root was removed and the Wireframe collection hidden from publishing (reports/components/button/figma/ledger.json, maintenance).",
-    "Default density resolved by the foundations change of 2026-10-13 (branch chore/foundations-defaults): tokens.css applies light and standard where no attribute selects an appearance or density, and the Figma Density collection defaults to standard, so a Button dropped on a frame without modes and a page without data-ggb-density both show the standard heights."
+    "Default density resolved by the foundations change of 2026-10-13 (branch chore/foundations-defaults): tokens.css applies light and standard where no attribute selects an appearance or density, and the Figma Density collection defaults to standard, so a Button dropped on a frame without modes and a page without data-ggb-density both show the standard heights.",
+    "Repository and Figma structure (user, 2026-10-13, branch chore/repo-structure): sources of truth under foundations/ (foundations/tokens with its config, inventory, palette config and status; foundations/components/<family>/<id> with contract, status and figma-spec), implementations under packages/svelte/src/components/<id>, token evidence under reports/tokens, one Figma page per component named by its path (actions/button) holding the master, its internal parts and its specification; family pages removed. The contract's $schema pointer and the generated header comment changed with the paths; approvals re-digested under the user's authorization."
   ],
-  "openDecisions": [
-    "Repository structure (2026-10-07, after the Button pull request, branch chore/repo-structure): user proposal foundations/contracts beside foundations/tokens; packages/svelte/src/components/<id>; category folders inside semantic tokens.",
-    "Figma file structure (user proposal, 2026-10-12): one page per component, named by its repository path (e.g. actions/button), holding the master, its internal parts and its specification; family pages replaced. Changes authoring/figma.md; to settle with the repository structure work."
-  ],
-  "nextAction": "Pull request https://github.com/JeremySQT/design-system/pull/2 open for user merge after the audit correction batch of 2026-10-13. Improvements proposed by the audit for later branches: default appearance and density in tokens.css and in the Figma default modes (chore/foundations-defaults, with the invariants radius.focus = radius.control + focus.offset and edge-inline + label-inline = padding-inline checked by tooling); package shape and a real consumer render before the first Deliver; $extensions for fontFeatures; grapheme-safe truncation; CI concurrency and computed.json drift check; Cover, Getting started and Foundations pages of the Figma file are still empty. Then chore/repo-structure, the documentation site, and Done when Icon, Counter and Shortcut exist.",
+  "openDecisions": [],
+  "nextAction": "Pull request for chore/repo-structure open for user merge. Then Icon (ggb-component), then Counter and Shortcut; Done when they exist.",
   "implementationNotes": [
     "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
     "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",

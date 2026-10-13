@@ -59,8 +59,8 @@ export function config(): Config {
     !cfg.appearances.includes(cfg.defaults.appearance) ||
     !cfg.densities.includes(cfg.defaults.density)
   )
-    throw Error('foundations/config.json: defaults.appearance and defaults.density must name configured values');
-  if (cfg.brands[0] !== 'base') throw Error('foundations/config.json: base must be the first brand');
+    throw Error('foundations/tokens/config.json: defaults.appearance and defaults.density must name configured values');
+  if (cfg.brands[0] !== 'base') throw Error('foundations/tokens/config.json: base must be the first brand');
   return cfg;
 }
 
