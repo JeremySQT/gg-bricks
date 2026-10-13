@@ -1,5 +1,9 @@
 {
   "brands": ["base", "brick", "orchid"],
   "appearances": ["light", "dark"],
-  "densities": ["compact", "standard", "comfortable"]
+  "densities": ["compact", "standard", "comfortable"],
+  "defaults": {
+    "appearance": "light",
+    "density": "standard"
+  }
 }

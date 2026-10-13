@@ -53,7 +53,15 @@ export function resolveAliases(raw: TokenMap<SourceToken>): TokenMap {
 }
 
 export function config(): Config {
-  return readJson<Config>(paths.config);
+  const cfg = readJson<Config>(paths.config);
+  if (
+    !cfg.defaults ||
+    !cfg.appearances.includes(cfg.defaults.appearance) ||
+    !cfg.densities.includes(cfg.defaults.density)
+  )
+    throw Error('foundations/config.json: defaults.appearance and defaults.density must name configured values');
+  if (cfg.brands[0] !== 'base') throw Error('foundations/config.json: base must be the first brand');
+  return cfg;
 }
 
 export function tokenFiles(dir: string): string[] {

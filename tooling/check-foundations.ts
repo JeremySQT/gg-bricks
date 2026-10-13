@@ -3,6 +3,7 @@
 //     (common, appearance or density file layer);
 //   - no undeclared semantic token exists (primitive.* and component tokens are exempt);
 //   - primitives hold no aliases; semantic colors hold no literal values;
+//   - every declared invariant holds (a derived dimension role equals the sum of other roles);
 //   - every contrast pair reaches its WCAG minimum, written to reports/tokens/contrast.json.
 // Exit code 1 on any failure. Run by `npm run validate`.
 //   node tooling/check-foundations.ts
@@ -15,6 +16,8 @@ type Axis = 'common' | 'appearance' | 'density';
 interface Inventory {
   roles: { path: string; type: string; axis: Axis }[];
   contrast: { content: string; surface: string; minimum: number; note?: string }[];
+  /** Dimension roles that must equal the sum of other dimension roles, in every context. */
+  invariants?: { equals: string; sum: string[]; note?: string }[];
 }
 export interface ContrastRecord {
   context: string;
@@ -102,7 +105,27 @@ for (const ctx of contexts) {
   }
 }
 
-// 3. Contrast evidence for the declared pairs.
+// 3. Derived roles maintained by hand (per brand or density) must keep their arithmetic relation.
+const px = (ctx: Context, p: string): number | null => {
+  const t = ctx.tokens[p];
+  if (!t || t.$type !== 'dimension') return null;
+  const d = t.$value as { value: number; unit: string };
+  return d.unit === 'px' ? d.value : null;
+};
+for (const ctx of contexts)
+  for (const inv of inventory.invariants ?? []) {
+    const target = px(ctx, inv.equals);
+    const parts = inv.sum.map((p) => px(ctx, p));
+    if (target === null || parts.some((x) => x === null)) {
+      errors.push(`${ctx.id}: invariant ${inv.equals} references a missing or non-px dimension role`);
+      continue;
+    }
+    const total = (parts as number[]).reduce((a, b) => a + b, 0);
+    if (total !== target)
+      errors.push(`${ctx.id}: ${inv.equals} is ${target}px, expected ${inv.sum.join(' + ')} = ${total}px`);
+  }
+
+// 4. Contrast evidence for the declared pairs.
 const records: ContrastRecord[] = [];
 function measure(ctx: Context, pair: Inventory['contrast'][number]): ContrastRecord | null {
   const content = ctx.tokens[pair.content]?.$value as Color | undefined;
@@ -147,6 +170,7 @@ for (const f of failures)
 const summary = {
   contexts: contexts.length,
   roles: inventory.roles.length,
+  invariants: inventory.invariants?.length ?? 0,
   contrastChecks: records.length,
   contrastFailures: failures.length,
   errors: errors.length

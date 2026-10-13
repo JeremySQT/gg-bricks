@@ -1,15 +1,26 @@
 // Layered CSS emission. The stylesheet mirrors the source structure instead of
 // resolving every brand × appearance × density combination:
 //
-//   [data-ggb-brand]                     base primitives, common and component tokens
+//   :root, [data-ggb-brand]              base primitives, common and component tokens, then the default
+//                                        appearance and density roles (foundations/config.json defaults)
 //   [data-ggb-appearance="<a>"]          base appearance roles (values reference primitives with var())
 //   [data-ggb-density="<d>"]             base density roles
 //   [data-ggb-brand="<b>"]               brand primitive/common/component overrides (sparse)
-//   [data-ggb-brand="<b>"][data-ggb-appearance="<a>"]  brand appearance overrides (sparse)
-//   [data-ggb-brand="<b>"][data-ggb-density="<d>"]     brand density overrides (sparse)
+//   [data-ggb-brand="<b>"][data-ggb-appearance="<a>"]  brand appearance overrides (sparse); for the default
+//                                        appearance also [data-ggb-brand="<b>"]:not([data-ggb-appearance])
+//   [data-ggb-brand="<b>"][data-ggb-density="<d>"]     brand density overrides (sparse), same for the default
 //
-// Cascade order reproduces the source precedence (base layers, then brand layers).
-// Aliases become var() references, so each attribute can be overridden alone in a subtree.
+// Cascade order reproduces the source precedence (base layers, then brand layers); the default appearance
+// and density blocks come first on their axis so that an explicit attribute on the same element wins.
+// Without any attribute the document gets base, the default appearance and the default density.
+//
+// Aliases become var() references, and a custom property substitutes its var() references on the element
+// that declares it, then its computed value is inherited. So an attribute can be overridden alone in a
+// subtree when its layer only reads layers that are constant below: appearance and density (they read the
+// palette and the primitives). A brand switch in a subtree changes the palette, which the appearance
+// roles computed on an ancestor do not re-read; the brand element re-declares the default appearance and
+// density instead, so a subtree that switches brand must restate data-ggb-appearance and
+// data-ggb-density on the same element to keep them. tests/tokens.test.ts models this.
 import { existsSync } from 'node:fs';
 import { abs, paths, readJson } from './paths.ts';
 import { flatten, cssVariable, isAlias, tokenFiles } from './tokens.ts';
@@ -81,19 +92,43 @@ function declarations(file: string): string[] {
 const block = (selector: string, lines: string[]): string =>
   lines.length ? `${selector} {\n${lines.join('\n')}\n}\n` : '';
 
+/** Selector list applying a base axis block: the default value also applies where no attribute selects one. */
+const axisSelector = (attribute: string, value: string, isDefault: boolean): string =>
+  isDefault ? `:root, [data-ggb-brand], [${attribute}="${value}"]` : `[${attribute}="${value}"]`;
+
+/** Selector list applying a brand's sparse override of one axis value. */
+const brandAxisSelector = (brand: string, attribute: string, value: string, isDefault: boolean): string =>
+  isDefault
+    ? `[data-ggb-brand="${brand}"]:not([${attribute}]), [data-ggb-brand="${brand}"][${attribute}="${value}"]`
+    : `[data-ggb-brand="${brand}"][${attribute}="${value}"]`;
+
+/** Values of an axis with the default first, so that explicit attributes on the same element win by order. */
+const defaultFirst = (values: string[], fallback: string): string[] => [
+  fallback,
+  ...values.filter((v) => v !== fallback)
+];
+
 export function buildLayeredCss(cfg: Config): string {
   const t = paths.tokens;
+  const appearances = defaultFirst(cfg.appearances, cfg.defaults.appearance);
+  const densities = defaultFirst(cfg.densities, cfg.defaults.density);
   let css = '/* Generated from foundations/tokens by tooling/build-tokens.ts. Do not edit. */\n';
   css +=
-    '/* Set data-ggb-brand, data-ggb-appearance and data-ggb-density on one ancestor; any of them can be overridden alone in a subtree. */\n';
+    `/* Set data-ggb-brand, data-ggb-appearance and data-ggb-density on one ancestor; without them the document is base, ${cfg.defaults.appearance} and ${cfg.defaults.density}. */\n` +
+    '/* A subtree may override data-ggb-appearance or data-ggb-density alone; a subtree that switches data-ggb-brand gets the defaults unless it restates the other two on the same element. */\n';
   const base = (name: string) => `${t}/base/semantic/${name}.tokens.json`;
-  css += block('[data-ggb-brand]', [
+  css += block(':root, [data-ggb-brand]', [
     ...tokenFiles(`${t}/base/primitives`).flatMap(declarations),
     ...(existsSync(abs(base('common'))) ? declarations(base('common')) : []),
     ...tokenFiles(`${t}/base/components`).flatMap(declarations)
   ]);
-  for (const a of cfg.appearances) css += block(`[data-ggb-appearance="${a}"]`, declarations(base(`appearance.${a}`)));
-  for (const d of cfg.densities) css += block(`[data-ggb-density="${d}"]`, declarations(base(`density.${d}`)));
+  for (const a of appearances)
+    css += block(
+      axisSelector('data-ggb-appearance', a, a === cfg.defaults.appearance),
+      declarations(base(`appearance.${a}`))
+    );
+  for (const d of densities)
+    css += block(axisSelector('data-ggb-density', d, d === cfg.defaults.density), declarations(base(`density.${d}`)));
   for (const b of cfg.brands) {
     if (b === 'base') continue;
     const brand = (name: string) => `${t}/${b}/semantic/${name}.tokens.json`;
@@ -102,12 +137,18 @@ export function buildLayeredCss(cfg: Config): string {
       ...(existsSync(abs(brand('common'))) ? declarations(brand('common')) : []),
       ...tokenFiles(`${t}/${b}/components`).flatMap(declarations)
     ]);
-    for (const a of cfg.appearances)
+    for (const a of appearances)
       if (existsSync(abs(brand(`appearance.${a}`))))
-        css += block(`[data-ggb-brand="${b}"][data-ggb-appearance="${a}"]`, declarations(brand(`appearance.${a}`)));
-    for (const d of cfg.densities)
+        css += block(
+          brandAxisSelector(b, 'data-ggb-appearance', a, a === cfg.defaults.appearance),
+          declarations(brand(`appearance.${a}`))
+        );
+    for (const d of densities)
       if (existsSync(abs(brand(`density.${d}`))))
-        css += block(`[data-ggb-brand="${b}"][data-ggb-density="${d}"]`, declarations(brand(`density.${d}`)));
+        css += block(
+          brandAxisSelector(b, 'data-ggb-density', d, d === cfg.defaults.density),
+          declarations(brand(`density.${d}`))
+        );
   }
   return css;
 }

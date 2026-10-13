@@ -11,6 +11,7 @@ import { abs, paths, readJson, readText, write } from './lib/paths.ts';
 
 interface Manifest {
   collections: Record<string, string[]>;
+  defaults: Record<string, string>;
   variables: { collection: string; name: string; [k: string]: unknown }[];
   typography: unknown[];
   effects: unknown[];
@@ -85,7 +86,7 @@ if (current.length) batches.push(current);
 if (existsSync(abs(out))) for (const f of readdirSync(abs(out))) if (/^variables-\d+\.js$/.test(f)) rmSync(abs(out, f));
 const files: string[] = [];
 batches.forEach((batch, i) => {
-  const defs = `const defs = ${JSON.stringify({ collections: manifest.collections }).slice(
+  const defs = `const defs = ${JSON.stringify({ collections: manifest.collections, defaults: manifest.defaults }).slice(
     0,
     -1
   )},"variables":[${batch.join(',')}]};\n`;
@@ -104,6 +105,7 @@ write(
     readText(`${adapters}/prune-variables.plugin.js`)
 );
 const cfg = readJson<{ brands: string[]; appearances: string[]; densities: string[] }>(paths.config);
+// The verification script resolves every brand × appearance × density explicitly; defaults do not matter to it.
 write(
   `${out}/verify.js`,
   `const defs = ${JSON.stringify({ brands: cfg.brands, appearances: cfg.appearances, densities: cfg.densities })};\n` +

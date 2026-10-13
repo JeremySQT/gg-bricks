@@ -150,7 +150,7 @@ With `href`, the button renders as a link. A disabled link keeps the appearance 
 
 ## API
 
-Import from `@ggbrick/svelte` (Svelte 5, built on Bits UI `Button.Root`). Import `@ggbrick/svelte/tokens.css` once and set `data-ggb-brand`, `data-ggb-appearance` and `data-ggb-density` on an ancestor.
+Import from `@ggbrick/svelte` (Svelte 5, built on Bits UI `Button.Root`). Import `@ggbrick/svelte/tokens.css` once and set `data-ggb-brand`, `data-ggb-appearance` and `data-ggb-density` on an ancestor (without them the page is `base`, `light` and `standard`).
 
 ```ts
 import { Button } from '@ggbrick/svelte';
