@@ -156,7 +156,10 @@
     "Purge of the reference-kit leftovers: seed brands, stale generated outputs, handoff note and Figma script bodies removed; adapter README keeps the known mechanics (round 2).",
     "Figma collections: Primitives (single mode) for primitives shared by every brand, Brand only for brand-dependent semantic tokens; component tokens go to Brand under component/<id> (user review of the Figma file, 2026-09-26)."
   ],
-  "pullRequest": "https://github.com/JeremySQT/design-system/pull/1",
+  "pullRequest": {
+    "initial": "https://github.com/JeremySQT/design-system/pull/1 (merged)",
+    "defaults": "https://github.com/JeremySQT/design-system/pull/3"
+  },
   "pendingChanges": [
     {
       "date": "2026-10-07",
