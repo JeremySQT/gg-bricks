@@ -1,0 +1,119 @@
+{
+  "formatStatus": "v1",
+  "componentId": "counter",
+  "family": "content",
+  "wave": 1,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Show a quantity (unread messages, items, selected rows) as a compact pill next to the thing it counts.",
+    "useCases": [
+      "Standalone next to a tab label, a navigation item or a list header, with an accessible label giving the number its meaning (8 unread messages).",
+      "Inside the Button trailing slot, as text-like content placed by its box that inherits the button's content color and takes the button's size.",
+      "Large quantities capped at a maximum and shown as an overflow (99+ by default, max configurable).",
+      "Zero shown as 0 when the integration chooses to render the counter (0 selected rows); hiding an empty quantity is the integration's choice."
+    ],
+    "exclusions": [
+      "Status or category words (Badge, wave 1, planned).",
+      "Free text, units or formatted amounts (plain text, DataField).",
+      "A dot indicator without a number (Badge or a later indicator).",
+      "Editing a quantity (NumberInput, wave 6).",
+      "Live announcements when the value changes: the integration owns live regions.",
+      "A colored or filled emphasis axis (neutral, accent, danger): waits for an indicator color family shared with Badge (open decision 2)."
+    ],
+    "alternatives": [
+      "Badge (planned) for a status or a category rather than a quantity.",
+      "Plain text when the number is part of a sentence or a data cell.",
+      "NumberInput (later) when the user edits the quantity."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": [
+    "The Button review fixture examples/button/Fixtures.svelte (kind counter) is the current stand-in inside Button: inline-grid pill, min-inline-size 1.5em, padding-inline 0.4em, radius full, inset 1 px ring in currentColor, font-size 0.85em, tabular figures. Button examples and tests switch to the component once Counter passes its implementation gate."
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/content/counter/contract.json",
+      "sha256": "ca8dc81d223179f1a2c5bb4a8a3236b0e7d4588ef830b44492fc7bdf0fc857a8"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate",
+      "report": "reports/components/counter/contract-validation.json",
+      "date": "2026-10-13",
+      "note": "Schema, consistency and token coverage (3 paths: radius.full, border.width.default, space.content.xs) in 18 contexts; node tooling/validate-contracts.ts counter --tokens --dependencies also passed (no accepted content). The typography role is not bound yet (open decision 1), so coverage does not prove the typography."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "date": "2026-10-13",
+      "note": "No contrast records: the counter binds no color role (it draws in the inherited content color), so there is no surface/content pair to measure. Contrast is the host's or the surrounding text's."
+    }
+  ],
+  "decisionsTaken": [
+    "value is a number (default 0, min 0), not a required string: the component owns the overflow rule (value > max shows max+), which needs a number, and a quantity is what the component means; free text belongs to Badge or plain text. The schema requires a default for numbers, so an omitted value shows 0 rather than failing.",
+    "max is a number (default 99, min 1); overflow shows max followed by a plus sign (99+). The accessible text is the visible text (99+), not the exact value: visible and announced text agree, which is what sighted screen reader users expect, and the pill stays compact. Exposed as the derived boolean state overflow.",
+    "label is an optional string: the accessible text is the visible number followed by label when set (8 unread messages). It is optional because inside a host (Button) the host decides whether the counter is announced at all, and next to a visible label (Inbox 8) the reading order already gives the meaning. The component guarantees that its text is readable and that label, when given, is part of it; the integration guarantees that a lone number has a meaning.",
+    "No showZero option: the counter always shows its value, 0 included; the integration knows whether 0 is meaningful (0 selected rows) or should disappear (0 unread), and conditional rendering is trivial on every platform.",
+    "No emphasis, intent or appearance axis in v1: the existing inventory offers action colors (for actions), status colors (Badge's territory) and selection colors, none of which is honest for a notification counter; and inside a Button the counter must inherit the button's content anyway. The single treatment is the one the user validated in the Button implementation review: border and digits in the inherited content color, no fill. A future filled or colored emphasis is recorded as open decision 2, to share with Badge.",
+    "No color role at all: the border and the value use the inherited content color (currentColor) in every context (standalone next to text, inside a solid, outline or ghost Button in any state). This is the only context-independent choice and it needs no contrast evidence of its own.",
+    "size is sm | md | lg with the Button's names (default md), so that an integration passes the host's size through without a mapping; the counter's typography is one step below the host's label at each size (fixture ratio 0.85: 10.2, 11.9, 13.6 px rounded to the 11, 12, 14 px primitives).",
+    "The container block size is the line box of the typography (no block padding) and the minimum inline size equals the block size, so a single digit is a circle; the counter has no control height and no interaction target because it is not interactive. The alternative, binding the block size to size.icon.{size} (16, 20, 24 px, equal to the Button slot's minimum block size), was considered and set aside because the brief and the validated fixture size the counter by its typography; it is mentioned at the gate.",
+    "paddingInline binds space.content.xs (compact 2, standard 4, comfortable 6 px): the content spacing family is the one for spacing inside content, the standard value matches the validated fixture (0.4em of 11.9 px = 4.8 px) and a density-dependent padding follows the Button's own spacing, which also shrinks with density. space.content.sm (4, 8, 12) was too wide at standard.",
+    "borderWidth binds border.width.default (1 px) and radius binds radius.full, as in the fixture; the border is drawn inside the container edge so the box the host places is the visible pill.",
+    "Digits are tabular (fixture, and the numeral typography family already carries tnum), so counters of the same size and digit count have the same width in lists and tabs.",
+    "Typography role left unbound on purpose: no existing role is honest (numeral.sm/md/lg are 14/16/24 px, too big for a counter that must sit below a 12 to 16 px label; caption.sm/md are 400 weight without tabular figures and have no lg step; label.sm/md/lg are the host's own sizes). Binding typography.numeral.{size} would validate but render a 24 px counter in a lg Button. The proposed roles are in open decision 1; the contract binds the role typography once the reviewer picks the family.",
+    "Parts limited to container and value; the accessible label is not a visual part. No events, no interaction states: the counter never reacts to its host's hover, pressed, loading or disabled states beyond inheriting the content color (Button fades its trailing content while loading and gives it the disabled content color).",
+    "Forced-colors rule kept in the contract (decision register: every component with a border handles forced colors): the border stays visible in the system text color.",
+    "The roadmap progress row, the token files and the token inventory were not touched in this worktree (orchestrator instruction: shared files are edited by the orchestrator at the grouped gate)."
+  ],
+  "openDecisions": [
+    {
+      "id": 1,
+      "question": "Which typography roles for the counter sizes? The contract needs a role typography bound to a size-parameterized path; none exists today.",
+      "proposal": "Recommended (A): new semantic family typography.indicator.{sm,md,lg}, type typography, axis common (same value in all 18 contexts, Inter everywhere): sm = Inter 500, 11 px, line-height 1.4, letter-spacing 0, fontFeatures [tnum]; md = Inter 500, 12 px, 1.4, 0, [tnum]; lg = Inter 500, 14 px, 1.4, 0, [tnum] (lg equals typography.numeral.sm). Keyed by the control sizes it accompanies, so the contract binds typography: typography.indicator.{size} and the generator emits one data-size selector per size; reusable by Badge (same pill text ladder) and by Shortcut if it stays in the sans family. Figma: three text styles indicator/sm, md, lg. Alternative (B): extend the numeral ladder downward with typography.numeral.xs = 12 px and typography.numeral.2xs = 11 px (500, 1.4, 0, [tnum]) and bind three explicit roles typographySm, typographyMd, typographyLg (numeral.2xs, numeral.xs, numeral.sm); smaller addition but bypasses the {size} convention of the generated CSS. Rejected (C): typography.caption.{sm,md} with no lg size (400 weight, no tabular figures, inconsistent with the validated fixture).",
+      "blocks": "implementation (not the contract gate)"
+    },
+    {
+      "id": 2,
+      "question": "Should v1 ship with the single currentColor treatment (border and digits in the inherited content color, no fill), and should a filled or colored emphasis wait for Badge?",
+      "proposal": "Yes: no existing color family is honest for a notification counter (action colors are for actions, status colors are Badge's, selection is for selection), and a translucent neutral fill that would work in every host has no token. When Badge is scoped, define one indicator color family shared by both, for example color.indicator.{neutral,accent,danger}.{surface,content} on the appearance axis (neutral: surface.muted + content.primary; accent and danger: strong fills with white content), and add an emphasis prop to Counter then. Until then, the integration tints a standalone counter through the surrounding text color.",
+      "blocks": "nothing"
+    },
+    {
+      "id": 3,
+      "question": "Button hides its leading and trailing content from assistive technology (Button decision, 2026-10-07), so a Button Inbox with a counter 8 announces only Inbox. Should Button append the counter's accessible text to its name, or should the integration put the quantity in the button label when it matters?",
+      "proposal": "Outside the Counter's scope; the Counter rule says a host may hide it. Recommended: keep Button as approved and document in Counter and Button usage that a quantity a screen reader user needs goes into the host's label (Inbox, 8 unread) or into a live region owned by the integration. If the reviewer prefers announcing, it is a Button contract change (its accessible-name rule), reopened for that fact only.",
+      "blocks": "nothing"
+    }
+  ],
+  "nextAction": "Contract gate (grouped with Icon and Shortcut): reviewer picks the typography family (open decision 1), confirms the currentColor-only treatment (2) and the Button announcement question (3); then bind the typography role, re-validate, record the approval with digests and start the implementation (ggb-svelte).",
+  "implementationNotes": [
+    "Svelte: a <span class=\"ggb-counter\" data-size> root with a <span class=\"ggb-counter__value\"> for the digits and, when label is set, a visually hidden <span> appended after the value so the accessible text reads 8 unread messages; no role attribute, no aria-label (visible text stays the name). Live announcements are left to the integration.",
+    "Formatting: Math.floor then Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }) for digit grouping when max is raised above 999; overflow appends U+002B (+) to the formatted max. SSR uses the server locale; the integration can pin a locale by wrapping, which is out of scope for v1.",
+    "CSS: display inline-grid; place-items center; font from --ggb-counter-typography with the fontFeatureSettings helper (tnum) once the role is bound, plus font-variant-numeric: tabular-nums as a fallback; min-inline-size: 1lh (the lh unit is supported by current Chromium, Safari and Firefox; a calc on the line-height custom property is the fallback); padding-inline var(--ggb-counter-paddingInline); border-radius var(--ggb-counter-radius).",
+    "Ring: box-shadow: inset 0 0 0 var(--ggb-counter-borderWidth) currentColor keeps the box equal to the line box; forced-colors mode drops box-shadows, so @media (forced-colors: active) adds an outline of borderWidth at a negative offset in CanvasText.",
+    "Block sizes are fractional with a 1.4 line height (15.4, 16.8, 19.6 px): do not round them; the Button slot centers the box (min-block-size iconSize), and the parity tolerance is 1.5 px.",
+    "Inside Button: the integration writes <Counter size={buttonSize} value={n} /> in the trailing snippet; Button's slotInline margin applies to the counter's box, the content color is inherited through color: inherit on the slot, loading fades the slot (opacity 0) and disabled gives it the disabled content color; nothing to do in Counter.",
+    "Figma: component set Counter with a Size variant property (sm, md, lg), a Value text property and an Overflow boolean that swaps the text to max+ for the specification; text bound to the typography style of the size, inside stroke bound to border/width/default; no currentColor in Figma, so the stroke and text color bind to an adapter foreground variable (as Button's button/foreground) defaulting to color/content/primary; auto layout with min width equal to the frame height per size and corner radius radius/full.",
+    "Tests: SSR (0, 8, 99+, label text, size attribute); browser (computed line box and min width per size and density, tabular widths equal for 8 and 1, overflow at max, forced-colors ring, axe light and dark, a counter in sm, md and lg Buttons compared with the fixture geometry)."
+  ]
+}
