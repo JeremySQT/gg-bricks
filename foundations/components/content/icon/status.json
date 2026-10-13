@@ -1,0 +1,74 @@
+{
+  "formatStatus": "v1",
+  "componentId": "icon",
+  "family": "content",
+  "wave": 1,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Display a vector glyph from the application's icon set at a system size, in the current content color, decorative unless it carries a label.",
+    "useCases": [
+      "An icon next to text: menu items, list rows, navigation entries, form hints (inherits the text color).",
+      "Slot content of Button (leading or trailing), sized by the button.",
+      "A meaningful icon on its own, with a label as accessible name: a status icon in a table cell, a type icon in a file list.",
+      "Five sizes from captions (xs) to empty states and feature headers (xl)."
+    ],
+    "exclusions": [
+      "Bundling an icon set: the application provides the glyphs (decision: Phosphor Icons is the reference set, nothing is bundled).",
+      "Interactive icons: IconButton (wave 1) owns the action, name and target size.",
+      "Multi-color or illustrative artwork, logos, avatars (Avatar, wave 5) and images.",
+      "Loading indicators: Spinner (wave 3); the Button has its own intrinsic indicator.",
+      "Icon fonts and sprite sheets: a glyph is inline vector content."
+    ],
+    "alternatives": [
+      "IconButton for an action without visible text.",
+      "Badge for a status or category with text.",
+      "Spinner for an activity indicator."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": [
+    "Phosphor Icons 2.1.1 regular paths (plus, arrow-right, trash, download-simple, check) in examples and tests, standing in for the application's icon set."
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/content/icon/contract.json",
+      "sha256": "4298b3118dba2865343db03589ad7f70b2f3a103ce6d3e44b3754e6c4215a96a"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [],
+  "decisionsTaken": [
+    "The glyph is content supplied by the host (a drawing), not a name looked up in a bundled set: ggbrick bundles no icons (authoring/decisions.md, Icons). The implementation exposes the drawing's coordinate box as an option so that icon sets with another grid still render.",
+    "Five sizes, bound to size.icon.{xs,sm,md,lg,xl} (12, 16, 20, 24, 32 px), density-independent as every icon size; default md to match the md Button.",
+    "Decorative by default: a lone icon without label is hidden from assistive technology; a label turns it into an image with that accessible name. No separate boolean: the presence of label decides.",
+    "No color option: the icon paints in the current content color; a host that needs another color wraps it in a colored container (as Button does through its content color).",
+    "No states and no interaction: the icon is static content.",
+    "Inside a Button slot the button's icon size wins over the size option, so that slot content always matches the button size (Button contract rule).",
+    "The reference set's 1/8 inset is a documented convention, not an option: hosts that apply optical spacing (Button) assume it; glyphs from sets with another inset are supported but sit slightly off in those hosts."
+  ],
+  "openDecisions": [
+    "Contract gate: should the glyph be passed as content (a snippet rendering the drawing inside the icon's own svg, with a viewBox option defaulting to the reference grid) or as a path string option? Proposed: content, because glyphs may hold several shapes and sets differ.",
+    "Contract gate: keep all five sizes of size.icon (xs 12 to xl 32) or only the three used by Button (sm, md, lg)? Proposed: five, since captions and empty states need the extremes and the tokens already exist.",
+    "Figma parity gate (later): the Figma master cannot hold the application's icons; proposed: an Icon component set whose Name variants are the review fixtures (Phosphor), with Size as a variant, replacing the _Fixture/Icon set."
+  ],
+  "nextAction": "Contract gate (grouped with Counter and Shortcut).",
+  "implementationNotes": [
+    "Svelte: Icon renders a single svg root element (class ggb-icon, data-size, viewBox option defaulting to the Phosphor grid 0 0 256 256, fill currentColor, width and height from size.icon) whose content is the children snippet. A single svg root keeps the Button slot selectors (.ggb-button__leading > svg) working, so the button sizes and optically offsets the icon as it does today with raw svg fixtures.",
+    "Accessibility: without label, aria-hidden=\"true\" and focusable=\"false\"; with label, role=\"img\" and aria-label.",
+    "Layout: display inline-block, vertical-align middle, flex none, so the icon aligns with text and never shrinks in a flex row."
+  ]
+}

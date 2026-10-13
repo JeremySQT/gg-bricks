@@ -1,0 +1,19 @@
+{
+  "valid": true,
+  "checks": {
+    "schema": "passed",
+    "consistency": "passed",
+    "tokenCoverage": "passed",
+    "dependencies": "not-provided",
+    "intrinsicRules": "manual-review-required"
+  },
+  "errors": [],
+  "requiredTokenPaths": [
+    "size.icon.xs",
+    "size.icon.sm",
+    "size.icon.md",
+    "size.icon.lg",
+    "size.icon.xl"
+  ],
+  "dependencies": []
+}
