@@ -4,7 +4,7 @@ Generated outputs of the authoritative token sources in `foundations/tokens`. Do
 
 | File | Content |
 | --- | --- |
-| `tokens.css` | Layered rules: base tokens under `[data-ggb-brand]`, appearance roles under `[data-ggb-appearance]`, density roles under `[data-ggb-density]`, sparse brand overrides under combined selectors. Every token becomes `--ggb-<path-with-dashes>`; aliases are `var()` references. |
+| `tokens.css` | Layered rules: base tokens and the default appearance and density under `:root, [data-ggb-brand]`, appearance roles under `[data-ggb-appearance]`, density roles under `[data-ggb-density]`, sparse brand overrides under combined selectors. Every token becomes `--ggb-<path-with-dashes>`; aliases are `var()` references. |
 | `resolved/<brand>-<appearance>-<density>.json` | Flat resolved DTCG map for one context (aliases resolved after sparse overlays). |
 | `figma-manifest.json` | Variable collections, routing and values for the Figma adapter. |
 | `figma-expectations.json` | Expected native Figma resolution per brand and mode pair, used by the verification scripts. |
@@ -19,4 +19,4 @@ Provenance traces (which source file set each value) are written to `reports/tok
 <body data-ggb-brand="base" data-ggb-appearance="light" data-ggb-density="standard">
 ```
 
-Set all three attributes on one ancestor. A subtree may override any one of them alone (for example `data-ggb-density="compact"` on a toolbar): the stylesheet is layered per attribute and aliases resolve through `var()`.
+Set the three attributes on one ancestor. Without any of them the document is `base`, `light` and `standard` (the defaults of `foundations/config.json`); a brand attribute alone gets that brand with the defaults. A subtree may override `data-ggb-appearance` or `data-ggb-density` alone (for example `data-ggb-density="compact"` on a toolbar). A subtree that switches `data-ggb-brand` gets the defaults for the other two unless it restates them on the same element: the color roles are computed where the appearance is declared, with the palette in effect there.

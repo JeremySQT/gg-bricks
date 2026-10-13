@@ -49,6 +49,8 @@ export interface Config {
   brands: string[];
   appearances: string[];
   densities: string[];
+  /** Appearance and density applied where no attribute selects one (the base brand is always the default brand). */
+  defaults: { appearance: string; density: string };
 }
 
 export interface TraceEntry {

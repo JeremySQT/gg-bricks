@@ -89,6 +89,10 @@
       {
         "date": "2026-09-26",
         "change": "Primitives moved from the Brand collection (VariableID:4:5 to 4:228, removed) to the new Primitives collection (VariableID:14:3 to 14:226); 560 aliases re-pointed by name; no node was bound to the old variables."
+      },
+      {
+        "date": "2026-10-13",
+        "change": "Density collection default mode set to standard (mode 4:6) with setDefaultMode; the mode order became standard, compact, comfortable. Appearance already defaulted to light, Brand to base. Matches the defaults of foundations/config.json; the sync script now sets default modes from the manifest."
       }
     ],
     "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change).",

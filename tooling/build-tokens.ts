@@ -217,7 +217,7 @@ for (const c of components) {
 // like the token files. A technical `_resolved/*` variable (Brand collection, hidden) is emitted only when
 // a token cannot be expressed as one alias per mode (a brand overlay of an appearance or density file,
 // or an alias across the Appearance and Density axes); it is compilation detail, not a source layer.
-const base = contexts.find((c) => c.id === `base-${cfg.appearances[0]}-${cfg.densities[0]}`);
+const base = contexts.find((c) => c.id === `base-${cfg.defaults.appearance}-${cfg.defaults.density}`);
 if (!base) throw Error('Base context missing');
 const ctxById = Object.fromEntries(contexts.map((c) => [c.id, c]));
 const flatByContext: Record<string, TokenMap> = Object.fromEntries(
@@ -282,6 +282,8 @@ const figmaName = (p: string) => p.replaceAll('.', '/');
 const primitivesMode = 'default';
 const manifest: {
   collections: Record<string, string[]>;
+  /** Default mode per collection (what a node without an explicit mode resolves to), from config defaults. */
+  defaults: Record<string, string>;
   variables: FigmaVariable[];
   typography: {
     name: string;
@@ -299,6 +301,12 @@ const manifest: {
     Brand: cfg.brands,
     Appearance: cfg.appearances,
     Density: cfg.densities
+  },
+  defaults: {
+    Primitives: primitivesMode,
+    Brand: cfg.brands[0],
+    Appearance: cfg.defaults.appearance,
+    Density: cfg.defaults.density
   },
   variables: [],
   typography: [],

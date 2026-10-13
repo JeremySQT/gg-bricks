@@ -48,54 +48,155 @@ test('unknown configuration fails before reading overlays', () => {
   assert.throws(() => sources('typo-brand', 'light', 'standard'), /Unknown configuration/);
 });
 
-// Layered CSS parity: applying the cascade for a context and resolving var() must give the
-// same literal values as the resolved JSON map. A minimal resolver, not a CSS engine.
+// Layered CSS parity. The resolver models what browsers do with custom properties: on each element the
+// winning declaration per property is chosen by specificity then source order, var() references are
+// substituted on that element (own declarations first, then values inherited from the parent), and the
+// substituted value is what descendants inherit. Elements are chains of attribute sets (the root first).
 import { buildLayeredCss, cssSourceValue } from '../tooling/lib/css.ts';
 import { config, cssValue } from '../tooling/lib/tokens.ts';
-function cascade(css: string, attrs: Record<string, string>): Record<string, string> {
-  const vars: Record<string, string> = {};
+type Attrs = Record<string, string>;
+type Rule = { specificity: number; order: number; declarations: Record<string, string> };
+const SIMPLE = /\[(data-ggb-\w+)(?:="([^"]+)")?\]|:root|:not\(\[(data-ggb-\w+)\]\)/g;
+/** Parse the stylesheet into rules; a selector list yields one rule per selector. */
+function parse(css: string): Rule[] {
+  const rules: Rule[] = [];
+  let order = 0;
   for (const m of css.matchAll(/^([^{\n]+) \{\n([\s\S]*?)\n\}/gm)) {
-    const selectors = [...m[1].matchAll(/\[data-ggb-(\w+)(?:="([^"]+)")?\]/g)];
-    if (!selectors.every(([, k, v]) => (v === undefined ? k in attrs : attrs[k] === v))) continue;
+    const declarations: Record<string, string> = {};
     for (const line of m[2].split('\n')) {
       const match = line.match(/^\s*(--[^:]+): (.+);$/);
       if (!match) throw Error('Unexpected line: ' + line);
-      vars[match[1]] = match[2];
+      declarations[match[1]] = match[2];
+    }
+    for (const selector of m[1].split(', ')) {
+      const parts = [...selector.matchAll(SIMPLE)];
+      if (parts.map((p) => p[0]).join('') !== selector) throw Error('Unsupported selector: ' + selector);
+      const matches = (attrs: Attrs, isRoot: boolean) =>
+        parts.every(([whole, attr, value, notAttr]) =>
+          whole === ':root'
+            ? isRoot
+            : notAttr
+              ? !(notAttr in attrs)
+              : value === undefined
+                ? attr in attrs
+                : attrs[attr] === value
+        );
+      rules.push({ specificity: parts.length, order: order++, declarations, ...{ matches } } as Rule & {
+        matches: typeof matches;
+      });
     }
   }
-  const resolve = (v: string, depth = 0): string => {
-    if (depth > 20) throw Error('deep');
-    return v.replace(/var\((--[^)]+)\)/g, (_, n: string) => {
-      if (!(n in vars)) throw Error('unset ' + n);
-      return resolve(vars[n], depth + 1);
-    });
-  };
-  return Object.fromEntries(Object.entries(vars).map(([k, v]) => [k, resolve(v)]));
+  return rules;
 }
+/** Computed custom properties of the last element of a chain of attribute sets. */
+function computed(css: string, chain: Attrs[]): Record<string, string> {
+  const rules = parse(css) as (Rule & { matches: (a: Attrs, r: boolean) => boolean })[];
+  let inherited: Record<string, string> = {};
+  chain.forEach((attrs, index) => {
+    const own: Record<string, { value: string; specificity: number; order: number }> = {};
+    for (const rule of rules) {
+      if (!rule.matches(attrs, index === 0)) continue;
+      for (const [name, value] of Object.entries(rule.declarations)) {
+        const current = own[name];
+        if (
+          !current ||
+          rule.specificity > current.specificity ||
+          (rule.specificity === current.specificity && rule.order > current.order)
+        )
+          own[name] = { value, specificity: rule.specificity, order: rule.order };
+      }
+    }
+    const result: Record<string, string> = { ...inherited };
+    const resolve = (v: string, depth = 0): string => {
+      if (depth > 20) throw Error('deep');
+      return v.replace(/var\((--[^)]+)\)/g, (_, n: string) => {
+        const source = own[n]?.value ?? inherited[n];
+        if (source === undefined) throw Error('unset ' + n);
+        return resolve(source, depth + 1);
+      });
+    };
+    for (const [name, decl] of Object.entries(own)) result[name] = resolve(decl.value);
+    inherited = result;
+  });
+  return inherited;
+}
+const cfg = config();
+const css = buildLayeredCss(cfg);
+const name = (p: string) => '--ggb-' + p.replaceAll('.', '-');
+const expectContext = (
+  vars: Record<string, string>,
+  brand: string,
+  appearance: string,
+  density: string,
+  only?: RegExp
+) => {
+  let compared = 0;
+  for (const [p, t] of Object.entries(resolveSources(sources(brand, appearance, density)).tokens)) {
+    if (only && !only.test(p)) continue;
+    assert.ok(name(p) in vars, `${name(p)} missing for ${brand}/${appearance}/${density}`);
+    assert.equal(vars[name(p)], cssValue(t), `${name(p)} differs for ${brand}/${appearance}/${density}`);
+    compared++;
+  }
+  return compared;
+};
 test('layered CSS resolves to the same values as the resolved maps in every context', () => {
-  const cfg = config();
-  const css = buildLayeredCss(cfg);
   let compared = 0;
   for (const brand of cfg.brands)
     for (const appearance of cfg.appearances)
-      for (const density of cfg.densities) {
-        const vars = cascade(css, { brand, appearance, density });
-        const tokens = resolveSources(sources(brand, appearance, density)).tokens;
-        for (const [p, t] of Object.entries(tokens)) {
-          const name = '--ggb-' + p.replaceAll('.', '-');
-          assert.ok(name in vars, `${name} missing for ${brand}/${appearance}/${density}`);
-          assert.equal(vars[name], cssValue(t), `${name} differs for ${brand}/${appearance}/${density}`);
-          compared++;
-        }
-      }
+      for (const density of cfg.densities)
+        compared += expectContext(
+          computed(css, [{ 'data-ggb-brand': brand, 'data-ggb-appearance': appearance, 'data-ggb-density': density }]),
+          brand,
+          appearance,
+          density
+        );
   assert.ok(compared > 1000);
 });
-test('a single overridden attribute changes only its layer', () => {
-  const css = buildLayeredCss(config());
-  const a = cascade(css, { brand: 'base', appearance: 'light', density: 'standard' }),
-    b = cascade(css, { brand: 'base', appearance: 'light', density: 'compact' });
-  assert.notEqual(a['--ggb-size-control-md'], b['--ggb-size-control-md']);
-  assert.equal(a['--ggb-color-surface-canvas'], b['--ggb-color-surface-canvas']);
+test('without any attribute the document is base with the default appearance and density', () => {
+  expectContext(computed(css, [{}]), 'base', cfg.defaults.appearance, cfg.defaults.density);
+});
+test('a brand attribute alone gets that brand with the default appearance and density', () => {
+  for (const brand of cfg.brands)
+    expectContext(
+      computed(css, [{}, { 'data-ggb-brand': brand }]),
+      brand,
+      cfg.defaults.appearance,
+      cfg.defaults.density
+    );
+});
+test('appearance or density can be overridden alone in a subtree', () => {
+  const root = { 'data-ggb-brand': 'brick', 'data-ggb-appearance': 'light', 'data-ggb-density': 'standard' };
+  expectContext(computed(css, [root, { 'data-ggb-appearance': 'dark' }]), 'brick', 'dark', 'standard');
+  expectContext(computed(css, [root, { 'data-ggb-density': 'compact' }]), 'brick', 'light', 'compact');
+  expectContext(
+    computed(css, [root, {}, { 'data-ggb-appearance': 'dark' }, { 'data-ggb-density': 'comfortable' }]),
+    'brick',
+    'dark',
+    'comfortable'
+  );
+});
+test('a brand switch in a subtree works when it restates appearance and density, and only then', () => {
+  const root = { 'data-ggb-brand': 'base', 'data-ggb-appearance': 'dark', 'data-ggb-density': 'compact' };
+  expectContext(
+    computed(css, [root, { 'data-ggb-brand': 'orchid', 'data-ggb-appearance': 'dark', 'data-ggb-density': 'compact' }]),
+    'orchid',
+    'dark',
+    'compact'
+  );
+  // Documented limitation: a brand attribute alone re-declares the default appearance and density on its
+  // element (the ancestor's dark and compact roles were computed with the ancestor's palette and cannot
+  // follow the new brand), so the subtree is orchid with the defaults, not orchid dark compact.
+  expectContext(
+    computed(css, [root, { 'data-ggb-brand': 'orchid' }]),
+    'orchid',
+    cfg.defaults.appearance,
+    cfg.defaults.density
+  );
+});
+
+test('an explicit attribute on the same element wins over the default of its axis', () => {
+  const vars = computed(css, [{ 'data-ggb-brand': 'base', 'data-ggb-appearance': 'dark' }]);
+  expectContext(vars, 'base', 'dark', cfg.defaults.density);
   assert.equal(
     cssSourceValue({ $type: 'dimension', $value: '{primitive.dimension.v4}' }),
     'var(--ggb-primitive-dimension-v4)'

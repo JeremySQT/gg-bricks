@@ -1,6 +1,7 @@
 /* Generated from foundations/tokens by tooling/build-tokens.ts. Do not edit. */
-/* Set data-ggb-brand, data-ggb-appearance and data-ggb-density on one ancestor; any of them can be overridden alone in a subtree. */
-[data-ggb-brand] {
+/* Set data-ggb-brand, data-ggb-appearance and data-ggb-density on one ancestor; without them the document is base, light and standard. */
+/* A subtree may override data-ggb-appearance or data-ggb-density alone; a subtree that switches data-ggb-brand gets the defaults unless it restates the other two on the same element. */
+:root, [data-ggb-brand] {
   --ggb-primitive-border-0: 0px;
   --ggb-primitive-border-1: 1px;
   --ggb-primitive-border-2: 2px;
@@ -460,7 +461,7 @@
   --ggb-opacity-disabled: var(--ggb-primitive-opacity-40);
   --ggb-opacity-scrim: var(--ggb-primitive-opacity-60);
 }
-[data-ggb-appearance="light"] {
+:root, [data-ggb-brand], [data-ggb-appearance="light"] {
   --ggb-color-surface-canvas: var(--ggb-color-palette-neutral-0);
   --ggb-color-surface-default: var(--ggb-color-palette-neutral-0);
   --ggb-color-surface-subtle: var(--ggb-color-palette-neutral-50);
@@ -876,6 +877,40 @@
   --ggb-color-status-danger-border: var(--ggb-color-palette-danger-800);
   --ggb-color-status-danger-icon: var(--ggb-color-palette-danger-400);
 }
+:root, [data-ggb-brand], [data-ggb-density="standard"] {
+  --ggb-size-control-sm: var(--ggb-primitive-dimension-v32);
+  --ggb-size-control-md: var(--ggb-primitive-dimension-v40);
+  --ggb-size-control-lg: var(--ggb-primitive-dimension-v48);
+  --ggb-space-control-padding-inline-sm: var(--ggb-primitive-dimension-v12);
+  --ggb-space-control-padding-inline-md: var(--ggb-primitive-dimension-v16);
+  --ggb-space-control-padding-inline-lg: var(--ggb-primitive-dimension-v20);
+  --ggb-space-control-padding-block-sm: var(--ggb-primitive-dimension-v6);
+  --ggb-space-control-padding-block-md: var(--ggb-primitive-dimension-v10);
+  --ggb-space-control-padding-block-lg: var(--ggb-primitive-dimension-v12);
+  --ggb-space-control-gap-sm: var(--ggb-primitive-dimension-v6);
+  --ggb-space-control-gap-md: var(--ggb-primitive-dimension-v8);
+  --ggb-space-control-gap-lg: var(--ggb-primitive-dimension-v10);
+  --ggb-space-control-edge-inline-sm: var(--ggb-primitive-dimension-v8);
+  --ggb-space-control-edge-inline-md: var(--ggb-primitive-dimension-v10);
+  --ggb-space-control-edge-inline-lg: var(--ggb-primitive-dimension-v12);
+  --ggb-space-control-label-inline-sm: var(--ggb-primitive-dimension-v4);
+  --ggb-space-control-label-inline-md: var(--ggb-primitive-dimension-v6);
+  --ggb-space-control-label-inline-lg: var(--ggb-primitive-dimension-v8);
+  --ggb-space-control-slot-inline-sm: var(--ggb-primitive-dimension-v0);
+  --ggb-space-control-slot-inline-md: var(--ggb-primitive-dimension-v2);
+  --ggb-space-control-slot-inline-lg: var(--ggb-primitive-dimension-v2);
+  --ggb-space-content-xs: var(--ggb-primitive-dimension-v4);
+  --ggb-space-content-sm: var(--ggb-primitive-dimension-v8);
+  --ggb-space-content-md: var(--ggb-primitive-dimension-v12);
+  --ggb-space-content-lg: var(--ggb-primitive-dimension-v16);
+  --ggb-space-content-xl: var(--ggb-primitive-dimension-v24);
+  --ggb-space-layout-xs: var(--ggb-primitive-dimension-v8);
+  --ggb-space-layout-sm: var(--ggb-primitive-dimension-v16);
+  --ggb-space-layout-md: var(--ggb-primitive-dimension-v24);
+  --ggb-space-layout-lg: var(--ggb-primitive-dimension-v32);
+  --ggb-space-layout-xl: var(--ggb-primitive-dimension-v48);
+  --ggb-space-layout-2xl: var(--ggb-primitive-dimension-v64);
+}
 [data-ggb-density="compact"] {
   --ggb-size-control-sm: var(--ggb-primitive-dimension-v28);
   --ggb-size-control-md: var(--ggb-primitive-dimension-v32);
@@ -909,40 +944,6 @@
   --ggb-space-layout-lg: var(--ggb-primitive-dimension-v24);
   --ggb-space-layout-xl: var(--ggb-primitive-dimension-v32);
   --ggb-space-layout-2xl: var(--ggb-primitive-dimension-v48);
-}
-[data-ggb-density="standard"] {
-  --ggb-size-control-sm: var(--ggb-primitive-dimension-v32);
-  --ggb-size-control-md: var(--ggb-primitive-dimension-v40);
-  --ggb-size-control-lg: var(--ggb-primitive-dimension-v48);
-  --ggb-space-control-padding-inline-sm: var(--ggb-primitive-dimension-v12);
-  --ggb-space-control-padding-inline-md: var(--ggb-primitive-dimension-v16);
-  --ggb-space-control-padding-inline-lg: var(--ggb-primitive-dimension-v20);
-  --ggb-space-control-padding-block-sm: var(--ggb-primitive-dimension-v6);
-  --ggb-space-control-padding-block-md: var(--ggb-primitive-dimension-v10);
-  --ggb-space-control-padding-block-lg: var(--ggb-primitive-dimension-v12);
-  --ggb-space-control-gap-sm: var(--ggb-primitive-dimension-v6);
-  --ggb-space-control-gap-md: var(--ggb-primitive-dimension-v8);
-  --ggb-space-control-gap-lg: var(--ggb-primitive-dimension-v10);
-  --ggb-space-control-edge-inline-sm: var(--ggb-primitive-dimension-v8);
-  --ggb-space-control-edge-inline-md: var(--ggb-primitive-dimension-v10);
-  --ggb-space-control-edge-inline-lg: var(--ggb-primitive-dimension-v12);
-  --ggb-space-control-label-inline-sm: var(--ggb-primitive-dimension-v4);
-  --ggb-space-control-label-inline-md: var(--ggb-primitive-dimension-v6);
-  --ggb-space-control-label-inline-lg: var(--ggb-primitive-dimension-v8);
-  --ggb-space-control-slot-inline-sm: var(--ggb-primitive-dimension-v0);
-  --ggb-space-control-slot-inline-md: var(--ggb-primitive-dimension-v2);
-  --ggb-space-control-slot-inline-lg: var(--ggb-primitive-dimension-v2);
-  --ggb-space-content-xs: var(--ggb-primitive-dimension-v4);
-  --ggb-space-content-sm: var(--ggb-primitive-dimension-v8);
-  --ggb-space-content-md: var(--ggb-primitive-dimension-v12);
-  --ggb-space-content-lg: var(--ggb-primitive-dimension-v16);
-  --ggb-space-content-xl: var(--ggb-primitive-dimension-v24);
-  --ggb-space-layout-xs: var(--ggb-primitive-dimension-v8);
-  --ggb-space-layout-sm: var(--ggb-primitive-dimension-v16);
-  --ggb-space-layout-md: var(--ggb-primitive-dimension-v24);
-  --ggb-space-layout-lg: var(--ggb-primitive-dimension-v32);
-  --ggb-space-layout-xl: var(--ggb-primitive-dimension-v48);
-  --ggb-space-layout-2xl: var(--ggb-primitive-dimension-v64);
 }
 [data-ggb-density="comfortable"] {
   --ggb-size-control-sm: var(--ggb-primitive-dimension-v36);

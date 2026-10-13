@@ -25,6 +25,15 @@ for (const [name, modes] of Object.entries(defs.collections)) {
     } else c.addMode(mode);
     created.modes.push(`${name}/${mode}`);
   });
+  // Default mode (what a node without an explicit mode resolves to) mirrors foundations/config.json defaults.
+  const wanted = defs.defaults && defs.defaults[name];
+  if (wanted) {
+    const m = c.modes.find((x) => x.name === wanted);
+    if (m && c.defaultModeId !== m.modeId) {
+      c.setDefaultMode(m.modeId);
+      created.modes.push(`${name}/default=${wanted}`);
+    }
+  }
 }
 const modeId = (collection, mode) => {
   const m = byName[collection].modes.find((x) => x.name === mode);

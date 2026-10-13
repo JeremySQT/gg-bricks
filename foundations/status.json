@@ -109,13 +109,13 @@
     {
       "name": "foundations coverage and contrast",
       "command": "node tooling/check-foundations.ts",
-      "result": "371 roles present with the declared type and axis in 18 contexts; 98 contrast pairs × 18 contexts = 1764 checks, 0 failures (2026-10-13)",
+      "result": "371 roles present with the declared type and axis in 18 contexts; 4 invariants hold in 18 contexts; 98 contrast pairs × 18 contexts = 1764 checks, 0 failures (2026-10-13)",
       "evidence": "reports/tokens/contrast.json"
     },
     {
       "name": "unit tests",
       "command": "npm test",
-      "result": "19 passing (alias resolution, layered CSS parity in every context, palette determinism, ramp contrast floors)"
+      "result": "23 passing (alias resolution, browser-faithful cascade model in every context with defaults and subtree overrides, palette determinism, ramp contrast floors)"
     },
     {
       "name": "review page",
@@ -145,7 +145,7 @@
     "Brands: brick (orange accent, radii xs/sm/md) and orchid (violet accent, radii xl/2xl/2xl).",
     "Typography composites carry letterSpacing and optional fontFeatures (OpenType tags); CSS exposes --ggb-typography-<role>-letterSpacing and -fontFeatureSettings; the Figma manifest carries both."
   ],
-  "nextAction": "Wave 1 components (Button in review, JeremySQT/design-system#2). Proposed foundations change for a later branch: default appearance (light) and density (standard) declared in tokens.css and as the Figma default modes, with the token invariants checked by tooling/check-foundations.ts.",
+  "nextAction": "Foundations review of the defaults change (reports/foundations/changes/2026-10-13-defaults.md, branch chore/foundations-defaults): on approval re-record approvals.semantic with the new digests and open the pull request. Then wave 1 components.",
   "decided": [
     "Brand names brick and orchid (round 1).",
     "Fonts: Inter for every brand, IBM Plex Mono for code roles (round 1).",
@@ -185,6 +185,17 @@
       "review": "Asked by the user at the Button Figma parity review (concentric focus ring corners), accepted 2026-10-13.",
       "figma": "Synced on 2026-10-13: Brand variable radius/focus created and bound to the Button focus ring corners.",
       "recorded": "approvals.semantic re-recorded with this change on 2026-10-13 (audit correction batch)."
+    },
+    {
+      "date": "2026-10-13",
+      "change": "Default appearance (light) and density (standard) declared in foundations/config.json and applied by tokens.css under :root and [data-ggb-brand]; invariants list in foundations/inventory.json checked by tooling/check-foundations.ts; Figma Density default mode set to standard. No token value changed. Subtree override semantics corrected: appearance or density alone, brand switch restates both.",
+      "invalidates": "approvals.semantic for foundations/config.json and foundations/inventory.json (digests no longer match); values unchanged.",
+      "sha256": {
+        "foundations/config.json": "dad74c754b9a01730b84b8849872ee28ae096b452954f10a436fa195c54f2e65",
+        "foundations/inventory.json": "6338bec7361179acd30720fd9aa197ee1a10bed0c07dee8a18b734821d85a7ed"
+      },
+      "review": "Foundations review requested at the end of the audit follow-up session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH; change record reports/foundations/changes/2026-10-13-defaults.md.",
+      "figma": "Density collection default mode set to standard (VariableCollectionId:4:4, mode 4:6) on 2026-10-13; variables untouched."
     }
   ]
 }

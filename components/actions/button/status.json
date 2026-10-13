@@ -84,7 +84,7 @@
     },
     "humanDocs": {
       "path": "documentation/components/button.md",
-      "sha256": "eb8578b5625de0073615549ab1d13f62dcdac9fd510d809adebd2fff8a20d851",
+      "sha256": "4c50b8292d5b9de68240669551d014b29022abde47018d3f4154bc4abceeb633",
       "sections": [
         "Overview",
         "When to use",
@@ -261,11 +261,11 @@
     "Audit correction batch (user authorization, 2026-10-13, session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH): a loading link blocked click but not auxclick, so a middle click opened its destination in a new tab (reproduced in Chromium); the component now guards auxclick the same way and forwards a consumer's onclick and onauxclick through the guard (types.ts no longer omits onclick, which the documentation already described as forwarded).",
     "Audit correction batch: approvals whose listed paths had changed (implementation after the radius.focus commit, Figma parity after figma-spec.md cited a superseded contract digest, foundations semantic after the two pending changes) were re-recorded with the current digests and the amendments' provenance, per the rule added to authoring/workflow.md.",
     "Audit correction batch: documentation states that the root's layout box is at least 44 px tall (the visible surface keeps the size height), a consequence of the target rule that matters in compact tables.",
-    "Audit of the Figma file (2026-10-13): variables and masters consistent with the manifest and the contract; a stray _Fixture/Counter instance at the Utilities page root was removed and the Wireframe collection hidden from publishing (reports/components/button/figma/ledger.json, maintenance)."
+    "Audit of the Figma file (2026-10-13): variables and masters consistent with the manifest and the contract; a stray _Fixture/Counter instance at the Utilities page root was removed and the Wireframe collection hidden from publishing (reports/components/button/figma/ledger.json, maintenance).",
+    "Default density resolved by the foundations change of 2026-10-13 (branch chore/foundations-defaults): tokens.css applies light and standard where no attribute selects an appearance or density, and the Figma Density collection defaults to standard, so a Button dropped on a frame without modes and a page without data-ggb-density both show the standard heights."
   ],
   "openDecisions": [
     "Repository structure (2026-10-07, after the Button pull request, branch chore/repo-structure): user proposal foundations/contracts beside foundations/tokens; packages/svelte/src/components/<id>; category folders inside semantic tokens.",
-    "Default density (2026-10-10): the Figma file's default Density mode is compact (first mode, from the order in foundations/config.json), so a Button dropped on a frame without modes shows the compact heights (28/32/40) while the review page uses standard (32/40/48); the code has no default density (data-ggb-density must be set). Proposed: declare standard as the default density for code and Figma (foundations change).",
     "Figma file structure (user proposal, 2026-10-12): one page per component, named by its repository path (e.g. actions/button), holding the master, its internal parts and its specification; family pages replaced. Changes authoring/figma.md; to settle with the repository structure work."
   ],
   "nextAction": "Pull request https://github.com/JeremySQT/design-system/pull/2 open for user merge after the audit correction batch of 2026-10-13. Improvements proposed by the audit for later branches: default appearance and density in tokens.css and in the Figma default modes (chore/foundations-defaults, with the invariants radius.focus = radius.control + focus.offset and edge-inline + label-inline = padding-inline checked by tooling); package shape and a real consumer render before the first Deliver; $extensions for fontFeatures; grapheme-safe truncation; CI concurrency and computed.json drift check; Cover, Getting started and Foundations pages of the Figma file are still empty. Then chore/repo-structure, the documentation site, and Done when Icon, Counter and Shortcut exist.",
