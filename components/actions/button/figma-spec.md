@@ -4,7 +4,7 @@
 
 - File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), page **Actions** (`8:4`).
 - Master: component set **Button** ([`48:1586`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=48-1586)), 135 variants.
-- Specification frame: **Button — Specification** ([`105:1579`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=105-1579)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples, written in plain sentences for designers; token paths and mechanics stay in this file. Its instances are explanatory, never masters. Built by `authoring/adapters/figma/button-spec.plugin.js`.
+- Specification frame: **Button — Specification** ([`115:1569`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=115-1569)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples, written in plain sentences for designers; token paths and mechanics stay in this file. Its instances are explanatory, never masters. Built by `authoring/adapters/figma/button-spec.plugin.js`.
 - Reproduces: contract `components/actions/button/contract.json` (sha256 `0144dc9a…413e`) and the implementation approved on 2026-10-07 (`packages/svelte/src/button`).
 - Node and variable IDs: `reports/components/button/figma/ledger.json`. Parity: `reports/components/button/figma/parity.json` (9324 records, 0 failures). Screenshots: `reports/components/button/figma/master-set.png`, `specification.png`.
 - The library is not published (publication needs explicit authorization).
@@ -51,9 +51,9 @@ Recorded as such in `parity.json`; none hides a defect of the masters.
 9. **Spinner rotation, color transitions and reduced motion** are code-only.
 10. **Fixtures.** The Phosphor library is not attached to the file: icons are local fixtures (variant set `_Fixture/Icon`, property Name, Phosphor 2.1.1 paths) with literal vector sizes, and Counter and Shortcut are local fixtures on the Utilities page, standing in for the future Icon, Counter and Shortcut components.
 
-## Anatomy diagrams
+## Page style and diagrams
 
-The Anatomy section shows a grayscale structure diagram (root, container, leading, label, trailing, loading indicator, focus ring, numbered) and a zoomed spacing diagram (edge padding, label margin, slot margin, icon drawing versus icon box). Their grays are variables of the Figma-only **Wireframe** collection (`wireframe/*`, aliases of `primitive/color/neutral/*`), so every specification page can reuse the same levels. The structure diagram is not to scale: the root is drawn taller than it is, otherwise its outline merges with the focus ring, which really sits on the root boundary. The Wireframe collection is documentation tooling, not a source token.
+Examples and diagrams sit on dotted boards (a canvas fill plus a tiled 16 px image with one dot, at 35% opacity), legends in soft panels, sections separated by dividers. The Anatomy section shows a structure diagram (root, container, leading, label, trailing, loading indicator, focus ring, numbered callouts joined to the parts by dashed leader lines) and a spacing diagram zoomed in four times (edge padding, label margin, slot margin, icon drawing versus icon box, as dimension lines). Diagram parts are translucent tints of one ink color with dashed outlines, so they read as a schematic rather than as the real component. Colors come from the Figma-only **Wireframe** collection (`wireframe/*`: canvas, dot, panel, divider, ink, on-ink, text and five alpha tints of the ink), and the recurring pieces are the documentation components `_Spec/Canvas`, `_Spec/Callout` and `_Spec/Marker` on the Utilities page. The structure diagram is not to scale: the root is drawn taller than it is, otherwise its outline merges with the focus ring; the focus ring is drawn with a corner radius of container radius plus offset, as the CSS outline renders it. None of this is a source token or part of the library API.
 
 ## Adapter mechanics
 
