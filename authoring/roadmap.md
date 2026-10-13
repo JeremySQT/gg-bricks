@@ -40,9 +40,9 @@ Composition patterns (toolbar, form section, action group, empty state, page hea
 
 One row per component once its scope phase starts. Phase values: scope, contract, implementation, figma, documentation, done; append "(gate pending)" while waiting for the reviewer.
 
-| Component | Family  | Wave | Phase                                                                                                   | Status file                             |
-| --------- | ------- | ---- | ------------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| Button    | actions | 1    | documented (contract, implementation and Figma parity approved; Done waits for Icon, Counter, Shortcut) | `components/actions/button/status.json` |
+| Component | Family  | Wave | Phase         | Status file                             |
+| --------- | ------- | ---- | ------------- | --------------------------------------- |
+| Button    | actions | 1    | documentation | `components/actions/button/status.json` |
 
 ## How a fresh session starts a task
 
