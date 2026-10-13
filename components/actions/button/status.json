@@ -257,7 +257,7 @@
     "Default density (2026-10-10): the Figma file's default Density mode is compact (first mode, from the order in foundations/config.json), so a Button dropped on a frame without modes shows the compact heights (28/32/40) while the review page uses standard (32/40/48); the code has no default density (data-ggb-density must be set). Proposed: declare standard as the default density for code and Figma (foundations change).",
     "Figma file structure (user proposal, 2026-10-12): one page per component, named by its repository path (e.g. actions/button), holding the master, its internal parts and its specification; family pages replaced. Changes authoring/figma.md; to settle with the repository structure work."
   ],
-  "nextAction": "Documentation written (user editorial feedback welcome; approvals.documentation stays empty until given). Final consistency check, then the pull request to main with .github/pull_request_template.md; Done waits for Icon, Counter and Shortcut (fixtures today).",
+  "nextAction": "Pull request https://github.com/JeremySQT/design-system/pull/2 open for user review and merge. Then: chore/repo-structure (repository and Figma organization, default density), then the documentation site with the Button as the first page; Done when Icon, Counter and Shortcut exist.",
   "implementationNotes": [
     "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
     "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",
