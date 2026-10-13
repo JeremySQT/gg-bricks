@@ -3,7 +3,7 @@
   "componentId": "button",
   "family": "actions",
   "wave": 1,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Trigger an action or move to the next step of a task with a short visible label.",
     "useCases": [
@@ -120,7 +120,28 @@
       "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"L implémentation du Button est bien validée\", after reviewing the preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5 (commit 2c362f9).",
       "note": "Automated evidence: Chromium only (9 browser tests, 6 SSR tests). Icon, Counter and Shortcut are fixtures; Done waits for them and for Figma parity."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma component set Button (48:1586, 135 variants, one trailing slot with an internal _Button/Trailing part), specification frame 126:1904 (layout tuned by the user), parity report (9324 records and 108 slot geometry records, 0 failures, 630 justified differences: forced-colors outline and loading keeps focus), focus ring corners on radius.focus.",
+      "revision": {
+        "paths": [
+          "components/actions/button/figma-spec.md",
+          "reports/components/button/figma/parity.json",
+          "reports/components/button/figma/ledger.json"
+        ],
+        "sha256": {
+          "components/actions/button/figma-spec.md": "845c965c5f998bb716172d90daa776c505c2ea449830200cf066c6bc09a1e6b7",
+          "reports/components/button/figma/parity.json": "0cc7343db7cb4c4d29d4f725ba353e3ab77dc1cf5c914a6b30034832ecc86948",
+          "reports/components/button/figma/ledger.json": "8427198535d3b425d5fa65fd61d591150cff9d16662df4104e6db09cf0050793"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "48:1586",
+          "specificationFrame": "126:1904"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-13: \"je valide la parité Figma ! Tu peux tout cleaner et enchaîner sur la documentation\", after reviewing the masters and refining the specification page by hand.",
+      "note": "Library not published (publication needs explicit authorization). Explorations and the previous specification copy removed from the Actions page."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -216,7 +237,7 @@
     "Default density (2026-10-10): the Figma file's default Density mode is compact (first mode, from the order in foundations/config.json), so a Button dropped on a frame without modes shows the compact heights (28/32/40) while the review page uses standard (32/40/48); the code has no default density (data-ggb-density must be set). Proposed: declare standard as the default density for code and Figma (foundations change).",
     "Figma file structure (user proposal, 2026-10-12): one page per component, named by its repository path (e.g. actions/button), holding the master, its internal parts and its specification; family pages replaced. Changes authoring/figma.md; to settle with the repository structure work."
   ],
-  "nextAction": "Figma parity gate (user review of the masters, the specification frame and the parity report); then documentation (ggb-docs) and the pull request.",
+  "nextAction": "Documentation (ggb-docs): documentation/components/button.md, documentation/index.json entry, status artifacts; then final consistency and the pull request to main.",
   "implementationNotes": [
     "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
     "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",
