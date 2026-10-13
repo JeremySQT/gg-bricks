@@ -1,6 +1,6 @@
 # Button — Svelte implementation report
 
-Component: `packages/svelte/src/button/` (Svelte 5.57.1, Bits UI 2.19.3 `Button.Root`). Review page: `examples/button/`; self-contained preview: `dist/previews/button.html` (`npm run build && npm run build:preview button`). Implementation approved on 2026-10-07 (status `approvals.implementation`); amended on 2026-10-13 (focus ring token binding, middle-click guard) under the audit correction batch.
+Component: `packages/svelte/src/components/button/` (Svelte 5.57.1, Bits UI 2.19.3 `Button.Root`). Review page: `examples/button/`; self-contained preview: `dist/previews/button.html` (`npm run build && npm run build:preview button`). Implementation approved on 2026-10-07 (status `approvals.implementation`); amended on 2026-10-13 (focus ring token binding, middle-click guard) under the audit correction batch.
 
 ## Structure
 

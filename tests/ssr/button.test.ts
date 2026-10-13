@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { renderComponent, closeServer, writeSsrReport } from './helpers.ts';
 
 const checks: string[] = [];
-const render = async (props: Record<string, unknown>) => (await renderComponent('button/Button.svelte', props)).body;
+const render = async (props: Record<string, unknown>) =>
+  (await renderComponent('components/button/Button.svelte', props)).body;
 after(async () => {
   writeSsrReport('button', checks);
   await closeServer();

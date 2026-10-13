@@ -217,7 +217,7 @@ test('OKLCH conversion hits sRGB anchors and stays in gamut', () => {
   assert.equal(Math.round(luminance([1, 1, 1])), 1);
 });
 test('the committed palette is exactly what the committed parameters generate', () => {
-  const generated = JSON.stringify(generatePalette(readJson('foundations/palette.config.json')), null, 2) + '\n';
+  const generated = JSON.stringify(generatePalette(readJson('foundations/tokens/palette.config.json')), null, 2) + '\n';
   const committed = fs.readFileSync(
     new URL('../foundations/tokens/base/primitives/colors.tokens.json', import.meta.url),
     'utf8'

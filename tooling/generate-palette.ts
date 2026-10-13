@@ -1,4 +1,4 @@
-// Generate foundations/tokens/base/primitives/colors.tokens.json from foundations/palette.config.json.
+// Generate foundations/tokens/base/primitives/colors.tokens.json from foundations/tokens/palette.config.json.
 // Ramps are computed in OKLCH (even lightness per step, hue-specific chroma reduced into the sRGB
 // gamut) and written as DTCG sRGB colors with components in 0–1. Deterministic: same config, same file.
 //   node tooling/generate-palette.ts
@@ -18,7 +18,7 @@ interface PaletteConfig {
   alpha: { black: number[]; white: number[] };
 }
 
-export const paletteConfigPath = 'foundations/palette.config.json';
+export const paletteConfigPath = 'foundations/tokens/palette.config.json';
 export const colorsPath = 'foundations/tokens/base/primitives/colors.tokens.json';
 
 const round = (x: number): number => Math.round(x * 1e6) / 1e6;

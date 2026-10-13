@@ -2,10 +2,10 @@
 
 ## Overview
 
-- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), page **Actions** (`8:4`).
+- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), page **actions/button** (`144:2`), which holds the master, its internal parts and this specification (moved from the former Actions page on 2026-10-13).
 - Master: component set **Button** ([`48:1586`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=48-1586)), 135 variants.
 - Specification frame: **Button — Specification** ([`126:1904`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=126-1904)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples, written in plain sentences for designers; token paths and mechanics stay in this file. Its instances are explanatory, never masters. Built by `authoring/adapters/figma/button-spec.plugin.js`.
-- Reproduces: contract `components/actions/button/contract.json` (sha256 `6e15acb0…47ca`, revision of 2026-10-13 with the focusRadius role) and the implementation approved on 2026-10-07 (`packages/svelte/src/button`).
+- Reproduces: contract `foundations/components/actions/button/contract.json` (sha256 `6e15acb0…47ca`, revision of 2026-10-13 with the focusRadius role) and the implementation approved on 2026-10-07 (`packages/svelte/src/components/button`).
 - Node and variable IDs: `reports/components/button/figma/ledger.json`. Parity: `reports/components/button/figma/parity.json` (9324 records, 0 failures). Screenshots: `reports/components/button/figma/master-set.png`, `specification.png`.
 - The library is not published (publication needs explicit authorization).
 
@@ -29,7 +29,7 @@ Every color, dimension, radius, padding, margin, stroke and typography value of 
 - **Root** reserves the 44px interaction height (`size/target/min`) around the container; the container keeps the size height.
 - **Container** padding is `space/control/edge-inline/{size}` and `space/control/padding-block/{size}`; **Label** carries `space/control/label-inline/{size}` on both sides; **Leading** and **Trailing** carry `space/control/slot-inline/{size}`.
 - **Optical icon spacing**: icons sit in a _Drawing box_ sized to the icon's drawing (iconSize × 3/4), so the box overlaps the slot spacing by 1/8 of the icon size on each side, like the CSS negative margin. The compensation belongs to Button (Leading, and Type=Icon of `_Button/Trailing`); the icon component itself stays neutral.
-- **Trailing**: one frame carrying the slot margin, holding an exposed instance of the internal `_Button/Trailing` set (Utilities page), with one variant per allowed type, each holding only its own content: Icon (drawing box with the icon, placed by its drawing), Counter and Shortcut (placed by their box). The drawing box centers the icon with auto layout: the part is shared by the three sizes through modes, so an absolute position would be right for one size only (it left the icon 2 px low in md and 4 px in lg before 2026-10-12).
+- **Trailing**: one frame carrying the slot margin, holding an exposed instance of the internal `_Button/Trailing` set (same page), with one variant per allowed type, each holding only its own content: Icon (drawing box with the icon, placed by its drawing), Counter and Shortcut (placed by their box). The drawing box centers the icon with auto layout: the part is shared by the three sizes through modes, so an absolute position would be right for one size only (it left the icon 2 px low in md and 4 px in lg before 2026-10-12).
 - **Slot color**: slot content (leading glyph, Icon, Counter, Shortcut) is bound to `button/foreground`, which resolves to the content color of the variant's intent, appearance and state through the modes each variant sets (see Adapter mechanics), like `currentColor` in the code. No per-variant color override is needed, so switching Type or Name keeps the right color.
 - **Cap-height centering**: the label text uses vertical trim (leading trim to cap height), the Figma equivalent of `text-box: trim-both cap alphabetic`.
 - **Loading**: the Loading indicator is centered over the container (absolute); Leading, Label and Trailing are kept in the layout at opacity 0, so the width does not change.

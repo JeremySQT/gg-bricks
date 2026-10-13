@@ -25,7 +25,7 @@ Set the three `data-ggb-*` attributes on one ancestor; without them the document
 
 ## Copy instead of installing
 
-Every component folder in `src/<id>/` is self-contained: copy it, add `tokens.css`, install `bits-ui`, and copy the internal dependencies listed in the component's documentation page. Generated files inside the folder (`contract.generated.ts`, `tokens.generated.css`) are part of the copy.
+Every component folder in `src/components/<id>/` is self-contained: copy it, add `tokens.css`, install `bits-ui`, and copy the internal dependencies listed in the component's documentation page. Generated files inside the folder (`contract.generated.ts`, `tokens.generated.css`) are part of the copy.
 
 ## Documentation
 
@@ -34,5 +34,5 @@ Read `docs/index.json` first, then the component page (`docs/<id>.md`). `docs/AG
 ## Package layout
 
 - `src/index.ts`: public exports.
-- `src/<id>/`: `<Name>.svelte`, `types.ts`, `<id>.css`, generated `contract.generated.ts` and `tokens.generated.css`.
+- `src/components/<id>/`: `<Name>.svelte`, `types.ts`, `<id>.css`, generated `contract.generated.ts` and `tokens.generated.css`.
 - `tokens.css`, `contracts/`, `docs/`: copies generated at build time from `packages/tokens` and `documentation/`.

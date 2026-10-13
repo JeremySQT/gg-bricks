@@ -4,7 +4,7 @@ import { abs, paths, readJson, exists } from './paths.ts';
 import type { ComponentSource, ComponentStatus, Contract } from './types.ts';
 
 /**
- * Discover component sources: components/<family>/<name>/contract.json.
+ * Discover component sources: foundations/components/<family>/<name>/contract.json.
  * A folder without a contract is not a component. Order is deterministic (family, then name).
  */
 export function listComponents(): ComponentSource[] {

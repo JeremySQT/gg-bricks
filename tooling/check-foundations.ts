@@ -1,4 +1,4 @@
-// Check the foundations against foundations/inventory.json in every configured context:
+// Check the foundations against foundations/tokens/inventory.json in every configured context:
 //   - every declared semantic role exists, has the declared type and is defined on the declared axis
 //     (common, appearance or density file layer);
 //   - no undeclared semantic token exists (primitive.* and component tokens are exempt);
@@ -29,7 +29,7 @@ export interface ContrastRecord {
   passed: boolean;
 }
 
-const inventoryPath = 'foundations/inventory.json';
+const inventoryPath = 'foundations/tokens/inventory.json';
 const inventory = readJson<Inventory>(inventoryPath);
 const contexts = resolveAllContexts();
 const errors: string[] = [];
@@ -157,7 +157,7 @@ for (const ctx of contexts)
 const failures = records.filter((r) => !r.passed);
 write(`${paths.reports}/tokens/contrast.json`, {
   method:
-    'WCAG 2 relative luminance and contrast ratio on resolved sRGB values. Content is composited on its surface; a translucent surface is first composited on color.surface.default (recorded as backdrop). Minimum 4.5 for text, 3 for borders, icons and focus indicators. Pairs come from foundations/inventory.json.',
+    'WCAG 2 relative luminance and contrast ratio on resolved sRGB values. Content is composited on its surface; a translucent surface is first composited on color.surface.default (recorded as backdrop). Minimum 4.5 for text, 3 for borders, icons and focus indicators. Pairs come from foundations/tokens/inventory.json.',
   contexts: contexts.length,
   pairs: inventory.contrast.length,
   checks: records.length,

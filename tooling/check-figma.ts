@@ -1,5 +1,5 @@
 // Compare the native Figma resolution returned by authoring/adapters/figma/verify-resolution.plugin.js
-// with packages/tokens/figma-expectations.json and write reports/foundations/figma/verification.json.
+// with packages/tokens/figma-expectations.json and write reports/tokens/figma/verification.json.
 //   node tooling/check-figma.ts <result.json>     (the JSON returned by the verification script)
 //   node tooling/check-figma.ts --expected        (print the expected hashes only)
 import { paths, readJson, write } from './lib/paths.ts';

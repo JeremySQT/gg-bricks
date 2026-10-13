@@ -1,6 +1,6 @@
 // Scaffold the authoring sources for a component that is being addressed (Create procedure, Scope phase).
 //   node tooling/new-component.ts <family> <component-id>
-// Creates components/<family>/<id>/contract.json (skeleton) and status.json from the templates.
+// Creates foundations/components/<family>/<id>/contract.json (skeleton) and status.json from the templates.
 // It does not create Svelte, Figma or documentation files: those follow their own gates.
 import { paths, write, exists, readJson } from './lib/paths.ts';
 import type { Contract } from './lib/types.ts';
@@ -21,7 +21,7 @@ const dir = `${paths.components}/${family}/${id}`;
 if (exists(`${dir}/contract.json`)) throw Error(`${dir}/contract.json already exists`);
 
 const contract = readJson<Contract>(`${paths.templates}/component-contract.json`);
-contract.$schema = '../../../authoring/schemas/component-contract.schema.json';
+contract.$schema = '../../../../authoring/schemas/component-contract.schema.json';
 contract.id = id;
 const status = readJson<StatusTemplate>(`${paths.templates}/component-status.json`);
 status.componentId = id;

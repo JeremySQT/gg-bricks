@@ -2,7 +2,7 @@
 // resolving every brand × appearance × density combination:
 //
 //   :root, [data-ggb-brand]              base primitives, common and component tokens, then the default
-//                                        appearance and density roles (foundations/config.json defaults)
+//                                        appearance and density roles (foundations/tokens/config.json defaults)
 //   [data-ggb-appearance="<a>"]          base appearance roles (values reference primitives with var())
 //   [data-ggb-density="<d>"]             base density roles
 //   [data-ggb-brand="<b>"]               brand primitive/common/component overrides (sparse)

@@ -2,7 +2,7 @@
 
 This catalog organizes scope and dependency notes per component family; the order of work is in roadmap.md. Names and boundaries are proposals until each contract is reviewed. Do not create empty component folders or placeholder contracts for these candidates.
 
-## Families (folder names under `components/`)
+## Families (folder names under `foundations/components/`)
 
 | Folder       | Contents                                                                                                                                                  |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |

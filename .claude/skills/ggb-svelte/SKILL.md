@@ -9,7 +9,7 @@ Read `authoring/architecture.md` (Svelte adapter generation, Component folder ru
 
 ## Conventions
 
-- Folder `packages/svelte/src/<id>/`: `<Name>.svelte`, `types.ts`, `<id>.css`, generated `contract.generated.ts` and `tokens.generated.css` (`npm run build:svelte`); export from `src/index.ts`. The folder must be copyable on its own (plus `tokens.css`, Bits UI and declared internal dependencies).
+- Folder `packages/svelte/src/components/<id>/`: `<Name>.svelte`, `types.ts`, `<id>.css`, generated `contract.generated.ts` and `tokens.generated.css` (`npm run build:svelte`); export from `src/index.ts`. The folder must be copyable on its own (plus `tokens.css`, Bits UI and declared internal dependencies).
 - Root class `ggb-<id>`, parts `ggb-<id>__<part>`, enum props as `data-<prop>` attributes, boolean states as `data-<state>` presence. Bindable props use `$bindable()`; contract events map to `on<Event>` callback props.
 - Colors and dimensions come only from `tokens.generated.css` custom properties; `<id>.css` holds structural literals only (0, 100%, transparent, currentColor).
 - Use logical properties (`inline-size`, `padding-inline`, `margin-block`, `inset-inline-start`) so the component works in RTL without changes.
