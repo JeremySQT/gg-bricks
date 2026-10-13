@@ -170,6 +170,19 @@
       },
       "review": "Presented at the Button contract gate (spacing fact).",
       "figma": "Synced on 2026-10-07: 9 Density variables created (IDs in reports/foundations/figma/ledger.json), scope GAP; native resolution re-verified for 410 semantic variables in 18 contexts, 0 failures (reports/foundations/figma/verification.json)."
+    },
+    {
+      "date": "2026-10-13",
+      "change": "Semantic role radius.focus (common axis, per brand): corner radius of a focus ring drawn at focus.offset outside a control, equal to radius.control + focus.offset so that the ring stays concentric. base aliases primitive.radius.lg (8), brick primitive.radius.sm (4), orchid holds the literal 14 px because 12 + 2 is not in the primitive ramp. Inventory entry added.",
+      "invalidates": "approvals.semantic for foundations/inventory.json and the three semantic common files (digests no longer match).",
+      "sha256": {
+        "foundations/inventory.json": "210243e6f5131d8359ffcbaf64b6282e4e1613206eca596d37a21f2a75f5bcf4",
+        "foundations/tokens/base/semantic/common.tokens.json": "587e3ae7e5205e7041f34d851613e7681c17bb7932501d47a21ddcf51685d78b",
+        "foundations/tokens/brick/semantic/common.tokens.json": "df785f028b7c884fe7b653f6ce2a2b497d54bde8265058d678b3c1c58d29fb3e",
+        "foundations/tokens/orchid/semantic/common.tokens.json": "5de6c880874ad0e61d821f9279ab92417032333fc41d14577f74d453fc6eca51"
+      },
+      "review": "Asked by the user at the Button Figma parity review (concentric focus ring corners), accepted 2026-10-13.",
+      "figma": "Synced on 2026-10-13: Brand variable radius/focus created and bound to the Button focus ring corners."
     }
   ]
 }

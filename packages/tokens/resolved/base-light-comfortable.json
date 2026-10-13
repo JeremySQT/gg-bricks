@@ -3441,6 +3441,14 @@
       "unit": "px"
     }
   },
+  "radius.focus": {
+    "$type": "dimension",
+    "$value": {
+      "value": 8,
+      "unit": "px"
+    },
+    "$description": "Corner radius of the focus ring: radius.control + focus.offset, so the ring stays concentric with the control."
+  },
   "radius.container": {
     "$type": "dimension",
     "$value": {

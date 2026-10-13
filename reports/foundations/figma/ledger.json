@@ -54,7 +54,7 @@
     }
   },
   "variables": {
-    "total": 634,
+    "total": 635,
     "batches": [
       {
         "batch": 1,
@@ -108,6 +108,14 @@
           "space/control/slot-inline/md": "VariableID:39:9",
           "space/control/slot-inline/lg": "VariableID:39:10"
         }
+      },
+      {
+        "date": "2026-10-13",
+        "collection": "Brand",
+        "variables": {
+          "radius/focus": "VariableID:119:2"
+        },
+        "note": "radius.focus (base alias primitive/radius/lg, brick primitive/radius/sm, orchid literal 14), scope CORNER_RADIUS, code syntax var(--ggb-radius-focus); resolution checked in the three brands (8, 4, 14)."
       }
     ]
   },

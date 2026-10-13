@@ -5308,6 +5308,27 @@
     },
     {
       "collection": "Brand",
+      "name": "radius/focus",
+      "path": "radius.focus",
+      "type": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-radius-focus)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/radius/lg"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/radius/sm"
+        },
+        "orchid": 14
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "radius/container",
       "path": "radius.container",
       "type": "FLOAT",

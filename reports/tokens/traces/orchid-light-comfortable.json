@@ -3574,6 +3574,19 @@
       "value": "{primitive.radius.xl}"
     }
   ],
+  "radius.focus": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.radius.lg}"
+    },
+    {
+      "source": "foundations/tokens/orchid/semantic/common.tokens.json",
+      "value": {
+        "value": 14,
+        "unit": "px"
+      }
+    }
+  ],
   "radius.container": [
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",

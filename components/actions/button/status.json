@@ -35,13 +35,16 @@
   "artifacts": {
     "contract": {
       "path": "components/actions/button/contract.json",
-      "sha256": "0144dc9a71506260962a06769156beff3d463ce1f9788267aceaa60d2541413e"
+      "sha256": "6e15acb0733ffc15e3be08e2f910f4d877ac27dc9fce3b83bfea0ce3881947ca"
     },
     "tokens": [
+      "foundations/inventory.json",
+      "foundations/tokens/base/semantic/common.tokens.json",
+      "foundations/tokens/base/semantic/density.comfortable.tokens.json",
       "foundations/tokens/base/semantic/density.compact.tokens.json",
       "foundations/tokens/base/semantic/density.standard.tokens.json",
-      "foundations/tokens/base/semantic/density.comfortable.tokens.json",
-      "foundations/inventory.json"
+      "foundations/tokens/brick/semantic/common.tokens.json",
+      "foundations/tokens/orchid/semantic/common.tokens.json"
     ],
     "figma": {
       "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
@@ -84,14 +87,14 @@
   },
   "approvals": {
     "contract": {
-      "scope": "Button contract as revised after the implementation review: props, parts, states, activate event, token roles including edgeInline, labelInline and slotInline (space.control.edge-inline, label-inline, slot-inline per density), and rules including optical icon spacing, cap-height centering and the tight ellipsis.",
+      "scope": "Button contract as revised after the implementation review: props, parts, states, activate event, token roles including edgeInline, labelInline and slotInline (space.control.edge-inline, label-inline, slot-inline per density), the focusRadius role (radius.focus, added 2026-10-13), and rules including optical icon spacing, cap-height centering and the tight ellipsis.",
       "revision": {
         "paths": ["components/actions/button/contract.json"],
         "sha256": {
-          "components/actions/button/contract.json": "0144dc9a71506260962a06769156beff3d463ce1f9788267aceaa60d2541413e"
+          "components/actions/button/contract.json": "6e15acb0733ffc15e3be08e2f910f4d877ac27dc9fce3b83bfea0ce3881947ca"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"le contrat mis à jour me semble bon au regard de l implémentation sur la page\" (preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5). Supersedes the approval of 2026-09-26.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"le contrat mis à jour me semble bon au regard de l implémentation sur la page\" (preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5). Supersedes the approval of 2026-09-26. Revision of 2026-10-13 (focusRadius role and the concentric focus ring rule): user, same session, \"Ok pour le token radius.focus\".",
       "note": "Covers the contract; the six-plus-three new semantic roles are recorded as a pending foundations change in foundations/status.json. Implementation approval recorded separately."
     },
     "implementation": {
@@ -202,7 +205,9 @@
     "Native Figma slots (checked 2026-10-12): the Plugin API accepts a SLOT component property with preferred components but offers no way to create or bind the slot layer, so slots cannot be built or verified by script yet; the Button keeps the internal part. To revisit when the API supports slot layers.",
     "Trailing icon vertical offset (user, 2026-10-12): the shared _Button/Trailing part positioned its icon in absolute coordinates for one size, so the icon sat 2 px low in md and 4 px in lg; the drawing box now centers the icon with auto layout. The parity measurement did not cover slot geometry; it now does (button-parity-slots.plugin.js, 108 records, 0 failures).",
     "Specification page rewritten in plain language (user, 2026-10-12): full sentences, no token paths or abbreviations on the page (they stay in figma-spec.md). Anatomy uses a grayscale structure diagram and a zoomed spacing diagram whose grays come from a Figma-only Wireframe collection aliased to the neutral primitives; the diagram is not to scale (the root is drawn taller than it is so that its outline stays visible next to the focus ring).",
-    "Specification visual language (user, 2026-10-13): examples and diagrams sit on dotted boards (tiled dot image), diagram parts are translucent pink tints with dashed outlines and numbered callouts joined by dashed leader lines, legends in soft panels, dividers between sections. Documentation components _Spec/Canvas, _Spec/Callout and _Spec/Marker on the Utilities page; Wireframe collection reworked (pink ink and alpha tints instead of gray levels)."
+    "Specification visual language (user, 2026-10-13): examples and diagrams sit on dotted boards (tiled dot image), diagram parts are translucent pink tints with dashed outlines and numbered callouts joined by dashed leader lines, legends in soft panels, dividers between sections. Documentation components _Spec/Canvas, _Spec/Callout and _Spec/Marker on the Utilities page; Wireframe collection reworked (pink ink and alpha tints instead of gray levels).",
+    "Focus ring corners (user, 2026-10-13): new semantic role radius.focus = radius.control + focus.offset per brand (8, 4, 14), contract role focusRadius. The CSS outline already renders concentric corners natively; the token makes the rule explicit and lets Figma bind the ring radius, removing the former justified difference.",
+    "Spacing model kept (user, 2026-10-13): margins on the label and on the slots rather than a gap, because a gap cannot make a lone label sit further from the edge than a lone icon; a gap could only replace the slot margin, at the cost of moving a text-only button by 2 px in md and lg."
   ],
   "openDecisions": [
     "Repository structure (2026-10-07, after the Button pull request, branch chore/repo-structure): user proposal foundations/contracts beside foundations/tokens; packages/svelte/src/components/<id>; category folders inside semantic tokens.",

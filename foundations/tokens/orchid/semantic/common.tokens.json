@@ -54,6 +54,14 @@
       "$type": "dimension",
       "$value": "{primitive.radius.xl}"
     },
+    "focus": {
+      "$type": "dimension",
+      "$value": {
+        "value": 14,
+        "unit": "px"
+      },
+      "$description": "Corner radius of the focus ring: radius.control + focus.offset, so the ring stays concentric with the control."
+    },
     "container": {
       "$type": "dimension",
       "$value": "{primitive.radius.2xl}"

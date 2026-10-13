@@ -34,14 +34,14 @@ Every color, dimension, radius, padding, margin, stroke and typography value of 
 - **Cap-height centering**: the label text uses vertical trim (leading trim to cap height), the Figma equivalent of `text-box: trim-both cap alphabetic`.
 - **Loading**: the Loading indicator is centered over the container (absolute); Leading, Label and Trailing are kept in the layout at opacity 0, so the width does not change.
 - **Outline appearance**: the border is an inside stroke bound to the border role, so it never changes outer dimensions (`strokesIncludedInLayout` off on containers).
-- **Focus ring**: absolute frame 2px outside the container (the focus offset), outside stroke bound to `focus/width` and `color/focus/ring`, corner radius bound to the control radius role.
+- **Focus ring**: absolute frame 2px outside the container (the focus offset), outside stroke bound to `focus/width` and `color/focus/ring`, corner radius bound to `radius/focus` (radius.control + focus.offset, so the ring stays concentric with the container, as the CSS outline renders it).
 
 ## Justified differences
 
 Recorded as such in `parity.json`; none hides a defect of the masters.
 
 1. **Forced-colors outline.** The code keeps a transparent 1px outline so that forced-colors mode draws a boundary. Figma has no forced-colors mode: no layer stands for it (594 `outline` records noted as justified).
-2. **Focus ring corner.** CSS rounds the outline by radius + offset; Figma variables cannot add, so the ring's corner equals the control radius (6 base, 2 brick, 12 orchid). The outer corner is about 2px tighter than in the browser in every brand. Color, width and offset match.
+2. **Focus ring corner.** Resolved on 2026-10-13: the ring corner is bound to the new `radius/focus` role (8, 4, 14 per brand), equal to what the CSS outline draws. No difference remains.
 3. **Focus offset** is ring geometry (2px), not a variable binding, because Figma cannot bind an absolute position. `focus/offset` is 2 in every brand and density.
 4. **Loading + focus.** The browser measurement keeps focus on a loading button (loading stays focusable), so its focus outline is computed; in Figma the State=loading variant combines with the separate Focus boolean (shown in States). 36 records noted as justified.
 5. **Disabled + loading** is an instance override in the specification (State=disabled, Loading indicator visible, content at opacity 0), not a variant: it is a rare combination and would add 27 variants.

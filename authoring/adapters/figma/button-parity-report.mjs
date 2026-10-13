@@ -99,7 +99,7 @@ for (const r of records) {
         const [c, w, o] = (f[15] || '').split('/');
         passed = !!m && closeHex(toHex(m[2]), c) && +m[1] === +w && +m[3] === +o;
         note =
-          'Ring color and width bound to the focus roles; the 2px offset is ring geometry. The ring corner radius is bound to the control radius role; CSS rounds the outline by radius + offset, which Figma cannot compute (see figma-spec.md).';
+          'Ring color and width bound to the focus roles; the 2px offset is ring geometry. The ring corner radius is bound to radius.focus (radius + offset), the value the CSS outline renders.';
       }
       break;
     }
@@ -179,7 +179,7 @@ const meta = {
     computed: 'reports/components/button/svelte/computed.json',
     method:
       'Instances of each variant in temporary frames with explicit Brand, Appearance and Density modes; bound variables resolved with resolveForConsumer; geometry read from the laid-out instance.',
-    measuredAt: '2026-10-12'
+    measuredAt: '2026-10-13'
   },
   summary: {
     records: out.length,

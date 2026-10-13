@@ -176,6 +176,9 @@
 .ggb-button:focus-visible .ggb-button__container {
   outline: var(--ggb-button-focusWidth) solid var(--ggb-button-focusColor);
   outline-offset: var(--ggb-button-focusOffset);
+  /* Browsers draw the outline concentric with the border radius: its corners resolve to radius + offset,
+   * the value of --ggb-button-focusRadius (radius.focus). The token makes the rule explicit for Figma and
+   * for any rendering that cannot use outline. */
 }
 
 @media (prefers-reduced-motion: reduce) {
