@@ -266,7 +266,7 @@
     "Repository and Figma structure (user, 2026-10-13, branch chore/repo-structure): sources of truth under foundations/ (foundations/tokens with its config, inventory, palette config and status; foundations/components/<family>/<id> with contract, status and figma-spec), implementations under packages/svelte/src/components/<id>, token evidence under reports/tokens, one Figma page per component named by its path (actions/button) holding the master, its internal parts and its specification; family pages removed. The contract's $schema pointer and the generated header comment changed with the paths; approvals re-digested under the user's authorization."
   ],
   "openDecisions": [],
-  "nextAction": "Pull request for chore/repo-structure open for user merge. Then Icon (ggb-component), then Counter and Shortcut; Done when they exist.",
+  "nextAction": "Pull request https://github.com/JeremySQT/design-system/pull/4 (chore/repo-structure) open for user merge. Then Icon (ggb-component), then Counter and Shortcut; Done when they exist.",
   "implementationNotes": [
     "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
     "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",
