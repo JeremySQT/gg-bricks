@@ -4,7 +4,7 @@
       "/opt/node22/bin/node",
       "/home/user/design-system/node_modules/.bin/playwright",
       "test",
-      "tests/browser/icon.spec.ts"
+      "tests/browser/counter.spec.ts"
     ],
     "configFile": "/home/user/design-system/playwright.config.ts",
     "rootDir": "/home/user/design-system/tests/browser",
@@ -70,13 +70,13 @@
   },
   "suites": [
     {
-      "title": "icon.spec.ts",
-      "file": "icon.spec.ts",
+      "title": "counter.spec.ts",
+      "file": "counter.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "sizes follow size.icon in every context and never change with density",
+          "title": "shows the value as an integer, overflows above max and exposes the derived state",
           "ok": true,
           "tags": [],
           "tests": [
@@ -91,12 +91,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2980,
+                  "duration": 2132,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-14T04:51:03.159Z",
+                  "startTime": "2026-10-14T05:07:57.081Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -104,13 +104,13 @@
               "status": "expected"
             }
           ],
-          "id": "535808cb8277c0a9ae9e-b7a144cc1564a627d705",
-          "file": "icon.spec.ts",
-          "line": 37,
+          "id": "50879ed375f8988ef978-521f39c58fb6cc969b97",
+          "file": "counter.spec.ts",
+          "line": 126,
           "column": 1
         },
         {
-          "title": "decorative icons are hidden, named icons are images with their label",
+          "title": "the accessible text is the visible text followed by the label",
           "ok": true,
           "tags": [],
           "tests": [
@@ -125,12 +125,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 665,
+                  "duration": 1064,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-14T04:51:06.344Z",
+                  "startTime": "2026-10-14T05:07:59.472Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -138,13 +138,13 @@
               "status": "expected"
             }
           ],
-          "id": "535808cb8277c0a9ae9e-2dd8f896db3369486f25",
-          "file": "icon.spec.ts",
-          "line": 63,
+          "id": "50879ed375f8988ef978-cc37540377abc0063c01",
+          "file": "counter.spec.ts",
+          "line": 170,
           "column": 1
         },
         {
-          "title": "a host sizes its slot icons; the icon keeps its box in a flexible layout and follows the color",
+          "title": "geometry: line-box height, square minimum, inline padding only, same height for one and two digits",
           "ok": true,
           "tags": [],
           "tests": [
@@ -159,12 +159,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 733,
+                  "duration": 1608,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-14T04:51:07.026Z",
+                  "startTime": "2026-10-14T05:08:00.565Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -172,13 +172,13 @@
               "status": "expected"
             }
           ],
-          "id": "535808cb8277c0a9ae9e-31f36d2d0adbb8c600d5",
-          "file": "icon.spec.ts",
-          "line": 81,
+          "id": "50879ed375f8988ef978-718a67744deb663a2a08",
+          "file": "counter.spec.ts",
+          "line": 192,
           "column": 1
         },
         {
-          "title": "automated accessibility audit and screenshots in light and dark",
+          "title": "border and digits use the inherited content color inside every Button intent, appearance and state",
           "ok": true,
           "tags": [],
           "tests": [
@@ -193,12 +193,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3974,
+                  "duration": 1548,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-14T04:51:07.777Z",
+                  "startTime": "2026-10-14T05:08:02.200Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -206,9 +206,111 @@
               "status": "expected"
             }
           ],
-          "id": "535808cb8277c0a9ae9e-19d6673d4afa64728412",
-          "file": "icon.spec.ts",
-          "line": 105,
+          "id": "50879ed375f8988ef978-650a289e792a8eada30f",
+          "file": "counter.spec.ts",
+          "line": 270,
+          "column": 1
+        },
+        {
+          "title": "computed values match the resolved tokens for every size and the overflow state in every context",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4771,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:08:03.769Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50879ed375f8988ef978-c23fa07248280750496a",
+          "file": "counter.spec.ts",
+          "line": 333,
+          "column": 1
+        },
+        {
+          "title": "no motion to reduce; forced colors keep the border visible in the system text color",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1302,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:08:08.562Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50879ed375f8988ef978-a6a6dca48fe15b1805ab",
+          "file": "counter.spec.ts",
+          "line": 434,
+          "column": 1
+        },
+        {
+          "title": "automated accessibility audit and screenshots in light and dark, desktop and mobile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4274,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:08:09.889Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50879ed375f8988ef978-f5a782397f6ae247392e",
+          "file": "counter.spec.ts",
+          "line": 468,
           "column": 1
         }
       ]
@@ -216,9 +318,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-14T04:51:00.934Z",
-    "duration": 11011.379,
-    "expected": 4,
+    "startTime": "2026-10-14T05:07:54.708Z",
+    "duration": 19633.514,
+    "expected": 7,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

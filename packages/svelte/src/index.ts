@@ -5,3 +5,6 @@ export type { ButtonIntent, ButtonAppearance, ButtonSize } from './components/bu
 export { default as Icon } from './components/icon/Icon.svelte';
 export type { IconProps } from './components/icon/types.js';
 export type { IconSize } from './components/icon/contract.generated.js';
+export { default as Counter } from './components/counter/Counter.svelte';
+export type { CounterProps } from './components/counter/types.js';
+export type { CounterSize } from './components/counter/contract.generated.js';

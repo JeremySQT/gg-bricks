@@ -1,0 +1,57 @@
+/*
+ * Counter structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * The root element is the container part: a box the height of the value's line box (no block padding),
+ * at least as wide as it is high, with the value centered. Border and digits use the inherited content
+ * color so the counter follows its host (a solid Button, a navigation item, running text).
+ */
+.ggb-counter {
+  box-sizing: border-box;
+  display: inline-grid;
+  place-items: center;
+  /* The line box of the typography, from the lh unit: no block padding, so one and two digits share a height. */
+  min-inline-size: 1lh;
+  /* Never shrunk by a flex parent (the explicit minimum above would otherwise replace the content floor). */
+  flex: none;
+  margin: 0;
+  padding-block: 0;
+  padding-inline: var(--ggb-counter-paddingInline);
+  border: 0;
+  border-radius: var(--ggb-counter-radius);
+  background: transparent;
+  color: inherit;
+  font: var(--ggb-counter-typography);
+  letter-spacing: var(--ggb-counter-typography-letterSpacing, normal);
+  font-feature-settings: var(--ggb-counter-typography-fontFeatureSettings, normal);
+  /* Tabular figures also through the high-level property, should the feature helper be unset. */
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: center;
+  /* The border is drawn inside the edge so that it never changes the outer dimensions. */
+  box-shadow: inset 0 0 0 var(--ggb-counter-borderWidth) currentColor;
+  /* Transparent outline: invisible normally, drawn by the system in forced-colors mode (box-shadow is dropped). */
+  outline: var(--ggb-counter-borderWidth) solid transparent;
+  outline-offset: calc(-1 * var(--ggb-counter-borderWidth));
+}
+
+.ggb-counter__value {
+  display: block;
+  min-inline-size: 0;
+  white-space: nowrap;
+}
+
+/* Accessible label: read after the value, never shown. */
+.ggb-counter__label {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: pre;
+}
+
+@media (forced-colors: active) {
+  .ggb-counter {
+    box-shadow: none;
+    outline-color: currentColor;
+  }
+}

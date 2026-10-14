@@ -42,9 +42,27 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/counter/Counter.svelte",
+      "folder": "packages/svelte/src/components/counter",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (static content, no native semantics to borrow)"
+      },
+      "report": "reports/components/counter/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/counter",
+      "preview": "dist/previews/counter.html (npm run build:preview counter)",
+      "artifact": null
+    },
+    "tests": {
+      "ssr": "tests/ssr/counter.test.ts",
+      "browser": "tests/browser/counter.spec.ts",
+      "computed": "reports/components/counter/svelte/computed.json",
+      "screenshots": "reports/components/counter/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -80,6 +98,36 @@
       "command": "npm run build:tokens",
       "date": "2026-10-13",
       "note": "No contrast records: the counter binds no color role (it draws in the inherited content color), so there is no surface/content pair to measure. Contrast is the host's or the surrounding text's."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-14",
+      "note": "generate, lint, validate, unit tests, svelte-check (775 files, 0 errors), SSR, build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/counter/svelte/ssr.json",
+      "date": "2026-10-14",
+      "note": "6 Counter tests: defaults, integer normalization (7.9, -5, NaN, grouping), overflow (99+, custom max, max floor, invalid max), label in the accessible text, sizes, class merge and native attributes."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-14",
+      "note": "16 Chromium 141 tests (9 Button, 7 Counter): values and overflow, accessible text read from the accessibility tree through CDP, geometry in 3 densities (line-box heights 15.4/16.8/19.6 px, minimum width = height, tabular widths, no wrap), inherited color in 9 intent x appearance Buttons plus disabled, loading, hover, pressed and nested mode, computed values versus resolved tokens in 18 contexts (1800 records), no motion, forced colors, axe light and dark, 390 px viewport."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run build:preview counter",
+      "date": "2026-10-14",
+      "note": "dist/previews/counter.html (1451 kB) mounts from file:// without errors."
     }
   ],
   "decisionsTaken": [
@@ -100,18 +148,28 @@
     "The roadmap progress row, the token files and the token inventory were not touched in this worktree (orchestrator instruction: shared files are edited by the orchestrator at the grouped gate).",
     "Contract gate (user, 2026-10-14): typography bound to the new family typography.indicator.{sm,md,lg} (Inter 500, 11/12/14 px, line height 1.4, tabular figures, common axis), shared with Shortcut and later Badge (option A of the former open decision 1).",
     "Contract gate (user, 2026-10-14): the counter is a rectangle with a small corner radius, not a pill, so that one and two digits read alike. New semantic role radius.indicator (base 4 px, brick 2 px, orchid inherits 4 px) bound to the radius role; the minimum width equal to the height is kept.",
-    "Contract gate (user, 2026-10-14): inherited-color treatment only in v1 (emphasis waits for an indicator color family defined with Badge); pill height from the typography line box; Button kept as approved (a quantity that must be announced goes into the host label or a live region); 99+ is announced as shown."
+    "Contract gate (user, 2026-10-14): inherited-color treatment only in v1 (emphasis waits for an indicator color family defined with Badge); pill height from the typography line box; Button kept as approved (a quantity that must be announced goes into the host label or a live region); 99+ is announced as shown.",
+    "Implementation (2026-10-14): the root element is the container part (class ggb-counter, no ggb-counter__container layer); Button has a separate root only because it is an interaction target. The hidden accessible label uses the helper class ggb-counter__label, not a contract part, following Button's ggb-button__name precedent.",
+    "Implementation (2026-10-14): a non-finite value (NaN, Infinity, null from an empty number field) shows 0 and a non-finite max falls back to 99; max is floored and kept at least 1 so the overflow text is itself a counter value. The accessible text is the visible text (99+), as decided at the contract gate.",
+    "Implementation (2026-10-14): the accessible label is a visually hidden span that starts with a space, kept by white-space: pre, rather than aria-label (which would replace the visible text) or a space-less span (Chromium's accessibility tree concatenates inline text without inserting one). Verified through the Chromium accessibility tree (CDP) rather than Playwright's accessible-name computation, which does not name a generic span.",
+    "Implementation (2026-10-14): flex: none on the root. An explicit min-inline-size replaces a flex item's automatic content floor, so the first draft let a narrow flex parent shrink the box and the digits spilled past the border; with flex: none the counter overflows its parent instead, as the contract requires (never wrapped or truncated).",
+    "Implementation (2026-10-14): in forced-colors mode the outline color is currentColor, not CanvasText, so the border follows the forced text color of the host (ButtonText in a Button, GrayText in a disabled Button); verified in Chromium 141.",
+    "Implementation (2026-10-14): min-inline-size uses the lh unit (no generated lineHeight helper exists and adding one would change shared tooling); Chromium resolves it in 1/64 px layout units, equal to the laid-out block size, so the browser test compares the minimum with the element's height at 0.005 px and with the token line box at 0.05 px.",
+    "Implementation (2026-10-14): the geometry test asserts width = max(line box, digit + 2 x padding) rather than 'a single digit is square', which the first draft assumed and which is false at comfortable density (padding 6 px per side); the square is still asserted wherever the padding allows it. The code was right; the assertion is the contract's rule.",
+    "Implementation (2026-10-14): the Counter export was added locally to packages/svelte/src/index.ts so that the example page and the tests resolve the component; the orchestrator owns that line, documentation/index.json and examples/index.html.",
+    "Implementation (2026-10-14): the review page is examples/counter (sizes x values 0, 1, 8, 42, 99, 100, 1234; tabular pairs; custom maximums; invalid input; label; next to label and body text of each size and in RTL; inside Buttons of every size, intent, appearance and state; nested opposite mode; constrained width). The Button example keeps its counter fixture until the implementation gate passes, as the fixtures note says."
   ],
-  "openDecisions": [],
-  "nextAction": "Implementation (ggb-svelte), grouped implementation gate with Icon and Shortcut.",
+  "openDecisions": [
+    "Comfortable density: with paddingInline bound to space.content.xs (6 px), a single digit is wider than it is high (sm 19.1 x 15.4 px, md 19.5 x 16.8, lg 20.8 x 19.6) while it is a square at compact and standard. Accept as the consequence of the density-dependent padding, or bind a density-independent padding (a new indicator spacing role) so the square holds in every density? To be judged on the preview (density selector)."
+  ],
+  "nextAction": "Grouped implementation gate with Icon and Shortcut (preview dist/previews/counter.html); then Figma reproduction (ggb-figma) and documentation (ggb-docs).",
   "implementationNotes": [
-    "Svelte: a <span class=\"ggb-counter\" data-size> root with a <span class=\"ggb-counter__value\"> for the digits and, when label is set, a visually hidden <span> appended after the value so the accessible text reads 8 unread messages; no role attribute, no aria-label (visible text stays the name). Live announcements are left to the integration.",
-    "Formatting: Math.floor then Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }) for digit grouping when max is raised above 999; overflow appends U+002B (+) to the formatted max. SSR uses the server locale; the integration can pin a locale by wrapping, which is out of scope for v1.",
-    "CSS: display inline-grid; place-items center; font from --ggb-counter-typography with the fontFeatureSettings helper (tnum) once the role is bound, plus font-variant-numeric: tabular-nums as a fallback; min-inline-size: 1lh (the lh unit is supported by current Chromium, Safari and Firefox; a calc on the line-height custom property is the fallback); padding-inline var(--ggb-counter-paddingInline); border-radius var(--ggb-counter-radius).",
-    "Ring: box-shadow: inset 0 0 0 var(--ggb-counter-borderWidth) currentColor keeps the box equal to the line box; forced-colors mode drops box-shadows, so @media (forced-colors: active) adds an outline of borderWidth at a negative offset in CanvasText.",
-    "Block sizes are fractional with a 1.4 line height (15.4, 16.8, 19.6 px): do not round them; the Button slot centers the box (min-block-size iconSize), and the parity tolerance is 1.5 px.",
-    "Inside Button: the integration writes <Counter size={buttonSize} value={n} /> in the trailing snippet; Button's slotInline margin applies to the counter's box, the content color is inherited through color: inherit on the slot, loading fades the slot (opacity 0) and disabled gives it the disabled content color; nothing to do in Counter.",
-    "Figma: component set Counter with a Size variant property (sm, md, lg), a Value text property and an Overflow boolean that swaps the text to max+ for the specification; text bound to the typography style of the size, inside stroke bound to border/width/default; no currentColor in Figma, so the stroke and text color bind to an adapter foreground variable (as Button's button/foreground) defaulting to color/content/primary; auto layout with min width equal to the frame height per size and corner radius radius/full.",
-    "Tests: SSR (0, 8, 99+, label text, size attribute); browser (computed line box and min width per size and density, tabular widths equal for 8 and 1, overflow at max, forced-colors ring, axe light and dark, a counter in sm, md and lg Buttons compared with the fixture geometry)."
+    "Svelte: <span class=\"ggb-counter\" data-size data-overflow?> is the root and the container part (no separate target layer: not interactive); <span class=\"ggb-counter__value\"> holds the digits; when label is set a visually hidden <span class=\"ggb-counter__label\"> follows, starting with a space (white-space: pre keeps it) so the accessible text is one phrase (8 unread messages); no role, aria-label or tabindex. Native attributes pass through, class is merged, ref is bindable. No Bits UI primitive: there are no native semantics to borrow.",
+    "Formatting: value -> Number.isFinite ? max(0, floor) : 0; max -> finite ? max(1, floor) : 99; overflow = value > max; text = Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }) of value, or of max followed by U+002B. The locale is the runtime's (server or browser); grouping only shows once max is raised above 999.",
+    "CSS: display inline-grid; place-items center; font from --ggb-counter-typography with the letterSpacing and fontFeatureSettings helpers (tnum) plus font-variant-numeric: tabular-nums; padding-block 0; padding-inline var(--ggb-counter-paddingInline); min-inline-size: 1lh (Chromium resolves it in 1/64 px layout units: 15.3906 px for sm, equal to the laid-out block size); flex: none so a flex parent cannot shrink the box below its content; white-space nowrap; border-radius var(--ggb-counter-radius); box-shadow: inset 0 0 0 var(--ggb-counter-borderWidth) currentColor; a transparent 1 px inset outline is always present and becomes the border in forced-colors mode (box-shadow: none; outline-color: currentColor, which follows the forced text color: CanvasText standalone, ButtonText in a Button, GrayText when the Button is disabled).",
+    "Measured geometry (base, Inter): block size 15.4 / 16.8 / 19.6 px for sm / md / lg in every density; one digit is a square at compact and standard; at comfortable the padding (6 px per side) plus the digit exceeds the line box (sm: 19.1 x 15.4 px), the minimum rule still holds.",
+    "Inside Button: the integration writes <Counter size={buttonSize} value={n} /> in the trailing snippet; the counter is centered in the surface (<= 0.5 px) and inherits the content color in every intent, appearance and state; Button fades the trailing slot while loading and hides it from assistive technology; nothing to do in Counter.",
+    "Figma (unchanged from the contract notes except the shape): component set Counter with Size (sm, md, lg), a Value text property and an Overflow boolean; text bound to typography/indicator/{size}, inside stroke border/width/default, corner radius radius/indicator, auto layout with min width equal to the frame height per size, fill none, stroke and text bound to an adapter foreground variable defaulting to color/content/primary.",
+    "Tests: SSR (tests/ssr/counter.test.ts, 6) and browser (tests/browser/counter.spec.ts, 7) as recorded in checks; reports/components/counter/svelte/computed.json holds 1800 records (18 contexts x 3 sizes x default and overflow x container and value parts, plus the inherited color inside 9 intent x appearance Buttons in 4 representative contexts)."
   ]
 }
