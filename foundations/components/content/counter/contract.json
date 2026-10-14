@@ -31,7 +31,8 @@
     }
   },
   "tokens": {
-    "radius": "radius.full",
+    "typography": "typography.indicator.{size}",
+    "radius": "radius.indicator",
     "borderWidth": "border.width.default",
     "paddingInline": "space.content.xs"
   },
@@ -41,8 +42,8 @@
     "A value of 0 is shown as 0; the counter never hides itself. Whether an empty quantity is shown at all is the integration's choice.",
     "The accessible text is the visible text, followed by label when label is set (8 unread messages), so that a lone number has a meaning. Without label, the surrounding content or the host supplies the meaning; a counter is never the sole accessible name of its host, and a host may hide it from assistive technology (Button hides its trailing content).",
     "The border and the value are drawn in the inherited content color with no fill, so the counter follows its host: the content color of a solid Button, the text color of a navigation item.",
-    "The value is set in the typography of the size, with tabular figures so that counters of the same size and digit count have the same width; the typography does not change with density.",
-    "The container block size is the line box of the value typography, with no block padding. Its inline padding is paddingInline on both sides and its minimum inline size equals its block size, so that a single digit sits in a circle; corners use radius, so the container is a pill.",
+    "The value is set in typography (the indicator typography of the size, one step below the host's label), with tabular figures so that counters of the same size and digit count have the same width; the typography does not change with density.",
+    "The container block size is the line box of the value typography, with no block padding. Its inline padding is paddingInline on both sides and its minimum inline size equals its block size, so that one digit and two digits sit in boxes of the same height and family; corners use radius, a small rounding that keeps the counter rectangular rather than a pill.",
     "Draw the border at borderWidth inside the container edge in the content color; it never changes the outer dimensions.",
     "Sizes are named like Button sizes; inside a host that has a size, the integration gives the counter the host's size. The counter is text-like content placed by its box, without optical compensation.",
     "The counter is not interactive: it is never focusable, emits no events and changes nothing when its host is hovered, pressed, loading or disabled beyond inheriting the host's content color.",

@@ -3,7 +3,7 @@
   "componentId": "counter",
   "family": "content",
   "wave": 1,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Show a quantity (unread messages, items, selected rows) as a compact pill next to the thing it counts.",
     "useCases": [
@@ -33,9 +33,13 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/content/counter/contract.json",
-      "sha256": "ca8dc81d223179f1a2c5bb4a8a3236b0e7d4588ef830b44492fc7bdf0fc857a8"
+      "sha256": "780d5bb95dac71a36a45c35efca071396cf1b538f16fc4247351f324a9f9abc8"
     },
-    "tokens": [],
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/common.tokens.json",
+      "foundations/tokens/brick/semantic/common.tokens.json"
+    ],
     "figma": null,
     "figmaSpec": null,
     "svelte": null,
@@ -45,7 +49,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Counter contract: value (number, default 0), max (default 99, overflow 99+), size (sm, md, lg named like Button), optional label appended to the accessible text; container and value parts; overflow state; typography.indicator.{size}, radius.indicator, border.width.default, space.content.xs; eleven rules (inherited content color, tabular figures, line-box height, minimum width equal to the height, small corner radius, non interactive, forced colors).",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14 at the grouped contract gate of Icon, Counter and Shortcut: \"Ok pour tout\" on the seven grouped decisions (indicator typography family for Counter and Shortcut, keycap appearance now, platform-driven Shortcut rendering, Counter in inherited color only, pill height from the typography, Button kept as approved, Icon glyph as content with five sizes), with two amendments applied before recording: Phosphor confirmed as the reference icon set, and the Counter made rectangular with a small corner radius (2 or 4 px) instead of a pill so that one and two digits read alike.",
+      "note": "Contract digest recorded after the amendments; implementation approval recorded separately.",
+      "revision": {
+        "paths": ["foundations/components/content/counter/contract.json"],
+        "sha256": {
+          "foundations/components/content/counter/contract.json": "780d5bb95dac71a36a45c35efca071396cf1b538f16fc4247351f324a9f9abc8"
+        }
+      }
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -58,7 +72,7 @@
       "command": "npm run validate",
       "report": "reports/components/counter/contract-validation.json",
       "date": "2026-10-13",
-      "note": "Schema, consistency and token coverage (3 paths: radius.full, border.width.default, space.content.xs) in 18 contexts; node tooling/validate-contracts.ts counter --tokens --dependencies also passed (no accepted content). The typography role is not bound yet (open decision 1), so coverage does not prove the typography."
+      "note": "Schema, consistency and token coverage (6 paths, typography.indicator bound at the gate) in 18 contexts."
     },
     {
       "kind": "build-tokens",
@@ -83,29 +97,13 @@
     "Typography role left unbound on purpose: no existing role is honest (numeral.sm/md/lg are 14/16/24 px, too big for a counter that must sit below a 12 to 16 px label; caption.sm/md are 400 weight without tabular figures and have no lg step; label.sm/md/lg are the host's own sizes). Binding typography.numeral.{size} would validate but render a 24 px counter in a lg Button. The proposed roles are in open decision 1; the contract binds the role typography once the reviewer picks the family.",
     "Parts limited to container and value; the accessible label is not a visual part. No events, no interaction states: the counter never reacts to its host's hover, pressed, loading or disabled states beyond inheriting the content color (Button fades its trailing content while loading and gives it the disabled content color).",
     "Forced-colors rule kept in the contract (decision register: every component with a border handles forced colors): the border stays visible in the system text color.",
-    "The roadmap progress row, the token files and the token inventory were not touched in this worktree (orchestrator instruction: shared files are edited by the orchestrator at the grouped gate)."
+    "The roadmap progress row, the token files and the token inventory were not touched in this worktree (orchestrator instruction: shared files are edited by the orchestrator at the grouped gate).",
+    "Contract gate (user, 2026-10-14): typography bound to the new family typography.indicator.{sm,md,lg} (Inter 500, 11/12/14 px, line height 1.4, tabular figures, common axis), shared with Shortcut and later Badge (option A of the former open decision 1).",
+    "Contract gate (user, 2026-10-14): the counter is a rectangle with a small corner radius, not a pill, so that one and two digits read alike. New semantic role radius.indicator (base 4 px, brick 2 px, orchid inherits 4 px) bound to the radius role; the minimum width equal to the height is kept.",
+    "Contract gate (user, 2026-10-14): inherited-color treatment only in v1 (emphasis waits for an indicator color family defined with Badge); pill height from the typography line box; Button kept as approved (a quantity that must be announced goes into the host label or a live region); 99+ is announced as shown."
   ],
-  "openDecisions": [
-    {
-      "id": 1,
-      "question": "Which typography roles for the counter sizes? The contract needs a role typography bound to a size-parameterized path; none exists today.",
-      "proposal": "Recommended (A): new semantic family typography.indicator.{sm,md,lg}, type typography, axis common (same value in all 18 contexts, Inter everywhere): sm = Inter 500, 11 px, line-height 1.4, letter-spacing 0, fontFeatures [tnum]; md = Inter 500, 12 px, 1.4, 0, [tnum]; lg = Inter 500, 14 px, 1.4, 0, [tnum] (lg equals typography.numeral.sm). Keyed by the control sizes it accompanies, so the contract binds typography: typography.indicator.{size} and the generator emits one data-size selector per size; reusable by Badge (same pill text ladder) and by Shortcut if it stays in the sans family. Figma: three text styles indicator/sm, md, lg. Alternative (B): extend the numeral ladder downward with typography.numeral.xs = 12 px and typography.numeral.2xs = 11 px (500, 1.4, 0, [tnum]) and bind three explicit roles typographySm, typographyMd, typographyLg (numeral.2xs, numeral.xs, numeral.sm); smaller addition but bypasses the {size} convention of the generated CSS. Rejected (C): typography.caption.{sm,md} with no lg size (400 weight, no tabular figures, inconsistent with the validated fixture).",
-      "blocks": "implementation (not the contract gate)"
-    },
-    {
-      "id": 2,
-      "question": "Should v1 ship with the single currentColor treatment (border and digits in the inherited content color, no fill), and should a filled or colored emphasis wait for Badge?",
-      "proposal": "Yes: no existing color family is honest for a notification counter (action colors are for actions, status colors are Badge's, selection is for selection), and a translucent neutral fill that would work in every host has no token. When Badge is scoped, define one indicator color family shared by both, for example color.indicator.{neutral,accent,danger}.{surface,content} on the appearance axis (neutral: surface.muted + content.primary; accent and danger: strong fills with white content), and add an emphasis prop to Counter then. Until then, the integration tints a standalone counter through the surrounding text color.",
-      "blocks": "nothing"
-    },
-    {
-      "id": 3,
-      "question": "Button hides its leading and trailing content from assistive technology (Button decision, 2026-10-07), so a Button Inbox with a counter 8 announces only Inbox. Should Button append the counter's accessible text to its name, or should the integration put the quantity in the button label when it matters?",
-      "proposal": "Outside the Counter's scope; the Counter rule says a host may hide it. Recommended: keep Button as approved and document in Counter and Button usage that a quantity a screen reader user needs goes into the host's label (Inbox, 8 unread) or into a live region owned by the integration. If the reviewer prefers announcing, it is a Button contract change (its accessible-name rule), reopened for that fact only.",
-      "blocks": "nothing"
-    }
-  ],
-  "nextAction": "Contract gate (grouped with Icon and Shortcut): reviewer picks the typography family (open decision 1), confirms the currentColor-only treatment (2) and the Button announcement question (3); then bind the typography role, re-validate, record the approval with digests and start the implementation (ggb-svelte).",
+  "openDecisions": [],
+  "nextAction": "Implementation (ggb-svelte), grouped implementation gate with Icon and Shortcut.",
   "implementationNotes": [
     "Svelte: a <span class=\"ggb-counter\" data-size> root with a <span class=\"ggb-counter__value\"> for the digits and, when label is set, a visually hidden <span> appended after the value so the accessible text reads 8 unread messages; no role attribute, no aria-label (visible text stays the name). Live announcements are left to the integration.",
     "Formatting: Math.floor then Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }) for digit grouping when max is raised above 999; overflow appends U+002B (+) to the formatted max. SSR uses the server locale; the integration can pin a locale by wrapping, which is out of scope for v1.",

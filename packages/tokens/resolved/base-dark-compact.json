@@ -3470,6 +3470,14 @@
       "unit": "px"
     }
   },
+  "radius.indicator": {
+    "$type": "dimension",
+    "$value": {
+      "value": 4,
+      "unit": "px"
+    },
+    "$description": "Corner radius of small companion content (counters, keycaps): a rectangle with slightly rounded corners, never a pill, so one and two digits read alike."
+  },
   "border.width.default": {
     "$type": "dimension",
     "$value": {
@@ -4157,6 +4165,84 @@
         "value": 0,
         "unit": "px"
       }
+    }
+  },
+  "typography.indicator.sm": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": [
+        "Inter",
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "Roboto",
+        "sans-serif"
+      ],
+      "fontWeight": 500,
+      "fontSize": {
+        "value": 11,
+        "unit": "px"
+      },
+      "lineHeight": 1.4,
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      },
+      "fontFeatures": [
+        "tnum"
+      ]
+    }
+  },
+  "typography.indicator.md": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": [
+        "Inter",
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "Roboto",
+        "sans-serif"
+      ],
+      "fontWeight": 500,
+      "fontSize": {
+        "value": 12,
+        "unit": "px"
+      },
+      "lineHeight": 1.4,
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      },
+      "fontFeatures": [
+        "tnum"
+      ]
+    }
+  },
+  "typography.indicator.lg": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": [
+        "Inter",
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "Roboto",
+        "sans-serif"
+      ],
+      "fontWeight": 500,
+      "fontSize": {
+        "value": 14,
+        "unit": "px"
+      },
+      "lineHeight": 1.4,
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      },
+      "fontFeatures": [
+        "tnum"
+      ]
     }
   },
   "shadow.raised": {

@@ -3,7 +3,7 @@
   "componentId": "icon",
   "family": "content",
   "wave": 1,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Display a vector glyph from the application's icon set at a system size, in the current content color, decorative unless it carries a label.",
     "useCases": [
@@ -32,7 +32,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/content/icon/contract.json",
-      "sha256": "4298b3118dba2865343db03589ad7f70b2f3a103ce6d3e44b3754e6c4215a96a"
+      "sha256": "159c7201c40969c2f12a33feb479be56345c69e05843aafb7d604445bc9101b6"
     },
     "tokens": [],
     "figma": null,
@@ -44,7 +44,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Icon contract: size (xs to xl on size.icon), optional label, box and glyph parts, six rules (square box in the current color, reference set conventions, decorative unless labelled, fixed size, no state, host size wins in a slot).",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14 at the grouped contract gate of Icon, Counter and Shortcut: \"Ok pour tout\" on the seven grouped decisions (indicator typography family for Counter and Shortcut, keycap appearance now, platform-driven Shortcut rendering, Counter in inherited color only, pill height from the typography, Button kept as approved, Icon glyph as content with five sizes), with two amendments applied before recording: Phosphor confirmed as the reference icon set, and the Counter made rectangular with a small corner radius (2 or 4 px) instead of a pill so that one and two digits read alike.",
+      "note": "Contract digest recorded after the amendments; implementation approval recorded separately.",
+      "revision": {
+        "paths": ["foundations/components/content/icon/contract.json"],
+        "sha256": {
+          "foundations/components/content/icon/contract.json": "159c7201c40969c2f12a33feb479be56345c69e05843aafb7d604445bc9101b6"
+        }
+      }
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -58,14 +68,13 @@
     "No color option: the icon paints in the current content color; a host that needs another color wraps it in a colored container (as Button does through its content color).",
     "No states and no interaction: the icon is static content.",
     "Inside a Button slot the button's icon size wins over the size option, so that slot content always matches the button size (Button contract rule).",
-    "The reference set's 1/8 inset is a documented convention, not an option: hosts that apply optical spacing (Button) assume it; glyphs from sets with another inset are supported but sit slightly off in those hosts."
+    "The reference set's 1/8 inset is a documented convention, not an option: hosts that apply optical spacing (Button) assume it; glyphs from sets with another inset are supported but sit slightly off in those hosts.",
+    "Contract gate (user, 2026-10-14): glyph passed as content with a coordinate-box option defaulting to the Phosphor grid; five sizes kept. Phosphor Icons confirmed as the reference set (nothing bundled: the application supplies the glyphs)."
   ],
   "openDecisions": [
-    "Contract gate: should the glyph be passed as content (a snippet rendering the drawing inside the icon's own svg, with a viewBox option defaulting to the reference grid) or as a path string option? Proposed: content, because glyphs may hold several shapes and sets differ.",
-    "Contract gate: keep all five sizes of size.icon (xs 12 to xl 32) or only the three used by Button (sm, md, lg)? Proposed: five, since captions and empty states need the extremes and the tokens already exist.",
     "Figma parity gate (later): the Figma master cannot hold the application's icons; proposed: an Icon component set whose Name variants are the review fixtures (Phosphor), with Size as a variant, replacing the _Fixture/Icon set."
   ],
-  "nextAction": "Contract gate (grouped with Counter and Shortcut).",
+  "nextAction": "Implementation (ggb-svelte), grouped implementation gate with Counter and Shortcut.",
   "implementationNotes": [
     "Svelte: Icon renders a single svg root element (class ggb-icon, data-size, viewBox option defaulting to the Phosphor grid 0 0 256 256, fill currentColor, width and height from size.icon) whose content is the children snippet. A single svg root keeps the Button slot selectors (.ggb-button__leading > svg) working, so the button sizes and optically offsets the icon as it does today with raw svg fixtures.",
     "Accessibility: without label, aria-hidden=\"true\" and focusable=\"false\"; with label, role=\"img\" and aria-label.",

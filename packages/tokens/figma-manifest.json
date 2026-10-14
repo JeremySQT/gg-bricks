@@ -5404,6 +5404,29 @@
     },
     {
       "collection": "Brand",
+      "name": "radius/indicator",
+      "path": "radius.indicator",
+      "type": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-radius-indicator)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/radius/sm"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/radius/xs"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/radius/sm"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "border/width/default",
       "path": "border.width.default",
       "type": "FLOAT",
@@ -7309,6 +7332,195 @@
       ],
       "codeSyntax": {
         "WEB": "var(--ggb-typography-code-sm-letterSpacing)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/tracking/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/tracking/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/sm/fontSize",
+      "path": "typography.indicator.sm.fontSize",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_SIZE"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-sm-fontSize)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/size/11"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/size/11"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/size/11"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/sm/lineHeight",
+      "path": "typography.indicator.sm.lineHeight",
+      "type": "FLOAT",
+      "scopes": [
+        "LINE_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-sm-lineHeight)"
+      },
+      "values": {
+        "base": 15.399999999999999,
+        "brick": 15.399999999999999,
+        "orchid": 15.399999999999999
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/sm/letterSpacing",
+      "path": "typography.indicator.sm.letterSpacing",
+      "type": "FLOAT",
+      "scopes": [
+        "LETTER_SPACING"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-sm-letterSpacing)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/tracking/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/tracking/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/md/fontSize",
+      "path": "typography.indicator.md.fontSize",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_SIZE"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-md-fontSize)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/size/12"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/size/12"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/size/12"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/md/lineHeight",
+      "path": "typography.indicator.md.lineHeight",
+      "type": "FLOAT",
+      "scopes": [
+        "LINE_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-md-lineHeight)"
+      },
+      "values": {
+        "base": 16.799999999999997,
+        "brick": 16.799999999999997,
+        "orchid": 16.799999999999997
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/md/letterSpacing",
+      "path": "typography.indicator.md.letterSpacing",
+      "type": "FLOAT",
+      "scopes": [
+        "LETTER_SPACING"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-md-letterSpacing)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/tracking/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/tracking/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/lg/fontSize",
+      "path": "typography.indicator.lg.fontSize",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_SIZE"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-lg-fontSize)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/size/14"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/size/14"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/size/14"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/lg/lineHeight",
+      "path": "typography.indicator.lg.lineHeight",
+      "type": "FLOAT",
+      "scopes": [
+        "LINE_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-lg-lineHeight)"
+      },
+      "values": {
+        "base": 19.599999999999998,
+        "brick": 19.599999999999998,
+        "orchid": 19.599999999999998
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/lg/letterSpacing",
+      "path": "typography.indicator.lg.letterSpacing",
+      "type": "FLOAT",
+      "scopes": [
+        "LETTER_SPACING"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-lg-letterSpacing)"
       },
       "values": {
         "base": {
@@ -12842,6 +13054,39 @@
       "lineHeight": 18,
       "letterSpacing": 0,
       "features": []
+    },
+    {
+      "name": "typography/indicator/sm",
+      "family": "Inter",
+      "style": "Medium",
+      "size": 11,
+      "lineHeight": 15.399999999999999,
+      "letterSpacing": 0,
+      "features": [
+        "tnum"
+      ]
+    },
+    {
+      "name": "typography/indicator/md",
+      "family": "Inter",
+      "style": "Medium",
+      "size": 12,
+      "lineHeight": 16.799999999999997,
+      "letterSpacing": 0,
+      "features": [
+        "tnum"
+      ]
+    },
+    {
+      "name": "typography/indicator/lg",
+      "family": "Inter",
+      "style": "Medium",
+      "size": 14,
+      "lineHeight": 19.599999999999998,
+      "letterSpacing": 0,
+      "features": [
+        "tnum"
+      ]
     }
   ],
   "effects": [

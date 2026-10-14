@@ -16,7 +16,7 @@
     },
     "size": {
       "values": ["sm", "md", "lg"],
-      "default": "sm"
+      "default": "md"
     },
     "label": {
       "type": "string"
@@ -29,7 +29,7 @@
   },
   "states": {},
   "tokens": {
-    "typography": "typography.label.{size}",
+    "typography": "typography.indicator.{size}",
     "surface": "color.surface.subtle",
     "border": "color.border.default",
     "borderWidth": "border.width.default",
