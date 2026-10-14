@@ -25,3 +25,15 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - `icon-parity.plugin.js`: `use_figma` body measuring the Icon set in the 18 contexts (box size, bound variables, glyph fill, drawing box); save its result as JSON.
 - `icon-parity-report.mjs <result.json>`: compares the measurement with `reports/components/icon/svelte/computed.json` and writes `reports/components/icon/figma/parity.json`.
 - `icon-spec.plugin.js`: the `use_figma` body that builds the Icon specification page (same layout as the Button page).
+- `counter-master.plugin.js`: `use_figma` body building the page `content/counter`, the hidden adapter collection `_ggbrick counter` (`counter/foreground`, `counter/border-opacity`) and the Counter component set (Size × Overflow) with every visual property bound to a variable.
+- `counter-spec.plugin.js`: `use_figma` body building the Counter specification frame (same layout as the Button's).
+- `counter-parity.plugin.js`: `use_figma` body measuring the six Counter variants in every context, the `button/foreground` proxies and Inter's default figure widths; save its result as a JSON file.
+- `counter-parity-report.mjs <file>`: compares the saved measurements with `reports/components/counter/svelte/computed.json` and writes `reports/components/counter/figma/parity.json`.
+
+## Mechanics learned with the Counter (2026-10-14)
+
+- A number variable bound to layer opacity is read as a **percentage**: binding a 0.7 token renders 0.7 %. Until the sync emits opacity-scoped variables in percent, components bind a hidden mirror variable (`counter/border-opacity` = 70).
+- A text layer's auto height is rounded to whole pixels; bind the container height to the line-height variable when the box must be the line box (15.4, 16.8, 19.6).
+- STRETCH constraints on an absolute child round the master's fractional width when applied to an instance; SCALE constraints keep the child equal to the box.
+- `openTypeFeatures` is read-only on text nodes as on styles: tabular figures must be switched on by hand.
+- The default variant of a set is the top-left one on the canvas, whatever the child order.

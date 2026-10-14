@@ -1,0 +1,146 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "content/counter",
+      "id": "149:1547",
+      "note": "Created on 2026-10-14 with figma.createPage() and inserted after actions/button (144:2); holds the master and its specification."
+    }
+  },
+  "recordedOn": "2026-10-14",
+  "componentSet": {
+    "id": "149:1568",
+    "name": "Counter",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=149-1568",
+    "defaultVariant": "Size=md, Overflow=false (top-left of the set: Figma takes the top-left variant as the default)"
+  },
+  "properties": {
+    "Value#149:6": {
+      "type": "TEXT",
+      "default": "8",
+      "boundIn": "Overflow=false variants (Value layer)"
+    },
+    "Overflow text#149:13": {
+      "type": "TEXT",
+      "default": "99+",
+      "boundIn": "Overflow=true variants (Value layer): the maximum followed by a plus sign; edit it for another maximum"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": ["sm", "md", "lg"]
+    },
+    "Overflow": {
+      "type": "VARIANT",
+      "default": "false",
+      "options": ["false", "true"],
+      "note": "Boolean-valued variant property, shown as a switch in Figma; the contract's derived state overflow."
+    }
+  },
+  "variants": {
+    "Size=md, Overflow=false": "149:1553",
+    "Size=sm, Overflow=false": "149:1550",
+    "Size=lg, Overflow=false": "149:1556",
+    "Size=md, Overflow=true": "149:1562",
+    "Size=sm, Overflow=true": "149:1559",
+    "Size=lg, Overflow=true": "149:1565"
+  },
+  "layers": {
+    "Container": "the variant component itself (auto layout, no fill)",
+    "Border": "stroke-only rectangle, absolute, SCALE constraints",
+    "Value": "text layer",
+    "ids": {
+      "Size=sm, Overflow=false": { "value": "149:1551", "border": "149:1552" },
+      "Size=md, Overflow=false": { "value": "149:1554", "border": "149:1555" },
+      "Size=lg, Overflow=false": { "value": "149:1557", "border": "149:1558" },
+      "Size=sm, Overflow=true": { "value": "149:1560", "border": "149:1561" },
+      "Size=md, Overflow=true": { "value": "149:1563", "border": "149:1564" },
+      "Size=lg, Overflow=true": { "value": "149:1566", "border": "149:1567" }
+    }
+  },
+  "bindings": {
+    "Container": {
+      "paddingLeft, paddingRight": "space/content/xs (Density, VariableID:6:14)",
+      "paddingTop, paddingBottom": "0 (no block padding, contract rule)",
+      "height": "typography/indicator/{size}/lineHeight (Brand, VariableID:145:6 / 145:9 / 145:12)",
+      "minWidth": "typography/indicator/{size}/lineHeight (same variable: minimum width equal to the height)",
+      "corner radii": "radius/indicator (Brand, VariableID:145:4)",
+      "fills": "none"
+    },
+    "Value": {
+      "textStyle": "typography/indicator/{size} (S:3f083edf…, S:e32656fa…, S:6ac9d1c7…), kept on the node",
+      "fontSize": "typography/indicator/{size}/fontSize (VariableID:145:5 / 145:8 / 145:11)",
+      "lineHeight": "typography/indicator/{size}/lineHeight",
+      "letterSpacing": "typography/indicator/{size}/letterSpacing (VariableID:145:7 / 145:10 / 145:13)",
+      "fills": "counter/foreground (VariableID:149:1549)",
+      "openTypeFeatures": "not settable through the Plugin API (read-only); see limitations"
+    },
+    "Border": {
+      "strokes": "counter/foreground (VariableID:149:1549), inside",
+      "stroke weights": "border/width/default (Brand, VariableID:5:74)",
+      "corner radii": "radius/indicator (VariableID:145:4)",
+      "opacity": "counter/border-opacity (VariableID:158:250, = 70): Figma reads an opacity binding in percent, opacity/muted (VariableID:145:3) holds 0.7"
+    }
+  },
+  "adapterVariables": {
+    "collection": {
+      "name": "_ggbrick counter",
+      "id": "VariableCollectionId:149:1548",
+      "hiddenFromPublishing": true,
+      "modes": { "default": "single mode" }
+    },
+    "variables": {
+      "counter/foreground": {
+        "id": "VariableID:149:1549",
+        "type": "COLOR",
+        "scopes": ["TEXT_FILL", "STROKE_COLOR"],
+        "hiddenFromPublishing": true,
+        "value": "alias color/content/primary (Appearance, VariableID:7:10)",
+        "note": "Stands for the inherited content color; the Button overrides the Value fill and Border stroke of its Counter instance with button/foreground (VariableID:90:13)."
+      },
+      "counter/border-opacity": {
+        "id": "VariableID:158:250",
+        "type": "FLOAT",
+        "scopes": ["OPACITY"],
+        "hiddenFromPublishing": true,
+        "value": 70,
+        "note": "Mirror of opacity/muted (0.7) in percent, because a Figma opacity binding reads its number as a percentage (binding opacity/muted gave 0.7 % opacity). To be replaced by a binding to opacity/muted once the token sync emits opacity-scoped variables in percent (orchestrator decision)."
+      }
+    }
+  },
+  "specification": {
+    "frame": {
+      "id": "156:4865",
+      "name": "Counter — Specification",
+      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=156-4865",
+      "size": "1232 × 4267"
+    },
+    "sections": {
+      "Header (title, summary, hero, reference note, Anatomy)": "156:4866",
+      "Anatomy": "156:4895",
+      "Body": "156:4997",
+      "Variants": "156:4998",
+      "States": "156:5193",
+      "Behavior & sizing": "156:5274",
+      "Usage examples": "156:5491"
+    },
+    "diagrams": {
+      "Anatomy diagram": "156:4902"
+    },
+    "builder": "authoring/adapters/figma/counter-spec.plugin.js",
+    "documentationComponents": "_Spec/Board 113:17 (fills reused), _Spec/Callout 115:6 (property Number#115:0), _Spec/Marker 115:8, Wireframe collection VariableCollectionId:105:1565 (modes light 105:0, blueprint 126:0)"
+  },
+  "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run (authoring/adapters/figma/counter-parity.plugin.js); experiment clones named “_experiment …” were removed in the same script that created them; none remain.",
+  "scripts": {
+    "master": "authoring/adapters/figma/counter-master.plugin.js",
+    "specification": "authoring/adapters/figma/counter-spec.plugin.js",
+    "parity": "authoring/adapters/figma/counter-parity.plugin.js + counter-parity-report.mjs"
+  },
+  "limitations": [
+    "openTypeFeatures is read-only in the Plugin API: tabular figures (tnum) are not set on the Value layers; Inter's default figures in Figma are proportional (11 is 12 px wide, 88 is 16 px at md). To switch on by hand (Type settings → Numbers → Tabular) on the typography/indicator text styles or on the six Value layers.",
+    "A Figma text layer's auto height is rounded to whole pixels (16 for a 15.4 line height), so the container height is bound to the lineHeight variable instead of hugging the text.",
+    "STRETCH constraints on an absolute child round the master's fractional width; the Border uses SCALE constraints, which keep it equal to the box in every instance.",
+    "A number variable bound to opacity is read as a percentage: the Border binds counter/border-opacity (70) rather than opacity/muted (0.7)."
+  ]
+}
