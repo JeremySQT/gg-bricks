@@ -3,7 +3,7 @@
   "componentId": "shortcut",
   "family": "content",
   "wave": 1,
-  "phase": "figma",
+  "phase": "done",
   "scope": {
     "purpose": "Show a keyboard shortcut hint (⌘K, Ctrl+Shift+P) as a sequence of keys, written once in a platform-neutral notation and rendered in the conventions of the user's platform, with a spoken equivalent for assistive technology.",
     "useCases": [
@@ -78,8 +78,8 @@
       "computed": "reports/components/shortcut/svelte/computed.json",
       "screenshots": "reports/components/shortcut/svelte/*.png"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/shortcut.md",
+    "agentDocs": "documentation/index.json (entry shortcut); copied into packages/svelte by npm run build:svelte"
   },
   "approvals": {
     "contract": {
@@ -118,7 +118,29 @@
       "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, after reviewing the published preview artifacts (grouped implementation gate of Icon, Counter and Shortcut): \"Ok pour la dernière proposition sur la densité, je valide l'approche recommandée\", then \"Pour le counter ça me semble bon, mais visuellement je verrai bien un contour à 70% d'opacité\" (applied), then, for the Shortcut, after comparing 100 %, 85 %, 70 % and a lighter weight on a lab page (https://claude.ai/artifact/L1agvDLoc2hBK3Hqz91reB): \"85% ne me semble pas assez atténué. 70% me semble mieux\" (applied). Approval recorded on the revisions that include these adjustments.",
       "note": "Automated evidence: Chromium only (SSR and Playwright tests in tests/); no assistive-technology test."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma component set Shortcut (151:110, Appearance × Platform × Size, keys as nested _Shortcut/Key parts 149:1581 and _Shortcut/Separator 149:1582 with Key 1 to 3 exposed instances), specification frame 154:32, parity report (4104 records, 0 failures), Shortcut masters placed in the Button trailing slot.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/shortcut/figma-spec.md",
+          "reports/components/shortcut/figma/parity.json",
+          "reports/components/shortcut/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/content/shortcut/figma-spec.md": "3b6968c35d784b6ce4f2fc585a070d18635284ca74f79628a89d5085cfeff367",
+          "reports/components/shortcut/figma/parity.json": "d3bf34baa5ea520076140e4a3d3aaa1326d86f2817a54cf9ffa566234d2b11ec",
+          "reports/components/shortcut/figma/ledger.json": "5ad35ba63ac13e3c52af0843c4092312102cad48d4dd3c64724bcd07ba012353"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "page": "149:1569",
+          "componentSet": "151:110",
+          "specificationFrame": "154:32"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, at the grouped wave 1 Figma parity gate (Icon, Counter, Shortcut and the Button with the real slot content), after reviewing the Figma pages, the master and specification screenshots, the parity reports and the preview artifacts: \"Très bien le counter comme ça, jolie travail.\" then, asked whether the validation covered the whole gate, \"La validation porte sur la parité figma de la vague 1. On peut avancer.\" Keys typed per nested part: user in the same session, \"Pour le shortcut, tu peux rester avec les sous-parts pour l'instant, on verra à l'usage si on doit faire une update\".",
+      "note": "Library not published (publication needs explicit authorization). The nested-part key typing is accepted for now; a flat Key 1/2/3 text property on the set is a possible later update (decision taken, no longer open)."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -220,12 +242,12 @@
     "Figma (2026-10-14): inherited color has no Figma equivalent; the key texts and separators bind shortcut/foreground (hidden adapter alias of color/content/primary, scopes TEXT_FILL and STROKE_COLOR) so that a host rebinds one variable: the Button will bind its Shortcut trailing item to button/foreground when the orchestrator integrates the master (Button masters, fixtures and pages untouched in this phase).",
     "Figma (2026-10-14): font-feature-settings tnum cannot be set through the Plugin API (openTypeFeatures is read-only, as the token ledger and the Counter recorded); the keys show letters and glyphs, not figures, so nothing is lost; 216 records justified. The Apple glyphs ↩ ⎋ ⇥ ⌫ ⌦ ↖ ↘ ⇞ ⇟ are not in Inter and render with Figma's fallback font, as in the browser.",
     "Figma (2026-10-14): Figma reads a number variable bound to layer opacity as a percentage: opacity/muted (0.7) bound directly rendered the plain variants at 0.7 %. Resolved in the token sync (orchestrator): opacity tokens are emitted ×100 for Figma (opacity/muted = 70, expectations and native verification updated) and the Plain variants bind opacity/muted directly; the temporary mirror variable opacity/muted (synced in percent) was removed. Effective opacity 0.7 in the 18 contexts.",
-    "Figma (user review of 2026-10-14): the component adapter variables are grouped in one hidden collection “Components” (modes sm, md, lg) by component name prefix; the former per-component collections were deleted after rebinding. The Button keeps “Components · button style” and “Components · button state” because its shared trailing part needs two independent mode axes (9 pairs × 5 states exceed one collection's modes)."
+    "Figma (user review of 2026-10-14): the component adapter variables are grouped in one hidden collection “Components” (modes sm, md, lg) by component name prefix; the former per-component collections were deleted after rebinding. The Button keeps “Components · button style” and “Components · button state” because its shared trailing part needs two independent mode axes (9 pairs × 5 states exceed one collection's modes).",
+    "Figma parity gate (user, 2026-10-14): the keys stay typed per nested part (Key 1, Key 2, Key 3 exposed instances with Show key 2 / Show key 3, up to three keys) because the Plugin API cannot attach a set-level text property to a nested instance text; \"tu peux rester avec les sous-parts pour l'instant, on verra à l'usage si on doit faire une update\". A flat text property per key on the set (direct text layers in each variant) is the candidate update if designers find the nested typing awkward.",
+    "Done (2026-10-14): documentation page documentation/components/shortcut.md and index entry written after the wave 1 Figma parity gate; phase set to done within the declared scope. The Figma library and the npm package are not published (delivery approval pending)."
   ],
-  "openDecisions": [
-    "Keys in Figma are typed per nested part (Key 1, Key 2, Key 3 exposed instances with Show key 2 / Show key 3), up to three keys, because the Plugin API cannot attach a set-level text property to a nested instance text. Acceptable for the library, or should the keys become direct text layers of each variant (12 variants × 3 caps bound individually) to get flat Key 1/2/3 text properties on the Shortcut itself?"
-  ],
-  "nextAction": "Wave 1 Figma parity gate (grouped review of Icon, Counter, Shortcut and of the Button with the real slot content); then documentation (ggb-docs).",
+  "openDecisions": [],
+  "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",
   "implementationNotes": [
     "Markup: <kbd class=\"ggb-shortcut\" data-platform data-appearance data-size> holding a visually hidden <span class=\"ggb-shortcut__name\"> (the spoken equivalent, or label when non-blank) and <span class=\"ggb-shortcut__container\" aria-hidden=\"true\"> with one nested <kbd class=\"ggb-shortcut__key\" data-key data-kind> per resolved key and a <span class=\"ggb-shortcut__separator\">+</span> between keys on other. No role, no aria-label. data-platform carries the resolved platform (mac or other), never auto.",
     "Parsing lives in keys.ts (pure TypeScript, unit-tested): parseKeys splits on +, trims, maps aliases ignoring case, uppercases single letters, drops empty tokens, keeps unknown names as literals; resolveShortcut maps Mod, collapses a modifier named twice, orders modifiers per platform (mac Ctrl, Alt, Shift, Meta; other Meta, Ctrl, Alt, Shift), then the other keys in the given order, and yields text, spoken word and separator; it never throws.",
