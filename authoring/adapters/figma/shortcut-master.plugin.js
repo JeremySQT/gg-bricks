@@ -22,7 +22,8 @@ figma.root.insertChild(idx + 1, page);
 await figma.setCurrentPageAsync(page);
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
 let vars = await figma.variables.getLocalVariablesAsync();
-const colName = (v) => (cols.find((c) => c.id === v.variableCollectionId) || {}).name;
+const colName = (v) =>
+  ((cols.find((c) => c.id === v.variableCollectionId) || {}).name || '').replace(/^Foundations · /, '');
 const V = (name, cn) => {
   const v = vars.find((x) => x.name === name && colName(x) === cn);
   if (!v) throw new Error('missing variable ' + cn + ':' + name);
@@ -159,7 +160,8 @@ await figma.setCurrentPageAsync(page);
 await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
 const vars = await figma.variables.getLocalVariablesAsync();
-const colName = (v) => (cols.find((c) => c.id === v.variableCollectionId) || {}).name;
+const colName = (v) =>
+  ((cols.find((c) => c.id === v.variableCollectionId) || {}).name || '').replace(/^Foundations · /, '');
 const V = (name, cn) => {
   const v = vars.find((x) => x.name === name && colName(x) === cn);
   if (!v) throw new Error('missing variable ' + cn + ':' + name);

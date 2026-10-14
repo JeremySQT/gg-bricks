@@ -19,13 +19,13 @@
     "Utilities": "8:10"
   },
   "collections": {
-    "Primitives": {
+    "Foundations · Primitives": {
       "id": "VariableCollectionId:14:2",
       "modes": {
         "default": "14:0"
       }
     },
-    "Brand": {
+    "Foundations · Brand": {
       "id": "VariableCollectionId:4:2",
       "modes": {
         "base": "4:0",
@@ -33,14 +33,14 @@
         "orchid": "4:2"
       }
     },
-    "Appearance": {
+    "Foundations · Appearance": {
       "id": "VariableCollectionId:4:3",
       "modes": {
         "light": "4:3",
         "dark": "4:4"
       }
     },
-    "Density": {
+    "Foundations · Density": {
       "id": "VariableCollectionId:4:4",
       "modes": {
         "compact": "4:5",
@@ -101,6 +101,10 @@
       {
         "date": "2026-10-14",
         "change": "Adapter collections regrouped (user review, 2026-10-14): the component adapter variables now live in one hidden collection Components (VariableCollectionId:181:2, modes sm 181:0, md 181:1, lg 181:2, default md): button/icon-drawing 181:3, button/icon-size 181:4, counter/foreground 181:5, shortcut/foreground 181:6, shortcut/font-size 181:7, shortcut/line-height 181:8, shortcut/letter-spacing 181:9, shortcut/cap-min-width 181:10 (size-independent variables carry the same alias in the three modes). Every consumer was rebound and the explicit size modes moved (Button: 564 bindings, 138 mode assignments; Shortcut: 13 bindings, 12 modes; Counter: 12 paints; stale Leading icon overrides on ten specification instances reset and re-applied); the collections _ggbrick button size (74:3), _ggbrick shortcut size (149:1570), _ggbrick counter (149:1548) and _ggbrick shortcut (149:1571) were deleted with no reference left on any page. _ggbrick button style and _ggbrick button state were renamed Components · button style (90:12) and Components · button state (90:2), IDs unchanged, hidden. Checks: the eight variables resolve to the former values in each mode; Button slot geometry re-measured with icon, counter and shortcut trailing items (162 records, 0 failures)."
+      },
+      {
+        "date": "2026-10-14",
+        "change": "Collections renamed with the “Foundations · ” prefix (Primitives 14:2, Brand 4:2, Appearance 4:3, Density 4:4; IDs, modes and bindings unchanged) so that the flat collection list of the single library file reads as two families, Foundations and Components. Decision: one Figma file (not a separate tokens library) because a community or client distribution requires a self-contained file; recorded in authoring/figma.md. The manifest, the sync and verification scripts and the adapter scripts use the prefixed names (adapter scripts accept the short axis names); native resolution re-verified, hashes unchanged (506 variables, 0 failures)."
       }
     ],
     "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change).",

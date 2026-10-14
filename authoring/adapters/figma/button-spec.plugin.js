@@ -13,7 +13,7 @@
 figma.skipInvisibleInstanceChildren = false;
 let vars = await figma.variables.getLocalVariablesAsync();
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const col = (n) => cols.find((c) => c.name === n);
+const col = (n) => cols.find((c) => c.name === n || c.name === 'Foundations · ' + n);
 const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
 const PR = (n) => vars.find((v) => v.name === 'primitive/color/' + n);
 const wf = col('Wireframe');
@@ -510,7 +510,7 @@ const root = await figma.getNodeByIdAsync('<root id returned by part 1>');
 for (const n of root.children.filter((n) => n.name === 'Body')) n.remove();
 const vars = await figma.variables.getLocalVariablesAsync();
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const col = (n) => cols.find((c) => c.name === n);
+const col = (n) => cols.find((c) => c.name === n || c.name === 'Foundations · ' + n);
 const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
 const wf = col('Wireframe');
 const V = (name) =>

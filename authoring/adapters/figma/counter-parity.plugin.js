@@ -19,7 +19,7 @@ for (const n of page.children.filter((n) => n.type === 'FRAME' && n.name.startsW
 await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
 const set = await figma.getNodeByIdAsync('149:1568');
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const col = (n) => cols.find((c) => c.name === n);
+const col = (n) => cols.find((c) => c.name === n || c.name === 'Foundations · ' + n);
 const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
 const vars = await figma.variables.getLocalVariablesAsync();
 const VN = (name, colName) => vars.find((v) => v.name === name && v.variableCollectionId === col(colName).id);

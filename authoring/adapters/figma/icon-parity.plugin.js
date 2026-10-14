@@ -10,7 +10,7 @@ await figma.setCurrentPageAsync(page);
 for (const n of page.children.filter((n) => n.type === 'FRAME' && n.name.startsWith('_parity '))) n.remove();
 const set = await figma.getNodeByIdAsync('149:20');
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const col = (n) => cols.find((c) => c.name === n);
+const col = (n) => cols.find((c) => c.name === n || c.name === 'Foundations · ' + n);
 const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
 const cache = {};
 const varOf = async (id) => cache[id] || (cache[id] = await figma.variables.getVariableByIdAsync(id));

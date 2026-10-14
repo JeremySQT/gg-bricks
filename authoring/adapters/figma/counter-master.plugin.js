@@ -18,7 +18,7 @@ for (const n of page.children.filter((n) => n.type === 'COMPONENT' && n.name.sta
 
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
 let vars = await figma.variables.getLocalVariablesAsync();
-const col = (n) => cols.find((c) => c.name === n);
+const col = (n) => cols.find((c) => c.name === n || c.name === 'Foundations · ' + n);
 const V = (name, colName) => {
   const v = vars.find((x) => x.name === name && (!colName || x.variableCollectionId === col(colName).id));
   if (!v) throw new Error('missing variable ' + name);

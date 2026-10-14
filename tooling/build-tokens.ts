@@ -309,6 +309,13 @@ const figmaValueOf = (p: string, t: ResolvedToken): FigmaValue => {
   return isOpacity(p) ? Math.round((convert(t) as number) * 100 * 10000) / 10000 : convert(t);
 };
 const figmaName = (p: string) => p.replaceAll('.', '/');
+/**
+ * Figma collection names. The token collections carry the “Foundations · ” prefix so that the flat,
+ * alphabetical collection list of the single library file reads as two families (Foundations, Components);
+ * the axes keep their short names in the code (user decision of 2026-10-14: one file, for distribution).
+ */
+const FOUNDATIONS = 'Foundations · ';
+const collectionName = (axis: 'Primitives' | 'Brand' | 'Appearance' | 'Density' | string) => FOUNDATIONS + axis;
 const primitivesMode = 'default';
 const manifest: {
   collections: Record<string, string[]>;
@@ -329,16 +336,16 @@ const manifest: {
   effects: { name: string; layers: FigmaEffect[] }[];
 } = {
   collections: {
-    Primitives: [primitivesMode],
-    Brand: cfg.brands,
-    Appearance: cfg.appearances,
-    Density: cfg.densities
+    [collectionName('Primitives')]: [primitivesMode],
+    [collectionName('Brand')]: cfg.brands,
+    [collectionName('Appearance')]: cfg.appearances,
+    [collectionName('Density')]: cfg.densities
   },
   defaults: {
-    Primitives: primitivesMode,
-    Brand: cfg.brands[0],
-    Appearance: cfg.defaults.appearance,
-    Density: cfg.defaults.density
+    [collectionName('Primitives')]: primitivesMode,
+    [collectionName('Brand')]: cfg.brands[0],
+    [collectionName('Appearance')]: cfg.defaults.appearance,
+    [collectionName('Density')]: cfg.defaults.density
   },
   variables: [],
   typography: [],
@@ -361,7 +368,8 @@ const aliasFor = (raw: unknown, axis: Axis): FigmaValue | null => {
   const q = raw.slice(1, -1);
   if (!isVariable(q)) return null;
   const target = collectionOf(q);
-  if (target === 'Primitives' || target === 'Brand' || target === axis) return { alias: `${target}:${figmaName(q)}` };
+  if (target === 'Primitives' || target === 'Brand' || target === axis)
+    return { alias: `${collectionName(target)}:${figmaName(q)}` };
   return null;
 };
 const isAliasString = (raw: unknown) => typeof raw === 'string' && /^\{[^{}]+\}$/.test(raw);
@@ -373,7 +381,7 @@ for (const p of Object.keys(flatByContext[base.id])) {
     figmaValueOf(p, flatByContext[`${brand}-${appearance}-${density}`][p]);
   if (sharedPrimitive(p)) {
     manifest.variables.push({
-      collection: 'Primitives',
+      collection: collectionName('Primitives'),
       name: figmaName(p),
       path: p,
       type,
@@ -385,7 +393,7 @@ for (const p of Object.keys(flatByContext[base.id])) {
   }
   if (axis === 'Brand') {
     manifest.variables.push({
-      collection: 'Brand',
+      collection: collectionName('Brand'),
       name: figmaName(p),
       path: p,
       type,
@@ -425,18 +433,18 @@ for (const p of Object.keys(flatByContext[base.id])) {
     for (const mode of modes) {
       const name = `_resolved/${axis.toLowerCase()}/${mode}/${figmaName(p)}`;
       manifest.variables.push({
-        collection: 'Brand',
+        collection: collectionName('Brand'),
         name,
         path: p,
         type,
         scopes: [],
         values: Object.fromEntries(cfg.brands.map((b) => [b, figmaValueOf(p, flatByContext[ctxOf(b, mode)][p])]))
       });
-      values[mode] = { alias: `Brand:${name}` };
+      values[mode] = { alias: `${collectionName('Brand')}:${name}` };
     }
   }
   manifest.variables.push({
-    collection: axis,
+    collection: collectionName(axis),
     name: figmaName(p),
     path: p,
     type,

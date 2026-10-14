@@ -34,7 +34,7 @@ const manifest = readJson<Manifest>(`${paths.tokensPackage}/figma-manifest.json`
 const expectations = readJson<Record<string, Record<string, Record<string, FigmaValue>>>>(
   `${paths.tokensPackage}/figma-expectations.json`
 );
-const ordered = ['Brand', 'Appearance', 'Density'].flatMap((c) =>
+const ordered = ['Foundations · Brand', 'Foundations · Appearance', 'Foundations · Density'].flatMap((c) =>
   manifest.variables
     .filter((v) => v.collection === c && !v.name.startsWith('primitive/') && !v.name.startsWith('_resolved/'))
     .map((v) => v.name)

@@ -213,6 +213,10 @@
     {
       "date": "2026-10-14",
       "change": "Adapter collections regrouped (user review, 2026-10-14): the component adapter variables now live in one hidden collection Components (VariableCollectionId:181:2, modes sm 181:0, md 181:1, lg 181:2, default md): button/icon-drawing 181:3, button/icon-size 181:4, counter/foreground 181:5, shortcut/foreground 181:6, shortcut/font-size 181:7, shortcut/line-height 181:8, shortcut/letter-spacing 181:9, shortcut/cap-min-width 181:10 (size-independent variables carry the same alias in the three modes). Every consumer was rebound and the explicit size modes moved (Button: 564 bindings, 138 mode assignments; Shortcut: 13 bindings, 12 modes; Counter: 12 paints; stale Leading icon overrides on ten specification instances reset and re-applied); the collections _ggbrick button size (74:3), _ggbrick shortcut size (149:1570), _ggbrick counter (149:1548) and _ggbrick shortcut (149:1571) were deleted with no reference left on any page. _ggbrick button style and _ggbrick button state were renamed Components · button style (90:12) and Components · button state (90:2), IDs unchanged, hidden. Checks: the eight variables resolve to the former values in each mode; Button slot geometry re-measured with icon, counter and shortcut trailing items (162 records, 0 failures)."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Token collections renamed Foundations · Primitives, Foundations · Brand, Foundations · Appearance and Foundations · Density (IDs and bindings unchanged); the adapter scripts of this component resolve the short axis names to the prefixed ones."
     }
   ]
 }

@@ -68,7 +68,7 @@
   "bindings": {
     "width": "size/icon/{size} (Brand)",
     "height": "size/icon/{size} (Brand)",
-    "glyphFill": "color/content/primary (Appearance, VariableID:7:10), inherited from the _Fixture/Icon glyph"
+    "glyphFill": "color/content/primary (Foundations · Appearance, VariableID:7:10), inherited from the _Fixture/Icon glyph"
   },
   "fixtures": {
     "_Fixture/Icon": {
@@ -112,6 +112,10 @@
     {
       "date": "2026-10-14",
       "change": "Blueprint boards: the drawing is centered vertically in each board and the legend elements follow (user review of the wave 1 Figma parity gate, 2026-10-14); the builder script applies the same pass (centerBoards)."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Token collections renamed Foundations · Primitives, Foundations · Brand, Foundations · Appearance and Foundations · Density (IDs and bindings unchanged); the adapter scripts of this component resolve the short axis names to the prefixed ones."
     }
   ]
 }

@@ -34,7 +34,7 @@ const mode = (c, name) => {
   if (!m) throw new Error(`Mode ${c.name}/${name} missing`);
   return m.modeId;
 };
-const order = ['Brand', 'Appearance', 'Density'].map(col);
+const order = ['Foundations · Brand', 'Foundations · Appearance', 'Foundations · Density'].map(col);
 const all = await figma.variables.getLocalVariablesAsync();
 const ordered = order.flatMap((c) =>
   all

@@ -16,7 +16,7 @@ for (const n of page.children.filter((n) => n.type === 'FRAME' && n.name.startsW
 await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
 const set = await figma.getNodeByIdAsync('151:110');
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const col = (n) => cols.find((c) => c.name === n);
+const col = (n) => cols.find((c) => c.name === n || c.name === 'Foundations · ' + n);
 const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
 const defs = set.componentPropertyDefinitions;
 const propKey = (name) => Object.keys(defs).find((k) => k.split('#')[0] === name);

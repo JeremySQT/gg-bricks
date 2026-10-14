@@ -10,7 +10,7 @@ const page = await figma.getNodeByIdAsync('149:1569');
 await figma.setCurrentPageAsync(page);
 const vars = await figma.variables.getLocalVariablesAsync();
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const col = (n) => cols.find((c) => c.name === n);
+const col = (n) => cols.find((c) => c.name === n || c.name === 'Foundations · ' + n);
 const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
 const wf = col('Wireframe');
 const L = mode(wf, 'light'),
