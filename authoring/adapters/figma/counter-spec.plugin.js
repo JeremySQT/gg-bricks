@@ -216,7 +216,7 @@ header.appendChild(intro);
 intro.layoutSizingHorizontal = 'FILL';
 intro.appendChild(
   text(
-    'A counter shows a quantity, such as unread messages, items or selected rows, as a small rectangle next to the thing it counts. It is drawn in the color of the surrounding text, with a thin lighter border and no fill, so it follows its host: a tab label, a list header or a button. Above its maximum it shows the maximum followed by a plus sign, 99+ by default.',
+    'A counter shows a quantity, such as unread messages, items or selected rows, as a small rectangle next to the thing it counts. It is drawn in the color of the surrounding text, on a faint tint of that same color, so it follows its host: a tab label, a list header or a button. Above its maximum it shows the maximum followed by a plus sign, 99+ by default.',
     'body/lg',
     'color/content/secondary',
     900
@@ -287,22 +287,23 @@ const k = 8,
   H = 134,
   PAD = 32,
   W = 2 * PAD + 128;
-const cont = rect('1 Container', OX, OY, W, H, 'wireframe/tint/8', 32);
+// The tint (the whole box in the digit color at 12 %) sits under the container, whose edge is a dashed line.
+const tint = rect('3 Tint', OX, OY, W, H, 'wireframe/tint/16', 32);
+const cont = rect('1 Container', OX, OY, W, H, null, 32);
+stroke(cont, 'wireframe/tint/48', 2, [12, 8]);
 cont.clipsContent = true;
 const padL = rect('Side padding', 0, 0, PAD, H, 'wireframe/tint/16', 0, cont);
 const padR = rect('Side padding', W - PAD, 0, PAD, H, 'wireframe/tint/16', 0, cont);
 padL.opacity = padR.opacity = 0.8;
 const val = rect('2 Value', PAD, 0, W - 2 * PAD, H, null, 0, cont);
 digits(val, '42', 96, W - 2 * PAD, H);
-const bord = rect('3 Border', OX, OY, W, H, null, 32);
-stroke(bord, 'wireframe/tint/48', 8);
 // One-digit counter at ×8: a square, minimum width equal to the height.
 const OX2 = OX + W + 150;
-const sq = rect('Container (one digit)', OX2, OY, H, H, 'wireframe/tint/8', 32);
+const sqt = rect('Tint (one digit)', OX2, OY, H, H, 'wireframe/tint/16', 32);
+const sq = rect('Container (one digit)', OX2, OY, H, H, null, 32);
+stroke(sq, 'wireframe/tint/48', 2, [12, 8]);
 digits(sq, '8', 96, H, H);
-const sqb = rect('Border (one digit)', OX2, OY, H, H, null, 32);
-stroke(sqb, 'wireframe/tint/48', 8);
-// Callouts: 1 container (top), 2 value (bottom), 3 border (right).
+// Callouts: 1 container (top), 2 value (bottom), 3 tint (right).
 pin(dg, 1, OX + 40, 44, OX + 40, OY);
 pin(dg, 2, OX + W / 2, OY + H + 96, OX + W / 2, OY + H - 24);
 pin(dg, 3, OX + W + 72, OY + 32, OX + W - 4, OY + H / 2 - 30);
@@ -353,13 +354,16 @@ legend.cornerRadius = 12;
 const items = [
   [
     '1',
-    'Container: the box the host places. It has no fill, so whatever is behind shows through, and its corners are slightly rounded: a rectangle, not a pill.'
+    'Container: the box the host places. Its only paint is the tint (3), and its corners are slightly rounded: a rectangle, not a pill.'
   ],
   [
     '2',
     'Value: the digits, centered, in the indicator type of the size with tabular figures, so counters with the same number of digits have the same width.'
   ],
-  ['3', 'Border: a thin line just inside the edge, in the same color as the digits but lighter (70 %).'],
+  [
+    '3',
+    'Tint: the whole box filled with the color of the digits at 12 % opacity, a faint shade of its surroundings on any background.'
+  ],
   ['A', 'Side padding, on both sides. It follows the density of the frame: 2, 4 or 6 px.'],
   [
     'B',
@@ -712,7 +716,7 @@ btnNote.cornerRadius = 12;
 btnNote.appendChild(text('Inside a button', 'heading/sm'));
 btnNote.appendChild(
   text(
-    'The Button’s trailing item will use this component, in the button’s size and content color, once the Counter is integrated into the Button master. Until then the Button page shows its stand-in counter; nothing changes for designers, who keep using the Button’s “Show trailing” switch with Type = Counter.',
+    'The Button’s trailing item uses this component: with the “Show trailing” switch and Type = Counter, the button places a Counter of its own size and binds its digits and tint to its content color, in every intent, appearance and state.',
     'body/sm',
     'color/content/secondary',
     420

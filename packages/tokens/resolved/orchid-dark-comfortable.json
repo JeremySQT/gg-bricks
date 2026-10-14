@@ -2138,6 +2138,10 @@
     "$type": "number",
     "$value": 0.1
   },
+  "primitive.opacity.12": {
+    "$type": "number",
+    "$value": 0.12
+  },
   "primitive.opacity.20": {
     "$type": "number",
     "$value": 0.2
@@ -4526,7 +4530,12 @@
   "opacity.muted": {
     "$type": "number",
     "$value": 0.7,
-    "$description": "Attenuation of companion content next to a label (a shortcut hint) and of light outlines (a counter's border), so that they read lighter than the text they accompany."
+    "$description": "Attenuation of companion content next to a label (a shortcut hint), so that it reads lighter than the text it accompanies."
+  },
+  "opacity.tint": {
+    "$type": "number",
+    "$value": 0.12,
+    "$description": "A faint surface in the inherited content color behind small companion content (a counter's box), so that it follows its host without a border."
   },
   "color.surface.canvas": {
     "$type": "color",

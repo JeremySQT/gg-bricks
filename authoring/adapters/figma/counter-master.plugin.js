@@ -38,13 +38,13 @@ if (!ac) {
 }
 let fg = vars.find((v) => v.name === 'counter/foreground' && v.variableCollectionId === ac.id);
 if (!fg) fg = figma.variables.createVariable('counter/foreground', ac, 'COLOR');
-fg.scopes = ['TEXT_FILL', 'STROKE_COLOR'];
+fg.scopes = ['TEXT_FILL', 'SHAPE_FILL'];
 fg.hiddenFromPublishing = true;
 for (const m of ac.modes)
   fg.setValueForMode(m.modeId, figma.variables.createVariableAlias(V('color/content/primary', 'Appearance')));
-// Border opacity: Figma reads an opacity binding as a percentage; the token sync emits opacity variables ×100
-// (opacity/muted = 70 since 2026-10-14), so the Border binds opacity/muted directly.
-const bo = V('opacity/muted', 'Brand');
+// Tint opacity: Figma reads an opacity binding as a percentage; the token sync emits opacity variables ×100
+// (opacity/tint = 12 since 2026-10-14), so the Tint layer binds opacity/tint directly.
+const bo = V('opacity/tint', 'Brand');
 
 await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
 const styles = await figma.getLocalTextStylesAsync();
@@ -72,7 +72,11 @@ const make = async (size, overflow) => {
   for (const k of ['topLeftRadius', 'topRightRadius', 'bottomLeftRadius', 'bottomRightRadius'])
     c.setBoundVariable(k, V('radius/indicator', 'Brand'));
   const lh = V(`typography/indicator/${size}/lineHeight`, 'Brand');
-  // Value: text style typography/indicator/{size}, and the typography variables bound on the node.
+  // Value: the text style typography/indicator/{size} is applied, then the typography variables are bound on the
+  // node, and the digits are trimmed to their cap height (the code's text-box: trim-both cap alphabetic) so that
+  // they sit centered in the line box. Leading trim is a text-style property: setting it on the node detaches the
+  // style (observed 2026-10-14), so the node keeps the six bindings (family, weight, size, line height, letter
+  // spacing, fill) and the style is a convenience that does not survive; the bindings are what the parity checks.
   const t = figma.createText();
   t.name = 'Value';
   t.fontName = { family: 'Inter', style: 'Medium' };
@@ -82,30 +86,31 @@ const make = async (size, overflow) => {
   t.textAlignHorizontal = 'CENTER';
   t.textAlignVertical = 'CENTER';
   t.fills = [paint(fg)];
+  t.setBoundVariable('fontFamily', V(`typography/indicator/${size}/fontFamily`, 'Brand'));
+  t.setBoundVariable('fontWeight', V(`typography/indicator/${size}/fontWeight`, 'Brand'));
   t.setBoundVariable('fontSize', V(`typography/indicator/${size}/fontSize`, 'Brand'));
   t.setBoundVariable('lineHeight', lh);
   t.setBoundVariable('letterSpacing', V(`typography/indicator/${size}/letterSpacing`, 'Brand'));
+  t.leadingTrim = 'CAP_HEIGHT';
   c.appendChild(t);
   // Minimum width equal to the height: both bound to the lineHeight variable (Figma cannot derive one from the other).
   c.setBoundVariable('minWidth', lh);
   c.setBoundVariable('height', lh);
-  // Border: stroke-only rectangle filling the container (absolute, scaled), inside stroke, layer opacity bound to
-  // opacity/muted so that the digits keep their full opacity (a paint opacity cannot bind a variable).
+  // Tint: a rectangle filling the container (absolute, scaled) in the content color, layer opacity bound to
+  // opacity/tint so that the digits keep their full opacity (a paint opacity cannot bind a variable). Since
+  // 2026-10-14 (user decision at the implementation review page) it replaces the former stroke-only Border.
   const b = figma.createRectangle();
-  b.name = 'Border';
-  b.fills = [];
-  b.strokes = [paint(fg)];
-  b.strokeAlign = 'INSIDE';
+  b.name = 'Tint';
+  b.fills = [paint(fg)];
+  b.strokes = [];
   c.insertChild(0, b);
   b.layoutPositioning = 'ABSOLUTE';
   // SCALE, not STRETCH: Figma rounds the master's fractional width (15.4) when it applies STRETCH offsets to an
-  // instance, which left the border 0.4 px wider than a 19 px instance; SCALE keeps the border equal to the box.
+  // instance, which left the layer 0.4 px wider than a 19 px instance; SCALE keeps the tint equal to the box.
   b.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
   b.x = 0;
   b.y = 0;
   b.resize(c.width, c.height);
-  for (const k of ['strokeTopWeight', 'strokeRightWeight', 'strokeBottomWeight', 'strokeLeftWeight'])
-    b.setBoundVariable(k, V('border/width/default', 'Brand'));
   for (const k of ['topLeftRadius', 'topRightRadius', 'bottomLeftRadius', 'bottomRightRadius'])
     b.setBoundVariable(k, V('radius/indicator', 'Brand'));
   b.setBoundVariable('opacity', bo);
@@ -144,14 +149,14 @@ const valueKey = set.addComponentProperty('Value', 'TEXT', '8');
 const overflowKey = set.addComponentProperty('Overflow text', 'TEXT', '99+');
 for (const m of made) m.t.componentPropertyReferences = { characters: m.overflow ? overflowKey : valueKey };
 set.description =
-  'Shows a quantity (unread messages, items, selected rows) as a compact rectangle next to the thing it counts, drawn in the inherited content color with no fill. Source of truth: foundations/components/content/counter/contract.json; implementation: packages/svelte/src/components/counter. Size mirrors the code prop (named like Button sizes); Overflow is the derived state value > max, shown as max followed by a plus sign (99+ by default; edit Overflow text for another maximum). Value is the digits. Not interactive.';
+  'Shows a quantity (unread messages, items, selected rows) as a compact rectangle next to the thing it counts, drawn in the inherited content color on a faint tint of that color (12 %). Source of truth: foundations/components/content/counter/contract.json; implementation: packages/svelte/src/components/counter. Size mirrors the code prop (named like Button sizes); Overflow is the derived state value > max, shown as max followed by a plus sign (99+ by default; edit Overflow text for another maximum). Value is the digits. Not interactive.';
 return {
   page: page.id,
   collection: ac.id,
   foreground: fg.id,
-  borderOpacity: bo.id,
+  tintOpacity: bo.id,
   set: set.id,
   props: Object.keys(set.componentPropertyDefinitions),
   variants: Object.fromEntries(set.children.map((c) => [c.name, c.id])),
-  layers: made.map((m) => ({ v: m.c.name, text: m.t.id, border: m.b.id }))
+  layers: made.map((m) => ({ v: m.c.name, text: m.t.id, tint: m.b.id }))
 };

@@ -208,6 +208,7 @@
   --ggb-primitive-opacity-0: 0;
   --ggb-primitive-opacity-5: 0.05;
   --ggb-primitive-opacity-10: 0.1;
+  --ggb-primitive-opacity-12: 0.12;
   --ggb-primitive-opacity-20: 0.2;
   --ggb-primitive-opacity-40: 0.4;
   --ggb-primitive-opacity-60: 0.6;
@@ -478,6 +479,7 @@
   --ggb-opacity-disabled: var(--ggb-primitive-opacity-40);
   --ggb-opacity-scrim: var(--ggb-primitive-opacity-60);
   --ggb-opacity-muted: var(--ggb-primitive-opacity-70);
+  --ggb-opacity-tint: var(--ggb-primitive-opacity-12);
 }
 :root, [data-ggb-brand], [data-ggb-appearance="light"] {
   --ggb-color-surface-canvas: var(--ggb-color-palette-neutral-0);

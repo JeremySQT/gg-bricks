@@ -2550,6 +2550,12 @@
       "value": 0.1
     }
   ],
+  "primitive.opacity.12": [
+    {
+      "source": "foundations/tokens/base/primitives/opacity.tokens.json",
+      "value": 0.12
+    }
+  ],
   "primitive.opacity.20": [
     {
       "source": "foundations/tokens/base/primitives/opacity.tokens.json",
@@ -4193,6 +4199,12 @@
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
       "value": "{primitive.opacity.70}"
+    }
+  ],
+  "opacity.tint": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.opacity.12}"
     }
   ],
   "color.surface.canvas": [

@@ -2,12 +2,12 @@
 // In every brand × appearance × density, instantiates the six Counter variants (Size sm, md, lg × Overflow false,
 // true) in a temporary frame with explicit modes, resolves the bound variables with resolveForConsumer, reads the
 // laid-out geometry, removes the frame and returns:
-//   out["<context>|<size>|<state>"] = "textFill|borderStroke|borderOpacity (effective node opacity)|strokeWeight|radius|
+//   out["<context>|<size>|<state>"] = "textFill|tintFill|tintOpacity (effective node opacity)|leadingTrim|radius|
 //     paddingLeft|paddingTop|minWidth|height|width|fontSize|lineHeight|letterSpacing|fontStyle|characters|tnum|fills|
-//     strokeAlign|borderRadius|borderSize|textHeight|borderOpacityVariable (percent)"
-//   host["<context>|button-<intent>-<appearance>"] = "foreground|opacity|borderWidth" (adapter variable the Button binds
+//     tintFills|tintRadius|tintSize|textHeight|tintOpacityVariable (percent)|lineHeightUnit:value"
+//   host["<context>|button-<intent>-<appearance>"] = "foreground|opacity|" (adapter variable the Button binds
 //     its slot content to, resolved in the four representative contexts with the default state mode; opacity from
-//     opacity/muted in percent, divided by 100)
+//     opacity/tint in percent, divided by 100)
 //   tabular: widths of 00, 11, 88 and 10 at md in base-light-standard (Inter's default figures in Figma).
 // Save the returned object as reports/components/counter/figma/measurements.json (not committed) and run
 // node authoring/adapters/figma/counter-parity-report.mjs <file>.
@@ -71,30 +71,36 @@ for (const b of ['base', 'brick', 'orchid'])
             frame.appendChild(inst);
             inst.setProperties({ [P.value]: '8', [P.overflow]: '99+' });
             const t = inst.findOne((n) => n.type === 'TEXT' && n.name === 'Value');
-            const bd = inst.findOne((n) => n.name === 'Border');
+            const bd = inst.findOne((n) => n.name === 'Tint');
+            // Line height comes from the typography/indicator text style (a percentage string variable bound to the
+            // style since the typography migration of 2026-10-14), so it is read from the node's effective value.
+            const fs = await res(t, 'fontSize');
+            const lh = t.lineHeight;
+            const lhPx = lh.unit === 'PERCENT' ? r3((lh.value * fs) / 100) : lh.unit === 'PIXELS' ? r3(lh.value) : '';
             out[`${ctx}|${s}|${o ? 'overflow' : 'default'}`] = [
               await paint(t, 'fills'),
-              await paint(bd, 'strokes'),
+              await paint(bd, 'fills'),
               r3(bd.opacity),
-              await res(bd, 'strokeTopWeight'),
+              t.leadingTrim,
               await res(inst, 'topLeftRadius'),
               await res(inst, 'paddingLeft'),
               inst.paddingTop,
               r3(await res(inst, 'minWidth')),
               r3(inst.height),
               r3(inst.width),
-              await res(t, 'fontSize'),
-              r3(await res(t, 'lineHeight')),
+              fs,
+              lhPx,
               await res(t, 'letterSpacing'),
               t.fontName.style,
               t.characters,
               t.openTypeFeatures && t.openTypeFeatures.TNUM ? 'tnum' : 'default',
               inst.fills.length,
-              bd.strokeAlign,
+              bd.fills.length,
               await res(bd, 'topLeftRadius'),
               `${r3(bd.width)}x${r3(bd.height)}`,
               t.height,
-              await res(bd, 'opacity')
+              await res(bd, 'opacity'),
+              `${lh.unit}:${lh.value}`
             ].join('|');
           }
       } finally {
@@ -115,8 +121,8 @@ for (const ctx of ['base-light-standard', 'base-dark-standard', 'brick-light-com
       try {
         host[`${ctx}|button-${i}-${ap}`] = [
           hex(VN('button/foreground', 'Components · button style').resolveForConsumer(f).value),
-          r3(VN('opacity/muted', 'Brand').resolveForConsumer(f).value / 100),
-          VN('border/width/default', 'Brand').resolveForConsumer(f).value
+          r3(VN('opacity/tint', 'Brand').resolveForConsumer(f).value / 100),
+          ''
         ].join('|');
       } finally {
         f.remove();

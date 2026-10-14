@@ -26,7 +26,7 @@ const closeHex = (a, b) =>
   a.length === 8 &&
   b.length === 8 &&
   [0, 2, 4, 6].every((i) => Math.abs(parseInt(a.slice(i, i + 2), 16) - parseInt(b.slice(i, i + 2), 16)) <= 1);
-// The border color is compared without its alpha: the code's alpha is the opacity of the Figma Border layer.
+// The tint color is compared without its alpha: the code's alpha is the opacity of the Figma Tint layer.
 const closeRgb = (a, b) => a && b && closeHex(a.slice(0, 6) + 'ff', b.slice(0, 6) + 'ff');
 const px = (v) => (v === 'normal' ? 0 : parseFloat(v));
 const WEIGHT = { Regular: 400, Medium: 500, 'Semi Bold': 600, Bold: 700 };
@@ -61,13 +61,12 @@ for (const r of records) {
     if (r.property === 'color') {
       observed = fg;
       passed = closeHex(toHex(r.value), fg);
-    } else if (r.property === 'box-shadow') {
-      const mm = r.value.match(SHADOW);
-      observed = `${fg} at ${op} stroke ${bw}px inside`;
-      passed = !!mm && closeRgb(toHex(mm[1]), fg) && Math.abs(alphaOf(mm[1]) - +op) < 0.001 && +mm[2] === +bw;
+    } else if (r.property === 'background-color') {
+      observed = `${fg} at ${op}`;
+      passed = closeRgb(toHex(r.value), fg) && Math.abs(alphaOf(r.value) - +op) < 0.001;
     }
     note =
-      'Proxy: the Counter master is placed inside the Button by the orchestrator after this gate; measured on button/foreground (the adapter variable the Button binds its slot content to) resolved with the style mode of the intent and appearance and the default state mode, and on the roles the Border binds.';
+      'Proxy: measured on button/foreground (the adapter variable the Button binds its Counter instance to, Value fill and Tint fill) resolved with the style mode of the intent and appearance and the default state mode, and on opacity/tint.';
     out.push({ ...rec, observed, passed: !!passed, note });
     continue;
   }
@@ -84,23 +83,14 @@ for (const r of records) {
       passed = closeHex(toHex(r.value), f[0]);
       if (r.part === 'container')
         note =
-          'The container has no color of its own in Figma: counter/foreground (alias of color/content/primary), bound to the Value fill and the Border stroke, stands for the inherited content color; the Button overrides it with button/foreground.';
+          'The container has no color of its own in Figma: counter/foreground (alias of color/content/primary), bound to the Value fill and the Tint fill, stands for the inherited content color; the Button overrides it with button/foreground.';
       break;
-    case 'background-color':
-      observed = +f[16] === 0 ? 'none' : `${f[16]} fill(s)`;
-      passed = toHex(r.value).endsWith('00') && +f[16] === 0;
-      break;
-    case 'box-shadow': {
-      const mm = r.value.match(SHADOW);
-      observed = `${f[1]} at ${f[2]} stroke ${f[3]}px ${f[17].toLowerCase()}`;
+    case 'background-color': {
+      observed = `${f[1]} at ${f[2]} (${f[17]} fill on the Tint layer, container ${+f[16] === 0 ? 'unfilled' : 'filled'})`;
       passed =
-        !!mm &&
-        closeRgb(toHex(mm[1]), f[1]) &&
-        Math.abs(alphaOf(mm[1]) - +f[2]) < 0.001 &&
-        +mm[2] === +f[3] &&
-        f[17] === 'INSIDE';
+        closeRgb(toHex(r.value), f[1]) && Math.abs(alphaOf(r.value) - +f[2]) < 0.001 && +f[16] === 0 && +f[17] === 1;
       note =
-        'Code draws the border as an inset box-shadow in the content color at borderOpacity; Figma as an inside stroke on the Border layer (stroke bound to counter/foreground, width to border/width/default, layer opacity to opacity/muted, synced in percent = 70 because Figma reads an opacity binding in percent). Observed: the effective layer opacity.';
+        'Code paints the container in the content color at surfaceOpacity; Figma paints a Tint layer filling the container (fill bound to counter/foreground, layer opacity bound to opacity/tint, synced in percent = 12 because Figma reads an opacity binding in percent). Observed: the effective layer opacity.';
       break;
     }
     case 'border-radius':
@@ -111,10 +101,20 @@ for (const r of records) {
       observed = +f[5];
       passed = px(r.value) === observed;
       break;
-    case 'padding-block':
-      observed = +f[6];
-      passed = px(r.value) === observed;
+    case 'padding-block': {
+      // Code: cap-height trimming plus a symmetric block padding ((line box − cap height) / 2) keeps the line-box
+      // height; Figma: no block padding, the Value text trimmed to cap height (leading trim) and centered in the
+      // fixed-height container, which is the same geometry.
+      const pads = String(r.value)
+        .split(' ')
+        .map((x) => parseFloat(x));
+      const symmetric = pads.length === 2 && Math.abs(pads[0] - pads[1]) < 0.01;
+      observed = `0 (Value trimmed to cap height: ${f[3]})`;
+      passed = +f[6] === 0 && f[3] === 'CAP_HEIGHT' && symmetric;
+      note =
+        'Justified: the CSS padding only centers the cap-trimmed digits in the line box; Figma centers the cap-trimmed text in the fixed-height container with no padding.';
       break;
+    }
     case 'min-inline-size':
       observed = +f[7];
       passed = Math.abs(px(r.value) - observed) < 0.05;
@@ -125,7 +125,7 @@ for (const r of records) {
       observed = +f[8];
       passed = Math.abs(px(r.value) - observed) < 0.05 && f[19] === `${f[9]}x${f[8]}`;
       note =
-        'Height bound to typography/indicator/{size}/lineHeight: Figma rounds a text layer’s auto height to whole pixels, so the container cannot hug the text; Chromium lays the line box out in 1/64 px units, tolerance 0.05px. The Border layer matches the container size.';
+        'Height bound to typography/indicator/{size}/lineHeight: Figma rounds a text layer’s auto height to whole pixels, so the container cannot hug the text; Chromium lays the line box out in 1/64 px units, tolerance 0.05px. The Tint layer matches the container size.';
       break;
     case 'inline-size':
       observed = +f[9];

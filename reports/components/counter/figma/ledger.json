@@ -55,32 +55,32 @@
   },
   "layers": {
     "Container": "the variant component itself (auto layout, no fill)",
-    "Border": "stroke-only rectangle, absolute, SCALE constraints",
+    "Tint": "filled rectangle (content color at opacity/tint), absolute, SCALE constraints, under the Value; the former Border (stroke-only) converted in place on 2026-10-14",
     "Value": "text layer",
     "ids": {
       "Size=sm, Overflow=false": {
         "value": "149:1551",
-        "border": "149:1552"
+        "tint": "149:1552"
       },
       "Size=md, Overflow=false": {
         "value": "149:1554",
-        "border": "149:1555"
+        "tint": "149:1555"
       },
       "Size=lg, Overflow=false": {
         "value": "149:1557",
-        "border": "149:1558"
+        "tint": "149:1558"
       },
       "Size=sm, Overflow=true": {
         "value": "149:1560",
-        "border": "149:1561"
+        "tint": "149:1561"
       },
       "Size=md, Overflow=true": {
         "value": "149:1563",
-        "border": "149:1564"
+        "tint": "149:1564"
       },
       "Size=lg, Overflow=true": {
         "value": "149:1566",
-        "border": "149:1567"
+        "tint": "149:1567"
       }
     }
   },
@@ -94,18 +94,21 @@
       "fills": "none"
     },
     "Value": {
-      "textStyle": "typography/indicator/{size} (S:3f083edf…, S:e32656fa…, S:6ac9d1c7…), kept on the node",
+      "textStyle": "typography/indicator/{size} applied by the builder, detached by the leading trim (a text-style property) on 2026-10-14; the node keeps direct bindings",
+      "leadingTrim": "CAP_HEIGHT (since 2026-10-14: digits centered on their cap height, as the code's text-box trim)",
+      "fontFamily": "typography/indicator/{size}/fontFamily",
+      "fontWeight": "typography/indicator/{size}/fontWeight",
       "fontSize": "typography/indicator/{size}/fontSize (VariableID:145:5 / 145:8 / 145:11)",
-      "lineHeight": "typography/indicator/{size}/lineHeight",
+      "lineHeight": "typography/indicator/{size}/lineHeight (VariableID:145:6 / 145:9 / 145:12; re-bound on 2026-10-14 after the style detached)",
       "letterSpacing": "typography/indicator/{size}/letterSpacing (VariableID:145:7 / 145:10 / 145:13)",
       "fills": "counter/foreground (VariableID:181:5)",
-      "openTypeFeatures": "not settable through the Plugin API (read-only); see limitations"
+      "openTypeFeatures": "not settable through the Plugin API (read-only); tnum read on the sm and md layers (set by the user on the styles before they detached), default on lg; Inter renders tabular figures in the file (00, 11, 88, 10 all 16 px at md)"
     },
-    "Border": {
-      "strokes": "counter/foreground (VariableID:181:5), inside",
-      "stroke weights": "border/width/default (Foundations · Brand, VariableID:5:74)",
+    "Tint": {
+      "fills": "counter/foreground (VariableID:181:5)",
+      "strokes": "none (the former inside stroke and its border/width/default weights were removed on 2026-10-14)",
       "corner radii": "radius/indicator (VariableID:145:4)",
-      "opacity": "opacity/muted (Foundations · Brand, VariableID:145:3, = 70): opacity variables are synced in percent since 2026-10-14 (re-bound from the former mirror counter/border-opacity, removed)"
+      "opacity": "opacity/tint (Foundations · Brand, VariableID:186:3, = 12): opacity variables are synced in percent since 2026-10-14"
     }
   },
   "adapterVariables": {
@@ -126,11 +129,11 @@
         "type": "COLOR",
         "scopes": [
           "TEXT_FILL",
-          "STROKE_COLOR"
+          "SHAPE_FILL"
         ],
         "hiddenFromPublishing": true,
         "value": "alias color/content/primary (Foundations · Appearance, VariableID:7:10) in the three modes",
-        "note": "Stands for the inherited content color; the Button overrides the Value fill and Border stroke of its Counter instance with button/foreground (VariableID:90:13). Formerly VariableID:149:1549 in _ggbrick counter (deleted 2026-10-14)."
+        "note": "Stands for the inherited content color; the Button overrides the Value fill and Tint fill of its Counter instance with button/foreground (VariableID:90:13). Formerly VariableID:149:1549 in _ggbrick counter (deleted 2026-10-14)."
       }
     }
   },
@@ -163,12 +166,17 @@
     "parity": "authoring/adapters/figma/counter-parity.plugin.js + counter-parity-report.mjs"
   },
   "limitations": [
-    "openTypeFeatures is read-only in the Plugin API: tabular figures (tnum) are not set on the Value layers; Inter's default figures in Figma are proportional (11 is 12 px wide, 88 is 16 px at md). To switch on by hand (Type settings → Numbers → Tabular) on the typography/indicator text styles or on the six Value layers.",
+    "openTypeFeatures is read-only in the Plugin API: tabular figures were switched on by hand by the user on the typography/indicator text styles (2026-10-14); the sm and md Value layers read tnum, lg reads the default, and the measured digit widths at md are all 16 px (tabular rendering).",
     "A Figma text layer's auto height is rounded to whole pixels (16 for a 15.4 line height), so the container height is bound to the lineHeight variable instead of hugging the text.",
-    "STRETCH constraints on an absolute child round the master's fractional width; the Border uses SCALE constraints, which keep it equal to the box in every instance.",
-    "A number variable bound to layer opacity is read as a percentage: the token sync emits opacity variables ×100 (opacity/muted = 70); the former mirror variable counter/border-opacity (VariableID:158:250) was removed on 2026-10-14."
+    "STRETCH constraints on an absolute child round the master's fractional width; the Tint uses SCALE constraints, which keep it equal to the box in every instance.",
+    "Leading trim is a text-style property: setting leadingTrim on the Value layers detached their typography/indicator text style and dropped the lineHeight binding the style carried; the six typography and fill bindings were set on the nodes (2026-10-14).",
+    "A number variable bound to layer opacity is read as a percentage: the token sync emits opacity variables ×100 (opacity/tint = 12); the former mirror variable counter/border-opacity (VariableID:158:250) was removed on 2026-10-14."
   ],
   "maintenance": [
+    {
+      "date": "2026-10-14",
+      "change": "Tint instead of border (user decision on the implementation review page, \"Je crois que je préfère la version 'BG Current color' à 12%\"): the six Border rectangles (149:1552, 149:1555, 149:1558, 149:1561, 149:1564, 149:1567) were converted in place into Tint layers (fill bound to counter/foreground, no stroke, stroke weight bindings removed, layer opacity bound to the new opacity/tint VariableID:186:3 = 12, radii and SCALE constraints kept); counter/foreground scopes TEXT_FILL and SHAPE_FILL. Cap-height centering: leadingTrim CAP_HEIGHT on the six Value texts (149:1551, 149:1554, 149:1557, 149:1560, 149:1563, 149:1566), which detached their text style; lineHeight re-bound to typography/indicator/{size}/lineHeight. Set description, specification texts (summary 156:4871, legend 156:4943 and 156:4951, Button note 156:5554) and the anatomy diagram (3 Tint 156:4908 and Tint (one digit) 156:4911 filled under the dashed containers 156:4903 and 156:4909) updated in place. In the Button, the three trailing Counter instances (164:1545, 164:1549, 164:1553) had their stroke override cleared and the Tint fill bound to button/foreground; the 18 Tint layers of the page audit all read button/foreground, no stroke, opacity/tint. Parity re-measured: 1692 records, 0 failed, 144 justified, 72 proxy; the Counter boxes inside the Button keep their size (15.4, 16.8, 19.6 px), so the slot geometry of 2026-10-14 stands."
+    },
     {
       "date": "2026-10-14",
       "change": "Blueprint boards: the drawing is centered vertically in each board and the legend elements follow (user review of the wave 1 Figma parity gate, 2026-10-14); the builder script applies the same pass (centerBoards)."

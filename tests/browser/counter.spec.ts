@@ -94,7 +94,9 @@ async function measure(page: Page, selector: string) {
       valueHeight: vr.height,
       valueWidth: vr.width,
       valueOffsetInline: vr.left - r.left,
-      valueOffsetBlock: vr.top - r.top
+      valueOffsetBlock: vr.top - r.top,
+      // Cap-height centering applies where text-box is supported (Chromium 133+); elsewhere the line box centers.
+      capTrim: CSS.supports('text-box: trim-both cap alphabetic')
     };
   });
 }
@@ -213,18 +215,29 @@ test('geometry: line-box height, square minimum, inline padding only, same heigh
       const two = await measure(page, `#size-${size}-value-42`);
       const over = await measure(page, `#size-${size}-value-1234`);
       const zero = await measure(page, `#size-${size}-value-0`);
-      // Block size is the line box of the typography, with no block padding, whatever the digit count.
+      // Block size is the line box of the typography whatever the digit count. With text-box support the
+      // value is trimmed to its cap height and a symmetric block padding restores the line box; otherwise
+      // there is no block padding and the value spans the line box.
       for (const m of [one, two, over, zero]) {
         expect(m.height, `${density} ${size} height`).toBeCloseTo(box, 1);
-        expect(m.paddingBlock).toBe('0px 0px');
-        expect(m.valueHeight, `${density} ${size} value line box`).toBeCloseTo(box, 1);
-        expect(m.valueOffsetBlock, `${density} ${size} value centered`).toBeCloseTo(0, 1);
+        const [top, bottom] = m.paddingBlock.split(' ').map(parseFloat);
+        expect(top, `${density} ${size} symmetric block padding`).toBeCloseTo(bottom, 2);
+        if (m.capTrim) {
+          expect(top).toBeGreaterThan(0);
+          expect(m.valueHeight + 2 * top, `${density} ${size} cap height plus padding`).toBeCloseTo(box, 1);
+          expect(m.valueOffsetBlock, `${density} ${size} value centered`).toBeCloseTo(top, 1);
+        } else {
+          expect(top).toBe(0);
+          expect(m.valueHeight, `${density} ${size} value line box`).toBeCloseTo(box, 1);
+          expect(m.valueOffsetBlock, `${density} ${size} value centered`).toBeCloseTo(0, 1);
+        }
       }
       // One digit: the minimum inline size equals the block size (a square); more digits widen the box.
-      // The lh unit resolves to layout units (1/64 px): the minimum is the laid-out block size, not the decimal.
+      // The lh unit resolves to layout units (1/64 px): the minimum is the laid-out block size, not the decimal;
+      // with cap trimming the block size is cap height plus padding, which rounds one layout unit apart.
       expect(parseFloat(one.minInlineSize), `${density} ${size} min inline size = block size`).toBeCloseTo(
         one.height,
-        2
+        1
       );
       expect(parseFloat(one.minInlineSize)).toBeCloseTo(box, 1);
       // Contract: the minimum inline size equals the block size; the padded digit may exceed it (comfortable:
@@ -278,12 +291,54 @@ test('geometry: line-box height, square minimum, inline padding only, same heigh
   }
 });
 
-test('border and digits use the inherited content color inside every Button intent, appearance and state', async ({
+test('the digits are centered on their cap height (ink measured)', async ({ page }) => {
+  // The ink of a digit must sit within a device pixel of the centre of the box (Chromium, Inter): the line box
+  // alone sits it about 0.8 px high at md. The screenshot is decoded in the page through a canvas.
+  for (const size of sizes) {
+    const id = `#size-${size}-value-8`;
+    const m = await measure(page, id);
+    test.skip(!m.capTrim, 'text-box not supported by this browser');
+    const png = (await page.locator(id).screenshot({ scale: 'device' })).toString('base64');
+    const offset = await page.evaluate(
+      async ({ png, height }) => {
+        const img = new Image();
+        img.src = `data:image/png;base64,${png}`;
+        await img.decode();
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d')!;
+        ctx.drawImage(img, 0, 0);
+        const { data, width } = ctx.getImageData(0, 0, img.width, img.height);
+        const x0 = Math.floor(width * 0.3),
+          x1 = Math.ceil(width * 0.7);
+        let top = -1,
+          bottom = -1;
+        for (let y = 0; y < img.height; y++) {
+          let ink = false;
+          for (let x = x0; x < x1 && !ink; x++) {
+            const i = (y * width + x) * 4;
+            ink = data[i] < 120 && data[i + 3] > 200;
+          }
+          if (ink) {
+            if (top < 0) top = y;
+            bottom = y;
+          }
+        }
+        const dpr = img.height / height;
+        return { centre: (top + bottom + 1) / 2 / dpr, dpr };
+      },
+      { png, height: m.height }
+    );
+    expect(Math.abs(offset.centre - m.height / 2), `${size} ink centre offset`).toBeLessThanOrEqual(1 / offset.dpr);
+  }
+});
+
+test('tint and digits use the inherited content color inside every Button intent, appearance and state', async ({
   page
 }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' }); // read the host's settled color after hover and press
   const tokens = tokensFor('base-light-standard');
-  const border = px(tokens['border.width.default']);
   const check = async (buttonId: string, expectedColor?: string) => {
     const button = page.locator(buttonId);
     const color = await button.evaluate((el) => getComputedStyle(el).color);
@@ -291,10 +346,8 @@ test('border and digits use the inherited content color inside every Button inte
     const m = await measure(page, `${buttonId} .ggb-counter`);
     expect(m.color, `${buttonId} counter color`).toBe(color);
     expect(m.valueColor, `${buttonId} digits color`).toBe(color);
-    expect(m.boxShadow, `${buttonId} border color`).toBe(
-      `${faded(color, tokens['opacity.muted'].$value as number)} 0px 0px 0px ${border}px inset`
-    );
-    expect(m.backgroundColor).toBe('rgba(0, 0, 0, 0)');
+    expect(m.backgroundColor, `${buttonId} tint`).toBe(faded(color, tokens['opacity.tint'].$value as number));
+    expect(m.boxShadow).toBe('none');
     return m;
   };
   for (const intent of intents)
@@ -380,13 +433,13 @@ test('computed values match the resolved tokens for every size and the overflow 
             expect(m.fontFeatureSettings).toBe((font.fontFeatures ?? []).map((f) => `"${f}"`).join(', ') || 'normal');
             expect(m.radius, `${context} ${size} radius`).toBe(`${px(tokens['radius.indicator'])}px`);
             expect(m.paddingInline, `${context} ${size} padding`).toBe(`${px(tokens['space.content.xs'])}px`);
-            expect(m.paddingBlock).toBe('0px 0px');
             expect(m.borderWidth).toBe('0px');
-            expect(m.boxShadow).toBe(
-              `${faded(m.color, tokens['opacity.muted'].$value as number)} 0px 0px 0px ${px(tokens['border.width.default'])}px inset`
+            expect(m.boxShadow).toBe('none');
+            expect(m.backgroundColor, `${context} ${size} tint`).toBe(
+              faded(m.color, tokens['opacity.tint'].$value as number)
             );
             expect(m.height).toBeCloseTo(box, 1);
-            expect(parseFloat(m.minInlineSize)).toBeCloseTo(m.height, 2);
+            expect(parseFloat(m.minInlineSize)).toBeCloseTo(m.height, 1);
             expect(m.overflow).toBe(state === 'overflow');
             expect(m.text).toBe(state === 'overflow' ? '99+' : '8');
             // Standalone the counter inherits the page's primary content color.
@@ -395,10 +448,9 @@ test('computed values match the resolved tokens for every size and the overflow 
             record(context, props, state, 'container', {
               color: m.color,
               'background-color': m.backgroundColor,
-              'box-shadow': m.boxShadow,
               'border-radius': m.radius,
               'padding-inline': m.paddingInline,
-              'padding-block': '0px',
+              'padding-block': m.paddingBlock,
               'min-inline-size': m.minInlineSize,
               'block-size': `${m.height}px`,
               'inline-size': `${m.width}px`
@@ -432,7 +484,7 @@ test('computed values match the resolved tokens for every size and the overflow 
           'container',
           {
             color: m.color,
-            'box-shadow': m.boxShadow
+            'background-color': m.backgroundColor
           }
         );
       }
@@ -446,7 +498,9 @@ test('computed values match the resolved tokens for every size and the overflow 
   expect(records.length).toBeGreaterThan(0);
 });
 
-test('no motion to reduce; forced colors keep the border visible in the system text color', async ({ page }) => {
+test('no motion to reduce; forced colors keep the box visible with an edge in the system text color', async ({
+  page
+}) => {
   const counter = page.locator('#size-md-value-8');
   await expect(counter).toHaveCSS('transition-duration', '0s');
   await expect(counter).toHaveCSS('animation-name', 'none');
@@ -463,9 +517,9 @@ test('no motion to reduce; forced colors keep the border visible in the system t
     '#button-disabled-outline .ggb-counter'
   ]) {
     const m = await measure(page, id);
-    expect(m.boxShadow, `${id} shadow dropped`).toBe('none');
     expect(m.outline, `${id} outline`).toBe(`solid ${border}px ${m.color} -${border}px`);
-    expect(m.backgroundColor, `${id} no fill`).toMatch(/^rgba\(\d+, \d+, \d+, 0\)$/); // forced to Canvas, alpha kept
+    // The tint is forced to the Canvas color: the edge carries the box.
+    expect(m.backgroundColor, `${id} tint forced`).toMatch(/^rgba?\(\d+, \d+, \d+(, 0(\.12)?)?\)$/);
   }
   // Standalone the outline is the system text color (CanvasText); in a disabled button both follow GrayText.
   const canvasText = await page.evaluate(() => {

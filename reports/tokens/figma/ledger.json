@@ -50,7 +50,7 @@
     }
   },
   "variables": {
-    "total": 737,
+    "total": 739,
     "batches": [
       {
         "batch": 1,
@@ -164,6 +164,16 @@
         "collection": "Primitives and Brand",
         "ids": "VariableID:178:2 to VariableID:178:97 (96 variables; primitives: family/sans 178:2, family/mono 178:3, weight/400 to 700 178:4 to 178:7, lineHeight/none to loose 178:8 to 178:13)",
         "note": "Native resolution verified: 506 semantic variables in 18 contexts, 0 failures (strings compared as they are)."
+      },
+      {
+        "date": "2026-10-14",
+        "reason": "Counter tint (user decision on the implementation review page): primitive.opacity.12 and opacity.tint",
+        "collection": "Primitives and Brand",
+        "variables": {
+          "primitive/opacity/12": "VariableID:186:2",
+          "opacity/tint": "VariableID:186:3"
+        },
+        "note": "Synced with a delta batch (the sync-variables body with the two manifest entries) through use_figma; 739 manifest variables in the file afterwards. Native resolution re-verified: 507 semantic variables in 18 contexts, 0 failures (reports/tokens/figma/verification.json)."
       }
     ]
   },

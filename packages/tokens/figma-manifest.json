@@ -3269,6 +3269,19 @@
     },
     {
       "collection": "Foundations · Primitives",
+      "name": "primitive/opacity/12",
+      "path": "primitive.opacity.12",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-opacity-12)"
+      },
+      "values": {
+        "default": 12
+      }
+    },
+    {
+      "collection": "Foundations · Primitives",
       "name": "primitive/opacity/20",
       "path": "primitive.opacity.20",
       "type": "FLOAT",
@@ -9735,6 +9748,29 @@
         },
         "orchid": {
           "alias": "Foundations · Primitives:primitive/opacity/70"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "opacity/tint",
+      "path": "opacity.tint",
+      "type": "FLOAT",
+      "scopes": [
+        "OPACITY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-opacity-tint)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/opacity/12"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/opacity/12"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/opacity/12"
         }
       }
     },

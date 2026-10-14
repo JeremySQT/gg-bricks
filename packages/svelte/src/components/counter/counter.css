@@ -1,14 +1,14 @@
 /*
  * Counter structure. Values come from tokens.generated.css; this file holds structural literals only.
- * The root element is the container part: a box the height of the value's line box (no block padding),
- * at least as wide as it is high, with the value centered. Border and digits use the inherited content
- * color so the counter follows its host (a solid Button, a navigation item, running text); the border is attenuated.
+ * The root element is the container part: a box the height of the value's line box,
+ * at least as wide as it is high, with the value centered on its capital height. Tint and digits use the
+ * inherited content color so the counter follows its host (a solid Button, a navigation item, running text).
  */
 .ggb-counter {
   box-sizing: border-box;
   display: inline-grid;
   place-items: center;
-  /* The line box of the typography, from the lh unit: no block padding, so one and two digits share a height. */
+  /* The line box of the typography, from the lh unit, so one and two digits share a height. */
   min-inline-size: 1lh;
   /* Never shrunk by a flex parent (the explicit minimum above would otherwise replace the content floor). */
   flex: none;
@@ -17,7 +17,6 @@
   padding-inline: var(--ggb-counter-paddingInline);
   border: 0;
   border-radius: var(--ggb-counter-radius);
-  background: transparent;
   color: inherit;
   font: var(--ggb-counter-typography);
   letter-spacing: var(--ggb-counter-typography-letterSpacing, normal);
@@ -26,10 +25,9 @@
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
   text-align: center;
-  /* The border is drawn inside the edge so that it never changes the outer dimensions, in the content color
-   * attenuated to borderOpacity so that it reads lighter than the digits. */
-  box-shadow: inset 0 0 0 var(--ggb-counter-borderWidth) rgb(from currentColor r g b / var(--ggb-counter-borderOpacity));
-  /* Transparent outline: invisible normally, drawn by the system in forced-colors mode (box-shadow is dropped). */
+  /* The surface is the content color at surfaceOpacity: a faint tint that follows the host, no border. */
+  background: rgb(from currentColor r g b / var(--ggb-counter-surfaceOpacity));
+  /* Transparent outline: invisible normally, drawn by the system in forced-colors mode (the tint is dropped). */
   outline: var(--ggb-counter-borderWidth) solid transparent;
   outline-offset: calc(-1 * var(--ggb-counter-borderWidth));
 }
@@ -50,9 +48,22 @@
   white-space: pre;
 }
 
+/*
+ * Vertical centering on the capital height: the line box of Inter sits the digits about 0.8 px high (md).
+ * The value box is trimmed to cap height and baseline, and a symmetric block padding restores the line-box
+ * height, so one and two digits keep the same box. Browsers without text-box keep the line-box centering.
+ */
+@supports (text-box: trim-both cap alphabetic) {
+  .ggb-counter {
+    padding-block: calc((1lh - 1cap) / 2);
+  }
+  .ggb-counter__value {
+    text-box: trim-both cap alphabetic;
+  }
+}
+
 @media (forced-colors: active) {
   .ggb-counter {
-    box-shadow: none;
     outline-color: currentColor;
   }
 }
