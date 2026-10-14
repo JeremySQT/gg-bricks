@@ -1,0 +1,76 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "content/icon",
+      "id": "149:4"
+    }
+  },
+  "recordedOn": "2026-10-14",
+  "componentSet": {
+    "id": "149:20",
+    "name": "Icon",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=149-20",
+    "defaultVariant": "Size=md"
+  },
+  "properties": {
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": ["xs", "sm", "md", "lg", "xl"]
+    },
+    "Glyph#149:0": {
+      "type": "INSTANCE_SWAP",
+      "default": "42:7",
+      "preferredValues": [{ "type": "COMPONENT_SET", "key": "e4274aabe7dd8c91160067313105398e1c7421ed", "name": "_Fixture/Icon" }]
+    }
+  },
+  "variants": {
+    "Size=xs": { "id": "149:5", "glyph": "149:6", "size": "VariableID:5:79" },
+    "Size=sm": { "id": "149:8", "glyph": "149:9", "size": "VariableID:5:80" },
+    "Size=md": { "id": "149:11", "glyph": "149:12", "size": "VariableID:5:81" },
+    "Size=lg": { "id": "149:14", "glyph": "149:15", "size": "VariableID:5:82" },
+    "Size=xl": { "id": "149:17", "glyph": "149:18", "size": "VariableID:5:83" }
+  },
+  "bindings": {
+    "width": "size/icon/{size} (Brand)",
+    "height": "size/icon/{size} (Brand)",
+    "glyphFill": "color/content/primary (Appearance, VariableID:7:10), inherited from the _Fixture/Icon glyph"
+  },
+  "fixtures": {
+    "_Fixture/Icon": {
+      "id": "74:2",
+      "page": "Utilities (8:10)",
+      "variants": {
+        "plus": "42:7",
+        "arrow-right": "42:10",
+        "trash": "42:13",
+        "download-simple": "42:16",
+        "check": "42:19"
+      }
+    }
+  },
+  "specification": {
+    "id": "152:7",
+    "name": "Icon — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=152-7",
+    "builder": "authoring/adapters/figma/icon-spec.plugin.js",
+    "uses": {
+      "_Spec/Board": "113:17",
+      "_Spec/Callout": "115:6",
+      "_Spec/Marker": "115:8",
+      "Button": "48:1586",
+      "Wireframe": "VariableCollectionId:105:1565"
+    }
+  },
+  "evidence": {
+    "parity": "reports/components/icon/figma/parity.json",
+    "screenshots": ["reports/components/icon/figma/master-set.png", "reports/components/icon/figma/specification.png"],
+    "scripts": [
+      "authoring/adapters/figma/icon-spec.plugin.js",
+      "authoring/adapters/figma/icon-parity.plugin.js",
+      "authoring/adapters/figma/icon-parity-report.mjs"
+    ]
+  }
+}

@@ -22,3 +22,6 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - `button-parity-slots.plugin.js`: `use_figma` body checking leading and trailing slot geometry against the contract spacing rule in every context and size; save its `all` object as `slots.json` in the same folder.
 - `button-spec.plugin.js`: the two `use_figma` bodies that build the Button specification page (Wireframe collection with its light and blueprint modes, documentation components, header band with the Anatomy diagrams, then the body sections).
 - `button-parity-report.mjs <folder>`: compares the saved measurements with `reports/components/button/svelte/computed.json` and writes `reports/components/button/figma/parity.json` (one record per computed record, justified differences noted, slot geometry records when `slots.json` is present).
+- `icon-parity.plugin.js`: `use_figma` body measuring the Icon set in the 18 contexts (box size, bound variables, glyph fill, drawing box); save its result as JSON.
+- `icon-parity-report.mjs <result.json>`: compares the measurement with `reports/components/icon/svelte/computed.json` and writes `reports/components/icon/figma/parity.json`.
+- `icon-spec.plugin.js`: the `use_figma` body that builds the Icon specification page (same layout as the Button page).

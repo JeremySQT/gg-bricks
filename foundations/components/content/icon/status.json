@@ -35,8 +35,16 @@
       "sha256": "159c7201c40969c2f12a33feb479be56345c69e05843aafb7d604445bc9101b6"
     },
     "tokens": [],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "content/icon (149:4)",
+      "componentSet": "149:20",
+      "specification": "152:7",
+      "ledger": "reports/components/icon/figma/ledger.json",
+      "parity": "reports/components/icon/figma/parity.json",
+      "screenshots": ["reports/components/icon/figma/master-set.png", "reports/components/icon/figma/specification.png"]
+    },
+    "figmaSpec": "foundations/components/content/icon/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "entry": "packages/svelte/src/components/icon/Icon.svelte",
@@ -121,6 +129,14 @@
       "result": "passed",
       "command": "npm run build:preview icon",
       "date": "2026-10-14"
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/icon-parity.plugin.js; node authoring/adapters/figma/icon-parity-report.mjs <result>",
+      "report": "reports/components/icon/figma/parity.json",
+      "date": "2026-10-14",
+      "note": "360 records (270 computed records: width, height, glyph fill per size in 18 contexts; 90 drawing-inset records), 0 failures. Justified differences listed in figma-spec.md (label, glyph source, local fixtures, color override instead of currentColor)."
     }
   ],
   "decisionsTaken": [
@@ -134,12 +150,11 @@
     "Contract gate (user, 2026-10-14): glyph passed as content with a coordinate-box option defaulting to the Phosphor grid; five sizes kept. Phosphor Icons confirmed as the reference set (nothing bundled: the application supplies the glyphs).",
     "Implementation: the svg element is the component root (not wrapped in a span), so that hosts that select their slot's svg (Button) size and offset the Icon exactly as a raw glyph; attributes pass through to the svg.",
     "Implementation: a blank label counts as no label (decorative), so an empty string from a binding never yields an unnamed image.",
-    "Review page: the disabled-color sample was replaced by a tertiary-color sample because disabled text on the canvas is below 4.5:1 and fails the axe audit; the test assertion follows (a page choice, not a component change)."
+    "Review page: the disabled-color sample was replaced by a tertiary-color sample because disabled text on the canvas is below 4.5:1 and fails the axe audit; the test assertion follows (a page choice, not a component change).",
+    "Figma: the Icon master is a Size variant set whose Glyph is an instance-swap property defaulting to the _Fixture/Icon set (Phosphor fixtures), instead of Name variants per glyph: the glyph is content, so it is swapped, not enumerated. Size=md is the default variant. The _Fixture/Icon set stays on the Utilities page as the glyph source until a Phosphor library is attached."
   ],
-  "openDecisions": [
-    "Figma parity gate (later): the Figma master cannot hold the application's icons; proposed: an Icon component set whose Name variants are the review fixtures (Phosphor), with Size as a variant, replacing the _Fixture/Icon set."
-  ],
-  "nextAction": "Figma parity (ggb-figma), grouped Figma parity gate for the wave 1 slot contents.",
+  "openDecisions": [],
+  "nextAction": "Grouped Figma parity gate for the wave 1 slot contents (Icon, Counter, Shortcut); then documentation (ggb-docs).",
   "implementationNotes": [
     "Svelte: Icon renders a single svg root element (class ggb-icon, data-size, viewBox option defaulting to the Phosphor grid 0 0 256 256, fill currentColor, width and height from size.icon) whose content is the children snippet. A single svg root keeps the Button slot selectors (.ggb-button__leading > svg) working, so the button sizes and optically offsets the icon as it does today with raw svg fixtures.",
     "Accessibility: without label, aria-hidden=\"true\" and focusable=\"false\"; with label, role=\"img\" and aria-label.",
