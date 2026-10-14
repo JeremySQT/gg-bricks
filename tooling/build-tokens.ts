@@ -278,6 +278,10 @@ const convert = (t: ResolvedToken): FigmaValue => {
   if (t.$type === 'number') return t.$value as number;
   return dimOf(t).value;
 };
+/** Figma reads a number bound to layer opacity as a percentage: opacity tokens are emitted ×100 (0.7 → 70). */
+const isOpacity = (p: string) => p.startsWith('opacity.') || p.startsWith('primitive.opacity.');
+const figmaValueOf = (p: string, t: ResolvedToken): FigmaValue =>
+  isOpacity(p) ? Math.round((convert(t) as number) * 100 * 10000) / 10000 : convert(t);
 const figmaName = (p: string) => p.replaceAll('.', '/');
 const primitivesMode = 'default';
 const manifest: {
@@ -338,7 +342,7 @@ for (const p of Object.keys(flatByContext[base.id])) {
   const axis = axisOf(p);
   const codeSyntax = { WEB: `var(${cssVariable(p)})` };
   const at = (brand: string, appearance: string, density: string) =>
-    convert(flatByContext[`${brand}-${appearance}-${density}`][p]);
+    figmaValueOf(p, flatByContext[`${brand}-${appearance}-${density}`][p]);
   if (sharedPrimitive(p)) {
     manifest.variables.push({
       collection: 'Primitives',
@@ -398,7 +402,7 @@ for (const p of Object.keys(flatByContext[base.id])) {
         path: p,
         type,
         scopes: [],
-        values: Object.fromEntries(cfg.brands.map((b) => [b, convert(flatByContext[ctxOf(b, mode)][p])]))
+        values: Object.fromEntries(cfg.brands.map((b) => [b, figmaValueOf(p, flatByContext[ctxOf(b, mode)][p])]))
       });
       values[mode] = { alias: `Brand:${name}` };
     }
@@ -459,7 +463,7 @@ for (const ctx of contexts) {
   (expectations[ctx.brand] ??= {})[`${ctx.appearance}-${ctx.density}`] = Object.fromEntries(
     Object.entries(flatByContext[ctx.id])
       .filter(([p]) => !p.startsWith('primitive.'))
-      .map(([p, v]) => [figmaName(p), convert(v)])
+      .map(([p, v]) => [figmaName(p), figmaValueOf(p, v)])
   );
 }
 write(`${paths.tokensPackage}/figma-expectations.json`, expectations);

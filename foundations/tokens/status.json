@@ -226,6 +226,11 @@
       "review": "Requested by the user at the implementation review of the wave 1 slot contents (2026-10-14): a 70 % border on the Counter.",
       "figma": "Synced on 2026-10-14 (reports/tokens/figma/ledger.json, additions); native resolution to re-verify at the wave's Figma parity gate. Native resolution re-verified on 2026-10-14 for the 422 semantic variables in the 18 contexts, 0 failures (reports/tokens/figma/verification.json).",
       "recorded": "approvals.primitives and approvals.semantic re-recorded with this change on 2026-10-14."
+    },
+    {
+      "date": "2026-10-14",
+      "scope": "Figma adapter only (tooling/build-tokens.ts): opacity tokens are emitted ×100 in figma-manifest.json and figma-expectations.json because Figma reads a number variable bound to layer opacity as a percentage (found while building the Counter and Shortcut masters: opacity/muted bound at 0.7 rendered at 0.7 %). Source tokens and CSS unchanged. The 10 primitive/opacity variables were re-synced (IDs preserved) and native resolution re-verified: 422 semantic variables, 18 contexts, 0 failures.",
+      "approval": "Adapter mechanic, no token change: no approval needed; recorded for the wave 1 Figma parity gate summary."
     }
   ]
 }

@@ -100,7 +100,7 @@ for (const r of records) {
         +mm[2] === +f[3] &&
         f[17] === 'INSIDE';
       note =
-        'Code draws the border as an inset box-shadow in the content color at borderOpacity; Figma as an inside stroke on the Border layer (stroke bound to counter/foreground, width to border/width/default, layer opacity to the adapter variable counter/border-opacity = 70, because Figma reads an opacity binding in percent and opacity/muted holds 0.7). Observed: the effective layer opacity.';
+        'Code draws the border as an inset box-shadow in the content color at borderOpacity; Figma as an inside stroke on the Border layer (stroke bound to counter/foreground, width to border/width/default, layer opacity to opacity/muted, synced in percent = 70 because Figma reads an opacity binding in percent). Observed: the effective layer opacity.';
       break;
     }
     case 'border-radius':

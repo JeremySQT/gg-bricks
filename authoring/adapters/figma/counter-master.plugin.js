@@ -36,15 +36,9 @@ if (!fg) fg = figma.variables.createVariable('counter/foreground', ac, 'COLOR');
 fg.scopes = ['TEXT_FILL', 'STROKE_COLOR'];
 fg.hiddenFromPublishing = true;
 fg.setValueForMode(ac.modes[0].modeId, figma.variables.createVariableAlias(V('color/content/primary', 'Appearance')));
-// Border opacity: Figma reads an opacity binding as a percentage, so opacity/muted (0.7) would give 0.7 %. The adapter
-// variable holds 70 until the token sync emits opacity variables in percent (then re-bind to opacity/muted).
-let bo = vars.find((v) => v.name === 'counter/border-opacity' && v.variableCollectionId === ac.id);
-if (!bo) bo = figma.variables.createVariable('counter/border-opacity', ac, 'FLOAT');
-bo.scopes = ['OPACITY'];
-bo.hiddenFromPublishing = true;
-bo.description =
-  'Adapter: opacity.muted (0.7) in percent, because Figma reads an opacity binding as a percentage. Mirror of opacity/muted until the token sync emits opacity variables in percent.';
-bo.setValueForMode(ac.modes[0].modeId, 70);
+// Border opacity: Figma reads an opacity binding as a percentage; the token sync emits opacity variables ×100
+// (opacity/muted = 70 since 2026-10-14), so the Border binds opacity/muted directly.
+const bo = V('opacity/muted', 'Brand');
 
 await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
 const styles = await figma.getLocalTextStylesAsync();
@@ -90,7 +84,7 @@ const make = async (size, overflow) => {
   c.setBoundVariable('minWidth', lh);
   c.setBoundVariable('height', lh);
   // Border: stroke-only rectangle filling the container (absolute, scaled), inside stroke, layer opacity bound to
-  // counter/border-opacity so that the digits keep their full opacity (a paint opacity cannot bind a variable).
+  // opacity/muted so that the digits keep their full opacity (a paint opacity cannot bind a variable).
   const b = figma.createRectangle();
   b.name = 'Border';
   b.fills = [];

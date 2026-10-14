@@ -7,7 +7,7 @@
 //     strokeAlign|borderRadius|borderSize|textHeight|borderOpacityVariable (percent)"
 //   host["<context>|button-<intent>-<appearance>"] = "foreground|opacity|borderWidth" (adapter variable the Button binds
 //     its slot content to, resolved in the four representative contexts with the default state mode; opacity from
-//     counter/border-opacity in percent, divided by 100)
+//     opacity/muted in percent, divided by 100)
 //   tabular: widths of 00, 11, 88 and 10 at md in base-light-standard (Inter's default figures in Figma).
 // Save the returned object as reports/components/counter/figma/measurements.json (not committed) and run
 // node authoring/adapters/figma/counter-parity-report.mjs <file>.
@@ -115,7 +115,7 @@ for (const ctx of ['base-light-standard', 'base-dark-standard', 'brick-light-com
       try {
         host[`${ctx}|button-${i}-${ap}`] = [
           hex(VN('button/foreground', '_ggbrick button style').resolveForConsumer(f).value),
-          r3(VN('counter/border-opacity', '_ggbrick counter').resolveForConsumer(f).value / 100),
+          r3(VN('opacity/muted', 'Brand').resolveForConsumer(f).value / 100),
           VN('border/width/default', 'Brand').resolveForConsumer(f).value
         ].join('|');
       } finally {

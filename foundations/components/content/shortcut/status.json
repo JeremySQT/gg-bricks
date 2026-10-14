@@ -37,8 +37,25 @@
       "sha256": "8a78a432cf7684b3a423ab8d34a4905b9a4a91f6ec6d9bb7ebbcbeb47c3549bf"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=151-110",
+      "page": "content/shortcut (149:1569)",
+      "componentSet": "151:110",
+      "internalParts": {
+        "_Shortcut/Key": "149:1581",
+        "_Shortcut/Separator": "149:1582"
+      },
+      "specificationFrame": "154:32",
+      "ledger": "reports/components/shortcut/figma/ledger.json",
+      "parity": "reports/components/shortcut/figma/parity.json",
+      "screenshots": [
+        "reports/components/shortcut/figma/master-set.png",
+        "reports/components/shortcut/figma/specification.png"
+      ],
+      "published": false
+    },
+    "figmaSpec": "foundations/components/content/shortcut/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "entry": "packages/svelte/src/components/shortcut/Shortcut.svelte",
@@ -158,6 +175,13 @@
       "command": "npm run build:preview shortcut",
       "date": "2026-10-14",
       "note": "dist/previews/shortcut.html (1460 kB), single bundle, mounts from file:// without errors in Chromium."
+    },
+    {
+      "kind": "figma-parity",
+      "result": "passed",
+      "report": "reports/components/shortcut/figma/parity.json",
+      "date": "2026-10-14",
+      "note": "4104 records (one per computed record: 18 contexts × 3 sizes × 2 appearances × 2 platforms, three-key form Mod+Shift+K), 0 failures, 540 justified differences (text line boxes rounded to whole pixels by Figma: heights 0.2 to 0.6 px above the browser; square minimum 18/19/22 on the rounded line box; OpenType tnum not settable); first-key widths within ±1.5 px (measured 0.20 to 0.98 px). 216 opacity records from the contract role (plain 0.7, keycap 1), 0 failures, through opacity/muted synced in percent (70) because Figma reads an opacity binding as a percentage. Difficult cases in the specification: one, two and three keys, fallback glyphs, six brand × appearance pairs, three densities, a box too narrow (overflow, no wrap)."
     }
   ],
   "decisionsTaken": [
@@ -188,10 +212,19 @@
     "Implementation (2026-10-14): the accessible text is a visually hidden span (1 px, clipped) inside the root; aria-label on a kbd is unreliable. A blank label is ignored. The browser test checks the name through native hosts (a button, a tooltip) because a kbd root has no role of its own.",
     "Implementation (2026-10-14): browser test corrections, code unchanged: expected name \"Delete line Command Shift K\" corrected to \"Delete line Shift Command K\" (contract mac order); \"single cap is square within 0.05 px\" replaced by the contract rule (width at least the height) plus \"width equals the greater of the square minimum and glyph + padding within 0.5 px\"; display read on an inline sample rather than a blockified flex item; line-height compared numerically.",
     "Implementation review (user, 2026-10-14): comfortable density keeps the density-dependent padding (single-letter caps slightly wider than tall there); the recommended approach was validated.",
-    "Implementation review (user, 2026-10-14): the plain shortcut is attenuated to 70 % (opacity.muted, contract role contentOpacity) so that it is not read as part of the label; keycaps and forced colors stay at full opacity. Accepted contrast exception: inside solid Buttons the hint falls to 3.3:1 (and below 4.5:1 in some outline and ghost ones in light); the hint is indicative and hidden from assistive technology inside a Button. The browser audit tolerates color-contrast only on those nodes. Lab page examples/shortcut-opacity (artifact https://claude.ai/artifact/L1agvDLoc2hBK3Hqz91reB, commit ad68c20) removed after the choice."
+    "Implementation review (user, 2026-10-14): the plain shortcut is attenuated to 70 % (opacity.muted, contract role contentOpacity) so that it is not read as part of the label; keycaps and forced colors stay at full opacity. Accepted contrast exception: inside solid Buttons the hint falls to 3.3:1 (and below 4.5:1 in some outline and ghost ones in light); the hint is indicative and hidden from assistive technology inside a Button. The browser audit tolerates color-contrast only on those nodes. Lab page examples/shortcut-opacity (artifact https://claude.ai/artifact/L1agvDLoc2hBK3Hqz91reB, commit ad68c20) removed after the choice.",
+    "Figma (2026-10-14): one page content/shortcut (149:1569) after actions/button and the other content/* pages, holding the master Shortcut (151:110, Appearance × Size × Platform, 12 variants), the internal parts _Shortcut/Key (149:1581) and _Shortcut/Separator (149:1582) and the specification frame (154:32). Platform auto has no Figma meaning; the default variant is Plain, md, Mac (Figma takes the top-left variant of the set, so the md column comes first).",
+    "Figma (2026-10-14): keys are not a property. The Plugin API refuses component property references on instance sublayers, so set-level Key 1/2/3 text properties cannot drive the nested key texts; the nested _Shortcut/Key instances Key 1, Key 2, Key 3 are exposed (text Key) and two switches, Show key 2 (default on) and Show key 3 (default off), set one, two or three keys; separators follow on Other. Four keys or more are composed from two instances. The specification lists the glyph and short-name tables and the modifier order.",
+    "Figma (2026-10-14): size through the hidden adapter collection _ggbrick shortcut size (modes sm, md, lg) whose variables alias typography/indicator/{size}/fontSize, lineHeight and letterSpacing, set once on the key text; each Shortcut variant sets its Size mode, the pattern of _ggbrick button size. The cap border is an inside stroke with strokesIncludedInLayout (the border-box border of the code), so the cap is the line box plus two borders tall with no block padding.",
+    "Figma (2026-10-14): Figma rounds an auto-sized text layer to whole pixels (line boxes 16, 17, 20 for 15.4, 16.8, 19.6), so caps are 18, 19, 22 px tall instead of 17.4, 18.8, 21.6 (0.2 to 0.6 px); the square minimum shortcut/cap-min-width is set to those rounded values (18, 19, 22) so that single-character caps stay square in Figma. Recorded as justified in parity.json (tolerance ±1 px on heights), not hidden.",
+    "Figma (2026-10-14): inherited color has no Figma equivalent; the key texts and separators bind shortcut/foreground (hidden adapter alias of color/content/primary, scopes TEXT_FILL and STROKE_COLOR) so that a host rebinds one variable: the Button will bind its Shortcut trailing item to button/foreground when the orchestrator integrates the master (Button masters, fixtures and pages untouched in this phase).",
+    "Figma (2026-10-14): font-feature-settings tnum cannot be set through the Plugin API (openTypeFeatures is read-only, as the token ledger and the Counter recorded); the keys show letters and glyphs, not figures, so nothing is lost; 216 records justified. The Apple glyphs ↩ ⎋ ⇥ ⌫ ⌦ ↖ ↘ ⇞ ⇟ are not in Inter and render with Figma's fallback font, as in the browser.",
+    "Figma (2026-10-14): Figma reads a number variable bound to layer opacity as a percentage: opacity/muted (0.7) bound directly rendered the plain variants at 0.7 %. Resolved in the token sync (orchestrator): opacity tokens are emitted ×100 for Figma (opacity/muted = 70, expectations and native verification updated) and the Plain variants bind opacity/muted directly; the temporary mirror variable opacity/muted (synced in percent) was removed. Effective opacity 0.7 in the 18 contexts."
   ],
-  "openDecisions": [],
-  "nextAction": "Figma parity (ggb-figma), grouped Figma parity gate for the wave 1 slot contents.",
+  "openDecisions": [
+    "Keys in Figma are typed per nested part (Key 1, Key 2, Key 3 exposed instances with Show key 2 / Show key 3), up to three keys, because the Plugin API cannot attach a set-level text property to a nested instance text. Acceptable for the library, or should the keys become direct text layers of each variant (12 variants × 3 caps bound individually) to get flat Key 1/2/3 text properties on the Shortcut itself?"
+  ],
+  "nextAction": "Grouped Figma parity gate for the wave 1 slot contents (Icon, Counter, Shortcut), then documentation (ggb-docs).",
   "implementationNotes": [
     "Markup: <kbd class=\"ggb-shortcut\" data-platform data-appearance data-size> holding a visually hidden <span class=\"ggb-shortcut__name\"> (the spoken equivalent, or label when non-blank) and <span class=\"ggb-shortcut__container\" aria-hidden=\"true\"> with one nested <kbd class=\"ggb-shortcut__key\" data-key data-kind> per resolved key and a <span class=\"ggb-shortcut__separator\">+</span> between keys on other. No role, no aria-label. data-platform carries the resolved platform (mac or other), never auto.",
     "Parsing lives in keys.ts (pure TypeScript, unit-tested): parseKeys splits on +, trims, maps aliases ignoring case, uppercases single letters, drops empty tokens, keeps unknown names as literals; resolveShortcut maps Mod, collapses a modifier named twice, orders modifiers per platform (mac Ctrl, Alt, Shift, Meta; other Meta, Ctrl, Alt, Shift), then the other keys in the given order, and yields text, spoken word and separator; it never throws.",
@@ -201,7 +234,7 @@
     "Comfortable density: keyPaddingInline is 6 px, so a single-letter cap is wider than tall at sm and md (glyph plus padding exceeds the square minimum); at least as wide as tall holds everywhere (open decision 1).",
     "Inside Button: the integration writes <Shortcut keys=\"Mod+S\" size={buttonSize} /> in the trailing snippet; the content color is inherited, loading fades the slot, disabled gives the disabled content color; the Button hides the trailing content from assistive technology. Nothing to do in Shortcut.",
     "Glyphs: Inter covers the modifiers and the arrows; the other Apple glyphs (↩ ⎋ ⇥ ⌫ ⌦ ↖ ↘ ⇞ ⇟) come from the system fallback of the font stack; check their weight and alignment on macOS and Windows at the review.",
-    "Figma: a component set with Appearance (Plain, Keycap), Size (sm, md, lg) and Platform (Mac, Other) properties; Auto has no Figma meaning. Keys are text properties on nested _Shortcut/Key instances (Figma cannot parse keys): the master shows a representative combination (⌘K and Ctrl+K) and the specification page documents the glyph tables. Once the master exists it replaces the shortcut fixture of _Button/Trailing in the Button library (Button Done).",
+    "Figma: component set Shortcut (151:110) with Appearance (Plain, Keycap), Size (sm, md, lg) and Platform (Mac, Other); Auto has no Figma meaning. Keys are the exposed nested _Shortcut/Key instances Key 1, Key 2, Key 3 (text Key) with the switches Show key 2 and Show key 3 (Figma cannot parse keys): the master shows ⌘ K and Ctrl + K and the specification page documents the glyph tables. See figma-spec.md and reports/components/shortcut/figma/ledger.json. Once integrated by the orchestrator it replaces the shortcut fixture of _Button/Trailing in the Button library (Button Done).",
     "Tests: unit (keys.ts), SSR (other form on the server, forced mac, keycap and sizes, label, class merge, difficult content), browser (order, glyphs, separators, spoken text, accessible names through native hosts, keycap geometry per density, inherited color in every Button intent x appearance, one line, baseline, computed values in 18 contexts, forced colors, axe, screenshots)."
   ],
   "contrastScope": {
