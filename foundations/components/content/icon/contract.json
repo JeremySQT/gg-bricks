@@ -1,0 +1,29 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "icon",
+  "props": {
+    "size": {
+      "values": ["xs", "sm", "md", "lg", "xl"],
+      "default": "md"
+    },
+    "label": {
+      "type": "string"
+    }
+  },
+  "parts": {
+    "box": {},
+    "glyph": {}
+  },
+  "states": {},
+  "tokens": {
+    "size": "size.icon.{size}"
+  },
+  "rules": [
+    "The box is a square of size by size; glyph fills the box without distortion and is painted in the current content color, so the host decides the color.",
+    "glyph is a vector drawing supplied by the application, following the reference icon set's conventions (Phosphor: a square grid, the drawing inset 1/8 of the box on each side); hosts rely on that inset for optical spacing.",
+    "Without label the icon is decorative and hidden from assistive technology; with label it is an image whose accessible name is label.",
+    "The box keeps its size in a flexible layout: it neither shrinks nor stretches, and it does not change with density.",
+    "The icon has no interaction, no state and no color of its own; a glyph is one color (strokes belong to the drawing, not to the component).",
+    "When placed in a host slot that defines an icon size (a Button's leading or trailing slot), the host's size applies instead of the size option."
+  ]
+}

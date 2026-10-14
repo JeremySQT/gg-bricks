@@ -549,7 +549,16 @@ test('automated accessibility audit and screenshots in light and dark, desktop a
       .include('.page')
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
       .analyze();
-    expect(results.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target).join(', ')}`)).toEqual([]);
+    // Documented exception (user decision at the wave 1 implementation gate, 2026-10-14): a plain Shortcut in a
+    // trailing slot is attenuated to opacity.muted, which takes its hint text below 4.5:1 inside some buttons.
+    // The same exception is recorded in tests/browser/shortcut.spec.ts. Every other violation fails.
+    const exception = (target: string) => /\.ggb-button__trailing.*data-appearance="plain"/.test(target);
+    const violations = results.violations.flatMap((v) =>
+      v.nodes
+        .filter((n) => !(v.id === 'color-contrast' && n.target.every((t) => exception(String(t)))))
+        .map((n) => `${v.id}: ${n.target}`)
+    );
+    expect(violations).toEqual([]);
     await page.screenshot({ path: `${out}/review-${mode}.png`, fullPage: true });
   }
   await page.setViewportSize({ width: 390, height: 844 });

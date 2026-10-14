@@ -24,14 +24,16 @@ const out = `${paths.dist}/figma`;
 // Order: Primitives, Brand primitives, Brand semantic, Appearance, Density; inside a rank, alias targets of
 // the same collection precede the variables that reference them (stable topological order).
 type Variable = Manifest['variables'][number] & { values: Record<string, unknown> };
+// Collection names carry the “Foundations · ” prefix; the rank reads the axis after it.
+const axisOf = (v: Variable) => v.collection.replace(/^Foundations · /, '');
 const rank = (v: Variable) =>
-  v.collection === 'Primitives'
+  axisOf(v) === 'Primitives'
     ? 0
-    : v.collection === 'Brand'
+    : axisOf(v) === 'Brand'
       ? v.name.startsWith('primitive/')
         ? 1
         : 2
-      : v.collection === 'Appearance'
+      : axisOf(v) === 'Appearance'
         ? 3
         : 4;
 const key = (v: Variable) => `${v.collection}:${v.name}`;

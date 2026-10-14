@@ -1,0 +1,14 @@
+/*
+ * Icon structure. The size comes from tokens.generated.css (one custom property per size); this file holds
+ * structural literals only. The box is square, never shrinks or stretches in a flexible layout, and sits
+ * on the middle of the surrounding text line. The glyph is painted in the current content color.
+ */
+.ggb-icon {
+  display: inline-block;
+  inline-size: var(--ggb-icon-size);
+  block-size: var(--ggb-icon-size);
+  flex: none;
+  vertical-align: middle;
+  fill: currentColor;
+  overflow: hidden;
+}

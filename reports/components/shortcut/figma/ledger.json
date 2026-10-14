@@ -1,0 +1,222 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "content/shortcut",
+      "id": "149:1569",
+      "position": "after actions/button and the other content/* pages, before Utilities"
+    }
+  },
+  "recordedOn": "2026-10-14",
+  "componentSet": {
+    "id": "151:110",
+    "name": "Shortcut",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=151-110",
+    "defaultVariant": "Appearance=Plain, Size=md, Platform=Mac (the top-left variant of the set; columns md, sm, lg)"
+  },
+  "properties": {
+    "Appearance": {
+      "type": "VARIANT",
+      "default": "Plain",
+      "options": [
+        "Plain",
+        "Keycap"
+      ]
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "sm",
+        "md",
+        "lg"
+      ]
+    },
+    "Platform": {
+      "type": "VARIANT",
+      "default": "Mac",
+      "options": [
+        "Mac",
+        "Other"
+      ],
+      "note": "auto has no Figma meaning"
+    },
+    "Show key 2#152:0": {
+      "type": "BOOLEAN",
+      "default": true,
+      "controls": "Key 2 and Separator 1"
+    },
+    "Show key 3#151:39": {
+      "type": "BOOLEAN",
+      "default": false,
+      "controls": "Key 3 and Separator 2"
+    }
+  },
+  "exposedInstances": {
+    "Key 1": "instance of _Shortcut/Key (text property Key#149:20, default ⌘ on Mac, Ctrl on Other)",
+    "Key 2": "instance of _Shortcut/Key (Key, default K)",
+    "Key 3": "instance of _Shortcut/Key (Key, default K; hidden unless Show key 3)",
+    "note": "The Plugin API refuses componentPropertyReferences on instance sublayers, so set-level Key 1/2/3 text properties could not drive the nested texts; the nested instances are exposed instead and also show their own Appearance."
+  },
+  "variants": {
+    "Appearance=Plain, Size=md, Platform=Mac": "151:9",
+    "Appearance=Plain, Size=sm, Platform=Mac": "151:2",
+    "Appearance=Plain, Size=lg, Platform=Mac": "151:16",
+    "Appearance=Plain, Size=sm, Platform=Other": "151:23",
+    "Appearance=Plain, Size=md, Platform=Other": "151:34",
+    "Appearance=Plain, Size=lg, Platform=Other": "151:45",
+    "Appearance=Keycap, Size=sm, Platform=Mac": "151:56",
+    "Appearance=Keycap, Size=md, Platform=Mac": "151:63",
+    "Appearance=Keycap, Size=lg, Platform=Mac": "151:70",
+    "Appearance=Keycap, Size=sm, Platform=Other": "151:77",
+    "Appearance=Keycap, Size=md, Platform=Other": "151:88",
+    "Appearance=Keycap, Size=lg, Platform=Other": "151:99"
+  },
+  "layers": {
+    "Mac variants": [
+      "Key 1",
+      "Key 2",
+      "Key 3 (hidden)"
+    ],
+    "Other variants": [
+      "Key 1",
+      "Separator 1",
+      "Key 2",
+      "Separator 2 (hidden)",
+      "Key 3 (hidden)"
+    ],
+    "bindings": {
+      "variant (container)": "itemSpacing → space/content/xs (Keycap) or 0 (Plain); opacity → opacity/muted (synced in percent, VariableID:145:3) (Plain); explicit mode of Components = Size",
+      "_Shortcut/Key text": "fontSize, lineHeight, letterSpacing → shortcut/font-size, shortcut/line-height, shortcut/letter-spacing; fill → shortcut/foreground; font Inter Medium (literal)",
+      "_Shortcut/Key Keycap frame": "fill → color/surface/subtle; stroke (inside, strokesIncludedInLayout) → color/border/default; strokeWeight → border/width/default; four corners → radius/control; paddingLeft, paddingRight → space/content/xs; paddingTop, paddingBottom 0; minWidth → shortcut/cap-min-width",
+      "_Shortcut/Separator text": "as the key text, characters +"
+    }
+  },
+  "internalComponents": {
+    "_Shortcut/Key": {
+      "page": "content/shortcut (149:1569)",
+      "set": "149:1581",
+      "variants": {
+        "Appearance=Plain": "149:1577",
+        "Appearance=Keycap": "149:1579"
+      },
+      "properties": {
+        "Key#149:20": {
+          "type": "TEXT",
+          "default": "K"
+        },
+        "Appearance": "VARIANT"
+      }
+    },
+    "_Shortcut/Separator": {
+      "id": "149:1582",
+      "page": "content/shortcut (149:1569)"
+    }
+  },
+  "adapterVariables": {
+    "collection": {
+      "id": "VariableCollectionId:181:2",
+      "name": "Components",
+      "modes": {
+        "sm": "181:0",
+        "md": "181:1",
+        "lg": "181:2"
+      },
+      "default": "md",
+      "hiddenFromPublishing": true
+    },
+    "variables": {
+      "shortcut/font-size": {
+        "id": "VariableID:181:7",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "value": "alias typography/indicator/{size}/fontSize per mode"
+      },
+      "shortcut/line-height": {
+        "id": "VariableID:181:8",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "value": "alias typography/indicator/{size}/lineHeight per mode"
+      },
+      "shortcut/letter-spacing": {
+        "id": "VariableID:181:9",
+        "scopes": [
+          "LETTER_SPACING"
+        ],
+        "value": "alias typography/indicator/{size}/letterSpacing per mode"
+      },
+      "shortcut/cap-min-width": {
+        "id": "VariableID:181:10",
+        "scopes": [
+          "WIDTH_HEIGHT"
+        ],
+        "value": {
+          "sm": 18,
+          "md": 19,
+          "lg": 22
+        }
+      },
+      "shortcut/foreground": {
+        "id": "VariableID:181:6",
+        "type": "COLOR",
+        "scopes": [
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "value": "alias color/content/primary (VariableID:7:10) in the three modes",
+        "note": "Bound by the key texts and the separators; the Button rebinds its Shortcut trailing item to button/foreground (VariableID:90:13)."
+      }
+    },
+    "note": "Formerly _ggbrick shortcut size (149:1570, variables 149:1572 to 149:1575) and _ggbrick shortcut (149:1571, variable 149:1576), deleted on 2026-10-14 after the regrouping."
+  },
+  "specification": {
+    "frame": {
+      "id": "154:32",
+      "name": "Shortcut — Specification",
+      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=154-32",
+      "size": "1232 × 5155"
+    },
+    "sections": {
+      "Header (title, summary, hero, Anatomy)": "154:33",
+      "Anatomy": "154:88",
+      "Body": "154:235",
+      "Variants": "154:236",
+      "States": "154:1102",
+      "Behavior & sizing": "154:1194",
+      "Usage examples": "154:1531"
+    },
+    "diagrams": {
+      "Anatomy diagram": "154:95",
+      "Keycap diagram": "156:1090"
+    },
+    "builder": "authoring/adapters/figma/shortcut-spec.plugin.js",
+    "note": "Built on 2026-10-14, then one fix (keys table first column widened to 250 px so long names do not wrap; keycap zoom redrawn at ×8 on a 300 px board); both folded into the builder. Uses the Wireframe collection (VariableCollectionId:105:1565) and the documentation components _Spec/Callout 115:6 and _Spec/Marker 115:8 of the Utilities page; _Spec/Board 113:17 is the style reference of the boards."
+  },
+  "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run; a “_tmp measure” frame of the first geometry check was removed; none remain (checked on 2026-10-14: the page holds _Shortcut/Key, _Shortcut/Separator, Shortcut and the specification frame only).",
+  "fixtures": {
+    "note": "The Button masters still use _Fixture/Shortcut (42:22) on the Utilities page; nothing of the Button was touched. Integration of this master as the Shortcut trailing type of _Button/Trailing (75:14) is the orchestrator's step."
+  },
+  "scripts": {
+    "masters": "authoring/adapters/figma/shortcut-master.plugin.js",
+    "specification": "authoring/adapters/figma/shortcut-spec.plugin.js",
+    "parity": "authoring/adapters/figma/shortcut-parity.plugin.js (one run per brand) + shortcut-parity-report.mjs"
+  },
+  "maintenance": [
+    "2026-10-14: the six Plain variants re-bound from the mirror variable shortcut/plain-opacity (VariableID:155:874, removed) to opacity/muted (VariableID:145:3), now synced in percent (70) by the token sync; effective opacity 0.7 verified on an instance.",
+    {
+      "date": "2026-10-14",
+      "change": "Blueprint boards: the drawing is centered vertically in each board and the legend elements follow (user review of the wave 1 Figma parity gate, 2026-10-14); the builder script applies the same pass (centerBoards). The Anatomy leaders were shortened (24 px margins) and the Keycap board's dimension rows moved next to the caps, B above the first cap, so that the legend stays inside the board."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Adapter collections regrouped (user review, 2026-10-14): the component adapter variables now live in one hidden collection Components (VariableCollectionId:181:2, modes sm 181:0, md 181:1, lg 181:2, default md): button/icon-drawing 181:3, button/icon-size 181:4, counter/foreground 181:5, shortcut/foreground 181:6, shortcut/font-size 181:7, shortcut/line-height 181:8, shortcut/letter-spacing 181:9, shortcut/cap-min-width 181:10 (size-independent variables carry the same alias in the three modes). Every consumer was rebound and the explicit size modes moved (Button: 564 bindings, 138 mode assignments; Shortcut: 13 bindings, 12 modes; Counter: 12 paints; stale Leading icon overrides on ten specification instances reset and re-applied); the collections _ggbrick button size (74:3), _ggbrick shortcut size (149:1570), _ggbrick counter (149:1548) and _ggbrick shortcut (149:1571) were deleted with no reference left on any page. _ggbrick button style and _ggbrick button state were renamed Components · button style (90:12) and Components · button state (90:2), IDs unchanged, hidden. Checks: the eight variables resolve to the former values in each mode; Button slot geometry re-measured with icon, counter and shortcut trailing items (162 records, 0 failures)."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Token collections renamed Foundations · Primitives, Foundations · Brand, Foundations · Appearance and Foundations · Density (IDs and bindings unchanged); the adapter scripts of this component resolve the short axis names to the prefixed ones."
+    }
+  ]
+}

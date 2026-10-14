@@ -19,13 +19,13 @@
     "Utilities": "8:10"
   },
   "collections": {
-    "Primitives": {
+    "Foundations · Primitives": {
       "id": "VariableCollectionId:14:2",
       "modes": {
         "default": "14:0"
       }
     },
-    "Brand": {
+    "Foundations · Brand": {
       "id": "VariableCollectionId:4:2",
       "modes": {
         "base": "4:0",
@@ -33,14 +33,14 @@
         "orchid": "4:2"
       }
     },
-    "Appearance": {
+    "Foundations · Appearance": {
       "id": "VariableCollectionId:4:3",
       "modes": {
         "light": "4:3",
         "dark": "4:4"
       }
     },
-    "Density": {
+    "Foundations · Density": {
       "id": "VariableCollectionId:4:4",
       "modes": {
         "compact": "4:5",
@@ -50,7 +50,7 @@
     }
   },
   "variables": {
-    "total": 635,
+    "total": 739,
     "batches": [
       {
         "batch": 1,
@@ -93,6 +93,18 @@
       {
         "date": "2026-10-13",
         "change": "Pages: family pages (Actions 8:4, Forms 8:5, Feedback 8:6, Overlays 8:7, Navigation 8:8, Data 8:9) removed; one page per component named by its repository path (actions/button 144:2). Variables untouched."
+      },
+      {
+        "date": "2026-10-14",
+        "change": "primitive/font/lineHeight/{none,tight,snug,normal,relaxed,loose} migrated from FLOAT ratios (1 to 1.6) to STRING percentages (100% to 160%, new IDs 178:8 to 178:13): Figma cannot bind a percentage line height, the strings document the ratio the text styles type. No node was bound to the old variables (the masters bind the px line-height variables typography/<role>/lineHeight)."
+      },
+      {
+        "date": "2026-10-14",
+        "change": "Adapter collections regrouped (user review, 2026-10-14): the component adapter variables now live in one hidden collection Components (VariableCollectionId:181:2, modes sm 181:0, md 181:1, lg 181:2, default md): button/icon-drawing 181:3, button/icon-size 181:4, counter/foreground 181:5, shortcut/foreground 181:6, shortcut/font-size 181:7, shortcut/line-height 181:8, shortcut/letter-spacing 181:9, shortcut/cap-min-width 181:10 (size-independent variables carry the same alias in the three modes). Every consumer was rebound and the explicit size modes moved (Button: 564 bindings, 138 mode assignments; Shortcut: 13 bindings, 12 modes; Counter: 12 paints; stale Leading icon overrides on ten specification instances reset and re-applied); the collections _ggbrick button size (74:3), _ggbrick shortcut size (149:1570), _ggbrick counter (149:1548) and _ggbrick shortcut (149:1571) were deleted with no reference left on any page. _ggbrick button style and _ggbrick button state were renamed Components · button style (90:12) and Components · button state (90:2), IDs unchanged, hidden. Checks: the eight variables resolve to the former values in each mode; Button slot geometry re-measured with icon, counter and shortcut trailing items (162 records, 0 failures)."
+      },
+      {
+        "date": "2026-10-14",
+        "change": "Collections renamed with the “Foundations · ” prefix (Primitives 14:2, Brand 4:2, Appearance 4:3, Density 4:4; IDs, modes and bindings unchanged) so that the flat collection list of the single library file reads as two families, Foundations and Components. Decision: one Figma file (not a separate tokens library) because a community or client distribution requires a self-contained file; recorded in authoring/figma.md. The manifest, the sync and verification scripts and the adapter scripts use the prefixed names (adapter scripts accept the short axis names); native resolution re-verified, hashes unchanged (506 variables, 0 failures)."
       }
     ],
     "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change).",
@@ -120,10 +132,56 @@
           "radius/focus": "VariableID:119:2"
         },
         "note": "radius.focus (base alias primitive/radius/lg, brick primitive/radius/sm, orchid literal 14), scope CORNER_RADIUS, code syntax var(--ggb-radius-focus); resolution checked in the three brands (8, 4, 14)."
+      },
+      {
+        "date": "2026-10-14",
+        "reason": "Wave 1 slot contents (Icon, Counter, Shortcut): indicator typography, indicator radius, muted opacity",
+        "collection": "Primitives and Brand",
+        "ids": {
+          "primitive/opacity/70": "VariableID:145:2",
+          "opacity/muted": "VariableID:145:3",
+          "radius/indicator": "VariableID:145:4",
+          "typography/indicator/sm/fontSize": "VariableID:145:5",
+          "typography/indicator/sm/lineHeight": "VariableID:145:6",
+          "typography/indicator/sm/letterSpacing": "VariableID:145:7",
+          "typography/indicator/md/fontSize": "VariableID:145:8",
+          "typography/indicator/md/lineHeight": "VariableID:145:9",
+          "typography/indicator/md/letterSpacing": "VariableID:145:10",
+          "typography/indicator/lg/fontSize": "VariableID:145:11",
+          "typography/indicator/lg/lineHeight": "VariableID:145:12",
+          "typography/indicator/lg/letterSpacing": "VariableID:145:13"
+        },
+        "textStyles": {
+          "typography/indicator/sm": "S:3f083edfdb5a7a04e9831a88597c733bc3e382d7",
+          "typography/indicator/md": "S:e32656fae099a2252a5f70ab795b323508026806",
+          "typography/indicator/lg": "S:6ac9d1c703f7b7670f8b1f81a2855f6a942dfa10"
+        },
+        "note": "Synced with a delta batch of tooling/figma-batches.ts output through use_figma; 676 variables and 28 text styles in the file afterwards."
+      },
+      {
+        "date": "2026-10-14",
+        "reason": "Typography variables for the text styles (user review): font families and weights, line-height ratios as percentage strings, and the fontFamily, fontWeight and lineHeightRatio parts of the 28 typography roles",
+        "collection": "Primitives and Brand",
+        "ids": "VariableID:178:2 to VariableID:178:97 (96 variables; primitives: family/sans 178:2, family/mono 178:3, weight/400 to 700 178:4 to 178:7, lineHeight/none to loose 178:8 to 178:13)",
+        "note": "Native resolution verified: 506 semantic variables in 18 contexts, 0 failures (strings compared as they are)."
+      },
+      {
+        "date": "2026-10-14",
+        "reason": "Counter tint (user decision on the implementation review page): primitive.opacity.12 and opacity.tint",
+        "collection": "Primitives and Brand",
+        "variables": {
+          "primitive/opacity/12": "VariableID:186:2",
+          "opacity/tint": "VariableID:186:3"
+        },
+        "note": "Synced with a delta batch (the sync-variables body with the two manifest entries) through use_figma; 739 manifest variables in the file afterwards. Native resolution re-verified: 507 semantic variables in 18 contexts, 0 failures (reports/tokens/figma/verification.json)."
       }
     ]
   },
-  "textStyles": 25,
+  "textStyles": {
+    "count": 28,
+    "bindings": "fontFamily → typography/<role>/fontFamily, fontWeight → typography/<role>/fontWeight, fontSize → typography/<role>/fontSize, letterSpacing → typography/<role>/letterSpacing (112 bindings, 2026-10-14); lineHeight typed as a percentage (the role's lineHeightRatio); tabular figures switched on by hand by the user on the three typography/indicator styles (2026-10-14).",
+    "ids": 28
+  },
   "effectStyles": 3,
   "limitations": [
     "OpenType features (tnum on typography/numeral/*) cannot be set on text styles through the Plugin API; the style description records them and the text layer sets them.",

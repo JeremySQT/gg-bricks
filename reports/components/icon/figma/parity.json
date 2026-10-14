@@ -1,0 +1,4700 @@
+{
+  "recordedOn": "2026-10-14",
+  "file": "TDPqojP4KvbWJlKSYc4zKC",
+  "componentSet": "149:20",
+  "bindings": {
+    "width": "VariableID:5:79",
+    "height": "VariableID:5:79",
+    "fill": "VariableID:7:10",
+    "widthName": "size/icon/xs",
+    "fillName": "color/content/primary"
+  },
+  "summary": {
+    "records": 360,
+    "computedRecords": 270,
+    "insetRecords": 90,
+    "failures": 0
+  },
+  "records": [
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 12,
+      "observed": 12,
+      "passed": true,
+      "note": "bound to size/icon/xs (resolves to 12)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 16,
+      "observed": 16,
+      "passed": true,
+      "note": "bound to size/icon/sm (resolves to 16)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 20,
+      "observed": 20,
+      "passed": true,
+      "note": "bound to size/icon/md (resolves to 20)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 24,
+      "observed": 24,
+      "passed": true,
+      "note": "bound to size/icon/lg (resolves to 24)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "width",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "height",
+      "expected": 32,
+      "observed": 32,
+      "passed": true,
+      "note": "bound to size/icon/xl (resolves to 32)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "box",
+      "property": "fill",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "glyph fill bound to color/content/primary (the host content color; Button overrides it with button/foreground)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "xs"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "9×9 at (1.5, 1.5)",
+      "observed": "9×9 at (1.5, 1.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "12×12 at (2, 2)",
+      "observed": "12×12 at (2, 2)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "15×15 at (2.5, 2.5)",
+      "observed": "15×15 at (2.5, 2.5)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "lg"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "18×18 at (3, 3)",
+      "observed": "18×18 at (3, 3)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "xl"
+      },
+      "state": "default",
+      "part": "glyph",
+      "property": "drawingBox",
+      "expected": "24×24 at (4, 4)",
+      "observed": "24×24 at (4, 4)",
+      "passed": true,
+      "note": "Phosphor “plus” fixture: drawing 18/24 of the box, inset 1/8, scaled by the box (constraints scale)"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+/*
+ * Shortcut structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * The root kbd is inline content set in the indicator typography, kept on one line, aligned on the text
+ * baseline of its context (an inline-flex box takes the baseline of its first key) and drawn in the inherited
+ * color: the component sets no content color of its own. The UA styles of kbd (monospace, smaller size) are reset.
+ */
+.ggb-shortcut {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: var(--ggb-shortcut-typography);
+  letter-spacing: var(--ggb-shortcut-typography-letterSpacing, normal);
+  font-feature-settings: var(--ggb-shortcut-typography-fontFeatureSettings, normal);
+  white-space: nowrap;
+  text-decoration: none;
+  text-transform: none;
+}
+
+/* Plain: a hint beside a label, attenuated so that it is not read as part of the label. Keycaps stay at full opacity. */
+.ggb-shortcut[data-appearance='plain'] {
+  opacity: var(--ggb-shortcut-contentOpacity);
+}
+
+/* Spoken equivalent: the accessible text, visually hidden; the visible parts are aria-hidden. */
+.ggb-shortcut__name {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.ggb-shortcut__container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+.ggb-shortcut__key,
+.ggb-shortcut__separator {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  white-space: nowrap;
+}
+
+/*
+ * Keycap: one cap per key. A real border (not an inset shadow) so that the cap is the line box plus two
+ * borderWidth tall and keeps its boundary in forced-colors mode. No block padding; inline padding
+ * keyPaddingInline; the cap is at least as wide as it is tall (1lh is the line box of the key), so single
+ * characters are square. Consecutive caps are keyGap apart; on other the separator is a flex item in that gap.
+ */
+.ggb-shortcut[data-appearance='keycap'] .ggb-shortcut__container {
+  gap: var(--ggb-shortcut-keyGap);
+}
+.ggb-shortcut[data-appearance='keycap'] .ggb-shortcut__key {
+  min-inline-size: calc(1lh + 2 * var(--ggb-shortcut-borderWidth));
+  padding-inline: var(--ggb-shortcut-keyPaddingInline);
+  border: var(--ggb-shortcut-borderWidth) solid var(--ggb-shortcut-border);
+  border-radius: var(--ggb-shortcut-radius);
+  background-color: var(--ggb-shortcut-surface);
+}
+
+@media (forced-colors: active) {
+  .ggb-shortcut[data-appearance='plain'] {
+    opacity: 1;
+  }
+  .ggb-shortcut[data-appearance='keycap'] .ggb-shortcut__key {
+    border-color: CanvasText;
+    background-color: Canvas;
+  }
+}

@@ -2138,6 +2138,10 @@
     "$type": "number",
     "$value": 0.1
   },
+  "primitive.opacity.12": {
+    "$type": "number",
+    "$value": 0.12
+  },
   "primitive.opacity.20": {
     "$type": "number",
     "$value": 0.2
@@ -2149,6 +2153,10 @@
   "primitive.opacity.60": {
     "$type": "number",
     "$value": 0.6
+  },
+  "primitive.opacity.70": {
+    "$type": "number",
+    "$value": 0.7
   },
   "primitive.opacity.80": {
     "$type": "number",
@@ -3470,6 +3478,14 @@
       "unit": "px"
     }
   },
+  "radius.indicator": {
+    "$type": "dimension",
+    "$value": {
+      "value": 4,
+      "unit": "px"
+    },
+    "$description": "Corner radius of small companion content (counters, keycaps): a rectangle with slightly rounded corners, never a pill, so one and two digits read alike."
+  },
   "border.width.default": {
     "$type": "dimension",
     "$value": {
@@ -4159,6 +4175,84 @@
       }
     }
   },
+  "typography.indicator.sm": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": [
+        "Inter",
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "Roboto",
+        "sans-serif"
+      ],
+      "fontWeight": 500,
+      "fontSize": {
+        "value": 11,
+        "unit": "px"
+      },
+      "lineHeight": 1.4,
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      },
+      "fontFeatures": [
+        "tnum"
+      ]
+    }
+  },
+  "typography.indicator.md": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": [
+        "Inter",
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "Roboto",
+        "sans-serif"
+      ],
+      "fontWeight": 500,
+      "fontSize": {
+        "value": 12,
+        "unit": "px"
+      },
+      "lineHeight": 1.4,
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      },
+      "fontFeatures": [
+        "tnum"
+      ]
+    }
+  },
+  "typography.indicator.lg": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": [
+        "Inter",
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "Roboto",
+        "sans-serif"
+      ],
+      "fontWeight": 500,
+      "fontSize": {
+        "value": 14,
+        "unit": "px"
+      },
+      "lineHeight": 1.4,
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      },
+      "fontFeatures": [
+        "tnum"
+      ]
+    }
+  },
   "shadow.raised": {
     "$type": "shadow",
     "$value": [
@@ -4432,6 +4526,16 @@
   "opacity.scrim": {
     "$type": "number",
     "$value": 0.6
+  },
+  "opacity.muted": {
+    "$type": "number",
+    "$value": 0.7,
+    "$description": "Attenuation of companion content next to a label (a shortcut hint), so that it reads lighter than the text it accompanies."
+  },
+  "opacity.tint": {
+    "$type": "number",
+    "$value": 0.12,
+    "$description": "A faint surface in the inherited content color behind small companion content (a counter's box), so that it follows its host without a border."
   },
   "color.surface.canvas": {
     "$type": "color",

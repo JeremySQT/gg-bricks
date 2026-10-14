@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "counter",
+  "props": {
+    "value": {
+      "type": "number",
+      "default": 0,
+      "min": 0
+    },
+    "max": {
+      "type": "number",
+      "default": 99,
+      "min": 1
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "label": {
+      "type": "string"
+    }
+  },
+  "parts": {
+    "container": {},
+    "value": {}
+  },
+  "states": {
+    "overflow": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "tokens": {
+    "typography": "typography.indicator.{size}",
+    "radius": "radius.indicator",
+    "paddingInline": "space.content.xs",
+    "surfaceOpacity": "opacity.tint",
+    "borderWidth": "border.width.default"
+  },
+  "rules": [
+    "Show value in the value part as a non-negative integer on one line, never wrapped or truncated; a fractional value is rounded down and a negative value is shown as 0.",
+    "overflow is true when value exceeds max; the visible text is then max followed by a plus sign (99+ by default) and the exact value is not shown.",
+    "A value of 0 is shown as 0; the counter never hides itself. Whether an empty quantity is shown at all is the integration's choice.",
+    "The accessible text is the visible text, followed by label when label is set (8 unread messages), so that a lone number has a meaning. Without label, the surrounding content or the host supplies the meaning; a counter is never the sole accessible name of its host, and a host may hide it from assistive technology (Button hides its trailing content).",
+    "The container surface is the inherited content color at surfaceOpacity (a faint tint) and the value is drawn in that color at full opacity, so the counter follows its host: the content color of a solid Button, the text color of a navigation item. There is no border.",
+    "The value is set in typography (the indicator typography of the size, one step below the host's label), with tabular figures so that counters of the same size and digit count have the same width; the typography does not change with density.",
+    "The container block size is the line box of the value typography; the digits are centered vertically on their capital height, not on the line box (whose metrics would sit them high). Its inline padding is paddingInline on both sides and its minimum inline size equals its block size, so that one digit and two digits sit in boxes of the same height and family; corners use radius, a small rounding that keeps the counter rectangular rather than a pill.",
+    "The tint never changes the outer dimensions; nothing is drawn outside the container.",
+    "Sizes are named like Button sizes; inside a host that has a size, the integration gives the counter the host's size. The counter is text-like content placed by its box, without optical compensation.",
+    "The counter is not interactive: it is never focusable, emits no events and changes nothing when its host is hovered, pressed, loading or disabled beyond inheriting the host's content color.",
+    "In forced-colors mode, where the tint cannot be painted, the container shows an edge of borderWidth inside its boundary in the system text color, so that the box stays visible."
+  ]
+}

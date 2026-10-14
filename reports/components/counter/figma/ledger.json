@@ -1,0 +1,193 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "content/counter",
+      "id": "149:1547",
+      "note": "Created on 2026-10-14 with figma.createPage() and inserted after actions/button (144:2); holds the master and its specification."
+    }
+  },
+  "recordedOn": "2026-10-14",
+  "componentSet": {
+    "id": "149:1568",
+    "name": "Counter",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=149-1568",
+    "defaultVariant": "Size=md, Overflow=false (top-left of the set: Figma takes the top-left variant as the default)"
+  },
+  "properties": {
+    "Value#149:6": {
+      "type": "TEXT",
+      "default": "8",
+      "boundIn": "Overflow=false variants (Value layer)"
+    },
+    "Overflow text#149:13": {
+      "type": "TEXT",
+      "default": "99+",
+      "boundIn": "Overflow=true variants (Value layer): the maximum followed by a plus sign; edit it for another maximum"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "sm",
+        "md",
+        "lg"
+      ]
+    },
+    "Overflow": {
+      "type": "VARIANT",
+      "default": "false",
+      "options": [
+        "false",
+        "true"
+      ],
+      "note": "Boolean-valued variant property, shown as a switch in Figma; the contract's derived state overflow."
+    }
+  },
+  "variants": {
+    "Size=md, Overflow=false": "149:1553",
+    "Size=sm, Overflow=false": "149:1550",
+    "Size=lg, Overflow=false": "149:1556",
+    "Size=md, Overflow=true": "149:1562",
+    "Size=sm, Overflow=true": "149:1559",
+    "Size=lg, Overflow=true": "149:1565"
+  },
+  "layers": {
+    "Container": "the variant component itself (auto layout, no fill)",
+    "Tint": "filled rectangle (content color at opacity/tint), absolute, SCALE constraints, under the Value; the former Border (stroke-only) converted in place on 2026-10-14",
+    "Value": "text layer",
+    "ids": {
+      "Size=sm, Overflow=false": {
+        "value": "149:1551",
+        "tint": "149:1552"
+      },
+      "Size=md, Overflow=false": {
+        "value": "149:1554",
+        "tint": "149:1555"
+      },
+      "Size=lg, Overflow=false": {
+        "value": "149:1557",
+        "tint": "149:1558"
+      },
+      "Size=sm, Overflow=true": {
+        "value": "149:1560",
+        "tint": "149:1561"
+      },
+      "Size=md, Overflow=true": {
+        "value": "149:1563",
+        "tint": "149:1564"
+      },
+      "Size=lg, Overflow=true": {
+        "value": "149:1566",
+        "tint": "149:1567"
+      }
+    }
+  },
+  "bindings": {
+    "Container": {
+      "paddingLeft, paddingRight": "space/content/xs (Foundations · Density, VariableID:6:14)",
+      "paddingTop, paddingBottom": "0 (no block padding, contract rule)",
+      "height": "typography/indicator/{size}/lineHeight (Foundations · Brand, VariableID:145:6 / 145:9 / 145:12)",
+      "minWidth": "typography/indicator/{size}/lineHeight (same variable: minimum width equal to the height)",
+      "corner radii": "radius/indicator (Foundations · Brand, VariableID:145:4)",
+      "fills": "none"
+    },
+    "Value": {
+      "textStyle": "typography/indicator/{size} applied by the builder, detached by the leading trim (a text-style property) on 2026-10-14; the node keeps direct bindings",
+      "leadingTrim": "CAP_HEIGHT (since 2026-10-14: digits centered on their cap height, as the code's text-box trim)",
+      "fontFamily": "typography/indicator/{size}/fontFamily",
+      "fontWeight": "typography/indicator/{size}/fontWeight",
+      "fontSize": "typography/indicator/{size}/fontSize (VariableID:145:5 / 145:8 / 145:11)",
+      "lineHeight": "typography/indicator/{size}/lineHeight (VariableID:145:6 / 145:9 / 145:12; re-bound on 2026-10-14 after the style detached)",
+      "letterSpacing": "typography/indicator/{size}/letterSpacing (VariableID:145:7 / 145:10 / 145:13)",
+      "fills": "counter/foreground (VariableID:181:5)",
+      "openTypeFeatures": "not settable through the Plugin API (read-only); tnum read on the sm and md layers (set by the user on the styles before they detached), default on lg; Inter renders tabular figures in the file (00, 11, 88, 10 all 16 px at md)"
+    },
+    "Tint": {
+      "fills": "counter/foreground (VariableID:181:5)",
+      "strokes": "none (the former inside stroke and its border/width/default weights were removed on 2026-10-14)",
+      "corner radii": "radius/indicator (VariableID:145:4)",
+      "opacity": "opacity/tint (Foundations · Brand, VariableID:186:3, = 12): opacity variables are synced in percent since 2026-10-14"
+    }
+  },
+  "adapterVariables": {
+    "collection": {
+      "id": "VariableCollectionId:181:2",
+      "name": "Components",
+      "modes": {
+        "sm": "181:0",
+        "md": "181:1",
+        "lg": "181:2"
+      },
+      "default": "md",
+      "hiddenFromPublishing": true
+    },
+    "variables": {
+      "counter/foreground": {
+        "id": "VariableID:181:5",
+        "type": "COLOR",
+        "scopes": [
+          "TEXT_FILL",
+          "SHAPE_FILL"
+        ],
+        "hiddenFromPublishing": true,
+        "value": "alias color/content/primary (Foundations · Appearance, VariableID:7:10) in the three modes",
+        "note": "Stands for the inherited content color; the Button overrides the Value fill and Tint fill of its Counter instance with button/foreground (VariableID:90:13). Formerly VariableID:149:1549 in _ggbrick counter (deleted 2026-10-14)."
+      }
+    }
+  },
+  "specification": {
+    "frame": {
+      "id": "156:4865",
+      "name": "Counter — Specification",
+      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=156-4865",
+      "size": "1232 × 4267"
+    },
+    "sections": {
+      "Header (title, summary, hero, reference note, Anatomy)": "156:4866",
+      "Anatomy": "156:4895",
+      "Body": "156:4997",
+      "Variants": "156:4998",
+      "States": "156:5193",
+      "Behavior & sizing": "156:5274",
+      "Usage examples": "156:5491"
+    },
+    "diagrams": {
+      "Anatomy diagram": "156:4902"
+    },
+    "builder": "authoring/adapters/figma/counter-spec.plugin.js",
+    "documentationComponents": "_Spec/Board 113:17 (fills reused), _Spec/Callout 115:6 (property Number#115:0), _Spec/Marker 115:8, Wireframe collection VariableCollectionId:105:1565 (modes light 105:0, blueprint 126:0)"
+  },
+  "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run (authoring/adapters/figma/counter-parity.plugin.js); experiment clones named “_experiment …” were removed in the same script that created them; none remain.",
+  "scripts": {
+    "master": "authoring/adapters/figma/counter-master.plugin.js",
+    "specification": "authoring/adapters/figma/counter-spec.plugin.js",
+    "parity": "authoring/adapters/figma/counter-parity.plugin.js + counter-parity-report.mjs"
+  },
+  "limitations": [
+    "openTypeFeatures is read-only in the Plugin API: tabular figures were switched on by hand by the user on the typography/indicator text styles (2026-10-14); the sm and md Value layers read tnum, lg reads the default, and the measured digit widths at md are all 16 px (tabular rendering).",
+    "A Figma text layer's auto height is rounded to whole pixels (16 for a 15.4 line height), so the container height is bound to the lineHeight variable instead of hugging the text.",
+    "STRETCH constraints on an absolute child round the master's fractional width; the Tint uses SCALE constraints, which keep it equal to the box in every instance.",
+    "Leading trim is a text-style property: setting leadingTrim on the Value layers detached their typography/indicator text style and dropped the lineHeight binding the style carried; the six typography and fill bindings were set on the nodes (2026-10-14).",
+    "A number variable bound to layer opacity is read as a percentage: the token sync emits opacity variables ×100 (opacity/tint = 12); the former mirror variable counter/border-opacity (VariableID:158:250) was removed on 2026-10-14."
+  ],
+  "maintenance": [
+    {
+      "date": "2026-10-14",
+      "change": "Tint instead of border (user decision on the implementation review page, \"Je crois que je préfère la version 'BG Current color' à 12%\"): the six Border rectangles (149:1552, 149:1555, 149:1558, 149:1561, 149:1564, 149:1567) were converted in place into Tint layers (fill bound to counter/foreground, no stroke, stroke weight bindings removed, layer opacity bound to the new opacity/tint VariableID:186:3 = 12, radii and SCALE constraints kept); counter/foreground scopes TEXT_FILL and SHAPE_FILL. Cap-height centering: leadingTrim CAP_HEIGHT on the six Value texts (149:1551, 149:1554, 149:1557, 149:1560, 149:1563, 149:1566), which detached their text style; lineHeight re-bound to typography/indicator/{size}/lineHeight. Set description, specification texts (summary 156:4871, legend 156:4943 and 156:4951, Button note 156:5554) and the anatomy diagram (3 Tint 156:4908 and Tint (one digit) 156:4911 filled under the dashed containers 156:4903 and 156:4909) updated in place. In the Button, the three trailing Counter instances (164:1545, 164:1549, 164:1553) had their stroke override cleared and the Tint fill bound to button/foreground; the 18 Tint layers of the page audit all read button/foreground, no stroke, opacity/tint. Parity re-measured: 1692 records, 0 failed, 144 justified, 72 proxy; the Counter boxes inside the Button keep their size (15.4, 16.8, 19.6 px), so the slot geometry of 2026-10-14 stands."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Blueprint boards: the drawing is centered vertically in each board and the legend elements follow (user review of the wave 1 Figma parity gate, 2026-10-14); the builder script applies the same pass (centerBoards)."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Adapter collections regrouped (user review, 2026-10-14): the component adapter variables now live in one hidden collection Components (VariableCollectionId:181:2, modes sm 181:0, md 181:1, lg 181:2, default md): button/icon-drawing 181:3, button/icon-size 181:4, counter/foreground 181:5, shortcut/foreground 181:6, shortcut/font-size 181:7, shortcut/line-height 181:8, shortcut/letter-spacing 181:9, shortcut/cap-min-width 181:10 (size-independent variables carry the same alias in the three modes). Every consumer was rebound and the explicit size modes moved (Button: 564 bindings, 138 mode assignments; Shortcut: 13 bindings, 12 modes; Counter: 12 paints; stale Leading icon overrides on ten specification instances reset and re-applied); the collections _ggbrick button size (74:3), _ggbrick shortcut size (149:1570), _ggbrick counter (149:1548) and _ggbrick shortcut (149:1571) were deleted with no reference left on any page. _ggbrick button style and _ggbrick button state were renamed Components · button style (90:12) and Components · button state (90:2), IDs unchanged, hidden. Checks: the eight variables resolve to the former values in each mode; Button slot geometry re-measured with icon, counter and shortcut trailing items (162 records, 0 failures)."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Token collections renamed Foundations · Primitives, Foundations · Brand, Foundations · Appearance and Foundations · Density (IDs and bindings unchanged); the adapter scripts of this component resolve the short axis names to the prefixed ones."
+    }
+  ]
+}

@@ -4,19 +4,19 @@
 // removes the frame and returns { "<context>|<intent>|<appearance>|<size>|<state>": "<fields>" }.
 // Fields: content|surface|border|borderWidth|radius|edgeInline|paddingBlock|gap|labelInline|
 // fontSize|fontStyle|letterSpacing|containerHeight|containerWidth|rootHeight|ring(color/width/offset).
-// IDs (page 8:4, set 48:1586, property keys) come from reports/components/button/figma/ledger.json.
+// IDs (page 144:2, set 48:1586, property keys) come from reports/components/button/figma/ledger.json.
 figma.skipInvisibleInstanceChildren = false;
 // Parameters: one brand and its appearances per run (the MCP output limit is about 20 kB).
 const BRAND = 'base',
   APS = ['light'];
 const REPRESENTATIVE = ['base-light-standard', 'base-dark-standard', 'brick-light-compact', 'orchid-dark-comfortable'];
-const page = await figma.getNodeByIdAsync('8:4');
+const page = await figma.getNodeByIdAsync('144:2');
 await figma.setCurrentPageAsync(page);
 for (const n of page.children.filter((n) => n.type === 'FRAME' && n.name.startsWith('_parity '))) n.remove();
 await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
 const set = await figma.getNodeByIdAsync('48:1586');
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const col = (n) => cols.find((c) => c.name === n);
+const col = (n) => cols.find((c) => c.name === n || c.name === 'Foundations · ' + n);
 const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
 const P = { label: 'Label#48:360', lead: 'Show leading#48:361', focus: 'Focus#48:367' };
 const variant = (i, a, s, t) =>

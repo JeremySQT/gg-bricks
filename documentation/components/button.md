@@ -41,7 +41,7 @@ The annotated anatomy lives on the Figma specification page of the component (fr
 
 Spacing follows one rule in every size and density: the container has side padding, the label has a margin on each side, and an icon, counter or shortcut has a smaller margin on each side. An icon is placed by its drawing rather than by its square, so it looks as close to the text as a counter does.
 
-Slots versus content: `leading` and `trailing` are the two slots. Until the Icon, Counter and Shortcut components exist, pass your own icon (an inline SVG in `currentColor`) or a small inline element; the examples use local fixtures for this purpose.
+Slots versus content: `leading` and `trailing` are the two slots. Fill them with the Icon, Counter and Shortcut components (see their pages): the button sizes an Icon itself, and a Counter or a Shortcut takes the button's `size`. A raw inline SVG in `currentColor` also works as an icon.
 
 ## Usage guidelines
 
@@ -59,7 +59,7 @@ Slots versus content: `leading` and `trailing` are the two slots. Until the Icon
 
 **Links.** Pass `href` when the action moves the user to another page or task. Keep the button for actions and the Link component (planned) for navigation inside text.
 
-**Icons.** A leading icon helps when it is a well-known symbol of the action (plus, download, trash). A trailing icon suits “next step” arrows. Counters show a quantity (“Inbox 8”); shortcuts remind of a key combination. One element per slot.
+**Icons.** A leading icon helps when it is a well-known symbol of the action (plus, download, trash). A trailing icon suits “next step” arrows. Counters show a quantity (“Inbox 8”); shortcuts remind of a key combination (plain appearance only inside a button). One element per slot. Slot content is hidden from assistive technology, so a counter's quantity must also exist in an accessible form elsewhere.
 
 **Width.** Let the layout decide: a button is as wide as its content, and stretches when its container stretches it (for example a full-width button on a small screen).
 
@@ -68,7 +68,7 @@ Don't: “Submit” and “Save” as two solid accent buttons in the same foote
 
 ## Examples
 
-The verified source of every example is `examples/button/App.svelte`, the review page of the component (`npm run build && npm run build:preview button` produces a self-contained page). Icons, counters and shortcuts in these examples come from `examples/button/Fixtures.svelte`.
+The verified source of every example is `examples/button/App.svelte`, the review page of the component (`npm run build && npm run build:preview button` produces a self-contained page). Icons, counters and shortcuts in these examples are the Icon, Counter and Shortcut components; the glyphs come from `examples/icon/glyphs.ts`.
 
 ### The usual case
 
@@ -92,14 +92,20 @@ The verified source of every example is `examples/button/App.svelte`, the review
 
 ### Leading and trailing content
 
-Snippets fill the two slots. The content inherits the text color and the icon size.
+Snippets fill the two slots. The content inherits the text color; the button sizes an Icon, and a Counter or a Shortcut takes the button's size.
 
 ```svelte
-{#snippet plus()}<svg viewBox="0 0 256 256" fill="currentColor"><path d="…" /></svg>{/snippet}
-{#snippet counter()}<span class="counter">8</span>{/snippet}
+<script lang="ts">
+  import { Button, Counter, Icon, Shortcut } from '@ggbrick/svelte';
+</script>
+
+{#snippet plus()}<Icon><path d="…" /></Icon>{/snippet}
+{#snippet counter()}<Counter value={8} size="md" />{/snippet}
+{#snippet save()}<Shortcut keys="Mod+S" size="md" />{/snippet}
 
 <Button label="New project" leading={plus} />
 <Button label="Inbox" intent="neutral" appearance="ghost" trailing={counter} />
+<Button label="Save" trailing={save} />
 ```
 
 ### Asynchronous action

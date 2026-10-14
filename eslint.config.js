@@ -13,7 +13,8 @@ export default [
       '**/*.generated.*',
       'reports/**',
       'test-results/**',
-      'authoring/adapters/figma/**'
+      'authoring/adapters/figma/**',
+      '.claude/worktrees/**'
     ]
   },
   js.configs.recommended,

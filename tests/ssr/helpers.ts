@@ -27,6 +27,11 @@ export async function renderComponent(
   return render(Component, { props });
 }
 
+/** Load a module through the same server module graph as the component (for example `svelte` for createRawSnippet). */
+export async function loadModule<T = Record<string, unknown>>(id: string): Promise<T> {
+  return (await server()).ssrLoadModule(id) as Promise<T>;
+}
+
 export async function closeServer(): Promise<void> {
   if (serverPromise) await (await serverPromise).close();
 }

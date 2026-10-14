@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "shortcut",
+  "props": {
+    "keys": {
+      "type": "string",
+      "required": true
+    },
+    "platform": {
+      "values": ["auto", "mac", "other"],
+      "default": "auto"
+    },
+    "appearance": {
+      "values": ["plain", "keycap"],
+      "default": "plain"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "label": {
+      "type": "string"
+    }
+  },
+  "parts": {
+    "container": {},
+    "key": {},
+    "separator": {}
+  },
+  "states": {},
+  "tokens": {
+    "typography": "typography.indicator.{size}",
+    "surface": "color.surface.subtle",
+    "border": "color.border.default",
+    "borderWidth": "border.width.default",
+    "radius": "radius.control",
+    "keyGap": "space.content.xs",
+    "keyPaddingInline": "space.content.xs",
+    "contentOpacity": "opacity.muted"
+  },
+  "rules": [
+    "keys is a non-empty platform-neutral combination: key names joined by + are pressed together (Mod+Shift+P). Names are matched ignoring case. Modifiers: Mod, Ctrl (alias Control), Alt (alias Option), Shift, Meta (aliases Cmd, Command, Super, Win). Special keys: Enter (alias Return), Escape (alias Esc), Tab, Space, Backspace, Delete (alias Del), ArrowUp, ArrowDown, ArrowLeft, ArrowRight (aliases Up, Down, Left, Right), Home, End, PageUp, PageDown (aliases PgUp, PgDn), F1 to F12, Plus (the + key). Any other name is a literal key shown as written; a single letter is shown in uppercase.",
+    "platform auto resolves to mac on Apple platforms and to other everywhere else; mac and other force that resolution. Mod resolves to Meta on mac and to Ctrl on other. No other name changes meaning with the platform.",
+    "Render one key part per resolved key inside container, modifiers first in the canonical order of the resolved platform whatever their order in keys, then the remaining keys in the order given: on mac Ctrl, Alt, Shift, Meta; on other Meta, Ctrl, Alt, Shift.",
+    "On mac, modifiers and special keys show their Apple glyphs: Ctrl ⌃, Alt ⌥, Shift ⇧, Meta ⌘, Enter ↩, Escape ⎋, Tab ⇥, Backspace ⌫, Delete ⌦, Home ↖, End ↘, PageUp ⇞, PageDown ⇟; Space and the function keys show their name. Keys are juxtaposed with no separator part.",
+    "On other, modifiers and special keys show short names: Ctrl, Alt, Shift, Win (Meta), Enter, Esc, Tab, Space, Backspace, Del, Home, End, PgUp, PgDn, F1 to F12. A separator part showing + sits between consecutive keys.",
+    "Arrow keys show ↑ ↓ ← → and Plus shows + on every platform.",
+    "The accessible name is a spoken equivalent in words, in the display order: Control, Option (mac) or Alt (other), Shift, Command (mac) or Windows (other), Enter, Escape, Tab, Space, Backspace, Delete, Up arrow, Down arrow, Left arrow, Right arrow, Home, End, Page up, Page down, the function key name, plus, and the literal key, separated by spaces (Mod+K reads Command K on mac and Control K on other). The glyphs and separators are presentation only and are never read. A non-empty label replaces the generated spoken equivalent.",
+    "The shortcut is inline content set in typography, kept on one line and never wrapped or truncated; it aligns on the text baseline of its context.",
+    "The text, the glyphs and the separators take the content color of the surrounding context; the component sets no content color of its own, so it follows a disabled or hovered parent, and inside a Button trailing slot it takes the resolved button content color.",
+    "The plain appearance draws no surface and no border: it is text placed by its box, shown at contentOpacity so that a hint beside a label (a menu item, a Button) reads lighter than the label and is not confused with it.",
+    "The keycap appearance draws every key part as a cap: surface, a border of borderWidth in border inside the cap, corners of radius, keyPaddingInline on both inline sides and no block padding, so that the cap is the line height of typography plus two borderWidth tall; a cap is at least as wide as it is tall, so single-character caps are square. Consecutive caps are keyGap apart; on other the separator sits in that gap, in the inherited content color and outside any cap.",
+    "The keycap appearance is for contexts whose backdrop is a neutral surface (canvas, default, subtle, muted, raised, overlay); inside a Button or any colored control the shortcut is plain.",
+    "In forced-colors mode a keycap keeps a visible boundary and a plain shortcut is shown at full opacity."
+  ]
+}

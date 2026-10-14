@@ -1,0 +1,11 @@
+{
+  "result": "passed",
+  "checks": [
+    "defaults: span, class, data-size md, value 0, no overflow, no label, no role",
+    "0, 8, 99 shown exactly; 7.9 rounds down; -5 and NaN show 0; 1234 grouped by the locale",
+    "99+ at 100, exact at 99, custom max 5+ and 999+, max floor at 1, invalid max",
+    "label after the value with a separating space; 99+ unread messages; empty label omitted",
+    "3 sizes",
+    "class merge, id, data-testid, title"
+  ]
+}

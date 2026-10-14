@@ -1,9 +1,9 @@
 <script lang="ts">
   // Button implementation review: a playground with every option, the intent × appearance matrix per size,
   // slots, states, forms, links and difficult cases, in any brand, appearance and density.
-  import { Button } from '../../packages/svelte/src/index.ts';
+  import { Button, Counter, Icon, Shortcut } from '../../packages/svelte/src/index.ts';
   import type { ButtonAppearance, ButtonIntent, ButtonSize } from '../../packages/svelte/src/index.ts';
-  import Fixture from './Fixtures.svelte';
+  import { phosphor } from '../icon/glyphs.ts';
 
   const brands = ['base', 'brick', 'orchid'];
   const modes = ['light', 'dark'];
@@ -50,20 +50,22 @@
   let width = $state(220);
 </script>
 
-<!-- Slot fixtures shared by the sections below. -->
-{#snippet leadingIcon()}<Fixture kind="icon" value="check" />{/snippet}
-{#snippet leadingPlus()}<Fixture kind="icon" value="plus" />{/snippet}
-{#snippet iconPlus()}<Fixture kind="icon" value="plus" />{/snippet}
-{#snippet iconArrow()}<Fixture kind="icon" value="arrow" />{/snippet}
-{#snippet iconDownload()}<Fixture kind="icon" value="download" />{/snippet}
-{#snippet iconTrash()}<Fixture kind="icon" value="trash" />{/snippet}
-{#snippet counter()}<Fixture kind="counter" value="8" />{/snippet}
-{#snippet shortcut()}<Fixture kind="shortcut" value="⌘S" />{/snippet}
+<!-- Slot content shared by the sections below: the Icon, Counter and Shortcut components of wave 1, with
+     Phosphor review glyphs (the application supplies its icon set). -->
+{#snippet glyph(id: string)}<path d={phosphor[id]} />{/snippet}
+{#snippet leadingIcon()}<Icon>{@render glyph('check')}</Icon>{/snippet}
+{#snippet leadingPlus()}<Icon>{@render glyph('plus')}</Icon>{/snippet}
+{#snippet iconPlus()}<Icon>{@render glyph('plus')}</Icon>{/snippet}
+{#snippet iconArrow()}<Icon>{@render glyph('arrow-right')}</Icon>{/snippet}
+{#snippet iconDownload()}<Icon>{@render glyph('download-simple')}</Icon>{/snippet}
+{#snippet iconTrash()}<Icon>{@render glyph('trash')}</Icon>{/snippet}
+{#snippet counter()}<Counter value={8} data-testid="fixture-counter" />{/snippet}
+{#snippet shortcut()}<Shortcut keys="Mod+S" />{/snippet}
 {#snippet trailingContent()}
-  {#if trailing === 'icon'}<Fixture kind="icon" value="arrow" />{:else if trailing === 'counter'}<Fixture
-      kind="counter"
-      value="12"
-    />{:else}<Fixture kind="shortcut" value="⌘S" />{/if}
+  {#if trailing === 'icon'}<Icon>{@render glyph('arrow-right')}</Icon>{:else if trailing === 'counter'}<Counter
+      value={12}
+      {size}
+    />{:else}<Shortcut keys="Mod+S" {size} />{/if}
 {/snippet}
 
 <svelte:window onhashchange={() => location.hash === '#new-item' && navigations++} />
@@ -221,7 +223,9 @@
 
   <section id="slots" aria-labelledby="slots-title">
     <h2 id="slots-title">Leading and trailing content</h2>
-    <p>Icon, counter and shortcut fixtures stand in for the Icon, Counter and Shortcut components of wave 1.</p>
+    <p>
+      Leading and trailing content is the Icon, Counter and Shortcut components; the button passes its size to them.
+    </p>
     <div class="row wrap">
       <Button id="slot-leading" label="New project" leading={iconPlus} />
       <Button id="slot-trailing" label="Continue" appearance="outline" trailing={iconArrow} />
@@ -230,7 +234,8 @@
       <Button id="slot-both" label="Download" intent="neutral" leading={iconDownload} trailing={shortcut} />
       <Button id="slot-danger" label="Delete" intent="danger" appearance="outline" leading={iconTrash} />
       {#each sizes as s (s)}
-        <Button id={`slot-size-${s}`} label={`Size ${s}`} size={s} leading={iconPlus} trailing={counter} />
+        {#snippet sizedCounter()}<Counter value={8} size={s} data-testid="fixture-counter" />{/snippet}
+        <Button id={`slot-size-${s}`} label={`Size ${s}`} size={s} leading={iconPlus} trailing={sizedCounter} />
       {/each}
     </div>
   </section>

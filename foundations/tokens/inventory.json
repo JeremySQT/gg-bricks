@@ -367,6 +367,11 @@
       "axis": "common"
     },
     {
+      "path": "radius.indicator",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
       "path": "border.width.default",
       "type": "dimension",
       "axis": "common"
@@ -567,6 +572,21 @@
       "axis": "common"
     },
     {
+      "path": "typography.indicator.sm",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.indicator.md",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
+      "path": "typography.indicator.lg",
+      "type": "typography",
+      "axis": "common"
+    },
+    {
       "path": "shadow.raised",
       "type": "shadow",
       "axis": "common"
@@ -663,6 +683,16 @@
     },
     {
       "path": "opacity.scrim",
+      "type": "number",
+      "axis": "common"
+    },
+    {
+      "path": "opacity.muted",
+      "type": "number",
+      "axis": "common"
+    },
+    {
+      "path": "opacity.tint",
       "type": "number",
       "axis": "common"
     },

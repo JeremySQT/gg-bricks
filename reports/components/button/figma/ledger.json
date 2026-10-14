@@ -7,7 +7,7 @@
       "id": "144:2"
     }
   },
-  "recordedOn": "2026-10-12",
+  "recordedOn": "2026-10-14",
   "componentSet": {
     "id": "48:1586",
     "name": "Button",
@@ -210,7 +210,7 @@
     "Container",
     "Leading",
     "Leading/Drawing box",
-    "Leading/Drawing box/Leading icon",
+    "Leading/Drawing box/Leading icon (Icon component, Size=md, width and height bound to button/icon-size)",
     "Label",
     "Label/Text",
     "Trailing",
@@ -224,8 +224,6 @@
       "id": "8:10"
     },
     "_Fixtures (review only, not part of the library API)": "42:2",
-    "_Fixture/Counter": "42:20",
-    "_Fixture/Shortcut": "42:22",
     "_Fixture/Icon": {
       "set": "74:2",
       "variants": {
@@ -235,20 +233,26 @@
         "Name=download-simple": "42:16",
         "Name=check": "42:19"
       }
-    }
+    },
+    "removed": "_Fixture/Counter (42:20) and _Fixture/Shortcut (42:22) removed on 2026-10-14: the Button masters use the Counter (149:1568) and Shortcut (151:110) components; no instance was left on any page.",
+    "note": "_Fixture/Icon stays as the glyph source of the Icon component (preferred values of its Glyph property)."
   },
   "adapterVariables": {
     "size": {
-      "collection": "VariableCollectionId:74:3",
-      "name": "_ggbrick button size",
-      "modes": {
-        "sm": "74:0",
-        "md": "74:1",
-        "lg": "74:2"
+      "collection": {
+        "id": "VariableCollectionId:181:2",
+        "name": "Components",
+        "modes": {
+          "sm": "181:0",
+          "md": "181:1",
+          "lg": "181:2"
+        },
+        "default": "md",
+        "hiddenFromPublishing": true
       },
       "variables": {
         "button/icon-drawing": {
-          "id": "VariableID:74:4",
+          "id": "VariableID:181:3",
           "type": "FLOAT",
           "values": {
             "sm": 12,
@@ -257,13 +261,13 @@
           }
         },
         "button/icon-size": {
-          "id": "VariableID:74:5",
+          "id": "VariableID:181:4",
           "type": "FLOAT",
           "values": "alias size/icon/{sm,md,lg}"
         }
       },
-      "assignment": "Each Button variant sets the mode matching its Size explicitly.",
-      "removed": "Collection _ggbrick adapter (VariableCollectionId:43:2, button/icon-drawing/{sm,md,lg}) deleted on 2026-10-10 after migration; no remaining bindings."
+      "assignment": "Each Button variant sets the Components mode matching its Size explicitly (moved from the former _ggbrick button size collection 74:3 on 2026-10-14).",
+      "removed": "Collection _ggbrick adapter (VariableCollectionId:43:2) deleted on 2026-10-10; collection _ggbrick button size (74:3, variables 74:4 and 74:5) deleted on 2026-10-14 after the regrouping."
     },
     "foreground": {
       "collections": {
@@ -285,11 +289,11 @@
       "variables": {
         "button/foreground": {
           "id": "VariableID:90:13",
-          "collection": "_ggbrick button style",
+          "collection": "Components · button style",
           "value": "alias button/{intent}-{appearance}/foreground per mode"
         },
         "button/{intent}-{appearance}/foreground": {
-          "collection": "_ggbrick button state",
+          "collection": "Components · button state",
           "count": 9,
           "value": "alias color/action/{intent}/{appearance}/{state}/content per mode"
         }
@@ -322,22 +326,34 @@
   },
   "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run; none remain.",
   "exposedInstances": {
-    "Leading icon": "instance of _Fixture/Icon (property Name)",
-    "Trailing item": "instance of _Button/Trailing (property Type: Icon | Counter | Shortcut; Type=Icon exposes a nested Icon with Name)"
+    "Leading icon": "instance of Icon (149:11, Size=md; the size follows button/icon-size through the Button's size modes): property Glyph#149:0 (instance swap, defaults to _Fixture/Icon Name=plus), nested exposed Glyph",
+    "Trailing item": "instance of _Button/Trailing (properties Type: Icon | Counter | Shortcut, Size: sm | md | lg set by the Button variant); Type=Icon exposes a nested Icon (Glyph), Type=Counter a nested Counter (Value, Overflow, Overflow text), Type=Shortcut a nested Shortcut (Appearance, Platform, Show key 2/3, Key 1/2/3)"
   },
   "internalComponents": {
     "_Button/Trailing": {
       "page": "actions/button (144:2)",
       "set": "75:14",
       "variants": {
-        "Type=Icon": "75:2",
-        "Type=Counter": "75:8",
-        "Type=Shortcut": "91:7"
+        "Type=Icon, Size=md": "75:2",
+        "Type=Icon, Size=sm": "164:1524",
+        "Type=Icon, Size=lg": "164:1527",
+        "Type=Counter, Size=md": "75:8",
+        "Type=Counter, Size=sm": "164:1541",
+        "Type=Counter, Size=lg": "164:1543",
+        "Type=Shortcut, Size=md": "91:7",
+        "Type=Shortcut, Size=sm": "164:1556",
+        "Type=Shortcut, Size=lg": "164:1558"
+      },
+      "content": {
+        "Icon": "Drawing box (width button/icon-drawing, height button/icon-size) holding an Icon instance (149:8 sm, 149:11 md, 149:14 lg) named Icon, width and height bound to button/icon-size, Glyph default _Fixture/Icon Name=arrow-right, glyph vector fill bound to button/foreground; instances 75:4, 164:1526, 164:1529",
+        "Counter": "Counter instance (149:1550 sm, 149:1553 md, 149:1556 lg) named Counter, Value fill and Tint fill bound to button/foreground (the Border stroke override was cleared when the Counter master switched to a tint on 2026-10-14); instances 164:1549, 164:1545, 164:1553",
+        "Shortcut": "Shortcut instance (151:2 sm, 151:9 md, 151:16 lg; Plain, Mac) named Shortcut, key and separator texts bound to button/foreground (the Plain attenuation to opacity/muted stays); instances 164:1571, 164:1560, 164:1582"
       },
       "properties": {
-        "Type": "VARIANT"
+        "Type": "VARIANT (Icon, Counter, Shortcut)",
+        "Size": "VARIANT (md, sm, lg; set by each Button variant to its own Size)"
       },
-      "note": "One variant per allowed trailing type, each holding only its own content; colors bound to button/foreground. Type=Icon centers the icon in its drawing box with auto layout, so the box can follow the size modes (fixed 2026-10-12: absolute positioning left the icon 2 px low in md and 4 px in lg)."
+      "note": "Type × Size since 2026-10-14: the Counter and Shortcut masters carry their size as a variant, so the part cannot follow the Button's size modes alone; each Button variant sets Size on its Trailing item. Type=Icon keeps the mode-driven drawing box (fixed 2026-10-12: absolute positioning left the icon 2 px low in md and 4 px in lg). The default variant is Type=Icon, Size=md (top-left)."
     },
     "_Button/Loading indicator": {
       "id": "42:28",
@@ -411,6 +427,22 @@
     {
       "date": "2026-10-13",
       "change": "Repository structure: the Button component set (48:1586), its specification frame (126:1904) and its internal parts (_Button/Trailing 75:14, _Button/Loading indicator 42:28) moved from the Actions and Utilities pages to the new page actions/button (144:2); family pages Actions, Forms, Feedback, Overlays, Navigation and Data removed (empty). Set description and the specification reference note now cite foundations/components/actions/button and packages/svelte/src/components/button. Node IDs unchanged; fixtures _Fixture/* and documentation components _Spec/* stay on Utilities."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Wave 1 integration: the Leading icon of the 135 variants swapped from _Fixture/Icon to the Icon component (149:11), size re-bound to button/icon-size and the glyph fill to button/foreground (an override of the former vector fill landed on the Glyph instance frame after the swap and was cleared); _Button/Trailing rebuilt as Type × Size with the Icon, Counter and Shortcut masters, every Button variant setting Size on its Trailing item; the six specification instances carrying a glyph choice (Delete, Download report, Inbox ×2, Export…, Download) re-bound to the Icon component with the right Glyph; the Anatomy sentence of the specification updated. Parity re-measured: 666 cases identical to the approved measurement (hash comparison, base-light re-read in full), slot geometry 108 records, 0 failures (counter heights now 15.4/16.8/19.6). Fixtures _Fixture/Counter and _Fixture/Shortcut removed."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Blueprint boards: the drawing is centered vertically in each board and the legend elements follow (user review of the wave 1 Figma parity gate, 2026-10-14); the builder script applies the same pass (centerBoards). The Spacing diagram's dimension row sits 8 px closer to the zoomed container."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Adapter collections regrouped (user review, 2026-10-14): the component adapter variables now live in one hidden collection Components (VariableCollectionId:181:2, modes sm 181:0, md 181:1, lg 181:2, default md): button/icon-drawing 181:3, button/icon-size 181:4, counter/foreground 181:5, shortcut/foreground 181:6, shortcut/font-size 181:7, shortcut/line-height 181:8, shortcut/letter-spacing 181:9, shortcut/cap-min-width 181:10 (size-independent variables carry the same alias in the three modes). Every consumer was rebound and the explicit size modes moved (Button: 564 bindings, 138 mode assignments; Shortcut: 13 bindings, 12 modes; Counter: 12 paints; stale Leading icon overrides on ten specification instances reset and re-applied); the collections _ggbrick button size (74:3), _ggbrick shortcut size (149:1570), _ggbrick counter (149:1548) and _ggbrick shortcut (149:1571) were deleted with no reference left on any page. _ggbrick button style and _ggbrick button state were renamed Components · button style (90:12) and Components · button state (90:2), IDs unchanged, hidden. Checks: the eight variables resolve to the former values in each mode; Button slot geometry re-measured with icon, counter and shortcut trailing items (162 records, 0 failures)."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Token collections renamed Foundations · Primitives, Foundations · Brand, Foundations · Appearance and Foundations · Density (IDs and bindings unchanged); the adapter scripts of this component resolve the short axis names to the prefixed ones."
     }
   ]
 }

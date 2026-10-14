@@ -5,7 +5,7 @@
 import { paths, readJson, write } from './lib/paths.ts';
 import fs from 'node:fs';
 
-type FigmaValue = number | { r: number; g: number; b: number; a: number };
+type FigmaValue = number | string | { r: number; g: number; b: number; a: number };
 interface Manifest {
   variables: { collection: string; name: string }[];
 }
@@ -22,7 +22,9 @@ const canonical = (value: FigmaValue): string =>
             .padStart(2, '0')
         )
         .join('')
-    : String(Math.round(value * 10000) / 10000);
+    : typeof value === 'string'
+      ? value
+      : String(Math.round(value * 10000) / 10000);
 const fnv = (s: string): string => {
   let h = 0x811c9dc5;
   for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 0x01000193) >>> 0;
@@ -32,7 +34,7 @@ const manifest = readJson<Manifest>(`${paths.tokensPackage}/figma-manifest.json`
 const expectations = readJson<Record<string, Record<string, Record<string, FigmaValue>>>>(
   `${paths.tokensPackage}/figma-expectations.json`
 );
-const ordered = ['Brand', 'Appearance', 'Density'].flatMap((c) =>
+const ordered = ['Foundations · Brand', 'Foundations · Appearance', 'Foundations · Density'].flatMap((c) =>
   manifest.variables
     .filter((v) => v.collection === c && !v.name.startsWith('primitive/') && !v.name.startsWith('_resolved/'))
     .map((v) => v.name)
@@ -62,7 +64,7 @@ const records = Object.entries(expected).map(([ctx, e]) => {
   };
 });
 const failures = records.filter((r) => !r.passed);
-write(`${paths.reports}/foundations/figma/verification.json`, {
+write(`${paths.reports}/tokens/figma/verification.json`, {
   method:
     'Native Figma resolution (resolveForConsumer on a frame with explicit Brand, Appearance and Density modes) of every semantic variable, in deterministic order, hashed with FNV-1a over canonical values (8-digit hex colors from float32 channels, as Figma stores them; 4-decimal numbers) and compared with the same hash of packages/tokens/figma-expectations.json.',
   variables: ordered.length,

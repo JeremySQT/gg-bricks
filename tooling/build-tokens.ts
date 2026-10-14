@@ -18,7 +18,7 @@ interface ContrastRecord {
   passed: boolean;
   [param: string]: string | number | boolean | null;
 }
-type FigmaValue = { r: number; g: number; b: number; a: number } | number | { alias: string };
+type FigmaValue = { r: number; g: number; b: number; a: number } | number | string | { alias: string };
 interface FigmaEffect {
   type: 'DROP_SHADOW' | 'INNER_SHADOW';
   color: { r: number; g: number; b: number; a: number };
@@ -30,7 +30,7 @@ interface FigmaVariable {
   collection: string;
   name: string;
   path: string;
-  type: 'COLOR' | 'FLOAT';
+  type: 'COLOR' | 'FLOAT' | 'STRING';
   scopes: string[];
   codeSyntax?: { WEB: string };
   values: Record<string, FigmaValue>;
@@ -98,6 +98,11 @@ const flatten = (tokens: TokenMap): TokenMap => {
         $value: { value: (ty.lineHeight as number) * fontSize.value, unit: 'px' }
       };
       if (ty.letterSpacing) flat[p + '.letterSpacing'] = { $type: 'dimension', $value: ty.letterSpacing as Dimension };
+      // Figma text styles bind their family, weight, size and letter spacing to variables; the line-height
+      // ratio is kept as a percentage string (Figma cannot bind a percentage) and typed in the style.
+      flat[p + '.fontFamily'] = { $type: 'fontFamily', $value: ty.fontFamily };
+      flat[p + '.fontWeight'] = { $type: 'fontWeight', $value: ty.fontWeight };
+      flat[p + '.lineHeightRatio'] = { $type: 'number', $value: ty.lineHeight as number };
     }
     flat[p] = v;
   }
@@ -224,12 +229,14 @@ const flatByContext: Record<string, TokenMap> = Object.fromEntries(
   contexts.map((c) => [
     c.id,
     Object.fromEntries(
-      Object.entries(flatten(c.tokens)).filter(([, v]) => ['color', 'dimension', 'number'].includes(v.$type))
+      Object.entries(flatten(c.tokens)).filter(([, v]) =>
+        ['color', 'dimension', 'number', 'fontFamily', 'fontWeight'].includes(v.$type)
+      )
     )
   ])
 );
 type Axis = 'Appearance' | 'Density' | 'Brand';
-const derived = /\.(fontSize|lineHeight|letterSpacing)$/;
+const derived = /\.(fontSize|lineHeight|letterSpacing|fontFamily|fontWeight|lineHeightRatio)$/;
 const axisOf = (p: string): Axis => {
   const source = (base.trace[p] ?? base.trace[p.replace(derived, '')] ?? []).at(-1)?.source ?? '';
   return /\/appearance\./.test(source) ? 'Appearance' : /\/density\./.test(source) ? 'Density' : 'Brand';
@@ -242,7 +249,10 @@ const rawIn = (ctxId: string, p: string): unknown => {
   const ty = (ctx.trace[p.replace(derived, '')].at(-1)?.value ?? {}) as Typography;
   if (m[1] === 'fontSize') return ty.fontSize;
   if (m[1] === 'letterSpacing') return ty.letterSpacing;
-  return convert(flatByContext[ctxId][p]); // line height in px is computed, never an alias
+  if (m[1] === 'fontFamily') return ty.fontFamily;
+  if (m[1] === 'fontWeight') return ty.fontWeight;
+  if (m[1] === 'lineHeightRatio') return ty.lineHeight;
+  return figmaValueOf(p, flatByContext[ctxId][p]); // line height in px is computed, never an alias
 };
 const scopes = (p: string): string[] =>
   p.startsWith('primitive.')
@@ -255,21 +265,28 @@ const scopes = (p: string): string[] =>
           ? ['CORNER_RADIUS']
           : p.includes('padding') || p.includes('gap') || p.startsWith('space.control.')
             ? ['GAP']
-            : p.endsWith('fontSize')
-              ? ['FONT_SIZE']
-              : p.endsWith('lineHeight')
-                ? ['LINE_HEIGHT']
-                : p.endsWith('letterSpacing')
-                  ? ['LETTER_SPACING']
-                  : /\.(content|contentStrong|placeholder|link|onAccent)$/.test(p) || p.startsWith('color.content')
-                    ? ['TEXT_FILL', 'SHAPE_FILL', 'STROKE_COLOR']
-                    : p.includes('focus.ring') || p.endsWith('.border') || p.startsWith('color.border.')
-                      ? ['STROKE_COLOR']
-                      : p.startsWith('color.')
-                        ? ['FRAME_FILL', 'SHAPE_FILL']
-                        : p.includes('width')
-                          ? ['STROKE_FLOAT']
-                          : ['WIDTH_HEIGHT'];
+            : p.endsWith('fontFamily')
+              ? ['FONT_FAMILY']
+              : p.endsWith('fontWeight')
+                ? ['FONT_WEIGHT']
+                : p.endsWith('lineHeightRatio')
+                  ? []
+                  : p.endsWith('fontSize')
+                    ? ['FONT_SIZE']
+                    : p.endsWith('lineHeight')
+                      ? ['LINE_HEIGHT']
+                      : p.endsWith('letterSpacing')
+                        ? ['LETTER_SPACING']
+                        : /\.(content|contentStrong|placeholder|link|onAccent)$/.test(p) ||
+                            p.startsWith('color.content')
+                          ? ['TEXT_FILL', 'SHAPE_FILL', 'STROKE_COLOR']
+                          : p.includes('focus.ring') || p.endsWith('.border') || p.startsWith('color.border.')
+                            ? ['STROKE_COLOR']
+                            : p.startsWith('color.')
+                              ? ['FRAME_FILL', 'SHAPE_FILL']
+                              : p.includes('width')
+                                ? ['STROKE_FLOAT']
+                                : ['WIDTH_HEIGHT'];
 const convert = (t: ResolvedToken): FigmaValue => {
   if (t.$type === 'color') {
     const c = colorOf(t);
@@ -278,7 +295,27 @@ const convert = (t: ResolvedToken): FigmaValue => {
   if (t.$type === 'number') return t.$value as number;
   return dimOf(t).value;
 };
+/** Figma reads a number bound to layer opacity as a percentage: opacity tokens are emitted ×100 (0.7 → 70). */
+const isOpacity = (p: string) => p.startsWith('opacity.') || p.startsWith('primitive.opacity.');
+/** Line-height ratios are emitted as percentage strings ("140%"): Figma cannot bind a percentage, the text styles type it. */
+const isLineHeightRatio = (p: string) => p.startsWith('primitive.font.lineHeight.') || p.endsWith('.lineHeightRatio');
+const figmaTypeOf = (p: string, t: ResolvedToken): FigmaVariable['type'] =>
+  t.$type === 'color' ? 'COLOR' : t.$type === 'fontFamily' || isLineHeightRatio(p) ? 'STRING' : 'FLOAT';
+const figmaValueOf = (p: string, t: ResolvedToken): FigmaValue => {
+  // Figma needs one installed family: the first of the stack.
+  if (t.$type === 'fontFamily') return (Array.isArray(t.$value) ? t.$value[0] : t.$value) as string;
+  if (t.$type === 'fontWeight') return t.$value as number;
+  if (isLineHeightRatio(p)) return `${Math.round((t.$value as number) * 100 * 1000) / 1000}%`;
+  return isOpacity(p) ? Math.round((convert(t) as number) * 100 * 10000) / 10000 : convert(t);
+};
 const figmaName = (p: string) => p.replaceAll('.', '/');
+/**
+ * Figma collection names. The token collections carry the “Foundations · ” prefix so that the flat,
+ * alphabetical collection list of the single library file reads as two families (Foundations, Components);
+ * the axes keep their short names in the code (user decision of 2026-10-14: one file, for distribution).
+ */
+const FOUNDATIONS = 'Foundations · ';
+const collectionName = (axis: 'Primitives' | 'Brand' | 'Appearance' | 'Density' | string) => FOUNDATIONS + axis;
 const primitivesMode = 'default';
 const manifest: {
   collections: Record<string, string[]>;
@@ -291,22 +328,24 @@ const manifest: {
     style: string;
     size: number;
     lineHeight: number;
+    lineHeightPercent: number;
     letterSpacing: number;
     features: string[];
+    variables: Record<'fontFamily' | 'fontWeight' | 'fontSize' | 'letterSpacing', string>;
   }[];
   effects: { name: string; layers: FigmaEffect[] }[];
 } = {
   collections: {
-    Primitives: [primitivesMode],
-    Brand: cfg.brands,
-    Appearance: cfg.appearances,
-    Density: cfg.densities
+    [collectionName('Primitives')]: [primitivesMode],
+    [collectionName('Brand')]: cfg.brands,
+    [collectionName('Appearance')]: cfg.appearances,
+    [collectionName('Density')]: cfg.densities
   },
   defaults: {
-    Primitives: primitivesMode,
-    Brand: cfg.brands[0],
-    Appearance: cfg.defaults.appearance,
-    Density: cfg.defaults.density
+    [collectionName('Primitives')]: primitivesMode,
+    [collectionName('Brand')]: cfg.brands[0],
+    [collectionName('Appearance')]: cfg.defaults.appearance,
+    [collectionName('Density')]: cfg.defaults.density
   },
   variables: [],
   typography: [],
@@ -319,8 +358,8 @@ const sharedPrimitive = (p: string): boolean =>
   axisOf(p) === 'Brand' &&
   cfg.brands.every(
     (b) =>
-      JSON.stringify(convert(flatByContext[`${b}-${base.appearance}-${base.density}`][p])) ===
-      JSON.stringify(convert(flatByContext[`${cfg.brands[0]}-${base.appearance}-${base.density}`][p]))
+      JSON.stringify(figmaValueOf(p, flatByContext[`${b}-${base.appearance}-${base.density}`][p])) ===
+      JSON.stringify(figmaValueOf(p, flatByContext[`${cfg.brands[0]}-${base.appearance}-${base.density}`][p]))
   );
 const collectionOf = (p: string): string => (sharedPrimitive(p) ? 'Primitives' : axisOf(p));
 /** Alias target expressed for Figma, or null when the source alias cannot be one Figma alias for this axis. */
@@ -329,19 +368,20 @@ const aliasFor = (raw: unknown, axis: Axis): FigmaValue | null => {
   const q = raw.slice(1, -1);
   if (!isVariable(q)) return null;
   const target = collectionOf(q);
-  if (target === 'Primitives' || target === 'Brand' || target === axis) return { alias: `${target}:${figmaName(q)}` };
+  if (target === 'Primitives' || target === 'Brand' || target === axis)
+    return { alias: `${collectionName(target)}:${figmaName(q)}` };
   return null;
 };
 const isAliasString = (raw: unknown) => typeof raw === 'string' && /^\{[^{}]+\}$/.test(raw);
 for (const p of Object.keys(flatByContext[base.id])) {
-  const type = flatByContext[base.id][p].$type === 'color' ? 'COLOR' : 'FLOAT';
+  const type = figmaTypeOf(p, flatByContext[base.id][p]);
   const axis = axisOf(p);
   const codeSyntax = { WEB: `var(${cssVariable(p)})` };
   const at = (brand: string, appearance: string, density: string) =>
-    convert(flatByContext[`${brand}-${appearance}-${density}`][p]);
+    figmaValueOf(p, flatByContext[`${brand}-${appearance}-${density}`][p]);
   if (sharedPrimitive(p)) {
     manifest.variables.push({
-      collection: 'Primitives',
+      collection: collectionName('Primitives'),
       name: figmaName(p),
       path: p,
       type,
@@ -353,7 +393,7 @@ for (const p of Object.keys(flatByContext[base.id])) {
   }
   if (axis === 'Brand') {
     manifest.variables.push({
-      collection: 'Brand',
+      collection: collectionName('Brand'),
       name: figmaName(p),
       path: p,
       type,
@@ -393,18 +433,18 @@ for (const p of Object.keys(flatByContext[base.id])) {
     for (const mode of modes) {
       const name = `_resolved/${axis.toLowerCase()}/${mode}/${figmaName(p)}`;
       manifest.variables.push({
-        collection: 'Brand',
+        collection: collectionName('Brand'),
         name,
         path: p,
         type,
         scopes: [],
-        values: Object.fromEntries(cfg.brands.map((b) => [b, convert(flatByContext[ctxOf(b, mode)][p])]))
+        values: Object.fromEntries(cfg.brands.map((b) => [b, figmaValueOf(p, flatByContext[ctxOf(b, mode)][p])]))
       });
-      values[mode] = { alias: `Brand:${name}` };
+      values[mode] = { alias: `${collectionName('Brand')}:${name}` };
     }
   }
   manifest.variables.push({
-    collection: axis,
+    collection: collectionName(axis),
     name: figmaName(p),
     path: p,
     type,
@@ -434,8 +474,16 @@ for (const [p, v] of Object.entries(base.tokens)) {
     style: styleNames[ty.fontWeight as number] ?? String(ty.fontWeight),
     size: fontSize.value,
     lineHeight: (ty.lineHeight as number) * fontSize.value,
+    lineHeightPercent: Math.round((ty.lineHeight as number) * 100 * 1000) / 1000,
     letterSpacing: (ty.letterSpacing as Dimension | undefined)?.value ?? 0,
-    features: ty.fontFeatures ?? []
+    features: ty.fontFeatures ?? [],
+    // Variables the text style binds (family, weight, size, letter spacing); the line height is typed as a percentage.
+    variables: {
+      fontFamily: `${figmaName(p)}/fontFamily`,
+      fontWeight: `${figmaName(p)}/fontWeight`,
+      fontSize: `${figmaName(p)}/fontSize`,
+      letterSpacing: `${figmaName(p)}/letterSpacing`
+    }
   });
 }
 // Semantic shadow roles become effect styles (one drop-shadow layer per composed shadow).
@@ -459,7 +507,7 @@ for (const ctx of contexts) {
   (expectations[ctx.brand] ??= {})[`${ctx.appearance}-${ctx.density}`] = Object.fromEntries(
     Object.entries(flatByContext[ctx.id])
       .filter(([p]) => !p.startsWith('primitive.'))
-      .map(([p, v]) => [figmaName(p), convert(v)])
+      .map(([p, v]) => [figmaName(p), figmaValueOf(p, v)])
   );
 }
 write(`${paths.tokensPackage}/figma-expectations.json`, expectations);

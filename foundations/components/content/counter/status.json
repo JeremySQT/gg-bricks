@@ -1,0 +1,281 @@
+{
+  "formatStatus": "v1",
+  "componentId": "counter",
+  "family": "content",
+  "wave": 1,
+  "phase": "done",
+  "scope": {
+    "purpose": "Show a quantity (unread messages, items, selected rows) as a compact pill next to the thing it counts.",
+    "useCases": [
+      "Standalone next to a tab label, a navigation item or a list header, with an accessible label giving the number its meaning (8 unread messages).",
+      "Inside the Button trailing slot, as text-like content placed by its box that inherits the button's content color and takes the button's size.",
+      "Large quantities capped at a maximum and shown as an overflow (99+ by default, max configurable).",
+      "Zero shown as 0 when the integration chooses to render the counter (0 selected rows); hiding an empty quantity is the integration's choice."
+    ],
+    "exclusions": [
+      "Status or category words (Badge, wave 1, planned).",
+      "Free text, units or formatted amounts (plain text, DataField).",
+      "A dot indicator without a number (Badge or a later indicator).",
+      "Editing a quantity (NumberInput, wave 6).",
+      "Live announcements when the value changes: the integration owns live regions.",
+      "A colored or filled emphasis axis (neutral, accent, danger): waits for an indicator color family shared with Badge (open decision 2)."
+    ],
+    "alternatives": [
+      "Badge (planned) for a status or a category rather than a quantity.",
+      "Plain text when the number is part of a sentence or a data cell.",
+      "NumberInput (later) when the user edits the quantity."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": [
+    "The Button review fixture examples/button/Fixtures.svelte (kind counter) is the current stand-in inside Button: inline-grid pill, min-inline-size 1.5em, padding-inline 0.4em, radius full, inset 1 px ring in currentColor, font-size 0.85em, tabular figures. Button examples and tests switch to the component once Counter passes its implementation gate."
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/content/counter/contract.json",
+      "sha256": "23838f2c388853f46fd6e82b6820bbe020507658fe880a488ed91d82afe0a852"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/common.tokens.json",
+      "foundations/tokens/brick/semantic/common.tokens.json"
+    ],
+    "figma": {
+      "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+      "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+      "page": {
+        "name": "content/counter",
+        "id": "149:1547"
+      },
+      "componentSet": {
+        "id": "149:1568",
+        "name": "Counter",
+        "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=149-1568",
+        "variants": 6
+      },
+      "specificationFrame": {
+        "id": "156:4865",
+        "name": "Counter — Specification",
+        "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=156-4865"
+      },
+      "adapterCollection": {
+        "name": "Components",
+        "id": "VariableCollectionId:181:2",
+        "note": "shared by every component since 2026-10-14"
+      },
+      "ledger": "reports/components/counter/figma/ledger.json",
+      "parity": "reports/components/counter/figma/parity.json",
+      "screenshots": [
+        "reports/components/counter/figma/master-set.png",
+        "reports/components/counter/figma/specification.png"
+      ],
+      "scripts": [
+        "authoring/adapters/figma/counter-master.plugin.js",
+        "authoring/adapters/figma/counter-spec.plugin.js",
+        "authoring/adapters/figma/counter-parity.plugin.js",
+        "authoring/adapters/figma/counter-parity-report.mjs"
+      ],
+      "published": false
+    },
+    "figmaSpec": {
+      "path": "foundations/components/content/counter/figma-spec.md",
+      "sha256": "332b963c8ca91a188ed7240257d47ea44e848bb91c722fe84881686c11bf087c"
+    },
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/counter/Counter.svelte",
+      "folder": "packages/svelte/src/components/counter",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (static content, no native semantics to borrow)"
+      },
+      "report": "reports/components/counter/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/counter",
+      "preview": "dist/previews/counter.html (npm run build:preview counter)",
+      "artifact": "https://claude.ai/artifact/G3xkXNU3ZoskK8AiMULgTg (version 1)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/counter.test.ts",
+      "browser": "tests/browser/counter.spec.ts",
+      "computed": "reports/components/counter/svelte/computed.json",
+      "screenshots": "reports/components/counter/svelte/*.png"
+    },
+    "humanDocs": "documentation/components/counter.md",
+    "agentDocs": "documentation/index.json (entry counter); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Counter contract: value (number, default 0), max (default 99, overflow 99+), size (sm, md, lg named like Button), optional label appended to the accessible text; container and value parts; overflow state; typography.indicator.{size}, radius.indicator, border.width.default, space.content.xs; eleven rules (inherited content color, tabular figures, line-box height, minimum width equal to the height, small corner radius, non interactive, forced colors). Amendment at the implementation review (2026-10-14): the border is drawn at borderOpacity (opacity.muted, 70 %) so that it reads lighter than the digits. Second amendment (2026-10-14, implementation review page): the container is a tint of the content color at surfaceOpacity (opacity.tint, 12 %) with no border; borderWidth is kept for the forced-colors edge only; the digits are centered on their cap height (rule 6); rules 4, 7 and 10 rewritten accordingly.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14 at the grouped contract gate of Icon, Counter and Shortcut: \"Ok pour tout\" on the seven grouped decisions (indicator typography family for Counter and Shortcut, keycap appearance now, platform-driven Shortcut rendering, Counter in inherited color only, pill height from the typography, Button kept as approved, Icon glyph as content with five sizes), with two amendments applied before recording: Phosphor confirmed as the reference icon set, and the Counter made rectangular with a small corner radius (2 or 4 px) instead of a pill so that one and two digits read alike. Amendment of 2026-10-14: user at the implementation review in the same session, \"je verrai bien un contour à 70% d'opacité pour pas avoir quelque chose de trop lourd visuellement\"; digest re-recorded. Second amendment of 2026-10-14: user on the Counter implementation review page (https://claude.ai/artifact/LTLuBfwRyhyfqR4hkfd7KD, border opacity ladder 70 % to 0 % then background alternatives), \"Je crois que je préfère la version 'BG Current color' à 12%\", with the cap-height centering fix shown on the same page; digest re-recorded.",
+      "note": "Contract digest recorded after the amendments; implementation approval recorded separately.",
+      "revision": {
+        "paths": ["foundations/components/content/counter/contract.json"],
+        "sha256": {
+          "foundations/components/content/counter/contract.json": "c5ceae837ea2a69e4301c1ed405317002ea558f7236833683b683d7157eefd0f"
+        }
+      }
+    },
+    "implementation": {
+      "scope": "Svelte implementation of the Counter: rectangle with a small radius, indicator typography with tabular figures, line-box height, overflow 99+, digits in the inherited content color on a tint of that color at 12 % (opacity.tint) with no border, digits centered on their cap height (text-box trim with symmetric block padding), comfortable density keeping the density-dependent padding, review page examples/counter.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/counter/Counter.svelte",
+          "packages/svelte/src/components/counter/types.ts",
+          "packages/svelte/src/components/counter/counter.css",
+          "packages/svelte/src/components/counter/contract.generated.ts",
+          "packages/svelte/src/components/counter/tokens.generated.css",
+          "examples/counter/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/counter/Counter.svelte": "31d2eb5a5a162810816d22f465085f58ba2ef4d4f2247ddb78f755ccbf787d7c",
+          "packages/svelte/src/components/counter/types.ts": "3b6f7eeda626a204487758f706bb83e78fb6f048ed828c56efa64975bdffe3df",
+          "packages/svelte/src/components/counter/counter.css": "76575128a065d58e76062e732738cc5b0fcd393be3629a5cca5642d9551202d2",
+          "packages/svelte/src/components/counter/contract.generated.ts": "26c13097272fce8b85337756d4641427f3c009185169920d50c524101abcd995",
+          "packages/svelte/src/components/counter/tokens.generated.css": "1b4e5705a278da409bd9af02171d1c7d601361fb1245f653c65a9b1ed8c73ff5",
+          "examples/counter/App.svelte": "c12fd75c237f35957e81544ea5a933d953a6db0eb2610b52b81af824ff682927"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, after reviewing the published preview artifacts (grouped implementation gate of Icon, Counter and Shortcut): \"Ok pour la dernière proposition sur la densité, je valide l'approche recommandée\", then \"Pour le counter ça me semble bon, mais visuellement je verrai bien un contour à 70% d'opacité\" (applied), then, for the Shortcut, after comparing 100 %, 85 %, 70 % and a lighter weight on a lab page (https://claude.ai/artifact/L1agvDLoc2hBK3Hqz91reB): \"85% ne me semble pas assez atténué. 70% me semble mieux\" (applied). Approval recorded on the revisions that include these adjustments. Amendment of 2026-10-14: on the Counter implementation review page (https://claude.ai/artifact/LTLuBfwRyhyfqR4hkfd7KD) the user asked for a lighter border (\"Je pensais la rendre encore moins visible\"), compared a 70 % to 0 % ladder and background alternatives, and chose \"Je crois que je préfère la version 'BG Current color' à 12%\"; the cap-height centering fix measured on that page (md ink 3.0 px from the top and 4.8 px from the bottom before, within 0.45 px after) was applied with it, as announced. Digests re-recorded on the amended revision.",
+      "note": "Automated evidence: Chromium only (SSR and Playwright tests in tests/); no assistive-technology test."
+    },
+    "figmaParity": {
+      "scope": "Figma component set Counter (149:1568, Size × Overflow, text properties Value and Overflow text, Tint layer at opacity/tint, Value trimmed to cap height), specification frame 156:4865, parity report (1692 records, 0 failures, 144 justified: tabular figures on lg and the cap-height block padding; 72 proxy records on button/foreground), Counter masters placed in the Button trailing slot.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/counter/figma-spec.md",
+          "reports/components/counter/figma/parity.json",
+          "reports/components/counter/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/content/counter/figma-spec.md": "48af55ed34ef3747a35c076d41f2a68ff30069e1c20990f72b997cdc0310bdb3",
+          "reports/components/counter/figma/parity.json": "1888d1e500b8b7f442443a2ad124eecec19ddb7588974570f98ed0b442c6bde3",
+          "reports/components/counter/figma/ledger.json": "e6f315a3da7e3adcc0a9e83d9bc2aa9713261dfdce06b18ee66c6a63d531d311"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "page": "149:1547",
+          "componentSet": "149:1568",
+          "specificationFrame": "156:4865"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, at the grouped wave 1 Figma parity gate (Icon, Counter, Shortcut and the Button with the real slot content), after reviewing the Figma pages, the master and specification screenshots, the parity reports and the preview artifacts: \"Très bien le counter comme ça, jolie travail.\" then, asked whether the validation covered the whole gate, \"La validation porte sur la parité figma de la vague 1. On peut avancer.\" The tint and cap-height amendment of the same day (implementation review page) was applied in Figma before this approval.",
+      "note": "Library not published (publication needs explicit authorization). Tabular figures were switched on by the user on the typography/indicator styles; the Value layers of lg read the default feature set after the leading trim detached the style (ledger limitations)."
+    },
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate",
+      "report": "reports/components/counter/contract-validation.json",
+      "date": "2026-10-14",
+      "note": "Schema, consistency and token coverage (6 paths, typography.indicator bound at the gate) in 18 contexts."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "date": "2026-10-14",
+      "note": "No contrast records: the counter binds no color role (it draws in the inherited content color), so there is no surface/content pair to measure. Contrast is the host's or the surrounding text's."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-14",
+      "note": "generate, lint, validate, unit tests, svelte-check, SSR, build (re-run on 2026-10-14 after the tint and centering amendment)."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/counter/svelte/ssr.json",
+      "date": "2026-10-14",
+      "note": "6 Counter tests: defaults, integer normalization (7.9, -5, NaN, grouping), overflow (99+, custom max, max floor, invalid max), label in the accessible text, sizes, class merge and native attributes."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-14",
+      "note": "Chromium 141, 8 Counter tests (re-run on 2026-10-14 after the tint and centering amendment): values and overflow, accessible text read from the accessibility tree through CDP, geometry in 3 densities (line-box heights 15.4/16.8/19.6 px, cap-height padding, minimum width = height, tabular widths, no wrap), ink centering measured on a screenshot (within 1/dpr px), tint and digits in 9 intent x appearance Buttons plus disabled, loading, hover, pressed and nested mode, computed values versus resolved tokens in 18 contexts (1692 records), no motion, forced colors, axe light and dark, 390 px viewport."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run build:preview counter",
+      "date": "2026-10-14",
+      "note": "dist/previews/counter.html rebuilt after the tint and centering amendment; mounts from file:// without errors."
+    },
+    {
+      "kind": "figma-parity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/counter-parity.plugin.js, then node authoring/adapters/figma/counter-parity-report.mjs <measurements.json>",
+      "report": "reports/components/counter/figma/parity.json",
+      "date": "2026-10-14",
+      "note": "Re-measured on 2026-10-14 after the tint decision: 1692 records (18 contexts × 3 sizes × default and overflow × container and value properties, plus 72 records inside Buttons): 1692 passed, 0 failed, 144 justified (36 lg records on tabular figures: openTypeFeatures is read-only in the Plugin API; 108 on padding-block: Figma centers the cap-trimmed Value in the fixed-height box with no padding, the code with a symmetric padding), 72 proxy records measured on button/foreground and opacity/tint. Widths within −0.08 to 0.86 px of the browser (tolerance ±1.5 px); heights, minimum widths, paddings, radii, tint opacity, colors and typography exact."
+    }
+  ],
+  "decisionsTaken": [
+    "value is a number (default 0, min 0), not a required string: the component owns the overflow rule (value > max shows max+), which needs a number, and a quantity is what the component means; free text belongs to Badge or plain text. The schema requires a default for numbers, so an omitted value shows 0 rather than failing.",
+    "max is a number (default 99, min 1); overflow shows max followed by a plus sign (99+). The accessible text is the visible text (99+), not the exact value: visible and announced text agree, which is what sighted screen reader users expect, and the pill stays compact. Exposed as the derived boolean state overflow.",
+    "label is an optional string: the accessible text is the visible number followed by label when set (8 unread messages). It is optional because inside a host (Button) the host decides whether the counter is announced at all, and next to a visible label (Inbox 8) the reading order already gives the meaning. The component guarantees that its text is readable and that label, when given, is part of it; the integration guarantees that a lone number has a meaning.",
+    "No showZero option: the counter always shows its value, 0 included; the integration knows whether 0 is meaningful (0 selected rows) or should disappear (0 unread), and conditional rendering is trivial on every platform.",
+    "No emphasis, intent or appearance axis in v1: the existing inventory offers action colors (for actions), status colors (Badge's territory) and selection colors, none of which is honest for a notification counter; and inside a Button the counter must inherit the button's content anyway. The single treatment is the one the user validated in the Button implementation review: border and digits in the inherited content color, no fill. A future filled or colored emphasis is recorded as open decision 2, to share with Badge.",
+    "No color role at all: the border and the value use the inherited content color (currentColor) in every context (standalone next to text, inside a solid, outline or ghost Button in any state). This is the only context-independent choice and it needs no contrast evidence of its own.",
+    "size is sm | md | lg with the Button's names (default md), so that an integration passes the host's size through without a mapping; the counter's typography is one step below the host's label at each size (fixture ratio 0.85: 10.2, 11.9, 13.6 px rounded to the 11, 12, 14 px primitives).",
+    "The container block size is the line box of the typography (no block padding) and the minimum inline size equals the block size, so a single digit is a circle; the counter has no control height and no interaction target because it is not interactive. The alternative, binding the block size to size.icon.{size} (16, 20, 24 px, equal to the Button slot's minimum block size), was considered and set aside because the brief and the validated fixture size the counter by its typography; it is mentioned at the gate.",
+    "paddingInline binds space.content.xs (compact 2, standard 4, comfortable 6 px): the content spacing family is the one for spacing inside content, the standard value matches the validated fixture (0.4em of 11.9 px = 4.8 px) and a density-dependent padding follows the Button's own spacing, which also shrinks with density. space.content.sm (4, 8, 12) was too wide at standard.",
+    "borderWidth binds border.width.default (1 px) and radius binds radius.full, as in the fixture; the border is drawn inside the container edge so the box the host places is the visible pill.",
+    "Digits are tabular (fixture, and the numeral typography family already carries tnum), so counters of the same size and digit count have the same width in lists and tabs.",
+    "Typography role left unbound on purpose: no existing role is honest (numeral.sm/md/lg are 14/16/24 px, too big for a counter that must sit below a 12 to 16 px label; caption.sm/md are 400 weight without tabular figures and have no lg step; label.sm/md/lg are the host's own sizes). Binding typography.numeral.{size} would validate but render a 24 px counter in a lg Button. The proposed roles are in open decision 1; the contract binds the role typography once the reviewer picks the family.",
+    "Parts limited to container and value; the accessible label is not a visual part. No events, no interaction states: the counter never reacts to its host's hover, pressed, loading or disabled states beyond inheriting the content color (Button fades its trailing content while loading and gives it the disabled content color).",
+    "Forced-colors rule kept in the contract (decision register: every component with a border handles forced colors): the border stays visible in the system text color.",
+    "The roadmap progress row, the token files and the token inventory were not touched in this worktree (orchestrator instruction: shared files are edited by the orchestrator at the grouped gate).",
+    "Contract gate (user, 2026-10-14): typography bound to the new family typography.indicator.{sm,md,lg} (Inter 500, 11/12/14 px, line height 1.4, tabular figures, common axis), shared with Shortcut and later Badge (option A of the former open decision 1).",
+    "Contract gate (user, 2026-10-14): the counter is a rectangle with a small corner radius, not a pill, so that one and two digits read alike. New semantic role radius.indicator (base 4 px, brick 2 px, orchid inherits 4 px) bound to the radius role; the minimum width equal to the height is kept.",
+    "Contract gate (user, 2026-10-14): inherited-color treatment only in v1 (emphasis waits for an indicator color family defined with Badge); pill height from the typography line box; Button kept as approved (a quantity that must be announced goes into the host label or a live region); 99+ is announced as shown.",
+    "Implementation (2026-10-14): the root element is the container part (class ggb-counter, no ggb-counter__container layer); Button has a separate root only because it is an interaction target. The hidden accessible label uses the helper class ggb-counter__label, not a contract part, following Button's ggb-button__name precedent.",
+    "Implementation (2026-10-14): a non-finite value (NaN, Infinity, null from an empty number field) shows 0 and a non-finite max falls back to 99; max is floored and kept at least 1 so the overflow text is itself a counter value. The accessible text is the visible text (99+), as decided at the contract gate.",
+    "Implementation (2026-10-14): the accessible label is a visually hidden span that starts with a space, kept by white-space: pre, rather than aria-label (which would replace the visible text) or a space-less span (Chromium's accessibility tree concatenates inline text without inserting one). Verified through the Chromium accessibility tree (CDP) rather than Playwright's accessible-name computation, which does not name a generic span.",
+    "Implementation (2026-10-14): flex: none on the root. An explicit min-inline-size replaces a flex item's automatic content floor, so the first draft let a narrow flex parent shrink the box and the digits spilled past the border; with flex: none the counter overflows its parent instead, as the contract requires (never wrapped or truncated).",
+    "Implementation (2026-10-14): in forced-colors mode the outline color is currentColor, not CanvasText, so the border follows the forced text color of the host (ButtonText in a Button, GrayText in a disabled Button); verified in Chromium 141.",
+    "Implementation (2026-10-14): min-inline-size uses the lh unit (no generated lineHeight helper exists and adding one would change shared tooling); Chromium resolves it in 1/64 px layout units, equal to the laid-out block size, so the browser test compares the minimum with the element's height at 0.005 px and with the token line box at 0.05 px.",
+    "Implementation (2026-10-14): the geometry test asserts width = max(line box, digit + 2 x padding) rather than 'a single digit is square', which the first draft assumed and which is false at comfortable density (padding 6 px per side); the square is still asserted wherever the padding allows it. The code was right; the assertion is the contract's rule.",
+    "Implementation (2026-10-14): the Counter export was added locally to packages/svelte/src/index.ts so that the example page and the tests resolve the component; the orchestrator owns that line, documentation/index.json and examples/index.html.",
+    "Implementation (2026-10-14): the review page is examples/counter (sizes x values 0, 1, 8, 42, 99, 100, 1234; tabular pairs; custom maximums; invalid input; label; next to label and body text of each size and in RTL; inside Buttons of every size, intent, appearance and state; nested opposite mode; constrained width). The Button example keeps its counter fixture until the implementation gate passes, as the fixtures note says.",
+    "Implementation review (user, 2026-10-14): comfortable density keeps the density-dependent padding (a single digit is slightly wider than tall there); the approach recommended by the implementation was validated.",
+    "Implementation review (user, 2026-10-14): the border is attenuated to 70 % of the content color (new semantic role opacity.muted on primitive.opacity.70, contract role borderOpacity), drawn with rgb(from currentColor r g b / borderOpacity); forced colors keep the full-opacity outline. Test assertions follow Chromium's color(srgb …) serialization of the attenuated color.",
+    "Implementation review page (user, 2026-10-14): the border goes away; the container is painted in the content color at 12 % (new semantic role opacity.tint on primitive.opacity.12, contract role surfaceOpacity replacing borderOpacity), rgb(from currentColor r g b / surfaceOpacity). The user compared a 70 % to 0 % border ladder, a gray 40 % background and a currentColor background and chose 'BG Current color' at 12 %. borderWidth stays in the contract for the forced-colors edge only (rule 10), where the system drops the tint. opacity.muted keeps serving the Shortcut.",
+    "Implementation review page (2026-10-14): the digits were not centered (md: ink 3.0 px from the top, 4.8 px from the bottom, because the line box centers the ascender-to-descender box, not the cap height). Fix: text-box: trim-both cap alphabetic on the value and padding-block: calc((1lh - 1cap) / 2) on the container, inside @supports, so the line-box height is unchanged and the ink sits within 0.45 px of center; browsers without text-box keep the untrimmed line box. Contract rule 6 states the centering; the browser test measures the ink on a screenshot.",
+    "Figma (2026-10-14): the Border layers were converted in place into Tint layers (fill bound to counter/foreground, no stroke, opacity bound to opacity/tint = 12 in percent), node IDs kept; the Value texts trim to cap height (leadingTrim CAP_HEIGHT), which detached their text style (leading trim is a style property): the nodes bind the typography variables directly, like the Button labels and the Shortcut keys. The Button's three trailing Counter instances bind the Tint fill to button/foreground.",
+    "Figma (2026-10-14): the overflow state is a boolean-valued variant property Overflow (false, true), shown as a switch, rather than a boolean component property: a boolean property can only show or hide layers and cannot replace the digits by the capped text. The Overflow=true variants show the text property Overflow text (default 99+), so a custom maximum (999+) is typed by the designer; Value applies to the Overflow=false variants.",
+    "Figma (2026-10-14): the container height is bound to typography/indicator/{size}/lineHeight (and so is minWidth) instead of hugging the Value text, because Figma rounds a text layer’s auto height to whole pixels (16, 17, 20 for 15.4, 16.8, 19.6) and the browser height is the line box.",
+    "Figma (2026-10-14): the border is a stroke-only Border rectangle, absolute with SCALE constraints (STRETCH rounds the master’s fractional width and left a 19 px instance with a 19.4 px border), inside stroke bound to border/width/default and counter/foreground, corner radii bound to radius/indicator, layer opacity carrying the 70 % attenuation so that the digits keep their full opacity. Superseded the same day by the Tint layer (see below), which keeps the absolute placement and SCALE constraints.",
+    "Figma (2026-10-14): counter/foreground (hidden adapter collection _ggbrick counter, alias of color/content/primary, scopes TEXT_FILL and STROKE_COLOR) stands for the inherited content color on the Value fill and the Border stroke; the Button will override both bindings of its instance with button/foreground.",
+    "Figma (2026-10-14): the default variant is Size=md, Overflow=false, obtained by placing the md row at the top-left of the set (Figma takes the top-left variant as the default, not the first or last child); rows md, sm, lg and columns Overflow false, true.",
+    "Figma (2026-10-14): the 72 computed records inside Buttons are compared with the resolution of button/foreground per intent × appearance pair (proxy records, 0 failures) because the master is placed inside the Button by the orchestrator after the grouped gate; the Button masters and pages were not touched.",
+    "Figma (2026-10-14): the specification frame follows the Button’s layout and language (header with hero and blueprint Anatomy board using the _Spec/* components and the Wireframe collection, body cards for Variants, States, Behavior & sizing and Usage examples); the Button usage is a text note until the integration.",
+    "Figma (2026-10-14): a number variable bound to layer opacity is read as a percentage, so binding opacity/muted (0.7) rendered the border at 0.7 %. Resolved in the token sync (orchestrator): opacity tokens are emitted ×100 for Figma (opacity/muted = 70, expectations and native verification updated) and the Border binds opacity/muted directly; the temporary mirror variable counter/border-opacity was removed.",
+    "Figma (user review of 2026-10-14): the component adapter variables are grouped in one hidden collection “Components” (modes sm, md, lg) by component name prefix; the former per-component collections were deleted after rebinding. The Button keeps “Components · button style” and “Components · button state” because its shared trailing part needs two independent mode axes (9 pairs × 5 states exceed one collection's modes).",
+    "Done (2026-10-14): documentation page documentation/components/counter.md and index entry written after the wave 1 Figma parity gate; phase set to done within the declared scope. The Figma library and the npm package are not published (delivery approval pending)."
+  ],
+  "openDecisions": [
+    "Tabular figures in Figma: the Plugin API cannot set OpenType features. The user switched them on by hand on the three typography/indicator text styles (2026-10-14); the digit widths at md now measure 16 px for 00, 11, 88 and 10 (tabular). The lg Value layers read the default feature set after their style detached (leading trim); if a narrow digit ever renders proportional at lg, set Numbers → Tabular on the two lg Value layers. Recorded as 36 justified parity records."
+  ],
+  "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",
+  "implementationNotes": [
+    "Svelte: <span class=\"ggb-counter\" data-size data-overflow?> is the root and the container part (no separate target layer: not interactive); <span class=\"ggb-counter__value\"> holds the digits; when label is set a visually hidden <span class=\"ggb-counter__label\"> follows, starting with a space (white-space: pre keeps it) so the accessible text is one phrase (8 unread messages); no role, aria-label or tabindex. Native attributes pass through, class is merged, ref is bindable. No Bits UI primitive: there are no native semantics to borrow.",
+    "Formatting: value -> Number.isFinite ? max(0, floor) : 0; max -> finite ? max(1, floor) : 99; overflow = value > max; text = Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }) of value, or of max followed by U+002B. The locale is the runtime's (server or browser); grouping only shows once max is raised above 999.",
+    "CSS: display inline-grid; place-items center; font from --ggb-counter-typography with the letterSpacing and fontFeatureSettings helpers (tnum) plus font-variant-numeric: tabular-nums; padding-inline var(--ggb-counter-paddingInline); padding-block 0, or calc((1lh - 1cap) / 2) with text-box: trim-both cap alphabetic on the value where supported (@supports), so the digits are centered on their cap height in an unchanged line box; min-inline-size: 1lh (Chromium resolves it in 1/64 px layout units: 15.3906 px for sm, equal to the laid-out block size); flex: none so a flex parent cannot shrink the box below its content; white-space nowrap; border-radius var(--ggb-counter-radius); background: rgb(from currentColor r g b / var(--ggb-counter-surfaceOpacity)); border 0; a transparent inset outline of borderWidth is always present and becomes the edge in forced-colors mode (outline-color: currentColor, which follows the forced text color: CanvasText standalone, ButtonText in a Button, GrayText when the Button is disabled).",
+    "Measured geometry (base, Inter): block size 15.4 / 16.8 / 19.6 px for sm / md / lg in every density; one digit is a square at compact and standard; at comfortable the padding (6 px per side) plus the digit exceeds the line box (sm: 19.1 x 15.4 px), the minimum rule still holds.",
+    "Inside Button: the integration writes <Counter size={buttonSize} value={n} /> in the trailing snippet; the counter is centered in the surface (<= 0.5 px) and inherits the content color in every intent, appearance and state; Button fades the trailing slot while loading and hides it from assistive technology; nothing to do in Counter.",
+    "Figma: page content/counter (149:1547); component set Counter (149:1568) with Size (sm, md, lg) × Overflow (false, true), text properties Value and Overflow text; Value text bound to typography/indicator/{size}/* (family, weight, size, line height, letter spacing; no text style since the leading trim) with leadingTrim CAP_HEIGHT; container height and minWidth bound to the lineHeight variable; Tint rectangle (SCALE constraints) under the digits, fill bound to counter/foreground, radii to radius/indicator, layer opacity to opacity/tint (synced in percent, 12); no stroke; adapter variable counter/foreground in the hidden Components collection. Details in foundations/components/content/counter/figma-spec.md and reports/components/counter/figma/ledger.json.",
+    "Tests: SSR (tests/ssr/counter.test.ts, 6) and browser (tests/browser/counter.spec.ts, 8) as recorded in checks; reports/components/counter/svelte/computed.json holds 1692 records (18 contexts x 3 sizes x default and overflow x container and value parts, plus the inherited color and tint inside 9 intent x appearance Buttons in 4 representative contexts)."
+  ]
+}

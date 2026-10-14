@@ -208,9 +208,11 @@
   --ggb-primitive-opacity-0: 0;
   --ggb-primitive-opacity-5: 0.05;
   --ggb-primitive-opacity-10: 0.1;
+  --ggb-primitive-opacity-12: 0.12;
   --ggb-primitive-opacity-20: 0.2;
   --ggb-primitive-opacity-40: 0.4;
   --ggb-primitive-opacity-60: 0.6;
+  --ggb-primitive-opacity-70: 0.7;
   --ggb-primitive-opacity-80: 0.8;
   --ggb-primitive-opacity-90: 0.9;
   --ggb-primitive-opacity-100: 1;
@@ -322,6 +324,7 @@
   --ggb-radius-container: var(--ggb-primitive-radius-lg);
   --ggb-radius-overlay: var(--ggb-primitive-radius-xl);
   --ggb-radius-full: var(--ggb-primitive-radius-full);
+  --ggb-radius-indicator: var(--ggb-primitive-radius-sm);
   --ggb-border-width-default: var(--ggb-primitive-border-1);
   --ggb-border-width-strong: var(--ggb-primitive-border-2);
   --ggb-focus-width: var(--ggb-primitive-border-2);
@@ -440,6 +443,21 @@
   --ggb-typography-code-sm-fontSize: var(--ggb-primitive-font-size-12);
   --ggb-typography-code-sm-lineHeight: calc(var(--ggb-primitive-font-lineHeight-relaxed) * var(--ggb-primitive-font-size-12));
   --ggb-typography-code-sm-letterSpacing: var(--ggb-primitive-font-tracking-normal);
+  --ggb-typography-indicator-sm: var(--ggb-primitive-font-weight-500) var(--ggb-primitive-font-size-11)/var(--ggb-primitive-font-lineHeight-normal) var(--ggb-primitive-font-family-sans);
+  --ggb-typography-indicator-sm-fontSize: var(--ggb-primitive-font-size-11);
+  --ggb-typography-indicator-sm-lineHeight: calc(var(--ggb-primitive-font-lineHeight-normal) * var(--ggb-primitive-font-size-11));
+  --ggb-typography-indicator-sm-letterSpacing: var(--ggb-primitive-font-tracking-normal);
+  --ggb-typography-indicator-sm-fontFeatureSettings: "tnum";
+  --ggb-typography-indicator-md: var(--ggb-primitive-font-weight-500) var(--ggb-primitive-font-size-12)/var(--ggb-primitive-font-lineHeight-normal) var(--ggb-primitive-font-family-sans);
+  --ggb-typography-indicator-md-fontSize: var(--ggb-primitive-font-size-12);
+  --ggb-typography-indicator-md-lineHeight: calc(var(--ggb-primitive-font-lineHeight-normal) * var(--ggb-primitive-font-size-12));
+  --ggb-typography-indicator-md-letterSpacing: var(--ggb-primitive-font-tracking-normal);
+  --ggb-typography-indicator-md-fontFeatureSettings: "tnum";
+  --ggb-typography-indicator-lg: var(--ggb-primitive-font-weight-500) var(--ggb-primitive-font-size-14)/var(--ggb-primitive-font-lineHeight-normal) var(--ggb-primitive-font-family-sans);
+  --ggb-typography-indicator-lg-fontSize: var(--ggb-primitive-font-size-14);
+  --ggb-typography-indicator-lg-lineHeight: calc(var(--ggb-primitive-font-lineHeight-normal) * var(--ggb-primitive-font-size-14));
+  --ggb-typography-indicator-lg-letterSpacing: var(--ggb-primitive-font-tracking-normal);
+  --ggb-typography-indicator-lg-fontFeatureSettings: "tnum";
   --ggb-shadow-raised: var(--ggb-primitive-shadow-2);
   --ggb-shadow-overlay: var(--ggb-primitive-shadow-3);
   --ggb-shadow-modal: var(--ggb-primitive-shadow-5);
@@ -460,6 +478,8 @@
   --ggb-layer-tooltip: var(--ggb-primitive-layer-tooltip);
   --ggb-opacity-disabled: var(--ggb-primitive-opacity-40);
   --ggb-opacity-scrim: var(--ggb-primitive-opacity-60);
+  --ggb-opacity-muted: var(--ggb-primitive-opacity-70);
+  --ggb-opacity-tint: var(--ggb-primitive-opacity-12);
 }
 :root, [data-ggb-brand], [data-ggb-appearance="light"] {
   --ggb-color-surface-canvas: var(--ggb-color-palette-neutral-0);
@@ -995,6 +1015,7 @@
   --ggb-radius-focus: var(--ggb-primitive-radius-sm);
   --ggb-radius-container: var(--ggb-primitive-radius-sm);
   --ggb-radius-overlay: var(--ggb-primitive-radius-md);
+  --ggb-radius-indicator: var(--ggb-primitive-radius-xs);
 }
 [data-ggb-brand="orchid"] {
   --ggb-color-palette-accent-50: var(--ggb-primitive-color-violet-50);

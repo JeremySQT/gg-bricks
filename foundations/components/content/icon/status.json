@@ -1,0 +1,186 @@
+{
+  "formatStatus": "v1",
+  "componentId": "icon",
+  "family": "content",
+  "wave": 1,
+  "phase": "done",
+  "scope": {
+    "purpose": "Display a vector glyph from the application's icon set at a system size, in the current content color, decorative unless it carries a label.",
+    "useCases": [
+      "An icon next to text: menu items, list rows, navigation entries, form hints (inherits the text color).",
+      "Slot content of Button (leading or trailing), sized by the button.",
+      "A meaningful icon on its own, with a label as accessible name: a status icon in a table cell, a type icon in a file list.",
+      "Five sizes from captions (xs) to empty states and feature headers (xl)."
+    ],
+    "exclusions": [
+      "Bundling an icon set: the application provides the glyphs (decision: Phosphor Icons is the reference set, nothing is bundled).",
+      "Interactive icons: IconButton (wave 1) owns the action, name and target size.",
+      "Multi-color or illustrative artwork, logos, avatars (Avatar, wave 5) and images.",
+      "Loading indicators: Spinner (wave 3); the Button has its own intrinsic indicator.",
+      "Icon fonts and sprite sheets: a glyph is inline vector content."
+    ],
+    "alternatives": [
+      "IconButton for an action without visible text.",
+      "Badge for a status or category with text.",
+      "Spinner for an activity indicator."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": [
+    "Phosphor Icons 2.1.1 regular paths (plus, arrow-right, trash, download-simple, check) in examples and tests, standing in for the application's icon set."
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/content/icon/contract.json",
+      "sha256": "159c7201c40969c2f12a33feb479be56345c69e05843aafb7d604445bc9101b6"
+    },
+    "tokens": [],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "content/icon (149:4)",
+      "componentSet": "149:20",
+      "specification": "152:7",
+      "ledger": "reports/components/icon/figma/ledger.json",
+      "parity": "reports/components/icon/figma/parity.json",
+      "screenshots": ["reports/components/icon/figma/master-set.png", "reports/components/icon/figma/specification.png"]
+    },
+    "figmaSpec": "foundations/components/content/icon/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/icon/Icon.svelte",
+      "folder": "packages/svelte/src/components/icon",
+      "versions": {
+        "svelte": "5.57.1"
+      },
+      "report": "reports/components/icon/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/icon",
+      "preview": "dist/previews/icon.html (npm run build && npm run build:preview icon)",
+      "artifact": "https://claude.ai/artifact/1Q1daFCNrmvupkcBprs9G6 (version 1)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/icon.test.ts",
+      "browser": "tests/browser/icon.spec.ts",
+      "computed": "reports/components/icon/svelte/computed.json",
+      "screenshots": "reports/components/icon/svelte/*.png"
+    },
+    "humanDocs": "documentation/components/icon.md",
+    "agentDocs": "documentation/index.json (entry icon); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Icon contract: size (xs to xl on size.icon), optional label, box and glyph parts, six rules (square box in the current color, reference set conventions, decorative unless labelled, fixed size, no state, host size wins in a slot).",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14 at the grouped contract gate of Icon, Counter and Shortcut: \"Ok pour tout\" on the seven grouped decisions (indicator typography family for Counter and Shortcut, keycap appearance now, platform-driven Shortcut rendering, Counter in inherited color only, pill height from the typography, Button kept as approved, Icon glyph as content with five sizes), with two amendments applied before recording: Phosphor confirmed as the reference icon set, and the Counter made rectangular with a small corner radius (2 or 4 px) instead of a pill so that one and two digits read alike.",
+      "note": "Contract digest recorded after the amendments; implementation approval recorded separately.",
+      "revision": {
+        "paths": ["foundations/components/content/icon/contract.json"],
+        "sha256": {
+          "foundations/components/content/icon/contract.json": "159c7201c40969c2f12a33feb479be56345c69e05843aafb7d604445bc9101b6"
+        }
+      }
+    },
+    "implementation": {
+      "scope": "Svelte implementation of the Icon (interactive implementation review, which is also the design review): svg root sized by size.icon, decorative or named, host sizing inside Button, review page examples/icon.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/icon/Icon.svelte",
+          "packages/svelte/src/components/icon/types.ts",
+          "packages/svelte/src/components/icon/icon.css",
+          "packages/svelte/src/components/icon/contract.generated.ts",
+          "packages/svelte/src/components/icon/tokens.generated.css",
+          "examples/icon/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/icon/Icon.svelte": "086f3ee5330f0fe864605299b095990b33fda693ec49692a6c95b376a14f787a",
+          "packages/svelte/src/components/icon/types.ts": "2845c64674a8b5457596fda104c81b0f2fea2536490166ca66a7a990bfe6f315",
+          "packages/svelte/src/components/icon/icon.css": "16a5dc6e92d73bf95201c984eac18c02320e497a3774f3ca50826eec4429a8b1",
+          "packages/svelte/src/components/icon/contract.generated.ts": "4c538ce8183705efa4f0c5b7c8ee4b7273567415049e517b59e83a2a59831ebd",
+          "packages/svelte/src/components/icon/tokens.generated.css": "1f0ec4fb267b6ec3c00832efb242b98192dec9050a574e719b2a83a67040c29d",
+          "examples/icon/App.svelte": "21f4a0a7755e16c1459190fe1dde84ba28637ef4cac3dbb5b69c4d77542105d0"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, after reviewing the published preview artifacts (grouped implementation gate of Icon, Counter and Shortcut): \"Ok pour la dernière proposition sur la densité, je valide l'approche recommandée\", then \"Pour le counter ça me semble bon, mais visuellement je verrai bien un contour à 70% d'opacité\" (applied), then, for the Shortcut, after comparing 100 %, 85 %, 70 % and a lighter weight on a lab page (https://claude.ai/artifact/L1agvDLoc2hBK3Hqz91reB): \"85% ne me semble pas assez atténué. 70% me semble mieux\" (applied). Approval recorded on the revisions that include these adjustments.",
+      "note": "Automated evidence: Chromium only (SSR and Playwright tests in tests/); no assistive-technology test."
+    },
+    "figmaParity": {
+      "scope": "Figma component set Icon (149:20, 5 variants Size xs to xl, Glyph instance-swap property on the local _Fixture/Icon set), specification frame 152:7, parity report (360 records, 0 failures: width, height and glyph fill per size in 18 contexts plus drawing size and inset), Icon masters placed in the Button leading and trailing slots.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/icon/figma-spec.md",
+          "reports/components/icon/figma/parity.json",
+          "reports/components/icon/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/content/icon/figma-spec.md": "928a1318186644c41d49377870a0e080734121b179912c3f35aadd96e4a40674",
+          "reports/components/icon/figma/parity.json": "52449f9642621550de7713c57c50055aded772a888b04291517f1f1f9a606660",
+          "reports/components/icon/figma/ledger.json": "9c0af03798885a63b9149d0eeb0ace6a025428d105616d9493f9180e4fbbb3f1"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "page": "149:4",
+          "componentSet": "149:20",
+          "specificationFrame": "152:7"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, at the grouped wave 1 Figma parity gate (Icon, Counter, Shortcut and the Button with the real slot content), after reviewing the Figma pages, the master and specification screenshots, the parity reports and the preview artifacts: \"Très bien le counter comme ça, jolie travail.\" then, asked whether the validation covered the whole gate, \"La validation porte sur la parité figma de la vague 1. On peut avancer.\"",
+      "note": "Library not published (publication needs explicit authorization). Glyphs are local Phosphor fixtures until a Phosphor library is attached (justified difference 3 of the Figma specification)."
+    },
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/icon/svelte/ssr.json",
+      "date": "2026-10-14",
+      "note": "4 tests: svg root and defaults, label semantics, sizes and viewBox, attribute pass-through."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "npx playwright test tests/browser/icon.spec.ts",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-14",
+      "note": "4 Chromium tests: sizes in 18 contexts (270 computed records), decorative versus named, host sizing and layout, axe light and dark."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build:preview icon",
+      "date": "2026-10-14"
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/icon-parity.plugin.js; node authoring/adapters/figma/icon-parity-report.mjs <result>",
+      "report": "reports/components/icon/figma/parity.json",
+      "date": "2026-10-14",
+      "note": "360 records (270 computed records: width, height, glyph fill per size in 18 contexts; 90 drawing-inset records), 0 failures. Justified differences listed in figma-spec.md (label, glyph source, local fixtures, color override instead of currentColor)."
+    }
+  ],
+  "decisionsTaken": [
+    "The glyph is content supplied by the host (a drawing), not a name looked up in a bundled set: ggbrick bundles no icons (authoring/decisions.md, Icons). The implementation exposes the drawing's coordinate box as an option so that icon sets with another grid still render.",
+    "Five sizes, bound to size.icon.{xs,sm,md,lg,xl} (12, 16, 20, 24, 32 px), density-independent as every icon size; default md to match the md Button.",
+    "Decorative by default: a lone icon without label is hidden from assistive technology; a label turns it into an image with that accessible name. No separate boolean: the presence of label decides.",
+    "No color option: the icon paints in the current content color; a host that needs another color wraps it in a colored container (as Button does through its content color).",
+    "No states and no interaction: the icon is static content.",
+    "Inside a Button slot the button's icon size wins over the size option, so that slot content always matches the button size (Button contract rule).",
+    "The reference set's 1/8 inset is a documented convention, not an option: hosts that apply optical spacing (Button) assume it; glyphs from sets with another inset are supported but sit slightly off in those hosts.",
+    "Contract gate (user, 2026-10-14): glyph passed as content with a coordinate-box option defaulting to the Phosphor grid; five sizes kept. Phosphor Icons confirmed as the reference set (nothing bundled: the application supplies the glyphs).",
+    "Implementation: the svg element is the component root (not wrapped in a span), so that hosts that select their slot's svg (Button) size and offset the Icon exactly as a raw glyph; attributes pass through to the svg.",
+    "Implementation: a blank label counts as no label (decorative), so an empty string from a binding never yields an unnamed image.",
+    "Review page: the disabled-color sample was replaced by a tertiary-color sample because disabled text on the canvas is below 4.5:1 and fails the axe audit; the test assertion follows (a page choice, not a component change).",
+    "Figma: the Icon master is a Size variant set whose Glyph is an instance-swap property defaulting to the _Fixture/Icon set (Phosphor fixtures), instead of Name variants per glyph: the glyph is content, so it is swapped, not enumerated. Size=md is the default variant. The _Fixture/Icon set stays on the Utilities page as the glyph source until a Phosphor library is attached.",
+    "Done (2026-10-14): documentation page documentation/components/icon.md and index entry written after the wave 1 Figma parity gate; phase set to done within the declared scope. The Figma library and the npm package are not published (delivery approval pending)."
+  ],
+  "openDecisions": [],
+  "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",
+  "implementationNotes": [
+    "Svelte: Icon renders a single svg root element (class ggb-icon, data-size, viewBox option defaulting to the Phosphor grid 0 0 256 256, fill currentColor, width and height from size.icon) whose content is the children snippet. A single svg root keeps the Button slot selectors (.ggb-button__leading > svg) working, so the button sizes and optically offsets the icon as it does today with raw svg fixtures.",
+    "Accessibility: without label, aria-hidden=\"true\" and focusable=\"false\"; with label, role=\"img\" and aria-label.",
+    "Layout: display inline-block, vertical-align middle, flex none, so the icon aligns with text and never shrinks in a flex row."
+  ]
+}

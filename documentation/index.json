@@ -20,6 +20,63 @@
         "API",
         "Accessibility"
       ]
+    },
+    {
+      "id": "icon",
+      "import": "Icon",
+      "from": "@ggbrick/svelte",
+      "purpose": "Shows a vector glyph from the application's icon set (Phosphor conventions) at one of five system sizes in the current text color; decorative unless it carries a label, which makes it a named image; content of Button slots.",
+      "whenNotToUse": "Actions without visible text (IconButton, planned), multi-color artwork, logos and avatars (Avatar, planned), activity indicators (Spinner, planned), statuses with text (Badge, planned), icon fonts and sprite sheets.",
+      "documentation": "icon.md",
+      "contract": "foundations/components/content/icon/contract.json",
+      "sections": [
+        "Overview",
+        "When to use",
+        "When not to use",
+        "Anatomy",
+        "Usage guidelines",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "counter",
+      "import": "Counter",
+      "from": "@ggbrick/svelte",
+      "purpose": "Shows a quantity next to the thing it counts as a small rectangle in the inherited text color on a faint tint of it; overflow above a maximum (99+), tabular figures, three sizes named like Button; accessible phrase with label (8 unread messages); content of the Button trailing slot.",
+      "whenNotToUse": "Statuses or categories in words (Badge, planned), free text or amounts (plain text), a dot without a number, editing a quantity (NumberInput, planned), live announcements (integration), colored emphasis (not in this version).",
+      "documentation": "counter.md",
+      "contract": "foundations/components/content/counter/contract.json",
+      "sections": [
+        "Overview",
+        "When to use",
+        "When not to use",
+        "Anatomy",
+        "Usage guidelines",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "shortcut",
+      "import": "Shortcut",
+      "from": "@ggbrick/svelte",
+      "purpose": "Shows a keyboard combination written once in a platform-neutral notation (Mod+K) in the conventions of the user's platform (⌘K or Ctrl+K), plain beside a label or as keycaps on a neutral surface, with a spoken equivalent for assistive technology; content of the Button trailing slot.",
+      "whenNotToUse": "Key sequences (compose two shortcuts), handling the keys (the application binds them), a shortcut quoted in a sentence (plain text), quantities (Counter), statuses (Badge, planned), gestures, keycaps inside a Button or on a colored control.",
+      "documentation": "shortcut.md",
+      "contract": "foundations/components/content/shortcut/contract.json",
+      "sections": [
+        "Overview",
+        "When to use",
+        "When not to use",
+        "Anatomy",
+        "Usage guidelines",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
     }
   ]
 }
