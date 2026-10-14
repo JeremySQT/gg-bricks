@@ -15,6 +15,28 @@
     title: pct === 70 ? '70 % (actuel)' : pct === 0 ? '0 % (sans contour)' : `${pct} %`
   }));
 
+  const fills = [
+    { id: 'o40', title: 'Contour 40 % (référence)', note: 'Pas de fond, contour currentColor à 40 %.' },
+    {
+      id: 'bg8',
+      title: 'Fond currentColor 8 %',
+      note: 'Teinte de la couleur du texte : suit tout hôte, même un bouton plein.'
+    },
+    { id: 'bg12', title: 'Fond currentColor 12 %', note: 'Idem, un peu plus présent.' },
+    { id: 'bg20', title: 'Fond currentColor 20 %', note: 'Idem, lecture de badge.' },
+    {
+      id: 'bggrey',
+      title: 'Fond gris neutre 40 %',
+      note: 'neutral/500 à 40 % : gris fixe, suit la surface mais pas la couleur du bouton.'
+    },
+    {
+      id: 'bgmuted',
+      title: 'Fond surface.muted',
+      note: 'Rôle de surface du thème (clair/sombre), indépendant du bouton.'
+    },
+    { id: 'bg12b', title: 'Fond 12 % + contour 40 %', note: 'Les deux combinés.' },
+    { id: 'o0', title: 'Rien (0 %)', note: 'Chiffres seuls.' }
+  ];
   let brand = $state('base');
   let density = $state('standard');
   let zoom = $state(4);
@@ -94,6 +116,43 @@
         {#each opacities as o (o.id)}
           <div class={`column fix ${o.id}`}>
             <p class="panel-title">{o.title}</p>
+            <div class="real">
+              {#each sizes as s (s)}
+                <span class="inline"
+                  >Inbox <Counter value={8} size={s} />
+                  <Counter value={42} size={s} />
+                  <Counter value={120} size={s} /></span
+                >
+              {/each}
+              <Button label="Inbox" intent="neutral" appearance="outline" trailing={counterMd} />
+              <Button label="Inbox" intent="neutral" appearance="ghost" trailing={counterMd} />
+              <Button label="Inbox" intent="accent" trailing={counterMd} />
+              <Button label="Inbox" intent="neutral" trailing={counterMd} />
+              <div class="zoomed small" style:zoom={2}>
+                <span class="guide"><Counter value={8} size="md" /></span><span class="guide"
+                  ><Counter value={42} size="md" /></span
+                >
+              </div>
+            </div>
+          </div>
+        {/each}
+      </div>
+    </section>
+  {/each}
+
+  {#each ['light', 'dark'] as mode (mode)}
+    <section class="block mode" data-ggb-appearance={mode}>
+      <h2>3. Fond plutôt que contour · {mode}</h2>
+      <p>
+        Les fonds « currentColor » prennent la couleur du texte de l'hôte à faible opacité : sombres sur une surface
+        claire, clairs dans un bouton plein, sans aucun réglage. Le gris neutre et le rôle surface.muted suivent le
+        thème mais pas la couleur d'un bouton plein.
+      </p>
+      <div class="columns four">
+        {#each fills as f (f.id)}
+          <div class={`column fix ${f.id}`}>
+            <p class="panel-title">{f.title}</p>
+            <p class="note">{f.note}</p>
             <div class="real">
               {#each sizes as s (s)}
                 <span class="inline"
@@ -275,6 +334,38 @@
   }
   .o0 :global(.ggb-counter) {
     --ggb-counter-borderOpacity: 0;
+  }
+  /* Lab rule: background candidates instead of the border. */
+  .bg8 :global(.ggb-counter),
+  .bg12 :global(.ggb-counter),
+  .bg20 :global(.ggb-counter),
+  .bggrey :global(.ggb-counter),
+  .bgmuted :global(.ggb-counter) {
+    box-shadow: none;
+  }
+  .bg8 :global(.ggb-counter) {
+    background: rgb(from currentColor r g b / 0.08);
+  }
+  .bg12 :global(.ggb-counter),
+  .bg12b :global(.ggb-counter) {
+    background: rgb(from currentColor r g b / 0.12);
+  }
+  .bg20 :global(.ggb-counter) {
+    background: rgb(from currentColor r g b / 0.2);
+  }
+  .bggrey :global(.ggb-counter) {
+    background: rgb(from var(--ggb-primitive-color-neutral-500) r g b / 0.4);
+  }
+  .bgmuted :global(.ggb-counter) {
+    background: var(--ggb-color-surface-muted);
+  }
+  .o40 :global(.ggb-counter),
+  .bg12b :global(.ggb-counter) {
+    --ggb-counter-borderOpacity: 0.4;
+  }
+  .note {
+    font: var(--ggb-typography-caption-md);
+    min-block-size: 2.4em;
   }
   @media (max-width: 1100px) {
     .columns.four,
