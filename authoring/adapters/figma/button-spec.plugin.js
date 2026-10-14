@@ -390,7 +390,7 @@ l2.appendChild(lt2);
 lt2.x = 24;
 lt2.y = (80 - lt2.height) / 2;
 const dim = (ch, x, w) => {
-  const y = SY + 128;
+  const y = SY + 120;
   const l = figma.createLine();
   l.resize(w, 0);
   l.x = SX + x;
@@ -484,6 +484,22 @@ rdiv.resize(100, 1);
 fill(rdiv, 'wireframe/divider');
 root.appendChild(rdiv);
 rdiv.layoutSizingHorizontal = 'FILL';
+// Center each blueprint board's drawing vertically (user review of 2026-10-14); the legend elements
+// (callouts, markers, leader and dimension lines) keep their position relative to the drawing.
+const centerBoards = (frame) => {
+  const isLegend = (k) =>
+    k.type === 'LINE' ||
+    (k.type === 'INSTANCE' && ['115:6', '115:8'].includes(k.mainComponent.id)) ||
+    (k.type === 'TEXT' && k.characters.length <= 2);
+  for (const b of frame.findAll((n) => n.type === 'FRAME' && n.fills.some((f) => f.type === 'IMAGE'))) {
+    const draw = b.children.filter((k) => !isLegend(k));
+    const top = Math.min(...draw.map((k) => k.y)),
+      bottom = Math.max(...draw.map((k) => k.y + k.height));
+    const dy = Math.round(b.height / 2 - (top + bottom) / 2);
+    for (const k of b.children) k.y += dy;
+  }
+};
+centerBoards(root);
 return { root: root.id };
 
 // ---- Part 2 ----

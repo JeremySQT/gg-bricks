@@ -164,5 +164,11 @@
     "A Figma text layer's auto height is rounded to whole pixels (16 for a 15.4 line height), so the container height is bound to the lineHeight variable instead of hugging the text.",
     "STRETCH constraints on an absolute child round the master's fractional width; the Border uses SCALE constraints, which keep it equal to the box in every instance.",
     "A number variable bound to layer opacity is read as a percentage: the token sync emits opacity variables ×100 (opacity/muted = 70); the former mirror variable counter/border-opacity (VariableID:158:250) was removed on 2026-10-14."
+  ],
+  "maintenance": [
+    {
+      "date": "2026-10-14",
+      "change": "Blueprint boards: the drawing is centered vertically in each board and the legend elements follow (user review of the wave 1 Figma parity gate, 2026-10-14); the builder script applies the same pass (centerBoards)."
+    }
   ]
 }

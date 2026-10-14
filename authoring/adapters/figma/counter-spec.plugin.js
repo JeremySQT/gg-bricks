@@ -742,6 +742,22 @@ right.appendChild(
 ex.appendChild(right);
 ue.appendChild(ex);
 ex.layoutSizingHorizontal = 'FILL';
+// Center each blueprint board's drawing vertically (user review of 2026-10-14); the legend elements
+// (callouts, markers, leader and dimension lines) keep their position relative to the drawing.
+const centerBoards = (frame) => {
+  const isLegend = (k) =>
+    k.type === 'LINE' ||
+    (k.type === 'INSTANCE' && ['115:6', '115:8'].includes(k.mainComponent.id)) ||
+    (k.type === 'TEXT' && k.characters.length <= 2);
+  for (const b of frame.findAll((n) => n.type === 'FRAME' && n.fills.some((f) => f.type === 'IMAGE'))) {
+    const draw = b.children.filter((k) => !isLegend(k));
+    const top = Math.min(...draw.map((k) => k.y)),
+      bottom = Math.max(...draw.map((k) => k.y + k.height));
+    const dy = Math.round(b.height / 2 - (top + bottom) / 2);
+    for (const k of b.children) k.y += dy;
+  }
+};
+centerBoards(root);
 return {
   root: root.id,
   height: Math.round(root.height),

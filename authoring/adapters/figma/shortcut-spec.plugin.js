@@ -345,9 +345,9 @@ cap('2 Key', OX, 75, 'Ctrl');
 const sp = rect('3 Separator', OX + 85, OY, 20, CH, null, 0);
 inkText(sp, '+', 28, 20, CH);
 cap('2 Key', OX + 115, 45, 'K');
-pin(dg, 2, OX + 37, 44, OX + 37, OY);
-pin(dg, 3, OX + 95, 44, OX + 95, OY + 8);
-pin(dg, 1, OX + 80, 256, OX + 80, OY + CH + 10);
+pin(dg, 2, OX + 37, 35, OX + 37, OY);
+pin(dg, 3, OX + 95, 35, OX + 95, OY + 8);
+pin(dg, 1, OX + 80, 223, OX + 80, OY + CH + 10);
 anRow.appendChild(dg);
 const legend = stack('Legend', 'VERTICAL', 12);
 fill(legend, 'wireframe/canvas');
@@ -397,15 +397,16 @@ const line = (x, y, len, rot) => {
   sd.appendChild(l);
   return l;
 };
-const dim = (ch, x, w, y) => {
+// Dimension row: the callout sits 21 px below the line (or above it, side -1) so that the rows stay inside the board.
+const dim = (ch, x, w, y, side = 1) => {
   line(SX + x, y, w, 0);
   for (const tx of [x, x + w]) line(SX + tx, y + 4, 8, 90);
-  callout(ch, sd, SX + x + w / 2, y + 26);
+  callout(ch, sd, SX + x + w / 2, y + side * 21);
 };
-const Y1 = SY + 18 * Z + 20;
+const Y1 = SY + 18 * Z + 10;
 dim('A', 1 * Z, 4 * Z, Y1);
 dim('C', 18 * Z, 4 * Z, Y1);
-dim('B', 0, 1 * Z, Y1 + 50);
+dim('B', 0, 1 * Z, SY - 12, -1);
 const vx = SX + 40 * Z + 28;
 line(vx, SY + 18 * Z, 18 * Z, 90);
 for (const ty of [SY, SY + 18 * Z]) line(vx - 4, ty, 8, 0);
@@ -797,6 +798,22 @@ right.appendChild(
 ex.appendChild(right);
 ue.appendChild(ex);
 ex.layoutSizingHorizontal = 'FILL';
+// Center each blueprint board's drawing vertically (user review of 2026-10-14); the legend elements
+// (callouts, markers, leader and dimension lines) keep their position relative to the drawing.
+const centerBoards = (frame) => {
+  const isLegend = (k) =>
+    k.type === 'LINE' ||
+    (k.type === 'INSTANCE' && ['115:6', '115:8'].includes(k.mainComponent.id)) ||
+    (k.type === 'TEXT' && k.characters.length <= 2);
+  for (const b of frame.findAll((n) => n.type === 'FRAME' && n.fills.some((f) => f.type === 'IMAGE'))) {
+    const draw = b.children.filter((k) => !isLegend(k));
+    const top = Math.min(...draw.map((k) => k.y)),
+      bottom = Math.max(...draw.map((k) => k.y + k.height));
+    const dy = Math.round(b.height / 2 - (top + bottom) / 2);
+    for (const k of b.children) k.y += dy;
+  }
+};
+centerBoards(root);
 return {
   root: root.id,
   h: Math.round(root.height),

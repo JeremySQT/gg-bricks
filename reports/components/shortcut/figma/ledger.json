@@ -219,6 +219,10 @@
     "parity": "authoring/adapters/figma/shortcut-parity.plugin.js (one run per brand) + shortcut-parity-report.mjs"
   },
   "maintenance": [
-    "2026-10-14: the six Plain variants re-bound from the mirror variable shortcut/plain-opacity (VariableID:155:874, removed) to opacity/muted (VariableID:145:3), now synced in percent (70) by the token sync; effective opacity 0.7 verified on an instance."
+    "2026-10-14: the six Plain variants re-bound from the mirror variable shortcut/plain-opacity (VariableID:155:874, removed) to opacity/muted (VariableID:145:3), now synced in percent (70) by the token sync; effective opacity 0.7 verified on an instance.",
+    {
+      "date": "2026-10-14",
+      "change": "Blueprint boards: the drawing is centered vertically in each board and the legend elements follow (user review of the wave 1 Figma parity gate, 2026-10-14); the builder script applies the same pass (centerBoards). The Anatomy leaders were shortened (24 px margins) and the Keycap board's dimension rows moved next to the caps, B above the first cap, so that the legend stays inside the board."
+    }
   ]
 }

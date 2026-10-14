@@ -18,20 +18,52 @@
     "Size": {
       "type": "VARIANT",
       "default": "md",
-      "options": ["xs", "sm", "md", "lg", "xl"]
+      "options": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
     },
     "Glyph#149:0": {
       "type": "INSTANCE_SWAP",
       "default": "42:7",
-      "preferredValues": [{ "type": "COMPONENT_SET", "key": "e4274aabe7dd8c91160067313105398e1c7421ed", "name": "_Fixture/Icon" }]
+      "preferredValues": [
+        {
+          "type": "COMPONENT_SET",
+          "key": "e4274aabe7dd8c91160067313105398e1c7421ed",
+          "name": "_Fixture/Icon"
+        }
+      ]
     }
   },
   "variants": {
-    "Size=xs": { "id": "149:5", "glyph": "149:6", "size": "VariableID:5:79" },
-    "Size=sm": { "id": "149:8", "glyph": "149:9", "size": "VariableID:5:80" },
-    "Size=md": { "id": "149:11", "glyph": "149:12", "size": "VariableID:5:81" },
-    "Size=lg": { "id": "149:14", "glyph": "149:15", "size": "VariableID:5:82" },
-    "Size=xl": { "id": "149:17", "glyph": "149:18", "size": "VariableID:5:83" }
+    "Size=xs": {
+      "id": "149:5",
+      "glyph": "149:6",
+      "size": "VariableID:5:79"
+    },
+    "Size=sm": {
+      "id": "149:8",
+      "glyph": "149:9",
+      "size": "VariableID:5:80"
+    },
+    "Size=md": {
+      "id": "149:11",
+      "glyph": "149:12",
+      "size": "VariableID:5:81"
+    },
+    "Size=lg": {
+      "id": "149:14",
+      "glyph": "149:15",
+      "size": "VariableID:5:82"
+    },
+    "Size=xl": {
+      "id": "149:17",
+      "glyph": "149:18",
+      "size": "VariableID:5:83"
+    }
   },
   "bindings": {
     "width": "size/icon/{size} (Brand)",
@@ -66,11 +98,20 @@
   },
   "evidence": {
     "parity": "reports/components/icon/figma/parity.json",
-    "screenshots": ["reports/components/icon/figma/master-set.png", "reports/components/icon/figma/specification.png"],
+    "screenshots": [
+      "reports/components/icon/figma/master-set.png",
+      "reports/components/icon/figma/specification.png"
+    ],
     "scripts": [
       "authoring/adapters/figma/icon-spec.plugin.js",
       "authoring/adapters/figma/icon-parity.plugin.js",
       "authoring/adapters/figma/icon-parity-report.mjs"
     ]
-  }
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-14",
+      "change": "Blueprint boards: the drawing is centered vertically in each board and the legend elements follow (user review of the wave 1 Figma parity gate, 2026-10-14); the builder script applies the same pass (centerBoards)."
+    }
+  ]
 }

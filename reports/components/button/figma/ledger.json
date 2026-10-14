@@ -427,6 +427,10 @@
     {
       "date": "2026-10-14",
       "change": "Wave 1 integration: the Leading icon of the 135 variants swapped from _Fixture/Icon to the Icon component (149:11), size re-bound to button/icon-size and the glyph fill to button/foreground (an override of the former vector fill landed on the Glyph instance frame after the swap and was cleared); _Button/Trailing rebuilt as Type × Size with the Icon, Counter and Shortcut masters, every Button variant setting Size on its Trailing item; the six specification instances carrying a glyph choice (Delete, Download report, Inbox ×2, Export…, Download) re-bound to the Icon component with the right Glyph; the Anatomy sentence of the specification updated. Parity re-measured: 666 cases identical to the approved measurement (hash comparison, base-light re-read in full), slot geometry 108 records, 0 failures (counter heights now 15.4/16.8/19.6). Fixtures _Fixture/Counter and _Fixture/Shortcut removed."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Blueprint boards: the drawing is centered vertically in each board and the legend elements follow (user review of the wave 1 Figma parity gate, 2026-10-14); the builder script applies the same pass (centerBoards). The Spacing diagram's dimension row sits 8 px closer to the zoomed container."
     }
   ]
 }
