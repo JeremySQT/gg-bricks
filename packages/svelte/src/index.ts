@@ -8,3 +8,6 @@ export type { IconSize } from './components/icon/contract.generated.js';
 export { default as Counter } from './components/counter/Counter.svelte';
 export type { CounterProps } from './components/counter/types.js';
 export type { CounterSize } from './components/counter/contract.generated.js';
+export { default as Shortcut } from './components/shortcut/Shortcut.svelte';
+export type { ShortcutProps } from './components/shortcut/types.js';
+export type { ShortcutPlatform, ShortcutAppearance, ShortcutSize } from './components/shortcut/contract.generated.js';

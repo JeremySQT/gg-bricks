@@ -39,9 +39,28 @@
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/shortcut/Shortcut.svelte",
+      "folder": "packages/svelte/src/components/shortcut",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "none (kbd element, no primitive needed)"
+      },
+      "report": "reports/components/shortcut/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/shortcut",
+      "preview": "dist/previews/shortcut.html (npm run build && npm run build:preview shortcut)",
+      "artifact": null
+    },
+    "tests": {
+      "unit": "tests/shortcut-keys.test.ts",
+      "ssr": "tests/ssr/shortcut.test.ts",
+      "browser": "tests/browser/shortcut.spec.ts",
+      "computed": "reports/components/shortcut/svelte/computed.json",
+      "screenshots": "reports/components/shortcut/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -78,6 +97,43 @@
       "report": "reports/components/shortcut/contrast.json",
       "date": "2026-10-13",
       "note": "No content role (the text inherits the context color, which owns its legibility). The border role (color.border.default) is informational on the six contrastScope backdrops: a keycap outline is decorative framing; without the exemption it measures 1.14 to 2.26 across the 18 contexts. See decisionsTaken and open decision 1."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-14",
+      "note": "generate, lint, validate, unit tests, svelte-check, SSR, build."
+    },
+    {
+      "kind": "unit",
+      "result": "passed",
+      "command": "npm test",
+      "date": "2026-10-14",
+      "note": "10 tests of keys.ts (tests/shortcut-keys.test.ts): aliases and case, empty token, Mod resolution, modifier order on both platforms, glyphs and short names, separators, arrows and Plus, spoken text, unknown literal, platform detection."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/shortcut/svelte/ssr.json",
+      "date": "2026-10-14",
+      "note": "5 tests: other form on the server for auto, forced mac and other, 2 appearances x 3 sizes, label, class merge and native attributes, empty keys and empty token."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-14",
+      "note": "8 Chromium tests: parsed order, glyphs, separators and spoken text (9 combinations x 2 platforms x 2 appearances), accessible names, keycap geometry in 3 densities, inherited color in 9 Button intent x appearance plus hover, disabled, loading and menu items, one line and baseline, computed values (4104 records, 18 contexts), forced colors, axe light and dark, mobile width. The whole suite (Button 9 + Shortcut 8) was run once after."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build:preview shortcut",
+      "date": "2026-10-14",
+      "note": "dist/previews/shortcut.html (1460 kB), single bundle, mounts from file:// without errors in Chromium."
     }
   ],
   "decisionsTaken": [
@@ -97,20 +153,36 @@
     "No token addition: every role reuses the approved semantic inventory. A smaller text role (typography.label.xs, 11 px) would only serve Button sm, where the shortcut is otherwise as large as the label; proposed as open decision 2, not created.",
     "Key sequences, a format override and localized spoken words are excluded from wave 1 and recorded as exclusions, so that the contract stays a display of one combination.",
     "Contract gate (user, 2026-10-14): typography bound to typography.indicator.{size} (11/12/14 px, one step below the host label) instead of typography.label.{size}, default size md: the consumer passes the host's size unchanged (Button md gives Shortcut md), the same convention as Counter. The earlier notes about typography.label and a one-step-below mapping are superseded by this decision.",
-    "Contract gate (user, 2026-10-14): keycap appearance kept in wave 1 with color.border.default informational on the neutral backdrops; platform-driven rendering without a format option; platform values auto, mac, other confirmed."
+    "Contract gate (user, 2026-10-14): keycap appearance kept in wave 1 with color.border.default informational on the neutral backdrops; platform-driven rendering without a format option; platform values auto, mac, other confirmed.",
+    "Implementation (2026-10-14): no Bits UI primitive. A kbd element carries the native semantics of a key combination and Bits UI has no primitive for it; the component is plain Svelte with the generated bindings.",
+    "Implementation (2026-10-14): data-platform reflects the resolved platform (mac or other) rather than the prop value auto, so that styles, Figma parity and tests read what is rendered; data-appearance and data-size reflect the props as usual.",
+    "Implementation (2026-10-14): an empty token (Ctrl+, Ctrl++K) is dropped rather than rendered as an empty key part: there is nothing to show and an empty cap would be a visible artifact; the + key is written Plus as the contract says. A modifier named twice (Mod+Ctrl on other) counts once. Tokens are trimmed (Ctrl + K). None of these throw.",
+    "Implementation (2026-10-14): the keycap border is a real CSS border inside a border-box cap (not an inset box-shadow): the contract defines the cap height as the line box plus two borders, and a real border survives forced-colors mode without an extra outline.",
+    "Implementation (2026-10-14): the square minimum of a cap is min-inline-size: calc(1lh + 2 * borderWidth); 1lh is the key line box (supported by current Chromium, Firefox and Safari). The generated bindings carry no lineHeight helper and the contract rule is expressed in terms of the line height, so the CSS unit is used rather than a new helper. Chromium resolves 1lh about 0.17 px above the laid-out line box at 11 px; invisible at 1x.",
+    "Implementation (2026-10-14): the separator is a flex item of the keycap container, so on other the sequence cap, +, cap has keyGap between each pair (the + glyph is wider than keyGap and cannot sit inside one gap); on mac caps are exactly keyGap apart.",
+    "Implementation (2026-10-14): platform detection runs in onMount, after hydration, rather than during the first render, so that server and client markup match; the one-paint flip on Apple platforms is accepted as the status foresaw. No Svelte context for the platform in v1.",
+    "Implementation (2026-10-14): the accessible text is a visually hidden span (1 px, clipped) inside the root; aria-label on a kbd is unreliable. A blank label is ignored. The browser test checks the name through native hosts (a button, a tooltip) because a kbd root has no role of its own.",
+    "Implementation (2026-10-14): browser test corrections, code unchanged: expected name \"Delete line Command Shift K\" corrected to \"Delete line Shift Command K\" (contract mac order); \"single cap is square within 0.05 px\" replaced by the contract rule (width at least the height) plus \"width equals the greater of the square minimum and glyph + padding within 0.5 px\"; display read on an inline sample rather than a blockified flex item; line-height compared numerically."
   ],
-  "openDecisions": [],
-  "nextAction": "Implementation (ggb-svelte), grouped implementation gate with Icon and Counter.",
+  "openDecisions": [
+    {
+      "id": 1,
+      "question": "Comfortable density: keyPaddingInline (space.content.xs, 6 px) makes a single-letter keycap wider than tall at sm and md (21.6 x 17.4 px at sm), while compact and standard give square caps. Keep the density-following padding, or bind keyPaddingInline to a density-independent value so that single caps stay square everywhere?",
+      "recommendation": "Keep: the contract rule (at least as wide as tall) holds, the difference is 2 to 4 px in the roomiest density only, and a new binding would reopen the contract gate."
+    }
+  ],
+  "nextAction": "Implementation gate (grouped with Icon and Counter): review dist/previews/shortcut.html, then Figma parity (ggb-figma).",
   "implementationNotes": [
-    "Markup: a kbd root (container) holding one nested kbd per key, which is the HTML pattern for a combination; separators are plain text spans. kbd has no implicit ARIA role, so the spoken equivalent is carried by a visually hidden span inside the root (aria-label on a generic element is unreliable), and the visible key parts and separators are aria-hidden.",
-    "Platform detection for auto: navigator.userAgentData.platform when available, otherwise navigator.platform, matched against Mac, iPhone, iPad and iPod. Server rendering cannot know the platform: render the other form on the server and correct after hydration (one-paint flip, acceptable for a hint), or let the application force platform from its own detection or a user preference. Consider a Svelte context so that an app sets the platform once.",
-    "Parsing is done once from keys: split on +, map aliases case-insensitively, uppercase single letters in the parsed model (not with CSS text-transform), so that the visible key and the spoken word come from the same model. An empty or unknown token is shown as written; the component never throws on content.",
-    "Glyphs: Inter covers ⌘ ⇧ ⌥ ⌃ and the arrows; ↩ ⎋ ⇥ ⌫ ⌦ ↖ ↘ ⇞ ⇟ come from the system fallback of the typography font stack. Keep the token font stack; do not switch to a monospace family. Check the vertical alignment of fallback glyphs in the implementation review.",
-    "Plain appearance: display inline (or inline-flex for alignment) with the typography token, white-space nowrap, color inherit, no font-size override from the context (the size prop fixes it). Inside the Button trailing slot the slot is a flex container with min-block-size iconSize that centers the shortcut box; no compensation like the icon's optical margin.",
-    "Keycap appearance: each key is inline-flex, box-sizing border-box, min-inline-size equal to its computed block size (square single characters), border borderWidth solid border, border-radius radius, padding-inline keyPaddingInline, background surface; container is inline-flex with gap keyGap and the separator as a flex item. Logical properties throughout. forced-colors: border-color CanvasText and background Canvas.",
-    "Inside Button: the consumer passes size one step below the button size (sm for md, md for lg). A later Button change could set it automatically through a context; not in the Button contract today.",
+    "Markup: <kbd class=\"ggb-shortcut\" data-platform data-appearance data-size> holding a visually hidden <span class=\"ggb-shortcut__name\"> (the spoken equivalent, or label when non-blank) and <span class=\"ggb-shortcut__container\" aria-hidden=\"true\"> with one nested <kbd class=\"ggb-shortcut__key\" data-key data-kind> per resolved key and a <span class=\"ggb-shortcut__separator\">+</span> between keys on other. No role, no aria-label. data-platform carries the resolved platform (mac or other), never auto.",
+    "Parsing lives in keys.ts (pure TypeScript, unit-tested): parseKeys splits on +, trims, maps aliases ignoring case, uppercases single letters, drops empty tokens, keeps unknown names as literals; resolveShortcut maps Mod, collapses a modifier named twice, orders modifiers per platform (mac Ctrl, Alt, Shift, Meta; other Meta, Ctrl, Alt, Shift), then the other keys in the given order, and yields text, spoken word and separator; it never throws.",
+    "Platform auto: the server and the first browser render use the other form (hydration matches), then onMount runs detectPlatform (navigator.userAgentData.platform, else navigator.platform, matching Mac, iPhone, iPad, iPod, iOS) and the component re-renders once. mac and other bypass detection. No Svelte context in v1: an application that knows the platform passes it.",
+    "CSS: root display inline-flex, vertical-align baseline (the baseline of the first key), font from --ggb-shortcut-typography with the letterSpacing and fontFeatureSettings helpers, white-space nowrap, color inherit; UA kbd styles (monospace, smaller size) reset on root and keys. Keys and separators are inline-flex items; the container has gap 0 in plain.",
+    "Keycap: [data-appearance=keycap] gives the container gap keyGap and each key a real border (borderWidth solid border, box-sizing border-box, so the cap is the line box plus two borders tall: 17.4, 18.8, 21.6 px), border-radius radius, padding-inline keyPaddingInline, no block padding, background surface, min-inline-size calc(1lh + 2 * borderWidth) for square single characters. The separator is a flex item in the gap, outside any cap, in the inherited color. forced-colors: border-color CanvasText, background Canvas.",
+    "Comfortable density: keyPaddingInline is 6 px, so a single-letter cap is wider than tall at sm and md (glyph plus padding exceeds the square minimum); at least as wide as tall holds everywhere (open decision 1).",
+    "Inside Button: the integration writes <Shortcut keys=\"Mod+S\" size={buttonSize} /> in the trailing snippet; the content color is inherited, loading fades the slot, disabled gives the disabled content color; the Button hides the trailing content from assistive technology. Nothing to do in Shortcut.",
+    "Glyphs: Inter covers the modifiers and the arrows; the other Apple glyphs (↩ ⎋ ⇥ ⌫ ⌦ ↖ ↘ ⇞ ⇟) come from the system fallback of the font stack; check their weight and alignment on macOS and Windows at the review.",
     "Figma: a component set with Appearance (Plain, Keycap), Size (sm, md, lg) and Platform (Mac, Other) properties; Auto has no Figma meaning. Keys are text properties on nested _Shortcut/Key instances (Figma cannot parse keys): the master shows a representative combination (⌘K and Ctrl+K) and the specification page documents the glyph tables. Once the master exists it replaces the shortcut fixture of _Button/Trailing in the Button library (Button Done).",
-    "Tests: SSR renders the other form; browser tests force platform mac and other and check the parsed order, glyphs, separators, the spoken text, the uppercase literal, the square keycaps (inline size at least block size), the inherited color inside a Button in every intent and appearance, nowrap, forced-colors, and axe in light and dark."
+    "Tests: unit (keys.ts), SSR (other form on the server, forced mac, keycap and sizes, label, class merge, difficult content), browser (order, glyphs, separators, spoken text, accessible names through native hosts, keycap geometry per density, inherited color in every Button intent x appearance, one line, baseline, computed values in 18 contexts, forced colors, axe, screenshots)."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
