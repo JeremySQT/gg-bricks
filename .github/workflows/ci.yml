@@ -23,6 +23,8 @@ jobs:
       - run: npm run check
       - run: npm run test:ssr
       - run: npm run build
+      - name: Documentation site (compiles every live example)
+        run: npm run build:docs
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - run: npm run test:browser

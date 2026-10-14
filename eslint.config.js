@@ -14,7 +14,10 @@ export default [
       'reports/**',
       'test-results/**',
       'authoring/adapters/figma/**',
-      '.claude/worktrees/**'
+      '.claude/worktrees/**',
+      'apps/docs/dist/**',
+      'apps/docs/.astro/**',
+      'apps/docs/src/generated/**'
     ]
   },
   js.configs.recommended,

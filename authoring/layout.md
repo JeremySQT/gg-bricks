@@ -30,7 +30,8 @@ The design-system root is the repository root. All agent instructions resolve pa
 | `tests/browser/<id>.spec.ts`                          | Playwright tests per component                                                                                                                 |
 | `reports/`                                            | Revision-bound evidence (see `reports/README.md`): `tokens/` (traces, contrast, Figma ledger, change records), `components/<id>/`              |
 | `dist/`                                               | Ignored build outputs: `examples/`, `previews/<id>.html`, package tarballs                                                                     |
-| `apps/`                                               | Future: `docs` (Starlight, docs.ggbrick.design), `site` (marketing, ggbrick.design), `theme-builder`, `figma-plugin`                           |
+| `apps/docs/`                                          | Documentation site (Astro + Starlight, docs.ggbrick.design); `lib/content.ts` generates the component pages, see architecture.md               |
+| `apps/`                                               | Future: `site` (marketing, ggbrick.design), `theme-builder`, `figma-plugin`                                                                    |
 
 ## Rules
 

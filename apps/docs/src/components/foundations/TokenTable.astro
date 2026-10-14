@@ -1,0 +1,181 @@
+---
+// Tokens under a prefix with a live preview (custom properties of the reader's context), the CSS
+// custom property, the value and alias in that context, and the axes that change it.
+import { axes, cssVar, paths as pathsUnder, token } from '../../lib/tokens';
+import ContextValue from './ContextValue.astro';
+
+type Preview = 'color' | 'width' | 'radius' | 'shadow' | 'type' | 'border' | 'opacity' | 'duration' | 'easing' | 'none';
+interface Props {
+  prefix?: string;
+  paths?: string[];
+  preview?: Preview;
+  exclude?: string[];
+  showAlias?: boolean;
+}
+const { prefix, preview = 'none', exclude = [], showAlias = true } = Astro.props;
+const list = (Astro.props.paths ?? pathsUnder(prefix!)).filter((p) => !exclude.some((e) => p.startsWith(e)));
+---
+
+<div class="ggb-docs-tokens not-content">
+  <table>
+    <thead>
+      <tr>
+        {preview !== 'none' && (
+          <th scope="col">
+            <span class="sr-only">Preview</span>
+          </th>
+        )}
+        <th scope="col">Token</th>
+        <th scope="col">Value in the selected context</th>
+      </tr>
+    </thead>
+    <tbody>
+      {list.map((path) => {
+        const v = `var(${cssVar(path)})`;
+        const varying = axes(path);
+        const description = token(path)?.$description;
+        return (
+          <tr>
+            {preview !== 'none' && (
+              <td class="preview">
+                {preview === 'color' && <span class="swatch" style={`background:${v}`} />}
+                {preview === 'width' && <span class="bar" style={`inline-size:${v}`} />}
+                {preview === 'radius' && <span class="corner" style={`border-radius:${v}`} />}
+                {preview === 'shadow' && <span class="card" style={`box-shadow:${v}`} />}
+                {preview === 'border' && <span class="corner" style={`border:${v} solid currentColor`} />}
+                {preview === 'opacity' && <span class="swatch ink" style={`opacity:${v}`} />}
+                {preview === 'type' && (
+                  <span class="type" style={`font:${v};letter-spacing:var(${cssVar(path)}-letterSpacing)`}>
+                    Brick by brick
+                  </span>
+                )}
+                {(preview === 'duration' || preview === 'easing') && (
+                  <span class="track" title="Hover to play">
+                    <span
+                      class="dot"
+                      style={
+                        preview === 'duration'
+                          ? `transition-duration:${v}`
+                          : `transition-duration:var(--ggb-motion-duration-slow);transition-timing-function:${v}`
+                      }
+                    />
+                  </span>
+                )}
+              </td>
+            )}
+            <td>
+              <code class="name">{cssVar(path)}</code>
+              {varying.length > 0 && <span class="axes">varies with {varying.join(' and ')}</span>}
+              {description && <span class="description">{description}</span>}
+            </td>
+            <td>
+              <ContextValue path={path} showAlias={showAlias} />
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .ggb-docs-tokens {
+    margin-block: 1rem 2rem;
+    overflow-x: auto;
+  }
+  table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-size: var(--sl-text-sm);
+  }
+  th,
+  td {
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    border-block-end: 1px solid var(--sl-color-hairline);
+    text-align: start;
+    vertical-align: middle;
+  }
+  th {
+    color: var(--sl-color-gray-2);
+    font-weight: 600;
+  }
+  .preview {
+    inline-size: 1%;
+    white-space: nowrap;
+  }
+  .name {
+    display: block;
+    font-size: var(--sl-text-xs);
+    overflow-wrap: anywhere;
+  }
+  .axes,
+  .description {
+    display: block;
+    margin-block-start: 0.125rem;
+    color: var(--ggb-color-content-secondary);
+    font-size: var(--sl-text-xs);
+  }
+  .swatch {
+    display: block;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    border-radius: var(--ggb-radius-control);
+    box-shadow: inset 0 0 0 1px var(--ggb-color-border-subtle);
+  }
+  .ink {
+    background: var(--ggb-color-content-primary);
+  }
+  .bar {
+    display: block;
+    block-size: 1rem;
+    min-inline-size: 1px;
+    background: var(--ggb-color-palette-accent-500);
+    border-radius: 2px;
+  }
+  .corner {
+    display: block;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    background: var(--ggb-color-surface-muted);
+    border: 2px solid var(--ggb-color-border-strong);
+  }
+  .card {
+    display: block;
+    inline-size: 4rem;
+    block-size: 2.5rem;
+    margin: 0.5rem;
+    border-radius: var(--ggb-radius-container);
+    background: var(--ggb-color-surface-raised);
+  }
+  .type {
+    display: block;
+    max-inline-size: 22rem;
+    overflow: hidden;
+    color: var(--ggb-color-content-primary);
+    text-overflow: ellipsis;
+  }
+  .track {
+    display: block;
+    inline-size: 6rem;
+    block-size: 1rem;
+    padding: 0.25rem;
+    border-radius: 999px;
+    background: var(--ggb-color-surface-muted);
+  }
+  .dot {
+    display: block;
+    inline-size: 1rem;
+    block-size: 1rem;
+    border-radius: 50%;
+    background: var(--ggb-color-palette-accent-500);
+    transition-property: transform;
+  }
+  .track:hover .dot {
+    transform: translateX(5rem);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dot {
+      transition: none !important;
+    }
+  }
+</style>

@@ -53,13 +53,13 @@ Don't: `<Icon label="check mark" />` next to the text “Changes saved”: the l
 
 ## Examples
 
-The verified source of every example is `examples/icon/App.svelte`, the review page of the component (`npm run build && npm run build:preview icon` produces a self-contained page). The glyphs of the examples come from `examples/icon/glyphs.ts`, a handful of Phosphor paths standing in for the application's set.
+Blocks marked `live` are complete components: the documentation site compiles and renders each one above its code (a block without a script element gets the `@ggbrick/svelte` imports). The glyphs come from `examples/icon/glyphs.ts`, a handful of Phosphor paths standing in for the application's set, imported here as `./glyphs`. The review page `examples/icon/App.svelte` covers every case, difficult ones included (`npm run build && npm run build:preview icon` produces a self-contained page).
 
 ### A decorative icon next to text
 
 The drawing is the content of the component; a snippet keeps it reusable.
 
-```svelte
+```svelte live
 <script lang="ts">
   import { Icon } from '@ggbrick/svelte';
   import { phosphor } from './glyphs';
@@ -67,36 +67,65 @@ The drawing is the content of the component; a snippet keeps it reusable.
 
 {#snippet glyph(id: string)}<path d={phosphor[id]} />{/snippet}
 
-<li><Icon size="sm">{@render glyph('check')}</Icon> Changes saved</li>
-<li><Icon size="sm">{@render glyph('trash')}</Icon> Move to trash</li>
+<ul>
+  <li><Icon size="sm">{@render glyph('check')}</Icon> Changes saved</li>
+  <li><Icon size="sm">{@render glyph('trash')}</Icon> Move to trash</li>
+</ul>
 ```
 
 ### A named icon on its own
 
 With `label`, the icon is an image with that accessible name.
 
-```svelte
-<td><Icon size="sm" label="Paid">{@render glyph('check')}</Icon></td>
-<td><Icon size="sm" label="Attention needed">{@render glyph('warning-circle')}</Icon></td>
+```svelte live
+<script lang="ts">
+  import { Icon } from '@ggbrick/svelte';
+  import { phosphor } from './glyphs';
+</script>
+
+{#snippet glyph(id: string)}<path d={phosphor[id]} />{/snippet}
+
+<table>
+  <tbody>
+    <tr>
+      <th scope="row">Invoice 1042</th>
+      <td><Icon size="sm" label="Paid">{@render glyph('check')}</Icon></td>
+    </tr>
+    <tr>
+      <th scope="row">Invoice 1043</th>
+      <td><Icon size="sm" label="Attention needed">{@render glyph('warning-circle')}</Icon></td>
+    </tr>
+  </tbody>
+</table>
 ```
 
 ### Sizes
 
-```svelte
-<Icon size="xs">{@render glyph('plus')}</Icon>
-<Icon size="sm">{@render glyph('plus')}</Icon>
-<Icon>{@render glyph('plus')}</Icon>
-<Icon size="lg">{@render glyph('plus')}</Icon>
-<Icon size="xl">{@render glyph('plus')}</Icon>
+```svelte live
+<script lang="ts">
+  import { Icon } from '@ggbrick/svelte';
+  import { phosphor } from './glyphs';
+</script>
+
+<Icon size="xs"><path d={phosphor.plus} /></Icon>
+<Icon size="sm"><path d={phosphor.plus} /></Icon>
+<Icon><path d={phosphor.plus} /></Icon>
+<Icon size="lg"><path d={phosphor.plus} /></Icon>
+<Icon size="xl"><path d={phosphor.plus} /></Icon>
 ```
 
 ### Inside a Button
 
 The button sizes the icon and places it against the label; the `size` option is not needed.
 
-```svelte
-{#snippet plus()}<Icon>{@render glyph('plus')}</Icon>{/snippet}
-{#snippet arrow()}<Icon>{@render glyph('arrow-right')}</Icon>{/snippet}
+```svelte live
+<script lang="ts">
+  import { Button, Icon } from '@ggbrick/svelte';
+  import { phosphor } from './glyphs';
+</script>
+
+{#snippet plus()}<Icon><path d={phosphor.plus} /></Icon>{/snippet}
+{#snippet arrow()}<Icon><path d={phosphor['arrow-right']} /></Icon>{/snippet}
 
 <Button label="New project" leading={plus} />
 <Button label="Continue" intent="neutral" appearance="outline" trailing={arrow} />
@@ -106,7 +135,7 @@ The button sizes the icon and places it against the label; the `size` option is 
 
 A glyph drawn on a 24-unit grid passes its own `viewBox`.
 
-```svelte
+```svelte live
 <Icon size="lg" viewBox="0 0 24 24"><path d="M3 3h18v18H3z" /></Icon>
 ```
 

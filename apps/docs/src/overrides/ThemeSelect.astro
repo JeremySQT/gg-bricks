@@ -1,0 +1,71 @@
+---
+// Starlight's light/dark/auto select plus the two other ggbrick axes: brand and density. They apply to
+// the whole page, chrome and live examples alike, and are remembered in localStorage.
+import Default from '@astrojs/starlight/components/ThemeSelect.astro';
+import Select from '@astrojs/starlight/components/Select.astro';
+import config from '../../../../foundations/tokens/config.json';
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const options = (values: string[], selected: string) =>
+  values.map((value) => ({ label: capitalize(value), value, selected: value === selected }));
+---
+
+<ggbrick-context-select class="ggb-docs-context">
+  <Select icon="star" label="Brand" options={options(config.brands, config.brands[0])} width="6.5em" />
+  <Select
+    icon="list-format"
+    label="Density"
+    options={options(config.densities, config.defaults.density)}
+    width="8.5em"
+  />
+</ggbrick-context-select>
+<Default />
+
+<script>
+  const axes = ['brand', 'density'] as const;
+
+  class GgbrickContextSelect extends HTMLElement {
+    constructor() {
+      super();
+      const selects = this.querySelectorAll('select');
+      axes.forEach((axis, i) => {
+        const select = selects[i];
+        if (!select) return;
+        const key = axis === 'brand' ? 'ggbBrand' : 'ggbDensity';
+        select.value = document.documentElement.dataset[key] ?? select.value;
+        select.addEventListener('change', () => {
+          document.documentElement.dataset[key] = select.value;
+          try {
+            localStorage.setItem(`ggbrick-${axis}`, select.value);
+          } catch {
+            // Storage unavailable: the choice lasts for this page only.
+          }
+          document.querySelectorAll('ggbrick-context-select select').forEach((other, j) => {
+            if (j % axes.length === i && other instanceof HTMLSelectElement) other.value = select.value;
+          });
+        });
+      });
+    }
+  }
+  customElements.define('ggbrick-context-select', GgbrickContextSelect);
+
+  // Token values shown for every context (foundations pages): reveal the ones of the current context.
+  const root = document.documentElement;
+  function revealContext() {
+    const context = `${root.dataset.ggbBrand}-${root.dataset.ggbAppearance}-${root.dataset.ggbDensity}`;
+    document.querySelectorAll<HTMLElement>('[data-ggb-contexts]').forEach((el) => {
+      el.hidden = !el.dataset.ggbContexts!.split(' ').includes(context);
+    });
+  }
+  revealContext();
+  new MutationObserver(revealContext).observe(root, {
+    attributes: true,
+    attributeFilter: ['data-ggb-brand', 'data-ggb-appearance', 'data-ggb-density']
+  });
+</script>
+
+<style>
+  .ggb-docs-context {
+    display: contents;
+  }
+</style>

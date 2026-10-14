@@ -1,0 +1,27 @@
+---
+// Frame of a live example: the rendered Svelte island above its code block, on the default surface of
+// the current brand, appearance and density.
+---
+
+<div class="ggb-docs-live not-content" data-ggb-docs-live>
+  <slot />
+</div>
+
+<style>
+  .ggb-docs-live {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ggb-space-content-md);
+    margin-block-start: 1.5rem;
+    padding: var(--ggb-space-layout-md);
+    border: var(--ggb-border-width-default) solid var(--ggb-color-border-subtle);
+    border-block-end: 0;
+    border-start-start-radius: var(--ggb-radius-container);
+    border-start-end-radius: var(--ggb-radius-container);
+    background: var(--ggb-color-surface-default);
+    color: var(--ggb-color-content-primary);
+    font: var(--ggb-typography-body-md);
+    letter-spacing: var(--ggb-typography-body-md-letter);
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+// The three context axes with their values and defaults, from foundations/tokens/config.json.
+import { config } from '../../lib/tokens';
+
+const rows = [
+  { axis: 'Brand', attribute: 'data-ggb-brand', values: config.brands, fallback: config.brands[0] },
+  {
+    axis: 'Appearance',
+    attribute: 'data-ggb-appearance',
+    values: config.appearances,
+    fallback: config.defaults.appearance
+  },
+  { axis: 'Density', attribute: 'data-ggb-density', values: config.densities, fallback: config.defaults.density }
+];
+---
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Axis</th>
+      <th scope="col">Attribute</th>
+      <th scope="col">Values</th>
+      <th scope="col">Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    {rows.map((r) => (
+      <tr>
+        <td>{r.axis}</td>
+        <td>
+          <code>{r.attribute}</code>
+        </td>
+        <td>
+          {r.values.map((v, i) => (
+            <>
+              {i > 0 && ', '}
+              <code>{v}</code>
+            </>
+          ))}
+        </td>
+        <td>
+          <code>{r.fallback}</code>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

@@ -1,0 +1,39 @@
+---
+title: Theming
+description: Choose a brand, an appearance and a density with three attributes, for a whole page or for a part of it.
+sidebar:
+  order: 3
+---
+
+import Demo from '../../../components/Demo.astro';
+import ContextAxes from '../../../components/foundations/ContextAxes.astro';
+import Subtrees from '../../../examples/theming-subtrees.svelte';
+import subtrees from '../../../examples/theming-subtrees.svelte?raw';
+
+Every token resolves in a context made of three independent axes. Set them as attributes on one ancestor, usually `<html>` or `<body>`:
+
+```html
+<body data-ggb-brand="base" data-ggb-appearance="light" data-ggb-density="standard"></body>
+```
+
+<ContextAxes />
+
+Missing attributes take the defaults. A document without any attribute, or with a brand attribute alone, is fully usable.
+
+## Override a part of the page
+
+A subtree may change its appearance or its density alone: a dark panel, a compact toolbar. A subtree that switches brand restates the appearance and the density on the same element, because color roles are computed where the appearance is declared, with the brand in effect there.
+
+<Demo source={subtrees}>
+  <Subtrees client:visible />
+</Demo>
+
+The header of this site does the same on `<html>`: change the brand, the density or the theme there and every page follows, live examples included.
+
+## What changes with each axis
+
+- **Brand** changes the accent palette and the shape of corners. A brand is a sparse overlay of the base: it redefines the eleven aliases of its accent ramp and a few radius roles, and inherits everything else.
+- **Appearance** changes color roles only: surfaces, content, borders, actions, fields and statuses each have a light and a dark value picked from the same palette ramps.
+- **Density** changes spacing and control heights. Font sizes and icon sizes do not shrink with density, and the minimum interaction target stays 44 × 44 CSS px.
+
+No axis depends on the viewport: layout chooses the composition, it does not rewrite token values.

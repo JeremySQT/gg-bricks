@@ -1,0 +1,39 @@
+---
+title: ggbrick
+description: A design system delivered as a Figma library, a Svelte 5 package and documentation, from one set of JSON sources.
+template: splash
+hero:
+  tagline: One set of JSON sources, three deliverables that agree with each other — a Figma library, a Svelte 5 package built on Bits UI, and this documentation.
+  actions:
+    - text: Get started
+      link: /getting-started/installation/
+      icon: right-arrow
+    - text: Browse components
+      link: /components/
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import HomeShowcase from '../../components/HomeShowcase.svelte';
+
+<HomeShowcase client:visible />
+
+Switch the brand, the density and the light or dark appearance in the header: the whole site, these buttons included, follows the same tokens a product would.
+
+<CardGrid>
+  <Card title="Sources first" icon="document">
+    Tokens are DTCG JSON and each component has a compact, platform-independent contract. Figma, code and documentation
+    derive from them or are checked against them.
+  </Card>
+  <Card title="Three independent axes" icon="setting">
+    Brand, appearance and density are attributes on one ancestor. A brand overrides a handful of aliases; light, dark
+    and three densities come with every brand.
+  </Card>
+  <Card title="Copyable components" icon="puzzle">
+    Every component folder is self-contained: copy it next to `tokens.css` and Bits UI, or install `@ggbrick/svelte`.
+  </Card>
+  <Card title="Evidence, not claims" icon="approve-check">
+    Contrast in 18 contexts, accessibility checks in a real browser and Figma parity reports are recorded for every
+    component and summarized on its page.
+  </Card>
+</CardGrid>

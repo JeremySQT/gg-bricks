@@ -40,6 +40,7 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 ## Documentation
 
 - One maintained source per component in `documentation/components/<id>.md`, sections in this order: Overview, When to use, When not to use, Anatomy, Usage guidelines, Examples, API, Accessibility. `documentation/index.json` is the economical agent index.
+- Examples that can run on their own are ` ```svelte live ` blocks of the Markdown page: the documentation site compiles and renders each one above its code, so the Markdown stays the single source and the site build verifies the examples. The site is Starlight dressed in ggbrick tokens with brand and density selects beside the light/dark one, and adds Getting started pages, Foundations pages generated from the resolved tokens, and a generated contract and evidence section on each component page (user choices at the start of the site task, 2026-10-14).
 - Introduce a component by its user-facing purpose; framework names and native mappings belong in API. Accessibility lists relevant WCAG 2.2 criteria with level, link and the component/integration split; listing is not a conformance claim.
 - Figma specification sections: Overview, Anatomy, Variants, States, Behavior & sizing, Usage examples. Masters are distinguished from explanatory instances.
 - Derived semantic roles maintained by hand per brand or density (`radius.focus`, `space.control.padding-inline`) are declared as `invariants` in `foundations/tokens/inventory.json` and checked in every context by `tooling/check-foundations.ts` (2026-10-13).

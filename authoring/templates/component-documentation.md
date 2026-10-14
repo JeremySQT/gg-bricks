@@ -26,6 +26,8 @@ Explain labeling, emphasis, composition and relevant behavior before showing cod
 
 Start with the usual case, then relevant variations and edge cases. Explain the intent and reference verified executable source. The human site may embed demos; local agent docs need useful text and code without a browser.
 
+Mark a Svelte block ` ```svelte live ` when it can run on its own: the documentation site (`apps/docs`) compiles it as a component and renders it above its code, so the build checks it. A live block is a complete Svelte 5 component in valid HTML (a `<li>` inside a list, a `<td>` inside a table); without a `<script>` element the site adds `import { …every export… } from '@ggbrick/svelte'`, and `./glyphs` resolves to `examples/icon/glyphs.ts`. Define what the block calls (a stand-in `save()` or `api`), link to `#fragments` rather than application routes, and leave fragments that cannot run (a prop-less excerpt, an API signature) unmarked. Difficult cases point to anchors of the review page `examples/<id>/App.svelte`.
+
 ## API
 
 Document exact target import, properties, types, defaults, exposed composition points, events and methods where relevant. Derive facts from the shared contract and real implementation. Do not equate anatomy with the public API.

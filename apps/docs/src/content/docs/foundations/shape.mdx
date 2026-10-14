@@ -1,0 +1,24 @@
+---
+title: Shape
+description: Corner radii, border widths and the focus ring.
+sidebar:
+  order: 4
+---
+
+import TokenTable from '../../../components/foundations/TokenTable.astro';
+
+Corner radii are the main shape signature of a brand: compare base, brick and orchid in the header. Radius roles are named by what they round, not by their size, so a brand can make controls sharper and containers softer without touching components.
+
+`radius.focus` is derived: it equals the control radius plus the focus offset, so that the focus ring stays concentric with the control it surrounds. The foundations check verifies it in every context.
+
+## Radius
+
+<TokenTable prefix="radius" preview="radius" />
+
+## Borders
+
+<TokenTable prefix="border.width" preview="border" />
+
+## Focus
+
+<TokenTable paths={['focus.width', 'focus.offset']} preview="width" />

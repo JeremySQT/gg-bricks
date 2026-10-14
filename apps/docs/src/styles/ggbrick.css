@@ -1,0 +1,74 @@
+/* Starlight dressed in ggbrick tokens. The html element carries data-ggb-brand, data-ggb-appearance (mirrored
+   from Starlight's data-theme) and data-ggb-density, so semantic roles follow the reader's context; the
+   accent steps are chosen per appearance because Starlight's light and dark scales run in opposite orders. */
+
+:root {
+  --sl-font: var(--ggb-primitive-font-family-sans);
+  --sl-font-mono: var(--ggb-primitive-font-family-mono);
+
+  --sl-color-white: var(--ggb-color-content-primary);
+  --sl-color-gray-1: var(--ggb-color-content-primary);
+  --sl-color-gray-2: var(--ggb-color-content-secondary);
+  --sl-color-gray-3: var(--ggb-color-content-tertiary);
+  --sl-color-gray-4: var(--ggb-color-border-strong);
+  --sl-color-gray-5: var(--ggb-color-border-default);
+  --sl-color-gray-6: var(--ggb-color-surface-subtle);
+  --sl-color-gray-7: var(--ggb-color-surface-muted);
+  --sl-color-black: var(--ggb-color-surface-canvas);
+
+  --sl-color-text: var(--ggb-color-content-primary);
+  --sl-color-text-accent: var(--ggb-color-content-link);
+  --sl-color-bg: var(--ggb-color-surface-canvas);
+  --sl-color-bg-nav: var(--ggb-color-surface-canvas);
+  --sl-color-bg-sidebar: var(--ggb-color-surface-canvas);
+  --sl-color-bg-inline-code: var(--ggb-color-surface-muted);
+  --sl-color-hairline-light: var(--ggb-color-border-default);
+  --sl-color-hairline: var(--ggb-color-border-subtle);
+  --sl-color-hairline-shade: var(--ggb-color-border-subtle);
+  --sl-color-backdrop-overlay: var(--ggb-color-surface-scrim);
+
+  --sl-color-accent-low: var(--ggb-color-palette-accent-950);
+  --sl-color-accent: var(--ggb-color-palette-accent-400);
+  --sl-color-accent-high: var(--ggb-color-palette-accent-200);
+  --sl-color-text-invert: var(--ggb-color-palette-accent-950);
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: var(--ggb-color-palette-accent-100);
+  --sl-color-accent: var(--ggb-color-palette-accent-600);
+  --sl-color-accent-high: var(--ggb-color-palette-accent-800);
+  --sl-color-text-invert: var(--ggb-color-palette-accent-50);
+}
+
+::selection {
+  background: var(--ggb-color-selection-surface);
+  color: var(--ggb-color-selection-content);
+}
+
+:focus-visible {
+  outline: var(--ggb-focus-width) solid var(--ggb-color-focus-ring);
+  outline-offset: var(--ggb-focus-offset);
+}
+
+/* Code of a live example sits directly under its rendering. */
+.ggb-docs-live + .expressive-code {
+  margin-block-start: 0 !important;
+}
+.ggb-docs-live + .expressive-code .frame pre {
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+}
+
+/* Figma specification boards: tall captures kept behind a disclosure. */
+.ggb-docs-figma img {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+  margin-block-start: 1rem;
+  border: var(--ggb-border-width-default) solid var(--ggb-color-border-subtle);
+  border-radius: var(--ggb-radius-container);
+}
+.sl-markdown-content details > summary {
+  cursor: pointer;
+  color: var(--sl-color-text-accent);
+}

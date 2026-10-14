@@ -1,0 +1,28 @@
+---
+title: Working with agents
+description: How a coding agent finds and uses ggbrick components in your application.
+sidebar:
+  order: 5
+---
+
+The documentation ships inside the package, aligned with the installed version, so an agent working in your application reads the same pages as this site without network access:
+
+| File                                               | Use                                                                                                      |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `node_modules/@ggbrick/svelte/docs/AGENTS.md`      | Entry point: theme attributes, slot rules, what not to copy from Figma.                                  |
+| `node_modules/@ggbrick/svelte/docs/index.json`     | One entry per exported component: import, purpose, when not to use it, page and contract.                |
+| `node_modules/@ggbrick/svelte/docs/<id>.md`        | The component page. Its sections have stable names, so an agent reads only the one it needs (often API). |
+| `node_modules/@ggbrick/svelte/contracts/<id>.json` | The platform-independent contract: options, parts, states, token roles and rules.                        |
+
+Point your agent to `docs/AGENTS.md`, for example from your own `AGENTS.md` or `CLAUDE.md`:
+
+```md
+UI components come from @ggbrick/svelte. Read node_modules/@ggbrick/svelte/docs/AGENTS.md
+before building an interface, and prefer exported components over rebuilding their appearance.
+```
+
+A name that a page mentions as an alternative but that is absent from `index.json` is planned, not an export: the agent should not import it.
+
+## Authoring ggbrick itself
+
+The repository has its own entry point for agents that build the design system: `AGENTS.md` at its root routes each request (“build the InputText”, “change a token”, “audit”) to a skill that stops at the human review gates. That side is not needed to use the components.

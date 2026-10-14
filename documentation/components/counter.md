@@ -57,21 +57,21 @@ Don't: `<Counter value={n} />` alone in a cell with no visible label and no `lab
 
 ## Examples
 
-The verified source of every example is `examples/counter/App.svelte`, the review page of the component (`npm run build && npm run build:preview counter` produces a self-contained page).
+Blocks marked `live` are complete components: the documentation site compiles and renders each one above its code (a block without a script element gets the `@ggbrick/svelte` imports). The review page `examples/counter/App.svelte` covers every case, difficult ones included (`npm run build && npm run build:preview counter` produces a self-contained page).
 
 ### The usual case
 
-```svelte
+```svelte live
 <script lang="ts">
   import { Counter } from '@ggbrick/svelte';
 </script>
 
-<a href="/inbox">Inbox <Counter value={8} label="unread messages" /></a>
+<a href="#inbox">Inbox <Counter value={8} label="unread messages" /></a>
 ```
 
 ### Overflow and maximum
 
-```svelte
+```svelte live
 <Counter value={100} />
 <!-- shows 99+ -->
 <Counter value={1234} max={999} />
@@ -82,17 +82,19 @@ The verified source of every example is `examples/counter/App.svelte`, the revie
 
 ### Sizes next to text
 
-```svelte
-<span class="label-sm">Drafts <Counter size="sm" value={3} /></span>
-<span class="label-md">Notifications <Counter value={99} /></span>
-<span class="label-lg">Archive <Counter size="lg" value={42} /></span>
+Each counter takes the size of the label it follows.
+
+```svelte live
+<span style="font: var(--ggb-typography-label-sm)">Drafts <Counter size="sm" value={3} /></span>
+<span style="font: var(--ggb-typography-label-md)">Notifications <Counter value={99} /></span>
+<span style="font: var(--ggb-typography-label-lg)">Archive <Counter size="lg" value={42} /></span>
 ```
 
 ### Inside a Button
 
 The counter takes the button's size and content color. Repeat the quantity where assistive technology can read it: the button hides its trailing content.
 
-```svelte
+```svelte live
 {#snippet inboxCount()}<Counter value={8} size="md" />{/snippet}
 
 <Button label="Inbox" intent="neutral" appearance="ghost" trailing={inboxCount} />
@@ -102,7 +104,7 @@ The counter takes the button's size and content color. Repeat the quantity where
 
 A fractional value is rounded down, a negative value shows 0, and a value that is not a number shows 0.
 
-```svelte
+```svelte live
 <Counter value={7.9} />
 <!-- 7 -->
 <Counter value={-5} />

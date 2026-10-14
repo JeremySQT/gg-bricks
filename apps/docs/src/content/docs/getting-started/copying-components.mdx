@@ -1,0 +1,23 @@
+---
+title: Copying a component
+description: Use a component without the package by copying its self-contained folder.
+sidebar:
+  order: 4
+---
+
+import ComponentFolders from '../../../components/foundations/ComponentFolders.astro';
+
+Every component lives in one self-contained folder, `src/components/<id>/` in the package. Instead of installing `@ggbrick/svelte` you can copy that folder into your project and own the code.
+
+A copied component needs:
+
+1. the folder itself, generated files included (`contract.generated.ts` and `tokens.generated.css` are part of the copy);
+2. `tokens.css`, imported once;
+3. `bits-ui` installed;
+4. the components it imports, if any.
+
+<ComponentFolders />
+
+Slot contents are optional: a Button renders an Icon, a Counter or a Shortcut only if you pass one, so you copy those folders only when you use them.
+
+Copying trades updates for control: a copied folder no longer receives fixes from the package. Keep the version you copied from, and compare with the component's page when you update.

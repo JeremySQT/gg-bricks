@@ -1,0 +1,56 @@
+---
+title: Installation
+description: Add @ggbrick/svelte to a Svelte 5 application, load the tokens and the fonts, and render a first component.
+sidebar:
+  order: 2
+---
+
+import Demo from '../../../components/Demo.astro';
+import FirstComponent from '../../../examples/first-component.svelte';
+import firstComponent from '../../../examples/first-component.svelte?raw';
+
+## Requirements
+
+- Svelte 5 (the package is tested with Svelte 5.57.1).
+- Bits UI is the only other runtime dependency; the package installs it.
+
+## Install the package
+
+The package is not on npm before the first release. Build a tarball from the repository and install it in your application:
+
+```sh
+# in the ggbrick repository
+npm ci
+npm run pack:svelte          # writes dist/ggbrick-svelte-<version>.tgz
+
+# in your application
+npm install /absolute/path/to/ggbrick-svelte-<version>.tgz
+```
+
+## Load the tokens and the fonts
+
+Import `tokens.css` once, at the root of the application. It defines every token as a CSS custom property (`--ggb-<path>`) for every brand, appearance and density.
+
+```svelte
+<script lang="ts">
+  import '@ggbrick/svelte/tokens.css';
+</script>
+```
+
+Components do not load fonts. ggbrick sets interface text in Inter and code in IBM Plex Mono; load them the way your application loads fonts, for example with Fontsource:
+
+```ts
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/ibm-plex-mono/400.css';
+```
+
+## Render a first component
+
+<Demo source={firstComponent}>
+  <FirstComponent client:visible />
+</Demo>
+
+Without any theme attribute the document uses the default context: the `base` brand, the `light` appearance and the `standard` density. [Theming](/getting-started/theming/) explains how to choose another one.

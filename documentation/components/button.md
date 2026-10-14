@@ -68,13 +68,17 @@ Don't: “Submit” and “Save” as two solid accent buttons in the same foote
 
 ## Examples
 
-The verified source of every example is `examples/button/App.svelte`, the review page of the component (`npm run build && npm run build:preview button` produces a self-contained page). Icons, counters and shortcuts in these examples are the Icon, Counter and Shortcut components; the glyphs come from `examples/icon/glyphs.ts`.
+Blocks marked `live` are complete components: the documentation site compiles and renders each one above its code (a block without a script element gets the `@ggbrick/svelte` imports). Icons, counters and shortcuts in these examples are the Icon, Counter and Shortcut components; the glyphs come from `examples/icon/glyphs.ts`, imported here as `./glyphs`. The review page `examples/button/App.svelte` covers every case, difficult ones included (`npm run build && npm run build:preview button` produces a self-contained page).
 
 ### The usual case
 
-```svelte
+```svelte live
 <script lang="ts">
   import { Button } from '@ggbrick/svelte';
+
+  function save() {
+    // The application's action.
+  }
 </script>
 
 <Button label="Save changes" onactivate={() => save()} />
@@ -83,7 +87,7 @@ The verified source of every example is `examples/button/App.svelte`, the review
 
 ### Intent, appearance and size
 
-```svelte
+```svelte live
 <Button label="Delete project" intent="danger" />
 <Button label="Delete" intent="danger" appearance="ghost" />
 <Button label="Add item" size="sm" />
@@ -94,12 +98,13 @@ The verified source of every example is `examples/button/App.svelte`, the review
 
 Snippets fill the two slots. The content inherits the text color; the button sizes an Icon, and a Counter or a Shortcut takes the button's size.
 
-```svelte
+```svelte live
 <script lang="ts">
   import { Button, Counter, Icon, Shortcut } from '@ggbrick/svelte';
+  import { phosphor } from './glyphs';
 </script>
 
-{#snippet plus()}<Icon><path d="…" /></Icon>{/snippet}
+{#snippet plus()}<Icon><path d={phosphor.plus} /></Icon>{/snippet}
 {#snippet counter()}<Counter value={8} size="md" />{/snippet}
 {#snippet save()}<Shortcut keys="Mod+S" size="md" />{/snippet}
 
@@ -112,8 +117,13 @@ Snippets fill the two slots. The content inherits the text color; the button siz
 
 The button shows the loading indicator, keeps its width and focus, and ignores presses until `loading` is cleared.
 
-```svelte
+```svelte live
 <script lang="ts">
+  import { Button } from '@ggbrick/svelte';
+
+  // Stands in for the application's request.
+  const api = { save: () => new Promise((resolve) => setTimeout(resolve, 1500)) };
+
   let saving = $state(false);
   async function save() {
     saving = true;
@@ -132,7 +142,16 @@ The button shows the loading indicator, keeps its width and focus, and ignores p
 
 `type` defaults to `button`, so a Button never submits a form by accident. Pass `submit` or `reset` explicitly.
 
-```svelte
+```svelte live
+<script lang="ts">
+  import { Button } from '@ggbrick/svelte';
+
+  function handle(event: SubmitEvent) {
+    event.preventDefault();
+    // Read the form data and send it.
+  }
+</script>
+
 <form onsubmit={handle}>
   <Button type="submit" label="Create item" />
   <Button type="reset" label="Reset" intent="neutral" appearance="ghost" />
@@ -143,9 +162,16 @@ The button shows the loading indicator, keeps its width and focus, and ignores p
 
 With `href`, the button renders as a link. A disabled link keeps the appearance but loses its destination; a loading link keeps focus and does not navigate.
 
-```svelte
-<Button href="/projects/new" label="Create project" leading={plus} />
-<Button href="/projects/new" label="Unavailable" disabled appearance="outline" />
+```svelte live
+<script lang="ts">
+  import { Button, Icon } from '@ggbrick/svelte';
+  import { phosphor } from './glyphs';
+</script>
+
+{#snippet plus()}<Icon><path d={phosphor.plus} /></Icon>{/snippet}
+
+<Button href="#new-project" label="Create project" leading={plus} />
+<Button href="#new-project" label="Unavailable" disabled appearance="outline" />
 ```
 
 ### Difficult cases

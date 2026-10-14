@@ -58,23 +58,39 @@ Don't: a keycap shortcut inside a solid Button, or `keys="Ctrl+S"` where Command
 
 ## Examples
 
-The verified source of every example is `examples/shortcut/App.svelte`, the review page of the component (`npm run build && npm run build:preview shortcut` produces a self-contained page).
+Blocks marked `live` are complete components: the documentation site compiles and renders each one above its code (a block without a script element gets the `@ggbrick/svelte` imports). The review page `examples/shortcut/App.svelte` covers every case, difficult ones included (`npm run build && npm run build:preview shortcut` produces a self-contained page).
 
 ### The usual case
 
-```svelte
+```svelte live
 <script lang="ts">
   import { Shortcut } from '@ggbrick/svelte';
 </script>
 
 <button type="button" class="menu-item">Save <Shortcut keys="Mod+S" /></button>
+
+<style>
+  /* The application's menu item: its own surface and text color, which the shortcut inherits. */
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--ggb-space-content-lg);
+    min-inline-size: 12rem;
+    padding: var(--ggb-space-control-padding-block-md) var(--ggb-space-control-padding-inline-md);
+    border: 0;
+    border-radius: var(--ggb-radius-control);
+    background: var(--ggb-color-surface-raised);
+    color: var(--ggb-color-content-primary);
+    font: var(--ggb-typography-body-md);
+  }
+</style>
 ```
 
 On a Mac this shows ⌘S and is announced “Command S”; elsewhere Ctrl+S, announced “Control S”.
 
 ### Both platforms side by side
 
-```svelte
+```svelte live
 <Shortcut keys="Mod+Shift+P" platform="mac" />
 <!-- ⇧⌘P, “Shift Command P” -->
 <Shortcut keys="Mod+Shift+P" platform="other" />
@@ -83,7 +99,7 @@ On a Mac this shows ⌘S and is announced “Command S”; elsewhere Ctrl+S, ann
 
 ### Keycaps in a help page
 
-```svelte
+```svelte live
 <p>Use <Shortcut keys="Mod+K" appearance="keycap" /> to open the command palette.</p>
 ```
 
@@ -91,7 +107,7 @@ On a Mac this shows ⌘S and is announced “Command S”; elsewhere Ctrl+S, ann
 
 The shortcut takes the button's size and content color; the button hides it from assistive technology.
 
-```svelte
+```svelte live
 {#snippet save()}<Shortcut keys="Mod+S" size="md" />{/snippet}
 
 <Button label="Save" trailing={save} />
@@ -99,7 +115,7 @@ The shortcut takes the button's size and content color; the button hides it from
 
 ### A custom spoken equivalent
 
-```svelte
+```svelte live
 <Shortcut keys="Mod+K" label="Ouvrir la palette de commandes" />
 ```
 
