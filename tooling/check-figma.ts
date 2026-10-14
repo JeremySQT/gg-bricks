@@ -62,7 +62,7 @@ const records = Object.entries(expected).map(([ctx, e]) => {
   };
 });
 const failures = records.filter((r) => !r.passed);
-write(`${paths.reports}/foundations/figma/verification.json`, {
+write(`${paths.reports}/tokens/figma/verification.json`, {
   method:
     'Native Figma resolution (resolveForConsumer on a frame with explicit Brand, Appearance and Density modes) of every semantic variable, in deterministic order, hashed with FNV-1a over canonical values (8-digit hex colors from float32 channels, as Figma stores them; 4-decimal numbers) and compared with the same hash of packages/tokens/figma-expectations.json.',
   variables: ordered.length,
