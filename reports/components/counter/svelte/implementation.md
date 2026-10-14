@@ -1,5 +1,7 @@
 # Counter — Svelte implementation report
 
+Amended on 2026-10-14 after the implementation review: the border is drawn in the inherited color attenuated to `opacity.muted` (70 %), through `rgb(from currentColor r g b / var(--ggb-counter-borderOpacity))`; forced colors keep the full-opacity outline.
+
 Component: `packages/svelte/src/components/counter/` (Svelte 5.57.1; no Bits UI primitive: a counter is static content with no native semantics to borrow). Review page: `examples/counter/`; self-contained preview: `dist/previews/counter.html` (`npm run build:preview counter`). Implemented on 2026-10-14 against contract digest `780d5bb9…` (approved at the grouped contract gate of 2026-10-14); implementation approval pending (grouped implementation gate with Icon and Shortcut).
 
 ## Structure

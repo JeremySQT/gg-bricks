@@ -38,7 +38,7 @@ No completed token set or production catalog is included. Never manufacture toke
 
 ## Role naming convention
 
-Generic checks infer the expected token type from the role name: `surface`, `content`, `border` and roles ending in `Color` are colors; roles starting with `typography` are typography; `motion*`/`duration*` durations; `easing*` cubic Béziers; `shadow*` shadows; everything else is a dimension. The validator rejects a resolved token whose `$type` does not match. Contrast evidence uses `surface`/`content`/`border`/`focusColor`.
+Generic checks infer the expected token type from the role name: `surface`, `content`, `border` and roles ending in `Color` are colors; roles starting with `typography` are typography; `motion*`/`duration*` durations; `easing*` cubic Béziers; `shadow*` shadows; roles ending in `Opacity` numbers; everything else is a dimension. The validator rejects a resolved token whose `$type` does not match. Contrast evidence uses `surface`/`content`/`border`/`focusColor`.
 
 ## Commands
 

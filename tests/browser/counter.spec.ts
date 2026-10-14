@@ -32,6 +32,17 @@ const representative = [
 const tokensFor = (context: string): TokenMap =>
   JSON.parse(fs.readFileSync(`packages/tokens/resolved/${context}.json`, 'utf8'));
 const px = (t: Token): number => (t.$value as { value: number }).value;
+/**
+ * The attenuated border color as Chromium serializes rgb(from currentColor r g b / a): a color(srgb …) with
+ * six significant digits per channel.
+ */
+const faded = (color: string, alpha: number): string => {
+  const [r, g, b] = color
+    .match(/[\d.]+/g)!
+    .slice(0, 3)
+    .map((x) => Number((Number(x) / 255).toPrecision(6)));
+  return `color(srgb ${r} ${g} ${b} / ${alpha})`;
+};
 const typography = (t: Token): Typography => t.$value as Typography;
 const rgb = (t: Token): string => {
   const c = t.$value as Color;
@@ -280,7 +291,9 @@ test('border and digits use the inherited content color inside every Button inte
     const m = await measure(page, `${buttonId} .ggb-counter`);
     expect(m.color, `${buttonId} counter color`).toBe(color);
     expect(m.valueColor, `${buttonId} digits color`).toBe(color);
-    expect(m.boxShadow, `${buttonId} border color`).toBe(`${color} 0px 0px 0px ${border}px inset`);
+    expect(m.boxShadow, `${buttonId} border color`).toBe(
+      `${faded(color, tokens['opacity.muted'].$value as number)} 0px 0px 0px ${border}px inset`
+    );
     expect(m.backgroundColor).toBe('rgba(0, 0, 0, 0)');
     return m;
   };
@@ -369,7 +382,9 @@ test('computed values match the resolved tokens for every size and the overflow 
             expect(m.paddingInline, `${context} ${size} padding`).toBe(`${px(tokens['space.content.xs'])}px`);
             expect(m.paddingBlock).toBe('0px 0px');
             expect(m.borderWidth).toBe('0px');
-            expect(m.boxShadow).toBe(`${m.color} 0px 0px 0px ${px(tokens['border.width.default'])}px inset`);
+            expect(m.boxShadow).toBe(
+              `${faded(m.color, tokens['opacity.muted'].$value as number)} 0px 0px 0px ${px(tokens['border.width.default'])}px inset`
+            );
             expect(m.height).toBeCloseTo(box, 1);
             expect(parseFloat(m.minInlineSize)).toBeCloseTo(m.height, 2);
             expect(m.overflow).toBe(state === 'overflow');

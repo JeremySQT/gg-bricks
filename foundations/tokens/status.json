@@ -37,12 +37,12 @@
           "foundations/tokens/base/primitives/dimensions.tokens.json": "3cf30ef0e5ea0bbf63df9e0571caf8cdc742c336a46e7ac8258c2414d7893807",
           "foundations/tokens/base/primitives/layers.tokens.json": "01f303b575528089608b86f9ff2241716b77570e51a34f7cf748f4a99ffea3ec",
           "foundations/tokens/base/primitives/motion.tokens.json": "de6f6d25e050c9809c75fe6c9eb653b8ed0be9161fbdde3dd05ee4ac3571da35",
-          "foundations/tokens/base/primitives/opacity.tokens.json": "ead888676631ca59afe41cadd53a7852006f07400a1dde6f47f78714daa0f6fa",
+          "foundations/tokens/base/primitives/opacity.tokens.json": "4cc7f86e82592011c1324949e2b3173a4b751e9f36423aa0b4fcd2a91fc5bced",
           "foundations/tokens/base/primitives/shadows.tokens.json": "cdf808e7764b1adcb9b3a2d6a4c91968e42c532492f6165e6157036cde6eed10",
           "foundations/tokens/base/primitives/typography.tokens.json": "f0f7178da7112b31d6922095736ff7122347e576b9eae77bd7eed94424d4a166"
         }
       },
-      "provenance": "Foundations review in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8), three rounds on the review page dist/previews/foundations.html (artifact https://claude.ai/artifact/FXSaVj9UCJhHQr3T7M8omk, version 3). The user arbitrated every open point in chat (color.palette kept, warning B, icon method, fonts, brand names, purge) and confirmed the last addition (caption, overline, numeral roles) with 'Parfait pour les styles de textes'; approval is recorded on that basis and the user may object to the record. Re-digested on 2026-10-13 for the repository structure change (branch chore/repo-structure, user decision in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: \"tu peux partir là dessus\"): paths moved; foundations/tokens/base/primitives/colors.tokens.json changed only by the path written in its generated $description; behavior, values and rendering unchanged.",
+      "provenance": "Foundations review in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8), three rounds on the review page dist/previews/foundations.html (artifact https://claude.ai/artifact/FXSaVj9UCJhHQr3T7M8omk, version 3). The user arbitrated every open point in chat (color.palette kept, warning B, icon method, fonts, brand names, purge) and confirmed the last addition (caption, overline, numeral roles) with 'Parfait pour les styles de textes'; approval is recorded on that basis and the user may object to the record. Re-digested on 2026-10-13 for the repository structure change (branch chore/repo-structure, user decision in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: \"tu peux partir là dessus\"): paths moved; foundations/tokens/base/primitives/colors.tokens.json changed only by the path written in its generated $description; behavior, values and rendering unchanged. Amendment of 2026-10-14 (primitive.opacity.70, opacity.muted): user at the implementation review of the wave 1 slot contents in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH (70 % border on the Counter); digests re-recorded.",
       "note": "Values may still change through ggb-maintain Modify with a representative visual review; Figma variables are approved separately."
     },
     "semantic": {
@@ -62,10 +62,10 @@
         ],
         "sha256": {
           "foundations/tokens/config.json": "dad74c754b9a01730b84b8849872ee28ae096b452954f10a436fa195c54f2e65",
-          "foundations/tokens/inventory.json": "a3dad03c9a2e0ecb1197768546e97bb3224e0f65cc340e95612e3ec20dfc7508",
+          "foundations/tokens/inventory.json": "614446bd9bfd5ca5f63c94ebe2b127902d2c1e5606bfef0398b35c9783215c6b",
           "foundations/tokens/base/semantic/appearance.dark.tokens.json": "548523cf1726df867458b9c54a4dccbcd7213f7580d5ff559ab8cc93b93b6081",
           "foundations/tokens/base/semantic/appearance.light.tokens.json": "75909e6f22e53adcb7122c2581debcfc83130cffa24d4621b7dc05b24242a19e",
-          "foundations/tokens/base/semantic/common.tokens.json": "b736e5d0929356d5b3491929f353d344f97d93c0113e40e1d201f77cf079d257",
+          "foundations/tokens/base/semantic/common.tokens.json": "385416b5d5bd535215123cc35882077ed21f2f689204e6a67470a0376a248bdf",
           "foundations/tokens/base/semantic/density.comfortable.tokens.json": "1d639da1a714cd86d8e20048a588af431e1ded0eb088ffddef3cbaa1a466f863",
           "foundations/tokens/base/semantic/density.compact.tokens.json": "f9f1c703c7fc735816637cc2b45f2b8473e1353832183a99983d01574d005030",
           "foundations/tokens/base/semantic/density.standard.tokens.json": "160578c8145c1127c64c8e5fd315e923cbff8ab0a851c244128aa48b3343e6d8",
@@ -73,7 +73,7 @@
           "foundations/tokens/orchid/semantic/common.tokens.json": "5de6c880874ad0e61d821f9279ab92417032333fc41d14577f74d453fc6eca51"
         }
       },
-      "provenance": "Foundations review in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8), three rounds on the review page dist/previews/foundations.html (artifact https://claude.ai/artifact/FXSaVj9UCJhHQr3T7M8omk, version 3). The user arbitrated every open point in chat (color.palette kept, warning B, icon method, fonts, brand names, purge) and confirmed the last addition (caption, overline, numeral roles) with 'Parfait pour les styles de textes'; approval is recorded on that basis and the user may object to the record. Amendments accepted by the user at the Button gates: nine space.control.{edge-inline,label-inline,slot-inline}.{sm,md,lg} density roles (Button contract gate, 2026-10-07) and radius.focus per brand (Button Figma parity review, 2026-10-13), see pendingChanges. Digests re-recorded on 2026-10-13 in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH (user authorization of the correction batch). Amendment of 2026-10-13 (defaults light and standard in config.json, invariants in inventory.json, cascade semantics; change record reports/tokens/changes/2026-10-13-defaults.md): user in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, \"Oui je valide ça\", after a plain-language summary of the three decisions (defaults without attributes, Figma default density standard, brand switch restates appearance and density). Digests re-recorded in that session. Amendment of 2026-10-14 (typography.indicator.{sm,md,lg} and radius.indicator): user at the grouped contract gate of Icon, Counter and Shortcut in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, \"Ok pour tout\" with the counter made rectangular; digests re-recorded.",
+      "provenance": "Foundations review in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8), three rounds on the review page dist/previews/foundations.html (artifact https://claude.ai/artifact/FXSaVj9UCJhHQr3T7M8omk, version 3). The user arbitrated every open point in chat (color.palette kept, warning B, icon method, fonts, brand names, purge) and confirmed the last addition (caption, overline, numeral roles) with 'Parfait pour les styles de textes'; approval is recorded on that basis and the user may object to the record. Amendments accepted by the user at the Button gates: nine space.control.{edge-inline,label-inline,slot-inline}.{sm,md,lg} density roles (Button contract gate, 2026-10-07) and radius.focus per brand (Button Figma parity review, 2026-10-13), see pendingChanges. Digests re-recorded on 2026-10-13 in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH (user authorization of the correction batch). Amendment of 2026-10-13 (defaults light and standard in config.json, invariants in inventory.json, cascade semantics; change record reports/tokens/changes/2026-10-13-defaults.md): user in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, \"Oui je valide ça\", after a plain-language summary of the three decisions (defaults without attributes, Figma default density standard, brand switch restates appearance and density). Digests re-recorded in that session. Amendment of 2026-10-14 (typography.indicator.{sm,md,lg} and radius.indicator): user at the grouped contract gate of Icon, Counter and Shortcut in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, \"Ok pour tout\" with the counter made rectangular; digests re-recorded. Amendment of 2026-10-14 (primitive.opacity.70, opacity.muted): user at the implementation review of the wave 1 slot contents in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH (70 % border on the Counter); digests re-recorded.",
       "note": "color.surface.muted in dark is tested with primary and secondary content only. Figma variables pending (approvals.figmaVariables)."
     },
     "figmaVariables": {
@@ -213,6 +213,19 @@
       "review": "Accepted by the user at the grouped contract gate of Icon, Counter and Shortcut (2026-10-14, \"Ok pour tout\", counter rectangular with a 2 or 4 px radius).",
       "figma": "Pending: three text styles indicator/sm|md|lg and the Brand variable radius/indicator to sync at the Figma parity phase of the wave.",
       "recorded": "approvals.semantic re-recorded with this change on 2026-10-14."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "primitive.opacity.70 added to the opacity primitives; semantic role opacity.muted (common axis, alias of primitive.opacity.70) for attenuated companion content and light outlines (Counter border). Inventory entry added. Contract role names ending in Opacity are typed as numbers (tooling/lib/contract.ts, authoring/contract-format.md).",
+      "invalidates": "approvals.primitives for foundations/tokens/base/primitives/opacity.tokens.json and approvals.semantic for foundations/tokens/inventory.json and foundations/tokens/base/semantic/common.tokens.json (digests re-recorded below).",
+      "sha256": {
+        "foundations/tokens/base/primitives/opacity.tokens.json": "4cc7f86e82592011c1324949e2b3173a4b751e9f36423aa0b4fcd2a91fc5bced",
+        "foundations/tokens/inventory.json": "614446bd9bfd5ca5f63c94ebe2b127902d2c1e5606bfef0398b35c9783215c6b",
+        "foundations/tokens/base/semantic/common.tokens.json": "385416b5d5bd535215123cc35882077ed21f2f689204e6a67470a0376a248bdf"
+      },
+      "review": "Requested by the user at the implementation review of the wave 1 slot contents (2026-10-14): a 70 % border on the Counter.",
+      "figma": "Pending: variable opacity/muted and the primitive to sync at the Figma parity phase of the wave.",
+      "recorded": "approvals.primitives and approvals.semantic re-recorded with this change on 2026-10-14."
     }
   ]
 }

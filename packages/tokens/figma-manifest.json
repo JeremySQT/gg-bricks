@@ -3308,6 +3308,19 @@
     },
     {
       "collection": "Primitives",
+      "name": "primitive/opacity/70",
+      "path": "primitive.opacity.70",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-opacity-70)"
+      },
+      "values": {
+        "default": 0.7
+      }
+    },
+    {
+      "collection": "Primitives",
       "name": "primitive/opacity/80",
       "path": "primitive.opacity.80",
       "type": "FLOAT",
@@ -7745,6 +7758,29 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/opacity/60"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "opacity/muted",
+      "path": "opacity.muted",
+      "type": "FLOAT",
+      "scopes": [
+        "OPACITY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-opacity-muted)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/opacity/70"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/opacity/70"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/opacity/70"
         }
       }
     },

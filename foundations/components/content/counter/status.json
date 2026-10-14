@@ -33,7 +33,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/content/counter/contract.json",
-      "sha256": "780d5bb95dac71a36a45c35efca071396cf1b538f16fc4247351f324a9f9abc8"
+      "sha256": "23838f2c388853f46fd6e82b6820bbe020507658fe880a488ed91d82afe0a852"
     },
     "tokens": [
       "foundations/tokens/inventory.json",
@@ -68,13 +68,13 @@
   },
   "approvals": {
     "contract": {
-      "scope": "Counter contract: value (number, default 0), max (default 99, overflow 99+), size (sm, md, lg named like Button), optional label appended to the accessible text; container and value parts; overflow state; typography.indicator.{size}, radius.indicator, border.width.default, space.content.xs; eleven rules (inherited content color, tabular figures, line-box height, minimum width equal to the height, small corner radius, non interactive, forced colors).",
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14 at the grouped contract gate of Icon, Counter and Shortcut: \"Ok pour tout\" on the seven grouped decisions (indicator typography family for Counter and Shortcut, keycap appearance now, platform-driven Shortcut rendering, Counter in inherited color only, pill height from the typography, Button kept as approved, Icon glyph as content with five sizes), with two amendments applied before recording: Phosphor confirmed as the reference icon set, and the Counter made rectangular with a small corner radius (2 or 4 px) instead of a pill so that one and two digits read alike.",
+      "scope": "Counter contract: value (number, default 0), max (default 99, overflow 99+), size (sm, md, lg named like Button), optional label appended to the accessible text; container and value parts; overflow state; typography.indicator.{size}, radius.indicator, border.width.default, space.content.xs; eleven rules (inherited content color, tabular figures, line-box height, minimum width equal to the height, small corner radius, non interactive, forced colors). Amendment at the implementation review (2026-10-14): the border is drawn at borderOpacity (opacity.muted, 70 %) so that it reads lighter than the digits.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14 at the grouped contract gate of Icon, Counter and Shortcut: \"Ok pour tout\" on the seven grouped decisions (indicator typography family for Counter and Shortcut, keycap appearance now, platform-driven Shortcut rendering, Counter in inherited color only, pill height from the typography, Button kept as approved, Icon glyph as content with five sizes), with two amendments applied before recording: Phosphor confirmed as the reference icon set, and the Counter made rectangular with a small corner radius (2 or 4 px) instead of a pill so that one and two digits read alike. Amendment of 2026-10-14: user at the implementation review in the same session, \"je verrai bien un contour à 70% d'opacité pour pas avoir quelque chose de trop lourd visuellement\"; digest re-recorded.",
       "note": "Contract digest recorded after the amendments; implementation approval recorded separately.",
       "revision": {
         "paths": ["foundations/components/content/counter/contract.json"],
         "sha256": {
-          "foundations/components/content/counter/contract.json": "780d5bb95dac71a36a45c35efca071396cf1b538f16fc4247351f324a9f9abc8"
+          "foundations/components/content/counter/contract.json": "23838f2c388853f46fd6e82b6820bbe020507658fe880a488ed91d82afe0a852"
         }
       }
     },
@@ -157,11 +157,11 @@
     "Implementation (2026-10-14): min-inline-size uses the lh unit (no generated lineHeight helper exists and adding one would change shared tooling); Chromium resolves it in 1/64 px layout units, equal to the laid-out block size, so the browser test compares the minimum with the element's height at 0.005 px and with the token line box at 0.05 px.",
     "Implementation (2026-10-14): the geometry test asserts width = max(line box, digit + 2 x padding) rather than 'a single digit is square', which the first draft assumed and which is false at comfortable density (padding 6 px per side); the square is still asserted wherever the padding allows it. The code was right; the assertion is the contract's rule.",
     "Implementation (2026-10-14): the Counter export was added locally to packages/svelte/src/index.ts so that the example page and the tests resolve the component; the orchestrator owns that line, documentation/index.json and examples/index.html.",
-    "Implementation (2026-10-14): the review page is examples/counter (sizes x values 0, 1, 8, 42, 99, 100, 1234; tabular pairs; custom maximums; invalid input; label; next to label and body text of each size and in RTL; inside Buttons of every size, intent, appearance and state; nested opposite mode; constrained width). The Button example keeps its counter fixture until the implementation gate passes, as the fixtures note says."
+    "Implementation (2026-10-14): the review page is examples/counter (sizes x values 0, 1, 8, 42, 99, 100, 1234; tabular pairs; custom maximums; invalid input; label; next to label and body text of each size and in RTL; inside Buttons of every size, intent, appearance and state; nested opposite mode; constrained width). The Button example keeps its counter fixture until the implementation gate passes, as the fixtures note says.",
+    "Implementation review (user, 2026-10-14): comfortable density keeps the density-dependent padding (a single digit is slightly wider than tall there); the approach recommended by the implementation was validated.",
+    "Implementation review (user, 2026-10-14): the border is attenuated to 70 % of the content color (new semantic role opacity.muted on primitive.opacity.70, contract role borderOpacity), drawn with rgb(from currentColor r g b / borderOpacity); forced colors keep the full-opacity outline. Test assertions follow Chromium's color(srgb …) serialization of the attenuated color."
   ],
-  "openDecisions": [
-    "Comfortable density: with paddingInline bound to space.content.xs (6 px), a single digit is wider than it is high (sm 19.1 x 15.4 px, md 19.5 x 16.8, lg 20.8 x 19.6) while it is a square at compact and standard. Accept as the consequence of the density-dependent padding, or bind a density-independent padding (a new indicator spacing role) so the square holds in every density? To be judged on the preview (density selector)."
-  ],
+  "openDecisions": [],
   "nextAction": "Implementation gate (grouped with the other wave 1 slot contents): preview published as an artifact for the remote review.",
   "implementationNotes": [
     "Svelte: <span class=\"ggb-counter\" data-size data-overflow?> is the root and the container part (no separate target layer: not interactive); <span class=\"ggb-counter__value\"> holds the digits; when label is set a visually hidden <span class=\"ggb-counter__label\"> follows, starting with a space (white-space: pre keeps it) so the accessible text is one phrase (8 unread messages); no role, aria-label or tabindex. Native attributes pass through, class is merged, ref is bindable. No Bits UI primitive: there are no native semantics to borrow.",

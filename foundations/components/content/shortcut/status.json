@@ -162,14 +162,11 @@
     "Implementation (2026-10-14): the separator is a flex item of the keycap container, so on other the sequence cap, +, cap has keyGap between each pair (the + glyph is wider than keyGap and cannot sit inside one gap); on mac caps are exactly keyGap apart.",
     "Implementation (2026-10-14): platform detection runs in onMount, after hydration, rather than during the first render, so that server and client markup match; the one-paint flip on Apple platforms is accepted as the status foresaw. No Svelte context for the platform in v1.",
     "Implementation (2026-10-14): the accessible text is a visually hidden span (1 px, clipped) inside the root; aria-label on a kbd is unreliable. A blank label is ignored. The browser test checks the name through native hosts (a button, a tooltip) because a kbd root has no role of its own.",
-    "Implementation (2026-10-14): browser test corrections, code unchanged: expected name \"Delete line Command Shift K\" corrected to \"Delete line Shift Command K\" (contract mac order); \"single cap is square within 0.05 px\" replaced by the contract rule (width at least the height) plus \"width equals the greater of the square minimum and glyph + padding within 0.5 px\"; display read on an inline sample rather than a blockified flex item; line-height compared numerically."
+    "Implementation (2026-10-14): browser test corrections, code unchanged: expected name \"Delete line Command Shift K\" corrected to \"Delete line Shift Command K\" (contract mac order); \"single cap is square within 0.05 px\" replaced by the contract rule (width at least the height) plus \"width equals the greater of the square minimum and glyph + padding within 0.5 px\"; display read on an inline sample rather than a blockified flex item; line-height compared numerically.",
+    "Implementation review (user, 2026-10-14): comfortable density keeps the density-dependent padding (single-letter caps slightly wider than tall there); the recommended approach was validated."
   ],
   "openDecisions": [
-    {
-      "id": 1,
-      "question": "Comfortable density: keyPaddingInline (space.content.xs, 6 px) makes a single-letter keycap wider than tall at sm and md (21.6 x 17.4 px at sm), while compact and standard give square caps. Keep the density-following padding, or bind keyPaddingInline to a density-independent value so that single caps stay square everywhere?",
-      "recommendation": "Keep: the contract rule (at least as wide as tall) holds, the difference is 2 to 4 px in the roomiest density only, and a new binding would reopen the contract gate."
-    }
+    "Implementation review (user, 2026-10-14): the plain shortcut beside a label (inside a Button) should be attenuated so that it is not read as part of the label. A 70 % opacity (like the Counter border) drops the hint text below 4.5:1 in 81 of 198 context × button combinations (worst 3.27:1, white hint on a solid accent or danger button in dark); 85 % still fails 30. Proposed instead: a lighter weight (regular 400 instead of medium 500) for the plain appearance, which differentiates it from the label without any contrast loss; or accept the opacity with a documented contrast exception. Awaiting the user's choice."
   ],
   "nextAction": "Implementation gate (grouped with the other wave 1 slot contents): preview published as an artifact for the remote review.",
   "implementationNotes": [

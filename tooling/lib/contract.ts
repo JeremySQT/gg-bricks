@@ -88,7 +88,8 @@ export function resolveTemplate(contract: Contract, role: string, params: Params
 /**
  * Role naming convention used by generic checks (see authoring/contract-format.md):
  * surface / content / border and roles ending in "Color" are colors;
- * roles starting with "typography" are typography; everything else is a dimension.
+ * roles starting with "typography" are typography; roles ending in "Opacity" are numbers; everything
+ * else is a dimension.
  */
 export function expectedRoleType(role: string): TokenType {
   if (['surface', 'content', 'border'].includes(role) || /Color$/.test(role)) return 'color';
@@ -96,6 +97,7 @@ export function expectedRoleType(role: string): TokenType {
   if (/^(motion|duration)/.test(role)) return 'duration';
   if (/^easing/.test(role)) return 'cubicBezier';
   if (/^shadow/.test(role)) return 'shadow';
+  if (/Opacity$/.test(role)) return 'number';
   return 'dimension';
 }
 

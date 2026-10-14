@@ -2150,6 +2150,10 @@
     "$type": "number",
     "$value": 0.6
   },
+  "primitive.opacity.70": {
+    "$type": "number",
+    "$value": 0.7
+  },
   "primitive.opacity.80": {
     "$type": "number",
     "$value": 0.8
@@ -4517,6 +4521,11 @@
   "opacity.scrim": {
     "$type": "number",
     "$value": 0.6
+  },
+  "opacity.muted": {
+    "$type": "number",
+    "$value": 0.7,
+    "$description": "Attenuation of companion content next to a label (a shortcut hint) and of light outlines (a counter's border), so that they read lighter than the text they accompany."
   },
   "color.surface.canvas": {
     "$type": "color",
