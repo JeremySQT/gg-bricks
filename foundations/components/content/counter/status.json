@@ -55,7 +55,7 @@
     "examples": {
       "page": "examples/counter",
       "preview": "dist/previews/counter.html (npm run build:preview counter)",
-      "artifact": null
+      "artifact": "https://claude.ai/artifact/G3xkXNU3ZoskK8AiMULgTg (version 1)"
     },
     "tests": {
       "ssr": "tests/ssr/counter.test.ts",
@@ -162,7 +162,7 @@
   "openDecisions": [
     "Comfortable density: with paddingInline bound to space.content.xs (6 px), a single digit is wider than it is high (sm 19.1 x 15.4 px, md 19.5 x 16.8, lg 20.8 x 19.6) while it is a square at compact and standard. Accept as the consequence of the density-dependent padding, or bind a density-independent padding (a new indicator spacing role) so the square holds in every density? To be judged on the preview (density selector)."
   ],
-  "nextAction": "Grouped implementation gate with Icon and Shortcut (preview dist/previews/counter.html); then Figma reproduction (ggb-figma) and documentation (ggb-docs).",
+  "nextAction": "Implementation gate (grouped with the other wave 1 slot contents): preview published as an artifact for the remote review.",
   "implementationNotes": [
     "Svelte: <span class=\"ggb-counter\" data-size data-overflow?> is the root and the container part (no separate target layer: not interactive); <span class=\"ggb-counter__value\"> holds the digits; when label is set a visually hidden <span class=\"ggb-counter__label\"> follows, starting with a space (white-space: pre keeps it) so the accessible text is one phrase (8 unread messages); no role, aria-label or tabindex. Native attributes pass through, class is merged, ref is bindable. No Bits UI primitive: there are no native semantics to borrow.",
     "Formatting: value -> Number.isFinite ? max(0, floor) : 0; max -> finite ? max(1, floor) : 99; overflow = value > max; text = Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }) of value, or of max followed by U+002B. The locale is the runtime's (server or browser); grouping only shows once max is raised above 999.",

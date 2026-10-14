@@ -48,7 +48,8 @@
     },
     "examples": {
       "page": "examples/icon",
-      "preview": "dist/previews/icon.html (npm run build && npm run build:preview icon)"
+      "preview": "dist/previews/icon.html (npm run build && npm run build:preview icon)",
+      "artifact": "https://claude.ai/artifact/1Q1daFCNrmvupkcBprs9G6 (version 1)"
     },
     "tests": {
       "ssr": "tests/ssr/icon.test.ts",
@@ -116,7 +117,7 @@
   "openDecisions": [
     "Figma parity gate (later): the Figma master cannot hold the application's icons; proposed: an Icon component set whose Name variants are the review fixtures (Phosphor), with Size as a variant, replacing the _Fixture/Icon set."
   ],
-  "nextAction": "Implementation gate (grouped with Counter and Shortcut).",
+  "nextAction": "Implementation gate (grouped with the other wave 1 slot contents): preview published as an artifact for the remote review.",
   "implementationNotes": [
     "Svelte: Icon renders a single svg root element (class ggb-icon, data-size, viewBox option defaulting to the Phosphor grid 0 0 256 256, fill currentColor, width and height from size.icon) whose content is the children snippet. A single svg root keeps the Button slot selectors (.ggb-button__leading > svg) working, so the button sizes and optically offsets the icon as it does today with raw svg fixtures.",
     "Accessibility: without label, aria-hidden=\"true\" and focusable=\"false\"; with label, role=\"img\" and aria-label.",

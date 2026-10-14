@@ -52,7 +52,7 @@
     "examples": {
       "page": "examples/shortcut",
       "preview": "dist/previews/shortcut.html (npm run build && npm run build:preview shortcut)",
-      "artifact": null
+      "artifact": "https://claude.ai/artifact/4J6XDHxZ5b3wwoZeNkxurX (version 1)"
     },
     "tests": {
       "unit": "tests/shortcut-keys.test.ts",
@@ -171,7 +171,7 @@
       "recommendation": "Keep: the contract rule (at least as wide as tall) holds, the difference is 2 to 4 px in the roomiest density only, and a new binding would reopen the contract gate."
     }
   ],
-  "nextAction": "Implementation gate (grouped with Icon and Counter): review dist/previews/shortcut.html, then Figma parity (ggb-figma).",
+  "nextAction": "Implementation gate (grouped with the other wave 1 slot contents): preview published as an artifact for the remote review.",
   "implementationNotes": [
     "Markup: <kbd class=\"ggb-shortcut\" data-platform data-appearance data-size> holding a visually hidden <span class=\"ggb-shortcut__name\"> (the spoken equivalent, or label when non-blank) and <span class=\"ggb-shortcut__container\" aria-hidden=\"true\"> with one nested <kbd class=\"ggb-shortcut__key\" data-key data-kind> per resolved key and a <span class=\"ggb-shortcut__separator\">+</span> between keys on other. No role, no aria-label. data-platform carries the resolved platform (mac or other), never auto.",
     "Parsing lives in keys.ts (pure TypeScript, unit-tested): parseKeys splits on +, trims, maps aliases ignoring case, uppercases single letters, drops empty tokens, keeps unknown names as literals; resolveShortcut maps Mod, collapses a modifier named twice, orders modifiers per platform (mac Ctrl, Alt, Shift, Meta; other Meta, Ctrl, Alt, Shift), then the other keys in the given order, and yields text, spoken word and separator; it never throws.",
