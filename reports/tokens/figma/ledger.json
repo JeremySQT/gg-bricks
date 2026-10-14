@@ -50,7 +50,7 @@
     }
   },
   "variables": {
-    "total": 635,
+    "total": 647,
     "batches": [
       {
         "batch": 1,
@@ -120,10 +120,35 @@
           "radius/focus": "VariableID:119:2"
         },
         "note": "radius.focus (base alias primitive/radius/lg, brick primitive/radius/sm, orchid literal 14), scope CORNER_RADIUS, code syntax var(--ggb-radius-focus); resolution checked in the three brands (8, 4, 14)."
+      },
+      {
+        "date": "2026-10-14",
+        "reason": "Wave 1 slot contents (Icon, Counter, Shortcut): indicator typography, indicator radius, muted opacity",
+        "collection": "Primitives and Brand",
+        "ids": {
+          "primitive/opacity/70": "VariableID:145:2",
+          "opacity/muted": "VariableID:145:3",
+          "radius/indicator": "VariableID:145:4",
+          "typography/indicator/sm/fontSize": "VariableID:145:5",
+          "typography/indicator/sm/lineHeight": "VariableID:145:6",
+          "typography/indicator/sm/letterSpacing": "VariableID:145:7",
+          "typography/indicator/md/fontSize": "VariableID:145:8",
+          "typography/indicator/md/lineHeight": "VariableID:145:9",
+          "typography/indicator/md/letterSpacing": "VariableID:145:10",
+          "typography/indicator/lg/fontSize": "VariableID:145:11",
+          "typography/indicator/lg/lineHeight": "VariableID:145:12",
+          "typography/indicator/lg/letterSpacing": "VariableID:145:13"
+        },
+        "textStyles": {
+          "typography/indicator/sm": "S:3f083edfdb5a7a04e9831a88597c733bc3e382d7",
+          "typography/indicator/md": "S:e32656fae099a2252a5f70ab795b323508026806",
+          "typography/indicator/lg": "S:6ac9d1c703f7b7670f8b1f81a2855f6a942dfa10"
+        },
+        "note": "Synced with a delta batch of tooling/figma-batches.ts output through use_figma; 676 variables and 28 text styles in the file afterwards."
       }
     ]
   },
-  "textStyles": 25,
+  "textStyles": 28,
   "effectStyles": 3,
   "limitations": [
     "OpenType features (tnum on typography/numeral/*) cannot be set on text styles through the Plugin API; the style description records them and the text layer sets them.",
