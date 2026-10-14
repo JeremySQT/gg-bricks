@@ -1,5 +1,7 @@
 # Shortcut — Svelte implementation report
 
+Amended on 2026-10-14 after the implementation review: the plain appearance is attenuated to `opacity.muted` (70 %) so that a hint beside a label is not read as part of it; keycaps and forced-colors rendering stay at full opacity. Accepted contrast exception: inside solid Buttons (and some outline and ghost ones in light) the attenuated hint falls below 4.5:1 (worst 3.3:1 on solid accent and danger); the user chose 70 % over 85 % and a lighter weight after comparing them on a lab page, the hint being indicative and already hidden from assistive technology inside a Button. The axe audit lists these nodes as the only tolerated violations.
+
 Component: `packages/svelte/src/components/shortcut/` (Svelte 5.57.1; no Bits UI primitive: a `kbd` element owns the native semantics of a key combination and Bits UI has no primitive for it). Review page: `examples/shortcut/`; self-contained preview: `dist/previews/shortcut.html` (`npm run build && npm run build:preview shortcut`). Implementation gate pending (grouped with Icon and Counter).
 
 ## Structure

@@ -476,11 +476,32 @@ test('automated accessibility audit and screenshots in light and dark, desktop a
       .include('.page')
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
       .analyze();
-    expect(results.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target).join(', ')}`)).toEqual([]);
+    // Documented exception (user decision, 2026-10-14): a plain shortcut is attenuated to opacity.muted, which
+    // takes its hint text below 4.5:1 inside solid and some outline/ghost Buttons. Every other violation fails.
+    const exception = (target: string) => /\.ggb-button__trailing.*data-appearance="plain"/.test(target);
+    const violations = results.violations.flatMap((v) =>
+      v.nodes
+        .filter((n) => !(v.id === 'color-contrast' && n.target.every((t) => exception(String(t)))))
+        .map((n) => `${v.id}: ${n.target}`)
+    );
+    expect(violations).toEqual([]);
     await page.screenshot({ path: `${out}/review-${mode}.png`, fullPage: true });
   }
   await page.setViewportSize({ width: 390, height: 844 });
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(0);
   await page.screenshot({ path: `${out}/review-mobile.png`, fullPage: true });
+});
+
+test('a plain shortcut is attenuated beside its label; a keycap is not', async ({ page }) => {
+  const tokens = tokensFor('base-light-standard');
+  const muted = String(tokens['opacity.muted'].$value);
+  await page.selectOption('#opt-appearance', 'plain');
+  await expect(page.locator('#play-shortcut')).toHaveCSS('opacity', muted);
+  await page.selectOption('#opt-appearance', 'keycap');
+  await expect(page.locator('#play-shortcut')).toHaveCSS('opacity', '1');
+  await expect(page.getByTestId('menu-shortcut').first()).toHaveCSS('opacity', muted);
+  await page.emulateMedia({ forcedColors: 'active' });
+  await page.selectOption('#opt-appearance', 'plain');
+  await expect(page.locator('#play-shortcut')).toHaveCSS('opacity', '1');
 });

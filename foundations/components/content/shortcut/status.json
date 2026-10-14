@@ -3,7 +3,7 @@
   "componentId": "shortcut",
   "family": "content",
   "wave": 1,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Show a keyboard shortcut hint (⌘K, Ctrl+Shift+P) as a sequence of keys, written once in a platform-neutral notation and rendered in the conventions of the user's platform, with a spoken equivalent for assistive technology.",
     "useCases": [
@@ -34,7 +34,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/content/shortcut/contract.json",
-      "sha256": "2eb40a1bbf19eff371f1940312e88024e6b74146687f8ff998a58bbfcba1cf0b"
+      "sha256": "8a78a432cf7684b3a423ab8d34a4905b9a4a91f6ec6d9bb7ebbcbeb47c3549bf"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
@@ -66,17 +66,41 @@
   },
   "approvals": {
     "contract": {
-      "scope": "Shortcut contract: keys (platform-neutral notation), platform (auto, mac, other), appearance (plain, keycap), size (sm, md, lg named like Button, default md), optional label; container, key and separator parts; typography.indicator.{size}, color.surface.subtle, color.border.default (informational on neutral backdrops), border.width.default, radius.control, space.content.xs; thirteen rules (notation and aliases, platform resolution and modifier order, Apple glyphs versus short names, spoken equivalent, inherited color, plain and keycap geometry, forced colors).",
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14 at the grouped contract gate of Icon, Counter and Shortcut: \"Ok pour tout\" on the seven grouped decisions (indicator typography family for Counter and Shortcut, keycap appearance now, platform-driven Shortcut rendering, Counter in inherited color only, pill height from the typography, Button kept as approved, Icon glyph as content with five sizes), with two amendments applied before recording: Phosphor confirmed as the reference icon set, and the Counter made rectangular with a small corner radius (2 or 4 px) instead of a pill so that one and two digits read alike.",
+      "scope": "Shortcut contract: keys (platform-neutral notation), platform (auto, mac, other), appearance (plain, keycap), size (sm, md, lg named like Button, default md), optional label; container, key and separator parts; typography.indicator.{size}, color.surface.subtle, color.border.default (informational on neutral backdrops), border.width.default, radius.control, space.content.xs; thirteen rules (notation and aliases, platform resolution and modifier order, Apple glyphs versus short names, spoken equivalent, inherited color, plain and keycap geometry, forced colors). Amendment at the implementation review (2026-10-14): the plain appearance is shown at contentOpacity (opacity.muted, 70 %).",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14 at the grouped contract gate of Icon, Counter and Shortcut: \"Ok pour tout\" on the seven grouped decisions (indicator typography family for Counter and Shortcut, keycap appearance now, platform-driven Shortcut rendering, Counter in inherited color only, pill height from the typography, Button kept as approved, Icon glyph as content with five sizes), with two amendments applied before recording: Phosphor confirmed as the reference icon set, and the Counter made rectangular with a small corner radius (2 or 4 px) instead of a pill so that one and two digits read alike. Amendment of 2026-10-14: user at the implementation review in the same session, attenuation of the plain shortcut beside a label, 70 % chosen over 85 % and a lighter weight after the comparison lab; digest re-recorded.",
       "note": "Contract digest recorded after the amendments; implementation approval recorded separately.",
       "revision": {
         "paths": ["foundations/components/content/shortcut/contract.json"],
         "sha256": {
-          "foundations/components/content/shortcut/contract.json": "2eb40a1bbf19eff371f1940312e88024e6b74146687f8ff998a58bbfcba1cf0b"
+          "foundations/components/content/shortcut/contract.json": "8a78a432cf7684b3a423ab8d34a4905b9a4a91f6ec6d9bb7ebbcbeb47c3549bf"
         }
       }
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Svelte implementation of the Shortcut: neutral notation parsed in keys.ts, platform resolution, Apple glyphs and short names, spoken equivalent, plain appearance attenuated to 70 % (opacity.muted, accepted contrast exception inside solid Buttons), keycap appearance, comfortable density keeping the density-dependent padding, review page examples/shortcut.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/shortcut/Shortcut.svelte",
+          "packages/svelte/src/components/shortcut/keys.ts",
+          "packages/svelte/src/components/shortcut/types.ts",
+          "packages/svelte/src/components/shortcut/shortcut.css",
+          "packages/svelte/src/components/shortcut/contract.generated.ts",
+          "packages/svelte/src/components/shortcut/tokens.generated.css",
+          "examples/shortcut/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/shortcut/Shortcut.svelte": "5daf33afc71f32b2ffa80f11b15029e811d5134e14a6a6ca31293fd6b09489cb",
+          "packages/svelte/src/components/shortcut/keys.ts": "bb2c44c8224289d3b9a75a1457779db1c440f3f00f4a5649e31491a6cdbf8bcd",
+          "packages/svelte/src/components/shortcut/types.ts": "f99477d945870699f56c3b6a9fe1158bcceac1c8124388427b58d750e3efe057",
+          "packages/svelte/src/components/shortcut/shortcut.css": "e39a51fa79e56998ca1525b87d59dfb7f36d782306d0cadace95e5b358ed66cb",
+          "packages/svelte/src/components/shortcut/contract.generated.ts": "f6b0eeb26d7c019a821bf7fe749bf4b2eaf826935a1831810462e041e5003731",
+          "packages/svelte/src/components/shortcut/tokens.generated.css": "cf018ee07b67e2f6695e181dd58c202776ce50a8f8795a7e25ecbbdbaf2b85f0",
+          "examples/shortcut/App.svelte": "4c3ba3739d9023510f073c258ac62989b0c435120a559efd54631cc20d11b14f"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, after reviewing the published preview artifacts (grouped implementation gate of Icon, Counter and Shortcut): \"Ok pour la dernière proposition sur la densité, je valide l'approche recommandée\", then \"Pour le counter ça me semble bon, mais visuellement je verrai bien un contour à 70% d'opacité\" (applied), then, for the Shortcut, after comparing 100 %, 85 %, 70 % and a lighter weight on a lab page (https://claude.ai/artifact/L1agvDLoc2hBK3Hqz91reB): \"85% ne me semble pas assez atténué. 70% me semble mieux\" (applied). Approval recorded on the revisions that include these adjustments.",
+      "note": "Automated evidence: Chromium only (SSR and Playwright tests in tests/); no assistive-technology test."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -163,12 +187,11 @@
     "Implementation (2026-10-14): platform detection runs in onMount, after hydration, rather than during the first render, so that server and client markup match; the one-paint flip on Apple platforms is accepted as the status foresaw. No Svelte context for the platform in v1.",
     "Implementation (2026-10-14): the accessible text is a visually hidden span (1 px, clipped) inside the root; aria-label on a kbd is unreliable. A blank label is ignored. The browser test checks the name through native hosts (a button, a tooltip) because a kbd root has no role of its own.",
     "Implementation (2026-10-14): browser test corrections, code unchanged: expected name \"Delete line Command Shift K\" corrected to \"Delete line Shift Command K\" (contract mac order); \"single cap is square within 0.05 px\" replaced by the contract rule (width at least the height) plus \"width equals the greater of the square minimum and glyph + padding within 0.5 px\"; display read on an inline sample rather than a blockified flex item; line-height compared numerically.",
-    "Implementation review (user, 2026-10-14): comfortable density keeps the density-dependent padding (single-letter caps slightly wider than tall there); the recommended approach was validated."
+    "Implementation review (user, 2026-10-14): comfortable density keeps the density-dependent padding (single-letter caps slightly wider than tall there); the recommended approach was validated.",
+    "Implementation review (user, 2026-10-14): the plain shortcut is attenuated to 70 % (opacity.muted, contract role contentOpacity) so that it is not read as part of the label; keycaps and forced colors stay at full opacity. Accepted contrast exception: inside solid Buttons the hint falls to 3.3:1 (and below 4.5:1 in some outline and ghost ones in light); the hint is indicative and hidden from assistive technology inside a Button. The browser audit tolerates color-contrast only on those nodes. Lab page examples/shortcut-opacity (artifact https://claude.ai/artifact/L1agvDLoc2hBK3Hqz91reB, commit ad68c20) removed after the choice."
   ],
-  "openDecisions": [
-    "Implementation review (user, 2026-10-14): the plain shortcut beside a label (inside a Button) should be attenuated so that it is not read as part of the label. A 70 % opacity (like the Counter border) drops the hint text below 4.5:1 in 81 of 198 context × button combinations (worst 3.27:1, white hint on a solid accent or danger button in dark); 85 % still fails 30. Proposed instead: a lighter weight (regular 400 instead of medium 500) for the plain appearance, which differentiates it from the label without any contrast loss; or accept the opacity with a documented contrast exception. Awaiting the user's choice."
-  ],
-  "nextAction": "Implementation gate (grouped with the other wave 1 slot contents): preview published as an artifact for the remote review.",
+  "openDecisions": [],
+  "nextAction": "Figma parity (ggb-figma), grouped Figma parity gate for the wave 1 slot contents.",
   "implementationNotes": [
     "Markup: <kbd class=\"ggb-shortcut\" data-platform data-appearance data-size> holding a visually hidden <span class=\"ggb-shortcut__name\"> (the spoken equivalent, or label when non-blank) and <span class=\"ggb-shortcut__container\" aria-hidden=\"true\"> with one nested <kbd class=\"ggb-shortcut__key\" data-key data-kind> per resolved key and a <span class=\"ggb-shortcut__separator\">+</span> between keys on other. No role, no aria-label. data-platform carries the resolved platform (mac or other), never auto.",
     "Parsing lives in keys.ts (pure TypeScript, unit-tested): parseKeys splits on +, trims, maps aliases ignoring case, uppercases single letters, drops empty tokens, keeps unknown names as literals; resolveShortcut maps Mod, collapses a modifier named twice, orders modifiers per platform (mac Ctrl, Alt, Shift, Meta; other Meta, Ctrl, Alt, Shift), then the other keys in the given order, and yields text, spoken word and separator; it never throws.",

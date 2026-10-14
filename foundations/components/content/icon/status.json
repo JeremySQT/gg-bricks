@@ -3,7 +3,7 @@
   "componentId": "icon",
   "family": "content",
   "wave": 1,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Display a vector glyph from the application's icon set at a system size, in the current content color, decorative unless it carries a label.",
     "useCases": [
@@ -72,7 +72,29 @@
         }
       }
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Svelte implementation of the Icon (interactive implementation review, which is also the design review): svg root sized by size.icon, decorative or named, host sizing inside Button, review page examples/icon.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/icon/Icon.svelte",
+          "packages/svelte/src/components/icon/types.ts",
+          "packages/svelte/src/components/icon/icon.css",
+          "packages/svelte/src/components/icon/contract.generated.ts",
+          "packages/svelte/src/components/icon/tokens.generated.css",
+          "examples/icon/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/icon/Icon.svelte": "086f3ee5330f0fe864605299b095990b33fda693ec49692a6c95b376a14f787a",
+          "packages/svelte/src/components/icon/types.ts": "2845c64674a8b5457596fda104c81b0f2fea2536490166ca66a7a990bfe6f315",
+          "packages/svelte/src/components/icon/icon.css": "16a5dc6e92d73bf95201c984eac18c02320e497a3774f3ca50826eec4429a8b1",
+          "packages/svelte/src/components/icon/contract.generated.ts": "4c538ce8183705efa4f0c5b7c8ee4b7273567415049e517b59e83a2a59831ebd",
+          "packages/svelte/src/components/icon/tokens.generated.css": "1f0ec4fb267b6ec3c00832efb242b98192dec9050a574e719b2a83a67040c29d",
+          "examples/icon/App.svelte": "21f4a0a7755e16c1459190fe1dde84ba28637ef4cac3dbb5b69c4d77542105d0"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, after reviewing the published preview artifacts (grouped implementation gate of Icon, Counter and Shortcut): \"Ok pour la dernière proposition sur la densité, je valide l'approche recommandée\", then \"Pour le counter ça me semble bon, mais visuellement je verrai bien un contour à 70% d'opacité\" (applied), then, for the Shortcut, after comparing 100 %, 85 %, 70 % and a lighter weight on a lab page (https://claude.ai/artifact/L1agvDLoc2hBK3Hqz91reB): \"85% ne me semble pas assez atténué. 70% me semble mieux\" (applied). Approval recorded on the revisions that include these adjustments.",
+      "note": "Automated evidence: Chromium only (SSR and Playwright tests in tests/); no assistive-technology test."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -117,7 +139,7 @@
   "openDecisions": [
     "Figma parity gate (later): the Figma master cannot hold the application's icons; proposed: an Icon component set whose Name variants are the review fixtures (Phosphor), with Size as a variant, replacing the _Fixture/Icon set."
   ],
-  "nextAction": "Implementation gate (grouped with the other wave 1 slot contents): preview published as an artifact for the remote review.",
+  "nextAction": "Figma parity (ggb-figma), grouped Figma parity gate for the wave 1 slot contents.",
   "implementationNotes": [
     "Svelte: Icon renders a single svg root element (class ggb-icon, data-size, viewBox option defaulting to the Phosphor grid 0 0 256 256, fill currentColor, width and height from size.icon) whose content is the children snippet. A single svg root keeps the Button slot selectors (.ggb-button__leading > svg) working, so the button sizes and optically offsets the icon as it does today with raw svg fixtures.",
     "Accessibility: without label, aria-hidden=\"true\" and focusable=\"false\"; with label, role=\"img\" and aria-label.",

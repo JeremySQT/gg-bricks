@@ -43,9 +43,9 @@ One row per component once its scope phase starts. Phase values: scope, contract
 | Component | Family  | Wave | Phase         | Status file                                           |
 | --------- | ------- | ---- | ------------- | ----------------------------------------------------- |
 | Button    | actions | 1    | documentation | `foundations/components/actions/button/status.json`   |
-| Icon      | content | 1    | contract      | `foundations/components/content/icon/status.json`     |
-| Counter   | content | 1    | contract      | `foundations/components/content/counter/status.json`  |
-| Shortcut  | content | 1    | contract      | `foundations/components/content/shortcut/status.json` |
+| Icon      | content | 1    | figma         | `foundations/components/content/icon/status.json`     |
+| Counter   | content | 1    | figma         | `foundations/components/content/counter/status.json`  |
+| Shortcut  | content | 1    | figma         | `foundations/components/content/shortcut/status.json` |
 
 ## How a fresh session starts a task
 

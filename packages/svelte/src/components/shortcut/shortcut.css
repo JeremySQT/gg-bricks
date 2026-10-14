@@ -22,6 +22,11 @@
   text-transform: none;
 }
 
+/* Plain: a hint beside a label, attenuated so that it is not read as part of the label. Keycaps stay at full opacity. */
+.ggb-shortcut[data-appearance='plain'] {
+  opacity: var(--ggb-shortcut-contentOpacity);
+}
+
 /* Spoken equivalent: the accessible text, visually hidden; the visible parts are aria-hidden. */
 .ggb-shortcut__name {
   position: absolute;
@@ -73,6 +78,9 @@
 }
 
 @media (forced-colors: active) {
+  .ggb-shortcut[data-appearance='plain'] {
+    opacity: 1;
+  }
   .ggb-shortcut[data-appearance='keycap'] .ggb-shortcut__key {
     border-color: CanvasText;
     background-color: Canvas;

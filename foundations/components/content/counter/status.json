@@ -3,7 +3,7 @@
   "componentId": "counter",
   "family": "content",
   "wave": 1,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Show a quantity (unread messages, items, selected rows) as a compact pill next to the thing it counts.",
     "useCases": [
@@ -78,7 +78,29 @@
         }
       }
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Svelte implementation of the Counter: rectangle with a small radius, indicator typography with tabular figures, line-box height, overflow 99+, inherited content color with the border attenuated to 70 % (opacity.muted), comfortable density keeping the density-dependent padding, review page examples/counter.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/counter/Counter.svelte",
+          "packages/svelte/src/components/counter/types.ts",
+          "packages/svelte/src/components/counter/counter.css",
+          "packages/svelte/src/components/counter/contract.generated.ts",
+          "packages/svelte/src/components/counter/tokens.generated.css",
+          "examples/counter/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/counter/Counter.svelte": "31d2eb5a5a162810816d22f465085f58ba2ef4d4f2247ddb78f755ccbf787d7c",
+          "packages/svelte/src/components/counter/types.ts": "3b6f7eeda626a204487758f706bb83e78fb6f048ed828c56efa64975bdffe3df",
+          "packages/svelte/src/components/counter/counter.css": "aa6e70d1116e562ffb872cb163246d53e03a02a7dcf7e63e986288a8f7d08390",
+          "packages/svelte/src/components/counter/contract.generated.ts": "26c13097272fce8b85337756d4641427f3c009185169920d50c524101abcd995",
+          "packages/svelte/src/components/counter/tokens.generated.css": "12b5f54c6f6794678d9ff221e2456c98af8bc0545145df9ca878bd44a7560698",
+          "examples/counter/App.svelte": "c12fd75c237f35957e81544ea5a933d953a6db0eb2610b52b81af824ff682927"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, after reviewing the published preview artifacts (grouped implementation gate of Icon, Counter and Shortcut): \"Ok pour la dernière proposition sur la densité, je valide l'approche recommandée\", then \"Pour le counter ça me semble bon, mais visuellement je verrai bien un contour à 70% d'opacité\" (applied), then, for the Shortcut, after comparing 100 %, 85 %, 70 % and a lighter weight on a lab page (https://claude.ai/artifact/L1agvDLoc2hBK3Hqz91reB): \"85% ne me semble pas assez atténué. 70% me semble mieux\" (applied). Approval recorded on the revisions that include these adjustments.",
+      "note": "Automated evidence: Chromium only (SSR and Playwright tests in tests/); no assistive-technology test."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -162,7 +184,7 @@
     "Implementation review (user, 2026-10-14): the border is attenuated to 70 % of the content color (new semantic role opacity.muted on primitive.opacity.70, contract role borderOpacity), drawn with rgb(from currentColor r g b / borderOpacity); forced colors keep the full-opacity outline. Test assertions follow Chromium's color(srgb …) serialization of the attenuated color."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation gate (grouped with the other wave 1 slot contents): preview published as an artifact for the remote review.",
+  "nextAction": "Figma parity (ggb-figma), grouped Figma parity gate for the wave 1 slot contents.",
   "implementationNotes": [
     "Svelte: <span class=\"ggb-counter\" data-size data-overflow?> is the root and the container part (no separate target layer: not interactive); <span class=\"ggb-counter__value\"> holds the digits; when label is set a visually hidden <span class=\"ggb-counter__label\"> follows, starting with a space (white-space: pre keeps it) so the accessible text is one phrase (8 unread messages); no role, aria-label or tabindex. Native attributes pass through, class is merged, ref is bindable. No Bits UI primitive: there are no native semantics to borrow.",
     "Formatting: value -> Number.isFinite ? max(0, floor) : 0; max -> finite ? max(1, floor) : 99; overflow = value > max; text = Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }) of value, or of max followed by U+002B. The locale is the runtime's (server or browser); grouping only shows once max is raised above 999.",
