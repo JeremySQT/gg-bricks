@@ -239,16 +239,20 @@
   },
   "adapterVariables": {
     "size": {
-      "collection": "VariableCollectionId:74:3",
-      "name": "_ggbrick button size",
-      "modes": {
-        "sm": "74:0",
-        "md": "74:1",
-        "lg": "74:2"
+      "collection": {
+        "id": "VariableCollectionId:181:2",
+        "name": "Components",
+        "modes": {
+          "sm": "181:0",
+          "md": "181:1",
+          "lg": "181:2"
+        },
+        "default": "md",
+        "hiddenFromPublishing": true
       },
       "variables": {
         "button/icon-drawing": {
-          "id": "VariableID:74:4",
+          "id": "VariableID:181:3",
           "type": "FLOAT",
           "values": {
             "sm": 12,
@@ -257,13 +261,13 @@
           }
         },
         "button/icon-size": {
-          "id": "VariableID:74:5",
+          "id": "VariableID:181:4",
           "type": "FLOAT",
           "values": "alias size/icon/{sm,md,lg}"
         }
       },
-      "assignment": "Each Button variant sets the mode matching its Size explicitly.",
-      "removed": "Collection _ggbrick adapter (VariableCollectionId:43:2, button/icon-drawing/{sm,md,lg}) deleted on 2026-10-10 after migration; no remaining bindings."
+      "assignment": "Each Button variant sets the Components mode matching its Size explicitly (moved from the former _ggbrick button size collection 74:3 on 2026-10-14).",
+      "removed": "Collection _ggbrick adapter (VariableCollectionId:43:2) deleted on 2026-10-10; collection _ggbrick button size (74:3, variables 74:4 and 74:5) deleted on 2026-10-14 after the regrouping."
     },
     "foreground": {
       "collections": {
@@ -285,11 +289,11 @@
       "variables": {
         "button/foreground": {
           "id": "VariableID:90:13",
-          "collection": "_ggbrick button style",
+          "collection": "Components · button style",
           "value": "alias button/{intent}-{appearance}/foreground per mode"
         },
         "button/{intent}-{appearance}/foreground": {
-          "collection": "_ggbrick button state",
+          "collection": "Components · button state",
           "count": 9,
           "value": "alias color/action/{intent}/{appearance}/{state}/content per mode"
         }
@@ -431,6 +435,10 @@
     {
       "date": "2026-10-14",
       "change": "Blueprint boards: the drawing is centered vertically in each board and the legend elements follow (user review of the wave 1 Figma parity gate, 2026-10-14); the builder script applies the same pass (centerBoards). The Spacing diagram's dimension row sits 8 px closer to the zoomed container."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Adapter collections regrouped (user review, 2026-10-14): the component adapter variables now live in one hidden collection Components (VariableCollectionId:181:2, modes sm 181:0, md 181:1, lg 181:2, default md): button/icon-drawing 181:3, button/icon-size 181:4, counter/foreground 181:5, shortcut/foreground 181:6, shortcut/font-size 181:7, shortcut/line-height 181:8, shortcut/letter-spacing 181:9, shortcut/cap-min-width 181:10 (size-independent variables carry the same alias in the three modes). Every consumer was rebound and the explicit size modes moved (Button: 564 bindings, 138 mode assignments; Shortcut: 13 bindings, 12 modes; Counter: 12 paints; stale Leading icon overrides on ten specification instances reset and re-applied); the collections _ggbrick button size (74:3), _ggbrick shortcut size (149:1570), _ggbrick counter (149:1548) and _ggbrick shortcut (149:1571) were deleted with no reference left on any page. _ggbrick button style and _ggbrick button state were renamed Components · button style (90:12) and Components · button state (90:2), IDs unchanged, hidden. Checks: the eight variables resolve to the former values in each mode; Button slot geometry re-measured with icon, counter and shortcut trailing items (162 records, 0 failures)."
     }
   ]
 }

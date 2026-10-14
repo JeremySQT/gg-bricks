@@ -25,7 +25,7 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - `icon-parity.plugin.js`: `use_figma` body measuring the Icon set in the 18 contexts (box size, bound variables, glyph fill, drawing box); save its result as JSON.
 - `icon-parity-report.mjs <result.json>`: compares the measurement with `reports/components/icon/svelte/computed.json` and writes `reports/components/icon/figma/parity.json`.
 - `icon-spec.plugin.js`: the `use_figma` body that builds the Icon specification page (same layout as the Button page).
-- `counter-master.plugin.js`: `use_figma` body building the page `content/counter`, the hidden adapter collection `_ggbrick counter` (`counter/foreground`) and the Counter component set (Size × Overflow) with every visual property bound to a variable.
+- `counter-master.plugin.js`: `use_figma` body building the page `content/counter`, the `counter/foreground` adapter variable (Components collection) and the Counter component set (Size × Overflow) with every visual property bound to a variable.
 - `counter-spec.plugin.js`: `use_figma` body building the Counter specification frame (same layout as the Button's).
 - `counter-parity.plugin.js`: `use_figma` body measuring the six Counter variants in every context, the `button/foreground` proxies and Inter's default figure widths; save its result as a JSON file.
 - `counter-parity-report.mjs <file>`: compares the saved measurements with `reports/components/counter/svelte/computed.json` and writes `reports/components/counter/figma/parity.json`.
@@ -40,8 +40,15 @@ The Plugin API script bodies inherited from the reference kit were removed after
 
 ## Shortcut scripts (2026-10-14)
 
-- `shortcut-master.plugin.js`: the two `use_figma` bodies that create the page `content/shortcut`, the hidden adapter collections `_ggbrick shortcut size` and `_ggbrick shortcut`, the parts `_Shortcut/Key` and `_Shortcut/Separator`, then the `Shortcut` component set (Appearance × Size × Platform).
+- `shortcut-master.plugin.js`: the two `use_figma` bodies that create the page `content/shortcut`, the `shortcut/…` adapter variables (Components collection), the parts `_Shortcut/Key` and `_Shortcut/Separator`, then the `Shortcut` component set (Appearance × Size × Platform).
 - `shortcut-spec.plugin.js`: the `use_figma` body that builds the Shortcut specification page (same layout and documentation components as the Button page).
 - `shortcut-parity.plugin.js`: `use_figma` body measuring the Shortcut master for one brand in its six appearance × density contexts (set `BRAND`); save each returned object as `<brand>.json` in one folder.
 - `shortcut-parity-report.mjs <folder>`: compares the saved measurements with `reports/components/shortcut/svelte/computed.json` and writes `reports/components/shortcut/figma/parity.json` (one record per computed record, justified differences noted, opacity records from the contract role).
 - Mechanics learned: the Plugin API refuses `componentPropertyReferences` on instance sublayers (expose the nested instance instead); auto-sized text layers are rounded to whole pixels; `strokesIncludedInLayout` gives a border-box border.
+
+## Mechanics learned on 2026-10-14 (typography variables and collections)
+
+- Text styles bind `fontFamily`, `fontWeight`, `fontSize` and `letterSpacing` to variables (`setBoundVariable` on the style); a line height cannot be bound as a percentage, so the style types the percentage and the `lineHeightRatio` string variable documents it. Font families reach Figma as STRING variables (scope FONT_FAMILY), weights as FLOAT (scope FONT_WEIGHT).
+- On a TEXT node, `boundVariables.fontSize`, `lineHeight` and `letterSpacing` are arrays (one entry per styled segment); `setBoundVariable` on the node rebinds the whole text.
+- A variable cannot move between collections: regrouping means creating the variable in the target collection, rebinding every consumer (masters first, then instance overrides; `explicitVariableModes` moved with `setExplicitVariableModeForCollection` and `clearExplicitVariableModeForCollection`) and deleting the old collection once no reference remains. A stale width binding override on a nested instance is cleared with `resetOverrides()` on that nested instance.
+- Component adapter variables live in one hidden collection `Components` (modes sm, md, lg; size-independent variables repeat their value), grouped by component in the variable names. The Button keeps two more hidden collections, `Components · button style` and `Components · button state`, because its shared trailing part needs two independent mode axes (9 intent-appearance pairs × 5 states cannot share one collection).

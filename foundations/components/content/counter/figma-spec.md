@@ -54,7 +54,7 @@ The Anatomy section shows one blueprint board (the `_Spec/Board` fills: blue/800
 
 ## Adapter mechanics
 
-- Collection `_ggbrick counter` (hidden from publishing, one mode) holds `counter/foreground` (COLOR, scopes TEXT_FILL and STROKE_COLOR, hidden, alias of `color/content/primary`), bound to the Value fill and the Border stroke: it stands for the inherited content color (`currentColor` in the code). Standalone, the counter resolves to the primary content color of the appearance; inside the Button the orchestrator overrides both bindings of the instance with `button/foreground`, which resolves to the content color of the button's intent, appearance and state through the Button's modes.
+- The hidden **Components** collection (modes sm, md, lg; one collection for every component adapter variable since 2026-10-14, formerly `_ggbrick counter`) holds `counter/foreground` (COLOR, scopes TEXT_FILL and STROKE_COLOR, hidden, alias of `color/content/primary` in the three modes), bound to the Value fill and the Border stroke: it stands for the inherited content color (`currentColor` in the code). Standalone, the counter resolves to the primary content color of the appearance; inside the Button the orchestrator overrides both bindings of the instance with `button/foreground`, which resolves to the content color of the button's intent, appearance and state through the Button's modes.
 - The adapter variable is not a source token, a contract field or a code requirement. Opacity variables reach Figma in percent (adapter convention of the token sync, see `authoring/figma.md`).
 - `figma.skipInvisibleInstanceChildren = false` is set by every script that reads instance children.
 

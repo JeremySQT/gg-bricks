@@ -5,7 +5,7 @@
 import { paths, readJson, write } from './lib/paths.ts';
 import fs from 'node:fs';
 
-type FigmaValue = number | { r: number; g: number; b: number; a: number };
+type FigmaValue = number | string | { r: number; g: number; b: number; a: number };
 interface Manifest {
   variables: { collection: string; name: string }[];
 }
@@ -22,7 +22,9 @@ const canonical = (value: FigmaValue): string =>
             .padStart(2, '0')
         )
         .join('')
-    : String(Math.round(value * 10000) / 10000);
+    : typeof value === 'string'
+      ? value
+      : String(Math.round(value * 10000) / 10000);
 const fnv = (s: string): string => {
   let h = 0x811c9dc5;
   for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 0x01000193) >>> 0;

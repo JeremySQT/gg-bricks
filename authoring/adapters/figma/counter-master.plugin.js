@@ -1,5 +1,5 @@
 // Counter master builder (use_figma body), 2026-10-14. Creates the page content/counter after actions/button
-// (144:2), the hidden adapter collection “_ggbrick counter” with counter/foreground (alias of
+// (144:2), the hidden Components collection with counter/foreground (alias of
 // color/content/primary) and the component set Counter: variants Size (sm, md, lg) × Overflow (false, true), text
 // properties Value (default 8) and Overflow text (default 99+). Every visual property is bound to a variable looked
 // up by collection and name; no ID is guessed. Rerunning the script replaces the set (the page and the adapter
@@ -25,17 +25,23 @@ const V = (name, colName) => {
   return v;
 };
 // Hidden adapter collection: the Button later overrides the binding with button/foreground on its instance.
-let ac = col('_ggbrick counter');
+// Since 2026-10-14 every component adapter variable lives in the single hidden collection “Components”
+// (modes sm, md, lg): counter/foreground carries the same alias in the three modes.
+let ac = col('Components');
 if (!ac) {
-  ac = figma.variables.createVariableCollection('_ggbrick counter');
+  ac = figma.variables.createVariableCollection('Components');
   ac.hiddenFromPublishing = true;
-  ac.renameMode(ac.modes[0].modeId, 'default');
+  ac.renameMode(ac.modes[0].modeId, 'sm');
+  ac.addMode('md');
+  ac.addMode('lg');
+  ac.setDefaultMode(ac.modes[1].modeId);
 }
 let fg = vars.find((v) => v.name === 'counter/foreground' && v.variableCollectionId === ac.id);
 if (!fg) fg = figma.variables.createVariable('counter/foreground', ac, 'COLOR');
 fg.scopes = ['TEXT_FILL', 'STROKE_COLOR'];
 fg.hiddenFromPublishing = true;
-fg.setValueForMode(ac.modes[0].modeId, figma.variables.createVariableAlias(V('color/content/primary', 'Appearance')));
+for (const m of ac.modes)
+  fg.setValueForMode(m.modeId, figma.variables.createVariableAlias(V('color/content/primary', 'Appearance')));
 // Border opacity: Figma reads an opacity binding as a percentage; the token sync emits opacity variables ×100
 // (opacity/muted = 70 since 2026-10-14), so the Border binds opacity/muted directly.
 const bo = V('opacity/muted', 'Brand');

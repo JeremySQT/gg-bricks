@@ -54,8 +54,16 @@ const expand = (collection, values) =>
     ? values
     : Object.fromEntries(defs.collections[collection].map((m) => [m, values]));
 // Pass 1: create every variable of the batch so that aliases inside the batch can resolve in pass 2.
+const migrated = [];
 for (const [collection, name, type, scopes] of defs.variables) {
   const key = `${collection}:${name}`;
+  // A type change (a line-height ratio becoming a percentage string) is a migration: the variable is
+  // recreated with a new ID; the step is explicit in the batch and recorded in the result.
+  if (varByKey[key] && varByKey[key].resolvedType !== type) {
+    migrated.push(`${key}: ${varByKey[key].resolvedType} → ${type}`);
+    varByKey[key].remove();
+    delete varByKey[key];
+  }
   if (!varByKey[key]) {
     const v = figma.variables.createVariable(name, byName[collection], type);
     varByKey[key] = v;
@@ -84,6 +92,7 @@ for (const [collection, name, , , values] of defs.variables) {
 return {
   created,
   updated: updated.length,
+  migrated,
   errors,
   totalVariables: (await figma.variables.getLocalVariablesAsync()).length
 };

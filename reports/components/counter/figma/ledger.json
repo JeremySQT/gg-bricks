@@ -98,11 +98,11 @@
       "fontSize": "typography/indicator/{size}/fontSize (VariableID:145:5 / 145:8 / 145:11)",
       "lineHeight": "typography/indicator/{size}/lineHeight",
       "letterSpacing": "typography/indicator/{size}/letterSpacing (VariableID:145:7 / 145:10 / 145:13)",
-      "fills": "counter/foreground (VariableID:149:1549)",
+      "fills": "counter/foreground (VariableID:181:5)",
       "openTypeFeatures": "not settable through the Plugin API (read-only); see limitations"
     },
     "Border": {
-      "strokes": "counter/foreground (VariableID:149:1549), inside",
+      "strokes": "counter/foreground (VariableID:181:5), inside",
       "stroke weights": "border/width/default (Brand, VariableID:5:74)",
       "corner radii": "radius/indicator (VariableID:145:4)",
       "opacity": "opacity/muted (Brand, VariableID:145:3, = 70): opacity variables are synced in percent since 2026-10-14 (re-bound from the former mirror counter/border-opacity, removed)"
@@ -110,24 +110,27 @@
   },
   "adapterVariables": {
     "collection": {
-      "name": "_ggbrick counter",
-      "id": "VariableCollectionId:149:1548",
-      "hiddenFromPublishing": true,
+      "id": "VariableCollectionId:181:2",
+      "name": "Components",
       "modes": {
-        "default": "single mode"
-      }
+        "sm": "181:0",
+        "md": "181:1",
+        "lg": "181:2"
+      },
+      "default": "md",
+      "hiddenFromPublishing": true
     },
     "variables": {
       "counter/foreground": {
-        "id": "VariableID:149:1549",
+        "id": "VariableID:181:5",
         "type": "COLOR",
         "scopes": [
           "TEXT_FILL",
           "STROKE_COLOR"
         ],
         "hiddenFromPublishing": true,
-        "value": "alias color/content/primary (Appearance, VariableID:7:10)",
-        "note": "Stands for the inherited content color; the Button overrides the Value fill and Border stroke of its Counter instance with button/foreground (VariableID:90:13)."
+        "value": "alias color/content/primary (Appearance, VariableID:7:10) in the three modes",
+        "note": "Stands for the inherited content color; the Button overrides the Value fill and Border stroke of its Counter instance with button/foreground (VariableID:90:13). Formerly VariableID:149:1549 in _ggbrick counter (deleted 2026-10-14)."
       }
     }
   },
@@ -169,6 +172,10 @@
     {
       "date": "2026-10-14",
       "change": "Blueprint boards: the drawing is centered vertically in each board and the legend elements follow (user review of the wave 1 Figma parity gate, 2026-10-14); the builder script applies the same pass (centerBoards)."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Adapter collections regrouped (user review, 2026-10-14): the component adapter variables now live in one hidden collection Components (VariableCollectionId:181:2, modes sm 181:0, md 181:1, lg 181:2, default md): button/icon-drawing 181:3, button/icon-size 181:4, counter/foreground 181:5, shortcut/foreground 181:6, shortcut/font-size 181:7, shortcut/line-height 181:8, shortcut/letter-spacing 181:9, shortcut/cap-min-width 181:10 (size-independent variables carry the same alias in the three modes). Every consumer was rebound and the explicit size modes moved (Button: 564 bindings, 138 mode assignments; Shortcut: 13 bindings, 12 modes; Counter: 12 paints; stale Leading icon overrides on ten specification instances reset and re-applied); the collections _ggbrick button size (74:3), _ggbrick shortcut size (149:1570), _ggbrick counter (149:1548) and _ggbrick shortcut (149:1571) were deleted with no reference left on any page. _ggbrick button style and _ggbrick button state were renamed Components · button style (90:12) and Components · button state (90:2), IDs unchanged, hidden. Checks: the eight variables resolve to the former values in each mode; Button slot geometry re-measured with icon, counter and shortcut trailing items (162 records, 0 failures)."
     }
   ]
 }

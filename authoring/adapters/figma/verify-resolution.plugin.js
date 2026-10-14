@@ -3,7 +3,7 @@
 // appearance × density it creates a temporary frame with explicit modes for the three collections,
 // resolves every semantic variable natively (resolveForConsumer) in a deterministic order (collections
 // Brand, Appearance, Density; names in code-unit order; primitive/* excluded), and returns per context the
-// count and the FNV-1a hash of the canonical values (colors as 8-digit hex from float32 channels, numbers rounded to 4 decimals),
+// count and the FNV-1a hash of the canonical values (colors as 8-digit hex from float32 channels, numbers rounded to 4 decimals, strings as they are),
 // plus the first values of each context as a sample. tooling/check-figma.ts compares the hashes with the
 // ones computed from packages/tokens/figma-expectations.json. Read-only apart from the temporary frames.
 const canonical = (value) =>
@@ -15,7 +15,9 @@ const canonical = (value) =>
             .padStart(2, '0')
         )
         .join('')
-    : String(Math.round(Number(value) * 10000) / 10000);
+    : typeof value === 'string'
+      ? value
+      : String(Math.round(Number(value) * 10000) / 10000);
 const fnv = (s) => {
   let h = 0x811c9dc5;
   for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 0x01000193) >>> 0;

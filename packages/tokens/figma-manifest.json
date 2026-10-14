@@ -3360,6 +3360,84 @@
     },
     {
       "collection": "Primitives",
+      "name": "primitive/font/family/sans",
+      "path": "primitive.font.family.sans",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-font-family-sans)"
+      },
+      "values": {
+        "default": "Inter"
+      }
+    },
+    {
+      "collection": "Primitives",
+      "name": "primitive/font/family/mono",
+      "path": "primitive.font.family.mono",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-font-family-mono)"
+      },
+      "values": {
+        "default": "IBM Plex Mono"
+      }
+    },
+    {
+      "collection": "Primitives",
+      "name": "primitive/font/weight/400",
+      "path": "primitive.font.weight.400",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-font-weight-400)"
+      },
+      "values": {
+        "default": 400
+      }
+    },
+    {
+      "collection": "Primitives",
+      "name": "primitive/font/weight/500",
+      "path": "primitive.font.weight.500",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-font-weight-500)"
+      },
+      "values": {
+        "default": 500
+      }
+    },
+    {
+      "collection": "Primitives",
+      "name": "primitive/font/weight/600",
+      "path": "primitive.font.weight.600",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-font-weight-600)"
+      },
+      "values": {
+        "default": 600
+      }
+    },
+    {
+      "collection": "Primitives",
+      "name": "primitive/font/weight/700",
+      "path": "primitive.font.weight.700",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-font-weight-700)"
+      },
+      "values": {
+        "default": 700
+      }
+    },
+    {
+      "collection": "Primitives",
       "name": "primitive/font/size/11",
       "path": "primitive.font.size.11",
       "type": "FLOAT",
@@ -3544,78 +3622,78 @@
       "collection": "Primitives",
       "name": "primitive/font/lineHeight/none",
       "path": "primitive.font.lineHeight.none",
-      "type": "FLOAT",
+      "type": "STRING",
       "scopes": [],
       "codeSyntax": {
         "WEB": "var(--ggb-primitive-font-lineHeight-none)"
       },
       "values": {
-        "default": 1
+        "default": "100%"
       }
     },
     {
       "collection": "Primitives",
       "name": "primitive/font/lineHeight/tight",
       "path": "primitive.font.lineHeight.tight",
-      "type": "FLOAT",
+      "type": "STRING",
       "scopes": [],
       "codeSyntax": {
         "WEB": "var(--ggb-primitive-font-lineHeight-tight)"
       },
       "values": {
-        "default": 1.2
+        "default": "120%"
       }
     },
     {
       "collection": "Primitives",
       "name": "primitive/font/lineHeight/snug",
       "path": "primitive.font.lineHeight.snug",
-      "type": "FLOAT",
+      "type": "STRING",
       "scopes": [],
       "codeSyntax": {
         "WEB": "var(--ggb-primitive-font-lineHeight-snug)"
       },
       "values": {
-        "default": 1.3
+        "default": "130%"
       }
     },
     {
       "collection": "Primitives",
       "name": "primitive/font/lineHeight/normal",
       "path": "primitive.font.lineHeight.normal",
-      "type": "FLOAT",
+      "type": "STRING",
       "scopes": [],
       "codeSyntax": {
         "WEB": "var(--ggb-primitive-font-lineHeight-normal)"
       },
       "values": {
-        "default": 1.4
+        "default": "140%"
       }
     },
     {
       "collection": "Primitives",
       "name": "primitive/font/lineHeight/relaxed",
       "path": "primitive.font.lineHeight.relaxed",
-      "type": "FLOAT",
+      "type": "STRING",
       "scopes": [],
       "codeSyntax": {
         "WEB": "var(--ggb-primitive-font-lineHeight-relaxed)"
       },
       "values": {
-        "default": 1.5
+        "default": "150%"
       }
     },
     {
       "collection": "Primitives",
       "name": "primitive/font/lineHeight/loose",
       "path": "primitive.font.lineHeight.loose",
-      "type": "FLOAT",
+      "type": "STRING",
       "scopes": [],
       "codeSyntax": {
         "WEB": "var(--ggb-primitive-font-lineHeight-loose)"
       },
       "values": {
-        "default": 1.6
+        "default": "160%"
       }
     },
     {
@@ -5848,6 +5926,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/display/xl/fontFamily",
+      "path": "typography.display.xl.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-xl-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/display/xl/fontWeight",
+      "path": "typography.display.xl.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-xl-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/700"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/700"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/700"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/display/xl/lineHeightRatio",
+      "path": "typography.display.xl.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-xl-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/none"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/none"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/none"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/display/lg/fontSize",
       "path": "typography.display.lg.fontSize",
       "type": "FLOAT",
@@ -5906,6 +6051,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/tighter"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/display/lg/fontFamily",
+      "path": "typography.display.lg.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-lg-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/display/lg/fontWeight",
+      "path": "typography.display.lg.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-lg-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/700"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/700"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/700"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/display/lg/lineHeightRatio",
+      "path": "typography.display.lg.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-lg-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/none"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/none"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/none"
         }
       }
     },
@@ -5974,6 +6186,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/display/md/fontFamily",
+      "path": "typography.display.md.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-md-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/display/md/fontWeight",
+      "path": "typography.display.md.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-md-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/700"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/700"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/700"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/display/md/lineHeightRatio",
+      "path": "typography.display.md.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-md-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/tight"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/tight"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/tight"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/display/sm/fontSize",
       "path": "typography.display.sm.fontSize",
       "type": "FLOAT",
@@ -6032,6 +6311,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/tight"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/display/sm/fontFamily",
+      "path": "typography.display.sm.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-sm-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/display/sm/fontWeight",
+      "path": "typography.display.sm.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-sm-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/700"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/700"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/700"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/display/sm/lineHeightRatio",
+      "path": "typography.display.sm.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-sm-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/tight"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/tight"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/tight"
         }
       }
     },
@@ -6100,6 +6446,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/display/xs/fontFamily",
+      "path": "typography.display.xs.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-xs-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/display/xs/fontWeight",
+      "path": "typography.display.xs.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-xs-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/700"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/700"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/700"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/display/xs/lineHeightRatio",
+      "path": "typography.display.xs.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-display-xs-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/tight"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/tight"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/tight"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/heading/xl/fontSize",
       "path": "typography.heading.xl.fontSize",
       "type": "FLOAT",
@@ -6158,6 +6571,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/tight"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/xl/fontFamily",
+      "path": "typography.heading.xl.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-xl-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/xl/fontWeight",
+      "path": "typography.heading.xl.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-xl-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/600"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/xl/lineHeightRatio",
+      "path": "typography.heading.xl.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-xl-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/snug"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/snug"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/snug"
         }
       }
     },
@@ -6226,6 +6706,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/heading/lg/fontFamily",
+      "path": "typography.heading.lg.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-lg-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/lg/fontWeight",
+      "path": "typography.heading.lg.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-lg-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/600"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/lg/lineHeightRatio",
+      "path": "typography.heading.lg.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-lg-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/snug"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/snug"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/snug"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/heading/md/fontSize",
       "path": "typography.heading.md.fontSize",
       "type": "FLOAT",
@@ -6284,6 +6831,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/md/fontFamily",
+      "path": "typography.heading.md.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-md-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/md/fontWeight",
+      "path": "typography.heading.md.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-md-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/600"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/md/lineHeightRatio",
+      "path": "typography.heading.md.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-md-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
         }
       }
     },
@@ -6352,6 +6966,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/heading/sm/fontFamily",
+      "path": "typography.heading.sm.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-sm-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/sm/fontWeight",
+      "path": "typography.heading.sm.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-sm-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/600"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/sm/lineHeightRatio",
+      "path": "typography.heading.sm.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-sm-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/heading/xs/fontSize",
       "path": "typography.heading.xs.fontSize",
       "type": "FLOAT",
@@ -6410,6 +7091,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/xs/fontFamily",
+      "path": "typography.heading.xs.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-xs-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/xs/fontWeight",
+      "path": "typography.heading.xs.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-xs-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/600"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/heading/xs/lineHeightRatio",
+      "path": "typography.heading.xs.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-heading-xs-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
         }
       }
     },
@@ -6478,6 +7226,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/body/lg/fontFamily",
+      "path": "typography.body.lg.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-body-lg-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/body/lg/fontWeight",
+      "path": "typography.body.lg.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-body-lg-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/400"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/body/lg/lineHeightRatio",
+      "path": "typography.body.lg.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-body-lg-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/loose"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/loose"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/loose"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/body/md/fontSize",
       "path": "typography.body.md.fontSize",
       "type": "FLOAT",
@@ -6536,6 +7351,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/body/md/fontFamily",
+      "path": "typography.body.md.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-body-md-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/body/md/fontWeight",
+      "path": "typography.body.md.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-body-md-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/400"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/body/md/lineHeightRatio",
+      "path": "typography.body.md.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-body-md-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
         }
       }
     },
@@ -6604,6 +7486,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/body/sm/fontFamily",
+      "path": "typography.body.sm.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-body-sm-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/body/sm/fontWeight",
+      "path": "typography.body.sm.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-body-sm-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/400"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/body/sm/lineHeightRatio",
+      "path": "typography.body.sm.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-body-sm-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/label/lg/fontSize",
       "path": "typography.label.lg.fontSize",
       "type": "FLOAT",
@@ -6662,6 +7611,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/label/lg/fontFamily",
+      "path": "typography.label.lg.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-label-lg-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/label/lg/fontWeight",
+      "path": "typography.label.lg.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-label-lg-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/label/lg/lineHeightRatio",
+      "path": "typography.label.lg.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-label-lg-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
         }
       }
     },
@@ -6730,6 +7746,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/label/md/fontFamily",
+      "path": "typography.label.md.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-label-md-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/label/md/fontWeight",
+      "path": "typography.label.md.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-label-md-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/label/md/lineHeightRatio",
+      "path": "typography.label.md.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-label-md-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/label/sm/fontSize",
       "path": "typography.label.sm.fontSize",
       "type": "FLOAT",
@@ -6788,6 +7871,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/wide"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/label/sm/fontFamily",
+      "path": "typography.label.sm.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-label-sm-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/label/sm/fontWeight",
+      "path": "typography.label.sm.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-label-sm-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/label/sm/lineHeightRatio",
+      "path": "typography.label.sm.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-label-sm-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
         }
       }
     },
@@ -6856,6 +8006,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/caption/md/fontFamily",
+      "path": "typography.caption.md.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-caption-md-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/caption/md/fontWeight",
+      "path": "typography.caption.md.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-caption-md-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/400"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/caption/md/lineHeightRatio",
+      "path": "typography.caption.md.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-caption-md-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/caption/sm/fontSize",
       "path": "typography.caption.sm.fontSize",
       "type": "FLOAT",
@@ -6914,6 +8131,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/caption/sm/fontFamily",
+      "path": "typography.caption.sm.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-caption-sm-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/caption/sm/fontWeight",
+      "path": "typography.caption.sm.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-caption-sm-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/400"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/caption/sm/lineHeightRatio",
+      "path": "typography.caption.sm.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-caption-sm-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
         }
       }
     },
@@ -6982,6 +8266,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/overline/md/fontFamily",
+      "path": "typography.overline.md.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-overline-md-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/overline/md/fontWeight",
+      "path": "typography.overline.md.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-overline-md-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/600"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/overline/md/lineHeightRatio",
+      "path": "typography.overline.md.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-overline-md-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/overline/sm/fontSize",
       "path": "typography.overline.sm.fontSize",
       "type": "FLOAT",
@@ -7040,6 +8391,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/wide"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/overline/sm/fontFamily",
+      "path": "typography.overline.sm.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-overline-sm-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/overline/sm/fontWeight",
+      "path": "typography.overline.sm.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-overline-sm-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/600"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/overline/sm/lineHeightRatio",
+      "path": "typography.overline.sm.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-overline-sm-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
         }
       }
     },
@@ -7108,6 +8526,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/numeral/lg/fontFamily",
+      "path": "typography.numeral.lg.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-numeral-lg-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/numeral/lg/fontWeight",
+      "path": "typography.numeral.lg.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-numeral-lg-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/600"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/600"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/numeral/lg/lineHeightRatio",
+      "path": "typography.numeral.lg.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-numeral-lg-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/tight"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/tight"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/tight"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/numeral/md/fontSize",
       "path": "typography.numeral.md.fontSize",
       "type": "FLOAT",
@@ -7166,6 +8651,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/numeral/md/fontFamily",
+      "path": "typography.numeral.md.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-numeral-md-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/numeral/md/fontWeight",
+      "path": "typography.numeral.md.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-numeral-md-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/numeral/md/lineHeightRatio",
+      "path": "typography.numeral.md.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-numeral-md-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
         }
       }
     },
@@ -7234,6 +8786,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/numeral/sm/fontFamily",
+      "path": "typography.numeral.sm.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-numeral-sm-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/numeral/sm/fontWeight",
+      "path": "typography.numeral.sm.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-numeral-sm-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/numeral/sm/lineHeightRatio",
+      "path": "typography.numeral.sm.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-numeral-sm-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/code/md/fontSize",
       "path": "typography.code.md.fontSize",
       "type": "FLOAT",
@@ -7292,6 +8911,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/code/md/fontFamily",
+      "path": "typography.code.md.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-code-md-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/mono"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/mono"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/mono"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/code/md/fontWeight",
+      "path": "typography.code.md.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-code-md-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/400"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/code/md/lineHeightRatio",
+      "path": "typography.code.md.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-code-md-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
         }
       }
     },
@@ -7360,6 +9046,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/code/sm/fontFamily",
+      "path": "typography.code.sm.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-code-sm-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/mono"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/mono"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/mono"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/code/sm/fontWeight",
+      "path": "typography.code.sm.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-code-sm-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/400"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/400"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/code/sm/lineHeightRatio",
+      "path": "typography.code.sm.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-code-sm-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/relaxed"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/indicator/sm/fontSize",
       "path": "typography.indicator.sm.fontSize",
       "type": "FLOAT",
@@ -7418,6 +9171,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/sm/fontFamily",
+      "path": "typography.indicator.sm.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-sm-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/sm/fontWeight",
+      "path": "typography.indicator.sm.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-sm-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/sm/lineHeightRatio",
+      "path": "typography.indicator.sm.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-sm-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
         }
       }
     },
@@ -7486,6 +9306,73 @@
     },
     {
       "collection": "Brand",
+      "name": "typography/indicator/md/fontFamily",
+      "path": "typography.indicator.md.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-md-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/md/fontWeight",
+      "path": "typography.indicator.md.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-md-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/md/lineHeightRatio",
+      "path": "typography.indicator.md.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-md-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
       "name": "typography/indicator/lg/fontSize",
       "path": "typography.indicator.lg.fontSize",
       "type": "FLOAT",
@@ -7544,6 +9431,73 @@
         },
         "orchid": {
           "alias": "Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/lg/fontFamily",
+      "path": "typography.indicator.lg.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-lg-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/lg/fontWeight",
+      "path": "typography.indicator.lg.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-lg-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Brand",
+      "name": "typography/indicator/lg/lineHeightRatio",
+      "path": "typography.indicator.lg.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-typography-indicator-lg-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "brick": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
+        },
+        "orchid": {
+          "alias": "Primitives:primitive/font/lineHeight/normal"
         }
       }
     },
@@ -12866,8 +14820,15 @@
       "style": "Bold",
       "size": 64,
       "lineHeight": 64,
+      "lineHeightPercent": 100,
       "letterSpacing": -1,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/display/xl/fontFamily",
+        "fontWeight": "typography/display/xl/fontWeight",
+        "fontSize": "typography/display/xl/fontSize",
+        "letterSpacing": "typography/display/xl/letterSpacing"
+      }
     },
     {
       "name": "typography/display/lg",
@@ -12875,8 +14836,15 @@
       "style": "Bold",
       "size": 56,
       "lineHeight": 56,
+      "lineHeightPercent": 100,
       "letterSpacing": -1,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/display/lg/fontFamily",
+        "fontWeight": "typography/display/lg/fontWeight",
+        "fontSize": "typography/display/lg/fontSize",
+        "letterSpacing": "typography/display/lg/letterSpacing"
+      }
     },
     {
       "name": "typography/display/md",
@@ -12884,8 +14852,15 @@
       "style": "Bold",
       "size": 48,
       "lineHeight": 57.599999999999994,
+      "lineHeightPercent": 120,
       "letterSpacing": -1,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/display/md/fontFamily",
+        "fontWeight": "typography/display/md/fontWeight",
+        "fontSize": "typography/display/md/fontSize",
+        "letterSpacing": "typography/display/md/letterSpacing"
+      }
     },
     {
       "name": "typography/display/sm",
@@ -12893,8 +14868,15 @@
       "style": "Bold",
       "size": 40,
       "lineHeight": 48,
+      "lineHeightPercent": 120,
       "letterSpacing": -0.5,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/display/sm/fontFamily",
+        "fontWeight": "typography/display/sm/fontWeight",
+        "fontSize": "typography/display/sm/fontSize",
+        "letterSpacing": "typography/display/sm/letterSpacing"
+      }
     },
     {
       "name": "typography/display/xs",
@@ -12902,8 +14884,15 @@
       "style": "Bold",
       "size": 32,
       "lineHeight": 38.4,
+      "lineHeightPercent": 120,
       "letterSpacing": -0.5,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/display/xs/fontFamily",
+        "fontWeight": "typography/display/xs/fontWeight",
+        "fontSize": "typography/display/xs/fontSize",
+        "letterSpacing": "typography/display/xs/letterSpacing"
+      }
     },
     {
       "name": "typography/heading/xl",
@@ -12911,8 +14900,15 @@
       "style": "Semi Bold",
       "size": 28,
       "lineHeight": 36.4,
+      "lineHeightPercent": 130,
       "letterSpacing": -0.5,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/heading/xl/fontFamily",
+        "fontWeight": "typography/heading/xl/fontWeight",
+        "fontSize": "typography/heading/xl/fontSize",
+        "letterSpacing": "typography/heading/xl/letterSpacing"
+      }
     },
     {
       "name": "typography/heading/lg",
@@ -12920,8 +14916,15 @@
       "style": "Semi Bold",
       "size": 24,
       "lineHeight": 31.200000000000003,
+      "lineHeightPercent": 130,
       "letterSpacing": -0.5,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/heading/lg/fontFamily",
+        "fontWeight": "typography/heading/lg/fontWeight",
+        "fontSize": "typography/heading/lg/fontSize",
+        "letterSpacing": "typography/heading/lg/letterSpacing"
+      }
     },
     {
       "name": "typography/heading/md",
@@ -12929,8 +14932,15 @@
       "style": "Semi Bold",
       "size": 20,
       "lineHeight": 28,
+      "lineHeightPercent": 140,
       "letterSpacing": 0,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/heading/md/fontFamily",
+        "fontWeight": "typography/heading/md/fontWeight",
+        "fontSize": "typography/heading/md/fontSize",
+        "letterSpacing": "typography/heading/md/letterSpacing"
+      }
     },
     {
       "name": "typography/heading/sm",
@@ -12938,8 +14948,15 @@
       "style": "Semi Bold",
       "size": 18,
       "lineHeight": 25.2,
+      "lineHeightPercent": 140,
       "letterSpacing": 0,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/heading/sm/fontFamily",
+        "fontWeight": "typography/heading/sm/fontWeight",
+        "fontSize": "typography/heading/sm/fontSize",
+        "letterSpacing": "typography/heading/sm/letterSpacing"
+      }
     },
     {
       "name": "typography/heading/xs",
@@ -12947,8 +14964,15 @@
       "style": "Semi Bold",
       "size": 16,
       "lineHeight": 24,
+      "lineHeightPercent": 150,
       "letterSpacing": 0,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/heading/xs/fontFamily",
+        "fontWeight": "typography/heading/xs/fontWeight",
+        "fontSize": "typography/heading/xs/fontSize",
+        "letterSpacing": "typography/heading/xs/letterSpacing"
+      }
     },
     {
       "name": "typography/body/lg",
@@ -12956,8 +14980,15 @@
       "style": "Regular",
       "size": 18,
       "lineHeight": 28.8,
+      "lineHeightPercent": 160,
       "letterSpacing": 0,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/body/lg/fontFamily",
+        "fontWeight": "typography/body/lg/fontWeight",
+        "fontSize": "typography/body/lg/fontSize",
+        "letterSpacing": "typography/body/lg/letterSpacing"
+      }
     },
     {
       "name": "typography/body/md",
@@ -12965,8 +14996,15 @@
       "style": "Regular",
       "size": 16,
       "lineHeight": 24,
+      "lineHeightPercent": 150,
       "letterSpacing": 0,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/body/md/fontFamily",
+        "fontWeight": "typography/body/md/fontWeight",
+        "fontSize": "typography/body/md/fontSize",
+        "letterSpacing": "typography/body/md/letterSpacing"
+      }
     },
     {
       "name": "typography/body/sm",
@@ -12974,8 +15012,15 @@
       "style": "Regular",
       "size": 14,
       "lineHeight": 21,
+      "lineHeightPercent": 150,
       "letterSpacing": 0,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/body/sm/fontFamily",
+        "fontWeight": "typography/body/sm/fontWeight",
+        "fontSize": "typography/body/sm/fontSize",
+        "letterSpacing": "typography/body/sm/letterSpacing"
+      }
     },
     {
       "name": "typography/label/lg",
@@ -12983,8 +15028,15 @@
       "style": "Medium",
       "size": 16,
       "lineHeight": 24,
+      "lineHeightPercent": 150,
       "letterSpacing": 0,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/label/lg/fontFamily",
+        "fontWeight": "typography/label/lg/fontWeight",
+        "fontSize": "typography/label/lg/fontSize",
+        "letterSpacing": "typography/label/lg/letterSpacing"
+      }
     },
     {
       "name": "typography/label/md",
@@ -12992,8 +15044,15 @@
       "style": "Medium",
       "size": 14,
       "lineHeight": 19.599999999999998,
+      "lineHeightPercent": 140,
       "letterSpacing": 0,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/label/md/fontFamily",
+        "fontWeight": "typography/label/md/fontWeight",
+        "fontSize": "typography/label/md/fontSize",
+        "letterSpacing": "typography/label/md/letterSpacing"
+      }
     },
     {
       "name": "typography/label/sm",
@@ -13001,8 +15060,15 @@
       "style": "Medium",
       "size": 12,
       "lineHeight": 16.799999999999997,
+      "lineHeightPercent": 140,
       "letterSpacing": 0.5,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/label/sm/fontFamily",
+        "fontWeight": "typography/label/sm/fontWeight",
+        "fontSize": "typography/label/sm/fontSize",
+        "letterSpacing": "typography/label/sm/letterSpacing"
+      }
     },
     {
       "name": "typography/caption/md",
@@ -13010,8 +15076,15 @@
       "style": "Regular",
       "size": 12,
       "lineHeight": 16.799999999999997,
+      "lineHeightPercent": 140,
       "letterSpacing": 0,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/caption/md/fontFamily",
+        "fontWeight": "typography/caption/md/fontWeight",
+        "fontSize": "typography/caption/md/fontSize",
+        "letterSpacing": "typography/caption/md/letterSpacing"
+      }
     },
     {
       "name": "typography/caption/sm",
@@ -13019,8 +15092,15 @@
       "style": "Regular",
       "size": 11,
       "lineHeight": 15.399999999999999,
+      "lineHeightPercent": 140,
       "letterSpacing": 0,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/caption/sm/fontFamily",
+        "fontWeight": "typography/caption/sm/fontWeight",
+        "fontSize": "typography/caption/sm/fontSize",
+        "letterSpacing": "typography/caption/sm/letterSpacing"
+      }
     },
     {
       "name": "typography/overline/md",
@@ -13028,8 +15108,15 @@
       "style": "Semi Bold",
       "size": 12,
       "lineHeight": 16.799999999999997,
+      "lineHeightPercent": 140,
       "letterSpacing": 0.5,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/overline/md/fontFamily",
+        "fontWeight": "typography/overline/md/fontWeight",
+        "fontSize": "typography/overline/md/fontSize",
+        "letterSpacing": "typography/overline/md/letterSpacing"
+      }
     },
     {
       "name": "typography/overline/sm",
@@ -13037,8 +15124,15 @@
       "style": "Semi Bold",
       "size": 11,
       "lineHeight": 15.399999999999999,
+      "lineHeightPercent": 140,
       "letterSpacing": 0.5,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/overline/sm/fontFamily",
+        "fontWeight": "typography/overline/sm/fontWeight",
+        "fontSize": "typography/overline/sm/fontSize",
+        "letterSpacing": "typography/overline/sm/letterSpacing"
+      }
     },
     {
       "name": "typography/numeral/lg",
@@ -13046,10 +15140,17 @@
       "style": "Semi Bold",
       "size": 24,
       "lineHeight": 28.799999999999997,
+      "lineHeightPercent": 120,
       "letterSpacing": -0.5,
       "features": [
         "tnum"
-      ]
+      ],
+      "variables": {
+        "fontFamily": "typography/numeral/lg/fontFamily",
+        "fontWeight": "typography/numeral/lg/fontWeight",
+        "fontSize": "typography/numeral/lg/fontSize",
+        "letterSpacing": "typography/numeral/lg/letterSpacing"
+      }
     },
     {
       "name": "typography/numeral/md",
@@ -13057,10 +15158,17 @@
       "style": "Medium",
       "size": 16,
       "lineHeight": 22.4,
+      "lineHeightPercent": 140,
       "letterSpacing": 0,
       "features": [
         "tnum"
-      ]
+      ],
+      "variables": {
+        "fontFamily": "typography/numeral/md/fontFamily",
+        "fontWeight": "typography/numeral/md/fontWeight",
+        "fontSize": "typography/numeral/md/fontSize",
+        "letterSpacing": "typography/numeral/md/letterSpacing"
+      }
     },
     {
       "name": "typography/numeral/sm",
@@ -13068,10 +15176,17 @@
       "style": "Medium",
       "size": 14,
       "lineHeight": 19.599999999999998,
+      "lineHeightPercent": 140,
       "letterSpacing": 0,
       "features": [
         "tnum"
-      ]
+      ],
+      "variables": {
+        "fontFamily": "typography/numeral/sm/fontFamily",
+        "fontWeight": "typography/numeral/sm/fontWeight",
+        "fontSize": "typography/numeral/sm/fontSize",
+        "letterSpacing": "typography/numeral/sm/letterSpacing"
+      }
     },
     {
       "name": "typography/code/md",
@@ -13079,8 +15194,15 @@
       "style": "Regular",
       "size": 14,
       "lineHeight": 21,
+      "lineHeightPercent": 150,
       "letterSpacing": 0,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/code/md/fontFamily",
+        "fontWeight": "typography/code/md/fontWeight",
+        "fontSize": "typography/code/md/fontSize",
+        "letterSpacing": "typography/code/md/letterSpacing"
+      }
     },
     {
       "name": "typography/code/sm",
@@ -13088,8 +15210,15 @@
       "style": "Regular",
       "size": 12,
       "lineHeight": 18,
+      "lineHeightPercent": 150,
       "letterSpacing": 0,
-      "features": []
+      "features": [],
+      "variables": {
+        "fontFamily": "typography/code/sm/fontFamily",
+        "fontWeight": "typography/code/sm/fontWeight",
+        "fontSize": "typography/code/sm/fontSize",
+        "letterSpacing": "typography/code/sm/letterSpacing"
+      }
     },
     {
       "name": "typography/indicator/sm",
@@ -13097,10 +15226,17 @@
       "style": "Medium",
       "size": 11,
       "lineHeight": 15.399999999999999,
+      "lineHeightPercent": 140,
       "letterSpacing": 0,
       "features": [
         "tnum"
-      ]
+      ],
+      "variables": {
+        "fontFamily": "typography/indicator/sm/fontFamily",
+        "fontWeight": "typography/indicator/sm/fontWeight",
+        "fontSize": "typography/indicator/sm/fontSize",
+        "letterSpacing": "typography/indicator/sm/letterSpacing"
+      }
     },
     {
       "name": "typography/indicator/md",
@@ -13108,10 +15244,17 @@
       "style": "Medium",
       "size": 12,
       "lineHeight": 16.799999999999997,
+      "lineHeightPercent": 140,
       "letterSpacing": 0,
       "features": [
         "tnum"
-      ]
+      ],
+      "variables": {
+        "fontFamily": "typography/indicator/md/fontFamily",
+        "fontWeight": "typography/indicator/md/fontWeight",
+        "fontSize": "typography/indicator/md/fontSize",
+        "letterSpacing": "typography/indicator/md/letterSpacing"
+      }
     },
     {
       "name": "typography/indicator/lg",
@@ -13119,10 +15262,17 @@
       "style": "Medium",
       "size": 14,
       "lineHeight": 19.599999999999998,
+      "lineHeightPercent": 140,
       "letterSpacing": 0,
       "features": [
         "tnum"
-      ]
+      ],
+      "variables": {
+        "fontFamily": "typography/indicator/lg/fontFamily",
+        "fontWeight": "typography/indicator/lg/fontWeight",
+        "fontSize": "typography/indicator/lg/fontSize",
+        "letterSpacing": "typography/indicator/lg/letterSpacing"
+      }
     }
   ],
   "effects": [

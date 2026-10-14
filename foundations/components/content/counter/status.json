@@ -59,8 +59,9 @@
         "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=156-4865"
       },
       "adapterCollection": {
-        "name": "_ggbrick counter",
-        "id": "VariableCollectionId:149:1548"
+        "name": "Components",
+        "id": "VariableCollectionId:181:2",
+        "note": "shared by every component since 2026-10-14"
       },
       "ledger": "reports/components/counter/figma/ledger.json",
       "parity": "reports/components/counter/figma/parity.json",
@@ -235,7 +236,8 @@
     "Figma (2026-10-14): the default variant is Size=md, Overflow=false, obtained by placing the md row at the top-left of the set (Figma takes the top-left variant as the default, not the first or last child); rows md, sm, lg and columns Overflow false, true.",
     "Figma (2026-10-14): the 72 computed records inside Buttons are compared with the resolution of button/foreground per intent × appearance pair (proxy records, 0 failures) because the master is placed inside the Button by the orchestrator after the grouped gate; the Button masters and pages were not touched.",
     "Figma (2026-10-14): the specification frame follows the Button’s layout and language (header with hero and blueprint Anatomy board using the _Spec/* components and the Wireframe collection, body cards for Variants, States, Behavior & sizing and Usage examples); the Button usage is a text note until the integration.",
-    "Figma (2026-10-14): a number variable bound to layer opacity is read as a percentage, so binding opacity/muted (0.7) rendered the border at 0.7 %. Resolved in the token sync (orchestrator): opacity tokens are emitted ×100 for Figma (opacity/muted = 70, expectations and native verification updated) and the Border binds opacity/muted directly; the temporary mirror variable counter/border-opacity was removed."
+    "Figma (2026-10-14): a number variable bound to layer opacity is read as a percentage, so binding opacity/muted (0.7) rendered the border at 0.7 %. Resolved in the token sync (orchestrator): opacity tokens are emitted ×100 for Figma (opacity/muted = 70, expectations and native verification updated) and the Border binds opacity/muted directly; the temporary mirror variable counter/border-opacity was removed.",
+    "Figma (user review of 2026-10-14): the component adapter variables are grouped in one hidden collection “Components” (modes sm, md, lg) by component name prefix; the former per-component collections were deleted after rebinding. The Button keeps “Components · button style” and “Components · button state” because its shared trailing part needs two independent mode axes (9 pairs × 5 states exceed one collection's modes)."
   ],
   "openDecisions": [
     "Tabular figures in Figma: the Plugin API cannot set OpenType features and Inter’s default digits in Figma are proportional (11 is 12 px wide, 88 is 16 px at md), so counters with a 1 are narrower in Figma than in the browser. Reviewer: switch on tabular figures by hand (Type settings → Numbers → Tabular) on the three typography/indicator text styles (which also serves the Shortcut), or on the six Value layers, or accept the difference. Recorded as 108 justified parity records."

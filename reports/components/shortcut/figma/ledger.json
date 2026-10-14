@@ -87,7 +87,7 @@
       "Key 3 (hidden)"
     ],
     "bindings": {
-      "variant (container)": "itemSpacing → space/content/xs (Keycap) or 0 (Plain); opacity → opacity/muted (synced in percent, VariableID:145:3) (Plain); explicit mode of _ggbrick shortcut size = Size",
+      "variant (container)": "itemSpacing → space/content/xs (Keycap) or 0 (Plain); opacity → opacity/muted (synced in percent, VariableID:145:3) (Plain); explicit mode of Components = Size",
       "_Shortcut/Key text": "fontSize, lineHeight, letterSpacing → shortcut/font-size, shortcut/line-height, shortcut/letter-spacing; fill → shortcut/foreground; font Inter Medium (literal)",
       "_Shortcut/Key Keycap frame": "fill → color/surface/subtle; stroke (inside, strokesIncludedInLayout) → color/border/default; strokeWeight → border/width/default; four corners → radius/control; paddingLeft, paddingRight → space/content/xs; paddingTop, paddingBottom 0; minWidth → shortcut/cap-min-width",
       "_Shortcut/Separator text": "as the key text, characters +"
@@ -115,76 +115,62 @@
     }
   },
   "adapterVariables": {
-    "size": {
-      "collection": "VariableCollectionId:149:1570",
-      "name": "_ggbrick shortcut size",
-      "hiddenFromPublishing": true,
+    "collection": {
+      "id": "VariableCollectionId:181:2",
+      "name": "Components",
       "modes": {
-        "sm": "149:1",
-        "md": "149:2",
-        "lg": "149:3"
+        "sm": "181:0",
+        "md": "181:1",
+        "lg": "181:2"
       },
-      "variables": {
-        "shortcut/font-size": {
-          "id": "VariableID:149:1572",
-          "type": "FLOAT",
-          "scopes": [
-            "FONT_SIZE"
-          ],
-          "values": "alias typography/indicator/{sm,md,lg}/fontSize (VariableID:145:5, 145:8, 145:11)"
-        },
-        "shortcut/line-height": {
-          "id": "VariableID:149:1573",
-          "type": "FLOAT",
-          "scopes": [
-            "LINE_HEIGHT"
-          ],
-          "values": "alias typography/indicator/{sm,md,lg}/lineHeight (VariableID:145:6, 145:9, 145:12)"
-        },
-        "shortcut/letter-spacing": {
-          "id": "VariableID:149:1574",
-          "type": "FLOAT",
-          "scopes": [
-            "LETTER_SPACING"
-          ],
-          "values": "alias typography/indicator/{sm,md,lg}/letterSpacing (VariableID:145:7, 145:10, 145:13)"
-        },
-        "shortcut/cap-min-width": {
-          "id": "VariableID:149:1575",
-          "type": "FLOAT",
-          "scopes": [
-            "WIDTH_HEIGHT"
-          ],
-          "values": {
-            "sm": 18,
-            "md": 19,
-            "lg": 22
-          },
-          "note": "Rounded Figma line box (16, 17, 20) plus two border widths; the browser computes 1lh + 2 = 17.39, 18.8, 21.59. Literal because Figma cannot add two variables; to update if a brand changes border/width/default."
-        }
-      },
-      "assignment": "Each Shortcut variant sets the mode matching its Size explicitly."
+      "default": "md",
+      "hiddenFromPublishing": true
     },
-    "foreground": {
-      "collection": "VariableCollectionId:149:1571",
-      "name": "_ggbrick shortcut",
-      "hiddenFromPublishing": true,
-      "modes": {
-        "default": "149:4"
+    "variables": {
+      "shortcut/font-size": {
+        "id": "VariableID:181:7",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "value": "alias typography/indicator/{size}/fontSize per mode"
       },
-      "variables": {
-        "shortcut/foreground": {
-          "id": "VariableID:149:1576",
-          "type": "COLOR",
-          "scopes": [
-            "TEXT_FILL",
-            "STROKE_COLOR"
-          ],
-          "value": "alias color/content/primary (VariableID:7:10)",
-          "note": "Bound by the key texts and the separators; the Button will rebind its Shortcut trailing item to button/foreground (VariableID:90:13)."
+      "shortcut/line-height": {
+        "id": "VariableID:181:8",
+        "scopes": [
+          "LINE_HEIGHT"
+        ],
+        "value": "alias typography/indicator/{size}/lineHeight per mode"
+      },
+      "shortcut/letter-spacing": {
+        "id": "VariableID:181:9",
+        "scopes": [
+          "LETTER_SPACING"
+        ],
+        "value": "alias typography/indicator/{size}/letterSpacing per mode"
+      },
+      "shortcut/cap-min-width": {
+        "id": "VariableID:181:10",
+        "scopes": [
+          "WIDTH_HEIGHT"
+        ],
+        "value": {
+          "sm": 18,
+          "md": 19,
+          "lg": 22
         }
+      },
+      "shortcut/foreground": {
+        "id": "VariableID:181:6",
+        "type": "COLOR",
+        "scopes": [
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "value": "alias color/content/primary (VariableID:7:10) in the three modes",
+        "note": "Bound by the key texts and the separators; the Button rebinds its Shortcut trailing item to button/foreground (VariableID:90:13)."
       }
-    }
+    },
+    "note": "Formerly _ggbrick shortcut size (149:1570, variables 149:1572 to 149:1575) and _ggbrick shortcut (149:1571, variable 149:1576), deleted on 2026-10-14 after the regrouping."
   },
   "specification": {
     "frame": {
@@ -223,6 +209,10 @@
     {
       "date": "2026-10-14",
       "change": "Blueprint boards: the drawing is centered vertically in each board and the legend elements follow (user review of the wave 1 Figma parity gate, 2026-10-14); the builder script applies the same pass (centerBoards). The Anatomy leaders were shortened (24 px margins) and the Keycap board's dimension rows moved next to the caps, B above the first cap, so that the legend stays inside the board."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Adapter collections regrouped (user review, 2026-10-14): the component adapter variables now live in one hidden collection Components (VariableCollectionId:181:2, modes sm 181:0, md 181:1, lg 181:2, default md): button/icon-drawing 181:3, button/icon-size 181:4, counter/foreground 181:5, shortcut/foreground 181:6, shortcut/font-size 181:7, shortcut/line-height 181:8, shortcut/letter-spacing 181:9, shortcut/cap-min-width 181:10 (size-independent variables carry the same alias in the three modes). Every consumer was rebound and the explicit size modes moved (Button: 564 bindings, 138 mode assignments; Shortcut: 13 bindings, 12 modes; Counter: 12 paints; stale Leading icon overrides on ten specification instances reset and re-applied); the collections _ggbrick button size (74:3), _ggbrick shortcut size (149:1570), _ggbrick counter (149:1548) and _ggbrick shortcut (149:1571) were deleted with no reference left on any page. _ggbrick button style and _ggbrick button state were renamed Components · button style (90:12) and Components · button state (90:2), IDs unchanged, hidden. Checks: the eight variables resolve to the former values in each mode; Button slot geometry re-measured with icon, counter and shortcut trailing items (162 records, 0 failures)."
     }
   ]
 }

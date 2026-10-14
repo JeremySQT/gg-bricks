@@ -1,9 +1,13 @@
 // ggbrick style sync, Plugin API body run through the Figma MCP server (use_figma).
 // Prepend `const defs = { typography: manifest.typography, effects: manifest.effects };`.
-// Text styles: one per typography role (family, style, size, line height in px, letter spacing in px,
-// OpenType features). Effect styles: one per shadow role. Matched by name, IDs preserved.
+// Text styles: one per typography role (family, weight, size and letter spacing bound to the role's variables,
+// line height as a percentage, OpenType features in the description). Effect styles: one per shadow role. Matched by name, IDs preserved.
 const fonts = new Set(defs.typography.map((t) => JSON.stringify({ family: t.family, style: t.style })));
 await Promise.all([...fonts].map((f) => figma.loadFontAsync(JSON.parse(f))));
+// Text styles bind their family, weight, size and letter spacing to the role's variables (Brand collection,
+// synced before the styles); the line height is typed as a percentage, which Figma cannot bind.
+const vars = await figma.variables.getLocalVariablesAsync();
+const V = (name) => vars.find((v) => v.name === name);
 const textStyles = await figma.getLocalTextStylesAsync();
 const effectStyles = await figma.getLocalEffectStylesAsync();
 const result = { text: { created: [], updated: [] }, effects: { created: [], updated: [] }, errors: [] };
@@ -17,8 +21,13 @@ for (const t of defs.typography) {
     } else result.text.updated.push(s.id);
     s.fontName = { family: t.family, style: t.style };
     s.fontSize = t.size;
-    s.lineHeight = { unit: 'PIXELS', value: t.lineHeight };
+    s.lineHeight = { unit: 'PERCENT', value: t.lineHeightPercent };
     s.letterSpacing = { unit: 'PIXELS', value: t.letterSpacing };
+    for (const [field, name] of Object.entries(t.variables || {})) {
+      const v = V(name);
+      if (!v) throw new Error(`variable ${name} missing for ${field}`);
+      s.setBoundVariable(field, v);
+    }
     // The Plugin API exposes no OpenType feature setting on text styles: features (tabular figures for
     // numeral roles) are recorded in the description and reported as a limitation.
     const features =

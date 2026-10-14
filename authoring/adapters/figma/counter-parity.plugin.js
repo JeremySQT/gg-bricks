@@ -103,8 +103,8 @@ for (const b of ['base', 'brick', 'orchid'])
     }
 // Host proxies: the adapter variable the Button binds its slot content to, resolved per intent × appearance.
 const host = {};
-const style = col('_ggbrick button style'),
-  state = col('_ggbrick button state');
+const style = col('Components · button style'),
+  state = col('Components · button state');
 for (const ctx of ['base-light-standard', 'base-dark-standard', 'brick-light-compact', 'orchid-dark-comfortable']) {
   const [b, a, d] = ctx.split('-');
   for (const i of ['accent', 'neutral', 'danger'])
@@ -114,7 +114,7 @@ for (const ctx of ['base-light-standard', 'base-dark-standard', 'brick-light-com
       f.setExplicitVariableModeForCollection(state, mode(state, 'default'));
       try {
         host[`${ctx}|button-${i}-${ap}`] = [
-          hex(VN('button/foreground', '_ggbrick button style').resolveForConsumer(f).value),
+          hex(VN('button/foreground', 'Components · button style').resolveForConsumer(f).value),
           r3(VN('opacity/muted', 'Brand').resolveForConsumer(f).value / 100),
           VN('border/width/default', 'Brand').resolveForConsumer(f).value
         ].join('|');

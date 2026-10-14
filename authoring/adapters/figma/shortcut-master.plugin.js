@@ -1,7 +1,7 @@
 // Shortcut masters builder (use_figma bodies), 2026-10-14. Run the parts in order; each one is safe to re-run
 // (existing nodes of the same name on the page are replaced, variables are matched by collection and name).
 // Part 1 creates the page content/shortcut (after actions/button and the content/* pages), the hidden adapter
-// collections _ggbrick shortcut size (modes sm, md, lg) and _ggbrick shortcut (mode default), the internal part
+// adapter variables in the Components collection (modes sm, md, lg; regrouped on 2026-10-14), the internal part
 // _Shortcut/Key (Appearance=Plain | Keycap, text property Key) and the part _Shortcut/Separator.
 // Part 2 builds the component set Shortcut (Appearance × Size × Platform, 12 variants) from instances of the parts,
 // with the switches Show key 2 and Show key 3 and the nested key texts exposed (Key 1, Key 2, Key 3).
@@ -30,20 +30,19 @@ const V = (name, cn) => {
 };
 const modeOf = (c, n) => c.modes.find((m) => m.name === n).modeId;
 const alias = (v) => figma.variables.createVariableAlias(v);
-let sizeCol = cols.find((c) => c.name === '_ggbrick shortcut size');
+// Since 2026-10-14 every component adapter variable lives in the single hidden collection “Components”
+// (modes sm, md, lg; size-independent variables carry the same value in the three modes), grouped by
+// component through the variable names (shortcut/…, counter/…, button/…).
+let sizeCol = cols.find((c) => c.name === 'Components');
 if (!sizeCol) {
-  sizeCol = figma.variables.createVariableCollection('_ggbrick shortcut size');
+  sizeCol = figma.variables.createVariableCollection('Components');
   sizeCol.renameMode(sizeCol.modes[0].modeId, 'sm');
   sizeCol.addMode('md');
   sizeCol.addMode('lg');
+  sizeCol.setDefaultMode(sizeCol.modes[1].modeId);
 }
 sizeCol.hiddenFromPublishing = true;
-let fgCol = cols.find((c) => c.name === '_ggbrick shortcut');
-if (!fgCol) {
-  fgCol = figma.variables.createVariableCollection('_ggbrick shortcut');
-  fgCol.renameMode(fgCol.modes[0].modeId, 'default');
-}
-fgCol.hiddenFromPublishing = true;
+const fgCol = sizeCol;
 const mk = (col, name, type, scopes) => {
   let v = vars.find((x) => x.name === name && x.variableCollectionId === col.id);
   if (!v) v = figma.variables.createVariable(name, col, type);
@@ -72,7 +71,7 @@ lsV.description = 'Adapter: aliases typography/indicator/{size}/letterSpacing pe
 mwV.description =
   'Adapter: the square minimum of a keycap. Figma rounds an auto-sized text layer to whole pixels (line boxes 16, 17, 20), so the minimum is that rounded line box plus two border widths (18, 19, 22; border/width/default is 1 in every brand). The browser computes 17.4, 18.8, 21.6; difference recorded in parity.json.';
 const fgV = mk(fgCol, 'shortcut/foreground', 'COLOR', ['TEXT_FILL', 'STROKE_COLOR']);
-fgV.setValueForMode(modeOf(fgCol, 'default'), alias(V('color/content/primary', 'Appearance')));
+for (const m of fgCol.modes) fgV.setValueForMode(m.modeId, alias(V('color/content/primary', 'Appearance')));
 fgV.description =
   'Adapter: the inherited content color of the shortcut (currentColor in the code); aliases color/content/primary. A host (Button) rebinds the key texts and separators to its own foreground.';
 // Plain attenuation: opacity/muted, synced in percent (70) because Figma reads an opacity binding as a percentage.
@@ -166,7 +165,7 @@ const V = (name, cn) => {
   if (!v) throw new Error('missing variable ' + cn + ':' + name);
   return v;
 };
-const sizeCol = cols.find((c) => c.name === '_ggbrick shortcut size');
+const sizeCol = cols.find((c) => c.name === 'Components');
 const modeOf = (c, n) => c.modes.find((m) => m.name === n).modeId;
 const keySet = await figma.getNodeByIdAsync('<key set id returned by part 1>');
 const keyV = (a) => keySet.children.find((c) => c.name === `Appearance=${a}`);

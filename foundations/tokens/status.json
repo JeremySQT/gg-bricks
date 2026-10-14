@@ -231,6 +231,11 @@
       "date": "2026-10-14",
       "scope": "Figma adapter only (tooling/build-tokens.ts): opacity tokens are emitted ×100 in figma-manifest.json and figma-expectations.json because Figma reads a number variable bound to layer opacity as a percentage (found while building the Counter and Shortcut masters: opacity/muted bound at 0.7 rendered at 0.7 %). Source tokens and CSS unchanged. The 10 primitive/opacity variables were re-synced (IDs preserved) and native resolution re-verified: 422 semantic variables, 18 contexts, 0 failures.",
       "approval": "Adapter mechanic, no token change: no approval needed; recorded for the wave 1 Figma parity gate summary."
+    },
+    {
+      "date": "2026-10-14",
+      "scope": "Figma adapter only (tooling/build-tokens.ts, sync scripts): typography roles are emitted as parts (fontFamily STRING, fontWeight FLOAT, fontSize, letterSpacing, lineHeightRatio STRING percentage) aliasing the primitive/font/* variables (family and weight primitives new, line-height ratios migrated to percentage strings), and the 28 text styles bind family, weight, size and letter spacing to them with the line height typed as a percentage. Source tokens and CSS unchanged. Native resolution verified: 506 semantic variables, 18 contexts, 0 failures.",
+      "approval": "Adapter mechanic requested by the user at the wave 1 Figma parity gate (2026-10-14): no token change, no approval needed; recorded for the gate summary."
     }
   ]
 }
