@@ -1,7 +1,7 @@
 <script lang="ts">
   // Counter review lab (temporary, removed after the decision): vertical centering of the digits, current
-  // versus cap-height trimmed, zoomed with a centre line; and the border opacity at 70 (current), 80, 85, 90
-  // and 100 %, alone and inside Buttons, in light and dark.
+  // versus cap-height trimmed, zoomed with a centre line; and the border opacity from 70 % (current) down to
+  // 0 % in steps of 10, alone and inside Buttons, in light and dark.
   import { Button, Counter } from '../../packages/svelte/src/index.ts';
   import type { CounterSize } from '../../packages/svelte/src/index.ts';
 
@@ -9,13 +9,12 @@
   const densities = ['compact', 'standard', 'comfortable'];
   const sizes: CounterSize[] = ['sm', 'md', 'lg'];
   const values = [8, 42, 100];
-  const opacities = [
-    { id: 'o70', pct: 70, title: '70 % (actuel)' },
-    { id: 'o80', pct: 80, title: '80 %' },
-    { id: 'o85', pct: 85, title: '85 %' },
-    { id: 'o90', pct: 90, title: '90 %' },
-    { id: 'o100', pct: 100, title: '100 %' }
-  ];
+  const opacities = [70, 60, 50, 40, 30, 20, 10, 0].map((pct) => ({
+    id: `o${pct}`,
+    pct,
+    title: pct === 70 ? '70 % (actuel)' : pct === 0 ? '0 % (sans contour)' : `${pct} %`
+  }));
+
   let brand = $state('base');
   let density = $state('standard');
   let zoom = $state(4);
@@ -90,8 +89,8 @@
 
   {#each ['light', 'dark'] as mode (mode)}
     <section class="block mode" data-ggb-appearance={mode}>
-      <h2>2. Opacité du contour · {mode}</h2>
-      <div class="columns five">
+      <h2>2. Opacité du contour, de 70 % à 0 % · {mode}</h2>
+      <div class="columns four">
         {#each opacities as o (o.id)}
           <div class={`column fix ${o.id}`}>
             <p class="panel-title">{o.title}</p>
@@ -200,8 +199,8 @@
   .columns.two {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .columns.five {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+  .columns.four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .column {
     padding: var(--ggb-space-content-lg);
@@ -256,20 +255,29 @@
     padding-block: calc((1lh - 1cap) / 2);
   }
   /* Lab rule: border opacity candidates (the role opacity.muted gives 0.7 today). */
-  .o80 :global(.ggb-counter) {
-    --ggb-counter-borderOpacity: 0.8;
+  .o60 :global(.ggb-counter) {
+    --ggb-counter-borderOpacity: 0.6;
   }
-  .o85 :global(.ggb-counter) {
-    --ggb-counter-borderOpacity: 0.85;
+  .o50 :global(.ggb-counter) {
+    --ggb-counter-borderOpacity: 0.5;
   }
-  .o90 :global(.ggb-counter) {
-    --ggb-counter-borderOpacity: 0.9;
+  .o40 :global(.ggb-counter) {
+    --ggb-counter-borderOpacity: 0.4;
   }
-  .o100 :global(.ggb-counter) {
-    --ggb-counter-borderOpacity: 1;
+  .o30 :global(.ggb-counter) {
+    --ggb-counter-borderOpacity: 0.3;
+  }
+  .o20 :global(.ggb-counter) {
+    --ggb-counter-borderOpacity: 0.2;
+  }
+  .o10 :global(.ggb-counter) {
+    --ggb-counter-borderOpacity: 0.1;
+  }
+  .o0 :global(.ggb-counter) {
+    --ggb-counter-borderOpacity: 0;
   }
   @media (max-width: 1100px) {
-    .columns.five,
+    .columns.four,
     .columns.two {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
