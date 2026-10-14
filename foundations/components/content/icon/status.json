@@ -37,9 +37,25 @@
     "tokens": [],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/icon/Icon.svelte",
+      "folder": "packages/svelte/src/components/icon",
+      "versions": {
+        "svelte": "5.57.1"
+      },
+      "report": "reports/components/icon/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/icon",
+      "preview": "dist/previews/icon.html (npm run build && npm run build:preview icon)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/icon.test.ts",
+      "browser": "tests/browser/icon.spec.ts",
+      "computed": "reports/components/icon/svelte/computed.json",
+      "screenshots": "reports/components/icon/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -60,7 +76,30 @@
     "documentation": null,
     "delivery": null
   },
-  "checks": [],
+  "checks": [
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/icon/svelte/ssr.json",
+      "date": "2026-10-14",
+      "note": "4 tests: svg root and defaults, label semantics, sizes and viewBox, attribute pass-through."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "npx playwright test tests/browser/icon.spec.ts",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-14",
+      "note": "4 Chromium tests: sizes in 18 contexts (270 computed records), decorative versus named, host sizing and layout, axe light and dark."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build:preview icon",
+      "date": "2026-10-14"
+    }
+  ],
   "decisionsTaken": [
     "The glyph is content supplied by the host (a drawing), not a name looked up in a bundled set: ggbrick bundles no icons (authoring/decisions.md, Icons). The implementation exposes the drawing's coordinate box as an option so that icon sets with another grid still render.",
     "Five sizes, bound to size.icon.{xs,sm,md,lg,xl} (12, 16, 20, 24, 32 px), density-independent as every icon size; default md to match the md Button.",
@@ -69,12 +108,15 @@
     "No states and no interaction: the icon is static content.",
     "Inside a Button slot the button's icon size wins over the size option, so that slot content always matches the button size (Button contract rule).",
     "The reference set's 1/8 inset is a documented convention, not an option: hosts that apply optical spacing (Button) assume it; glyphs from sets with another inset are supported but sit slightly off in those hosts.",
-    "Contract gate (user, 2026-10-14): glyph passed as content with a coordinate-box option defaulting to the Phosphor grid; five sizes kept. Phosphor Icons confirmed as the reference set (nothing bundled: the application supplies the glyphs)."
+    "Contract gate (user, 2026-10-14): glyph passed as content with a coordinate-box option defaulting to the Phosphor grid; five sizes kept. Phosphor Icons confirmed as the reference set (nothing bundled: the application supplies the glyphs).",
+    "Implementation: the svg element is the component root (not wrapped in a span), so that hosts that select their slot's svg (Button) size and offset the Icon exactly as a raw glyph; attributes pass through to the svg.",
+    "Implementation: a blank label counts as no label (decorative), so an empty string from a binding never yields an unnamed image.",
+    "Review page: the disabled-color sample was replaced by a tertiary-color sample because disabled text on the canvas is below 4.5:1 and fails the axe audit; the test assertion follows (a page choice, not a component change)."
   ],
   "openDecisions": [
     "Figma parity gate (later): the Figma master cannot hold the application's icons; proposed: an Icon component set whose Name variants are the review fixtures (Phosphor), with Size as a variant, replacing the _Fixture/Icon set."
   ],
-  "nextAction": "Implementation (ggb-svelte), grouped implementation gate with Counter and Shortcut.",
+  "nextAction": "Implementation gate (grouped with Counter and Shortcut).",
   "implementationNotes": [
     "Svelte: Icon renders a single svg root element (class ggb-icon, data-size, viewBox option defaulting to the Phosphor grid 0 0 256 256, fill currentColor, width and height from size.icon) whose content is the children snippet. A single svg root keeps the Button slot selectors (.ggb-button__leading > svg) working, so the button sizes and optically offsets the icon as it does today with raw svg fixtures.",
     "Accessibility: without label, aria-hidden=\"true\" and focusable=\"false\"; with label, role=\"img\" and aria-label.",

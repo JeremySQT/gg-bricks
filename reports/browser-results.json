@@ -3,7 +3,8 @@
     "argv": [
       "/opt/node22/bin/node",
       "/home/user/design-system/node_modules/.bin/playwright",
-      "test"
+      "test",
+      "tests/browser/icon.spec.ts"
     ],
     "configFile": "/home/user/design-system/playwright.config.ts",
     "rootDir": "/home/user/design-system/tests/browser",
@@ -69,13 +70,13 @@
   },
   "suites": [
     {
-      "title": "button.spec.ts",
-      "file": "button.spec.ts",
+      "title": "icon.spec.ts",
+      "file": "icon.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "activation by pointer, Enter and Space; forms submit and reset only on request",
+          "title": "sizes follow size.icon in every context and never change with density",
           "ok": true,
           "tags": [],
           "tests": [
@@ -90,12 +91,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2348,
+                  "duration": 2980,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-13T11:50:33.122Z",
+                  "startTime": "2026-10-14T04:51:03.159Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -103,13 +104,13 @@
               "status": "expected"
             }
           ],
-          "id": "853d4d75579e0323ed08-b89b1725aaddedf266b1",
-          "file": "button.spec.ts",
-          "line": 70,
+          "id": "535808cb8277c0a9ae9e-b7a144cc1564a627d705",
+          "file": "icon.spec.ts",
+          "line": 37,
           "column": 1
         },
         {
-          "title": "loading keeps focus, name and width, and blocks activation, submission and navigation",
+          "title": "decorative icons are hidden, named icons are images with their label",
           "ok": true,
           "tags": [],
           "tests": [
@@ -124,12 +125,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3276,
+                  "duration": 665,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-13T11:50:35.680Z",
+                  "startTime": "2026-10-14T04:51:06.344Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -137,13 +138,13 @@
               "status": "expected"
             }
           ],
-          "id": "853d4d75579e0323ed08-98491803819d6e7fbee0",
-          "file": "button.spec.ts",
-          "line": 90,
+          "id": "535808cb8277c0a9ae9e-2dd8f896db3369486f25",
+          "file": "icon.spec.ts",
+          "line": 63,
           "column": 1
         },
         {
-          "title": "disabled leaves the tab order and never navigates; links keep link semantics",
+          "title": "a host sizes its slot icons; the icon keeps its box in a flexible layout and follows the color",
           "ok": true,
           "tags": [],
           "tests": [
@@ -158,12 +159,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1113,
+                  "duration": 733,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-13T11:50:38.977Z",
+                  "startTime": "2026-10-14T04:51:07.026Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -171,13 +172,13 @@
               "status": "expected"
             }
           ],
-          "id": "853d4d75579e0323ed08-8fcaf8b52cd4e7854bee",
-          "file": "button.spec.ts",
-          "line": 142,
+          "id": "535808cb8277c0a9ae9e-31f36d2d0adbb8c600d5",
+          "file": "icon.spec.ts",
+          "line": 81,
           "column": 1
         },
         {
-          "title": "slot content is decorative, inherits the content color and uses the icon size",
+          "title": "automated accessibility audit and screenshots in light and dark",
           "ok": true,
           "tags": [],
           "tests": [
@@ -192,12 +193,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 804,
+                  "duration": 3974,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-13T11:50:40.119Z",
+                  "startTime": "2026-10-14T04:51:07.777Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -205,179 +206,9 @@
               "status": "expected"
             }
           ],
-          "id": "853d4d75579e0323ed08-5cd2f70aa609b89843a9",
-          "file": "button.spec.ts",
-          "line": 182,
-          "column": 1
-        },
-        {
-          "title": "long labels truncate without losing the name; targets reach 44 px without growing the surface",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 1036,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-13T11:50:40.941Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "853d4d75579e0323ed08-6ee62835c2d615e5c410",
-          "file": "button.spec.ts",
-          "line": 233,
-          "column": 1
-        },
-        {
-          "title": "the label is centered on its capital letters, keeps descenders and ends at the ellipsis",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 2943,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-13T11:50:41.995Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "853d4d75579e0323ed08-c4f5fdfecd5f8a624e6d",
-          "file": "button.spec.ts",
-          "line": 359,
-          "column": 1
-        },
-        {
-          "title": "computed values match the resolved tokens for every option, state and context",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 240000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 26281,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-13T11:50:44.960Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "853d4d75579e0323ed08-bd9703aa9764312f09cc",
-          "file": "button.spec.ts",
-          "line": 414,
-          "column": 1
-        },
-        {
-          "title": "transitions follow the motion tokens and stop under reduced motion; forced colors stay usable",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 1376,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-13T11:51:11.262Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "853d4d75579e0323ed08-07f3c63a4318edf4070d",
-          "file": "button.spec.ts",
-          "line": 521,
-          "column": 1
-        },
-        {
-          "title": "automated accessibility audit and screenshots in light and dark, desktop and mobile",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 5910,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-10-13T11:51:12.660Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "853d4d75579e0323ed08-5f9df68aed05dd4e2add",
-          "file": "button.spec.ts",
-          "line": 544,
+          "id": "535808cb8277c0a9ae9e-19d6673d4afa64728412",
+          "file": "icon.spec.ts",
+          "line": 105,
           "column": 1
         }
       ]
@@ -385,9 +216,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-13T11:50:30.097Z",
-    "duration": 48668.267,
-    "expected": 9,
+    "startTime": "2026-10-14T04:51:00.934Z",
+    "duration": 11011.379,
+    "expected": 4,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
