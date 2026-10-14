@@ -224,7 +224,7 @@
   "openDecisions": [
     "Keys in Figma are typed per nested part (Key 1, Key 2, Key 3 exposed instances with Show key 2 / Show key 3), up to three keys, because the Plugin API cannot attach a set-level text property to a nested instance text. Acceptable for the library, or should the keys become direct text layers of each variant (12 variants × 3 caps bound individually) to get flat Key 1/2/3 text properties on the Shortcut itself?"
   ],
-  "nextAction": "Grouped Figma parity gate for the wave 1 slot contents (Icon, Counter, Shortcut), then documentation (ggb-docs).",
+  "nextAction": "Wave 1 Figma parity gate (grouped review of Icon, Counter, Shortcut and of the Button with the real slot content); then documentation (ggb-docs).",
   "implementationNotes": [
     "Markup: <kbd class=\"ggb-shortcut\" data-platform data-appearance data-size> holding a visually hidden <span class=\"ggb-shortcut__name\"> (the spoken equivalent, or label when non-blank) and <span class=\"ggb-shortcut__container\" aria-hidden=\"true\"> with one nested <kbd class=\"ggb-shortcut__key\" data-key data-kind> per resolved key and a <span class=\"ggb-shortcut__separator\">+</span> between keys on other. No role, no aria-label. data-platform carries the resolved platform (mac or other), never auto.",
     "Parsing lives in keys.ts (pure TypeScript, unit-tested): parseKeys splits on +, trims, maps aliases ignoring case, uppercases single letters, drops empty tokens, keeps unknown names as literals; resolveShortcut maps Mod, collapses a modifier named twice, orders modifiers per platform (mac Ctrl, Alt, Shift, Meta; other Meta, Ctrl, Alt, Shift), then the other keys in the given order, and yields text, spoken word and separator; it never throws.",

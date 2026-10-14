@@ -7,7 +7,7 @@
       "id": "144:2"
     }
   },
-  "recordedOn": "2026-10-12",
+  "recordedOn": "2026-10-14",
   "componentSet": {
     "id": "48:1586",
     "name": "Button",
@@ -210,7 +210,7 @@
     "Container",
     "Leading",
     "Leading/Drawing box",
-    "Leading/Drawing box/Leading icon",
+    "Leading/Drawing box/Leading icon (Icon component, Size=md, width and height bound to button/icon-size)",
     "Label",
     "Label/Text",
     "Trailing",
@@ -224,8 +224,6 @@
       "id": "8:10"
     },
     "_Fixtures (review only, not part of the library API)": "42:2",
-    "_Fixture/Counter": "42:20",
-    "_Fixture/Shortcut": "42:22",
     "_Fixture/Icon": {
       "set": "74:2",
       "variants": {
@@ -235,7 +233,9 @@
         "Name=download-simple": "42:16",
         "Name=check": "42:19"
       }
-    }
+    },
+    "removed": "_Fixture/Counter (42:20) and _Fixture/Shortcut (42:22) removed on 2026-10-14: the Button masters use the Counter (149:1568) and Shortcut (151:110) components; no instance was left on any page.",
+    "note": "_Fixture/Icon stays as the glyph source of the Icon component (preferred values of its Glyph property)."
   },
   "adapterVariables": {
     "size": {
@@ -322,22 +322,34 @@
   },
   "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run; none remain.",
   "exposedInstances": {
-    "Leading icon": "instance of _Fixture/Icon (property Name)",
-    "Trailing item": "instance of _Button/Trailing (property Type: Icon | Counter | Shortcut; Type=Icon exposes a nested Icon with Name)"
+    "Leading icon": "instance of Icon (149:11, Size=md; the size follows button/icon-size through the Button's size modes): property Glyph#149:0 (instance swap, defaults to _Fixture/Icon Name=plus), nested exposed Glyph",
+    "Trailing item": "instance of _Button/Trailing (properties Type: Icon | Counter | Shortcut, Size: sm | md | lg set by the Button variant); Type=Icon exposes a nested Icon (Glyph), Type=Counter a nested Counter (Value, Overflow, Overflow text), Type=Shortcut a nested Shortcut (Appearance, Platform, Show key 2/3, Key 1/2/3)"
   },
   "internalComponents": {
     "_Button/Trailing": {
       "page": "actions/button (144:2)",
       "set": "75:14",
       "variants": {
-        "Type=Icon": "75:2",
-        "Type=Counter": "75:8",
-        "Type=Shortcut": "91:7"
+        "Type=Icon, Size=md": "75:2",
+        "Type=Icon, Size=sm": "164:1524",
+        "Type=Icon, Size=lg": "164:1527",
+        "Type=Counter, Size=md": "75:8",
+        "Type=Counter, Size=sm": "164:1541",
+        "Type=Counter, Size=lg": "164:1543",
+        "Type=Shortcut, Size=md": "91:7",
+        "Type=Shortcut, Size=sm": "164:1556",
+        "Type=Shortcut, Size=lg": "164:1558"
+      },
+      "content": {
+        "Icon": "Drawing box (width button/icon-drawing, height button/icon-size) holding an Icon instance (149:8 sm, 149:11 md, 149:14 lg) named Icon, width and height bound to button/icon-size, Glyph default _Fixture/Icon Name=arrow-right, glyph vector fill bound to button/foreground; instances 75:4, 164:1526, 164:1529",
+        "Counter": "Counter instance (149:1550 sm, 149:1553 md, 149:1556 lg) named Counter, Value fill and Border stroke bound to button/foreground; instances 164:1549, 164:1545, 164:1553",
+        "Shortcut": "Shortcut instance (151:2 sm, 151:9 md, 151:16 lg; Plain, Mac) named Shortcut, key and separator texts bound to button/foreground (the Plain attenuation to opacity/muted stays); instances 164:1571, 164:1560, 164:1582"
       },
       "properties": {
-        "Type": "VARIANT"
+        "Type": "VARIANT (Icon, Counter, Shortcut)",
+        "Size": "VARIANT (md, sm, lg; set by each Button variant to its own Size)"
       },
-      "note": "One variant per allowed trailing type, each holding only its own content; colors bound to button/foreground. Type=Icon centers the icon in its drawing box with auto layout, so the box can follow the size modes (fixed 2026-10-12: absolute positioning left the icon 2 px low in md and 4 px in lg)."
+      "note": "Type × Size since 2026-10-14: the Counter and Shortcut masters carry their size as a variant, so the part cannot follow the Button's size modes alone; each Button variant sets Size on its Trailing item. Type=Icon keeps the mode-driven drawing box (fixed 2026-10-12: absolute positioning left the icon 2 px low in md and 4 px in lg). The default variant is Type=Icon, Size=md (top-left)."
     },
     "_Button/Loading indicator": {
       "id": "42:28",
@@ -411,6 +423,10 @@
     {
       "date": "2026-10-13",
       "change": "Repository structure: the Button component set (48:1586), its specification frame (126:1904) and its internal parts (_Button/Trailing 75:14, _Button/Loading indicator 42:28) moved from the Actions and Utilities pages to the new page actions/button (144:2); family pages Actions, Forms, Feedback, Overlays, Navigation and Data removed (empty). Set description and the specification reference note now cite foundations/components/actions/button and packages/svelte/src/components/button. Node IDs unchanged; fixtures _Fixture/* and documentation components _Spec/* stay on Utilities."
+    },
+    {
+      "date": "2026-10-14",
+      "change": "Wave 1 integration: the Leading icon of the 135 variants swapped from _Fixture/Icon to the Icon component (149:11), size re-bound to button/icon-size and the glyph fill to button/foreground (an override of the former vector fill landed on the Glyph instance frame after the swap and was cleared); _Button/Trailing rebuilt as Type × Size with the Icon, Counter and Shortcut masters, every Button variant setting Size on its Trailing item; the six specification instances carrying a glyph choice (Delete, Download report, Inbox ×2, Export…, Download) re-bound to the Icon component with the right Glyph; the Anatomy sentence of the specification updated. Parity re-measured: 666 cases identical to the approved measurement (hash comparison, base-light re-read in full), slot geometry 108 records, 0 failures (counter heights now 15.4/16.8/19.6). Fixtures _Fixture/Counter and _Fixture/Shortcut removed."
     }
   ]
 }

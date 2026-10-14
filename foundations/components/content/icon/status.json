@@ -154,7 +154,7 @@
     "Figma: the Icon master is a Size variant set whose Glyph is an instance-swap property defaulting to the _Fixture/Icon set (Phosphor fixtures), instead of Name variants per glyph: the glyph is content, so it is swapped, not enumerated. Size=md is the default variant. The _Fixture/Icon set stays on the Utilities page as the glyph source until a Phosphor library is attached."
   ],
   "openDecisions": [],
-  "nextAction": "Grouped Figma parity gate for the wave 1 slot contents (Icon, Counter, Shortcut); then documentation (ggb-docs).",
+  "nextAction": "Wave 1 Figma parity gate (grouped review of Icon, Counter, Shortcut and of the Button with the real slot content); then documentation (ggb-docs).",
   "implementationNotes": [
     "Svelte: Icon renders a single svg root element (class ggb-icon, data-size, viewBox option defaulting to the Phosphor grid 0 0 256 256, fill currentColor, width and height from size.icon) whose content is the children snippet. A single svg root keeps the Button slot selectors (.ggb-button__leading > svg) working, so the button sizes and optically offsets the icon as it does today with raw svg fixtures.",
     "Accessibility: without label, aria-hidden=\"true\" and focusable=\"false\"; with label, role=\"img\" and aria-label.",

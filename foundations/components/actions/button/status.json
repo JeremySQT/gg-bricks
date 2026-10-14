@@ -266,7 +266,7 @@
     "Repository and Figma structure (user, 2026-10-13, branch chore/repo-structure): sources of truth under foundations/ (foundations/tokens with its config, inventory, palette config and status; foundations/components/<family>/<id> with contract, status and figma-spec), implementations under packages/svelte/src/components/<id>, token evidence under reports/tokens, one Figma page per component named by its path (actions/button) holding the master, its internal parts and its specification; family pages removed. The contract's $schema pointer and the generated header comment changed with the paths; approvals re-digested under the user's authorization."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 1 Figma parity gate: Icon, Counter and Shortcut masters, Button masters updated with the real slot components; then re-record the Button implementation and Figma parity approvals and mark the Button Done.",
+  "nextAction": "Wave 1 Figma parity gate (Icon, Counter, Shortcut masters; Button masters and review page on the real components); on approval re-record approvals.implementation and approvals.figmaParity, then mark the Button Done (documentation already consultable).",
   "implementationNotes": [
     "Bits UI Button.Root owns the button/link element switch and the disabled link semantics (no href, aria-disabled, tabindex -1).",
     "Loading is guarded in the click handler; Enter and Space on a native button and Enter on a link dispatch click, so one guard covers pointer and keyboard.",
@@ -290,6 +290,12 @@
       "scope": "examples/button/App.svelte (listed in approvals.implementation): the local Icon, Counter and Shortcut fixtures (examples/button/Fixtures.svelte, removed) are replaced by the wave 1 components; the button passes its size to Counter and Shortcut. tests/browser/button.spec.ts: the axe audit tolerates the documented color-contrast exception of the attenuated plain Shortcut inside buttons (user decision at the wave 1 implementation gate; same exception as tests/browser/shortcut.spec.ts). Component files unchanged.",
       "evidence": "npx playwright test tests/browser/button.spec.ts: 9 passed on 2026-10-14; dist/previews/button.html rebuilt.",
       "approval": "To re-record at the wave 1 Figma parity gate (grouped review of Icon, Counter, Shortcut and of the Button with the real slot content)."
+    },
+    {
+      "date": "2026-10-14",
+      "scope": "Figma masters (approvals.figmaParity paths figma-spec.md, parity.json, ledger.json): the Leading icon of the 135 variants is the Icon component, _Button/Trailing is Type × Size with the Icon, Counter and Shortcut masters (each variant sets Size), the specification's six glyph choices re-applied and its Anatomy sentence updated; fixtures _Fixture/Counter and _Fixture/Shortcut removed. Colors, geometry and typography of the masters unchanged (666 measured cases identical to the approved measurement); slot geometry re-measured with the real Counter (108 records, 0 failures).",
+      "evidence": "reports/components/button/figma/parity.json (re-generated 2026-10-14), reports/components/button/figma/trailing-set.png, ledger maintenance entry.",
+      "approval": "To re-record at the wave 1 Figma parity gate together with the implementation change (review page on the real components)."
     }
   ]
 }

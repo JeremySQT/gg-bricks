@@ -70,11 +70,15 @@ const GRID = '349e013eedf533dd9a34627a53f989e11cc9a869';
 const callC = await figma.getNodeByIdAsync('115:6');
 const markC = await figma.getNodeByIdAsync('115:8');
 const numKey = Object.keys(callC.componentPropertyDefinitions)[0];
-const page = await figma.getNodeByIdAsync('8:4');
+const page = await figma.getNodeByIdAsync('144:2');
 await figma.setCurrentPageAsync(page);
 const NAME = 'Button — Specification';
 for (const n of page.children.filter((n) => n.name === NAME)) n.remove();
 const set = await figma.getNodeByIdAsync('48:1586');
+const GLYPH = Object.keys((await figma.getNodeByIdAsync('149:20')).componentPropertyDefinitions).find((k) =>
+  k.startsWith('Glyph')
+);
+const FX = { plus: '42:7', 'arrow-right': '42:10', trash: '42:13', 'download-simple': '42:16', check: '42:19' };
 const styles = await figma.getLocalTextStylesAsync();
 const S = (n) => styles.find((s) => s.name === 'typography/' + n);
 for (const s of styles) await figma.loadFontAsync(s.fontName);
@@ -133,12 +137,14 @@ const btn = (o = {}) => {
     'Show trailing#76:0': !!o.trail,
     'Focus#48:367': !!o.focus
   });
+  // Since 2026-10-14 the leading and trailing icons are Icon components: the drawing is their Glyph property
+  // (instance swap, fixture ids in FX).
   if (o.lead && o.leadIcon)
-    inst.exposedInstances.find((e) => e.name === 'Leading icon').setProperties({ Name: o.leadIcon });
+    inst.exposedInstances.find((e) => e.name === 'Leading icon').setProperties({ [GLYPH]: FX[o.leadIcon] });
   if (o.trail) {
     const t = inst.exposedInstances.find((e) => e.name === 'Trailing item');
     if (o.trail === 'icon') {
-      if (o.trailIcon) t.findOne((n) => n.name === 'Icon').setProperties({ Name: o.trailIcon });
+      if (o.trailIcon) t.findOne((n) => n.name === 'Icon').setProperties({ [GLYPH]: FX[o.trailIcon] });
     } else t.setProperties({ Type: o.trail === 'counter' ? 'Counter' : 'Shortcut' });
   }
   return inst;
@@ -466,7 +472,7 @@ an.appendChild(real);
 real.layoutSizingHorizontal = 'FILL';
 an.appendChild(
   text(
-    'In Figma, the label is a text property. “Show leading” and “Show trailing” add the optional parts; the leading icon is chosen by its name, and the trailing item has a type: Icon, Counter or Shortcut. Intent, Appearance, Size and State are variants, and Focus is a separate switch.',
+    'In Figma, the label is a text property. “Show leading” and “Show trailing” add the optional parts; the leading icon is an Icon component whose drawing is its “Glyph”, and the trailing item has a type: Icon, Counter or Shortcut (the real components, in the button’s size and color). Intent, Appearance, Size and State are variants, and Focus is a separate switch.',
     'body/md',
     'color/content/secondary',
     1000
@@ -482,7 +488,7 @@ return { root: root.id };
 
 // ---- Part 2 ----
 figma.skipInvisibleInstanceChildren = false;
-const page = await figma.getNodeByIdAsync('8:4');
+const page = await figma.getNodeByIdAsync('144:2');
 await figma.setCurrentPageAsync(page);
 const root = await figma.getNodeByIdAsync('<root id returned by part 1>');
 for (const n of root.children.filter((n) => n.name === 'Body')) n.remove();
@@ -505,6 +511,10 @@ const stroke = (node, name, w = 1, dash, align = 'INSIDE') => {
   node.strokeAlign = align;
 };
 const set = await figma.getNodeByIdAsync('48:1586');
+const GLYPH = Object.keys((await figma.getNodeByIdAsync('149:20')).componentPropertyDefinitions).find((k) =>
+  k.startsWith('Glyph')
+);
+const FX = { plus: '42:7', 'arrow-right': '42:10', trash: '42:13', 'download-simple': '42:16', check: '42:19' };
 const styles = await figma.getLocalTextStylesAsync();
 const S = (n) => styles.find((s) => s.name === 'typography/' + n);
 for (const s of styles) await figma.loadFontAsync(s.fontName);
@@ -554,12 +564,14 @@ const btn = (o = {}) => {
     'Show trailing#76:0': !!o.trail,
     'Focus#48:367': !!o.focus
   });
+  // Since 2026-10-14 the leading and trailing icons are Icon components: the drawing is their Glyph property
+  // (instance swap, fixture ids in FX).
   if (o.lead && o.leadIcon)
-    inst.exposedInstances.find((e) => e.name === 'Leading icon').setProperties({ Name: o.leadIcon });
+    inst.exposedInstances.find((e) => e.name === 'Leading icon').setProperties({ [GLYPH]: FX[o.leadIcon] });
   if (o.trail) {
     const t = inst.exposedInstances.find((e) => e.name === 'Trailing item');
     if (o.trail === 'icon') {
-      if (o.trailIcon) t.findOne((n) => n.name === 'Icon').setProperties({ Name: o.trailIcon });
+      if (o.trailIcon) t.findOne((n) => n.name === 'Icon').setProperties({ [GLYPH]: FX[o.trailIcon] });
     } else t.setProperties({ Type: o.trail === 'counter' ? 'Counter' : 'Shortcut' });
   }
   return inst;

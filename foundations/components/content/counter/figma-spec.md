@@ -7,7 +7,7 @@
 - Specification frame: **Counter — Specification** ([`156:4865`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=156-4865)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples, written in plain sentences for designers; token paths and mechanics stay in this file. Its instances are explanatory, never masters. Built by `authoring/adapters/figma/counter-spec.plugin.js`.
 - Reproduces: contract `foundations/components/content/counter/contract.json` (sha256 `23838f2c…a852`, amended on 2026-10-14 with the borderOpacity role) and the implementation approved on 2026-10-14 (`packages/svelte/src/components/counter`).
 - Node and variable IDs: `reports/components/counter/figma/ledger.json`. Parity: `reports/components/counter/figma/parity.json` (1800 records, 0 failures, 108 justified, 72 proxy records for the Button host). Screenshots: `reports/components/counter/figma/master-set.png`, `specification.png`.
-- The library is not published (publication needs explicit authorization). The Counter is not yet placed inside the Button master: the orchestrator integrates it after the grouped Figma parity gate.
+- The library is not published (publication needs explicit authorization). Since 2026-10-14 the Counter is the Type=Counter content of the Button's internal `_Button/Trailing` part (one instance per size, Value fill and Border stroke bound to `button/foreground`); see `foundations/components/actions/button/figma-spec.md`.
 
 ## Mapping from the contract
 

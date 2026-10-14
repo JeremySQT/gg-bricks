@@ -2,7 +2,7 @@
 // the contract spacing rule (edge + slot, slot + label, label + slot, slot + edge; icons vertically centered at the
 // icon size), in every brand × appearance × density and size. Save the returned `all` object for the parity report.
 figma.skipInvisibleInstanceChildren = false;
-const page = await figma.getNodeByIdAsync('8:4');
+const page = await figma.getNodeByIdAsync('144:2');
 await figma.setCurrentPageAsync(page);
 for (const n of page.children.filter((n) => n.name.startsWith('_parity'))) n.remove();
 const set = await figma.getNodeByIdAsync('48:1586');
