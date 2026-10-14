@@ -44,6 +44,6 @@ Component: `packages/svelte/src/components/button/` (Svelte 5.57.1, Bits UI 2.19
 
 - Only Chromium is automated; Firefox, Safari and screen readers were not tested. Firefox has no `text-box` support yet and centers the line box instead of the capital letters.
 - Slot content cannot be restricted to Icon, Counter or Shortcut by the type system; it is a documented rule. Slot content is hidden from assistive technology, so information it carries (a counter value) must also be in the label or described by the application.
-- Icon, Counter and Shortcut are local fixtures in the review page; Done waits for those components.
+- Since 2026-10-14 the review page uses the Icon, Counter and Shortcut components (wave 1) with Phosphor review glyphs; before that it used local fixtures. The automated audit tolerates the documented contrast exception of the attenuated plain Shortcut inside buttons (user decision at the wave 1 implementation gate).
 - A loading link keeps its `href` (so it stays focusable) and cancels activation, middle click and modified clicks in script; the context menu can still open the destination, and without JavaScript it would navigate.
 - The truncation algorithm slices the label on UTF-16 code units; a label ending in an emoji or a combining sequence may be cut inside it at some widths (not reproduced, noted at the audit of 2026-10-13).
