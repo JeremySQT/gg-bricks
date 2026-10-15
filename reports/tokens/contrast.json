@@ -1,8 +1,8 @@
 {
   "method": "WCAG 2 relative luminance and contrast ratio on resolved sRGB values. Content is composited on its surface; a translucent surface is first composited on color.surface.default (recorded as backdrop). Minimum 4.5 for text, 3 for borders, icons and focus indicators. Pairs come from foundations/tokens/inventory.json.",
   "contexts": 18,
-  "pairs": 98,
-  "checks": 1764,
+  "pairs": 102,
+  "checks": 1836,
   "failures": [],
   "results": [
     {
@@ -673,6 +673,42 @@
     },
     {
       "context": "base-light-compact",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.31,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
       "content": "color.status.info.content",
       "surface": "color.status.info.surface",
       "backdrop": null,
@@ -1555,6 +1591,42 @@
     },
     {
       "context": "base-light-standard",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.31,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
       "content": "color.status.info.content",
       "surface": "color.status.info.surface",
       "backdrop": null,
@@ -2432,6 +2504,42 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.31,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.99,
       "minimum": 3,
       "passed": true
     },
@@ -3314,6 +3422,42 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 10.04,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.77,
       "minimum": 3,
       "passed": true
     },
@@ -4201,6 +4345,42 @@
     },
     {
       "context": "base-dark-standard",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 10.04,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
       "content": "color.status.info.content",
       "surface": "color.status.info.surface",
       "backdrop": null,
@@ -5078,6 +5258,42 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 10.04,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.77,
       "minimum": 3,
       "passed": true
     },
@@ -5960,6 +6176,42 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.31,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.99,
       "minimum": 3,
       "passed": true
     },
@@ -6847,6 +7099,42 @@
     },
     {
       "context": "brick-light-standard",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.31,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
       "content": "color.status.info.content",
       "surface": "color.status.info.surface",
       "backdrop": null,
@@ -7724,6 +8012,42 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.31,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.99,
       "minimum": 3,
       "passed": true
     },
@@ -8606,6 +8930,42 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 10.04,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.77,
       "minimum": 3,
       "passed": true
     },
@@ -9493,6 +9853,42 @@
     },
     {
       "context": "brick-dark-standard",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 10.04,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
       "content": "color.status.info.content",
       "surface": "color.status.info.surface",
       "backdrop": null,
@@ -10370,6 +10766,42 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 10.04,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.77,
       "minimum": 3,
       "passed": true
     },
@@ -11252,6 +11684,42 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.31,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.99,
       "minimum": 3,
       "passed": true
     },
@@ -12139,6 +12607,42 @@
     },
     {
       "context": "orchid-light-standard",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.31,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
       "content": "color.status.info.content",
       "surface": "color.status.info.surface",
       "backdrop": null,
@@ -13016,6 +13520,42 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.31,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.99,
       "minimum": 3,
       "passed": true
     },
@@ -13898,6 +14438,42 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 10.04,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.77,
       "minimum": 3,
       "passed": true
     },
@@ -14785,6 +15361,42 @@
     },
     {
       "context": "orchid-dark-standard",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 10.04,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
       "content": "color.status.info.content",
       "surface": "color.status.info.surface",
       "backdrop": null,
@@ -15662,6 +16274,42 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 10.04,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.77,
       "minimum": 3,
       "passed": true
     },

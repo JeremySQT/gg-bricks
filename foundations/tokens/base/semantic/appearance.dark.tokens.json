@@ -869,6 +869,32 @@
       }
     },
     "status": {
+      "neutral": {
+        "surface": {
+          "$type": "color",
+          "$value": "{color.palette.neutral.800}"
+        },
+        "surfaceStrong": {
+          "$type": "color",
+          "$value": "{color.palette.neutral.600}"
+        },
+        "content": {
+          "$type": "color",
+          "$value": "{color.palette.neutral.200}"
+        },
+        "contentStrong": {
+          "$type": "color",
+          "$value": "{color.palette.neutral.0}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{color.palette.neutral.600}"
+        },
+        "icon": {
+          "$type": "color",
+          "$value": "{color.palette.neutral.400}"
+        }
+      },
       "info": {
         "surface": {
           "$type": "color",
