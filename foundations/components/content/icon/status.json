@@ -192,5 +192,17 @@
     "Svelte: Icon renders a single svg root element (class ggb-icon, data-size, viewBox option defaulting to the Phosphor grid 0 0 256 256, fill currentColor, width and height from size.icon) whose content is the children snippet. A single svg root keeps the Button slot selectors (.ggb-button__leading > svg) working, so the button sizes and optically offsets the icon as it does today with raw svg fixtures.",
     "Accessibility: without label, aria-hidden=\"true\" and focusable=\"false\"; with label, role=\"img\" and aria-label.",
     "Layout: display inline-block, vertical-align middle, flex none, so the icon aligns with text and never shrinks in a flex row."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-10-15",
+      "change": "Inline alignment: next to text the box is centered on the cap height of the surrounding text (contract rule added; icon.css vertical-align from middle to calc((1cap - size) / 2), middle kept as fallback). The icon moved up by 1.1 to 1.8 px next to text; Button slots unchanged.",
+      "record": "reports/components/icon/changes/2026-10-15-inline-alignment.md",
+      "invalidates": "approvals.contract and approvals.implementation for the changed files until the user approves the amendment; Figma parity retained (masters unchanged).",
+      "sha256": {
+        "foundations/components/content/icon/contract.json": "17f251fe727b7e90fb6e26d0289a7a3c850cca1870c2737d0965822a24ca57d4",
+        "packages/svelte/src/components/icon/icon.css": "1956cff4556ccf3a7464dd89e90d7bf0f4ad8525b1de6c5d01932459666e3785"
+      }
+    }
   ]
 }

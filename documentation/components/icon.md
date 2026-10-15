@@ -6,10 +6,10 @@ An icon shows a small one-color drawing from your icon set at one of five sizes,
 
 ## Anatomy
 
-| #   | Part  | Required | Role                                                                                                        |
-| --- | ----- | -------- | ----------------------------------------------------------------------------------------------------------- |
-| 1   | Box   | yes      | A square of the chosen size (12, 16, 20, 24 or 32 px) that never shrinks or stretches. No fill, no border.  |
-| 2   | Glyph | yes      | The drawing you supply, in one color (`currentColor`), inset by one eighth of the box as in Phosphor Icons. |
+| #   | Part  | Required | Role                                                                                                                                    |
+| --- | ----- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Box   | yes      | A square of the chosen size (12, 16, 20, 24 or 32 px) that never shrinks or stretches, centered on the capitals of the text next to it. |
+| 2   | Glyph | yes      | The drawing you supply, in one color (`currentColor`), inset by one eighth of the box as in Phosphor Icons.                             |
 
 A is the inset, B the box size. Hosts rely on the inset: a Button places an icon by its drawing, not by its box.
 
