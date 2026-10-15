@@ -71,7 +71,7 @@ for (const theme of ['light', 'dark'] as const) {
 }
 
 for (const component of index.components) {
-  test(`${component.id}: every live block is rendered and hydrated`, async ({ page }) => {
+  test(`${component.id}: playground, blueprints and every live block`, async ({ page }) => {
     const markdown = fs.readFileSync(`documentation/components/${component.documentation}`, 'utf8');
     const blocks = (markdown.match(/^```svelte live$/gm) ?? []).length;
     expect(blocks).toBeGreaterThan(0);
@@ -83,6 +83,23 @@ for (const component of index.components) {
       await frame.scrollIntoViewIfNeeded();
       await expect(frame.locator(`.ggb-${component.id}`).first()).toBeVisible();
       await expect(frame.locator('astro-island')).not.toHaveAttribute('ssr', /.*/);
+    }
+    // The page opens with a playground whose first select changes the component.
+    const playground = page.locator('.ggb-docs-playground');
+    await expect(playground).toHaveCount(1);
+    const target = playground.locator(`.ggb-${component.id}`).first();
+    await expect(target).toBeVisible();
+    const select = playground.locator('select').first();
+    const options = await select.locator('option').allTextContents();
+    const before = await target.evaluate((el) => el.outerHTML);
+    await select.selectOption(options[options.length - 1]);
+    await expect.poll(() => target.evaluate((el) => el.outerHTML)).not.toBe(before);
+    // Anatomy shows the Figma blueprint boards.
+    const blueprints = page.locator('img.ggb-docs-blueprint');
+    expect(await blueprints.count()).toBeGreaterThan(0);
+    for (const img of await blueprints.all()) {
+      await img.scrollIntoViewIfNeeded();
+      expect(await img.evaluate((el) => (el as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
     }
     await expect(page.locator('a[href*="/edit/main/"]').first()).toHaveAttribute(
       'href',

@@ -98,7 +98,13 @@ for (const entry of index.components) {
     );
   const doc = `${paths.documentation}/components/${entry.documentation}`;
   if (!exists(doc)) throw Error(`Missing documentation page ${doc}`);
-  write(`${pkg}/docs/${entry.documentation}`, readText(doc));
+  const text = readText(doc);
+  // The page's level-2 headings are exactly the sections the index announces, in order.
+  const headings = [...text.matchAll(/^## (.+)$/gm)].map((m) => m[1]);
+  const sections = (entry.sections as string[] | undefined) ?? [];
+  if (headings.join('|') !== sections.join('|'))
+    throw Error(`${doc} has sections ${headings.join(', ')}; documentation/index.json lists ${sections.join(', ')}`);
+  write(`${pkg}/docs/${entry.documentation}`, text);
 }
 // Foundations guides: copied under docs/foundations/; every token path they name in inline code must exist
 // (a path may be a group prefix such as `color.status`), so a renamed role cannot leave a stale guide.

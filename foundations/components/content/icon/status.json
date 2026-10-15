@@ -42,7 +42,17 @@
       "specification": "152:7",
       "ledger": "reports/components/icon/figma/ledger.json",
       "parity": "reports/components/icon/figma/parity.json",
-      "screenshots": ["reports/components/icon/figma/master-set.png", "reports/components/icon/figma/specification.png"]
+      "screenshots": [
+        "reports/components/icon/figma/master-set.png",
+        "reports/components/icon/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/icon/figma/blueprint-anatomy.png",
+          "node": "152:44"
+        }
+      ],
+      "blueprintsNote": "Anatomy diagrams of the specification page exported with the Figma MCP get_screenshot on 2026-10-15 and cropped to the board; shown under Anatomy on the documentation site."
     },
     "figmaSpec": "foundations/components/content/icon/figma-spec.md",
     "svelte": {

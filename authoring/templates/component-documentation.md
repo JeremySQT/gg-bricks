@@ -4,27 +4,27 @@
 
 ## Overview
 
-Write a short human-readable introduction: purpose, principal forms and capabilities. Several informative sentences, not only an API summary. Start with what the component lets the user do. Keep framework names, versions, HTML mappings and adapter mechanics in API or implementation references.
+One or two sentences: what the component is and what it lets the user do, with concrete examples of use. No variants, states or mechanics here: When to use, Do and don't and API cover them. The page answers four questions, in this order: what is it, when to use it, when not to use it, how to use it well. Be concise without abbreviating: full sentences, no keyword lists; a reader (person or agent) should get each point once.
 
 ## When to use
 
-Start with the general purpose, then list representative situations where this component is a suitable choice. Do not lead with a narrow example or implementation detail.
+A short list of the situations where this component is the right choice. Decisions only; how to use it goes to Do and don't.
 
 ## When not to use
 
-List unsuitable situations and name/link the appropriate component or pattern. Distinguish planned alternatives from currently available exports.
+A short list of situations, each with the component or pattern to use instead (“A link inside a sentence: Link (planned)”). Mark planned alternatives.
 
 ## Anatomy
 
-Include an annotated visual and a textual list/table of parts. Explain role, optionality and allowed slot contents. Derive factual parts and constraints from the contract. Distinguish slots from inserted content and internal parts from public API.
+A table of parts (#, part, required, role in one sentence) whose numbers match the callouts of the Figma blueprint board, then one line for its lettered dimensions. The site shows the blueprint captures (`reports/components/<id>/figma/blueprint-*.png`, exported from the specification page at the Figma parity phase) under the heading.
 
-## Usage guidelines
+## Do and don't
 
-Explain labeling, emphasis, composition and relevant behavior before showing code. Use Do / Don't comparisons when they clarify a decision; do not force every recommendation into that format. Include accessibility guidance here when it affects usage choices.
+Best practices grouped by topic, one `###` heading per topic (Label, Hierarchy, Size, Slots…), each with bullets starting with **Do** or **Don't**. A topic may have only Do bullets. Say why in a few words when it is not obvious; keep accessibility guidance that affects usage choices here.
 
 ## Examples
 
-Start with the usual case, then relevant variations and edge cases. Explain the intent and reference verified executable source. The human site may embed demos; local agent docs need useful text and code without a browser.
+Start with the usual case, then relevant variations, then a short list of difficult cases. One line of intent per example at most. The site also opens the page with a playground (`apps/docs/src/playgrounds/<id>.svelte`); examples show code, the playground the variants.
 
 Mark a Svelte block ` ```svelte live ` when it can run on its own: the documentation site (`apps/docs`) compiles it as a component and renders it above its code, so the build checks it. A live block is a complete Svelte 5 component in valid HTML (a `<li>` inside a list, a `<td>` inside a table); without a `<script>` element the site adds `import { …every export… } from '@ggbrick/svelte'`, and `./glyphs` resolves to `examples/icon/glyphs.ts`. Define what the block calls (a stand-in `save()` or `api`), link to `#fragments` rather than application routes, and leave fragments that cannot run (a prop-less excerpt, an API signature) unmarked. Difficult cases point to anchors of the review page `examples/<id>/App.svelte`.
 

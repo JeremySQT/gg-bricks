@@ -2,62 +2,57 @@
 
 ## Overview
 
-A counter shows a quantity next to the thing it counts: unread messages after a tab label, items in a list header, selected rows beside an action. It is a small rectangle with the number inside, drawn in the color of the surrounding text on a faint tint of that same color, so it reads as part of its context, whether that is a line of text, a navigation item or a solid button.
-
-Above a maximum (99 by default) the counter shows the maximum followed by a plus sign rather than the exact number, keeps the same height whether it holds one digit or two, and uses tabular figures so that counters of the same size line up. It comes in three sizes named like the Button sizes, so a host passes its own size through.
+A counter shows a quantity next to the thing it counts: unread messages after a tab label, items in a list header, selected rows beside an action. It is a small box in the color of the surrounding text on a faint tint of that color, and shows “99+” above its maximum.
 
 ## When to use
 
-Use a counter whenever a quantity accompanies an item and the user reads it at a glance.
-
-- After a tab label, a navigation item or a list header (“Inbox 8”, “Selected rows 42”), with an accessible label that gives the number its meaning.
-- In the trailing slot of a Button, where it takes the button's size and content color.
-- For large quantities that only need a magnitude: capped at a maximum and shown as an overflow (99+, or 999+ with a raised maximum).
-- For zero, when showing an empty quantity is meaningful (“0 selected rows”); hiding the counter when it is empty is the integration's choice.
+- After a tab label, a navigation item or a list header (“Inbox 8”).
+- In the trailing slot of a Button.
+- For a large quantity where only the magnitude matters (99+, or 999+ with a raised maximum).
 
 ## When not to use
 
-- A status or a category in words (“Draft”, “New”): use Badge (planned).
-- Free text, units or formatted amounts (“12 kB”, “€ 4.50”): plain text or a data field.
-- A dot that only signals “something new” without a number: Badge (planned) or a later indicator.
-- Editing a quantity: a number input (NumberInput, planned); the counter is display only.
-- A quantity that changes live and must be announced: the counter does not announce its changes; the integration owns the live region.
-- A colored emphasis (an accent or a danger counter): not available in this version; the counter has one treatment, the inherited color.
+- A status or a category in words (“Draft”, “New”): Badge (planned).
+- Free text, units or amounts (“12 kB”, “€ 4.50”): plain text.
+- A dot that only signals something new: Badge (planned).
+- Editing a quantity: NumberInput (planned).
+- A colored emphasis (accent, danger): not available; the counter takes the color of its context.
 
 ## Anatomy
 
-The annotated anatomy lives on the Figma specification page of the component (frame “Counter — Specification”, `foundations/components/content/counter/figma-spec.md` gives the links; a capture is kept in `reports/components/counter/figma/specification.png`). Text equivalent, from the outside in:
+| #   | Part      | Required | Role                                                                                              |
+| --- | --------- | -------- | ------------------------------------------------------------------------------------------------- |
+| 1   | Container | yes      | The box: as tall as the line of digits, at least as wide as it is tall, slightly rounded corners. |
+| 2   | Value     | yes      | The digits, centered, with tabular figures; the maximum followed by “+” above the maximum.        |
+| 3   | Tint      | yes      | The box filled with the color of the digits at 12 % opacity.                                      |
 
-| #   | Part      | Required | Role                                                                                                                                                                                                                                                           |
-| --- | --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Container | yes      | The box the host places: as tall as the line box of its typography, at least as wide as it is tall, with a side padding that follows the density and small rounded corners (a rectangle, not a pill). Its only paint is the tint; nothing is drawn outside it. |
-| 2   | Value     | yes      | The digits, centered on their cap height, in the indicator typography of the size with tabular figures. Shows the quantity, or the maximum followed by “+” when the quantity exceeds it.                                                                       |
-| 3   | Tint      | yes      | The whole box filled with the color of the digits at 12 % opacity: a faint shade of its surroundings on any background. In forced-colors mode, where the tint cannot be painted, a thin edge in the system text color keeps the box visible.                   |
+A side padding (2, 4 or 6 px with the density), B height (the line box of the digits), C minimum width, equal to the height.
 
-The dimension lines of the specification board show A, the side padding (2, 4 or 6 px with the density), B, the height (the line box of the digits) and C, the minimum width, equal to the height, so that a single digit sits in a square at compact and standard density.
+## Do and don't
 
-The accessible label is not a visual part: it is read after the digits and never shown.
+### Meaning
 
-## Usage guidelines
+- **Do** place the counter after a visible label (“Inbox 8”), or pass `label` so that screen readers hear a phrase (“8 unread messages”).
+- **Don't** show a lone counter with neither a visible label nor `label`.
 
-**Give the number a meaning.** A lone “8” says nothing to a screen reader user. Next to a visible label (“Inbox 8”) the reading order already gives the meaning; elsewhere pass `label` so that the accessible text becomes a phrase (“8 unread messages”). The label is read after the visible text and is never displayed.
+### Maximum and zero
 
-**Maximum.** Keep the default maximum of 99 for notification-style counts: the exact number stops mattering past two digits and the box stays narrow. Raise `max` when the exact quantity matters longer (a count of results up to 999); the overflow text is then “999+”. The exact value is never shown once the maximum is exceeded.
+- **Do** keep the default maximum of 99 for notification counts; raise `max` when the exact number matters longer (999).
+- **Do** decide in your code whether zero is useful (“0 selected”) or noise (“0 unread”): the counter shows 0 when asked and never hides itself.
 
-**Zero.** The counter shows 0 when asked; it never hides itself. Decide in the integration whether an empty quantity is information (“0 selected”) or noise (“0 unread”), and render the counter conditionally in the second case.
+### Size and color
 
-**Size.** Use the size of the host: `sm` beside small labels and in sm Buttons, `md` by default, `lg` with large labels. Inside a Button pass the button's size unchanged; the typography of the counter is one step below the host's label at each size.
+- **Do** use the size of the host: `sm` beside small labels and in `sm` buttons, `md` by default, `lg` with large labels.
+- **Don't** wrap a counter in a color of its own: it takes the text color of its context, which is why it works in every button.
 
-**Color.** The counter has no color option: digits and tint take the text color of the context. Put it where that color is right (the row, the tab, the button) rather than wrapping it in a color of its own. Inside a Button the button's content color applies in every intent, appearance and state, and the button hides the counter from assistive technology: repeat the quantity in the label or elsewhere when it matters.
+### Inside a Button
 
-**Not interactive.** A counter never receives focus and emits no events; it changes nothing when its host is hovered, pressed, loading or disabled beyond inheriting the host's content color.
-
-Do: `Inbox <Counter value={8} label="unread messages" />` after the tab label.
-Don't: `<Counter value={n} />` alone in a cell with no visible label and no `label`.
+- **Do** repeat the quantity elsewhere when it matters: the Button hides its trailing content from screen readers.
+- **Don't** expect a counter to announce changes: add a live region in the page if the user must be told.
 
 ## Examples
 
-Blocks marked `live` are complete components: the documentation site compiles and renders each one above its code (a block without a script element gets the `@ggbrick/svelte` imports). The review page `examples/counter/App.svelte` covers every case, difficult ones included (`npm run build && npm run build:preview counter` produces a self-contained page).
+The review page `examples/counter/App.svelte` covers every case.
 
 ### The usual case
 
@@ -113,9 +108,8 @@ A fractional value is rounded down, a negative value shows 0, and a value that i
 
 ### Difficult cases
 
-- A long number in a narrow container overflows the container rather than wrapping or shrinking (`#constrained` on the review page).
-- A counter in a right-to-left paragraph follows the writing direction of its context (`#rtl`).
-- Counters with the same number of digits have the same width (tabular figures: 11 and 88, 10 and 99 on the review page).
+- A long number in a narrow container overflows it rather than wrapping or shrinking.
+- Counters with the same number of digits have the same width (tabular figures).
 
 ## API
 
@@ -139,37 +133,28 @@ Renders a `<span>` that is the container, holding a `<span class="ggb-counter__v
 
 Every other attribute of `HTMLAttributes<HTMLSpanElement>` is forwarded to the element, except those the component owns: `children`, `role` and `tabindex`. There are no events.
 
-The platform-independent options and rules are in `foundations/components/content/counter/contract.json`; the Figma master exposes Size and Overflow as variants and the digits as text properties.
-
-Visual tokens: `typography.indicator.{size}`, `radius.indicator`, `space.content.xs` (side padding), `opacity.tint` (the tint) and `border.width.default` (the forced-colors edge), so brands, appearances and densities apply without any prop.
+Brand, appearance and density apply through the tokens, without any prop. The platform-independent contract ships as `contracts/counter.json`.
 
 ## Accessibility
 
-What the component guarantees:
+The component provides:
 
-- The accessible text is the visible text, followed by `label` when it is set, read as one phrase (“99+ unread messages”); the visible and announced numbers always agree.
-- No role, no name of its own and no place in the tab order: a counter is text, so it never traps focus and never competes with its host's name.
-- The digits keep the contrast of the surrounding text, in every brand, appearance and density; the tint is 12 % of that same color and carries no information.
-- In forced-colors mode the box stays visible through a thin edge in the system text color (CanvasText standalone, ButtonText in a Button, GrayText in a disabled Button).
-- Digits are never wrapped or truncated; the number stays legible at 200 % zoom and in a narrow container.
+- Accessible text made of the visible digits followed by `label` (“99+ unread messages”); no role, never focusable.
+- The digits in the text color of the context; in forced colors a thin edge keeps the box visible.
+- Digits never wrapped or truncated, legible at 200 % zoom.
 
-What the integration must provide:
+The integration provides:
 
-- The meaning of the number: a visible label before the counter or the `label` prop.
-- Inside a Button, the quantity in another accessible form: the Button hides its trailing content from assistive technology, so a counter there is decorative.
-- Announcements when the quantity changes and the user should know (an `aria-live` region in the page); the counter is silent.
-- Contrast between the surrounding text and its background: the counter inherits it.
+- The meaning of the number: a visible label before it, or `label`.
+- The quantity in another accessible form inside a Button, and a live region when changes must be announced.
 
-Relevant WCAG 2.2 success criteria:
+| WCAG 2.2 criterion                                                                                      | Level | Responsibility                                    |
+| ------------------------------------------------------------------------------------------------------- | ----- | ------------------------------------------------- |
+| [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html) | A     | Component (label phrase), integration (placement) |
+| [1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)           | AA    | Integration (the counter inherits the text color) |
+| [1.4.4 Resize Text](https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html)                       | AA    | Component                                         |
+| [1.4.10 Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html)                                | AA    | Integration (give it room)                        |
+| [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)             | A     | Component                                         |
+| [4.1.3 Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html)               | AA    | Integration                                       |
 
-| Criterion                                                                                               | Level | Relevance                                                                                                     | Responsibility                                                          |
-| ------------------------------------------------------------------------------------------------------- | ----- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html) | A     | The number and its meaning read as one phrase; the relationship to the labelled item is in the reading order. | Component (label phrase); integration (placement)                       |
-| [1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)           | AA    | The digits inherit the text color of the context; the tint lowers no contrast of its own.                     | Integration (context color), component keeps full opacity on the digits |
-| [1.4.4 Resize Text](https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html)                       | AA    | The counter scales with its typography and never truncates.                                                   | Component                                                               |
-| [1.4.10 Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html)                                | AA    | A counter overflows a too-narrow container rather than hiding digits; layouts must give it room.              | Integration                                                             |
-| [1.4.12 Text Spacing](https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html)                    | AA    | Letter spacing and line height overrides do not clip the digits (the box grows with the line box).            | Component                                                               |
-| [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)             | A     | Plain text content with no role; the value is the text itself.                                                | Component                                                               |
-| [4.1.3 Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html)               | AA    | A changing quantity that must be announced needs a live region.                                               | Integration                                                             |
-
-Validation status: automated checks only, in Chromium: the accessible text read from the browser's accessibility tree, axe-core on the review page in light and dark appearances (0 violations), geometry and ink centering, the inherited color inside every Button intent, appearance and state, forced colors, computed values in the 18 brand × appearance × density contexts (`tests/browser/counter.spec.ts`, `reports/components/counter/`). No assistive-technology test has been run yet; listing these criteria is not a conformance claim.
+Validated by automated checks in Chromium (accessible text, axe-core in light and dark, geometry, forced colors, the 18 contexts); no assistive-technology test yet. This list is not a conformance claim.
