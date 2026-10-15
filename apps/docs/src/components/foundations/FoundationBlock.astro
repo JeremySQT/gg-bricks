@@ -1,0 +1,66 @@
+---
+// Renders one `<!-- site:… -->` marker of a documentation/foundations page, from the blocks lib/content.ts
+// wrote to src/generated/foundations/<page>.json.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import type { FoundationBlock } from '../../../lib/content';
+import { repoRoot } from '../../lib/root';
+import { contrastReport, paths } from '../../lib/tokens';
+import TokenTable from './TokenTable.astro';
+import Ramp from './Ramp.astro';
+import ActionMatrix from './ActionMatrix.astro';
+
+interface Props {
+  page: string;
+  block: string;
+}
+const { page, block } = Astro.props;
+const blocks = JSON.parse(
+  readFileSync(join(repoRoot, 'apps/docs/src/generated/foundations', `${page}.json`), 'utf8')
+) as FoundationBlock[];
+const { kind, options, headers, rows } = blocks[Number(block)];
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const rampLabel = (prefix: string) =>
+  prefix.startsWith('color.palette.accent')
+    ? 'Accent (changes with the brand)'
+    : capitalize(prefix.split('.').slice(2).join(' '));
+const primitiveRamps = [...new Set(paths('primitive.color').map((p) => p.split('.').slice(0, -1).join('.')))].filter(
+  (p) => p.split('.').length >= 3
+);
+const tableProps = {
+  prefix: options.prefix,
+  paths: options.paths?.split(','),
+  preview: (options.preview ?? 'none') as 'none',
+  showAlias: options.alias !== 'false',
+  headers,
+  rows
+};
+const known = rows?.every((r) => paths(r.path).length > 0) ?? true;
+if (kind === 'tokens' && !known) throw new Error(`A role table of documentation page ${page} names an unknown token`);
+---
+
+{kind === 'tokens' && !options.collapsed && <TokenTable {...tableProps} />}
+{kind === 'tokens' && options.collapsed && (
+  <details>
+    <summary>{options.collapsed}</summary>
+    <TokenTable {...tableProps} />
+  </details>
+)}
+{kind === 'ramps' && options.prefixes.split(' ').map((prefix) => <Ramp prefix={prefix} label={rampLabel(prefix)} />)}
+{kind === 'actions' && <ActionMatrix />}
+{kind === 'contrast' && (
+  <p>
+    Every declared pair is measured in all 18 brand × appearance × density contexts: {contrastReport.checks} checks,
+    {contrastReport.failures.length} below the minimum (4.5:1 for text, 3:1 for borders, icons and focus indicators).
+    Translucent surfaces are composited on the default surface before measuring. The report is
+    <code>reports/tokens/contrast.json</code>.
+  </p>
+)}
+{kind === 'primitive-ramps' && (
+  <details>
+    <summary>Every primitive ramp</summary>
+    {primitiveRamps.map((prefix) => (
+      <Ramp prefix={prefix} label={prefix.split('.').slice(2).join(' ')} />
+    ))}
+  </details>
+)}

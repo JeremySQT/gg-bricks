@@ -1,7 +1,10 @@
 ---
 // Tokens under a prefix with a live preview (custom properties of the reader's context), the CSS
-// custom property, the value and alias in that context, and the axes that change it.
+// custom property, the value and alias in that context, and the axes that change it. With rows, the
+// role table of a documentation page: the value moves under the token name and the page's other columns
+// (Use for…) follow.
 import { axes, cssVar, paths as pathsUnder, token } from '../../lib/tokens';
+import { inlineMarkdown } from '../../lib/inline';
 import ContextValue from './ContextValue.astro';
 
 type Preview = 'color' | 'width' | 'radius' | 'shadow' | 'type' | 'border' | 'opacity' | 'duration' | 'easing' | 'none';
@@ -11,9 +14,15 @@ interface Props {
   preview?: Preview;
   exclude?: string[];
   showAlias?: boolean;
+  headers?: string[];
+  rows?: { path: string; cells: string[] }[];
 }
-const { prefix, preview = 'none', exclude = [], showAlias = true } = Astro.props;
-const list = (Astro.props.paths ?? pathsUnder(prefix!)).filter((p) => !exclude.some((e) => p.startsWith(e)));
+const { prefix, preview = 'none', exclude = [], showAlias = true, headers = [], rows } = Astro.props;
+const list = (rows?.map((r) => r.path) ?? Astro.props.paths ?? pathsUnder(prefix!)).filter(
+  (p) => !exclude.some((e) => p.startsWith(e))
+);
+const cells = (path: string) => rows?.find((r) => r.path === path)?.cells ?? [];
+const merged = headers.length > 0;
 ---
 
 <div class="ggb-docs-tokens not-content">
@@ -26,7 +35,10 @@ const list = (Astro.props.paths ?? pathsUnder(prefix!)).filter((p) => !exclude.s
           </th>
         )}
         <th scope="col">Token</th>
-        <th scope="col">Value in the selected context</th>
+        {headers.map((h) => (
+          <th scope="col" set:html={inlineMarkdown(h)} />
+        ))}
+        {!merged && <th scope="col">Value in the selected context</th>}
       </tr>
     </thead>
     <tbody>
@@ -66,11 +78,21 @@ const list = (Astro.props.paths ?? pathsUnder(prefix!)).filter((p) => !exclude.s
             <td>
               <code class="name">{cssVar(path)}</code>
               {varying.length > 0 && <span class="axes">varies with {varying.join(' and ')}</span>}
-              {description && <span class="description">{description}</span>}
+              {description && !rows && <span class="description">{description}</span>}
+              {merged && (
+                <span class="inline-value">
+                  <ContextValue path={path} showAlias={showAlias} />
+                </span>
+              )}
             </td>
-            <td>
-              <ContextValue path={path} showAlias={showAlias} />
-            </td>
+            {cells(path).map((c) => (
+              <td class="cell" set:html={inlineMarkdown(c)} />
+            ))}
+            {!merged && (
+              <td>
+                <ContextValue path={path} showAlias={showAlias} />
+              </td>
+            )}
           </tr>
         );
       })}
@@ -99,6 +121,9 @@ const list = (Astro.props.paths ?? pathsUnder(prefix!)).filter((p) => !exclude.s
     color: var(--sl-color-gray-2);
     font-weight: 600;
   }
+  .cell {
+    min-inline-size: 12rem;
+  }
   .preview {
     inline-size: 1%;
     white-space: nowrap;
@@ -106,7 +131,11 @@ const list = (Astro.props.paths ?? pathsUnder(prefix!)).filter((p) => !exclude.s
   .name {
     display: block;
     font-size: var(--sl-text-xs);
-    overflow-wrap: anywhere;
+  }
+  .inline-value {
+    display: block;
+    margin-block-start: 0.25rem;
+    font-size: var(--sl-text-xs);
   }
   .axes,
   .description {

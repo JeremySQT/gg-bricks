@@ -2,10 +2,11 @@ import { defineConfig } from 'astro/config';
 import type { AstroIntegration } from 'astro';
 import starlight from '@astrojs/starlight';
 import svelte from '@astrojs/svelte';
-import { EDIT_BASE, generateComponentPages, watchedSources } from './lib/content.ts';
+import { EDIT_BASE, generateComponentPages, generateFoundationPages, watchedSources } from './lib/content.ts';
 
-// Component pages are generated from documentation/ before Astro reads its content (see lib/content.ts).
+// Component and foundations pages are generated from documentation/ before Astro reads its content (see lib/content.ts).
 const components = generateComponentPages();
+generateFoundationPages();
 const families = [...new Set(components.map((c) => c.family))];
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -18,6 +19,7 @@ const regenerate: AstroIntegration = {
       server.watcher.on('change', (file) => {
         if (watchedSources.some((source) => file.startsWith(source))) {
           generateComponentPages();
+          generateFoundationPages();
           logger.info(`regenerated component pages after a change in ${file}`);
         }
       });
