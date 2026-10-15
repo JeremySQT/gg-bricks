@@ -4,6 +4,16 @@
 
 A shortcut shows a keyboard combination as a hint: ⌘K after a command, Ctrl+Shift+P beside a menu item, keycaps in a help page. You write it once (`Mod+K`) and it renders in the conventions of the user's platform (⌘K on a Mac, Ctrl+K elsewhere), with a spoken equivalent for screen readers.
 
+## Anatomy
+
+| #   | Part      | Required | Role                                                                                                   |
+| --- | --------- | -------- | ------------------------------------------------------------------------------------------------------ |
+| 1   | Container | yes      | The keys on one line, aligned on the text baseline.                                                    |
+| 2   | Key       | yes      | One per key, modifiers first. Plain: text. Keycap: a cap with a surface, a border and rounded corners. |
+| 3   | Separator | platform | The “+” between keys on other platforms; on a Mac the keys are juxtaposed.                             |
+
+Keycap dimensions: A side padding and C gap between caps (2, 4 or 6 px with the density), B border (1 px), D cap height (the text line plus two borders).
+
 ## When to use
 
 - After a menu item, a command palette entry or a list action.
@@ -18,37 +28,18 @@ A shortcut shows a keyboard combination as a hint: ⌘K after a command, Ctrl+Sh
 - A quantity: Counter. A status or a category: Badge (planned).
 - Mouse or touch gestures.
 
-## Anatomy
+## Best practices
 
-| #   | Part      | Required | Role                                                                                                   |
-| --- | --------- | -------- | ------------------------------------------------------------------------------------------------------ |
-| 1   | Container | yes      | The keys on one line, aligned on the text baseline.                                                    |
-| 2   | Key       | yes      | One per key, modifiers first. Plain: text. Keycap: a cap with a surface, a border and rounded corners. |
-| 3   | Separator | platform | The “+” between keys on other platforms; on a Mac the keys are juxtaposed.                             |
-
-Keycap dimensions: A side padding and C gap between caps (2, 4 or 6 px with the density), B border (1 px), D cap height (the text line plus two borders).
-
-## Do and don't
-
-### Notation
-
-- **Do** write `Mod` for the platform's main modifier (`Mod+S`), and join names with `+`: modifiers (`Mod`, `Ctrl`, `Alt`, `Shift`, `Meta`), special keys (`Enter`, `Escape`, `Tab`, `Space`, `Backspace`, `Delete`, `ArrowUp`…`ArrowRight`, `Home`, `End`, `PageUp`, `PageDown`, `F1`…`F12`, `Plus`) and literal keys (`K`, `,`).
-- **Don't** write `Ctrl` or `Meta` when the shortcut follows the platform convention: Mac users would see Control instead of Command.
-
-### Platform
-
-- **Do** leave `platform` on `auto` in an application; force `mac` or `other` in documentation, screenshots and tests.
-
-### Appearance and size
-
-- **Do** use the plain appearance beside a label (menu item, button, tooltip), and keycaps where the keys are the subject, on a neutral surface.
-- **Do** use the size of the host: the button's size inside a Button, `md` beside body text, `sm` beside small labels.
-- **Don't** put keycaps inside a Button or on a colored control, or color a shortcut on its own: it takes the color of its context.
-
-### Spoken equivalent
-
-- **Do** pass `label` when the generated English words (“Control Shift P”) do not suit: another language or product wording.
-- **Don't** rely on a shortcut inside a Button being announced: the Button hides it. Make the shortcut discoverable elsewhere if it matters.
+| Guidance | Topic             | Practice                                                                                                                            |
+| -------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Do       | Notation          | Write `Mod` for the platform's main modifier and join key names with `+`: `Mod+S`, `Mod+Shift+P`, `Escape`, `ArrowUp`.              |
+| Do       | Platform          | Leave `platform` on `auto` in an application; force `mac` or `other` in documentation, screenshots and tests.                       |
+| Do       | Appearance        | Use the plain appearance beside a label (menu item, button, tooltip), keycaps where the keys are the subject, on a neutral surface. |
+| Do       | Size              | Use the size of the host: the button's size inside a Button, `md` beside body text, `sm` beside small labels.                       |
+| Do       | Spoken equivalent | Pass `label` when the generated English words (“Control Shift P”) do not suit.                                                      |
+| Don't    | Notation          | Write `Ctrl` or `Meta` for a shortcut that follows the platform convention: Mac users would see Control instead of Command.         |
+| Don't    | Appearance        | Put keycaps inside a Button or on a colored control, or color a shortcut on its own.                                                |
+| Don't    | Inside a Button   | Rely on a shortcut inside a Button being announced: the Button hides it.                                                            |
 
 ## Examples
 

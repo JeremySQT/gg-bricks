@@ -10,7 +10,16 @@
       "whenNotToUse": "Icon-only actions (IconButton, planned), navigation inside text (Link, planned), toggles with a pressed state (SegmentedControl, planned), menu triggers (Menu, planned), button groups and toolbars (composition), width as a prop (layout decides).",
       "documentation": "button.md",
       "contract": "foundations/components/actions/button/contract.json",
-      "sections": ["Overview", "Anatomy", "Usage", "Examples", "API", "Accessibility"]
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
     },
     {
       "id": "icon",
@@ -22,10 +31,10 @@
       "contract": "foundations/components/content/icon/contract.json",
       "sections": [
         "Overview",
+        "Anatomy",
         "When to use",
         "When not to use",
-        "Anatomy",
-        "Do and don't",
+        "Best practices",
         "Examples",
         "API",
         "Accessibility"
@@ -41,10 +50,10 @@
       "contract": "foundations/components/content/counter/contract.json",
       "sections": [
         "Overview",
+        "Anatomy",
         "When to use",
         "When not to use",
-        "Anatomy",
-        "Do and don't",
+        "Best practices",
         "Examples",
         "API",
         "Accessibility"
@@ -60,10 +69,10 @@
       "contract": "foundations/components/content/shortcut/contract.json",
       "sections": [
         "Overview",
+        "Anatomy",
         "When to use",
         "When not to use",
-        "Anatomy",
-        "Do and don't",
+        "Best practices",
         "Examples",
         "API",
         "Accessibility"

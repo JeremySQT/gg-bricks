@@ -4,6 +4,16 @@
 
 A counter shows a quantity next to the thing it counts: unread messages after a tab label, items in a list header, selected rows beside an action. It is a small box in the color of the surrounding text on a faint tint of that color, and shows “99+” above its maximum.
 
+## Anatomy
+
+| #   | Part      | Required | Role                                                                                              |
+| --- | --------- | -------- | ------------------------------------------------------------------------------------------------- |
+| 1   | Container | yes      | The box: as tall as the line of digits, at least as wide as it is tall, slightly rounded corners. |
+| 2   | Value     | yes      | The digits, centered, with tabular figures; the maximum followed by “+” above the maximum.        |
+| 3   | Tint      | yes      | The box filled with the color of the digits at 12 % opacity.                                      |
+
+A side padding (2, 4 or 6 px with the density), B height (the line box of the digits), C minimum width, equal to the height.
+
 ## When to use
 
 - After a tab label, a navigation item or a list header (“Inbox 8”).
@@ -18,37 +28,18 @@ A counter shows a quantity next to the thing it counts: unread messages after a 
 - Editing a quantity: NumberInput (planned).
 - A colored emphasis (accent, danger): not available; the counter takes the color of its context.
 
-## Anatomy
+## Best practices
 
-| #   | Part      | Required | Role                                                                                              |
-| --- | --------- | -------- | ------------------------------------------------------------------------------------------------- |
-| 1   | Container | yes      | The box: as tall as the line of digits, at least as wide as it is tall, slightly rounded corners. |
-| 2   | Value     | yes      | The digits, centered, with tabular figures; the maximum followed by “+” above the maximum.        |
-| 3   | Tint      | yes      | The box filled with the color of the digits at 12 % opacity.                                      |
-
-A side padding (2, 4 or 6 px with the density), B height (the line box of the digits), C minimum width, equal to the height.
-
-## Do and don't
-
-### Meaning
-
-- **Do** place the counter after a visible label (“Inbox 8”), or pass `label` so that screen readers hear a phrase (“8 unread messages”).
-- **Don't** show a lone counter with neither a visible label nor `label`.
-
-### Maximum and zero
-
-- **Do** keep the default maximum of 99 for notification counts; raise `max` when the exact number matters longer (999).
-- **Do** decide in your code whether zero is useful (“0 selected”) or noise (“0 unread”): the counter shows 0 when asked and never hides itself.
-
-### Size and color
-
-- **Do** use the size of the host: `sm` beside small labels and in `sm` buttons, `md` by default, `lg` with large labels.
-- **Don't** wrap a counter in a color of its own: it takes the text color of its context, which is why it works in every button.
-
-### Inside a Button
-
-- **Do** repeat the quantity elsewhere when it matters: the Button hides its trailing content from screen readers.
-- **Don't** expect a counter to announce changes: add a live region in the page if the user must be told.
+| Guidance | Topic           | Practice                                                                                                              |
+| -------- | --------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Do       | Meaning         | Place the counter after a visible label (“Inbox 8”), or pass `label` so that screen readers hear “8 unread messages”. |
+| Do       | Maximum         | Keep the default maximum of 99 for notification counts; raise `max` when the exact number matters longer (999).       |
+| Do       | Zero            | Decide in your code whether zero is useful (“0 selected”) or noise (“0 unread”): the counter shows 0 when asked.      |
+| Do       | Size            | Use the size of the host: `sm` beside small labels and in `sm` buttons, `md` by default, `lg` with large labels.      |
+| Do       | Inside a Button | Repeat the quantity elsewhere when it matters: the Button hides its trailing content from screen readers.             |
+| Don't    | Meaning         | Show a lone counter with neither a visible label nor `label`.                                                         |
+| Don't    | Color           | Wrap a counter in a color of its own: it takes the text color of its context.                                         |
+| Don't    | Announcements   | Expect a counter to announce changes: add a live region in the page if the user must be told.                         |
 
 ## Examples
 

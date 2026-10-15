@@ -83,26 +83,7 @@
   border-radius: 12px;
 }
 
-/* Do and don't badges (component pages). */
-.ggb-docs-do,
-.ggb-docs-dont {
-  display: inline-block;
-  margin-inline-end: 0.25rem;
-  padding: 0 0.375rem;
-  border-radius: var(--ggb-radius-indicator);
-  font: var(--ggb-typography-label-sm);
-  letter-spacing: var(--ggb-typography-label-sm-letterSpacing);
-}
-.ggb-docs-do {
-  background: var(--ggb-color-status-success-surface);
-  color: var(--ggb-color-status-success-content);
-}
-.ggb-docs-dont {
-  background: var(--ggb-color-status-danger-surface);
-  color: var(--ggb-color-status-danger-content);
-}
-
-/* Usage tables (Guidance column): a card with badges, topics written once per group. */
+/* Best practices tables (Guidance column): a card, a badge per row, a stronger rule between Do and Don't. */
 .ggb-docs-guidance {
   margin-block: 1rem 2rem;
   overflow-x: auto;
@@ -136,6 +117,9 @@
 }
 .ggb-docs-guidance tbody tr.group-start > * {
   border-block-start: var(--ggb-border-width-default) solid var(--ggb-color-border-default);
+}
+.ggb-docs-guidance tbody tr + tr th {
+  border-block-start: var(--ggb-border-width-default) solid var(--ggb-color-border-subtle);
 }
 .ggb-docs-guidance tbody th {
   inline-size: 1%;

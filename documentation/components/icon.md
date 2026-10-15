@@ -4,6 +4,15 @@
 
 An icon shows a small one-color drawing from your icon set at one of five sizes, in the color of the text around it. It gives a visual cue next to a label or in a button, or carries a meaning on its own when it has a label.
 
+## Anatomy
+
+| #   | Part  | Required | Role                                                                                                        |
+| --- | ----- | -------- | ----------------------------------------------------------------------------------------------------------- |
+| 1   | Box   | yes      | A square of the chosen size (12, 16, 20, 24 or 32 px) that never shrinks or stretches. No fill, no border.  |
+| 2   | Glyph | yes      | The drawing you supply, in one color (`currentColor`), inset by one eighth of the box as in Phosphor Icons. |
+
+A is the inset, B the box size. Hosts rely on the inset: a Button places an icon by its drawing, not by its box.
+
 ## When to use
 
 - Next to the text of a menu item, a list row, a navigation entry or a hint.
@@ -18,37 +27,19 @@ An icon shows a small one-color drawing from your icon set at one of five sizes,
 - A status or a category in words: Badge (planned).
 - Icon fonts and sprite sheets: the component takes inline vector content.
 
-## Anatomy
+## Best practices
 
-| #   | Part  | Required | Role                                                                                                        |
-| --- | ----- | -------- | ----------------------------------------------------------------------------------------------------------- |
-| 1   | Box   | yes      | A square of the chosen size (12, 16, 20, 24 or 32 px) that never shrinks or stretches. No fill, no border.  |
-| 2   | Glyph | yes      | The drawing you supply, in one color (`currentColor`), inset by one eighth of the box as in Phosphor Icons. |
-
-A is the inset, B the box size. Hosts rely on the inset: a Button places an icon by its drawing, not by its box.
-
-## Do and don't
-
-### Decorative or named
-
-- **Do** leave `label` out when the text next to the icon says the same thing: the icon is then skipped by screen readers.
-- **Do** give a `label` when the icon carries the meaning alone, and write the meaning (“Paid”), not the drawing (“check mark”).
-- **Don't** label an icon that repeats the visible text: it is read twice.
-
-### Color
-
-- **Do** set the color on the surrounding text, the row or the host: the icon follows it.
-- **Don't** color an icon on its own, or let color be the only way a status is conveyed.
-
-### Size
-
-- **Do** match the text next to it: `sm` beside body text and labels, `xs` beside captions, `md` by default, `lg` and `xl` for headers and empty states.
-- **Don't** set a size inside a Button slot: the button sizes the icon.
-
-### Icon set
-
-- **Do** use one set, one weight and one grid across the product; pass `viewBox` for a set drawn on another grid.
-- **Don't** make an icon clickable: it never receives focus. Put it in a Button, or wait for IconButton.
+| Guidance | Topic       | Practice                                                                                                                                        |
+| -------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Do       | Decorative  | Leave `label` out when the text next to the icon says the same thing: screen readers skip the icon.                                             |
+| Do       | Named       | Give a `label` when the icon carries the meaning alone, written as the meaning (“Paid”), not the drawing (“check mark”).                        |
+| Do       | Color       | Set the color on the surrounding text, the row or the host: the icon follows it.                                                                |
+| Do       | Size        | Match the text next to it: `sm` beside body text and labels, `xs` beside captions, `md` by default, `lg` and `xl` for headers and empty states. |
+| Do       | Icon set    | Use one set, one weight and one grid across the product; pass `viewBox` for a set drawn on another grid.                                        |
+| Don't    | Named       | Label an icon that repeats the visible text: it is read twice.                                                                                  |
+| Don't    | Color       | Color an icon on its own, or let color be the only way a status is conveyed.                                                                    |
+| Don't    | Size        | Set a size inside a Button slot: the button sizes the icon.                                                                                     |
+| Don't    | Interaction | Make an icon clickable: it never receives focus. Put it in a Button.                                                                            |
 
 ## Examples
 

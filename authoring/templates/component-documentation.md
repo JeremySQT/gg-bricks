@@ -4,23 +4,23 @@
 
 ## Overview
 
-One or two sentences: what the component is and what it lets the user do, with concrete examples of use. No variants, states or mechanics here: When to use, Do and don't and API cover them. The page answers four questions, in this order: what is it, when to use it, when not to use it, how to use it well. Be concise without abbreviating: full sentences, no keyword lists; a reader (person or agent) should get each point once.
-
-## When to use
-
-A short list of the situations where this component is the right choice. Decisions only; how to use it goes to Do and don't.
-
-## When not to use
-
-A short list of situations, each with the component or pattern to use instead (“A link inside a sentence: Link (planned)”). Mark planned alternatives.
+One or two sentences: what the component is and what it lets the user do, with concrete examples of use. No variants, states or mechanics here: When to use, Best practices and API cover them. The page answers four questions, in this order: what is it, when to use it, when not to use it, how to use it well. Be concise without abbreviating: full sentences, no keyword lists; a reader (person or agent) should get each point once.
 
 ## Anatomy
 
 A table of parts (#, part, required, role in one sentence) whose numbers match the callouts of the Figma blueprint board, then one line for its lettered dimensions. The site shows the blueprint captures (`reports/components/<id>/figma/blueprint-*.png`, exported from the specification page at the Figma parity phase) under the heading.
 
-## Do and don't
+## When to use
 
-Best practices grouped by topic, one `###` heading per topic (Label, Hierarchy, Size, Slots…), each with bullets starting with **Do** or **Don't**. A topic may have only Do bullets. Say why in a few words when it is not obvious; keep accessibility guidance that affects usage choices here.
+A short list of the situations where this component is the right choice. Decisions only; how to use it goes to Best practices.
+
+## When not to use
+
+A short list of situations, each with the component or pattern to use instead (“A link inside a sentence: Link (planned)”). Mark planned alternatives.
+
+## Best practices
+
+A Markdown table with the columns Guidance, Topic, Practice: every Do row first, then every Don't row. Topic is one or two words (Label, Size, Slots); Do and Don't topics need not pair up. One sentence per practice, with the reason in a few words when it is not obvious. The site renders it as a card with a badge per row.
 
 ## Examples
 

@@ -13,7 +13,7 @@ import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkMdx from 'remark-mdx';
 import remarkStringify from 'remark-stringify';
-import type { Code, Heading, List, PhrasingContent, Root, RootContent, Table, TableCell } from 'mdast';
+import type { Code, Heading, PhrasingContent, Root, RootContent, Table, TableCell } from 'mdast';
 
 interface IndexEntry {
   id: string;
@@ -135,7 +135,6 @@ function renderPage(entry: IndexEntry, page: ComponentPage, exportsList: string[
       children.push({ ...node, meta: meta || null } as Code);
       continue;
     }
-    if (node.type === 'list') markDoAndDont(node);
     if (node.type === 'table' && isGuidanceTable(node)) {
       children.push(guidanceTable(node));
       continue;
@@ -167,25 +166,6 @@ function renderPage(entry: IndexEntry, page: ComponentPage, exportsList: string[
   );
 }
 
-/** Bullets opening with a bold **Do** or **Don't** get a badge on the site (ggb-docs-do, ggb-docs-dont). */
-function markDoAndDont(list: List): void {
-  for (const item of list.children) {
-    const first = item.children[0];
-    if (first?.type !== 'paragraph') continue;
-    const lead = first.children[0];
-    if (lead?.type !== 'strong' || lead.children.length !== 1 || lead.children[0].type !== 'text') continue;
-    const word = lead.children[0].value;
-    const kind = word === 'Do' ? 'do' : word === 'Don’t' || word === "Don't" ? 'dont' : null;
-    if (!kind) continue;
-    first.children[0] = {
-      type: 'mdxJsxTextElement',
-      name: 'span',
-      attributes: [{ type: 'mdxJsxAttribute', name: 'class', value: `ggb-docs-${kind}` }],
-      children: [{ type: 'text', value: word }]
-    } as unknown as PhrasingContent;
-  }
-}
-
 const cellText = (cell: TableCell) => cell.children.map((c) => ('value' in c ? c.value : '')).join('');
 const guidanceKinds: Record<string, 'positive' | 'negative'> = {
   Use: 'positive',
@@ -198,8 +178,8 @@ const guidanceKinds: Record<string, 'positive' | 'negative'> = {
 const isGuidanceTable = (table: Table) => table.children[0].children.some((c) => cellText(c) === 'Guidance');
 
 /**
- * A table with a Guidance column (Use / Don't use, Do / Don't) rendered as a card: badges for the guidance and,
- * when a Topic column precedes it, the topic written once for its consecutive rows.
+ * A table with a Guidance column (Do / Don't, Use / Don't use) rendered as a card: a badge for the guidance of
+ * each row, the topic as the row header, and a stronger rule between the groups of guidance.
  */
 function guidanceTable(table: Table): RootContent {
   const [head, ...body] = table.children;
@@ -210,48 +190,31 @@ function guidanceTable(table: Table): RootContent {
   const cell = (name: 'td' | 'th', content: PhrasingContent[], attributes: Attribute[] = []) =>
     el(name, attributes, [{ type: 'paragraph', children: content } as RootContent]);
   const rows = body.map((row, r) => {
-    const cells: RootContent[] = [];
-    row.children.forEach((c, i) => {
-      if (i === topicIndex) {
-        const topic = cellText(c);
-        if (r > 0 && cellText(body[r - 1].children[i]) === topic) return;
-        let span = 1;
-        while (r + span < body.length && cellText(body[r + span].children[i]) === topic) span++;
-        cells.push(
-          cell('th', c.children, [
-            { name: 'scope', value: 'rowgroup' },
-            { name: 'rowspan', value: String(span) }
-          ])
+    const cells = row.children.map((c, i) => {
+      if (i !== guidanceIndex)
+        return cell(
+          i === topicIndex ? 'th' : 'td',
+          c.children,
+          i === topicIndex ? [{ name: 'scope', value: 'row' }] : []
         );
-      } else if (i === guidanceIndex) {
-        const word = cellText(c);
-        const kind = guidanceKinds[word] ?? 'positive';
-        cells.push(
-          el(
-            'td',
-            [{ name: 'class', value: 'guidance' }],
-            [
-              {
-                type: 'paragraph',
-                children: [
-                  {
-                    type: 'mdxJsxTextElement',
-                    name: 'span',
-                    attributes: [
-                      { type: 'mdxJsxAttribute', name: 'class', value: `ggb-docs-badge ggb-docs-badge--${kind}` }
-                    ],
-                    children: [{ type: 'text', value: word }]
-                  } as unknown as PhrasingContent
-                ]
-              } as RootContent
-            ]
-          )
-        );
-      } else cells.push(cell('td', c.children));
+      const word = cellText(c);
+      const badge = {
+        type: 'mdxJsxTextElement',
+        name: 'span',
+        attributes: [
+          {
+            type: 'mdxJsxAttribute',
+            name: 'class',
+            value: `ggb-docs-badge ggb-docs-badge--${guidanceKinds[word] ?? 'positive'}`
+          }
+        ],
+        children: [{ type: 'text', value: word }]
+      } as unknown as PhrasingContent;
+      return cell('td', [badge], [{ name: 'class', value: 'guidance' }]);
     });
-    const topic = topicIndex >= 0 ? cellText(row.children[topicIndex]) : '';
-    const groupStart = topicIndex >= 0 && (r === 0 || cellText(body[r - 1].children[topicIndex]) !== topic);
-    return el('tr', groupStart && r > 0 ? [{ name: 'class', value: 'group-start' }] : [], cells);
+    // A stronger rule where the guidance changes (all Do rows, then all Don't rows).
+    const groupStart = r > 0 && cellText(body[r - 1].children[guidanceIndex]) !== cellText(row.children[guidanceIndex]);
+    return el('tr', groupStart ? [{ name: 'class', value: 'group-start' }] : [], cells);
   });
   return el(
     'div',
