@@ -20,3 +20,20 @@ npm run build:docs   # apps/docs/dist
 | `src/lib/tokens.ts`, `src/lib/root.ts` | Build-time access to resolved tokens, traces and config                                                                   |
 
 Component and foundations pages are never edited here: change `documentation/`, the contract, the status or the reports. See `authoring/architecture.md`, Documentation distribution.
+
+## Deployment
+
+Cloudflare Workers with static assets (`wrangler.jsonc`), built and deployed by Workers Builds, Cloudflare's Git integration: no token is stored in GitHub, the production branch deploys to docs.ggbrick.design and every other branch gets a preview URL. The production branch (`main` or a release branch) is open decision 3 in `authoring/decisions.md`. One-time setup in the Cloudflare dashboard (Workers & Pages → Create → Import a repository):
+
+| Setting                              | Value                                             |
+| ------------------------------------ | ------------------------------------------------- |
+| Repository                           | `JeremySQT/design-system`                         |
+| Project name                         | `ggbrick-docs` (the `name` in `wrangler.jsonc`)   |
+| Production branch                    | `main`, or a release branch (open decision 3)     |
+| Root directory                       | `/` (the repository root, for the npm workspaces) |
+| Build command                        | `npm run build:docs`                              |
+| Deploy command                       | `npm run deploy --workspace apps/docs`            |
+| Non-production branch deploy command | `npm run deploy:preview --workspace apps/docs`    |
+| Build variable                       | `NODE_VERSION` = `22` (also in `.node-version`)   |
+
+Then add the custom domain `docs.ggbrick.design` to the Worker (Settings → Domains & Routes) once `ggbrick.design` is a zone of the account. Locally, `npx wrangler dev` in `apps/docs` serves `dist/` as Cloudflare will.
