@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import type { AstroIntegration } from 'astro';
 import starlight from '@astrojs/starlight';
 import svelte from '@astrojs/svelte';
-import { generateComponentPages, watchedSources } from './lib/content.ts';
+import { EDIT_BASE, generateComponentPages, watchedSources } from './lib/content.ts';
 
 // Component pages are generated from documentation/ before Astro reads its content (see lib/content.ts).
 const components = generateComponentPages();
@@ -34,6 +34,7 @@ export default defineConfig({
         'A design system delivered as a Figma library, a Svelte 5 package and documentation, from one set of JSON sources.',
       logo: { src: './src/assets/logo.svg', alt: 'ggbrick' },
       favicon: '/favicon.svg',
+      editLink: { baseUrl: `${EDIT_BASE}apps/docs/` },
       customCss: [
         '@fontsource/inter/400.css',
         '@fontsource/inter/500.css',

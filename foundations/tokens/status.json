@@ -131,7 +131,8 @@
   ],
   "figmaNote": "Figma variables, text styles and effect styles were created and verified through the Figma MCP server on 2026-09-26; see approvals.figmaVariables and reports/tokens/figma/.",
   "openDecisions": [
-    "color.surface.muted in dark (neutral 700) is tested with primary and secondary content only; revisit if a component needs tertiary text on it."
+    "color.surface.muted in dark (neutral 700) is tested with primary and secondary content only; revisit if a component needs tertiary text on it.",
+    "Deferred fix (noted by the user on 2026-10-15, docs site task): tokens.css quotes every family of a font stack, so \"system-ui\", \"-apple-system\", \"sans-serif\", \"ui-monospace\" and \"monospace\" are read as font names, not as the generic keywords; the fallbacks after Inter and IBM Plex Mono never apply. Fix in the CSS generator (tooling/lib/css.ts: quote only family names, leave generic and system keywords bare), then regenerate; no token source changes."
   ],
   "choices": [
     "Ramps generated in OKLCH from foundations/tokens/palette.config.json; step 600 reaches 4.5:1 with white on every hue, step 500 reaches 3:1 on white.",

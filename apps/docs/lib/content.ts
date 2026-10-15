@@ -66,6 +66,12 @@ export interface ComponentPage {
 
 const LIVE_EXPORTS_MODULE = '@ggbrick/svelte';
 
+/**
+ * "Edit page" links open the source on GitHub. On main, GitHub's editor proposes a branch and a pull request,
+ * so a typo fix follows the usual review path. Generated pages link to their Markdown source, not to the MDX.
+ */
+export const EDIT_BASE = 'https://github.com/JeremySQT/design-system/edit/main/';
+
 const docsRoot = resolve(import.meta.dirname, '..');
 const repoRoot = resolve(docsRoot, '../..');
 const pagesDir = join(docsRoot, 'src/content/docs/components');
@@ -171,7 +177,11 @@ function renderPage(entry: IndexEntry, page: ComponentPage, exportsList: string[
     children: [{ type: 'mdxjsEsm', value: imports.join('\n') } as unknown as RootContent, ...children]
   };
   return (
-    frontmatter({ title: page.title, description: firstSentence(entry.purpose) }) +
+    frontmatter({
+      title: page.title,
+      description: firstSentence(entry.purpose),
+      editUrl: `${EDIT_BASE}documentation/components/${entry.documentation}`
+    }) +
     `{/* Generated from documentation/components/${entry.documentation} by apps/docs/lib/content.ts. Do not edit. */}\n\n` +
     stringify(body)
   );
@@ -458,7 +468,11 @@ function renderOverview(pages: ComponentPage[]): string {
     ]
   };
   return (
-    frontmatter({ title: 'Components', description: 'The ggbrick components, grouped by family.' }) +
+    frontmatter({
+      title: 'Components',
+      description: 'The ggbrick components, grouped by family.',
+      editUrl: `${EDIT_BASE}documentation/index.json`
+    }) +
     `{/* Generated from documentation/index.json by apps/docs/lib/content.ts. Do not edit. */}\n\n` +
     stringify(tree)
   );

@@ -84,6 +84,10 @@ for (const component of index.components) {
       await expect(frame.locator(`.ggb-${component.id}`).first()).toBeVisible();
       await expect(frame.locator('astro-island')).not.toHaveAttribute('ssr', /.*/);
     }
+    await expect(page.locator('a[href*="/edit/main/"]').first()).toHaveAttribute(
+      'href',
+      `https://github.com/JeremySQT/design-system/edit/main/documentation/components/${component.documentation}`
+    );
     expect(errors).toEqual([]);
     fs.mkdirSync(out, { recursive: true });
     await page.screenshot({ path: `${out}/${component.id}-light.png`, fullPage: false });
