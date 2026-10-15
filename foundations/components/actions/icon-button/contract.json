@@ -1,0 +1,88 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "icon-button",
+  "props": {
+    "intent": {
+      "values": ["accent", "neutral", "danger"],
+      "default": "neutral"
+    },
+    "appearance": {
+      "values": ["solid", "outline", "ghost"],
+      "default": "ghost"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "loading": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "container": {},
+    "icon": {
+      "accepts": ["icon"],
+      "min": 1,
+      "max": 1
+    },
+    "loadingIndicator": {}
+  },
+  "states": {
+    "interaction": {
+      "values": ["default", "hover", "pressed", "loading", "disabled"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "events": {
+    "activate": {
+      "when": "The user activates the icon button (pointer click, Enter or Space) while it is neither disabled nor loading."
+    }
+  },
+  "tokens": {
+    "surface": "color.action.{intent}.{appearance}.{interaction}.surface",
+    "content": "color.action.{intent}.{appearance}.{interaction}.content",
+    "border": "color.action.{intent}.outline.{interaction}.border",
+    "borderWidth": "border.width.default",
+    "radius": "radius.control",
+    "boxSize": "size.control.{size}",
+    "minTarget": "size.target.min",
+    "iconSize": "size.icon.{size}",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "focusRadius": "radius.focus",
+    "motionDuration": "motion.duration.fast",
+    "easingStandard": "motion.easing.standard"
+  },
+  "rules": [
+    "The container is a square of boxSize by boxSize; it neither shrinks nor stretches in a flexible layout. The icon part holds exactly one icon, centered in the container by its box at iconSize, in the resolved content color; the host's iconSize replaces the icon's own size option.",
+    "label is required and non-empty; it is the accessible name and is never shown as visible text. The icon is decorative and hidden from assistive technology. Showing label on hover or focus is the job of a tooltip composed by the integration, not of the icon button.",
+    "The interaction target meets minTarget in both dimensions without enlarging the visible container; the visible size is unchanged by density, like Button heights at each density.",
+    "Resolve the interaction state in this order: disabled, loading, pressed, hover, default. Focus is an independent axis.",
+    "Emit activate only when neither disabled nor loading; a disabled or loading icon button never navigates.",
+    "When href is set and the icon button is not disabled, it navigates to href as a link; otherwise it is a button. Appearance and states are identical in both roles.",
+    "Disabled removes the icon button from sequential focus; loading keeps it focusable, exposes a busy state and keeps label as the accessible name.",
+    "While loading, loadingIndicator replaces the icon at the same place and size, so the container does not change; when loading and disabled are both true, interaction resolves to disabled and loadingIndicator stays visible in the resolved content color.",
+    "Draw border only for the outline appearance, inside the container; it never changes the outer dimensions.",
+    "When focus is true and was reached by keyboard, draw a focus indicator of focusWidth in focusColor at focusOffset outside the container, with corners of focusRadius so that it stays concentric with the container.",
+    "Color changes between interaction states transition over motionDuration with easingStandard; no transition when reduced motion is requested. The loadingIndicator animation is slowed or stopped under reduced motion.",
+    "Visual treatments, colors, corner radius and focus indicator are those of Button for the same intent, appearance and size, so that an icon button sits beside a Button of the same size at the same height.",
+    "In forced-colors mode the container keeps a visible boundary, the icon is drawn in the system button text color and the focus indicator stays visible."
+  ]
+}

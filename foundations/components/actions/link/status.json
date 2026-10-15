@@ -1,0 +1,102 @@
+{
+  "formatStatus": "v1",
+  "componentId": "link",
+  "family": "actions",
+  "wave": 1,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Navigate to another page or resource from inside text, as an underlined word or phrase that reads with the sentence around it.",
+    "useCases": [
+      "A link inside a paragraph, a help text, a table cell or a message, taking the surrounding typography.",
+      "A standalone text link (See all, Learn more) placed by the layout, still underlined.",
+      "An external destination that opens in a new tab, with a visible arrow and an announced suffix.",
+      "A link inside a colored context (status message, inverse surface) that keeps the context color with tone inherit."
+    ],
+    "exclusions": [
+      "Navigation to a task with a control appearance: Button with href.",
+      "Icon-only links: IconButton with href.",
+      "A disabled link: a destination that cannot be followed is plain text.",
+      "Leading or trailing icons other than the external indicator.",
+      "Distinct visited color; size or weight options (the context decides typography).",
+      "Routing: the application's router intercepts navigation; the component renders a native link."
+    ],
+    "alternatives": [
+      "Button (with href) for a call to action or navigation to a task.",
+      "IconButton (with href) for an icon-only navigation control.",
+      "Breadcrumb, Tabs, Pagination (wave 4) for structured navigation."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/actions/link/contract.json",
+      "sha256": "0b7c46850dcd44bc3cc8c61ad97c609772888a2b267bb72f0c5644623df6357f"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate",
+      "report": "reports/components/link/contract-validation.json",
+      "date": "2026-10-15",
+      "note": "Schema, consistency and token coverage (8 paths) in 18 contexts; check-foundations passes (383 roles, 1836 contrast checks, 0 failures)."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/link/contrast.json",
+      "date": "2026-10-15",
+      "note": "108 contrast records on the contrastScope backdrops in 18 contexts, 0 failures. The component report measures only the focus ring (Link binds content without a surface role); color.content.link on the six backdrops was measured separately: 4.93 to 7.83 except surface.muted in dark (3.30 to 3.46), see open decision 1."
+    }
+  ],
+  "decisionsTaken": [
+    "label is a required string, like Button, rather than free children: the accessible name is then known to the component (needed to append the external suffix) and Figma maps it to a text property.",
+    "Underlined in every state (WCAG 1.4.1, use of color): the hover and pressed feedback thickens the underline from border.width.default (1 px) to border.width.strong (2 px) instead of changing the color, so no new color token is needed; no transition.",
+    "One color role, color.content.link (approved), and tone inherit for colored contexts; no visited color in an application context.",
+    "No size prop and no typography role: a link takes the font of the text it sits in.",
+    "external groups three facts that belong together: a new browsing context without opener, a visible arrow glyph (Phosphor ArrowUpRight, inline SVG in the component folder, attributed, per the icon decision) and an announced suffix externalLabel (default \"opens in a new tab\", a string prop so that it can be translated).",
+    "Focus indicator drawn around each line box (an outline, so a wrapped link gets one ring per line) with radius.indicator corners: radius.focus (concentric with controls) is too round for text.",
+    "No Bits UI primitive: a native anchor carries every semantic needed."
+  ],
+  "openDecisions": [
+    {
+      "id": 1,
+      "question": "color.content.link reaches only 3.30 to 3.46:1 on color.surface.muted in dark (all three brands); 4.94 or more on the other neutral backdrops. Change the dark link color?",
+      "proposal": "Recommended (A): foundations amendment, color.content.link in dark from color.palette.accent.400 to color.palette.accent.300: 4.80 to 4.95 on muted, 7.17 or more elsewhere; the inventory pair content.link / surface.muted is added. Alternative (B): keep the value and declare surface.muted out of the Link contrastScope in dark (use tone inherit there).",
+      "blocks": "implementation"
+    },
+    {
+      "id": 2,
+      "question": "Should the external indicator and its announced suffix stay tied to the new-tab behavior (one external option)?",
+      "proposal": "Yes: an external destination in an application usually opens in a new tab, and announcing the new tab is what users need to know; a link to another site in the same tab is a plain link.",
+      "blocks": "contract gate"
+    }
+  ],
+  "nextAction": "Contract gate (grouped with IconButton and Badge): reviewer decides the dark link color (open decision 1) and the external option (2); then record the approval and start the implementation.",
+  "implementationNotes": [
+    "Markup: <a class=\"ggb-link\" data-tone href> with the label, and when external target=\"_blank\" rel=\"noopener noreferrer\" plus the glyph (aria-hidden) and a visually hidden suffix. The glyph is joined to the last word with a no-break so it never starts a line.",
+    "Underline through text-decoration (thickness from the tokens, text-underline-offset from-font); focus with outline on the inline box so it follows each line."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": []
+  }
+}

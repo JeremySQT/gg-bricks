@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "link",
+  "props": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "tone": {
+      "values": ["accent", "inherit"],
+      "default": "accent"
+    },
+    "external": {
+      "type": "boolean",
+      "default": false
+    },
+    "externalLabel": {
+      "type": "string",
+      "default": "opens in a new tab"
+    }
+  },
+  "parts": {
+    "container": {},
+    "label": {},
+    "externalIndicator": {}
+  },
+  "states": {
+    "interaction": {
+      "values": ["default", "hover", "pressed"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "tokens": {
+    "content": "color.content.link",
+    "underlineWidth": "border.width.default",
+    "underlineHoverWidth": "border.width.strong",
+    "externalGap": "space.content.xs",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "focusRadius": "radius.indicator"
+  },
+  "rules": [
+    "The link is inline text inside its context: label is the visible text and, with the external suffix when present, the accessible name. It takes the font family, size, weight and line height of the surrounding text; it sets no typography of its own.",
+    "The label is underlined in every state, so that a link is never identified by color alone. The underline is underlineWidth thick by default and underlineHoverWidth when hovered or pressed; the color does not change between interaction states, and visited links look the same as unvisited ones.",
+    "With tone accent the text and underline are drawn in content; with tone inherit they take the content color of the surrounding text, for colored contexts (a status message, an inverse surface) where the accent color would not reach the required contrast.",
+    "Inside a sentence the label wraps like the surrounding text; the external indicator never ends up alone at the start of a line.",
+    "When external is true, the link opens in a new browsing context without giving it access to the opener, externalIndicator shows an arrow glyph (an up-right arrow from the reference icon set) of one em after externalGap, in the link color and not underlined, and externalLabel is appended to the accessible name. When external is false there is no indicator and the link opens in the same context.",
+    "The link has no disabled state: a destination that cannot be followed is shown as plain text.",
+    "When focus is true and was reached by keyboard, draw a focus indicator of focusWidth in focusColor at focusOffset around each line box of the link, with corners of focusRadius.",
+    "The underline thickness change is immediate; there is no animation.",
+    "In forced-colors mode the link uses the system link color, keeps its underline and the focus indicator stays visible."
+  ]
+}

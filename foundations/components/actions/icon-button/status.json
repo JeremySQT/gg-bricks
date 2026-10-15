@@ -1,0 +1,106 @@
+{
+  "formatStatus": "v1",
+  "componentId": "icon-button",
+  "family": "actions",
+  "wave": 1,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Trigger an action, or navigate to a task, from a compact square control that shows only an icon, with an accessible name that is never visible.",
+    "useCases": [
+      "Toolbars, table rows and card headers where a recognizable icon is enough (close, more, edit, delete, copy).",
+      "Dense layouts beside Buttons of the same size, at the same height and with the same treatments (intent x appearance).",
+      "Navigation to a task with href (an icon-only link with a button appearance), like Button.",
+      "A pending action with loading, keeping the size and focus."
+    ],
+    "exclusions": [
+      "Toggle buttons with a pressed state (bold, mute): SegmentedControl or a later toggle, like Button.",
+      "A visible tooltip: Tooltip (wave 3) is composed by the integration; no native title attribute.",
+      "Badges or counters over the icon (notification dots): a later indicator composition.",
+      "Round (circular) shape: corners follow radius.control of each brand, like Button.",
+      "Menu triggers with a chevron (Menu, wave 3).",
+      "Icon-only links inside prose (Link)."
+    ],
+    "alternatives": [
+      "Button with a leading icon when space allows a visible label, which is always clearer.",
+      "Link for navigation inside text.",
+      "Menu (wave 3) for a list of actions behind a single trigger."
+    ]
+  },
+  "dependencies": ["icon"],
+  "fixtures": [
+    "Phosphor glyphs re-exported by examples/icon/glyphs.ts for the examples and tests (fixtures, not dependencies)."
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/actions/icon-button/contract.json",
+      "sha256": "b9298af06953dbb94216c3e65a257e6db283443d3fe69698105de1ec3919ba79"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate",
+      "report": "reports/components/icon-button/contract-validation.json",
+      "date": "2026-10-15",
+      "note": "Schema, consistency and token coverage (120 paths) in 18 contexts; check-foundations passes (383 roles, 1836 contrast checks, 0 failures)."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/icon-button/contrast.json",
+      "date": "2026-10-15",
+      "note": "6264 contrast records on the contrastScope backdrops in 18 contexts, 0 failures."
+    }
+  ],
+  "decisionsTaken": [
+    "Separate component rather than a Button option: an icon-only control has a different required anatomy (one icon, no visible label), a square box and a different default treatment; Button keeps its required visible label.",
+    "Same props, states, event, precedence and tokens as Button where they apply (intent, appearance, size, href, disabled, loading; color.action.*, radius.control, size.control.{size}, size.icon.{size}, focus roles, motion), so an IconButton matches a Button of the same size; no new token.",
+    "Default intent neutral and appearance ghost (Button: accent solid): icon buttons are mostly secondary actions in toolbars and rows, where a filled accent square is too loud. Open decision 1 asks the reviewer to confirm.",
+    "label is required and only the accessible name, as in the catalog note (\"IconButton needs an explicit accessible name\"); no native title tooltip: it is not keyboard or touch accessible and would duplicate the future Tooltip.",
+    "The icon slot requires exactly one Icon (min 1, max 1) and the host's iconSize applies, as in Button slots (Icon contract rule).",
+    "Box: a square of size.control.{size} (32/40/48 px in standard density, following density like Button heights); the interaction target is extended to 44 px without enlarging the visible box.",
+    "The icon is centered by its box: the reference set draws its 1/8 inset symmetrically, so the box center is the drawing center and no optical compensation is needed.",
+    "Contrast checked on the same contrastScope as Button (six neutral backdrops, outline border on muted in dark informational, accepted at the Button contract gate)."
+  ],
+  "openDecisions": [
+    {
+      "id": 1,
+      "question": "Default treatment: neutral + ghost (proposed) or the Button defaults accent + solid?",
+      "proposal": "neutral + ghost: the most frequent icon-only use (toolbars, rows, close buttons); a consumer sets intent and appearance explicitly for a primary icon action.",
+      "blocks": "contract gate"
+    }
+  ],
+  "nextAction": "Contract gate (grouped with Link and Badge): reviewer confirms the default treatment (open decision 1); then record the approval with digests and start the implementation (ggb-svelte).",
+  "implementationNotes": [
+    "Self-contained folder packages/svelte/src/components/icon-button/ on the Bits UI Button primitive (button or a with href), its own CSS duplicated from the Button patterns rather than importing Button: a component folder must stay copyable with tokens.css, Bits UI and its declared dependencies (icon).",
+    "Loading indicator: the same inline spinner as Button, sized at iconSize, replacing the icon in place."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Accepted at the contract gate (2026-09-26): outline border reaches 2.06 to 2.37 on surface.muted in dark; the label identifies the button, WCAG 1.4.11 does not require the boundary."
+      }
+    ]
+  }
+}
