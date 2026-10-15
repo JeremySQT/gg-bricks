@@ -32,7 +32,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/content/icon/contract.json",
-      "sha256": "159c7201c40969c2f12a33feb479be56345c69e05843aafb7d604445bc9101b6"
+      "sha256": "17f251fe727b7e90fb6e26d0289a7a3c850cca1870c2737d0965822a24ca57d4"
     },
     "tokens": [],
     "figma": {
@@ -42,7 +42,17 @@
       "specification": "152:7",
       "ledger": "reports/components/icon/figma/ledger.json",
       "parity": "reports/components/icon/figma/parity.json",
-      "screenshots": ["reports/components/icon/figma/master-set.png", "reports/components/icon/figma/specification.png"]
+      "screenshots": [
+        "reports/components/icon/figma/master-set.png",
+        "reports/components/icon/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/icon/figma/blueprint-anatomy.png",
+          "node": "152:44"
+        }
+      ],
+      "blueprintsNote": "Anatomy diagrams of the specification page exported with the Figma MCP get_screenshot on 2026-10-15 and cropped to the board; shown under Anatomy on the documentation site."
     },
     "figmaSpec": "foundations/components/content/icon/figma-spec.md",
     "svelte": {
@@ -72,11 +82,11 @@
     "contract": {
       "scope": "Icon contract: size (xs to xl on size.icon), optional label, box and glyph parts, six rules (square box in the current color, reference set conventions, decorative unless labelled, fixed size, no state, host size wins in a slot).",
       "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14 at the grouped contract gate of Icon, Counter and Shortcut: \"Ok pour tout\" on the seven grouped decisions (indicator typography family for Counter and Shortcut, keycap appearance now, platform-driven Shortcut rendering, Counter in inherited color only, pill height from the typography, Button kept as approved, Icon glyph as content with five sizes), with two amendments applied before recording: Phosphor confirmed as the reference icon set, and the Counter made rectangular with a small corner radius (2 or 4 px) instead of a pill so that one and two digits read alike.",
-      "note": "Contract digest recorded after the amendments; implementation approval recorded separately.",
+      "note": "Contract digest recorded after the amendments; implementation approval recorded separately. Amendment 2026-10-15: rule added, the box is centered on the cap height of the surrounding text. User in the Claude Code session https://claude.ai/code/session_01U3p2qzwo1fintkUyC2pViu on 2026-10-15: \"je valide la correction pour l'icône\" (inline alignment on the cap height, reported by the user on the documentation site preview; change record reports/components/icon/changes/2026-10-15-inline-alignment.md).",
       "revision": {
         "paths": ["foundations/components/content/icon/contract.json"],
         "sha256": {
-          "foundations/components/content/icon/contract.json": "159c7201c40969c2f12a33feb479be56345c69e05843aafb7d604445bc9101b6"
+          "foundations/components/content/icon/contract.json": "17f251fe727b7e90fb6e26d0289a7a3c850cca1870c2737d0965822a24ca57d4"
         }
       }
     },
@@ -94,14 +104,14 @@
         "sha256": {
           "packages/svelte/src/components/icon/Icon.svelte": "086f3ee5330f0fe864605299b095990b33fda693ec49692a6c95b376a14f787a",
           "packages/svelte/src/components/icon/types.ts": "2845c64674a8b5457596fda104c81b0f2fea2536490166ca66a7a990bfe6f315",
-          "packages/svelte/src/components/icon/icon.css": "16a5dc6e92d73bf95201c984eac18c02320e497a3774f3ca50826eec4429a8b1",
+          "packages/svelte/src/components/icon/icon.css": "1956cff4556ccf3a7464dd89e90d7bf0f4ad8525b1de6c5d01932459666e3785",
           "packages/svelte/src/components/icon/contract.generated.ts": "4c538ce8183705efa4f0c5b7c8ee4b7273567415049e517b59e83a2a59831ebd",
           "packages/svelte/src/components/icon/tokens.generated.css": "1f0ec4fb267b6ec3c00832efb242b98192dec9050a574e719b2a83a67040c29d",
           "examples/icon/App.svelte": "21f4a0a7755e16c1459190fe1dde84ba28637ef4cac3dbb5b69c4d77542105d0"
         }
       },
       "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, after reviewing the published preview artifacts (grouped implementation gate of Icon, Counter and Shortcut): \"Ok pour la dernière proposition sur la densité, je valide l'approche recommandée\", then \"Pour le counter ça me semble bon, mais visuellement je verrai bien un contour à 70% d'opacité\" (applied), then, for the Shortcut, after comparing 100 %, 85 %, 70 % and a lighter weight on a lab page (https://claude.ai/artifact/L1agvDLoc2hBK3Hqz91reB): \"85% ne me semble pas assez atténué. 70% me semble mieux\" (applied). Approval recorded on the revisions that include these adjustments.",
-      "note": "Automated evidence: Chromium only (SSR and Playwright tests in tests/); no assistive-technology test."
+      "note": "Automated evidence: Chromium only (SSR and Playwright tests in tests/); no assistive-technology test. Amendment 2026-10-15: icon.css vertical-align from middle to calc((1cap - size) / 2) with middle as fallback. User in the Claude Code session https://claude.ai/code/session_01U3p2qzwo1fintkUyC2pViu on 2026-10-15: \"je valide la correction pour l'icône\" (inline alignment on the cap height, reported by the user on the documentation site preview; change record reports/components/icon/changes/2026-10-15-inline-alignment.md)."
     },
     "figmaParity": {
       "scope": "Figma component set Icon (149:20, 5 variants Size xs to xl, Glyph instance-swap property on the local _Fixture/Icon set), specification frame 152:7, parity report (360 records, 0 failures: width, height and glyph fill per size in 18 contexts plus drawing size and inset), Icon masters placed in the Button leading and trailing slots.",
@@ -159,6 +169,14 @@
       "report": "reports/components/icon/figma/parity.json",
       "date": "2026-10-14",
       "note": "360 records (270 computed records: width, height, glyph fill per size in 18 contexts; 90 drawing-inset records), 0 failures. Justified differences listed in figma-spec.md (label, glyph source, local fixtures, color override instead of currentColor)."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-15",
+      "note": "40 tests including the new inline alignment test (icon center within 0.5 px of the middle of the capitals; measured 0.02 px)."
     }
   ],
   "decisionsTaken": [
@@ -182,5 +200,6 @@
     "Svelte: Icon renders a single svg root element (class ggb-icon, data-size, viewBox option defaulting to the Phosphor grid 0 0 256 256, fill currentColor, width and height from size.icon) whose content is the children snippet. A single svg root keeps the Button slot selectors (.ggb-button__leading > svg) working, so the button sizes and optically offsets the icon as it does today with raw svg fixtures.",
     "Accessibility: without label, aria-hidden=\"true\" and focusable=\"false\"; with label, role=\"img\" and aria-label.",
     "Layout: display inline-block, vertical-align middle, flex none, so the icon aligns with text and never shrinks in a flex row."
-  ]
+  ],
+  "pendingChanges": []
 }

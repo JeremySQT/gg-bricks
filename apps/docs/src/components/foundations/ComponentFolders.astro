@@ -1,0 +1,52 @@
+---
+// What each component folder needs besides tokens.css and bits-ui: the components it imports (read from
+// its sources) and the optional slot contents declared in its status file.
+import { readdirSync, readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { repoRoot } from '../../lib/root';
+
+const index = JSON.parse(readFileSync(join(repoRoot, 'documentation/index.json'), 'utf8')) as {
+  components: { id: string; import: string; contract: string }[];
+};
+const rows = index.components.map((c) => {
+  const folder = join(repoRoot, 'packages/svelte/src/components', c.id);
+  const sources = readdirSync(folder)
+    .filter((f) => /\.(svelte|ts)$/.test(f))
+    .map((f) => readFileSync(join(folder, f), 'utf8'))
+    .join('\n');
+  const imports = [...sources.matchAll(/from '\.\.\/([a-z0-9-]+)\//g)].map((m) => m[1]);
+  const status = JSON.parse(readFileSync(join(repoRoot, dirname(c.contract), 'status.json'), 'utf8')) as {
+    dependencies: string[];
+  };
+  const name = (id: string) => index.components.find((x) => x.id === id)?.import ?? id;
+  return {
+    name: c.import,
+    folder: `src/components/${c.id}/`,
+    imports: [...new Set(imports)].map(name),
+    slots: status.dependencies.filter((d) => !imports.includes(d)).map(name)
+  };
+});
+---
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Component</th>
+      <th scope="col">Folder</th>
+      <th scope="col">Imports</th>
+      <th scope="col">Optional slot contents</th>
+    </tr>
+  </thead>
+  <tbody>
+    {rows.map((r) => (
+      <tr>
+        <td>{r.name}</td>
+        <td>
+          <code>{r.folder}</code>
+        </td>
+        <td>{r.imports.length ? r.imports.join(', ') : 'none'}</td>
+        <td>{r.slots.length ? r.slots.join(', ') : '—'}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

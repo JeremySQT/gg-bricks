@@ -1,0 +1,15 @@
+---
+// A site demo: the rendered Svelte file above its own source, so that the code shown is the code that runs.
+import { Code } from '@astrojs/starlight/components';
+import LiveExample from './LiveExample.astro';
+
+interface Props {
+  source: string;
+}
+const { source } = Astro.props;
+---
+
+<LiveExample>
+  <slot />
+</LiveExample>
+<Code code={source.trimEnd()} lang="svelte" />

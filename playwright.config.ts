@@ -16,5 +16,18 @@ export default defineConfig({
         : []
     }
   },
-  webServer: { command: 'npm run dev', url: 'http://127.0.0.1:5173', reuseExistingServer: !process.env.CI }
+  webServer: [
+    { command: 'npm run dev', url: 'http://127.0.0.1:5173', reuseExistingServer: !process.env.CI },
+    {
+      // The documentation site, built then served statically (tests/browser/docs-site.spec.ts). Always rebuilt and
+      // started fresh: a server already on 4321 fails the run instead of serving an older build. --ignore-lock keeps
+      // astro preview in the foreground (Astro 7 moves it to the background when it detects an AI agent, and
+      // Playwright would see the command exit) and lets it start even if a stale lock file remains.
+      command:
+        'npm run build:docs && npm run preview --workspace apps/docs -- --host 127.0.0.1 --port 4321 --ignore-lock',
+      url: 'http://127.0.0.1:4321',
+      reuseExistingServer: false,
+      timeout: 180000
+    }
+  ]
 });

@@ -75,7 +75,14 @@
         "authoring/adapters/figma/counter-parity.plugin.js",
         "authoring/adapters/figma/counter-parity-report.mjs"
       ],
-      "published": false
+      "published": false,
+      "blueprints": [
+        {
+          "path": "reports/components/counter/figma/blueprint-anatomy.png",
+          "node": "156:4902"
+        }
+      ],
+      "blueprintsNote": "Anatomy diagrams of the specification page exported with the Figma MCP get_screenshot on 2026-10-15 and cropped to the board; shown under Anatomy on the documentation site."
     },
     "figmaSpec": {
       "path": "foundations/components/content/counter/figma-spec.md",

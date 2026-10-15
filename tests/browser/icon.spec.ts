@@ -102,6 +102,29 @@ test('a host sizes its slot icons; the icon keeps its box in a flexible layout a
   expect(grid24).toBe((px(tokens['size.icon.lg']) * 18) / 24);
 });
 
+test('next to text, the box is centered on the cap height of the surrounding text', async ({ page }) => {
+  // Each "Inline with every text size" row: the icon center must meet the middle of the capitals (baseline minus
+  // half of 1cap), within half a pixel. vertical-align: middle centered it on the x-height, 1.1 to 1.8 px low.
+  const rows = await page.locator('p.inline').evaluateAll((ps) =>
+    ps.map((p) => {
+      const probe = (css: string) => {
+        const el = document.createElement('span');
+        el.style.cssText = css;
+        p.appendChild(el);
+        const r = el.getBoundingClientRect();
+        el.remove();
+        return r;
+      };
+      const baseline = probe('display:inline-block;width:0;height:0;vertical-align:baseline').bottom;
+      const cap = probe('display:inline-block;width:0;height:1cap').height;
+      const icon = p.querySelector('svg.ggb-icon')!.getBoundingClientRect();
+      return { text: p.textContent!.trim(), offset: (icon.top + icon.bottom) / 2 - (baseline - cap / 2) };
+    })
+  );
+  expect(rows.length).toBe(4);
+  for (const row of rows) expect(Math.abs(row.offset), row.text).toBeLessThan(0.5);
+});
+
 test('automated accessibility audit and screenshots in light and dark', async ({ page }) => {
   fs.mkdirSync(out, { recursive: true });
   for (const mode of modes) {

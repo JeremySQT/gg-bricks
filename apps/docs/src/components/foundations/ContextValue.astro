@@ -1,0 +1,32 @@
+---
+// A token's value and alias in every context: one element per distinct display, only the one of the
+// reader's context visible (ThemeSelect toggles them; without script the default context shows).
+import { defaultContext, variants } from '../../lib/tokens';
+
+interface Props {
+  path: string;
+  showAlias?: boolean;
+}
+const { path, showAlias = true } = Astro.props;
+const list = variants(path);
+---
+
+{list.map((v) => (
+  <span class="ggb-docs-value" data-ggb-contexts={v.contexts.join(' ')} hidden={!v.contexts.includes(defaultContext)}>
+    <code>{v.value}</code>
+    {showAlias && v.alias && <span class="ggb-docs-alias">→ {v.alias}</span>}
+  </span>
+))}
+
+<style>
+  .ggb-docs-value:not([hidden]) {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    align-items: baseline;
+  }
+  .ggb-docs-alias {
+    color: var(--ggb-color-content-secondary);
+    font-size: var(--sl-text-xs);
+  }
+</style>

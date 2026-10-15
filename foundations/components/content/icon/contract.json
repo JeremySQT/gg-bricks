@@ -23,6 +23,7 @@
     "glyph is a vector drawing supplied by the application, following the reference icon set's conventions (Phosphor: a square grid, the drawing inset 1/8 of the box on each side); hosts rely on that inset for optical spacing.",
     "Without label the icon is decorative and hidden from assistive technology; with label it is an image whose accessible name is label.",
     "The box keeps its size in a flexible layout: it neither shrinks nor stretches, and it does not change with density.",
+    "Next to text, outside a host that places it, the box is centered on the cap height of the surrounding text (the middle of its capitals), not on its x-height or its line box.",
     "The icon has no interaction, no state and no color of its own; a glyph is one color (strokes belong to the drawing, not to the component).",
     "When placed in a host slot that defines an icon size (a Button's leading or trailing slot), the host's size applies instead of the size option."
   ]

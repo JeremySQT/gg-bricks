@@ -1,0 +1,31 @@
+---
+// Starlight's theme provider, followed by the ggbrick theme attributes: brand and density restored from
+// the reader's choice (ThemeSelect), appearance mirrored from Starlight's resolved data-theme so that
+// the site chrome and the live examples always share one context.
+import Default from '@astrojs/starlight/components/ThemeProvider.astro';
+import config from '../../../../foundations/tokens/config.json';
+
+const { brands, densities, defaults } = config;
+---
+
+<Default />
+<script is:inline define:vars={{ brands, densities, defaultDensity: defaults.density }}>
+  (() => {
+    const root = document.documentElement;
+    const read = (key, allowed, fallback) => {
+      try {
+        const value = localStorage.getItem(key);
+        return allowed.includes(value) ? value : fallback;
+      } catch {
+        return fallback;
+      }
+    };
+    root.dataset.ggbBrand = read('ggbrick-brand', brands, brands[0]);
+    root.dataset.ggbDensity = read('ggbrick-density', densities, defaultDensity);
+    const sync = () => {
+      root.dataset.ggbAppearance = root.dataset.theme === 'light' ? 'light' : 'dark';
+    };
+    sync();
+    new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
+</script>

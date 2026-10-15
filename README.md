@@ -26,7 +26,7 @@ The repository structure, tooling, procedures and skills are in place. The found
 | `examples/`                                 | Vite review app, one page per component                                                                                                                             |
 | `tests/`                                    | Tooling unit tests, SSR tests, Playwright tests                                                                                                                     |
 | `reports/`                                  | Revision-bound evidence                                                                                                                                             |
-| `apps/`                                     | Reserved for the docs site, marketing site, theme builder and Figma plugin                                                                                          |
+| `apps/docs/`                                | Documentation site (Astro + Starlight, docs.ggbrick.design): renders `documentation/` with live examples, foundations pages generated from the tokens               |
 
 Full description: [authoring/layout.md](authoring/layout.md).
 
@@ -42,10 +42,12 @@ npm run test:ssr        # server rendering per component
 npm run dev             # review app at http://127.0.0.1:5173
 npm run build           # generate + production build of the review app
 npm run build:preview <id>     # self-contained dist/previews/<id>.html
+npm run dev:docs        # documentation site at http://localhost:4321
+npm run build:docs      # static documentation site in apps/docs/dist
 npm run figma:batches   # dist/figma/*.js scripts for the Figma MCP server (variables, styles, verification)
 npm run figma:check -- <result.json>   # compare a verification result with figma-expectations.json
 npm run test:browser    # Playwright (Chromium); PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH reuses a local browser
-npm run verify          # generate, validate, test, check, ssr, build
+npm run verify          # generate, validate, test, check, ssr, build, docs site build
 npm run verify:generated       # fails when generated outputs drift from sources
 npm run pack:svelte     # dist/ggbrick-svelte-<version>.tgz
 npm run new:component -- <family> <id>

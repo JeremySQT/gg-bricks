@@ -36,6 +36,6 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Each one says which `authoring/
 
 ## Branches
 
-`main` is production. Work on the branch assigned to the session (created from `main`, named `component/<id>`, `wave/<n>`, `foundations/<topic>`, `docs/<topic>`, `site/<topic>`, `fix/<topic>` or `chore/<topic>`); push there freely. Never commit to `main` directly. When the unit of work is complete (see decisions.md, Branches), open one pull request to `main` using the repository template; the user merges it. A gate summary is not a PR.
+`main` is production. `release` is the published state of the sites (docs.ggbrick.design): only the Deliver procedure merges into it. Work on the branch assigned to the session (created from `main`, named `component/<id>`, `wave/<n>`, `foundations/<topic>`, `docs/<topic>`, `site/<topic>`, `fix/<topic>` or `chore/<topic>`); push there freely. Never commit to `main` directly. When the unit of work is complete (see decisions.md, Branches), open one pull request to `main` using the repository template; the user merges it. A gate summary is not a PR.
 
 Finish every batch with `npm run lint`, `npm run verify`, updated status files, and a concise summary: completed work, evidence, open decisions, next phase.

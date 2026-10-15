@@ -7,7 +7,8 @@
     "node": ">=22.18.0"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
     "generate": "npm run build:palette && npm run build:tokens && npm run build:svelte",
@@ -18,17 +19,19 @@
     "test": "node --test tests/*.test.ts",
     "test:ssr": "node --test tests/ssr/*.test.ts",
     "test:browser": "node tooling/test-browser.ts",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check": "svelte-check --tsconfig ./tsconfig.json && svelte-check --tsconfig ./apps/docs/tsconfig.json",
     "dev": "vite --host 127.0.0.1",
     "build": "npm run generate && vite build",
     "build:preview": "node tooling/build-preview.ts",
+    "dev:docs": "npm run dev --workspace apps/docs",
+    "build:docs": "npm run build --workspace apps/docs",
     "pack:svelte": "npm run generate && npm pack --workspace packages/svelte --pack-destination ./dist",
     "pack:tokens": "npm run build:tokens && npm pack --workspace packages/tokens --pack-destination ./dist",
     "new:component": "node tooling/new-component.ts",
     "digest": "node tooling/digest.ts",
     "figma:batches": "node tooling/figma-batches.ts",
     "figma:check": "node tooling/check-figma.ts",
-    "verify": "npm run generate && npm run lint && npm run validate && npm test && npm run check && npm run test:ssr && npm run build",
+    "verify": "npm run generate && npm run lint && npm run validate && npm test && npm run check && npm run test:ssr && npm run build && npm run build:docs",
     "verify:generated": "npm run generate && npm run validate && git diff --exit-code --stat -- packages reports foundations/tokens/base/primitives/colors.tokens.json",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write ."
@@ -46,6 +49,7 @@
     "eslint-plugin-svelte": "3.23.0",
     "globals": "16.5.0",
     "prettier": "3.9.9",
+    "prettier-plugin-astro": "1.1.1",
     "prettier-plugin-svelte": "3.5.2",
     "svelte-check": "4.7.6",
     "typescript": "6.0.3",

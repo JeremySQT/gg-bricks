@@ -58,7 +58,18 @@
         "reports/components/button/figma/master-set.png",
         "reports/components/button/figma/specification.png"
       ],
-      "published": false
+      "published": false,
+      "blueprints": [
+        {
+          "path": "reports/components/button/figma/blueprint-anatomy.png",
+          "node": "126:2007"
+        },
+        {
+          "path": "reports/components/button/figma/blueprint-spacing.png",
+          "node": "126:2076"
+        }
+      ],
+      "blueprintsNote": "Anatomy diagrams of the specification page exported with the Figma MCP get_screenshot on 2026-10-15 and cropped to the board; shown under Anatomy on the documentation site."
     },
     "figmaSpec": "foundations/components/actions/button/figma-spec.md",
     "svelte": {

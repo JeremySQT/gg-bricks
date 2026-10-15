@@ -12,10 +12,10 @@
       "contract": "foundations/components/actions/button/contract.json",
       "sections": [
         "Overview",
+        "Anatomy",
         "When to use",
         "When not to use",
-        "Anatomy",
-        "Usage guidelines",
+        "Best practices",
         "Examples",
         "API",
         "Accessibility"
@@ -31,10 +31,10 @@
       "contract": "foundations/components/content/icon/contract.json",
       "sections": [
         "Overview",
+        "Anatomy",
         "When to use",
         "When not to use",
-        "Anatomy",
-        "Usage guidelines",
+        "Best practices",
         "Examples",
         "API",
         "Accessibility"
@@ -50,10 +50,10 @@
       "contract": "foundations/components/content/counter/contract.json",
       "sections": [
         "Overview",
+        "Anatomy",
         "When to use",
         "When not to use",
-        "Anatomy",
-        "Usage guidelines",
+        "Best practices",
         "Examples",
         "API",
         "Accessibility"
@@ -69,14 +69,83 @@
       "contract": "foundations/components/content/shortcut/contract.json",
       "sections": [
         "Overview",
+        "Anatomy",
         "When to use",
         "When not to use",
-        "Anatomy",
-        "Usage guidelines",
+        "Best practices",
         "Examples",
         "API",
         "Accessibility"
       ]
+    }
+  ],
+  "foundations": [
+    {
+      "id": "overview",
+      "title": "Foundations",
+      "documentation": "foundations/overview.md",
+      "purpose": "Token layers (role, palette, primitive), CSS custom property names, the brand, appearance and density context, and the rules for using tokens in application styles.",
+      "sections": ["Overview", "Token layers", "In CSS", "Context", "Rules"],
+      "navLabel": "Overview"
+    },
+    {
+      "id": "color",
+      "title": "Color",
+      "documentation": "foundations/color.md",
+      "purpose": "Which color role to use for surfaces, content, borders and focus, selection, actions, fields and statuses, and on which surfaces each content role is guaranteed 4.5:1 or 3:1.",
+      "sections": [
+        "Overview",
+        "Surfaces",
+        "Content",
+        "Borders and focus",
+        "Selection",
+        "Actions",
+        "Fields",
+        "Statuses",
+        "Rules"
+      ]
+    },
+    {
+      "id": "typography",
+      "title": "Typography",
+      "documentation": "foundations/typography.md",
+      "purpose": "Which typography role to use for display, headings, body, labels, captions, overlines, numerals, indicators and code, and how to apply a role in CSS.",
+      "sections": ["Overview", "Roles", "In CSS", "Rules"]
+    },
+    {
+      "id": "spacing",
+      "title": "Spacing and sizing",
+      "documentation": "foundations/spacing.md",
+      "purpose": "Layout, content and control spacing, control heights, icon and avatar sizes and the 44 px interaction target; what follows the density.",
+      "sections": ["Overview", "Layout", "Content", "Controls", "Icons and avatars", "Rules"]
+    },
+    {
+      "id": "shape",
+      "title": "Shape",
+      "documentation": "foundations/shape.md",
+      "purpose": "Radius roles by what they round (control, focus, container, overlay, indicator, full), border widths and the focus outline.",
+      "sections": ["Overview", "Radius", "Borders and focus", "Rules"]
+    },
+    {
+      "id": "elevation",
+      "title": "Elevation and layers",
+      "documentation": "foundations/elevation.md",
+      "purpose": "Shadows paired with surfaces, z-index layers and opacity roles.",
+      "sections": ["Overview", "Shadows", "Layers", "Opacity", "Rules"]
+    },
+    {
+      "id": "motion",
+      "title": "Motion",
+      "documentation": "foundations/motion.md",
+      "purpose": "Duration and easing roles and reduced motion.",
+      "sections": ["Overview", "Durations", "Easing", "Rules"]
+    },
+    {
+      "id": "contracts",
+      "title": "Contracts and evidence",
+      "documentation": "foundations/contracts.md",
+      "purpose": "What a component contract contains (props, parts, states, events, token roles, rules), how to use it to build another implementation, and how components are verified and approved.",
+      "sections": ["Overview", "The contract", "Building another implementation", "Evidence"]
     }
   ]
 }

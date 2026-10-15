@@ -1,0 +1,57 @@
+---
+// One palette ramp as a row of swatches in the reader's context, each with its step and value.
+import { cssVar, paths } from '../../lib/tokens';
+import ContextValue from './ContextValue.astro';
+
+interface Props {
+  prefix: string;
+  label: string;
+}
+const { prefix, label } = Astro.props;
+const steps = paths(prefix).filter((p) => p.split('.').length === prefix.split('.').length + 1);
+---
+
+<figure class="ggb-docs-ramp not-content">
+  <figcaption>{label}</figcaption>
+  <ol>
+    {steps.map((path) => (
+      <li>
+        <span class="chip" style={`background:var(${cssVar(path)})`} />
+        <span class="step">{path.split('.').pop()}</span>
+        <ContextValue path={path} showAlias={false} />
+      </li>
+    ))}
+  </ol>
+</figure>
+
+<style>
+  .ggb-docs-ramp {
+    margin-block: 1rem;
+  }
+  figcaption {
+    margin-block-end: 0.5rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+  }
+  ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr));
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--sl-text-xs);
+  }
+  li {
+    display: grid;
+    gap: 0.125rem;
+  }
+  .chip {
+    block-size: 2.75rem;
+    border-radius: var(--ggb-radius-control);
+    box-shadow: inset 0 0 0 1px var(--ggb-color-border-subtle);
+  }
+  .step {
+    font-weight: 600;
+  }
+</style>

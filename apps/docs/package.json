@@ -1,0 +1,30 @@
+{
+  "name": "@ggbrick/docs",
+  "version": "0.1.0",
+  "description": "Documentation site of ggbrick (docs.ggbrick.design): Astro and Starlight rendering documentation/ with live Svelte examples.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "wrangler deploy",
+    "deploy:preview": "wrangler preview"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "0.42.6",
+    "@astrojs/svelte": "9.0.1",
+    "@ggbrick/svelte": "0.1.0",
+    "@ggbrick/tokens": "0.1.0",
+    "@types/mdast": "4.0.4",
+    "astro": "7.3.8",
+    "remark-gfm": "4.0.1",
+    "remark-mdx": "3.1.1",
+    "remark-parse": "11.0.0",
+    "remark-stringify": "11.0.0",
+    "unified": "11.0.5"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.0"
+  }
+}

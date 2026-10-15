@@ -1,0 +1,17 @@
+// Cloudflare Workers static assets: the built site (apps/docs/dist) served as docs.ggbrick.design.
+// Built and deployed by Workers Builds (Cloudflare's Git integration); see apps/docs/README.md, Deployment.
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "ggbrick-docs",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "preview_urls": true,
+  // Worker Previews (`wrangler preview`, the Workers Builds default for non-production branches): one preview per
+  // branch, named after it. Assets and compatibility settings stay at the top level.
+  "previews": {},
+  "workers_dev": true
+}

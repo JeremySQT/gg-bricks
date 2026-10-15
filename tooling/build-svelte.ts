@@ -12,6 +12,7 @@ interface DocIndex {
   package: string;
   version: string;
   components: { id: string; documentation: string; [key: string]: unknown }[];
+  foundations?: { id: string; documentation: string; [key: string]: unknown }[];
 }
 
 const pkg = paths.sveltePackage;
@@ -97,7 +98,30 @@ for (const entry of index.components) {
     );
   const doc = `${paths.documentation}/components/${entry.documentation}`;
   if (!exists(doc)) throw Error(`Missing documentation page ${doc}`);
-  write(`${pkg}/docs/${entry.documentation}`, readText(doc));
+  const text = readText(doc);
+  // The page's level-2 headings are exactly the sections the index announces, in order.
+  const headings = [...text.matchAll(/^## (.+)$/gm)].map((m) => m[1]);
+  const sections = (entry.sections as string[] | undefined) ?? [];
+  if (headings.join('|') !== sections.join('|'))
+    throw Error(`${doc} has sections ${headings.join(', ')}; documentation/index.json lists ${sections.join(', ')}`);
+  write(`${pkg}/docs/${entry.documentation}`, text);
+}
+// Foundations guides: copied under docs/foundations/; every token path they name in inline code must exist
+// (a path may be a group prefix such as `color.status`), so a renamed role cannot leave a stale guide.
+const tokenPaths = Object.keys(
+  readJson<Record<string, unknown>>(`${paths.tokensPackage}/resolved/base-light-standard.json`)
+);
+const rolePath =
+  /`((?:color|space|size|radius|border|focus|shadow|layer|opacity|motion|typography|primitive)\.[A-Za-z0-9.-]*[A-Za-z0-9])`/g;
+for (const entry of index.foundations ?? []) {
+  const doc = `${paths.documentation}/${entry.documentation}`;
+  if (!exists(doc)) throw Error(`Missing foundations page ${doc}`);
+  const text = readText(doc);
+  for (const [, path] of text.matchAll(rolePath)) {
+    if (!tokenPaths.some((t) => t === path || t.startsWith(path + '.')))
+      throw Error(`${doc} names the token ${path}, which does not exist`);
+  }
+  write(`${pkg}/docs/${entry.documentation}`, text);
 }
 write(`${pkg}/docs/index.json`, index);
 write(`${pkg}/docs/AGENTS.md`, readText(`${paths.documentation}/AGENTS.md`));
