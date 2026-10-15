@@ -23,7 +23,7 @@ Component and foundations pages are never edited here: change `documentation/`, 
 
 ## Deployment
 
-Cloudflare Workers with static assets (`wrangler.jsonc`), built and deployed by Workers Builds, Cloudflare's Git integration: no token is stored in GitHub, `release` deploys to docs.ggbrick.design and every other branch, `main` included, gets a preview URL. Only the Deliver procedure merges into `release` (see `authoring/decisions.md`); until the first Deliver creates it, the site exists only as previews. One-time setup in the Cloudflare dashboard (Workers & Pages → Create → Import a repository):
+Cloudflare Workers with static assets (`wrangler.jsonc`), built and deployed by Workers Builds, Cloudflare's Git integration: no token is stored in GitHub, `release` deploys to docs.ggbrick.design and every other branch, `main` included, gets a Worker Preview named after the branch (`wrangler preview`, open beta in Wrangler 4.151). Only the Deliver procedure merges into `release` (see `authoring/decisions.md`); until the first Deliver creates it, the site exists only as previews. One-time setup in the Cloudflare dashboard (Workers & Pages → Create → Import a repository):
 
 | Setting                              | Value                                             |
 | ------------------------------------ | ------------------------------------------------- |
