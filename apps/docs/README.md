@@ -23,16 +23,17 @@ Component and foundations pages are never edited here: change `documentation/`, 
 
 ## Deployment
 
-Cloudflare Workers with static assets (`wrangler.jsonc`), built and deployed by Workers Builds, Cloudflare's Git integration: no token is stored in GitHub, the production branch deploys to docs.ggbrick.design and every other branch gets a preview URL. The production branch (`main` or a release branch) is open decision 3 in `authoring/decisions.md`. One-time setup in the Cloudflare dashboard (Workers & Pages → Create → Import a repository):
+Cloudflare Workers with static assets (`wrangler.jsonc`), built and deployed by Workers Builds, Cloudflare's Git integration: no token is stored in GitHub, `release` deploys to docs.ggbrick.design and every other branch, `main` included, gets a preview URL. Only the Deliver procedure merges into `release` (see `authoring/decisions.md`); until the first Deliver creates it, the site exists only as previews. One-time setup in the Cloudflare dashboard (Workers & Pages → Create → Import a repository):
 
 | Setting                              | Value                                             |
 | ------------------------------------ | ------------------------------------------------- |
 | Repository                           | `JeremySQT/design-system`                         |
 | Project name                         | `ggbrick-docs` (the `name` in `wrangler.jsonc`)   |
-| Production branch                    | `main`, or a release branch (open decision 3)     |
+| Production branch                    | `release`                                         |
 | Root directory                       | `/` (the repository root, for the npm workspaces) |
 | Build command                        | `npm run build:docs`                              |
 | Deploy command                       | `npm run deploy --workspace apps/docs`            |
+| Builds for non-production branches   | enabled                                           |
 | Non-production branch deploy command | `npm run deploy:preview --workspace apps/docs`    |
 | Build variable                       | `NODE_VERSION` = `22` (also in `.node-version`)   |
 
