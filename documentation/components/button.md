@@ -4,21 +4,6 @@
 
 A button lets the user start an action or move to the next step of a task: save a form, open a dialog, confirm a deletion, create a project. It shows a short text label that names the action, with an optional icon before it and an optional icon, counter or keyboard shortcut after it.
 
-## When to use
-
-- The main, secondary and tertiary actions of a form, a dialog, a toolbar or a page header.
-- A destructive action: delete, remove, revoke.
-- An action that runs in the background: the button shows a loading state.
-- Navigation that reads like an action (“Create project”): the button renders as a link with `href`.
-
-## When not to use
-
-- An action without visible text: IconButton (planned).
-- A link inside a sentence: Link (planned).
-- A toggle that stays pressed: SegmentedControl (planned).
-- A trigger that opens a menu or a split action: Menu (planned).
-- A group of buttons or a toolbar: compose buttons in your layout; there is no group component.
-
 ## Anatomy
 
 | #   | Part              | Required | Role                                                                                             |
@@ -33,42 +18,39 @@ A button lets the user start an action or move to the next step of a task: save 
 
 Spacing, the same in every size and density: A side padding of the container, B margin on each side of the label, C margin on each side of slot content. An icon is placed by its drawing, not by its box.
 
-## Do and don't
+## Usage
 
-### Label
+### When to use
 
-- **Do** name the action with a verb, short and specific: “Save changes”, “Delete project”, “Create”.
-- **Don't** write “OK”, “Yes” or a label that only makes sense next to the dialog title. Screen readers announce the label alone; icons add nothing to it.
+| Guidance  | Situation                                                                                 |
+| --------- | ----------------------------------------------------------------------------------------- |
+| Use       | The main, secondary and tertiary actions of a form, a dialog, a toolbar or a page header. |
+| Use       | A destructive action: delete, remove, revoke.                                             |
+| Use       | An action that runs in the background: the button shows a loading state.                  |
+| Use       | Navigation that reads like an action (“Create project”), with `href`.                     |
+| Don't use | An action without visible text: IconButton (planned).                                     |
+| Don't use | A link inside a sentence: Link (planned).                                                 |
+| Don't use | A toggle that stays pressed: SegmentedControl (planned).                                  |
+| Don't use | A trigger that opens a menu: Menu (planned).                                              |
 
-### Hierarchy
+### Best practices
 
-- **Do** keep one solid accent button per area for the main action, and use neutral outline or ghost for the others.
-- **Don't** put two solid accent buttons side by side: the user should not have to guess which one is the main action.
-
-### Destructive actions
-
-- **Do** use the danger intent for actions that delete something or cannot be undone; outline or ghost when it is not the main action of the area.
-- **Don't** use danger for emphasis or for actions that can be undone.
-
-### Size and width
-
-- **Do** match the surrounding controls: `md` by default, `sm` in dense toolbars and table rows, `lg` for a prominent call to action. Let the container decide the width.
-- **Don't** resize or pad a button by hand to follow the density: sizes already follow `data-ggb-density`.
-
-### Loading and disabled
-
-- **Do** set `loading` while an action runs and clear it when it completes or fails: the button keeps its focus and ignores presses.
-- **Don't** add `disabled` to a loading button, or disable a button without saying why nearby: a disabled button cannot be reached by keyboard.
-
-### Slots
-
-- **Do** fill `leading` with an Icon, and `trailing` with one Icon, Counter or Shortcut in the button's size. Use a leading icon only when it is a well-known symbol of the action (plus, download, trash).
-- **Don't** put the only copy of a piece of information in a slot: slot content is hidden from screen readers. Repeat a counter's quantity in the label or elsewhere.
-
-### Links
-
-- **Do** pass `href` when the action takes the user to another page or task.
-- **Don't** use a button for a link inside running text.
+| Topic       | Guidance | Practice                                                                                                  |
+| ----------- | -------- | --------------------------------------------------------------------------------------------------------- |
+| Label       | Do       | Name the action with a verb, short and specific: “Save changes”, “Delete project”.                        |
+| Label       | Don't    | Write “OK” or “Yes”: screen readers announce the label alone, without the dialog title.                   |
+| Hierarchy   | Do       | Keep one solid accent button per area; use neutral outline or ghost for the other actions.                |
+| Hierarchy   | Don't    | Put two solid accent buttons side by side.                                                                |
+| Destructive | Do       | Use the danger intent for actions that delete or cannot be undone; outline or ghost when secondary.       |
+| Destructive | Don't    | Use danger for emphasis.                                                                                  |
+| Size        | Do       | Match the surrounding controls: `md` by default, `sm` in dense rows, `lg` for a prominent call to action. |
+| Size        | Don't    | Resize or pad a button for density, or give it a width: density and layout already decide.                |
+| Loading     | Do       | Set `loading` while the action runs: the button keeps its focus and ignores presses.                      |
+| Loading     | Don't    | Add `disabled` to a loading button, or disable a button without saying why nearby.                        |
+| Slots       | Do       | Put one Icon before the label, one Icon, Counter or Shortcut after it, in the button's size.              |
+| Slots       | Don't    | Put information only in a slot: screen readers skip it, so repeat a counter's quantity elsewhere.         |
+| Links       | Do       | Pass `href` when the action takes the user to another page or task.                                       |
+| Links       | Don't    | Use a button for a link inside running text.                                                              |
 
 ## Examples
 

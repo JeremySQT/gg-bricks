@@ -13,7 +13,7 @@ import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkMdx from 'remark-mdx';
 import remarkStringify from 'remark-stringify';
-import type { Code, Heading, List, PhrasingContent, Root, RootContent, TableCell } from 'mdast';
+import type { Code, Heading, List, PhrasingContent, Root, RootContent, Table, TableCell } from 'mdast';
 
 interface IndexEntry {
   id: string;
@@ -136,6 +136,10 @@ function renderPage(entry: IndexEntry, page: ComponentPage, exportsList: string[
       continue;
     }
     if (node.type === 'list') markDoAndDont(node);
+    if (node.type === 'table' && isGuidanceTable(node)) {
+      children.push(guidanceTable(node));
+      continue;
+    }
     children.push(node);
     if (node.type === 'heading' && node.depth === 2 && headingText(node) === 'Anatomy') {
       children.push(...blueprints(entry.id, page.title));
@@ -180,6 +184,105 @@ function markDoAndDont(list: List): void {
       children: [{ type: 'text', value: word }]
     } as unknown as PhrasingContent;
   }
+}
+
+const cellText = (cell: TableCell) => cell.children.map((c) => ('value' in c ? c.value : '')).join('');
+const guidanceKinds: Record<string, 'positive' | 'negative'> = {
+  Use: 'positive',
+  Do: 'positive',
+  "Don't use": 'negative',
+  'Don’t use': 'negative',
+  "Don't": 'negative',
+  'Don’t': 'negative'
+};
+const isGuidanceTable = (table: Table) => table.children[0].children.some((c) => cellText(c) === 'Guidance');
+
+/**
+ * A table with a Guidance column (Use / Don't use, Do / Don't) rendered as a card: badges for the guidance and,
+ * when a Topic column precedes it, the topic written once for its consecutive rows.
+ */
+function guidanceTable(table: Table): RootContent {
+  const [head, ...body] = table.children;
+  const headers = head.children.map(cellText);
+  const topicIndex = headers.indexOf('Topic');
+  const guidanceIndex = headers.indexOf('Guidance');
+  const el = (name: string, attributes: Attribute[], children: RootContent[]) => jsx(name, attributes, children);
+  const cell = (name: 'td' | 'th', content: PhrasingContent[], attributes: Attribute[] = []) =>
+    el(name, attributes, [{ type: 'paragraph', children: content } as RootContent]);
+  const rows = body.map((row, r) => {
+    const cells: RootContent[] = [];
+    row.children.forEach((c, i) => {
+      if (i === topicIndex) {
+        const topic = cellText(c);
+        if (r > 0 && cellText(body[r - 1].children[i]) === topic) return;
+        let span = 1;
+        while (r + span < body.length && cellText(body[r + span].children[i]) === topic) span++;
+        cells.push(
+          cell('th', c.children, [
+            { name: 'scope', value: 'rowgroup' },
+            { name: 'rowspan', value: String(span) }
+          ])
+        );
+      } else if (i === guidanceIndex) {
+        const word = cellText(c);
+        const kind = guidanceKinds[word] ?? 'positive';
+        cells.push(
+          el(
+            'td',
+            [{ name: 'class', value: 'guidance' }],
+            [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'mdxJsxTextElement',
+                    name: 'span',
+                    attributes: [
+                      { type: 'mdxJsxAttribute', name: 'class', value: `ggb-docs-badge ggb-docs-badge--${kind}` }
+                    ],
+                    children: [{ type: 'text', value: word }]
+                  } as unknown as PhrasingContent
+                ]
+              } as RootContent
+            ]
+          )
+        );
+      } else cells.push(cell('td', c.children));
+    });
+    const topic = topicIndex >= 0 ? cellText(row.children[topicIndex]) : '';
+    const groupStart = topicIndex >= 0 && (r === 0 || cellText(body[r - 1].children[topicIndex]) !== topic);
+    return el('tr', groupStart && r > 0 ? [{ name: 'class', value: 'group-start' }] : [], cells);
+  });
+  return el(
+    'div',
+    [{ name: 'class', value: 'ggb-docs-guidance not-content' }],
+    [
+      el(
+        'table',
+        [],
+        [
+          el(
+            'thead',
+            [],
+            [
+              el(
+                'tr',
+                [],
+                headers.map((h) =>
+                  el(
+                    'th',
+                    [{ name: 'scope', value: 'col' }],
+                    [{ type: 'paragraph', children: [{ type: 'text', value: h }] } as RootContent]
+                  )
+                )
+              )
+            ]
+          ),
+          el('tbody', [], rows)
+        ]
+      )
+    ]
+  );
 }
 
 /** A live block is a complete Svelte component; a block without a script gets the ggbrick imports. */

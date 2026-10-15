@@ -1,0 +1,98 @@
+---
+// The evidence of every documented component, from its status file and its reports: phase, the three
+// approval gates with their dates, contrast and Figma parity measurements.
+import { existsSync, readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { repoRoot } from '../../lib/root';
+
+const readJson = <T,>(path: string): T => JSON.parse(readFileSync(join(repoRoot, path), 'utf8')) as T;
+interface Status {
+  phase: string;
+  wave: number;
+  approvals?: Record<string, { provenance?: string } | null>;
+}
+const index = readJson<{ components: { id: string; import: string; contract: string }[] }>('documentation/index.json');
+const date = (approval?: { provenance?: string } | null) =>
+  approval ? (/\b(\d{4}-\d{2}-\d{2})\b/.exec(approval.provenance ?? '')?.[1] ?? 'approved') : '—';
+const rows = index.components.map((c) => {
+  const status = readJson<Status>(join(dirname(c.contract), 'status.json'));
+  const contrastPath = `reports/components/${c.id}/contrast.json`;
+  const contrast = existsSync(join(repoRoot, contrastPath))
+    ? readJson<{ checks: number; failures: unknown[] }>(contrastPath)
+    : null;
+  const parityPath = `reports/components/${c.id}/figma/parity.json`;
+  const parity = existsSync(join(repoRoot, parityPath))
+    ? readJson<{ summary: { records: number; failed?: number; failures?: number } }>(parityPath).summary
+    : null;
+  return {
+    name: c.import,
+    href: `/components/${c.id}/`,
+    phase: status.phase,
+    wave: status.wave,
+    contract: date(status.approvals?.contract),
+    implementation: date(status.approvals?.implementation),
+    figma: date(status.approvals?.figmaParity),
+    contrast: contrast ? `${contrast.checks} pairs, ${contrast.failures.length} below` : 'inherits its context',
+    parity: parity ? `${parity.records} records, ${parity.failed ?? parity.failures ?? 0} failed` : '—'
+  };
+});
+---
+
+<div class="ggb-docs-evidence not-content">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Component</th>
+        <th scope="col">Phase</th>
+        <th scope="col">Contract</th>
+        <th scope="col">Implementation</th>
+        <th scope="col">Figma parity</th>
+        <th scope="col">Contrast</th>
+        <th scope="col">Figma measurements</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((r) => (
+        <tr>
+          <th scope="row">
+            <a href={r.href}>{r.name}</a>
+          </th>
+          <td>
+            {r.phase} · wave {r.wave}
+          </td>
+          <td>{r.contract}</td>
+          <td>{r.implementation}</td>
+          <td>{r.figma}</td>
+          <td>{r.contrast}</td>
+          <td>{r.parity}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .ggb-docs-evidence {
+    margin-block: 1.5rem;
+    overflow-x: auto;
+  }
+  table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-size: var(--sl-text-sm);
+  }
+  th,
+  td {
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    border-block-end: 1px solid var(--sl-color-hairline);
+    text-align: start;
+    white-space: nowrap;
+  }
+  thead th {
+    color: var(--sl-color-gray-2);
+    font-weight: 600;
+  }
+  a {
+    color: var(--sl-color-text-accent);
+  }
+</style>

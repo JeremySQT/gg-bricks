@@ -10,16 +10,7 @@
       "whenNotToUse": "Icon-only actions (IconButton, planned), navigation inside text (Link, planned), toggles with a pressed state (SegmentedControl, planned), menu triggers (Menu, planned), button groups and toolbars (composition), width as a prop (layout decides).",
       "documentation": "button.md",
       "contract": "foundations/components/actions/button/contract.json",
-      "sections": [
-        "Overview",
-        "When to use",
-        "When not to use",
-        "Anatomy",
-        "Do and don't",
-        "Examples",
-        "API",
-        "Accessibility"
-      ]
+      "sections": ["Overview", "Anatomy", "Usage", "Examples", "API", "Accessibility"]
     },
     {
       "id": "icon",
@@ -139,6 +130,13 @@
       "documentation": "foundations/motion.md",
       "purpose": "Duration and easing roles and reduced motion.",
       "sections": ["Overview", "Durations", "Easing", "Rules"]
+    },
+    {
+      "id": "contracts",
+      "title": "Contracts and evidence",
+      "documentation": "foundations/contracts.md",
+      "purpose": "What a component contract contains (props, parts, states, events, token roles, rules), how to use it to build another implementation, and how components are verified and approved.",
+      "sections": ["Overview", "The contract", "Building another implementation", "Evidence"]
     }
   ]
 }

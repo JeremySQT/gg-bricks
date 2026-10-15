@@ -101,3 +101,63 @@
   background: var(--ggb-color-status-danger-surface);
   color: var(--ggb-color-status-danger-content);
 }
+
+/* Usage tables (Guidance column): a card with badges, topics written once per group. */
+.ggb-docs-guidance {
+  margin-block: 1rem 2rem;
+  overflow-x: auto;
+  border: var(--ggb-border-width-default) solid var(--ggb-color-border-subtle);
+  border-radius: var(--ggb-radius-container);
+  background: var(--ggb-color-surface-default);
+}
+.ggb-docs-guidance table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  color: var(--ggb-color-content-primary);
+  font: var(--ggb-typography-body-md);
+}
+.ggb-docs-guidance th,
+.ggb-docs-guidance td {
+  padding: var(--ggb-space-content-md) var(--ggb-space-content-lg);
+  text-align: start;
+  vertical-align: top;
+}
+.ggb-docs-guidance p {
+  margin: 0;
+}
+.ggb-docs-guidance thead th {
+  border-block-end: var(--ggb-border-width-default) solid var(--ggb-color-border-subtle);
+  color: var(--ggb-color-content-secondary);
+  font: var(--ggb-typography-label-sm);
+  letter-spacing: var(--ggb-typography-label-sm-letterSpacing);
+}
+.ggb-docs-guidance tbody tr + tr td {
+  border-block-start: var(--ggb-border-width-default) solid var(--ggb-color-border-subtle);
+}
+.ggb-docs-guidance tbody tr.group-start > * {
+  border-block-start: var(--ggb-border-width-default) solid var(--ggb-color-border-default);
+}
+.ggb-docs-guidance tbody th {
+  inline-size: 1%;
+  white-space: nowrap;
+  font: var(--ggb-typography-label-md);
+}
+.ggb-docs-guidance td.guidance {
+  inline-size: 1%;
+  white-space: nowrap;
+}
+.ggb-docs-badge {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--ggb-radius-full);
+  font: var(--ggb-typography-label-sm);
+  letter-spacing: var(--ggb-typography-label-sm-letterSpacing);
+}
+.ggb-docs-badge--positive {
+  background: var(--ggb-color-status-success-surfaceStrong);
+  color: var(--ggb-color-status-success-contentStrong);
+}
+.ggb-docs-badge--negative {
+  background: var(--ggb-color-status-danger-surfaceStrong);
+  color: var(--ggb-color-status-danger-contentStrong);
+}

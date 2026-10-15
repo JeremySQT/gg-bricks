@@ -9,6 +9,7 @@ import { contrastReport, paths } from '../../lib/tokens';
 import TokenTable from './TokenTable.astro';
 import Ramp from './Ramp.astro';
 import ActionMatrix from './ActionMatrix.astro';
+import EvidenceTable from './EvidenceTable.astro';
 
 interface Props {
   page: string;
@@ -48,6 +49,7 @@ if (kind === 'tokens' && !known) throw new Error(`A role table of documentation 
 )}
 {kind === 'ramps' && options.prefixes.split(' ').map((prefix) => <Ramp prefix={prefix} label={rampLabel(prefix)} />)}
 {kind === 'actions' && <ActionMatrix />}
+{kind === 'evidence' && <EvidenceTable />}
 {kind === 'contrast' && (
   <p>
     Every declared pair is measured in all 18 brand × appearance × density contexts: {contrastReport.checks} checks,
