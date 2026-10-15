@@ -132,16 +132,16 @@
 }
 .ggb-docs-badge {
   display: inline-block;
-  padding: 0.125rem 0.5rem;
-  border-radius: var(--ggb-radius-full);
+  padding: 0 0.375rem;
+  border-radius: var(--ggb-radius-indicator);
   font: var(--ggb-typography-label-sm);
   letter-spacing: var(--ggb-typography-label-sm-letterSpacing);
 }
 .ggb-docs-badge--positive {
-  background: var(--ggb-color-status-success-surfaceStrong);
-  color: var(--ggb-color-status-success-contentStrong);
+  background: var(--ggb-color-status-success-surface);
+  color: var(--ggb-color-status-success-content);
 }
 .ggb-docs-badge--negative {
-  background: var(--ggb-color-status-danger-surfaceStrong);
-  color: var(--ggb-color-status-danger-contentStrong);
+  background: var(--ggb-color-status-danger-surface);
+  color: var(--ggb-color-status-danger-content);
 }
