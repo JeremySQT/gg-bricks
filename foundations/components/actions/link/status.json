@@ -5,19 +5,22 @@
   "wave": 1,
   "phase": "contract",
   "scope": {
-    "purpose": "Navigate to another page or resource from inside text, as an underlined word or phrase that reads with the sentence around it.",
+    "purpose": "Navigate to another page or resource from inside text, as an underlined word or phrase that reads with the sentence around it and tells the reader what it leads to (a page, another site, an email, a phone number, a file and its format, a printable version).",
     "useCases": [
       "A link inside a paragraph, a help text, a table cell or a message, taking the surrounding typography.",
       "A standalone text link (See all, Learn more) placed by the layout, still underlined.",
-      "An external destination that opens in a new tab, with a visible arrow and an announced suffix.",
+      "A destination announced before the click: another site (new tab, arrow), an email address (envelope), a phone number (handset), a printable version (printer).",
+      "A link to a file showing its format and size as text and a format glyph: Annual report (PDF, 2.4 MB).",
       "A link inside a colored context (status message, inverse surface) that keeps the context color with tone inherit."
     ],
     "exclusions": [
       "Navigation to a task with a control appearance: Button with href.",
       "Icon-only links: IconButton with href.",
+      "Opening the print dialog, sending a form, copying an address: actions, so Button (with a leading Icon).",
       "A disabled link: a destination that cannot be followed is plain text.",
-      "Leading or trailing icons other than the external indicator.",
+      "Free leading or trailing icons: the indicator is chosen by destination.",
       "Distinct visited color; size or weight options (the context decides typography).",
+      "Formatting file sizes or detecting the format from href: the application passes fileType and fileSize.",
       "Routing: the application's router intercepts navigation; the component renders a native link."
     ],
     "alternatives": [
@@ -31,7 +34,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/actions/link/contract.json",
-      "sha256": "0b7c46850dcd44bc3cc8c61ad97c609772888a2b267bb72f0c5644623df6357f"
+      "sha256": "fbe2a0f36d97cba45119440fd1413984b16566391789b59f184334b4e5395209"
     },
     "tokens": [],
     "figma": null,
@@ -55,15 +58,15 @@
       "result": "passed",
       "command": "npm run validate",
       "report": "reports/components/link/contract-validation.json",
-      "date": "2026-10-15",
-      "note": "Schema, consistency and token coverage (8 paths) in 18 contexts; check-foundations passes (383 roles, 1836 contrast checks, 0 failures)."
+      "date": "2026-10-16",
+      "note": "Schema, consistency, token coverage (8 paths) in 18 contexts and accepted components (--dependencies); check-foundations passes (384 roles, 1836 contrast checks, 0 failures)."
     },
     {
       "kind": "build-tokens",
       "result": "passed",
       "command": "npm run build:tokens",
       "report": "reports/components/link/contrast.json",
-      "date": "2026-10-15",
+      "date": "2026-10-16",
       "note": "108 contrast records on the contrastScope backdrops in 18 contexts, 0 failures. The component report measures only the focus ring (Link binds content without a surface role); color.content.link on the six backdrops was measured separately: 4.93 to 7.83 except surface.muted in dark (3.30 to 3.46), see open decision 1."
     }
   ],
@@ -72,9 +75,13 @@
     "Underlined in every state (WCAG 1.4.1, use of color): the hover and pressed feedback thickens the underline from border.width.default (1 px) to border.width.strong (2 px) instead of changing the color, so no new color token is needed; no transition.",
     "One color role, color.content.link (approved), and tone inherit for colored contexts; no visited color in an application context.",
     "No size prop and no typography role: a link takes the font of the text it sits in.",
-    "external groups three facts that belong together: a new browsing context without opener, a visible arrow glyph (Phosphor ArrowUpRight, inline SVG in the component folder, attributed, per the icon decision) and an announced suffix externalLabel (default \"opens in a new tab\", a string prop so that it can be translated).",
     "Focus indicator drawn around each line box (an outline, so a wrapped link gets one ring per line) with radius.indicator corners: radius.focus (concentric with controls) is too round for text.",
-    "No Bits UI primitive: a native anchor carries every semantic needed."
+    "No Bits UI primitive: a native anchor carries every semantic needed.",
+    "User review of the contract drafts (2026-10-16): the trailing indicator orients the reader on what the link leads to. The boolean external becomes destination (page, external, email, phone, file, print) with fileType and fileSize for files; externalLabel becomes destinationLabel (overrides the default English suffix of any destination).",
+    "phone added beside email (tel: links are the same kind of destination); print means a link to a printable version, because opening the print dialog is an action that belongs to Button.",
+    "File links show the format and size as visible text (PDF, 2.4 MB) in addition to the format glyph: the small lettering inside Phosphor's file glyphs is not legible at text size, and visible text helps everyone, not only screen reader users (practice of GOV.UK and most public-sector systems). The component does not format sizes (locale) and sets no download attribute: viewable formats open in the browser, others download, as the server decides.",
+    "Glyphs (Phosphor, MIT): ArrowUpRight, Envelope, Phone, Printer, File, FilePdf, FileDoc, FileXls, FileCsv, FilePpt, FileTxt, FileZip, FileImage, FileAudio, FileVideo, copied as inline SVG paths into the component folder per the icon decision; one em square so they follow the text size. Only external opens a new tab.",
+    "No new token: meta and indicator take the link color; indicatorGap is space.content.xs."
   ],
   "openDecisions": [
     {
@@ -85,15 +92,16 @@
     },
     {
       "id": 2,
-      "question": "Should the external indicator and its announced suffix stay tied to the new-tab behavior (one external option)?",
-      "proposal": "Yes: an external destination in an application usually opens in a new tab, and announcing the new tab is what users need to know; a link to another site in the same tab is a plain link.",
-      "blocks": "contract gate"
+      "question": "Should a file link (or any destination) also be able to open in a new tab, announced like external?",
+      "proposal": "Not in v1: only external opens a new tab; a PDF opens in the browser tab and Back returns. A newTab option can be added later if products need it.",
+      "blocks": "nothing"
     }
   ],
-  "nextAction": "Contract gate (grouped with IconButton and Badge): reviewer decides the dark link color (open decision 1) and the external option (2); then record the approval and start the implementation.",
+  "nextAction": "Contract gate (grouped with IconButton and Badge), second round after the user's review: reviewer confirms the destinations and the file meta, decides the dark link color (open decision 1); then record the approval and start the implementation.",
   "implementationNotes": [
-    "Markup: <a class=\"ggb-link\" data-tone href> with the label, and when external target=\"_blank\" rel=\"noopener noreferrer\" plus the glyph (aria-hidden) and a visually hidden suffix. The glyph is joined to the last word with a no-break so it never starts a line.",
-    "Underline through text-decoration (thickness from the tokens, text-underline-offset from-font); focus with outline on the inline box so it follows each line."
+    "Markup: <a class=\"ggb-link\" data-tone data-destination href> with the label, a <span class=\"ggb-link__meta\"> for files, the glyph (aria-hidden) and a visually hidden suffix; external adds target=\"_blank\" rel=\"noopener noreferrer\". The last word, meta and glyph are wrapped in a no-wrap span so they never start a line alone.",
+    "Underline through text-decoration (thickness from the tokens, text-underline-offset from-font) on the label only; focus with outline on the inline box so it follows each line.",
+    "Glyph table in a glyphs.ts of the component folder, keyed by destination and normalized fileType."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

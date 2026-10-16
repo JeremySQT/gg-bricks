@@ -57,15 +57,15 @@
       "result": "passed",
       "command": "npm run validate",
       "report": "reports/components/icon-button/contract-validation.json",
-      "date": "2026-10-15",
-      "note": "Schema, consistency and token coverage (120 paths) in 18 contexts; check-foundations passes (383 roles, 1836 contrast checks, 0 failures)."
+      "date": "2026-10-16",
+      "note": "Schema, consistency, token coverage (120 paths) in 18 contexts and accepted components (--dependencies); check-foundations passes (384 roles, 1836 contrast checks, 0 failures)."
     },
     {
       "kind": "build-tokens",
       "result": "passed",
       "command": "npm run build:tokens",
       "report": "reports/components/icon-button/contrast.json",
-      "date": "2026-10-15",
+      "date": "2026-10-16",
       "note": "6264 contrast records on the contrastScope backdrops in 18 contexts, 0 failures."
     }
   ],

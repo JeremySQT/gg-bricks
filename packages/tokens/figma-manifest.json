@@ -14724,6 +14724,29 @@
     },
     {
       "collection": "Foundations · Density",
+      "name": "space/content/2xs",
+      "path": "space.content.2xs",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-space-content-2xs)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Foundations · Primitives:primitive/dimension/v1"
+        },
+        "standard": {
+          "alias": "Foundations · Primitives:primitive/dimension/v2"
+        },
+        "comfortable": {
+          "alias": "Foundations · Primitives:primitive/dimension/v2"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Density",
       "name": "space/content/xs",
       "path": "space.content.xs",
       "type": "FLOAT",
