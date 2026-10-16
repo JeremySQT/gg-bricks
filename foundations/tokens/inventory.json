@@ -1622,6 +1622,36 @@
       "axis": "appearance"
     },
     {
+      "path": "color.status.accent.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.accent.surfaceStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.accent.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.accent.contentStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.accent.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.accent.icon",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
       "path": "color.status.info.surface",
       "type": "color",
       "axis": "appearance"
@@ -1858,11 +1888,6 @@
     },
     {
       "path": "space.control.slot-inline.lg",
-      "type": "dimension",
-      "axis": "density"
-    },
-    {
-      "path": "space.content.2xs",
       "type": "dimension",
       "axis": "density"
     },
@@ -2310,6 +2335,26 @@
     },
     {
       "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.accent.content",
+      "surface": "color.status.accent.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.accent.contentStrong",
+      "surface": "color.status.accent.surfaceStrong",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.accent.icon",
+      "surface": "color.status.accent.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.accent.icon",
       "surface": "color.surface.default",
       "minimum": 3
     },

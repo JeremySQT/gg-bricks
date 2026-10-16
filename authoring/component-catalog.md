@@ -7,7 +7,7 @@ This catalog organizes scope and dependency notes per component family; the orde
 | Folder       | Contents                                                                                                                                                  |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `actions`    | Button, IconButton, Link                                                                                                                                  |
-| `content`    | Icon, Badge, Counter, Shortcut, Avatar, Divider                                                                                                           |
+| `content`    | Icon, Badge, Counter, Shortcut, Tag, Avatar, Divider                                                                                                      |
 | `forms`      | Field, FieldGroup, TextField, InputText, Textarea, Checkbox, RadioGroup, Switch, Select, Combobox, NumberInput, Slider, FileUpload, DatePicker, TimeInput |
 | `feedback`   | Alert, Toast, Progress, Spinner, Skeleton                                                                                                                 |
 | `overlays`   | Dialog, Popover, Tooltip, Menu, Drawer                                                                                                                    |
@@ -45,13 +45,14 @@ Dependency rule: a component requested on its own needs only the dependencies it
 
 ## Later candidates
 
-| Family             | Candidates                                   | Trigger                                                   |
-| ------------------ | -------------------------------------------- | --------------------------------------------------------- |
-| Advanced inputs    | NumberInput, Slider, RangeSlider, FileUpload | Clear product demand and accessibility behavior           |
-| Rich selection     | MultiSelect, TreeView, SegmentedControl      | Explicit selection, navigation and state rules            |
-| Advanced date/time | DateRangePicker, TimePicker                  | Proven need beyond a single date/time entry               |
-| Larger surfaces    | Drawer, NavigationRail, Sidebar              | Responsive composition and dismissal requirements         |
-| Rich data          | DataGrid, Chart                              | Editing/virtualization or data visualization requirements |
+| Family             | Candidates                                   | Trigger                                                                                                                                                                                                                     |
+| ------------------ | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Advanced inputs    | NumberInput, Slider, RangeSlider, FileUpload | Clear product demand and accessibility behavior                                                                                                                                                                             |
+| Rich selection     | MultiSelect, TreeView, SegmentedControl      | Explicit selection, navigation and state rules                                                                                                                                                                              |
+| Values and filters | Tag                                          | Removable or selectable values (keywords, active filters, MultiSelect values), optionally with a count; interactive, unlike Badge (read-only status or category) and Counter (quantity). Scope with filters and MultiSelect |
+| Advanced date/time | DateRangePicker, TimePicker                  | Proven need beyond a single date/time entry                                                                                                                                                                                 |
+| Larger surfaces    | Drawer, NavigationRail, Sidebar              | Responsive composition and dismissal requirements                                                                                                                                                                           |
+| Rich data          | DataGrid, Chart                              | Editing/virtualization or data visualization requirements                                                                                                                                                                   |
 
 ## Composition patterns
 

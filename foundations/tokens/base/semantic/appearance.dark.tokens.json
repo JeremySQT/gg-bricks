@@ -895,6 +895,32 @@
           "$value": "{color.palette.neutral.400}"
         }
       },
+      "accent": {
+        "surface": {
+          "$type": "color",
+          "$value": "{color.palette.accent.950}"
+        },
+        "surfaceStrong": {
+          "$type": "color",
+          "$value": "{color.palette.accent.600}"
+        },
+        "content": {
+          "$type": "color",
+          "$value": "{color.palette.accent.200}"
+        },
+        "contentStrong": {
+          "$type": "color",
+          "$value": "{color.palette.neutral.0}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{color.palette.accent.800}"
+        },
+        "icon": {
+          "$type": "color",
+          "$value": "{color.palette.accent.400}"
+        }
+      },
       "info": {
         "surface": {
           "$type": "color",

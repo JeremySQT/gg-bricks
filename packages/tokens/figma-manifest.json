@@ -13733,6 +13733,133 @@
     },
     {
       "collection": "Foundations · Appearance",
+      "name": "color/status/accent/surface",
+      "path": "color.status.accent.surface",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-status-accent-surface)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/accent/50"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/accent/950"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/status/accent/surfaceStrong",
+      "path": "color.status.accent.surfaceStrong",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-status-accent-surfaceStrong)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/accent/600"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/accent/600"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/status/accent/content",
+      "path": "color.status.accent.content",
+      "type": "COLOR",
+      "scopes": [
+        "TEXT_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-status-accent-content)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/accent/800"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/accent/200"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/status/accent/contentStrong",
+      "path": "color.status.accent.contentStrong",
+      "type": "COLOR",
+      "scopes": [
+        "TEXT_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-status-accent-contentStrong)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/neutral/0"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/neutral/0"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/status/accent/border",
+      "path": "color.status.accent.border",
+      "type": "COLOR",
+      "scopes": [
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-status-accent-border)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/accent/300"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/accent/800"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/status/accent/icon",
+      "path": "color.status.accent.icon",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-status-accent-icon)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/accent/600"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/accent/400"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
       "name": "color/status/info/surface",
       "path": "color.status.info.surface",
       "type": "COLOR",
@@ -14713,29 +14840,6 @@
       "values": {
         "compact": {
           "alias": "Foundations · Primitives:primitive/dimension/v2"
-        },
-        "standard": {
-          "alias": "Foundations · Primitives:primitive/dimension/v2"
-        },
-        "comfortable": {
-          "alias": "Foundations · Primitives:primitive/dimension/v2"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Density",
-      "name": "space/content/2xs",
-      "path": "space.content.2xs",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-space-content-2xs)"
-      },
-      "values": {
-        "compact": {
-          "alias": "Foundations · Primitives:primitive/dimension/v1"
         },
         "standard": {
           "alias": "Foundations · Primitives:primitive/dimension/v2"

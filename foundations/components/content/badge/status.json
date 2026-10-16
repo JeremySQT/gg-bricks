@@ -5,36 +5,34 @@
   "wave": 1,
   "phase": "contract",
   "scope": {
-    "purpose": "Label an object with a short status or category word (Draft, Paid, Overdue), in a small colored box whose words carry the meaning and whose color reinforces it.",
+    "purpose": "Describe an object with a short, read-only status or category word (Draft, Paid, Overdue, Beta) set by the application, in a small colored box whose words carry the meaning and whose color reinforces it.",
     "useCases": [
       "A status in a table cell, a list item, a card or a page header (Active, Pending, Failed).",
-      "A category or tag without valence (Beta, Internal) with the neutral intent.",
+      "A category without valence (Internal, Archived) with the neutral intent, or a highlighted one in the brand color (New, Beta) with the accent intent.",
       "A stronger signal with the strong appearance (a critical status that must stand out in a dense list).",
-      "An optional leading icon that repeats the status shape (check, warning) for faster scanning.",
-      "A count attached to a category with a trailing Counter (Bugs 12), in the badge colors."
+      "An optional leading icon that repeats the status shape (check, warning) for faster scanning."
     ],
     "exclusions": [
       "Quantities: Counter.",
-      "A dismissible (closable) badge: open decision 3.",
-      "Selectable or clickable tags (filters): a later interactive component.",
+      "Values the user manipulates (removable keywords, active filters, MultiSelect values, user labels), with or without a count: Tag (later candidate).",
       "A dot without text: a later indicator.",
       "Badges positioned over another element (avatar or icon corner): a later composition.",
       "Badges inside a Button slot: a quantity in a Button is a Counter.",
-      "An accent or brand intent: open decision 2.",
       "Live announcements when a status changes: the integration owns live regions."
     ],
     "alternatives": [
       "Counter for a number.",
+      "Tag (later) for a value the user can remove or select.",
       "Plain text when the status is part of a sentence.",
       "Alert (wave 3) for a message that explains the status."
     ]
   },
-  "dependencies": ["icon", "counter"],
+  "dependencies": ["icon"],
   "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading icon examples."],
   "artifacts": {
     "contract": {
       "path": "foundations/components/content/badge/contract.json",
-      "sha256": "b6d1402dd6da7e9cddd28dee53e1df94886552a301626a2fd44819456fd60061"
+      "sha256": "87242b5e663c9abdcc5e6b6edbea6ccf2db34e6bc034a74655b721672ce3f24a"
     },
     "tokens": [
       "foundations/tokens/inventory.json",
@@ -63,7 +61,7 @@
       "command": "npm run validate",
       "report": "reports/components/badge/contract-validation.json",
       "date": "2026-10-16",
-      "note": "Schema, consistency, token coverage (38 paths) in 18 contexts and accepted components (--dependencies); check-foundations passes (384 roles, 1836 contrast checks, 0 failures)."
+      "note": "Schema, consistency, token coverage (43 paths) in 18 contexts and accepted components (--dependencies); check-foundations passes (389 roles, 1908 contrast checks, 0 failures)."
     },
     {
       "kind": "build-tokens",
@@ -71,7 +69,7 @@
       "command": "npm run build:tokens",
       "report": "reports/components/badge/contrast.json",
       "date": "2026-10-16",
-      "note": "1080 contrast records on the contrastScope backdrops in 18 contexts, 0 failures."
+      "note": "1296 contrast records on the contrastScope backdrops in 18 contexts, 0 failures."
     }
   ],
   "decisionsTaken": [
@@ -81,33 +79,13 @@
     "Leading icon at size.icon.xs (12 px) for every size: the indicator text is 11 to 14 px, so the 16 px icon of a sm Button would dominate; gap space.content.xs; optical placement like Button.",
     "One line, truncated with an ellipsis when the width is short (table cells); the full label stays readable by assistive technology.",
     "Strong appearance without a visible border (the strong surface already contrasts); the forced-colors edge is drawn in both appearances.",
-    "User review of the contract drafts (2026-10-16): a trailing slot accepting one Counter (Bugs 12).",
-    "Box: indicator typography (typography.indicator.{size}, 11/12/14 px), block size = line box + 2 x paddingBlock, cap-height centering, minimum inline size = block size, radius.indicator, padding-inline space.content.xs. The block padding exists so that a trailing Counter (whose box is the same line box) sits inside an even rim; every badge has it, so badges with and without a counter have the same height (md: 18.8 / 20.8 / 20.8 px in compact / standard / comfortable).",
-    "Foundations addition: space.content.2xs (density axis; compact 1 px, standard 2 px, comfortable 2 px: no 3 px primitive exists and 4 px made the comfortable badge as tall as a small control) for the badge rim; a generic role for the thinnest separations inside small content.",
-    "A trailing Counter takes the badge size and its content color; the inline padding on its side becomes paddingBlock so the counter is framed evenly. Counter needs no change: it already inherits the host color and size.",
-    "Trailing Counter only with the subtle appearance: measured in the 18 contexts, the counter digits on the 12 % tint reach 6.74:1 or more on subtle badges but only 3.95 (success), 4.33 (info) and 4.55 (neutral) on strong ones, below 4.5:1 for 11 to 14 px text. A strong badge with a count would need a counter without tint, which Counter does not offer."
+    "Box family of Counter: indicator typography (typography.indicator.{size}, 11/12/14 px), block size = line box, cap-height centering, minimum inline size = block size, radius.indicator, padding space.content.xs; a badge and a counter of the same size align. Sizes named like Button sizes, default md.",
+    "User decision at the contract gate (2026-10-16): Badge, Counter and Tag are distinct. Badge describes an object (status or category, read-only, set by the application); Counter says how many; Tag is a value the user manipulates (removable, sometimes selectable, often user-created). The trailing Counter and the dismissible option suggested at the first review belong to Tag: the trailing slot and space.content.2xs were withdrawn (\"Ok ça me va\"), and Tag is added to the catalog as a later candidate.",
+    "User decision at the contract gate (2026-10-16): neutral intent kept with the color.status.neutral.* roles (part of the accepted proposal).",
+    "User decision at the contract gate (2026-10-16): accent intent added (\"pourquoi pas avoir l'intent accent pour le badge aussi\"): new roles color.status.accent.* aliasing color.palette.accent and mirroring info (light 50/600/800/neutral.0/300/600, dark 950/600/200/neutral.0/800/400); four inventory contrast pairs. Listed after neutral since both are categories rather than statuses. Measured in the 18 contexts: content/surface 8.76 to 11.66, contentStrong/surfaceStrong 5.32 to 5.67, icon/surface 4.96 to 6.47, icon/surface.default 5.32 to 6.85."
   ],
-  "openDecisions": [
-    {
-      "id": 1,
-      "question": "Accept the foundations addition color.status.neutral.* (six roles, contrast pairs pass in every context) for the neutral intent?",
-      "proposal": "Yes. Alternative: no neutral intent (status intents only) and categories as plain text.",
-      "blocks": "contract gate"
-    },
-    {
-      "id": 2,
-      "question": "Add an accent intent (New, Beta, brand categories)?",
-      "proposal": "Not in v1: no status role carries the accent, and info already covers New. If wanted, add color.status.accent.* aliasing color.palette.accent (same six roles), which would also give Counter its colored emphasis later.",
-      "blocks": "nothing"
-    },
-    {
-      "id": 3,
-      "question": "Dismissible (closable) badge: an option of Badge, or a separate Tag component later?",
-      "proposal": "Recommended: a separate Tag component, scheduled with the filters and MultiSelect. A dismiss button makes the badge interactive (focus, keyboard Delete and Backspace, focus moved after removal, a dismiss event, a translatable Remove {label} name), and a status (Paid, Overdue) is never removable: only categories and filter values are. It also conflicts with the 44 x 44 px minimum target decided in the foundations: a 20 px badge cannot hold one without overlapping its neighbours, so Tag needs its own sizing (a taller box, or a documented exception to the WCAG 2.5.8 minimum of 24 px). If you prefer an option on Badge, I add dismissible, a dismiss part, a dismiss event and a dismissLabel prop in this wave, with those rules.",
-      "blocks": "contract gate"
-    }
-  ],
-  "nextAction": "Contract gate (grouped with IconButton and Link), second round after the user's review: reviewer confirms the trailing Counter, the neutral status roles and space.content.2xs (open decision 1), the scope without accent (2) and decides the dismissible question (3); then record the approval and start the implementation.",
+  "openDecisions": [],
+  "nextAction": "Contract gate, final confirmation of the simplified Badge with the accent intent (grouped with Link); then record the approval, re-record the semantic approval of the foundations (neutral and accent status roles) and start the implementation.",
   "implementationNotes": [
     "Markup: <span class=\"ggb-badge\" data-intent data-appearance data-size> with the leading icon (aria-hidden) and <span class=\"ggb-badge__label\">; no role (static text). Truncation with native text-overflow and the full label in a title-free visually hidden copy only if truncation hides it (decided at implementation).",
     "No Bits UI primitive (static content), like Counter."

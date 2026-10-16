@@ -3,7 +3,7 @@
   "componentId": "icon-button",
   "family": "actions",
   "wave": 1,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Trigger an action, or navigate to a task, from a compact square control that shows only an icon, with an accessible name that is never visible.",
     "useCases": [
@@ -45,7 +45,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "IconButton contract: intent (accent, neutral, danger; default neutral), appearance (solid, outline, ghost; default ghost), size (sm, md, lg), required label as the accessible name only, href, disabled, loading; container, icon (exactly one Icon) and loadingIndicator parts; Button interaction states, precedence and activate event; Button tokens with a square box of size.control.{size}; thirteen rules.",
+      "revision": {
+        "paths": ["foundations/components/actions/icon-button/contract.json"],
+        "sha256": {
+          "foundations/components/actions/icon-button/contract.json": "b9298af06953dbb94216c3e65a257e6db283443d3fe69698105de1ec3919ba79"
+        }
+      },
+      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU (2026-10-16): the only open question (default treatment) answered with \"Pareil pour le neutral+ghost par défaut sur le bouton icône\"; no other remark on this contract across two review rounds. Approval recorded on that basis; the user may object to the record.",
+      "note": "No token change; Link and Badge await their final confirmation at the same gate."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -58,7 +68,7 @@
       "command": "npm run validate",
       "report": "reports/components/icon-button/contract-validation.json",
       "date": "2026-10-16",
-      "note": "Schema, consistency, token coverage (120 paths) in 18 contexts and accepted components (--dependencies); check-foundations passes (384 roles, 1836 contrast checks, 0 failures)."
+      "note": "Schema, consistency, token coverage (120 paths) in 18 contexts and accepted components (--dependencies); check-foundations passes (389 roles, 1908 contrast checks, 0 failures)."
     },
     {
       "kind": "build-tokens",
@@ -72,22 +82,15 @@
   "decisionsTaken": [
     "Separate component rather than a Button option: an icon-only control has a different required anatomy (one icon, no visible label), a square box and a different default treatment; Button keeps its required visible label.",
     "Same props, states, event, precedence and tokens as Button where they apply (intent, appearance, size, href, disabled, loading; color.action.*, radius.control, size.control.{size}, size.icon.{size}, focus roles, motion), so an IconButton matches a Button of the same size; no new token.",
-    "Default intent neutral and appearance ghost (Button: accent solid): icon buttons are mostly secondary actions in toolbars and rows, where a filled accent square is too loud. Open decision 1 asks the reviewer to confirm.",
+    "Default intent neutral and appearance ghost (Button: accent solid): icon buttons are mostly secondary actions in toolbars and rows, where a filled accent square is too loud. Confirmed by the user at the contract gate (2026-10-16, \"Pareil pour le neutral+ghost par défaut sur le bouton icône\").",
     "label is required and only the accessible name, as in the catalog note (\"IconButton needs an explicit accessible name\"); no native title tooltip: it is not keyboard or touch accessible and would duplicate the future Tooltip.",
     "The icon slot requires exactly one Icon (min 1, max 1) and the host's iconSize applies, as in Button slots (Icon contract rule).",
     "Box: a square of size.control.{size} (32/40/48 px in standard density, following density like Button heights); the interaction target is extended to 44 px without enlarging the visible box.",
     "The icon is centered by its box: the reference set draws its 1/8 inset symmetrically, so the box center is the drawing center and no optical compensation is needed.",
     "Contrast checked on the same contrastScope as Button (six neutral backdrops, outline border on muted in dark informational, accepted at the Button contract gate)."
   ],
-  "openDecisions": [
-    {
-      "id": 1,
-      "question": "Default treatment: neutral + ghost (proposed) or the Button defaults accent + solid?",
-      "proposal": "neutral + ghost: the most frequent icon-only use (toolbars, rows, close buttons); a consumer sets intent and appearance explicitly for a primary icon action.",
-      "blocks": "contract gate"
-    }
-  ],
-  "nextAction": "Contract gate (grouped with Link and Badge): reviewer confirms the default treatment (open decision 1); then record the approval with digests and start the implementation (ggb-svelte).",
+  "openDecisions": [],
+  "nextAction": "Implementation (ggb-svelte), grouped with Link and Badge once their contracts are approved; then the interactive implementation review.",
   "implementationNotes": [
     "Self-contained folder packages/svelte/src/components/icon-button/ on the Bits UI Button primitive (button or a with href), its own CSS duplicated from the Button patterns rather than importing Button: a component folder must stay copyable with tokens.css, Bits UI and its declared dependencies (icon).",
     "Loading indicator: the same inline spinner as Button, sized at iconSize, replacing the icon in place."
