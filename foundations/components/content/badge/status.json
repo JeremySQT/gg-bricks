@@ -41,9 +41,27 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/badge/Badge.svelte",
+      "folder": "packages/svelte/src/components/badge",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (static content, no native semantics to borrow)"
+      },
+      "report": "reports/components/badge/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/badge",
+      "preview": "dist/previews/badge.html (npm run build:preview badge)",
+      "artifact": null
+    },
+    "tests": {
+      "ssr": "tests/ssr/badge.test.ts",
+      "browser": "tests/browser/badge.spec.ts",
+      "computed": "reports/components/badge/svelte/computed.json",
+      "screenshots": "reports/components/badge/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -80,6 +98,36 @@
       "report": "reports/components/badge/contrast.json",
       "date": "2026-10-16",
       "note": "1296 contrast records on the contrastScope backdrops in 18 contexts, 0 failures."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-17",
+      "note": "generate, lint, validate, unit tests (40), svelte-check, SSR (38), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/badge/svelte/ssr.json",
+      "date": "2026-10-17",
+      "note": "5 Badge tests."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-17",
+      "note": "Chromium 141, 6 Badge tests (full suite 61 passed); computed values: 11664 records in 18 contexts (reports/components/badge/svelte/computed.json). Details in reports/components/badge/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run build:preview badge",
+      "date": "2026-10-17",
+      "note": "dist/previews/badge.html mounts from file:// without errors."
     }
   ],
   "decisionsTaken": [
@@ -95,10 +143,11 @@
     "User decision at the contract gate (2026-10-16): accent intent added (\"pourquoi pas avoir l'intent accent pour le badge aussi\"): new roles color.status.accent.* aliasing color.palette.accent and mirroring info (light 50/600/800/neutral.0/300/600, dark 950/600/200/neutral.0/800/400); four inventory contrast pairs. Listed after neutral since both are categories rather than statuses. Measured in the 18 contexts: content/surface 8.76 to 11.66, contentStrong/surfaceStrong 5.32 to 5.67, icon/surface 4.96 to 6.47, icon/surface.default 5.32 to 6.85."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (ggb-svelte), grouped with the other components of the wave; then the interactive implementation review.",
+  "nextAction": "Implementation gate (grouped with the other components of the wave): the reviewer exercises the preview page; record the approval with source digests, then the Figma parity phase (ggb-figma).",
   "implementationNotes": [
     "Markup: <span class=\"ggb-badge\" data-intent data-appearance data-size> with the leading icon (aria-hidden) and <span class=\"ggb-badge__label\">; no role (static text). Truncation with native text-overflow and the full label in a title-free visually hidden copy only if truncation hides it (decided at implementation).",
-    "No Bits UI primitive (static content), like Counter."
+    "No Bits UI primitive (static content), like Counter.",
+    "Implemented: block-size: 1lh so that the 12 px icon never grows the box; the strong appearance keeps a transparent inset edge; forced colors draw a 1 px CanvasText outline."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

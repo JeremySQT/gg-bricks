@@ -1,0 +1,91 @@
+<script lang="ts">
+  import { Button as Primitive } from 'bits-ui';
+  import type { IconButtonProps } from './types.js';
+  import { defaults } from './contract.generated.js';
+  import './tokens.generated.css';
+  import './icon-button.css';
+
+  let {
+    label,
+    icon,
+    intent = defaults.intent,
+    appearance = defaults.appearance,
+    size = defaults.size,
+    disabled = defaults.disabled,
+    loading = defaults.loading,
+    href,
+    type = 'button',
+    onactivate,
+    ref = $bindable(null),
+    class: className,
+    ...rest
+  }: IconButtonProps = $props();
+
+  // Fail identically on the server and in the browser rather than render a control without a name.
+  const name = $derived.by(() => {
+    if (typeof label !== 'string' || !label.trim()) throw new Error('IconButton requires a non-empty label.');
+    return label;
+  });
+
+  // Contract precedence: disabled wins over loading; both block activation and navigation.
+  const blocked = $derived(disabled || loading);
+
+  type Handler = (event: MouseEvent) => void;
+  const handlers = $derived(rest as { onclick?: Handler; onauxclick?: Handler });
+
+  function handleClick(event: MouseEvent) {
+    if (blocked) {
+      // Cancels navigation and form submission; loading keeps focus, so keyboard presses land here.
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return;
+    }
+    handlers.onclick?.(event);
+    onactivate?.(event);
+  }
+
+  // A middle click on a link opens it in a new tab through auxclick, not click: a loading link keeps
+  // its href (to stay focusable), so that path is guarded too. Disabled links have no href.
+  function handleAuxclick(event: MouseEvent) {
+    if (blocked) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return;
+    }
+    handlers.onauxclick?.(event);
+  }
+
+  // Bits UI renders <a> when href is set and <button> otherwise. Disabled removes the href, the
+  // native focus and activation; loading keeps them and is guarded in handleClick. The label is the
+  // accessible name through aria-label: the element has no visible text.
+  const primitiveProps = $derived({
+    ...rest,
+    ...(href === undefined ? { type, disabled } : { href, disabled }),
+    class: ['ggb-icon-button', className],
+    'aria-label': name,
+    'data-intent': intent,
+    'data-appearance': appearance,
+    'data-size': size,
+    'data-disabled': disabled ? '' : undefined,
+    'data-loading': loading ? '' : undefined,
+    'aria-busy': loading && !disabled ? 'true' : undefined,
+    'aria-disabled': blocked ? 'true' : undefined,
+    onclick: handleClick,
+    onauxclick: handleAuxclick
+  } as Primitive.RootProps);
+</script>
+
+<Primitive.Root {...primitiveProps} bind:ref>
+  <span class="ggb-icon-button__container">
+    {#if loading}
+      <span class="ggb-icon-button__loadingIndicator" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" focusable="false">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" opacity="0.25" />
+          <path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        </svg>
+      </span>
+    {:else}
+      <span class="ggb-icon-button__icon" aria-hidden="true">{@render icon()}</span>
+    {/if}
+  </span>
+</Primitive.Root>

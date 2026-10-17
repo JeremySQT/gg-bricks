@@ -1,0 +1,71 @@
+/* Generated token bindings from the badge contract. Do not edit. */
+.ggb-badge[data-intent="neutral"] {
+  --ggb-badge-surface: var(--ggb-color-status-neutral-surface);
+  --ggb-badge-content: var(--ggb-color-status-neutral-content);
+  --ggb-badge-border: var(--ggb-color-status-neutral-border);
+  --ggb-badge-iconColor: var(--ggb-color-status-neutral-icon);
+  --ggb-badge-strongSurfaceColor: var(--ggb-color-status-neutral-surfaceStrong);
+  --ggb-badge-strongContentColor: var(--ggb-color-status-neutral-contentStrong);
+}
+.ggb-badge[data-intent="accent"] {
+  --ggb-badge-surface: var(--ggb-color-status-accent-surface);
+  --ggb-badge-content: var(--ggb-color-status-accent-content);
+  --ggb-badge-border: var(--ggb-color-status-accent-border);
+  --ggb-badge-iconColor: var(--ggb-color-status-accent-icon);
+  --ggb-badge-strongSurfaceColor: var(--ggb-color-status-accent-surfaceStrong);
+  --ggb-badge-strongContentColor: var(--ggb-color-status-accent-contentStrong);
+}
+.ggb-badge[data-intent="info"] {
+  --ggb-badge-surface: var(--ggb-color-status-info-surface);
+  --ggb-badge-content: var(--ggb-color-status-info-content);
+  --ggb-badge-border: var(--ggb-color-status-info-border);
+  --ggb-badge-iconColor: var(--ggb-color-status-info-icon);
+  --ggb-badge-strongSurfaceColor: var(--ggb-color-status-info-surfaceStrong);
+  --ggb-badge-strongContentColor: var(--ggb-color-status-info-contentStrong);
+}
+.ggb-badge[data-intent="success"] {
+  --ggb-badge-surface: var(--ggb-color-status-success-surface);
+  --ggb-badge-content: var(--ggb-color-status-success-content);
+  --ggb-badge-border: var(--ggb-color-status-success-border);
+  --ggb-badge-iconColor: var(--ggb-color-status-success-icon);
+  --ggb-badge-strongSurfaceColor: var(--ggb-color-status-success-surfaceStrong);
+  --ggb-badge-strongContentColor: var(--ggb-color-status-success-contentStrong);
+}
+.ggb-badge[data-intent="warning"] {
+  --ggb-badge-surface: var(--ggb-color-status-warning-surface);
+  --ggb-badge-content: var(--ggb-color-status-warning-content);
+  --ggb-badge-border: var(--ggb-color-status-warning-border);
+  --ggb-badge-iconColor: var(--ggb-color-status-warning-icon);
+  --ggb-badge-strongSurfaceColor: var(--ggb-color-status-warning-surfaceStrong);
+  --ggb-badge-strongContentColor: var(--ggb-color-status-warning-contentStrong);
+}
+.ggb-badge[data-intent="danger"] {
+  --ggb-badge-surface: var(--ggb-color-status-danger-surface);
+  --ggb-badge-content: var(--ggb-color-status-danger-content);
+  --ggb-badge-border: var(--ggb-color-status-danger-border);
+  --ggb-badge-iconColor: var(--ggb-color-status-danger-icon);
+  --ggb-badge-strongSurfaceColor: var(--ggb-color-status-danger-surfaceStrong);
+  --ggb-badge-strongContentColor: var(--ggb-color-status-danger-contentStrong);
+}
+.ggb-badge {
+  --ggb-badge-borderWidth: var(--ggb-border-width-default);
+  --ggb-badge-radius: var(--ggb-radius-indicator);
+  --ggb-badge-paddingInline: var(--ggb-space-content-xs);
+  --ggb-badge-leadingGap: var(--ggb-space-content-xs);
+  --ggb-badge-iconSize: var(--ggb-size-icon-xs);
+}
+.ggb-badge[data-size="sm"] {
+  --ggb-badge-typography: var(--ggb-typography-indicator-sm);
+  --ggb-badge-typography-letterSpacing: var(--ggb-typography-indicator-sm-letterSpacing);
+  --ggb-badge-typography-fontFeatureSettings: var(--ggb-typography-indicator-sm-fontFeatureSettings);
+}
+.ggb-badge[data-size="md"] {
+  --ggb-badge-typography: var(--ggb-typography-indicator-md);
+  --ggb-badge-typography-letterSpacing: var(--ggb-typography-indicator-md-letterSpacing);
+  --ggb-badge-typography-fontFeatureSettings: var(--ggb-typography-indicator-md-fontFeatureSettings);
+}
+.ggb-badge[data-size="lg"] {
+  --ggb-badge-typography: var(--ggb-typography-indicator-lg);
+  --ggb-badge-typography-letterSpacing: var(--ggb-typography-indicator-lg-letterSpacing);
+  --ggb-badge-typography-fontFeatureSettings: var(--ggb-typography-indicator-lg-fontFeatureSettings);
+}

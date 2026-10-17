@@ -1,0 +1,11 @@
+{
+  "result": "passed",
+  "checks": [
+    "page link: element, class, href, defaults, label only, same context",
+    "external: new context, rel merged with noopener noreferrer, glyph hidden, suffix",
+    "email, phone, print: glyph, suffix, same context",
+    "file: meta text, glyph, last word kept with them, no suffix; no meta without type and size",
+    "translated suffix, tone inherit, class merge, native attributes, owned target",
+    "invalid label and href rejected on the server"
+  ]
+}

@@ -38,9 +38,27 @@
     "tokens": [],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/icon-button/IconButton.svelte",
+      "folder": "packages/svelte/src/components/icon-button",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (Button.Root)"
+      },
+      "report": "reports/components/icon-button/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/icon-button",
+      "preview": "dist/previews/icon-button.html (npm run build:preview icon-button)",
+      "artifact": null
+    },
+    "tests": {
+      "ssr": "tests/ssr/icon-button.test.ts",
+      "browser": "tests/browser/icon-button.spec.ts",
+      "computed": "reports/components/icon-button/svelte/computed.json",
+      "screenshots": "reports/components/icon-button/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -77,6 +95,36 @@
       "report": "reports/components/icon-button/contrast.json",
       "date": "2026-10-16",
       "note": "6264 contrast records on the contrastScope backdrops in 18 contexts, 0 failures."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-17",
+      "note": "generate, lint, validate, unit tests (40), svelte-check, SSR (38), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/icon-button/svelte/ssr.json",
+      "date": "2026-10-17",
+      "note": "6 IconButton tests."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-17",
+      "note": "Chromium 141, 7 IconButton tests (full suite 61 passed); computed values: 7992 records in 18 contexts (reports/components/icon-button/svelte/computed.json). Details in reports/components/icon-button/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run build:preview icon-button",
+      "date": "2026-10-17",
+      "note": "dist/previews/icon-button.html mounts from file:// without errors."
     }
   ],
   "decisionsTaken": [
@@ -90,10 +138,11 @@
     "Contrast checked on the same contrastScope as Button (six neutral backdrops, outline border on muted in dark informational, accepted at the Button contract gate)."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (ggb-svelte), grouped with Link and Badge; then the interactive implementation review.",
+  "nextAction": "Implementation gate (grouped with the other components of the wave): the reviewer exercises the preview page; record the approval with source digests, then the Figma parity phase (ggb-figma).",
   "implementationNotes": [
     "Self-contained folder packages/svelte/src/components/icon-button/ on the Bits UI Button primitive (button or a with href), its own CSS duplicated from the Button patterns rather than importing Button: a component folder must stay copyable with tokens.css, Bits UI and its declared dependencies (icon).",
-    "Loading indicator: the same inline spinner as Button, sized at iconSize, replacing the icon in place."
+    "Loading indicator: the same inline spinner as Button, sized at iconSize, replacing the icon in place.",
+    "Implemented: the ::before target is extended in both dimensions (Button extends only the width); the review glyphs added for the wave (x, dots-three, pencil-simple, copy, info, magnifying-glass, star) live in examples/icon-button/glyphs.ts so that the Icon review page stays unchanged."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

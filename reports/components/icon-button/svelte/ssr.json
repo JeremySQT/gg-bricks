@@ -1,0 +1,11 @@
+{
+  "result": "passed",
+  "checks": [
+    "default icon button: element, type, class, defaults neutral ghost md, aria-label, hidden icon, no text",
+    "27 intent x appearance x size combinations",
+    "disabled, loading (indicator in place of the icon) and their combination",
+    "link role, disabled link without href, loading link kept focusable",
+    "type submit, class merge, native attributes, owned aria-label",
+    "invalid label rejected on the server"
+  ]
+}

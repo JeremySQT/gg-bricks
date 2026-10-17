@@ -39,9 +39,28 @@
     "tokens": [],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/link/Link.svelte",
+      "folder": "packages/svelte/src/components/link",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (a native anchor carries the semantics)"
+      },
+      "report": "reports/components/link/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/link",
+      "preview": "dist/previews/link.html (npm run build:preview link)",
+      "artifact": null
+    },
+    "tests": {
+      "ssr": "tests/ssr/link.test.ts",
+      "browser": "tests/browser/link.spec.ts",
+      "computed": "reports/components/link/svelte/computed.json",
+      "screenshots": "reports/components/link/svelte/*.png",
+      "unit": "tests/link-destination.test.ts"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -78,6 +97,36 @@
       "report": "reports/components/link/contrast.json",
       "date": "2026-10-16",
       "note": "108 contrast records on the contrastScope backdrops in 18 contexts, 0 failures. The component report measures only the focus ring (Link binds content without a surface role); color.content.link is measured by the inventory pairs on canvas, default, subtle, muted, raised and overlay: 4.80 to 11.19 after the dark amendment."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-17",
+      "note": "generate, lint, validate, unit tests (40), svelte-check, SSR (38), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/link/svelte/ssr.json",
+      "date": "2026-10-17",
+      "note": "6 Link tests."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-17",
+      "note": "Chromium 141, 8 Link tests (full suite 61 passed); computed values: 4104 records in 18 contexts (reports/components/link/svelte/computed.json). Details in reports/components/link/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run build:preview link",
+      "date": "2026-10-17",
+      "note": "dist/previews/link.html mounts from file:// without errors."
     }
   ],
   "decisionsTaken": [
@@ -102,11 +151,12 @@
       "blocks": "nothing"
     }
   ],
-  "nextAction": "Implementation (ggb-svelte), grouped with the other components of the wave; then the interactive implementation review.",
+  "nextAction": "Implementation gate (grouped with the other components of the wave): the reviewer exercises the preview page; record the approval with source digests, then the Figma parity phase (ggb-figma).",
   "implementationNotes": [
     "Markup: <a class=\"ggb-link\" data-tone data-destination href> with the label, a <span class=\"ggb-link__meta\"> for files, the glyph (aria-hidden) and a visually hidden suffix; external adds target=\"_blank\" rel=\"noopener noreferrer\". The last word, meta and glyph are wrapped in a no-wrap span so they never start a line alone.",
     "Underline through text-decoration (thickness from the tokens, text-underline-offset from-font) on the label only; focus with outline on the inline box so it follows each line.",
-    "Glyph table in a glyphs.ts of the component folder, keyed by destination and normalized fileType."
+    "Glyph table in a glyphs.ts of the component folder, keyed by destination and normalized fileType.",
+    "Implemented: the underline is drawn on the label spans (not the anchor) so that meta and glyph are never underlined; box-decoration-break: clone for per-line corners and focus ring; rel merged with noopener noreferrer for external; target owned. Glyph table copied from @phosphor-icons/core 2.1.1."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

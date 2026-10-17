@@ -11,3 +11,16 @@ export type { CounterSize } from './components/counter/contract.generated.js';
 export { default as Shortcut } from './components/shortcut/Shortcut.svelte';
 export type { ShortcutProps } from './components/shortcut/types.js';
 export type { ShortcutPlatform, ShortcutAppearance, ShortcutSize } from './components/shortcut/contract.generated.js';
+export { default as IconButton } from './components/icon-button/IconButton.svelte';
+export type { IconButtonProps, IconButtonAsButton, IconButtonAsLink } from './components/icon-button/types.js';
+export type {
+  IconButtonIntent,
+  IconButtonAppearance,
+  IconButtonSize
+} from './components/icon-button/contract.generated.js';
+export { default as Link } from './components/link/Link.svelte';
+export type { LinkProps } from './components/link/types.js';
+export type { LinkTone, LinkDestination } from './components/link/contract.generated.js';
+export { default as Badge } from './components/badge/Badge.svelte';
+export type { BadgeProps } from './components/badge/types.js';
+export type { BadgeIntent, BadgeAppearance, BadgeSize } from './components/badge/contract.generated.js';

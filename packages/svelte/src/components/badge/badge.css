@@ -1,0 +1,100 @@
+/*
+ * Badge structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * The root element is the container part: a box the height of the label's line box (the Counter box
+ * family), at least as wide as it is high, with the label centered on its capital height.
+ */
+.ggb-badge {
+  --_surface: var(--ggb-badge-surface);
+  --_content: var(--ggb-badge-content);
+  --_icon: var(--ggb-badge-iconColor);
+  --_edge: var(--ggb-badge-border);
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  /* The line box of the typography, from the lh unit: an icon taller than the capitals never grows the box. */
+  block-size: 1lh;
+  min-inline-size: 1lh;
+  max-inline-size: 100%;
+  /* A flex parent may shrink a badge (the label truncates) but never below its icon and padding. */
+  flex: 0 1 auto;
+  margin: 0;
+  padding-block: 0;
+  padding-inline: var(--ggb-badge-paddingInline);
+  border: 0;
+  border-radius: var(--ggb-badge-radius);
+  background-color: var(--_surface);
+  color: var(--_content);
+  font: var(--ggb-badge-typography);
+  letter-spacing: var(--ggb-badge-typography-letterSpacing, normal);
+  font-feature-settings: var(--ggb-badge-typography-fontFeatureSettings, normal);
+  white-space: nowrap;
+  /* The edge is drawn inside the boundary, so it never changes the outer dimensions. */
+  box-shadow: inset 0 0 0 var(--ggb-badge-borderWidth) var(--_edge);
+  /* Transparent outline: invisible normally, drawn by the system in forced-colors mode. */
+  outline: var(--ggb-badge-borderWidth) solid transparent;
+  outline-offset: calc(-1 * var(--ggb-badge-borderWidth));
+}
+
+.ggb-badge[data-appearance='strong'] {
+  --_surface: var(--ggb-badge-strongSurfaceColor);
+  --_content: var(--ggb-badge-strongContentColor);
+  --_icon: var(--ggb-badge-strongContentColor);
+  --_edge: transparent;
+}
+
+.ggb-badge__label {
+  display: block;
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ggb-badge__leading {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  margin-inline-end: var(--ggb-badge-leadingGap);
+  color: var(--_icon);
+}
+/*
+ * Optical alignment: icons of the reference set draw 1/8 inside their box on each side, so the box overlaps
+ * the padding by that inset and the drawing sits at paddingInline from the edge. The host size applies.
+ */
+.ggb-badge__leading > svg {
+  display: block;
+  inline-size: var(--ggb-badge-iconSize);
+  block-size: var(--ggb-badge-iconSize);
+  margin-inline-start: calc(var(--ggb-badge-iconSize) / -8);
+  flex: none;
+  vertical-align: baseline;
+}
+
+/*
+ * Vertical centering on the capital height: the label box is trimmed to cap height and baseline and a
+ * symmetric block padding restores the line-box height, as in Counter. The overflow clip margin keeps
+ * descenders visible. Browsers without text-box keep the line-box centering.
+ */
+@supports (text-box: trim-both cap alphabetic) {
+  .ggb-badge {
+    padding-block: calc((1lh - 1cap) / 2);
+  }
+  .ggb-badge__label {
+    text-box: trim-both cap alphabetic;
+    overflow: clip;
+    overflow-clip-margin: 0.3em;
+  }
+}
+
+@media (forced-colors: active) {
+  .ggb-badge {
+    box-shadow: none;
+    outline-color: CanvasText;
+    color: CanvasText;
+  }
+  .ggb-badge__leading {
+    color: CanvasText;
+  }
+}
