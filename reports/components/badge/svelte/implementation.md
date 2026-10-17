@@ -2,6 +2,8 @@
 
 Component: `packages/svelte/src/components/badge/` (Svelte 5.57.1; no Bits UI primitive: a badge is static text with no native semantics to borrow). Review page: `examples/badge/`; self-contained preview: `dist/previews/badge.html` (`npm run build:preview badge`). Implemented on 2026-10-17 against contract digest `b6d1402d…`, as re-recorded after the simplification and the accent intent at the contract gate of 2026-10-17; implementation approval pending (grouped implementation gate with IconButton and Link).
 
+Amended on 2026-10-17 after the user's review ("les lettres qui descendent sont masquées/coupées par le container du badge"): the label was clipped in both directions (`overflow: clip`) and relied on `overflow-clip-margin: 0.3em` to keep the descenders below the cap-trimmed box. Safari does not support `overflow-clip-margin`, so it cut g, p and y at the baseline; Chromium hid the defect. The label is now clipped in the inline direction only (`overflow-x: clip; overflow-y: visible`), which is all the ellipsis needs, so no browser can cut the descenders. Simulated on the adjustment page (`examples/link-badge-review`, "Before" with `overflow: hidden`); the browser test now asserts the clip axes. Not verified in WebKit (not installed in this environment).
+
 ## Structure
 
 - `Badge.svelte`: one `<span class="ggb-badge" data-intent data-appearance data-size>`, which is the container part, holding an optional `ggb-badge__leading` (`aria-hidden`, renders the `leading` snippet) and `ggb-badge__label` (the text). No role, no `aria-*`, no `tabindex`: the label is read where it stands. Native attributes pass through; `class` merged; `ref` bindable.

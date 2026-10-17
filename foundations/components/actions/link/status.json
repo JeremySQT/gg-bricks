@@ -149,6 +149,12 @@
       "question": "Should a file link (or any destination) also be able to open in a new tab, announced like external?",
       "proposal": "Not in v1: only external opens a new tab; a PDF opens in the browser tab and Back returns. A newTab option can be added later if products need it.",
       "blocks": "nothing"
+    },
+    {
+      "id": 3,
+      "question": "Implementation review (2026-10-17): the user asked for a subtler glyph, \"juste comme une petite info complémentaire\". Which variant of examples/link-badge-review?",
+      "proposal": "B: the glyph in the link color at opacity.muted (70 %), like a plain Shortcut beside its label; it works with both tones and needs one contract role (indicatorOpacity: opacity.muted). C and D use a neutral grey that cannot follow tone inherit.",
+      "blocks": "implementation gate"
     }
   ],
   "nextAction": "Implementation gate (grouped with the other components of the wave): the reviewer exercises the preview page; record the approval with source digests, then the Figma parity phase (ggb-figma).",

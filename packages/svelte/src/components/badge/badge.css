@@ -47,7 +47,13 @@
 .ggb-badge__label {
   display: block;
   min-inline-size: 0;
-  overflow: hidden;
+  /*
+   * Clipped in the inline direction only, which is all the ellipsis needs: descenders and accents may extend
+   * past the label box vertically. A vertical clip with overflow-clip-margin is not enough, since Safari does
+   * not support overflow-clip-margin and would cut the descenders at the trimmed baseline.
+   */
+  overflow-x: clip;
+  overflow-y: visible;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -74,8 +80,8 @@
 
 /*
  * Vertical centering on the capital height: the label box is trimmed to cap height and baseline and a
- * symmetric block padding restores the line-box height, as in Counter. The overflow clip margin keeps
- * descenders visible. Browsers without text-box keep the line-box centering.
+ * symmetric block padding restores the line-box height, as in Counter. Descenders overflow the trimmed
+ * box into that padding, unclipped. Browsers without text-box keep the line-box centering.
  */
 @supports (text-box: trim-both cap alphabetic) {
   .ggb-badge {
@@ -83,8 +89,6 @@
   }
   .ggb-badge__label {
     text-box: trim-both cap alphabetic;
-    overflow: clip;
-    overflow-clip-margin: 0.3em;
   }
 }
 

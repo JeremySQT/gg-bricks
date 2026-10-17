@@ -159,6 +159,10 @@ test('the label truncates with an ellipsis in a narrow cell; the icon stays whol
   }
   expect((await measure(page, '#badge-warning-subtle-md')).truncated).toBe(false);
   await expect(page.locator('#truncated .ggb-badge__label')).toHaveCSS('text-overflow', 'ellipsis');
+  // Clipped horizontally only: descenders are never cut, whatever the browser's support for overflow-clip-margin.
+  await expect(page.locator('#truncated .ggb-badge__label')).toHaveCSS('overflow-x', 'clip');
+  await expect(page.locator('#truncated .ggb-badge__label')).toHaveCSS('overflow-y', 'visible');
+  await expect(page.locator('#truncated .ggb-badge__label')).toHaveCSS('overflow-clip-margin', '0px');
   await expect(page.locator('#long')).toHaveCSS('white-space', 'nowrap');
 });
 

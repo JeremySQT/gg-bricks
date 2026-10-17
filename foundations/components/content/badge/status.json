@@ -54,7 +54,12 @@
     "examples": {
       "page": "examples/badge",
       "preview": "dist/previews/badge.html (npm run build:preview badge)",
-      "artifact": "https://claude.ai/artifact/6D7aXkYH7NsK7HDygz8dSk (version 1)"
+      "artifact": "https://claude.ai/artifact/6D7aXkYH7NsK7HDygz8dSk (version 2, descenders fixed)",
+      "adjustmentPage": {
+        "page": "examples/link-badge-review",
+        "artifact": "https://claude.ai/artifact/Mxz4dUCR8k2WaNQmUXa18J (version 1)",
+        "note": "Temporary comparison of the Link glyph colors and the Badge descender fix with all-caps alternatives; removed once decided."
+      }
     },
     "tests": {
       "ssr": "tests/ssr/badge.test.ts",
@@ -147,7 +152,8 @@
   "implementationNotes": [
     "Markup: <span class=\"ggb-badge\" data-intent data-appearance data-size> with the leading icon (aria-hidden) and <span class=\"ggb-badge__label\">; no role (static text). Truncation with native text-overflow and the full label in a title-free visually hidden copy only if truncation hides it (decided at implementation).",
     "No Bits UI primitive (static content), like Counter.",
-    "Implemented: block-size: 1lh so that the 12 px icon never grows the box; the strong appearance keeps a transparent inset edge; forced colors draw a 1 px CanvasText outline."
+    "Implemented: block-size: 1lh so that the 12 px icon never grows the box; the strong appearance keeps a transparent inset edge; forced colors draw a 1 px CanvasText outline.",
+    "Implementation review (2026-10-17): descenders were cut in Safari (no overflow-clip-margin support); the label is now clipped horizontally only. All-caps alternatives shown for the reviewer's choice on examples/link-badge-review."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
