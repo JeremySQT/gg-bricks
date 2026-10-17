@@ -3,7 +3,7 @@
   "componentId": "link",
   "family": "actions",
   "wave": 1,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Navigate to another page or resource from inside text, as an underlined word or phrase that reads with the sentence around it and tells the reader what it leads to (a page, another site, an email, a phone number, a file and its format, a printable version).",
     "useCases": [
@@ -46,7 +46,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Link contract: required label and href, tone (accent, inherit), destination (page, external, email, phone, file, print) with fileType, fileSize and destinationLabel; container, label, meta and indicator parts; default, hover and pressed interaction with focus; color.content.link, underline widths, indicator gap and focus roles; thirteen rules (destinations and glyphs, file meta, accessible name and suffix, permanent underline, tone, wrapping, no disabled state, focus per line box, forced colors). The dark link color amendment (accent.300) is recorded in the semantic approval.",
+      "revision": {
+        "paths": ["foundations/components/actions/link/contract.json"],
+        "sha256": {
+          "foundations/components/actions/link/contract.json": "fbe2a0f36d97cba45119440fd1413984b16566391789b59f184334b4e5395209"
+        }
+      },
+      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: three review rounds (2026-10-15 to 2026-10-17); Link destinations requested at the first round, Badge simplified and given the accent intent at the third; final \"D'accord pour tout ! Tu peux commencer le reste je valide\" (2026-10-17) covering the remaining questions (Link destinations including phone and print as a printable version, dark link color A, simplified Badge).",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -67,7 +77,7 @@
       "command": "npm run build:tokens",
       "report": "reports/components/link/contrast.json",
       "date": "2026-10-16",
-      "note": "108 contrast records on the contrastScope backdrops in 18 contexts, 0 failures. The component report measures only the focus ring (Link binds content without a surface role); color.content.link on the six backdrops was measured separately: 4.93 to 7.83 except surface.muted in dark (3.30 to 3.46), see open decision 1."
+      "note": "108 contrast records on the contrastScope backdrops in 18 contexts, 0 failures. The component report measures only the focus ring (Link binds content without a surface role); color.content.link is measured by the inventory pairs on canvas, default, subtle, muted, raised and overlay: 4.80 to 11.19 after the dark amendment."
     }
   ],
   "decisionsTaken": [
@@ -81,15 +91,10 @@
     "phone added beside email (tel: links are the same kind of destination); print means a link to a printable version, because opening the print dialog is an action that belongs to Button.",
     "File links show the format and size as visible text (PDF, 2.4 MB) in addition to the format glyph: the small lettering inside Phosphor's file glyphs is not legible at text size, and visible text helps everyone, not only screen reader users (practice of GOV.UK and most public-sector systems). The component does not format sizes (locale) and sets no download attribute: viewable formats open in the browser, others download, as the server decides.",
     "Glyphs (Phosphor, MIT): ArrowUpRight, Envelope, Phone, Printer, File, FilePdf, FileDoc, FileXls, FileCsv, FilePpt, FileTxt, FileZip, FileImage, FileAudio, FileVideo, copied as inline SVG paths into the component folder per the icon decision; one em square so they follow the text size. Only external opens a new tab.",
-    "No new token: meta and indicator take the link color; indicatorGap is space.content.xs."
+    "No new token: meta and indicator take the link color; indicatorGap is space.content.xs.",
+    "User at the contract gate (2026-10-17): destinations confirmed as drafted (phone included, print = a link to a printable version); dark link color changed to color.palette.accent.300 (4.80:1 or more on every neutral backdrop in the 18 contexts; recommendation A)."
   ],
   "openDecisions": [
-    {
-      "id": 1,
-      "question": "color.content.link reaches only 3.30 to 3.46:1 on color.surface.muted in dark (all three brands); 4.94 or more on the other neutral backdrops. Change the dark link color?",
-      "proposal": "Recommended (A): foundations amendment, color.content.link in dark from color.palette.accent.400 to color.palette.accent.300: 4.80 to 4.95 on muted, 7.17 or more elsewhere; the inventory pair content.link / surface.muted is added. Alternative (B): keep the value and declare surface.muted out of the Link contrastScope in dark (use tone inherit there).",
-      "blocks": "implementation"
-    },
     {
       "id": 2,
       "question": "Should a file link (or any destination) also be able to open in a new tab, announced like external?",
@@ -97,7 +102,7 @@
       "blocks": "nothing"
     }
   ],
-  "nextAction": "Contract gate (grouped with IconButton and Badge), second round after the user's review: reviewer confirms the destinations and the file meta, decides the dark link color (open decision 1); then record the approval and start the implementation.",
+  "nextAction": "Implementation (ggb-svelte), grouped with the other components of the wave; then the interactive implementation review.",
   "implementationNotes": [
     "Markup: <a class=\"ggb-link\" data-tone data-destination href> with the label, a <span class=\"ggb-link__meta\"> for files, the glyph (aria-hidden) and a visually hidden suffix; external adds target=\"_blank\" rel=\"noopener noreferrer\". The last word, meta and glyph are wrapped in a no-wrap span so they never start a line alone.",
     "Underline through text-decoration (thickness from the tokens, text-underline-offset from-font) on the label only; focus with outline on the inline box so it follows each line.",

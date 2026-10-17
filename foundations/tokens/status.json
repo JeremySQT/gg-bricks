@@ -46,7 +46,7 @@
       "note": "Values may still change through ggb-maintain Modify with a representative visual review; Figma variables are approved separately."
     },
     "semantic": {
-      "scope": "Semantic inventory (361 roles at the review; 371 after the amendments below) across base, brick and orchid in light and dark and three densities, with the contrast pairs of foundations/tokens/inventory.json (commit 7232b4e).",
+      "scope": "Semantic inventory (361 roles at the review; 389 after the amendments below) across base, brick and orchid in light and dark and three densities, with the contrast pairs of foundations/tokens/inventory.json (commit 7232b4e).",
       "revision": {
         "paths": [
           "foundations/tokens/config.json",
@@ -62,9 +62,9 @@
         ],
         "sha256": {
           "foundations/tokens/config.json": "dad74c754b9a01730b84b8849872ee28ae096b452954f10a436fa195c54f2e65",
-          "foundations/tokens/inventory.json": "09984901e6d2599c4e957fa0d2be34ad01d59a2888eb49be599500bbaeff52b6",
-          "foundations/tokens/base/semantic/appearance.dark.tokens.json": "548523cf1726df867458b9c54a4dccbcd7213f7580d5ff559ab8cc93b93b6081",
-          "foundations/tokens/base/semantic/appearance.light.tokens.json": "75909e6f22e53adcb7122c2581debcfc83130cffa24d4621b7dc05b24242a19e",
+          "foundations/tokens/inventory.json": "c0401647029a8338c9d274af93aa69a53066a33c0cab7935b71ba7f888c39c73",
+          "foundations/tokens/base/semantic/appearance.dark.tokens.json": "64fa5fa706b7e2f6787da04d7c05284905620493869e618923647a161c7e6d19",
+          "foundations/tokens/base/semantic/appearance.light.tokens.json": "f9c13daca73bb72a66ecbbfb2df5d6dcaae3ce5ef517f09ef2ba64737f731c5c",
           "foundations/tokens/base/semantic/common.tokens.json": "1bc7d41ebb572d81bbae30cc7daeb2beb1ce68a567d6efd8e640c566cf638d59",
           "foundations/tokens/base/semantic/density.comfortable.tokens.json": "1d639da1a714cd86d8e20048a588af431e1ded0eb088ffddef3cbaa1a466f863",
           "foundations/tokens/base/semantic/density.compact.tokens.json": "f9f1c703c7fc735816637cc2b45f2b8473e1353832183a99983d01574d005030",
@@ -73,7 +73,7 @@
           "foundations/tokens/orchid/semantic/common.tokens.json": "5de6c880874ad0e61d821f9279ab92417032333fc41d14577f74d453fc6eca51"
         }
       },
-      "provenance": "Foundations review in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8), three rounds on the review page dist/previews/foundations.html (artifact https://claude.ai/artifact/FXSaVj9UCJhHQr3T7M8omk, version 3). The user arbitrated every open point in chat (color.palette kept, warning B, icon method, fonts, brand names, purge) and confirmed the last addition (caption, overline, numeral roles) with 'Parfait pour les styles de textes'; approval is recorded on that basis and the user may object to the record. Amendments accepted by the user at the Button gates: nine space.control.{edge-inline,label-inline,slot-inline}.{sm,md,lg} density roles (Button contract gate, 2026-10-07) and radius.focus per brand (Button Figma parity review, 2026-10-13), see pendingChanges. Digests re-recorded on 2026-10-13 in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH (user authorization of the correction batch). Amendment of 2026-10-13 (defaults light and standard in config.json, invariants in inventory.json, cascade semantics; change record reports/tokens/changes/2026-10-13-defaults.md): user in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, \"Oui je valide ça\", after a plain-language summary of the three decisions (defaults without attributes, Figma default density standard, brand switch restates appearance and density). Digests re-recorded in that session. Amendment of 2026-10-14 (typography.indicator.{sm,md,lg} and radius.indicator): user at the grouped contract gate of Icon, Counter and Shortcut in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, \"Ok pour tout\" with the counter made rectangular; digests re-recorded. Amendment of 2026-10-14 (primitive.opacity.70, opacity.muted): user at the implementation review of the wave 1 slot contents in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH (70 % border on the Counter); digests re-recorded. Amendment of 2026-10-14 (primitive.opacity.12, opacity.tint): user on the Counter implementation review page in the same session, \"Je crois que je préfère la version 'BG Current color' à 12%\"; digests re-recorded.",
+      "provenance": "Foundations review in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8), three rounds on the review page dist/previews/foundations.html (artifact https://claude.ai/artifact/FXSaVj9UCJhHQr3T7M8omk, version 3). The user arbitrated every open point in chat (color.palette kept, warning B, icon method, fonts, brand names, purge) and confirmed the last addition (caption, overline, numeral roles) with 'Parfait pour les styles de textes'; approval is recorded on that basis and the user may object to the record. Amendments accepted by the user at the Button gates: nine space.control.{edge-inline,label-inline,slot-inline}.{sm,md,lg} density roles (Button contract gate, 2026-10-07) and radius.focus per brand (Button Figma parity review, 2026-10-13), see pendingChanges. Digests re-recorded on 2026-10-13 in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH (user authorization of the correction batch). Amendment of 2026-10-13 (defaults light and standard in config.json, invariants in inventory.json, cascade semantics; change record reports/tokens/changes/2026-10-13-defaults.md): user in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, \"Oui je valide ça\", after a plain-language summary of the three decisions (defaults without attributes, Figma default density standard, brand switch restates appearance and density). Digests re-recorded in that session. Amendment of 2026-10-14 (typography.indicator.{sm,md,lg} and radius.indicator): user at the grouped contract gate of Icon, Counter and Shortcut in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, \"Ok pour tout\" with the counter made rectangular; digests re-recorded. Amendment of 2026-10-14 (primitive.opacity.70, opacity.muted): user at the implementation review of the wave 1 slot contents in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH (70 % border on the Counter); digests re-recorded. Amendment of 2026-10-14 (primitive.opacity.12, opacity.tint): user on the Counter implementation review page in the same session, \"Je crois que je préfère la version 'BG Current color' à 12%\"; digests re-recorded. Amendment of 2026-10-17 (color.status.neutral.* and color.status.accent.* for Badge, color.content.link in dark from accent.400 to accent.300, inventory contrast pairs): user at the grouped contract gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU, neutral kept with the simplified Badge (\"Ok ça me va\", 2026-10-16), accent requested (\"pourquoi pas avoir l'intent accent pour le badge aussi\") and everything confirmed with \"D'accord pour tout !\" (2026-10-17); digests re-recorded.",
       "note": "color.surface.muted in dark is tested with primary and secondary content only. Figma variables pending (approvals.figmaVariables)."
     },
     "figmaVariables": {
@@ -260,13 +260,22 @@
       "date": "2026-10-15",
       "scope": "Semantic roles color.status.neutral.{surface,surfaceStrong,content,contentStrong,border,icon} (appearance axis; light palette.neutral 100/600/800/0/300/600, dark 800/600/200/0/600/400) for the neutral intent of Badge, with inventory entries and four contrast pairs mirroring the other statuses (all pass in the 18 contexts). No existing role changed. Proposed at the contract gate of IconButton, Link and Badge (branch wave/1-iconbutton-link-badge).",
       "approval": "Pending: to be accepted at that contract gate; approvals.semantic is re-recorded with new digests once accepted.",
-      "figma": "Not synced yet: Figma variables follow at the Figma parity phase of the wave."
+      "figma": "Not synced yet: Figma variables follow at the Figma parity phase of the wave.",
+      "recorded": "approvals.semantic re-recorded with this change on 2026-10-17."
     },
     {
       "date": "2026-10-16",
       "scope": "Semantic roles color.status.accent.{surface,surfaceStrong,content,contentStrong,border,icon} (appearance axis; light palette.accent 50/600/800, neutral.0, accent 300/600; dark accent 950/600/200, neutral.0, accent 800/400, mirroring info) for the accent intent of Badge, requested by the user at the contract gate of IconButton, Link and Badge; inventory entries and four contrast pairs. Brands follow their own accent ramp. No existing role changed. (space.content.2xs, proposed earlier the same day for a Badge trailing counter, was withdrawn with that slot.)",
       "approval": "Requested by the user (\"pourquoi pas avoir l'intent accent pour le badge aussi\"); approvals.semantic is re-recorded with new digests at the final confirmation of the Badge contract.",
-      "figma": "Not synced yet: Figma variables follow at the Figma parity phase of the wave."
+      "figma": "Not synced yet: Figma variables follow at the Figma parity phase of the wave.",
+      "recorded": "approvals.semantic re-recorded with this change on 2026-10-17."
+    },
+    {
+      "date": "2026-10-17",
+      "scope": "color.content.link in dark: color.palette.accent.400 -> color.palette.accent.300 (the link reached only 3.30 to 3.46:1 on color.surface.muted in dark); inventory pairs content.link on surface.muted, surface.raised and surface.overlay added (canvas, default and subtle existed). Light unchanged.",
+      "approval": "User at the contract gate of IconButton, Link and Badge (2026-10-17, \"D'accord pour tout\"), recommendation A of Link open decision 1.",
+      "figma": "Not synced yet: Figma variables follow at the Figma parity phase of the wave.",
+      "recorded": "approvals.semantic re-recorded with this change on 2026-10-17."
     }
   ]
 }

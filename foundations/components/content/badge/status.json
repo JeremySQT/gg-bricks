@@ -3,7 +3,7 @@
   "componentId": "badge",
   "family": "content",
   "wave": 1,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Describe an object with a short, read-only status or category word (Draft, Paid, Overdue, Beta) set by the application, in a small colored box whose words carry the meaning and whose color reinforces it.",
     "useCases": [
@@ -48,7 +48,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Badge contract: required label, intent (neutral, accent, info, success, warning, danger; default neutral), appearance (subtle, strong), size (sm, md, lg); container, leading (at most one Icon) and label parts; no state; color.status.{intent}.* roles, border.width.default, radius.indicator, typography.indicator.{size}, space.content.xs paddings and gap, size.icon.xs; nine rules (read-only text carrying the meaning, appearances, one-line truncation, Counter box family, optical icon placement, no interaction, forced colors). The neutral and accent status roles are recorded in the semantic approval.",
+      "revision": {
+        "paths": ["foundations/components/content/badge/contract.json"],
+        "sha256": {
+          "foundations/components/content/badge/contract.json": "87242b5e663c9abdcc5e6b6edbea6ccf2db34e6bc034a74655b721672ce3f24a"
+        }
+      },
+      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: three review rounds (2026-10-15 to 2026-10-17); Link destinations requested at the first round, Badge simplified and given the accent intent at the third; final \"D'accord pour tout ! Tu peux commencer le reste je valide\" (2026-10-17) covering the remaining questions (Link destinations including phone and print as a printable version, dark link color A, simplified Badge).",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -85,7 +95,7 @@
     "User decision at the contract gate (2026-10-16): accent intent added (\"pourquoi pas avoir l'intent accent pour le badge aussi\"): new roles color.status.accent.* aliasing color.palette.accent and mirroring info (light 50/600/800/neutral.0/300/600, dark 950/600/200/neutral.0/800/400); four inventory contrast pairs. Listed after neutral since both are categories rather than statuses. Measured in the 18 contexts: content/surface 8.76 to 11.66, contentStrong/surfaceStrong 5.32 to 5.67, icon/surface 4.96 to 6.47, icon/surface.default 5.32 to 6.85."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate, final confirmation of the simplified Badge with the accent intent (grouped with Link); then record the approval, re-record the semantic approval of the foundations (neutral and accent status roles) and start the implementation.",
+  "nextAction": "Implementation (ggb-svelte), grouped with the other components of the wave; then the interactive implementation review.",
   "implementationNotes": [
     "Markup: <span class=\"ggb-badge\" data-intent data-appearance data-size> with the leading icon (aria-hidden) and <span class=\"ggb-badge__label\">; no role (static text). Truncation with native text-overflow and the full label in a title-free visually hidden copy only if truncation hides it (decided at implementation).",
     "No Bits UI primitive (static content), like Counter."

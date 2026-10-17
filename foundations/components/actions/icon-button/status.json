@@ -90,7 +90,7 @@
     "Contrast checked on the same contrastScope as Button (six neutral backdrops, outline border on muted in dark informational, accepted at the Button contract gate)."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (ggb-svelte), grouped with Link and Badge once their contracts are approved; then the interactive implementation review.",
+  "nextAction": "Implementation (ggb-svelte), grouped with Link and Badge; then the interactive implementation review.",
   "implementationNotes": [
     "Self-contained folder packages/svelte/src/components/icon-button/ on the Bits UI Button primitive (button or a with href), its own CSS duplicated from the Button patterns rather than importing Button: a component folder must stay copyable with tokens.css, Bits UI and its declared dependencies (icon).",
     "Loading indicator: the same inline spinner as Button, sized at iconSize, replacing the icon in place."
