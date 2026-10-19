@@ -54,12 +54,7 @@
     "examples": {
       "page": "examples/badge",
       "preview": "dist/previews/badge.html (npm run build:preview badge)",
-      "artifact": "https://claude.ai/artifact/6D7aXkYH7NsK7HDygz8dSk (version 2, descenders fixed)",
-      "adjustmentPage": {
-        "page": "examples/link-badge-review",
-        "artifact": "https://claude.ai/artifact/Mxz4dUCR8k2WaNQmUXa18J (version 1)",
-        "note": "Temporary comparison of the Link glyph colors and the Badge descender fix with all-caps alternatives; removed once decided."
-      }
+      "artifact": "https://claude.ai/artifact/6D7aXkYH7NsK7HDygz8dSk (version 2, descenders fixed)"
     },
     "tests": {
       "ssr": "tests/ssr/badge.test.ts",
@@ -145,7 +140,8 @@
     "Box family of Counter: indicator typography (typography.indicator.{size}, 11/12/14 px), block size = line box, cap-height centering, minimum inline size = block size, radius.indicator, padding space.content.xs; a badge and a counter of the same size align. Sizes named like Button sizes, default md.",
     "User decision at the contract gate (2026-10-16): Badge, Counter and Tag are distinct. Badge describes an object (status or category, read-only, set by the application); Counter says how many; Tag is a value the user manipulates (removable, sometimes selectable, often user-created). The trailing Counter and the dismissible option suggested at the first review belong to Tag: the trailing slot and space.content.2xs were withdrawn (\"Ok ça me va\"), and Tag is added to the catalog as a later candidate.",
     "User decision at the contract gate (2026-10-16): neutral intent kept with the color.status.neutral.* roles (part of the accepted proposal).",
-    "User decision at the contract gate (2026-10-16): accent intent added (\"pourquoi pas avoir l'intent accent pour le badge aussi\"): new roles color.status.accent.* aliasing color.palette.accent and mirroring info (light 50/600/800/neutral.0/300/600, dark 950/600/200/neutral.0/800/400); four inventory contrast pairs. Listed after neutral since both are categories rather than statuses. Measured in the 18 contexts: content/surface 8.76 to 11.66, contentStrong/surfaceStrong 5.32 to 5.67, icon/surface 4.96 to 6.47, icon/surface.default 5.32 to 6.85."
+    "User decision at the contract gate (2026-10-16): accent intent added (\"pourquoi pas avoir l'intent accent pour le badge aussi\"): new roles color.status.accent.* aliasing color.palette.accent and mirroring info (light 50/600/800/neutral.0/300/600, dark 950/600/200/neutral.0/800/400); four inventory contrast pairs. Listed after neutral since both are categories rather than statuses. Measured in the 18 contexts: content/surface 8.76 to 11.66, contentStrong/surfaceStrong 5.32 to 5.67, icon/surface 4.96 to 6.47, icon/surface.default 5.32 to 6.85.",
+    "User at the implementation review (2026-10-19): variant A, mixed case with the label clipped horizontally only; all caps rejected (\"capitales ne fonctionne pas\"). The comparison page examples/link-badge-review was removed once decided."
   ],
   "openDecisions": [],
   "nextAction": "Implementation gate (grouped with the other components of the wave): the reviewer exercises the preview page; record the approval with source digests, then the Figma parity phase (ggb-figma).",

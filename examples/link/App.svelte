@@ -264,6 +264,17 @@
       <div class="message inverse">
         Inverse surface. <Link id="inherit-inverse" tone="inherit" label="Undo" href="#tones" />
       </div>
+      <div class="message inverse">
+        Report ready. <Link
+          id="inherit-file"
+          tone="inherit"
+          label="Monthly report"
+          href="#tones"
+          destination="file"
+          fileType="pdf"
+          fileSize="1 MB"
+        />
+      </div>
       <div class="message" style:background="var(--ggb-color-surface-muted)">
         Muted surface, accent tone. <Link id="accent-muted" label="Open settings" href="#tones" />
       </div>

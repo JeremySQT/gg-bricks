@@ -34,7 +34,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/actions/link/contract.json",
-      "sha256": "fbe2a0f36d97cba45119440fd1413984b16566391789b59f184334b4e5395209"
+      "sha256": "d482a8b7b9ed7a260e1d184267b95dfd61d88dc662a77cb1f535fcbc010daaab"
     },
     "tokens": [],
     "figma": null,
@@ -52,7 +52,7 @@
     "examples": {
       "page": "examples/link",
       "preview": "dist/previews/link.html (npm run build:preview link)",
-      "artifact": "https://claude.ai/artifact/EVqNMf5jPq8hHjYH2yAJ5Y (version 1)"
+      "artifact": "https://claude.ai/artifact/EVqNMf5jPq8hHjYH2yAJ5Y (version 2, subtle glyph and meta)"
     },
     "tests": {
       "ssr": "tests/ssr/link.test.ts",
@@ -70,10 +70,10 @@
       "revision": {
         "paths": ["foundations/components/actions/link/contract.json"],
         "sha256": {
-          "foundations/components/actions/link/contract.json": "fbe2a0f36d97cba45119440fd1413984b16566391789b59f184334b4e5395209"
+          "foundations/components/actions/link/contract.json": "d482a8b7b9ed7a260e1d184267b95dfd61d88dc662a77cb1f535fcbc010daaab"
         }
       },
-      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: three review rounds (2026-10-15 to 2026-10-17); Link destinations requested at the first round, Badge simplified and given the accent intent at the third; final \"D'accord pour tout ! Tu peux commencer le reste je valide\" (2026-10-17) covering the remaining questions (Link destinations including phone and print as a printable version, dark link color A, simplified Badge).",
+      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: three review rounds (2026-10-15 to 2026-10-17); Link destinations requested at the first round, Badge simplified and given the accent intent at the third; final \"D'accord pour tout ! Tu peux commencer le reste je valide\" (2026-10-17) covering the remaining questions (Link destinations including phone and print as a printable version, dark link color A, simplified Badge). Amendment of 2026-10-19 (meta and glyph as a subtle complement: metaColor and indicatorColor color.content.tertiary with tone accent, the context color with tone inherit and the glyph at inheritIndicatorOpacity opacity.muted): user at the implementation review in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU, variant D chosen on the comparison page (\"je préfère la D\") with the remark that the meta did not look attenuated in dark; color.content.secondary measured 1.12:1 against the dark link color, so the meta uses color.content.tertiary like the glyph (1.40:1 against the link, 5.11:1 or more on canvas, default, subtle, raised and overlay). Digest re-recorded; to be confirmed on the republished review page.",
       "note": null
     },
     "implementation": null,
@@ -127,6 +127,14 @@
       "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run build:preview link",
       "date": "2026-10-17",
       "note": "dist/previews/link.html mounts from file:// without errors."
+    },
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate",
+      "report": "reports/components/link/contract-validation.json",
+      "date": "2026-10-19",
+      "note": "Amended contract: 10 token paths, coverage in 18 contexts."
     }
   ],
   "decisionsTaken": [
@@ -141,7 +149,8 @@
     "File links show the format and size as visible text (PDF, 2.4 MB) in addition to the format glyph: the small lettering inside Phosphor's file glyphs is not legible at text size, and visible text helps everyone, not only screen reader users (practice of GOV.UK and most public-sector systems). The component does not format sizes (locale) and sets no download attribute: viewable formats open in the browser, others download, as the server decides.",
     "Glyphs (Phosphor, MIT): ArrowUpRight, Envelope, Phone, Printer, File, FilePdf, FileDoc, FileXls, FileCsv, FilePpt, FileTxt, FileZip, FileImage, FileAudio, FileVideo, copied as inline SVG paths into the component folder per the icon decision; one em square so they follow the text size. Only external opens a new tab.",
     "No new token: meta and indicator take the link color; indicatorGap is space.content.xs.",
-    "User at the contract gate (2026-10-17): destinations confirmed as drafted (phone included, print = a link to a printable version); dark link color changed to color.palette.accent.300 (4.80:1 or more on every neutral backdrop in the 18 contexts; recommendation A)."
+    "User at the contract gate (2026-10-17): destinations confirmed as drafted (phone included, print = a link to a printable version); dark link color changed to color.palette.accent.300 (4.80:1 or more on every neutral backdrop in the 18 contexts; recommendation A).",
+    "User at the implementation review (2026-10-19): variant D, glyph and meta as a subtle neutral complement; the meta in color.content.tertiary rather than color.content.secondary after the dark-mode remark. With tone inherit the meta keeps the context color at full strength (text contrast) and only the glyph is attenuated (opacity.muted)."
   ],
   "openDecisions": [
     {
@@ -149,12 +158,6 @@
       "question": "Should a file link (or any destination) also be able to open in a new tab, announced like external?",
       "proposal": "Not in v1: only external opens a new tab; a PDF opens in the browser tab and Back returns. A newTab option can be added later if products need it.",
       "blocks": "nothing"
-    },
-    {
-      "id": 3,
-      "question": "Implementation review (2026-10-17): the user asked for a subtler glyph, \"juste comme une petite info complémentaire\". Which variant of examples/link-badge-review?",
-      "proposal": "B: the glyph in the link color at opacity.muted (70 %), like a plain Shortcut beside its label; it works with both tones and needs one contract role (indicatorOpacity: opacity.muted). C and D use a neutral grey that cannot follow tone inherit.",
-      "blocks": "implementation gate"
     }
   ],
   "nextAction": "Implementation gate (grouped with the other components of the wave): the reviewer exercises the preview page; record the approval with source digests, then the Figma parity phase (ggb-figma).",
@@ -162,7 +165,8 @@
     "Markup: <a class=\"ggb-link\" data-tone data-destination href> with the label, a <span class=\"ggb-link__meta\"> for files, the glyph (aria-hidden) and a visually hidden suffix; external adds target=\"_blank\" rel=\"noopener noreferrer\". The last word, meta and glyph are wrapped in a no-wrap span so they never start a line alone.",
     "Underline through text-decoration (thickness from the tokens, text-underline-offset from-font) on the label only; focus with outline on the inline box so it follows each line.",
     "Glyph table in a glyphs.ts of the component folder, keyed by destination and normalized fileType.",
-    "Implemented: the underline is drawn on the label spans (not the anchor) so that meta and glyph are never underlined; box-decoration-break: clone for per-line corners and focus ring; rel merged with noopener noreferrer for external; target owned. Glyph table copied from @phosphor-icons/core 2.1.1."
+    "Implemented: the underline is drawn on the label spans (not the anchor) so that meta and glyph are never underlined; box-decoration-break: clone for per-line corners and focus ring; rel merged with noopener noreferrer for external; target owned. Glyph table copied from @phosphor-icons/core 2.1.1.",
+    "Limitation (2026-10-19): color.content.tertiary measures 3.42:1 on color.surface.muted in dark, below 4.5:1 for the meta text; the foundations do not pair tertiary content with the muted surface either. On a muted surface in dark, prefer tone inherit or a plain file link without meta."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

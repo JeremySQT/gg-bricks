@@ -106,13 +106,14 @@
   text-overflow: ellipsis;
   /*
    * Vertical centering on the capital letters: the label box is trimmed to cap height and baseline, so
-   * flex centering aligns the letters (not the line box) with the icons. The clip margin keeps
-   * descenders and accents visible; clipping still enables the ellipsis. Without text-box support the
-   * line box is centered as before.
+   * flex centering aligns the letters (not the line box) with the icons. Without text-box support the
+   * line box is centered as before. The label is clipped in the inline direction only, which is all the
+   * ellipsis needs: descenders and accents extend past the trimmed box unclipped. A vertical clip with
+   * overflow-clip-margin would cut them in Safari, which does not support that property.
    */
   text-box: trim-both cap alphabetic;
-  overflow: clip;
-  overflow-clip-margin: 0.3em;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 /* Full label kept for assistive technology while the component renders a truncated copy. */

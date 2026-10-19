@@ -41,6 +41,18 @@
   white-space: nowrap;
 }
 
+/*
+ * Meta and glyph are a subtle complement, so that only the underlined words read as the link: a neutral
+ * color with the accent tone; the context color with tone inherit (the glyph attenuated, the meta text at
+ * full strength for its contrast).
+ */
+.ggb-link__meta {
+  color: var(--ggb-link-metaColor);
+}
+.ggb-link[data-tone='inherit'] .ggb-link__meta {
+  color: inherit;
+}
+
 /* One em square, centered on the capital height of the text like an Icon next to text. */
 .ggb-link__indicator {
   display: inline-block;
@@ -49,8 +61,13 @@
   margin-inline-start: var(--ggb-link-indicatorGap);
   vertical-align: middle;
   vertical-align: calc((1cap - 1em) / 2);
+  color: var(--ggb-link-indicatorColor);
   fill: currentColor;
   overflow: hidden;
+}
+.ggb-link[data-tone='inherit'] .ggb-link__indicator {
+  color: inherit;
+  opacity: var(--ggb-link-inheritIndicatorOpacity);
 }
 
 /* Announced after the name, never shown. */
@@ -70,8 +87,11 @@
 
 @media (forced-colors: active) {
   .ggb-link,
-  .ggb-link[data-tone='inherit'] {
+  .ggb-link[data-tone='inherit'],
+  .ggb-link .ggb-link__meta,
+  .ggb-link .ggb-link__indicator {
     color: LinkText;
+    opacity: 1;
   }
   .ggb-link:focus-visible {
     outline-color: Highlight;

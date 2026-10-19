@@ -53,6 +53,7 @@ async function measure(page: Page, selector: string) {
       glyphWidth: g?.width ?? 0,
       glyphHeight: g?.height ?? 0,
       glyphColor: glyph ? getComputedStyle(glyph).fill : '',
+      glyphOpacity: glyph ? getComputedStyle(glyph).opacity : '',
       glyphGap: glyph ? getComputedStyle(glyph).marginInlineStart : '',
       outline: `${c.outlineStyle} ${c.outlineWidth} ${c.outlineColor} ${c.outlineOffset}`,
       radius: c.borderTopLeftRadius
@@ -204,11 +205,14 @@ test('computed values match the resolved tokens in every context; tone inherit t
           expect(m.color, `${context} ${d}`).toBe(rgb(tokens['color.content.link']));
           expect(m.decorationColor).toBe(m.color);
           expect(m.decorationThickness).toBe(`${px(tokens['border.width.default'])}px`);
+          // Meta and glyph are a subtle complement in a neutral color (user choice D at the implementation
+          // review, 2026-10-19).
           if (d !== 'page') {
-            expect(m.glyphColor).toBe(m.color);
+            expect(m.glyphColor, `${context} ${d} glyph`).toBe(rgb(tokens['color.content.tertiary']));
+            expect(m.glyphOpacity).toBe('1');
             expect(m.glyphGap).toBe(`${px(tokens['space.content.xs'])}px`);
           }
-          if (d === 'file') expect(m.metaColor).toBe(m.color);
+          if (d === 'file') expect(m.metaColor, `${context} meta`).toBe(rgb(tokens['color.content.tertiary']));
           record(context, { tone: 'accent', destination: d }, 'default', m);
         }
         for (const s of ['info', 'success', 'warning', 'danger', 'inverse']) {
@@ -217,6 +221,13 @@ test('computed values match the resolved tokens in every context; tone inherit t
           expect(m.decorationLine).toBe('underline');
           record(context, { tone: 'inherit', destination: 'page' }, s, m);
         }
+        // Tone inherit: meta in the context color, glyph in the context color at opacity.muted.
+        const inherit = await measure(page, '#inherit-file');
+        expect(inherit.color).toBe(inherit.parentColor);
+        expect(inherit.metaColor).toBe(inherit.parentColor);
+        expect(inherit.glyphColor).toBe(inherit.parentColor);
+        expect(inherit.glyphOpacity).toBe(String(tokens['opacity.muted'].$value));
+        record(context, { tone: 'inherit', destination: 'file' }, 'default', inherit);
         // Focus ring, reached by keyboard.
         await page.locator('#dest-page').focus();
         await page.keyboard.press('Shift+Tab');

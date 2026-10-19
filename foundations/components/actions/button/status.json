@@ -122,13 +122,13 @@
         "sha256": {
           "packages/svelte/src/components/button/Button.svelte": "cf8ce1cf7953268e5bcd08a529270ad5bb25c9274e9400ed6a29f2944430466a",
           "packages/svelte/src/components/button/types.ts": "9f7140afe278eba5828b37c890f0fcc6f35209c276008519401721bb4cba8472",
-          "packages/svelte/src/components/button/button.css": "3a555a2464201303fa7e699c8ac636db292836904069807b0f1627b2b704787b",
+          "packages/svelte/src/components/button/button.css": "7e179a55bd731a22e5253b56f865dc43365a535ec49a0e12c6c2a04ef076b474",
           "packages/svelte/src/components/button/contract.generated.ts": "17c57d1cc7c5cc5b8587ea9d517397b9cf1833a652caaf7da859ff0afc68b0ae",
           "packages/svelte/src/components/button/tokens.generated.css": "95984070b62c3e306fff311d23234f97a9a9d7d7ddc886e7dbec18f59320bf4a",
           "examples/button/App.svelte": "5281ae9abf80e62558f68390c9742c10199feac80c9d5daf55f130ce87b91eec"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"L implémentation du Button est bien validée\", after reviewing the preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5 (commit 2c362f9). Amendment of 2026-10-13 (focusRadius): user, same session, \"Ok pour le token radius.focus\". Amendment of 2026-10-13 (auxclick guard, onclick types): user in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, authorizing the before-merge correction batch proposed by the audit (\"applique les correctifs proposés avant le merge. Je te fais confiance\"); digests re-recorded in that session. No separate interactive review of the guard: it changes no rendering, and the browser test covers it. Re-digested on 2026-10-13 for the repository structure change (branch chore/repo-structure, user decision in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: \"tu peux partir là dessus\"): files moved, only path references changed in their content; behavior, values and rendering unchanged. Re-recorded on 2026-10-14 in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH at the wave 1 Figma parity gate: only examples/button/App.svelte changed (real slot components, preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 7); the six component source digests are unchanged. User: \"La validation porte sur la parité figma de la vague 1. On peut avancer.\"",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01EvHNtXFTTyBz5ZU7cXqvds on 2026-10-07: \"L implémentation du Button est bien validée\", after reviewing the preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 5 (commit 2c362f9). Amendment of 2026-10-13 (focusRadius): user, same session, \"Ok pour le token radius.focus\". Amendment of 2026-10-13 (auxclick guard, onclick types): user in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH, authorizing the before-merge correction batch proposed by the audit (\"applique les correctifs proposés avant le merge. Je te fais confiance\"); digests re-recorded in that session. No separate interactive review of the guard: it changes no rendering, and the browser test covers it. Re-digested on 2026-10-13 for the repository structure change (branch chore/repo-structure, user decision in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: \"tu peux partir là dessus\"): files moved, only path references changed in their content; behavior, values and rendering unchanged. Re-recorded on 2026-10-14 in the session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH at the wave 1 Figma parity gate: only examples/button/App.svelte changed (real slot components, preview artifact https://claude.ai/artifact/S65YFeLbLPWRPVBRXj9myK version 7); the six component source digests are unchanged. User: \"La validation porte sur la parité figma de la vague 1. On peut avancer.\" Amendment of 2026-10-19 (label clipped horizontally only, so that Safari keeps the descenders; reports/components/button/changes/2026-10-19-label-clip.md): user in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU, \"oui tu peux aussi corriger le bouton si ça n'impacte pas l'alignement vertical\"; the condition was verified (198 geometry measurements identical, computed.json byte-identical); button.css digest re-recorded.",
       "note": "Automated evidence: Chromium only (9 browser tests, 6 SSR tests). Icon, Counter and Shortcut are the real components since 2026-10-14."
     },
     "figmaParity": {
@@ -209,6 +209,14 @@
       "result": "corrected",
       "date": "2026-10-13",
       "note": "Read-only audit of the pull request, the repository architecture and the Figma file (session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH), then the before-merge correction batch authorized by the user: auxclick guard, onclick/onauxclick types, approvals re-digested (implementation, Figma parity, foundations semantic and Figma variables), implementation report refreshed, documentation clarified (layout height of the 44 px target, guarded handlers), Figma cleanup. Remaining improvements are listed in nextAction."
+    },
+    {
+      "kind": "modify",
+      "result": "passed",
+      "command": "geometry comparison before/after on examples/button, npx playwright test tests/browser/button.spec.ts, npm run verify",
+      "report": "reports/components/button/changes/2026-10-19-label-clip.md",
+      "date": "2026-10-19",
+      "note": "Label clip fix: 0 geometry differences on 198 measurements; computed.json identical; 9 Button browser tests pass."
     }
   ],
   "decisionsTaken": [
