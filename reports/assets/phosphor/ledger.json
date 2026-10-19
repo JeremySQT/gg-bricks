@@ -1,0 +1,65 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=199-2"
+  },
+  "recordedOn": "2026-10-19",
+  "decision": "authoring/decisions.md (Icons, amended 2026-10-19): Phosphor is imported locally because the community library is not available to the file; designers reach the glyphs only through the Icon component or a component's icon slot.",
+  "source": {
+    "package": "@phosphor-icons/core",
+    "version": "2.1.1",
+    "files": "assets/regular/*.svg",
+    "weight": "regular",
+    "license": "MIT, Copyright (c) 2023 Phosphor Icons (phosphoricons.com)"
+  },
+  "page": {
+    "name": "assets/phosphor",
+    "id": "199:2",
+    "position": "after the component pages, before Utilities"
+  },
+  "notes": {
+    "id": "201:2",
+    "name": "Phosphor — Library notes",
+    "builder": "authoring/adapters/figma/phosphor-spec.plugin.js",
+    "content": "import record (set, date, source, license, names, construction, script), how to use (through Icon only), updating",
+    "screenshot": "reports/assets/phosphor/notes.png"
+  },
+  "components": {
+    "count": 1512,
+    "naming": "phosphor/<name>, the package names (phosphor/acorn … phosphor/youtube-logo)",
+    "builder": "authoring/adapters/figma/phosphor-components.plugin.js",
+    "construction": "24 × 24 component with a transparent background; one vector named Glyph, drawn on the 256 grid (inset 1/8), Scale constraints, fill bound to color/content/primary (Foundations · Appearance, VariableID:7:10); description with the version, the license and the usage rule",
+    "layout": "alphabetical grid, 40 columns, 48 px apart, from y = 960 below the notes frame",
+    "import": "SVG files uploaded through the Figma MCP upload_assets tool (one frame per file, named after the icon), then converted in place by the builder script",
+    "ids": {
+      "plus": "200:4367",
+      "arrow-right": "200:4482",
+      "arrow-up-right": "200:4471",
+      "trash": "200:5762",
+      "download-simple": "200:4881",
+      "check": "200:4715",
+      "warning-circle": "200:5831",
+      "envelope-simple": "200:4875",
+      "phone": "200:5423",
+      "printer": "200:5463",
+      "file": "200:4974",
+      "file-pdf": "200:4959",
+      "magnifying-glass": "200:5872"
+    }
+  },
+  "consumers": {
+    "Icon": "component set 149:20, property Glyph#149:0 defaults to phosphor/plus (200:4367), no preferred values; reports/components/icon/figma/ledger.json"
+  },
+  "replaced": {
+    "_Fixture/Icon": "component set 74:2 (plus 42:7, arrow-right 42:10, trash 42:13, download-simple 42:16, check 42:19) and its frame 42:2 on Utilities, deleted on 2026-10-19 after every instance was swapped to the Phosphor components (identical vectors)"
+  },
+  "verification": [
+    "1,512 components on the page, one per file of assets/regular in the package; 12 uploads that failed on the first pass were retried, one duplicate frame removed.",
+    "The five glyphs that replaced the fixtures have vector paths byte-identical to the fixtures'.",
+    "Specification frames Icon (152:7) and Button (126:1904) inspected after the swap: no visual change."
+  ],
+  "limitations": [
+    "Library not published: publication needs explicit authorization.",
+    "Other weights (thin, light, bold, fill, duotone) are not imported."
+  ]
+}

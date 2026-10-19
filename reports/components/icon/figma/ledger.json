@@ -28,14 +28,9 @@
     },
     "Glyph#149:0": {
       "type": "INSTANCE_SWAP",
-      "default": "42:7",
-      "preferredValues": [
-        {
-          "type": "COMPONENT_SET",
-          "key": "e4274aabe7dd8c91160067313105398e1c7421ed",
-          "name": "_Fixture/Icon"
-        }
-      ]
+      "default": "200:4367",
+      "defaultName": "phosphor/plus",
+      "preferredValues": []
     }
   },
   "variants": {
@@ -68,19 +63,18 @@
   "bindings": {
     "width": "size/icon/{size} (Brand)",
     "height": "size/icon/{size} (Brand)",
-    "glyphFill": "color/content/primary (Foundations · Appearance, VariableID:7:10), inherited from the _Fixture/Icon glyph"
+    "glyphFill": "color/content/primary (Foundations · Appearance, VariableID:7:10), inherited from the Phosphor glyph component"
   },
-  "fixtures": {
-    "_Fixture/Icon": {
-      "id": "74:2",
-      "page": "Utilities (8:10)",
-      "variants": {
-        "plus": "42:7",
-        "arrow-right": "42:10",
-        "trash": "42:13",
-        "download-simple": "42:16",
-        "check": "42:19"
-      }
+  "glyphSource": {
+    "page": "assets/phosphor (199:2)",
+    "ledger": "reports/assets/phosphor/ledger.json",
+    "set": "Phosphor Icons 2.1.1 regular, 1,512 components phosphor/<name>",
+    "specificationGlyphs": {
+      "plus": "200:4367",
+      "arrow-right": "200:4482",
+      "trash": "200:5762",
+      "download-simple": "200:4881",
+      "check": "200:4715"
     }
   },
   "specification": {
@@ -116,6 +110,10 @@
     {
       "date": "2026-10-14",
       "change": "Token collections renamed Foundations · Primitives, Foundations · Brand, Foundations · Appearance and Foundations · Density (IDs and bindings unchanged); the adapter scripts of this component resolve the short axis names to the prefixed ones."
+    },
+    {
+      "date": "2026-10-19",
+      "change": "Glyph source: the five local fixtures _Fixture/Icon (74:2, variants 42:7, 42:10, 42:13, 42:16, 42:19, page Utilities) are replaced by the Phosphor 2.1.1 regular components of the page assets/phosphor (user, 2026-10-19). Glyph defaults to phosphor/plus (200:4367) with no preferred values, so the swap menu lists every local glyph. Every instance was swapped through the Icon setProperties (77 on content/icon, 13 on actions/button; none elsewhere); the vectors are byte-identical to the fixtures', so no rendering changed (specification frames 152:7 and 126:1904 re-inspected). The fixture set and its frame 42:2 were deleted; the specification's two sentences on fixtures were rewritten, and the builder scripts point at the Phosphor IDs."
     }
   ]
 }

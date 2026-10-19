@@ -78,7 +78,13 @@ const set = await figma.getNodeByIdAsync('48:1586');
 const GLYPH = Object.keys((await figma.getNodeByIdAsync('149:20')).componentPropertyDefinitions).find((k) =>
   k.startsWith('Glyph')
 );
-const FX = { plus: '42:7', 'arrow-right': '42:10', trash: '42:13', 'download-simple': '42:16', check: '42:19' };
+const FX = {
+  plus: '200:4367',
+  'arrow-right': '200:4482',
+  trash: '200:5762',
+  'download-simple': '200:4881',
+  check: '200:4715'
+};
 const styles = await figma.getLocalTextStylesAsync();
 const S = (n) => styles.find((s) => s.name === 'typography/' + n);
 for (const s of styles) await figma.loadFontAsync(s.fontName);
@@ -530,7 +536,13 @@ const set = await figma.getNodeByIdAsync('48:1586');
 const GLYPH = Object.keys((await figma.getNodeByIdAsync('149:20')).componentPropertyDefinitions).find((k) =>
   k.startsWith('Glyph')
 );
-const FX = { plus: '42:7', 'arrow-right': '42:10', trash: '42:13', 'download-simple': '42:16', check: '42:19' };
+const FX = {
+  plus: '200:4367',
+  'arrow-right': '200:4482',
+  trash: '200:5762',
+  'download-simple': '200:4881',
+  check: '200:4715'
+};
 const styles = await figma.getLocalTextStylesAsync();
 const S = (n) => styles.find((s) => s.name === 'typography/' + n);
 for (const s of styles) await figma.loadFontAsync(s.fontName);
