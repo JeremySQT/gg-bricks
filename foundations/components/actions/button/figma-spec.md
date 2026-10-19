@@ -49,7 +49,7 @@ Recorded as such in `parity.json`; none hides a defect of the masters.
 7. **Tight ellipsis.** The code ends the visible box at the ellipsis and keeps the full label as accessible name. Figma truncates the text layer (ellipsis at the end): for a constrained width, set the instance width to Fixed or Fill and set Container, Label and Text to Fill (example in Behavior & sizing).
 8. **Horizontal 44px target.** The code also reserves 44px horizontally for very short labels; the Figma root reserves the height only.
 9. **Spinner rotation, color transitions and reduced motion** are code-only.
-10. **Icon glyphs.** The slots hold the Icon component, whose glyphs are the local Phosphor 2.1.1 regular components of the page `assets/phosphor` (since 2026-10-19; before, five `_Fixture/Icon` glyphs with the same drawings). Counter and Shortcut are the real components since 2026-10-14; no fixture remains.
+10. **Icon glyphs.** The slots hold the Icon component, whose glyphs are the local Phosphor 2.1.1 regular components of the page `assets/phosphor` (since 2026-10-19; before, five `_Fixture/Icon` glyphs with the same drawings). Counter and Shortcut are the real components since 2026-10-14; no fixture remains. The glyph color is a nested override (`button/foreground`): Figma drops it when an instance swap replaces the nested glyph through a default change (the 2026-10-19 migration did so on the 135 leading icons; restored the same day) or when the default glyph is re-selected explicitly; choosing another glyph or resetting the instance restores it.
 
 ## Page style and diagrams
 

@@ -185,7 +185,7 @@
       "command": "Figma inspection (instance references, vector paths, specification screenshots), npm run verify",
       "report": "reports/components/icon/changes/2026-10-19-phosphor-glyphs.md",
       "date": "2026-10-19",
-      "note": "Glyph source moved from _Fixture/Icon to the Phosphor components of assets/phosphor: identical vectors, 0 instances referencing a missing or fixture component, Icon and Button specifications unchanged apart from two rewritten sentences."
+      "note": "Glyph source moved from _Fixture/Icon to the Phosphor components of assets/phosphor: identical vectors, 0 instances referencing a missing or fixture component. Correction: the swap dropped the Button leading glyph color override (135 variants); restored to button/foreground and checked (270 checks, 0 differences)."
     }
   ],
   "decisionsTaken": [

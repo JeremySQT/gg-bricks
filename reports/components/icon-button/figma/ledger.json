@@ -1,0 +1,263 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=211-2"
+  },
+  "recordedOn": "2026-10-19",
+  "page": {
+    "name": "actions/icon-button",
+    "id": "211:2",
+    "position": "after actions/button"
+  },
+  "componentSet": {
+    "id": "211:1167",
+    "name": "IconButton",
+    "key": "49dd6b71cecbcd3ad635cf9b10d2cd3a5eae652d",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=211-1167",
+    "builder": "authoring/adapters/figma/icon-button-master.plugin.js",
+    "defaultVariant": "Intent=neutral, Appearance=ghost, Size=md, State=default (top-left)"
+  },
+  "properties": {
+    "Label#211:0": {
+      "type": "TEXT",
+      "default": "Add",
+      "layer": "Label (accessible name, not shown): hidden text layer, typography/label/md"
+    },
+    "Focus#211:136": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Focus ring (visible)"
+    },
+    "Intent": {
+      "type": "VARIANT",
+      "default": "neutral",
+      "options": [
+        "neutral",
+        "accent",
+        "danger"
+      ]
+    },
+    "Appearance": {
+      "type": "VARIANT",
+      "default": "ghost",
+      "options": [
+        "ghost",
+        "outline",
+        "solid"
+      ]
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ]
+    },
+    "State": {
+      "type": "VARIANT",
+      "default": "default",
+      "options": [
+        "default",
+        "hover",
+        "pressed",
+        "loading",
+        "disabled"
+      ]
+    }
+  },
+  "exposedInstances": {
+    "Icon": "instance of Icon (149:8 sm, 149:11 md, 149:14 lg), exposed: property Glyph#149:0 (instance swap, defaults to phosphor/plus 200:4367); glyph vector fill overridden to button/foreground"
+  },
+  "layers": [
+    "Target (absolute, empty, width and height size/target/min, constraints center)",
+    "Container (fill, auto layout centered)",
+    "Container/Icon",
+    "Container/Loading indicator (instance of _Button/Loading indicator 42:28, hidden except in State=loading)",
+    "Container/Focus ring (absolute, outside stroke)",
+    "Label (accessible name, not shown)"
+  ],
+  "bindings": {
+    "root width and height": "size/control/{size} (Density)",
+    "Container fill": "color/action/{intent}/{appearance}/{state}/surface",
+    "Container stroke (outline only)": "color/action/{intent}/outline/{state}/border, weight border/width/default, inside",
+    "Container corners": "radius/control",
+    "Icon glyph fill": "button/foreground (Components · button style mode {intent}-{appearance}, Components · button state mode {state})",
+    "Loading indicator size": "size/icon/{size}",
+    "Loading indicator strokes": "color/action/{intent}/{appearance}/{state}/content",
+    "Focus ring": "stroke color/focus/ring, weight focus/width, corners radius/focus, 2 px outside (focus.offset)",
+    "Target": "size/target/min"
+  },
+  "adapterModes": "Each variant sets Components (sm, md, lg), Components · button style ({intent}-{appearance}) and Components · button state ({state}); the IconButton reuses the Button adapter variables and adds none.",
+  "variants": {
+    "Intent=neutral, Appearance=ghost, Size=md, State=default": "211:3",
+    "Intent=neutral, Appearance=ghost, Size=md, State=hover": "211:12",
+    "Intent=neutral, Appearance=ghost, Size=md, State=pressed": "211:20",
+    "Intent=neutral, Appearance=ghost, Size=md, State=loading": "211:28",
+    "Intent=neutral, Appearance=ghost, Size=md, State=disabled": "211:39",
+    "Intent=neutral, Appearance=ghost, Size=sm, State=default": "211:47",
+    "Intent=neutral, Appearance=ghost, Size=sm, State=hover": "211:56",
+    "Intent=neutral, Appearance=ghost, Size=sm, State=pressed": "211:64",
+    "Intent=neutral, Appearance=ghost, Size=sm, State=loading": "211:72",
+    "Intent=neutral, Appearance=ghost, Size=sm, State=disabled": "211:83",
+    "Intent=neutral, Appearance=ghost, Size=lg, State=default": "211:91",
+    "Intent=neutral, Appearance=ghost, Size=lg, State=hover": "211:100",
+    "Intent=neutral, Appearance=ghost, Size=lg, State=pressed": "211:108",
+    "Intent=neutral, Appearance=ghost, Size=lg, State=loading": "211:116",
+    "Intent=neutral, Appearance=ghost, Size=lg, State=disabled": "211:127",
+    "Intent=neutral, Appearance=outline, Size=md, State=default": "211:135",
+    "Intent=neutral, Appearance=outline, Size=md, State=hover": "211:143",
+    "Intent=neutral, Appearance=outline, Size=md, State=pressed": "211:151",
+    "Intent=neutral, Appearance=outline, Size=md, State=loading": "211:159",
+    "Intent=neutral, Appearance=outline, Size=md, State=disabled": "211:170",
+    "Intent=neutral, Appearance=outline, Size=sm, State=default": "211:178",
+    "Intent=neutral, Appearance=outline, Size=sm, State=hover": "211:186",
+    "Intent=neutral, Appearance=outline, Size=sm, State=pressed": "211:194",
+    "Intent=neutral, Appearance=outline, Size=sm, State=loading": "211:202",
+    "Intent=neutral, Appearance=outline, Size=sm, State=disabled": "211:213",
+    "Intent=neutral, Appearance=outline, Size=lg, State=default": "211:221",
+    "Intent=neutral, Appearance=outline, Size=lg, State=hover": "211:229",
+    "Intent=neutral, Appearance=outline, Size=lg, State=pressed": "211:237",
+    "Intent=neutral, Appearance=outline, Size=lg, State=loading": "211:245",
+    "Intent=neutral, Appearance=outline, Size=lg, State=disabled": "211:256",
+    "Intent=neutral, Appearance=solid, Size=md, State=default": "211:264",
+    "Intent=neutral, Appearance=solid, Size=md, State=hover": "211:272",
+    "Intent=neutral, Appearance=solid, Size=md, State=pressed": "211:280",
+    "Intent=neutral, Appearance=solid, Size=md, State=loading": "211:288",
+    "Intent=neutral, Appearance=solid, Size=md, State=disabled": "211:299",
+    "Intent=neutral, Appearance=solid, Size=sm, State=default": "211:307",
+    "Intent=neutral, Appearance=solid, Size=sm, State=hover": "211:315",
+    "Intent=neutral, Appearance=solid, Size=sm, State=pressed": "211:323",
+    "Intent=neutral, Appearance=solid, Size=sm, State=loading": "211:331",
+    "Intent=neutral, Appearance=solid, Size=sm, State=disabled": "211:342",
+    "Intent=neutral, Appearance=solid, Size=lg, State=default": "211:350",
+    "Intent=neutral, Appearance=solid, Size=lg, State=hover": "211:358",
+    "Intent=neutral, Appearance=solid, Size=lg, State=pressed": "211:366",
+    "Intent=neutral, Appearance=solid, Size=lg, State=loading": "211:374",
+    "Intent=neutral, Appearance=solid, Size=lg, State=disabled": "211:385",
+    "Intent=accent, Appearance=ghost, Size=md, State=default": "211:393",
+    "Intent=accent, Appearance=ghost, Size=md, State=hover": "211:401",
+    "Intent=accent, Appearance=ghost, Size=md, State=pressed": "211:409",
+    "Intent=accent, Appearance=ghost, Size=md, State=loading": "211:417",
+    "Intent=accent, Appearance=ghost, Size=md, State=disabled": "211:428",
+    "Intent=accent, Appearance=ghost, Size=sm, State=default": "211:436",
+    "Intent=accent, Appearance=ghost, Size=sm, State=hover": "211:444",
+    "Intent=accent, Appearance=ghost, Size=sm, State=pressed": "211:452",
+    "Intent=accent, Appearance=ghost, Size=sm, State=loading": "211:460",
+    "Intent=accent, Appearance=ghost, Size=sm, State=disabled": "211:471",
+    "Intent=accent, Appearance=ghost, Size=lg, State=default": "211:479",
+    "Intent=accent, Appearance=ghost, Size=lg, State=hover": "211:487",
+    "Intent=accent, Appearance=ghost, Size=lg, State=pressed": "211:495",
+    "Intent=accent, Appearance=ghost, Size=lg, State=loading": "211:503",
+    "Intent=accent, Appearance=ghost, Size=lg, State=disabled": "211:514",
+    "Intent=accent, Appearance=outline, Size=md, State=default": "211:522",
+    "Intent=accent, Appearance=outline, Size=md, State=hover": "211:530",
+    "Intent=accent, Appearance=outline, Size=md, State=pressed": "211:538",
+    "Intent=accent, Appearance=outline, Size=md, State=loading": "211:546",
+    "Intent=accent, Appearance=outline, Size=md, State=disabled": "211:557",
+    "Intent=accent, Appearance=outline, Size=sm, State=default": "211:565",
+    "Intent=accent, Appearance=outline, Size=sm, State=hover": "211:573",
+    "Intent=accent, Appearance=outline, Size=sm, State=pressed": "211:581",
+    "Intent=accent, Appearance=outline, Size=sm, State=loading": "211:589",
+    "Intent=accent, Appearance=outline, Size=sm, State=disabled": "211:600",
+    "Intent=accent, Appearance=outline, Size=lg, State=default": "211:608",
+    "Intent=accent, Appearance=outline, Size=lg, State=hover": "211:616",
+    "Intent=accent, Appearance=outline, Size=lg, State=pressed": "211:624",
+    "Intent=accent, Appearance=outline, Size=lg, State=loading": "211:632",
+    "Intent=accent, Appearance=outline, Size=lg, State=disabled": "211:643",
+    "Intent=accent, Appearance=solid, Size=md, State=default": "211:651",
+    "Intent=accent, Appearance=solid, Size=md, State=hover": "211:659",
+    "Intent=accent, Appearance=solid, Size=md, State=pressed": "211:667",
+    "Intent=accent, Appearance=solid, Size=md, State=loading": "211:675",
+    "Intent=accent, Appearance=solid, Size=md, State=disabled": "211:686",
+    "Intent=accent, Appearance=solid, Size=sm, State=default": "211:694",
+    "Intent=accent, Appearance=solid, Size=sm, State=hover": "211:702",
+    "Intent=accent, Appearance=solid, Size=sm, State=pressed": "211:710",
+    "Intent=accent, Appearance=solid, Size=sm, State=loading": "211:718",
+    "Intent=accent, Appearance=solid, Size=sm, State=disabled": "211:729",
+    "Intent=accent, Appearance=solid, Size=lg, State=default": "211:737",
+    "Intent=accent, Appearance=solid, Size=lg, State=hover": "211:745",
+    "Intent=accent, Appearance=solid, Size=lg, State=pressed": "211:753",
+    "Intent=accent, Appearance=solid, Size=lg, State=loading": "211:761",
+    "Intent=accent, Appearance=solid, Size=lg, State=disabled": "211:772",
+    "Intent=danger, Appearance=ghost, Size=md, State=default": "211:780",
+    "Intent=danger, Appearance=ghost, Size=md, State=hover": "211:788",
+    "Intent=danger, Appearance=ghost, Size=md, State=pressed": "211:796",
+    "Intent=danger, Appearance=ghost, Size=md, State=loading": "211:804",
+    "Intent=danger, Appearance=ghost, Size=md, State=disabled": "211:815",
+    "Intent=danger, Appearance=ghost, Size=sm, State=default": "211:823",
+    "Intent=danger, Appearance=ghost, Size=sm, State=hover": "211:831",
+    "Intent=danger, Appearance=ghost, Size=sm, State=pressed": "211:839",
+    "Intent=danger, Appearance=ghost, Size=sm, State=loading": "211:847",
+    "Intent=danger, Appearance=ghost, Size=sm, State=disabled": "211:858",
+    "Intent=danger, Appearance=ghost, Size=lg, State=default": "211:866",
+    "Intent=danger, Appearance=ghost, Size=lg, State=hover": "211:874",
+    "Intent=danger, Appearance=ghost, Size=lg, State=pressed": "211:882",
+    "Intent=danger, Appearance=ghost, Size=lg, State=loading": "211:890",
+    "Intent=danger, Appearance=ghost, Size=lg, State=disabled": "211:901",
+    "Intent=danger, Appearance=outline, Size=md, State=default": "211:909",
+    "Intent=danger, Appearance=outline, Size=md, State=hover": "211:917",
+    "Intent=danger, Appearance=outline, Size=md, State=pressed": "211:925",
+    "Intent=danger, Appearance=outline, Size=md, State=loading": "211:933",
+    "Intent=danger, Appearance=outline, Size=md, State=disabled": "211:944",
+    "Intent=danger, Appearance=outline, Size=sm, State=default": "211:952",
+    "Intent=danger, Appearance=outline, Size=sm, State=hover": "211:960",
+    "Intent=danger, Appearance=outline, Size=sm, State=pressed": "211:968",
+    "Intent=danger, Appearance=outline, Size=sm, State=loading": "211:976",
+    "Intent=danger, Appearance=outline, Size=sm, State=disabled": "211:987",
+    "Intent=danger, Appearance=outline, Size=lg, State=default": "211:995",
+    "Intent=danger, Appearance=outline, Size=lg, State=hover": "211:1003",
+    "Intent=danger, Appearance=outline, Size=lg, State=pressed": "211:1011",
+    "Intent=danger, Appearance=outline, Size=lg, State=loading": "211:1019",
+    "Intent=danger, Appearance=outline, Size=lg, State=disabled": "211:1030",
+    "Intent=danger, Appearance=solid, Size=md, State=default": "211:1038",
+    "Intent=danger, Appearance=solid, Size=md, State=hover": "211:1046",
+    "Intent=danger, Appearance=solid, Size=md, State=pressed": "211:1054",
+    "Intent=danger, Appearance=solid, Size=md, State=loading": "211:1062",
+    "Intent=danger, Appearance=solid, Size=md, State=disabled": "211:1073",
+    "Intent=danger, Appearance=solid, Size=sm, State=default": "211:1081",
+    "Intent=danger, Appearance=solid, Size=sm, State=hover": "211:1089",
+    "Intent=danger, Appearance=solid, Size=sm, State=pressed": "211:1097",
+    "Intent=danger, Appearance=solid, Size=sm, State=loading": "211:1105",
+    "Intent=danger, Appearance=solid, Size=sm, State=disabled": "211:1116",
+    "Intent=danger, Appearance=solid, Size=lg, State=default": "211:1124",
+    "Intent=danger, Appearance=solid, Size=lg, State=hover": "211:1132",
+    "Intent=danger, Appearance=solid, Size=lg, State=pressed": "211:1140",
+    "Intent=danger, Appearance=solid, Size=lg, State=loading": "211:1148",
+    "Intent=danger, Appearance=solid, Size=lg, State=disabled": "211:1159"
+  },
+  "specification": {
+    "id": "219:1828",
+    "name": "IconButton — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=219-1828",
+    "builder": "authoring/adapters/figma/icon-button-spec.plugin.js",
+    "anatomyBoard": "219:1924",
+    "uses": {
+      "_Spec/Board": "113:17",
+      "_Spec/Callout": "115:6",
+      "_Spec/Marker": "115:8",
+      "Button": "48:1586",
+      "Icon": "149:20",
+      "Wireframe": "VariableCollectionId:105:1565"
+    }
+  },
+  "evidence": {
+    "parity": "reports/components/icon-button/figma/parity.json",
+    "parityScripts": [
+      "authoring/adapters/figma/icon-button-parity.plugin.js",
+      "authoring/adapters/figma/icon-button-parity-report.mjs"
+    ],
+    "screenshots": [
+      "reports/components/icon-button/figma/master-set.png",
+      "reports/components/icon-button/figma/specification.png",
+      "reports/components/icon-button/figma/blueprint-anatomy.png"
+    ]
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-19",
+      "change": "Built: 135 variants; the Target layer was re-centered after creation (it sat 28 px up-left) and checked centered in the three densities; a hidden Loading indicator was added to the 108 non-loading variants so that an instance can show loading + disabled."
+    }
+  ]
+}

@@ -219,23 +219,7 @@
     "Focus ring"
   ],
   "fixtures": {
-    "page": {
-      "name": "Utilities",
-      "id": "8:10"
-    },
-    "_Fixtures (review only, not part of the library API)": "42:2",
-    "_Fixture/Icon": {
-      "set": "74:2",
-      "variants": {
-        "Name=plus": "42:7",
-        "Name=arrow-right": "42:10",
-        "Name=trash": "42:13",
-        "Name=download-simple": "42:16",
-        "Name=check": "42:19"
-      }
-    },
-    "removed": "_Fixture/Counter (42:20) and _Fixture/Shortcut (42:22) removed on 2026-10-14: the Button masters use the Counter (149:1568) and Shortcut (151:110) components; no instance was left on any page.",
-    "note": "_Fixture/Icon stays as the glyph source of the Icon component (preferred values of its Glyph property)."
+    "removed": "_Fixture/Counter (42:20) and _Fixture/Shortcut (42:22) removed on 2026-10-14 (the Button masters use the Counter 149:1568 and Shortcut 151:110 components); _Fixture/Icon (74:2, variants 42:7, 42:10, 42:13, 42:16, 42:19) and its frame _Fixtures (42:2) on Utilities removed on 2026-10-19, replaced by the Phosphor components of the page assets/phosphor (reports/assets/phosphor/ledger.json). No fixture remains."
   },
   "adapterVariables": {
     "size": {
@@ -326,7 +310,7 @@
   },
   "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run; none remain.",
   "exposedInstances": {
-    "Leading icon": "instance of Icon (149:11, Size=md; the size follows button/icon-size through the Button's size modes): property Glyph#149:0 (instance swap, defaults to _Fixture/Icon Name=plus), nested exposed Glyph",
+    "Leading icon": "instance of Icon (149:11, Size=md; the size follows button/icon-size through the Button's size modes): property Glyph#149:0 (instance swap, defaults to phosphor/plus, 200:4367; glyph vector fill overridden to button/foreground), nested exposed Glyph",
     "Trailing item": "instance of _Button/Trailing (properties Type: Icon | Counter | Shortcut, Size: sm | md | lg set by the Button variant); Type=Icon exposes a nested Icon (Glyph), Type=Counter a nested Counter (Value, Overflow, Overflow text), Type=Shortcut a nested Shortcut (Appearance, Platform, Show key 2/3, Key 1/2/3)"
   },
   "internalComponents": {
@@ -345,7 +329,7 @@
         "Type=Shortcut, Size=lg": "164:1558"
       },
       "content": {
-        "Icon": "Drawing box (width button/icon-drawing, height button/icon-size) holding an Icon instance (149:8 sm, 149:11 md, 149:14 lg) named Icon, width and height bound to button/icon-size, Glyph default _Fixture/Icon Name=arrow-right, glyph vector fill bound to button/foreground; instances 75:4, 164:1526, 164:1529",
+        "Icon": "Drawing box (width button/icon-drawing, height button/icon-size) holding an Icon instance (149:8 sm, 149:11 md, 149:14 lg) named Icon, width and height bound to button/icon-size, Glyph phosphor/arrow-right (200:4482), glyph vector fill bound to button/foreground; instances 75:4, 164:1526, 164:1529",
         "Counter": "Counter instance (149:1550 sm, 149:1553 md, 149:1556 lg) named Counter, Value fill and Tint fill bound to button/foreground (the Border stroke override was cleared when the Counter master switched to a tint on 2026-10-14); instances 164:1549, 164:1545, 164:1553",
         "Shortcut": "Shortcut instance (151:2 sm, 151:9 md, 151:16 lg; Plain, Mac) named Shortcut, key and separator texts bound to button/foreground (the Plain attenuation to opacity/muted stays); instances 164:1571, 164:1560, 164:1582"
       },
@@ -443,6 +427,10 @@
     {
       "date": "2026-10-14",
       "change": "Token collections renamed Foundations · Primitives, Foundations · Brand, Foundations · Appearance and Foundations · Density (IDs and bindings unchanged); the adapter scripts of this component resolve the short axis names to the prefixed ones."
+    },
+    {
+      "date": "2026-10-19",
+      "change": "Leading icon glyph fill of the 135 variants re-bound to button/foreground: the Phosphor migration (Icon Glyph default changed from _Fixture/Icon plus to phosphor/plus) had dropped the nested override, leaving color/content/primary. Checked: leading glyph color = label color in the 45 md variants × 6 brand-appearance contexts (270 checks, 0 differences); no Button instance in the file keeps a stale override (actions/button 189 instances, content/icon 10; the 4 on actions/icon-button were rebuilt). The ledger's exposedInstances note now reads phosphor/plus as the Glyph default."
     }
   ]
 }

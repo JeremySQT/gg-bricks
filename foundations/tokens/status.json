@@ -96,7 +96,7 @@
         "reports/tokens/figma/native-resolution.json",
         "reports/tokens/figma/verification.json"
       ],
-      "provenance": "Synced and verified through the Figma MCP server in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8) on the user's file. Verification: native resolveForConsumer of the 401 semantic variables in the 18 brand × appearance × density contexts, hashed and compared with figma-expectations.json, 0 failures; re-run after moving the primitives to their own collection (user review of the Figma file, 2026-09-26), 0 failures. Technical verification only; the user has not visually reviewed the Figma file in this session. Re-verified on 2026-10-13 in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: 635 variables match the manifest by collection and name; native resolution of the 411 semantic variables in the 18 contexts, 0 failures (reports/tokens/figma/verification.json).",
+      "provenance": "Synced and verified through the Figma MCP server in the Claude Code session of 2026-09-26 (https://claude.ai/code/session_01M1JhKczhD1D7qecwP1qNB8) on the user's file. Verification: native resolveForConsumer of the 401 semantic variables in the 18 brand × appearance × density contexts, hashed and compared with figma-expectations.json, 0 failures; re-run after moving the primitives to their own collection (user review of the Figma file, 2026-09-26), 0 failures. Technical verification only; the user has not visually reviewed the Figma file in this session. Re-verified on 2026-10-13 in the audit session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH: 635 variables match the manifest by collection and name; native resolution of the 411 semantic variables in the 18 contexts, 0 failures (reports/tokens/figma/verification.json). Delta sync on 2026-10-19 in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU (wave 1 IconButton, Link and Badge, Figma parity phase): 12 Appearance variables created (color/status/neutral/*, color/status/accent/*) and color/content/link dark re-pointed, following the semantic changes approved at the contract gate; native resolution of the 519 semantic variables in the 18 contexts, 0 failures.",
       "note": "OpenType features (tnum) cannot be applied to text styles through the Plugin API; numeral styles carry the note in their description. The Foundations page exists but holds no specification frames yet."
     }
   },
@@ -260,21 +260,21 @@
       "date": "2026-10-15",
       "scope": "Semantic roles color.status.neutral.{surface,surfaceStrong,content,contentStrong,border,icon} (appearance axis; light palette.neutral 100/600/800/0/300/600, dark 800/600/200/0/600/400) for the neutral intent of Badge, with inventory entries and four contrast pairs mirroring the other statuses (all pass in the 18 contexts). No existing role changed. Proposed at the contract gate of IconButton, Link and Badge (branch wave/1-iconbutton-link-badge).",
       "approval": "Pending: to be accepted at that contract gate; approvals.semantic is re-recorded with new digests once accepted.",
-      "figma": "Not synced yet: Figma variables follow at the Figma parity phase of the wave.",
+      "figma": "Synced on 2026-10-19 at the Figma parity phase of the wave (delta batch, IDs in reports/tokens/figma/ledger.json); native resolution of 519 semantic variables in 18 contexts, 0 failures (reports/tokens/figma/verification.json).",
       "recorded": "approvals.semantic re-recorded with this change on 2026-10-17."
     },
     {
       "date": "2026-10-16",
       "scope": "Semantic roles color.status.accent.{surface,surfaceStrong,content,contentStrong,border,icon} (appearance axis; light palette.accent 50/600/800, neutral.0, accent 300/600; dark accent 950/600/200, neutral.0, accent 800/400, mirroring info) for the accent intent of Badge, requested by the user at the contract gate of IconButton, Link and Badge; inventory entries and four contrast pairs. Brands follow their own accent ramp. No existing role changed. (space.content.2xs, proposed earlier the same day for a Badge trailing counter, was withdrawn with that slot.)",
       "approval": "Requested by the user (\"pourquoi pas avoir l'intent accent pour le badge aussi\"); approvals.semantic is re-recorded with new digests at the final confirmation of the Badge contract.",
-      "figma": "Not synced yet: Figma variables follow at the Figma parity phase of the wave.",
+      "figma": "Synced on 2026-10-19 at the Figma parity phase of the wave (delta batch, IDs in reports/tokens/figma/ledger.json); native resolution of 519 semantic variables in 18 contexts, 0 failures (reports/tokens/figma/verification.json).",
       "recorded": "approvals.semantic re-recorded with this change on 2026-10-17."
     },
     {
       "date": "2026-10-17",
       "scope": "color.content.link in dark: color.palette.accent.400 -> color.palette.accent.300 (the link reached only 3.30 to 3.46:1 on color.surface.muted in dark); inventory pairs content.link on surface.muted, surface.raised and surface.overlay added (canvas, default and subtle existed). Light unchanged.",
       "approval": "User at the contract gate of IconButton, Link and Badge (2026-10-17, \"D'accord pour tout\"), recommendation A of Link open decision 1.",
-      "figma": "Not synced yet: Figma variables follow at the Figma parity phase of the wave.",
+      "figma": "Synced on 2026-10-19 at the Figma parity phase of the wave (delta batch, IDs in reports/tokens/figma/ledger.json); native resolution of 519 semantic variables in 18 contexts, 0 failures (reports/tokens/figma/verification.json).",
       "recorded": "approvals.semantic re-recorded with this change on 2026-10-17."
     }
   ]

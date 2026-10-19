@@ -56,7 +56,7 @@
   "verification": [
     "1,512 components on the page, one per file of assets/regular in the package; 12 uploads that failed on the first pass were retried, one duplicate frame removed.",
     "The five glyphs that replaced the fixtures have vector paths byte-identical to the fixtures'.",
-    "Specification frames Icon (152:7) and Button (126:1904) inspected after the swap: no visual change."
+    "Specification frames Icon (152:7) and Button (126:1904) inspected after the swap; the Button leading glyph color lost by the swap was found and restored the same day (see reports/components/icon/changes/2026-10-19-phosphor-glyphs.md, Correction)."
   ],
   "limitations": [
     "Library not published: publication needs explicit authorization.",

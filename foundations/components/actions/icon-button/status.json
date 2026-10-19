@@ -36,8 +36,29 @@
       "sha256": "b9298af06953dbb94216c3e65a257e6db283443d3fe69698105de1ec3919ba79"
     },
     "tokens": [],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "actions/icon-button (211:2)",
+      "componentSet": "211:1167",
+      "specification": "219:1828",
+      "ledger": "reports/components/icon-button/figma/ledger.json",
+      "parity": "reports/components/icon-button/figma/parity.json",
+      "screenshots": [
+        "reports/components/icon-button/figma/master-set.png",
+        "reports/components/icon-button/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/icon-button/figma/blueprint-anatomy.png",
+          "node": "219:1924"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/icon-button-master.plugin.js",
+        "authoring/adapters/figma/icon-button-spec.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/actions/icon-button/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "entry": "packages/svelte/src/components/icon-button/IconButton.svelte",
@@ -147,6 +168,14 @@
       "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run build:preview icon-button",
       "date": "2026-10-17",
       "note": "dist/previews/icon-button.html mounts from file:// without errors."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/icon-button-parity.plugin.js; node authoring/adapters/figma/icon-button-parity-report.mjs <result>",
+      "report": "reports/components/icon-button/figma/parity.json",
+      "date": "2026-10-19",
+      "note": "8658 records (7992 computed records: glyph and content color, surface, border, radius, size, icon size and offset, focus ring, in 18 contexts and the md states of 4 representative contexts; 666 target records), 0 failures; 630 justified differences (forced-colors outline, loading measured with focus). Hash comparison per context, all 18 equal; re-run after the hidden loading indicators were added, unchanged."
     }
   ],
   "decisionsTaken": [
@@ -160,7 +189,7 @@
     "Contrast checked on the same contrastScope as Button (six neutral backdrops, outline border on muted in dark informational, accepted at the Button contract gate)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (ggb-figma): masters reproducing the approved implementation, specification page, parity report; then the Figma parity gate.",
+  "nextAction": "Figma parity gate (grouped with Link and Badge): the user reviews the IconButton page (master 211:1167, specification 219:1828) and the parity report; then documentation (ggb-docs).",
   "implementationNotes": [
     "Self-contained folder packages/svelte/src/components/icon-button/ on the Bits UI Button primitive (button or a with href), its own CSS duplicated from the Button patterns rather than importing Button: a component folder must stay copyable with tokens.css, Bits UI and its declared dependencies (icon).",
     "Loading indicator: the same inline spinner as Button, sized at iconSize, replacing the icon in place.",
