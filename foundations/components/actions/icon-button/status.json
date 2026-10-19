@@ -3,7 +3,7 @@
   "componentId": "icon-button",
   "family": "actions",
   "wave": 1,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Trigger an action, or navigate to a task, from a compact square control that shows only an icon, with an accessible name that is never visible.",
     "useCases": [
@@ -74,7 +74,29 @@
       "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU (2026-10-16): the only open question (default treatment) answered with \"Pareil pour le neutral+ghost par défaut sur le bouton icône\"; no other remark on this contract across two review rounds. Approval recorded on that basis; the user may object to the record.",
       "note": "No token change; Link and Badge await their final confirmation at the same gate."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "IconButton: Bits UI Button.Root, square box of size.control.{size}, Button treatments and guards, icon replaced by the loading indicator in place, 44 px target in both dimensions, aria-label from the required label.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/icon-button/IconButton.svelte",
+          "packages/svelte/src/components/icon-button/contract.generated.ts",
+          "packages/svelte/src/components/icon-button/icon-button.css",
+          "packages/svelte/src/components/icon-button/tokens.generated.css",
+          "packages/svelte/src/components/icon-button/types.ts",
+          "examples/icon-button/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/icon-button/IconButton.svelte": "5747d1987f4da9052e6351061e9af041dfb8a40cbe50ece04366e401ec7b68a2",
+          "packages/svelte/src/components/icon-button/contract.generated.ts": "4a524955ac3998c543b83afee2a1ea6a9dff1e68b09922761d460086fcd12166",
+          "packages/svelte/src/components/icon-button/icon-button.css": "28f3143225c86afc219b816a6823e6a9f4667cfceced717a2a3e073b07b4fc00",
+          "packages/svelte/src/components/icon-button/tokens.generated.css": "226deddd2a209cf061c4ba516895acab195fd6bfafe2490880db8769583f2b4c",
+          "packages/svelte/src/components/icon-button/types.ts": "946087207d9a24c9426021e4d9a43efa0da704e9bb5e639d25d0e68e68f1446b",
+          "examples/icon-button/App.svelte": "696ffe20ac17840d442a56befdfe2bb5c19ee6f5f2e9919abf1fafc1fe5302ec"
+        }
+      },
+      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/M41vUxuVssusHawLkXvhhH version 1.",
+      "note": "Automated evidence: Chromium only; Safari behavior of the label clip reasoned, not observed."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -138,7 +160,7 @@
     "Contrast checked on the same contrastScope as Button (six neutral backdrops, outline border on muted in dark informational, accepted at the Button contract gate)."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation gate (grouped with the other components of the wave): the reviewer exercises the preview page; record the approval with source digests, then the Figma parity phase (ggb-figma).",
+  "nextAction": "Figma parity (ggb-figma): masters reproducing the approved implementation, specification page, parity report; then the Figma parity gate.",
   "implementationNotes": [
     "Self-contained folder packages/svelte/src/components/icon-button/ on the Bits UI Button primitive (button or a with href), its own CSS duplicated from the Button patterns rather than importing Button: a component folder must stay copyable with tokens.css, Bits UI and its declared dependencies (icon).",
     "Loading indicator: the same inline spinner as Button, sized at iconSize, replacing the icon in place.",

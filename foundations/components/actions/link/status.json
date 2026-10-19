@@ -3,7 +3,7 @@
   "componentId": "link",
   "family": "actions",
   "wave": 1,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Navigate to another page or resource from inside text, as an underlined word or phrase that reads with the sentence around it and tells the reader what it leads to (a page, another site, an email, a phone number, a file and its format, a printable version).",
     "useCases": [
@@ -76,7 +76,33 @@
       "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: three review rounds (2026-10-15 to 2026-10-17); Link destinations requested at the first round, Badge simplified and given the accent intent at the third; final \"D'accord pour tout ! Tu peux commencer le reste je valide\" (2026-10-17) covering the remaining questions (Link destinations including phone and print as a printable version, dark link color A, simplified Badge). Amendment of 2026-10-19 (meta and glyph as a subtle complement: metaColor and indicatorColor color.content.tertiary with tone accent, the context color with tone inherit and the glyph at inheritIndicatorOpacity opacity.muted): user at the implementation review in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU, variant D chosen on the comparison page (\"je préfère la D\") with the remark that the meta did not look attenuated in dark; color.content.secondary measured 1.12:1 against the dark link color, so the meta uses color.content.tertiary like the glyph (1.40:1 against the link, 5.11:1 or more on canvas, default, subtle, raised and overlay). Digest re-recorded; to be confirmed on the republished review page.",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Link: native anchor, destinations with Phosphor glyphs, visible file meta, announced suffixes, underline on the label only (1 px, 2 px on hover and press), glyph and meta as a subtle complement in color.content.tertiary (variant D), tone inherit, wrapping that keeps meta and glyph with the last word.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/link/Link.svelte",
+          "packages/svelte/src/components/link/contract.generated.ts",
+          "packages/svelte/src/components/link/destination.ts",
+          "packages/svelte/src/components/link/glyphs.ts",
+          "packages/svelte/src/components/link/link.css",
+          "packages/svelte/src/components/link/tokens.generated.css",
+          "packages/svelte/src/components/link/types.ts",
+          "examples/link/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/link/Link.svelte": "a6791d5521304422d962afe133f018f116ac41056da472d9b11579d89b48c9a4",
+          "packages/svelte/src/components/link/contract.generated.ts": "2b7e1031fce29d4599eb2e1b7c560c5e83818e959244d4410803e4ed686f6140",
+          "packages/svelte/src/components/link/destination.ts": "3e959dd8ed30605c5c927a4477aae74f52f7fbf750297621c7b6e0e99f2e6677",
+          "packages/svelte/src/components/link/glyphs.ts": "d0cc407e56d33d343bc86ce7be6cadc5ec567fb449c0ac1e5e8b5fdb35191b39",
+          "packages/svelte/src/components/link/link.css": "544ea8bb112d5959d13ee0e476606b12f6d4662b92a8691af33adeeaac4940fb",
+          "packages/svelte/src/components/link/tokens.generated.css": "92ac5eb6731c8b71e3bab63863d1159e710ab47c49a1814662583e990e28a869",
+          "packages/svelte/src/components/link/types.ts": "142759450f1f36cbc95a78cb664868f22d1aab2fd6474be2162ad784055a642e",
+          "examples/link/App.svelte": "dd627deacc5ae26648fc49c764706260b1630b61f6f699074b9d1123d1d68131"
+        }
+      },
+      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/EVqNMf5jPq8hHjYH2yAJ5Y version 2.",
+      "note": "Automated evidence: Chromium only; Safari behavior of the label clip reasoned, not observed."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -160,7 +186,7 @@
       "blocks": "nothing"
     }
   ],
-  "nextAction": "Implementation gate (grouped with the other components of the wave): the reviewer exercises the preview page; record the approval with source digests, then the Figma parity phase (ggb-figma).",
+  "nextAction": "Figma parity (ggb-figma): masters reproducing the approved implementation, specification page, parity report; then the Figma parity gate.",
   "implementationNotes": [
     "Markup: <a class=\"ggb-link\" data-tone data-destination href> with the label, a <span class=\"ggb-link__meta\"> for files, the glyph (aria-hidden) and a visually hidden suffix; external adds target=\"_blank\" rel=\"noopener noreferrer\". The last word, meta and glyph are wrapped in a no-wrap span so they never start a line alone.",
     "Underline through text-decoration (thickness from the tokens, text-underline-offset from-font) on the label only; focus with outline on the inline box so it follows each line.",

@@ -4,14 +4,14 @@ Validated by the user on 2026-09-25 (waves), amended for the foundations-first o
 
 ## Phase 1: the design system
 
-| Task                                                                           | Skill                  | Gate                                   | State                                                                                                                                                                                                                                                                                       |
-| ------------------------------------------------------------------------------ | ---------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0 · Foundations: generous primitives, full semantic inventory, Figma variables | `ggb-foundations`      | Tokens review                          | Done: approved 2026-09-26 (JeremySQT/design-system#1)                                                                                                                                                                                                                                       |
-| 1 · Wave 1 components                                                          | `ggb-component`        | Contract, implementation, Figma parity | Done: Button merged (JeremySQT/design-system#2); Icon, Counter and Shortcut Done and integrated into the Button (wave 1 pull request, 2026-10-14); In progress: IconButton, Link, Badge implementation gate pending (contracts approved 2026-10-17) (branch `wave/1-iconbutton-link-badge`) |
-| 2 · Wave 2 … 6                                                                 | `ggb-component`        | Same                                   | Not started                                                                                                                                                                                                                                                                                 |
-| 3 · Documentation site `apps/docs` (Astro + Starlight, docs.ggbrick.design)    | dedicated task         | Site review                            | Done: site review approved by the user on 2026-10-15 (branch `site/docs`); published at the first Deliver                                                                                                                                                                                   |
-| 4 · Marketing site `apps/site` (Astro, ggbrick.design)                         | dedicated task         | Site review                            | Not started                                                                                                                                                                                                                                                                                 |
-| 5 · First release (package, Figma library, docs)                               | `ggb-maintain` Deliver | Delivery approval                      | Not started                                                                                                                                                                                                                                                                                 |
+| Task                                                                           | Skill                  | Gate                                   | State                                                                                                                                                                                                                                                                             |
+| ------------------------------------------------------------------------------ | ---------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 · Foundations: generous primitives, full semantic inventory, Figma variables | `ggb-foundations`      | Tokens review                          | Done: approved 2026-09-26 (JeremySQT/design-system#1)                                                                                                                                                                                                                             |
+| 1 · Wave 1 components                                                          | `ggb-component`        | Contract, implementation, Figma parity | Done: Button merged (JeremySQT/design-system#2); Icon, Counter and Shortcut Done and integrated into the Button (wave 1 pull request, 2026-10-14); In progress: IconButton, Link, Badge Figma parity (implementation approved 2026-10-19) (branch `wave/1-iconbutton-link-badge`) |
+| 2 · Wave 2 … 6                                                                 | `ggb-component`        | Same                                   | Not started                                                                                                                                                                                                                                                                       |
+| 3 · Documentation site `apps/docs` (Astro + Starlight, docs.ggbrick.design)    | dedicated task         | Site review                            | Done: site review approved by the user on 2026-10-15 (branch `site/docs`); published at the first Deliver                                                                                                                                                                         |
+| 4 · Marketing site `apps/site` (Astro, ggbrick.design)                         | dedicated task         | Site review                            | Not started                                                                                                                                                                                                                                                                       |
+| 5 · First release (package, Figma library, docs)                               | `ggb-maintain` Deliver | Delivery approval                      | Not started                                                                                                                                                                                                                                                                       |
 
 ## Phase 2: customization
 
@@ -40,15 +40,15 @@ Composition patterns (toolbar, form section, action group, empty state, page hea
 
 One row per component once its scope phase starts. Phase values: scope, contract, implementation, figma, documentation, done; append "(gate pending)" while waiting for the reviewer.
 
-| Component  | Family  | Wave | Phase                         | Status file                                              |
-| ---------- | ------- | ---- | ----------------------------- | -------------------------------------------------------- |
-| Button     | actions | 1    | done                          | `foundations/components/actions/button/status.json`      |
-| Icon       | content | 1    | done                          | `foundations/components/content/icon/status.json`        |
-| Counter    | content | 1    | done                          | `foundations/components/content/counter/status.json`     |
-| Shortcut   | content | 1    | done                          | `foundations/components/content/shortcut/status.json`    |
-| IconButton | actions | 1    | implementation (gate pending) | `foundations/components/actions/icon-button/status.json` |
-| Link       | actions | 1    | implementation (gate pending) | `foundations/components/actions/link/status.json`        |
-| Badge      | content | 1    | implementation (gate pending) | `foundations/components/content/badge/status.json`       |
+| Component  | Family  | Wave | Phase | Status file                                              |
+| ---------- | ------- | ---- | ----- | -------------------------------------------------------- |
+| Button     | actions | 1    | done  | `foundations/components/actions/button/status.json`      |
+| Icon       | content | 1    | done  | `foundations/components/content/icon/status.json`        |
+| Counter    | content | 1    | done  | `foundations/components/content/counter/status.json`     |
+| Shortcut   | content | 1    | done  | `foundations/components/content/shortcut/status.json`    |
+| IconButton | actions | 1    | figma | `foundations/components/actions/icon-button/status.json` |
+| Link       | actions | 1    | figma | `foundations/components/actions/link/status.json`        |
+| Badge      | content | 1    | figma | `foundations/components/content/badge/status.json`       |
 
 ## How a fresh session starts a task
 

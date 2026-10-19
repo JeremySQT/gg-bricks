@@ -3,7 +3,7 @@
   "componentId": "badge",
   "family": "content",
   "wave": 1,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Describe an object with a short, read-only status or category word (Draft, Paid, Overdue, Beta) set by the application, in a small colored box whose words carry the meaning and whose color reinforces it.",
     "useCases": [
@@ -77,7 +77,29 @@
       "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: three review rounds (2026-10-15 to 2026-10-17); Link destinations requested at the first round, Badge simplified and given the accent intent at the third; final \"D'accord pour tout ! Tu peux commencer le reste je valide\" (2026-10-17) covering the remaining questions (Link destinations including phone and print as a printable version, dark link color A, simplified Badge).",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Badge: static text in the Counter box family, status colors in subtle and strong appearances, optional leading icon with optical placement, one-line truncation clipped horizontally only (descenders kept in every browser).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/badge/Badge.svelte",
+          "packages/svelte/src/components/badge/badge.css",
+          "packages/svelte/src/components/badge/contract.generated.ts",
+          "packages/svelte/src/components/badge/tokens.generated.css",
+          "packages/svelte/src/components/badge/types.ts",
+          "examples/badge/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/badge/Badge.svelte": "7870d9f2c00ca017ce96321c7bfd839a7dff999170e12c06e55c62f1b9dcf986",
+          "packages/svelte/src/components/badge/badge.css": "791f4c5e4224e1ac3937d1762d9108ef7528e4bceb8746e18037208f0bdc83e3",
+          "packages/svelte/src/components/badge/contract.generated.ts": "9c76153ddaf6cbe88a6e7597249ced0b528e65e0150b0062d8b1e9c23915c058",
+          "packages/svelte/src/components/badge/tokens.generated.css": "61f6f5b730021ae7f86da1c91ee0c62d213c19b53da5f0ad3466d213d2c5f8ca",
+          "packages/svelte/src/components/badge/types.ts": "079e439d142074a11c39bd3dc756125076248e73b3e5e3e9141588b9ecf3f9e9",
+          "examples/badge/App.svelte": "4960d8788e068fae6551745c1cc6c66150c7db4e129392f5c5ceca45434ff557"
+        }
+      },
+      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/6D7aXkYH7NsK7HDygz8dSk version 2.",
+      "note": "Automated evidence: Chromium only; Safari behavior of the label clip reasoned, not observed."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -144,7 +166,7 @@
     "User at the implementation review (2026-10-19): variant A, mixed case with the label clipped horizontally only; all caps rejected (\"capitales ne fonctionne pas\"). The comparison page examples/link-badge-review was removed once decided."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation gate (grouped with the other components of the wave): the reviewer exercises the preview page; record the approval with source digests, then the Figma parity phase (ggb-figma).",
+  "nextAction": "Figma parity (ggb-figma): masters reproducing the approved implementation, specification page, parity report; then the Figma parity gate.",
   "implementationNotes": [
     "Markup: <span class=\"ggb-badge\" data-intent data-appearance data-size> with the leading icon (aria-hidden) and <span class=\"ggb-badge__label\">; no role (static text). Truncation with native text-overflow and the full label in a title-free visually hidden copy only if truncation hides it (decided at implementation).",
     "No Bits UI primitive (static content), like Counter.",
