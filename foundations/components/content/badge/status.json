@@ -39,8 +39,26 @@
       "foundations/tokens/base/semantic/appearance.light.tokens.json",
       "foundations/tokens/base/semantic/appearance.dark.tokens.json"
     ],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "content/badge (220:2)",
+      "componentSet": "220:293",
+      "specification": "223:2",
+      "ledger": "reports/components/badge/figma/ledger.json",
+      "parity": "reports/components/badge/figma/parity.json",
+      "screenshots": [
+        "reports/components/badge/figma/master-set.png",
+        "reports/components/badge/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/badge/figma/blueprint-anatomy.png",
+          "node": "223:75"
+        }
+      ],
+      "builders": ["authoring/adapters/figma/badge-master.plugin.js", "authoring/adapters/figma/badge-spec.plugin.js"]
+    },
+    "figmaSpec": "foundations/components/content/badge/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "entry": "packages/svelte/src/components/badge/Badge.svelte",
@@ -150,6 +168,14 @@
       "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run build:preview badge",
       "date": "2026-10-17",
       "note": "dist/previews/badge.html mounts from file:// without errors."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/badge-parity.plugin.js; node authoring/adapters/figma/badge-parity-report.mjs <result>",
+      "report": "reports/components/badge/figma/parity.json",
+      "date": "2026-10-19",
+      "note": "11664 records (every computed record: 6 intents × 2 appearances × 3 sizes with the leading icon in 18 contexts), 0 failures; 972 justified differences (strong edge without stroke, tabIndex); width within 1.08 px, height and minimum width within 0.01 px. A first run found the subtle stroke included in the layout; corrected before recording."
     }
   ],
   "decisionsTaken": [
@@ -166,7 +192,7 @@
     "User at the implementation review (2026-10-19): variant A, mixed case with the label clipped horizontally only; all caps rejected (\"capitales ne fonctionne pas\"). The comparison page examples/link-badge-review was removed once decided."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (ggb-figma): masters reproducing the approved implementation, specification page, parity report; then the Figma parity gate.",
+  "nextAction": "Figma parity gate (grouped with IconButton and Link): the user reviews the Badge page (master 220:293, specification 223:2) and the parity report; then documentation (ggb-docs).",
   "implementationNotes": [
     "Markup: <span class=\"ggb-badge\" data-intent data-appearance data-size> with the leading icon (aria-hidden) and <span class=\"ggb-badge__label\">; no role (static text). Truncation with native text-overflow and the full label in a title-free visually hidden copy only if truncation hides it (decided at implementation).",
     "No Bits UI primitive (static content), like Counter.",

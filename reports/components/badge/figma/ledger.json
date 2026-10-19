@@ -1,0 +1,163 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=220-2"
+  },
+  "recordedOn": "2026-10-19",
+  "page": {
+    "name": "content/badge",
+    "id": "220:2",
+    "position": "after content/counter"
+  },
+  "componentSet": {
+    "id": "220:293",
+    "name": "Badge",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=220-293",
+    "builder": "authoring/adapters/figma/badge-master.plugin.js",
+    "defaultVariant": "Intent=neutral, Appearance=subtle, Size=md (top-left)"
+  },
+  "properties": {
+    "Label#220:0": {
+      "type": "TEXT",
+      "default": "Badge",
+      "layer": "Label"
+    },
+    "Show leading#220:37": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Leading (visible)"
+    },
+    "Intent": {
+      "type": "VARIANT",
+      "default": "neutral",
+      "options": [
+        "neutral",
+        "accent",
+        "info",
+        "success",
+        "warning",
+        "danger"
+      ]
+    },
+    "Appearance": {
+      "type": "VARIANT",
+      "default": "subtle",
+      "options": [
+        "subtle",
+        "strong"
+      ]
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ]
+    }
+  },
+  "exposedInstances": {
+    "Leading icon": "instance of Icon Size=xs (149:5), exposed: property Glyph#149:0; each intent sets its glyph (neutral pencil-simple 200:5392, accent star 200:5647, info info 200:5169, success check 200:4715, warning and danger warning-circle 200:5831); glyph fill overridden to color/status/{intent}/icon (subtle) or contentStrong (strong)"
+  },
+  "layers": [
+    "Leading (padding-right space/content/xs, visible = Show leading)",
+    "Leading/Drawing box (width badge/icon-box, height size/icon/xs, icon aligned to its end)",
+    "Leading/Drawing box/Leading icon",
+    "Label (text, typography/indicator/{size} bindings, leading trim cap height, truncation ending, one line)"
+  ],
+  "bindings": {
+    "height and minWidth": "typography/indicator/{size}/lineHeight",
+    "padding left and right": "space/content/xs (Density)",
+    "corners": "radius/indicator",
+    "fill": "color/status/{intent}/surface (subtle), surfaceStrong (strong)",
+    "stroke (subtle only)": "color/status/{intent}/border, weight border/width/default, inside, not included in layout",
+    "Label fill": "color/status/{intent}/content (subtle), contentStrong (strong)",
+    "Label typography": "typography/indicator/{size}/fontFamily, fontWeight, fontSize, lineHeight, letterSpacing",
+    "Leading icon glyph fill": "color/status/{intent}/icon (subtle), contentStrong (strong)"
+  },
+  "adapterVariables": {
+    "badge/icon-box": {
+      "id": "VariableID:220:3",
+      "collection": "Components (VariableCollectionId:181:2)",
+      "type": "FLOAT",
+      "values": "10.5 in sm, md and lg",
+      "meaning": "size/icon/xs − size/icon/xs ÷ 8: the icon box minus its leading inset (Figma cannot compute a fraction of a variable)",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "hiddenFromPublishing": true
+    }
+  },
+  "variants": {
+    "Intent=neutral, Appearance=subtle, Size=md": "220:4",
+    "Intent=neutral, Appearance=subtle, Size=sm": "220:13",
+    "Intent=neutral, Appearance=subtle, Size=lg": "220:21",
+    "Intent=neutral, Appearance=strong, Size=md": "220:29",
+    "Intent=neutral, Appearance=strong, Size=sm": "220:37",
+    "Intent=neutral, Appearance=strong, Size=lg": "220:45",
+    "Intent=accent, Appearance=subtle, Size=md": "220:53",
+    "Intent=accent, Appearance=subtle, Size=sm": "220:61",
+    "Intent=accent, Appearance=subtle, Size=lg": "220:69",
+    "Intent=accent, Appearance=strong, Size=md": "220:77",
+    "Intent=accent, Appearance=strong, Size=sm": "220:85",
+    "Intent=accent, Appearance=strong, Size=lg": "220:93",
+    "Intent=info, Appearance=subtle, Size=md": "220:101",
+    "Intent=info, Appearance=subtle, Size=sm": "220:109",
+    "Intent=info, Appearance=subtle, Size=lg": "220:117",
+    "Intent=info, Appearance=strong, Size=md": "220:125",
+    "Intent=info, Appearance=strong, Size=sm": "220:133",
+    "Intent=info, Appearance=strong, Size=lg": "220:141",
+    "Intent=success, Appearance=subtle, Size=md": "220:149",
+    "Intent=success, Appearance=subtle, Size=sm": "220:157",
+    "Intent=success, Appearance=subtle, Size=lg": "220:165",
+    "Intent=success, Appearance=strong, Size=md": "220:173",
+    "Intent=success, Appearance=strong, Size=sm": "220:181",
+    "Intent=success, Appearance=strong, Size=lg": "220:189",
+    "Intent=warning, Appearance=subtle, Size=md": "220:197",
+    "Intent=warning, Appearance=subtle, Size=sm": "220:205",
+    "Intent=warning, Appearance=subtle, Size=lg": "220:213",
+    "Intent=warning, Appearance=strong, Size=md": "220:221",
+    "Intent=warning, Appearance=strong, Size=sm": "220:229",
+    "Intent=warning, Appearance=strong, Size=lg": "220:237",
+    "Intent=danger, Appearance=subtle, Size=md": "220:245",
+    "Intent=danger, Appearance=subtle, Size=sm": "220:253",
+    "Intent=danger, Appearance=subtle, Size=lg": "220:261",
+    "Intent=danger, Appearance=strong, Size=md": "220:269",
+    "Intent=danger, Appearance=strong, Size=sm": "220:277",
+    "Intent=danger, Appearance=strong, Size=lg": "220:285"
+  },
+  "specification": {
+    "id": "223:2",
+    "name": "Badge — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=223-2",
+    "builder": "authoring/adapters/figma/badge-spec.plugin.js",
+    "anatomyBoard": "223:75",
+    "uses": {
+      "_Spec/Board": "113:17",
+      "_Spec/Callout": "115:6",
+      "_Spec/Marker": "115:8",
+      "Counter": "149:1568",
+      "Icon": "149:20",
+      "Wireframe": "VariableCollectionId:105:1565"
+    }
+  },
+  "evidence": {
+    "parity": "reports/components/badge/figma/parity.json",
+    "parityScripts": [
+      "authoring/adapters/figma/badge-parity.plugin.js",
+      "authoring/adapters/figma/badge-parity-report.mjs"
+    ],
+    "screenshots": [
+      "reports/components/badge/figma/master-set.png",
+      "reports/components/badge/figma/specification.png",
+      "reports/components/badge/figma/blueprint-anatomy.png"
+    ]
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-19",
+      "change": "Built: 36 variants. The first parity run found the subtle edge included in the layout (strokesIncludedInLayout, icon offset 3.5 instead of 2.5 and widths +2 px); set to false on the 36 variants and in the builder, re-measured: 0 failures."
+    }
+  ]
+}
