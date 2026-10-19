@@ -1,5 +1,5 @@
 // Badge master builder (use_figma body), 2026-10-19.
-// Creates (or reuses) the page content/badge after content/counter, the adapter variable badge/icon-box in the
+// Creates (or reuses) the page content/badge before content/counter, the adapter variable badge/icon-box in the
 // hidden Components collection, and the component set “Badge” (Intent × Appearance × Size, 36 variants) with
 // the boolean Show leading, the text property Label and an exposed Icon (xs) in the leading slot. Every visual
 // property is bound to a variable looked up by collection and name; no ID is guessed. Rerunning replaces the set.
@@ -13,8 +13,8 @@ let page = figma.root.children.find((p) => p.name === 'content/badge');
 if (!page) {
   page = figma.createPage();
   page.name = 'content/badge';
-  const after = figma.root.children.findIndex((p) => p.name === 'content/counter');
-  figma.root.insertChild(after + 1, page);
+  const before = figma.root.children.findIndex((p) => p.name === 'content/counter');
+  figma.root.insertChild(before, page);
 }
 await figma.setCurrentPageAsync(page);
 for (const n of page.children.filter((n) => n.type === 'COMPONENT_SET' && n.name === 'Badge')) n.remove();

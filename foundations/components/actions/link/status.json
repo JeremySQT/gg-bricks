@@ -37,8 +37,26 @@
       "sha256": "d482a8b7b9ed7a260e1d184267b95dfd61d88dc662a77cb1f535fcbc010daaab"
     },
     "tokens": [],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "actions/link (225:2)",
+      "componentSet": "225:276",
+      "specification": "228:63",
+      "ledger": "reports/components/link/figma/ledger.json",
+      "parity": "reports/components/link/figma/parity.json",
+      "screenshots": [
+        "reports/components/link/figma/master-set.png",
+        "reports/components/link/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/link/figma/blueprint-anatomy.png",
+          "node": "228:114"
+        }
+      ],
+      "builders": ["authoring/adapters/figma/link-master.plugin.js", "authoring/adapters/figma/link-spec.plugin.js"]
+    },
+    "figmaSpec": "foundations/components/actions/link/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "entry": "packages/svelte/src/components/link/Link.svelte",
@@ -161,6 +179,14 @@
       "report": "reports/components/link/contract-validation.json",
       "date": "2026-10-19",
       "note": "Amended contract: 10 token paths, coverage in 18 contexts."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/link-parity.plugin.js; node authoring/adapters/figma/link-parity-report.mjs <result>",
+      "report": "reports/components/link/figma/parity.json",
+      "date": "2026-10-19",
+      "note": "4680 records (13 cases × 20 properties in 18 contexts), 0 failures; 234 justified differences (underline thickness literal: Figma cannot bind it). Parent text values compared with the instance's text and context modes."
     }
   ],
   "decisionsTaken": [
@@ -186,7 +212,7 @@
       "blocks": "nothing"
     }
   ],
-  "nextAction": "Figma parity (ggb-figma): masters reproducing the approved implementation, specification page, parity report; then the Figma parity gate.",
+  "nextAction": "Figma parity gate (grouped with IconButton and Badge): the user reviews the Link page (master 225:276, specification 228:63) and the parity report; then documentation (ggb-docs).",
   "implementationNotes": [
     "Markup: <a class=\"ggb-link\" data-tone data-destination href> with the label, a <span class=\"ggb-link__meta\"> for files, the glyph (aria-hidden) and a visually hidden suffix; external adds target=\"_blank\" rel=\"noopener noreferrer\". The last word, meta and glyph are wrapped in a no-wrap span so they never start a line alone.",
     "Underline through text-decoration (thickness from the tokens, text-underline-offset from-font) on the label only; focus with outline on the inline box so it follows each line.",
