@@ -343,7 +343,9 @@ ring.x = LX - 2 * Z;
 ring.y = LY - (24 * Z - lab.height) / 2 - 2 * Z;
 ring.resize(gl.x + FS - LX + 4 * Z, 24 * Z + 4 * Z);
 ring.cornerRadius = 6 * Z;
-stroke(ring, 'wireframe/ink', 2, null, 'OUTSIDE');
+// Dashed and translucent: the ring is shown only on keyboard focus, and the link itself has no box.
+stroke(ring, 'wireframe/ink', 1.5, [6, 4], 'OUTSIDE');
+ring.opacity = 0.5;
 dg.appendChild(ring);
 const dimH = (x1, x2, y, ch) => {
   const l = figma.createLine();
@@ -366,7 +368,7 @@ const dimH = (x1, x2, y, ch) => {
 const ringBottom = ring.y + ring.height;
 dimH(meta.x + meta.width, glyphX, ringBottom + 24, 'A');
 dimH(glyphX, glyphX + FS, ringBottom + 24, 'B');
-pin(dg, 1, LX + lab.width / 2, 40, LX + lab.width / 2, ring.y);
+pin(dg, 1, LX + lab.width / 2, 40, LX + lab.width / 2, LY);
 pin(dg, 2, meta.x + meta.width / 2, 40, meta.x + meta.width / 2, LY);
 pin(dg, 3, glyphX + FS / 2, 40, glyphX + FS / 2, gl.y);
 pin(dg, 4, LX + 20, ringBottom + 50, LX + 20, ringBottom);
@@ -384,7 +386,10 @@ for (const [n, s] of [
     '3',
     'Indicator: one glyph, one em square, after the words, not underlined, in a quieter color. It says where the link goes; a page link has none.'
   ],
-  ['4', 'Focus ring: around the link when it is focused with the keyboard.'],
+  [
+    '4',
+    'Focus ring (dashed here): drawn around the link only when it is focused with the keyboard; the link itself has no box.'
+  ],
   ['A', 'Gap before the indicator: 2, 4 or 6 px with the density.'],
   ['B', 'Indicator size: the font size of the text (16 px in body md).']
 ]) {

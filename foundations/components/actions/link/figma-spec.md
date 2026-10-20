@@ -48,7 +48,7 @@ Recorded as such in `parity.json` where a record exists; none hides a defect of 
 
 ## Page style and diagrams
 
-Same layout as the other component pages. The Anatomy board shows a file link (“Report (PDF, 2 MB)” with its glyph) zoomed three times, with its focus ring, callouts 1 Label, 2 Meta, 3 Indicator, 4 Focus ring and the dimensions A (gap) and B (glyph size). Colors come from the Figma-only **Wireframe** collection and the documentation components `_Spec/Board`, `_Spec/Callout`, `_Spec/Marker` on the Utilities page.
+Same layout as the other component pages. The Anatomy board shows a file link (“Report (PDF, 2 MB)” with its glyph) zoomed three times, with its focus ring dashed and translucent (shown only on keyboard focus: the link has no box), callouts 1 Label, 2 Meta, 3 Indicator, 4 Focus ring and the dimensions A (gap) and B (glyph size). Colors come from the Figma-only **Wireframe** collection and the documentation components `_Spec/Board`, `_Spec/Callout`, `_Spec/Marker` on the Utilities page.
 
 ## Parity method
 
