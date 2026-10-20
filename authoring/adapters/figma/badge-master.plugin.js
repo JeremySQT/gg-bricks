@@ -6,8 +6,9 @@
 // Construction follows the Counter (the badge shares its box family): the height and the minimum width are bound
 // to typography/indicator/{size}/lineHeight, the label is trimmed to its cap height (text-box: trim-both cap
 // alphabetic in the code). The leading icon is placed by its drawing: a “Drawing box” of badge/icon-box
-// (iconSize − iconSize/8, 10.5) holds the 12 px icon aligned to its end, so the icon box overlaps the padding
-// by iconSize/8 as the code's negative margin does, and the Leading frame adds leadingGap after the icon box.
+// (iconSize − iconSize/4, 9) holds the 12 px icon centered, so the icon box overlaps the padding and the leading
+// gap by iconSize/8 on each side as the code's negative margins do (amended on 2026-10-20, as in Button), and
+// the Leading frame adds leadingGap after the drawing.
 figma.skipInvisibleInstanceChildren = false;
 let page = figma.root.children.find((p) => p.name === 'content/badge');
 if (!page) {
@@ -27,13 +28,13 @@ const V = (name) => {
   if (!v) throw new Error('missing variable ' + name);
   return v;
 };
-// Adapter: the icon box minus its leading inset (Figma cannot compute a fraction of a variable).
+// Adapter: the icon box minus its two insets (Figma cannot compute a fraction of a variable).
 const ac = col('Components');
 let box = vars.find((v) => v.name === 'badge/icon-box' && v.variableCollectionId === ac.id);
 if (!box) box = figma.variables.createVariable('badge/icon-box', ac, 'FLOAT');
 box.scopes = ['WIDTH_HEIGHT'];
 box.hiddenFromPublishing = true;
-for (const m of ac.modes) box.setValueForMode(m.modeId, 10.5);
+for (const m of ac.modes) box.setValueForMode(m.modeId, 9);
 
 const paint = (name) =>
   figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', V(name));
@@ -95,12 +96,12 @@ for (const i of I)
       const draw = figma.createAutoLayout('HORIZONTAL', { name: 'Drawing box' });
       draw.fills = [];
       draw.clipsContent = false;
-      draw.primaryAxisAlignItems = 'MAX';
+      draw.primaryAxisAlignItems = 'CENTER';
       draw.counterAxisAlignItems = 'CENTER';
       draw.primaryAxisSizingMode = 'FIXED';
       draw.counterAxisSizingMode = 'FIXED';
       lead.appendChild(draw);
-      draw.resize(10.5, 12);
+      draw.resize(9, 12);
       draw.setBoundVariable('width', box);
       draw.setBoundVariable('height', V('size/icon/xs'));
       const icon = iconXs.createInstance();

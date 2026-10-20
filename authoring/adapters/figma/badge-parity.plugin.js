@@ -1,8 +1,9 @@
-// Badge Figma parity measurement (use_figma body), 2026-10-19.
+// Badge Figma parity measurement (use_figma body), 2026-10-19; iconToLabel added on 2026-10-20.
 // In each of the 18 brand × appearance × density contexts, instantiates the 36 cases of
 // reports/components/badge/svelte/computed.json (every intent, appearance and size, with the leading icon and the
 // label of the code's review page) in a temporary frame with explicit Brand/Appearance/Density modes, and reads:
-// exact fields  labelColor|surface|stroke/width|radius|padL|padR|fontSize|fontWeight|iconColor|iconSize|iconOffset|iconGap
+// exact fields  labelColor|surface|stroke/width|radius|padL|padR|fontSize|fontWeight|iconColor|iconSize|iconOffset|iconGap|
+//               iconToLabel (from the icon box end to the label start)
 // numeric fields  height, minWidth, width (compared with a tolerance by the report: text rendering).
 // Returns per context { n, hash } (FNV-1a of the sorted "key=exact fields" lines) and num, the numeric fields
 // "height,minWidth,width" in the order of ORDER (the set's variant order, returned once), plus the exact lines
@@ -94,7 +95,8 @@ for (const brand of ['base', 'brick', 'orchid'])
             await paint(vec, 'fills'),
             `${r3(icon.width)}x${r3(icon.height)}`,
             r3(ix),
-            await res(lead, 'paddingRight')
+            await res(lead, 'paddingRight'),
+            r3(t.absoluteTransform[0][2] - icon.absoluteTransform[0][2] - icon.width)
           ].join('|');
           num.push([r3(inst.height), r3(await res(inst, 'minWidth')), r3(inst.width)].join(','));
         }

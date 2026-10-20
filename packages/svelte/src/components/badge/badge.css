@@ -66,14 +66,15 @@
   color: var(--_icon);
 }
 /*
- * Optical alignment: icons of the reference set draw 1/8 inside their box on each side, so the box overlaps
- * the padding by that inset and the drawing sits at paddingInline from the edge. The host size applies.
+ * Optical alignment, as in Button: icons of the reference set draw 1/8 inside their box on each side, so the box
+ * overlaps the padding and the leading gap by that inset; the drawing sits at paddingInline from the edge and at
+ * leadingGap from the label. The host size applies.
  */
 .ggb-badge__leading > svg {
   display: block;
   inline-size: var(--ggb-badge-iconSize);
   block-size: var(--ggb-badge-iconSize);
-  margin-inline-start: calc(var(--ggb-badge-iconSize) / -8);
+  margin-inline: calc(var(--ggb-badge-iconSize) / -8);
   flex: none;
   vertical-align: baseline;
 }

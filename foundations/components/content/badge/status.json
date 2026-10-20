@@ -108,14 +108,14 @@
         ],
         "sha256": {
           "packages/svelte/src/components/badge/Badge.svelte": "7870d9f2c00ca017ce96321c7bfd839a7dff999170e12c06e55c62f1b9dcf986",
-          "packages/svelte/src/components/badge/badge.css": "791f4c5e4224e1ac3937d1762d9108ef7528e4bceb8746e18037208f0bdc83e3",
+          "packages/svelte/src/components/badge/badge.css": "79eec37494cbe9a6fe6609535c0f8867a2c8d474bdaaa0c4ca442829f6752dd7",
           "packages/svelte/src/components/badge/contract.generated.ts": "9c76153ddaf6cbe88a6e7597249ced0b528e65e0150b0062d8b1e9c23915c058",
           "packages/svelte/src/components/badge/tokens.generated.css": "61f6f5b730021ae7f86da1c91ee0c62d213c19b53da5f0ad3466d213d2c5f8ca",
           "packages/svelte/src/components/badge/types.ts": "079e439d142074a11c39bd3dc756125076248e73b3e5e3e9141588b9ecf3f9e9",
           "examples/badge/App.svelte": "4960d8788e068fae6551745c1cc6c66150c7db4e129392f5c5ceca45434ff557"
         }
       },
-      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/6D7aXkYH7NsK7HDygz8dSk version 2.",
+      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/6D7aXkYH7NsK7HDygz8dSk version 2. Amendment of 2026-10-20 (user at the Figma parity review, seeing the badge with its icon: \"je trouve l'icône un poil trop espacée du label\"): the glyph inset is compensated on both sides of the icon box, as in Button (margin-inline instead of margin-inline-start), so the drawing sits at leadingGap from the label (4 px in standard instead of 5.5 px); the contract is unchanged (its rule already places the icon by its drawing). Digest of badge.css re-recorded; to be confirmed at the Figma parity gate.",
       "note": "Automated evidence: Chromium only; Safari behavior of the label clip reasoned, not observed."
     },
     "figmaParity": null,
@@ -176,6 +176,22 @@
       "report": "reports/components/badge/figma/parity.json",
       "date": "2026-10-19",
       "note": "11664 records (every computed record: 6 intents × 2 appearances × 3 sizes with the leading icon in 18 contexts), 0 failures; 972 justified differences (strong edge without stroke, tabIndex); width within 1.08 px, height and minimum width within 0.01 px. A first run found the subtle stroke included in the layout; corrected before recording."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-20",
+      "note": "Full suite 61 passed after the icon inset amendment; the Badge test now measures the distance from the icon box to the label (leadingGap − iconSize/8: 0.5, 2.5, 4.5 px in compact, standard, comfortable). computed.json: 12 312 records (iconToLabel added)."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/badge-parity.plugin.js; node authoring/adapters/figma/badge-parity-report.mjs <result>",
+      "report": "reports/components/badge/figma/parity.json",
+      "date": "2026-10-20",
+      "note": "Re-measured after the icon inset amendment (badge/icon-box 9, icon centered in its drawing box): 12 312 records, 0 failures, the 18 hashes equal (iconToLabel added to the exact fields); width within 1.08 px. Supersedes the check of 2026-10-19."
     }
   ],
   "decisionsTaken": [
@@ -189,10 +205,11 @@
     "User decision at the contract gate (2026-10-16): Badge, Counter and Tag are distinct. Badge describes an object (status or category, read-only, set by the application); Counter says how many; Tag is a value the user manipulates (removable, sometimes selectable, often user-created). The trailing Counter and the dismissible option suggested at the first review belong to Tag: the trailing slot and space.content.2xs were withdrawn (\"Ok ça me va\"), and Tag is added to the catalog as a later candidate.",
     "User decision at the contract gate (2026-10-16): neutral intent kept with the color.status.neutral.* roles (part of the accepted proposal).",
     "User decision at the contract gate (2026-10-16): accent intent added (\"pourquoi pas avoir l'intent accent pour le badge aussi\"): new roles color.status.accent.* aliasing color.palette.accent and mirroring info (light 50/600/800/neutral.0/300/600, dark 950/600/200/neutral.0/800/400); four inventory contrast pairs. Listed after neutral since both are categories rather than statuses. Measured in the 18 contexts: content/surface 8.76 to 11.66, contentStrong/surfaceStrong 5.32 to 5.67, icon/surface 4.96 to 6.47, icon/surface.default 5.32 to 6.85.",
-    "User at the implementation review (2026-10-19): variant A, mixed case with the label clipped horizontally only; all caps rejected (\"capitales ne fonctionne pas\"). The comparison page examples/link-badge-review was removed once decided."
+    "User at the implementation review (2026-10-19): variant A, mixed case with the label clipped horizontally only; all caps rejected (\"capitales ne fonctionne pas\"). The comparison page examples/link-badge-review was removed once decided.",
+    "User at the Figma parity review (2026-10-20): the icon looked a little too far from the label. Cause: the glyph inset (1/8 of the icon) was compensated only before the icon, so the visible gap was leadingGap + 1.5 px. Now compensated on both sides as in Button: the drawing sits at leadingGap from the label (2, 4, 6 px by density); no token change."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity gate (grouped with IconButton and Link): the user reviews the Badge page (master 220:293, specification 223:2) and the parity report; then documentation (ggb-docs).",
+  "nextAction": "Figma parity gate (grouped with IconButton and Link): the user reviews the Badge page (master 220:293, specification 223:2) after the icon gap amendment, and the parity report; then documentation (ggb-docs).",
   "implementationNotes": [
     "Markup: <span class=\"ggb-badge\" data-intent data-appearance data-size> with the leading icon (aria-hidden) and <span class=\"ggb-badge__label\">; no role (static text). Truncation with native text-overflow and the full label in a title-free visually hidden copy only if truncation hides it (decided at implementation).",
     "No Bits UI primitive (static content), like Counter.",

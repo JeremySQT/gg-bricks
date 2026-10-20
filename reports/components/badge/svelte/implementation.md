@@ -20,7 +20,7 @@ Amended on 2026-10-17 after the user's review ("les lettres qui descendent sont 
 | subtle: surface, inset border, content, icon color; strong: strong surface, no visible border, strong content for label and icon | custom properties per appearance | browser: background, color, icon color and shadow for 36 combinations in 18 contexts |
 | Indicator typography, one line, truncated with an ellipsis, icon whole, full text available | `font: var(--ggb-badge-typography)`, `white-space: nowrap`, ellipsis on the label, `flex: none` on the icon | browser: truncated at 3, 5 and 8 em without overflowing the cell, icon 12 × 12, accessibility tree reads the full label |
 | Block size = line box; cap-height centering; inline padding; min inline size = block size; radius | `block-size: 1lh`, `padding-inline`, `min-inline-size: 1lh`, `text-box` trim | browser: heights 15.4 / 16.8 / 19.6 px in 3 densities, same height and top as the Counter on the same line, radius per brand |
-| Leading icon at iconSize, optical placement, leadingGap | svg sized to `size.icon.xs`, `margin-inline-start: -iconSize/8`, `margin-inline-end: leadingGap` | browser: icon box starts 2.5 px from the edge at standard (4 − 12/8), gap = `space.content.xs` |
+| Leading icon at iconSize, optical placement, leadingGap | svg sized to `size.icon.xs`, `margin-inline: -iconSize/8` (both sides, as in Button; amended on 2026-10-20), `margin-inline-end: leadingGap` | browser: icon box starts 2.5 px from the edge at standard (4 − 12/8) and ends 2.5 px before the label, gap = `space.content.xs` |
 | Sizes like Button; typography, icon and height fixed across densities, padding follows | tokens | browser: 3 densities |
 | Not interactive | no handlers, no role, no tabindex | browser: tabIndex −1, Tab skips badges |
 | Forced colors: edge of borderWidth in the system text color, label in the system text color | transparent 1 px outline always present, `outline-color: CanvasText` and `color: CanvasText` | browser: outline 1 px solid in the text color, subtle and strong |
@@ -29,7 +29,7 @@ Amended on 2026-10-17 after the user's review ("les lettres qui descendent sont 
 
 - `npm run verify`: passed. SSR: 5 Badge tests (`ssr.json`).
 - Browser (Chromium 141): 6 Badge tests: text and roles through the accessibility tree and focus, geometry in 3 densities with the Counter alignment and the icon placement, truncation, computed values in 18 contexts, motion and forced colors, axe WCAG 2.0/2.1/2.2 A and AA in light and dark plus 390 px. Full suite: 61 passed.
-- Computed values: `computed.json`, 11 664 records: 6 intents × 2 appearances × 3 sizes with a leading icon, in the 18 contexts (colors, edge, radius, padding, font, geometry, icon color, size, offset and gap).
+- Computed values: `computed.json`, 12 312 records: 6 intents × 2 appearances × 3 sizes with a leading icon, in the 18 contexts (colors, edge, radius, padding, font, geometry, icon color, size, offset, gap and distance to the label).
 - Contrast: subtle content on surface and strong content on strong surface for the six intents pass 4.5:1 in the 18 contexts (inventory pairs, `reports/tokens/contrast.json`; component report `reports/components/badge/contrast.json`, edges informational as decided at the contract gate).
 - Preview: `dist/previews/badge.html` (1 439 kB) mounts from `file://` without errors.
 

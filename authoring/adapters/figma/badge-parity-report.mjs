@@ -40,7 +40,8 @@ const FIELDS = [
   'iconColor',
   'iconSize',
   'iconOffset',
-  'iconGap'
+  'iconGap',
+  'iconToLabel'
 ];
 // Computed property → exact field. The strong edge is a transparent inset shadow in code (kept for forced colors):
 // no stroke in Figma.
@@ -60,7 +61,8 @@ const exactMap = {
   iconColor: ['iconColor', hex],
   iconSize: ['iconSize', String],
   iconOffsetInline: ['iconOffset', (v) => String(Math.round(v * 1000) / 1000)],
-  iconGap: ['iconGap', px]
+  iconGap: ['iconGap', px],
+  iconToLabel: ['iconToLabel', (v) => String(Math.round(v * 1000) / 1000)]
 };
 const numMap = { height: [0, 0.01], minInlineSize: [1, 0.01], width: [2, 1.5] };
 const keyOf = (r) => `${r.context}|${r.props.intent}|${r.props.appearance}|${r.props.size}`;
@@ -97,8 +99,10 @@ const notes = {
   iconColor: 'glyph fill bound to color/status/{intent}/icon (subtle) or contentStrong (strong)',
   iconSize: 'Icon xs, size/icon/xs',
   iconOffset:
-    'Drawing box of badge/icon-box (iconSize − iconSize/8) holding the icon at its end: the icon box starts at padding − iconSize/8',
-  iconGap: 'Leading frame padding-right bound to space/content/xs'
+    'Drawing box of badge/icon-box (iconSize − iconSize/4) holding the icon centered: the icon box starts at padding − iconSize/8',
+  iconGap: 'Leading frame padding-right bound to space/content/xs',
+  iconToLabel:
+    'Drawing box of badge/icon-box (iconSize − iconSize/4) with the icon centered, then the leading gap: the icon box overlaps the gap by iconSize/8'
 };
 const out = [];
 for (const r of records) {

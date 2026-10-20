@@ -311,7 +311,7 @@ const rect = (name, x, y, w, h, fillName, r = 0, parent = dg) => {
   parent.appendChild(f);
   return f;
 };
-// md badge “Paid” with its icon, zoomed ×6: padding 24, icon box 72 overlapping the padding by 9, gap 24.
+// md badge “Paid” with its icon, zoomed ×6: padding 24, icon box 72 overlapping the padding and the gap by 9, gap 24.
 const Z = 6,
   BX = 196,
   BY = 120,
@@ -324,7 +324,7 @@ word.fontSize = 12 * Z;
 word.fontName = { family: 'Inter', style: 'Medium' };
 word.leadingTrim = 'CAP_HEIGHT';
 word.lineHeight = { unit: 'PIXELS', value: BH };
-const BW = PAD + (ICON - ICON / 8) + GAP + word.width + PAD;
+const BW = PAD + (ICON - ICON / 4) + GAP + word.width + PAD;
 const boxR = rect('1 Container', BX, BY, BW, BH, 'wireframe/tint/16', 4 * Z);
 stroke(boxR, 'wireframe/tint/48', 1.5);
 const iconBox = rect(
@@ -347,7 +347,7 @@ gl.resize(ICON, ICON);
 gl.name = 'Glyph (zoomed)';
 dg.appendChild(word);
 word.name = '3 Label';
-word.x = BX + PAD + ICON - ICON / 8 + GAP;
+word.x = BX + PAD + ICON - ICON / 4 + GAP;
 word.y = BY + (BH - word.height) / 2;
 const dimH = (x1, x2, y, ch, side = -1) => {
   const l = figma.createLine();
@@ -387,7 +387,7 @@ const dimV = (x, y1, y2, ch) => {
 };
 dimV(BX + BW + 28, BY, BY + BH, 'A');
 dimH(BX, BX + PAD, BY + BH + 24, 'B', 1);
-dimH(BX + PAD + ICON - ICON / 8, BX + PAD + ICON - ICON / 8 + GAP, BY + BH + 24, 'C', 1);
+dimH(BX + PAD + ICON - ICON / 4, BX + PAD + ICON - ICON / 4 + GAP, BY + BH + 24, 'C', 1);
 pin(dg, 1, BX + BW - 30, 60, BX + BW - 30, BY);
 pin(dg, 2, BX + PAD + ICON / 2, 60, BX + PAD + ICON / 2, iconBox.y);
 pin(dg, 3, word.x + word.width / 2, 60, word.x + word.width / 2, word.y);
@@ -402,12 +402,12 @@ for (const [n, s] of [
   ],
   [
     '2',
-    'Leading icon (optional): one decorative icon of 12 px, placed by its drawing: its box overlaps the padding by 1/8 of its size, so the drawing starts at the padding.'
+    'Leading icon (optional): one decorative icon of 12 px, placed by its drawing: its box overlaps the padding and the gap by 1/8 of its size on each side, so the drawing starts at the padding and ends at the gap.'
   ],
   ['3', 'Label: the text, on one line, centered on its capital height. It is always visible and carries the meaning.'],
   ['A', 'Height: the line box of the label (15.4, 16.8 or 19.6 px); it does not change with the density.'],
   ['B', 'Side padding: 2, 4 or 6 px in compact, standard and comfortable density.'],
-  ['C', 'Gap between the icon and the label: the same value as the padding.']
+  ['C', 'Gap between the drawing of the icon and the label: the same value as the padding.']
 ]) {
   const r = stack('Legend item', 'HORIZONTAL', 10);
   r.counterAxisAlignItems = 'MIN';

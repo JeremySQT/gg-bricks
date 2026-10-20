@@ -58,6 +58,7 @@ async function measure(page: Page, selector: string) {
       iconSize: g ? `${g.width}x${g.height}` : '',
       iconOffsetInline: g ? g.left - r.left : 0,
       iconGap: glyph ? getComputedStyle(el.querySelector('.ggb-badge__leading')!).marginInlineEnd : '',
+      iconToLabel: g ? label.getBoundingClientRect().left - g.right : 0,
       tabIndex: (el as HTMLElement).tabIndex,
       truncated: label.scrollWidth > label.clientWidth
     };
@@ -136,6 +137,8 @@ test('geometry: the Counter box family, density-independent height, inline paddi
       expect(icon.iconSize).toBe(`${iconSize}x${iconSize}`);
       expect(icon.iconOffsetInline).toBeCloseTo(px(tokens['space.content.xs']) - iconSize / 8, 1);
       expect(icon.iconGap).toBe(`${px(tokens['space.content.xs'])}px`);
+      // The drawing, not the box, sits at leadingGap from the label (the box overlaps the gap by 1/8).
+      expect(icon.iconToLabel).toBeCloseTo(px(tokens['space.content.xs']) - iconSize / 8, 1);
       // Same line, same height as a Counter of the same size.
       const badge = (await page.locator(`#line-badge-${size}`).boundingBox())!;
       const counter = (await page.locator(`#line-counter-${size}`).boundingBox())!;

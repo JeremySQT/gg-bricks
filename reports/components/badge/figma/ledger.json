@@ -62,7 +62,7 @@
   },
   "layers": [
     "Leading (padding-right space/content/xs, visible = Show leading)",
-    "Leading/Drawing box (width badge/icon-box, height size/icon/xs, icon aligned to its end)",
+    "Leading/Drawing box (width badge/icon-box, height size/icon/xs, icon centered)",
     "Leading/Drawing box/Leading icon",
     "Label (text, typography/indicator/{size} bindings, leading trim cap height, truncation ending, one line)"
   ],
@@ -81,8 +81,8 @@
       "id": "VariableID:220:3",
       "collection": "Components (VariableCollectionId:181:2)",
       "type": "FLOAT",
-      "values": "10.5 in sm, md and lg",
-      "meaning": "size/icon/xs − size/icon/xs ÷ 8: the icon box minus its leading inset (Figma cannot compute a fraction of a variable)",
+      "values": "9 in sm, md and lg (10.5 until 2026-10-20)",
+      "meaning": "size/icon/xs − 2 × size/icon/xs ÷ 8: the icon box minus its two insets (Figma cannot compute a fraction of a variable)",
       "scopes": [
         "WIDTH_HEIGHT"
       ],
@@ -158,6 +158,10 @@
     {
       "date": "2026-10-19",
       "change": "Built: 36 variants. The first parity run found the subtle edge included in the layout (strokesIncludedInLayout, icon offset 3.5 instead of 2.5 and widths +2 px); set to false on the 36 variants and in the builder, re-measured: 0 failures."
+    },
+    {
+      "date": "2026-10-20",
+      "change": "Icon gap amendment (user: the icon looked a little too far from the label): badge/icon-box 10.5 → 9 and the icon centered in its Drawing box (36 variants), so the icon box overlaps the padding and the leading gap by iconSize/8 each, as the code now does. Anatomy board 223:75: label side shifted by 9 (zoomed 1.5 px), legend items 2 and C rewritten. Parity re-measured with the new iconToLabel field: 12 312 records, 0 failures."
     }
   ]
 }
