@@ -1,99 +1,84 @@
-// Link master builder (use_figma body), 2026-10-19.
-// Creates (or reuses) the page actions/link after actions/icon-button, two hidden adapter collections and the
-// component set “Link” (Tone × Destination × State, 36 variants) with the properties Label, Meta and Focus.
-// The code's link is inline text that takes the font and, with tone inherit, the color of its context; Figma has
-// no inheritance, so the context is a variable mode chosen on the instance:
-//   Components · link text     modes body-md (default), body-sm, body-lg, label-sm, label-md, label-lg, caption-md:
-//                              link/font-family, link/font-weight, link/font-size, link/line-height,
-//                              link/letter-spacing, aliases of typography/{role}/*;
-//   Components · link context  modes primary (default), secondary, tertiary, info, success, warning, danger,
-//                              inverse: link/context, alias of the matching content color.
-// Every visual property is bound to a variable, except the underline thickness when Figma refuses the binding
-// (the script reports it). Rerunning replaces the set; the collections are reused.
+// Link master builder (use_figma body), 2026-10-20 (replaces the version of 2026-10-19 whose modes were chosen by
+// the designer). Rebuilds, on the page actions/link, the internal part “_Link/Destination” and the component set
+// “Link” (Color × Size × State, 54 variants) with the properties Label and Focus and the exposed part Destination
+// (variant Destination, text Meta, exposed Indicator icon), so that a designer configures a link from its
+// properties only (user decision, 2026-10-20). The code's link takes the font and, with tone inherit, the color of
+// its context; in Figma each Link variant sets the modes of two hidden adapter collections on itself, which the
+// label and the nested part resolve, as the Button variants set their style and state modes:
+//   Components · link size   modes md (default), sm, lg: link/font-family, link/font-weight, link/font-size,
+//                            link/line-height, link/letter-spacing, aliases of typography/body/{size}/*;
+//   Components · link color  modes accent (default), on-info, on-success, on-warning, on-danger, on-inverse:
+//                            link/content (label), link/quiet (meta and glyph), link/indicator-opacity.
+// Color accent is tone accent; “on …” is tone inherit inside that context. Rerunning removes the previous set,
+// part, specification frame and adapter collections (including those of the 2026-10-19 version) first.
 figma.skipInvisibleInstanceChildren = false;
-let page = figma.root.children.find((p) => p.name === 'actions/link');
-if (!page) {
-  page = figma.createPage();
-  page.name = 'actions/link';
-  const after = figma.root.children.findIndex((p) => p.name === 'actions/icon-button');
-  figma.root.insertChild(after + 1, page);
-}
+const page = figma.root.children.find((p) => p.name === 'actions/link');
 await figma.setCurrentPageAsync(page);
-for (const n of page.children.filter((n) => n.type === 'COMPONENT_SET' && n.name === 'Link')) n.remove();
-
+for (const n of page.children.filter((n) =>
+  ['Link', '_Link/Destination', '_Backdrop on inverse', 'Link — Specification'].includes(n.name)
+))
+  n.remove();
 let cols = await figma.variables.getLocalVariableCollectionsAsync();
-let vars = await figma.variables.getLocalVariablesAsync();
+for (const c of cols.filter((c) => c.name.startsWith('Components · link '))) c.remove();
+const vars = await figma.variables.getLocalVariablesAsync();
 const V = (name) => {
   const v = vars.find((x) => x.name === name);
   if (!v) throw new Error('missing variable ' + name);
   return v;
 };
 const collection = (name, modes) => {
-  let c = cols.find((x) => x.name === name);
-  if (!c) {
-    c = figma.variables.createVariableCollection(name);
-    c.renameMode(c.modes[0].modeId, modes[0]);
-  }
-  for (const m of modes) if (!c.modes.some((x) => x.name === m)) c.addMode(m);
+  const c = figma.variables.createVariableCollection(name);
+  c.renameMode(c.modes[0].modeId, modes[0]);
+  for (const m of modes.slice(1)) c.addMode(m);
   c.hiddenFromPublishing = true;
-  c.setDefaultMode(c.modes.find((x) => x.name === modes[0]).modeId);
   return c;
 };
 const variable = (c, name, type, scopes, valueOf) => {
-  let v = vars.find((x) => x.name === name && x.variableCollectionId === c.id);
-  if (!v) v = figma.variables.createVariable(name, c, type);
+  const v = figma.variables.createVariable(name, c, type);
   v.scopes = scopes;
   v.hiddenFromPublishing = true;
-  for (const m of c.modes) v.setValueForMode(m.modeId, figma.variables.createVariableAlias(V(valueOf(m.name))));
+  for (const m of c.modes) {
+    const val = valueOf(m.name);
+    v.setValueForMode(m.modeId, typeof val === 'number' ? val : figma.variables.createVariableAlias(V(val)));
+  }
   return v;
 };
-const ROLES = ['body-md', 'body-sm', 'body-lg', 'label-sm', 'label-md', 'label-lg', 'caption-md'];
-const textC = collection('Components · link text', ROLES);
-const role = (m) => m.replace('-', '/');
-const T = {
-  fontFamily: variable(textC, 'link/font-family', 'STRING', ['FONT_FAMILY'], (m) => `typography/${role(m)}/fontFamily`),
-  fontWeight: variable(textC, 'link/font-weight', 'FLOAT', ['FONT_WEIGHT'], (m) => `typography/${role(m)}/fontWeight`),
-  fontSize: variable(
-    textC,
-    'link/font-size',
-    'FLOAT',
-    ['FONT_SIZE', 'WIDTH_HEIGHT'],
-    (m) => `typography/${role(m)}/fontSize`
-  ),
-  lineHeight: variable(
-    textC,
-    'link/line-height',
-    'FLOAT',
-    ['LINE_HEIGHT', 'WIDTH_HEIGHT'],
-    (m) => `typography/${role(m)}/lineHeight`
-  ),
-  letterSpacing: variable(
-    textC,
-    'link/letter-spacing',
-    'FLOAT',
-    ['LETTER_SPACING'],
-    (m) => `typography/${role(m)}/letterSpacing`
-  )
-};
-const CONTEXTS = {
-  primary: 'color/content/primary',
-  secondary: 'color/content/secondary',
-  tertiary: 'color/content/tertiary',
-  info: 'color/status/info/content',
-  success: 'color/status/success/content',
-  warning: 'color/status/warning/content',
-  danger: 'color/status/danger/content',
-  inverse: 'color/content/inverse'
-};
-const ctxC = collection('Components · link context', Object.keys(CONTEXTS));
-const context = variable(ctxC, 'link/context', 'COLOR', ['TEXT_FILL', 'SHAPE_FILL'], (m) => CONTEXTS[m]);
-vars = await figma.variables.getLocalVariablesAsync();
+const SIZES = ['md', 'sm', 'lg'];
+const sizeC = collection('Components · link size', SIZES);
+const T = {};
+for (const [k, scopes] of [
+  ['fontFamily', ['FONT_FAMILY']],
+  ['fontWeight', ['FONT_WEIGHT']],
+  ['fontSize', ['FONT_SIZE', 'WIDTH_HEIGHT']],
+  ['lineHeight', ['LINE_HEIGHT', 'WIDTH_HEIGHT']],
+  ['letterSpacing', ['LETTER_SPACING']]
+])
+  T[k] = variable(
+    sizeC,
+    'link/' + k.replace(/[A-Z]/g, (x) => '-' + x.toLowerCase()),
+    k === 'fontFamily' ? 'STRING' : 'FLOAT',
+    scopes,
+    (m) => `typography/body/${m}/${k}`
+  );
+const COLORS = ['accent', 'on-info', 'on-success', 'on-warning', 'on-danger', 'on-inverse'];
+const colorC = collection('Components · link color', COLORS);
+const context = (m) => (m === 'on-inverse' ? 'color/content/inverse' : `color/status/${m.replace('on-', '')}/content`);
+const content = variable(colorC, 'link/content', 'COLOR', ['TEXT_FILL'], (m) =>
+  m === 'accent' ? 'color/content/link' : context(m)
+);
+const quiet = variable(colorC, 'link/quiet', 'COLOR', ['TEXT_FILL', 'SHAPE_FILL'], (m) =>
+  m === 'accent' ? 'color/content/tertiary' : context(m)
+);
+// Figma reads an opacity binding as a percentage: 100 for the accent tone, opacity/muted (70) for tone inherit.
+const opacity = variable(colorC, 'link/indicator-opacity', 'FLOAT', ['OPACITY'], (m) =>
+  m === 'accent' ? 100 : 'opacity/muted'
+);
 
 const paint = (v) =>
   figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', v);
 const RADII = ['topLeftRadius', 'topRightRadius', 'bottomLeftRadius', 'bottomRightRadius'];
 const STROKES = ['strokeTopWeight', 'strokeRightWeight', 'strokeBottomWeight', 'strokeLeftWeight'];
-for (const style of ['Regular', 'Medium']) await figma.loadFontAsync({ family: 'Inter', style });
+await figma.loadFontAsync({ family: 'Inter', style: 'Regular' });
 const iconMd = await figma.getNodeByIdAsync('149:11');
 const iconSet = await figma.getNodeByIdAsync('149:20');
 const GLYPH = Object.keys(iconSet.componentPropertyDefinitions).find((k) => k.startsWith('Glyph'));
@@ -104,7 +89,6 @@ const GLYPHS = {
   file: '200:4959', // file-pdf (the default meta is a PDF)
   print: '200:5463' // printer
 };
-const unbound = new Set();
 const typeset = (t, chars) => {
   t.fontName = { family: 'Inter', style: 'Regular' };
   t.characters = chars;
@@ -112,117 +96,167 @@ const typeset = (t, chars) => {
   for (const [f, v] of Object.entries(T)) t.setBoundVariable(f, v);
   t.leadingTrim = 'CAP_HEIGHT';
 };
-const D = ['page', 'external', 'email', 'phone', 'file', 'print'];
-const comps = [];
-for (const tone of ['accent', 'inherit'])
-  for (const st of ['default', 'hover', 'pressed'])
-    for (const d of D) {
-      const c = figma.createComponent();
-      c.name = `Tone=${tone}, Destination=${d}, State=${st}`;
-      c.layoutMode = 'HORIZONTAL';
-      c.primaryAxisSizingMode = 'AUTO';
-      c.counterAxisSizingMode = 'AUTO';
-      c.counterAxisAlignItems = 'CENTER';
-      c.itemSpacing = 0;
-      c.fills = [];
-      c.clipsContent = false;
-      c.setBoundVariable('minHeight', T.lineHeight);
-      for (const k of RADII) c.setBoundVariable(k, V('radius/indicator'));
-      const main = tone === 'accent' ? V('color/content/link') : context;
-      const quiet = tone === 'accent' ? V('color/content/tertiary') : context;
 
+// ---- Part: what follows the label, per destination ----
+const parts = [];
+for (const d of ['page', 'external', 'email', 'phone', 'file', 'print']) {
+  const p = figma.createComponent();
+  p.name = `Destination=${d}`;
+  p.layoutMode = 'HORIZONTAL';
+  p.primaryAxisSizingMode = 'AUTO';
+  p.counterAxisSizingMode = 'AUTO';
+  p.counterAxisAlignItems = 'CENTER';
+  p.itemSpacing = 0;
+  p.fills = [];
+  p.clipsContent = false;
+  // An empty auto-layout frame keeps a 100 px width: the page part is fixed at 0.01 px wide instead.
+  if (d === 'page') {
+    p.primaryAxisSizingMode = 'FIXED';
+    p.counterAxisSizingMode = 'FIXED';
+    p.resize(0.01, 16);
+  }
+  if (d === 'file') {
+    const meta = figma.createText();
+    meta.name = 'Meta';
+    typeset(meta, ' (PDF, 2.4 MB)');
+    meta.fills = [paint(quiet)];
+    p.appendChild(meta);
+  }
+  if (d !== 'page') {
+    const ind = figma.createAutoLayout('HORIZONTAL', { name: 'Indicator', itemSpacing: 0 });
+    ind.fills = [];
+    ind.clipsContent = false;
+    ind.counterAxisAlignItems = 'CENTER';
+    ind.setBoundVariable('paddingLeft', V('space/content/xs'));
+    p.appendChild(ind);
+    const icon = iconMd.createInstance();
+    icon.name = 'Indicator icon';
+    ind.appendChild(icon);
+    icon.setProperties({ [GLYPH]: GLYPHS[d] });
+    icon.setBoundVariable('width', T.fontSize);
+    icon.setBoundVariable('height', T.fontSize);
+    icon.setBoundVariable('opacity', opacity);
+    for (const v of icon.findAll((n) => n.type === 'VECTOR')) v.fills = [paint(quiet)];
+  }
+  parts.push(p);
+}
+const part = figma.combineAsVariants(parts, page);
+part.name = '_Link/Destination';
+part.description =
+  'Internal part of Link: what follows the label for each destination (page: nothing; external, email, phone, print: the glyph; file: the format and size, then the glyph of the format). Its colors and sizes come from the Link variant that holds it. Do not use on its own.';
+const META = part.addComponentProperty('Meta', 'TEXT', ' (PDF, 2.4 MB)');
+for (const v of part.children) {
+  const meta = v.findOne((n) => n.name === 'Meta');
+  if (meta) meta.componentPropertyReferences = { characters: META };
+  const icon = v.findOne((n) => n.name === 'Indicator icon');
+  if (icon) icon.isExposedInstance = true;
+}
+part.children.forEach((v, k) => {
+  v.x = 40 + k * 240;
+  v.y = 40;
+});
+part.resizeWithoutConstraints(40 + 6 * 240, 100);
+part.fills = [];
+const pagePart = part.children.find((v) => v.name === 'Destination=page');
+
+// ---- Link ----
+const comps = [];
+const COLOR_NAME = (m) => m.replace('-', ' ');
+for (const c of COLORS)
+  for (const st of ['default', 'hover', 'pressed'])
+    for (const s of SIZES) {
+      const root = figma.createComponent();
+      root.name = `Color=${COLOR_NAME(c)}, Size=${s}, State=${st}`;
+      root.layoutMode = 'HORIZONTAL';
+      root.primaryAxisSizingMode = 'AUTO';
+      root.counterAxisSizingMode = 'AUTO';
+      root.counterAxisAlignItems = 'CENTER';
+      root.itemSpacing = 0;
+      root.fills = [];
+      root.clipsContent = false;
+      root.setExplicitVariableModeForCollection(sizeC, sizeC.modes.find((m) => m.name === s).modeId);
+      root.setExplicitVariableModeForCollection(colorC, colorC.modes.find((m) => m.name === c).modeId);
+      root.setBoundVariable('minHeight', T.lineHeight);
+      for (const k of RADII) root.setBoundVariable(k, V('radius/indicator'));
       const label = figma.createText();
       label.name = 'Label';
       typeset(label, 'Read the guide');
-      label.fills = [paint(main)];
+      label.fills = [paint(content)];
       label.textDecoration = 'UNDERLINE';
       label.textDecorationSkipInk = true;
       label.textDecorationOffset = { unit: 'AUTO' };
       label.textDecorationColor = { value: 'AUTO' };
-      const width = st === 'default' ? 'border/width/default' : 'border/width/strong';
+      // Figma refuses a variable on the underline thickness: the values of border/width/default and /strong.
       label.textDecorationThickness = { unit: 'PIXELS', value: st === 'default' ? 1 : 2 };
-      try {
-        label.setBoundVariable('textDecorationThickness', V(width));
-      } catch (e) {
-        unbound.add('textDecorationThickness: ' + e.message.slice(0, 80));
-      }
-      c.appendChild(label);
-
-      if (d === 'file') {
-        const meta = figma.createText();
-        meta.name = 'Meta';
-        typeset(meta, ' (PDF, 2.4 MB)');
-        meta.fills = [paint(quiet)];
-        meta.textDecoration = 'NONE';
-        c.appendChild(meta);
-      }
-      if (d !== 'page') {
-        const ind = figma.createAutoLayout('HORIZONTAL', { name: 'Indicator', itemSpacing: 0 });
-        ind.fills = [];
-        ind.clipsContent = false;
-        ind.counterAxisAlignItems = 'CENTER';
-        ind.setBoundVariable('paddingLeft', V('space/content/xs'));
-        c.appendChild(ind);
-        const icon = iconMd.createInstance();
-        icon.name = 'Indicator icon';
-        ind.appendChild(icon);
-        icon.setProperties({ [GLYPH]: GLYPHS[d] });
-        icon.setBoundVariable('width', T.fontSize);
-        icon.setBoundVariable('height', T.fontSize);
-        for (const v of icon.findAll((n) => n.type === 'VECTOR')) v.fills = [paint(quiet)];
-        if (tone === 'inherit') icon.setBoundVariable('opacity', V('opacity/muted'));
-      }
+      root.appendChild(label);
+      const dest = pagePart.createInstance();
+      dest.name = 'Destination';
+      root.appendChild(dest);
       const ring = figma.createFrame();
       ring.name = 'Focus ring';
       ring.fills = [];
-      c.appendChild(ring);
+      root.appendChild(ring);
       ring.layoutPositioning = 'ABSOLUTE';
       ring.x = -2;
       ring.y = -2;
-      ring.resize(c.width + 4, c.height + 4);
+      ring.resize(root.width + 4, root.height + 4);
       ring.constraints = { horizontal: 'STRETCH', vertical: 'STRETCH' };
       ring.strokes = [paint(V('color/focus/ring'))];
       ring.strokeAlign = 'OUTSIDE';
       for (const k of STROKES) ring.setBoundVariable(k, V('focus/width'));
       for (const k of RADII) ring.setBoundVariable(k, V('radius/indicator'));
       ring.visible = false;
-      comps.push(c);
+      comps.push(root);
     }
 const set = figma.combineAsVariants(comps, page);
 set.name = 'Link';
 set.description =
-  'A link to another page, a file, an email address, a phone number or a printable version, shown as underlined text. Source of truth: foundations/components/actions/link/contract.json; implementation: packages/svelte/src/components/link. Tone accent (default) draws the label in the link color; tone inherit takes the color of the surrounding text, for status messages and inverse surfaces. Destination adds what the reader needs to know before following it: an arrow for external pages, an envelope, a handset, a printer, a file glyph with its format and size (Meta). The link takes the font of its text: choose the mode of “Components · link text” on the instance (body md by default) and, with tone inherit, the mode of “Components · link context” (primary by default). State shows the underline: 1 px, 2 px when hovered or pressed; Focus shows the keyboard focus ring.';
+  'A link to another page, a file, an email address, a phone number or a printable version, shown as underlined text. Source of truth: foundations/components/actions/link/contract.json; implementation: packages/svelte/src/components/link. Color accent (default) is the link color; “on info”, “on success”, “on warning”, “on danger” and “on inverse” take the color of the text of that context (tone inherit in code), for status messages and inverse surfaces. Size is the size of the body text around the link. State shows the underline: 1 px, 2 px when hovered or pressed; Focus shows the keyboard focus ring. Destination (in the nested Destination part) adds what the reader needs to know before following it: an arrow for external pages, an envelope, a handset, a printer, a file glyph with its format and size (Meta).';
 const LABEL = set.addComponentProperty('Label', 'TEXT', 'Read the guide');
-const META = set.addComponentProperty('Meta', 'TEXT', ' (PDF, 2.4 MB)');
 const FOCUS = set.addComponentProperty('Focus', 'BOOLEAN', false);
 for (const v of set.children) {
   v.findOne((n) => n.name === 'Label').componentPropertyReferences = { characters: LABEL };
-  const meta = v.findOne((n) => n.name === 'Meta');
-  if (meta) meta.componentPropertyReferences = { characters: META };
   v.findOne((n) => n.name === 'Focus ring').componentPropertyReferences = { visible: FOCUS };
-  const icon = v.findOne((n) => n.name === 'Indicator icon');
-  if (icon) icon.isExposedInstance = true;
+  v.findOne((n) => n.name === 'Destination').isExposedInstance = true;
 }
-// Rows Tone × State, columns Destination (the top-left default is accent · page · default); the file column is
-// wider for its meta.
+// Rows Color × State, columns Size (md first: the top-left default is accent · md · default).
 const GAP = 40,
-  ROW = 56,
-  X = [0, 240, 480, 720, 960, 1260];
+  COL = 200,
+  ROW = 48;
 set.children.forEach((v, k) => {
-  v.x = GAP + X[k % 6];
-  v.y = GAP + Math.floor(k / 6) * ROW + (k >= 18 ? GAP : 0);
+  const row = Math.floor(k / 3);
+  v.x = GAP + (k % 3) * COL;
+  v.y = GAP + row * ROW + Math.floor(row / 3) * 24;
 });
-set.resizeWithoutConstraints(Math.max(...set.children.map((v) => v.x + v.width)) + GAP, GAP * 3 + 6 * ROW - 24);
+set.resizeWithoutConstraints(GAP * 2 + 3 * COL, GAP * 2 + 18 * ROW + 5 * 24);
 set.fills = [];
 set.x = 0;
 set.y = 0;
+part.x = set.width + 80;
+part.y = 0;
+// A locked page backdrop in color/surface/inverse behind the “on inverse” rows, so that they read on the canvas.
+const inverseRows = set.children.filter((c) => c.name.startsWith('Color=on inverse'));
+const top = Math.min(...inverseRows.map((r) => r.y)) - 16;
+const backdrop = figma.createRectangle();
+backdrop.name = '_Backdrop on inverse';
+backdrop.resize(set.width - 32, Math.max(...inverseRows.map((r) => r.y + r.height)) + 16 - top);
+backdrop.x = set.x + 16;
+backdrop.y = set.y + top;
+backdrop.cornerRadius = 8;
+backdrop.fills = [paint(V('color/surface/inverse'))];
+backdrop.locked = true;
+page.insertChild(page.children.indexOf(set), backdrop);
 return {
-  page: page.id,
   set: set.id,
-  collections: { text: textC.id, context: ctxC.id },
-  variables: Object.fromEntries([...Object.entries(T).map(([k, v]) => [k, v.id]), ['context', context.id]]),
+  part: part.id,
+  collections: { size: sizeC.id, color: colorC.id },
+  variables: Object.fromEntries(
+    [...Object.entries(T), ['content', content], ['quiet', quiet], ['opacity', opacity]].map(([k, v]) => [k, v.id])
+  ),
   props: Object.keys(set.componentPropertyDefinitions),
+  partProps: Object.keys(part.componentPropertyDefinitions),
   defaultVariant: set.defaultVariant.name,
-  unbound: [...unbound],
+  pageWidth: pagePart.width,
+  parts: Object.fromEntries(part.children.map((c) => [c.name, c.id])),
   variants: Object.fromEntries(set.children.map((c) => [c.name.replace(/\w+=/g, ''), c.id]))
 };

@@ -3,43 +3,83 @@
     "key": "TDPqojP4KvbWJlKSYc4zKC",
     "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=225-2"
   },
-  "recordedOn": "2026-10-19",
+  "recordedOn": "2026-10-20",
   "page": {
     "name": "actions/link",
     "id": "225:2",
     "position": "after actions/icon-button"
   },
   "componentSet": {
-    "id": "225:276",
+    "id": "232:659",
     "name": "Link",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=225-276",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=232-659",
     "builder": "authoring/adapters/figma/link-master.plugin.js",
-    "defaultVariant": "Tone=accent, Destination=page, State=default (top-left)"
+    "defaultVariant": "Color=accent, Size=md, State=default (top-left)"
+  },
+  "part": {
+    "id": "232:442",
+    "name": "_Link/Destination",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=232-442",
+    "builder": "authoring/adapters/figma/link-master.plugin.js",
+    "defaultVariant": "Destination=page",
+    "note": "Internal part (name starts with _), placed in every Link variant as the exposed nested instance Destination; not used on its own.",
+    "variants": {
+      "Destination=page": "232:410",
+      "Destination=external": "232:411",
+      "Destination=email": "232:417",
+      "Destination=phone": "232:423",
+      "Destination=file": "232:429",
+      "Destination=print": "232:436"
+    }
+  },
+  "pageDecoration": {
+    "_Backdrop on inverse": "237:400 (locked rectangle in color/surface/inverse behind the on inverse rows, so that they read on the canvas; not part of the component)"
   },
   "properties": {
-    "Label#225:0": {
+    "Label#232:7": {
       "type": "TEXT",
       "default": "Read the guide",
       "layer": "Label"
     },
-    "Meta#225:37": {
-      "type": "TEXT",
-      "default": " (PDF, 2.4 MB)",
-      "layer": "Meta (file variants only; the value keeps its leading space)"
-    },
-    "Focus#225:74": {
+    "Focus#232:62": {
       "type": "BOOLEAN",
       "default": false,
       "layer": "Focus ring (visible)"
     },
-    "Tone": {
+    "Color": {
       "type": "VARIANT",
       "default": "accent",
       "options": [
         "accent",
-        "inherit"
-      ]
+        "on info",
+        "on success",
+        "on warning",
+        "on danger",
+        "on inverse"
+      ],
+      "code": "tone accent (accent) or tone inherit inside the named context (on …)"
     },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ],
+      "code": "none: the size of the surrounding body text (typography/body/{size})"
+    },
+    "State": {
+      "type": "VARIANT",
+      "default": "default",
+      "options": [
+        "default",
+        "hover",
+        "pressed"
+      ]
+    }
+  },
+  "partProperties": {
     "Destination": {
       "type": "VARIANT",
       "default": "page",
@@ -52,120 +92,135 @@
         "print"
       ]
     },
-    "State": {
-      "type": "VARIANT",
-      "default": "default",
-      "options": [
-        "default",
-        "hover",
-        "pressed"
-      ]
+    "Meta#232:0": {
+      "type": "TEXT",
+      "default": " (PDF, 2.4 MB)",
+      "layer": "Meta (file variant only; the value keeps its leading space)"
     }
   },
   "exposedInstances": {
-    "Indicator icon": "instance of Icon (149:11) in every destination but page, exposed: Glyph#149:0 set per destination (external arrow-up-right 200:4471, email envelope 200:4873, phone 200:5423, file file-pdf 200:4959, print printer 200:5463); width and height bound to link/font-size; glyph fill color/content/tertiary (accent) or link/context (inherit, opacity bound to opacity/muted)"
+    "Destination": "instance of _Link/Destination (232:442) in every Link variant, exposed: Destination and Meta are set from the Link instance",
+    "Indicator icon": "instance of Icon md (149:11) in every destination but page, exposed inside Destination: Glyph#149:0 set per destination (external arrow-up-right 200:4471, email envelope 200:4873, phone 200:5423, file file-pdf 200:4959, print printer 200:5463); width and height bound to link/font-size, opacity to link/indicator-opacity, glyph fill link/quiet"
   },
   "layers": [
-    "Label (text: link/* typography bindings, leading trim cap height, underline 1 px default or 2 px hover and pressed, skip ink, offset and color auto)",
-    "Meta (file only)",
-    "Indicator (padding-left space/content/xs)",
-    "Indicator/Indicator icon",
+    "Label (text: link/* typography bindings, leading trim cap height, fill link/content, underline 1 px default or 2 px hover and pressed, skip ink, offset and color auto)",
+    "Destination (exposed instance of _Link/Destination)",
+    "Destination/Meta (file only)",
+    "Destination/Indicator (padding-left space/content/xs)",
+    "Destination/Indicator/Indicator icon",
     "Focus ring (absolute, outside stroke)"
   ],
   "bindings": {
     "link box": "minHeight link/line-height, corners radius/indicator",
-    "Label fill": "color/content/link (accent) or link/context (inherit)",
-    "Meta fill": "color/content/tertiary (accent) or link/context (inherit)",
+    "variant modes": "each Link variant sets its own modes of Components · link size (from Size) and Components · link color (from Color); designers never pick a mode",
+    "Label fill": "link/content",
+    "Meta fill, glyph fill": "link/quiet",
+    "glyph opacity": "link/indicator-opacity",
     "typography (Label, Meta)": "link/font-family, link/font-weight, link/font-size, link/line-height, link/letter-spacing",
     "Indicator gap": "space/content/xs",
     "Focus ring": "stroke color/focus/ring, weight focus/width, corners radius/indicator, 2 px outside",
-    "underline thickness": "literal 1 px (default) and 2 px (hover, pressed): Figma refuses a variable on textDecorationThickness (Unknown field)"
+    "underline thickness": "literal 1 px (default) and 2 px (hover, pressed): Figma refuses a variable on textDecorationThickness (Unknown field)",
+    "page part": "fixed at 0.01 × 16 px: an empty auto-layout frame keeps a 100 px width"
   },
   "adapterCollections": {
-    "Components · link text": {
-      "id": "VariableCollectionId:225:3",
+    "Components · link size": {
+      "id": "VariableCollectionId:232:400",
       "hiddenFromPublishing": true,
       "modes": [
-        "body-md (default)",
-        "body-sm",
-        "body-lg",
-        "label-sm",
-        "label-md",
-        "label-lg",
-        "caption-md"
+        "md (default)",
+        "sm",
+        "lg"
       ],
       "variables": {
-        "link/font-family": "VariableID:225:4",
-        "link/font-weight": "VariableID:225:5",
-        "link/font-size": "VariableID:225:6",
-        "link/line-height": "VariableID:225:7",
-        "link/letter-spacing": "VariableID:225:8"
+        "link/font-family": "VariableID:232:401",
+        "link/font-weight": "VariableID:232:402",
+        "link/font-size": "VariableID:232:403",
+        "link/line-height": "VariableID:232:404",
+        "link/letter-spacing": "VariableID:232:405"
       },
-      "values": "aliases of typography/{role}/{property} per mode"
+      "values": "aliases of typography/body/{size}/{property}"
     },
-    "Components · link context": {
-      "id": "VariableCollectionId:225:9",
+    "Components · link color": {
+      "id": "VariableCollectionId:232:406",
       "hiddenFromPublishing": true,
       "modes": [
-        "primary (default)",
-        "secondary",
-        "tertiary",
-        "info",
-        "success",
-        "warning",
-        "danger",
-        "inverse"
+        "accent (default)",
+        "on-info",
+        "on-success",
+        "on-warning",
+        "on-danger",
+        "on-inverse"
       ],
       "variables": {
-        "link/context": "VariableID:225:10"
+        "link/content": "VariableID:232:407",
+        "link/quiet": "VariableID:232:408",
+        "link/indicator-opacity": "VariableID:232:409"
       },
-      "values": "aliases of color/content/{primary,secondary,tertiary,inverse} and color/status/{info,success,warning,danger}/content"
+      "values": "accent: color/content/link, color/content/tertiary, 100; on-{status}: color/status/{status}/content twice and opacity/muted; on-inverse: color/content/inverse twice and opacity/muted"
     }
   },
   "variants": {
-    "Tone=accent, Destination=page, State=default": "225:11",
-    "Tone=accent, Destination=external, State=default": "225:14",
-    "Tone=accent, Destination=email, State=default": "225:23",
-    "Tone=accent, Destination=phone, State=default": "225:31",
-    "Tone=accent, Destination=file, State=default": "225:39",
-    "Tone=accent, Destination=print, State=default": "225:48",
-    "Tone=accent, Destination=page, State=hover": "225:56",
-    "Tone=accent, Destination=external, State=hover": "225:59",
-    "Tone=accent, Destination=email, State=hover": "225:67",
-    "Tone=accent, Destination=phone, State=hover": "225:75",
-    "Tone=accent, Destination=file, State=hover": "225:83",
-    "Tone=accent, Destination=print, State=hover": "225:92",
-    "Tone=accent, Destination=page, State=pressed": "225:100",
-    "Tone=accent, Destination=external, State=pressed": "225:103",
-    "Tone=accent, Destination=email, State=pressed": "225:111",
-    "Tone=accent, Destination=phone, State=pressed": "225:119",
-    "Tone=accent, Destination=file, State=pressed": "225:127",
-    "Tone=accent, Destination=print, State=pressed": "225:136",
-    "Tone=inherit, Destination=page, State=default": "225:144",
-    "Tone=inherit, Destination=external, State=default": "225:147",
-    "Tone=inherit, Destination=email, State=default": "225:155",
-    "Tone=inherit, Destination=phone, State=default": "225:163",
-    "Tone=inherit, Destination=file, State=default": "225:171",
-    "Tone=inherit, Destination=print, State=default": "225:180",
-    "Tone=inherit, Destination=page, State=hover": "225:188",
-    "Tone=inherit, Destination=external, State=hover": "225:191",
-    "Tone=inherit, Destination=email, State=hover": "225:199",
-    "Tone=inherit, Destination=phone, State=hover": "225:207",
-    "Tone=inherit, Destination=file, State=hover": "225:215",
-    "Tone=inherit, Destination=print, State=hover": "225:224",
-    "Tone=inherit, Destination=page, State=pressed": "225:232",
-    "Tone=inherit, Destination=external, State=pressed": "225:235",
-    "Tone=inherit, Destination=email, State=pressed": "225:243",
-    "Tone=inherit, Destination=phone, State=pressed": "225:251",
-    "Tone=inherit, Destination=file, State=pressed": "225:259",
-    "Tone=inherit, Destination=print, State=pressed": "225:268"
+    "Color=accent, Size=md, State=default": "232:443",
+    "Color=accent, Size=sm, State=default": "232:447",
+    "Color=accent, Size=lg, State=default": "232:451",
+    "Color=accent, Size=md, State=hover": "232:455",
+    "Color=accent, Size=sm, State=hover": "232:459",
+    "Color=accent, Size=lg, State=hover": "232:463",
+    "Color=accent, Size=md, State=pressed": "232:467",
+    "Color=accent, Size=sm, State=pressed": "232:471",
+    "Color=accent, Size=lg, State=pressed": "232:475",
+    "Color=on info, Size=md, State=default": "232:479",
+    "Color=on info, Size=sm, State=default": "232:483",
+    "Color=on info, Size=lg, State=default": "232:487",
+    "Color=on info, Size=md, State=hover": "232:491",
+    "Color=on info, Size=sm, State=hover": "232:495",
+    "Color=on info, Size=lg, State=hover": "232:499",
+    "Color=on info, Size=md, State=pressed": "232:503",
+    "Color=on info, Size=sm, State=pressed": "232:507",
+    "Color=on info, Size=lg, State=pressed": "232:511",
+    "Color=on success, Size=md, State=default": "232:515",
+    "Color=on success, Size=sm, State=default": "232:519",
+    "Color=on success, Size=lg, State=default": "232:523",
+    "Color=on success, Size=md, State=hover": "232:527",
+    "Color=on success, Size=sm, State=hover": "232:531",
+    "Color=on success, Size=lg, State=hover": "232:535",
+    "Color=on success, Size=md, State=pressed": "232:539",
+    "Color=on success, Size=sm, State=pressed": "232:543",
+    "Color=on success, Size=lg, State=pressed": "232:547",
+    "Color=on warning, Size=md, State=default": "232:551",
+    "Color=on warning, Size=sm, State=default": "232:555",
+    "Color=on warning, Size=lg, State=default": "232:559",
+    "Color=on warning, Size=md, State=hover": "232:563",
+    "Color=on warning, Size=sm, State=hover": "232:567",
+    "Color=on warning, Size=lg, State=hover": "232:571",
+    "Color=on warning, Size=md, State=pressed": "232:575",
+    "Color=on warning, Size=sm, State=pressed": "232:579",
+    "Color=on warning, Size=lg, State=pressed": "232:583",
+    "Color=on danger, Size=md, State=default": "232:587",
+    "Color=on danger, Size=sm, State=default": "232:591",
+    "Color=on danger, Size=lg, State=default": "232:595",
+    "Color=on danger, Size=md, State=hover": "232:599",
+    "Color=on danger, Size=sm, State=hover": "232:603",
+    "Color=on danger, Size=lg, State=hover": "232:607",
+    "Color=on danger, Size=md, State=pressed": "232:611",
+    "Color=on danger, Size=sm, State=pressed": "232:615",
+    "Color=on danger, Size=lg, State=pressed": "232:619",
+    "Color=on inverse, Size=md, State=default": "232:623",
+    "Color=on inverse, Size=sm, State=default": "232:627",
+    "Color=on inverse, Size=lg, State=default": "232:631",
+    "Color=on inverse, Size=md, State=hover": "232:635",
+    "Color=on inverse, Size=sm, State=hover": "232:639",
+    "Color=on inverse, Size=lg, State=hover": "232:643",
+    "Color=on inverse, Size=md, State=pressed": "232:647",
+    "Color=on inverse, Size=sm, State=pressed": "232:651",
+    "Color=on inverse, Size=lg, State=pressed": "232:655"
   },
   "specification": {
-    "id": "228:63",
+    "id": "234:13",
     "name": "Link — Specification",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=228-63",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=234-13",
     "builder": "authoring/adapters/figma/link-spec.plugin.js",
-    "anatomyBoard": "228:114",
+    "anatomyBoard": "234:69",
     "uses": {
       "_Spec/Board": "113:17",
       "_Spec/Callout": "115:6",
@@ -190,6 +245,10 @@
     {
       "date": "2026-10-19",
       "change": "Built: 36 variants; the variant grid widened so that the file column (with its meta) does not overlap the print column."
+    },
+    {
+      "date": "2026-10-20",
+      "change": "Rebuilt at the Figma parity review (user: configure the link by variants, not by modes; no secondary or tertiary context). The set 225:276 (Tone × Destination × State, 36 variants), its specification 228:63 and the collections Components · link text and Components · link context are removed. New set 232:659 (Color × Size × State, 54 variants) whose variants set the modes of the new collections Components · link size and Components · link color themselves; the destination moves into the nested part _Link/Destination 232:442 (Destination, Meta, Indicator icon); specification 234:13. Page backdrop 237:400 behind the on inverse rows. Parity re-measured: 4680 records, 0 failures."
     }
   ]
 }

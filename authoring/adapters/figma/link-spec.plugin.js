@@ -1,8 +1,8 @@
-// Link specification page builder (use_figma body), 2026-10-19. One part.
+// Link specification page builder (use_figma body), 2026-10-20 (Color × Size × State set). One part.
 // Builds the frame “Link — Specification” on the page actions/link (225:2) in the layout of the other component
 // pages (white header on a gray page, hero card, blueprint anatomy board, white cards in the body) and places the
-// component set to its right. Explanatory instances come from the Link set (225:276); their text and context
-// modes (Components · link text, Components · link context) stand for the surrounding text. The node ids and
+// component set and its part _Link/Destination to its right. Explanatory instances come from the Link set
+// (232:659); every option is a property of the instance. The node ids and
 // property keys the script relies on are listed in reports/components/link/figma/ledger.json.
 figma.skipInvisibleInstanceChildren = false;
 const page = await figma.getNodeByIdAsync('225:2');
@@ -16,8 +16,6 @@ const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
 const wf = col('Wireframe');
 const L = mode(wf, 'light'),
   B = mode(wf, 'blueprint');
-const textC = col('Components · link text');
-const ctxC = col('Components · link context');
 const V = (name) =>
   vars.find((v) => v.name === name && v.variableCollectionId === wf.id) || vars.find((v) => v.name === name);
 const paint = (name) =>
@@ -48,10 +46,11 @@ const GRID = '349e013eedf533dd9a34627a53f989e11cc9a869';
 const callC = await figma.getNodeByIdAsync('115:6');
 const markC = await figma.getNodeByIdAsync('115:8');
 const numKey = Object.keys(callC.componentPropertyDefinitions)[0];
-const set = await figma.getNodeByIdAsync('225:276');
+const set = await figma.getNodeByIdAsync('232:659');
+const part = await figma.getNodeByIdAsync('232:442');
 const PROPS = Object.keys(set.componentPropertyDefinitions);
 const LABEL = PROPS.find((k) => k.startsWith('Label'));
-const META = PROPS.find((k) => k.startsWith('Meta'));
+const META = Object.keys(part.componentPropertyDefinitions).find((k) => k.startsWith('Meta'));
 const FOCUS = PROPS.find((k) => k.startsWith('Focus'));
 const iconSet = await figma.getNodeByIdAsync('149:20');
 const GLYPH = Object.keys(iconSet.componentPropertyDefinitions).find((k) => k.startsWith('Glyph'));
@@ -104,17 +103,21 @@ const board = (name, w, h) => {
   f.setExplicitVariableModeForCollection(wf, B);
   return f;
 };
-// Link instance: variant, label, meta, glyph swap, focus, and the modes standing for the surrounding text.
+// Link instance: Color (accent, or “on …” for tone inherit in that context: o.ctx), Size (o.size, md by default),
+// State, label, focus, and the nested Destination part (destination, meta, glyph of the format).
 const lk = (o = {}) => {
+  const color = o.ctx ? `on ${o.ctx}` : 'accent';
   const inst = set.children
-    .find((c) => c.name === `Tone=${o.tone || 'accent'}, Destination=${o.d || 'page'}, State=${o.t || 'default'}`)
+    .find((c) => c.name === `Color=${color}, Size=${o.size || 'md'}, State=${o.t || 'default'}`)
     .createInstance();
-  const props = { [LABEL]: o.label || 'Read the guide', [FOCUS]: !!o.focus };
-  if (o.d === 'file') props[META] = o.meta || ' (PDF, 2.4 MB)';
-  inst.setProperties(props);
-  if (o.g) inst.exposedInstances.find((e) => e.name === 'Indicator icon').setProperties({ [GLYPH]: G[o.g] });
-  if (o.text) inst.setExplicitVariableModeForCollection(textC, mode(textC, o.text));
-  if (o.ctx) inst.setExplicitVariableModeForCollection(ctxC, mode(ctxC, o.ctx));
+  inst.setProperties({ [LABEL]: o.label || 'Read the guide', [FOCUS]: !!o.focus });
+  const dest = inst.exposedInstances.find((e) => e.name === 'Destination');
+  if (o.d && o.d !== 'page') {
+    dest.setProperties(
+      o.d === 'file' ? { Destination: 'file', [META]: o.meta || ' (PDF, 2.4 MB)' } : { Destination: o.d }
+    );
+    if (o.g) dest.findOne((n) => n.name === 'Indicator icon').setProperties({ [GLYPH]: G[o.g] });
+  }
   return inst;
 };
 const chip = (chars, bordered = true) => {
@@ -264,13 +267,13 @@ hero.cornerRadius = 16;
 shadow(hero);
 hero.counterAxisAlignItems = 'CENTER';
 const h1 = row('Hero row 1', 32, [
-  lk({ label: 'Pricing', text: 'body-lg' }),
-  lk({ d: 'external', label: 'Status page', text: 'body-lg' }),
-  lk({ d: 'email', label: 'support@ggbrick.io', text: 'body-lg' })
+  lk({ label: 'Pricing', size: 'lg' }),
+  lk({ d: 'external', label: 'Status page', size: 'lg' }),
+  lk({ d: 'email', label: 'support@ggbrick.io', size: 'lg' })
 ]);
 const h2 = row('Hero row 2', 32, [
-  lk({ d: 'file', label: 'Annual report', text: 'body-lg' }),
-  lk({ d: 'print', label: 'Printable version', text: 'body-lg' })
+  lk({ d: 'file', label: 'Annual report', size: 'lg' }),
+  lk({ d: 'print', label: 'Printable version', size: 'lg' })
 ]);
 hero.appendChild(h1);
 hero.appendChild(h2);
@@ -374,7 +377,7 @@ legend.cornerRadius = 12;
 for (const [n, s] of [
   [
     '1',
-    'Label: the words of the link, underlined in every state, in the link color (or the color of the text around it with tone inherit).'
+    'Label: the words of the link, underlined in every state, in the link color (or, with Color “on …”, the color of the text around it).'
   ],
   ['2', 'Meta (files only): the format and the size in parentheses, not underlined, in a quieter color.'],
   [
@@ -406,14 +409,12 @@ real.appendChild(caption(lk({ label: 'Pricing' }), 'page'));
 real.appendChild(caption(lk({ d: 'external', label: 'Status page' }), 'external'));
 real.appendChild(caption(lk({ d: 'file', label: 'Annual report' }), 'file'));
 real.appendChild(caption(lk({ label: 'Pricing', focus: true }), 'focused'));
-real.appendChild(
-  caption(message('inverse', ['Saved.', lk({ tone: 'inherit', label: 'Undo', ctx: 'inverse' })]), 'tone inherit')
-);
+real.appendChild(caption(message('inverse', ['Saved.', lk({ label: 'Undo', ctx: 'inverse' })]), 'on inverse'));
 an.appendChild(real);
 real.layoutSizingHorizontal = 'FILL';
 an.appendChild(
   text(
-    'In Figma, Tone, Destination and State are variants, and Focus is a separate switch. Label and Meta are text properties; for files, choose the glyph of the format in Indicator icon › Glyph (file-pdf, file-xls, file-zip…). A link takes the font of its text: in the instance’s Appearance panel, set the mode of “Components · link text” to the text around it (body md by default; body sm or lg, label, caption). With tone inherit, set the mode of “Components · link context” to that text’s color (primary by default; a status or inverse).',
+    'In Figma, everything is set in the properties of the instance. Color, Size and State are variants, Focus is a switch and Label a text. The nested Destination part sets the destination, the Meta of a file and, in Indicator icon › Glyph, the glyph of its format (file-pdf, file-xls, file-zip…). Size is the size of the body text around the link; Color “on …” is the color of the text of a status message or an inverse surface.',
     'body/md',
     'color/content/secondary',
     1000
@@ -438,13 +439,13 @@ const section = (t, introText) => {
 
 const va = section(
   'Variants',
-  'Destination says where the link goes: page (the default, another page of the product), external (another site, opened in a new tab), email, phone, file (with its format and size) and print (a printable version). Tone accent (the default) draws the words in the link color; tone inherit uses the color of the surrounding text, for status messages and inverse surfaces where the link color would not be readable. The brand and the light or dark appearance come from the modes of the frame.'
+  'Destination says where the link goes: page (the default, another page of the product), external (another site, opened in a new tab), email, phone, file (with its format and size) and print (a printable version). Color accent (the default) draws the words in the link color. On info, on success, on warning, on danger and on inverse use the color of the text of that context, for status messages and inverse surfaces where the link color would not be readable (tone inherit in code). Size follows the body text around the link: sm, md (the default) or lg. The brand and the light or dark appearance come from the modes of the frame.'
 );
 const matrix = card('Destinations', 'VERTICAL', 14);
 const mh = stack('Header', 'HORIZONTAL', 16);
 mh.appendChild(label('', 90));
 mh.appendChild(label('accent', 330, 'color/content/tertiary'));
-mh.appendChild(label('inherit, in an info message', 400, 'color/content/tertiary'));
+mh.appendChild(label('on info, in an info message', 400, 'color/content/tertiary'));
 matrix.appendChild(mh);
 for (const d of D) {
   const r = stack(d, 'HORIZONTAL', 16);
@@ -456,7 +457,7 @@ for (const d of D) {
   a.counterAxisAlignItems = 'CENTER';
   a.appendChild(lk({ d, label: DLABEL[d] }));
   r.appendChild(a);
-  r.appendChild(message('info', ['Note:', lk({ d, tone: 'inherit', label: DLABEL[d], ctx: 'info' })]));
+  r.appendChild(message('info', ['Note:', lk({ d, label: DLABEL[d], ctx: 'info' })]));
   matrix.appendChild(r);
 }
 va.appendChild(matrix);
@@ -465,19 +466,17 @@ const vrow = stack('Variants row', 'HORIZONTAL', 24);
 vrow.counterAxisAlignItems = 'MIN';
 va.appendChild(vrow);
 vrow.layoutSizingHorizontal = 'FILL';
-const fonts = card('Text modes', 'VERTICAL', 14);
-for (const [m, style] of [
-  ['body-sm', 'body/sm'],
-  ['body-md', 'body/md'],
-  ['body-lg', 'body/lg'],
-  ['label-md', 'label/md'],
-  ['caption-md', 'caption/md']
+const fonts = card('Sizes', 'VERTICAL', 14);
+for (const [sz, style] of [
+  ['sm', 'body/sm'],
+  ['md', 'body/md'],
+  ['lg', 'body/lg']
 ])
   fonts.appendChild(
-    row(m, 6, [
+    row(sz, 6, [
       text('Read the', style),
-      lk({ d: 'external', label: 'release notes', text: m }),
-      chip(`text mode ${m}`, false)
+      lk({ d: 'external', label: 'release notes', size: sz }),
+      chip(`Size ${sz}, in body ${sz} text`, false)
     ])
   );
 vrow.appendChild(fonts);
@@ -524,10 +523,10 @@ const sh = stack('Header', 'HORIZONTAL', 16);
 sh.appendChild(label('', 120));
 for (const t of ['default', 'hover', 'pressed', 'focus']) sh.appendChild(label(t, 200, 'color/content/tertiary'));
 sc.appendChild(sh);
-for (const [name, tone, d, ctxName] of [
-  ['accent, page', 'accent', 'page', null],
-  ['accent, file', 'accent', 'file', null],
-  ['inherit, inverse', 'inherit', 'external', 'inverse']
+for (const [name, d, ctxName] of [
+  ['accent, page', 'page', null],
+  ['accent, file', 'file', null],
+  ['on inverse', 'external', 'inverse']
 ]) {
   const r = stack(name, 'HORIZONTAL', 16);
   r.counterAxisAlignItems = 'CENTER';
@@ -541,7 +540,6 @@ for (const [name, tone, d, ctxName] of [
     }
     cell.appendChild(
       lk({
-        tone,
         d,
         t: t === 'focus' ? 'default' : t,
         focus: t === 'focus',
@@ -630,8 +628,8 @@ contact.appendChild(lk({ d: 'external', label: 'Community forum' }));
 colB.appendChild(caption(contact, 'contact details: the label is the address or the number'));
 colB.appendChild(
   caption(
-    message('warning', ['Your card expires soon.', lk({ tone: 'inherit', label: 'Update it', ctx: 'warning' })]),
-    'tone inherit in a status message'
+    message('warning', ['Your card expires soon.', lk({ label: 'Update it', ctx: 'warning' })]),
+    'Color on warning, in a status message'
   )
 );
 ex.appendChild(colB);
@@ -647,7 +645,7 @@ for (const o of [
   { d: 'external', label: 'GitHub' },
   { d: 'print', label: 'Printable version' }
 ])
-  footer.appendChild(lk({ ...o, text: 'body-sm' }));
+  footer.appendChild(lk({ ...o, size: 'sm' }));
 ex.appendChild(caption(footer, 'a footer, orchid brand, dark, body sm'));
 ue.appendChild(ex);
 ex.layoutSizingHorizontal = 'FILL';
@@ -669,4 +667,6 @@ const centerBoards = (frame) => {
 centerBoards(root);
 set.x = root.width + 160;
 set.y = 0;
+part.x = set.x + set.width + 80;
+part.y = 0;
 return { root: root.id, h: Math.round(root.height), board: dg.id };

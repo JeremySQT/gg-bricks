@@ -595,7 +595,7 @@ combo.layoutSizingHorizontal = 'FILL';
 
 const bs = section(
   'Behavior & sizing',
-  'An icon button is always a square: it does not grow with the available space or shrink in a narrow row. Its side is the Button height of the same size, so it follows the density of the frame: compact, standard or comfortable. The icon keeps its size in every density. However small the square, the area that reacts to clicks and taps is at least 44 × 44 px, and it takes no room in the layout: keep at least 8 px between neighbors, so that no target covers the square of a neighbor (targets may meet in the gap).'
+  'An icon button is always a square: it does not grow with the available space or shrink in a narrow row. Its side is the Button height of the same size, so it follows the density of the frame: compact, standard or comfortable. The icon keeps its size in every density. However small the square, the area that reacts to clicks and taps is at least 44 × 44 px, and it takes no room in the layout: space neighbors with space.control.gap of their size (6, 8 or 10 px in standard density), as for buttons. In compact density, sm icon buttons (28 px) sit 4 px apart and their targets reach 4 px into the square of a neighbor: an accepted exception, since the squares stay above the 24 px minimum of WCAG.'
 );
 const dens = card('Density × size', 'HORIZONTAL', 12);
 bs.appendChild(dens);
@@ -634,7 +634,7 @@ for (const g of ['text-b', 'text-italic', 'text-underline']) {
   stroke(t, 'color/focus/ring', 1, [3, 2]);
   compact.appendChild(inst);
 }
-tcard.appendChild(caption(compact, 'compact sm: 28 px squares 8 px apart; 44 px targets (dashed)'));
+tcard.appendChild(caption(compact, 'compact sm: 28 px squares, space.control.gap 4 px; 44 px targets (dashed)'));
 brow.appendChild(tcard);
 tcard.layoutSizingHorizontal = 'FILL';
 const pair = card('Beside a button', 'VERTICAL', 16);
@@ -645,7 +645,7 @@ for (const s of ['sm', 'md', 'lg'])
       ib({ s, a: 'outline', g: 'dots-three-vertical', label: 'More actions' })
     ])
   );
-pair.appendChild(chip('same size, same height: sm 32, md 40, lg 48 px (standard)'));
+pair.appendChild(chip('same size, same height: sm 32, md 40, lg 48 px; gap space.control.gap'));
 brow.appendChild(pair);
 pair.layoutSizingHorizontal = 'FILL';
 pair.layoutSizingVertical = 'FILL';
@@ -670,7 +670,7 @@ for (const [g, l] of [
   ['list-bullets', 'Bulleted list']
 ])
   toolbar.appendChild(ib({ s: 'sm', g, label: l }));
-colA.appendChild(caption(toolbar, 'editor toolbar: neutral ghost, sm, 8 px apart'));
+colA.appendChild(caption(toolbar, 'editor toolbar: neutral ghost, sm, space.control.gap'));
 const header2 = stack('Card header', 'HORIZONTAL', 8, [12, 12, 12, 20]);
 fill(header2, 'color/surface/raised');
 stroke(header2, 'color/border/subtle');
@@ -734,6 +734,16 @@ ue.appendChild(ex);
 ex.layoutSizingHorizontal = 'FILL';
 
 // Center each blueprint board's drawing vertically; the legend elements keep their position relative to it.
+// Gaps between neighbors use space.control.gap of their size (user decision, 2026-10-20).
+const bindGap = (name, size) => {
+  for (const n of root.findAll((x) => x.type === 'FRAME' && x.name === name))
+    n.setBoundVariable('itemSpacing', V(`space/control/gap/${size}`));
+};
+bindGap('Compact toolbar', 'sm');
+bindGap('Editor toolbar', 'sm');
+for (const n of table.children) n.setBoundVariable('itemSpacing', V('space/control/gap/sm'));
+for (const name of ['Card header', 'Dark toolbar', 'Player']) bindGap(name, 'md');
+for (const sz of ['sm', 'md', 'lg']) bindGap(`Pair ${sz}`, sz);
 const centerBoards = (frame) => {
   const isLegend = (k) =>
     k.type === 'LINE' ||

@@ -58,7 +58,7 @@ The Plugin API script bodies inherited from the reference kit were removed after
 
 - `icon-button-master.plugin.js`, `icon-button-spec.plugin.js`: the IconButton component set (135 variants, Button treatments and adapter modes, a Target layer outside the layout) and its specification page.
 - `badge-master.plugin.js`, `badge-spec.plugin.js`: the Badge component set (36 variants, Counter box family, the adapter variable `badge/icon-box`) and its specification page.
-- `link-master.plugin.js`, `link-spec.plugin.js`: the collections `Components · link text` and `Components · link context`, the Link component set (36 variants) and its specification page.
+- `link-master.plugin.js`, `link-spec.plugin.js`: the collections `Components · link size` and `Components · link color`, the internal part `_Link/Destination` (6 variants), the Link component set (Color × Size × State, 54 variants, each setting its own modes; rebuilt on 2026-10-20 from the mode-based version of 2026-10-19) and its specification page.
 - `phosphor-components.plugin.js`, `phosphor-spec.plugin.js`: the Phosphor glyph components of `assets/phosphor` and their notes frame.
 - `icon-button-parity.plugin.js` + `icon-button-parity-report.mjs`, `badge-parity.plugin.js` + `badge-parity-report.mjs`, `link-parity.plugin.js` + `link-parity-report.mjs`: parity by hash. The Figma body builds one field string per case, returns per context the FNV-1a hash of the sorted `key=fields` lines (plus the lines of the contexts listed in `DETAIL`, and numeric fields that need a tolerance), and the report script builds the same strings from `computed.json`; an equal hash proves every field equal. This keeps the MCP output small (the full lines of 18 contexts exceed its limit).
 
@@ -69,3 +69,9 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - `setBoundVariable('textDecorationThickness', …)` is refused (“Unknown field”): the underline thickness stays a literal (Link).
 - An absolute child bound to a size variable keeps its creation position: set its x and y explicitly, then CENTER constraints keep it centered when the parent's bound size changes with the density (IconButton Target).
 - Straight apostrophes in a component description are stored as `&#39;`; use the typographic apostrophe.
+
+## Mechanics learned on 2026-10-20
+
+- An auto-layout frame with no child keeps a width of 100 px whatever its sizing mode: an empty variant (Link's `Destination=page`) is fixed at 0.01 px wide instead.
+- Modes set explicitly on a variant reach the nested instances it holds: the Link variants set the modes of `Components · link size` and `Components · link color`, and the nested `_Link/Destination` part resolves `link/quiet` and `link/font-size` through them. Exposing the nested instance (`isExposedInstance`) lets a designer set its Destination and Meta from the Link instance.
+- `get_screenshot` of a component set renders the set alone: a page decoration behind it (the Link's on inverse backdrop) appears on the canvas but not in the exported master-set image.

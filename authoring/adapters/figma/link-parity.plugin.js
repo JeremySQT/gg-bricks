@@ -1,10 +1,10 @@
-// Link Figma parity measurement (use_figma body), 2026-10-19.
+// Link Figma parity measurement (use_figma body), 2026-10-20 (Color × Size × State set with the nested Destination).
 // In each of the 18 brand × appearance × density contexts, instantiates the 13 cases of
 // reports/components/link/svelte/computed.json in a temporary frame with explicit Brand/Appearance/Density modes:
-// tone accent with the six destinations; tone inherit (page) in the info, success, warning, danger and inverse
-// contexts (the instance's “Components · link context” mode stands for the parent text color); tone inherit (file)
-// in the inverse context, as on the review page; tone accent (page) with focus. The text mode is body-md, the font of the review page.
-// Fields: color|ctx|fontSize|fontWeight|lineHeight|decoLine|decoThickness|decoColor|metaDeco|metaColor|glyphW|glyphH|
+// Color accent with the six destinations (nested Destination); Color on info, on success, on warning, on danger and
+// on inverse (tone inherit in those contexts, destination page); Color on inverse with the file destination; Color
+// accent (page) with focus. Size md: the body md text of the review page.
+// Fields: color|fontSize|fontWeight|lineHeight|decoLine|decoThickness|decoColor|metaDeco|metaColor|glyphW|glyphH|
 // glyphColor|glyphOpacity|glyphGap|ring|radius. Returns per context { n, hash } (FNV-1a of the sorted "key=fields"
 // lines) and the lines of the contexts listed in DETAIL; link-parity-report.mjs builds the same strings from
 // computed.json. IDs come from reports/components/link/figma/ledger.json.
@@ -13,14 +13,11 @@ const DETAIL = [];
 const page = await figma.getNodeByIdAsync('225:2');
 await figma.setCurrentPageAsync(page);
 for (const n of page.children.filter((n) => n.name.startsWith('_parity '))) n.remove();
-const set = await figma.getNodeByIdAsync('225:276');
+const set = await figma.getNodeByIdAsync('232:659');
 const FOCUS = Object.keys(set.componentPropertyDefinitions).find((k) => k.startsWith('Focus'));
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const col = (n) => cols.find((c) => c.name === n || c.name === 'Foundations · ' + n);
+const col = (n) => cols.find((c) => c.name === 'Foundations · ' + n);
 const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
-const ctxC = col('Components · link context');
-const vars = await figma.variables.getLocalVariablesAsync();
-const linkContext = vars.find((v) => v.name === 'link/context');
 const cache = {};
 const varOf = async (id) => cache[id] || (cache[id] = await figma.variables.getVariableByIdAsync(id));
 const res = async (node, field) => {
@@ -48,7 +45,7 @@ const fnv = (s) => {
   for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 0x01000193) >>> 0;
   return h.toString(16).padStart(8, '0');
 };
-const variant = (tone, d) => set.children.find((c) => c.name === `Tone=${tone}, Destination=${d}, State=default`);
+const variant = (color) => set.children.find((c) => c.name === `Color=${color}, Size=md, State=default`);
 const result = {};
 for (const brand of ['base', 'brick', 'orchid'])
   for (const ap of ['light', 'dark'])
@@ -61,18 +58,18 @@ for (const brand of ['base', 'brick', 'orchid'])
       frame.setExplicitVariableModeForCollection(col('Density'), mode(col('Density'), den));
       const cases = [];
       for (const d of ['page', 'external', 'email', 'phone', 'file', 'print'])
-        cases.push({ key: `accent|${d}|default`, tone: 'accent', d, context: 'primary' });
+        cases.push({ key: `accent|${d}|default`, color: 'accent', d });
       for (const s of ['info', 'success', 'warning', 'danger', 'inverse'])
-        cases.push({ key: `inherit|page|${s}`, tone: 'inherit', d: 'page', context: s });
-      cases.push({ key: 'inherit|file|default', tone: 'inherit', d: 'file', context: 'inverse' });
-      cases.push({ key: 'accent|page|focus', tone: 'accent', d: 'page', context: 'primary', focus: true });
+        cases.push({ key: `inherit|page|${s}`, color: 'on ' + s, d: 'page' });
+      cases.push({ key: 'inherit|file|default', color: 'on inverse', d: 'file' });
+      cases.push({ key: 'accent|page|focus', color: 'accent', d: 'page', focus: true });
       const out = {};
       try {
         for (const k of cases) {
-          const inst = variant(k.tone, k.d).createInstance();
+          const inst = variant(k.color).createInstance();
           frame.appendChild(inst);
-          inst.setExplicitVariableModeForCollection(ctxC, mode(ctxC, k.context));
           inst.setProperties({ [FOCUS]: !!k.focus });
+          inst.exposedInstances.find((e) => e.name === 'Destination').setProperties({ Destination: k.d });
           const label = inst.findOne((n) => n.name === 'Label');
           const meta = inst.findOne((n) => n.name === 'Meta');
           const ind = inst.findOne((n) => n.name === 'Indicator');
@@ -81,7 +78,6 @@ for (const brand of ['base', 'brick', 'orchid'])
           const ring = inst.findOne((n) => n.name === 'Focus ring');
           out[`${ctx}|${k.key}`] = [
             await paint(label, 'fills'),
-            hex(linkContext.resolveForConsumer(inst).value),
             r3(await res(label, 'fontSize')),
             r3(await res(label, 'fontWeight')),
             r3(await res(label, 'lineHeight')),

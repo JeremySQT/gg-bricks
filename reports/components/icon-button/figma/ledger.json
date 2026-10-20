@@ -258,6 +258,10 @@
     {
       "date": "2026-10-19",
       "change": "Built: 135 variants; the Target layer was re-centered after creation (it sat 28 px up-left) and checked centered in the three densities; a hidden Loading indicator was added to the 108 non-loading variants so that an instance can show loading + disabled."
+    },
+    {
+      "date": "2026-10-20",
+      "change": "Specification 219:1828: the gaps of the example rows (Compact toolbar, Editor toolbar, table rows, Card header, Dark toolbar, Player, Pair sm/md/lg) are bound to space/control/gap/{size}, and the sizing text states the compact sm exception (4 px apart, targets reaching 4 px into the neighbor's square). The master is unchanged."
     }
   ]
 }
