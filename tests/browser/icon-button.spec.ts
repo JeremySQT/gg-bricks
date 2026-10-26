@@ -34,6 +34,15 @@ async function setContext(page: Page, brand: string, mode: string, density: stri
   await page.selectOption('#ctx-brand', brand);
   await page.selectOption('#ctx-mode', mode);
   await page.selectOption('#ctx-density', density);
+  await settle(page);
+}
+
+/**
+ * Waits until no CSS transition runs. A context switch transitions colors (motion duration); an audit or a measure
+ * taken meanwhile reads intermediate colors, which made the axe contrast audit fail intermittently in CI.
+ */
+async function settle(page: Page) {
+  await page.waitForFunction(() => document.getAnimations().every((a) => !(a instanceof CSSTransition)));
 }
 
 /** Computed values of one icon button: root color, container surface, border, focus ring and geometry. */
@@ -326,6 +335,7 @@ test('automated accessibility audit and screenshots in light and dark, desktop a
   fs.mkdirSync(out, { recursive: true });
   for (const mode of modes) {
     await page.selectOption('#ctx-mode', mode);
+    await settle(page);
     const results = await new AxeBuilder({ page })
       .include('.page')
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
