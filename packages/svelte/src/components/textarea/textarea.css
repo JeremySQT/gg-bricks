@@ -1,0 +1,139 @@
+/*
+ * Textarea structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * The container is the visible field (surface, inner border, focus ring) and grows with the textarea inside it.
+ * Block padding is half of minHeight minus one line (1lh), so one row is exactly as tall as an InputText.
+ */
+.ggb-textarea {
+  --_surface: var(--ggb-textarea-surface-default);
+  --_content: var(--ggb-textarea-content-default);
+  --_border: var(--ggb-textarea-border-default);
+  --_placeholder: var(--ggb-textarea-placeholderColor-default);
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  inline-size: 100%;
+  min-inline-size: 0;
+  border-radius: var(--ggb-textarea-radius);
+  background-color: var(--_surface);
+  color: var(--_content);
+  box-shadow: inset 0 0 0 var(--ggb-textarea-borderWidth) var(--_border);
+  outline: var(--ggb-textarea-borderWidth) solid transparent;
+  outline-offset: calc(-1 * var(--ggb-textarea-borderWidth));
+  font: var(--ggb-textarea-typography);
+  letter-spacing: var(--ggb-textarea-typography-letterSpacing, normal);
+  transition-property: background-color, color, box-shadow;
+  transition-duration: var(--ggb-textarea-motionDuration);
+  transition-timing-function: var(--ggb-textarea-easingStandard);
+}
+/* Interaction target: at least minTarget tall, centered, without enlarging the visible field (a short textarea). */
+.ggb-textarea::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  block-size: max(100%, var(--ggb-textarea-minTarget));
+  transform: translateY(-50%);
+}
+
+.ggb-textarea__input {
+  --_padding-block: calc((var(--ggb-textarea-minHeight) - 1lh) / 2);
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  margin: 0;
+  padding: var(--_padding-block) var(--ggb-textarea-paddingInline);
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  block-size: calc(var(--_rows) * 1lh + 2 * var(--_padding-block));
+  min-block-size: calc(1lh + 2 * var(--_padding-block));
+  overflow-wrap: break-word;
+  outline: none;
+  resize: none;
+}
+.ggb-textarea__input::placeholder {
+  color: var(--_placeholder);
+  opacity: 1;
+}
+.ggb-textarea[data-resize='vertical'] .ggb-textarea__input {
+  resize: vertical;
+}
+.ggb-textarea[data-resize='auto'] .ggb-textarea__input {
+  min-block-size: calc(var(--_rows) * 1lh + 2 * var(--_padding-block));
+  max-block-size: calc(var(--_max-rows) * 1lh + 2 * var(--_padding-block));
+}
+
+/* Condition, lowest precedence first: hover, focus, invalid, readonly, disabled. */
+@media (hover: hover) {
+  .ggb-textarea:where(:hover) {
+    --_surface: var(--ggb-textarea-surface-hover);
+    --_content: var(--ggb-textarea-content-hover);
+    --_border: var(--ggb-textarea-border-hover);
+    --_placeholder: var(--ggb-textarea-placeholderColor-hover);
+  }
+}
+.ggb-textarea:where(:has(.ggb-textarea__input:focus)) {
+  --_surface: var(--ggb-textarea-surface-focus);
+  --_content: var(--ggb-textarea-content-focus);
+  --_border: var(--ggb-textarea-border-focus);
+  --_placeholder: var(--ggb-textarea-placeholderColor-focus);
+}
+.ggb-textarea:where([data-invalid]) {
+  --_surface: var(--ggb-textarea-surface-invalid);
+  --_content: var(--ggb-textarea-content-invalid);
+  --_border: var(--ggb-textarea-border-invalid);
+  --_placeholder: var(--ggb-textarea-placeholderColor-invalid);
+}
+.ggb-textarea:where([data-readonly]) {
+  --_surface: var(--ggb-textarea-surface-readonly);
+  --_content: var(--ggb-textarea-content-readonly);
+  --_border: var(--ggb-textarea-border-readonly);
+  --_placeholder: var(--ggb-textarea-placeholderColor-readonly);
+}
+.ggb-textarea:where([data-disabled]) {
+  --_surface: var(--ggb-textarea-surface-disabled);
+  --_content: var(--ggb-textarea-content-disabled);
+  --_border: var(--ggb-textarea-border-disabled);
+  --_placeholder: var(--ggb-textarea-placeholderColor-disabled);
+}
+.ggb-textarea[data-disabled],
+.ggb-textarea[data-disabled] .ggb-textarea__input {
+  cursor: not-allowed;
+}
+
+.ggb-textarea:has(.ggb-textarea__input:focus) {
+  outline: var(--ggb-textarea-focusWidth) solid var(--ggb-textarea-focusColor);
+  outline-offset: var(--ggb-textarea-focusOffset);
+  /* Outline corners resolve to radius + offset, the value of --ggb-textarea-focusRadius (radius.focus). */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ggb-textarea {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .ggb-textarea {
+    box-shadow: none;
+    outline-color: FieldText;
+    background-color: Field;
+    color: FieldText;
+  }
+  .ggb-textarea__input::placeholder {
+    color: GrayText;
+  }
+  .ggb-textarea[data-disabled] {
+    outline-color: GrayText;
+    color: GrayText;
+  }
+  .ggb-textarea:has(.ggb-textarea__input:focus) {
+    outline: var(--ggb-textarea-focusWidth) solid Highlight;
+    outline-offset: var(--ggb-textarea-focusOffset);
+  }
+}

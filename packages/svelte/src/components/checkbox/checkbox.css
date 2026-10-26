@@ -1,0 +1,185 @@
+/*
+ * Checkbox structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * The container is a label: a press anywhere on the box, the label or the description toggles the control. The box
+ * is centered on the first line of the label (1lh), and the row is at least minTarget tall without growing.
+ */
+.ggb-checkbox {
+  --_condition-surface-off: var(--ggb-checkbox-surface-off-default);
+  --_condition-content-off: var(--ggb-checkbox-content-off-default);
+  --_condition-border-off: var(--ggb-checkbox-border-off-default);
+  --_condition-surface-on: var(--ggb-checkbox-surface-on-default);
+  --_condition-content-on: var(--ggb-checkbox-content-on-default);
+  --_condition-border-on: var(--ggb-checkbox-border-on-default);
+  --_surface: var(--_condition-surface-off);
+  --_content: var(--_condition-content-off);
+  --_border: var(--_condition-border-off);
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--ggb-checkbox-gap);
+  max-inline-size: 100%;
+  font: var(--ggb-checkbox-typography);
+  letter-spacing: var(--ggb-checkbox-typography-letterSpacing, normal);
+  color: var(--ggb-checkbox-labelColor);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.ggb-checkbox::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  block-size: max(100%, var(--ggb-checkbox-minTarget));
+  transform: translateY(-50%);
+}
+.ggb-checkbox[data-hide-label]::before {
+  inset: auto;
+  top: 50%;
+  left: 50%;
+  inline-size: max(100%, var(--ggb-checkbox-minTarget));
+  transform: translate(-50%, -50%);
+}
+
+.ggb-checkbox__control {
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: var(--ggb-checkbox-boxSize);
+  block-size: var(--ggb-checkbox-boxSize);
+  /* The control box is centered on the first line of the label: 1lh resolves with the inherited line height. */
+  margin: calc((1lh - var(--ggb-checkbox-boxSize)) / 2) 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ggb-checkbox-radius);
+  background-color: var(--_surface);
+  box-shadow: inset 0 0 0 var(--ggb-checkbox-borderWidth) var(--_border);
+  color: var(--_content);
+  font: inherit;
+  cursor: inherit;
+  appearance: none;
+  outline: var(--ggb-checkbox-borderWidth) solid transparent;
+  outline-offset: calc(-1 * var(--ggb-checkbox-borderWidth));
+  transition-property: background-color, color, box-shadow;
+  transition-duration: var(--ggb-checkbox-motionDuration);
+  transition-timing-function: var(--ggb-checkbox-easingStandard);
+}
+/* The glyph box is the control box: the reference set draws its 1/8 inset inside it. */
+.ggb-checkbox__mark {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.ggb-checkbox__text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+.ggb-checkbox__description {
+  font: var(--ggb-checkbox-typographyDescription);
+  letter-spacing: var(--ggb-checkbox-typographyDescription-letterSpacing, normal);
+  color: var(--ggb-checkbox-descriptionColor);
+}
+.ggb-checkbox[data-hide-label] .ggb-checkbox__text {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/*
+ * Condition sets both selections' colors, lowest precedence first (hover, invalid, readonly, disabled); every
+ * condition selector has the same specificity, so source order is the precedence. Selection then picks one set.
+ */
+@media (hover: hover) {
+  .ggb-checkbox:where(:hover) {
+    --_condition-surface-off: var(--ggb-checkbox-surface-off-hover);
+    --_condition-content-off: var(--ggb-checkbox-content-off-hover);
+    --_condition-border-off: var(--ggb-checkbox-border-off-hover);
+    --_condition-surface-on: var(--ggb-checkbox-surface-on-hover);
+    --_condition-content-on: var(--ggb-checkbox-content-on-hover);
+    --_condition-border-on: var(--ggb-checkbox-border-on-hover);
+  }
+}
+.ggb-checkbox:where([data-invalid]) {
+  --_condition-surface-off: var(--ggb-checkbox-surface-off-invalid);
+  --_condition-content-off: var(--ggb-checkbox-content-off-invalid);
+  --_condition-border-off: var(--ggb-checkbox-border-off-invalid);
+  --_condition-surface-on: var(--ggb-checkbox-surface-on-invalid);
+  --_condition-content-on: var(--ggb-checkbox-content-on-invalid);
+  --_condition-border-on: var(--ggb-checkbox-border-on-invalid);
+}
+.ggb-checkbox:where([data-readonly]) {
+  --_condition-surface-off: var(--ggb-checkbox-surface-off-readonly);
+  --_condition-content-off: var(--ggb-checkbox-content-off-readonly);
+  --_condition-border-off: var(--ggb-checkbox-border-off-readonly);
+  --_condition-surface-on: var(--ggb-checkbox-surface-on-readonly);
+  --_condition-content-on: var(--ggb-checkbox-content-on-readonly);
+  --_condition-border-on: var(--ggb-checkbox-border-on-readonly);
+  cursor: default;
+}
+.ggb-checkbox:where([data-disabled]) {
+  --_condition-surface-off: var(--ggb-checkbox-surface-off-disabled);
+  --_condition-content-off: var(--ggb-checkbox-content-off-disabled);
+  --_condition-border-off: var(--ggb-checkbox-border-off-disabled);
+  --_condition-surface-on: var(--ggb-checkbox-surface-on-disabled);
+  --_condition-content-on: var(--ggb-checkbox-content-on-disabled);
+  --_condition-border-on: var(--ggb-checkbox-border-on-disabled);
+  color: var(--ggb-checkbox-disabledColor);
+  cursor: not-allowed;
+}
+.ggb-checkbox[data-selection='on'] {
+  --_surface: var(--_condition-surface-on);
+  --_content: var(--_condition-content-on);
+  --_border: var(--_condition-border-on);
+}
+.ggb-checkbox[data-disabled] .ggb-checkbox__description {
+  color: var(--ggb-checkbox-disabledColor);
+}
+
+.ggb-checkbox__control:focus-visible {
+  outline: var(--ggb-checkbox-focusWidth) solid var(--ggb-checkbox-focusColor);
+  outline-offset: var(--ggb-checkbox-focusOffset);
+  /* Outline corners resolve to radius + focusOffset: concentric with the box. */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ggb-checkbox__control {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .ggb-checkbox__control {
+    box-shadow: none;
+    outline-color: CanvasText;
+    background-color: Canvas;
+    color: Canvas;
+  }
+  .ggb-checkbox[data-selection='on'] .ggb-checkbox__control {
+    background-color: Highlight;
+    color: HighlightText;
+    outline-color: Highlight;
+  }
+  .ggb-checkbox[data-disabled],
+  .ggb-checkbox[data-disabled] .ggb-checkbox__description {
+    color: GrayText;
+  }
+  .ggb-checkbox[data-disabled] .ggb-checkbox__control {
+    outline-color: GrayText;
+  }
+  .ggb-checkbox[data-disabled][data-selection='on'] .ggb-checkbox__control {
+    background-color: GrayText;
+    color: Canvas;
+  }
+  .ggb-checkbox__control:focus-visible {
+    outline: var(--ggb-checkbox-focusWidth) solid Highlight;
+    outline-offset: var(--ggb-checkbox-focusOffset);
+  }
+}

@@ -1,0 +1,189 @@
+/*
+ * InputText structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * The container is the visible field (surface, inner border, focus ring); the input inside is transparent.
+ * Horizontal spacing follows Button: edgeInline on the container, textInline around the text, slotInline
+ * around the slots, and icons placed by their drawing (1/8 of the box inside it).
+ */
+.ggb-input-text {
+  --_surface: var(--ggb-input-text-surface-default);
+  --_content: var(--ggb-input-text-content-default);
+  --_border: var(--ggb-input-text-border-default);
+  --_placeholder: var(--ggb-input-text-placeholderColor-default);
+  --_slot: var(--ggb-input-text-slotColor-default);
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  inline-size: 100%;
+  min-inline-size: 0;
+  block-size: var(--ggb-input-text-minHeight);
+  padding-inline: var(--ggb-input-text-edgeInline);
+  border-radius: var(--ggb-input-text-radius);
+  background-color: var(--_surface);
+  color: var(--_content);
+  /* The border is drawn inside so that it never changes the outer dimensions. */
+  box-shadow: inset 0 0 0 var(--ggb-input-text-borderWidth) var(--_border);
+  /* Transparent outline: invisible normally, drawn by the system in forced-colors mode. */
+  outline: var(--ggb-input-text-borderWidth) solid transparent;
+  outline-offset: calc(-1 * var(--ggb-input-text-borderWidth));
+  font: var(--ggb-input-text-typography);
+  letter-spacing: var(--ggb-input-text-typography-letterSpacing, normal);
+  cursor: text;
+  transition-property: background-color, color, box-shadow;
+  transition-duration: var(--ggb-input-text-motionDuration);
+  transition-timing-function: var(--ggb-input-text-easingStandard);
+}
+
+/* Interaction target: at least minTarget tall, centered, without enlarging the visible field. */
+.ggb-input-text::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 50%; /* physical on purpose: centering is symmetric */
+  block-size: max(100%, var(--ggb-input-text-minTarget));
+  transform: translateY(-50%);
+}
+
+.ggb-input-text__input {
+  position: relative; /* above the target extension */
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  block-size: 100%;
+  margin: 0;
+  padding: 0 var(--ggb-input-text-textInline);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-overflow: ellipsis;
+  outline: none;
+  appearance: none;
+}
+.ggb-input-text__input::placeholder {
+  color: var(--_placeholder);
+  opacity: 1;
+}
+/* No native search decorations: a clear button is an action supplied by the application. */
+.ggb-input-text__input::-webkit-search-decoration,
+.ggb-input-text__input::-webkit-search-cancel-button {
+  appearance: none;
+}
+/* Autofill keeps the field colors instead of the browser's tinted background. */
+.ggb-input-text__input:autofill {
+  box-shadow: 0 0 0 100vmax var(--_surface) inset;
+  -webkit-text-fill-color: var(--_content);
+  caret-color: var(--_content);
+}
+
+.ggb-input-text__leading,
+.ggb-input-text__trailing {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  margin-inline: var(--ggb-input-text-slotInline);
+  color: var(--_slot);
+}
+.ggb-input-text__leading > svg,
+.ggb-input-text__trailing > svg {
+  display: block;
+  inline-size: var(--ggb-input-text-iconSize);
+  block-size: var(--ggb-input-text-iconSize);
+  /* Optical placement: the drawing, not the box, sits at the spacing. */
+  margin-inline: calc(var(--ggb-input-text-iconSize) / -8);
+}
+
+/*
+ * The action is a square as tall as the field with the IconButton centered in it: the IconButton sits at the same
+ * distance from the inline end as from the block edges, (minHeight - its size) / 2.
+ */
+.ggb-input-text[data-action] {
+  padding-inline-end: 0;
+}
+.ggb-input-text__action {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  align-self: stretch;
+  aspect-ratio: 1;
+  cursor: default;
+}
+
+/* Condition, lowest precedence first: hover, focus, invalid, readonly, disabled. */
+@media (hover: hover) {
+  .ggb-input-text:where(:hover) {
+    --_surface: var(--ggb-input-text-surface-hover);
+    --_content: var(--ggb-input-text-content-hover);
+    --_border: var(--ggb-input-text-border-hover);
+    --_placeholder: var(--ggb-input-text-placeholderColor-hover);
+    --_slot: var(--ggb-input-text-slotColor-hover);
+  }
+}
+.ggb-input-text:where(:has(.ggb-input-text__input:focus)) {
+  --_surface: var(--ggb-input-text-surface-focus);
+  --_content: var(--ggb-input-text-content-focus);
+  --_border: var(--ggb-input-text-border-focus);
+  --_placeholder: var(--ggb-input-text-placeholderColor-focus);
+  --_slot: var(--ggb-input-text-slotColor-focus);
+}
+.ggb-input-text:where([data-invalid]) {
+  --_surface: var(--ggb-input-text-surface-invalid);
+  --_content: var(--ggb-input-text-content-invalid);
+  --_border: var(--ggb-input-text-border-invalid);
+  --_placeholder: var(--ggb-input-text-placeholderColor-invalid);
+  --_slot: var(--ggb-input-text-slotColor-invalid);
+}
+.ggb-input-text:where([data-readonly]) {
+  --_surface: var(--ggb-input-text-surface-readonly);
+  --_content: var(--ggb-input-text-content-readonly);
+  --_border: var(--ggb-input-text-border-readonly);
+  --_placeholder: var(--ggb-input-text-placeholderColor-readonly);
+  --_slot: var(--ggb-input-text-slotColor-readonly);
+}
+.ggb-input-text:where([data-disabled]) {
+  --_surface: var(--ggb-input-text-surface-disabled);
+  --_content: var(--ggb-input-text-content-disabled);
+  --_border: var(--ggb-input-text-border-disabled);
+  --_placeholder: var(--ggb-input-text-placeholderColor-disabled);
+  --_slot: var(--ggb-input-text-slotColor-disabled);
+  cursor: not-allowed;
+}
+.ggb-input-text[data-disabled] .ggb-input-text__input {
+  cursor: not-allowed;
+}
+
+/* Focus on the input, whatever the modality: the ring is drawn outside, with the concentric radius. */
+.ggb-input-text:has(.ggb-input-text__input:focus) {
+  outline: var(--ggb-input-text-focusWidth) solid var(--ggb-input-text-focusColor);
+  outline-offset: var(--ggb-input-text-focusOffset);
+  /* Outline corners resolve to radius + offset, the value of --ggb-input-text-focusRadius (radius.focus). */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ggb-input-text {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .ggb-input-text {
+    box-shadow: none;
+    outline-color: FieldText;
+    background-color: Field;
+    color: FieldText;
+  }
+  .ggb-input-text__input::placeholder {
+    color: GrayText;
+  }
+  .ggb-input-text[data-disabled] {
+    outline-color: GrayText;
+    color: GrayText;
+  }
+  .ggb-input-text:has(.ggb-input-text__input:focus) {
+    outline: var(--ggb-input-text-focusWidth) solid Highlight;
+    outline-offset: var(--ggb-input-text-focusOffset);
+  }
+}
