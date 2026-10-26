@@ -3,7 +3,7 @@
   "componentId": "icon-button",
   "family": "actions",
   "wave": 1,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Trigger an action, or navigate to a task, from a compact square control that shows only an icon, with an accessible name that is never visible.",
     "useCases": [
@@ -80,8 +80,9 @@
       "computed": "reports/components/icon-button/svelte/computed.json",
       "screenshots": "reports/components/icon-button/svelte/*.png"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/icon-button.md",
+    "agentDocs": "documentation/index.json (entry icon-button); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/icon-button.svelte"
   },
   "approvals": {
     "contract": {
@@ -206,6 +207,20 @@
       "report": "reports/components/icon-button/figma/parity.json",
       "date": "2026-10-26",
       "note": "After the icon slot migration (Icon#254:0, glyph placed directly): the 18 context hashes equal those built from computed.json; parity.json regenerated, unchanged (8 658 records, 0 failures)."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs",
+      "date": "2026-10-26",
+      "note": "Page documentation/components/icon-button.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/icon-button/ renders without console errors (Chromium), with the Figma blueprint under Anatomy."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify && npm run verify:generated",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests, svelte-check, SSR, build, docs build; generated files up to date."
     }
   ],
   "decisionsTaken": [
@@ -220,7 +235,7 @@
     "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs): the maintained page and the consumer index entry, from the approved contract, implementation and Figma master; then the wave 1 pull request.",
+  "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",
   "implementationNotes": [
     "Self-contained folder packages/svelte/src/components/icon-button/ on the Bits UI Button primitive (button or a with href), its own CSS duplicated from the Button patterns rather than importing Button: a component folder must stay copyable with tokens.css, Bits UI and its declared dependencies (icon).",
     "Loading indicator: the same inline spinner as Button, sized at iconSize, replacing the icon in place.",

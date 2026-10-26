@@ -27,8 +27,8 @@ Spacing, the same in every size and density: A side padding of the container, B 
 
 ## When not to use
 
-- An action without visible text: IconButton (planned).
-- A link inside a sentence: Link (planned).
+- An action without visible text: IconButton.
+- A link inside a sentence: Link.
 - A toggle that stays pressed: SegmentedControl (planned).
 - A trigger that opens a menu or a split action: Menu (planned).
 - A group of buttons or a toolbar: compose buttons in your layout; there is no group component.

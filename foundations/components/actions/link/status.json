@@ -3,7 +3,7 @@
   "componentId": "link",
   "family": "actions",
   "wave": 1,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Navigate to another page or resource from inside text, as an underlined word or phrase that reads with the sentence around it and tells the reader what it leads to (a page, another site, an email, a phone number, a file and its format, a printable version).",
     "useCases": [
@@ -80,8 +80,9 @@
       "screenshots": "reports/components/link/svelte/*.png",
       "unit": "tests/link-destination.test.ts"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/link.md",
+    "agentDocs": "documentation/index.json (entry link); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/link.svelte"
   },
   "approvals": {
     "contract": {
@@ -226,6 +227,20 @@
       "report": "reports/components/link/figma/parity.json",
       "date": "2026-10-26",
       "note": "After the icon slot migration (glyphs placed directly in _Link/Destination, File icon#259:0 on the file destination): the 18 context hashes equal those built from computed.json; parity.json regenerated, unchanged (4 680 records, 0 failures)."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs",
+      "date": "2026-10-26",
+      "note": "Page documentation/components/link.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/link/ renders without console errors (Chromium), with the Figma blueprint under Anatomy."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify && npm run verify:generated",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests, svelte-check, SSR, build, docs build; generated files up to date."
     }
   ],
   "decisionsTaken": [
@@ -253,7 +268,7 @@
       "blocks": "nothing"
     }
   ],
-  "nextAction": "Documentation (ggb-docs): the maintained page and the consumer index entry, from the approved contract, implementation and Figma master; then the wave 1 pull request.",
+  "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",
   "implementationNotes": [
     "Markup: <a class=\"ggb-link\" data-tone data-destination href> with the label, a <span class=\"ggb-link__meta\"> for files, the glyph (aria-hidden) and a visually hidden suffix; external adds target=\"_blank\" rel=\"noopener noreferrer\". The last word, meta and glyph are wrapped in a no-wrap span so they never start a line alone.",
     "Underline through text-decoration (thickness from the tokens, text-underline-offset from-font) on the label only; focus with outline on the inline box so it follows each line.",
