@@ -1,0 +1,90 @@
+{
+  "formatStatus": "v1",
+  "componentId": "textarea",
+  "family": "forms",
+  "wave": 2,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Let the user enter or edit multi-line free text (a comment, a description, a message).",
+    "useCases": [
+      "A form field inside Field.",
+      "A comment box that grows with its content (resize auto).",
+      "A readonly multi-line value that can be selected and copied."
+    ],
+    "exclusions": [
+      "Rich text, mentions, markdown preview.",
+      "Character counters and length limits shown to the user.",
+      "Inline resizing."
+    ],
+    "alternatives": ["InputText for a single line."]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/textarea/contract.json",
+      "sha256": "80fd037998c744d9af6c7128ee72a5fef8e7044a07ced885c03ec5f69533321e"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "foundations/tokens/base/semantic/common.tokens.json"
+    ],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate; node tooling/validate-contracts.ts --tokens --dependencies",
+      "report": "reports/components/textarea/contract-validation.json",
+      "date": "2026-10-26",
+      "note": "Schema, consistency, token coverage (42 paths) in 18 contexts and accepted components; check-foundations passes (425 roles, 2196 contrast checks, 0 failures). Intrinsic rules: manual review at the contract gate."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/textarea/contrast.json",
+      "date": "2026-10-26",
+      "note": "1296 contrast records on the contrastScope backdrops in 18 contexts, 0 failures; minimum active text 11.44."
+    }
+  ],
+  "decisionsTaken": [
+    "One derived state axis `condition` keys the field and choice color families (color.field.{condition}.*, color.choice.{selection}.{condition}.*), resolved from the disabled, readonly and invalid props and pointer hover with a fixed precedence (disabled, readonly, invalid, [focus,] hover, default). The props stay separate (contract-guide: validation is not an interaction state); only the token lookup is flattened, as the approved field family already is.",
+    "A standalone text entry or radio group takes its accessible name from an optional, non-displayed label prop (the IconButton precedent); inside a Field the Field label wins. There is no visually hidden Field label: a control without a visible label is used without Field.",
+    "Controls perform no validation and expose invalid/required only; the visible error message and required marker belong to Field (catalog composition rule: controls are standalone, Field wraps them).",
+    "Same colors, border, radius, inline padding, typography and focus treatment as InputText of the same size; the block padding is derived (half of size.control minus one line) so a one-row textarea matches an InputText, with no new token.",
+    "resize vertical (default), auto (grows from rows to maxRows, default 3 and 8) or none; never inline resizing."
+  ],
+  "openDecisions": [],
+  "nextAction": "Contract gate (grouped wave 2 review): present the contract, the token additions and the open decisions; record the approval with digests, then implement (ggb-svelte).",
+  "implementationNotes": [
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Proposed at the wave 2 contract gate, as accepted for the Button outline border (2026-09-26): color.field.default.border reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected. To be confirmed by the reviewer."
+      }
+    ]
+  }
+}

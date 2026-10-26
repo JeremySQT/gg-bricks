@@ -73,9 +73,15 @@ Action roles are named `color.action.{intent}.{appearance}.{state}.{surface|cont
 
 ## Fields
 
-Field roles are named `color.field.{state}.{surface|content|border|placeholder}` with states `default`, `hover`, `focus`, `readonly`, `disabled`, `invalid`. They paint text inputs and their relatives. Content and placeholder are guaranteed 4.5:1 on the surface of the same state, borders 3:1 on `color.surface.default` (readonly has a subtle border by design: the field is not editable). Invalid fields also need a text message: the border color alone does not convey the error.
+Field roles are named `color.field.{state}.{surface|content|border|placeholder}` with states `default`, `hover`, `focus`, `readonly`, `disabled`, `invalid`. They paint text inputs and their relatives. Content and placeholder are guaranteed 4.5:1 on the surface of the same state, borders 3:1 on `color.surface.default` (readonly keeps the default border on a tinted surface, so that a readonly field stays identifiable). Invalid fields also need a text message: the border color alone does not convey the error.
 
 <!-- site:tokens prefix=color.field preview=color -->
+
+## Choices
+
+Choice roles are named `color.choice.{off|on}.{state}.{surface|content|border}` with states `default`, `hover`, `readonly`, `disabled`, `invalid`. They paint the box of a checkbox or a radio and the track of a switch; `content` is the mark (check, dot) or the switch thumb. `off` repeats the field roles of the same state (the thumb of an off switch uses the field placeholder color); `on` fills the box in the accent color, or in the invalid color, with a contrasting mark. The mark and the thumb are guaranteed 3:1 on their surface, and the `on` fill 3:1 on `color.surface.default`. Readonly and disabled choices are not filled: the mark alone shows the choice.
+
+<!-- site:tokens prefix=color.choice preview=color collapsed="All choice roles" -->
 
 ## Statuses
 

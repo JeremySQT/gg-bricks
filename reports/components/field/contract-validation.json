@@ -1,0 +1,29 @@
+{
+  "valid": true,
+  "checks": {
+    "schema": "passed",
+    "consistency": "passed",
+    "tokenCoverage": "passed",
+    "dependencies": "not-provided",
+    "intrinsicRules": "manual-review-required"
+  },
+  "errors": [],
+  "requiredTokenPaths": [
+    "color.content.primary",
+    "color.content.secondary",
+    "color.status.danger.content",
+    "color.status.danger.icon",
+    "color.content.disabled",
+    "typography.label.md",
+    "typography.body.sm",
+    "size.icon.sm",
+    "space.content.xs",
+    "space.content.sm"
+  ],
+  "dependencies": [
+    "input-text",
+    "textarea",
+    "checkbox",
+    "radio-group"
+  ]
+}

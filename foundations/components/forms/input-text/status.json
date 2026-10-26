@@ -1,0 +1,102 @@
+{
+  "formatStatus": "v1",
+  "componentId": "input-text",
+  "family": "forms",
+  "wave": 2,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Let the user enter or edit a short single-line text value (name, email, search query, password, URL, phone number).",
+    "useCases": [
+      "A form field inside Field, with label, description and error message.",
+      "A standalone search box in a toolbar, named by its label prop, with a leading magnifying-glass icon.",
+      "A readonly value that can still be selected and copied (an identifier, an API key).",
+      "Masked password entry."
+    ],
+    "exclusions": [
+      "Numbers with steppers (NumberInput), dates and times (DatePicker, TimeInput), suggestions (Combobox): their own components.",
+      "Interactive trailing actions (clear button, show password): open decision, proposed for later.",
+      "Prefix/suffix text (units, currency), character counters, input masks and formatting.",
+      "Multi-line text: Textarea."
+    ],
+    "alternatives": [
+      "Textarea for multi-line text.",
+      "Combobox (wave 4) for a value chosen among suggestions.",
+      "DataField (wave 5) to display a value that cannot be edited at all."
+    ]
+  },
+  "dependencies": ["icon"],
+  "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading/trailing icon examples."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/input-text/contract.json",
+      "sha256": "e2b91a8e598b7a1339986c2b1e9fdd2d1bbfe99c72123657d7e367b6ecdf9c49"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "foundations/tokens/base/semantic/common.tokens.json"
+    ],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate; node tooling/validate-contracts.ts --tokens --dependencies",
+      "report": "reports/components/input-text/contract-validation.json",
+      "date": "2026-10-26",
+      "note": "Schema, consistency, token coverage (51 paths) in 18 contexts and accepted components; check-foundations passes (425 roles, 2196 contrast checks, 0 failures). Intrinsic rules: manual review at the contract gate."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/input-text/contrast.json",
+      "date": "2026-10-26",
+      "note": "1296 contrast records on the contrastScope backdrops in 18 contexts, 0 failures; minimum active text 11.44."
+    }
+  ],
+  "decisionsTaken": [
+    "One derived state axis `condition` keys the field and choice color families (color.field.{condition}.*, color.choice.{selection}.{condition}.*), resolved from the disabled, readonly and invalid props and pointer hover with a fixed precedence (disabled, readonly, invalid, [focus,] hover, default). The props stay separate (contract-guide: validation is not an interaction state); only the token lookup is flattened, as the approved field family already is.",
+    "A standalone text entry or radio group takes its accessible name from an optional, non-displayed label prop (the IconButton precedent); inside a Field the Field label wins. There is no visually hidden Field label: a control without a visible label is used without Field.",
+    "Controls perform no validation and expose invalid/required only; the visible error message and required marker belong to Field (catalog composition rule: controls are standalone, Field wraps them).",
+    "Same horizontal spacing as Button (edge-inline, label-inline, slot-inline, optical icon placement), so an InputText and a Button of the same size align their text and icons side by side; heights from size.control.{size}.",
+    "Value typography typography.body.{size} (14, 16, 18 px): entered text is content, not a control label; md at 16 px also avoids the automatic zoom of mobile browsers on focus.",
+    "Focus shows the approved color.field.focus.border and, on every focus (text entry shows a caret whatever the modality), the same outer focus ring as Button; an invalid field keeps its invalid border while focused, the ring shows focus.",
+    "Readonly keeps the field focusable, selectable and submitted; disabled is neither focusable nor submitted.",
+    "type limited to text, email, password, search, tel, url; number is NumberInput (wave 6).",
+    "The interaction target meets 44 px in block size without enlarging the visible field (decisions.md minimum target), as Button."
+  ],
+  "openDecisions": [
+    "Trailing actions (clear button for search, show/hide password): (A, proposed) defer to a later change, the trailing slot accepts a decorative Icon only; (B) accept an IconButton in trailing now, which needs an IconButton smaller than sm to fit the sm field (32 px). Which one?"
+  ],
+  "nextAction": "Contract gate (grouped wave 2 review): present the contract, the token additions and the open decisions; record the approval with digests, then implement (ggb-svelte).",
+  "implementationNotes": [
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Proposed at the wave 2 contract gate, as accepted for the Button outline border (2026-09-26): color.field.default.border reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected. To be confirmed by the reviewer."
+      }
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "input-text",
+  "props": {
+    "value": {
+      "type": "string",
+      "default": "",
+      "bindable": true
+    },
+    "type": {
+      "values": ["text", "email", "password", "search", "tel", "url"],
+      "default": "text"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "placeholder": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "readonly": {
+      "type": "boolean",
+      "default": false
+    },
+    "invalid": {
+      "type": "boolean",
+      "default": false
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "container": {},
+    "leading": {
+      "accepts": ["icon"],
+      "max": 1
+    },
+    "input": {},
+    "trailing": {
+      "accepts": ["icon"],
+      "max": 1
+    }
+  },
+  "states": {
+    "condition": {
+      "values": ["default", "hover", "focus", "readonly", "disabled", "invalid"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "events": {
+    "valueChange": {
+      "when": "The user edits the value (typing, pasting, deleting, autofill) while the input is neither disabled nor readonly.",
+      "payload": "The new value."
+    }
+  },
+  "tokens": {
+    "surface": "color.field.{condition}.surface",
+    "content": "color.field.{condition}.content",
+    "border": "color.field.{condition}.border",
+    "placeholderColor": "color.field.{condition}.placeholder",
+    "slotColor": "color.field.{condition}.placeholder",
+    "borderWidth": "border.width.default",
+    "radius": "radius.control",
+    "minHeight": "size.control.{size}",
+    "minTarget": "size.target.min",
+    "edgeInline": "space.control.edge-inline.{size}",
+    "textInline": "space.control.label-inline.{size}",
+    "slotInline": "space.control.slot-inline.{size}",
+    "typography": "typography.body.{size}",
+    "iconSize": "size.icon.{size}",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "focusRadius": "radius.focus",
+    "motionDuration": "motion.duration.fast",
+    "easingStandard": "motion.easing.standard"
+  },
+  "rules": [
+    "Arrange leading, input and trailing in that order inside container. input holds the value on one line: it never wraps and scrolls inline to keep the caret visible.",
+    "The accessible name is the label of the enclosing Field, otherwise the label prop; one of them is present and non-empty. label is not displayed. placeholder is an example of the expected value in placeholderColor, shown only while the value is empty; it is never the accessible name and never replaces a label.",
+    "Horizontal spacing matches Button: container has edgeInline inline padding, input has textInline on both inline sides, leading and trailing have slotInline on both inline sides. Without slots the text starts edgeInline + textInline from the container edge, the padding of a text-only Button of the same size.",
+    "leading and trailing each hold at most one decorative icon at iconSize in slotColor, hidden from assistive technology and placed by its drawing: icons of the reference set draw 1/8 of iconSize inside their box, so the icon box overlaps the spacing by that amount. A pointer press on a slot focuses the input.",
+    "The container fills the inline size it is given; its block size is minHeight and does not grow with the content. The text is set in typography and centered vertically. The interaction target meets minTarget in the block dimension without enlarging the visible container.",
+    "Paint container in surface with a border of borderWidth in border inside its boundary, corners of radius, and the value in content.",
+    "Resolve condition in this order: disabled, readonly, invalid, focus, hover, default. focus is an independent axis: an invalid input keeps the invalid colors while focused.",
+    "When focus is true, whatever the input modality (text entry shows a caret), draw a focus indicator of focusWidth in focusColor at focusOffset outside the container, with corners of focusRadius (radius plus focusOffset), in addition to the condition colors.",
+    "Disabled removes the input from sequential focus; its value cannot be edited, selected or submitted. Readonly keeps the input focusable; its value can be selected and copied and is submitted, but cannot be edited. Neither emits valueChange.",
+    "Invalid and required are exposed to assistive technology. The visible explanation of an error and the required marker belong to the enclosing Field: an invalid input is placed in a Field with a message, so that an error is never conveyed by color alone.",
+    "type describes the expected value so that the platform offers the matching keyboard, autofill and spelling behavior: text, email, telephone number, URL, search query, or a password whose characters are masked. The component performs no validation and does not format the value.",
+    "Emit valueChange on every user edit; a value set by the application does not emit it.",
+    "Color changes between conditions transition over motionDuration with easingStandard; the focus indicator appears without delay; no transition when reduced motion is requested.",
+    "In forced-colors mode the container keeps a visible boundary in the system field colors, the placeholder stays distinguishable from a value, the disabled input uses the system disabled text color and the focus indicator stays visible."
+  ]
+}

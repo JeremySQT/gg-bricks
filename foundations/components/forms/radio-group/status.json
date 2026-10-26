@@ -1,0 +1,82 @@
+{
+  "formatStatus": "v1",
+  "componentId": "radio-group",
+  "family": "forms",
+  "wave": 2,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Ask for exactly one choice among a few mutually exclusive options that should all stay visible.",
+    "useCases": [
+      "A required question in a form (delivery method) inside Field.",
+      "Options with descriptions (plans, shipping speeds).",
+      "A short horizontal group (Yes / No) with orientation horizontal."
+    ],
+    "exclusions": [
+      "Long lists or limited space: Select (wave 4).",
+      "Card-style options and segmented buttons: later (SegmentedControl).",
+      "Deselecting back to no value."
+    ],
+    "alternatives": [
+      "Select for many options.",
+      "Checkbox for independent options.",
+      "Switch for an immediate on/off setting."
+    ]
+  },
+  "dependencies": ["radio"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/radio-group/contract.json",
+      "sha256": "3bff76a8646fc9a485caede752faf14ff9cebdca0aa5711fe5345a23888a7222"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "foundations/tokens/base/semantic/common.tokens.json"
+    ],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate; node tooling/validate-contracts.ts --tokens --dependencies",
+      "report": "reports/components/radio-group/contract-validation.json",
+      "date": "2026-10-26",
+      "note": "Schema, consistency, token coverage (2 paths) in 18 contexts and accepted components; check-foundations passes (425 roles, 2196 contrast checks, 0 failures). Intrinsic rules: manual review at the contract gate."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/radio-group/token-coverage.json",
+      "date": "2026-10-26",
+      "note": "No surface, content or border role: no component contrast records; the colors it binds are covered by the inventory pairs."
+    }
+  ],
+  "decisionsTaken": [
+    "A standalone text entry or radio group takes its accessible name from an optional, non-displayed label prop (the IconButton precedent); inside a Field the Field label wins. There is no visually hidden Field label: a control without a visible label is used without Field.",
+    "RadioGroup is a compound component: its options are Radio children (contract-format: the child component is declared in accepts with min 2). Radio gets its own contract and status in the same wave; it is only usable inside a RadioGroup.",
+    "Keyboard per the WAI-ARIA radio group pattern: one tab stop, arrows move and select (both axes in either orientation, wrapping), Space selects; a readonly group lets arrows move focus without selecting.",
+    "Gaps space.content.sm between stacked radios and space.content.lg between radios on a line (density aware); size, readonly, invalid and disabled are set on the group and apply to every radio."
+  ],
+  "openDecisions": [],
+  "nextAction": "Contract gate (grouped wave 2 review): present the contract, the token additions and the open decisions; record the approval with digests, then implement (ggb-svelte).",
+  "implementationNotes": [
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
+  ]
+}

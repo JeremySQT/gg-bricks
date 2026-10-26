@@ -1,0 +1,79 @@
+{
+  "formatStatus": "v1",
+  "componentId": "radio",
+  "family": "forms",
+  "wave": 2,
+  "phase": "contract",
+  "scope": {
+    "purpose": "One option of a RadioGroup: a circle control, its label and an optional description.",
+    "useCases": ["Each option of a RadioGroup, optionally disabled on its own."],
+    "exclusions": ["Use outside a RadioGroup."],
+    "alternatives": ["Checkbox for an independent option."]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/radio/contract.json",
+      "sha256": "2f7f7aac2c6187092c702838684483d53c2d70ec7a7fc477fbf2bcac2a7b53ef"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "foundations/tokens/base/semantic/common.tokens.json"
+    ],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate; node tooling/validate-contracts.ts --tokens --dependencies",
+      "report": "reports/components/radio/contract-validation.json",
+      "date": "2026-10-26",
+      "note": "Schema, consistency, token coverage (50 paths) in 18 contexts and accepted components; check-foundations passes (425 roles, 2196 contrast checks, 0 failures). Intrinsic rules: manual review at the contract gate."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/radio/contrast.json",
+      "date": "2026-10-26",
+      "note": "2052 contrast records on the contrastScope backdrops in 18 contexts, 0 failures; minimum active text 5.11."
+    }
+  ],
+  "decisionsTaken": [
+    "Same box size, typography, gap, color.choice.* colors and focus ring as Checkbox; circle (radius.full) with a dot of 3/8 of the box.",
+    "size, readonly and invalid are states inherited from the group, not props of the radio; disabled exists on both."
+  ],
+  "openDecisions": [],
+  "nextAction": "Contract gate (grouped wave 2 review): present the contract, the token additions and the open decisions; record the approval with digests, then implement (ggb-svelte).",
+  "implementationNotes": [
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Proposed at the wave 2 contract gate, as accepted for the Button outline border (2026-09-26): color.field.default.border reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected. To be confirmed by the reviewer."
+      }
+    ]
+  }
+}

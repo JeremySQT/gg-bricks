@@ -276,6 +276,20 @@
       "approval": "User at the contract gate of IconButton, Link and Badge (2026-10-17, \"D'accord pour tout\"), recommendation A of Link open decision 1.",
       "figma": "Synced on 2026-10-19 at the Figma parity phase of the wave (delta batch, IDs in reports/tokens/figma/ledger.json); native resolution of 519 semantic variables in 18 contexts, 0 failures (reports/tokens/figma/verification.json).",
       "recorded": "approvals.semantic re-recorded with this change on 2026-10-17."
+    },
+    {
+      "date": "2026-10-26",
+      "change": "Wave 2 form foundations: 30 color roles color.choice.{off,on}.{default,hover,readonly,disabled,invalid}.{surface,content,border} in both appearance files (off aliases the field family, content = field placeholder; on: light accent.600/700 with neutral.0, dark accent.400/300 with neutral.900, readonly and disabled alias the field family, invalid fills with color.field.invalid.border); 6 common dimension roles size.choice.{sm,md,lg} = 14, 16, 20 and size.switch.{sm,md,lg} = 16, 20, 24; inventory entries and 13 contrast pairs (choice marks and thumbs 3:1 on their surface, on fills 3:1 on surface.default, color.status.danger.content 4.5:1 on surface.default for the Field message, color.field.readonly.border 3:1 on surface.default). Existing role changed: color.field.readonly.border now aliases color.field.default.border in light and dark (was neutral.200 light, neutral.700 dark, 1.29:1 and 1.98:1 on surface.default): an unchecked readonly checkbox and a readonly field must stay identifiable (WCAG 1.4.11). check-foundations: 425 roles, 2196 contrast checks, 0 failures.",
+      "invalidates": "approvals.semantic for foundations/tokens/inventory.json and foundations/tokens/base/semantic/{appearance.light,appearance.dark,common}.tokens.json; Figma variables not yet synced for the new roles (Figma parity phase of wave 2).",
+      "sha256": {
+        "foundations/tokens/inventory.json": "d2cd5a8d147225e7651d07f2e3895101ad7a99e9a361e62a862846bb97bdec67",
+        "foundations/tokens/base/semantic/appearance.light.tokens.json": "0dc593a93bb5c05f6502a15be005fa05d8daca936e9eb3dbad3bdcc98745b0b0",
+        "foundations/tokens/base/semantic/appearance.dark.tokens.json": "b5b1aa352854804f5d0b37eaa404f86570082cc66ef89fd5d8d55ef2c7de1fee",
+        "foundations/tokens/base/semantic/common.tokens.json": "914305e63c92a68b5228804fbc0df3342e25bff6ac1b92536872b1299ffa573c"
+      },
+      "review": "Presented at the wave 2 contract gate (grouped review of Field, InputText, Textarea, Checkbox, Switch, RadioGroup and Radio).",
+      "figma": null,
+      "recorded": null
     }
   ]
 }

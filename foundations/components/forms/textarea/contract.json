@@ -1,0 +1,103 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "textarea",
+  "props": {
+    "value": {
+      "type": "string",
+      "default": "",
+      "bindable": true
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "rows": {
+      "type": "number",
+      "default": 3,
+      "min": 1
+    },
+    "resize": {
+      "values": ["vertical", "auto", "none"],
+      "default": "vertical"
+    },
+    "maxRows": {
+      "type": "number",
+      "default": 8,
+      "min": 1
+    },
+    "placeholder": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "readonly": {
+      "type": "boolean",
+      "default": false
+    },
+    "invalid": {
+      "type": "boolean",
+      "default": false
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "container": {},
+    "input": {}
+  },
+  "states": {
+    "condition": {
+      "values": ["default", "hover", "focus", "readonly", "disabled", "invalid"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "events": {
+    "valueChange": {
+      "when": "The user edits the value (typing, pasting, deleting) while the textarea is neither disabled nor readonly.",
+      "payload": "The new value."
+    }
+  },
+  "tokens": {
+    "surface": "color.field.{condition}.surface",
+    "content": "color.field.{condition}.content",
+    "border": "color.field.{condition}.border",
+    "placeholderColor": "color.field.{condition}.placeholder",
+    "borderWidth": "border.width.default",
+    "radius": "radius.control",
+    "minHeight": "size.control.{size}",
+    "minTarget": "size.target.min",
+    "paddingInline": "space.control.padding-inline.{size}",
+    "typography": "typography.body.{size}",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "focusRadius": "radius.focus",
+    "motionDuration": "motion.duration.fast",
+    "easingStandard": "motion.easing.standard"
+  },
+  "rules": [
+    "input holds a multi-line value inside container: text wraps at the inline edge, explicit line breaks are kept, and Enter inserts a line break (it never submits a form).",
+    "The accessible name is the label of the enclosing Field, otherwise the label prop; one of them is present and non-empty. label is not displayed. placeholder is an example of the expected value in placeholderColor, shown only while the value is empty; it is never the accessible name and never replaces a label.",
+    "The text is set in typography with paddingInline on both inline sides (the padding of an InputText of the same size) and a block padding equal to half of minHeight minus one line of typography, so that a one-row textarea has the block size of an InputText of the same size and its text sits at the same position.",
+    "The container fills the inline size it is given. Its initial block size shows rows lines plus the block padding. resize vertical: the user can change the block size, never below one line nor in the inline direction. resize auto: the block size follows the content from rows to maxRows lines, then the content scrolls; the user cannot resize. resize none: the block size stays at rows lines and the content scrolls. maxRows applies only to auto. The interaction target meets minTarget in the block dimension without enlarging the visible container.",
+    "Paint container in surface with a border of borderWidth in border inside its boundary, corners of radius, and the value in content.",
+    "Resolve condition in this order: disabled, readonly, invalid, focus, hover, default. focus is an independent axis: an invalid textarea keeps the invalid colors while focused.",
+    "When focus is true, whatever the input modality, draw a focus indicator of focusWidth in focusColor at focusOffset outside the container, with corners of focusRadius (radius plus focusOffset), in addition to the condition colors.",
+    "Disabled removes the textarea from sequential focus; its value cannot be edited, selected or submitted. Readonly keeps it focusable and scrollable; its value can be selected and copied and is submitted, but cannot be edited. Neither emits valueChange.",
+    "Invalid and required are exposed to assistive technology. The visible explanation of an error and the required marker belong to the enclosing Field: an invalid textarea is placed in a Field with a message, so that an error is never conveyed by color alone.",
+    "Emit valueChange on every user edit; a value set by the application does not emit it. The component neither limits nor counts characters.",
+    "Color changes between conditions transition over motionDuration with easingStandard; the focus indicator appears without delay; no transition when reduced motion is requested.",
+    "In forced-colors mode the container keeps a visible boundary in the system field colors, the placeholder stays distinguishable from a value, the disabled textarea uses the system disabled text color and the focus indicator stays visible."
+  ]
+}

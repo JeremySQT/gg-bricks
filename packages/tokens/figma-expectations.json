@@ -425,6 +425,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -1643,9 +1649,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.869346,
-        "g": 0.891973,
-        "b": 0.921536,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -1700,6 +1706,186 @@
         "r": 0.371466,
         "g": 0.390923,
         "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0,
+        "g": 0.400403,
+        "b": 0.86493,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0,
+        "g": 0.400403,
+        "b": 0.86493,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0,
+        "g": 0.332325,
+        "b": 0.727412,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0,
+        "g": 0.332325,
+        "b": 0.727412,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -2376,6 +2562,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -3594,9 +3786,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.869346,
-        "g": 0.891973,
-        "b": 0.921536,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -3651,6 +3843,186 @@
         "r": 0.371466,
         "g": 0.390923,
         "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0,
+        "g": 0.400403,
+        "b": 0.86493,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0,
+        "g": 0.400403,
+        "b": 0.86493,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0,
+        "g": 0.332325,
+        "b": 0.727412,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0,
+        "g": 0.332325,
+        "b": 0.727412,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -4327,6 +4699,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -5545,9 +5923,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.869346,
-        "g": 0.891973,
-        "b": 0.921536,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -5602,6 +5980,186 @@
         "r": 0.371466,
         "g": 0.390923,
         "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0,
+        "g": 0.400403,
+        "b": 0.86493,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0,
+        "g": 0.400403,
+        "b": 0.86493,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0,
+        "g": 0.332325,
+        "b": 0.727412,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0,
+        "g": 0.332325,
+        "b": 0.727412,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -6278,6 +6836,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -7496,9 +8060,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.280035,
-        "g": 0.29861,
-        "b": 0.32281,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -7553,6 +8117,186 @@
         "r": 0.620009,
         "g": 0.641284,
         "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.407847,
+        "g": 0.647015,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.407847,
+        "g": 0.647015,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0.626495,
+        "g": 0.777282,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0.626495,
+        "g": 0.777282,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -8229,6 +8973,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -9447,9 +10197,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.280035,
-        "g": 0.29861,
-        "b": 0.32281,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -9504,6 +10254,186 @@
         "r": 0.620009,
         "g": 0.641284,
         "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.407847,
+        "g": 0.647015,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.407847,
+        "g": 0.647015,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0.626495,
+        "g": 0.777282,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0.626495,
+        "g": 0.777282,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -10180,6 +11110,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -11398,9 +12334,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.280035,
-        "g": 0.29861,
-        "b": 0.32281,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -11455,6 +12391,186 @@
         "r": 0.620009,
         "g": 0.641284,
         "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.407847,
+        "g": 0.647015,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.407847,
+        "g": 0.647015,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0.626495,
+        "g": 0.777282,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0.626495,
+        "g": 0.777282,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -12133,6 +13249,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -13351,9 +14473,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.869346,
-        "g": 0.891973,
-        "b": 0.921536,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -13408,6 +14530,186 @@
         "r": 0.371466,
         "g": 0.390923,
         "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.671566,
+        "g": 0.308617,
+        "b": 0,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.671566,
+        "g": 0.308617,
+        "b": 0,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0.562953,
+        "g": 0.254259,
+        "b": 0,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0.562953,
+        "g": 0.254259,
+        "b": 0,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -14084,6 +15386,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -15302,9 +16610,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.869346,
-        "g": 0.891973,
-        "b": 0.921536,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -15359,6 +16667,186 @@
         "r": 0.371466,
         "g": 0.390923,
         "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.671566,
+        "g": 0.308617,
+        "b": 0,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.671566,
+        "g": 0.308617,
+        "b": 0,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0.562953,
+        "g": 0.254259,
+        "b": 0,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0.562953,
+        "g": 0.254259,
+        "b": 0,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -16035,6 +17523,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -17253,9 +18747,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.869346,
-        "g": 0.891973,
-        "b": 0.921536,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -17310,6 +18804,186 @@
         "r": 0.371466,
         "g": 0.390923,
         "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.671566,
+        "g": 0.308617,
+        "b": 0,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.671566,
+        "g": 0.308617,
+        "b": 0,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0.562953,
+        "g": 0.254259,
+        "b": 0,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0.562953,
+        "g": 0.254259,
+        "b": 0,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -17986,6 +19660,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -19204,9 +20884,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.280035,
-        "g": 0.29861,
-        "b": 0.32281,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -19261,6 +20941,186 @@
         "r": 0.620009,
         "g": 0.641284,
         "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.950978,
+        "g": 0.508696,
+        "b": 0.223899,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.950978,
+        "g": 0.508696,
+        "b": 0.223899,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 1,
+        "g": 0.684188,
+        "b": 0.506484,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 1,
+        "g": 0.684188,
+        "b": 0.506484,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -19937,6 +21797,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -21155,9 +23021,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.280035,
-        "g": 0.29861,
-        "b": 0.32281,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -21212,6 +23078,186 @@
         "r": 0.620009,
         "g": 0.641284,
         "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.950978,
+        "g": 0.508696,
+        "b": 0.223899,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.950978,
+        "g": 0.508696,
+        "b": 0.223899,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 1,
+        "g": 0.684188,
+        "b": 0.506484,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 1,
+        "g": 0.684188,
+        "b": 0.506484,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -21888,6 +23934,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -23106,9 +25158,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.280035,
-        "g": 0.29861,
-        "b": 0.32281,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -23163,6 +25215,186 @@
         "r": 0.620009,
         "g": 0.641284,
         "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.950978,
+        "g": 0.508696,
+        "b": 0.223899,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.950978,
+        "g": 0.508696,
+        "b": 0.223899,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 1,
+        "g": 0.684188,
+        "b": 0.506484,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 1,
+        "g": 0.684188,
+        "b": 0.506484,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -23841,6 +26073,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -25059,9 +27297,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.869346,
-        "g": 0.891973,
-        "b": 0.921536,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -25116,6 +27354,186 @@
         "r": 0.371466,
         "g": 0.390923,
         "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.476281,
+        "g": 0.286397,
+        "b": 0.823371,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.476281,
+        "g": 0.286397,
+        "b": 0.823371,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0.398407,
+        "g": 0.229804,
+        "b": 0.700001,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0.398407,
+        "g": 0.229804,
+        "b": 0.700001,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -25792,6 +28210,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -27010,9 +29434,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.869346,
-        "g": 0.891973,
-        "b": 0.921536,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -27067,6 +29491,186 @@
         "r": 0.371466,
         "g": 0.390923,
         "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.476281,
+        "g": 0.286397,
+        "b": 0.823371,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.476281,
+        "g": 0.286397,
+        "b": 0.823371,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0.398407,
+        "g": 0.229804,
+        "b": 0.700001,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0.398407,
+        "g": 0.229804,
+        "b": 0.700001,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -27743,6 +30347,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -28961,9 +31571,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.869346,
-        "g": 0.891973,
-        "b": 0.921536,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -29018,6 +31628,186 @@
         "r": 0.371466,
         "g": 0.390923,
         "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.476281,
+        "g": 0.286397,
+        "b": 0.823371,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.476281,
+        "g": 0.286397,
+        "b": 0.823371,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0.398407,
+        "g": 0.229804,
+        "b": 0.700001,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0.398407,
+        "g": 0.229804,
+        "b": 0.700001,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.966165,
+        "g": 0.980825,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.869346,
+        "g": 0.891973,
+        "b": 0.921536,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 0.805103,
+        "g": 0,
+        "b": 0.128352,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -29694,6 +32484,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -30912,9 +33708,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.280035,
-        "g": 0.29861,
-        "b": 0.32281,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -30969,6 +33765,186 @@
         "r": 0.620009,
         "g": 0.641284,
         "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.678682,
+        "g": 0.551962,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.678682,
+        "g": 0.551962,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0.785882,
+        "g": 0.719041,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0.785882,
+        "g": 0.719041,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -31645,6 +34621,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -32863,9 +35845,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.280035,
-        "g": 0.29861,
-        "b": 0.32281,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -32920,6 +35902,186 @@
         "r": 0.620009,
         "g": 0.641284,
         "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.678682,
+        "g": 0.551962,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.678682,
+        "g": 0.551962,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0.785882,
+        "g": 0.719041,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0.785882,
+        "g": 0.719041,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
         "a": 1
       },
       "color/status/neutral/surface": {
@@ -33596,6 +36758,12 @@
       "size/icon/md": 20,
       "size/icon/lg": 24,
       "size/icon/xl": 32,
+      "size/choice/sm": 14,
+      "size/choice/md": 16,
+      "size/choice/lg": 20,
+      "size/switch/sm": 16,
+      "size/switch/md": 20,
+      "size/switch/lg": 24,
       "size/avatar/xs": 24,
       "size/avatar/sm": 32,
       "size/avatar/md": 40,
@@ -34814,9 +37982,9 @@
         "a": 1
       },
       "color/field/readonly/border": {
-        "r": 0.280035,
-        "g": 0.29861,
-        "b": 0.32281,
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
         "a": 1
       },
       "color/field/readonly/placeholder": {
@@ -34871,6 +38039,186 @@
         "r": 0.620009,
         "g": 0.641284,
         "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/default/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/default/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/hover/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/hover/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/hover/border": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/readonly/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/off/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/off/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/off/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/off/invalid/surface": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/off/invalid/content": {
+        "r": 0.620009,
+        "g": 0.641284,
+        "b": 0.669061,
+        "a": 1
+      },
+      "color/choice/off/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/default/surface": {
+        "r": 0.678682,
+        "g": 0.551962,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/default/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/default/border": {
+        "r": 0.678682,
+        "g": 0.551962,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/surface": {
+        "r": 0.785882,
+        "g": 0.719041,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/hover/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/hover/border": {
+        "r": 0.785882,
+        "g": 0.719041,
+        "b": 1,
+        "a": 1
+      },
+      "color/choice/on/readonly/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/readonly/content": {
+        "r": 0.924907,
+        "g": 0.947795,
+        "b": 0.977703,
+        "a": 1
+      },
+      "color/choice/on/readonly/border": {
+        "r": 0.466998,
+        "g": 0.487234,
+        "b": 0.513635,
+        "a": 1
+      },
+      "color/choice/on/disabled/surface": {
+        "r": 0.178601,
+        "g": 0.195946,
+        "b": 0.21851,
+        "a": 1
+      },
+      "color/choice/on/disabled/content": {
+        "r": 0.371466,
+        "g": 0.390923,
+        "b": 0.416295,
+        "a": 1
+      },
+      "color/choice/on/disabled/border": {
+        "r": 0.280035,
+        "g": 0.29861,
+        "b": 0.32281,
+        "a": 1
+      },
+      "color/choice/on/invalid/surface": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
+        "a": 1
+      },
+      "color/choice/on/invalid/content": {
+        "r": 0.094231,
+        "g": 0.110192,
+        "b": 0.13091,
+        "a": 1
+      },
+      "color/choice/on/invalid/border": {
+        "r": 1,
+        "g": 0.444769,
+        "b": 0.419716,
         "a": 1
       },
       "color/status/neutral/surface": {
