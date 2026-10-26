@@ -83,7 +83,7 @@ intro.appendChild(text('ASSETS / PHOSPHOR', 'label/sm', 'color/content/tertiary'
 intro.appendChild(text('Phosphor Icons', 'display/md'));
 intro.appendChild(
   text(
-    'The glyphs behind the Icon component. Designers pick an icon through the Glyph property of Icon, or through the icon slot of a component (Button, IconButton, Badge); these glyphs are never placed on their own in a design. They are the same drawings as in code, so a design and its implementation show identical icons.',
+    'The glyphs behind the Icon component. Designers pick an icon through the Glyph property of Icon, or through the icon property of a component (Button, IconButton, Badge, Link); these glyphs are never placed on their own in a design. They are the same drawings as in code, so a design and its implementation show identical icons.',
     'body/lg',
     'color/content/secondary',
     880
@@ -128,7 +128,7 @@ body.appendChild(facts);
 const use = card('How to use');
 use.appendChild(text('How to use', 'heading/sm'));
 for (const line of [
-  'Do: insert the Icon component (or a component with an icon slot) and choose the glyph in its Glyph property; search by name, as on phosphoricons.com.',
+  'Do: insert the Icon component and choose the glyph in its Glyph property (in a component with an icon, use that component’s icon property); search by name, as on phosphoricons.com.',
   'Do: let the host decide size and color: Icon sizes xs to xl, the color of the surrounding text or of the host component.',
   'Don’t: drag a phosphor/… glyph onto a design. It has no size option, no accessible name and no link to the design system’s rules.',
   'Don’t: detach, recolor by hand, resize the glyph components or edit their vectors: they mirror the code package exactly.',

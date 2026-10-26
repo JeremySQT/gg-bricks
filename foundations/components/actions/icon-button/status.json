@@ -176,6 +176,14 @@
       "report": "reports/components/icon-button/figma/parity.json",
       "date": "2026-10-19",
       "note": "8658 records (7992 computed records: glyph and content color, surface, border, radius, size, icon size and offset, focus ring, in 18 contexts and the md states of 4 representative contexts; 666 target records), 0 failures; 630 justified differences (forced-colors outline, loading measured with focus). Hash comparison per context, all 18 equal; re-run after the hidden loading indicators were added, unchanged."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/icon-slot-migrate.plugin.js; use_figma authoring/adapters/figma/icon-button-parity.plugin.js; node authoring/adapters/figma/icon-button-parity-report.mjs <result>",
+      "report": "reports/components/icon-button/figma/parity.json",
+      "date": "2026-10-26",
+      "note": "After the icon slot migration (Icon#254:0, glyph placed directly): the 18 context hashes equal those built from computed.json; parity.json regenerated, unchanged (8 658 records, 0 failures)."
     }
   ],
   "decisionsTaken": [
@@ -186,7 +194,8 @@
     "The icon slot requires exactly one Icon (min 1, max 1) and the host's iconSize applies, as in Button slots (Icon contract rule).",
     "Box: a square of size.control.{size} (32/40/48 px in standard density, following density like Button heights); the interaction target is extended to 44 px without enlarging the visible box.",
     "The icon is centered by its box: the reference set draws its 1/8 inset symmetrically, so the box center is the drawing center and no optical compensation is needed.",
-    "Contrast checked on the same contrastScope as Button (six neutral backdrops, outline border on muted in dark informational, accepted at the Button contract gate)."
+    "Contrast checked on the same contrastScope as Button (six neutral backdrops, outline border on muted in dark informational, accepted at the Button contract gate).",
+    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
   ],
   "openDecisions": [],
   "nextAction": "Figma parity gate (grouped with Link and Badge): the user reviews the IconButton page (master 211:1167, specification 219:1828) and the parity report; then documentation (ggb-docs).",

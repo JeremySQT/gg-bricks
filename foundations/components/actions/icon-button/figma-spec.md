@@ -17,7 +17,7 @@
 | `interaction` state            | Variant property State: default, hover, pressed, loading, disabled                                                                                                |
 | `focus` state                  | Boolean **Focus** (independent axis, combines with every state)                                                                                                   |
 | `label`                        | Text property **Label** on a hidden text layer “Label (accessible name, not shown)”: never drawn, read in Dev Mode                                                |
-| part `icon` (one icon)         | Exposed instance **Icon** (the Icon component at the size's variant); its **Glyph** property takes any glyph of the page `assets/phosphor`                        |
+| part `icon` (one icon)         | Instance-swap property **Icon** (default `phosphor/plus`): the glyph sits directly in the variant at `size/icon/{size}`; any glyph of the page `assets/phosphor`  |
 | part `loadingIndicator`        | Layer **Loading indicator** (instance of `_Button/Loading indicator`), visible in State=loading, hidden elsewhere so that an instance can show loading + disabled |
 | part `container`               | Layer **Container**                                                                                                                                               |
 | `href`, `disabled`, `loading`  | Not properties: href has no visual effect; disabled and loading are State values                                                                                  |
@@ -47,7 +47,7 @@ Recorded as such in `parity.json`; none hides a defect of the master.
 5. **Label** is documentation only: Figma has no accessibility tree. The hidden layer carries it for hand-off.
 6. **Tooltip** is the integration's job in the code too; the specification only mentions it.
 7. **Transitions, spinner rotation and reduced motion** are code-only.
-8. **Re-selecting the default glyph.** Choosing `plus` again in Icon › Glyph while it is already the glyph resets the nested color override (Figma treats it as a reset to the default), and the glyph turns to the primary text color; choosing any other glyph, or resetting the instance, restores it. The same applies to the Button's leading icon. Figma behavior; the scripts never set the default glyph explicitly.
+8. **Re-selecting the default glyph.** Choosing `plus` again in the Icon property while it is already the glyph resets the glyph layer (Figma treats it as a reset to the default): it loses its color override and turns to the primary text color; choosing any other glyph, or resetting the instance, restores it. The same applies to the Button's leading icon. Figma behavior; the scripts never set the default glyph explicitly.
 
 ## Page style and diagrams
 

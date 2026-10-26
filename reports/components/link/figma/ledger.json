@@ -96,11 +96,17 @@
       "type": "TEXT",
       "default": " (PDF, 2.4 MB)",
       "layer": "Meta (file variant only; the value keeps its leading space)"
+    },
+    "File icon#259:0": {
+      "type": "INSTANCE_SWAP",
+      "default": "200:4959",
+      "defaultName": "phosphor/file-pdf",
+      "layer": "Indicator icon of Destination=file only",
+      "note": "the other destinations impose their glyph (no property)"
     }
   },
   "exposedInstances": {
-    "Destination": "instance of _Link/Destination (232:442) in every Link variant, exposed: Destination and Meta are set from the Link instance",
-    "Indicator icon": "instance of Icon md (149:11) in every destination but page, exposed inside Destination: Glyph#149:0 set per destination (external arrow-up-right 200:4471, email envelope 200:4873, phone 200:5423, file file-pdf 200:4959, print printer 200:5463); width and height bound to link/font-size, opacity to link/indicator-opacity, glyph fill link/quiet"
+    "Destination": "instance of _Link/Destination (232:442) in every Link variant, exposed: Destination, Meta and File icon are set from the Link instance"
   },
   "layers": [
     "Label (text: link/* typography bindings, leading trim cap height, fill link/content, underline 1 px default or 2 px hover and pressed, skip ink, offset and color auto)",
@@ -120,7 +126,8 @@
     "Indicator gap": "space/content/xs",
     "Focus ring": "stroke color/focus/ring, weight focus/width, corners radius/indicator, 2 px outside",
     "underline thickness": "literal 1 px (default) and 2 px (hover, pressed): Figma refuses a variable on textDecorationThickness (Unknown field)",
-    "page part": "fixed at 0.01 × 16 px: an empty auto-layout frame keeps a 100 px width"
+    "page part": "fixed at 0.01 × 16 px: an empty auto-layout frame keeps a 100 px width",
+    "indicator glyph": "Phosphor glyph instance placed directly in the part (Indicator icon): width and height link/font-size, opacity link/indicator-opacity, fill link/quiet; external arrow-up-right 200:4471, email envelope 200:4873, phone 200:5423, print printer 200:5463 fixed; file behind File icon#259:0 (default file-pdf 200:4959)"
   },
   "adapterCollections": {
     "Components · link size": {
@@ -253,6 +260,10 @@
     {
       "date": "2026-10-20",
       "change": "Anatomy board 234:69 (user review): the focus ring is drawn dashed at 50 % opacity so the link no longer reads as a boxed control, callout 1 points at the label, and legend item 4 says the ring appears only on keyboard focus."
+    },
+    {
+      "date": "2026-10-26",
+      "change": "Icon slot (authoring/adapters/figma/icon-slot-migrate.plugin.js): the nested Icon md instances of the part (exposed in the file variant, showing Size) are replaced by the Phosphor glyphs themselves, same bindings; only the file destination binds its glyph to the new instance-swap property File icon#259:0. User decision at the wave 1 Figma parity review (2026-10-26): a component imposes the size of its icon, so the designer chooses the glyph only; an exposed nested Icon showed its Size property. Specification instances keep their file glyphs (3 re-applied); parity re-measured, the 18 hashes equal; specification pixel-identical before the text change."
     }
   ]
 }

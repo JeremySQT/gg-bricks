@@ -50,6 +50,16 @@ const set = await figma.getNodeByIdAsync('220:293');
 const PROPS = Object.keys(set.componentPropertyDefinitions);
 const LABEL = PROPS.find((k) => k.startsWith('Label'));
 const LEAD = PROPS.find((k) => k.startsWith('Show leading'));
+const LEAD_ICON = PROPS.find((k) => k.startsWith('Leading icon'));
+// The glyph each intent shows on this page, as on the code's review page (the property's default is pencil-simple).
+const INTENT_GLYPH = {
+  neutral: '200:5392',
+  accent: '200:5647',
+  info: '200:5169',
+  success: '200:4715',
+  warning: '200:5831',
+  danger: '200:5831'
+};
 const iconSet = await figma.getNodeByIdAsync('149:20');
 const GLYPH = Object.keys(iconSet.componentPropertyDefinitions).find((k) => k.startsWith('Glyph'));
 const cset = await figma.getNodeByIdAsync('149:1568');
@@ -118,13 +128,14 @@ const board = (name, w, h) => {
   f.setExplicitVariableModeForCollection(wf, B);
   return f;
 };
-// Badge instance: variant, label, optional leading icon (the intent's default glyph unless g is given).
+// Badge instance: variant, label, optional leading icon (the intent's glyph unless g is given).
 const bd = (o = {}) => {
   const inst = set.children
     .find((c) => c.name === `Intent=${o.i || 'neutral'}, Appearance=${o.a || 'subtle'}, Size=${o.s || 'md'}`)
     .createInstance();
   inst.setProperties({ [LABEL]: o.label || 'Badge', [LEAD]: !!o.icon });
-  if (o.g) inst.exposedInstances.find((e) => e.name === 'Leading icon').setProperties({ [GLYPH]: G[o.g] });
+  const g = o.g ? G[o.g] : INTENT_GLYPH[o.i || 'neutral'];
+  if (o.icon && g !== set.componentPropertyDefinitions[LEAD_ICON].defaultValue) inst.setProperties({ [LEAD_ICON]: g });
   return inst;
 };
 const counter = (value, s = 'md') => {
@@ -439,7 +450,7 @@ an.appendChild(real);
 real.layoutSizingHorizontal = 'FILL';
 an.appendChild(
   text(
-    'In Figma, Intent, Appearance and Size are variants. Label is a text property. Show leading adds the icon; choose its drawing in Leading icon › Glyph (each intent proposes one; any glyph of the page assets/phosphor fits). The badge has no State: it is not interactive.',
+    'In Figma, Intent, Appearance and Size are variants. Label is a text property. Show leading adds the icon; choose its drawing with the Leading icon property (any glyph of the page assets/phosphor); its size is set by the badge. The badge has no State: it is not interactive.',
     'body/md',
     'color/content/secondary',
     1000

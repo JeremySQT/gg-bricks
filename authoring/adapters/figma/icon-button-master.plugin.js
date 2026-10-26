@@ -1,4 +1,4 @@
-// IconButton master builder (use_figma body), 2026-10-19.
+// IconButton master builder (use_figma body), 2026-10-19; the glyph placed directly behind the Icon property on 2026-10-26.
 // Creates (or reuses) the page actions/icon-button after actions/button and builds the component set
 // “IconButton” (Intent × Appearance × Size × State, 135 variants) reproducing the approved Svelte
 // implementation. Every visual property is bound to a variable; the treatments are the Button's
@@ -39,11 +39,9 @@ const SIZE_C = col('Components');
 const STYLE_C = col('Components · button style');
 const STATE_C = col('Components · button state');
 
-const iconVariant = {
-  sm: await figma.getNodeByIdAsync('149:8'),
-  md: await figma.getNodeByIdAsync('149:11'),
-  lg: await figma.getNodeByIdAsync('149:14')
-};
+// The glyph sits directly in the variant, sized by the variant, so that a designer chooses the glyph only (the Icon
+// property) and never its size (user decision, 2026-10-26: a nested Icon would expose its Size).
+const PLUS = await figma.getNodeByIdAsync('200:4367'); // phosphor/plus
 const spinner = await figma.getNodeByIdAsync('42:28'); // _Button/Loading indicator
 await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
 const labelStyle = (await figma.getLocalTextStylesAsync()).find((s) => s.name === 'typography/label/md');
@@ -98,9 +96,10 @@ for (const i of I)
           bind(box, STROKES, 'border/width/default');
         }
 
-        const icon = iconVariant[s].createInstance();
+        const icon = PLUS.createInstance();
         icon.name = 'Icon';
         box.appendChild(icon);
+        bind(icon, ['width', 'height'], `size/icon/${s}`);
         for (const v of icon.findAll((n) => n.type === 'VECTOR')) v.fills = [paint('button/foreground')];
         // Every variant holds the indicator (hidden except in loading), so that an instance can show the
         // loading + disabled combination, which resolves to disabled with the indicator visible.
@@ -140,14 +139,17 @@ for (const i of I)
 const set = figma.combineAsVariants(comps, page);
 set.name = 'IconButton';
 set.description =
-  'A square button that shows only an icon; its label is the accessible name and is never shown (the integration adds a tooltip). Source of truth: foundations/components/actions/icon-button/contract.json; implementation: packages/svelte/src/components/icon-button. Intent, Appearance and Size mirror the code props (default neutral · ghost · md); State shows interaction states (loading and disabled are props in code); Focus is a separate switch. Treatments are the Button’s, so an icon button sits beside a Button of the same size at the same height. The icon is centered by its box at the size’s icon size; choose the glyph in Icon › Glyph. The visible square sits in a 44 × 44 target that takes no layout space.';
+  'A square button that shows only an icon; its label is the accessible name and is never shown (the integration adds a tooltip). Source of truth: foundations/components/actions/icon-button/contract.json; implementation: packages/svelte/src/components/icon-button. Intent, Appearance and Size mirror the code props (default neutral · ghost · md); State shows interaction states (loading and disabled are props in code); Focus is a separate switch. Treatments are the Button’s, so an icon button sits beside a Button of the same size at the same height. The icon is centered by its box at the size’s icon size; choose the glyph with the Icon property; its size follows Size. The visible square sits in a 44 × 44 target that takes no layout space.';
 const LABEL = set.addComponentProperty('Label', 'TEXT', 'Add');
 const FOCUS = set.addComponentProperty('Focus', 'BOOLEAN', false);
+const ICON = set.addComponentProperty('Icon', 'INSTANCE_SWAP', PLUS.id);
 for (const v of set.children) {
   v.findOne((n) => n.type === 'TEXT').componentPropertyReferences = { characters: LABEL };
   v.findOne((n) => n.name === 'Focus ring').componentPropertyReferences = { visible: FOCUS };
   const icon = v.findOne((n) => n.type === 'INSTANCE' && n.name === 'Icon');
-  icon.isExposedInstance = true;
+  icon.componentPropertyReferences = { mainComponent: ICON };
+  // Binding the swap property may drop the glyph color override: set it again.
+  for (const g of icon.findAll((n) => n.type === 'VECTOR')) g.fills = [paint('button/foreground')];
 }
 // Grid: rows Intent × Appearance, columns Size × State (md first, so the top-left default is neutral · ghost · md).
 const GAP = 24,

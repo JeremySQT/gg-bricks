@@ -1,8 +1,10 @@
 // Link master builder (use_figma body), 2026-10-20 (replaces the version of 2026-10-19 whose modes were chosen by
 // the designer). Rebuilds, on the page actions/link, the internal part “_Link/Destination” and the component set
 // “Link” (Color × Size × State, 54 variants) with the properties Label and Focus and the exposed part Destination
-// (variant Destination, text Meta, exposed Indicator icon), so that a designer configures a link from its
-// properties only (user decision, 2026-10-20). The code's link takes the font and, with tone inherit, the color of
+// (variant Destination, text Meta, instance swap File icon), so that a designer configures a link from its
+// properties only (user decision, 2026-10-20). The glyphs sit directly in the part, sized by the link's font size:
+// each destination imposes its glyph, and only the file destination offers the File icon property for the format
+// (2026-10-26: a nested Icon would expose its Size). The code's link takes the font and, with tone inherit, the color of
 // its context; in Figma each Link variant sets the modes of two hidden adapter collections on itself, which the
 // label and the nested part resolve, as the Button variants set their style and state modes:
 //   Components · link size   modes md (default), sm, lg: link/font-family, link/font-weight, link/font-size,
@@ -79,9 +81,6 @@ const paint = (v) =>
 const RADII = ['topLeftRadius', 'topRightRadius', 'bottomLeftRadius', 'bottomRightRadius'];
 const STROKES = ['strokeTopWeight', 'strokeRightWeight', 'strokeBottomWeight', 'strokeLeftWeight'];
 await figma.loadFontAsync({ family: 'Inter', style: 'Regular' });
-const iconMd = await figma.getNodeByIdAsync('149:11');
-const iconSet = await figma.getNodeByIdAsync('149:20');
-const GLYPH = Object.keys(iconSet.componentPropertyDefinitions).find((k) => k.startsWith('Glyph'));
 const GLYPHS = {
   external: '200:4471', // arrow-up-right
   email: '200:4873', // envelope
@@ -129,10 +128,9 @@ for (const d of ['page', 'external', 'email', 'phone', 'file', 'print']) {
     ind.counterAxisAlignItems = 'CENTER';
     ind.setBoundVariable('paddingLeft', V('space/content/xs'));
     p.appendChild(ind);
-    const icon = iconMd.createInstance();
+    const icon = (await figma.getNodeByIdAsync(GLYPHS[d])).createInstance();
     icon.name = 'Indicator icon';
     ind.appendChild(icon);
-    icon.setProperties({ [GLYPH]: GLYPHS[d] });
     icon.setBoundVariable('width', T.fontSize);
     icon.setBoundVariable('height', T.fontSize);
     icon.setBoundVariable('opacity', opacity);
@@ -143,13 +141,18 @@ for (const d of ['page', 'external', 'email', 'phone', 'file', 'print']) {
 const part = figma.combineAsVariants(parts, page);
 part.name = '_Link/Destination';
 part.description =
-  'Internal part of Link: what follows the label for each destination (page: nothing; external, email, phone, print: the glyph; file: the format and size, then the glyph of the format). Its colors and sizes come from the Link variant that holds it. Do not use on its own.';
+  'Internal part of Link: what follows the label for each destination (page: nothing; external, email, phone, print: the glyph; file: the format and size, then the glyph of the format, chosen with File icon). Its colors and sizes come from the Link variant that holds it. Do not use on its own.';
 const META = part.addComponentProperty('Meta', 'TEXT', ' (PDF, 2.4 MB)');
+const FILE_ICON = part.addComponentProperty('File icon', 'INSTANCE_SWAP', GLYPHS.file);
 for (const v of part.children) {
   const meta = v.findOne((n) => n.name === 'Meta');
   if (meta) meta.componentPropertyReferences = { characters: META };
-  const icon = v.findOne((n) => n.name === 'Indicator icon');
-  if (icon) icon.isExposedInstance = true;
+  const icon = v.name === 'Destination=file' && v.findOne((n) => n.name === 'Indicator icon');
+  if (icon) {
+    icon.componentPropertyReferences = { mainComponent: FILE_ICON };
+    // Binding the swap property may drop the glyph color override: set it again.
+    for (const g of icon.findAll((n) => n.type === 'VECTOR')) g.fills = [paint(quiet)];
+  }
 }
 part.children.forEach((v, k) => {
   v.x = 40 + k * 240;

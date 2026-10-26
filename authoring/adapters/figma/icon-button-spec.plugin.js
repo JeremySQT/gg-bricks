@@ -50,6 +50,7 @@ const set = await figma.getNodeByIdAsync('211:1167');
 const PROPS = Object.keys(set.componentPropertyDefinitions);
 const LABEL = PROPS.find((k) => k.startsWith('Label'));
 const FOCUS = PROPS.find((k) => k.startsWith('Focus'));
+const ICON = PROPS.find((k) => k.startsWith('Icon'));
 const iconSet = await figma.getNodeByIdAsync('149:20');
 const GLYPH = Object.keys(iconSet.componentPropertyDefinitions).find((k) => k.startsWith('Glyph'));
 const G = {
@@ -139,8 +140,8 @@ const ib = (o = {}) => {
     )
     .createInstance();
   inst.setProperties({ [LABEL]: o.label || 'Add', [FOCUS]: !!o.focus });
-  // Never set the default glyph explicitly: Figma then resets the nested color override (button/foreground).
-  if (o.g && o.g !== 'plus') inst.exposedInstances.find((e) => e.name === 'Icon').setProperties({ [GLYPH]: G[o.g] });
+  // The glyph sits in the variant behind the Icon property (2026-10-26); the default plus needs no override.
+  if (o.g && o.g !== 'plus') inst.setProperties({ [ICON]: G[o.g] });
   return inst;
 };
 const btn = (o = {}) => {
@@ -157,7 +158,8 @@ const btn = (o = {}) => {
     'Show trailing#76:0': false,
     'Focus#48:367': false
   });
-  if (o.lead && o.g) inst.exposedInstances.find((e) => e.name === 'Leading icon').setProperties({ [GLYPH]: G[o.g] });
+  if (o.lead && o.g)
+    inst.setProperties({ [Object.keys(inst.componentProperties).find((k) => k.startsWith('Leading icon'))]: G[o.g] });
   return inst;
 };
 const chip = (chars, bordered = true) => {
@@ -297,7 +299,7 @@ intro.appendChild(hero);
 hero.layoutSizingHorizontal = 'FILL';
 intro.appendChild(
   text(
-    'The contract and the code in the ggbrick repository (foundations/components/actions/icon-button) are the reference. This page documents the Figma component set “IconButton”; every icon button shown here is an instance, not a master. Glyphs come from the page assets/phosphor through the Icon component. Unless a frame says otherwise, the examples use the base brand, the light appearance and the standard density.',
+    'The contract and the code in the ggbrick repository (foundations/components/actions/icon-button) are the reference. This page documents the Figma component set “IconButton”; every icon button shown here is an instance, not a master. Glyphs come from the page assets/phosphor through the Icon property. Unless a frame says otherwise, the examples use the base brand, the light appearance and the standard density.',
     'body/sm',
     'color/content/tertiary',
     900
@@ -438,7 +440,7 @@ an.appendChild(real);
 real.layoutSizingHorizontal = 'FILL';
 an.appendChild(
   text(
-    'In Figma, Intent, Appearance, Size and State are variants, and Focus is a separate switch. Choose the glyph in the nested Icon (Glyph property, any glyph of the page assets/phosphor); its size and color follow the icon button. Write the accessible name in the Label property: it is not drawn, but developers read it in Dev Mode.',
+    'In Figma, Intent, Appearance, Size and State are variants, and Focus is a separate switch. Choose the glyph with the Icon property (any glyph of the page assets/phosphor); its size and color are set by the icon button and cannot be changed. Write the accessible name in the Label property: it is not drawn, but developers read it in Dev Mode.',
     'body/md',
     'color/content/secondary',
     1000

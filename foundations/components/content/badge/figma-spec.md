@@ -11,13 +11,13 @@
 
 ## Mapping from the contract
 
-| Contract                       | Figma                                                                                                                                                                |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `intent`, `appearance`, `size` | Variant properties Intent, Appearance, Size (default neutral · subtle · md, the top-left variant)                                                                    |
-| `label`                        | Text property **Label** (layer Label)                                                                                                                                |
-| part `leading` (one icon)      | Boolean **Show leading** (layer Leading); exposed instance **Leading icon** (Icon xs) whose **Glyph** takes any glyph of `assets/phosphor`; each intent proposes one |
-| part `container`               | The variant itself (auto layout)                                                                                                                                     |
-| states                         | None: the badge is not interactive                                                                                                                                   |
+| Contract                       | Figma                                                                                                                                                                                                          |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `intent`, `appearance`, `size` | Variant properties Intent, Appearance, Size (default neutral · subtle · md, the top-left variant)                                                                                                              |
+| `label`                        | Text property **Label** (layer Label)                                                                                                                                                                          |
+| part `leading` (one icon)      | Boolean **Show leading** (layer Leading); instance-swap property **Leading icon** (default `phosphor/pencil-simple`): the glyph sits directly in the variant at `size/icon/xs`; any glyph of `assets/phosphor` |
+| part `container`               | The variant itself (auto layout)                                                                                                                                                                               |
+| states                         | None: the badge is not interactive                                                                                                                                                                             |
 
 Every color, dimension, radius, stroke and typography value of the masters is bound to a variable of the Brand, Appearance and Density collections or to the adapter variable `badge/icon-box`; brand, appearance and density are chosen by the consuming frame's variable modes.
 
@@ -27,7 +27,7 @@ Every color, dimension, radius, stroke and typography value of the masters is bo
 - **Appearance**: subtle fills `color/status/{intent}/surface` and draws an inside stroke in `color/status/{intent}/border` at `border/width/default`, kept out of the layout (`strokesIncludedInLayout` false) because the code draws it as an inset shadow that takes no room; strong fills `surfaceStrong` with no stroke. Label and icon use `content` and `icon` (subtle) or `contentStrong` (strong).
 - **Label**: text layer bound to the five `typography/indicator/{size}/*` variables, leading trim set to cap height (the code's `text-box: trim-both cap alphabetic`), so the capitals sit centered in the line box and descenders overflow unclipped. One line, truncation at the end: a fixed instance width shortens the label with an ellipsis.
 - **Leading**: a frame with right padding `space/content/xs` (the leading gap) holding a **Drawing box** whose width is `badge/icon-box` (iconSize − 2 × iconSize/8 = 9) and height `size/icon/xs`, with the 12 px Icon centered: the icon box overlaps the padding and the gap by iconSize/8 on each side, as the code's negative margins do (and as in Button), so the drawing starts at the padding and ends at the leading gap. Until 2026-10-20 only the start side was compensated, which left the drawing 1.5 px further from the label (user remark at the Figma parity review).
-- **Default glyph per intent** (as on the code's review page): neutral pencil-simple, accent star, info info, success check, warning and danger warning-circle.
+- **Glyph**: the Phosphor glyph instance itself (layer Leading icon), width and height bound to `size/icon/xs`, behind the Leading icon property; no nested Icon, so a designer chooses the glyph and never its size (user decision, 2026-10-26). An instance-swap property has one default for the whole set, so every intent defaults to pencil-simple; the specification shows the glyphs of the code's review page (neutral pencil-simple, accent star, info info, success check, warning and danger warning-circle) as instance choices.
 
 ## Justified differences
 
@@ -38,7 +38,7 @@ Recorded as such in `parity.json`; none hides a defect of the master.
 3. **Line box.** Figma resolves the line height to font size × 1.4 (16.8) where the browser rounds to 1/64 px (16.796875): height and minimum width compared at ±0.01 px.
 4. **Width.** Text layout differs slightly between Figma and the browser (largest difference 1.08 px); width compared at ±1.5 px, as for Button.
 5. **Truncation** is a fixed instance width in Figma; the code truncates whenever the container is narrower than the badge, keeping the full text available to assistive technology.
-6. **Re-selecting the default glyph** of the Icon resets the nested color override (see the IconButton and Button specifications); the scripts set each intent's glyph explicitly.
+6. **Re-selecting the default glyph** (pencil-simple) in Leading icon while it is already the glyph resets the glyph layer and its color (see the IconButton specification); the scripts never set the default explicitly.
 
 ## Page style and diagrams
 

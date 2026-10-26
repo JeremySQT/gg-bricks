@@ -119,6 +119,13 @@ const icon = (s = 'md', name = 'plus', color) => {
 };
 const bvariant = (i, a, s, t) =>
   bset.children.find((c) => c.name === `Intent=${i}, Appearance=${a}, Size=${s}, State=${t}`);
+const prop = (inst, name) => Object.keys(inst.componentProperties).find((k) => k.split('#')[0] === name);
+// Sets a glyph through an instance-swap property, except the default: choosing the default again resets the glyph
+// layer (its name and its color override), a Figma behavior.
+const swap = (inst, name, id) => {
+  const k = prop(inst, name);
+  if (id !== inst.mainComponent.parent.componentPropertyDefinitions[k].defaultValue) inst.setProperties({ [k]: id });
+};
 const btn = (o = {}) => {
   const inst = bvariant(o.i || 'accent', o.a || 'solid', o.s || 'md', o.t || 'default').createInstance();
   inst.setProperties({
@@ -127,12 +134,11 @@ const btn = (o = {}) => {
     'Show trailing#76:0': !!o.trail,
     'Focus#48:367': !!o.focus
   });
-  if (o.lead && o.leadIcon)
-    inst.exposedInstances.find((e) => e.name === 'Leading icon').setProperties({ Name: o.leadIcon });
+  if (o.lead && o.leadIcon) swap(inst, 'Leading icon', FX[o.leadIcon]);
   if (o.trail) {
     const t = inst.exposedInstances.find((e) => e.name === 'Trailing item');
     if (o.trail === 'icon') {
-      if (o.trailIcon) t.findOne((n) => n.name === 'Icon').setProperties({ Name: o.trailIcon });
+      if (o.trailIcon) swap(t, 'Icon', FX[o.trailIcon]);
     } else t.setProperties({ Type: o.trail === 'counter' ? 'Counter' : 'Shortcut' });
   }
   return inst;
@@ -391,7 +397,7 @@ an.appendChild(real);
 real.layoutSizingHorizontal = 'FILL';
 an.appendChild(
   text(
-    'In Figma, Size is the only variant. The drawing is the “Glyph” property: pick any glyph of the page assets/phosphor (search by name); any icon component that follows the same grid also fits. The icon takes the content color of the frame by default; to color it like the surrounding text, override the fill of its drawing. A label has no visual effect, so it is not a Figma property.',
+    'In Figma, Size is the only variant. The drawing is the “Glyph” property: pick any glyph of the page assets/phosphor (search by name); any icon component that follows the same grid also fits. The icon takes the content color of the frame by default; to color it like the surrounding text, override the fill of its drawing. A label has no visual effect, so it is not a Figma property. In a component with an icon (Button, IconButton, Badge, Link), choose the glyph with that component’s icon property: the component sets its size.',
     'body/md',
     'color/content/secondary',
     1000

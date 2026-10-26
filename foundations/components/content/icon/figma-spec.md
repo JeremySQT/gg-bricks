@@ -29,6 +29,7 @@ Every dimension of the master is bound to a variable; the only color is the glyp
 - **Glyph**: an instance of a Phosphor component, resized to the box; its vector keeps scale constraints, so the drawing follows the box (18/24 of the box, inset 1/8) in every size and when a host resizes the instance.
 - **Default variant**: Figma takes the top-left variant as the default; Size=md is placed first (as the Button set places its md column first), the other sizes follow in ascending order.
 - **Size in a host**: a host that defines an icon size binds the instance's width and height to its own variable (Button: `button/icon-size`), which overrides the component binding (checked while building: an md instance bound to `size/icon/lg` measures 24 × 24 with the drawing at 18 × 18).
+- **In a component**: Button, IconButton, Badge and Link do not nest Icon; they place the Phosphor glyph instance themselves, bound to the size they impose, behind an instance-swap property of their own (Leading icon, Icon, File icon), so that a designer chooses the glyph and never its size (user decision, 2026-10-26). Icon stays the component for an icon on its own.
 - **Color in a host**: override the fill of the vector inside the Glyph instance (the specification's `icon()` helper does this for examples in secondary, tertiary, disabled and status colors).
 
 ## Justified differences

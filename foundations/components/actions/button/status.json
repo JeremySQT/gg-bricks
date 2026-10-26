@@ -225,6 +225,14 @@
       "report": "reports/components/icon/changes/2026-10-19-phosphor-glyphs.md",
       "date": "2026-10-19",
       "note": "Leading glyph color restored to button/foreground in the 135 variants: 270 checks, 0 differences; no Button instance keeps a stale override."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/icon-slot-migrate.plugin.js (Button 48:1586, then _Button/Trailing 75:14); use_figma authoring/adapters/figma/button-parity-slots.plugin.js",
+      "report": "reports/components/button/figma/ledger.json",
+      "date": "2026-10-26",
+      "note": "Modify after Done, at the wave 1 Figma parity review: the leading Icon and the Icon of _Button/Trailing are replaced by the glyphs themselves behind Leading icon#260:0 and Icon#261:0. Slot geometry 1 026 checks in 18 contexts, 0 failures; the glyph color resolves like the label in the 135 variants for both slots (270 checks); the label, surface and box fields are untouched by the change."
     }
   ],
   "decisionsTaken": [
@@ -275,7 +283,8 @@
     "Default density resolved by the foundations change of 2026-10-13 (branch chore/foundations-defaults): tokens.css applies light and standard where no attribute selects an appearance or density, and the Figma Density collection defaults to standard, so a Button dropped on a frame without modes and a page without data-ggb-density both show the standard heights.",
     "Repository and Figma structure (user, 2026-10-13, branch chore/repo-structure): sources of truth under foundations/ (foundations/tokens with its config, inventory, palette config and status; foundations/components/<family>/<id> with contract, status and figma-spec), implementations under packages/svelte/src/components/<id>, token evidence under reports/tokens, one Figma page per component named by its path (actions/button) holding the master, its internal parts and its specification; family pages removed. The contract's $schema pointer and the generated header comment changed with the paths; approvals re-digested under the user's authorization.",
     "Figma (user review of 2026-10-14): the component adapter variables are grouped in one hidden collection “Components” (modes sm, md, lg) by component name prefix; the former per-component collections were deleted after rebinding. The Button keeps “Components · button style” and “Components · button state” because its shared trailing part needs two independent mode axes (9 pairs × 5 states exceed one collection's modes).",
-    "Done (2026-10-14): documentation page documentation/components/button.md and index entry written after the wave 1 Figma parity gate; phase set to done within the declared scope. The Figma library and the npm package are not published (delivery approval pending)."
+    "Done (2026-10-14): documentation page documentation/components/button.md and index entry written after the wave 1 Figma parity gate; phase set to done within the declared scope. The Figma library and the npm package are not published (delivery approval pending).",
+    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
   ],
   "openDecisions": [],
   "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",

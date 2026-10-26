@@ -51,6 +51,7 @@ const part = await figma.getNodeByIdAsync('232:442');
 const PROPS = Object.keys(set.componentPropertyDefinitions);
 const LABEL = PROPS.find((k) => k.startsWith('Label'));
 const META = Object.keys(part.componentPropertyDefinitions).find((k) => k.startsWith('Meta'));
+const FILE_ICON = Object.keys(part.componentPropertyDefinitions).find((k) => k.startsWith('File icon'));
 const FOCUS = PROPS.find((k) => k.startsWith('Focus'));
 const iconSet = await figma.getNodeByIdAsync('149:20');
 const GLYPH = Object.keys(iconSet.componentPropertyDefinitions).find((k) => k.startsWith('Glyph'));
@@ -116,7 +117,7 @@ const lk = (o = {}) => {
     dest.setProperties(
       o.d === 'file' ? { Destination: 'file', [META]: o.meta || ' (PDF, 2.4 MB)' } : { Destination: o.d }
     );
-    if (o.g) dest.findOne((n) => n.name === 'Indicator icon').setProperties({ [GLYPH]: G[o.g] });
+    if (o.g) dest.setProperties({ [FILE_ICON]: G[o.g] });
   }
   return inst;
 };
@@ -419,7 +420,7 @@ an.appendChild(real);
 real.layoutSizingHorizontal = 'FILL';
 an.appendChild(
   text(
-    'In Figma, everything is set in the properties of the instance. Color, Size and State are variants, Focus is a switch and Label a text. The nested Destination part sets the destination, the Meta of a file and, in Indicator icon › Glyph, the glyph of its format (file-pdf, file-xls, file-zip…). Size is the size of the body text around the link; Color “on …” is the color of the text of a status message or an inverse surface.',
+    'In Figma, everything is set in the properties of the instance. Color, Size and State are variants, Focus is a switch and Label a text. The nested Destination part sets the destination, the Meta of a file and, in File icon, the glyph of its format (file-pdf, file-xls, file-zip…); the other destinations impose their glyph, and every glyph takes the size of the text. Size is the size of the body text around the link; Color “on …” is the color of the text of a status message or an inverse surface.',
     'body/md',
     'color/content/secondary',
     1000

@@ -48,7 +48,11 @@
     }
   },
   "consumers": {
-    "Icon": "component set 149:20, property Glyph#149:0 defaults to phosphor/plus (200:4367), no preferred values; reports/components/icon/figma/ledger.json"
+    "Icon": "component set 149:20, property Glyph#149:0 defaults to phosphor/plus (200:4367), no preferred values; reports/components/icon/figma/ledger.json",
+    "Button": "glyph instances placed directly in the variants since 2026-10-26: Leading icon#260:0 (default plus 200:4367) and, in _Button/Trailing, Icon#261:0 (default arrow-right 200:4482); reports/components/button/figma/ledger.json",
+    "IconButton": "glyph instance in the variants, Icon#254:0 (default plus 200:4367); reports/components/icon-button/figma/ledger.json",
+    "Badge": "glyph instance in the variants, Leading icon#252:0 (default pencil-simple 200:5392); reports/components/badge/figma/ledger.json",
+    "Link": "glyph instances in _Link/Destination: fixed per destination, File icon#259:0 for files (default file-pdf 200:4959); reports/components/link/figma/ledger.json"
   },
   "replaced": {
     "_Fixture/Icon": "component set 74:2 (plus 42:7, arrow-right 42:10, trash 42:13, download-simple 42:16, check 42:19) and its frame 42:2 on Utilities, deleted on 2026-10-19 after every instance was swapped to the Phosphor components (identical vectors)"
@@ -61,5 +65,11 @@
   "limitations": [
     "Library not published: publication needs explicit authorization.",
     "Other weights (thin, light, bold, fill, duotone) are not imported."
+  ],
+  "maintenance": [
+    {
+      "date": "2026-10-26",
+      "change": "Components with an icon place the glyph instances directly (no nested Icon) behind their own instance-swap property, so that designers cannot change the icon size inside them (user decision at the wave 1 Figma parity review). Notes frame 201:2: the usage texts mention the component icon properties."
+    }
   ]
 }

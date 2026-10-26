@@ -67,6 +67,12 @@
         "loading",
         "disabled"
       ]
+    },
+    "Leading icon#260:0": {
+      "type": "INSTANCE_SWAP",
+      "default": "200:4367",
+      "defaultName": "phosphor/plus",
+      "layer": "Leading icon"
     }
   },
   "variants": {
@@ -310,8 +316,7 @@
   },
   "temporary": "Parity frames named “_parity <context>” are created at x=-4000 and removed by each measurement run; none remain.",
   "exposedInstances": {
-    "Leading icon": "instance of Icon (149:11, Size=md; the size follows button/icon-size through the Button's size modes): property Glyph#149:0 (instance swap, defaults to phosphor/plus, 200:4367; glyph vector fill overridden to button/foreground), nested exposed Glyph",
-    "Trailing item": "instance of _Button/Trailing (properties Type: Icon | Counter | Shortcut, Size: sm | md | lg set by the Button variant); Type=Icon exposes a nested Icon (Glyph), Type=Counter a nested Counter (Value, Overflow, Overflow text), Type=Shortcut a nested Shortcut (Appearance, Platform, Show key 2/3, Key 1/2/3)"
+    "Trailing item": "instance of _Button/Trailing (properties Type: Icon | Counter | Shortcut, Size: sm | md | lg set by the Button variant, Icon#261:0 instance swap for Type=Icon, default phosphor/arrow-right 200:4482); Type=Counter exposes a nested Counter (Value, Overflow, Overflow text), Type=Shortcut a nested Shortcut (Appearance, Platform, Show key 2/3, Key 1/2/3)"
   },
   "internalComponents": {
     "_Button/Trailing": {
@@ -329,13 +334,14 @@
         "Type=Shortcut, Size=lg": "164:1558"
       },
       "content": {
-        "Icon": "Drawing box (width button/icon-drawing, height button/icon-size) holding an Icon instance (149:8 sm, 149:11 md, 149:14 lg) named Icon, width and height bound to button/icon-size, Glyph phosphor/arrow-right (200:4482), glyph vector fill bound to button/foreground; instances 75:4, 164:1526, 164:1529",
+        "Icon": "Drawing box (width button/icon-drawing, height button/icon-size) holding the Phosphor glyph instance itself (since 2026-10-26; an Icon instance before) named Icon, width and height bound to button/icon-size, behind the instance-swap property Icon#261:0 (default phosphor/arrow-right 200:4482), glyph vector fill bound to button/foreground",
         "Counter": "Counter instance (149:1550 sm, 149:1553 md, 149:1556 lg) named Counter, Value fill and Tint fill bound to button/foreground (the Border stroke override was cleared when the Counter master switched to a tint on 2026-10-14); instances 164:1549, 164:1545, 164:1553",
         "Shortcut": "Shortcut instance (151:2 sm, 151:9 md, 151:16 lg; Plain, Mac) named Shortcut, key and separator texts bound to button/foreground (the Plain attenuation to opacity/muted stays); instances 164:1571, 164:1560, 164:1582"
       },
       "properties": {
         "Type": "VARIANT (Icon, Counter, Shortcut)",
-        "Size": "VARIANT (md, sm, lg; set by each Button variant to its own Size)"
+        "Size": "VARIANT (md, sm, lg; set by each Button variant to its own Size)",
+        "Icon#261:0": "INSTANCE_SWAP (Type=Icon variants; default phosphor/arrow-right 200:4482)"
       },
       "note": "Type × Size since 2026-10-14: the Counter and Shortcut masters carry their size as a variant, so the part cannot follow the Button's size modes alone; each Button variant sets Size on its Trailing item. Type=Icon keeps the mode-driven drawing box (fixed 2026-10-12: absolute positioning left the icon 2 px low in md and 4 px in lg). The default variant is Type=Icon, Size=md (top-left)."
     },
@@ -431,6 +437,10 @@
     {
       "date": "2026-10-19",
       "change": "Leading icon glyph fill of the 135 variants re-bound to button/foreground: the Phosphor migration (Icon Glyph default changed from _Fixture/Icon plus to phosphor/plus) had dropped the nested override, leaving color/content/primary. Checked: leading glyph color = label color in the 45 md variants × 6 brand-appearance contexts (270 checks, 0 differences); no Button instance in the file keeps a stale override (actions/button 189 instances, content/icon 10; the 4 on actions/icon-button were rebuilt). The ledger's exposedInstances note now reads phosphor/plus as the Glyph default."
+    },
+    {
+      "date": "2026-10-26",
+      "change": "Icon slots (authoring/adapters/figma/icon-slot-migrate.plugin.js): the leading Icon (135 variants) and the Icon of _Button/Trailing (Type=Icon, 3 variants) are replaced by the Phosphor glyphs themselves, width and height bound as before (button/icon-size), fill button/foreground, behind the new instance-swap properties Leading icon#260:0 (Button) and Icon#261:0 (_Button/Trailing). User decision at the wave 1 Figma parity review (2026-10-26): a component imposes the size of its icon, so the designer chooses the glyph only; an exposed nested Icon showed its Size property. 13 instances re-given their leading glyph. Description and specification text updated. Checked: slot geometry 1026 checks, 0 failures (button-parity-slots.plugin.js); glyph color equals the label color in the 135 variants for both slots (270 checks)."
     }
   ]
 }

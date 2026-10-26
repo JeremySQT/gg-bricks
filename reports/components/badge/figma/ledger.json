@@ -55,15 +55,20 @@
         "sm",
         "lg"
       ]
+    },
+    "Leading icon#252:0": {
+      "type": "INSTANCE_SWAP",
+      "default": "200:5392",
+      "defaultName": "phosphor/pencil-simple",
+      "layer": "Leading icon",
+      "note": "one default for the whole set (Figma): the per-intent glyphs of the code's review page are set on the specification instances, not as defaults"
     }
   },
-  "exposedInstances": {
-    "Leading icon": "instance of Icon Size=xs (149:5), exposed: property Glyph#149:0; each intent sets its glyph (neutral pencil-simple 200:5392, accent star 200:5647, info info 200:5169, success check 200:4715, warning and danger warning-circle 200:5831); glyph fill overridden to color/status/{intent}/icon (subtle) or contentStrong (strong)"
-  },
+  "exposedInstances": {},
   "layers": [
     "Leading (padding-right space/content/xs, visible = Show leading)",
     "Leading/Drawing box (width badge/icon-box, height size/icon/xs, icon centered)",
-    "Leading/Drawing box/Leading icon",
+    "Leading/Drawing box/Leading icon (Phosphor glyph instance, width and height bound to size/icon/xs, behind Leading icon#252:0)",
     "Label (text, typography/indicator/{size} bindings, leading trim cap height, truncation ending, one line)"
   ],
   "bindings": {
@@ -162,6 +167,10 @@
     {
       "date": "2026-10-20",
       "change": "Icon gap amendment (user: the icon looked a little too far from the label): badge/icon-box 10.5 → 9 and the icon centered in its Drawing box (36 variants), so the icon box overlaps the padding and the leading gap by iconSize/8 each, as the code now does. Anatomy board 223:75: label side shifted by 9 (zoomed 1.5 px), legend items 2 and C rewritten. Parity re-measured with the new iconToLabel field: 12 312 records, 0 failures."
+    },
+    {
+      "date": "2026-10-26",
+      "change": "Icon slot (authoring/adapters/figma/icon-slot-migrate.plugin.js): the nested Icon xs instance (exposed, showing Size) is replaced in the 36 variants by the Phosphor glyph itself, width and height bound to size/icon/xs, glyph colors kept, behind the new instance-swap property Leading icon#252:0. User decision at the wave 1 Figma parity review (2026-10-26): a component imposes the size of its icon, so the designer chooses the glyph only; an exposed nested Icon showed its Size property. A swap property has one default for the set: the first run left warning-circle everywhere; the default is now pencil-simple and the 88 specification instances were given back their intent's glyph (76) or their chosen one (sparkle, clock, lock-simple). Descriptions and the Anatomy text updated; parity re-measured, identical (18 hashes and numeric fields)."
     }
   ]
 }

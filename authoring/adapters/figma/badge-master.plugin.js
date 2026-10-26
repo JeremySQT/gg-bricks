@@ -1,7 +1,11 @@
-// Badge master builder (use_figma body), 2026-10-19.
+// Badge master builder (use_figma body), 2026-10-19; the glyph placed directly behind the Leading icon property on
+// 2026-10-26.
 // Creates (or reuses) the page content/badge before content/counter, the adapter variable badge/icon-box in the
 // hidden Components collection, and the component set “Badge” (Intent × Appearance × Size, 36 variants) with
-// the boolean Show leading, the text property Label and an exposed Icon (xs) in the leading slot. Every visual
+// the boolean Show leading, the text property Label and the instance-swap property Leading icon: the glyph sits
+// directly in the variant at size/icon/xs, so a designer chooses the glyph, never its size (user decision,
+// 2026-10-26: a nested Icon would expose its Size). An instance-swap property has one default for the set, so the
+// per-intent glyphs of the code's review page are not defaults (pencil-simple for all). Every visual
 // property is bound to a variable looked up by collection and name; no ID is guessed. Rerunning replaces the set.
 // Construction follows the Counter (the badge shares its box family): the height and the minimum width are bound
 // to typography/indicator/{size}/lineHeight, the label is trimmed to its cap height (text-box: trim-both cap
@@ -42,24 +46,14 @@ const RADII = ['topLeftRadius', 'topRightRadius', 'bottomLeftRadius', 'bottomRig
 const STROKES = ['strokeTopWeight', 'strokeRightWeight', 'strokeBottomWeight', 'strokeLeftWeight'];
 await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
 const styles = await figma.getLocalTextStylesAsync();
-const iconXs = await figma.getNodeByIdAsync('149:5'); // Icon, Size=xs
-const iconSet = await figma.getNodeByIdAsync('149:20');
-const GLYPH = Object.keys(iconSet.componentPropertyDefinitions).find((k) => k.startsWith('Glyph'));
-// Default glyph per intent, as in the code's review page (examples/badge).
-const GLYPHS = {
-  neutral: '200:5392', // pencil-simple
-  accent: '200:5647', // star
-  info: '200:5169', // info
-  success: '200:4715', // check
-  warning: '200:5831', // warning-circle
-  danger: '200:5831' // warning-circle
-};
+const PENCIL = await figma.getNodeByIdAsync('200:5392'); // phosphor/pencil-simple, the default glyph
 const I = ['neutral', 'accent', 'info', 'success', 'warning', 'danger'];
 const A = ['subtle', 'strong'];
 const S = ['md', 'sm', 'lg'];
 const comps = [];
 const texts = [];
 const leads = [];
+const icons = [];
 for (const i of I)
   for (const a of A)
     for (const s of S) {
@@ -104,12 +98,12 @@ for (const i of I)
       draw.resize(9, 12);
       draw.setBoundVariable('width', box);
       draw.setBoundVariable('height', V('size/icon/xs'));
-      const icon = iconXs.createInstance();
+      const icon = PENCIL.createInstance();
       icon.name = 'Leading icon';
       draw.appendChild(icon);
-      icon.setProperties({ [GLYPH]: GLYPHS[i] });
-      for (const v of icon.findAll((n) => n.type === 'VECTOR'))
-        v.fills = [paint(a === 'subtle' ? role('icon') : role('contentStrong'))];
+      icon.setBoundVariable('width', V('size/icon/xs'));
+      icon.setBoundVariable('height', V('size/icon/xs'));
+      icons.push([icon, a === 'subtle' ? role('icon') : role('contentStrong')]);
 
       const t = figma.createText();
       t.name = 'Label';
@@ -135,14 +129,17 @@ for (const i of I)
 const set = figma.combineAsVariants(comps, page);
 set.name = 'Badge';
 set.description =
-  'A short, non-interactive label for a status or a category (Paid, Draft, New), in the box family of Counter. Source of truth: foundations/components/content/badge/contract.json; implementation: packages/svelte/src/components/badge. Intent picks the color family (neutral and accent for categories; info, success, warning, danger for statuses), Appearance its weight (subtle with an edge, strong filled), Size the typography (one step below a Button label of the same size; height and icon fixed across densities, padding follows). Label is the text, on one line (set a fixed width to truncate with an ellipsis). Show leading adds one decorative icon (Leading icon › Glyph), placed by its drawing. A removable or selectable value is a Tag; a quantity is a Counter.';
+  'A short, non-interactive label for a status or a category (Paid, Draft, New), in the box family of Counter. Source of truth: foundations/components/content/badge/contract.json; implementation: packages/svelte/src/components/badge. Intent picks the color family (neutral and accent for categories; info, success, warning, danger for statuses), Appearance its weight (subtle with an edge, strong filled), Size the typography (one step below a Button label of the same size; height and icon fixed across densities, padding follows). Label is the text, on one line (set a fixed width to truncate with an ellipsis). Show leading adds one decorative icon, placed by its drawing; choose it with Leading icon (its size is fixed). A removable or selectable value is a Tag; a quantity is a Counter.';
 const LABEL = set.addComponentProperty('Label', 'TEXT', 'Badge');
 const LEAD = set.addComponentProperty('Show leading', 'BOOLEAN', false);
+const ICON = set.addComponentProperty('Leading icon', 'INSTANCE_SWAP', PENCIL.id);
 for (const v of set.children) {
   v.findOne((n) => n.type === 'TEXT' && n.name === 'Label').componentPropertyReferences = { characters: LABEL };
   v.findOne((n) => n.name === 'Leading').componentPropertyReferences = { visible: LEAD };
-  v.findOne((n) => n.name === 'Leading icon').isExposedInstance = true;
+  v.findOne((n) => n.name === 'Leading icon').componentPropertyReferences = { mainComponent: ICON };
 }
+// Binding the swap property may drop the glyph color overrides: set them after it.
+for (const [icon, color] of icons) for (const v of icon.findAll((n) => n.type === 'VECTOR')) v.fills = [paint(color)];
 // Rows by intent, columns Appearance × Size (md first, so the top-left default is neutral · subtle · md).
 const GAP = 32,
   COL = 96,

@@ -114,6 +114,10 @@
     {
       "date": "2026-10-19",
       "change": "Glyph source: the five local fixtures _Fixture/Icon (74:2, variants 42:7, 42:10, 42:13, 42:16, 42:19, page Utilities) are replaced by the Phosphor 2.1.1 regular components of the page assets/phosphor (user, 2026-10-19). Glyph defaults to phosphor/plus (200:4367) with no preferred values, so the swap menu lists every local glyph. Every instance was swapped through the Icon setProperties (77 on content/icon, 13 on actions/button; none elsewhere); the vectors are byte-identical to the fixtures', so no rendering changed (specification frames 152:7 and 126:1904 re-inspected). The fixture set and its frame 42:2 were deleted; the specification's two sentences on fixtures were rewritten, and the builder scripts point at the Phosphor IDs."
+    },
+    {
+      "date": "2026-10-26",
+      "change": "Description and specification text: components with an icon (Button, IconButton, Badge, Link) no longer nest Icon; they place the Phosphor glyph themselves, impose its size and offer an instance-swap property for the glyph (user decision at the wave 1 Figma parity review). Icon itself is unchanged."
     }
   ]
 }

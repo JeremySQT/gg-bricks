@@ -192,6 +192,14 @@
       "report": "reports/components/badge/figma/parity.json",
       "date": "2026-10-20",
       "note": "Re-measured after the icon inset amendment (badge/icon-box 9, icon centered in its drawing box): 12 312 records, 0 failures, the 18 hashes equal (iconToLabel added to the exact fields); width within 1.08 px. Supersedes the check of 2026-10-19."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/icon-slot-migrate.plugin.js; use_figma authoring/adapters/figma/badge-parity.plugin.js",
+      "report": "reports/components/badge/figma/parity.json",
+      "date": "2026-10-26",
+      "note": "After the icon slot migration (Leading icon#252:0, glyph placed directly): the 18 context hashes and the numeric fields (height, minimum width, width) are identical to the run of 2026-10-20 recorded in parity.json (12 312 records, 0 failures)."
     }
   ],
   "decisionsTaken": [
@@ -206,7 +214,8 @@
     "User decision at the contract gate (2026-10-16): neutral intent kept with the color.status.neutral.* roles (part of the accepted proposal).",
     "User decision at the contract gate (2026-10-16): accent intent added (\"pourquoi pas avoir l'intent accent pour le badge aussi\"): new roles color.status.accent.* aliasing color.palette.accent and mirroring info (light 50/600/800/neutral.0/300/600, dark 950/600/200/neutral.0/800/400); four inventory contrast pairs. Listed after neutral since both are categories rather than statuses. Measured in the 18 contexts: content/surface 8.76 to 11.66, contentStrong/surfaceStrong 5.32 to 5.67, icon/surface 4.96 to 6.47, icon/surface.default 5.32 to 6.85.",
     "User at the implementation review (2026-10-19): variant A, mixed case with the label clipped horizontally only; all caps rejected (\"capitales ne fonctionne pas\"). The comparison page examples/link-badge-review was removed once decided.",
-    "User at the Figma parity review (2026-10-20): the icon looked a little too far from the label. Cause: the glyph inset (1/8 of the icon) was compensated only before the icon, so the visible gap was leadingGap + 1.5 px. Now compensated on both sides as in Button: the drawing sits at leadingGap from the label (2, 4, 6 px by density); no token change."
+    "User at the Figma parity review (2026-10-20): the icon looked a little too far from the label. Cause: the glyph inset (1/8 of the icon) was compensated only before the icon, so the visible gap was leadingGap + 1.5 px. Now compensated on both sides as in Button: the drawing sits at leadingGap from the label (2, 4, 6 px by density); no token change.",
+    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
   ],
   "openDecisions": [],
   "nextAction": "Figma parity gate (grouped with IconButton and Link): the user reviews the Badge page (master 220:293, specification 223:2) after the icon gap amendment, and the parity report; then documentation (ggb-docs).",

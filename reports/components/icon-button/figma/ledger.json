@@ -65,11 +65,15 @@
         "loading",
         "disabled"
       ]
+    },
+    "Icon#254:0": {
+      "type": "INSTANCE_SWAP",
+      "default": "200:4367",
+      "defaultName": "phosphor/plus",
+      "layer": "Icon"
     }
   },
-  "exposedInstances": {
-    "Icon": "instance of Icon (149:8 sm, 149:11 md, 149:14 lg), exposed: property Glyph#149:0 (instance swap, defaults to phosphor/plus 200:4367); glyph vector fill overridden to button/foreground"
-  },
+  "exposedInstances": {},
   "layers": [
     "Target (absolute, empty, width and height size/target/min, constraints center)",
     "Container (fill, auto layout centered)",
@@ -262,6 +266,10 @@
     {
       "date": "2026-10-20",
       "change": "Specification 219:1828: the gaps of the example rows (Compact toolbar, Editor toolbar, table rows, Card header, Dark toolbar, Player, Pair sm/md/lg) are bound to space/control/gap/{size}, and the sizing text states the compact sm exception (4 px apart, targets reaching 4 px into the neighbor's square). The master is unchanged."
+    },
+    {
+      "date": "2026-10-26",
+      "change": "Icon slot (authoring/adapters/figma/icon-slot-migrate.plugin.js): the nested, exposed Icon (sm/md/lg) is replaced in the 135 variants by the Phosphor glyph itself, width and height bound to size/icon/{size}, fill button/foreground, hidden in the loading variants, behind the new instance-swap property Icon#254:0. User decision at the wave 1 Figma parity review (2026-10-26): a component imposes the size of its icon, so the designer chooses the glyph only; an exposed nested Icon showed its Size property. 168 specification instances re-given their glyph; 18 loading instances had their glyph shown again by the swap (Figma shows a hidden glyph when it is swapped) and were hidden again. Description and texts updated; parity re-measured: the 18 hashes are those of computed.json (specification pixel-identical before the text change)."
     }
   ]
 }

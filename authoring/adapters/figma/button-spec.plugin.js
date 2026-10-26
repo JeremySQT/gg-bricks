@@ -75,9 +75,13 @@ await figma.setCurrentPageAsync(page);
 const NAME = 'Button — Specification';
 for (const n of page.children.filter((n) => n.name === NAME)) n.remove();
 const set = await figma.getNodeByIdAsync('48:1586');
-const GLYPH = Object.keys((await figma.getNodeByIdAsync('149:20')).componentPropertyDefinitions).find((k) =>
-  k.startsWith('Glyph')
-);
+const prop = (inst, name) => Object.keys(inst.componentProperties).find((k) => k.split('#')[0] === name);
+// Sets a glyph through an instance-swap property, except the default: choosing the default again resets the glyph
+// layer (its name and its color override), a Figma behavior.
+const swap = (inst, name, id) => {
+  const k = prop(inst, name);
+  if (id !== inst.mainComponent.parent.componentPropertyDefinitions[k].defaultValue) inst.setProperties({ [k]: id });
+};
 const FX = {
   plus: '200:4367',
   'arrow-right': '200:4482',
@@ -143,14 +147,13 @@ const btn = (o = {}) => {
     'Show trailing#76:0': !!o.trail,
     'Focus#48:367': !!o.focus
   });
-  // Since 2026-10-14 the leading and trailing icons are Icon components: the drawing is their Glyph property
-  // (instance swap, fixture ids in FX).
-  if (o.lead && o.leadIcon)
-    inst.exposedInstances.find((e) => e.name === 'Leading icon').setProperties({ [GLYPH]: FX[o.leadIcon] });
+  // Since 2026-10-26 the leading and trailing glyphs sit directly in the Button and its Trailing part, behind the
+  // instance-swap properties Leading icon and Icon (fixture ids in FX); their size is the button's.
+  if (o.lead && o.leadIcon) swap(inst, 'Leading icon', FX[o.leadIcon]);
   if (o.trail) {
     const t = inst.exposedInstances.find((e) => e.name === 'Trailing item');
     if (o.trail === 'icon') {
-      if (o.trailIcon) t.findOne((n) => n.name === 'Icon').setProperties({ [GLYPH]: FX[o.trailIcon] });
+      if (o.trailIcon) swap(t, 'Icon', FX[o.trailIcon]);
     } else t.setProperties({ Type: o.trail === 'counter' ? 'Counter' : 'Shortcut' });
   }
   return inst;
@@ -478,7 +481,7 @@ an.appendChild(real);
 real.layoutSizingHorizontal = 'FILL';
 an.appendChild(
   text(
-    'In Figma, the label is a text property. “Show leading” and “Show trailing” add the optional parts; the leading icon is an Icon component whose drawing is its “Glyph”, and the trailing item has a type: Icon, Counter or Shortcut (the real components, in the button’s size and color). Intent, Appearance, Size and State are variants, and Focus is a separate switch.',
+    'In Figma, the label is a text property. “Show leading” and “Show trailing” add the optional parts; the leading icon is chosen with “Leading icon”, and the trailing item has a type: Icon (chosen with its “Icon” property), Counter or Shortcut (the real components, in the button’s size and color). Intent, Appearance, Size and State are variants, and Focus is a separate switch.',
     'body/md',
     'color/content/secondary',
     1000
@@ -533,9 +536,13 @@ const stroke = (node, name, w = 1, dash, align = 'INSIDE') => {
   node.strokeAlign = align;
 };
 const set = await figma.getNodeByIdAsync('48:1586');
-const GLYPH = Object.keys((await figma.getNodeByIdAsync('149:20')).componentPropertyDefinitions).find((k) =>
-  k.startsWith('Glyph')
-);
+const prop = (inst, name) => Object.keys(inst.componentProperties).find((k) => k.split('#')[0] === name);
+// Sets a glyph through an instance-swap property, except the default: choosing the default again resets the glyph
+// layer (its name and its color override), a Figma behavior.
+const swap = (inst, name, id) => {
+  const k = prop(inst, name);
+  if (id !== inst.mainComponent.parent.componentPropertyDefinitions[k].defaultValue) inst.setProperties({ [k]: id });
+};
 const FX = {
   plus: '200:4367',
   'arrow-right': '200:4482',
@@ -592,14 +599,13 @@ const btn = (o = {}) => {
     'Show trailing#76:0': !!o.trail,
     'Focus#48:367': !!o.focus
   });
-  // Since 2026-10-14 the leading and trailing icons are Icon components: the drawing is their Glyph property
-  // (instance swap, fixture ids in FX).
-  if (o.lead && o.leadIcon)
-    inst.exposedInstances.find((e) => e.name === 'Leading icon').setProperties({ [GLYPH]: FX[o.leadIcon] });
+  // Since 2026-10-26 the leading and trailing glyphs sit directly in the Button and its Trailing part, behind the
+  // instance-swap properties Leading icon and Icon (fixture ids in FX); their size is the button's.
+  if (o.lead && o.leadIcon) swap(inst, 'Leading icon', FX[o.leadIcon]);
   if (o.trail) {
     const t = inst.exposedInstances.find((e) => e.name === 'Trailing item');
     if (o.trail === 'icon') {
-      if (o.trailIcon) t.findOne((n) => n.name === 'Icon').setProperties({ [GLYPH]: FX[o.trailIcon] });
+      if (o.trailIcon) swap(t, 'Icon', FX[o.trailIcon]);
     } else t.setProperties({ Type: o.trail === 'counter' ? 'Counter' : 'Shortcut' });
   }
   return inst;

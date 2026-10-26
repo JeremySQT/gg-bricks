@@ -196,6 +196,14 @@
       "report": "reports/components/link/figma/parity.json",
       "date": "2026-10-20",
       "note": "Re-measured after the rebuild as Color × Size × State with the nested Destination part (set 232:659): 4680 records (13 cases × 20 properties in 18 contexts), 0 failures; 234 justified differences (underline thickness literal) and 126 (parent color of the Color accent cases, which has no Figma counterpart). Supersedes the check of 2026-10-19 on set 225:276."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/icon-slot-migrate.plugin.js; use_figma authoring/adapters/figma/link-parity.plugin.js; node authoring/adapters/figma/link-parity-report.mjs <result>",
+      "report": "reports/components/link/figma/parity.json",
+      "date": "2026-10-26",
+      "note": "After the icon slot migration (glyphs placed directly in _Link/Destination, File icon#259:0 on the file destination): the 18 context hashes equal those built from computed.json; parity.json regenerated, unchanged (4 680 records, 0 failures)."
     }
   ],
   "decisionsTaken": [
@@ -212,7 +220,8 @@
     "No new token: meta and indicator take the link color; indicatorGap is space.content.xs.",
     "User at the contract gate (2026-10-17): destinations confirmed as drafted (phone included, print = a link to a printable version); dark link color changed to color.palette.accent.300 (4.80:1 or more on every neutral backdrop in the 18 contexts; recommendation A).",
     "User at the implementation review (2026-10-19): variant D, glyph and meta as a subtle neutral complement; the meta in color.content.tertiary rather than color.content.secondary after the dark-mode remark. With tone inherit the meta keeps the context color at full strength (text contrast) and only the glyph is attenuated (opacity.muted).",
-    "User at the Figma parity review (2026-10-20): the link is configured by variants rather than variable modes chosen by the designer (\"Est-ce qu'on ne pourrais pas gérer plutôt tout ça par des variantes plutôt que des modes ?\"), and the secondary and tertiary contexts are dropped (a dimmed link is harder to find). Recommendation A adopted (\"je suis tes recommendations, à voir à l'usage\"): variants Color (accent, on info, on success, on warning, on danger, on inverse) × Size (md, sm, lg) × State, the destination in the exposed nested part _Link/Destination; each variant sets the modes of the hidden Components · link size and Components · link color collections on itself."
+    "User at the Figma parity review (2026-10-20): the link is configured by variants rather than variable modes chosen by the designer (\"Est-ce qu'on ne pourrais pas gérer plutôt tout ça par des variantes plutôt que des modes ?\"), and the secondary and tertiary contexts are dropped (a dimmed link is harder to find). Recommendation A adopted (\"je suis tes recommendations, à voir à l'usage\"): variants Color (accent, on info, on success, on warning, on danger, on inverse) × Size (md, sm, lg) × State, the destination in the exposed nested part _Link/Destination; each variant sets the modes of the hidden Components · link size and Components · link color collections on itself.",
+    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
   ],
   "openDecisions": [
     {
