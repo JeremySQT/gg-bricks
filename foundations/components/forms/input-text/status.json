@@ -3,7 +3,7 @@
   "componentId": "input-text",
   "family": "forms",
   "wave": 2,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Let the user enter or edit a short single-line text value (name, email, search query, password, URL, phone number).",
     "useCases": [
@@ -47,7 +47,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "InputText contract: bindable value, type (text, email, password, search, tel, url), size, placeholder, label (accessible name outside a Field), disabled, readonly, invalid, required; container, leading (Icon), input and trailing (Icon, or an IconButton at md and lg set to the next smaller size, neutral ghost) parts; condition and focus states; valueChange; color.field.{condition}.* roles, Button spacing, typography.body.{size}, focus ring on every focus.",
+      "revision": {
+        "paths": ["foundations/components/forms/input-text/contract.json"],
+        "sha256": {
+          "foundations/components/forms/input-text/contract.json": "c3e5118af4cd9599f49489b3c65c4b18ef02c8ec59b68c9cb168d15bf9298beb"
+        }
+      },
+      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): option B for trailing actions with sm forbidding the action (\"2 je partirai sur B\"), then the proposed mechanism confirmed: \"Ok pour la proposition, lance l'implémentation\".",
+      "note": "The reviewer expects adjustments at the implementation review."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -81,12 +91,10 @@
     "Readonly keeps the field focusable, selectable and submitted; disabled is neither focusable nor submitted.",
     "type limited to text, email, password, search, tel, url; number is NumberInput (wave 6).",
     "The interaction target meets 44 px in block size without enlarging the visible field (decisions.md minimum target), as Button.",
-    "Trailing actions B (user at the contract gate, 2026-10-26: \"2 je partirai sur B\", with the rule that sm forbids the action): trailing accepts an IconButton at sizes md and lg only. The input imposes on it an existing IconButton size one step smaller (sm in md, md in lg), intent neutral and appearance ghost, without any local override of IconButton: its tokens and behavior are unchanged, the host only chooses its options (the host-imposes-size principle of decisions.md, 2026-10-26). Block and inline-end inset (minHeight − box)/2: 4 px in standard, 2 to 6 px across densities."
+    "Trailing actions B (user at the contract gate, 2026-10-26: \"2 je partirai sur B\", with the rule that sm forbids the action): trailing accepts an IconButton at sizes md and lg only. The input imposes on it an existing IconButton size one step smaller (sm in md, md in lg), intent neutral and appearance ghost, without any local override of IconButton: its tokens and behavior are unchanged, the host only chooses its options (the host-imposes-size principle of decisions.md, 2026-10-26). Block and inline-end inset (minHeight − box)/2: 4 px in standard, 2 to 6 px across densities. Mechanism confirmed by the user (\"Ok pour la proposition\", 2026-10-26)."
   ],
-  "openDecisions": [
-    "Confirm the trailing IconButton mechanism proposed in answer to the gate question (next smaller IconButton size imposed by the input, neutral ghost, no local override, forbidden at sm). The contract approval is recorded once confirmed."
-  ],
-  "nextAction": "Confirm the trailing IconButton mechanism, record the contract approval, then implement (ggb-svelte) with the rest of wave 2.",
+  "openDecisions": [],
+  "nextAction": "Implement (ggb-svelte): component folder, examples page, SSR and browser tests, preview; grouped wave 2 implementation gate.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
     "Svelte: the trailing snippet receives the imposed IconButton props as a parameter (size, intent, appearance, disabled), so that InputText does not import IconButton and IconButton does not read a context from InputText; both folders stay self-contained. A trailing IconButton at size sm is reported as a usage error in development."
