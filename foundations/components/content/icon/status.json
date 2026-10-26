@@ -123,9 +123,9 @@
           "reports/components/icon/figma/ledger.json"
         ],
         "sha256": {
-          "foundations/components/content/icon/figma-spec.md": "2e6fbfa770c5179e951f012a58fd4eb547d532adf954c113f4ecee46da882e47",
+          "foundations/components/content/icon/figma-spec.md": "deb4466458039190889dff8c13d01ed124e981fe230bd675de8d444e00fefde3",
           "reports/components/icon/figma/parity.json": "52449f9642621550de7713c57c50055aded772a888b04291517f1f1f9a606660",
-          "reports/components/icon/figma/ledger.json": "8407b1a569f81050606027ac48d92ec63e6c77972c89a672c158259a76190bd5"
+          "reports/components/icon/figma/ledger.json": "8900972c738837e90a548f83edd6126f10931ee3fafaa944ae1688092d662aa6"
         },
         "figma": {
           "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
@@ -134,7 +134,7 @@
           "specificationFrame": "152:7"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, at the grouped wave 1 Figma parity gate (Icon, Counter, Shortcut and the Button with the real slot content), after reviewing the Figma pages, the master and specification screenshots, the parity reports and the preview artifacts: \"Très bien le counter comme ça, jolie travail.\" then, asked whether the validation covered the whole gate, \"La validation porte sur la parité figma de la vague 1. On peut avancer.\" Amendment of 2026-10-19 (glyph source: Phosphor 2.1.1 regular imported on the page assets/phosphor, fixtures replaced by identical glyphs; reports/components/icon/changes/2026-10-19-phosphor-glyphs.md): user in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU, \"Je penche pour l'option A\" then \"Je suis d'accord pour faire sur une page voisine […] il faudrait aussi ajouter une petite spec sur la page de la librairie\"; figma-spec.md and ledger.json re-digested, parity.json unchanged.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, at the grouped wave 1 Figma parity gate (Icon, Counter, Shortcut and the Button with the real slot content), after reviewing the Figma pages, the master and specification screenshots, the parity reports and the preview artifacts: \"Très bien le counter comme ça, jolie travail.\" then, asked whether the validation covered the whole gate, \"La validation porte sur la parité figma de la vague 1. On peut avancer.\" Amendment of 2026-10-19 (glyph source: Phosphor 2.1.1 regular imported on the page assets/phosphor, fixtures replaced by identical glyphs; reports/components/icon/changes/2026-10-19-phosphor-glyphs.md): user in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU, \"Je penche pour l'option A\" then \"Je suis d'accord pour faire sur une page voisine […] il faudrait aussi ajouter une petite spec sur la page de la librairie\"; figma-spec.md and ledger.json re-digested, parity.json unchanged. Amendment of 2026-10-26 at the wave 1 Figma parity review (session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU), requested by the user: components impose the size of what they hold (\"la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\"; option 2 for Counter and Shortcut: \"Va pour l'option 2, tu peux la faire maintenant\"). Icon itself is unchanged; its description and specification text say that components with an icon place the glyph themselves. Digests re-recorded.",
       "note": "Library not published (publication needs explicit authorization). Glyphs are the local Phosphor 2.1.1 regular components of the page assets/phosphor (justified difference 3 of the Figma specification; reports/assets/phosphor/ledger.json)."
     },
     "documentation": null,

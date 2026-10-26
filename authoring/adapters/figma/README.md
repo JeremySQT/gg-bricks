@@ -83,3 +83,6 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - Binding the property can drop the glyph color override of the variants: set the fills again after binding.
 - Replacing a layer drops the overrides instances had on it (a glyph chosen, a hidden icon): read them first and re-apply them. Swapping a hidden glyph on an instance shows it again: restore the visibility after the swap.
 - Choosing the default glyph again on an instance whose glyph is already the default resets the glyph layer (its name and its color): scripts never set the default explicitly.
+- `nested-parts.plugin.js` (three parts): the internal parts `_Counter/Nested` and `_Shortcut/Nested` (the md variants, sized by the host's Components mode) and the `_Button/Trailing` reduction to Type, with the content of every trailing instance re-applied.
+- A variant cloned out of its set loses its component property references (visibility, text): add the properties to the new set and bind them again. `clearExplicitVariableModeForCollection` on a variant lets it take the mode of its host.
+- A nested component whose size is a variant property always shows that Size once exposed; a host that must impose the size holds a copy whose size comes from a mode the host sets.

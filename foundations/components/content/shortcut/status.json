@@ -138,9 +138,9 @@
           "reports/components/shortcut/figma/ledger.json"
         ],
         "sha256": {
-          "foundations/components/content/shortcut/figma-spec.md": "3b6968c35d784b6ce4f2fc585a070d18635284ca74f79628a89d5085cfeff367",
+          "foundations/components/content/shortcut/figma-spec.md": "29d897dcb11f647a998f7f2331c851cb41afe2d79bb84d2baf493b93be356da0",
           "reports/components/shortcut/figma/parity.json": "d3bf34baa5ea520076140e4a3d3aaa1326d86f2817a54cf9ffa566234d2b11ec",
-          "reports/components/shortcut/figma/ledger.json": "5ad35ba63ac13e3c52af0843c4092312102cad48d4dd3c64724bcd07ba012353"
+          "reports/components/shortcut/figma/ledger.json": "8cf0627cb79cbd7e5e6445eb74efa50a283e8ca8e9c265f5df006a3ddaa3674c"
         },
         "figma": {
           "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
@@ -149,7 +149,7 @@
           "specificationFrame": "154:32"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, at the grouped wave 1 Figma parity gate (Icon, Counter, Shortcut and the Button with the real slot content), after reviewing the Figma pages, the master and specification screenshots, the parity reports and the preview artifacts: \"Très bien le counter comme ça, jolie travail.\" then, asked whether the validation covered the whole gate, \"La validation porte sur la parité figma de la vague 1. On peut avancer.\" Keys typed per nested part: user in the same session, \"Pour le shortcut, tu peux rester avec les sous-parts pour l'instant, on verra à l'usage si on doit faire une update\".",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, at the grouped wave 1 Figma parity gate (Icon, Counter, Shortcut and the Button with the real slot content), after reviewing the Figma pages, the master and specification screenshots, the parity reports and the preview artifacts: \"Très bien le counter comme ça, jolie travail.\" then, asked whether the validation covered the whole gate, \"La validation porte sur la parité figma de la vague 1. On peut avancer.\" Keys typed per nested part: user in the same session, \"Pour le shortcut, tu peux rester avec les sous-parts pour l'instant, on verra à l'usage si on doit faire une update\". Amendment of 2026-10-26 at the wave 1 Figma parity review (session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU), requested by the user: components impose the size of what they hold (\"la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\"; option 2 for Counter and Shortcut: \"Va pour l'option 2, tu peux la faire maintenant\"). Shortcut itself is unchanged apart from its description; the internal part _Shortcut/Nested is its copy for hosts, checked equal in 18 contexts × 3 sizes × 4 variants. Digests re-recorded.",
       "note": "Library not published (publication needs explicit authorization). The nested-part key typing is accepted for now; a flat Key 1/2/3 text property on the set is a possible later update (decision taken, no longer open)."
     },
     "documentation": null,
@@ -215,6 +215,14 @@
       "report": "reports/components/shortcut/figma/parity.json",
       "date": "2026-10-14",
       "note": "4104 records (one per computed record: 18 contexts × 3 sizes × 2 appearances × 2 platforms, three-key form Mod+Shift+K), 0 failures, 540 justified differences (text line boxes rounded to whole pixels by Figma: heights 0.2 to 0.6 px above the browser; square minimum 18/19/22 on the rounded line box; OpenType tnum not settable); first-key widths within ±1.5 px (measured 0.20 to 0.98 px). 216 opacity records from the contract role (plain 0.7, keycap 1), 0 failures, through opacity/muted synced in percent (70) because Figma reads an opacity binding as a percentage. Difficult cases in the specification: one, two and three keys, fallback glyphs, six brand × appearance pairs, three densities, a box too narrow (overflow, no wrap)."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/nested-parts.plugin.js (part 2); equivalence check of _Shortcut/Nested against Shortcut",
+      "report": "reports/components/shortcut/figma/ledger.json",
+      "date": "2026-10-26",
+      "note": "_Shortcut/Nested equals Shortcut (sizes, positions, resolved colors, opacity, text) in 18 contexts × 3 sizes × 4 variants with the three keys shown: 216 cases, 0 differences."
     }
   ],
   "decisionsTaken": [
@@ -255,7 +263,8 @@
     "Figma (2026-10-14): Figma reads a number variable bound to layer opacity as a percentage: opacity/muted (0.7) bound directly rendered the plain variants at 0.7 %. Resolved in the token sync (orchestrator): opacity tokens are emitted ×100 for Figma (opacity/muted = 70, expectations and native verification updated) and the Plain variants bind opacity/muted directly; the temporary mirror variable opacity/muted (synced in percent) was removed. Effective opacity 0.7 in the 18 contexts.",
     "Figma (user review of 2026-10-14): the component adapter variables are grouped in one hidden collection “Components” (modes sm, md, lg) by component name prefix; the former per-component collections were deleted after rebinding. The Button keeps “Components · button style” and “Components · button state” because its shared trailing part needs two independent mode axes (9 pairs × 5 states exceed one collection's modes).",
     "Figma parity gate (user, 2026-10-14): the keys stay typed per nested part (Key 1, Key 2, Key 3 exposed instances with Show key 2 / Show key 3, up to three keys) because the Plugin API cannot attach a set-level text property to a nested instance text; \"tu peux rester avec les sous-parts pour l'instant, on verra à l'usage si on doit faire une update\". A flat text property per key on the set (direct text layers in each variant) is the candidate update if designers find the nested typing awkward.",
-    "Done (2026-10-14): documentation page documentation/components/shortcut.md and index entry written after the wave 1 Figma parity gate; phase set to done within the declared scope. The Figma library and the npm package are not published (delivery approval pending)."
+    "Done (2026-10-14): documentation page documentation/components/shortcut.md and index entry written after the wave 1 Figma parity gate; phase set to done within the declared scope. The Figma library and the npm package are not published (delivery approval pending).",
+    "User at the wave 1 Figma parity review (2026-10-26, option 2): inside a host the component is replaced by an internal copy sized by the host (no Size property), so that a designer cannot change its size in a Button; the component keeps its Size variants for use on its own."
   ],
   "openDecisions": [],
   "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",
