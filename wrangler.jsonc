@@ -1,0 +1,17 @@
+// Mirror of apps/docs/wrangler.jsonc for commands run at the repository root. Workers Builds runs its preview
+// command (`npx wrangler preview`) at the root whatever the dashboard's Preview command says (seen on
+// 2026-10-26, pull request JeremySQT/design-system#7), and found no configuration there. Keep the two files equal
+// apart from the paths; apps/docs/wrangler.jsonc stays the reference (see apps/docs/README.md, Deployment).
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "ggbrick-docs",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./apps/docs/dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "preview_urls": true,
+  "previews": {},
+  "workers_dev": true
+}
