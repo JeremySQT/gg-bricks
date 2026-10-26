@@ -1,0 +1,9 @@
+{
+  "result": "passed",
+  "checks": [
+    "label container, control role and name/description references, no mark when off",
+    "check glyph, bar glyph, aria-checked true and mixed",
+    "sizes; readonly, invalid, required, hidden label, hidden form input; disabled wins over readonly",
+    "invalid label rejected on the server"
+  ]
+}

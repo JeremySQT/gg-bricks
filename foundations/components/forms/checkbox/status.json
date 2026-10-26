@@ -34,9 +34,27 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/checkbox/Checkbox.svelte",
+      "folder": "packages/svelte/src/components/checkbox",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 Checkbox.Root"
+      },
+      "report": "reports/components/checkbox/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/checkbox",
+      "preview": "dist/previews/checkbox.html (npm run build:preview checkbox)",
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/checkbox.test.ts",
+      "browser": "tests/browser/checkbox.spec.ts",
+      "computed": "reports/components/checkbox/svelte/computed.json",
+      "screenshots": "reports/components/checkbox/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -73,6 +91,36 @@
       "report": "reports/components/checkbox/contrast.json",
       "date": "2026-10-26",
       "note": "2052 contrast records on the contrastScope backdrops in 18 contexts, 0 failures; minimum active text 5.11."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors), SSR (64), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/checkbox/svelte/ssr.json",
+      "date": "2026-10-26",
+      "note": "4 checks recorded for Checkbox."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-26",
+      "note": "Chromium 153, full suite 102 passed; computed values: 7968 records (reports/components/checkbox/svelte/computed.json). Details in reports/components/checkbox/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview checkbox",
+      "date": "2026-10-26",
+      "note": "dist/previews/checkbox.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
     }
   ],
   "decisionsTaken": [
@@ -83,12 +131,15 @@
     "The box is centered on the first line of the label; label and description wrap.",
     "Indeterminate is a bindable prop; activation from indeterminate checks the box (the common select-all behavior).",
     "Readonly is supported (focusable, announced read-only, ignores activation) because the approved field family has a readonly condition and forms show readonly values.",
-    "The focus ring surrounds the box only, with corners of radius plus focus.offset (concentric, computed; no new token)."
+    "The focus ring surrounds the box only, with corners of radius plus focus.offset (concentric, computed; no new token).",
+    "The mark uses the Phosphor bold weight (check, minus) drawn at the box size: the regular weight is 1 px thin in a 16 px box.",
+    "Colors are chosen in two levels: each condition sets the off and on sets, then the selection picks one (equal-specificity condition selectors, source order is the precedence)."
   ],
   "openDecisions": [],
-  "nextAction": "Implement (ggb-svelte): component folder, examples page, SSR and browser tests, preview; grouped wave 2 implementation gate.",
+  "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",
   "implementationNotes": [
-    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/checkbox/svelte/implementation.md for the rule-by-rule evidence and the limitations."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

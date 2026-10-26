@@ -1,0 +1,10 @@
+{
+  "result": "passed",
+  "checks": [
+    "default input, container data-size md, aria-label, placeholder, no state attributes",
+    "18 type x size combinations; readonly, invalid, required, disabled (disabled wins over readonly)",
+    "leading/trailing hidden; action sm at md, md at lg, disabled passed, not rendered at sm",
+    "id, name, autocomplete and aria-describedby on the input; class on the container",
+    "invalid label rejected on the server"
+  ]
+}

@@ -16,8 +16,11 @@ export interface FieldContext {
   readonly required: boolean;
   readonly invalid: boolean;
   readonly disabled: boolean;
-  /** Called once by the control: a text entry is labelled by `for`, a choice control by `aria-labelledby`. */
-  register(kind: 'text' | 'choice'): void;
+  /**
+   * Called once by the control. A text entry passes a getter of its element id, which the label targets with `for`
+   * (the control may have an id of its own); a choice control is named through `aria-labelledby` only.
+   */
+  register(kind: 'text' | 'choice', id?: () => string): void;
 }
 
 type Owned = 'children' | 'role';

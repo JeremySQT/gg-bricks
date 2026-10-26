@@ -33,10 +33,12 @@
     message: `${base}-message`
   });
 
-  // A text entry is the label's `for` target; a choice control is named through aria-labelledby. The control
-  // registers while it initializes; until then (and on the server before the control renders) the label targets
-  // the text entry id, which a choice control never uses.
+  // A text entry is the label's `for` target (a press on the label focuses it); every control is also named through
+  // aria-labelledby. The control registers while it initializes; until then (and on the server, where the label is
+  // written before the control) the label targets the default control id.
   let kind = $state<'text' | 'choice'>('text');
+  let controlElementId = $state<(() => string) | undefined>();
+  const labelFor = $derived(kind === 'text' ? (controlElementId?.() ?? ids.control) : undefined);
 
   setContext<FieldContext>('ggb:field', {
     get controlId() {
@@ -58,8 +60,9 @@
     get disabled() {
       return disabled;
     },
-    register(k) {
+    register(k, id) {
       kind = k;
+      controlElementId = id;
     }
   });
 </script>
@@ -72,7 +75,7 @@
   data-invalid={invalid ? '' : undefined}
   data-disabled={disabled ? '' : undefined}
 >
-  <label class="ggb-field__label" id={ids.label} for={kind === 'text' ? ids.control : undefined}
+  <label class="ggb-field__label" id={ids.label} for={labelFor}
     >{name}{#if required}<span class="ggb-field__requiredIndicator" aria-hidden="true">&nbsp;*</span>{/if}</label
   >
   {#if hasDescription}

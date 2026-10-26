@@ -8,7 +8,7 @@ Validated by the user on 2026-09-25 (waves), amended for the foundations-first o
 | ------------------------------------------------------------------------------ | ---------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0 · Foundations: generous primitives, full semantic inventory, Figma variables | `ggb-foundations`      | Tokens review                          | Done: approved 2026-09-26 (JeremySQT/design-system#1)                                                                                                                                                                                                                                                       |
 | 1 · Wave 1 components                                                          | `ggb-component`        | Contract, implementation, Figma parity | Done: Button merged (JeremySQT/design-system#2); Icon, Counter and Shortcut Done and integrated into the Button (wave 1 pull request, 2026-10-14); IconButton, Link and Badge Done (Figma parity approved 2026-10-26, documentation written; branch `wave/1-iconbutton-link-badge`, pull request to `main`) |
-| 2 · Wave 2 … 6                                                                 | `ggb-component`        | Same                                   | In progress: wave 2 (Field, InputText, Textarea, Checkbox, Switch, RadioGroup with its Radio child), contracts approved 2026-10-26, implementation in progress, branch `wave/2-form-foundations`; waves 3 to 6 not started                                                                                  |
+| 2 · Wave 2 … 6                                                                 | `ggb-component`        | Same                                   | In progress: wave 2 (Field, InputText, Textarea, Checkbox, Switch, RadioGroup with its Radio child), contracts approved 2026-10-26, implementation (gate pending: review artifact https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz), branch `wave/2-form-foundations`; waves 3 to 6 not started            |
 | 3 · Documentation site `apps/docs` (Astro + Starlight, docs.ggbrick.design)    | dedicated task         | Site review                            | Done: site review approved by the user on 2026-10-15 (branch `site/docs`); published at the first Deliver                                                                                                                                                                                                   |
 | 4 · Marketing site `apps/site` (Astro, ggbrick.design)                         | dedicated task         | Site review                            | Not started                                                                                                                                                                                                                                                                                                 |
 | 5 · First release (package, Figma library, docs)                               | `ggb-maintain` Deliver | Delivery approval                      | Not started                                                                                                                                                                                                                                                                                                 |
@@ -40,22 +40,22 @@ Composition patterns (search/filter toolbar, form section, action placement on B
 
 One row per component once its scope phase starts. Phase values: scope, contract, implementation, figma, documentation, done; append "(gate pending)" while waiting for the reviewer.
 
-| Component  | Family  | Wave | Phase          | Status file                                              |
-| ---------- | ------- | ---- | -------------- | -------------------------------------------------------- |
-| Button     | actions | 1    | done           | `foundations/components/actions/button/status.json`      |
-| Icon       | content | 1    | done           | `foundations/components/content/icon/status.json`        |
-| Counter    | content | 1    | done           | `foundations/components/content/counter/status.json`     |
-| Shortcut   | content | 1    | done           | `foundations/components/content/shortcut/status.json`    |
-| IconButton | actions | 1    | done           | `foundations/components/actions/icon-button/status.json` |
-| Link       | actions | 1    | done           | `foundations/components/actions/link/status.json`        |
-| Badge      | content | 1    | done           | `foundations/components/content/badge/status.json`       |
-| Field      | forms   | 2    | implementation | `foundations/components/forms/field/status.json`         |
-| InputText  | forms   | 2    | implementation | `foundations/components/forms/input-text/status.json`    |
-| Textarea   | forms   | 2    | implementation | `foundations/components/forms/textarea/status.json`      |
-| Checkbox   | forms   | 2    | implementation | `foundations/components/forms/checkbox/status.json`      |
-| Switch     | forms   | 2    | implementation | `foundations/components/forms/switch/status.json`        |
-| RadioGroup | forms   | 2    | implementation | `foundations/components/forms/radio-group/status.json`   |
-| Radio      | forms   | 2    | implementation | `foundations/components/forms/radio/status.json`         |
+| Component  | Family  | Wave | Phase                         | Status file                                              |
+| ---------- | ------- | ---- | ----------------------------- | -------------------------------------------------------- |
+| Button     | actions | 1    | done                          | `foundations/components/actions/button/status.json`      |
+| Icon       | content | 1    | done                          | `foundations/components/content/icon/status.json`        |
+| Counter    | content | 1    | done                          | `foundations/components/content/counter/status.json`     |
+| Shortcut   | content | 1    | done                          | `foundations/components/content/shortcut/status.json`    |
+| IconButton | actions | 1    | done                          | `foundations/components/actions/icon-button/status.json` |
+| Link       | actions | 1    | done                          | `foundations/components/actions/link/status.json`        |
+| Badge      | content | 1    | done                          | `foundations/components/content/badge/status.json`       |
+| Field      | forms   | 2    | implementation (gate pending) | `foundations/components/forms/field/status.json`         |
+| InputText  | forms   | 2    | implementation (gate pending) | `foundations/components/forms/input-text/status.json`    |
+| Textarea   | forms   | 2    | implementation (gate pending) | `foundations/components/forms/textarea/status.json`      |
+| Checkbox   | forms   | 2    | implementation (gate pending) | `foundations/components/forms/checkbox/status.json`      |
+| Switch     | forms   | 2    | implementation (gate pending) | `foundations/components/forms/switch/status.json`        |
+| RadioGroup | forms   | 2    | implementation (gate pending) | `foundations/components/forms/radio-group/status.json`   |
+| Radio      | forms   | 2    | implementation (gate pending) | `foundations/components/forms/radio/status.json`         |
 
 ## How a fresh session starts a task
 

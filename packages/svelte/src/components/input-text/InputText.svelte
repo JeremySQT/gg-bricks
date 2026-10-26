@@ -12,7 +12,8 @@
     readonly required: boolean;
     readonly invalid: boolean;
     readonly disabled: boolean;
-    register(kind: 'text' | 'choice'): void;
+    readonly labelId: string;
+    register(kind: 'text' | 'choice', id?: () => string): void;
   }
 
   let {
@@ -37,7 +38,9 @@
   }: InputTextProps = $props();
 
   const field = getContext<FieldContext | undefined>('ggb:field');
-  field?.register('text');
+  // The label targets the element id, the consumer's or the field's; the field label also names the control through
+  // aria-labelledby, which holds even before hydration or with a custom id.
+  field?.register('text', () => id ?? field.controlId);
 
   // Fail identically on the server and in the browser rather than render an input without a name.
   const name = $derived.by(() => {
@@ -104,6 +107,7 @@
     required={isRequired}
     aria-invalid={isInvalid ? 'true' : undefined}
     aria-label={name}
+    aria-labelledby={field?.labelId}
     aria-describedby={describedByIds}
     oninput={(event) => {
       handleInput(event);

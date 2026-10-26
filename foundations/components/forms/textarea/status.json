@@ -33,9 +33,27 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/textarea/Textarea.svelte",
+      "folder": "packages/svelte/src/components/textarea",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (native textarea)"
+      },
+      "report": "reports/components/textarea/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/textarea",
+      "preview": "dist/previews/textarea.html (npm run build:preview textarea)",
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/textarea.test.ts",
+      "browser": "tests/browser/textarea.spec.ts",
+      "computed": "reports/components/textarea/svelte/computed.json",
+      "screenshots": "reports/components/textarea/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -72,6 +90,36 @@
       "report": "reports/components/textarea/contrast.json",
       "date": "2026-10-26",
       "note": "1296 contrast records on the contrastScope backdrops in 18 contexts, 0 failures; minimum active text 11.44."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors), SSR (64), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/textarea/svelte/ssr.json",
+      "date": "2026-10-26",
+      "note": "3 checks recorded for Textarea."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-26",
+      "note": "Chromium 153, full suite 102 passed; computed values: 1656 records (reports/components/textarea/svelte/computed.json). Details in reports/components/textarea/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview textarea",
+      "date": "2026-10-26",
+      "note": "dist/previews/textarea.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
     }
   ],
   "decisionsTaken": [
@@ -79,12 +127,14 @@
     "A standalone text entry or radio group takes its accessible name from an optional, non-displayed label prop (the IconButton precedent); inside a Field the Field label wins. There is no visually hidden Field label: a control without a visible label is used without Field.",
     "Controls perform no validation and expose invalid/required only; the visible error message and required marker belong to Field (catalog composition rule: controls are standalone, Field wraps them).",
     "Same colors, border, radius, inline padding, typography and focus treatment as InputText of the same size; the block padding is derived (half of size.control minus one line) so a one-row textarea matches an InputText, with no new token.",
-    "resize vertical (default), auto (grows from rows to maxRows, default 3 and 8) or none; never inline resizing."
+    "resize vertical (default), auto (grows from rows to maxRows, default 3 and 8) or none; never inline resizing.",
+    "Resize auto measures scrollHeight after every value change and CSS clamps it between rows and maxRows; the block padding is (minHeight − 1lh) / 2."
   ],
   "openDecisions": [],
-  "nextAction": "Implement (ggb-svelte): component folder, examples page, SSR and browser tests, preview; grouped wave 2 implementation gate.",
+  "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",
   "implementationNotes": [
-    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/textarea/svelte/implementation.md for the rule-by-rule evidence and the limitations."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

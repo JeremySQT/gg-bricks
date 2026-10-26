@@ -37,9 +37,27 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/radio-group/RadioGroup.svelte",
+      "folder": "packages/svelte/src/components/radio-group",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 RadioGroup.Root"
+      },
+      "report": "reports/components/radio-group/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/radio-group",
+      "preview": "dist/previews/radio-group.html (npm run build:preview radio-group)",
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/radio-group.test.ts",
+      "browser": "tests/browser/radio-group.spec.ts",
+      "computed": "reports/components/radio-group/svelte/computed.json",
+      "screenshots": "reports/components/radio-group/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -76,17 +94,50 @@
       "report": "reports/components/radio-group/token-coverage.json",
       "date": "2026-10-26",
       "note": "No surface, content or border role: no component contrast records; the colors it binds are covered by the inventory pairs."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors), SSR (64), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/radio-group/svelte/ssr.json",
+      "date": "2026-10-26",
+      "note": "3 checks recorded for RadioGroup."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-26",
+      "note": "Chromium 153, full suite 102 passed; computed values: 36 records (reports/components/radio-group/svelte/computed.json). Details in reports/components/radio-group/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview radio-group",
+      "date": "2026-10-26",
+      "note": "dist/previews/radio-group.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
     }
   ],
   "decisionsTaken": [
     "A standalone text entry or radio group takes its accessible name from an optional, non-displayed label prop (the IconButton precedent); inside a Field the Field label wins. There is no visually hidden Field label: a control without a visible label is used without Field.",
     "RadioGroup is a compound component: its options are Radio children (contract-format: the child component is declared in accepts with min 2). Radio gets its own contract and status in the same wave; it is only usable inside a RadioGroup.",
     "Keyboard per the WAI-ARIA radio group pattern: one tab stop, arrows move and select (both axes in either orientation, wrapping), Space selects; a readonly group lets arrows move focus without selecting.",
-    "Gaps space.content.sm between stacked radios and space.content.lg between radios on a line (density aware); size, readonly, invalid and disabled are set on the group and apply to every radio."
+    "Gaps space.content.sm between stacked radios and space.content.lg between radios on a line (density aware); size, readonly, invalid and disabled are set on the group and apply to every radio.",
+    "Two completions of Bits UI: the first arrow press in a group without a value selects the radio focus moved to; keyboard focus entering the group goes to the selected radio, or to the first enabled one when none is selected (Bits UI kept the last focused radio after the application cleared the value).",
+    "RadioGroup shares size, readonly, invalid and disabled with its radios through the context key `ggb:radio-group`."
   ],
   "openDecisions": [],
-  "nextAction": "Implement (ggb-svelte): component folder, examples page, SSR and browser tests, preview; grouped wave 2 implementation gate.",
+  "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",
   "implementationNotes": [
-    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/radio-group/svelte/implementation.md for the rule-by-rule evidence and the limitations."
   ]
 }

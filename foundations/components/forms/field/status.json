@@ -40,9 +40,27 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/field/Field.svelte",
+      "folder": "packages/svelte/src/components/field",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (label, texts and links around the control, which owns the native semantics)"
+      },
+      "report": "reports/components/field/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/field",
+      "preview": "dist/previews/field.html (npm run build:preview field)",
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/field.test.ts",
+      "browser": "tests/browser/field.spec.ts",
+      "computed": "reports/components/field/svelte/computed.json",
+      "screenshots": "reports/components/field/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -79,6 +97,36 @@
       "report": "reports/components/field/token-coverage.json",
       "date": "2026-10-26",
       "note": "No surface, content or border role: no component contrast records; the colors it binds are covered by the inventory pairs."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors), SSR (64), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/field/svelte/ssr.json",
+      "date": "2026-10-26",
+      "note": "7 checks recorded for Field."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-26",
+      "note": "Chromium 153, full suite 102 passed; computed values: 504 records (reports/components/field/svelte/computed.json). Details in reports/components/field/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview field",
+      "date": "2026-10-26",
+      "note": "dist/previews/field.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
     }
   ],
   "decisionsTaken": [
@@ -88,11 +136,15 @@
     "Field passes required, invalid and disabled to its control (OR with the control props) so that one source of truth drives both the marker and the control state.",
     "The message shows only when invalid and non-empty, with the intrinsic warning-circle glyph (Phosphor, inline SVG in the component folder) so that the error is not conveyed by color alone; color.status.danger.content is reused for the text, with a new inventory contrast pair on surface.default (4.5).",
     "Field accepts InputText, Textarea, Checkbox and RadioGroup; Select, Combobox and later entries will be added to accepts when they exist.",
-    "Required marker A: an asterisk after the label in color.content.secondary, hidden from assistive technology; the control exposes required (user at the contract gate, 2026-10-26, \"A pour 1\")."
+    "Required marker A: an asterisk after the label in color.content.secondary, hidden from assistive technology; the control exposes required (user at the contract gate, 2026-10-26, \"A pour 1\").",
+    "Field shares its state with the control through the Svelte context key `ggb:field` (a string, so no component folder imports another); each control declares the same shape locally. Text entries register their element id (the label `for` follows it) and every control is also named through aria-labelledby, which holds before hydration and with an id of the consumer.",
+    "Description and message are div elements rather than paragraphs, so that application paragraph styles cannot move them.",
+    "Around a Checkbox, the checkbox wraps itself in role=\"group\" named by the field label; a press on the field label does not toggle it."
   ],
   "openDecisions": [],
-  "nextAction": "Implement (ggb-svelte): component folder, examples page, SSR and browser tests, preview; grouped wave 2 implementation gate.",
+  "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",
   "implementationNotes": [
-    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/field/svelte/implementation.md for the rule-by-rule evidence and the limitations."
   ]
 }

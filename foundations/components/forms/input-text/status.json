@@ -40,9 +40,27 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/input-text/InputText.svelte",
+      "folder": "packages/svelte/src/components/input-text",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (native input; Bits UI has no text input primitive)"
+      },
+      "report": "reports/components/input-text/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/input-text",
+      "preview": "dist/previews/input-text.html (npm run build:preview input-text)",
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/input-text.test.ts",
+      "browser": "tests/browser/input-text.spec.ts",
+      "computed": "reports/components/input-text/svelte/computed.json",
+      "screenshots": "reports/components/input-text/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -79,6 +97,36 @@
       "report": "reports/components/input-text/contrast.json",
       "date": "2026-10-26",
       "note": "1296 contrast records on the contrastScope backdrops in 18 contexts, 0 failures; minimum active text 11.44."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors), SSR (64), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/input-text/svelte/ssr.json",
+      "date": "2026-10-26",
+      "note": "5 checks recorded for InputText."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-26",
+      "note": "Chromium 153, full suite 102 passed; computed values: 1656 records (reports/components/input-text/svelte/computed.json). Details in reports/components/input-text/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview input-text",
+      "date": "2026-10-26",
+      "note": "dist/previews/input-text.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
     }
   ],
   "decisionsTaken": [
@@ -91,13 +139,16 @@
     "Readonly keeps the field focusable, selectable and submitted; disabled is neither focusable nor submitted.",
     "type limited to text, email, password, search, tel, url; number is NumberInput (wave 6).",
     "The interaction target meets 44 px in block size without enlarging the visible field (decisions.md minimum target), as Button.",
-    "Trailing actions B (user at the contract gate, 2026-10-26: \"2 je partirai sur B\", with the rule that sm forbids the action): trailing accepts an IconButton at sizes md and lg only. The input imposes on it an existing IconButton size one step smaller (sm in md, md in lg), intent neutral and appearance ghost, without any local override of IconButton: its tokens and behavior are unchanged, the host only chooses its options (the host-imposes-size principle of decisions.md, 2026-10-26). Block and inline-end inset (minHeight − box)/2: 4 px in standard, 2 to 6 px across densities. Mechanism confirmed by the user (\"Ok pour la proposition\", 2026-10-26)."
+    "Trailing actions B (user at the contract gate, 2026-10-26: \"2 je partirai sur B\", with the rule that sm forbids the action): trailing accepts an IconButton at sizes md and lg only. The input imposes on it an existing IconButton size one step smaller (sm in md, md in lg), intent neutral and appearance ghost, without any local override of IconButton: its tokens and behavior are unchanged, the host only chooses its options (the host-imposes-size principle of decisions.md, 2026-10-26). Block and inline-end inset (minHeight − box)/2: 4 px in standard, 2 to 6 px across densities. Mechanism confirmed by the user (\"Ok pour la proposition\", 2026-10-26).",
+    "The trailing part maps to two snippet props: `trailing` (decorative icon) and `action` (IconButton). `action` receives the imposed IconButton options (size one step smaller, neutral, ghost, disabled with the input) to spread on the IconButton: InputText imports no IconButton and IconButton reads no context. At sm the action is not rendered and a console warning is logged.",
+    "Condition selectors are wrapped in :where() so that source order alone is the precedence (disabled, readonly, invalid, focus, hover); the focus ring is drawn while the input itself has focus (not its action)."
   ],
   "openDecisions": [],
-  "nextAction": "Implement (ggb-svelte): component folder, examples page, SSR and browser tests, preview; grouped wave 2 implementation gate.",
+  "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
-    "Svelte: the trailing snippet receives the imposed IconButton props as a parameter (size, intent, appearance, disabled), so that InputText does not import IconButton and IconButton does not read a context from InputText; both folders stay self-contained. A trailing IconButton at size sm is reported as a usage error in development."
+    "Svelte: the trailing snippet receives the imposed IconButton props as a parameter (size, intent, appearance, disabled), so that InputText does not import IconButton and IconButton does not read a context from InputText; both folders stay self-contained. A trailing IconButton at size sm is reported as a usage error in development.",
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/input-text/svelte/implementation.md for the rule-by-rule evidence and the limitations."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

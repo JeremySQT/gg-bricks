@@ -25,9 +25,27 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/radio/Radio.svelte",
+      "folder": "packages/svelte/src/components/radio",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 RadioGroup.Item"
+      },
+      "report": "reports/components/radio/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/radio-group",
+      "preview": "dist/previews/radio-group.html (npm run build:preview radio-group)",
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/radio-group.test.ts",
+      "browser": "tests/browser/radio-group.spec.ts",
+      "computed": "reports/components/radio/svelte/computed.json",
+      "screenshots": "reports/components/radio-group/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -64,16 +82,48 @@
       "report": "reports/components/radio/contrast.json",
       "date": "2026-10-26",
       "note": "2052 contrast records on the contrastScope backdrops in 18 contexts, 0 failures; minimum active text 5.11."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors), SSR (64), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/radio/svelte/ssr.json",
+      "date": "2026-10-26",
+      "note": "4 checks recorded for Radio."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-26",
+      "note": "Chromium 153, full suite 102 passed; computed values: 4440 records (reports/components/radio/svelte/computed.json). Details in reports/components/radio/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview radio-group",
+      "date": "2026-10-26",
+      "note": "dist/previews/radio-group.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
     }
   ],
   "decisionsTaken": [
     "Same box size, typography, gap, color.choice.* colors and focus ring as Checkbox; circle (radius.full) with a dot of 3/8 of the box.",
-    "size, readonly and invalid are states inherited from the group, not props of the radio; disabled exists on both."
+    "size, readonly and invalid are states inherited from the group, not props of the radio; disabled exists on both.",
+    "The size is a state inherited from the group: per-size custom properties are chosen from data-size; the selection is read from the item data-state through :has()."
   ],
   "openDecisions": [],
-  "nextAction": "Implement (ggb-svelte): component folder, examples page, SSR and browser tests, preview; grouped wave 2 implementation gate.",
+  "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",
   "implementationNotes": [
-    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/radio/svelte/implementation.md for the rule-by-rule evidence and the limitations."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

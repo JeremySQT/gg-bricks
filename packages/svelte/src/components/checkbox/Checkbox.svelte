@@ -13,7 +13,7 @@
     readonly required: boolean;
     readonly invalid: boolean;
     readonly disabled: boolean;
-    register(kind: 'text' | 'choice'): void;
+    register(kind: 'text' | 'choice', id?: () => string): void;
   }
 
   let {

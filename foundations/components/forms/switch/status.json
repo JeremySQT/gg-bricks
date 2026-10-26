@@ -36,9 +36,27 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/switch/Switch.svelte",
+      "folder": "packages/svelte/src/components/switch",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 Switch.Root and Switch.Thumb"
+      },
+      "report": "reports/components/switch/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/switch",
+      "preview": "dist/previews/switch.html (npm run build:preview switch)",
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/switch.test.ts",
+      "browser": "tests/browser/switch.spec.ts",
+      "computed": "reports/components/switch/svelte/computed.json",
+      "screenshots": "reports/components/switch/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -75,6 +93,36 @@
       "report": "reports/components/switch/contrast.json",
       "date": "2026-10-26",
       "note": "1620 contrast records on the contrastScope backdrops in 18 contexts, 0 failures; minimum active text 5.11."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors), SSR (64), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/switch/svelte/ssr.json",
+      "date": "2026-10-26",
+      "note": "3 checks recorded for Switch."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-26",
+      "note": "Chromium 153, full suite 102 passed; computed values: 4368 records (reports/components/switch/svelte/computed.json). Details in reports/components/switch/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview switch",
+      "date": "2026-10-26",
+      "note": "dist/previews/switch.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
     }
   ],
   "decisionsTaken": [
@@ -82,12 +130,14 @@
     "Shares color.choice.* with Checkbox and Radio: off is an outlined track with a neutral thumb (field placeholder color, at least 4.5:1 on the field surface), on an accent track with a contrasting thumb.",
     "New sizes size.switch.{sm,md,lg} = 16, 20, 24 px for the track block size; the inline size (2 x block - 4 x border width: 28, 36, 44 px) and the thumb (block - 4 x border width) are derived in rules, no further token.",
     "labelPosition end (default, like Checkbox) or start (settings rows: the switch aligns at the inline end of the row).",
-    "Thumb and colors animate over motion.duration.base with motion.easing.standard; instant under reduced motion."
+    "Thumb and colors animate over motion.duration.base with motion.easing.standard; instant under reduced motion.",
+    "Bits UI has no readonly switch: the component cancels click and Space/Enter before the primitive and sets aria-readonly. Enter also toggles (Bits UI, allowed by the WAI-ARIA switch pattern)."
   ],
   "openDecisions": [],
-  "nextAction": "Implement (ggb-svelte): component folder, examples page, SSR and browser tests, preview; grouped wave 2 implementation gate.",
+  "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",
   "implementationNotes": [
-    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/switch/svelte/implementation.md for the rule-by-rule evidence and the limitations."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
