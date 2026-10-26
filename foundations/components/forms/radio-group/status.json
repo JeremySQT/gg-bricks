@@ -3,7 +3,7 @@
   "componentId": "radio-group",
   "family": "forms",
   "wave": 2,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Ask for exactly one choice among a few mutually exclusive options that should all stay visible.",
     "useCases": [
@@ -44,7 +44,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "RadioGroup contract: bindable value, label, orientation vertical/horizontal, size, disabled, readonly, invalid, required; items accepting at least two Radio; valueChange; WAI-ARIA radio group keyboard; space.content.sm and lg gaps. Foundation additions of the wave (color.choice, size.choice, size.switch, readonly border) recorded in the semantic approval.",
+      "revision": {
+        "paths": ["foundations/components/forms/radio-group/contract.json"],
+        "sha256": {
+          "foundations/components/forms/radio-group/contract.json": "3bff76a8646fc9a485caede752faf14ff9cebdca0aa5711fe5345a23888a7222"
+        }
+      },
+      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\"",
+      "note": "Conversational approval of the whole wave contract set; the reviewer expects adjustments at the implementation review."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -75,7 +85,7 @@
     "Gaps space.content.sm between stacked radios and space.content.lg between radios on a line (density aware); size, readonly, invalid and disabled are set on the group and apply to every radio."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (grouped wave 2 review): present the contract, the token additions and the open decisions; record the approval with digests, then implement (ggb-svelte).",
+  "nextAction": "Implement (ggb-svelte): component folder, examples page, SSR and browser tests, preview; grouped wave 2 implementation gate.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
   ]

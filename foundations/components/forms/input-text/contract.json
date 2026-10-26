@@ -46,7 +46,7 @@
     },
     "input": {},
     "trailing": {
-      "accepts": ["icon"],
+      "accepts": ["icon", "icon-button"],
       "max": 1
     }
   },
@@ -92,7 +92,9 @@
     "Arrange leading, input and trailing in that order inside container. input holds the value on one line: it never wraps and scrolls inline to keep the caret visible.",
     "The accessible name is the label of the enclosing Field, otherwise the label prop; one of them is present and non-empty. label is not displayed. placeholder is an example of the expected value in placeholderColor, shown only while the value is empty; it is never the accessible name and never replaces a label.",
     "Horizontal spacing matches Button: container has edgeInline inline padding, input has textInline on both inline sides, leading and trailing have slotInline on both inline sides. Without slots the text starts edgeInline + textInline from the container edge, the padding of a text-only Button of the same size.",
-    "leading and trailing each hold at most one decorative icon at iconSize in slotColor, hidden from assistive technology and placed by its drawing: icons of the reference set draw 1/8 of iconSize inside their box, so the icon box overlaps the spacing by that amount. A pointer press on a slot focuses the input.",
+    "leading holds at most one decorative icon, and trailing at most one decorative icon or one IconButton (below). A decorative icon renders at iconSize in slotColor, hidden from assistive technology and placed by its drawing: icons of the reference set draw 1/8 of iconSize inside their box, so the icon box overlaps the spacing by that amount. A pointer press on a decorative icon focuses the input.",
+    "trailing accepts an IconButton (an action on the value: clear a search, show or hide a password) only at sizes md and lg; at size sm the space is too small and only a decorative icon is allowed. The input sets the IconButton to the next smaller size (sm in an md input, md in an lg input), intent neutral and appearance ghost; the IconButton keeps its own tokens and behavior. It is centered in the block dimension and its inline-end edge sits at the same distance from the container edge as its block inset (half of minHeight minus its box size); the input text keeps textInline before it.",
+    "An IconButton in trailing is a separate stop in sequential focus after the input and keeps its own required label. It is disabled when the input is disabled; a readonly input leaves it enabled (showing a password still makes sense), and the application decides which actions apply.",
     "The container fills the inline size it is given; its block size is minHeight and does not grow with the content. The text is set in typography and centered vertically. The interaction target meets minTarget in the block dimension without enlarging the visible container.",
     "Paint container in surface with a border of borderWidth in border inside its boundary, corners of radius, and the value in content.",
     "Resolve condition in this order: disabled, readonly, invalid, focus, hover, default. focus is an independent axis: an invalid input keeps the invalid colors while focused.",

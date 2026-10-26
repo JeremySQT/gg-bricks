@@ -3,7 +3,7 @@
   "componentId": "textarea",
   "family": "forms",
   "wave": 2,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Let the user enter or edit multi-line free text (a comment, a description, a message).",
     "useCases": [
@@ -40,7 +40,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Textarea contract: bindable value, size, rows (3), resize vertical/auto/none, maxRows (8), placeholder, label, disabled, readonly, invalid, required; container and input parts; condition and focus states; valueChange; color.field.{condition}.* roles, InputText metrics with a derived block padding. Foundation additions of the wave (color.choice, size.choice, size.switch, readonly border) recorded in the semantic approval.",
+      "revision": {
+        "paths": ["foundations/components/forms/textarea/contract.json"],
+        "sha256": {
+          "foundations/components/forms/textarea/contract.json": "80fd037998c744d9af6c7128ee72a5fef8e7044a07ced885c03ec5f69533321e"
+        }
+      },
+      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\"",
+      "note": "Conversational approval of the whole wave contract set; the reviewer expects adjustments at the implementation review."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -72,7 +82,7 @@
     "resize vertical (default), auto (grows from rows to maxRows, default 3 and 8) or none; never inline resizing."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (grouped wave 2 review): present the contract, the token additions and the open decisions; record the approval with digests, then implement (ggb-svelte).",
+  "nextAction": "Implement (ggb-svelte): component folder, examples page, SSR and browser tests, preview; grouped wave 2 implementation gate.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
   ],
@@ -83,7 +93,7 @@
         "role": "border",
         "backdrop": "muted",
         "appearance": "dark",
-        "reason": "Proposed at the wave 2 contract gate, as accepted for the Button outline border (2026-09-26): color.field.default.border reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected. To be confirmed by the reviewer."
+        "reason": "Accepted at the wave 2 contract gate (2026-10-26, \"4 ok\"), as for the Button outline border (2026-09-26): color.field.default.border (and the readonly border that now aliases it) reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected."
       }
     ]
   }

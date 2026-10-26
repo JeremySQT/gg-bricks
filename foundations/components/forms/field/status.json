@@ -3,7 +3,7 @@
   "componentId": "field",
   "family": "forms",
   "wave": 2,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Give one form control a visible label, an optional description, a required marker and a validation message, and link them to the control for assistive technology.",
     "useCases": [
@@ -47,7 +47,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Field contract: required label, description, message, required, invalid, disabled; label, requiredIndicator, description, control (InputText, Textarea, Checkbox or RadioGroup, exactly one), message and messageIcon parts; fixed label.md / body.sm typography, space.content gaps, danger message with the warning-circle glyph; required marker A (asterisk in color.content.secondary, hidden from assistive technology); eleven rules. Foundation additions of the wave (color.choice, size.choice, size.switch, readonly border) recorded in the semantic approval.",
+      "revision": {
+        "paths": ["foundations/components/forms/field/contract.json"],
+        "sha256": {
+          "foundations/components/forms/field/contract.json": "61eb96cdd454371e7be952402f4f0b1569d61c275cfc342fc61711d603952cab"
+        }
+      },
+      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\"",
+      "note": "Conversational approval of the whole wave contract set; the reviewer expects adjustments at the implementation review."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -77,12 +87,11 @@
     "Field typography is fixed (label typography.label.md, description and message typography.body.sm) whatever the control size: the label is a question in medium weight, option labels inside controls are answers in regular weight. Gaps use space.content.* and follow density.",
     "Field passes required, invalid and disabled to its control (OR with the control props) so that one source of truth drives both the marker and the control state.",
     "The message shows only when invalid and non-empty, with the intrinsic warning-circle glyph (Phosphor, inline SVG in the component folder) so that the error is not conveyed by color alone; color.status.danger.content is reused for the text, with a new inventory contrast pair on surface.default (4.5).",
-    "Field accepts InputText, Textarea, Checkbox and RadioGroup; Select, Combobox and later entries will be added to accepts when they exist."
+    "Field accepts InputText, Textarea, Checkbox and RadioGroup; Select, Combobox and later entries will be added to accepts when they exist.",
+    "Required marker A: an asterisk after the label in color.content.secondary, hidden from assistive technology; the control exposes required (user at the contract gate, 2026-10-26, \"A pour 1\")."
   ],
-  "openDecisions": [
-    "Required marker: (A, proposed) an asterisk after the label in color.content.secondary, hidden from assistive technology (the control exposes required); (B) mark optional fields with \"(optional)\" instead and no asterisk; (C) both, chosen per form. Which one?"
-  ],
-  "nextAction": "Contract gate (grouped wave 2 review): present the contract, the token additions and the open decisions; record the approval with digests, then implement (ggb-svelte).",
+  "openDecisions": [],
+  "nextAction": "Implement (ggb-svelte): component folder, examples page, SSR and browser tests, preview; grouped wave 2 implementation gate.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
   ]

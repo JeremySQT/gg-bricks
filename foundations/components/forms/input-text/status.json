@@ -10,13 +10,14 @@
       "A form field inside Field, with label, description and error message.",
       "A standalone search box in a toolbar, named by its label prop, with a leading magnifying-glass icon.",
       "A readonly value that can still be selected and copied (an identifier, an API key).",
-      "Masked password entry."
+      "Masked password entry.",
+      "A search box with a clear button, or a password field with a show/hide button, as a trailing IconButton at sizes md and lg."
     ],
     "exclusions": [
       "Numbers with steppers (NumberInput), dates and times (DatePicker, TimeInput), suggestions (Combobox): their own components.",
-      "Interactive trailing actions (clear button, show password): open decision, proposed for later.",
       "Prefix/suffix text (units, currency), character counters, input masks and formatting.",
-      "Multi-line text: Textarea."
+      "Multi-line text: Textarea.",
+      "A trailing IconButton at size sm (too little room for a second target), and built-in clear or show-password logic: the application supplies the IconButton and its action."
     ],
     "alternatives": [
       "Textarea for multi-line text.",
@@ -24,12 +25,12 @@
       "DataField (wave 5) to display a value that cannot be edited at all."
     ]
   },
-  "dependencies": ["icon"],
+  "dependencies": ["icon", "icon-button"],
   "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading/trailing icon examples."],
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/input-text/contract.json",
-      "sha256": "e2b91a8e598b7a1339986c2b1e9fdd2d1bbfe99c72123657d7e367b6ecdf9c49"
+      "sha256": "c3e5118af4cd9599f49489b3c65c4b18ef02c8ec59b68c9cb168d15bf9298beb"
     },
     "tokens": [
       "foundations/tokens/inventory.json",
@@ -79,14 +80,16 @@
     "Focus shows the approved color.field.focus.border and, on every focus (text entry shows a caret whatever the modality), the same outer focus ring as Button; an invalid field keeps its invalid border while focused, the ring shows focus.",
     "Readonly keeps the field focusable, selectable and submitted; disabled is neither focusable nor submitted.",
     "type limited to text, email, password, search, tel, url; number is NumberInput (wave 6).",
-    "The interaction target meets 44 px in block size without enlarging the visible field (decisions.md minimum target), as Button."
+    "The interaction target meets 44 px in block size without enlarging the visible field (decisions.md minimum target), as Button.",
+    "Trailing actions B (user at the contract gate, 2026-10-26: \"2 je partirai sur B\", with the rule that sm forbids the action): trailing accepts an IconButton at sizes md and lg only. The input imposes on it an existing IconButton size one step smaller (sm in md, md in lg), intent neutral and appearance ghost, without any local override of IconButton: its tokens and behavior are unchanged, the host only chooses its options (the host-imposes-size principle of decisions.md, 2026-10-26). Block and inline-end inset (minHeight − box)/2: 4 px in standard, 2 to 6 px across densities."
   ],
   "openDecisions": [
-    "Trailing actions (clear button for search, show/hide password): (A, proposed) defer to a later change, the trailing slot accepts a decorative Icon only; (B) accept an IconButton in trailing now, which needs an IconButton smaller than sm to fit the sm field (32 px). Which one?"
+    "Confirm the trailing IconButton mechanism proposed in answer to the gate question (next smaller IconButton size imposed by the input, neutral ghost, no local override, forbidden at sm). The contract approval is recorded once confirmed."
   ],
-  "nextAction": "Contract gate (grouped wave 2 review): present the contract, the token additions and the open decisions; record the approval with digests, then implement (ggb-svelte).",
+  "nextAction": "Confirm the trailing IconButton mechanism, record the contract approval, then implement (ggb-svelte) with the rest of wave 2.",
   "implementationNotes": [
-    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26."
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
+    "Svelte: the trailing snippet receives the imposed IconButton props as a parameter (size, intent, appearance, disabled), so that InputText does not import IconButton and IconButton does not read a context from InputText; both folders stay self-contained. A trailing IconButton at size sm is reported as a usage error in development."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
@@ -95,7 +98,7 @@
         "role": "border",
         "backdrop": "muted",
         "appearance": "dark",
-        "reason": "Proposed at the wave 2 contract gate, as accepted for the Button outline border (2026-09-26): color.field.default.border reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected. To be confirmed by the reviewer."
+        "reason": "Accepted at the wave 2 contract gate (2026-10-26, \"4 ok\"), as for the Button outline border (2026-09-26): color.field.default.border (and the readonly border that now aliases it) reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected."
       }
     ]
   }
