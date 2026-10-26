@@ -1,0 +1,255 @@
+{
+  "formatStatus": "v1",
+  "componentId": "icon-button",
+  "family": "actions",
+  "wave": 1,
+  "phase": "done",
+  "scope": {
+    "purpose": "Trigger an action, or navigate to a task, from a compact square control that shows only an icon, with an accessible name that is never visible.",
+    "useCases": [
+      "Toolbars, table rows and card headers where a recognizable icon is enough (close, more, edit, delete, copy).",
+      "Dense layouts beside Buttons of the same size, at the same height and with the same treatments (intent x appearance).",
+      "Navigation to a task with href (an icon-only link with a button appearance), like Button.",
+      "A pending action with loading, keeping the size and focus."
+    ],
+    "exclusions": [
+      "Toggle buttons with a pressed state (bold, mute): SegmentedControl or a later toggle, like Button.",
+      "A visible tooltip: Tooltip (wave 3) is composed by the integration; no native title attribute.",
+      "Badges or counters over the icon (notification dots): a later indicator composition.",
+      "Round (circular) shape: corners follow radius.control of each brand, like Button.",
+      "Menu triggers with a chevron (Menu, wave 3).",
+      "Icon-only links inside prose (Link)."
+    ],
+    "alternatives": [
+      "Button with a leading icon when space allows a visible label, which is always clearer.",
+      "Link for navigation inside text.",
+      "Menu (wave 3) for a list of actions behind a single trigger."
+    ]
+  },
+  "dependencies": ["icon"],
+  "fixtures": [
+    "Phosphor glyphs re-exported by examples/icon/glyphs.ts for the examples and tests (fixtures, not dependencies)."
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/actions/icon-button/contract.json",
+      "sha256": "b9298af06953dbb94216c3e65a257e6db283443d3fe69698105de1ec3919ba79"
+    },
+    "tokens": [],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "actions/icon-button (211:2)",
+      "componentSet": "211:1167",
+      "specification": "219:1828",
+      "ledger": "reports/components/icon-button/figma/ledger.json",
+      "parity": "reports/components/icon-button/figma/parity.json",
+      "screenshots": [
+        "reports/components/icon-button/figma/master-set.png",
+        "reports/components/icon-button/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/icon-button/figma/blueprint-anatomy.png",
+          "node": "219:1924"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/icon-button-master.plugin.js",
+        "authoring/adapters/figma/icon-button-spec.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/actions/icon-button/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/icon-button/IconButton.svelte",
+      "folder": "packages/svelte/src/components/icon-button",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (Button.Root)"
+      },
+      "report": "reports/components/icon-button/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/icon-button",
+      "preview": "dist/previews/icon-button.html (npm run build:preview icon-button)",
+      "artifact": "https://claude.ai/artifact/M41vUxuVssusHawLkXvhhH (version 1)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/icon-button.test.ts",
+      "browser": "tests/browser/icon-button.spec.ts",
+      "computed": "reports/components/icon-button/svelte/computed.json",
+      "screenshots": "reports/components/icon-button/svelte/*.png"
+    },
+    "humanDocs": "documentation/components/icon-button.md",
+    "agentDocs": "documentation/index.json (entry icon-button); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/icon-button.svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "IconButton contract: intent (accent, neutral, danger; default neutral), appearance (solid, outline, ghost; default ghost), size (sm, md, lg), required label as the accessible name only, href, disabled, loading; container, icon (exactly one Icon) and loadingIndicator parts; Button interaction states, precedence and activate event; Button tokens with a square box of size.control.{size}; thirteen rules.",
+      "revision": {
+        "paths": ["foundations/components/actions/icon-button/contract.json"],
+        "sha256": {
+          "foundations/components/actions/icon-button/contract.json": "b9298af06953dbb94216c3e65a257e6db283443d3fe69698105de1ec3919ba79"
+        }
+      },
+      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU (2026-10-16): the only open question (default treatment) answered with \"Pareil pour le neutral+ghost par défaut sur le bouton icône\"; no other remark on this contract across two review rounds. Approval recorded on that basis; the user may object to the record.",
+      "note": "No token change; Link and Badge await their final confirmation at the same gate."
+    },
+    "implementation": {
+      "scope": "IconButton: Bits UI Button.Root, square box of size.control.{size}, Button treatments and guards, icon replaced by the loading indicator in place, 44 px target in both dimensions, aria-label from the required label.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/icon-button/IconButton.svelte",
+          "packages/svelte/src/components/icon-button/contract.generated.ts",
+          "packages/svelte/src/components/icon-button/icon-button.css",
+          "packages/svelte/src/components/icon-button/tokens.generated.css",
+          "packages/svelte/src/components/icon-button/types.ts",
+          "examples/icon-button/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/icon-button/IconButton.svelte": "5747d1987f4da9052e6351061e9af041dfb8a40cbe50ece04366e401ec7b68a2",
+          "packages/svelte/src/components/icon-button/contract.generated.ts": "4a524955ac3998c543b83afee2a1ea6a9dff1e68b09922761d460086fcd12166",
+          "packages/svelte/src/components/icon-button/icon-button.css": "28f3143225c86afc219b816a6823e6a9f4667cfceced717a2a3e073b07b4fc00",
+          "packages/svelte/src/components/icon-button/tokens.generated.css": "226deddd2a209cf061c4ba516895acab195fd6bfafe2490880db8769583f2b4c",
+          "packages/svelte/src/components/icon-button/types.ts": "946087207d9a24c9426021e4d9a43efa0da704e9bb5e639d25d0e68e68f1446b",
+          "examples/icon-button/App.svelte": "696ffe20ac17840d442a56befdfe2bb5c19ee6f5f2e9919abf1fafc1fe5302ec"
+        }
+      },
+      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/M41vUxuVssusHawLkXvhhH version 1.",
+      "note": "Automated evidence: Chromium only; Safari behavior of the label clip reasoned, not observed."
+    },
+    "figmaParity": {
+      "scope": "Figma component set IconButton (211:1167, 135 variants, Icon instance-swap property with the glyph placed directly at size/icon/{size}, 44 px Target outside the layout), specification frame 219:1828 (rows spaced with space/control/gap/{size}, compact sm exception documented), parity report (8 658 records, 0 failures in 18 contexts).",
+      "revision": {
+        "paths": [
+          "foundations/components/actions/icon-button/figma-spec.md",
+          "reports/components/icon-button/figma/parity.json",
+          "reports/components/icon-button/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/actions/icon-button/figma-spec.md": "144baed8290bf81962f11676a67e776bce6a2551aa66a28cf7c66b204a85e661",
+          "reports/components/icon-button/figma/parity.json": "1a94b85a96b25774a9d73589ced389c34adc2e293eee8f7827eea8a4419af092",
+          "reports/components/icon-button/figma/ledger.json": "2bade03743874fc1fab5ab9e1503068c29b0ad1ee7bdd1d176ac3e9281048541"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "page": "211:2",
+          "componentSet": "211:1167",
+          "specificationFrame": "219:1828"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU on 2026-10-26, at the grouped wave 1 Figma parity gate (IconButton, Link, Badge), after the review rounds of 2026-10-20 to 2026-10-26 (Link rebuilt as variants, IconButton gaps on space.control.gap, Link anatomy ring dashed, Badge icon gap, icon slots without a nested Icon): \"Sinon je valide la parité figma des 3 composants\".",
+      "note": null
+    },
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate",
+      "report": "reports/components/icon-button/contract-validation.json",
+      "date": "2026-10-16",
+      "note": "Schema, consistency, token coverage (120 paths) in 18 contexts and accepted components (--dependencies); check-foundations passes (389 roles, 1908 contrast checks, 0 failures)."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/icon-button/contrast.json",
+      "date": "2026-10-16",
+      "note": "6264 contrast records on the contrastScope backdrops in 18 contexts, 0 failures."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-17",
+      "note": "generate, lint, validate, unit tests (40), svelte-check, SSR (38), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/icon-button/svelte/ssr.json",
+      "date": "2026-10-17",
+      "note": "6 IconButton tests."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-17",
+      "note": "Chromium 141, 7 IconButton tests (full suite 61 passed); computed values: 7992 records in 18 contexts (reports/components/icon-button/svelte/computed.json). Details in reports/components/icon-button/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run build:preview icon-button",
+      "date": "2026-10-17",
+      "note": "dist/previews/icon-button.html mounts from file:// without errors."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/icon-button-parity.plugin.js; node authoring/adapters/figma/icon-button-parity-report.mjs <result>",
+      "report": "reports/components/icon-button/figma/parity.json",
+      "date": "2026-10-19",
+      "note": "8658 records (7992 computed records: glyph and content color, surface, border, radius, size, icon size and offset, focus ring, in 18 contexts and the md states of 4 representative contexts; 666 target records), 0 failures; 630 justified differences (forced-colors outline, loading measured with focus). Hash comparison per context, all 18 equal; re-run after the hidden loading indicators were added, unchanged."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/icon-slot-migrate.plugin.js; use_figma authoring/adapters/figma/icon-button-parity.plugin.js; node authoring/adapters/figma/icon-button-parity-report.mjs <result>",
+      "report": "reports/components/icon-button/figma/parity.json",
+      "date": "2026-10-26",
+      "note": "After the icon slot migration (Icon#254:0, glyph placed directly): the 18 context hashes equal those built from computed.json; parity.json regenerated, unchanged (8 658 records, 0 failures)."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs",
+      "date": "2026-10-26",
+      "note": "Page documentation/components/icon-button.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/icon-button/ renders without console errors (Chromium), with the Figma blueprint under Anatomy."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify && npm run verify:generated",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests, svelte-check, SSR, build, docs build; generated files up to date."
+    }
+  ],
+  "decisionsTaken": [
+    "Separate component rather than a Button option: an icon-only control has a different required anatomy (one icon, no visible label), a square box and a different default treatment; Button keeps its required visible label.",
+    "Same props, states, event, precedence and tokens as Button where they apply (intent, appearance, size, href, disabled, loading; color.action.*, radius.control, size.control.{size}, size.icon.{size}, focus roles, motion), so an IconButton matches a Button of the same size; no new token.",
+    "Default intent neutral and appearance ghost (Button: accent solid): icon buttons are mostly secondary actions in toolbars and rows, where a filled accent square is too loud. Confirmed by the user at the contract gate (2026-10-16, \"Pareil pour le neutral+ghost par défaut sur le bouton icône\").",
+    "label is required and only the accessible name, as in the catalog note (\"IconButton needs an explicit accessible name\"); no native title tooltip: it is not keyboard or touch accessible and would duplicate the future Tooltip.",
+    "The icon slot requires exactly one Icon (min 1, max 1) and the host's iconSize applies, as in Button slots (Icon contract rule).",
+    "Box: a square of size.control.{size} (32/40/48 px in standard density, following density like Button heights); the interaction target is extended to 44 px without enlarging the visible box.",
+    "The icon is centered by its box: the reference set draws its 1/8 inset symmetrically, so the box center is the drawing center and no optical compensation is needed.",
+    "Contrast checked on the same contrastScope as Button (six neutral backdrops, outline border on muted in dark informational, accepted at the Button contract gate).",
+    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
+  ],
+  "openDecisions": [],
+  "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",
+  "implementationNotes": [
+    "Self-contained folder packages/svelte/src/components/icon-button/ on the Bits UI Button primitive (button or a with href), its own CSS duplicated from the Button patterns rather than importing Button: a component folder must stay copyable with tokens.css, Bits UI and its declared dependencies (icon).",
+    "Loading indicator: the same inline spinner as Button, sized at iconSize, replacing the icon in place.",
+    "Implemented: the ::before target is extended in both dimensions (Button extends only the width); the review glyphs added for the wave (x, dots-three, pencil-simple, copy, info, magnifying-glass, star) live in examples/icon-button/glyphs.ts so that the Icon review page stays unchanged."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Accepted at the contract gate (2026-09-26): outline border reaches 2.06 to 2.37 on surface.muted in dark; the label identifies the button, WCAG 1.4.11 does not require the boundary."
+      }
+    ]
+  }
+}

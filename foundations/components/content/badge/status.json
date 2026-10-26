@@ -1,0 +1,300 @@
+{
+  "formatStatus": "v1",
+  "componentId": "badge",
+  "family": "content",
+  "wave": 1,
+  "phase": "done",
+  "scope": {
+    "purpose": "Describe an object with a short, read-only status or category word (Draft, Paid, Overdue, Beta) set by the application, in a small colored box whose words carry the meaning and whose color reinforces it.",
+    "useCases": [
+      "A status in a table cell, a list item, a card or a page header (Active, Pending, Failed).",
+      "A category without valence (Internal, Archived) with the neutral intent, or a highlighted one in the brand color (New, Beta) with the accent intent.",
+      "A stronger signal with the strong appearance (a critical status that must stand out in a dense list).",
+      "An optional leading icon that repeats the status shape (check, warning) for faster scanning."
+    ],
+    "exclusions": [
+      "Quantities: Counter.",
+      "Values the user manipulates (removable keywords, active filters, MultiSelect values, user labels), with or without a count: Tag (later candidate).",
+      "A dot without text: a later indicator.",
+      "Badges positioned over another element (avatar or icon corner): a later composition.",
+      "Badges inside a Button slot: a quantity in a Button is a Counter.",
+      "Live announcements when a status changes: the integration owns live regions."
+    ],
+    "alternatives": [
+      "Counter for a number.",
+      "Tag (later) for a value the user can remove or select.",
+      "Plain text when the status is part of a sentence.",
+      "Alert (wave 3) for a message that explains the status."
+    ]
+  },
+  "dependencies": ["icon"],
+  "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading icon examples."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/content/badge/contract.json",
+      "sha256": "87242b5e663c9abdcc5e6b6edbea6ccf2db34e6bc034a74655b721672ce3f24a"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "foundations/tokens/base/semantic/appearance.dark.tokens.json"
+    ],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "content/badge (220:2)",
+      "componentSet": "220:293",
+      "specification": "223:2",
+      "ledger": "reports/components/badge/figma/ledger.json",
+      "parity": "reports/components/badge/figma/parity.json",
+      "screenshots": [
+        "reports/components/badge/figma/master-set.png",
+        "reports/components/badge/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/badge/figma/blueprint-anatomy.png",
+          "node": "223:75"
+        }
+      ],
+      "builders": ["authoring/adapters/figma/badge-master.plugin.js", "authoring/adapters/figma/badge-spec.plugin.js"]
+    },
+    "figmaSpec": "foundations/components/content/badge/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/badge/Badge.svelte",
+      "folder": "packages/svelte/src/components/badge",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (static content, no native semantics to borrow)"
+      },
+      "report": "reports/components/badge/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/badge",
+      "preview": "dist/previews/badge.html (npm run build:preview badge)",
+      "artifact": "https://claude.ai/artifact/6D7aXkYH7NsK7HDygz8dSk (version 2, descenders fixed)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/badge.test.ts",
+      "browser": "tests/browser/badge.spec.ts",
+      "computed": "reports/components/badge/svelte/computed.json",
+      "screenshots": "reports/components/badge/svelte/*.png"
+    },
+    "humanDocs": "documentation/components/badge.md",
+    "agentDocs": "documentation/index.json (entry badge); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/badge.svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Badge contract: required label, intent (neutral, accent, info, success, warning, danger; default neutral), appearance (subtle, strong), size (sm, md, lg); container, leading (at most one Icon) and label parts; no state; color.status.{intent}.* roles, border.width.default, radius.indicator, typography.indicator.{size}, space.content.xs paddings and gap, size.icon.xs; nine rules (read-only text carrying the meaning, appearances, one-line truncation, Counter box family, optical icon placement, no interaction, forced colors). The neutral and accent status roles are recorded in the semantic approval.",
+      "revision": {
+        "paths": ["foundations/components/content/badge/contract.json"],
+        "sha256": {
+          "foundations/components/content/badge/contract.json": "87242b5e663c9abdcc5e6b6edbea6ccf2db34e6bc034a74655b721672ce3f24a"
+        }
+      },
+      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: three review rounds (2026-10-15 to 2026-10-17); Link destinations requested at the first round, Badge simplified and given the accent intent at the third; final \"D'accord pour tout ! Tu peux commencer le reste je valide\" (2026-10-17) covering the remaining questions (Link destinations including phone and print as a printable version, dark link color A, simplified Badge).",
+      "note": null
+    },
+    "implementation": {
+      "scope": "Badge: static text in the Counter box family, status colors in subtle and strong appearances, optional leading icon with optical placement, one-line truncation clipped horizontally only (descenders kept in every browser).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/badge/Badge.svelte",
+          "packages/svelte/src/components/badge/badge.css",
+          "packages/svelte/src/components/badge/contract.generated.ts",
+          "packages/svelte/src/components/badge/tokens.generated.css",
+          "packages/svelte/src/components/badge/types.ts",
+          "examples/badge/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/badge/Badge.svelte": "7870d9f2c00ca017ce96321c7bfd839a7dff999170e12c06e55c62f1b9dcf986",
+          "packages/svelte/src/components/badge/badge.css": "79eec37494cbe9a6fe6609535c0f8867a2c8d474bdaaa0c4ca442829f6752dd7",
+          "packages/svelte/src/components/badge/contract.generated.ts": "9c76153ddaf6cbe88a6e7597249ced0b528e65e0150b0062d8b1e9c23915c058",
+          "packages/svelte/src/components/badge/tokens.generated.css": "61f6f5b730021ae7f86da1c91ee0c62d213c19b53da5f0ad3466d213d2c5f8ca",
+          "packages/svelte/src/components/badge/types.ts": "079e439d142074a11c39bd3dc756125076248e73b3e5e3e9141588b9ecf3f9e9",
+          "examples/badge/App.svelte": "4960d8788e068fae6551745c1cc6c66150c7db4e129392f5c5ceca45434ff557"
+        }
+      },
+      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/6D7aXkYH7NsK7HDygz8dSk version 2. Amendment of 2026-10-20 (user at the Figma parity review, seeing the badge with its icon: \"je trouve l'icône un poil trop espacée du label\"): the glyph inset is compensated on both sides of the icon box, as in Button (margin-inline instead of margin-inline-start), so the drawing sits at leadingGap from the label (4 px in standard instead of 5.5 px); the contract is unchanged (its rule already places the icon by its drawing). Digest of badge.css re-recorded; confirmed at the Figma parity gate of 2026-10-26 (\"je valide la parité figma des 3 composants\", after the before/after comparison).",
+      "note": "Automated evidence: Chromium only; Safari behavior of the label clip reasoned, not observed."
+    },
+    "figmaParity": {
+      "scope": "Figma component set Badge (220:293, 36 variants, Leading icon instance-swap property with the glyph placed directly at size/icon/xs, icon box overlapping the padding and the gap by 1/8), specification frame 223:2, parity report (12 312 records, 0 failures in 18 contexts, iconToLabel included).",
+      "revision": {
+        "paths": [
+          "foundations/components/content/badge/figma-spec.md",
+          "reports/components/badge/figma/parity.json",
+          "reports/components/badge/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/content/badge/figma-spec.md": "fce8b4ea919911f637fee5cc0e8518b2118065134d1136a1abfca4738bf4c468",
+          "reports/components/badge/figma/parity.json": "457fa52ea145db30bc8cb894115e665d1c3e65dbb9892e7855922d50fff49cd4",
+          "reports/components/badge/figma/ledger.json": "151124fe03fffe05c1e1d73eb610081755e625d81a4243f2efdbfb91f3196b39"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "page": "220:2",
+          "componentSet": "220:293",
+          "specificationFrame": "223:2"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU on 2026-10-26, at the grouped wave 1 Figma parity gate (IconButton, Link, Badge), after the review rounds of 2026-10-20 to 2026-10-26 (Link rebuilt as variants, IconButton gaps on space.control.gap, Link anatomy ring dashed, Badge icon gap, icon slots without a nested Icon): \"Sinon je valide la parité figma des 3 composants\".",
+      "note": null
+    },
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate",
+      "report": "reports/components/badge/contract-validation.json",
+      "date": "2026-10-16",
+      "note": "Schema, consistency, token coverage (43 paths) in 18 contexts and accepted components (--dependencies); check-foundations passes (389 roles, 1908 contrast checks, 0 failures)."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/badge/contrast.json",
+      "date": "2026-10-16",
+      "note": "1296 contrast records on the contrastScope backdrops in 18 contexts, 0 failures."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-17",
+      "note": "generate, lint, validate, unit tests (40), svelte-check, SSR (38), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/badge/svelte/ssr.json",
+      "date": "2026-10-17",
+      "note": "5 Badge tests."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-17",
+      "note": "Chromium 141, 6 Badge tests (full suite 61 passed); computed values: 11664 records in 18 contexts (reports/components/badge/svelte/computed.json). Details in reports/components/badge/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run build:preview badge",
+      "date": "2026-10-17",
+      "note": "dist/previews/badge.html mounts from file:// without errors."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/badge-parity.plugin.js; node authoring/adapters/figma/badge-parity-report.mjs <result>",
+      "report": "reports/components/badge/figma/parity.json",
+      "date": "2026-10-19",
+      "note": "11664 records (every computed record: 6 intents × 2 appearances × 3 sizes with the leading icon in 18 contexts), 0 failures; 972 justified differences (strong edge without stroke, tabIndex); width within 1.08 px, height and minimum width within 0.01 px. A first run found the subtle stroke included in the layout; corrected before recording."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-20",
+      "note": "Full suite 61 passed after the icon inset amendment; the Badge test now measures the distance from the icon box to the label (leadingGap − iconSize/8: 0.5, 2.5, 4.5 px in compact, standard, comfortable). computed.json: 12 312 records (iconToLabel added)."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/badge-parity.plugin.js; node authoring/adapters/figma/badge-parity-report.mjs <result>",
+      "report": "reports/components/badge/figma/parity.json",
+      "date": "2026-10-20",
+      "note": "Re-measured after the icon inset amendment (badge/icon-box 9, icon centered in its drawing box): 12 312 records, 0 failures, the 18 hashes equal (iconToLabel added to the exact fields); width within 1.08 px. Supersedes the check of 2026-10-19."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/icon-slot-migrate.plugin.js; use_figma authoring/adapters/figma/badge-parity.plugin.js",
+      "report": "reports/components/badge/figma/parity.json",
+      "date": "2026-10-26",
+      "note": "After the icon slot migration (Leading icon#252:0, glyph placed directly): the 18 context hashes and the numeric fields (height, minimum width, width) are identical to the run of 2026-10-20 recorded in parity.json (12 312 records, 0 failures)."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs",
+      "date": "2026-10-26",
+      "note": "Page documentation/components/badge.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/badge/ renders without console errors (Chromium), with the Figma blueprint under Anatomy."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify && npm run verify:generated",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests, svelte-check, SSR, build, docs build; generated files up to date."
+    }
+  ],
+  "decisionsTaken": [
+    "Colors from the approved color.status.{intent}.* family (surface, content, border, icon for subtle; surfaceStrong and contentStrong for strong) instead of a new indicator family: Badge is the status display the family was named for; the counter's colored emphasis stays deferred.",
+    "Foundations addition: color.status.neutral.{surface,surfaceStrong,content,contentStrong,border,icon} on the appearance axis, aliasing color.palette.neutral (light 100/600/800/0/300/600, dark 800/600/200/0/600/400), so that a category or a state without valence has a badge; four inventory contrast pairs added like the other statuses (content/surface 10.04 to 11.44, contentStrong/surfaceStrong 5.99, icon/surface 5.11 to 5.31, icon/surface.default 5.99 to 6.77; all 18 contexts pass). Brands inherit it through their palette.",
+    "Role names strongSurfaceColor and strongContentColor (suffix Color) because the role-type convention infers colors from surface, content, border or a Color suffix; the strong pair's contrast is guaranteed by the inventory pairs, not by the component report, which measures the subtle pair.",
+    "Leading icon at size.icon.xs (12 px) for every size: the indicator text is 11 to 14 px, so the 16 px icon of a sm Button would dominate; gap space.content.xs; optical placement like Button.",
+    "One line, truncated with an ellipsis when the width is short (table cells); the full label stays readable by assistive technology.",
+    "Strong appearance without a visible border (the strong surface already contrasts); the forced-colors edge is drawn in both appearances.",
+    "Box family of Counter: indicator typography (typography.indicator.{size}, 11/12/14 px), block size = line box, cap-height centering, minimum inline size = block size, radius.indicator, padding space.content.xs; a badge and a counter of the same size align. Sizes named like Button sizes, default md.",
+    "User decision at the contract gate (2026-10-16): Badge, Counter and Tag are distinct. Badge describes an object (status or category, read-only, set by the application); Counter says how many; Tag is a value the user manipulates (removable, sometimes selectable, often user-created). The trailing Counter and the dismissible option suggested at the first review belong to Tag: the trailing slot and space.content.2xs were withdrawn (\"Ok ça me va\"), and Tag is added to the catalog as a later candidate.",
+    "User decision at the contract gate (2026-10-16): neutral intent kept with the color.status.neutral.* roles (part of the accepted proposal).",
+    "User decision at the contract gate (2026-10-16): accent intent added (\"pourquoi pas avoir l'intent accent pour le badge aussi\"): new roles color.status.accent.* aliasing color.palette.accent and mirroring info (light 50/600/800/neutral.0/300/600, dark 950/600/200/neutral.0/800/400); four inventory contrast pairs. Listed after neutral since both are categories rather than statuses. Measured in the 18 contexts: content/surface 8.76 to 11.66, contentStrong/surfaceStrong 5.32 to 5.67, icon/surface 4.96 to 6.47, icon/surface.default 5.32 to 6.85.",
+    "User at the implementation review (2026-10-19): variant A, mixed case with the label clipped horizontally only; all caps rejected (\"capitales ne fonctionne pas\"). The comparison page examples/link-badge-review was removed once decided.",
+    "User at the Figma parity review (2026-10-20): the icon looked a little too far from the label. Cause: the glyph inset (1/8 of the icon) was compensated only before the icon, so the visible gap was leadingGap + 1.5 px. Now compensated on both sides as in Button: the drawing sits at leadingGap from the label (2, 4, 6 px by density); no token change.",
+    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
+  ],
+  "openDecisions": [],
+  "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",
+  "implementationNotes": [
+    "Markup: <span class=\"ggb-badge\" data-intent data-appearance data-size> with the leading icon (aria-hidden) and <span class=\"ggb-badge__label\">; no role (static text). Truncation with native text-overflow and the full label in a title-free visually hidden copy only if truncation hides it (decided at implementation).",
+    "No Bits UI primitive (static content), like Counter.",
+    "Implemented: block-size: 1lh so that the 12 px icon never grows the box; the strong appearance keeps a transparent inset edge; forced colors draw a 1 px CanvasText outline.",
+    "Implementation review (2026-10-17): descenders were cut in Safari (no overflow-clip-margin support); the label is now clipped horizontally only. All-caps alternatives shown for the reviewer's choice on examples/link-badge-review."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "canvas",
+        "reason": "The subtle badge edge is decorative framing: the label carries the meaning and reaches 4.5:1 on the badge's own opaque surface; WCAG 1.4.11 does not require a decorative boundary. color.status.*.border is a light tint by design (palette 300 in light, 800 in dark, 600 for neutral in dark)."
+      },
+      {
+        "role": "border",
+        "backdrop": "default",
+        "reason": "The subtle badge edge is decorative framing: the label carries the meaning and reaches 4.5:1 on the badge's own opaque surface; WCAG 1.4.11 does not require a decorative boundary. color.status.*.border is a light tint by design (palette 300 in light, 800 in dark, 600 for neutral in dark)."
+      },
+      {
+        "role": "border",
+        "backdrop": "subtle",
+        "reason": "The subtle badge edge is decorative framing: the label carries the meaning and reaches 4.5:1 on the badge's own opaque surface; WCAG 1.4.11 does not require a decorative boundary. color.status.*.border is a light tint by design (palette 300 in light, 800 in dark, 600 for neutral in dark)."
+      },
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "reason": "The subtle badge edge is decorative framing: the label carries the meaning and reaches 4.5:1 on the badge's own opaque surface; WCAG 1.4.11 does not require a decorative boundary. color.status.*.border is a light tint by design (palette 300 in light, 800 in dark, 600 for neutral in dark)."
+      },
+      {
+        "role": "border",
+        "backdrop": "raised",
+        "reason": "The subtle badge edge is decorative framing: the label carries the meaning and reaches 4.5:1 on the badge's own opaque surface; WCAG 1.4.11 does not require a decorative boundary. color.status.*.border is a light tint by design (palette 300 in light, 800 in dark, 600 for neutral in dark)."
+      },
+      {
+        "role": "border",
+        "backdrop": "overlay",
+        "reason": "The subtle badge edge is decorative framing: the label carries the meaning and reaches 4.5:1 on the badge's own opaque surface; WCAG 1.4.11 does not require a decorative boundary. color.status.*.border is a light tint by design (palette 300 in light, 800 in dark, 600 for neutral in dark)."
+      }
+    ]
+  }
+}

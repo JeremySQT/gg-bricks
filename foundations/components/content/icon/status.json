@@ -52,7 +52,8 @@
           "node": "152:44"
         }
       ],
-      "blueprintsNote": "Anatomy diagrams of the specification page exported with the Figma MCP get_screenshot on 2026-10-15 and cropped to the board; shown under Anatomy on the documentation site."
+      "blueprintsNote": "Anatomy diagrams of the specification page exported with the Figma MCP get_screenshot on 2026-10-15 and cropped to the board; shown under Anatomy on the documentation site.",
+      "glyphSource": "assets/phosphor (199:2), reports/assets/phosphor/ledger.json"
     },
     "figmaSpec": "foundations/components/content/icon/figma-spec.md",
     "svelte": {
@@ -114,7 +115,7 @@
       "note": "Automated evidence: Chromium only (SSR and Playwright tests in tests/); no assistive-technology test. Amendment 2026-10-15: icon.css vertical-align from middle to calc((1cap - size) / 2) with middle as fallback. User in the Claude Code session https://claude.ai/code/session_01U3p2qzwo1fintkUyC2pViu on 2026-10-15: \"je valide la correction pour l'icône\" (inline alignment on the cap height, reported by the user on the documentation site preview; change record reports/components/icon/changes/2026-10-15-inline-alignment.md)."
     },
     "figmaParity": {
-      "scope": "Figma component set Icon (149:20, 5 variants Size xs to xl, Glyph instance-swap property on the local _Fixture/Icon set), specification frame 152:7, parity report (360 records, 0 failures: width, height and glyph fill per size in 18 contexts plus drawing size and inset), Icon masters placed in the Button leading and trailing slots.",
+      "scope": "Figma component set Icon (149:20, 5 variants Size xs to xl, Glyph instance-swap property; glyphs from the local Phosphor components of the page assets/phosphor since 2026-10-19, before that the _Fixture/Icon set), specification frame 152:7, parity report (360 records, 0 failures: width, height and glyph fill per size in 18 contexts plus drawing size and inset), Icon masters placed in the Button leading and trailing slots.",
       "revision": {
         "paths": [
           "foundations/components/content/icon/figma-spec.md",
@@ -122,9 +123,9 @@
           "reports/components/icon/figma/ledger.json"
         ],
         "sha256": {
-          "foundations/components/content/icon/figma-spec.md": "928a1318186644c41d49377870a0e080734121b179912c3f35aadd96e4a40674",
+          "foundations/components/content/icon/figma-spec.md": "deb4466458039190889dff8c13d01ed124e981fe230bd675de8d444e00fefde3",
           "reports/components/icon/figma/parity.json": "52449f9642621550de7713c57c50055aded772a888b04291517f1f1f9a606660",
-          "reports/components/icon/figma/ledger.json": "9c0af03798885a63b9149d0eeb0ace6a025428d105616d9493f9180e4fbbb3f1"
+          "reports/components/icon/figma/ledger.json": "8900972c738837e90a548f83edd6126f10931ee3fafaa944ae1688092d662aa6"
         },
         "figma": {
           "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
@@ -133,8 +134,8 @@
           "specificationFrame": "152:7"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, at the grouped wave 1 Figma parity gate (Icon, Counter, Shortcut and the Button with the real slot content), after reviewing the Figma pages, the master and specification screenshots, the parity reports and the preview artifacts: \"Très bien le counter comme ça, jolie travail.\" then, asked whether the validation covered the whole gate, \"La validation porte sur la parité figma de la vague 1. On peut avancer.\"",
-      "note": "Library not published (publication needs explicit authorization). Glyphs are local Phosphor fixtures until a Phosphor library is attached (justified difference 3 of the Figma specification)."
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, at the grouped wave 1 Figma parity gate (Icon, Counter, Shortcut and the Button with the real slot content), after reviewing the Figma pages, the master and specification screenshots, the parity reports and the preview artifacts: \"Très bien le counter comme ça, jolie travail.\" then, asked whether the validation covered the whole gate, \"La validation porte sur la parité figma de la vague 1. On peut avancer.\" Amendment of 2026-10-19 (glyph source: Phosphor 2.1.1 regular imported on the page assets/phosphor, fixtures replaced by identical glyphs; reports/components/icon/changes/2026-10-19-phosphor-glyphs.md): user in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU, \"Je penche pour l'option A\" then \"Je suis d'accord pour faire sur une page voisine […] il faudrait aussi ajouter une petite spec sur la page de la librairie\"; figma-spec.md and ledger.json re-digested, parity.json unchanged. Amendment of 2026-10-26 at the wave 1 Figma parity review (session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU), requested by the user: components impose the size of what they hold (\"la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\"; option 2 for Counter and Shortcut: \"Va pour l'option 2, tu peux la faire maintenant\"). Icon itself is unchanged; its description and specification text say that components with an icon place the glyph themselves. Digests re-recorded.",
+      "note": "Library not published (publication needs explicit authorization). Glyphs are the local Phosphor 2.1.1 regular components of the page assets/phosphor (justified difference 3 of the Figma specification; reports/assets/phosphor/ledger.json)."
     },
     "documentation": null,
     "delivery": null
@@ -177,6 +178,14 @@
       "report": "reports/browser-results.json",
       "date": "2026-10-15",
       "note": "40 tests including the new inline alignment test (icon center within 0.5 px of the middle of the capitals; measured 0.02 px)."
+    },
+    {
+      "kind": "modify",
+      "result": "passed",
+      "command": "Figma inspection (instance references, vector paths, specification screenshots), npm run verify",
+      "report": "reports/components/icon/changes/2026-10-19-phosphor-glyphs.md",
+      "date": "2026-10-19",
+      "note": "Glyph source moved from _Fixture/Icon to the Phosphor components of assets/phosphor: identical vectors, 0 instances referencing a missing or fixture component. Correction: the swap dropped the Button leading glyph color override (135 variants); restored to button/foreground and checked (270 checks, 0 differences)."
     }
   ],
   "decisionsTaken": [
@@ -191,7 +200,7 @@
     "Implementation: the svg element is the component root (not wrapped in a span), so that hosts that select their slot's svg (Button) size and offset the Icon exactly as a raw glyph; attributes pass through to the svg.",
     "Implementation: a blank label counts as no label (decorative), so an empty string from a binding never yields an unnamed image.",
     "Review page: the disabled-color sample was replaced by a tertiary-color sample because disabled text on the canvas is below 4.5:1 and fails the axe audit; the test assertion follows (a page choice, not a component change).",
-    "Figma: the Icon master is a Size variant set whose Glyph is an instance-swap property defaulting to the _Fixture/Icon set (Phosphor fixtures), instead of Name variants per glyph: the glyph is content, so it is swapped, not enumerated. Size=md is the default variant. The _Fixture/Icon set stays on the Utilities page as the glyph source until a Phosphor library is attached.",
+    "Figma: the Icon master is a Size variant set whose Glyph is an instance-swap property defaulting to a Phosphor glyph, instead of Name variants per glyph: the glyph is content, so it is swapped, not enumerated. Size=md is the default variant. The glyphs were the local _Fixture/Icon set until 2026-10-19; since then they are the 1,512 Phosphor 2.1.1 regular components of the page assets/phosphor (user, option A: local import on a separate assets page with a notes frame, designers reach the glyphs only through Icon).",
     "Done (2026-10-14): documentation page documentation/components/icon.md and index entry written after the wave 1 Figma parity gate; phase set to done within the declared scope. The Figma library and the npm package are not published (delivery approval pending)."
   ],
   "openDecisions": [],

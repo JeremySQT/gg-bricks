@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "badge",
+  "props": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "intent": {
+      "values": ["neutral", "accent", "info", "success", "warning", "danger"],
+      "default": "neutral"
+    },
+    "appearance": {
+      "values": ["subtle", "strong"],
+      "default": "subtle"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    }
+  },
+  "parts": {
+    "container": {},
+    "leading": {
+      "accepts": ["icon"],
+      "max": 1
+    },
+    "label": {}
+  },
+  "states": {},
+  "tokens": {
+    "surface": "color.status.{intent}.surface",
+    "content": "color.status.{intent}.content",
+    "border": "color.status.{intent}.border",
+    "iconColor": "color.status.{intent}.icon",
+    "strongSurfaceColor": "color.status.{intent}.surfaceStrong",
+    "strongContentColor": "color.status.{intent}.contentStrong",
+    "borderWidth": "border.width.default",
+    "radius": "radius.indicator",
+    "typography": "typography.indicator.{size}",
+    "paddingInline": "space.content.xs",
+    "leadingGap": "space.content.xs",
+    "iconSize": "size.icon.xs"
+  },
+  "rules": [
+    "Arrange leading and label in that order inside container. label is required and non-empty; it is the visible text and is read as plain text, so the meaning never depends on the color: the intent only reinforces what the words say.",
+    "intent names the color family: neutral for a category or a state without valence (Draft, Archived), accent for a highlighted category in the brand color (New, Beta), info, success, warning and danger for the matching statuses.",
+    "The subtle appearance paints container in surface with a border of borderWidth in border inside its boundary, label in content and the leading icon in iconColor. The strong appearance paints container in strongSurfaceColor without a visible border, and label and the leading icon in strongContentColor.",
+    "The label is set in typography (the indicator typography of the size, one step below a Button label of the same size), on one line, never wrapped; when the available width is shorter than the badge, the label is truncated with an ellipsis, the leading icon stays whole and the full label stays available as text to assistive technology.",
+    "The container block size is the line box of the label typography; the label is centered vertically on its capital height, not on the line box. Inline padding is paddingInline on both sides, the minimum inline size equals the block size, and corners use radius: the badge shares the box family of Counter and sits on the same line at the same height.",
+    "The leading part holds at most one decorative icon at iconSize, hidden from assistive technology and placed by its drawing: icons of the reference set draw 1/8 of iconSize inside their box, so the icon box overlaps the padding by that amount. leadingGap separates it from the label.",
+    "Sizes are named like Button sizes; the typography, the icon size and the block size do not change with density, the inline padding does.",
+    "The badge is not interactive: it is never focusable, emits no events and has no hover, pressed or disabled state. It does not change the colors of the surrounding content and is not placed inside a Button slot (a quantity in a Button is a Counter). A removable or selectable value is a Tag, not a badge.",
+    "In forced-colors mode the container shows an edge of borderWidth in the system text color and the label stays in the system text color, so the box stays visible in both appearances."
+  ]
+}

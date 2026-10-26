@@ -22,9 +22,9 @@ A side padding (2, 4 or 6 px with the density), B height (the line box of the di
 
 ## When not to use
 
-- A status or a category in words (“Draft”, “New”): Badge (planned).
+- A status or a category in words (“Draft”, “New”): Badge.
 - Free text, units or amounts (“12 kB”, “€ 4.50”): plain text.
-- A dot that only signals something new: Badge (planned).
+- A dot that only signals something new: a later indicator (planned).
 - Editing a quantity: NumberInput (planned).
 - A colored emphasis (accent, danger): not available; the counter takes the color of its context.
 

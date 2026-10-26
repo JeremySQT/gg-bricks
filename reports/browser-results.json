@@ -65,6 +65,218 @@
   },
   "suites": [
     {
+      "title": "badge.spec.ts",
+      "file": "badge.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "read as plain text: the label is the text, the icon is hidden, nothing is interactive",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1212,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:08:07.908Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "556dc9409904593b1296-c62feea4d17e27a1d0ad",
+          "file": "badge.spec.ts",
+          "line": 110,
+          "column": 1
+        },
+        {
+          "title": "geometry: the Counter box family, density-independent height, inline padding and an optical icon",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 850,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:08:09.271Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "556dc9409904593b1296-c145616d5d9f3b3f5511",
+          "file": "badge.spec.ts",
+          "line": 127,
+          "column": 1
+        },
+        {
+          "title": "the label truncates with an ellipsis in a narrow cell; the icon stays whole and nothing overflows",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 577,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:08:10.139Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "556dc9409904593b1296-6bb99209d135cbc9073b",
+          "file": "badge.spec.ts",
+          "line": 160,
+          "column": 1
+        },
+        {
+          "title": "computed values match the resolved tokens for every intent, appearance and size in every context",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8651,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:08:10.728Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "556dc9409904593b1296-3beacf65df85b9251720",
+          "file": "badge.spec.ts",
+          "line": 181,
+          "column": 1
+        },
+        {
+          "title": "no motion; forced colors keep the box visible with an edge in the system text color",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 743,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:08:19.394Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "556dc9409904593b1296-955acb3f0e9dbff9911d",
+          "file": "badge.spec.ts",
+          "line": 230,
+          "column": 1
+        },
+        {
+          "title": "automated accessibility audit and screenshots in light and dark, desktop and mobile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3351,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:08:20.150Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "556dc9409904593b1296-63fa330e222e53973c0e",
+          "file": "badge.spec.ts",
+          "line": 247,
+          "column": 1
+        }
+      ]
+    },
+    {
       "title": "button.spec.ts",
       "file": "button.spec.ts",
       "column": 0,
@@ -86,12 +298,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1705,
+                  "duration": 973,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:47:22.215Z",
+                  "startTime": "2026-10-26T15:08:23.533Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -101,7 +313,7 @@
           ],
           "id": "853d4d75579e0323ed08-b89b1725aaddedf266b1",
           "file": "button.spec.ts",
-          "line": 70,
+          "line": 79,
           "column": 1
         },
         {
@@ -120,12 +332,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3360,
+                  "duration": 2936,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:47:24.100Z",
+                  "startTime": "2026-10-26T15:08:24.518Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -135,7 +347,7 @@
           ],
           "id": "853d4d75579e0323ed08-98491803819d6e7fbee0",
           "file": "button.spec.ts",
-          "line": 90,
+          "line": 99,
           "column": 1
         },
         {
@@ -154,12 +366,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 895,
+                  "duration": 771,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:47:27.476Z",
+                  "startTime": "2026-10-26T15:08:27.469Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -169,7 +381,7 @@
           ],
           "id": "853d4d75579e0323ed08-8fcaf8b52cd4e7854bee",
           "file": "button.spec.ts",
-          "line": 142,
+          "line": 151,
           "column": 1
         },
         {
@@ -188,12 +400,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 677,
+                  "duration": 711,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:47:28.392Z",
+                  "startTime": "2026-10-26T15:08:28.255Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -203,7 +415,7 @@
           ],
           "id": "853d4d75579e0323ed08-5cd2f70aa609b89843a9",
           "file": "button.spec.ts",
-          "line": 182,
+          "line": 191,
           "column": 1
         },
         {
@@ -222,12 +434,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 841,
+                  "duration": 739,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:47:29.085Z",
+                  "startTime": "2026-10-26T15:08:28.981Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -237,7 +449,7 @@
           ],
           "id": "853d4d75579e0323ed08-6ee62835c2d615e5c410",
           "file": "button.spec.ts",
-          "line": 233,
+          "line": 242,
           "column": 1
         },
         {
@@ -256,12 +468,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2848,
+                  "duration": 2536,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:47:29.945Z",
+                  "startTime": "2026-10-26T15:08:29.736Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -271,7 +483,7 @@
           ],
           "id": "853d4d75579e0323ed08-c4f5fdfecd5f8a624e6d",
           "file": "button.spec.ts",
-          "line": 359,
+          "line": 368,
           "column": 1
         },
         {
@@ -290,12 +502,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 20468,
+                  "duration": 17104,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:47:32.809Z",
+                  "startTime": "2026-10-26T15:08:32.283Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -305,7 +517,7 @@
           ],
           "id": "853d4d75579e0323ed08-bd9703aa9764312f09cc",
           "file": "button.spec.ts",
-          "line": 414,
+          "line": 423,
           "column": 1
         },
         {
@@ -324,12 +536,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 935,
+                  "duration": 827,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:47:53.295Z",
+                  "startTime": "2026-10-26T15:08:49.400Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -339,7 +551,7 @@
           ],
           "id": "853d4d75579e0323ed08-07f3c63a4318edf4070d",
           "file": "button.spec.ts",
-          "line": 521,
+          "line": 530,
           "column": 1
         },
         {
@@ -358,12 +570,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4070,
+                  "duration": 4018,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:47:54.249Z",
+                  "startTime": "2026-10-26T15:08:50.241Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -373,7 +585,7 @@
           ],
           "id": "853d4d75579e0323ed08-5f9df68aed05dd4e2add",
           "file": "button.spec.ts",
-          "line": 544,
+          "line": 553,
           "column": 1
         }
       ]
@@ -400,12 +612,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 934,
+                  "duration": 973,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:47:58.351Z",
+                  "startTime": "2026-10-26T15:08:54.301Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -415,7 +627,7 @@
           ],
           "id": "50879ed375f8988ef978-521f39c58fb6cc969b97",
           "file": "counter.spec.ts",
-          "line": 139,
+          "line": 148,
           "column": 1
         },
         {
@@ -434,12 +646,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 752,
+                  "duration": 704,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:47:59.297Z",
+                  "startTime": "2026-10-26T15:08:55.290Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -449,7 +661,7 @@
           ],
           "id": "50879ed375f8988ef978-cc37540377abc0063c01",
           "file": "counter.spec.ts",
-          "line": 183,
+          "line": 192,
           "column": 1
         },
         {
@@ -468,12 +680,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1106,
+                  "duration": 969,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:48:00.060Z",
+                  "startTime": "2026-10-26T15:08:56.007Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -483,7 +695,7 @@
           ],
           "id": "50879ed375f8988ef978-718a67744deb663a2a08",
           "file": "counter.spec.ts",
-          "line": 205,
+          "line": 214,
           "column": 1
         },
         {
@@ -502,12 +714,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 757,
+                  "duration": 864,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:48:01.182Z",
+                  "startTime": "2026-10-26T15:08:56.989Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -517,7 +729,7 @@
           ],
           "id": "50879ed375f8988ef978-ee2116f77757be8b7cde",
           "file": "counter.spec.ts",
-          "line": 294,
+          "line": 303,
           "column": 1
         },
         {
@@ -536,12 +748,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 993,
+                  "duration": 1061,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:48:01.954Z",
+                  "startTime": "2026-10-26T15:08:57.868Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -551,7 +763,7 @@
           ],
           "id": "50879ed375f8988ef978-14fa178f7920e976c5c5",
           "file": "counter.spec.ts",
-          "line": 337,
+          "line": 346,
           "column": 1
         },
         {
@@ -570,12 +782,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3379,
+                  "duration": 3020,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:48:02.961Z",
+                  "startTime": "2026-10-26T15:08:58.942Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -585,7 +797,7 @@
           ],
           "id": "50879ed375f8988ef978-c23fa07248280750496a",
           "file": "counter.spec.ts",
-          "line": 399,
+          "line": 408,
           "column": 1
         },
         {
@@ -604,12 +816,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 762,
+                  "duration": 821,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:48:06.351Z",
+                  "startTime": "2026-10-26T15:09:01.977Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -619,7 +831,7 @@
           ],
           "id": "50879ed375f8988ef978-81abd5544fca505d033a",
           "file": "counter.spec.ts",
-          "line": 501,
+          "line": 510,
           "column": 1
         },
         {
@@ -638,12 +850,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3255,
+                  "duration": 3409,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:48:07.128Z",
+                  "startTime": "2026-10-26T15:09:02.813Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -653,7 +865,7 @@
           ],
           "id": "50879ed375f8988ef978-f5a782397f6ae247392e",
           "file": "counter.spec.ts",
-          "line": 537,
+          "line": 546,
           "column": 1
         }
       ]
@@ -685,7 +897,7 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:48:10.407Z",
+                  "startTime": "2026-10-26T15:09:06.258Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -714,12 +926,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 39191,
+                  "duration": 51494,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:48:10.423Z",
+                  "startTime": "2026-10-26T15:09:06.273Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -748,12 +960,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 37207,
+                  "duration": 48503,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:48:49.628Z",
+                  "startTime": "2026-10-26T15:09:57.786Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -782,12 +994,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1559,
+                  "duration": 1657,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:26.849Z",
+                  "startTime": "2026-10-26T15:10:46.304Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -816,12 +1028,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1444,
+                  "duration": 1383,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:28.420Z",
+                  "startTime": "2026-10-26T15:10:47.975Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -850,12 +1062,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1390,
+                  "duration": 1358,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:29.873Z",
+                  "startTime": "2026-10-26T15:10:49.372Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -884,12 +1096,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1361,
+                  "duration": 1338,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:31.275Z",
+                  "startTime": "2026-10-26T15:10:50.744Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -898,6 +1110,108 @@
             }
           ],
           "id": "cd5a797f9c47b37db176-55f54e4f6457d3ae4ec2",
+          "file": "docs-site.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "icon-button: playground, blueprints and every live block",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1471,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:10:52.100Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cd5a797f9c47b37db176-e08fc876f63e053b2889",
+          "file": "docs-site.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "link: playground, blueprints and every live block",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1412,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:10:53.581Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cd5a797f9c47b37db176-429eff54f6a0f754a7da",
+          "file": "docs-site.spec.ts",
+          "line": 74,
+          "column": 3
+        },
+        {
+          "title": "badge: playground, blueprints and every live block",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1367,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:10:55.009Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cd5a797f9c47b37db176-ac2be0f93ee2cc7660e5",
           "file": "docs-site.spec.ts",
           "line": 74,
           "column": 3
@@ -923,7 +1237,7 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:32.647Z",
+                  "startTime": "2026-10-26T15:10:56.391Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -952,12 +1266,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1440,
+                  "duration": 1446,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:34.272Z",
+                  "startTime": "2026-10-26T15:10:58.017Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -968,6 +1282,252 @@
           "id": "cd5a797f9c47b37db176-780414f0e85bfddd5629",
           "file": "docs-site.spec.ts",
           "line": 143,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "icon-button.spec.ts",
+      "file": "icon-button.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the label is the accessible name; the icon is hidden and nothing is visible as text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 748,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:10:59.488Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4d384f95d4ed2293b4d-55d72e324106ad171de4",
+          "file": "icon-button.spec.ts",
+          "line": 104,
+          "column": 1
+        },
+        {
+          "title": "activation by pointer, Enter and Space; forms submit only on request",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 623,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:00.248Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4d384f95d4ed2293b4d-ef66ccae35ffe44e1536",
+          "file": "icon-button.spec.ts",
+          "line": 120,
+          "column": 1
+        },
+        {
+          "title": "loading keeps focus and size, replaces the icon and blocks activation; disabled leaves the tab order",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2654,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:00.887Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4d384f95d4ed2293b4d-1705a53a4df81c704c74",
+          "file": "icon-button.spec.ts",
+          "line": 134,
+          "column": 1
+        },
+        {
+          "title": "a square of the control size in every density, a centered icon and a 44 px target",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 890,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:03.558Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4d384f95d4ed2293b4d-ae8d8f93472cafee2359",
+          "file": "icon-button.spec.ts",
+          "line": 175,
+          "column": 1
+        },
+        {
+          "title": "computed values match the resolved tokens for every option, state and context",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15066,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:04.463Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4d384f95d4ed2293b4d-a6836c0b5f608f7b551d",
+          "file": "icon-button.spec.ts",
+          "line": 215,
+          "column": 1
+        },
+        {
+          "title": "transitions follow the motion tokens and stop under reduced motion; forced colors stay usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 827,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:19.545Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4d384f95d4ed2293b4d-21e9d39f2bc9ed7ecf73",
+          "file": "icon-button.spec.ts",
+          "line": 310,
+          "column": 1
+        },
+        {
+          "title": "automated accessibility audit and screenshots in light and dark, desktop and mobile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3697,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:20.389Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4d384f95d4ed2293b4d-d1deaf557e50addc5bd8",
+          "file": "icon-button.spec.ts",
+          "line": 334,
           "column": 1
         }
       ]
@@ -994,12 +1554,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1835,
+                  "duration": 2196,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:35.731Z",
+                  "startTime": "2026-10-26T15:11:24.106Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1009,7 +1569,7 @@
           ],
           "id": "535808cb8277c0a9ae9e-b7a144cc1564a627d705",
           "file": "icon.spec.ts",
-          "line": 37,
+          "line": 46,
           "column": 1
         },
         {
@@ -1028,12 +1588,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 485,
+                  "duration": 497,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:37.576Z",
+                  "startTime": "2026-10-26T15:11:26.315Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1043,7 +1603,7 @@
           ],
           "id": "535808cb8277c0a9ae9e-2dd8f896db3369486f25",
           "file": "icon.spec.ts",
-          "line": 63,
+          "line": 72,
           "column": 1
         },
         {
@@ -1062,12 +1622,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 492,
+                  "duration": 545,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:38.071Z",
+                  "startTime": "2026-10-26T15:11:26.829Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1077,7 +1637,7 @@
           ],
           "id": "535808cb8277c0a9ae9e-31f36d2d0adbb8c600d5",
           "file": "icon.spec.ts",
-          "line": 81,
+          "line": 90,
           "column": 1
         },
         {
@@ -1096,12 +1656,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 371,
+                  "duration": 419,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:38.572Z",
+                  "startTime": "2026-10-26T15:11:27.385Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1111,7 +1671,7 @@
           ],
           "id": "535808cb8277c0a9ae9e-3eb1d0f10c0c1d91bb42",
           "file": "icon.spec.ts",
-          "line": 105,
+          "line": 114,
           "column": 1
         },
         {
@@ -1130,12 +1690,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2464,
+                  "duration": 2467,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:38.954Z",
+                  "startTime": "2026-10-26T15:11:27.817Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1145,7 +1705,287 @@
           ],
           "id": "535808cb8277c0a9ae9e-19d6673d4afa64728412",
           "file": "icon.spec.ts",
-          "line": 128,
+          "line": 137,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "link.spec.ts",
+      "file": "link.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "every destination announces what it leads to; the glyph is hidden",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 780,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:30.308Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4839f04bc45534c03c5b-6208789671c838a25146",
+          "file": "link.spec.ts",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "only external opens a new tab, without opener; other destinations navigate in place",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 526,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:31.100Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4839f04bc45534c03c5b-59c13afcc0bd15e6dffd",
+          "file": "link.spec.ts",
+          "line": 121,
+          "column": 1
+        },
+        {
+          "title": "the file glyph follows the format; unknown formats get the generic file",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 431,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:31.639Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4839f04bc45534c03c5b-d68957769969623a52ac",
+          "file": "link.spec.ts",
+          "line": 137,
+          "column": 1
+        },
+        {
+          "title": "the link takes the font of its text; meta and glyph stay with the last word when the line wraps",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1095,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:32.087Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4839f04bc45534c03c5b-4a87c326ad32c52d9bd2",
+          "file": "link.spec.ts",
+          "line": 148,
+          "column": 1
+        },
+        {
+          "title": "underlined in every state; hover and press thicken the underline without changing the color",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 486,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:33.199Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4839f04bc45534c03c5b-e55685e5589922526542",
+          "file": "link.spec.ts",
+          "line": 177,
+          "column": 1
+        },
+        {
+          "title": "computed values match the resolved tokens in every context; tone inherit takes the text color",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3563,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:33.696Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4839f04bc45534c03c5b-7dc8825346df2da97e52",
+          "file": "link.spec.ts",
+          "line": 197,
+          "column": 1
+        },
+        {
+          "title": "forced colors use the system link color and keep the underline and the focus ring",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 721,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:37.271Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4839f04bc45534c03c5b-ca7c5c910f93e8e06c7a",
+          "file": "link.spec.ts",
+          "line": 260,
+          "column": 1
+        },
+        {
+          "title": "automated accessibility audit and screenshots in light and dark, desktop and mobile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2864,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:11:38.014Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4839f04bc45534c03c5b-ebda65c28742601c38fe",
+          "file": "link.spec.ts",
+          "line": 281,
           "column": 1
         }
       ]
@@ -1172,12 +2012,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1248,
+                  "duration": 1175,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:41.445Z",
+                  "startTime": "2026-10-26T15:11:40.916Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1187,7 +2027,7 @@
           ],
           "id": "ac842abf167403f6b8c1-cc4406eb27a086f2292d",
           "file": "shortcut.spec.ts",
-          "line": 120,
+          "line": 129,
           "column": 1
         },
         {
@@ -1206,12 +2046,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 542,
+                  "duration": 585,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:42.709Z",
+                  "startTime": "2026-10-26T15:11:42.103Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1221,7 +2061,7 @@
           ],
           "id": "ac842abf167403f6b8c1-b1f935f56059740d970e",
           "file": "shortcut.spec.ts",
-          "line": 167,
+          "line": 176,
           "column": 1
         },
         {
@@ -1240,12 +2080,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1266,
+                  "duration": 1140,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:43.264Z",
+                  "startTime": "2026-10-26T15:11:42.698Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1255,7 +2095,7 @@
           ],
           "id": "ac842abf167403f6b8c1-fe4db51f85c8011f3c1d",
           "file": "shortcut.spec.ts",
-          "line": 199,
+          "line": 208,
           "column": 1
         },
         {
@@ -1274,12 +2114,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1622,
+                  "duration": 1489,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:44.548Z",
+                  "startTime": "2026-10-26T15:11:43.854Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1289,7 +2129,7 @@
           ],
           "id": "ac842abf167403f6b8c1-b6c5b4f377e290853fdf",
           "file": "shortcut.spec.ts",
-          "line": 263,
+          "line": 272,
           "column": 1
         },
         {
@@ -1308,12 +2148,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 607,
+                  "duration": 523,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:46.183Z",
+                  "startTime": "2026-10-26T15:11:45.362Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1323,7 +2163,7 @@
           ],
           "id": "ac842abf167403f6b8c1-8ed66d42319729c1ed6b",
           "file": "shortcut.spec.ts",
-          "line": 309,
+          "line": 318,
           "column": 1
         },
         {
@@ -1342,12 +2182,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5038,
+                  "duration": 4515,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:46.804Z",
+                  "startTime": "2026-10-26T15:11:45.900Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1357,7 +2197,7 @@
           ],
           "id": "ac842abf167403f6b8c1-a37869b9fd4e50b4bed6",
           "file": "shortcut.spec.ts",
-          "line": 369,
+          "line": 378,
           "column": 1
         },
         {
@@ -1376,12 +2216,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 897,
+                  "duration": 822,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:51.857Z",
+                  "startTime": "2026-10-26T15:11:50.427Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1391,7 +2231,7 @@
           ],
           "id": "ac842abf167403f6b8c1-08d138353474914cc930",
           "file": "shortcut.spec.ts",
-          "line": 456,
+          "line": 465,
           "column": 1
         },
         {
@@ -1410,12 +2250,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5536,
+                  "duration": 5470,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:52.774Z",
+                  "startTime": "2026-10-26T15:11:51.260Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1425,7 +2265,7 @@
           ],
           "id": "ac842abf167403f6b8c1-624ed5decbfedebf0563",
           "file": "shortcut.spec.ts",
-          "line": 471,
+          "line": 480,
           "column": 1
         },
         {
@@ -1444,12 +2284,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 584,
+                  "duration": 531,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T14:49:58.327Z",
+                  "startTime": "2026-10-26T15:11:56.748Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1459,7 +2299,7 @@
           ],
           "id": "ac842abf167403f6b8c1-a083ebc959840b43a1b0",
           "file": "shortcut.spec.ts",
-          "line": 496,
+          "line": 506,
           "column": 1
         }
       ]
@@ -1467,9 +2307,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-15T14:47:02.222Z",
-    "duration": 176874.80000000002,
-    "expected": 40,
+    "startTime": "2026-10-26T15:07:50.679Z",
+    "duration": 246762.209,
+    "expected": 64,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

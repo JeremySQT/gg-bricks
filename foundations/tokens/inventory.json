@@ -1592,6 +1592,66 @@
       "axis": "appearance"
     },
     {
+      "path": "color.status.neutral.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.neutral.surfaceStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.neutral.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.neutral.contentStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.neutral.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.neutral.icon",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.accent.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.accent.surfaceStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.accent.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.accent.contentStrong",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.accent.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.status.accent.icon",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
       "path": "color.status.info.surface",
       "type": "color",
       "axis": "appearance"
@@ -1989,6 +2049,21 @@
       "minimum": 4.5
     },
     {
+      "content": "color.content.link",
+      "surface": "color.surface.muted",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.link",
+      "surface": "color.surface.raised",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.link",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5
+    },
+    {
       "content": "color.content.inverse",
       "surface": "color.surface.inverse",
       "minimum": 4.5
@@ -2255,6 +2330,46 @@
     },
     {
       "content": "color.field.invalid.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.neutral.content",
+      "surface": "color.status.neutral.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.neutral.contentStrong",
+      "surface": "color.status.neutral.surfaceStrong",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.neutral.icon",
+      "surface": "color.status.neutral.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.neutral.icon",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.accent.content",
+      "surface": "color.status.accent.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.accent.contentStrong",
+      "surface": "color.status.accent.surfaceStrong",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.status.accent.icon",
+      "surface": "color.status.accent.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.accent.icon",
       "surface": "color.surface.default",
       "minimum": 3
     },

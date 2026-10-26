@@ -134,6 +134,42 @@
         "hiddenFromPublishing": true,
         "value": "alias color/content/primary (Foundations · Appearance, VariableID:7:10) in the three modes",
         "note": "Stands for the inherited content color; the Button overrides the Value fill and Tint fill of its Counter instance with button/foreground (VariableID:90:13). Formerly VariableID:149:1549 in _ggbrick counter (deleted 2026-10-14)."
+      },
+      "counter/font-family": {
+        "id": "VariableID:278:250",
+        "scopes": [
+          "FONT_FAMILY"
+        ],
+        "value": "alias typography/indicator/{mode}/fontFamily"
+      },
+      "counter/font-weight": {
+        "id": "VariableID:278:251",
+        "scopes": [
+          "FONT_WEIGHT"
+        ],
+        "value": "alias typography/indicator/{mode}/fontWeight"
+      },
+      "counter/font-size": {
+        "id": "VariableID:278:252",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "value": "alias typography/indicator/{mode}/fontSize"
+      },
+      "counter/line-height": {
+        "id": "VariableID:278:253",
+        "scopes": [
+          "LINE_HEIGHT",
+          "WIDTH_HEIGHT"
+        ],
+        "value": "alias typography/indicator/{mode}/lineHeight"
+      },
+      "counter/letter-spacing": {
+        "id": "VariableID:278:254",
+        "scopes": [
+          "LETTER_SPACING"
+        ],
+        "value": "alias typography/indicator/{mode}/letterSpacing"
       }
     }
   },
@@ -188,6 +224,29 @@
     {
       "date": "2026-10-14",
       "change": "Token collections renamed Foundations · Primitives, Foundations · Brand, Foundations · Appearance and Foundations · Density (IDs and bindings unchanged); the adapter scripts of this component resolve the short axis names to the prefixed ones."
+    },
+    {
+      "date": "2026-10-26",
+      "change": "Internal part _Counter/Nested (278:261) and the adapter variables counter/* created (authoring/adapters/figma/nested-parts.plugin.js). User decision at the wave 1 Figma parity review (2026-10-26, option 2): inside a host, a Counter or Shortcut must not show its Size; Counter and Shortcut keep their Size for use on their own. Equal to Counter in 18 contexts × 3 sizes × 2 overflow states except the lg digits: the Counter lg master lacks tabular figures (limitation above), the nested part has them like the code, so an lg value can be 1 px wider. Counter itself is unchanged apart from its description, which points to the nested part."
     }
-  ]
+  ],
+  "nestedPart": {
+    "id": "278:261",
+    "name": "_Counter/Nested",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=278-261",
+    "page": "content/counter (149:1547)",
+    "builder": "authoring/adapters/figma/nested-parts.plugin.js (part 1)",
+    "variants": {
+      "Overflow=false": "278:255",
+      "Overflow=true": "278:258"
+    },
+    "properties": {
+      "Value#278:0": "TEXT, default 8",
+      "Overflow text#278:3": "TEXT, default 99+",
+      "Overflow": "VARIANT false/true"
+    },
+    "bindings": "as the md Counter, with height, minimum width and the Value typography bound to counter/font-family, counter/font-weight, counter/font-size, counter/line-height, counter/letter-spacing (Components, aliases of typography/indicator/{mode}/*); fills counter/foreground",
+    "use": "inside a host only (the trailing item of Button, 75:8); the host variant sets the Components mode",
+    "screenshot": "reports/components/counter/figma/nested-set.png"
+  }
 }

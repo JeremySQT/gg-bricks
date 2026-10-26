@@ -1,7 +1,7 @@
 // Icon specification page builder (use_figma body), 2026-10-14. One part.
 // Builds the frame “Icon — Specification” on the page content/icon (149:4) in the layout of the Button page
 // (white header on a gray page, hero card, blueprint anatomy board, white cards in the body). Explanatory
-// instances come from the Icon set (149:20); glyphs are the review fixtures (_Fixture/Icon, 74:2). The node ids and
+// instances come from the Icon set (149:20); glyphs are Phosphor components of the page assets/phosphor (199:2). The node ids and
 // property keys the script relies on are listed in reports/components/icon/figma/ledger.json.
 figma.skipInvisibleInstanceChildren = false;
 const page = await figma.getNodeByIdAsync('149:4');
@@ -47,7 +47,13 @@ const markC = await figma.getNodeByIdAsync('115:8');
 const numKey = Object.keys(callC.componentPropertyDefinitions)[0];
 const set = await figma.getNodeByIdAsync('149:20');
 const GLYPH = Object.keys(set.componentPropertyDefinitions).find((k) => k.startsWith('Glyph'));
-const FX = { plus: '42:7', 'arrow-right': '42:10', trash: '42:13', 'download-simple': '42:16', check: '42:19' };
+const FX = {
+  plus: '200:4367',
+  'arrow-right': '200:4482',
+  trash: '200:5762',
+  'download-simple': '200:4881',
+  check: '200:4715'
+};
 const bset = await figma.getNodeByIdAsync('48:1586');
 const styles = await figma.getLocalTextStylesAsync();
 const S = (n) => styles.find((s) => s.name === 'typography/' + n);
@@ -103,7 +109,7 @@ const board = (name, w, h) => {
   f.setExplicitVariableModeForCollection(wf, B);
   return f;
 };
-// Icon instance: size variant, glyph by fixture name, optional color override of the glyph drawing
+// Icon instance: size variant, glyph by Phosphor name, optional color override of the glyph drawing
 // (the Figma equivalent of the inherited content color: a nested fill override on the instance).
 const icon = (s = 'md', name = 'plus', color) => {
   const inst = set.children.find((c) => c.name === 'Size=' + s).createInstance();
@@ -113,6 +119,13 @@ const icon = (s = 'md', name = 'plus', color) => {
 };
 const bvariant = (i, a, s, t) =>
   bset.children.find((c) => c.name === `Intent=${i}, Appearance=${a}, Size=${s}, State=${t}`);
+const prop = (inst, name) => Object.keys(inst.componentProperties).find((k) => k.split('#')[0] === name);
+// Sets a glyph through an instance-swap property, except the default: choosing the default again resets the glyph
+// layer (its name and its color override), a Figma behavior.
+const swap = (inst, name, id) => {
+  const k = prop(inst, name);
+  if (id !== inst.mainComponent.parent.componentPropertyDefinitions[k].defaultValue) inst.setProperties({ [k]: id });
+};
 const btn = (o = {}) => {
   const inst = bvariant(o.i || 'accent', o.a || 'solid', o.s || 'md', o.t || 'default').createInstance();
   inst.setProperties({
@@ -121,12 +134,11 @@ const btn = (o = {}) => {
     'Show trailing#76:0': !!o.trail,
     'Focus#48:367': !!o.focus
   });
-  if (o.lead && o.leadIcon)
-    inst.exposedInstances.find((e) => e.name === 'Leading icon').setProperties({ Name: o.leadIcon });
+  if (o.lead && o.leadIcon) swap(inst, 'Leading icon', FX[o.leadIcon]);
   if (o.trail) {
     const t = inst.exposedInstances.find((e) => e.name === 'Trailing item');
     if (o.trail === 'icon') {
-      if (o.trailIcon) t.findOne((n) => n.name === 'Icon').setProperties({ Name: o.trailIcon });
+      if (o.trailIcon) swap(t, 'Icon', FX[o.trailIcon]);
     } else t.setProperties({ Type: o.trail === 'counter' ? 'Counter' : 'Shortcut' });
   }
   return inst;
@@ -261,7 +273,7 @@ intro.appendChild(hero);
 hero.layoutSizingHorizontal = 'FILL';
 intro.appendChild(
   text(
-    'The contract and the code in the ggbrick repository (foundations/components/content/icon) are the reference. This page documents the Figma component set “Icon”; every icon shown here is an instance, not a master. The glyphs are review fixtures from Phosphor Icons (regular weight): the library ships no icon set, the application brings its own. Unless a frame says otherwise, the examples use the base brand, the light appearance and the standard density.',
+    'The contract and the code in the ggbrick repository (foundations/components/content/icon) are the reference. This page documents the Figma component set “Icon”; every icon shown here is an instance, not a master. The glyphs are the Phosphor Icons components (regular weight) of the page assets/phosphor, the same drawings as in code. Unless a frame says otherwise, the examples use the base brand, the light appearance and the standard density.',
     'body/sm',
     'color/content/tertiary',
     900
@@ -307,7 +319,7 @@ const drawR = rect(
   4
 );
 stroke(drawR, 'wireframe/tint/48', 1.5);
-// the plus drawing, as the fixture draws it (Phosphor “plus”, scaled to the drawing area)
+// the plus drawing, as the Phosphor component draws it (Phosphor “plus”, scaled to the drawing area)
 const big = icon('xl', 'plus', 'wireframe/ink');
 dg.appendChild(big);
 big.x = BX;
@@ -385,7 +397,7 @@ an.appendChild(real);
 real.layoutSizingHorizontal = 'FILL';
 an.appendChild(
   text(
-    'In Figma, Size is the only variant. The drawing is the “Glyph” property: swap it for any icon component that follows the same grid; the review fixtures (Phosphor) are offered first. The icon takes the content color of the frame by default; to color it like the surrounding text, override the fill of its drawing. A label has no visual effect, so it is not a Figma property.',
+    'In Figma, Size is the only variant. The drawing is the “Glyph” property: pick any glyph of the page assets/phosphor (search by name); any icon component that follows the same grid also fits. The icon takes the content color of the frame by default; to color it like the surrounding text, override the fill of its drawing. A label has no visual effect, so it is not a Figma property. In a component with an icon (Button, IconButton, Badge, Link), choose the glyph with that component’s icon property: the component sets its size.',
     'body/md',
     'color/content/secondary',
     1000

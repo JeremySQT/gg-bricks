@@ -1,0 +1,24 @@
+{
+  "valid": true,
+  "checks": {
+    "schema": "passed",
+    "consistency": "passed",
+    "tokenCoverage": "passed",
+    "dependencies": "not-provided",
+    "intrinsicRules": "manual-review-required"
+  },
+  "errors": [],
+  "requiredTokenPaths": [
+    "color.content.link",
+    "color.content.tertiary",
+    "opacity.muted",
+    "border.width.default",
+    "border.width.strong",
+    "space.content.xs",
+    "color.focus.ring",
+    "focus.width",
+    "focus.offset",
+    "radius.indicator"
+  ],
+  "dependencies": []
+}

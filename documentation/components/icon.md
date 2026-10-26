@@ -21,10 +21,10 @@ A is the inset, B the box size. Hosts rely on the inset: a Button places an icon
 
 ## When not to use
 
-- An action without visible text: IconButton (planned).
+- An action without visible text: IconButton.
 - Multi-color artwork, logos, photographs; avatars: Avatar (planned).
 - A loading indicator: Spinner (planned); the Button has its own.
-- A status or a category in words: Badge (planned).
+- A status or a category in words: Badge.
 - Icon fonts and sprite sheets: the component takes inline vector content.
 
 ## Best practices

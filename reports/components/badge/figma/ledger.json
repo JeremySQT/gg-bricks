@@ -1,0 +1,176 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=220-2"
+  },
+  "recordedOn": "2026-10-19",
+  "page": {
+    "name": "content/badge",
+    "id": "220:2",
+    "position": "before content/counter (component pages in alphabetical order within a family)"
+  },
+  "componentSet": {
+    "id": "220:293",
+    "name": "Badge",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=220-293",
+    "builder": "authoring/adapters/figma/badge-master.plugin.js",
+    "defaultVariant": "Intent=neutral, Appearance=subtle, Size=md (top-left)"
+  },
+  "properties": {
+    "Label#220:0": {
+      "type": "TEXT",
+      "default": "Badge",
+      "layer": "Label"
+    },
+    "Show leading#220:37": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Leading (visible)"
+    },
+    "Intent": {
+      "type": "VARIANT",
+      "default": "neutral",
+      "options": [
+        "neutral",
+        "accent",
+        "info",
+        "success",
+        "warning",
+        "danger"
+      ]
+    },
+    "Appearance": {
+      "type": "VARIANT",
+      "default": "subtle",
+      "options": [
+        "subtle",
+        "strong"
+      ]
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ]
+    },
+    "Leading icon#252:0": {
+      "type": "INSTANCE_SWAP",
+      "default": "200:5392",
+      "defaultName": "phosphor/pencil-simple",
+      "layer": "Leading icon",
+      "note": "one default for the whole set (Figma): the per-intent glyphs of the code's review page are set on the specification instances, not as defaults"
+    }
+  },
+  "exposedInstances": {},
+  "layers": [
+    "Leading (padding-right space/content/xs, visible = Show leading)",
+    "Leading/Drawing box (width badge/icon-box, height size/icon/xs, icon centered)",
+    "Leading/Drawing box/Leading icon (Phosphor glyph instance, width and height bound to size/icon/xs, behind Leading icon#252:0)",
+    "Label (text, typography/indicator/{size} bindings, leading trim cap height, truncation ending, one line)"
+  ],
+  "bindings": {
+    "height and minWidth": "typography/indicator/{size}/lineHeight",
+    "padding left and right": "space/content/xs (Density)",
+    "corners": "radius/indicator",
+    "fill": "color/status/{intent}/surface (subtle), surfaceStrong (strong)",
+    "stroke (subtle only)": "color/status/{intent}/border, weight border/width/default, inside, not included in layout",
+    "Label fill": "color/status/{intent}/content (subtle), contentStrong (strong)",
+    "Label typography": "typography/indicator/{size}/fontFamily, fontWeight, fontSize, lineHeight, letterSpacing",
+    "Leading icon glyph fill": "color/status/{intent}/icon (subtle), contentStrong (strong)"
+  },
+  "adapterVariables": {
+    "badge/icon-box": {
+      "id": "VariableID:220:3",
+      "collection": "Components (VariableCollectionId:181:2)",
+      "type": "FLOAT",
+      "values": "9 in sm, md and lg (10.5 until 2026-10-20)",
+      "meaning": "size/icon/xs − 2 × size/icon/xs ÷ 8: the icon box minus its two insets (Figma cannot compute a fraction of a variable)",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "hiddenFromPublishing": true
+    }
+  },
+  "variants": {
+    "Intent=neutral, Appearance=subtle, Size=md": "220:4",
+    "Intent=neutral, Appearance=subtle, Size=sm": "220:13",
+    "Intent=neutral, Appearance=subtle, Size=lg": "220:21",
+    "Intent=neutral, Appearance=strong, Size=md": "220:29",
+    "Intent=neutral, Appearance=strong, Size=sm": "220:37",
+    "Intent=neutral, Appearance=strong, Size=lg": "220:45",
+    "Intent=accent, Appearance=subtle, Size=md": "220:53",
+    "Intent=accent, Appearance=subtle, Size=sm": "220:61",
+    "Intent=accent, Appearance=subtle, Size=lg": "220:69",
+    "Intent=accent, Appearance=strong, Size=md": "220:77",
+    "Intent=accent, Appearance=strong, Size=sm": "220:85",
+    "Intent=accent, Appearance=strong, Size=lg": "220:93",
+    "Intent=info, Appearance=subtle, Size=md": "220:101",
+    "Intent=info, Appearance=subtle, Size=sm": "220:109",
+    "Intent=info, Appearance=subtle, Size=lg": "220:117",
+    "Intent=info, Appearance=strong, Size=md": "220:125",
+    "Intent=info, Appearance=strong, Size=sm": "220:133",
+    "Intent=info, Appearance=strong, Size=lg": "220:141",
+    "Intent=success, Appearance=subtle, Size=md": "220:149",
+    "Intent=success, Appearance=subtle, Size=sm": "220:157",
+    "Intent=success, Appearance=subtle, Size=lg": "220:165",
+    "Intent=success, Appearance=strong, Size=md": "220:173",
+    "Intent=success, Appearance=strong, Size=sm": "220:181",
+    "Intent=success, Appearance=strong, Size=lg": "220:189",
+    "Intent=warning, Appearance=subtle, Size=md": "220:197",
+    "Intent=warning, Appearance=subtle, Size=sm": "220:205",
+    "Intent=warning, Appearance=subtle, Size=lg": "220:213",
+    "Intent=warning, Appearance=strong, Size=md": "220:221",
+    "Intent=warning, Appearance=strong, Size=sm": "220:229",
+    "Intent=warning, Appearance=strong, Size=lg": "220:237",
+    "Intent=danger, Appearance=subtle, Size=md": "220:245",
+    "Intent=danger, Appearance=subtle, Size=sm": "220:253",
+    "Intent=danger, Appearance=subtle, Size=lg": "220:261",
+    "Intent=danger, Appearance=strong, Size=md": "220:269",
+    "Intent=danger, Appearance=strong, Size=sm": "220:277",
+    "Intent=danger, Appearance=strong, Size=lg": "220:285"
+  },
+  "specification": {
+    "id": "223:2",
+    "name": "Badge — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=223-2",
+    "builder": "authoring/adapters/figma/badge-spec.plugin.js",
+    "anatomyBoard": "223:75",
+    "uses": {
+      "_Spec/Board": "113:17",
+      "_Spec/Callout": "115:6",
+      "_Spec/Marker": "115:8",
+      "Counter": "149:1568",
+      "Icon": "149:20",
+      "Wireframe": "VariableCollectionId:105:1565"
+    }
+  },
+  "evidence": {
+    "parity": "reports/components/badge/figma/parity.json",
+    "parityScripts": [
+      "authoring/adapters/figma/badge-parity.plugin.js",
+      "authoring/adapters/figma/badge-parity-report.mjs"
+    ],
+    "screenshots": [
+      "reports/components/badge/figma/master-set.png",
+      "reports/components/badge/figma/specification.png",
+      "reports/components/badge/figma/blueprint-anatomy.png"
+    ]
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-19",
+      "change": "Built: 36 variants. The first parity run found the subtle edge included in the layout (strokesIncludedInLayout, icon offset 3.5 instead of 2.5 and widths +2 px); set to false on the 36 variants and in the builder, re-measured: 0 failures."
+    },
+    {
+      "date": "2026-10-20",
+      "change": "Icon gap amendment (user: the icon looked a little too far from the label): badge/icon-box 10.5 → 9 and the icon centered in its Drawing box (36 variants), so the icon box overlaps the padding and the leading gap by iconSize/8 each, as the code now does. Anatomy board 223:75: label side shifted by 9 (zoomed 1.5 px), legend items 2 and C rewritten. Parity re-measured with the new iconToLabel field: 12 312 records, 0 failures."
+    },
+    {
+      "date": "2026-10-26",
+      "change": "Icon slot (authoring/adapters/figma/icon-slot-migrate.plugin.js): the nested Icon xs instance (exposed, showing Size) is replaced in the 36 variants by the Phosphor glyph itself, width and height bound to size/icon/xs, glyph colors kept, behind the new instance-swap property Leading icon#252:0. User decision at the wave 1 Figma parity review (2026-10-26): a component imposes the size of its icon, so the designer chooses the glyph only; an exposed nested Icon showed its Size property. A swap property has one default for the set: the first run left warning-circle everywhere; the default is now pencil-simple and the 88 specification instances were given back their intent's glyph (76) or their chosen one (sparkle, clock, lock-simple). Descriptions and the Anatomy text updated; parity re-measured, identical (18 hashes and numeric fields)."
+    }
+  ]
+}

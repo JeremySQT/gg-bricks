@@ -16,6 +16,13 @@
     "--- (divider)": "20:2",
     "Foundations": "8:3",
     "actions/button": "144:2",
+    "actions/icon-button": "211:2",
+    "actions/link": "225:2",
+    "content/badge": "220:2",
+    "content/counter": "149:1547",
+    "content/icon": "149:4",
+    "content/shortcut": "149:1569",
+    "assets/phosphor": "199:2",
     "Utilities": "8:10"
   },
   "collections": {
@@ -174,6 +181,29 @@
           "opacity/tint": "VariableID:186:3"
         },
         "note": "Synced with a delta batch (the sync-variables body with the two manifest entries) through use_figma; 739 manifest variables in the file afterwards. Native resolution re-verified: 507 semantic variables in 18 contexts, 0 failures (reports/tokens/figma/verification.json)."
+      },
+      {
+        "date": "2026-10-19",
+        "reason": "Wave 1 IconButton, Link and Badge: status families neutral and accent for the Badge intents; color.content.link in dark re-pointed to accent 300",
+        "collection": "Appearance",
+        "ids": {
+          "color/status/neutral/surface": "VariableID:208:2",
+          "color/status/neutral/surfaceStrong": "VariableID:208:3",
+          "color/status/neutral/content": "VariableID:208:4",
+          "color/status/neutral/contentStrong": "VariableID:208:5",
+          "color/status/neutral/border": "VariableID:208:6",
+          "color/status/neutral/icon": "VariableID:208:7",
+          "color/status/accent/surface": "VariableID:208:8",
+          "color/status/accent/surfaceStrong": "VariableID:208:9",
+          "color/status/accent/content": "VariableID:208:10",
+          "color/status/accent/contentStrong": "VariableID:208:11",
+          "color/status/accent/border": "VariableID:208:12",
+          "color/status/accent/icon": "VariableID:208:13"
+        },
+        "updated": {
+          "color/content/link": "dark alias color/palette/accent/400 -> color/palette/accent/300 (ID unchanged)"
+        },
+        "note": "Synced with a delta batch of the tooling/figma-batches.ts output (the 13 changed Appearance variables) through use_figma; native resolution of the 519 semantic variables in the 18 contexts, 0 failures (reports/tokens/figma/verification.json)."
       }
     ]
   },

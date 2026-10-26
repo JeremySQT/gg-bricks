@@ -7,7 +7,7 @@
       "import": "Button",
       "from": "@ggbrick/svelte",
       "purpose": "Starts an action or moves to the next step of a task with a short text label; optional leading icon and trailing icon, counter or shortcut; loading and disabled states; renders as a link with href.",
-      "whenNotToUse": "Icon-only actions (IconButton, planned), navigation inside text (Link, planned), toggles with a pressed state (SegmentedControl, planned), menu triggers (Menu, planned), button groups and toolbars (composition), width as a prop (layout decides).",
+      "whenNotToUse": "Icon-only actions (IconButton), navigation inside text (Link), toggles with a pressed state (SegmentedControl, planned), menu triggers (Menu, planned), button groups and toolbars (composition), width as a prop (layout decides).",
       "documentation": "button.md",
       "contract": "foundations/components/actions/button/contract.json",
       "sections": [
@@ -26,7 +26,7 @@
       "import": "Icon",
       "from": "@ggbrick/svelte",
       "purpose": "Shows a vector glyph from the application's icon set (Phosphor conventions) at one of five system sizes in the current text color; decorative unless it carries a label, which makes it a named image; content of Button slots.",
-      "whenNotToUse": "Actions without visible text (IconButton, planned), multi-color artwork, logos and avatars (Avatar, planned), activity indicators (Spinner, planned), statuses with text (Badge, planned), icon fonts and sprite sheets.",
+      "whenNotToUse": "Actions without visible text (IconButton), multi-color artwork, logos and avatars (Avatar, planned), activity indicators (Spinner, planned), statuses with text (Badge), icon fonts and sprite sheets.",
       "documentation": "icon.md",
       "contract": "foundations/components/content/icon/contract.json",
       "sections": [
@@ -45,7 +45,7 @@
       "import": "Counter",
       "from": "@ggbrick/svelte",
       "purpose": "Shows a quantity next to the thing it counts as a small rectangle in the inherited text color on a faint tint of it; overflow above a maximum (99+), tabular figures, three sizes named like Button; accessible phrase with label (8 unread messages); content of the Button trailing slot.",
-      "whenNotToUse": "Statuses or categories in words (Badge, planned), free text or amounts (plain text), a dot without a number, editing a quantity (NumberInput, planned), live announcements (integration), colored emphasis (not in this version).",
+      "whenNotToUse": "Statuses or categories in words (Badge), free text or amounts (plain text), a dot without a number, editing a quantity (NumberInput, planned), live announcements (integration), colored emphasis (not in this version).",
       "documentation": "counter.md",
       "contract": "foundations/components/content/counter/contract.json",
       "sections": [
@@ -64,9 +64,66 @@
       "import": "Shortcut",
       "from": "@ggbrick/svelte",
       "purpose": "Shows a keyboard combination written once in a platform-neutral notation (Mod+K) in the conventions of the user's platform (⌘K or Ctrl+K), plain beside a label or as keycaps on a neutral surface, with a spoken equivalent for assistive technology; content of the Button trailing slot.",
-      "whenNotToUse": "Key sequences (compose two shortcuts), handling the keys (the application binds them), a shortcut quoted in a sentence (plain text), quantities (Counter), statuses (Badge, planned), gestures, keycaps inside a Button or on a colored control.",
+      "whenNotToUse": "Key sequences (compose two shortcuts), handling the keys (the application binds them), a shortcut quoted in a sentence (plain text), quantities (Counter), statuses (Badge), gestures, keycaps inside a Button or on a colored control.",
       "documentation": "shortcut.md",
       "contract": "foundations/components/content/shortcut/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "icon-button",
+      "import": "IconButton",
+      "from": "@ggbrick/svelte",
+      "purpose": "Starts an action, or navigates to a task with href, from a compact square showing only an icon; the required label is the accessible name and is never shown; Button treatments and heights; loading and disabled states; 44 px target.",
+      "whenNotToUse": "Room for a visible label (Button with a leading icon), links inside text (Link), toggles with a pressed state (SegmentedControl, planned), menu triggers (Menu, planned), visible hints (Tooltip, planned), dots or numbers over the icon (indicator, planned).",
+      "documentation": "icon-button.md",
+      "contract": "foundations/components/actions/icon-button/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "link",
+      "import": "Link",
+      "from": "@ggbrick/svelte",
+      "purpose": "Navigates to another page or resource from inside text: underlined words in the font of the context, with a destination (page, external in a new tab, email, phone, file with visible format and size, printable version) shown by a glyph and announced; tone inherit for colored surfaces.",
+      "whenNotToUse": "Navigation that reads like an action (Button with href), icon-only links (IconButton with href), actions such as printing or sending (Button), destinations that cannot be followed (plain text), structured navigation (Breadcrumb, Tabs, Pagination, planned).",
+      "documentation": "link.md",
+      "contract": "foundations/components/actions/link/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "badge",
+      "import": "Badge",
+      "from": "@ggbrick/svelte",
+      "purpose": "Labels an item with a short read-only status or category word (Paid, Draft, Overdue, Beta) in a small box colored by intent (neutral, accent, info, success, warning, danger) and appearance (subtle, strong), with an optional decorative leading icon; never interactive.",
+      "whenNotToUse": "Quantities (Counter), values the user removes or selects (Tag, planned), dots without text or badges over another element (indicator, planned), explanations of a status (Alert, planned), statuses inside a sentence (plain text), content of a Button slot (Counter).",
+      "documentation": "badge.md",
+      "contract": "foundations/components/content/badge/contract.json",
       "sections": [
         "Overview",
         "Anatomy",

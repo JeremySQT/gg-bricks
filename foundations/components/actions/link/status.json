@@ -1,0 +1,283 @@
+{
+  "formatStatus": "v1",
+  "componentId": "link",
+  "family": "actions",
+  "wave": 1,
+  "phase": "done",
+  "scope": {
+    "purpose": "Navigate to another page or resource from inside text, as an underlined word or phrase that reads with the sentence around it and tells the reader what it leads to (a page, another site, an email, a phone number, a file and its format, a printable version).",
+    "useCases": [
+      "A link inside a paragraph, a help text, a table cell or a message, taking the surrounding typography.",
+      "A standalone text link (See all, Learn more) placed by the layout, still underlined.",
+      "A destination announced before the click: another site (new tab, arrow), an email address (envelope), a phone number (handset), a printable version (printer).",
+      "A link to a file showing its format and size as text and a format glyph: Annual report (PDF, 2.4 MB).",
+      "A link inside a colored context (status message, inverse surface) that keeps the context color with tone inherit."
+    ],
+    "exclusions": [
+      "Navigation to a task with a control appearance: Button with href.",
+      "Icon-only links: IconButton with href.",
+      "Opening the print dialog, sending a form, copying an address: actions, so Button (with a leading Icon).",
+      "A disabled link: a destination that cannot be followed is plain text.",
+      "Free leading or trailing icons: the indicator is chosen by destination.",
+      "Distinct visited color; size or weight options (the context decides typography).",
+      "Formatting file sizes or detecting the format from href: the application passes fileType and fileSize.",
+      "Routing: the application's router intercepts navigation; the component renders a native link."
+    ],
+    "alternatives": [
+      "Button (with href) for a call to action or navigation to a task.",
+      "IconButton (with href) for an icon-only navigation control.",
+      "Breadcrumb, Tabs, Pagination (wave 4) for structured navigation."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/actions/link/contract.json",
+      "sha256": "d482a8b7b9ed7a260e1d184267b95dfd61d88dc662a77cb1f535fcbc010daaab"
+    },
+    "tokens": [],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "actions/link (225:2)",
+      "componentSet": "232:659",
+      "part": "232:442",
+      "specification": "234:13",
+      "ledger": "reports/components/link/figma/ledger.json",
+      "parity": "reports/components/link/figma/parity.json",
+      "screenshots": [
+        "reports/components/link/figma/master-set.png",
+        "reports/components/link/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/link/figma/blueprint-anatomy.png",
+          "node": "234:69"
+        }
+      ],
+      "builders": ["authoring/adapters/figma/link-master.plugin.js", "authoring/adapters/figma/link-spec.plugin.js"]
+    },
+    "figmaSpec": "foundations/components/actions/link/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/link/Link.svelte",
+      "folder": "packages/svelte/src/components/link",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (a native anchor carries the semantics)"
+      },
+      "report": "reports/components/link/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/link",
+      "preview": "dist/previews/link.html (npm run build:preview link)",
+      "artifact": "https://claude.ai/artifact/EVqNMf5jPq8hHjYH2yAJ5Y (version 2, subtle glyph and meta)"
+    },
+    "tests": {
+      "ssr": "tests/ssr/link.test.ts",
+      "browser": "tests/browser/link.spec.ts",
+      "computed": "reports/components/link/svelte/computed.json",
+      "screenshots": "reports/components/link/svelte/*.png",
+      "unit": "tests/link-destination.test.ts"
+    },
+    "humanDocs": "documentation/components/link.md",
+    "agentDocs": "documentation/index.json (entry link); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/link.svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Link contract: required label and href, tone (accent, inherit), destination (page, external, email, phone, file, print) with fileType, fileSize and destinationLabel; container, label, meta and indicator parts; default, hover and pressed interaction with focus; color.content.link, underline widths, indicator gap and focus roles; thirteen rules (destinations and glyphs, file meta, accessible name and suffix, permanent underline, tone, wrapping, no disabled state, focus per line box, forced colors). The dark link color amendment (accent.300) is recorded in the semantic approval.",
+      "revision": {
+        "paths": ["foundations/components/actions/link/contract.json"],
+        "sha256": {
+          "foundations/components/actions/link/contract.json": "d482a8b7b9ed7a260e1d184267b95dfd61d88dc662a77cb1f535fcbc010daaab"
+        }
+      },
+      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: three review rounds (2026-10-15 to 2026-10-17); Link destinations requested at the first round, Badge simplified and given the accent intent at the third; final \"D'accord pour tout ! Tu peux commencer le reste je valide\" (2026-10-17) covering the remaining questions (Link destinations including phone and print as a printable version, dark link color A, simplified Badge). Amendment of 2026-10-19 (meta and glyph as a subtle complement: metaColor and indicatorColor color.content.tertiary with tone accent, the context color with tone inherit and the glyph at inheritIndicatorOpacity opacity.muted): user at the implementation review in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU, variant D chosen on the comparison page (\"je préfère la D\") with the remark that the meta did not look attenuated in dark; color.content.secondary measured 1.12:1 against the dark link color, so the meta uses color.content.tertiary like the glyph (1.40:1 against the link, 5.11:1 or more on canvas, default, subtle, raised and overlay). Digest re-recorded; to be confirmed on the republished review page.",
+      "note": null
+    },
+    "implementation": {
+      "scope": "Link: native anchor, destinations with Phosphor glyphs, visible file meta, announced suffixes, underline on the label only (1 px, 2 px on hover and press), glyph and meta as a subtle complement in color.content.tertiary (variant D), tone inherit, wrapping that keeps meta and glyph with the last word.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/link/Link.svelte",
+          "packages/svelte/src/components/link/contract.generated.ts",
+          "packages/svelte/src/components/link/destination.ts",
+          "packages/svelte/src/components/link/glyphs.ts",
+          "packages/svelte/src/components/link/link.css",
+          "packages/svelte/src/components/link/tokens.generated.css",
+          "packages/svelte/src/components/link/types.ts",
+          "examples/link/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/link/Link.svelte": "a6791d5521304422d962afe133f018f116ac41056da472d9b11579d89b48c9a4",
+          "packages/svelte/src/components/link/contract.generated.ts": "2b7e1031fce29d4599eb2e1b7c560c5e83818e959244d4410803e4ed686f6140",
+          "packages/svelte/src/components/link/destination.ts": "3e959dd8ed30605c5c927a4477aae74f52f7fbf750297621c7b6e0e99f2e6677",
+          "packages/svelte/src/components/link/glyphs.ts": "d0cc407e56d33d343bc86ce7be6cadc5ec567fb449c0ac1e5e8b5fdb35191b39",
+          "packages/svelte/src/components/link/link.css": "544ea8bb112d5959d13ee0e476606b12f6d4662b92a8691af33adeeaac4940fb",
+          "packages/svelte/src/components/link/tokens.generated.css": "92ac5eb6731c8b71e3bab63863d1159e710ab47c49a1814662583e990e28a869",
+          "packages/svelte/src/components/link/types.ts": "142759450f1f36cbc95a78cb664868f22d1aab2fd6474be2162ad784055a642e",
+          "examples/link/App.svelte": "dd627deacc5ae26648fc49c764706260b1630b61f6f699074b9d1123d1d68131"
+        }
+      },
+      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/EVqNMf5jPq8hHjYH2yAJ5Y version 2.",
+      "note": "Automated evidence: Chromium only; Safari behavior of the label clip reasoned, not observed."
+    },
+    "figmaParity": {
+      "scope": "Figma component set Link (232:659, Color × Size × State, 54 variants setting the modes of Components · link size and Components · link color themselves) with the internal part _Link/Destination (232:442; glyphs placed directly, File icon on the file destination), specification frame 234:13 (anatomy ring dashed), parity report (4 680 records, 0 failures; 360 justified differences: underline thickness literal, parent color of Color accent).",
+      "revision": {
+        "paths": [
+          "foundations/components/actions/link/figma-spec.md",
+          "reports/components/link/figma/parity.json",
+          "reports/components/link/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/actions/link/figma-spec.md": "ad78899c5ac9f4f3738969276e1b8595af528dd94f84d168ece4090f2de63eed",
+          "reports/components/link/figma/parity.json": "4bfc9492b328ea8026dcb9ddd3f6b43262448027fd20c68d82c2cb988708df78",
+          "reports/components/link/figma/ledger.json": "1adbfe31aa03012504420bd1c63ae31aeb593596e209b92b42e0eaaea60c8eab"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "page": "225:2",
+          "componentSet": "232:659",
+          "specificationFrame": "234:13"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU on 2026-10-26, at the grouped wave 1 Figma parity gate (IconButton, Link, Badge), after the review rounds of 2026-10-20 to 2026-10-26 (Link rebuilt as variants, IconButton gaps on space.control.gap, Link anatomy ring dashed, Badge icon gap, icon slots without a nested Icon): \"Sinon je valide la parité figma des 3 composants\".",
+      "note": null
+    },
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate",
+      "report": "reports/components/link/contract-validation.json",
+      "date": "2026-10-16",
+      "note": "Schema, consistency, token coverage (8 paths) in 18 contexts and accepted components (--dependencies); check-foundations passes (389 roles, 1908 contrast checks, 0 failures)."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/link/contrast.json",
+      "date": "2026-10-16",
+      "note": "108 contrast records on the contrastScope backdrops in 18 contexts, 0 failures. The component report measures only the focus ring (Link binds content without a surface role); color.content.link is measured by the inventory pairs on canvas, default, subtle, muted, raised and overlay: 4.80 to 11.19 after the dark amendment."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-17",
+      "note": "generate, lint, validate, unit tests (40), svelte-check, SSR (38), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/link/svelte/ssr.json",
+      "date": "2026-10-17",
+      "note": "6 Link tests."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-17",
+      "note": "Chromium 141, 8 Link tests (full suite 61 passed); computed values: 4104 records in 18 contexts (reports/components/link/svelte/computed.json). Details in reports/components/link/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run build:preview link",
+      "date": "2026-10-17",
+      "note": "dist/previews/link.html mounts from file:// without errors."
+    },
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate",
+      "report": "reports/components/link/contract-validation.json",
+      "date": "2026-10-19",
+      "note": "Amended contract: 10 token paths, coverage in 18 contexts."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/link-parity.plugin.js; node authoring/adapters/figma/link-parity-report.mjs <result>",
+      "report": "reports/components/link/figma/parity.json",
+      "date": "2026-10-19",
+      "note": "4680 records (13 cases × 20 properties in 18 contexts), 0 failures; 234 justified differences (underline thickness literal: Figma cannot bind it). Parent text values compared with the instance's text and context modes."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/link-parity.plugin.js; node authoring/adapters/figma/link-parity-report.mjs <result>",
+      "report": "reports/components/link/figma/parity.json",
+      "date": "2026-10-20",
+      "note": "Re-measured after the rebuild as Color × Size × State with the nested Destination part (set 232:659): 4680 records (13 cases × 20 properties in 18 contexts), 0 failures; 234 justified differences (underline thickness literal) and 126 (parent color of the Color accent cases, which has no Figma counterpart). Supersedes the check of 2026-10-19 on set 225:276."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/icon-slot-migrate.plugin.js; use_figma authoring/adapters/figma/link-parity.plugin.js; node authoring/adapters/figma/link-parity-report.mjs <result>",
+      "report": "reports/components/link/figma/parity.json",
+      "date": "2026-10-26",
+      "note": "After the icon slot migration (glyphs placed directly in _Link/Destination, File icon#259:0 on the file destination): the 18 context hashes equal those built from computed.json; parity.json regenerated, unchanged (4 680 records, 0 failures)."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs",
+      "date": "2026-10-26",
+      "note": "Page documentation/components/link.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/link/ renders without console errors (Chromium), with the Figma blueprint under Anatomy."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify && npm run verify:generated",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests, svelte-check, SSR, build, docs build; generated files up to date."
+    }
+  ],
+  "decisionsTaken": [
+    "label is a required string, like Button, rather than free children: the accessible name is then known to the component (needed to append the external suffix) and Figma maps it to a text property.",
+    "Underlined in every state (WCAG 1.4.1, use of color): the hover and pressed feedback thickens the underline from border.width.default (1 px) to border.width.strong (2 px) instead of changing the color, so no new color token is needed; no transition.",
+    "One color role, color.content.link (approved), and tone inherit for colored contexts; no visited color in an application context.",
+    "No size prop and no typography role: a link takes the font of the text it sits in.",
+    "Focus indicator drawn around each line box (an outline, so a wrapped link gets one ring per line) with radius.indicator corners: radius.focus (concentric with controls) is too round for text.",
+    "No Bits UI primitive: a native anchor carries every semantic needed.",
+    "User review of the contract drafts (2026-10-16): the trailing indicator orients the reader on what the link leads to. The boolean external becomes destination (page, external, email, phone, file, print) with fileType and fileSize for files; externalLabel becomes destinationLabel (overrides the default English suffix of any destination).",
+    "phone added beside email (tel: links are the same kind of destination); print means a link to a printable version, because opening the print dialog is an action that belongs to Button.",
+    "File links show the format and size as visible text (PDF, 2.4 MB) in addition to the format glyph: the small lettering inside Phosphor's file glyphs is not legible at text size, and visible text helps everyone, not only screen reader users (practice of GOV.UK and most public-sector systems). The component does not format sizes (locale) and sets no download attribute: viewable formats open in the browser, others download, as the server decides.",
+    "Glyphs (Phosphor, MIT): ArrowUpRight, Envelope, Phone, Printer, File, FilePdf, FileDoc, FileXls, FileCsv, FilePpt, FileTxt, FileZip, FileImage, FileAudio, FileVideo, copied as inline SVG paths into the component folder per the icon decision; one em square so they follow the text size. Only external opens a new tab.",
+    "No new token: meta and indicator take the link color; indicatorGap is space.content.xs.",
+    "User at the contract gate (2026-10-17): destinations confirmed as drafted (phone included, print = a link to a printable version); dark link color changed to color.palette.accent.300 (4.80:1 or more on every neutral backdrop in the 18 contexts; recommendation A).",
+    "User at the implementation review (2026-10-19): variant D, glyph and meta as a subtle neutral complement; the meta in color.content.tertiary rather than color.content.secondary after the dark-mode remark. With tone inherit the meta keeps the context color at full strength (text contrast) and only the glyph is attenuated (opacity.muted).",
+    "User at the Figma parity review (2026-10-20): the link is configured by variants rather than variable modes chosen by the designer (\"Est-ce qu'on ne pourrais pas gérer plutôt tout ça par des variantes plutôt que des modes ?\"), and the secondary and tertiary contexts are dropped (a dimmed link is harder to find). Recommendation A adopted (\"je suis tes recommendations, à voir à l'usage\"): variants Color (accent, on info, on success, on warning, on danger, on inverse) × Size (md, sm, lg) × State, the destination in the exposed nested part _Link/Destination; each variant sets the modes of the hidden Components · link size and Components · link color collections on itself.",
+    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
+  ],
+  "openDecisions": [
+    {
+      "id": 2,
+      "question": "Should a file link (or any destination) also be able to open in a new tab, announced like external?",
+      "proposal": "Not in v1: only external opens a new tab; a PDF opens in the browser tab and Back returns. A newTab option can be added later if products need it.",
+      "blocks": "nothing"
+    }
+  ],
+  "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",
+  "implementationNotes": [
+    "Markup: <a class=\"ggb-link\" data-tone data-destination href> with the label, a <span class=\"ggb-link__meta\"> for files, the glyph (aria-hidden) and a visually hidden suffix; external adds target=\"_blank\" rel=\"noopener noreferrer\". The last word, meta and glyph are wrapped in a no-wrap span so they never start a line alone.",
+    "Underline through text-decoration (thickness from the tokens, text-underline-offset from-font) on the label only; focus with outline on the inline box so it follows each line.",
+    "Glyph table in a glyphs.ts of the component folder, keyed by destination and normalized fileType.",
+    "Implemented: the underline is drawn on the label spans (not the anchor) so that meta and glyph are never underlined; box-decoration-break: clone for per-line corners and focus ring; rel merged with noopener noreferrer for external; target owned. Glyph table copied from @phosphor-icons/core 2.1.1.",
+    "Limitation (2026-10-19): color.content.tertiary measures 3.42:1 on color.surface.muted in dark, below 4.5:1 for the meta text; the foundations do not pair tertiary content with the muted surface either. On a muted surface in dark, prefer tone inherit or a plain file link without meta."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": []
+  }
+}

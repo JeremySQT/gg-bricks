@@ -1,0 +1,269 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=225-2"
+  },
+  "recordedOn": "2026-10-20",
+  "page": {
+    "name": "actions/link",
+    "id": "225:2",
+    "position": "after actions/icon-button"
+  },
+  "componentSet": {
+    "id": "232:659",
+    "name": "Link",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=232-659",
+    "builder": "authoring/adapters/figma/link-master.plugin.js",
+    "defaultVariant": "Color=accent, Size=md, State=default (top-left)"
+  },
+  "part": {
+    "id": "232:442",
+    "name": "_Link/Destination",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=232-442",
+    "builder": "authoring/adapters/figma/link-master.plugin.js",
+    "defaultVariant": "Destination=page",
+    "note": "Internal part (name starts with _), placed in every Link variant as the exposed nested instance Destination; not used on its own.",
+    "variants": {
+      "Destination=page": "232:410",
+      "Destination=external": "232:411",
+      "Destination=email": "232:417",
+      "Destination=phone": "232:423",
+      "Destination=file": "232:429",
+      "Destination=print": "232:436"
+    }
+  },
+  "pageDecoration": {
+    "_Backdrop on inverse": "237:400 (locked rectangle in color/surface/inverse behind the on inverse rows, so that they read on the canvas; not part of the component)"
+  },
+  "properties": {
+    "Label#232:7": {
+      "type": "TEXT",
+      "default": "Read the guide",
+      "layer": "Label"
+    },
+    "Focus#232:62": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Focus ring (visible)"
+    },
+    "Color": {
+      "type": "VARIANT",
+      "default": "accent",
+      "options": [
+        "accent",
+        "on info",
+        "on success",
+        "on warning",
+        "on danger",
+        "on inverse"
+      ],
+      "code": "tone accent (accent) or tone inherit inside the named context (on …)"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ],
+      "code": "none: the size of the surrounding body text (typography/body/{size})"
+    },
+    "State": {
+      "type": "VARIANT",
+      "default": "default",
+      "options": [
+        "default",
+        "hover",
+        "pressed"
+      ]
+    }
+  },
+  "partProperties": {
+    "Destination": {
+      "type": "VARIANT",
+      "default": "page",
+      "options": [
+        "page",
+        "external",
+        "email",
+        "phone",
+        "file",
+        "print"
+      ]
+    },
+    "Meta#232:0": {
+      "type": "TEXT",
+      "default": " (PDF, 2.4 MB)",
+      "layer": "Meta (file variant only; the value keeps its leading space)"
+    },
+    "File icon#259:0": {
+      "type": "INSTANCE_SWAP",
+      "default": "200:4959",
+      "defaultName": "phosphor/file-pdf",
+      "layer": "Indicator icon of Destination=file only",
+      "note": "the other destinations impose their glyph (no property)"
+    }
+  },
+  "exposedInstances": {
+    "Destination": "instance of _Link/Destination (232:442) in every Link variant, exposed: Destination, Meta and File icon are set from the Link instance"
+  },
+  "layers": [
+    "Label (text: link/* typography bindings, leading trim cap height, fill link/content, underline 1 px default or 2 px hover and pressed, skip ink, offset and color auto)",
+    "Destination (exposed instance of _Link/Destination)",
+    "Destination/Meta (file only)",
+    "Destination/Indicator (padding-left space/content/xs)",
+    "Destination/Indicator/Indicator icon",
+    "Focus ring (absolute, outside stroke)"
+  ],
+  "bindings": {
+    "link box": "minHeight link/line-height, corners radius/indicator",
+    "variant modes": "each Link variant sets its own modes of Components · link size (from Size) and Components · link color (from Color); designers never pick a mode",
+    "Label fill": "link/content",
+    "Meta fill, glyph fill": "link/quiet",
+    "glyph opacity": "link/indicator-opacity",
+    "typography (Label, Meta)": "link/font-family, link/font-weight, link/font-size, link/line-height, link/letter-spacing",
+    "Indicator gap": "space/content/xs",
+    "Focus ring": "stroke color/focus/ring, weight focus/width, corners radius/indicator, 2 px outside",
+    "underline thickness": "literal 1 px (default) and 2 px (hover, pressed): Figma refuses a variable on textDecorationThickness (Unknown field)",
+    "page part": "fixed at 0.01 × 16 px: an empty auto-layout frame keeps a 100 px width",
+    "indicator glyph": "Phosphor glyph instance placed directly in the part (Indicator icon): width and height link/font-size, opacity link/indicator-opacity, fill link/quiet; external arrow-up-right 200:4471, email envelope 200:4873, phone 200:5423, print printer 200:5463 fixed; file behind File icon#259:0 (default file-pdf 200:4959)"
+  },
+  "adapterCollections": {
+    "Components · link size": {
+      "id": "VariableCollectionId:232:400",
+      "hiddenFromPublishing": true,
+      "modes": [
+        "md (default)",
+        "sm",
+        "lg"
+      ],
+      "variables": {
+        "link/font-family": "VariableID:232:401",
+        "link/font-weight": "VariableID:232:402",
+        "link/font-size": "VariableID:232:403",
+        "link/line-height": "VariableID:232:404",
+        "link/letter-spacing": "VariableID:232:405"
+      },
+      "values": "aliases of typography/body/{size}/{property}"
+    },
+    "Components · link color": {
+      "id": "VariableCollectionId:232:406",
+      "hiddenFromPublishing": true,
+      "modes": [
+        "accent (default)",
+        "on-info",
+        "on-success",
+        "on-warning",
+        "on-danger",
+        "on-inverse"
+      ],
+      "variables": {
+        "link/content": "VariableID:232:407",
+        "link/quiet": "VariableID:232:408",
+        "link/indicator-opacity": "VariableID:232:409"
+      },
+      "values": "accent: color/content/link, color/content/tertiary, 100; on-{status}: color/status/{status}/content twice and opacity/muted; on-inverse: color/content/inverse twice and opacity/muted"
+    }
+  },
+  "variants": {
+    "Color=accent, Size=md, State=default": "232:443",
+    "Color=accent, Size=sm, State=default": "232:447",
+    "Color=accent, Size=lg, State=default": "232:451",
+    "Color=accent, Size=md, State=hover": "232:455",
+    "Color=accent, Size=sm, State=hover": "232:459",
+    "Color=accent, Size=lg, State=hover": "232:463",
+    "Color=accent, Size=md, State=pressed": "232:467",
+    "Color=accent, Size=sm, State=pressed": "232:471",
+    "Color=accent, Size=lg, State=pressed": "232:475",
+    "Color=on info, Size=md, State=default": "232:479",
+    "Color=on info, Size=sm, State=default": "232:483",
+    "Color=on info, Size=lg, State=default": "232:487",
+    "Color=on info, Size=md, State=hover": "232:491",
+    "Color=on info, Size=sm, State=hover": "232:495",
+    "Color=on info, Size=lg, State=hover": "232:499",
+    "Color=on info, Size=md, State=pressed": "232:503",
+    "Color=on info, Size=sm, State=pressed": "232:507",
+    "Color=on info, Size=lg, State=pressed": "232:511",
+    "Color=on success, Size=md, State=default": "232:515",
+    "Color=on success, Size=sm, State=default": "232:519",
+    "Color=on success, Size=lg, State=default": "232:523",
+    "Color=on success, Size=md, State=hover": "232:527",
+    "Color=on success, Size=sm, State=hover": "232:531",
+    "Color=on success, Size=lg, State=hover": "232:535",
+    "Color=on success, Size=md, State=pressed": "232:539",
+    "Color=on success, Size=sm, State=pressed": "232:543",
+    "Color=on success, Size=lg, State=pressed": "232:547",
+    "Color=on warning, Size=md, State=default": "232:551",
+    "Color=on warning, Size=sm, State=default": "232:555",
+    "Color=on warning, Size=lg, State=default": "232:559",
+    "Color=on warning, Size=md, State=hover": "232:563",
+    "Color=on warning, Size=sm, State=hover": "232:567",
+    "Color=on warning, Size=lg, State=hover": "232:571",
+    "Color=on warning, Size=md, State=pressed": "232:575",
+    "Color=on warning, Size=sm, State=pressed": "232:579",
+    "Color=on warning, Size=lg, State=pressed": "232:583",
+    "Color=on danger, Size=md, State=default": "232:587",
+    "Color=on danger, Size=sm, State=default": "232:591",
+    "Color=on danger, Size=lg, State=default": "232:595",
+    "Color=on danger, Size=md, State=hover": "232:599",
+    "Color=on danger, Size=sm, State=hover": "232:603",
+    "Color=on danger, Size=lg, State=hover": "232:607",
+    "Color=on danger, Size=md, State=pressed": "232:611",
+    "Color=on danger, Size=sm, State=pressed": "232:615",
+    "Color=on danger, Size=lg, State=pressed": "232:619",
+    "Color=on inverse, Size=md, State=default": "232:623",
+    "Color=on inverse, Size=sm, State=default": "232:627",
+    "Color=on inverse, Size=lg, State=default": "232:631",
+    "Color=on inverse, Size=md, State=hover": "232:635",
+    "Color=on inverse, Size=sm, State=hover": "232:639",
+    "Color=on inverse, Size=lg, State=hover": "232:643",
+    "Color=on inverse, Size=md, State=pressed": "232:647",
+    "Color=on inverse, Size=sm, State=pressed": "232:651",
+    "Color=on inverse, Size=lg, State=pressed": "232:655"
+  },
+  "specification": {
+    "id": "234:13",
+    "name": "Link — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=234-13",
+    "builder": "authoring/adapters/figma/link-spec.plugin.js",
+    "anatomyBoard": "234:69",
+    "uses": {
+      "_Spec/Board": "113:17",
+      "_Spec/Callout": "115:6",
+      "_Spec/Marker": "115:8",
+      "Icon": "149:20",
+      "Wireframe": "VariableCollectionId:105:1565"
+    }
+  },
+  "evidence": {
+    "parity": "reports/components/link/figma/parity.json",
+    "parityScripts": [
+      "authoring/adapters/figma/link-parity.plugin.js",
+      "authoring/adapters/figma/link-parity-report.mjs"
+    ],
+    "screenshots": [
+      "reports/components/link/figma/master-set.png",
+      "reports/components/link/figma/specification.png",
+      "reports/components/link/figma/blueprint-anatomy.png"
+    ]
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-19",
+      "change": "Built: 36 variants; the variant grid widened so that the file column (with its meta) does not overlap the print column."
+    },
+    {
+      "date": "2026-10-20",
+      "change": "Rebuilt at the Figma parity review (user: configure the link by variants, not by modes; no secondary or tertiary context). The set 225:276 (Tone × Destination × State, 36 variants), its specification 228:63 and the collections Components · link text and Components · link context are removed. New set 232:659 (Color × Size × State, 54 variants) whose variants set the modes of the new collections Components · link size and Components · link color themselves; the destination moves into the nested part _Link/Destination 232:442 (Destination, Meta, Indicator icon); specification 234:13. Page backdrop 237:400 behind the on inverse rows. Parity re-measured: 4680 records, 0 failures."
+    },
+    {
+      "date": "2026-10-20",
+      "change": "Anatomy board 234:69 (user review): the focus ring is drawn dashed at 50 % opacity so the link no longer reads as a boxed control, callout 1 points at the label, and legend item 4 says the ring appears only on keyboard focus."
+    },
+    {
+      "date": "2026-10-26",
+      "change": "Icon slot (authoring/adapters/figma/icon-slot-migrate.plugin.js): the nested Icon md instances of the part (exposed in the file variant, showing Size) are replaced by the Phosphor glyphs themselves, same bindings; only the file destination binds its glyph to the new instance-swap property File icon#259:0. User decision at the wave 1 Figma parity review (2026-10-26): a component imposes the size of its icon, so the designer chooses the glyph only; an exposed nested Icon showed its Size property. Specification instances keep their file glyphs (3 re-applied); parity re-measured, the 18 hashes equal; specification pixel-identical before the text change."
+    }
+  ]
+}

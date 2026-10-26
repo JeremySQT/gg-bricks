@@ -25,7 +25,7 @@ Keycap dimensions: A side padding and C gap between caps (2, 4 or 6 px with the 
 
 - A key sequence (“G then I”): write two shortcuts in a sentence.
 - Handling the keys: the application binds them; the component only displays them.
-- A quantity: Counter. A status or a category: Badge (planned).
+- A quantity: Counter. A status or a category: Badge.
 - Mouse or touch gestures.
 
 ## Best practices

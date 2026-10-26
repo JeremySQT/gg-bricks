@@ -217,6 +217,33 @@
     {
       "date": "2026-10-14",
       "change": "Token collections renamed Foundations · Primitives, Foundations · Brand, Foundations · Appearance and Foundations · Density (IDs and bindings unchanged); the adapter scripts of this component resolve the short axis names to the prefixed ones."
+    },
+    {
+      "date": "2026-10-26",
+      "change": "Internal part _Shortcut/Nested (278:1153) created (authoring/adapters/figma/nested-parts.plugin.js). User decision at the wave 1 Figma parity review (2026-10-26, option 2): inside a host, a Counter or Shortcut must not show its Size; Counter and Shortcut keep their Size for use on their own. Equal to Shortcut in 18 contexts × 3 sizes × 4 variants (216 cases, 0 differences). Shortcut itself is unchanged apart from its description, which points to the nested part."
     }
-  ]
+  ],
+  "nestedPart": {
+    "id": "278:1153",
+    "name": "_Shortcut/Nested",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=278-1153",
+    "page": "content/shortcut (149:1569)",
+    "builder": "authoring/adapters/figma/nested-parts.plugin.js (part 2)",
+    "variants": {
+      "Appearance=Plain, Platform=Mac": "278:1133",
+      "Appearance=Plain, Platform=Other": "278:1137",
+      "Appearance=Keycap, Platform=Mac": "278:1143",
+      "Appearance=Keycap, Platform=Other": "278:1147"
+    },
+    "properties": {
+      "Show key 2#278:11": "BOOLEAN, default true (Key 2, Separator 1)",
+      "Show key 3#278:6": "BOOLEAN, default false (Key 3, Separator 2)",
+      "Appearance": "VARIANT Plain/Keycap",
+      "Platform": "VARIANT Mac/Other"
+    },
+    "exposedInstances": "Key 1, Key 2, Key 3 (Key text, key Appearance)",
+    "bindings": "as the md Shortcut, without the explicit Components mode: the host's mode sets the size",
+    "use": "inside a host only (the trailing item of Button, 91:7)",
+    "screenshot": "reports/components/shortcut/figma/nested-set.png"
+  }
 }

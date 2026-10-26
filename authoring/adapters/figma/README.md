@@ -53,3 +53,36 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - A variable cannot move between collections: regrouping means creating the variable in the target collection, rebinding every consumer (masters first, then instance overrides; `explicitVariableModes` moved with `setExplicitVariableModeForCollection` and `clearExplicitVariableModeForCollection`) and deleting the old collection once no reference remains. A stale width binding override on a nested instance is cleared with `resetOverrides()` on that nested instance.
 - Component adapter variables live in one hidden collection `Components` (modes sm, md, lg; size-independent variables repeat their value), grouped by component in the variable names. The Button keeps two more hidden collections, `Components · button style` and `Components · button state`, because its shared trailing part needs two independent mode axes (9 intent-appearance pairs × 5 states cannot share one collection).
 - Token collections are named `Foundations · <Axis>` since 2026-10-14; every adapter script's `col()` helper accepts the short axis name (`col('Brand')`) and resolves it to the prefixed collection. The manifest and the sync, prune and verification scripts use the prefixed names.
+
+## IconButton, Badge and Link scripts (2026-10-19)
+
+- `icon-button-master.plugin.js`, `icon-button-spec.plugin.js`: the IconButton component set (135 variants, Button treatments and adapter modes, a Target layer outside the layout) and its specification page.
+- `badge-master.plugin.js`, `badge-spec.plugin.js`: the Badge component set (36 variants, Counter box family, the adapter variable `badge/icon-box`) and its specification page.
+- `link-master.plugin.js`, `link-spec.plugin.js`: the collections `Components · link size` and `Components · link color`, the internal part `_Link/Destination` (6 variants), the Link component set (Color × Size × State, 54 variants, each setting its own modes; rebuilt on 2026-10-20 from the mode-based version of 2026-10-19) and its specification page.
+- `phosphor-components.plugin.js`, `phosphor-spec.plugin.js`: the Phosphor glyph components of `assets/phosphor` and their notes frame.
+- `icon-button-parity.plugin.js` + `icon-button-parity-report.mjs`, `badge-parity.plugin.js` + `badge-parity-report.mjs`, `link-parity.plugin.js` + `link-parity-report.mjs`: parity by hash. The Figma body builds one field string per case, returns per context the FNV-1a hash of the sorted `key=fields` lines (plus the lines of the contexts listed in `DETAIL`, and numeric fields that need a tolerance), and the report script builds the same strings from `computed.json`; an equal hash proves every field equal. This keeps the MCP output small (the full lines of 18 contexts exceed its limit).
+
+## Mechanics learned on 2026-10-19
+
+- Changing the default of an instance-swap property (Icon › Glyph) re-swaps every instance that had not chosen its own value, and Figma drops the nested overrides under the swapped instance (the Button's leading glyph color, restored the same day). Explicitly setting the default value again has the same effect. Choosing any other component keeps the overrides. Scripts never set a default glyph explicitly and check slot colors after any default change.
+- An inside stroke on an auto-layout frame is included in its layout by default for these masters (`strokesIncludedInLayout`); set it to false where the code draws an inset shadow that takes no room (Badge).
+- `setBoundVariable('textDecorationThickness', …)` is refused (“Unknown field”): the underline thickness stays a literal (Link).
+- An absolute child bound to a size variable keeps its creation position: set its x and y explicitly, then CENTER constraints keep it centered when the parent's bound size changes with the density (IconButton Target).
+- Straight apostrophes in a component description are stored as `&#39;`; use the typographic apostrophe.
+
+## Mechanics learned on 2026-10-20
+
+- An auto-layout frame with no child keeps a width of 100 px whatever its sizing mode: an empty variant (Link's `Destination=page`) is fixed at 0.01 px wide instead.
+- Modes set explicitly on a variant reach the nested instances it holds: the Link variants set the modes of `Components · link size` and `Components · link color`, and the nested `_Link/Destination` part resolves `link/quiet` and `link/font-size` through them. Exposing the nested instance (`isExposedInstance`) lets a designer set its Destination and Meta from the Link instance.
+- `get_screenshot` of a component set renders the set alone: a page decoration behind it (the Link's on inverse backdrop) appears on the canvas but not in the exported master-set image.
+
+## Icon slots (2026-10-26)
+
+- `icon-slot-migrate.plugin.js`: replaces a nested Icon by the Phosphor glyph itself in every variant of one set, behind a new instance-swap property, and re-applies the glyph and visibility of every existing instance. Run once per set (Badge, IconButton, `_Link/Destination`, Button, `_Button/Trailing` on 2026-10-26); the master builders now build the glyph directly.
+- An instance-swap property has one default for the whole set: binding a layer swaps it to that default, and swapping one variant's bound layer changes the default of every variant. Per-variant default glyphs are not possible (the Badge's per-intent glyphs became instance choices on its specification page).
+- Binding the property can drop the glyph color override of the variants: set the fills again after binding.
+- Replacing a layer drops the overrides instances had on it (a glyph chosen, a hidden icon): read them first and re-apply them. Swapping a hidden glyph on an instance shows it again: restore the visibility after the swap.
+- Choosing the default glyph again on an instance whose glyph is already the default resets the glyph layer (its name and its color): scripts never set the default explicitly.
+- `nested-parts.plugin.js` (three parts): the internal parts `_Counter/Nested` and `_Shortcut/Nested` (the md variants, sized by the host's Components mode) and the `_Button/Trailing` reduction to Type, with the content of every trailing instance re-applied.
+- A variant cloned out of its set loses its component property references (visibility, text): add the properties to the new set and bind them again. `clearExplicitVariableModeForCollection` on a variant lets it take the mode of its host.
+- A nested component whose size is a variant property always shows that Size once exposed; a host that must impose the size holds a copy whose size comes from a mode the host sets.
