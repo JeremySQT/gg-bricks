@@ -3,7 +3,7 @@
   "componentId": "input-text",
   "family": "forms",
   "wave": 2,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Let the user enter or edit a short single-line text value (name, email, search query, password, URL, phone number).",
     "useCases": [
@@ -76,7 +76,29 @@
       "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): option B for trailing actions with sm forbidding the action (\"2 je partirai sur B\"), then the proposed mechanism confirmed: \"Ok pour la proposition, lance l'implémentation\".",
       "note": "The reviewer expects adjustments at the implementation review."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "InputText: native input in a Button-aligned container, decorative slots, trailing IconButton action at md and lg, conditions with the focus ring, lighter light border (neutral.450).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/input-text/InputText.svelte",
+          "packages/svelte/src/components/input-text/contract.generated.ts",
+          "packages/svelte/src/components/input-text/input-text.css",
+          "packages/svelte/src/components/input-text/tokens.generated.css",
+          "packages/svelte/src/components/input-text/types.ts",
+          "examples/input-text/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/input-text/InputText.svelte": "c61fce2a98da9ceab4b0affe322b33efa2ffd7d79eafa0d947ec47f06a5cfec9",
+          "packages/svelte/src/components/input-text/contract.generated.ts": "65e7dff8c1c30f700af22f16e8d306ffd1485800939a4478bfeca927ef3a6484",
+          "packages/svelte/src/components/input-text/input-text.css": "a587bc72dfd6f548c25882d30186fa08be94de3f61fd0240b148e2bcff031470",
+          "packages/svelte/src/components/input-text/tokens.generated.css": "de5fc879861cb6791cb5eed4e3d76fdc4a9353b73661640f77a3972a3f088d93",
+          "packages/svelte/src/components/input-text/types.ts": "d6079ba5518687533e834dd7a2246dacddf6b72db4f939dcbd90e30db4b98477",
+          "examples/input-text/App.svelte": "989f5de929d5bcf84bcc08ca858072e5529485931d75a9f1a6fa72e2e834f3c7"
+        }
+      },
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -150,12 +172,11 @@
     "Trailing actions B (user at the contract gate, 2026-10-26: \"2 je partirai sur B\", with the rule that sm forbids the action): trailing accepts an IconButton at sizes md and lg only. The input imposes on it an existing IconButton size one step smaller (sm in md, md in lg), intent neutral and appearance ghost, without any local override of IconButton: its tokens and behavior are unchanged, the host only chooses its options (the host-imposes-size principle of decisions.md, 2026-10-26). Block and inline-end inset (minHeight − box)/2: 4 px in standard, 2 to 6 px across densities. Mechanism confirmed by the user (\"Ok pour la proposition\", 2026-10-26).",
     "The trailing part maps to two snippet props: `trailing` (decorative icon) and `action` (IconButton). `action` receives the imposed IconButton options (size one step smaller, neutral, ghost, disabled with the input) to spread on the IconButton: InputText imports no IconButton and IconButton reads no context. At sm the action is not rendered and a console warning is logged.",
     "Condition selectors are wrapped in :where() so that source order alone is the precedence (disabled, readonly, invalid, focus, hover); the focus ring is drawn while the input itself has focus (not its action).",
-    "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges)."
+    "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges).",
+    "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
   ],
-  "openDecisions": [
-    "Field border contrast (user, 2026-10-27, implementation review round 2: whether to keep the 3:1 criterion is still to be decided; aesthetics matter). Options: (A) keep the current light border neutral.450 at 3.43:1 (WCAG 1.4.11 met by the border); (B) a lighter outline with a 3:1 bottom edge that identifies the field; (C) a lighter border below 3:1 accepted as a documented deviation, which lowers the inventory threshold of color.field.default.border and color.field.readonly.border. With B or C, the off borders of Checkbox, Radio and Switch are decoupled from the field border and keep 3:1, since the outline is the only thing that shows a box or a circle. To settle before the Figma parity phase (variables)."
-  ],
-  "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",
+  "openDecisions": [],
+  "nextAction": "Figma parity (ggb-figma): sync the wave 2 variables (color.choice, size.choice, size.switch, neutral.450, changed field border aliases), build the masters and specification pages, verify parity against computed.json; Figma parity gate.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
     "Svelte: the trailing snippet receives the imposed IconButton props as a parameter (size, intent, appearance, disabled), so that InputText does not import IconButton and IconButton does not read a context from InputText; both folders stay self-contained. A trailing IconButton at size sm is reported as a usage error in development.",

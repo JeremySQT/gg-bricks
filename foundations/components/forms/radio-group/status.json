@@ -3,7 +3,7 @@
   "componentId": "radio-group",
   "family": "forms",
   "wave": 2,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Ask for exactly one choice among a few mutually exclusive options that should all stay visible.",
     "useCases": [
@@ -73,7 +73,29 @@
       "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\"",
       "note": "Conversational approval of the whole wave contract set; the reviewer expects adjustments at the implementation review."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "RadioGroup: Bits UI RadioGroup with the first-arrow selection and keyboard entry completions, orientations, ggb:radio-group context.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/radio-group/RadioGroup.svelte",
+          "packages/svelte/src/components/radio-group/contract.generated.ts",
+          "packages/svelte/src/components/radio-group/radio-group.css",
+          "packages/svelte/src/components/radio-group/tokens.generated.css",
+          "packages/svelte/src/components/radio-group/types.ts",
+          "examples/radio-group/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/radio-group/RadioGroup.svelte": "df91f16973c6d198640d165ee6706cc0e0c0c0f1bfbc1b8b304eae3d32952f20",
+          "packages/svelte/src/components/radio-group/contract.generated.ts": "9ccfe98d15642a84b145ec8f67e80fb5733c1664d4627e597811d17bc13ca270",
+          "packages/svelte/src/components/radio-group/radio-group.css": "73c4b5d568242df1c841faf95aa6f078d36efe8126f6e7e452c265ff8ec69304",
+          "packages/svelte/src/components/radio-group/tokens.generated.css": "6f9b7dbc677b211e388255753a3f021b8e1106fa633f207c80853c954bd6beea",
+          "packages/svelte/src/components/radio-group/types.ts": "4bef50e7f76a59dc5c7b904b22e3a7a81fc888de695ba09b5a12f7988415835c",
+          "examples/radio-group/App.svelte": "17960ce04cab329ab1d6c7cc5c8cee6f6ba1d1a5fe073c1c0769dd91c4392912"
+        }
+      },
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -145,7 +167,7 @@
     "Implementation review, round 1 (user, 2026-10-27: selected dots flattened or off-center, outer circles odd): ring and dot are drawn as SVG circles (ring stroke inside the box, dot 3/8 of the box), centered by SVG geometry instead of CSS boxes snapped to device pixels at fractional display scales."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",
+  "nextAction": "Figma parity (ggb-figma): sync the wave 2 variables (color.choice, size.choice, size.switch, neutral.450, changed field border aliases), build the masters and specification pages, verify parity against computed.json; Figma parity gate.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
     "Implemented on 2026-10-26 on the approved contract; see reports/components/radio-group/svelte/implementation.md for the rule-by-rule evidence and the limitations."

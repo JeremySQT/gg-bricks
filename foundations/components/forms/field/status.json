@@ -3,7 +3,7 @@
   "componentId": "field",
   "family": "forms",
   "wave": 2,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Give one form control a visible label, an optional description, a required marker and a validation message, and link them to the control for assistive technology.",
     "useCases": [
@@ -76,7 +76,29 @@
       "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\"",
       "note": "Conversational approval of the whole wave contract set; the reviewer expects adjustments at the implementation review."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Field: label, description, required asterisk, error message with icon, links to the control through the ggb:field context (id registration, aria-labelledby, aria-describedby), state pass-through.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/field/Field.svelte",
+          "packages/svelte/src/components/field/contract.generated.ts",
+          "packages/svelte/src/components/field/field.css",
+          "packages/svelte/src/components/field/tokens.generated.css",
+          "packages/svelte/src/components/field/types.ts",
+          "examples/field/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/field/Field.svelte": "375b2bfff1a2e815324c9aeadb293e56be198d3369d1fac5df471ed45933490c",
+          "packages/svelte/src/components/field/contract.generated.ts": "7af77e5f32a58ee21d8837d9262c7cf4dff3ba9ef4390d2e06e7b9b3746abccc",
+          "packages/svelte/src/components/field/field.css": "cecc33350ceb0e8401056b7e8fe93f7a341fdf20fa04b144317a4fe53669fbc4",
+          "packages/svelte/src/components/field/tokens.generated.css": "2951a518058fd0357be2c0480166bfdda7ed0a4f3d457d700fd8be7280bc71fd",
+          "packages/svelte/src/components/field/types.ts": "5975a5bbcc55c836b5d71de0eafe0537b24e30e28e2f97236e5fcebda7c35eff",
+          "examples/field/App.svelte": "2845635321972d1d91082b67dd1ef214f89ba3c562994015abafd55be08b0362"
+        }
+      },
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -151,7 +173,7 @@
     "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges)."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",
+  "nextAction": "Figma parity (ggb-figma): sync the wave 2 variables (color.choice, size.choice, size.switch, neutral.450, changed field border aliases), build the masters and specification pages, verify parity against computed.json; Figma parity gate.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
     "Implemented on 2026-10-26 on the approved contract; see reports/components/field/svelte/implementation.md for the rule-by-rule evidence and the limitations."

@@ -3,7 +3,7 @@
   "componentId": "switch",
   "family": "forms",
   "wave": 2,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Turn a setting on or off with immediate effect (notifications, dark mode, a feature flag).",
     "useCases": [
@@ -72,7 +72,29 @@
       "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\"",
       "note": "Conversational approval of the whole wave contract set; the reviewer expects adjustments at the implementation review."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Switch: Bits UI Switch in a label container, SVG thumb centered at any display scale, readonly guard, label at the end or start.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/switch/Switch.svelte",
+          "packages/svelte/src/components/switch/contract.generated.ts",
+          "packages/svelte/src/components/switch/switch.css",
+          "packages/svelte/src/components/switch/tokens.generated.css",
+          "packages/svelte/src/components/switch/types.ts",
+          "examples/switch/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/switch/Switch.svelte": "3f388f0bd30fe261cfe020647d9157514252f0978f717b185ca115480c01d3e3",
+          "packages/svelte/src/components/switch/contract.generated.ts": "e0721ef891d2296b4859a7d682272f1cc5418bf99bb68169b8177684ea046fdf",
+          "packages/svelte/src/components/switch/switch.css": "0cbf0bbc949cbb1e41fa8fe0578f0c66ee02926b149f5f834659e103631810ea",
+          "packages/svelte/src/components/switch/tokens.generated.css": "bebc0c0e7366ab5ccf9ec5ca45d613409331ecf95941cf72f39279340b083333",
+          "packages/svelte/src/components/switch/types.ts": "357abc1a0b857fd00133b2bf576f1147b69afc005b0e55a0356b634f97b41824",
+          "examples/switch/App.svelte": "d0ad42fb3686ac64c101c4d4f0caf529f58cc47fbaa775f3e655a47dbc31433f"
+        }
+      },
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -141,12 +163,11 @@
     "Thumb and colors animate over motion.duration.base with motion.easing.standard; instant under reduced motion.",
     "Bits UI has no readonly switch: the component cancels click and Space/Enter before the primitive and sets aria-readonly. Enter also toggles (Bits UI, allowed by the WAI-ARIA switch pattern).",
     "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges).",
-    "Implementation review, round 1 (user, 2026-10-27: the white thumb is not vertically centered): the thumb is drawn as an SVG circle over the track, centered by SVG geometry (antialiased) instead of a CSS box snapped to device pixels, which was off by one pixel at fractional display scales (125 %, 150 %); it moves by transitioning cx. Bits UI Switch.Thumb is no longer used."
+    "Implementation review, round 1 (user, 2026-10-27: the white thumb is not vertically centered): the thumb is drawn as an SVG circle over the track, centered by SVG geometry (antialiased) instead of a CSS box snapped to device pixels, which was off by one pixel at fractional display scales (125 %, 150 %); it moves by transitioning cx. Bits UI Switch.Thumb is no longer used.",
+    "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
   ],
-  "openDecisions": [
-    "Field border contrast (user, 2026-10-27, implementation review round 2: whether to keep the 3:1 criterion is still to be decided; aesthetics matter). Options: (A) keep the current light border neutral.450 at 3.43:1 (WCAG 1.4.11 met by the border); (B) a lighter outline with a 3:1 bottom edge that identifies the field; (C) a lighter border below 3:1 accepted as a documented deviation, which lowers the inventory threshold of color.field.default.border and color.field.readonly.border. With B or C, the off borders of Checkbox, Radio and Switch are decoupled from the field border and keep 3:1, since the outline is the only thing that shows a box or a circle. To settle before the Figma parity phase (variables)."
-  ],
-  "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",
+  "openDecisions": [],
+  "nextAction": "Figma parity (ggb-figma): sync the wave 2 variables (color.choice, size.choice, size.switch, neutral.450, changed field border aliases), build the masters and specification pages, verify parity against computed.json; Figma parity gate.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
     "Implemented on 2026-10-26 on the approved contract; see reports/components/switch/svelte/implementation.md for the rule-by-rule evidence and the limitations."
