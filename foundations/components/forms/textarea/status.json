@@ -139,7 +139,9 @@
     "Resize auto measures scrollHeight after every value change and CSS clamps it between rows and maxRows; the block padding is (minHeight − 1lh) / 2.",
     "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges)."
   ],
-  "openDecisions": [],
+  "openDecisions": [
+    "Field border contrast (user, 2026-10-27, implementation review round 2: whether to keep the 3:1 criterion is still to be decided; aesthetics matter). Options: (A) keep the current light border neutral.450 at 3.43:1 (WCAG 1.4.11 met by the border); (B) a lighter outline with a 3:1 bottom edge that identifies the field; (C) a lighter border below 3:1 accepted as a documented deviation, which lowers the inventory threshold of color.field.default.border and color.field.readonly.border. With B or C, the off borders of Checkbox, Radio and Switch are decoupled from the field border and keep 3:1, since the outline is the only thing that shows a box or a circle. To settle before the Figma parity phase (variables)."
+  ],
   "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
