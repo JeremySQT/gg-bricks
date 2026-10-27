@@ -196,6 +196,8 @@ test('computed values match the resolved tokens for every selection, condition, 
     const context = `${brand}-${mode}-${density}`;
     const tokens = tokensFor(context);
     await setContext(page, brand, mode, density);
+    // Hover alone: drop the focus left by the previous context's focus check.
+    await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
     for (const selection of selections) {
       await page.hover(`#cb-default-${selection}-md >> xpath=../..`);
       const hover = await measure(page, `#cb-default-${selection}-md`);

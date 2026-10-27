@@ -1,0 +1,663 @@
+{
+  "recordedOn": "2026-10-27",
+  "file": "TDPqojP4KvbWJlKSYc4zKC",
+  "componentSet": "292:327",
+  "method": "Exact fields: per context, the measured field strings of every case are hashed in Figma (FNV-1a of the sorted key=fields lines) and compared with the same strings built from computed.json; an equal hash proves each field equal, so observed repeats expected in its Figma form. Geometry: compared one by one with a tolerance. Body: authoring/adapters/figma/forms-parity.plugin.js; report: forms-parity-report.mjs.",
+  "contexts": {
+    "base-dark-comfortable": {
+      "expected": {
+        "n": 2,
+        "hash": "10fa782d"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "10fa782d"
+      }
+    },
+    "base-dark-compact": {
+      "expected": {
+        "n": 2,
+        "hash": "1a9bae44"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "1a9bae44"
+      }
+    },
+    "base-dark-standard": {
+      "expected": {
+        "n": 2,
+        "hash": "3abc0080"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "3abc0080"
+      }
+    },
+    "base-light-comfortable": {
+      "expected": {
+        "n": 2,
+        "hash": "10fa782d"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "10fa782d"
+      }
+    },
+    "base-light-compact": {
+      "expected": {
+        "n": 2,
+        "hash": "1a9bae44"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "1a9bae44"
+      }
+    },
+    "base-light-standard": {
+      "expected": {
+        "n": 2,
+        "hash": "3abc0080"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "3abc0080"
+      }
+    },
+    "brick-dark-comfortable": {
+      "expected": {
+        "n": 2,
+        "hash": "10fa782d"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "10fa782d"
+      }
+    },
+    "brick-dark-compact": {
+      "expected": {
+        "n": 2,
+        "hash": "1a9bae44"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "1a9bae44"
+      }
+    },
+    "brick-dark-standard": {
+      "expected": {
+        "n": 2,
+        "hash": "3abc0080"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "3abc0080"
+      }
+    },
+    "brick-light-comfortable": {
+      "expected": {
+        "n": 2,
+        "hash": "10fa782d"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "10fa782d"
+      }
+    },
+    "brick-light-compact": {
+      "expected": {
+        "n": 2,
+        "hash": "1a9bae44"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "1a9bae44"
+      }
+    },
+    "brick-light-standard": {
+      "expected": {
+        "n": 2,
+        "hash": "3abc0080"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "3abc0080"
+      }
+    },
+    "orchid-dark-comfortable": {
+      "expected": {
+        "n": 2,
+        "hash": "10fa782d"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "10fa782d"
+      }
+    },
+    "orchid-dark-compact": {
+      "expected": {
+        "n": 2,
+        "hash": "1a9bae44"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "1a9bae44"
+      }
+    },
+    "orchid-dark-standard": {
+      "expected": {
+        "n": 2,
+        "hash": "3abc0080"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "3abc0080"
+      }
+    },
+    "orchid-light-comfortable": {
+      "expected": {
+        "n": 2,
+        "hash": "10fa782d"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "10fa782d"
+      }
+    },
+    "orchid-light-compact": {
+      "expected": {
+        "n": 2,
+        "hash": "1a9bae44"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "1a9bae44"
+      }
+    },
+    "orchid-light-standard": {
+      "expected": {
+        "n": 2,
+        "hash": "3abc0080"
+      },
+      "observed": {
+        "n": 2,
+        "hash": "3abc0080"
+      }
+    }
+  },
+  "summary": {
+    "records": 36,
+    "failures": 0,
+    "justified": 0
+  },
+  "records": [
+    {
+      "context": "base-light-compact",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "4px 12px",
+      "part": "gap",
+      "observed": "4 12",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "base-light-compact",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "4px",
+      "part": "gap",
+      "observed": "4",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "8px 16px",
+      "part": "gap",
+      "observed": "8 16",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "8px",
+      "part": "gap",
+      "observed": "8",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "12px 24px",
+      "part": "gap",
+      "observed": "12 24",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "base-light-comfortable",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "12px",
+      "part": "gap",
+      "observed": "12",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "4px 12px",
+      "part": "gap",
+      "observed": "4 12",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "base-dark-compact",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "4px",
+      "part": "gap",
+      "observed": "4",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "8px 16px",
+      "part": "gap",
+      "observed": "8 16",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "8px",
+      "part": "gap",
+      "observed": "8",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "12px 24px",
+      "part": "gap",
+      "observed": "12 24",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "base-dark-comfortable",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "12px",
+      "part": "gap",
+      "observed": "12",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "4px 12px",
+      "part": "gap",
+      "observed": "4 12",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "4px",
+      "part": "gap",
+      "observed": "4",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "8px 16px",
+      "part": "gap",
+      "observed": "8 16",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "brick-light-standard",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "8px",
+      "part": "gap",
+      "observed": "8",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "12px 24px",
+      "part": "gap",
+      "observed": "12 24",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "brick-light-comfortable",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "12px",
+      "part": "gap",
+      "observed": "12",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "4px 12px",
+      "part": "gap",
+      "observed": "4 12",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "brick-dark-compact",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "4px",
+      "part": "gap",
+      "observed": "4",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "8px 16px",
+      "part": "gap",
+      "observed": "8 16",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "brick-dark-standard",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "8px",
+      "part": "gap",
+      "observed": "8",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "12px 24px",
+      "part": "gap",
+      "observed": "12 24",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "12px",
+      "part": "gap",
+      "observed": "12",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "4px 12px",
+      "part": "gap",
+      "observed": "4 12",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "orchid-light-compact",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "4px",
+      "part": "gap",
+      "observed": "4",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "8px 16px",
+      "part": "gap",
+      "observed": "8 16",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "orchid-light-standard",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "8px",
+      "part": "gap",
+      "observed": "8",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "12px 24px",
+      "part": "gap",
+      "observed": "12 24",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "12px",
+      "part": "gap",
+      "observed": "12",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "4px 12px",
+      "part": "gap",
+      "observed": "4 12",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "orchid-dark-compact",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "4px",
+      "part": "gap",
+      "observed": "4",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "8px 16px",
+      "part": "gap",
+      "observed": "8 16",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "orchid-dark-standard",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "8px",
+      "part": "gap",
+      "observed": "8",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "12px 24px",
+      "part": "gap",
+      "observed": "12 24",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "orientation": "vertical"
+      },
+      "state": "default",
+      "property": "gap",
+      "expected": "12px",
+      "part": "gap",
+      "observed": "12",
+      "passed": true,
+      "note": "vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm"
+    }
+  ]
+}
