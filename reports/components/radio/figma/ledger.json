@@ -1,0 +1,170 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=288-6"
+  },
+  "recordedOn": "2026-10-27",
+  "page": {
+    "name": "forms/radio",
+    "id": "288:6",
+    "position": "forms pages after the content pages, in alphabetical order (authoring/adapters/figma/forms-setup.plugin.js)"
+  },
+  "componentSet": {
+    "id": "290:257",
+    "name": "Radio",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=290-257",
+    "builder": "authoring/adapters/figma/radio-master.plugin.js",
+    "defaultVariant": "Size=md, Selection=off, State=default",
+    "variantCount": 30
+  },
+  "properties": {
+    "Label#290:0": {
+      "type": "TEXT",
+      "default": "Option",
+      "layer": "Label"
+    },
+    "Description#290:31": {
+      "type": "TEXT",
+      "default": "Description",
+      "layer": "Description"
+    },
+    "Show description#290:62": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Description (visible)"
+    },
+    "Focus#290:93": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Focus ring (visible; State=focus variants show it always)"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ]
+    },
+    "Selection": {
+      "type": "VARIANT",
+      "default": "off",
+      "options": [
+        "off",
+        "on"
+      ]
+    },
+    "State": {
+      "type": "VARIANT",
+      "default": "default",
+      "options": [
+        "default",
+        "hover",
+        "readonly",
+        "disabled",
+        "invalid"
+      ]
+    }
+  },
+  "exposedInstances": {},
+  "layers": [
+    "First line (height typography/body/{size}/lineHeight)",
+    "First line/Control (circle: auto layout, size/choice/{size}, radius/full)",
+    "First line/Control/Mark (ellipse radio/dot, centered; on variants only)",
+    "First line/Control/Focus ring (absolute, visible = Focus)",
+    "Text/Label, Text/Description (visible = Show description)",
+    "Target (size/target/min, absolute)"
+  ],
+  "bindings": {
+    "Control size": "size/choice/{size}",
+    "Control corners": "radius/full",
+    "Control fill / inside stroke": "color/choice/{off|on}/{state}/surface, border; weight border/width/default, not included in layout",
+    "First line height": "typography/body/{size}/lineHeight (the control is centered in it)",
+    "row gap": "space/control/gap/{size}",
+    "Label": "typography/body/{size}; color/content/primary (disabled: color/content/disabled)",
+    "Description": "typography/body/sm; color/content/secondary (disabled: color/content/disabled)",
+    "Focus ring": "outside stroke color/focus/ring, weight focus/width, 2 px outside the control",
+    "Target": "height size/target/min, absolute, centered on the row",
+    "Mark (dot)": "width and height radio/dot; fill color/choice/on/{state}/content"
+  },
+  "adapterVariables": {
+    "radio/dot": {
+      "id": "VariableID:288:12",
+      "collection": "Components (VariableCollectionId:181:2)",
+      "type": "FLOAT",
+      "values": {
+        "md": 6,
+        "sm": 5.25,
+        "lg": 7.5
+      },
+      "scopes": [
+        "WIDTH_HEIGHT",
+        "GAP"
+      ],
+      "hiddenFromPublishing": true
+    }
+  },
+  "variants": {
+    "Size=md, Selection=off, State=default": "290:2",
+    "Size=sm, Selection=off, State=default": "290:10",
+    "Size=lg, Selection=off, State=default": "290:18",
+    "Size=md, Selection=off, State=hover": "290:26",
+    "Size=sm, Selection=off, State=hover": "290:34",
+    "Size=lg, Selection=off, State=hover": "290:42",
+    "Size=md, Selection=off, State=readonly": "290:50",
+    "Size=sm, Selection=off, State=readonly": "290:58",
+    "Size=lg, Selection=off, State=readonly": "290:66",
+    "Size=md, Selection=off, State=disabled": "290:74",
+    "Size=sm, Selection=off, State=disabled": "290:82",
+    "Size=lg, Selection=off, State=disabled": "290:90",
+    "Size=md, Selection=off, State=invalid": "290:98",
+    "Size=sm, Selection=off, State=invalid": "290:106",
+    "Size=lg, Selection=off, State=invalid": "290:114",
+    "Size=md, Selection=on, State=default": "290:122",
+    "Size=sm, Selection=on, State=default": "290:131",
+    "Size=lg, Selection=on, State=default": "290:140",
+    "Size=md, Selection=on, State=hover": "290:149",
+    "Size=sm, Selection=on, State=hover": "290:158",
+    "Size=lg, Selection=on, State=hover": "290:167",
+    "Size=md, Selection=on, State=readonly": "290:176",
+    "Size=sm, Selection=on, State=readonly": "290:185",
+    "Size=lg, Selection=on, State=readonly": "290:194",
+    "Size=md, Selection=on, State=disabled": "290:203",
+    "Size=sm, Selection=on, State=disabled": "290:212",
+    "Size=lg, Selection=on, State=disabled": "290:221",
+    "Size=md, Selection=on, State=invalid": "290:230",
+    "Size=sm, Selection=on, State=invalid": "290:239",
+    "Size=lg, Selection=on, State=invalid": "290:248"
+  },
+  "specification": {
+    "id": "309:404",
+    "name": "Radio — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=309-404",
+    "builder": "authoring/adapters/figma/forms-spec.plugin.js (IDS ['radio'])",
+    "anatomyBoard": "309:455",
+    "uses": {
+      "_Spec/Callout": "115:6",
+      "_Spec/Marker": "115:8",
+      "Wireframe": "VariableCollectionId:105:1565"
+    }
+  },
+  "evidence": {
+    "parity": "reports/components/radio/figma/parity.json",
+    "parityScripts": [
+      "authoring/adapters/figma/forms-parity.plugin.js",
+      "authoring/adapters/figma/forms-parity-report.mjs"
+    ],
+    "screenshots": [
+      "reports/components/radio/figma/master-set.png",
+      "reports/components/radio/figma/specification.png",
+      "reports/components/radio/figma/blueprint-anatomy.png"
+    ]
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-27",
+      "change": "Built: 30 variants and the specification page. Parity measured in the 18 contexts (forms-parity.plugin.js)."
+    }
+  ]
+}

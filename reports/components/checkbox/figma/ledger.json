@@ -1,0 +1,182 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=288-3"
+  },
+  "recordedOn": "2026-10-27",
+  "page": {
+    "name": "forms/checkbox",
+    "id": "288:3",
+    "position": "forms pages after the content pages, in alphabetical order (authoring/adapters/figma/forms-setup.plugin.js)"
+  },
+  "componentSet": {
+    "id": "289:428",
+    "name": "Checkbox",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=289-428",
+    "builder": "authoring/adapters/figma/checkbox-master.plugin.js",
+    "defaultVariant": "Size=md, Selection=off, State=default",
+    "variantCount": 45
+  },
+  "properties": {
+    "Label#289:0": {
+      "type": "TEXT",
+      "default": "Option",
+      "layer": "Label"
+    },
+    "Description#289:46": {
+      "type": "TEXT",
+      "default": "Description",
+      "layer": "Description"
+    },
+    "Show description#289:92": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Description (visible)"
+    },
+    "Show label#289:138": {
+      "type": "BOOLEAN",
+      "default": true,
+      "layer": "Text (visible)"
+    },
+    "Focus#289:184": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Focus ring (visible; State=focus variants show it always)"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ]
+    },
+    "Selection": {
+      "type": "VARIANT",
+      "default": "off",
+      "options": [
+        "off",
+        "on",
+        "indeterminate"
+      ]
+    },
+    "State": {
+      "type": "VARIANT",
+      "default": "default",
+      "options": [
+        "default",
+        "hover",
+        "readonly",
+        "disabled",
+        "invalid"
+      ]
+    }
+  },
+  "exposedInstances": {},
+  "parts": {
+    "_Checkbox/Check": "289:4",
+    "_Checkbox/Minus": "289:7",
+    "note": "Phosphor Icons 2.1.1 bold check and minus on the 256-unit grid, internal parts (not for direct use), drawn at the box size as in the code"
+  },
+  "layers": [
+    "First line (height typography/body/{size}/lineHeight, centers the Control)",
+    "First line/Control (the box, auto layout, fixed size/choice/{size})",
+    "First line/Control/Mark (instance of _Checkbox/Check or _Checkbox/Minus, absolute, stretched over the box; not in off variants)",
+    "First line/Control/Focus ring (absolute, 2 px outside, visible = Focus)",
+    "Text (visible = Show label)",
+    "Text/Label (text, typography/body/{size})",
+    "Text/Description (text, typography/body/sm, visible = Show description)",
+    "Target (empty frame, size/target/min tall, absolute)"
+  ],
+  "bindings": {
+    "Control size": "size/choice/{size}",
+    "Control corners": "radius/indicator",
+    "Control fill / inside stroke": "color/choice/{off|on}/{state}/surface, border; weight border/width/default, not included in layout",
+    "First line height": "typography/body/{size}/lineHeight (the control is centered in it)",
+    "row gap": "space/control/gap/{size}",
+    "Label": "typography/body/{size}; color/content/primary (disabled: color/content/disabled)",
+    "Description": "typography/body/sm; color/content/secondary (disabled: color/content/disabled)",
+    "Focus ring": "outside stroke color/focus/ring, weight focus/width, 2 px outside the control",
+    "Target": "height size/target/min, absolute, centered on the row",
+    "Mark glyph fill": "color/choice/on/{state}/content"
+  },
+  "adapterVariables": {},
+  "variants": {
+    "Size=md, Selection=off, State=default": "289:8",
+    "Size=sm, Selection=off, State=default": "289:16",
+    "Size=lg, Selection=off, State=default": "289:24",
+    "Size=md, Selection=off, State=hover": "289:32",
+    "Size=sm, Selection=off, State=hover": "289:40",
+    "Size=lg, Selection=off, State=hover": "289:48",
+    "Size=md, Selection=off, State=readonly": "289:56",
+    "Size=sm, Selection=off, State=readonly": "289:64",
+    "Size=lg, Selection=off, State=readonly": "289:72",
+    "Size=md, Selection=off, State=disabled": "289:80",
+    "Size=sm, Selection=off, State=disabled": "289:88",
+    "Size=lg, Selection=off, State=disabled": "289:96",
+    "Size=md, Selection=off, State=invalid": "289:104",
+    "Size=sm, Selection=off, State=invalid": "289:112",
+    "Size=lg, Selection=off, State=invalid": "289:120",
+    "Size=md, Selection=on, State=default": "289:128",
+    "Size=sm, Selection=on, State=default": "289:138",
+    "Size=lg, Selection=on, State=default": "289:148",
+    "Size=md, Selection=on, State=hover": "289:158",
+    "Size=sm, Selection=on, State=hover": "289:168",
+    "Size=lg, Selection=on, State=hover": "289:178",
+    "Size=md, Selection=on, State=readonly": "289:188",
+    "Size=sm, Selection=on, State=readonly": "289:198",
+    "Size=lg, Selection=on, State=readonly": "289:208",
+    "Size=md, Selection=on, State=disabled": "289:218",
+    "Size=sm, Selection=on, State=disabled": "289:228",
+    "Size=lg, Selection=on, State=disabled": "289:238",
+    "Size=md, Selection=on, State=invalid": "289:248",
+    "Size=sm, Selection=on, State=invalid": "289:258",
+    "Size=lg, Selection=on, State=invalid": "289:268",
+    "Size=md, Selection=indeterminate, State=default": "289:278",
+    "Size=sm, Selection=indeterminate, State=default": "289:288",
+    "Size=lg, Selection=indeterminate, State=default": "289:298",
+    "Size=md, Selection=indeterminate, State=hover": "289:308",
+    "Size=sm, Selection=indeterminate, State=hover": "289:318",
+    "Size=lg, Selection=indeterminate, State=hover": "289:328",
+    "Size=md, Selection=indeterminate, State=readonly": "289:338",
+    "Size=sm, Selection=indeterminate, State=readonly": "289:348",
+    "Size=lg, Selection=indeterminate, State=readonly": "289:358",
+    "Size=md, Selection=indeterminate, State=disabled": "289:368",
+    "Size=sm, Selection=indeterminate, State=disabled": "289:378",
+    "Size=lg, Selection=indeterminate, State=disabled": "289:388",
+    "Size=md, Selection=indeterminate, State=invalid": "289:398",
+    "Size=sm, Selection=indeterminate, State=invalid": "289:408",
+    "Size=lg, Selection=indeterminate, State=invalid": "289:418"
+  },
+  "specification": {
+    "id": "307:2597",
+    "name": "Checkbox — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=307-2597",
+    "builder": "authoring/adapters/figma/forms-spec.plugin.js (IDS ['checkbox'])",
+    "anatomyBoard": "307:2652",
+    "uses": {
+      "_Spec/Callout": "115:6",
+      "_Spec/Marker": "115:8",
+      "Wireframe": "VariableCollectionId:105:1565"
+    }
+  },
+  "evidence": {
+    "parity": "reports/components/checkbox/figma/parity.json",
+    "parityScripts": [
+      "authoring/adapters/figma/forms-parity.plugin.js",
+      "authoring/adapters/figma/forms-parity-report.mjs"
+    ],
+    "screenshots": [
+      "reports/components/checkbox/figma/master-set.png",
+      "reports/components/checkbox/figma/specification.png",
+      "reports/components/checkbox/figma/blueprint-anatomy.png"
+    ]
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-27",
+      "change": "Built: 45 variants and the specification page. Parity measured in the 18 contexts (forms-parity.plugin.js)."
+    }
+  ]
+}

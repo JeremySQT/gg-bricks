@@ -1,0 +1,129 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=288-4"
+  },
+  "recordedOn": "2026-10-27",
+  "page": {
+    "name": "forms/field",
+    "id": "288:4",
+    "position": "forms pages after the content pages, in alphabetical order (authoring/adapters/figma/forms-setup.plugin.js)"
+  },
+  "componentSet": {
+    "id": "295:77",
+    "name": "Field",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=295-77",
+    "builder": "authoring/adapters/figma/field-master.plugin.js",
+    "defaultVariant": "State=default",
+    "variantCount": 3
+  },
+  "properties": {
+    "Label#295:0": {
+      "type": "TEXT",
+      "default": "Email",
+      "layer": "Label"
+    },
+    "Description#295:4": {
+      "type": "TEXT",
+      "default": "We send invoices to this address.",
+      "layer": "Description"
+    },
+    "Message#295:8": {
+      "type": "TEXT",
+      "default": "Enter an email address like name@example.com.",
+      "layer": "Message text"
+    },
+    "Required#295:12": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Required indicator (visible)"
+    },
+    "Show description#295:16": {
+      "type": "BOOLEAN",
+      "default": true,
+      "layer": "Description (visible)"
+    },
+    "State": {
+      "type": "VARIANT",
+      "default": "default",
+      "options": [
+        "default",
+        "invalid",
+        "disabled"
+      ]
+    }
+  },
+  "exposedInstances": {
+    "Control": "InputText 293:1046 (isExposedInstance): swap for a Textarea, Checkbox or RadioGroup in the layers panel"
+  },
+  "layers": [
+    "Header (gap space/content/xs): Label row (Label, Required indicator), Description",
+    "Body (gap space/content/xs): Control, Message (invalid only)",
+    "Body/Control (exposed InputText instance, 293:1046, in the state of the field)",
+    "Body/Message/First line/Drawing box/Message icon (phosphor/warning-circle 200:5831, size/icon/sm; drawing box field/icon-box)",
+    "Body/Message/Message text (typography/body/sm)"
+  ],
+  "bindings": {
+    "gap Header → Body": "space/content/sm",
+    "Label": "typography/label/md; color/content/primary (disabled: color/content/disabled)",
+    "Required indicator": "color/content/secondary (disabled: color/content/disabled)",
+    "Description": "typography/body/sm; color/content/secondary (disabled: color/content/disabled)",
+    "Message text": "typography/body/sm; color/status/danger/content",
+    "Message icon": "color/status/danger/icon, size/icon/sm",
+    "Message first line": "typography/body/sm/lineHeight"
+  },
+  "adapterVariables": {
+    "field/icon-box": {
+      "id": "VariableID:288:11",
+      "collection": "Components (VariableCollectionId:181:2)",
+      "type": "FLOAT",
+      "values": {
+        "md": 12,
+        "sm": 12,
+        "lg": 12
+      },
+      "scopes": [
+        "WIDTH_HEIGHT",
+        "GAP"
+      ],
+      "hiddenFromPublishing": true
+    }
+  },
+  "variants": {
+    "State=default": "295:2",
+    "State=invalid": "295:25",
+    "State=disabled": "295:54"
+  },
+  "specification": {
+    "id": "307:897",
+    "name": "Field — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=307-897",
+    "builder": "authoring/adapters/figma/forms-spec.plugin.js (IDS ['field'])",
+    "anatomyBoard": "307:989",
+    "uses": {
+      "_Spec/Callout": "115:6",
+      "_Spec/Marker": "115:8",
+      "Wireframe": "VariableCollectionId:105:1565",
+      "InputText": "293:1046",
+      "phosphor/warning-circle": "200:5831"
+    }
+  },
+  "evidence": {
+    "parity": "reports/components/field/figma/parity.json",
+    "parityScripts": [
+      "authoring/adapters/figma/forms-parity.plugin.js",
+      "authoring/adapters/figma/forms-parity-report.mjs"
+    ],
+    "screenshots": [
+      "reports/components/field/figma/master-set.png",
+      "reports/components/field/figma/specification.png",
+      "reports/components/field/figma/blueprint-anatomy.png"
+    ]
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-27",
+      "change": "Built: 3 variants and the specification page. Parity measured in the 18 contexts (forms-parity.plugin.js)."
+    }
+  ]
+}

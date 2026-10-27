@@ -35,8 +35,30 @@
       "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "foundations/tokens/base/semantic/common.tokens.json"
     ],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/radio-group (288:7)",
+      "componentSet": "292:327",
+      "specification": "305:780",
+      "ledger": "reports/components/radio-group/figma/ledger.json",
+      "parity": "reports/components/radio-group/figma/parity.json",
+      "screenshots": [
+        "reports/components/radio-group/figma/master-set.png",
+        "reports/components/radio-group/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/radio-group/figma/blueprint-anatomy.png",
+          "node": "305:878"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/radio-group-master.plugin.js",
+        "authoring/adapters/figma/forms-spec.plugin.js",
+        "authoring/adapters/figma/forms-setup.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/radio-group/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "entry": "packages/svelte/src/components/radio-group/RadioGroup.svelte",
@@ -154,6 +176,14 @@
       "report": "reports/browser-results.json",
       "date": "2026-10-27",
       "note": "After review round 1 (SVG circles for Switch and Radio, lighter field borders): npm run verify passed (SSR 64), full browser suite 102 passed; computed.json regenerated."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID radio-group); node authoring/adapters/figma/forms-parity-report.mjs radio-group <result>",
+      "report": "reports/components/radio-group/figma/parity.json",
+      "date": "2026-10-27",
+      "note": "36 records (vertical and horizontal gaps in 18 contexts), 0 failures."
     }
   ],
   "decisionsTaken": [
@@ -167,9 +197,10 @@
     "Implementation review, round 1 (user, 2026-10-27: selected dots flattened or off-center, outer circles odd): ring and dot are drawn as SVG circles (ring stroke inside the box, dot 3/8 of the box), centered by SVG geometry instead of CSS boxes snapped to device pixels at fractional display scales."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (ggb-figma): sync the wave 2 variables (color.choice, size.choice, size.switch, neutral.450, changed field border aliases), build the masters and specification pages, verify parity against computed.json; Figma parity gate.",
+  "nextAction": "Figma parity gate (grouped wave 2 review): the user reviews the masters, the specification pages and the parity reports; then documentation (ggb-docs).",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
-    "Implemented on 2026-10-26 on the approved contract; see reports/components/radio-group/svelte/implementation.md for the rule-by-rule evidence and the limitations."
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/radio-group/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
+    "Figma on 2026-10-27: component set 292:327 (6 variants) and specification 305:780 on page forms/radio-group; see foundations/components/forms/radio-group/figma-spec.md."
   ]
 }

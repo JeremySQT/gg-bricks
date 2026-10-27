@@ -86,3 +86,19 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - `nested-parts.plugin.js` (three parts): the internal parts `_Counter/Nested` and `_Shortcut/Nested` (the md variants, sized by the host's Components mode) and the `_Button/Trailing` reduction to Type, with the content of every trailing instance re-applied.
 - A variant cloned out of its set loses its component property references (visibility, text): add the properties to the new set and bind them again. `clearExplicitVariableModeForCollection` on a variant lets it take the mode of its host.
 - A nested component whose size is a variant property always shows that Size once exposed; a host that must impose the size holds a copy whose size comes from a mode the host sets.
+
+## Form scripts (wave 2, 2026-10-27)
+
+- `forms-setup.plugin.js`: the seven `forms/*` pages and the wave 2 adapter variables of the hidden **Components** collection (`radio/dot`, `switch/track-width`, `switch/thumb`, `switch/inset`, `input-text/icon-box`, `field/icon-box`, `textarea/more-rows`; `textarea/text-rows` is created by the Textarea builder).
+- `checkbox-master`, `radio-master`, `radio-group-master`, `switch-master`, `input-text-master`, `textarea-master`, `field-master` (`.plugin.js`): one component set each. Choice controls (Checkbox, Radio, Switch) center their control in a **First line** frame bound to `typography/body/{size}/lineHeight`, so it sits on the first line of the label in every density.
+- `forms-spec.plugin.js`: one body for the seven specification pages (shared helpers, one block per component between `// <spec:id>` markers, `IDS` lists the pages to build; about three per call fit in the 50 000-character limit of `use_figma` once comments and indentation are dropped). The anatomy board shows a real instance enlarged with `rescale`, clamped to the 1088 px column, in the dark appearance.
+- `forms-parity.plugin.js` + `forms-parity-report.mjs <id>`: parity by hash for the seven sets (set `ID` in the body). Keys carry the occurrence number of a props-and-state pair in a context (`size=md|default#1`), because the review pages measure some pairs twice. Numeric rows identical across contexts are returned once (`TUPLES`, `NUMS`), which keeps the output small enough to save from the tool result.
+
+## Mechanics learned on 2026-10-27
+
+- A text style binds font family, size, weight and letter spacing to variables but keeps the line height as a percentage: `boundVariables.lineHeight` is absent on text nodes; read `fontSize × lineHeight.value / 100`. Frames that must be one line tall bind their height to the `typography/*/lineHeight` variable instead.
+- Figma rounds the text box of a fractional line (28.8 px) to 29 px: centering against the text box moves the first-line center by 0.1 px.
+- `instance.rescale(z)` scales a whole instance (text included) for a drawing; it is never used on masters.
+- An instance-swap property for a whole-control slot (Field's Control) resets every variant's control to its single default: the slot is an exposed instance set per variant instead, swapped by the designer in the layers panel.
+- `componentPropertyReferences` cannot be set on a layer inside a nested instance (the RadioGroup's hidden name layer is found by exact name, not by the radios' Label).
+- Every wave 2 browser spec that measures hover after a focus check must blur first: focus survives a context switch and its ring was recorded as part of the hover state.

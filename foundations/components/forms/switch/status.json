@@ -34,8 +34,30 @@
       "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "foundations/tokens/base/semantic/common.tokens.json"
     ],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/switch (288:8)",
+      "componentSet": "291:434",
+      "specification": "306:454",
+      "ledger": "reports/components/switch/figma/ledger.json",
+      "parity": "reports/components/switch/figma/parity.json",
+      "screenshots": [
+        "reports/components/switch/figma/master-set.png",
+        "reports/components/switch/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/switch/figma/blueprint-anatomy.png",
+          "node": "306:508"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/switch-master.plugin.js",
+        "authoring/adapters/figma/forms-spec.plugin.js",
+        "authoring/adapters/figma/forms-setup.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/switch/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "entry": "packages/svelte/src/components/switch/Switch.svelte",
@@ -153,6 +175,14 @@
       "report": "reports/browser-results.json",
       "date": "2026-10-27",
       "note": "After review round 1 (SVG circles for Switch and Radio, lighter field borders): npm run verify passed (SSR 64), full browser suite 102 passed; computed.json regenerated."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID switch); node authoring/adapters/figma/forms-parity-report.mjs switch <result>",
+      "report": "reports/components/switch/figma/parity.json",
+      "date": "2026-10-27",
+      "note": "4368 records, 0 failures; root width and track end gap within 1.80 px (text layout, tolerance ±2 px). Same hover measurement fix in tests/browser/switch.spec.ts."
     }
   ],
   "decisionsTaken": [
@@ -167,10 +197,11 @@
     "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (ggb-figma): sync the wave 2 variables (color.choice, size.choice, size.switch, neutral.450, changed field border aliases), build the masters and specification pages, verify parity against computed.json; Figma parity gate.",
+  "nextAction": "Figma parity gate (grouped wave 2 review): the user reviews the masters, the specification pages and the parity reports; then documentation (ggb-docs).",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
-    "Implemented on 2026-10-26 on the approved contract; see reports/components/switch/svelte/implementation.md for the rule-by-rule evidence and the limitations."
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/switch/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
+    "Figma on 2026-10-27: component set 291:434 (48 variants) and specification 306:454 on page forms/switch; see foundations/components/forms/switch/figma-spec.md."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

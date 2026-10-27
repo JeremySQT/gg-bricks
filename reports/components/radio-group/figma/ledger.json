@@ -1,0 +1,94 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=288-7"
+  },
+  "recordedOn": "2026-10-27",
+  "page": {
+    "name": "forms/radio-group",
+    "id": "288:7",
+    "position": "forms pages after the content pages, in alphabetical order (authoring/adapters/figma/forms-setup.plugin.js)"
+  },
+  "componentSet": {
+    "id": "292:327",
+    "name": "RadioGroup",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=292-327",
+    "builder": "authoring/adapters/figma/radio-group-master.plugin.js",
+    "defaultVariant": "Orientation=vertical, Size=md",
+    "variantCount": 6
+  },
+  "properties": {
+    "Label#292:7": {
+      "type": "TEXT",
+      "default": "Delivery speed",
+      "layer": "Label (accessible name, not shown)"
+    },
+    "Orientation": {
+      "type": "VARIANT",
+      "default": "vertical",
+      "options": [
+        "vertical",
+        "horizontal"
+      ]
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ]
+    }
+  },
+  "exposedInstances": {},
+  "layers": [
+    "Radio 1, Radio 2 (selected), Radio 3 (instances of Radio 290:257 of the group size, State=default)",
+    "Label (accessible name, not shown) (hidden text layer, typography/label/md, behind Label)"
+  ],
+  "bindings": {
+    "vertical itemSpacing": "space/content/sm",
+    "horizontal itemSpacing": "space/content/lg",
+    "horizontal counterAxisSpacing (wrap)": "space/content/sm"
+  },
+  "adapterVariables": {},
+  "variants": {
+    "Orientation=vertical, Size=md": "292:165",
+    "Orientation=vertical, Size=sm": "292:192",
+    "Orientation=vertical, Size=lg": "292:219",
+    "Orientation=horizontal, Size=md": "292:246",
+    "Orientation=horizontal, Size=sm": "292:273",
+    "Orientation=horizontal, Size=lg": "292:300"
+  },
+  "specification": {
+    "id": "305:780",
+    "name": "RadioGroup — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=305-780",
+    "builder": "authoring/adapters/figma/forms-spec.plugin.js (IDS ['radio-group'])",
+    "anatomyBoard": "305:878",
+    "uses": {
+      "_Spec/Callout": "115:6",
+      "_Spec/Marker": "115:8",
+      "Wireframe": "VariableCollectionId:105:1565",
+      "Radio": "290:257"
+    }
+  },
+  "evidence": {
+    "parity": "reports/components/radio-group/figma/parity.json",
+    "parityScripts": [
+      "authoring/adapters/figma/forms-parity.plugin.js",
+      "authoring/adapters/figma/forms-parity-report.mjs"
+    ],
+    "screenshots": [
+      "reports/components/radio-group/figma/master-set.png",
+      "reports/components/radio-group/figma/specification.png",
+      "reports/components/radio-group/figma/blueprint-anatomy.png"
+    ]
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-27",
+      "change": "Built: 6 variants and the specification page. Parity measured in the 18 contexts (forms-parity.plugin.js)."
+    }
+  ]
+}

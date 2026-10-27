@@ -1,0 +1,188 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=288-9"
+  },
+  "recordedOn": "2026-10-27",
+  "page": {
+    "name": "forms/textarea",
+    "id": "288:9",
+    "position": "forms pages after the content pages, in alphabetical order (authoring/adapters/figma/forms-setup.plugin.js)"
+  },
+  "componentSet": {
+    "id": "294:291",
+    "name": "Textarea",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=294-291",
+    "builder": "authoring/adapters/figma/textarea-master.plugin.js",
+    "defaultVariant": "Size=md, Content=placeholder, State=default",
+    "variantCount": 36
+  },
+  "properties": {
+    "Value#294:0": {
+      "type": "TEXT",
+      "default": "The parcel arrived on time but the box was damaged on one corner. The contents were intact.",
+      "layer": "Value"
+    },
+    "Placeholder#294:37": {
+      "type": "TEXT",
+      "default": "What went well, what could be better…",
+      "layer": "Placeholder"
+    },
+    "Label#294:74": {
+      "type": "TEXT",
+      "default": "Feedback",
+      "layer": "Label (accessible name, not shown)"
+    },
+    "Focus#294:111": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Focus ring (visible; State=focus variants show it always)"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ]
+    },
+    "Content": {
+      "type": "VARIANT",
+      "default": "placeholder",
+      "options": [
+        "placeholder",
+        "value"
+      ]
+    },
+    "State": {
+      "type": "VARIANT",
+      "default": "default",
+      "options": [
+        "default",
+        "hover",
+        "focus",
+        "readonly",
+        "disabled",
+        "invalid"
+      ]
+    }
+  },
+  "exposedInstances": {},
+  "layers": [
+    "Area (vertical auto layout, fill)",
+    "Area/First row (height size/control/{size})",
+    "Area/More rows (height textarea/more-rows: two lines)",
+    "Area/Text box (absolute, height textarea/text-rows, centered on the Area, clips)",
+    "Area/Text box/Value or Placeholder (typography/body/{size}, fill width, top aligned)",
+    "Focus ring (absolute, radius/focus)",
+    "Label (accessible name, not shown)"
+  ],
+  "bindings": {
+    "padding left / right": "space/control/padding-inline/{size}",
+    "fill / inside stroke": "color/field/{state}/surface, border; border/width/default",
+    "corners": "radius/control",
+    "Value": "color/field/{state}/content",
+    "Placeholder": "color/field/{state}/placeholder",
+    "Focus ring": "color/focus/ring, focus/width, radius/focus"
+  },
+  "adapterVariables": {
+    "textarea/more-rows": {
+      "id": "VariableID:288:16",
+      "collection": "Components (VariableCollectionId:181:2)",
+      "type": "FLOAT",
+      "values": {
+        "md": 48,
+        "sm": 42,
+        "lg": 57.6
+      },
+      "scopes": [
+        "WIDTH_HEIGHT",
+        "GAP"
+      ],
+      "hiddenFromPublishing": true
+    },
+    "textarea/text-rows": {
+      "id": "VariableID:294:2",
+      "collection": "Components (VariableCollectionId:181:2)",
+      "type": "FLOAT",
+      "values": {
+        "md": 72,
+        "sm": 63,
+        "lg": 86.4
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "hiddenFromPublishing": true
+    }
+  },
+  "variants": {
+    "Size=md, Content=placeholder, State=default": "294:3",
+    "Size=md, Content=placeholder, State=hover": "294:11",
+    "Size=md, Content=placeholder, State=focus": "294:19",
+    "Size=md, Content=placeholder, State=readonly": "294:27",
+    "Size=md, Content=placeholder, State=disabled": "294:35",
+    "Size=md, Content=placeholder, State=invalid": "294:43",
+    "Size=md, Content=value, State=default": "294:51",
+    "Size=md, Content=value, State=hover": "294:59",
+    "Size=md, Content=value, State=focus": "294:67",
+    "Size=md, Content=value, State=readonly": "294:75",
+    "Size=md, Content=value, State=disabled": "294:83",
+    "Size=md, Content=value, State=invalid": "294:91",
+    "Size=sm, Content=placeholder, State=default": "294:99",
+    "Size=sm, Content=placeholder, State=hover": "294:107",
+    "Size=sm, Content=placeholder, State=focus": "294:115",
+    "Size=sm, Content=placeholder, State=readonly": "294:123",
+    "Size=sm, Content=placeholder, State=disabled": "294:131",
+    "Size=sm, Content=placeholder, State=invalid": "294:139",
+    "Size=sm, Content=value, State=default": "294:147",
+    "Size=sm, Content=value, State=hover": "294:155",
+    "Size=sm, Content=value, State=focus": "294:163",
+    "Size=sm, Content=value, State=readonly": "294:171",
+    "Size=sm, Content=value, State=disabled": "294:179",
+    "Size=sm, Content=value, State=invalid": "294:187",
+    "Size=lg, Content=placeholder, State=default": "294:195",
+    "Size=lg, Content=placeholder, State=hover": "294:203",
+    "Size=lg, Content=placeholder, State=focus": "294:211",
+    "Size=lg, Content=placeholder, State=readonly": "294:219",
+    "Size=lg, Content=placeholder, State=disabled": "294:227",
+    "Size=lg, Content=placeholder, State=invalid": "294:235",
+    "Size=lg, Content=value, State=default": "294:243",
+    "Size=lg, Content=value, State=hover": "294:251",
+    "Size=lg, Content=value, State=focus": "294:259",
+    "Size=lg, Content=value, State=readonly": "294:267",
+    "Size=lg, Content=value, State=disabled": "294:275",
+    "Size=lg, Content=value, State=invalid": "294:283"
+  },
+  "specification": {
+    "id": "307:320",
+    "name": "Textarea — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=307-320",
+    "builder": "authoring/adapters/figma/forms-spec.plugin.js (IDS ['textarea'])",
+    "anatomyBoard": "307:389",
+    "uses": {
+      "_Spec/Callout": "115:6",
+      "_Spec/Marker": "115:8",
+      "Wireframe": "VariableCollectionId:105:1565"
+    }
+  },
+  "evidence": {
+    "parity": "reports/components/textarea/figma/parity.json",
+    "parityScripts": [
+      "authoring/adapters/figma/forms-parity.plugin.js",
+      "authoring/adapters/figma/forms-parity-report.mjs"
+    ],
+    "screenshots": [
+      "reports/components/textarea/figma/master-set.png",
+      "reports/components/textarea/figma/specification.png",
+      "reports/components/textarea/figma/blueprint-anatomy.png"
+    ]
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-27",
+      "change": "Built: 36 variants and the specification page. Parity measured in the 18 contexts (forms-parity.plugin.js)."
+    }
+  ]
+}

@@ -38,8 +38,30 @@
       "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "foundations/tokens/base/semantic/common.tokens.json"
     ],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/input-text (288:5)",
+      "componentSet": "293:1046",
+      "specification": "306:1344",
+      "ledger": "reports/components/input-text/figma/ledger.json",
+      "parity": "reports/components/input-text/figma/parity.json",
+      "screenshots": [
+        "reports/components/input-text/figma/master-set.png",
+        "reports/components/input-text/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/input-text/figma/blueprint-anatomy.png",
+          "node": "306:1449"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/input-text-master.plugin.js",
+        "authoring/adapters/figma/forms-spec.plugin.js",
+        "authoring/adapters/figma/forms-setup.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/input-text/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "entry": "packages/svelte/src/components/input-text/InputText.svelte",
@@ -157,6 +179,14 @@
       "report": "reports/browser-results.json",
       "date": "2026-10-27",
       "note": "After review round 1 (SVG circles for Switch and Radio, lighter field borders): npm run verify passed (SSR 64), full browser suite 102 passed; computed.json regenerated."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID input-text); node authoring/adapters/figma/forms-parity-report.mjs input-text <result>",
+      "report": "reports/components/input-text/figma/parity.json",
+      "date": "2026-10-27",
+      "note": "1656 records (sizes with the leading icon, conditions without, hover, focus and invalid + focus), 0 failures."
     }
   ],
   "decisionsTaken": [
@@ -176,11 +206,12 @@
     "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (ggb-figma): sync the wave 2 variables (color.choice, size.choice, size.switch, neutral.450, changed field border aliases), build the masters and specification pages, verify parity against computed.json; Figma parity gate.",
+  "nextAction": "Figma parity gate (grouped wave 2 review): the user reviews the masters, the specification pages and the parity reports; then documentation (ggb-docs).",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
     "Svelte: the trailing snippet receives the imposed IconButton props as a parameter (size, intent, appearance, disabled), so that InputText does not import IconButton and IconButton does not read a context from InputText; both folders stay self-contained. A trailing IconButton at size sm is reported as a usage error in development.",
-    "Implemented on 2026-10-26 on the approved contract; see reports/components/input-text/svelte/implementation.md for the rule-by-rule evidence and the limitations."
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/input-text/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
+    "Figma on 2026-10-27: component set 293:1046 (60 variants) and specification 306:1344 on page forms/input-text; see foundations/components/forms/input-text/figma-spec.md."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

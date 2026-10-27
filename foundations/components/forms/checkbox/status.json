@@ -32,8 +32,30 @@
       "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "foundations/tokens/base/semantic/common.tokens.json"
     ],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/checkbox (288:3)",
+      "componentSet": "289:428",
+      "specification": "307:2597",
+      "ledger": "reports/components/checkbox/figma/ledger.json",
+      "parity": "reports/components/checkbox/figma/parity.json",
+      "screenshots": [
+        "reports/components/checkbox/figma/master-set.png",
+        "reports/components/checkbox/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/checkbox/figma/blueprint-anatomy.png",
+          "node": "307:2652"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/checkbox-master.plugin.js",
+        "authoring/adapters/figma/forms-spec.plugin.js",
+        "authoring/adapters/figma/forms-setup.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/checkbox/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "entry": "packages/svelte/src/components/checkbox/Checkbox.svelte",
@@ -151,6 +173,14 @@
       "report": "reports/browser-results.json",
       "date": "2026-10-27",
       "note": "After review round 1 (SVG circles for Switch and Radio, lighter field borders): npm run verify passed (SSR 64), full browser suite 102 passed; computed.json regenerated."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID checkbox); node authoring/adapters/figma/forms-parity-report.mjs checkbox <result>",
+      "report": "reports/components/checkbox/figma/parity.json",
+      "date": "2026-10-27",
+      "note": "7968 records (3 sizes × 3 selections × 4 conditions in 18 contexts, hover and focus in 4), 0 failures, 224 justified (no mark when off). The first run showed the hover records of three representative contexts carrying the focus ring left by the previous context: the browser spec now blurs before hovering (tests/browser/checkbox.spec.ts, computed.json regenerated); the 18 hashes are then equal."
     }
   ],
   "decisionsTaken": [
@@ -168,10 +198,11 @@
     "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (ggb-figma): sync the wave 2 variables (color.choice, size.choice, size.switch, neutral.450, changed field border aliases), build the masters and specification pages, verify parity against computed.json; Figma parity gate.",
+  "nextAction": "Figma parity gate (grouped wave 2 review): the user reviews the masters, the specification pages and the parity reports; then documentation (ggb-docs).",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
-    "Implemented on 2026-10-26 on the approved contract; see reports/components/checkbox/svelte/implementation.md for the rule-by-rule evidence and the limitations."
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/checkbox/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
+    "Figma on 2026-10-27: component set 289:428 (45 variants) and specification 307:2597 on page forms/checkbox; see foundations/components/forms/checkbox/figma-spec.md."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

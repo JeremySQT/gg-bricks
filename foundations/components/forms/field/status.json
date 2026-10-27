@@ -38,8 +38,30 @@
       "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "foundations/tokens/base/semantic/common.tokens.json"
     ],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/field (288:4)",
+      "componentSet": "295:77",
+      "specification": "307:897",
+      "ledger": "reports/components/field/figma/ledger.json",
+      "parity": "reports/components/field/figma/parity.json",
+      "screenshots": [
+        "reports/components/field/figma/master-set.png",
+        "reports/components/field/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/field/figma/blueprint-anatomy.png",
+          "node": "307:989"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/field-master.plugin.js",
+        "authoring/adapters/figma/forms-spec.plugin.js",
+        "authoring/adapters/figma/forms-setup.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/field/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "entry": "packages/svelte/src/components/field/Field.svelte",
@@ -157,6 +179,14 @@
       "report": "reports/browser-results.json",
       "date": "2026-10-27",
       "note": "After review round 1 (SVG circles for Switch and Radio, lighter field borders): npm run verify passed (SSR 64), full browser suite 102 passed; computed.json regenerated."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID field); node authoring/adapters/figma/forms-parity-report.mjs field <result>",
+      "report": "reports/components/field/figma/parity.json",
+      "date": "2026-10-27",
+      "note": "504 records (invalid and disabled fields in 18 contexts), 0 failures."
     }
   ],
   "decisionsTaken": [
@@ -173,9 +203,10 @@
     "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (ggb-figma): sync the wave 2 variables (color.choice, size.choice, size.switch, neutral.450, changed field border aliases), build the masters and specification pages, verify parity against computed.json; Figma parity gate.",
+  "nextAction": "Figma parity gate (grouped wave 2 review): the user reviews the masters, the specification pages and the parity reports; then documentation (ggb-docs).",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
-    "Implemented on 2026-10-26 on the approved contract; see reports/components/field/svelte/implementation.md for the rule-by-rule evidence and the limitations."
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/field/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
+    "Figma on 2026-10-27: component set 295:77 (3 variants) and specification 307:897 on page forms/field; see foundations/components/forms/field/figma-spec.md."
   ]
 }
