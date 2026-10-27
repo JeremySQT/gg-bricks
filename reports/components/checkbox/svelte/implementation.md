@@ -35,3 +35,7 @@ Component: `packages/svelte/src/components/checkbox/` (Svelte 5.57.1, Bits UI 2.
 ## Limitations
 
 - Only Chromium is automated; screen readers were not tested.
+
+## Review round 1 (2026-10-27)
+
+- The empty box border follows the lighter field border (neutral.450 in light, 3.43:1).

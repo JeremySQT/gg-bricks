@@ -81,7 +81,9 @@
     onkeydown={handleKeydown}
     onCheckedChange={(value) => oncheckedchange?.(value)}
   >
-    <Primitive.Thumb class="ggb-switch__thumb" />
+    <!-- The thumb is a circle centered on the track by SVG geometry, which is antialiased instead of snapped to
+         device pixels: it stays centered at fractional display scales (125 %, 150 %). -->
+    <svg class="ggb-switch__thumbLayer" aria-hidden="true" focusable="false"><circle class="ggb-switch__thumb" /></svg>
   </Primitive.Root>
   {#if labelPosition !== 'start'}{@render text()}{/if}
 </label>

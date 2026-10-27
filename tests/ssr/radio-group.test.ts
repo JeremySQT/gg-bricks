@@ -21,9 +21,12 @@ test('a named radiogroup of radios; the value selects one radio, which is the on
   assert.equal(html.match(/role="radio"/g)?.length, 3);
   assert.match(
     html,
-    /id="r-express" data-value="express"[^>]*aria-checked="true"[^>]*tabindex="0">(<!--[^>]*-->)*<span class="ggb-radio__mark" aria-hidden="true">/
+    /id="r-express" data-value="express"[^>]*aria-checked="true"[^>]*tabindex="0">(<!--[^>]*-->)*<svg class="ggb-radio__circle" aria-hidden="true" focusable="false"><circle class="ggb-radio__ring"><\/circle>(<!--[^>]*-->)*<circle class="ggb-radio__mark">/
   );
-  assert.match(html, /id="r-standard"[^>]*aria-checked="false"[^>]*tabindex="-1"/);
+  assert.match(
+    html,
+    /id="r-standard"[^>]*aria-checked="false"[^>]*tabindex="-1">(<!--[^>]*-->)*<svg class="ggb-radio__circle"[^>]*><circle class="ggb-radio__ring"><\/circle>(<!--[^>]*-->)*<\/svg>/
+  );
   checks.push('radiogroup role and name, three radios, selected radio checked with the dot and the only tab stop');
   radioChecks.push('radio role, aria-labelledby to its label, dot only when selected');
 });

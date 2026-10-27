@@ -35,3 +35,7 @@ Component: `packages/svelte/src/components/field/` (Svelte 5.57.1; no Bits UI pr
 - Server rendering writes the label before the control registers: around a Checkbox or a RadioGroup the server markup keeps a `for` that points to no element until hydration (harmless: the names come from `aria-labelledby`); with a text entry that has an id of its own, a press on the label before hydration does not focus it.
 - Error announcement after a submission (live region, focus on the first invalid field, error summary) belongs to the application.
 - Only Chromium is automated; screen readers were not tested.
+
+## Review round 1 (2026-10-27)
+
+- The controls it wraps have lighter borders (neutral.450 in light); Field itself is unchanged.

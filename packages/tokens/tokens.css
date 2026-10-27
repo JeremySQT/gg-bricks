@@ -22,6 +22,7 @@
   --ggb-primitive-color-neutral-200: rgb(222 227 235 / 1);
   --ggb-primitive-color-neutral-300: rgb(202 208 215 / 1);
   --ggb-primitive-color-neutral-400: rgb(158 164 171 / 1);
+  --ggb-primitive-color-neutral-450: rgb(134 139 146 / 1);
   --ggb-primitive-color-neutral-500: rgb(119 124 131 / 1);
   --ggb-primitive-color-neutral-600: rgb(95 100 106 / 1);
   --ggb-primitive-color-neutral-700: rgb(71 76 82 / 1);
@@ -257,6 +258,7 @@
   --ggb-color-palette-neutral-200: var(--ggb-primitive-color-neutral-200);
   --ggb-color-palette-neutral-300: var(--ggb-primitive-color-neutral-300);
   --ggb-color-palette-neutral-400: var(--ggb-primitive-color-neutral-400);
+  --ggb-color-palette-neutral-450: var(--ggb-primitive-color-neutral-450);
   --ggb-color-palette-neutral-500: var(--ggb-primitive-color-neutral-500);
   --ggb-color-palette-neutral-600: var(--ggb-primitive-color-neutral-600);
   --ggb-color-palette-neutral-700: var(--ggb-primitive-color-neutral-700);
@@ -648,11 +650,11 @@
   --ggb-color-action-neutral-ghost-disabled-border: var(--ggb-primitive-color-transparent);
   --ggb-color-field-default-surface: var(--ggb-color-palette-neutral-0);
   --ggb-color-field-default-content: var(--ggb-color-palette-neutral-900);
-  --ggb-color-field-default-border: var(--ggb-color-palette-neutral-500);
+  --ggb-color-field-default-border: var(--ggb-color-palette-neutral-450);
   --ggb-color-field-default-placeholder: var(--ggb-color-palette-neutral-600);
   --ggb-color-field-hover-surface: var(--ggb-color-palette-neutral-0);
   --ggb-color-field-hover-content: var(--ggb-color-palette-neutral-900);
-  --ggb-color-field-hover-border: var(--ggb-color-palette-neutral-600);
+  --ggb-color-field-hover-border: var(--ggb-color-palette-neutral-500);
   --ggb-color-field-hover-placeholder: var(--ggb-color-palette-neutral-600);
   --ggb-color-field-focus-surface: var(--ggb-color-palette-neutral-0);
   --ggb-color-field-focus-content: var(--ggb-color-palette-neutral-900);

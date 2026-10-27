@@ -32,3 +32,8 @@ Component: `packages/svelte/src/components/switch/` (Svelte 5.57.1, Bits UI 2.19
 - Enter also toggles (Bits UI behavior, allowed by the WAI-ARIA switch pattern); the contract names Space only.
 - The off thumb uses the field placeholder color (a dark grey in light mode): to judge at the review.
 - Only Chromium is automated.
+
+## Review round 1 (2026-10-27)
+
+- The thumb was off center by one device pixel at fractional display scales (reported by the user; reproduced at 125 %): a 2 px inset becomes 2.5 device pixels and the CSS boxes of the track and the thumb were snapped separately. The thumb is now an SVG circle (`cy: 50%`, `r`, `cx` from the inset) laid over the track, antialiased rather than snapped; `cx` transitions over the base duration and mirrors with `:dir(rtl)`. Checked at 125 % and in the browser tests (geometry, right to left after the transition settles).
+- The off border follows the lighter field border (neutral.450 in light).

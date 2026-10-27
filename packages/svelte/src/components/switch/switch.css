@@ -72,21 +72,33 @@
   transition-duration: var(--ggb-switch-motionDuration);
   transition-timing-function: var(--ggb-switch-easingStandard);
 }
-.ggb-switch__thumb {
+.ggb-switch__thumbLayer {
   position: absolute;
-  top: var(--_inset);
-  inset-inline-start: var(--_inset);
+  inset: 0;
   display: block;
-  inline-size: var(--_thumb);
-  block-size: var(--_thumb);
-  border-radius: var(--ggb-switch-radius);
-  background-color: var(--_content);
-  transition-property: inset-inline-start, background-color;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+/* Off: at the inline start, inset by 2 x borderWidth; on: at the inline end. Mirrored in right-to-left layouts. */
+.ggb-switch__thumb {
+  --_start: calc(var(--_inset) + var(--_thumb) / 2);
+  --_end: calc(100% - var(--_inset) - var(--_thumb) / 2);
+  cx: var(--_start);
+  cy: 50%;
+  r: calc(var(--_thumb) / 2);
+  fill: var(--_content);
+  transition-property: cx, fill;
   transition-duration: var(--ggb-switch-motionDuration);
   transition-timing-function: var(--ggb-switch-easingStandard);
 }
-.ggb-switch[data-selection='on'] .ggb-switch__thumb {
-  inset-inline-start: calc(var(--_track-inline) - var(--_thumb) - var(--_inset));
+.ggb-switch[data-selection='on'] .ggb-switch__thumb,
+.ggb-switch:dir(rtl) .ggb-switch__thumb {
+  cx: var(--_end);
+}
+.ggb-switch[data-selection='on']:dir(rtl) .ggb-switch__thumb {
+  cx: var(--_start);
 }
 
 .ggb-switch__text {
@@ -171,14 +183,14 @@
     background-color: Canvas;
   }
   .ggb-switch__thumb {
-    background-color: CanvasText;
+    fill: CanvasText;
   }
   .ggb-switch[data-selection='on'] .ggb-switch__track {
     background-color: Highlight;
     outline-color: Highlight;
   }
   .ggb-switch[data-selection='on'] .ggb-switch__thumb {
-    background-color: HighlightText;
+    fill: HighlightText;
   }
   .ggb-switch[data-disabled],
   .ggb-switch[data-disabled] .ggb-switch__description {
@@ -188,7 +200,7 @@
     outline-color: GrayText;
   }
   .ggb-switch[data-disabled] .ggb-switch__thumb {
-    background-color: GrayText;
+    fill: GrayText;
   }
   .ggb-switch__track:focus-visible {
     outline: var(--ggb-switch-focusWidth) solid Highlight;

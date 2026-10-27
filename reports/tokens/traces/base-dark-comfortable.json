@@ -214,6 +214,20 @@
       }
     }
   ],
+  "primitive.color.neutral.450": [
+    {
+      "source": "foundations/tokens/base/primitives/colors.tokens.json",
+      "value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.524916,
+          0.54557,
+          0.572526
+        ],
+        "alpha": 1
+      }
+    }
+  ],
   "primitive.color.neutral.500": [
     {
       "source": "foundations/tokens/base/primitives/colors.tokens.json",
@@ -3158,6 +3172,12 @@
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
       "value": "{primitive.color.neutral.400}"
+    }
+  ],
+  "color.palette.neutral.450": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.color.neutral.450}"
     }
   ],
   "color.palette.neutral.500": [

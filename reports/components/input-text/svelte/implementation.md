@@ -43,3 +43,7 @@ Component: `packages/svelte/src/components/input-text/` (Svelte 5.57.1; a native
 - At compact density the action of an md field sits 2 px from the field edge: its focus ring touches the field border.
 - Autofill colors are overridden with an inset shadow in the field surface (Chromium); other engines not checked.
 - Only Chromium is automated.
+
+## Review round 1 (2026-10-27)
+
+- Lighter border in light mode: `color.field.default.border` on the new primitive step neutral.450 (3.43:1 instead of 4.19:1), hover on neutral.500; readonly follows. Dark unchanged.

@@ -28,3 +28,8 @@ Component: `packages/svelte/src/components/radio/` (Svelte 5.57.1, Bits UI 2.19.
 ## Limitations
 
 - Only Chromium is automated.
+
+## Review round 1 (2026-10-27)
+
+- The dot looked flattened or off center and the ring uneven at fractional display scales (reported by the user; reproduced at 125 %). The ring (fill and inner stroke) and the dot (3/8 of the box) are now SVG circles sized with percentages of the box, antialiased rather than snapped; the control box itself is transparent. Checked at 125 % and in the browser tests (fill, stroke and dot color in 18 contexts, forced colors read from the ring stroke).
+- The off border follows the lighter field border (neutral.450 in light).

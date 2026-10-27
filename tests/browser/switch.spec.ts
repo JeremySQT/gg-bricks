@@ -25,7 +25,7 @@ const selections = ['off', 'on'];
 async function measure(page: Page, selector: string) {
   return page.locator(selector).evaluate((track) => {
     const root = track.closest('.ggb-switch') as HTMLElement;
-    const thumb = track.querySelector('.ggb-switch__thumb') as HTMLElement;
+    const thumb = track.querySelector('.ggb-switch__thumb') as SVGCircleElement;
     const c = getComputedStyle(track);
     const r = track.getBoundingClientRect();
     const t = thumb.getBoundingClientRect();
@@ -35,7 +35,7 @@ async function measure(page: Page, selector: string) {
     return {
       surface: c.backgroundColor,
       boxShadow: c.boxShadow,
-      thumb: getComputedStyle(thumb).backgroundColor,
+      thumb: getComputedStyle(thumb).fill,
       outline: `${c.outlineStyle} ${c.outlineWidth} ${c.outlineColor} ${c.outlineOffset}`,
       width: r.width,
       height: r.height,
@@ -123,6 +123,7 @@ test('track, thumb and inset follow the switch size; the thumb moves to the end;
   expect(text.x).toBeLessThan(track.x);
   // Right to left: the on thumb sits at the inline end, on the left.
   await page.locator('#sw-default-on-md >> xpath=..').evaluate((el) => el.setAttribute('dir', 'rtl'));
+  await settle(page);
   const rtl = await measure(page, '#sw-default-on-md');
   expect(rtl.thumbStart).toBe(2 * px(tokensFor('base-light-standard')['border.width.default']));
 });

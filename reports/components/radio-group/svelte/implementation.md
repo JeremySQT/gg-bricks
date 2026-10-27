@@ -36,3 +36,7 @@ Component: `packages/svelte/src/components/radio-group/` (Svelte 5.57.1, Bits UI
 - Home and End also move focus (Bits UI behavior, as in the WAI-ARIA pattern); the contract does not name them.
 - Before hydration every radio of a group without a value is a tab stop (Bits UI server markup).
 - Only Chromium is automated.
+
+## Review round 1 (2026-10-27)
+
+- Radios redrawn in SVG (see `reports/components/radio/svelte/implementation.md`).

@@ -17,7 +17,10 @@ test('a label container with a switch control, its thumb, then the label', async
     html,
     /<button class="ggb-switch__track" aria-labelledby="s-label" aria-describedby="s-description"[^>]*role="switch" aria-checked="false"/
   );
-  assert.match(html, /<span class="ggb-switch__thumb"/);
+  assert.match(
+    html,
+    /<svg class="ggb-switch__thumbLayer" aria-hidden="true" focusable="false"><circle class="ggb-switch__thumb"><\/circle><\/svg>/
+  );
   assert.ok(html.indexOf('ggb-switch__track') < html.indexOf('ggb-switch__text'));
   checks.push('container, switch role, name and description references, thumb, track before text');
 });

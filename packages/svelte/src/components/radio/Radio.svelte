@@ -62,7 +62,12 @@
     aria-describedby={describedByIds}
   >
     {#snippet children({ checked })}
-      {#if checked}<span class="ggb-radio__mark" aria-hidden="true"></span>{/if}
+      <!-- Ring and dot are drawn as centered circles: SVG geometry is antialiased instead of snapped to device
+           pixels, so they stay round and centered at fractional display scales (125 %, 150 %). -->
+      <svg class="ggb-radio__circle" aria-hidden="true" focusable="false">
+        <circle class="ggb-radio__ring" />
+        {#if checked}<circle class="ggb-radio__mark" />{/if}
+      </svg>
     {/snippet}
   </Primitive.Item>
   <span class="ggb-radio__text">

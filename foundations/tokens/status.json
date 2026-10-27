@@ -290,6 +290,21 @@
       "review": "Presented at the wave 2 contract gate (grouped review of Field, InputText, Textarea, Checkbox, Switch, RadioGroup and Radio).",
       "figma": "Not synced yet: the 36 new variables and the readonly border alias are synced at the wave 2 Figma parity phase.",
       "recorded": "approvals.semantic re-recorded with this change on 2026-10-26 (wave 2 contract gate)."
+    },
+    {
+      "date": "2026-10-27",
+      "change": "Lighter field borders (user at the wave 2 implementation review: the field border is far too contrasted, almost black, also in readonly; make it lighter). New primitive step primitive.color.neutral.450 (OKLCH L 0.635, neutral ramp only) with its semantic alias color.palette.neutral.450 and inventory entry; color.field.default.border in light from neutral.500 to neutral.450 (4.19:1 to 3.43:1 on surface.default, 3.04:1 on surface.muted, still at least 3:1 everywhere, WCAG 1.4.11), color.field.hover.border in light from neutral.600 to neutral.500 (one step darker than default, as before). readonly and the off choice borders alias the default border and follow. Dark unchanged: its readonly border is already at 3.08:1. check-foundations: 426 roles, 2196 contrast checks, 0 failures; component reports 0 failures.",
+      "invalidates": "approvals.primitives for foundations/tokens/palette.config.json and foundations/tokens/base/primitives/colors.tokens.json; approvals.semantic for foundations/tokens/inventory.json and foundations/tokens/base/semantic/{appearance.light,common}.tokens.json. Figma variables: the new primitive and the changed aliases are synced at the wave 2 Figma parity phase.",
+      "sha256": {
+        "foundations/tokens/palette.config.json": "b1404d2ebb1dab6ec32a89a2eb36ccd90b5570e0c3387989717c636191ccc8cb",
+        "foundations/tokens/base/primitives/colors.tokens.json": "c0517b8a3902f0178478a7a04b1c7caf79a0fe1d5ee1ed6ae83d735f73a06f5c",
+        "foundations/tokens/inventory.json": "bf4edc9b15ac816c0fb00a6bead9f183a457ed0f486df6d034c2f90d6a1d6bb7",
+        "foundations/tokens/base/semantic/appearance.light.tokens.json": "343a8838ddbd8c518ec4035871d1e392725574ae833ce5904f8ae41c71c94d29",
+        "foundations/tokens/base/semantic/common.tokens.json": "7255be0362149c15c62564303b9ead560274028ee6f8c1680eb918587c07a98c"
+      },
+      "review": "Presented with the wave 2 implementation review (second round).",
+      "figma": null,
+      "recorded": null
     }
   ]
 }

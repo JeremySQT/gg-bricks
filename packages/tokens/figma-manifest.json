@@ -322,6 +322,24 @@
     },
     {
       "collection": "Foundations · Primitives",
+      "name": "primitive/color/neutral/450",
+      "path": "primitive.color.neutral.450",
+      "type": "COLOR",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-color-neutral-450)"
+      },
+      "values": {
+        "default": {
+          "r": 0.524916,
+          "g": 0.54557,
+          "b": 0.572526,
+          "a": 1
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Primitives",
       "name": "primitive/color/neutral/500",
       "path": "primitive.color.neutral.500",
       "type": "COLOR",
@@ -3902,6 +3920,30 @@
         },
         "orchid": {
           "alias": "Foundations · Primitives:primitive/color/neutral/400"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "color/palette/neutral/450",
+      "path": "color.palette.neutral.450",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-palette-neutral-450)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/color/neutral/450"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/color/neutral/450"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/color/neutral/450"
         }
       }
     },
@@ -13288,7 +13330,7 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Brand:color/palette/neutral/500"
+          "alias": "Foundations · Brand:color/palette/neutral/450"
         },
         "dark": {
           "alias": "Foundations · Brand:color/palette/neutral/500"
@@ -13373,7 +13415,7 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Brand:color/palette/neutral/600"
+          "alias": "Foundations · Brand:color/palette/neutral/500"
         },
         "dark": {
           "alias": "Foundations · Brand:color/palette/neutral/400"

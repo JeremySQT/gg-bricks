@@ -50,7 +50,7 @@
     "examples": {
       "page": "examples/radio-group",
       "preview": "dist/previews/radio-group.html (npm run build:preview radio-group)",
-      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)"
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 2, review round 2: SVG circles, lighter field borders)"
     },
     "tests": {
       "ssr": "tests/ssr/radio-group.test.ts",
@@ -124,6 +124,14 @@
       "command": "npm run build && npm run build:preview radio-group",
       "date": "2026-10-26",
       "note": "dist/previews/radio-group.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-27",
+      "note": "After review round 1 (SVG circles for Switch and Radio, lighter field borders): npm run verify passed (SSR 64), full browser suite 102 passed; computed.json regenerated."
     }
   ],
   "decisionsTaken": [
@@ -132,7 +140,9 @@
     "Keyboard per the WAI-ARIA radio group pattern: one tab stop, arrows move and select (both axes in either orientation, wrapping), Space selects; a readonly group lets arrows move focus without selecting.",
     "Gaps space.content.sm between stacked radios and space.content.lg between radios on a line (density aware); size, readonly, invalid and disabled are set on the group and apply to every radio.",
     "Two completions of Bits UI: the first arrow press in a group without a value selects the radio focus moved to; keyboard focus entering the group goes to the selected radio, or to the first enabled one when none is selected (Bits UI kept the last focused radio after the application cleared the value).",
-    "RadioGroup shares size, readonly, invalid and disabled with its radios through the context key `ggb:radio-group`."
+    "RadioGroup shares size, readonly, invalid and disabled with its radios through the context key `ggb:radio-group`.",
+    "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges).",
+    "Implementation review, round 1 (user, 2026-10-27: selected dots flattened or off-center, outer circles odd): ring and dot are drawn as SVG circles (ring stroke inside the box, dot 3/8 of the box), centered by SVG geometry instead of CSS boxes snapped to device pixels at fractional display scales."
   ],
   "openDecisions": [],
   "nextAction": "Implementation gate (grouped wave 2 review on the published previews): apply the feedback, record the approval with source digests, then Figma parity.",

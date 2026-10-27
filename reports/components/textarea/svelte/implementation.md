@@ -30,3 +30,7 @@ Component: `packages/svelte/src/components/textarea/` (Svelte 5.57.1; a native `
 - Resize auto measures with script after each change: a value changed while the textarea is hidden is measured at the next change.
 - The native resize handle is drawn by the browser; it is hidden by `resize: none` for auto and none.
 - Only Chromium is automated.
+
+## Review round 1 (2026-10-27)
+
+- Lighter border in light mode, as InputText (neutral.450).

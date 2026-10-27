@@ -6,7 +6,6 @@ import {
   allContexts,
   auditAndCapture,
   densities,
-  insetBorder,
   px,
   representative,
   rgb,
@@ -26,14 +25,15 @@ async function measure(page: Page, selector: string) {
     const root = control.closest('.ggb-radio') as HTMLElement;
     const c = getComputedStyle(control);
     const r = control.getBoundingClientRect();
-    const dot = control.querySelector('.ggb-radio__mark') as HTMLElement | null;
+    const ring = getComputedStyle(control.querySelector('.ggb-radio__ring') as SVGCircleElement);
+    const dot = control.querySelector('.ggb-radio__mark') as SVGCircleElement | null;
     const label = root.querySelector('.ggb-radio__label') as HTMLElement;
     const l = label.getBoundingClientRect();
     const lineHeight = parseFloat(getComputedStyle(label).lineHeight);
     return {
-      surface: c.backgroundColor,
-      boxShadow: c.boxShadow,
-      dot: dot ? getComputedStyle(dot).backgroundColor : '',
+      surface: ring.fill,
+      border: `${ring.stroke} ${ring.strokeWidth}`,
+      dot: dot ? getComputedStyle(dot).fill : '',
       dotSize: dot?.getBoundingClientRect().width ?? 0,
       labelColor: getComputedStyle(label).color,
       outline: `${c.outlineStyle} ${c.outlineWidth} ${c.outlineColor} ${c.outlineOffset}`,
@@ -47,7 +47,7 @@ async function measure(page: Page, selector: string) {
 
 const choiceColors = (tokens: TokenMap, selection: string, condition: string) => ({
   surface: rgb(tokens[`color.choice.${selection}.${condition}.surface`]),
-  boxShadow: insetBorder(tokens[`color.choice.${selection}.${condition}.border`], tokens['border.width.default'])
+  border: `${rgb(tokens[`color.choice.${selection}.${condition}.border`])} ${px(tokens['border.width.default'])}px`
 });
 const active = (page: Page) => page.evaluate(() => document.activeElement?.id ?? '');
 
@@ -182,10 +182,9 @@ test('computed values match the resolved tokens for every selection, condition, 
         ]) {
           const m = await measure(page, `#rg-${condition}-${size}-${id}`);
           const expected = choiceColors(tokens, selection, condition);
-          expect(
-            { surface: m.surface, boxShadow: m.boxShadow },
-            `${context} ${size} ${condition} ${selection}`
-          ).toEqual(expected);
+          expect({ surface: m.surface, border: m.border }, `${context} ${size} ${condition} ${selection}`).toEqual(
+            expected
+          );
           if (selection === 'on') expect(m.dot).toBe(rgb(tokens[`color.choice.on.${condition}.content`]));
           expect(m.radius).toBe(`${px(tokens['radius.full'])}px`);
           radio.add(context, { size, selection }, condition, m);
@@ -206,7 +205,7 @@ test('computed values match the resolved tokens for every selection, condition, 
     ]) {
       await page.hover(`#rg-default-md-${id}`);
       const hover = await measure(page, `#rg-default-md-${id}`);
-      expect({ surface: hover.surface, boxShadow: hover.boxShadow }).toEqual(choiceColors(tokens, selection, 'hover'));
+      expect({ surface: hover.surface, border: hover.border }).toEqual(choiceColors(tokens, selection, 'hover'));
       radio.add(context, { size: 'md', selection }, 'hover', hover);
     }
     await page.mouse.move(0, 0);
@@ -227,13 +226,22 @@ test('transitions follow the motion tokens and stop under reduced motion; forced
   page
 }) => {
   const tokens = tokensFor('base-light-standard');
-  const control = page.locator('#rg-default-md-solo');
+  const control = page.locator('#rg-default-md-solo .ggb-radio__ring');
   await expect(control).toHaveCSS('transition-duration', `${px(tokens['motion.duration.fast']) / 1000}s`);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(control).toHaveCSS('transition-duration', '0s');
   await page.emulateMedia({ forcedColors: 'active', reducedMotion: 'no-preference' });
-  await expect(control).toHaveCSS('outline-style', 'solid');
-  await expect(control).toHaveCSS('outline-width', '1px');
+  const ring = page.locator('#rg-default-md-solo .ggb-radio__ring');
+  await settle(page);
+  const forced = await ring.evaluate((el) => {
+    const probe = document.createElement('span');
+    probe.style.color = 'CanvasText';
+    document.body.append(probe);
+    const text = getComputedStyle(probe).color;
+    probe.remove();
+    return { stroke: getComputedStyle(el).stroke, text };
+  });
+  expect(forced.stroke).toBe(forced.text);
   fs.mkdirSync(out, { recursive: true });
   await page.screenshot({ path: `${out}/forced-colors.png`, fullPage: true });
 });

@@ -52,10 +52,8 @@
 
 .ggb-radio__control {
   position: relative;
-  box-sizing: border-box;
-  display: grid;
+  display: block;
   flex: none;
-  place-items: center;
   inline-size: var(--_box);
   block-size: var(--_box);
   /* The control box is centered on the first line of the label: 1lh resolves with the inherited line height. */
@@ -63,25 +61,38 @@
   padding: 0;
   border: 0;
   border-radius: var(--ggb-radio-radius);
-  background-color: var(--_surface);
-  box-shadow: inset 0 0 0 var(--ggb-radio-borderWidth) var(--_border);
-  color: var(--_content);
+  background: transparent;
   font: inherit;
   cursor: inherit;
   appearance: none;
-  outline: var(--ggb-radio-borderWidth) solid transparent;
-  outline-offset: calc(-1 * var(--ggb-radio-borderWidth));
-  transition-property: background-color, color, box-shadow;
+  outline: none;
+}
+/*
+ * The circle fills the control: the ring is centered on the box with its stroke inside it, the dot is 3/8 of the box.
+ * In a square SVG viewport a percentage radius is a share of the side.
+ */
+.ggb-radio__circle {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: visible;
+}
+.ggb-radio__ring {
+  cx: 50%;
+  cy: 50%;
+  r: calc(50% - var(--ggb-radio-borderWidth) / 2);
+  fill: var(--_surface);
+  stroke: var(--_border);
+  stroke-width: var(--ggb-radio-borderWidth);
+  transition-property: fill, stroke;
   transition-duration: var(--ggb-radio-motionDuration);
   transition-timing-function: var(--ggb-radio-easingStandard);
 }
-/* The dot: 3/8 of the box, centered, in the content color. */
 .ggb-radio__mark {
-  display: block;
-  inline-size: calc(var(--_box) * 3 / 8);
-  block-size: calc(var(--_box) * 3 / 8);
-  border-radius: var(--ggb-radio-radius);
-  background-color: currentColor;
+  cx: 50%;
+  cy: 50%;
+  r: calc(50% * 3 / 8);
+  fill: var(--_content);
 }
 
 .ggb-radio__text {
@@ -154,33 +165,38 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ggb-radio__control {
+  .ggb-radio__ring {
     transition: none;
   }
 }
 
 @media (forced-colors: active) {
-  .ggb-radio__control {
-    box-shadow: none;
-    outline-color: CanvasText;
-    background-color: Canvas;
-    color: Canvas;
+  .ggb-radio__ring {
+    fill: Canvas;
+    stroke: CanvasText;
   }
-  .ggb-radio:has(.ggb-radio__control[data-state='checked']) .ggb-radio__control {
-    background-color: Highlight;
-    color: HighlightText;
-    outline-color: Highlight;
+  .ggb-radio__mark {
+    fill: CanvasText;
+  }
+  .ggb-radio:has(.ggb-radio__control[data-state='checked']) .ggb-radio__ring {
+    fill: Highlight;
+    stroke: Highlight;
+  }
+  .ggb-radio:has(.ggb-radio__control[data-state='checked']) .ggb-radio__mark {
+    fill: HighlightText;
   }
   .ggb-radio[data-disabled],
   .ggb-radio[data-disabled] .ggb-radio__description {
     color: GrayText;
   }
-  .ggb-radio[data-disabled] .ggb-radio__control {
-    outline-color: GrayText;
+  .ggb-radio[data-disabled] .ggb-radio__ring {
+    stroke: GrayText;
   }
-  .ggb-radio[data-disabled]:has(.ggb-radio__control[data-state='checked']) .ggb-radio__control {
-    background-color: GrayText;
-    color: Canvas;
+  .ggb-radio[data-disabled]:has(.ggb-radio__control[data-state='checked']) .ggb-radio__ring {
+    fill: GrayText;
+  }
+  .ggb-radio[data-disabled] .ggb-radio__mark {
+    fill: Canvas;
   }
   .ggb-radio__control:focus-visible {
     outline: var(--ggb-radio-focusWidth) solid Highlight;
