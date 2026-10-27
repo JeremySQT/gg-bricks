@@ -57,7 +57,7 @@
     }
   },
   "variables": {
-    "total": 739,
+    "total": 789,
     "batches": [
       {
         "batch": 1,
@@ -86,6 +86,13 @@
         "content": "size/control, space",
         "count": 23,
         "ids": "VariableID:6:2 to VariableID:6:24"
+      },
+      {
+        "batch": "wave 2 delta (2026-10-27)",
+        "collection": "Primitives, Brand, Appearance",
+        "content": "primitive/color/neutral/450; color/palette/neutral/450; size/choice/{sm,md,lg}; size/switch/{sm,md,lg}; color/choice/{off,on}/{default,hover,readonly,disabled,invalid}/{surface,content,border}; updated: color/field/{default,hover,readonly}/border",
+        "count": 41,
+        "ids": "created VariableID:286:2 to VariableID:286:39 (38); updated the three field border variables in place"
       }
     ],
     "migrations": [
@@ -114,7 +121,7 @@
         "change": "Collections renamed with the “Foundations · ” prefix (Primitives 14:2, Brand 4:2, Appearance 4:3, Density 4:4; IDs, modes and bindings unchanged) so that the flat collection list of the single library file reads as two families, Foundations and Components. Decision: one Figma file (not a separate tokens library) because a community or client distribution requires a self-contained file; recorded in authoring/figma.md. The manifest, the sync and verification scripts and the adapter scripts use the prefixed names (adapter scripts accept the short axis names); native resolution re-verified, hashes unchanged (506 variables, 0 failures)."
       }
     ],
-    "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change).",
+    "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change). Wave 2 delta synced on 2026-10-27 with the same adapter body (authoring/adapters/figma/sync-variables.plugin.js) restricted to the new or changed manifest variables; native resolution verified in 18 contexts, 0 failures (reports/tokens/figma/verification.json).",
     "additions": [
       {
         "date": "2026-10-07",
