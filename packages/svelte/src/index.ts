@@ -35,6 +35,9 @@ export type { TextareaSize, TextareaResize } from './components/textarea/contrac
 export { default as Checkbox } from './components/checkbox/Checkbox.svelte';
 export type { CheckboxProps } from './components/checkbox/types.js';
 export type { CheckboxSize } from './components/checkbox/contract.generated.js';
+export { default as CheckboxGroup } from './components/checkbox-group/CheckboxGroup.svelte';
+export type { CheckboxGroupProps } from './components/checkbox-group/types.js';
+export type { CheckboxGroupOrientation, CheckboxGroupSize } from './components/checkbox-group/contract.generated.js';
 export { default as Switch } from './components/switch/Switch.svelte';
 export type { SwitchProps } from './components/switch/types.js';
 export type { SwitchSize, SwitchLabelPosition } from './components/switch/contract.generated.js';

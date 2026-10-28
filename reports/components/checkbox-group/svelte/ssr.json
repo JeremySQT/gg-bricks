@@ -1,0 +1,11 @@
+{
+  "result": "passed",
+  "checks": [
+    "group role and name, three checkboxes, checked from the value on the server, unknown values ignored",
+    "size, readonly, invalid, disabled and orientation applied to every checkbox; disabled wins over readonly",
+    "required marks the group (data-required) and never sets aria-required on a checkbox",
+    "own disabled, description, indeterminate ignored inside a group",
+    "Field label names the group, description and message describe it; checkboxes are not wrapped again",
+    "group label required outside a Field; a checkbox of a group requires a value"
+  ]
+}

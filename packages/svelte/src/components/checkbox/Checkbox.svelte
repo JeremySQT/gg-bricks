@@ -15,10 +15,19 @@
     readonly disabled: boolean;
     register(kind: 'text' | 'choice', id?: () => string): void;
   }
+  // Shape shared by CheckboxGroup through the context key `ggb:checkbox-group` (declared again here).
+  interface CheckboxGroupContext {
+    readonly value: readonly string[];
+    readonly size: 'sm' | 'md' | 'lg';
+    readonly readonly: boolean;
+    readonly invalid: boolean;
+    readonly disabled: boolean;
+  }
 
   let {
     checked = $bindable(defaults.checked),
     indeterminate = $bindable(defaults.indeterminate),
+    value = defaults.value,
     label,
     hideLabel = defaults.hideLabel,
     description,
@@ -35,7 +44,9 @@
     ...rest
   }: CheckboxProps = $props();
 
-  const field = getContext<FieldContext | undefined>('ggb:field');
+  // Inside a CheckboxGroup, the group answers to the Field and passes its size and conditions to the checkbox.
+  const group = getContext<CheckboxGroupContext | undefined>('ggb:checkbox-group');
+  const field = group ? undefined : getContext<FieldContext | undefined>('ggb:field');
   field?.register('choice');
 
   const uid = $props.id();
@@ -44,12 +55,21 @@
     if (typeof label !== 'string' || !label.trim()) throw new Error('Checkbox requires a non-empty label.');
     return label;
   });
+  const itemValue = $derived.by(() => {
+    if (group && !value) throw new Error('A Checkbox inside a CheckboxGroup requires a value.');
+    return value || undefined;
+  });
   const hasDescription = $derived(typeof description === 'string' && description.trim() !== '');
 
-  const isDisabled = $derived(disabled || !!field?.disabled);
-  const isInvalid = $derived(invalid || !!field?.invalid);
+  const isDisabled = $derived(disabled || !!field?.disabled || !!group?.disabled);
+  const isInvalid = $derived(invalid || !!field?.invalid || !!group?.invalid);
   const isRequired = $derived(required || !!field?.required);
-  const isReadonly = $derived(readonly && !isDisabled);
+  const isReadonly = $derived((readonly || !!group?.readonly) && !isDisabled);
+  const shownSize = $derived(group?.size ?? size);
+  // Checkboxes of a group are never indeterminate; their selection follows the group value (on the server too, where
+  // the primitive syncs checked only after the label has rendered).
+  const mixed = $derived(!group && indeterminate);
+  const selected = $derived(group ? group.value.includes(itemValue ?? '') : checked);
   const describedByIds = $derived(
     [hasDescription && `${base}-description`, field?.describedBy, describedBy].filter(Boolean).join(' ') || undefined
   );
@@ -58,8 +78,8 @@
 {#snippet checkbox()}
   <label
     class={['ggb-checkbox', className]}
-    data-size={size}
-    data-selection={checked || indeterminate ? 'on' : 'off'}
+    data-size={shownSize}
+    data-selection={selected || mixed ? 'on' : 'off'}
     data-hide-label={hideLabel ? '' : undefined}
     data-disabled={isDisabled ? '' : undefined}
     data-readonly={isReadonly ? '' : undefined}
@@ -68,8 +88,10 @@
     <Primitive.Root
       {...rest}
       bind:checked
-      bind:indeterminate
+      bind:indeterminate={() => mixed, (v) => (indeterminate = v)}
       bind:ref
+      value={itemValue}
+      data-checkbox-value={group ? itemValue : undefined}
       id={base}
       class="ggb-checkbox__control"
       disabled={isDisabled}

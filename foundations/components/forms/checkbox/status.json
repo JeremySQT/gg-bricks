@@ -204,7 +204,8 @@
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
     "Implemented on 2026-10-26 on the approved contract; see reports/components/checkbox/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
     "Figma on 2026-10-27: component set 289:428 (45 variants) and specification 307:2597 on page forms/checkbox; see foundations/components/forms/checkbox/figma-spec.md.",
-    "2026-10-28: contract amended (CheckboxGroup); the implementation follows with the CheckboxGroup implementation."
+    "2026-10-28: contract amended (CheckboxGroup); the implementation follows with the CheckboxGroup implementation.",
+    "2026-10-28 (CheckboxGroup): value prop; inside a CheckboxGroup the checkbox takes the group's size, value-driven selection (also on the server) and conditions, ignores the Field and is never indeterminate. Checkbox computed values and tests unchanged (full browser suite 111 passed)."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

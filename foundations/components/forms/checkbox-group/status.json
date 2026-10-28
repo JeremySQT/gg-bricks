@@ -33,9 +33,27 @@
     "tokens": ["foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/checkbox-group/CheckboxGroup.svelte",
+      "folder": "packages/svelte/src/components/checkbox-group",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 Checkbox.Group"
+      },
+      "report": "reports/components/checkbox-group/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/checkbox-group",
+      "preview": "dist/previews/checkbox-group.html (npm run build:preview checkbox-group)",
+      "artifact": null
+    },
+    "tests": {
+      "ssr": "tests/ssr/checkbox-group.test.ts",
+      "browser": "tests/browser/checkbox-group.spec.ts",
+      "computed": "reports/components/checkbox-group/svelte/computed.json",
+      "screenshots": "reports/components/checkbox-group/svelte/*.png"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -56,7 +74,38 @@
     "documentation": null,
     "delivery": null
   },
-  "checks": [],
+  "checks": [
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-28",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors, 0 warnings), SSR (69), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/checkbox-group/svelte/ssr.json",
+      "date": "2026-10-28",
+      "note": "5 tests; 6 checks recorded for CheckboxGroup."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-28",
+      "note": "Full suite 111 passed (9 CheckboxGroup tests). Details in reports/components/checkbox-group/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview checkbox-group",
+      "date": "2026-10-28",
+      "note": "dist/previews/checkbox-group.html mounts from file:// without errors."
+    }
+  ],
   "decisionsTaken": [
     "Added to wave 2 by the user on 2026-10-28 (Figma parity review): \"Je valide l'ajout du Checkboxgroup pour la vague 2.\"",
     "Built on the RadioGroup model: Field gives the visible label, description and message; label prop only for use without Field; orientation, size, readonly, invalid and disabled passed to every checkbox; gaps space.content.sm (vertical) and space.content.lg (horizontal), no new token.",
@@ -64,11 +113,13 @@
     "Each checkbox stays its own tab stop and toggles with Space (checkbox convention), unlike the single stop of a RadioGroup.",
     "required means at least one; not exposed as aria-required on each checkbox (it would announce every option as mandatory); the Field label or description states it in words.",
     "Selection limits and a select-all child are out of scope.",
-    "Required exposure (user, 2026-10-28): stated in words by the Field label or description, not as required on each checkbox."
+    "Required exposure (user, 2026-10-28): stated in words by the Field label or description, not as required on each checkbox.",
+    "Implementation: the Bits UI group required is not passed (it would set aria-required on every checkbox); the group sorts its value by the source order of the checkboxes; the group shares its value through the context so that the server markup shows checked boxes before hydration."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (ggb-svelte): CheckboxGroup on Bits UI Checkbox.Group, the Checkbox value amendment and Field accepting the group; then the implementation review.",
+  "nextAction": "Implementation review of CheckboxGroup (preview artifact), then the Figma master (eight exposed Checkbox options with Show option booleans, as RadioGroup) and parity.",
   "implementationNotes": [
-    "Wave 2 addition, branch wave/2-form-foundations, contract drafted on 2026-10-28. Bits UI 2.19.3 provides Checkbox.Group (value string[], role group); its required puts aria-required on every checkbox, which the contract excludes."
+    "Wave 2 addition, branch wave/2-form-foundations, contract drafted on 2026-10-28. Bits UI 2.19.3 provides Checkbox.Group (value string[], role group); its required puts aria-required on every checkbox, which the contract excludes.",
+    "Implemented on 2026-10-28: CheckboxGroup.svelte, Checkbox value amendment, Field fixture; review page examples/checkbox-group."
   ]
 }

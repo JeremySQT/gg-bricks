@@ -209,6 +209,7 @@
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
     "Implemented on 2026-10-26 on the approved contract; see reports/components/field/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
     "Figma on 2026-10-27: component set 295:77 (3 variants) and specification 307:897 on page forms/field; see foundations/components/forms/field/figma-spec.md.",
-    "2026-10-28: contract amended (CheckboxGroup); the implementation follows with the CheckboxGroup implementation."
+    "2026-10-28: contract amended (CheckboxGroup); the implementation follows with the CheckboxGroup implementation.",
+    "2026-10-28 (CheckboxGroup): accepts checkbox-group; the group registers as a choice control (named by the Field label, described by its description and message). SSR fixture FieldWith gains a checkbox-group control."
   ]
 }

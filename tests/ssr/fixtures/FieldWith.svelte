@@ -6,6 +6,7 @@
   import Checkbox from '../../../packages/svelte/src/components/checkbox/Checkbox.svelte';
   import RadioGroup from '../../../packages/svelte/src/components/radio-group/RadioGroup.svelte';
   import Radio from '../../../packages/svelte/src/components/radio/Radio.svelte';
+  import CheckboxGroup from '../../../packages/svelte/src/components/checkbox-group/CheckboxGroup.svelte';
 
   let { control = 'input-text', controlProps = {}, ...field }: Record<string, unknown> = $props();
 </script>
@@ -17,6 +18,11 @@
     <Textarea {...controlProps} />
   {:else if control === 'checkbox'}
     <Checkbox label="I accept" {...controlProps} />
+  {:else if control === 'checkbox-group'}
+    <CheckboxGroup {...controlProps}>
+      <Checkbox value="a" label="A" />
+      <Checkbox value="b" label="B" />
+    </CheckboxGroup>
   {:else}
     <RadioGroup {...controlProps}>
       <Radio value="a" label="A" />

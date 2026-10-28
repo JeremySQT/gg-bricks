@@ -7,6 +7,7 @@ type Owned =
   | 'child'
   | 'checked'
   | 'indeterminate'
+  | 'value'
   | 'onCheckedChange'
   | 'onIndeterminateChange'
   | 'disabled'
@@ -23,6 +24,11 @@ export interface CheckboxOptions {
   checked?: boolean;
   /** Mixed state (some of a set selected); bind it. Activating an indeterminate checkbox checks it. */
   indeterminate?: boolean;
+  /**
+   * Identifies the checkbox: submitted with a form when checked. Inside a CheckboxGroup it is required and unique,
+   * and the group decides checked (checked exactly when the value is in the group's value).
+   */
+  value?: string;
   /** Visible label, required and non-empty: the accessible name. */
   label: string;
   /** Hides label and description visually; they stay the accessible name and description (table row selector). */
@@ -47,5 +53,5 @@ export interface CheckboxOptions {
   class?: string;
 }
 
-/** Other attributes (id, name, value, form, aria-describedby…) go to the control; `name` adds a hidden input. */
+/** Other attributes (id, name, form, aria-describedby…) go to the control; `name` adds a hidden input. */
 export type CheckboxProps = CheckboxOptions & Omit<Primitive.RootProps, Owned | keyof CheckboxOptions>;
