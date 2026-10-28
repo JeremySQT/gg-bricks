@@ -195,7 +195,8 @@
     "Two completions of Bits UI: the first arrow press in a group without a value selects the radio focus moved to; keyboard focus entering the group goes to the selected radio, or to the first enabled one when none is selected (Bits UI kept the last focused radio after the application cleared the value).",
     "RadioGroup shares size, readonly, invalid and disabled with its radios through the context key `ggb:radio-group`.",
     "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges).",
-    "Implementation review, round 1 (user, 2026-10-27: selected dots flattened or off-center, outer circles odd): ring and dot are drawn as SVG circles (ring stroke inside the box, dot 3/8 of the box), centered by SVG geometry instead of CSS boxes snapped to device pixels at fractional display scales."
+    "Implementation review, round 1 (user, 2026-10-27: selected dots flattened or off-center, outer circles odd): ring and dot are drawn as SVG circles (ring stroke inside the box, dot 3/8 of the box), centered by SVG geometry instead of CSS boxes snapped to device pixels at fractional display scales.",
+    "Figma options (user, 2026-10-28): the eight hidden options with Show option 3–8 booleans are not approved (\"trop saturé d'options\"); the options of RadioGroup (and CheckboxGroup) use a Figma slot instead, so designers add options freely."
   ],
   "openDecisions": [],
   "nextAction": "Figma parity gate (grouped wave 2 review): the user reviews the masters, the specification pages and the parity reports; then documentation (ggb-docs).",

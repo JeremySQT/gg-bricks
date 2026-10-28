@@ -57,7 +57,7 @@ One row per component once its scope phase starts. Phase values: scope, contract
 | Switch        | forms   | 2    | figma (gate pending) | `foundations/components/forms/switch/status.json`         |
 | RadioGroup    | forms   | 2    | figma (gate pending) | `foundations/components/forms/radio-group/status.json`    |
 | Radio         | forms   | 2    | figma (gate pending) | `foundations/components/forms/radio/status.json`          |
-| CheckboxGroup | forms   | 2    | implementation       | `foundations/components/forms/checkbox-group/status.json` |
+| CheckboxGroup | forms   | 2    | figma                | `foundations/components/forms/checkbox-group/status.json` |
 
 ## How a fresh session starts a task
 

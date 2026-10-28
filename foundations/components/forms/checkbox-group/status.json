@@ -3,7 +3,7 @@
   "componentId": "checkbox-group",
   "family": "forms",
   "wave": 2,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Gather two or more related checkboxes that answer one question, any number of which can be checked, with one group name, one required rule (at least one) and one validation message through Field.",
     "useCases": [
@@ -69,7 +69,33 @@
       "provenance": "User at the CheckboxGroup contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-28): \"Je valide le contrat, avec ces trois modifications. Pour obligatoire je préfère qu'on soit accessible, donc plutôt sur le label ou la description du field.\"",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "CheckboxGroup on Bits UI Checkbox.Group (Field naming, value in source order, size and conditions passed to every checkbox, required kept off the checkboxes) and the Checkbox value amendment.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/checkbox-group/CheckboxGroup.svelte",
+          "packages/svelte/src/components/checkbox-group/contract.generated.ts",
+          "packages/svelte/src/components/checkbox-group/checkbox-group.css",
+          "packages/svelte/src/components/checkbox-group/tokens.generated.css",
+          "packages/svelte/src/components/checkbox-group/types.ts",
+          "packages/svelte/src/components/checkbox/Checkbox.svelte",
+          "packages/svelte/src/components/checkbox/types.ts",
+          "examples/checkbox-group/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/checkbox-group/CheckboxGroup.svelte": "6ca38d77448b8232073b6bfa2de91ea6d97a6e595da7a947a0daef070695bd71",
+          "packages/svelte/src/components/checkbox-group/contract.generated.ts": "9a822ed23b76ecc220721c2b7920f66882ff1e822319257df41aac1d12c1d725",
+          "packages/svelte/src/components/checkbox-group/checkbox-group.css": "a1e5f177206a6cb5458dcf0b0500c71073df13043468c13cf2de92460186da49",
+          "packages/svelte/src/components/checkbox-group/tokens.generated.css": "34491bf7538f0c4bfaa88d574c1339711f5a929e549fb7acc7ac2bf9073dffd5",
+          "packages/svelte/src/components/checkbox-group/types.ts": "9d38dd6fbcc55bc5a22a0ad2cd44f07beae6ce512debe97dd3868007edf8fb78",
+          "packages/svelte/src/components/checkbox/Checkbox.svelte": "b4a4a95b5d0cdcab1372a5d2cf824546326f827f3def07722e3fc7e7432eef17",
+          "packages/svelte/src/components/checkbox/types.ts": "86568aacd4634bf97c4b43fadbcd60e08e8d48f045b07ae383df7067b4459b04",
+          "examples/checkbox-group/App.svelte": "67dc738972b1a4e2fc066e4209e9b706ccffde0779297c066f84212a267d44ea"
+        }
+      },
+      "provenance": "User at the CheckboxGroup implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on https://claude.ai/artifact/Gk82eEnq6GMYxucRXpH5Nf (2026-10-28): \"Ok pour moi pour l'implémentation du checkbox group, à traiter comme le radiogroup sur figma quand ce sera valide du coup.\"",
+      "note": "The Figma master follows the RadioGroup option model once the user approves it (Figma slots requested on 2026-10-28)."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -117,7 +143,7 @@
     "Implementation: the Bits UI group required is not passed (it would set aria-required on every checkbox); the group sorts its value by the source order of the checkboxes; the group shares its value through the context so that the server markup shows checked boxes before hydration."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation review of CheckboxGroup (preview artifact), then the Figma master (eight exposed Checkbox options with Show option booleans, as RadioGroup) and parity.",
+  "nextAction": "Figma master once the RadioGroup option model with Figma slots is approved: same model for CheckboxGroup, then specification page and parity.",
   "implementationNotes": [
     "Wave 2 addition, branch wave/2-form-foundations, contract drafted on 2026-10-28. Bits UI 2.19.3 provides Checkbox.Group (value string[], role group); its required puts aria-required on every checkbox, which the contract excludes.",
     "Implemented on 2026-10-28: CheckboxGroup.svelte, Checkbox value amendment, Field fixture; review page examples/checkbox-group."
