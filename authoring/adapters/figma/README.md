@@ -102,3 +102,9 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - An instance-swap property for a whole-control slot (Field's Control) resets every variant's control to its single default: the slot is an exposed instance set per variant instead, swapped by the designer in the layers panel.
 - `componentPropertyReferences` cannot be set on a layer inside a nested instance (the RadioGroup's hidden name layer is found by exact name, not by the radios' Label).
 - Every wave 2 browser spec that measures hover after a focus check must blur first: focus survives a context switch and its ring was recorded as part of the hover state.
+
+## Mechanics learned on 2026-10-28
+
+- `checkbox-focus-radius.plugin.js`: a Figma-only variable in the **Brand** collection (`checkbox/focus-radius`, hidden from publishing) holds radius/indicator + focus/offset per brand, for the concentric focus ring of the Checkbox. A value that depends on the brand cannot live in the Components collection (its modes are sizes). The prune script's keep list must name it (`Foundations · Brand:checkbox/focus-radius`); rerun the script after a change of either token.
+- Anatomy boards draw the enlarged instance in the blueprint ink (`inkDrawing` in `forms-spec.plugin.js`): fills become `wireframe/tint/16`, strokes `wireframe/tint/48` at 1.5 px, text and glyphs `wireframe/ink`, transparent paints stay empty (their alpha is read from the bound variable). Leaders are always straight. `ANATOMY_ONLY = true` redraws only the boards of existing specification frames.
+- `strokesIncludedInLayout` can be set only on auto-layout frames; text layers set to `HUG` in a drawing end at their last word, where a side pin can land.

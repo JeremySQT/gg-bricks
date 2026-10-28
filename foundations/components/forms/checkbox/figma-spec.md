@@ -27,7 +27,7 @@ Every color, dimension, radius, stroke and typography value of the masters is bo
 - **Row**: horizontal auto layout, hug, gap `space/control/gap/{size}`, top aligned. A **First line** frame as tall as `typography/body/{size}/lineHeight` centers the Control, so that the box sits on the first line of the label in every density (the code's rule).
 - **Control**: fixed `size/choice/{size}`, corners `radius/indicator`, fill and inside stroke from `color/choice/{off|on}/{state}/…` at `border/width/default`, stroke kept out of the layout (the code draws an inset shadow). Indeterminate uses the on colors.
 - **Mark**: Phosphor 2.1.1 bold check and minus as internal components (256-unit grid, children scaled), stretched over the box and colored with `color/choice/on/{state}/content`, as the code draws the bold glyph at the box size. Off variants have no Mark layer.
-- **Focus ring**: a frame 2 px outside the box with an outside stroke `color/focus/ring` at `focus/width`, corners `radius/indicator` (see the justified differences).
+- **Focus ring**: a frame 2 px outside the box with an outside stroke `color/focus/ring` at `focus/width`, corners bound to `checkbox/focus-radius` (radius/indicator + focus/offset: 6, 4, 6 px in base, brick, orchid), so the ring is concentric with the box as in the code (user remark, 2026-10-28).
 - **Target**: an empty frame of `size/target/min` across the row, absolute and centered, as the 44 px interaction target of the code.
 
 ## Justified differences
@@ -35,17 +35,16 @@ Every color, dimension, radius, stroke and typography value of the masters is bo
 Recorded as such in `parity.json`; none hides a defect of the master.
 
 1. **Off mark color.** The code keeps a color on the empty off box for the transition; an off box draws nothing, so the master has no Mark layer (224 `mark` records noted as justified).
-2. **Focus ring corners.** The code draws the ring with corners of radius + offset (concentric); Figma binds `radius/indicator` on the ring frame. The outline color, width and offset match (parity `outline`).
-3. **Transparent outline.** Outside focus the code keeps a transparent outline for forced-colors mode; Figma has no forced colors and the ring is hidden (`outline` compares as empty).
-4. **First line.** At lg the 28.8 px line is rounded to 29 px by Figma's text box: the box center differs by 0.1 px from the line center (tolerance ±0.11 px).
+2. **Transparent outline.** Outside focus the code keeps a transparent outline for forced-colors mode; Figma has no forced colors and the ring is hidden (`outline` compares as empty).
+3. **First line.** At lg the 28.8 px line is rounded to 29 px by Figma's text box: the box center differs by 0.1 px from the line center (tolerance ±0.11 px).
 
 ## Page style and diagrams
 
-Same layout as the wave 1 pages (white header on a gray page, hero card, blueprint anatomy board, white cards in the body), built by the shared body `authoring/adapters/figma/forms-spec.plugin.js` (one block per component). The Anatomy board shows a real instance enlarged with `rescale` (a drawing, not a master) in the dark appearance, so its text reads on the blueprint; numbered callouts name the parts and lettered dimension lines the measures, with `_Spec/Callout` (`115:6`), `_Spec/Marker` (`115:8`) and the Figma-only **Wireframe** collection.
+Same layout as the wave 1 pages (white header on a gray page, hero card, blueprint anatomy board, white cards in the body), built by the shared body `authoring/adapters/figma/forms-spec.plugin.js` (one block per component). The Anatomy board shows a real instance enlarged with `rescale` (a drawing, not a master) redrawn in the blueprint ink: surfaces in a light tint with tint borders, text and glyphs in ink (secondary texts at 60 %), layout boxes dashed. Numbered callouts sit straight above, below or beside their part with straight leaders, and lettered dimension lines give the measures, with `_Spec/Callout` (`115:6`), `_Spec/Marker` (`115:8`) and the Figma-only **Wireframe** collection.
 
 ## Adapter mechanics
 
-- None: the Checkbox uses foundation variables only.
+- **Brand** collection: `checkbox/focus-radius` (hidden from publishing) = radius/indicator + focus/offset per brand, computed and bound by `checkbox-focus-radius.plugin.js`. It lives in the Brand collection because the indicator radius changes with the brand, which the Components collection (size modes) cannot follow. The prune script must keep it.
 - `figma.skipInvisibleInstanceChildren = false` is required when scripts read hidden layers (Description, Focus ring, slots).
 - Adapter variables are Figma mechanics only: never source tokens, contract fields or code requirements.
 

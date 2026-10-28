@@ -8,6 +8,7 @@
 // dimensions. Explanatory instances come from the wave 2 sets, found by name on their pages; the callout and marker
 // components (115:6, 115:8) and the grid image are the wave 1 utilities. Rerunning replaces the frame.
 const IDS = ['checkbox'];
+const ANATOMY_ONLY = false;
 figma.skipInvisibleInstanceChildren = false;
 const PAGES = {
   checkbox: ['288:3', 'Checkbox'],
@@ -109,8 +110,6 @@ const board = (name, w, h) => {
   stroke(f, 'wireframe/card', 8, null, 'OUTSIDE');
   shadow(f);
   f.setExplicitVariableModeForCollection(wf, B);
-  // The enlarged instance is drawn in the dark appearance: light text on the blueprint.
-  f.setExplicitVariableModeForCollection(col('Appearance'), mode(col('Appearance'), 'dark'));
   return f;
 };
 const chip = (chars, bordered = true) => {
@@ -328,6 +327,151 @@ const surface = (name, dir = 'VERTICAL', gap = 12, pad = 20) => {
   return f;
 };
 
+// ---- Anatomy board: the real instance enlarged, redrawn in the blueprint ink ----
+// The drawing keeps the geometry of the instance and replaces its colors: surfaces in a light tint with a tint
+// border, text, glyphs, thumbs and dots in ink (secondary texts at 60 %), the layers listed in `dashed` outlined
+// with a dashed tint (layout boxes). Hidden layers, the focus ring and the target stay hidden.
+const resolveAlpha = async (node, p) => {
+  const id = p.boundVariables && p.boundVariables.color && p.boundVariables.color.id;
+  if (!id) return (p.opacity ?? 1) * (p.color && p.color.a !== undefined ? p.color.a : 1);
+  const v = (await figma.variables.getVariableByIdAsync(id)).resolveForConsumer(node).value;
+  return (p.opacity ?? 1) * (v.a ?? 1);
+};
+const weight = (n, w) => {
+  for (const f of ['strokeTopWeight', 'strokeRightWeight', 'strokeBottomWeight', 'strokeLeftWeight'])
+    if (n.boundVariables && n.boundVariables[f]) n.setBoundVariable(f, null);
+  n.strokeWeight = w;
+};
+const SHAPES = ['VECTOR', 'ELLIPSE', 'BOOLEAN_OPERATION', 'STAR', 'POLYGON', 'RECTANGLE', 'LINE'];
+const inkDrawing = async (root, dashed = [], muted = ['Description', 'Placeholder']) => {
+  const walk = async (n) => {
+    if (n.visible === false || n.name === 'Focus ring' || n.name === 'Target') return;
+    if (n.type === 'TEXT') {
+      n.fills = [paint('wireframe/ink')];
+      n.opacity = muted.includes(n.name) ? 0.6 : 1;
+      return;
+    }
+    if (SHAPES.includes(n.type)) {
+      if (n.fills.length) n.fills = [paint('wireframe/ink')];
+      if (n.strokes.length) n.strokes = [paint('wireframe/ink')];
+      return;
+    }
+    const visibleFill = [];
+    for (const f of n.fills || []) if (f.visible !== false && (await resolveAlpha(n, f)) > 0) visibleFill.push(f);
+    const visibleStroke = [];
+    for (const f of n.strokes || []) if (f.visible !== false && (await resolveAlpha(n, f)) > 0) visibleStroke.push(f);
+    n.fills = visibleFill.length ? [paint('wireframe/tint/16')] : [];
+    if (visibleStroke.length) {
+      n.strokes = [paint('wireframe/tint/48')];
+      weight(n, 1.5);
+    } else if (n.strokes && n.strokes.length) n.strokes = [];
+    if (dashed.includes(n.name)) {
+      n.strokes = [paint('wireframe/tint/48')];
+      weight(n, 1);
+      n.dashPattern = [4, 3];
+      n.strokeAlign = 'INSIDE';
+      if (n.layoutMode && n.layoutMode !== 'NONE') n.strokesIncludedInLayout = false;
+    }
+    if ('children' in n) for (const c of n.children) await walk(c);
+  };
+  await walk(root);
+};
+const drawBoard = async (A) => {
+  const inst = A.instance();
+  // The board never grows past the 1088 px column.
+  inst.rescale(Math.min(A.zoom, (1088 - 240) / inst.width));
+  inst.name = 'Drawing (enlarged instance)';
+  await inkDrawing(inst, A.dashed, A.muted);
+  // Text layers listed in `hug` shrink to their words, so that a side pin lands at the end of the text.
+  for (const n of inst.findAll((n) => n.type === 'TEXT' && (A.hug || []).includes(n.name)))
+    n.layoutSizingHorizontal = 'HUG';
+  const W = Math.max(640, inst.width + 240),
+    H = inst.height + 200 + 28 * (A.dims || []).filter((d) => d.k === 'x').length;
+  const dg = board('Anatomy diagram', W, H);
+  dg.appendChild(inst);
+  inst.x = Math.round((W - inst.width) / 2 - (A.shift || 0));
+  inst.y = 96;
+  // A layer by name, or a path “Radio 2/Control”; '' is the instance.
+  const node = (name) =>
+    name
+      .split('/')
+      .filter(Boolean)
+      .reduce((p, part) => p && p.findOne((n) => n.name === part && n.visible !== false), inst);
+  const box = (name) => {
+    const n = node(name);
+    if (!n) throw new Error('anatomy layer ' + name);
+    const x = n.absoluteTransform[0][2] - dg.absoluteTransform[0][2];
+    const y = n.absoluteTransform[1][2] - dg.absoluteTransform[1][2];
+    return { l: x, t: y, r: x + n.width, b: y + n.height, cx: x + n.width / 2, cy: y + n.height / 2 };
+  };
+  const ib = box('');
+  // Pins: a numbered callout straight above, below or beside its target, a straight dashed leader and a marker
+  // on the layer edge. The fourth value moves the target along that edge (from its center).
+  for (const [n, layer, side, d = 0] of A.pins) {
+    const b = box(layer);
+    if (side === 'top' || side === 'bottom') {
+      const tx = b.cx + d;
+      const top = side === 'top';
+      const cy = top ? 44 : H - 44;
+      const ty = top ? b.t : b.b;
+      line(dg, tx, cy + (top ? 11 : -11), tx, ty, [3, 3], 1, 0.7);
+      marker(dg, tx, ty);
+      callout(n, dg, tx, cy);
+    } else {
+      const right = side === 'right';
+      const tx = right ? b.r : b.l;
+      const ty = b.cy + d;
+      const cx = right ? ib.r + 64 : ib.l - 64;
+      line(dg, cx + (right ? -11 : 11), ty, tx, ty, [3, 3], 1, 0.7);
+      marker(dg, tx, ty);
+      callout(n, dg, cx, ty);
+    }
+  }
+  let xi = 0,
+    yi = 0;
+  for (const d of A.dims || []) {
+    const a = box(d.a[0]),
+      b = box(d.b[0]);
+    if (d.k === 'x') {
+      const x1 = a[d.a[1]],
+        x2 = b[d.b[1]];
+      const y = ib.b + 30 + 28 * xi++;
+      // Extension lines from the measured edges down to the dimension line.
+      line(dg, x1, a.b, x1, y, [2, 2], 1, 0.5);
+      line(dg, x2, b.b, x2, y, [2, 2], 1, 0.5);
+      line(dg, x1, y, x2, y, null, 1.5);
+      for (const xx of [x1, x2]) line(dg, xx, y - 4, xx, y + 4, null, 1.5);
+      callout(d.c, dg, Math.max(x1, x2) + 18, y);
+    } else {
+      const y1 = a[d.a[1]],
+        y2 = b[d.b[1]];
+      const left = d.side === 'left';
+      const x = left ? ib.l - 30 - 28 * yi++ : ib.r + 30 + 28 * yi++;
+      line(dg, left ? a.l : a.r, y1, x, y1, [2, 2], 1, 0.5);
+      line(dg, left ? b.l : b.r, y2, x, y2, [2, 2], 1, 0.5);
+      line(dg, x, y1, x, y2, null, 1.5);
+      for (const yy of [y1, y2]) line(dg, x - 4, yy, x + 4, yy, null, 1.5);
+      callout(d.c, dg, x + (left ? -18 : 18), (y1 + y2) / 2);
+    }
+  }
+  return dg;
+};
+// Redraw only the board of an existing specification frame (ANATOMY_ONLY), keeping the frame and its other nodes.
+const redrawBoard = async (ID) => {
+  const page = await figma.getNodeByIdAsync(PAGES[ID][0]);
+  await figma.setCurrentPageAsync(page);
+  // Leftovers of an interrupted run sit at the top of the page.
+  for (const n of page.children.filter((n) => ['Drawing (enlarged instance)', 'Anatomy diagram'].includes(n.name)))
+    n.remove();
+  const root = page.children.find((n) => n.name === `${PAGES[ID][1]} — Specification`);
+  const old = root.findOne((n) => n.name === 'Anatomy diagram');
+  const row = old.parent;
+  const dg = await drawBoard(ANATOMY[ID]());
+  row.insertChild(row.children.indexOf(old), dg);
+  old.remove();
+  return { root: root.id, board: dg.id };
+};
+
 // ---- Page skeleton ----
 const build = async (ID, spec) => {
   const page = await figma.getNodeByIdAsync(PAGES[ID][0]);
@@ -388,83 +532,10 @@ const build = async (ID, spec) => {
   heading(an, 'Anatomy', A.intro);
   const anRow = stack('Anatomy row', 'HORIZONTAL', 44);
   anRow.counterAxisAlignItems = 'MIN';
+  const dg = await drawBoard(A);
+  const W = dg.width;
   // A wide drawing puts the legend under the board.
-  const inst = A.instance();
-  // The board never grows past the 1088 px column.
-  inst.rescale(Math.min(A.zoom, (1088 - 240) / inst.width));
-  inst.name = 'Drawing (enlarged instance)';
-  const W = Math.max(640, inst.width + 240),
-    H = inst.height + 200 + 28 * (A.dims || []).filter((d) => d.k === 'x').length;
-  const dg = board('Anatomy diagram', W, H);
   if (W > 760) anRow.layoutMode = 'VERTICAL';
-  dg.appendChild(inst);
-  inst.x = Math.round((W - inst.width) / 2 - (A.shift || 0));
-  inst.y = 96;
-  // A layer by name, or a path “Radio 2/Control”; '' is the instance.
-  const node = (name) =>
-    name
-      .split('/')
-      .filter(Boolean)
-      .reduce((p, part) => p && p.findOne((n) => n.name === part && n.visible !== false), inst);
-  const box = (name) => {
-    const n = node(name);
-    if (!n) throw new Error('anatomy layer ' + name);
-    const x = n.absoluteTransform[0][2] - dg.absoluteTransform[0][2];
-    const y = n.absoluteTransform[1][2] - dg.absoluteTransform[1][2];
-    return { l: x, t: y, r: x + n.width, b: y + n.height, cx: x + n.width / 2, cy: y + n.height / 2 };
-  };
-  const ib = box('');
-  // Pins: a numbered callout above, below or beside the drawing, a dashed leader and a marker on the layer edge.
-  for (const [n, layer, side, d = 0] of A.pins) {
-    const b = box(layer);
-    if (side === 'top' || side === 'bottom') {
-      const tx = b.cx + (A.pinAt && A.pinAt[n] ? A.pinAt[n] : 0);
-      const cx = tx + d;
-      const top = side === 'top';
-      const cy = top ? 44 : H - 44;
-      const ty = top ? b.t : b.b;
-      line(dg, cx, cy + (top ? 11 : -11), tx, ty, [3, 3], 1, 0.7);
-      marker(dg, tx, ty);
-      callout(n, dg, cx, cy);
-    } else {
-      const right = side === 'right';
-      const tx = right ? b.r : b.l;
-      const cx = right ? ib.r + 64 : ib.l - 64;
-      const cy = b.cy + d;
-      line(dg, cx + (right ? -11 : 11), cy, tx, b.cy, [3, 3], 1, 0.7);
-      marker(dg, tx, b.cy);
-      callout(n, dg, cx, cy);
-    }
-  }
-  let xi = 0,
-    yi = 0;
-  for (const d of A.dims || []) {
-    if (d.k === 'x') {
-      const a = box(d.a[0]),
-        b = box(d.b[0]);
-      const x1 = a[d.a[1]],
-        x2 = b[d.b[1]];
-      const y = ib.b + 30 + 28 * xi++;
-      // Extension lines from the measured edges down to the dimension line.
-      line(dg, x1, a.b, x1, y, [2, 2], 1, 0.5);
-      line(dg, x2, b.b, x2, y, [2, 2], 1, 0.5);
-      line(dg, x1, y, x2, y, null, 1.5);
-      for (const xx of [x1, x2]) line(dg, xx, y - 4, xx, y + 4, null, 1.5);
-      callout(d.c, dg, Math.max(x1, x2) + 18, y);
-    } else {
-      const a = box(d.a[0]),
-        b = box(d.b[0]);
-      const y1 = a[d.a[1]],
-        y2 = b[d.b[1]];
-      const left = d.side === 'left';
-      const x = left ? ib.l - 30 - 28 * yi++ : ib.r + 30 + 28 * yi++;
-      line(dg, left ? a.l : a.r, y1, x, y1, [2, 2], 1, 0.5);
-      line(dg, left ? b.l : b.r, y2, x, y2, [2, 2], 1, 0.5);
-      line(dg, x, y1, x, y2, null, 1.5);
-      for (const yy of [y1, y2]) line(dg, x - 4, yy, x + 4, yy, null, 1.5);
-      callout(d.c, dg, x + (d.side === 'left' ? -18 : 18), (y1 + y2) / 2);
-    }
-  }
   anRow.appendChild(dg);
   const legend = stack('Legend', 'VERTICAL', 12);
   fill(legend, 'wireframe/canvas');
@@ -510,6 +581,369 @@ const build = async (ID, spec) => {
   set.y = 0;
   return { root: root.id, h: Math.round(root.height), board: dg.id, set: set.id };
 };
+// Anatomy boards: one block per component (also run alone with ANATOMY_ONLY to redraw the boards in place).
+const ANATOMY = {};
+// <anatomy:checkbox>
+ANATOMY['checkbox'] = () => {
+  const cb = (v, p = {}) => mk('checkbox', v, p);
+  const SEL = ['off', 'on', 'indeterminate'];
+  return {
+    intro: 'How a checkbox is built. The instance is enlarged four times; the real checkboxes are shown underneath.',
+    dashed: ['First line'],
+    zoom: 4,
+    instance: () =>
+      cb(
+        { Selection: 'on' },
+        { Label: 'Email me a receipt', 'Show description': true, Description: 'Sent to the billing address.' }
+      ),
+    pins: [
+      [1, 'Control', 'top', 0],
+      [2, 'Mark', 'bottom', 0],
+      [3, 'Label', 'top', 0],
+      [4, 'Description', 'bottom', 0]
+    ],
+    dims: [
+      { k: 'y', a: ['Control', 't'], b: ['Control', 'b'], c: 'A', side: 'left' },
+      { k: 'x', a: ['First line', 'r'], b: ['Text', 'l'], c: 'B' },
+      { k: 'y', a: ['First line', 't'], b: ['First line', 'b'], c: 'C', side: 'left' }
+    ],
+    legend: [
+      [
+        '1',
+        'Control: a square box with a small radius (radius/indicator) and a thin border inside its edge. Off, it is light with a border; on or indeterminate, it is filled in the accent color.'
+      ],
+      [
+        '2',
+        'Mark: the check (on) or the bar (indeterminate), Phosphor bold, drawn at the size of the box in the content color of the state. Off has no mark.'
+      ],
+      ['3', 'Label: the body text of the size. It wraps and is the accessible name; pressing it toggles the box.'],
+      ['4', 'Description (optional): body/sm in the secondary color, under the label.'],
+      ['A', 'Box size: size/choice/{size}, 14, 16 or 20 px. It does not change with the density.'],
+      ['B', 'Gap: space/control/gap/{size}; at md 6, 8 or 10 px in compact, standard and comfortable density.'],
+      [
+        'C',
+        'First line: the box is centered on the first line of the label (the line height of typography/body/{size}), not on the whole text.'
+      ]
+    ],
+    real: () => [
+      [cb({}), 'off'],
+      [cb({ Selection: 'on' }), 'on'],
+      [cb({ Selection: 'indeterminate' }), 'indeterminate'],
+      [cb({ Selection: 'on' }, { 'Show description': true }), 'with a description'],
+      [cb({ Selection: 'on' }, { 'Show label': false }), 'Show label off: a row selector']
+    ],
+    figma:
+      'In Figma, Size, Selection and State are variants. Label and Description are text properties; Show description adds the help text and Show label off keeps the box alone (the label stays the accessible name in code). Focus shows the keyboard focus ring on any state. The 44 px interaction target is the empty Target layer around the row.'
+  };
+};
+// </anatomy:checkbox>
+
+// <anatomy:radio>
+ANATOMY['radio'] = () => {
+  const rd = (v, p = {}) => mk('radio', v, p);
+  return {
+    intro:
+      'How a radio is built. The instance is enlarged three and a half times; the real radios are shown underneath.',
+    dashed: ['First line'],
+    zoom: 3.5,
+    instance: () =>
+      rd(
+        { Selection: 'on' },
+        { Label: 'Express', 'Show description': true, Description: 'Delivered tomorrow before noon.' }
+      ),
+    pins: [
+      [1, 'Control', 'top', 0],
+      [2, 'Mark', 'bottom', 0],
+      [3, 'Label', 'top', 0],
+      [4, 'Description', 'bottom', 0]
+    ],
+    dims: [
+      { k: 'y', a: ['Control', 't'], b: ['Control', 'b'], c: 'A', side: 'left' },
+      { k: 'x', a: ['First line', 'r'], b: ['Text', 'l'], c: 'B' },
+      { k: 'y', a: ['First line', 't'], b: ['First line', 'b'], c: 'C', side: 'left' }
+    ],
+    legend: [
+      [
+        '1',
+        'Control: a circle with a thin border inside its edge (radius/full). Light when off, filled in the accent color when on.'
+      ],
+      ['2', 'Mark: a dot of 3/8 of the circle (radio/dot) in the content color of the state. Off has no dot.'],
+      ['3', 'Label: the body text of the size. It wraps, is the accessible name, and pressing it selects the radio.'],
+      ['4', 'Description (optional): body/sm in the secondary color, under the label.'],
+      ['A', 'Circle size: size/choice/{size}, 14, 16 or 20 px, the size of a Checkbox box.'],
+      ['B', 'Gap: space/control/gap/{size}; at md 6, 8 or 10 px in compact, standard and comfortable density.'],
+      ['C', 'First line: the circle is centered on the first line of the label, not on the whole text.']
+    ],
+    real: () => [
+      [rd({}, { Label: 'Standard' }), 'off'],
+      [rd({ Selection: 'on' }, { Label: 'Express' }), 'on'],
+      [rd({ Selection: 'on' }, { Label: 'Express', 'Show description': true }), 'with a description'],
+      [rd({ Selection: 'on', State: 'disabled' }, { Label: 'Express' }), 'disabled']
+    ],
+    figma:
+      'In Figma, Size, Selection and State are variants. In code the size, readonly and invalid state come from the group: set the same Size and State on every radio of a group, and select one radio only. Label and Description are text properties; Show description adds the help text. Focus shows the keyboard focus ring.'
+  };
+};
+// </anatomy:radio>
+
+// <anatomy:radio-group>
+ANATOMY['radio-group'] = () => {
+  const rg = (v = {}, p = {}) => mk('radio-group', v, p);
+  return {
+    intro: 'How a radio group is built. The instance is enlarged three times; the real groups are shown underneath.',
+    zoom: 3,
+    instance: () => rg(),
+    pins: [
+      [1, 'Radio 1', 'right', 0],
+      [2, 'Radio 2/Control', 'left', 0],
+      [3, 'Radio 3', 'right', 0]
+    ],
+    dims: [{ k: 'y', a: ['Radio 1', 'b'], b: ['Radio 2', 't'], c: 'A', side: 'left' }],
+    legend: [
+      ['1', 'Radio: one option, a Radio instance of the group’s size. Its parts are on the Radio page.'],
+      ['2', 'Selected radio: exactly one radio is on; selecting another turns it off.'],
+      [
+        '3',
+        'Radios follow the order of the source; the keyboard moves through them in that order and wraps at the ends.'
+      ],
+      [
+        'A',
+        'Gap: vertical, space/content/sm (4, 8 or 12 px in compact, standard and comfortable density). Horizontal: space/content/lg between radios (12, 16 or 24 px) and space/content/sm between lines.'
+      ]
+    ],
+    real: () => [
+      [rg(), 'vertical (default)'],
+      [rg({ Orientation: 'horizontal' }), 'horizontal'],
+      [rg({ Size: 'sm' }), 'sm']
+    ],
+    figma:
+      'In Figma, Orientation and Size are variants; the radios inside take the group’s size. Select one radio (Selection on) and keep the others off; for a readonly, invalid or disabled group, set that State on every radio. Label is the group’s accessible name when it is used without a Field; it is not shown. Add or remove radios by duplicating one.'
+  };
+};
+// </anatomy:radio-group>
+
+// <anatomy:switch>
+ANATOMY['switch'] = () => {
+  const sw = (v, p = {}) => mk('switch', v, p);
+  const start = (v, p, w = 320) => {
+    const i = sw({ 'Label position': 'start', ...v }, p);
+    i.resize(w, i.height);
+    return i;
+  };
+  return {
+    intro: 'How a switch is built. The instance is enlarged three times; the real switches are shown underneath.',
+    dashed: ['First line'],
+    zoom: 3,
+    instance: () =>
+      sw(
+        { Selection: 'on' },
+        { Label: 'Notifications', 'Show description': true, Description: 'Push notifications on this device.' }
+      ),
+    pins: [
+      [1, 'Track', 'top', 0],
+      [2, 'Thumb', 'bottom', 0],
+      [3, 'Label', 'top', 0],
+      [4, 'Description', 'bottom', 0]
+    ],
+    dims: [
+      { k: 'y', a: ['Track', 't'], b: ['Track', 'b'], c: 'A', side: 'left' },
+      { k: 'x', a: ['Track', 'l'], b: ['Track', 'r'], c: 'B' },
+      { k: 'x', a: ['First line', 'r'], b: ['Text', 'l'], c: 'C' }
+    ],
+    legend: [
+      [
+        '1',
+        'Track: fully rounded, with a thin border inside its edge. Light with a border when off, filled in the accent color when on.'
+      ],
+      [
+        '2',
+        'Thumb: a circle two borders smaller on each side than the track, inset by two borders: at the start when off, at the end when on (mirrored right to left).'
+      ],
+      ['3', 'Label: names the setting (Notifications, not “On”). It wraps and is the accessible name.'],
+      ['4', 'Description (optional): body/sm in the secondary color, under the label.'],
+      ['A', 'Track height: size/switch/{size}, 16, 20 or 24 px. It does not change with the density.'],
+      ['B', 'Track width: twice the height minus four borders (switch/track-width): 28, 36 or 44 px.'],
+      ['C', 'Gap: space/control/gap/{size}; at md 6, 8 or 10 px. The track is centered on the first line of the label.']
+    ],
+    real: () => [
+      [sw({}), 'off'],
+      [sw({ Selection: 'on' }), 'on'],
+      [start({ Selection: 'on' }, {}, 220), 'Label position start, 220 px'],
+      [sw({ Selection: 'on' }, { 'Show label': false }), 'Show label off'],
+      [sw({ Selection: 'on', State: 'disabled' }), 'disabled']
+    ],
+    figma:
+      'In Figma, Label position, Size, Selection and State are variants. Label position start puts the label first and spreads the row: resize the instance to the width of the list. Label and Description are text properties; Show description adds the help text and Show label off keeps the track alone (the label stays the accessible name in code). Focus shows the keyboard focus ring around the track.'
+  };
+};
+// </anatomy:switch>
+
+// <anatomy:input-text>
+ANATOMY['input-text'] = () => {
+  const it = (v, p = {}, w = 280) => {
+    const i = mk('input-text', v, p);
+    i.resize(w, i.height);
+    return i;
+  };
+  return {
+    intro: 'How an input text is built. The instance is enlarged three times; the real inputs are shown underneath.',
+    dashed: ['Drawing box'],
+    zoom: 3,
+    instance: () =>
+      it({ Action: 'icon-button', Content: 'value' }, { Value: 'Ada Lovelace', 'Show leading': true }, 300),
+    pins: [
+      [1, '', 'top', 250],
+      [2, 'Leading icon', 'bottom', 0],
+      [3, 'Value', 'top', -150],
+      [4, 'IconButton', 'bottom', 0]
+    ],
+    dims: [
+      { k: 'y', a: ['', 't'], b: ['', 'b'], c: 'A', side: 'right' },
+      { k: 'x', a: ['', 'l'], b: ['Leading icon', 'l'], c: 'B' },
+      { k: 'x', a: ['', 'l'], b: ['Value', 'l'], c: 'C' }
+    ],
+    legend: [
+      [
+        '1',
+        'Container: the field surface with a thin border inside its edge (color/field/{state}/…, border/width/default) and the control radius (radius/control).'
+      ],
+      [
+        '2',
+        'Leading icon (optional): one decorative icon at size/icon/{size} in the placeholder color, placed by its drawing like the icons of a Button. A Trailing icon works the same at the end.'
+      ],
+      [
+        '3',
+        'Value: typography/body/{size} on one line; it scrolls in code and truncates in Figma. While it is empty, the Placeholder shows an example in the placeholder color.'
+      ],
+      [
+        '4',
+        'Action (md and lg only): an IconButton one size smaller, neutral ghost, in a square as tall as the input; the container has no end padding then.'
+      ],
+      [
+        'A',
+        'Height: size/control/{size}, the height of a Button: at md 32, 40 or 44 px in compact, standard and comfortable.'
+      ],
+      ['B', 'Icon start: the edge padding and the slot padding, minus 1/8 of the icon for its drawing (as a Button).'],
+      [
+        'C',
+        'Text start: without icon, edge padding plus label padding, the padding of a text-only Button; with an icon, after the icon slot.'
+      ]
+    ],
+    real: () => [
+      [it({}, { Placeholder: 'Placeholder' }, 180), 'placeholder'],
+      [it({ Content: 'value' }, {}, 180), 'value'],
+      [it({}, { Placeholder: 'Search', 'Show leading': true }, 180), 'leading icon'],
+      [it({}, { Placeholder: 'Website', 'Show trailing': true }, 180), 'trailing icon'],
+      [it({ Action: 'icon-button', Content: 'value' }, { Value: 'Draft' }, 180), 'action']
+    ],
+    figma:
+      'In Figma, Size, Action, Content and State are variants (Action icon-button exists at md and lg only, as in the code). Value, Placeholder and Label are text properties; Label is the accessible name when the input is used without a Field and is not shown. Show leading and Show trailing add the decorative icons; choose them with Leading icon and Trailing icon. Focus adds the ring to another state. The type (email, password, search…) is a behavior of the code.'
+  };
+};
+// </anatomy:input-text>
+
+// <anatomy:textarea>
+ANATOMY['textarea'] = () => {
+  // A two-line value: the master shows 3 rows and clips longer text.
+  const SHORT = 'The parcel arrived on time but the box was damaged on one corner.';
+  const ta = (v, p = {}, w = 300) => {
+    const i = mk('textarea', v, p.Value || v.Content !== 'value' ? p : { ...p, Value: SHORT });
+    i.resize(w, i.height);
+    return i;
+  };
+  return {
+    intro: 'How a textarea is built. The instance is enlarged three times; the real textareas are shown underneath.',
+    dashed: ['Text box', 'First row'],
+    zoom: 3,
+    instance: () => ta({ Content: 'value' }, {}, 280),
+    pins: [
+      [1, '', 'top', 300],
+      [2, 'Value', 'bottom', 0]
+    ],
+    dims: [
+      { k: 'y', a: ['', 't'], b: ['Text box', 't'], c: 'A', side: 'right' },
+      { k: 'y', a: ['First row', 't'], b: ['First row', 'b'], c: 'C', side: 'left' },
+      { k: 'x', a: ['', 'l'], b: ['Text box', 'l'], c: 'B' }
+    ],
+    legend: [
+      ['1', 'Container: the field surface with a thin border inside its edge and the control radius, as an InputText.'],
+      [
+        '2',
+        'Value: typography/body/{size}; it wraps and keeps line breaks. While it is empty, the Placeholder shows an example.'
+      ],
+      [
+        'A',
+        'Block padding: half of the InputText height minus one line, so that one row has the height of an InputText (md: 4, 8 or 10 px in compact, standard and comfortable).'
+      ],
+      ['B', 'Inline padding: space/control/padding-inline/{size}, the padding of an InputText without icon.'],
+      ['C', 'First row: one line and its padding, as tall as an InputText of the same size (size/control/{size}).']
+    ],
+    real: () => [
+      [ta({}, {}, 220), 'placeholder'],
+      [ta({ Content: 'value' }, {}, 220), 'value'],
+      [ta({ Content: 'value', State: 'invalid' }, {}, 220), 'invalid']
+    ],
+    figma:
+      'In Figma, Size, Content and State are variants. Value, Placeholder and Label are text properties; Label is the accessible name when the textarea is used without a Field and is not shown. Focus adds the ring to another state. Rows, maximum rows and resizing are behaviors of the code: the master shows 3 rows; a taller instance gives more room, and the text shows up to 3 lines.'
+  };
+};
+// </anatomy:textarea>
+
+// <anatomy:field>
+ANATOMY['field'] = () => {
+  const fd = (v, p = {}, w) => {
+    const i = mk('field', v, p);
+    if (w) i.resize(w, i.height);
+    return i;
+  };
+  return {
+    intro: 'How a field is built. The instance is enlarged twice; the real fields are shown underneath.',
+    hug: ['Description'],
+    dashed: ['Drawing box'],
+    zoom: 2,
+    instance: () => fd({ State: 'invalid' }, { Required: true }),
+    pins: [
+      [1, 'Label', 'top', 0],
+      [2, 'Required indicator', 'top', 0],
+      [3, 'Description', 'right', 0],
+      [4, 'Control', 'right', 0],
+      [5, 'Message icon', 'bottom', 0],
+      [6, 'Message text', 'bottom', -170]
+    ],
+    dims: [
+      { k: 'y', a: ['Label row', 'b'], b: ['Description', 't'], c: 'A', side: 'left' },
+      { k: 'y', a: ['Description', 'b'], b: ['Control', 't'], c: 'B', side: 'left' },
+      { k: 'y', a: ['Control', 'b'], b: ['Message', 't'], c: 'C', side: 'left' }
+    ],
+    legend: [
+      [
+        '1',
+        'Label: typography/label/md in the primary color. It names the control (the group for a RadioGroup) and wraps.'
+      ],
+      ['2', 'Required indicator: an asterisk after a space, in the secondary color; hidden from assistive technology.'],
+      ['3', 'Description (optional): body/sm in the secondary color; the accessible description of the control.'],
+      ['4', 'Control: an InputText, a Textarea, a RadioGroup or a Checkbox, in the state of the field.'],
+      [
+        '5',
+        'Message icon: warning-circle at size/icon/sm in the danger icon color, centered on the first line of the message and placed by its drawing.'
+      ],
+      ['6', 'Message: body/sm in the danger content color, shown only when the field is invalid. It wraps.'],
+      ['A', 'Label to description: space/content/xs (2, 4 or 6 px in compact, standard and comfortable).'],
+      ['B', 'To the control: space/content/sm (4, 8 or 12 px).'],
+      ['C', 'Control to message: space/content/xs.']
+    ],
+    real: () => [
+      [fd({}, {}, 240), 'default'],
+      [fd({}, { Required: true, 'Show description': false }, 240), 'required, no description'],
+      [fd({ State: 'invalid' }, { Required: true }, 240), 'invalid'],
+      [fd({ State: 'disabled' }, {}, 240), 'disabled']
+    ],
+    figma:
+      'In Figma, State is a variant (default, invalid, disabled). Label, Description and Message are text properties; Required shows the asterisk and Show description the help text. The Control is an exposed InputText: set its options from the Field instance, or swap it for a Textarea, a Checkbox or a RadioGroup in the layers panel, and set the control’s State to match the field (the code does it for you). The field text keeps its size whatever the control size.'
+  };
+};
+// </anatomy:field>
+
 const SPECS = {};
 
 // <spec:checkbox>
@@ -525,53 +959,7 @@ SPECS.checkbox = () => {
       cb({ Size: 'lg', Selection: 'indeterminate' }, { Label: 'Select all invoices' }),
       cb({ Size: 'lg' }, { Label: 'Save this card' })
     ],
-    anatomy: {
-      intro: 'How a checkbox is built. The instance is enlarged four times; the real checkboxes are shown underneath.',
-      zoom: 4,
-      instance: () =>
-        cb(
-          { Selection: 'on' },
-          { Label: 'Email me a receipt', 'Show description': true, Description: 'Sent to the billing address.' }
-        ),
-      pins: [
-        [1, 'Control', 'top', -30],
-        [2, 'Mark', 'bottom', -30],
-        [3, 'Label', 'top', 0],
-        [4, 'Description', 'bottom', 0]
-      ],
-      dims: [
-        { k: 'y', a: ['Control', 't'], b: ['Control', 'b'], c: 'A', side: 'left' },
-        { k: 'x', a: ['First line', 'r'], b: ['Text', 'l'], c: 'B' },
-        { k: 'y', a: ['First line', 't'], b: ['First line', 'b'], c: 'C', side: 'left' }
-      ],
-      legend: [
-        [
-          '1',
-          'Control: a square box with a small radius (radius/indicator) and a thin border inside its edge. Off, it is light with a border; on or indeterminate, it is filled in the accent color.'
-        ],
-        [
-          '2',
-          'Mark: the check (on) or the bar (indeterminate), Phosphor bold, drawn at the size of the box in the content color of the state. Off has no mark.'
-        ],
-        ['3', 'Label: the body text of the size. It wraps and is the accessible name; pressing it toggles the box.'],
-        ['4', 'Description (optional): body/sm in the secondary color, under the label.'],
-        ['A', 'Box size: size/choice/{size}, 14, 16 or 20 px. It does not change with the density.'],
-        ['B', 'Gap: space/control/gap/{size}; at md 6, 8 or 10 px in compact, standard and comfortable density.'],
-        [
-          'C',
-          'First line: the box is centered on the first line of the label (the line height of typography/body/{size}), not on the whole text.'
-        ]
-      ],
-      real: () => [
-        [cb({}), 'off'],
-        [cb({ Selection: 'on' }), 'on'],
-        [cb({ Selection: 'indeterminate' }), 'indeterminate'],
-        [cb({ Selection: 'on' }, { 'Show description': true }), 'with a description'],
-        [cb({ Selection: 'on' }, { 'Show label': false }), 'Show label off: a row selector']
-      ],
-      figma:
-        'In Figma, Size, Selection and State are variants. Label and Description are text properties; Show description adds the help text and Show label off keeps the box alone (the label stays the accessible name in code). Focus shows the keyboard focus ring on any state. The 44 px interaction target is the empty Target layer around the row.'
-    },
+    anatomy: ANATOMY['checkbox'](),
     sections: [
       [
         'Variants',
@@ -712,47 +1100,7 @@ SPECS.radio = () => {
       rd({ Size: 'lg', Selection: 'on' }, { Label: 'Express' }),
       rd({ Size: 'lg' }, { Label: 'Pick up in store' })
     ],
-    anatomy: {
-      intro:
-        'How a radio is built. The instance is enlarged three and a half times; the real radios are shown underneath.',
-      zoom: 3.5,
-      instance: () =>
-        rd(
-          { Selection: 'on' },
-          { Label: 'Express', 'Show description': true, Description: 'Delivered tomorrow before noon.' }
-        ),
-      pins: [
-        [1, 'Control', 'top', -30],
-        [2, 'Mark', 'bottom', -30],
-        [3, 'Label', 'top', 0],
-        [4, 'Description', 'bottom', 0]
-      ],
-      dims: [
-        { k: 'y', a: ['Control', 't'], b: ['Control', 'b'], c: 'A', side: 'left' },
-        { k: 'x', a: ['First line', 'r'], b: ['Text', 'l'], c: 'B' },
-        { k: 'y', a: ['First line', 't'], b: ['First line', 'b'], c: 'C', side: 'left' }
-      ],
-      legend: [
-        [
-          '1',
-          'Control: a circle with a thin border inside its edge (radius/full). Light when off, filled in the accent color when on.'
-        ],
-        ['2', 'Mark: a dot of 3/8 of the circle (radio/dot) in the content color of the state. Off has no dot.'],
-        ['3', 'Label: the body text of the size. It wraps, is the accessible name, and pressing it selects the radio.'],
-        ['4', 'Description (optional): body/sm in the secondary color, under the label.'],
-        ['A', 'Circle size: size/choice/{size}, 14, 16 or 20 px, the size of a Checkbox box.'],
-        ['B', 'Gap: space/control/gap/{size}; at md 6, 8 or 10 px in compact, standard and comfortable density.'],
-        ['C', 'First line: the circle is centered on the first line of the label, not on the whole text.']
-      ],
-      real: () => [
-        [rd({}, { Label: 'Standard' }), 'off'],
-        [rd({ Selection: 'on' }, { Label: 'Express' }), 'on'],
-        [rd({ Selection: 'on' }, { Label: 'Express', 'Show description': true }), 'with a description'],
-        [rd({ Selection: 'on', State: 'disabled' }, { Label: 'Express' }), 'disabled']
-      ],
-      figma:
-        'In Figma, Size, Selection and State are variants. In code the size, readonly and invalid state come from the group: set the same Size and State on every radio of a group, and select one radio only. Label and Description are text properties; Show description adds the help text. Focus shows the keyboard focus ring.'
-    },
+    anatomy: ANATOMY['radio'](),
     sections: [
       [
         'Variants',
@@ -849,36 +1197,7 @@ SPECS['radio-group'] = () => {
     intro:
       'A radio group asks for exactly one choice among a few options that are all visible: a delivery speed, a plan, a payment method. It holds Radio options, stacks them or places them on a wrapping row, and is a single stop for the keyboard: the arrow keys move the selection. Once a radio is selected, the user cannot return to no selection. One on/off option is a Checkbox.',
     hero: () => [rg({ Size: 'lg' }), rg({ Orientation: 'horizontal', Size: 'lg' })],
-    anatomy: {
-      intro: 'How a radio group is built. The instance is enlarged three times; the real groups are shown underneath.',
-      zoom: 3,
-      instance: () => rg(),
-      pins: [
-        [1, 'Radio 1', 'right', 0],
-        [2, 'Radio 2/Control', 'left', 0],
-        [3, 'Radio 3', 'right', 0]
-      ],
-      dims: [{ k: 'y', a: ['Radio 1', 'b'], b: ['Radio 2', 't'], c: 'A', side: 'left' }],
-      legend: [
-        ['1', 'Radio: one option, a Radio instance of the group’s size. Its parts are on the Radio page.'],
-        ['2', 'Selected radio: exactly one radio is on; selecting another turns it off.'],
-        [
-          '3',
-          'Radios follow the order of the source; the keyboard moves through them in that order and wraps at the ends.'
-        ],
-        [
-          'A',
-          'Gap: vertical, space/content/sm (4, 8 or 12 px in compact, standard and comfortable density). Horizontal: space/content/lg between radios (12, 16 or 24 px) and space/content/sm between lines.'
-        ]
-      ],
-      real: () => [
-        [rg(), 'vertical (default)'],
-        [rg({ Orientation: 'horizontal' }), 'horizontal'],
-        [rg({ Size: 'sm' }), 'sm']
-      ],
-      figma:
-        'In Figma, Orientation and Size are variants; the radios inside take the group’s size. Select one radio (Selection on) and keep the others off; for a readonly, invalid or disabled group, set that State on every radio. Label is the group’s accessible name when it is used without a Field; it is not shown. Add or remove radios by duplicating one.'
-    },
+    anatomy: ANATOMY['radio-group'](),
     sections: [
       [
         'Variants',
@@ -991,53 +1310,7 @@ SPECS.switch = () => {
       list.appendChild(start({ Size: 'lg', Selection: 'on' }, { Label: 'Automatic renewal' }, 380));
       return [list];
     },
-    anatomy: {
-      intro: 'How a switch is built. The instance is enlarged three times; the real switches are shown underneath.',
-      zoom: 3,
-      instance: () =>
-        sw(
-          { Selection: 'on' },
-          { Label: 'Notifications', 'Show description': true, Description: 'Push notifications on this device.' }
-        ),
-      pins: [
-        [1, 'Track', 'top', -40],
-        [2, 'Thumb', 'bottom', -40],
-        [3, 'Label', 'top', 0],
-        [4, 'Description', 'bottom', 0]
-      ],
-      dims: [
-        { k: 'y', a: ['Track', 't'], b: ['Track', 'b'], c: 'A', side: 'left' },
-        { k: 'x', a: ['Track', 'l'], b: ['Track', 'r'], c: 'B' },
-        { k: 'x', a: ['First line', 'r'], b: ['Text', 'l'], c: 'C' }
-      ],
-      legend: [
-        [
-          '1',
-          'Track: fully rounded, with a thin border inside its edge. Light with a border when off, filled in the accent color when on.'
-        ],
-        [
-          '2',
-          'Thumb: a circle two borders smaller on each side than the track, inset by two borders: at the start when off, at the end when on (mirrored right to left).'
-        ],
-        ['3', 'Label: names the setting (Notifications, not “On”). It wraps and is the accessible name.'],
-        ['4', 'Description (optional): body/sm in the secondary color, under the label.'],
-        ['A', 'Track height: size/switch/{size}, 16, 20 or 24 px. It does not change with the density.'],
-        ['B', 'Track width: twice the height minus four borders (switch/track-width): 28, 36 or 44 px.'],
-        [
-          'C',
-          'Gap: space/control/gap/{size}; at md 6, 8 or 10 px. The track is centered on the first line of the label.'
-        ]
-      ],
-      real: () => [
-        [sw({}), 'off'],
-        [sw({ Selection: 'on' }), 'on'],
-        [start({ Selection: 'on' }, {}, 220), 'Label position start, 220 px'],
-        [sw({ Selection: 'on' }, { 'Show label': false }), 'Show label off'],
-        [sw({ Selection: 'on', State: 'disabled' }), 'disabled']
-      ],
-      figma:
-        'In Figma, Label position, Size, Selection and State are variants. Label position start puts the label first and spreads the row: resize the instance to the width of the list. Label and Description are text properties; Show description adds the help text and Show label off keeps the track alone (the label stays the accessible name in code). Focus shows the keyboard focus ring around the track.'
-    },
+    anatomy: ANATOMY['switch'](),
     sections: [
       [
         'Variants',
@@ -1161,63 +1434,7 @@ SPECS['input-text'] = () => {
         340
       )
     ],
-    anatomy: {
-      intro: 'How an input text is built. The instance is enlarged three times; the real inputs are shown underneath.',
-      zoom: 3,
-      instance: () =>
-        it({ Action: 'icon-button', Content: 'value' }, { Value: 'Ada Lovelace', 'Show leading': true }, 300),
-      pinAt: { 1: 180 },
-      pins: [
-        [1, '', 'top', 0],
-        [2, 'Leading icon', 'bottom', 0],
-        [3, 'Value', 'top', -60],
-        [4, 'IconButton', 'bottom', 0]
-      ],
-      dims: [
-        { k: 'y', a: ['', 't'], b: ['', 'b'], c: 'A', side: 'right' },
-        { k: 'x', a: ['', 'l'], b: ['Leading icon', 'l'], c: 'B' },
-        { k: 'x', a: ['', 'l'], b: ['Value', 'l'], c: 'C' }
-      ],
-      legend: [
-        [
-          '1',
-          'Container: the field surface with a thin border inside its edge (color/field/{state}/…, border/width/default) and the control radius (radius/control).'
-        ],
-        [
-          '2',
-          'Leading icon (optional): one decorative icon at size/icon/{size} in the placeholder color, placed by its drawing like the icons of a Button. A Trailing icon works the same at the end.'
-        ],
-        [
-          '3',
-          'Value: typography/body/{size} on one line; it scrolls in code and truncates in Figma. While it is empty, the Placeholder shows an example in the placeholder color.'
-        ],
-        [
-          '4',
-          'Action (md and lg only): an IconButton one size smaller, neutral ghost, in a square as tall as the input; the container has no end padding then.'
-        ],
-        [
-          'A',
-          'Height: size/control/{size}, the height of a Button: at md 32, 40 or 44 px in compact, standard and comfortable.'
-        ],
-        [
-          'B',
-          'Icon start: the edge padding and the slot padding, minus 1/8 of the icon for its drawing (as a Button).'
-        ],
-        [
-          'C',
-          'Text start: without icon, edge padding plus label padding, the padding of a text-only Button; with an icon, after the icon slot.'
-        ]
-      ],
-      real: () => [
-        [it({}, { Placeholder: 'Placeholder' }, 180), 'placeholder'],
-        [it({ Content: 'value' }, {}, 180), 'value'],
-        [it({}, { Placeholder: 'Search', 'Show leading': true }, 180), 'leading icon'],
-        [it({}, { Placeholder: 'Website', 'Show trailing': true }, 180), 'trailing icon'],
-        [it({ Action: 'icon-button', Content: 'value' }, { Value: 'Draft' }, 180), 'action']
-      ],
-      figma:
-        'In Figma, Size, Action, Content and State are variants (Action icon-button exists at md and lg only, as in the code). Value, Placeholder and Label are text properties; Label is the accessible name when the input is used without a Field and is not shown. Show leading and Show trailing add the decorative icons; choose them with Leading icon and Trailing icon. Focus adds the ring to another state. The type (email, password, search…) is a behavior of the code.'
-    },
+    anatomy: ANATOMY['input-text'](),
     sections: [
       [
         'Variants',
@@ -1346,44 +1563,7 @@ SPECS.textarea = () => {
       swapControl(f, 'textarea', { Content: 'value' });
       return [f, ta({ Size: 'lg', Content: 'value' }, {}, 360)];
     },
-    anatomy: {
-      intro: 'How a textarea is built. The instance is enlarged three times; the real textareas are shown underneath.',
-      zoom: 3,
-      instance: () => ta({ Content: 'value' }, {}, 280),
-      pinAt: { 1: 300 },
-      pins: [
-        [1, '', 'top', 0],
-        [2, 'Value', 'bottom', 0]
-      ],
-      dims: [
-        { k: 'y', a: ['', 't'], b: ['Text box', 't'], c: 'A', side: 'right' },
-        { k: 'y', a: ['First row', 't'], b: ['First row', 'b'], c: 'C', side: 'left' },
-        { k: 'x', a: ['', 'l'], b: ['Text box', 'l'], c: 'B' }
-      ],
-      legend: [
-        [
-          '1',
-          'Container: the field surface with a thin border inside its edge and the control radius, as an InputText.'
-        ],
-        [
-          '2',
-          'Value: typography/body/{size}; it wraps and keeps line breaks. While it is empty, the Placeholder shows an example.'
-        ],
-        [
-          'A',
-          'Block padding: half of the InputText height minus one line, so that one row has the height of an InputText (md: 4, 8 or 10 px in compact, standard and comfortable).'
-        ],
-        ['B', 'Inline padding: space/control/padding-inline/{size}, the padding of an InputText without icon.'],
-        ['C', 'First row: one line and its padding, as tall as an InputText of the same size (size/control/{size}).']
-      ],
-      real: () => [
-        [ta({}, {}, 220), 'placeholder'],
-        [ta({ Content: 'value' }, {}, 220), 'value'],
-        [ta({ Content: 'value', State: 'invalid' }, {}, 220), 'invalid']
-      ],
-      figma:
-        'In Figma, Size, Content and State are variants. Value, Placeholder and Label are text properties; Label is the accessible name when the textarea is used without a Field and is not shown. Focus adds the ring to another state. Rows, maximum rows and resizing are behaviors of the code: the master shows 3 rows; a taller instance gives more room, and the text shows up to 3 lines.'
-    },
+    anatomy: ANATOMY['textarea'](),
     sections: [
       [
         'Variants',
@@ -1495,52 +1675,7 @@ SPECS.field = () => {
       fd({}, { Label: 'Email', Required: true }),
       fd({ State: 'invalid' }, { Label: 'Email', Required: true })
     ],
-    anatomy: {
-      intro: 'How a field is built. The instance is enlarged twice; the real fields are shown underneath.',
-      zoom: 2,
-      instance: () => fd({ State: 'invalid' }, { Required: true }),
-      pins: [
-        [1, 'Label', 'top', 0],
-        [2, 'Required indicator', 'top', 40],
-        [3, 'Description', 'right', 0],
-        [4, 'Control', 'right', 0],
-        [5, 'Message icon', 'bottom', 0],
-        [6, 'Message text', 'right', 0]
-      ],
-      dims: [
-        { k: 'y', a: ['Label row', 'b'], b: ['Description', 't'], c: 'A', side: 'left' },
-        { k: 'y', a: ['Description', 'b'], b: ['Control', 't'], c: 'B', side: 'left' },
-        { k: 'y', a: ['Control', 'b'], b: ['Message', 't'], c: 'C', side: 'left' }
-      ],
-      legend: [
-        [
-          '1',
-          'Label: typography/label/md in the primary color. It names the control (the group for a RadioGroup) and wraps.'
-        ],
-        [
-          '2',
-          'Required indicator: an asterisk after a space, in the secondary color; hidden from assistive technology.'
-        ],
-        ['3', 'Description (optional): body/sm in the secondary color; the accessible description of the control.'],
-        ['4', 'Control: an InputText, a Textarea, a RadioGroup or a Checkbox, in the state of the field.'],
-        [
-          '5',
-          'Message icon: warning-circle at size/icon/sm in the danger icon color, centered on the first line of the message and placed by its drawing.'
-        ],
-        ['6', 'Message: body/sm in the danger content color, shown only when the field is invalid. It wraps.'],
-        ['A', 'Label to description: space/content/xs (2, 4 or 6 px in compact, standard and comfortable).'],
-        ['B', 'To the control: space/content/sm (4, 8 or 12 px).'],
-        ['C', 'Control to message: space/content/xs.']
-      ],
-      real: () => [
-        [fd({}, {}, 240), 'default'],
-        [fd({}, { Required: true, 'Show description': false }, 240), 'required, no description'],
-        [fd({ State: 'invalid' }, { Required: true }, 240), 'invalid'],
-        [fd({ State: 'disabled' }, {}, 240), 'disabled']
-      ],
-      figma:
-        'In Figma, State is a variant (default, invalid, disabled). Label, Description and Message are text properties; Required shows the asterisk and Show description the help text. The Control is an exposed InputText: set its options from the Field instance, or swap it for a Textarea, a Checkbox or a RadioGroup in the layers panel, and set the control’s State to match the field (the code does it for you). The field text keeps its size whatever the control size.'
-    },
+    anatomy: ANATOMY['field'](),
     sections: [
       [
         'Variants',
@@ -1636,5 +1771,5 @@ SPECS.field = () => {
 // </spec:field>
 
 const out = {};
-for (const id of IDS) out[id] = await build(id, SPECS[id]());
+for (const id of IDS) out[id] = ANATOMY_ONLY ? await redrawBoard(id) : await build(id, SPECS[id]());
 return out;

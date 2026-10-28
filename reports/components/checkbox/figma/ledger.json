@@ -97,11 +97,28 @@
     "row gap": "space/control/gap/{size}",
     "Label": "typography/body/{size}; color/content/primary (disabled: color/content/disabled)",
     "Description": "typography/body/sm; color/content/secondary (disabled: color/content/disabled)",
-    "Focus ring": "outside stroke color/focus/ring, weight focus/width, 2 px outside the control",
+    "Focus ring": "outside stroke color/focus/ring, weight focus/width, 2 px outside the control, corners checkbox/focus-radius (radius/indicator + focus/offset)",
     "Target": "height size/target/min, absolute, centered on the row",
     "Mark glyph fill": "color/choice/on/{state}/content"
   },
-  "adapterVariables": {},
+  "adapterVariables": {
+    "checkbox/focus-radius": {
+      "id": "VariableID:313:2",
+      "collection": "Foundations · Brand (hidden from publishing; a Figma adapter, not a source token)",
+      "type": "FLOAT",
+      "values": {
+        "base": 6,
+        "brick": 4,
+        "orchid": 6
+      },
+      "meaning": "radius/indicator + focus/offset: the focus ring corners, concentric with the box as in the code",
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
+      "hiddenFromPublishing": true,
+      "builder": "authoring/adapters/figma/checkbox-focus-radius.plugin.js"
+    }
+  },
   "variants": {
     "Size=md, Selection=off, State=default": "289:8",
     "Size=sm, Selection=off, State=default": "289:16",
@@ -154,7 +171,7 @@
     "name": "Checkbox — Specification",
     "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=307-2597",
     "builder": "authoring/adapters/figma/forms-spec.plugin.js (IDS ['checkbox'])",
-    "anatomyBoard": "307:2652",
+    "anatomyBoard": "315:691",
     "uses": {
       "_Spec/Callout": "115:6",
       "_Spec/Marker": "115:8",
@@ -177,6 +194,14 @@
     {
       "date": "2026-10-27",
       "change": "Built: 45 variants and the specification page. Parity measured in the 18 contexts (forms-parity.plugin.js)."
+    },
+    {
+      "date": "2026-10-28",
+      "change": "Anatomy board redrawn (user review of the Figma parity gate): the enlarged instance is drawn in the blueprint ink (surfaces in tint/16 with tint/48 borders, text and glyphs in ink, secondary texts at 60 %, layout boxes dashed) instead of the dark appearance, and every leader is straight (vertical above or below its target, horizontal beside it). forms-spec.plugin.js with ANATOMY_ONLY."
+    },
+    {
+      "date": "2026-10-28",
+      "change": "Focus ring corners (user: the ring was not concentric with the box): the 45 rings bound to the new Brand adapter variable checkbox/focus-radius (radius/indicator + focus/offset: 6, 4, 6 in base, brick, orchid) instead of radius/indicator; checkbox-master.plugin.js binds it too."
     }
   ]
 }

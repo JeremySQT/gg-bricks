@@ -46,13 +46,14 @@
       "blueprints": [
         {
           "path": "reports/components/checkbox/figma/blueprint-anatomy.png",
-          "node": "307:2652"
+          "node": "315:691"
         }
       ],
       "builders": [
         "authoring/adapters/figma/checkbox-master.plugin.js",
         "authoring/adapters/figma/forms-spec.plugin.js",
-        "authoring/adapters/figma/forms-setup.plugin.js"
+        "authoring/adapters/figma/forms-setup.plugin.js",
+        "authoring/adapters/figma/checkbox-focus-radius.plugin.js"
       ]
     },
     "figmaSpec": "foundations/components/forms/checkbox/figma-spec.md",

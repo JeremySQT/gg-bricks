@@ -160,7 +160,7 @@
     "name": "Textarea — Specification",
     "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=307-320",
     "builder": "authoring/adapters/figma/forms-spec.plugin.js (IDS ['textarea'])",
-    "anatomyBoard": "307:389",
+    "anatomyBoard": "315:4018",
     "uses": {
       "_Spec/Callout": "115:6",
       "_Spec/Marker": "115:8",
@@ -183,6 +183,10 @@
     {
       "date": "2026-10-27",
       "change": "Built: 36 variants and the specification page. Parity measured in the 18 contexts (forms-parity.plugin.js)."
+    },
+    {
+      "date": "2026-10-28",
+      "change": "Anatomy board redrawn (user review of the Figma parity gate): the enlarged instance is drawn in the blueprint ink (surfaces in tint/16 with tint/48 borders, text and glyphs in ink, secondary texts at 60 %, layout boxes dashed) instead of the dark appearance, and every leader is straight (vertical above or below its target, horizontal beside it). forms-spec.plugin.js with ANATOMY_ONLY."
     }
   ]
 }

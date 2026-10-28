@@ -6,7 +6,8 @@
 // typography/body/{size} and color/content/primary (disabled: color/content/disabled); the description to
 // typography/body/sm and color/content/secondary. The box sits in a frame as tall as the first line
 // (typography/body/{size}/lineHeight) so that it is centered on the first line in every density. The 44 px
-// target is an absolute empty layer. Rerunning replaces the set and the parts.
+// target is an absolute empty layer. The focus ring corners use the Brand adapter variable checkbox/focus-radius
+// (run checkbox-focus-radius.plugin.js first). Rerunning replaces the set and the parts.
 figma.skipInvisibleInstanceChildren = false;
 const page = await figma.getNodeByIdAsync('288:3');
 await figma.setCurrentPageAsync(page);
@@ -121,7 +122,8 @@ for (const sel of SEL)
       ring.strokes = [paint('color/focus/ring')];
       ring.strokeAlign = 'OUTSIDE';
       bind(ring, STROKES, 'focus/width');
-      bind(ring, RADII, 'radius/indicator');
+      // Concentric with the box: radius/indicator + focus/offset (checkbox-focus-radius.plugin.js creates it).
+      bind(ring, RADII, 'checkbox/focus-radius');
       ring.visible = false;
 
       const text = figma.createAutoLayout('VERTICAL', { name: 'Text', itemSpacing: 0 });
