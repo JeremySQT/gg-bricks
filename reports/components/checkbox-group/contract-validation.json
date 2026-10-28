@@ -1,0 +1,18 @@
+{
+  "valid": true,
+  "checks": {
+    "schema": "passed",
+    "consistency": "passed",
+    "tokenCoverage": "passed",
+    "dependencies": "not-provided",
+    "intrinsicRules": "manual-review-required"
+  },
+  "errors": [],
+  "requiredTokenPaths": [
+    "space.content.sm",
+    "space.content.lg"
+  ],
+  "dependencies": [
+    "checkbox"
+  ]
+}

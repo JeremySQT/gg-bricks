@@ -6,7 +6,7 @@ Status: compact encoding accepted during the design discussion; future component
 
 - $schema: optional local editor reference.
 - id: stable lowercase kebab-case ID.
-- props: enum = values + default; boolean = type + default; string = type and optional required or default; number = type + default with optional min/max. A required prop cannot also declare a fallback default. `bindable: true` marks a prop whose value flows both ways (an input's value, an open state a parent can control); the implementation exposes it as a two-way binding.
+- props: enum = values + default; boolean = type + default; string = type and optional required or default; number = type + default with optional min/max; list = `"type": "list"` + default (an array of unique strings, often `[]`), for a set of values such as the checked values of a group. A required prop cannot also declare a fallback default. `bindable: true` marks a prop whose value flows both ways (an input's value, an open state a parent can control); the implementation exposes it as a two-way binding.
 - parts: named anatomy. An empty object declares an internal part. `accepts` declares a slot accepting component IDs, with optional `min` (default 0) and `max` (unbounded when omitted). A compound component (RadioGroup and its radios) declares the child component in `accepts` with `min: 1`. Part names do not automatically create public API.
 - states: enum or boolean axes, using the same notation. These are observed or derived conditions, not automatically public inputs. Prop and state names must be distinct.
 - tokens: visual role to literal or parameterized token path.

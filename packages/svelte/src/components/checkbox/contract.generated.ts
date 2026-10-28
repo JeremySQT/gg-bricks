@@ -3,6 +3,7 @@ export type CheckboxSize = "sm" | "md" | "lg";
 export const defaults = {
   "checked": false,
   "indeterminate": false,
+  "value": "",
   "hideLabel": false,
   "size": "md",
   "disabled": false,

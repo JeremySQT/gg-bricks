@@ -1,0 +1,65 @@
+{
+  "formatStatus": "v1",
+  "componentId": "checkbox-group",
+  "family": "forms",
+  "wave": 2,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Gather two or more related checkboxes that answer one question, any number of which can be checked, with one group name, one required rule (at least one) and one validation message through Field.",
+    "useCases": [
+      "A required question with several possible answers (Select at least one notification channel).",
+      "Optional filters or preferences listed under one label.",
+      "A horizontal row of two or three short options (days of the week)."
+    ],
+    "exclusions": [
+      "Selection limits (at most N, exactly N): later, the application validates them meanwhile.",
+      "A select-all checkbox inside the group: it stays outside and the application derives its state from value.",
+      "Nested groups and indeterminate children.",
+      "Long or searchable option lists (a multi-select, later)."
+    ],
+    "alternatives": [
+      "Checkbox alone for a single independent option.",
+      "RadioGroup for exactly one choice.",
+      "Switch for settings applied at once."
+    ]
+  },
+  "dependencies": ["checkbox"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/checkbox-group/contract.json",
+      "sha256": "335fb582b8a283cb2fb32e483e6a89c2eceb16a874ff0966e8431f4fcbeb3bcb"
+    },
+    "tokens": ["foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [],
+  "decisionsTaken": [
+    "Added to wave 2 by the user on 2026-10-28 (Figma parity review): \"Je valide l'ajout du Checkboxgroup pour la vague 2.\"",
+    "Built on the RadioGroup model: Field gives the visible label, description and message; label prop only for use without Field; orientation, size, readonly, invalid and disabled passed to every checkbox; gaps space.content.sm (vertical) and space.content.lg (horizontal), no new token.",
+    "value is a list of the checked values (new list prop type in the contract format), in the source order of the checkboxes; each Checkbox gains an optional value prop (contract amendment).",
+    "Each checkbox stays its own tab stop and toggles with Space (checkbox convention), unlike the single stop of a RadioGroup.",
+    "required means at least one; not exposed as aria-required on each checkbox (it would announce every option as mandatory); the Field label or description states it in words.",
+    "Selection limits and a select-all child are out of scope."
+  ],
+  "openDecisions": [
+    "Confirm how a required group is exposed: in words by the Field label or description (recommended) rather than as required on every checkbox."
+  ],
+  "nextAction": "Contract gate (CheckboxGroup, with the Checkbox value and Field accepts amendments and the list prop type).",
+  "implementationNotes": [
+    "Wave 2 addition, branch wave/2-form-foundations, contract drafted on 2026-10-28. Bits UI 2.19.3 provides Checkbox.Group (value string[], role group); its required puts aria-required on every checkbox, which the contract excludes."
+  ]
+}

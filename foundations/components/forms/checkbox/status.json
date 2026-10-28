@@ -24,7 +24,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/checkbox/contract.json",
-      "sha256": "08dad2983d4056121d3ef1009f0d8a87ea82daf79f47987bf0a0275d71deef4d"
+      "sha256": "b972854175614a242538b37eadc840b6386d4cdeef8aaf8fdb3c8d7ef2db6c72"
     },
     "tokens": [
       "foundations/tokens/inventory.json",
@@ -198,7 +198,9 @@
     "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges).",
     "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
   ],
-  "openDecisions": [],
+  "openDecisions": [
+    "Contract amendment pending at the CheckboxGroup contract gate (2026-10-28): optional value prop and its group rule."
+  ],
   "nextAction": "Figma parity gate (grouped wave 2 review): the user reviews the masters, the specification pages and the parity reports; then documentation (ggb-docs).",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",

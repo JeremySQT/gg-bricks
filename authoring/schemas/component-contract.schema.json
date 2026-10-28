@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "ggbrick component contract \u2014 v1",
+  "title": "ggbrick component contract — v1",
   "description": "Structural schema for the compact contract. Semantic consistency and source token coverage are separate checks (tooling/lib/contract.ts).",
   "type": "object",
   "additionalProperties": false,
@@ -147,6 +147,9 @@
         },
         {
           "$ref": "#/$defs/number"
+        },
+        {
+          "$ref": "#/$defs/list"
         }
       ]
     },
@@ -228,6 +231,27 @@
           "minLength": 1
         }
       }
+    },
+    "list": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "default"],
+      "properties": {
+        "type": {
+          "const": "list"
+        },
+        "default": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "bindable": {
+          "type": "boolean"
+        }
+      },
+      "description": "An unordered set of string values (the checked values of a group). Values are unique."
     }
   }
 }

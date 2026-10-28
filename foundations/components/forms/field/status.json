@@ -25,12 +25,12 @@
       "TextField (later): Field + InputText as one component."
     ]
   },
-  "dependencies": ["input-text", "textarea", "checkbox", "radio-group"],
+  "dependencies": ["input-text", "textarea", "checkbox", "radio-group", "checkbox-group"],
   "fixtures": [],
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/field/contract.json",
-      "sha256": "61eb96cdd454371e7be952402f4f0b1569d61c275cfc342fc61711d603952cab"
+      "sha256": "d436ed24196dd07ea3b9602d27e8767460a1f46224c6b18daacfd2a4f8a3b596"
     },
     "tokens": [
       "foundations/tokens/inventory.json",
@@ -202,7 +202,9 @@
     "Around a Checkbox, the checkbox wraps itself in role=\"group\" named by the field label; a press on the field label does not toggle it.",
     "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges)."
   ],
-  "openDecisions": [],
+  "openDecisions": [
+    "Contract amendment pending at the CheckboxGroup contract gate (2026-10-28): control accepts checkbox-group; label and description name and describe the group."
+  ],
   "nextAction": "Figma parity gate (grouped wave 2 review): the user reviews the masters, the specification pages and the parity reports; then documentation (ggb-docs).",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",

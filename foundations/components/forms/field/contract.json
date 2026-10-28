@@ -31,7 +31,7 @@
     "requiredIndicator": {},
     "description": {},
     "control": {
-      "accepts": ["input-text", "textarea", "checkbox", "radio-group"],
+      "accepts": ["input-text", "textarea", "checkbox", "radio-group", "checkbox-group"],
       "min": 1,
       "max": 1
     },
@@ -56,8 +56,8 @@
   },
   "rules": [
     "Field gives one form control its visible label, an optional description and a validation message. Stack label (followed by requiredIndicator), description, control and message in that order, aligned at the inline start, with descriptionGap between label and description, controlGap above control and messageGap below it.",
-    "label is required and non-empty, set in typographyLabel in labelColor, and wraps. For an InputText or a Textarea it is the accessible name of the control and a pointer press on it focuses the control. For a RadioGroup it is the accessible name of the group. For a Checkbox it names the question the checkbox answers and the checkbox keeps its own label as its accessible name.",
-    "description, when non-empty, is set in typography in descriptionColor and wraps; it is the accessible description of the control (of the group for a RadioGroup).",
+    "label is required and non-empty, set in typographyLabel in labelColor, and wraps. For an InputText or a Textarea it is the accessible name of the control and a pointer press on it focuses the control. For a RadioGroup or a CheckboxGroup it is the accessible name of the group. For a Checkbox it names the question the checkbox answers and the checkbox keeps its own label as its accessible name.",
+    "description, when non-empty, is set in typography in descriptionColor and wraps; it is the accessible description of the control (of the group for a RadioGroup or a CheckboxGroup).",
     "Field passes required, invalid and disabled to its control: the control behaves as if its own prop were true when the field's is true; a control prop set to true stays true.",
     "When required is true, requiredIndicator shows an asterisk after the label, separated by a space, in requiredColor; it is hidden from assistive technology, which receives the required state from the control.",
     "When invalid is true and message is non-empty, message shows below the control: messageIcon (the warning-circle glyph of the reference set, decorative) at iconSize in messageIconColor, then messageIconGap, then the text in typography in messageColor, wrapping. The icon is centered on the first line and placed by its drawing. The message is part of the accessible description of the control, after description, so that an error is never conveyed by color alone. Otherwise message is absent and takes no space.",
