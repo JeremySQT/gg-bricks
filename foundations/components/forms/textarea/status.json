@@ -51,7 +51,8 @@
       "builders": [
         "authoring/adapters/figma/textarea-master.plugin.js",
         "authoring/adapters/figma/forms-spec.plugin.js",
-        "authoring/adapters/figma/forms-setup.plugin.js"
+        "authoring/adapters/figma/forms-setup.plugin.js",
+        "authoring/adapters/figma/field-focus-migrate.plugin.js"
       ]
     },
     "figmaSpec": "foundations/components/forms/textarea/figma-spec.md",
@@ -180,6 +181,14 @@
       "report": "reports/components/textarea/figma/parity.json",
       "date": "2026-10-27",
       "note": "1656 records, 0 failures, 192 justified (resize is a code behavior; paired 1-row textareas have no placeholder). Height compared for the code rows (master 3 rows minus the missing lines)."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/field-focus-migrate.plugin.js; use_figma authoring/adapters/figma/forms-parity.plugin.js (ID textarea)",
+      "report": "reports/components/textarea/figma/parity.json",
+      "date": "2026-10-28",
+      "note": "Re-measured after Focus became a property only: the 18 hashes are unchanged."
     }
   ],
   "decisionsTaken": [

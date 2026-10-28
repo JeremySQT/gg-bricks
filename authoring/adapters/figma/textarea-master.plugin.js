@@ -1,5 +1,5 @@
 // Textarea master builder (use_figma body), 2026-10-27.
-// On the page forms/textarea (288:9): the component set “Textarea” (Size × Content × State, 36 variants) at the
+// On the page forms/textarea (288:9): the component set “Textarea” (Size × Content × State, 30 variants) at the
 // default 3 rows. Same field treatment as InputText (color/field/{state}/…, border/width/default inside,
 // radius/control, inline padding space/control/padding-inline/{size}). The code's block padding is
 // (size/control − one line) / 2, which Figma cannot compute: the Area stacks a first row of size/control/{size} and
@@ -37,7 +37,7 @@ const style = (n) => styles.find((s) => s.name === 'typography/' + n);
 for (const st of ['Regular', 'Medium']) await figma.loadFontAsync({ family: 'Inter', style: st });
 const S = ['md', 'sm', 'lg'];
 const C = ['placeholder', 'value'];
-const ST = ['default', 'hover', 'focus', 'readonly', 'disabled', 'invalid'];
+const ST = ['default', 'hover', 'readonly', 'disabled', 'invalid'];
 const VALUE = 'The parcel arrived on time but the box was damaged on one corner. The contents were intact.';
 const comps = [];
 for (const s of S)
@@ -96,6 +96,23 @@ for (const s of S)
       box.appendChild(t);
       t.layoutSizingHorizontal = 'FILL';
       t.textAutoResize = 'HEIGHT';
+      // Focus border: the code paints the focus border by precedence (disabled, readonly, invalid, focus, hover),
+      // so only default and hover show it; visible = Focus.
+      if (st === 'default' || st === 'hover') {
+        const fb = figma.createFrame();
+        fb.name = 'Focus border';
+        fb.fills = [];
+        c.appendChild(fb);
+        fb.layoutPositioning = 'ABSOLUTE';
+        fb.x = 0;
+        fb.y = 0;
+        fb.resize(c.width, c.height);
+        fb.constraints = { horizontal: 'STRETCH', vertical: 'STRETCH' };
+        fb.strokes = [paint('color/field/focus/border')];
+        fb.strokeAlign = 'INSIDE';
+        bind(fb, STROKES, 'border/width/default');
+        bind(fb, RADII, 'radius/control');
+      }
       const ring = figma.createFrame();
       ring.name = 'Focus ring';
       ring.fills = [];
@@ -109,7 +126,7 @@ for (const s of S)
       ring.strokeAlign = 'OUTSIDE';
       bind(ring, STROKES, 'focus/width');
       bind(ring, RADII, 'radius/focus');
-      ring.visible = st === 'focus';
+      ring.visible = false;
       const name = figma.createText();
       name.name = 'Label (accessible name, not shown)';
       await name.setTextStyleIdAsync(style('label/md').id);
@@ -122,7 +139,7 @@ for (const s of S)
 const set = figma.combineAsVariants(comps, page);
 set.name = 'Textarea';
 set.description =
-  'Multi-line free text, shown at its default 3 rows. Source of truth: foundations/components/forms/textarea/contract.json; implementation: packages/svelte/src/components/textarea. Same colors, border, padding, text and focus ring as the InputText of the same size; one row is as tall as an InputText. Size and State mirror the code (State focus shows the focus ring; Focus adds it to another state). Content shows the Value or the Placeholder. Resize (vertical, auto, none) and the row count are behaviors of the code: in Figma, set the instance height for more rows. Inside a Field the field label names it; alone, Label is its accessible name (not shown).';
+  'Multi-line free text, shown at its default 3 rows. Source of truth: foundations/components/forms/textarea/contract.json; implementation: packages/svelte/src/components/textarea. Same colors, border, padding, text and focus ring as the InputText of the same size; one row is as tall as an InputText. Size and State mirror the code; Focus shows the keyboard focus (the ring, and the focus border on a default or hovered field; an invalid or readonly field keeps its border). Content shows the Value or the Placeholder. Resize (vertical, auto, none) and the row count are behaviors of the code: in Figma, set the instance height for more rows. Inside a Field the field label names it; alone, Label is its accessible name (not shown).';
 const VAL = set.addComponentProperty('Value', 'TEXT', VALUE);
 const PH = set.addComponentProperty('Placeholder', 'TEXT', 'What went well, what could be better…');
 const LABEL = set.addComponentProperty('Label', 'TEXT', 'Feedback');
@@ -135,21 +152,24 @@ for (const v of set.children) {
   v.children.find((n) => n.name === 'Label (accessible name, not shown)').componentPropertyReferences = {
     characters: LABEL
   };
-  if (!v.name.includes('State=focus'))
+  // Focus is a property only (2026-10-28); a disabled field is never focused.
+  if (!v.name.includes('State=disabled'))
     v.children.find((n) => n.name === 'Focus ring').componentPropertyReferences = { visible: FOCUS };
+  const fb = v.children.find((n) => n.name === 'Focus border');
+  if (fb) fb.componentPropertyReferences = { visible: FOCUS };
 }
 const GAP = 32,
   COL = 312;
 let y = GAP;
 for (let r = 0; r < 6; r++) {
-  const row = set.children.slice(r * 6, r * 6 + 6);
+  const row = set.children.slice(r * ST.length, (r + 1) * ST.length);
   row.forEach((v, k) => {
     v.x = GAP + k * COL;
     v.y = y;
   });
   y += Math.max(...row.map((v) => v.height)) + 24;
 }
-set.resizeWithoutConstraints(GAP * 2 + 6 * COL - 32, y + GAP - 24);
+set.resizeWithoutConstraints(GAP * 2 + ST.length * COL - 32, y + GAP - 24);
 set.fills = [];
 set.x = 0;
 set.y = 0;

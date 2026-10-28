@@ -3,7 +3,7 @@
   "componentId": "checkbox-group",
   "family": "forms",
   "wave": 2,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Gather two or more related checkboxes that answer one question, any number of which can be checked, with one group name, one required rule (at least one) and one validation message through Field.",
     "useCases": [
@@ -40,7 +40,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "CheckboxGroup contract: bindable list value, label (when no Field), orientation, size, disabled, readonly, invalid, required (at least one, stated in words by the Field); container and 2+ Checkbox items; valueChange; verticalGap space.content.sm, horizontalGap space.content.lg; each checkbox its own tab stop; no validation, no select-all child. With the list prop type added to the contract format.",
+      "revision": {
+        "paths": ["foundations/components/forms/checkbox-group/contract.json"],
+        "sha256": {
+          "foundations/components/forms/checkbox-group/contract.json": "335fb582b8a283cb2fb32e483e6a89c2eceb16a874ff0966e8431f4fcbeb3bcb"
+        }
+      },
+      "provenance": "User at the CheckboxGroup contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-28): \"Je valide le contrat, avec ces trois modifications. Pour obligatoire je préfère qu'on soit accessible, donc plutôt sur le label ou la description du field.\"",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -53,12 +63,11 @@
     "value is a list of the checked values (new list prop type in the contract format), in the source order of the checkboxes; each Checkbox gains an optional value prop (contract amendment).",
     "Each checkbox stays its own tab stop and toggles with Space (checkbox convention), unlike the single stop of a RadioGroup.",
     "required means at least one; not exposed as aria-required on each checkbox (it would announce every option as mandatory); the Field label or description states it in words.",
-    "Selection limits and a select-all child are out of scope."
+    "Selection limits and a select-all child are out of scope.",
+    "Required exposure (user, 2026-10-28): stated in words by the Field label or description, not as required on each checkbox."
   ],
-  "openDecisions": [
-    "Confirm how a required group is exposed: in words by the Field label or description (recommended) rather than as required on every checkbox."
-  ],
-  "nextAction": "Contract gate (CheckboxGroup, with the Checkbox value and Field accepts amendments and the list prop type).",
+  "openDecisions": [],
+  "nextAction": "Implementation (ggb-svelte): CheckboxGroup on Bits UI Checkbox.Group, the Checkbox value amendment and Field accepting the group; then the implementation review.",
   "implementationNotes": [
     "Wave 2 addition, branch wave/2-form-foundations, contract drafted on 2026-10-28. Bits UI 2.19.3 provides Checkbox.Group (value string[], role group); its required puts aria-required on every checkbox, which the contract excludes."
   ]

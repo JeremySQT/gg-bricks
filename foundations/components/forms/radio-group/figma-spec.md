@@ -11,20 +11,20 @@
 
 ## Mapping from the contract
 
-| Contract                          | Figma                                                                                           |
-| --------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `orientation`, `size`             | Variant properties Orientation (vertical, horizontal), Size (md, sm, lg); default vertical · md |
-| `label` (when no Field)           | Text property **Label** on a hidden text layer (accessible name, not shown)                     |
-| `value`                           | The selected radio: Selection on on one Radio instance                                          |
-| `readonly`, `invalid`, `disabled` | The State of every Radio instance (set by the designer; the code passes them)                   |
-| `radios` (slot)                   | Three Radio instances (`290:257`); duplicate or delete them                                     |
+| Contract                          | Figma                                                                                                                                                                                                                                                             |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `orientation`, `size`             | Variant properties Orientation (vertical, horizontal), Size (md, sm, lg); default vertical · md                                                                                                                                                                   |
+| `label` (when no Field)           | Text property **Label** on a hidden text layer (accessible name, not shown)                                                                                                                                                                                       |
+| `value`                           | The selected radio: Selection on on one Radio instance                                                                                                                                                                                                            |
+| `readonly`, `invalid`, `disabled` | The State of every Radio instance (set by the designer; the code passes them)                                                                                                                                                                                     |
+| `radios` (slot)                   | Eight exposed Radio instances (`290:257`), Option 1 to Option 8: options 1 and 2 always show, booleans **Show option 3** … **Show option 8** show the others (3 by default); each option’s Label, Description, Selection and State are set from the group’s panel |
 
 Every color, dimension, radius, stroke and typography value of the masters is bound to a variable of the Brand, Appearance and Density collections or to an adapter variable of the hidden **Components** collection; brand, appearance and density are chosen by the consuming frame's variable modes.
 
 ## Construction notes
 
 - Vertical: auto layout, gap `space/content/sm`. Horizontal: wrapping auto layout, gap `space/content/lg` between radios and `space/content/sm` between lines, as the code's flex wrap.
-- The radios are instances of Radio in the group's size, the second one selected, State default.
+- The options are exposed instances of Radio in the group's size (Option 2 selected, State default); an instance cannot receive new layers, so the eight options are built in and shown by property (2026-10-28). Overrides of an option (selection, label) survive a change of the group's Size or Orientation.
 
 ## Justified differences
 

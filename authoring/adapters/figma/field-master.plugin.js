@@ -56,11 +56,13 @@ for (const st of ST) {
   bind(c, ['itemSpacing'], 'space/content/sm');
   const header = figma.createAutoLayout('VERTICAL', { name: 'Header' });
   header.fills = [];
+  header.clipsContent = false; // the control's focus ring is drawn outside its edge
   c.appendChild(header);
   header.layoutSizingHorizontal = 'FILL';
   bind(header, ['itemSpacing'], 'space/content/xs');
   const row = figma.createAutoLayout('HORIZONTAL', { name: 'Label row', itemSpacing: 0 });
   row.fills = [];
+  row.clipsContent = false; // the control's focus ring is drawn outside its edge
   header.appendChild(row);
   row.appendChild(await txt('Label', 'Email', 'label/md', dim('color/content/primary')));
   row.appendChild(await txt('Required indicator', ' *', 'label/md', dim('color/content/secondary')));
@@ -70,6 +72,7 @@ for (const st of ST) {
   desc.textAutoResize = 'HEIGHT';
   const body = figma.createAutoLayout('VERTICAL', { name: 'Body' });
   body.fills = [];
+  body.clipsContent = false; // the control's focus ring is drawn outside its edge
   c.appendChild(body);
   body.layoutSizingHorizontal = 'FILL';
   bind(body, ['itemSpacing'], 'space/content/xs');

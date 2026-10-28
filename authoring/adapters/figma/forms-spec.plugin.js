@@ -316,7 +316,7 @@ const swapControl = (field, id, v = {}, p = {}) => {
 };
 // Set properties on every radio of a RadioGroup instance.
 const radios = (group, p) => {
-  for (const r of group.children.filter((n) => n.type === 'INSTANCE')) setProps(r, p);
+  for (const r of group.children.filter((n) => n.type === 'INSTANCE' && /^Option \d$/.test(n.name))) setProps(r, p);
   return group;
 };
 const surface = (name, dir = 'VERTICAL', gap = 12, pad = 20) => {
@@ -391,7 +391,7 @@ const drawBoard = async (A) => {
   dg.appendChild(inst);
   inst.x = Math.round((W - inst.width) / 2 - (A.shift || 0));
   inst.y = 96;
-  // A layer by name, or a path “Radio 2/Control”; '' is the instance.
+  // A layer by name, or a path “Option 2/Control”; '' is the instance.
   const node = (name) =>
     name
       .split('/')
@@ -694,11 +694,11 @@ ANATOMY['radio-group'] = () => {
     zoom: 3,
     instance: () => rg(),
     pins: [
-      [1, 'Radio 1', 'right', 0],
-      [2, 'Radio 2/Control', 'left', 0],
-      [3, 'Radio 3', 'right', 0]
+      [1, 'Option 1', 'right', 0],
+      [2, 'Option 2/Control', 'left', 0],
+      [3, 'Option 3', 'right', 0]
     ],
-    dims: [{ k: 'y', a: ['Radio 1', 'b'], b: ['Radio 2', 't'], c: 'A', side: 'left' }],
+    dims: [{ k: 'y', a: ['Option 1', 'b'], b: ['Option 2', 't'], c: 'A', side: 'left' }],
     legend: [
       ['1', 'Radio: one option, a Radio instance of the group’s size. Its parts are on the Radio page.'],
       ['2', 'Selected radio: exactly one radio is on; selecting another turns it off.'],
@@ -717,7 +717,7 @@ ANATOMY['radio-group'] = () => {
       [rg({ Size: 'sm' }), 'sm']
     ],
     figma:
-      'In Figma, Orientation and Size are variants; the radios inside take the group’s size. Select one radio (Selection on) and keep the others off; for a readonly, invalid or disabled group, set that State on every radio. Label is the group’s accessible name when it is used without a Field; it is not shown. Add or remove radios by duplicating one.'
+      'In Figma, Orientation and Size are variants; the radios inside take the group’s size. Select one radio (Selection on) and keep the others off; for a readonly, invalid or disabled group, set that State on every radio. Label is the group’s accessible name when it is used without a Field; it is not shown. Options 1 and 2 always show; Show option 3 … Show option 8 add options, and each option is exposed: set its label, selection and state from the group’s panel.'
   };
 };
 // </anatomy:radio-group>
@@ -837,7 +837,7 @@ ANATOMY['input-text'] = () => {
       [it({ Action: 'icon-button', Content: 'value' }, { Value: 'Draft' }, 180), 'action']
     ],
     figma:
-      'In Figma, Size, Action, Content and State are variants (Action icon-button exists at md and lg only, as in the code). Value, Placeholder and Label are text properties; Label is the accessible name when the input is used without a Field and is not shown. Show leading and Show trailing add the decorative icons; choose them with Leading icon and Trailing icon. Focus adds the ring to another state. The type (email, password, search…) is a behavior of the code.'
+      'In Figma, Size, Action, Content and State are variants (Action icon-button exists at md and lg only, as in the code). Value, Placeholder and Label are text properties; Label is the accessible name when the input is used without a Field and is not shown. Show leading and Show trailing add the decorative icons; choose them with Leading icon and Trailing icon. Focus shows the keyboard focus: the ring, and the focus border on a default or hovered input (an invalid or readonly input keeps its border). The type (email, password, search…) is a behavior of the code.'
   };
 };
 // </anatomy:input-text>
@@ -884,7 +884,7 @@ ANATOMY['textarea'] = () => {
       [ta({ Content: 'value', State: 'invalid' }, {}, 220), 'invalid']
     ],
     figma:
-      'In Figma, Size, Content and State are variants. Value, Placeholder and Label are text properties; Label is the accessible name when the textarea is used without a Field and is not shown. Focus adds the ring to another state. Rows, maximum rows and resizing are behaviors of the code: the master shows 3 rows; a taller instance gives more room, and the text shows up to 3 lines.'
+      'In Figma, Size, Content and State are variants. Value, Placeholder and Label are text properties; Label is the accessible name when the textarea is used without a Field and is not shown. Focus shows the keyboard focus, as on an InputText. Rows, maximum rows and resizing are behaviors of the code: the master shows 3 rows; a taller instance gives more room, and the text shows up to 3 lines.'
   };
 };
 // </anatomy:textarea>
@@ -1221,7 +1221,7 @@ SPECS['radio-group'] = () => {
           r.appendChild(caption(rg(), 'default'));
           const f = rg();
           setProps(
-            f.findOne((n) => n.name === 'Radio 2'),
+            f.findOne((n) => n.name === 'Option 2'),
             { Focus: true }
           );
           r.appendChild(caption(f, 'focus on the selected radio'));
@@ -1261,14 +1261,17 @@ SPECS['radio-group'] = () => {
           const f2 = mk('field', {}, { Label: 'Billing', 'Show description': false });
           const g2 = swapControl(f2, 'radio-group', { Orientation: 'horizontal' });
           setProps(
-            g2.findOne((n) => n.name === 'Radio 1'),
+            g2.findOne((n) => n.name === 'Option 1'),
             { Label: 'Monthly' }
           );
           setProps(
-            g2.findOne((n) => n.name === 'Radio 2'),
+            g2.findOne((n) => n.name === 'Option 2'),
             { Label: 'Yearly' }
           );
-          g2.findOne((n) => n.name === 'Radio 3').visible = false;
+          setProps(
+            f2.findOne((n) => n.name === 'Control'),
+            { 'Show option 3': false }
+          );
           ex.appendChild(caption(f2, 'two short options, horizontal'));
           const f3 = mk(
             'field',
@@ -1470,7 +1473,9 @@ SPECS['input-text'] = () => {
             (st, content) =>
               st === 'invalid + focus'
                 ? it({ State: 'invalid', Content: content }, { Focus: true }, 260)
-                : it({ State: st, Content: content }, {}, 260),
+                : st === 'focus'
+                  ? it({ Content: content }, { Focus: true }, 260)
+                  : it({ State: st, Content: content }, {}, 260),
             300
           );
           c.appendChild(m);
@@ -1588,7 +1593,9 @@ SPECS.textarea = () => {
             (st, content) =>
               st === 'invalid + focus'
                 ? ta({ State: 'invalid', Content: content }, { Focus: true }, 300)
-                : ta({ State: st, Content: content }, {}, 300),
+                : st === 'focus'
+                  ? ta({ Content: content }, { Focus: true }, 300)
+                  : ta({ State: st, Content: content }, {}, 300),
             340
           );
           c.appendChild(m);

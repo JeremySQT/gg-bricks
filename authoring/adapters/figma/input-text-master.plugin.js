@@ -1,5 +1,5 @@
 // InputText master builder (use_figma body), 2026-10-27.
-// On the page forms/input-text (288:5): the component set “InputText” (Size × Action × Content × State, 60
+// On the page forms/input-text (288:5): the component set “InputText” (Size × Action × Content × State, 50
 // variants; Action icon-button exists at md and lg only, as in the code). The root is the visible field: height
 // size/control/{size}, fill color/field/{state}/surface, inner border color/field/{state}/border of
 // border/width/default (outside the layout, as the code's inset shadow), corners radius/control, inline padding
@@ -10,8 +10,8 @@
 // the value (color/field/{state}/content) or the placeholder (color/field/{state}/placeholder) in
 // typography/body/{size}, one line, truncated. The action is a square of size/control/{size} holding an IconButton
 // (211:1167) one size smaller, neutral ghost, with the x glyph; disabled with the field. The focus ring (focus/width,
-// color/focus/ring, radius/focus, outside) always shows on State=focus and follows the Focus property otherwise (an
-// invalid or readonly field keeps its colors while focused). Rerunning replaces the set.
+// color/focus/ring, radius/focus, outside) and, on default and hover, the Focus border follow the Focus property
+// (an invalid or readonly field keeps its colors while focused; a disabled field is never focused). Rerunning replaces the set.
 figma.skipInvisibleInstanceChildren = false;
 const page = await figma.getNodeByIdAsync('288:5');
 await figma.setCurrentPageAsync(page);
@@ -42,7 +42,7 @@ const IB_ICON = Object.keys(ib.componentPropertyDefinitions).find((k) => k.start
 const IB_LABEL = Object.keys(ib.componentPropertyDefinitions).find((k) => k.startsWith('Label'));
 const S = ['md', 'sm', 'lg'];
 const C = ['placeholder', 'value'];
-const ST = ['default', 'hover', 'focus', 'readonly', 'disabled', 'invalid'];
+const ST = ['default', 'hover', 'readonly', 'disabled', 'invalid'];
 const comps = [];
 const glyphs = [];
 const slot = (name, glyph, s, st) => {
@@ -138,6 +138,23 @@ for (const s of S)
           act.appendChild(btn);
           btn.setProperties({ [IB_ICON]: X, [IB_LABEL]: 'Clear' });
         }
+        // Focus border: the code paints the focus border by precedence (disabled, readonly, invalid, focus, hover),
+        // so only default and hover show it; visible = Focus.
+        if (st === 'default' || st === 'hover') {
+          const fb = figma.createFrame();
+          fb.name = 'Focus border';
+          fb.fills = [];
+          c.appendChild(fb);
+          fb.layoutPositioning = 'ABSOLUTE';
+          fb.x = 0;
+          fb.y = 0;
+          fb.resize(c.width, c.height);
+          fb.constraints = { horizontal: 'STRETCH', vertical: 'STRETCH' };
+          fb.strokes = [paint('color/field/focus/border')];
+          fb.strokeAlign = 'INSIDE';
+          bind(fb, STROKES, 'border/width/default');
+          bind(fb, RADII, 'radius/control');
+        }
         const ring = figma.createFrame();
         ring.name = 'Focus ring';
         ring.fills = [];
@@ -151,7 +168,7 @@ for (const s of S)
         ring.strokeAlign = 'OUTSIDE';
         bind(ring, STROKES, 'focus/width');
         bind(ring, RADII, 'radius/focus');
-        ring.visible = st === 'focus';
+        ring.visible = false;
         const target = figma.createFrame();
         target.name = 'Target';
         target.fills = [];
@@ -174,7 +191,7 @@ for (const s of S)
 const set = figma.combineAsVariants(comps, page);
 set.name = 'InputText';
 set.description =
-  'A single line of text to enter or edit. Source of truth: foundations/components/forms/input-text/contract.json; implementation: packages/svelte/src/components/input-text. Size and State mirror the code (State focus shows the focus ring; for an invalid or readonly field that has focus, turn Focus on). Content shows the Value or the Placeholder (an example, never a label). Show leading and Show trailing add a decorative icon (choose it with Leading icon and Trailing icon; its size follows Size). Action icon-button (md and lg) holds an IconButton one size smaller, neutral ghost, for clear or show password (select it to change its icon and label). Same height and spacing as the Button of the same size. Inside a Field the field label names it; alone, Label is its accessible name (not shown). Set the width on the instance; the field fills it.';
+  'A single line of text to enter or edit. Source of truth: foundations/components/forms/input-text/contract.json; implementation: packages/svelte/src/components/input-text. Size and State mirror the code; Focus shows the keyboard focus (the ring, and the focus border on a default or hovered field; an invalid or readonly field keeps its border). Content shows the Value or the Placeholder (an example, never a label). Show leading and Show trailing add a decorative icon (choose it with Leading icon and Trailing icon; its size follows Size). Action icon-button (md and lg) holds an IconButton one size smaller, neutral ghost, for clear or show password (select it to change its icon and label). Same height and spacing as the Button of the same size. Inside a Field the field label names it; alone, Label is its accessible name (not shown). Set the width on the instance; the field fills it.';
 const VALUE = set.addComponentProperty('Value', 'TEXT', 'Ada Lovelace');
 const PH = set.addComponentProperty('Placeholder', 'TEXT', 'Placeholder');
 const LABEL = set.addComponentProperty('Label', 'TEXT', 'Full name');
@@ -200,8 +217,11 @@ for (const v of set.children) {
     tr.componentPropertyReferences = { visible: TRAIL };
     tr.findOne((n) => n.name === 'Trailing icon').componentPropertyReferences = { mainComponent: TICON };
   }
-  if (!v.name.includes('State=focus'))
+  // Focus is a property only (2026-10-28); a disabled field is never focused.
+  if (!v.name.includes('State=disabled'))
     v.children.find((n) => n.name === 'Focus ring').componentPropertyReferences = { visible: FOCUS };
+  const fb = v.children.find((n) => n.name === 'Focus border');
+  if (fb) fb.componentPropertyReferences = { visible: FOCUS };
 }
 for (const [icon, color] of glyphs) for (const g of icon.findAll((n) => n.type === 'VECTOR')) g.fills = [paint(color)];
 // Grid: columns State, rows Size × Action × Content (md · none · placeholder · default top-left).

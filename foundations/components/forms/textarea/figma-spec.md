@@ -11,12 +11,12 @@
 
 ## Mapping from the contract
 
-| Contract                    | Figma                                                                                                  |
-| --------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `size`, condition, focus    | Variant properties Size, State (default, hover, focus, readonly, disabled, invalid); boolean **Focus** |
-| `value`, `placeholder`      | Variant Content; text properties **Value**, **Placeholder**                                            |
-| `label` (when no Field)     | Text property **Label** on a hidden layer                                                              |
-| `rows`, `maxRows`, `resize` | Not variants: the master shows the default 3 rows (see the justified differences)                      |
+| Contract                    | Figma                                                                                                                                     |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `size`, condition, focus    | Variant properties Size, State (default, hover, readonly, disabled, invalid); boolean **Focus** (ring; Focus border on default and hover) |
+| `value`, `placeholder`      | Variant Content; text properties **Value**, **Placeholder**                                                                               |
+| `label` (when no Field)     | Text property **Label** on a hidden layer                                                                                                 |
+| `rows`, `maxRows`, `resize` | Not variants: the master shows the default 3 rows (see the justified differences)                                                         |
 
 Every color, dimension, radius, stroke and typography value of the masters is bound to a variable of the Brand, Appearance and Density collections or to an adapter variable of the hidden **Components** collection; brand, appearance and density are chosen by the consuming frame's variable modes.
 
@@ -25,6 +25,8 @@ Every color, dimension, radius, stroke and typography value of the masters is bo
 - **Container** as InputText: padding `space/control/padding-inline/{size}`, field colors, `radius/control`.
 - **Block padding** (size/control − one line) / 2, which Figma cannot compute: the **Area** stacks a **First row** of `size/control/{size}` and **More rows** of `textarea/more-rows` (two lines); the **Text box** (`textarea/text-rows`, three lines) is centered on that stack, so its top sits at exactly the code's padding in every density.
 - The text is top aligned, fills the width and wraps; the Text box clips beyond 3 lines.
+
+- **Focus** is a property only (2026-10-28): the ring follows Focus and, on default and hover, a **Focus border** layer (inside stroke `color/field/focus/border`) follows it too; a disabled field is never focused.
 
 ## Justified differences
 

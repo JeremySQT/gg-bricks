@@ -39,11 +39,50 @@
         "sm",
         "lg"
       ]
+    },
+    "Show option 3#325:0": {
+      "type": "BOOLEAN",
+      "default": true,
+      "layer": "Option 3 (visible)"
+    },
+    "Show option 4#325:7": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Option 4 (visible)"
+    },
+    "Show option 5#325:14": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Option 5 (visible)"
+    },
+    "Show option 6#325:21": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Option 6 (visible)"
+    },
+    "Show option 7#325:28": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Option 7 (visible)"
+    },
+    "Show option 8#325:35": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Option 8 (visible)"
     }
   },
-  "exposedInstances": {},
+  "exposedInstances": {
+    "Option 1": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
+    "Option 2": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
+    "Option 3": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
+    "Option 4": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
+    "Option 5": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
+    "Option 6": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
+    "Option 7": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
+    "Option 8": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel"
+  },
   "layers": [
-    "Radio 1, Radio 2 (selected), Radio 3 (instances of Radio 290:257 of the group size, State=default)",
+    "Option 1 … Option 8 (instances of Radio 290:257 of the group size, exposed; options 3 to 8 visible = Show option N, Option 2 selected)",
     "Label (accessible name, not shown) (hidden text layer, typography/label/md, behind Label)"
   ],
   "bindings": {
@@ -93,6 +132,10 @@
     {
       "date": "2026-10-28",
       "change": "Anatomy board redrawn (user review of the Figma parity gate): the enlarged instance is drawn in the blueprint ink (surfaces in tint/16 with tint/48 borders, text and glyphs in ink, secondary texts at 60 %, layout boxes dashed) instead of the dark appearance, and every leader is straight (vertical above or below its target, horizontal beside it). forms-spec.plugin.js with ANATOMY_ONLY."
+    },
+    {
+      "date": "2026-10-28",
+      "change": "Options as properties (user: designers should add options without detaching): radio-group-options.plugin.js renamed Radio 1–3 to Option 1–3, added Option 4–8 (copies of Option 3), exposed the eight options and bound options 3 to 8 to the new booleans Show option 3 … Show option 8 (3 on by default). Checked: an option’s selection and label survive a change of Size."
     }
   ]
 }

@@ -25,6 +25,7 @@ Every color, dimension, radius, stroke and typography value of the masters is bo
 - Vertical stack, gap `space/content/sm` between the **Header** (Label row and Description, gap `space/content/xs`) and the **Body** (Control and Message, gap `space/content/xs`).
 - **Label** in `typography/label/md`, **Required indicator** “ *” in `color/content/secondary`; **Description** in `typography/body/sm`; disabled paints the three in `color/content/disabled`.
 - **Message** (invalid only): a **First line** frame (`typography/body/sm/lineHeight`) centers a drawing box of `field/icon-box` (iconSize − iconSize/4) holding the warning-circle at `size/icon/sm` in `color/status/danger/icon`; the text in `color/status/danger/content` wraps.
+- The Header, Label row and Body do not clip, so the focus ring of the control (outside its edge) shows (fixed 2026-10-28).
 - The Control is an exposed instance in the state of the field. An instance-swap property is not used: its single default would reset every variant's control to one state.
 
 ## Justified differences

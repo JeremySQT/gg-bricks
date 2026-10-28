@@ -11,14 +11,14 @@
 
 ## Mapping from the contract
 
-| Contract                         | Figma                                                                                                                                                           |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `size`, condition, focus         | Variant properties Size (md, sm, lg), State (default, hover, focus, readonly, disabled, invalid); boolean **Focus** adds the ring to another state              |
-| `value`, `placeholder`           | Variant Content (placeholder, value); text properties **Value**, **Placeholder**                                                                                |
-| `label` (when no Field)          | Text property **Label** on a hidden layer                                                                                                                       |
-| slot `leading` (icon)            | Boolean **Show leading**, instance swap **Leading icon** (default magnifying-glass)                                                                             |
-| slot `trailing` (icon or action) | Boolean **Show trailing** + **Trailing icon** (default globe); variant **Action** icon-button (md and lg only) with an IconButton (`211:1167`) one size smaller |
-| `type`                           | Not represented: a behavior of the code                                                                                                                         |
+| Contract                         | Figma                                                                                                                                                                           |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `size`, condition, focus         | Variant properties Size (md, sm, lg), State (default, hover, readonly, disabled, invalid); boolean **Focus** shows the keyboard focus (ring; Focus border on default and hover) |
+| `value`, `placeholder`           | Variant Content (placeholder, value); text properties **Value**, **Placeholder**                                                                                                |
+| `label` (when no Field)          | Text property **Label** on a hidden layer                                                                                                                                       |
+| slot `leading` (icon)            | Boolean **Show leading**, instance swap **Leading icon** (default magnifying-glass)                                                                                             |
+| slot `trailing` (icon or action) | Boolean **Show trailing** + **Trailing icon** (default globe); variant **Action** icon-button (md and lg only) with an IconButton (`211:1167`) one size smaller                 |
+| `type`                           | Not represented: a behavior of the code                                                                                                                                         |
 
 Every color, dimension, radius, stroke and typography value of the masters is bound to a variable of the Brand, Appearance and Density collections or to an adapter variable of the hidden **Components** collection; brand, appearance and density are chosen by the consuming frame's variable modes.
 
@@ -28,7 +28,7 @@ Every color, dimension, radius, stroke and typography value of the masters is bo
 - **Slots** follow Button: a frame with `space/control/slot-inline/{size}` on both sides holds a drawing box of `input-text/icon-box` (iconSize − iconSize/4) with the Phosphor glyph at `size/icon/{size}` centered, so the drawing starts at the padding (the icon box overlaps it by iconSize/8). Icons use the placeholder color of the state.
 - **Input** frame with `space/control/label-inline/{size}` on both sides holds the Value (content color) or the Placeholder, one line, truncated at the end.
 - **Action**: a square of `size/control/{size}` holding an IconButton neutral ghost one size smaller with the x glyph, disabled with the field.
-- **Focus ring**: `radius/focus`, outside stroke, shown on State=focus and by Focus elsewhere (an invalid field keeps its border while focused).
+- **Focus** is a property only (2026-10-28): the ring (`radius/focus`, outside stroke) follows Focus, and on default and hover a **Focus border** layer (inside stroke `color/field/focus/border`) follows it too, as the code's precedence disabled, readonly, invalid, focus, hover paints the focus border only there; a disabled field is never focused.
 
 ## Justified differences
 

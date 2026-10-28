@@ -155,7 +155,14 @@ if (ID === 'checkbox' || ID === 'radio' || ID === 'switch') {
       { value: v('md', 'value', st) }
     );
   add({ size: 'md' }, 'hover', v('md', 'placeholder', 'hover'), {}, { value: v('md', 'value', 'hover'), rep: true });
-  add({ size: 'md' }, 'focus', v('md', 'placeholder', 'focus'), {}, { value: v('md', 'value', 'focus'), rep: true });
+  // Focus is a property (2026-10-28): State default with Focus on.
+  add(
+    { size: 'md' },
+    'focus',
+    v('md', 'placeholder', 'default'),
+    { Focus: true },
+    { value: v('md', 'value', 'default'), rep: true }
+  );
   add(
     { size: 'md' },
     'invalid+focus',
@@ -186,9 +193,9 @@ if (ID === 'checkbox' || ID === 'radio' || ID === 'switch') {
   add(
     { size: 'md' },
     'focus',
-    v('md', 'placeholder', 'focus'),
-    {},
-    { value: v('md', 'value', 'focus'), rows: 2, rep: true }
+    v('md', 'placeholder', 'default'),
+    { Focus: true },
+    { value: v('md', 'value', 'default'), rows: 2, rep: true }
   );
   add(
     { size: 'md' },
@@ -264,10 +271,12 @@ const measure = async (inst, c, valueInst) => {
   if (ID === 'input-text' || ID === 'textarea') {
     const ph = text(inst, 'Placeholder');
     const val = text(valueInst, 'Value');
+    const fb = named(inst, 'Focus border');
     const exact = [
       await paint(inst),
       await paint(val),
-      await stroke(inst),
+      // The focus border of a focused default or hovered field is its own layer.
+      fb && shown(fb) ? await stroke(fb) : await stroke(inst),
       // The paired textareas of the review page have no placeholder.
       c.noPlaceholder ? '' : await paint(ph),
       await outline(named(inst, 'Focus ring')),

@@ -128,6 +128,10 @@
     {
       "date": "2026-10-28",
       "change": "Anatomy board redrawn (user review of the Figma parity gate): the enlarged instance is drawn in the blueprint ink (surfaces in tint/16 with tint/48 borders, text and glyphs in ink, secondary texts at 60 %, layout boxes dashed) instead of the dark appearance, and every leader is straight (vertical above or below its target, horizontal beside it). forms-spec.plugin.js with ANATOMY_ONLY."
+    },
+    {
+      "date": "2026-10-28",
+      "change": "Header, Label row and Body no longer clip their content (user: the Focus property of the control seemed broken): the ring of a focused control, drawn outside its edge, was clipped by Body."
     }
   ]
 }

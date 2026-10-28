@@ -15,7 +15,7 @@
     "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=293-1046",
     "builder": "authoring/adapters/figma/input-text-master.plugin.js",
     "defaultVariant": "Size=md, Action=none, Content=placeholder, State=default",
-    "variantCount": 60
+    "variantCount": 50
   },
   "properties": {
     "Value#293:0": {
@@ -46,7 +46,7 @@
     "Focus#293:305": {
       "type": "BOOLEAN",
       "default": false,
-      "layer": "Focus ring (visible; State=focus variants show it always)"
+      "layer": "Focus ring (visible; never on disabled) and Focus border (default and hover variants)"
     },
     "Leading icon#293:366": {
       "type": "INSTANCE_SWAP",
@@ -89,7 +89,6 @@
       "options": [
         "default",
         "hover",
-        "focus",
         "readonly",
         "disabled",
         "invalid"
@@ -106,6 +105,7 @@
     "Trailing (Action=none; visible = Show trailing; same construction, Trailing icon)",
     "Action (Action=icon-button; square size/control/{size}) / IconButton (211:1167, neutral ghost, one size smaller, x glyph)",
     "Focus ring (absolute, radius/focus; visible on State=focus, Focus elsewhere)",
+    "Focus border (default and hover variants: absolute, inside stroke color/field/focus/border at border/width/default, radius/control, visible = Focus)",
     "Target (size/target/min, absolute)",
     "Label (accessible name, not shown) (hidden text, behind Label)"
   ],
@@ -116,7 +116,8 @@
     "corners": "radius/control",
     "Value": "color/field/{state}/content",
     "Placeholder and icons": "color/field/{state}/placeholder",
-    "Focus ring": "color/focus/ring, focus/width, radius/focus"
+    "Focus ring": "color/focus/ring, focus/width, radius/focus",
+    "Focus border": "color/field/focus/border, border/width/default, radius/control (visible = Focus on default and hover)"
   },
   "adapterVariables": {
     "input-text/icon-box": {
@@ -138,61 +139,51 @@
   "variants": {
     "Size=md, Action=none, Content=placeholder, State=default": "293:2",
     "Size=md, Action=none, Content=placeholder, State=hover": "293:16",
-    "Size=md, Action=none, Content=placeholder, State=focus": "293:30",
     "Size=md, Action=none, Content=placeholder, State=readonly": "293:44",
     "Size=md, Action=none, Content=placeholder, State=disabled": "293:58",
     "Size=md, Action=none, Content=placeholder, State=invalid": "293:72",
     "Size=md, Action=none, Content=value, State=default": "293:86",
     "Size=md, Action=none, Content=value, State=hover": "293:100",
-    "Size=md, Action=none, Content=value, State=focus": "293:114",
     "Size=md, Action=none, Content=value, State=readonly": "293:128",
     "Size=md, Action=none, Content=value, State=disabled": "293:142",
     "Size=md, Action=none, Content=value, State=invalid": "293:156",
     "Size=md, Action=icon-button, Content=placeholder, State=default": "293:170",
     "Size=md, Action=icon-button, Content=placeholder, State=hover": "293:195",
-    "Size=md, Action=icon-button, Content=placeholder, State=focus": "293:217",
     "Size=md, Action=icon-button, Content=placeholder, State=readonly": "293:239",
     "Size=md, Action=icon-button, Content=placeholder, State=disabled": "293:261",
     "Size=md, Action=icon-button, Content=placeholder, State=invalid": "293:286",
     "Size=md, Action=icon-button, Content=value, State=default": "293:308",
     "Size=md, Action=icon-button, Content=value, State=hover": "293:330",
-    "Size=md, Action=icon-button, Content=value, State=focus": "293:352",
     "Size=md, Action=icon-button, Content=value, State=readonly": "293:374",
     "Size=md, Action=icon-button, Content=value, State=disabled": "293:396",
     "Size=md, Action=icon-button, Content=value, State=invalid": "293:418",
     "Size=sm, Action=none, Content=placeholder, State=default": "293:440",
     "Size=sm, Action=none, Content=placeholder, State=hover": "293:454",
-    "Size=sm, Action=none, Content=placeholder, State=focus": "293:468",
     "Size=sm, Action=none, Content=placeholder, State=readonly": "293:482",
     "Size=sm, Action=none, Content=placeholder, State=disabled": "293:496",
     "Size=sm, Action=none, Content=placeholder, State=invalid": "293:510",
     "Size=sm, Action=none, Content=value, State=default": "293:524",
     "Size=sm, Action=none, Content=value, State=hover": "293:538",
-    "Size=sm, Action=none, Content=value, State=focus": "293:552",
     "Size=sm, Action=none, Content=value, State=readonly": "293:566",
     "Size=sm, Action=none, Content=value, State=disabled": "293:580",
     "Size=sm, Action=none, Content=value, State=invalid": "293:594",
     "Size=lg, Action=none, Content=placeholder, State=default": "293:608",
     "Size=lg, Action=none, Content=placeholder, State=hover": "293:622",
-    "Size=lg, Action=none, Content=placeholder, State=focus": "293:636",
     "Size=lg, Action=none, Content=placeholder, State=readonly": "293:650",
     "Size=lg, Action=none, Content=placeholder, State=disabled": "293:664",
     "Size=lg, Action=none, Content=placeholder, State=invalid": "293:678",
     "Size=lg, Action=none, Content=value, State=default": "293:692",
     "Size=lg, Action=none, Content=value, State=hover": "293:706",
-    "Size=lg, Action=none, Content=value, State=focus": "293:720",
     "Size=lg, Action=none, Content=value, State=readonly": "293:734",
     "Size=lg, Action=none, Content=value, State=disabled": "293:748",
     "Size=lg, Action=none, Content=value, State=invalid": "293:762",
     "Size=lg, Action=icon-button, Content=placeholder, State=default": "293:776",
     "Size=lg, Action=icon-button, Content=placeholder, State=hover": "293:801",
-    "Size=lg, Action=icon-button, Content=placeholder, State=focus": "293:823",
     "Size=lg, Action=icon-button, Content=placeholder, State=readonly": "293:845",
     "Size=lg, Action=icon-button, Content=placeholder, State=disabled": "293:867",
     "Size=lg, Action=icon-button, Content=placeholder, State=invalid": "293:892",
     "Size=lg, Action=icon-button, Content=value, State=default": "293:914",
     "Size=lg, Action=icon-button, Content=value, State=hover": "293:936",
-    "Size=lg, Action=icon-button, Content=value, State=focus": "293:958",
     "Size=lg, Action=icon-button, Content=value, State=readonly": "293:980",
     "Size=lg, Action=icon-button, Content=value, State=disabled": "293:1002",
     "Size=lg, Action=icon-button, Content=value, State=invalid": "293:1024"
@@ -233,6 +224,10 @@
     {
       "date": "2026-10-28",
       "change": "Anatomy board redrawn (user review of the Figma parity gate): the enlarged instance is drawn in the blueprint ink (surfaces in tint/16 with tint/48 borders, text and glyphs in ink, secondary texts at 60 %, layout boxes dashed) instead of the dark appearance, and every leader is straight (vertical above or below its target, horizontal beside it). forms-spec.plugin.js with ANATOMY_ONLY."
+    },
+    {
+      "date": "2026-10-28",
+      "change": "Focus as a property only (user: focus could be set twice, State=focus and Focus): field-focus-migrate.plugin.js swapped the 2 specification instances of the focus variants to State=default with Focus on, removed the 10 State=focus variants, added the Focus border layer (visible = Focus) to the default and hover variants, and stopped the disabled ring from following Focus. Parity re-measured: the 18 context hashes and the numeric fields are unchanged."
     }
   ]
 }
