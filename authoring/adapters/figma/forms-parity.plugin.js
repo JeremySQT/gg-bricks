@@ -134,7 +134,7 @@ if (ID === 'checkbox' || ID === 'radio' || ID === 'switch') {
     { rep: true }
   );
 } else if (ID === 'radio-group') {
-  for (const o of ['horizontal', 'vertical']) add({ orientation: o }, 'default', `Orientation=${o}, Size=md`);
+  for (const o of ['horizontal', 'vertical']) add({ orientation: o }, 'default', `Orientation=${o}`);
 } else if (ID === 'input-text') {
   const v = (s, content, st) => `Size=${s}, Action=none, Content=${content}, State=${st}`;
   // Sizes beside Buttons: leading magnifying glass, placeholder; then the empty inputs of the conditions.
@@ -262,10 +262,12 @@ const measure = async (inst, c, valueInst) => {
     };
   }
   if (ID === 'radio-group') {
+    // The gaps belong to the Options slot (2026-10-28).
+    const box = inst.findAllWithCriteria({ types: ['SLOT'] })[0];
     const gap =
-      inst.layoutMode === 'HORIZONTAL'
-        ? `${await res(inst, 'counterAxisSpacing')} ${await res(inst, 'itemSpacing')}`
-        : `${await res(inst, 'itemSpacing')}`;
+      box.layoutMode === 'HORIZONTAL'
+        ? `${await res(box, 'counterAxisSpacing')} ${await res(box, 'itemSpacing')}`
+        : `${await res(box, 'itemSpacing')}`;
     return { exact: [gap], num: [] };
   }
   if (ID === 'input-text' || ID === 'textarea') {

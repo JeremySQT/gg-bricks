@@ -1,3 +1,4 @@
+// SUPERSEDED on 2026-10-28 by radio-group-slot.plugin.js (the user did not approve hidden options): do not run.
 // RadioGroup options as properties (use_figma body), 2026-10-28.
 // User review of the Figma parity gate: designers should add options to a RadioGroup without detaching it
 // (an instance cannot receive new layers). Every variant of the set (292:327) now holds eight Radio instances,

@@ -13,15 +13,27 @@
     "id": "292:327",
     "name": "RadioGroup",
     "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=292-327",
-    "builder": "authoring/adapters/figma/radio-group-master.plugin.js",
-    "defaultVariant": "Orientation=vertical, Size=md",
-    "variantCount": 6
+    "builder": "authoring/adapters/figma/radio-group-master.plugin.js, then authoring/adapters/figma/radio-group-slot.plugin.js",
+    "defaultVariant": "Orientation=vertical",
+    "variantCount": 2
   },
   "properties": {
     "Label#292:7": {
       "type": "TEXT",
       "default": "Delivery speed",
       "layer": "Label (accessible name, not shown)"
+    },
+    "Options#337:0": {
+      "type": "SLOT",
+      "layer": "Options (one slot per variant, both bound)",
+      "settings": {
+        "minChildren": 2,
+        "allowPreferredValuesOnly": true
+      },
+      "preferredValues": [
+        "Radio 290:257 (COMPONENT_SET key b93a4acaefe9260a6edea662546c3bc600bc9578)"
+      ],
+      "default": "Radio 1, Radio 2 (selected), Radio 3: Radio md"
     },
     "Orientation": {
       "type": "VARIANT",
@@ -30,81 +42,28 @@
         "vertical",
         "horizontal"
       ]
-    },
-    "Size": {
-      "type": "VARIANT",
-      "default": "md",
-      "options": [
-        "md",
-        "sm",
-        "lg"
-      ]
-    },
-    "Show option 3#325:0": {
-      "type": "BOOLEAN",
-      "default": true,
-      "layer": "Option 3 (visible)"
-    },
-    "Show option 4#325:7": {
-      "type": "BOOLEAN",
-      "default": false,
-      "layer": "Option 4 (visible)"
-    },
-    "Show option 5#325:14": {
-      "type": "BOOLEAN",
-      "default": false,
-      "layer": "Option 5 (visible)"
-    },
-    "Show option 6#325:21": {
-      "type": "BOOLEAN",
-      "default": false,
-      "layer": "Option 6 (visible)"
-    },
-    "Show option 7#325:28": {
-      "type": "BOOLEAN",
-      "default": false,
-      "layer": "Option 7 (visible)"
-    },
-    "Show option 8#325:35": {
-      "type": "BOOLEAN",
-      "default": false,
-      "layer": "Option 8 (visible)"
     }
   },
-  "exposedInstances": {
-    "Option 1": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
-    "Option 2": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
-    "Option 3": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
-    "Option 4": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
-    "Option 5": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
-    "Option 6": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
-    "Option 7": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel",
-    "Option 8": "Radio 290:257 (isExposedInstance): Label, Description, Selection and State set from the group panel"
-  },
   "layers": [
-    "Option 1 … Option 8 (instances of Radio 290:257 of the group size, exposed; options 3 to 8 visible = Show option N, Option 2 selected)",
+    "Options (SLOT, carries the layout and the gap bindings; Radio 1–3 by default)",
     "Label (accessible name, not shown) (hidden text layer, typography/label/md, behind Label)"
   ],
   "bindings": {
-    "vertical itemSpacing": "space/content/sm",
-    "horizontal itemSpacing": "space/content/lg",
-    "horizontal counterAxisSpacing (wrap)": "space/content/sm"
+    "Options slot, vertical: itemSpacing": "space/content/sm",
+    "Options slot, horizontal: itemSpacing": "space/content/lg",
+    "Options slot, horizontal: counterAxisSpacing (wrap)": "space/content/sm"
   },
   "adapterVariables": {},
   "variants": {
-    "Orientation=vertical, Size=md": "292:165",
-    "Orientation=vertical, Size=sm": "292:192",
-    "Orientation=vertical, Size=lg": "292:219",
-    "Orientation=horizontal, Size=md": "292:246",
-    "Orientation=horizontal, Size=sm": "292:273",
-    "Orientation=horizontal, Size=lg": "292:300"
+    "Orientation=vertical": "292:165",
+    "Orientation=horizontal": "292:246"
   },
   "specification": {
-    "id": "305:780",
+    "id": "338:844",
     "name": "RadioGroup — Specification",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=305-780",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=338-844",
     "builder": "authoring/adapters/figma/forms-spec.plugin.js (IDS ['radio-group'])",
-    "anatomyBoard": "315:2114",
+    "anatomyBoard": "338:1001",
     "uses": {
       "_Spec/Callout": "115:6",
       "_Spec/Marker": "115:8",
@@ -136,6 +95,14 @@
     {
       "date": "2026-10-28",
       "change": "Options as properties (user: designers should add options without detaching): radio-group-options.plugin.js renamed Radio 1–3 to Option 1–3, added Option 4–8 (copies of Option 3), exposed the eight options and bound options 3 to 8 to the new booleans Show option 3 … Show option 8 (3 on by default). Checked: an option’s selection and label survive a change of Size."
+    },
+    {
+      "date": "2026-10-28",
+      "change": "Options in a Figma slot (user: the eight hidden options were \"trop saturé\"; use slots): radio-group-slot.plugin.js recorded the 30 instances of the forms pages, swapped the 5 sm/lg instances to md, removed the Size variants (a slot cannot pass the group size to its content: Size is set on each Radio), created the SLOT property Options shared by both variants (min 2, Radio only), moved the gap bindings onto the slot, deleted Show option 3–8 and refilled every instance with its options (30/30, no limit violation, nested Field controls included). Specification page rebuilt (338:844, anatomy 338:1001). Parity re-measured on the slot: 36 records, 0 failures."
     }
-  ]
+  ],
+  "slots": {
+    "Orientation=vertical": "337:6048",
+    "Orientation=horizontal": "337:6116"
+  }
 }

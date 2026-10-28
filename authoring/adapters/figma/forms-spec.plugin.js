@@ -314,9 +314,9 @@ const swapControl = (field, id, v = {}, p = {}) => {
   );
   return setProps(ctl, p);
 };
-// Set properties on every radio of a RadioGroup instance.
+// Set properties on every radio of a RadioGroup instance (the Radio instances in its Options slot).
 const radios = (group, p) => {
-  for (const r of group.children.filter((n) => n.type === 'INSTANCE' && /^Option \d$/.test(n.name))) setProps(r, p);
+  for (const r of group.findAllWithCriteria({ types: ['SLOT'] })[0].children) setProps(r, p);
   return group;
 };
 const surface = (name, dir = 'VERTICAL', gap = 12, pad = 20) => {
@@ -391,7 +391,7 @@ const drawBoard = async (A) => {
   dg.appendChild(inst);
   inst.x = Math.round((W - inst.width) / 2 - (A.shift || 0));
   inst.y = 96;
-  // A layer by name, or a path “Option 2/Control”; '' is the instance.
+  // A layer by name, or a path “Radio 2/Control”; '' is the instance.
   const node = (name) =>
     name
       .split('/')
@@ -694,13 +694,13 @@ ANATOMY['radio-group'] = () => {
     zoom: 3,
     instance: () => rg(),
     pins: [
-      [1, 'Option 1', 'right', 0],
-      [2, 'Option 2/Control', 'left', 0],
-      [3, 'Option 3', 'right', 0]
+      [1, 'Radio 1', 'right', 0],
+      [2, 'Radio 2/Control', 'left', 0],
+      [3, 'Radio 3', 'right', 0]
     ],
-    dims: [{ k: 'y', a: ['Option 1', 'b'], b: ['Option 2', 't'], c: 'A', side: 'left' }],
+    dims: [{ k: 'y', a: ['Radio 1', 'b'], b: ['Radio 2', 't'], c: 'A', side: 'left' }],
     legend: [
-      ['1', 'Radio: one option, a Radio instance of the group’s size. Its parts are on the Radio page.'],
+      ['1', 'Radio: one option, a Radio instance in the Options slot. Its parts are on the Radio page.'],
       ['2', 'Selected radio: exactly one radio is on; selecting another turns it off.'],
       [
         '3',
@@ -714,10 +714,10 @@ ANATOMY['radio-group'] = () => {
     real: () => [
       [rg(), 'vertical (default)'],
       [rg({ Orientation: 'horizontal' }), 'horizontal'],
-      [rg({ Size: 'sm' }), 'sm']
+      [radios(rg(), { Size: 'sm' }), 'sm']
     ],
     figma:
-      'In Figma, Orientation and Size are variants; the radios inside take the group’s size. Select one radio (Selection on) and keep the others off; for a readonly, invalid or disabled group, set that State on every radio. Label is the group’s accessible name when it is used without a Field; it is not shown. Options 1 and 2 always show; Show option 3 … Show option 8 add options, and each option is exposed: set its label, selection and state from the group’s panel.'
+      'In Figma, Orientation is a variant and Options is a slot: add, remove or reorder Radio instances in it (two at least) and give them all the same Size (the code sets it once on the group). Select one radio (Selection on) and keep the others off; for a readonly, invalid or disabled group, set that State on every radio. Label is the group’s accessible name when it is used without a Field; it is not shown.'
   };
 };
 // </anatomy:radio-group>
@@ -1196,16 +1196,16 @@ SPECS['radio-group'] = () => {
     path: 'FORMS / RADIO GROUP',
     intro:
       'A radio group asks for exactly one choice among a few options that are all visible: a delivery speed, a plan, a payment method. It holds Radio options, stacks them or places them on a wrapping row, and is a single stop for the keyboard: the arrow keys move the selection. Once a radio is selected, the user cannot return to no selection. One on/off option is a Checkbox.',
-    hero: () => [rg({ Size: 'lg' }), rg({ Orientation: 'horizontal', Size: 'lg' })],
+    hero: () => [radios(rg(), { Size: 'lg' }), radios(rg({ Orientation: 'horizontal' }), { Size: 'lg' })],
     anatomy: ANATOMY['radio-group'](),
     sections: [
       [
         'Variants',
-        'Orientation vertical (the default) stacks the radios; horizontal places them on one line and wraps when the width runs out. Size (sm, md, lg) applies to every radio. The brand, the light or dark appearance and the density come from the modes of the frame.',
+        'Orientation vertical (the default) stacks the radios; horizontal places them on one line and wraps when the width runs out. Size (sm, md, lg) applies to every radio (in Figma, set it on each radio of the slot). The brand, the light or dark appearance and the density come from the modes of the frame.',
         (c) => {
           const r = card('Orientation and size', 'HORIZONTAL', 40);
           r.counterAxisAlignItems = 'MIN';
-          for (const s of ['sm', 'md', 'lg']) r.appendChild(caption(rg({ Size: s }), `vertical · ${s}`));
+          for (const s of ['sm', 'md', 'lg']) r.appendChild(caption(radios(rg(), { Size: s }), `vertical · ${s}`));
           r.appendChild(caption(rg({ Orientation: 'horizontal' }), 'horizontal · md'));
           c.appendChild(r);
           r.layoutSizingHorizontal = 'FILL';
@@ -1221,7 +1221,7 @@ SPECS['radio-group'] = () => {
           r.appendChild(caption(rg(), 'default'));
           const f = rg();
           setProps(
-            f.findOne((n) => n.name === 'Option 2'),
+            f.findOne((n) => n.name === 'Radio 2'),
             { Focus: true }
           );
           r.appendChild(caption(f, 'focus on the selected radio'));
@@ -1261,17 +1261,14 @@ SPECS['radio-group'] = () => {
           const f2 = mk('field', {}, { Label: 'Billing', 'Show description': false });
           const g2 = swapControl(f2, 'radio-group', { Orientation: 'horizontal' });
           setProps(
-            g2.findOne((n) => n.name === 'Option 1'),
+            g2.findOne((n) => n.name === 'Radio 1'),
             { Label: 'Monthly' }
           );
           setProps(
-            g2.findOne((n) => n.name === 'Option 2'),
+            g2.findOne((n) => n.name === 'Radio 2'),
             { Label: 'Yearly' }
           );
-          setProps(
-            f2.findOne((n) => n.name === 'Control'),
-            { 'Show option 3': false }
-          );
+          g2.findOne((n) => n.name === 'Radio 3').remove();
           ex.appendChild(caption(f2, 'two short options, horizontal'));
           const f3 = mk(
             'field',

@@ -39,7 +39,7 @@
       "file": "TDPqojP4KvbWJlKSYc4zKC",
       "page": "forms/radio-group (288:7)",
       "componentSet": "292:327",
-      "specification": "305:780",
+      "specification": "338:844",
       "ledger": "reports/components/radio-group/figma/ledger.json",
       "parity": "reports/components/radio-group/figma/parity.json",
       "screenshots": [
@@ -49,14 +49,15 @@
       "blueprints": [
         {
           "path": "reports/components/radio-group/figma/blueprint-anatomy.png",
-          "node": "315:2114"
+          "node": "338:1001"
         }
       ],
       "builders": [
         "authoring/adapters/figma/radio-group-master.plugin.js",
         "authoring/adapters/figma/forms-spec.plugin.js",
         "authoring/adapters/figma/forms-setup.plugin.js",
-        "authoring/adapters/figma/radio-group-options.plugin.js"
+        "authoring/adapters/figma/radio-group-options.plugin.js",
+        "authoring/adapters/figma/radio-group-slot.plugin.js"
       ]
     },
     "figmaSpec": "foundations/components/forms/radio-group/figma-spec.md",
@@ -185,6 +186,14 @@
       "report": "reports/components/radio-group/figma/parity.json",
       "date": "2026-10-27",
       "note": "36 records (vertical and horizontal gaps in 18 contexts), 0 failures."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID radio-group); node authoring/adapters/figma/forms-parity-report.mjs radio-group <result>",
+      "report": "reports/components/radio-group/figma/parity.json",
+      "date": "2026-10-28",
+      "note": "After the move of the options to a Figma slot: gaps read on the Options slot, 36 records, 0 failures."
     }
   ],
   "decisionsTaken": [
