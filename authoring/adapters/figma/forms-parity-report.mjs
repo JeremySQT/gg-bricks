@@ -92,6 +92,19 @@ const CONFIG = {
     }
   },
   'radio-group': { fields: 1, exact: { gap: [0, px] }, num: {} },
+  'checkbox-group': {
+    fields: 6,
+    exact: {
+      surface: [0, hex],
+      boxShadow: [1, border],
+      mark: [2, hex],
+      labelColor: [3, hex],
+      outline: [4, outline],
+      fontSize: [5, px],
+      gap: [0, px]
+    },
+    num: { size: [0, T] }
+  },
   'input-text': {
     fields: 8,
     exact: { ...fieldExact, lineHeight: [7, px] },
@@ -172,6 +185,16 @@ const NOTES = {
   'radio-group': {
     gap: 'vertical: itemSpacing space/content/sm; horizontal: wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm'
   },
+  'checkbox-group': {
+    surface: 'Checkbox in the Options slot: Control fill bound to color/choice/{off|on}/{state}/surface',
+    boxShadow: 'Control inside stroke bound to color/choice/{off|on}/{state}/border and border/width/default',
+    mark: 'Mark glyph fill bound to color/choice/on/{state}/content',
+    labelColor: 'Label fill bound to color/content/primary (disabled: color/content/disabled)',
+    outline: 'Focus ring frame 2 px outside the Control, bound to color/focus/ring and focus/width, shown by Focus',
+    fontSize: 'Label in typography/body/{size}',
+    size: 'Control bound to size/choice/{size} (Size set on the checkbox of the slot)',
+    gap: 'Options slot: vertical itemSpacing space/content/sm; horizontal wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm'
+  },
   'input-text': {
     surface: 'root fill bound to color/field/{state}/surface',
     content: 'Value fill bound to color/field/{state}/content (Content=value)',
@@ -247,7 +270,7 @@ const keyed = records.map((r) => {
 // Checkbox off: no mark. Textarea pairs (1 row, key #1 at md, #0 at sm and lg): no placeholder attribute.
 const pair = (r, key) => id === 'textarea' && r.state === 'default' && (r.props.size !== 'md' || key.endsWith('#1'));
 const skip = (r, key) =>
-  (id === 'checkbox' && r.property === 'mark' && r.props.selection === 'off') ||
+  ((id === 'checkbox' || id === 'checkbox-group') && r.property === 'mark' && r.props.selection === 'off') ||
   (r.property === 'placeholder' && pair(r, key));
 const expected = {};
 for (const { r, key } of keyed) {

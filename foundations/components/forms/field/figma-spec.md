@@ -11,12 +11,12 @@
 
 ## Mapping from the contract
 
-| Contract                          | Figma                                                                                                                   |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `invalid`, `disabled`             | Variant State (default, invalid, disabled)                                                                              |
-| `label`, `description`, `message` | Text properties **Label**, **Description**, **Message**; boolean **Show description**                                   |
-| `required`                        | Boolean **Required** (asterisk)                                                                                         |
-| slot `control`                    | Exposed InputText instance **Control** (`293:1046`): swap it for a Textarea, Checkbox or RadioGroup in the layers panel |
+| Contract                          | Figma                                                                                                                                  |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `invalid`, `disabled`             | Variant State (default, invalid, disabled)                                                                                             |
+| `label`, `description`, `message` | Text properties **Label**, **Description**, **Message**; boolean **Show description**                                                  |
+| `required`                        | Boolean **Required** (asterisk)                                                                                                        |
+| slot `control`                    | Exposed InputText instance **Control** (`293:1046`): swap it for a Textarea, Checkbox, RadioGroup or CheckboxGroup in the layers panel |
 
 Every color, dimension, radius, stroke and typography value of the masters is bound to a variable of the Brand, Appearance and Density collections or to an adapter variable of the hidden **Components** collection; brand, appearance and density are chosen by the consuming frame's variable modes.
 

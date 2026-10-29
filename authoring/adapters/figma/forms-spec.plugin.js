@@ -18,6 +18,7 @@ const PAGES = {
   'input-text': ['288:5', 'InputText', '293:1046'],
   radio: ['288:6', 'Radio', '290:257'],
   'radio-group': ['288:7', 'RadioGroup', '292:327'],
+  'checkbox-group': ['347:243', 'CheckboxGroup', '347:303'],
   switch: ['288:8', 'Switch', '291:434'],
   textarea: ['288:9', 'Textarea', '294:291']
 };
@@ -313,8 +314,8 @@ const swapControl = (field, id, v = {}, p = {}) => {
   );
   return setProps(ctl, p);
 };
-// Set properties on every radio of a RadioGroup instance (the Radio instances in its Options slot).
-const radios = (group, p) => {
+// Set properties on every option of a RadioGroup or CheckboxGroup instance (the instances in its Options slot).
+const options = (group, p) => {
   for (const r of group.findAllWithCriteria({ types: ['SLOT'] })[0].children) setProps(r, p);
   return group;
 };
@@ -711,13 +712,52 @@ ANATOMY['radio-group'] = () => {
     real: () => [
       [rg(), 'vertical (default)'],
       [rg({ Orientation: 'horizontal' }), 'horizontal'],
-      [radios(rg(), { Size: 'sm' }), 'sm']
+      [options(rg(), { Size: 'sm' }), 'sm']
     ],
     figma:
       'In Figma, Orientation is a variant and Options is a slot: add, remove or reorder Radio instances in it (two at least) and give them all the same Size (the code sets it once on the group). Select one radio (Selection on) and keep the others off; for a readonly, invalid or disabled group, set that State on every radio. Label is the group’s accessible name when it is used without a Field; it is not shown.'
   };
 };
 // </anatomy:radio-group>
+
+// <anatomy:checkbox-group>
+ANATOMY['checkbox-group'] = () => {
+  const cg = (v = {}, p = {}) => mk('checkbox-group', v, p);
+  return {
+    intro: 'How a checkbox group is built. The instance is enlarged three times; the real groups are shown underneath.',
+    zoom: 3,
+    instance: () => cg(),
+    pins: [
+      [1, 'Checkbox 1', 'right', 0],
+      [2, 'Checkbox 2/Control', 'left', 0],
+      [3, 'Checkbox 3', 'right', 0]
+    ],
+    dims: [{ k: 'y', a: ['Checkbox 1', 'b'], b: ['Checkbox 2', 't'], c: 'A', side: 'left' }],
+    legend: [
+      ['1', 'Checkbox: one option, a Checkbox instance in the Options slot. Its parts are on the Checkbox page.'],
+      [
+        '2',
+        'Any number of checkboxes can be checked, none included; the value lists the checked ones in the order of the page.'
+      ],
+      [
+        '3',
+        'Order: the checkboxes follow the order of the source; each one is a stop for the Tab key, Space toggles it.'
+      ],
+      [
+        'A',
+        'Gap: vertical, space/content/sm (4, 8 or 12 px in compact, standard and comfortable density). Horizontal: space/content/lg between checkboxes (12, 16 or 24 px) and space/content/sm between lines.'
+      ]
+    ],
+    real: () => [
+      [cg(), 'vertical (default)'],
+      [cg({ Orientation: 'horizontal' }), 'horizontal'],
+      [options(cg(), { Size: 'sm' }), 'sm']
+    ],
+    figma:
+      'In Figma, Orientation is a variant and Options is a slot: add, remove or reorder Checkbox instances in it (two at least) and give them all the same Size (the code sets it once on the group). Check any number of them; for a readonly, invalid or disabled group, set that State on every checkbox. Checkboxes of a group are never indeterminate: a select-all checkbox stays outside the group. Label is the group’s accessible name when it is used without a Field; it is not shown.'
+  };
+};
+// </anatomy:checkbox-group>
 
 // <anatomy:switch>
 ANATOMY['switch'] = () => {
@@ -919,7 +959,10 @@ ANATOMY['field'] = () => {
       ],
       ['2', 'Required indicator: an asterisk after a space, in the secondary color; hidden from assistive technology.'],
       ['3', 'Description (optional): body/sm in the secondary color; the accessible description of the control.'],
-      ['4', 'Control: an InputText, a Textarea, a RadioGroup or a Checkbox, in the state of the field.'],
+      [
+        '4',
+        'Control: an InputText, a Textarea, a RadioGroup, a CheckboxGroup or a Checkbox, in the state of the field.'
+      ],
       [
         '5',
         'Message icon: warning-circle at size/icon/sm in the danger icon color, centered on the first line of the message and placed by its drawing.'
@@ -936,7 +979,7 @@ ANATOMY['field'] = () => {
       [fd({ State: 'disabled' }, {}, 240), 'disabled']
     ],
     figma:
-      'In Figma, State is a variant (default, invalid, disabled). Label, Description and Message are text properties; Required shows the asterisk and Show description the help text. The Control is an exposed InputText: set its options from the Field instance, or swap it for a Textarea, a Checkbox or a RadioGroup in the layers panel, and set the control’s State to match the field (the code does it for you). The field text keeps its size whatever the control size.'
+      'In Figma, State is a variant (default, invalid, disabled). Label, Description and Message are text properties; Required shows the asterisk and Show description the help text. The Control is an exposed InputText: set its options from the Field instance, or swap it for a Textarea, a Checkbox, a RadioGroup or a CheckboxGroup in the layers panel, and set the control’s State to match the field (the code does it for you). The field text keeps its size whatever the control size.'
   };
 };
 // </anatomy:field>
@@ -1193,7 +1236,7 @@ SPECS['radio-group'] = () => {
     path: 'FORMS / RADIO GROUP',
     intro:
       'A radio group asks for exactly one choice among a few options that are all visible: a delivery speed, a plan, a payment method. It holds Radio options, stacks them or places them on a wrapping row, and is a single stop for the keyboard: the arrow keys move the selection. Once a radio is selected, the user cannot return to no selection. One on/off option is a Checkbox.',
-    hero: () => [radios(rg(), { Size: 'lg' }), radios(rg({ Orientation: 'horizontal' }), { Size: 'lg' })],
+    hero: () => [options(rg(), { Size: 'lg' }), options(rg({ Orientation: 'horizontal' }), { Size: 'lg' })],
     anatomy: ANATOMY['radio-group'](),
     sections: [
       [
@@ -1202,7 +1245,7 @@ SPECS['radio-group'] = () => {
         (c) => {
           const r = card('Orientation and size', 'HORIZONTAL', 40);
           r.counterAxisAlignItems = 'MIN';
-          for (const s of ['sm', 'md', 'lg']) r.appendChild(caption(radios(rg(), { Size: s }), `vertical · ${s}`));
+          for (const s of ['sm', 'md', 'lg']) r.appendChild(caption(options(rg(), { Size: s }), `vertical · ${s}`));
           r.appendChild(caption(rg({ Orientation: 'horizontal' }), 'horizontal · md'));
           c.appendChild(r);
           r.layoutSizingHorizontal = 'FILL';
@@ -1222,7 +1265,8 @@ SPECS['radio-group'] = () => {
             { Focus: true }
           );
           r.appendChild(caption(f, 'focus on the selected radio'));
-          for (const st of ['readonly', 'invalid', 'disabled']) r.appendChild(caption(radios(rg(), { State: st }), st));
+          for (const st of ['readonly', 'invalid', 'disabled'])
+            r.appendChild(caption(options(rg(), { State: st }), st));
           c.appendChild(r);
           r.layoutSizingHorizontal = 'FILL';
         }
@@ -1273,7 +1317,7 @@ SPECS['radio-group'] = () => {
             { Label: 'Delivery speed', Required: true, Message: 'Choose a delivery speed.', 'Show description': false }
           );
           const g3 = swapControl(f3, 'radio-group');
-          radios(g3, { State: 'invalid', Selection: 'off' });
+          options(g3, { State: 'invalid', Selection: 'off' });
           ex.appendChild(caption(f3, 'required, nothing selected after submit'));
         }
       ]
@@ -1281,6 +1325,140 @@ SPECS['radio-group'] = () => {
   };
 };
 // </spec:radio-group>
+
+// <spec:checkbox-group>
+SPECS['checkbox-group'] = () => {
+  const cg = (v = {}, p = {}) => mk('checkbox-group', v, p);
+  // A checkbox of the default size appended to the Options slot of a group instance.
+  const addBox = (group, label, sel = 'off') => {
+    const box = mk('checkbox', { Selection: sel }, { Label: label });
+    group.findAllWithCriteria({ types: ['SLOT'] })[0].appendChild(box);
+    return box;
+  };
+  const label = (group, n, l, p = {}) =>
+    setProps(
+      group.findOne((x) => x.name === `Checkbox ${n}`),
+      { Label: l, ...p }
+    );
+  return {
+    path: 'FORMS / CHECKBOX GROUP',
+    intro:
+      'A checkbox group gathers several related checkboxes that answer one question, any number of which can be checked: notification channels, filters, delivery days. It stacks them or places them on a wrapping row; every checkbox stays its own stop for the keyboard and Space toggles it. A required group asks for at least one, and the Field says so in words. One independent option is a Checkbox; exactly one choice is a RadioGroup.',
+    hero: () => [options(cg(), { Size: 'lg' }), options(cg({ Orientation: 'horizontal' }), { Size: 'lg' })],
+    anatomy: ANATOMY['checkbox-group'](),
+    sections: [
+      [
+        'Variants',
+        'Orientation vertical (the default) stacks the checkboxes; horizontal places them on one line and wraps when the width runs out. Size (sm, md, lg) applies to every checkbox (in Figma, set it on each checkbox of the slot). The brand, the light or dark appearance and the density come from the modes of the frame.',
+        (c) => {
+          const r = card('Orientation and size', 'HORIZONTAL', 40);
+          r.counterAxisAlignItems = 'MIN';
+          for (const s of ['sm', 'md', 'lg']) r.appendChild(caption(options(cg(), { Size: s }), `vertical · ${s}`));
+          r.appendChild(caption(cg({ Orientation: 'horizontal' }), 'horizontal · md'));
+          c.appendChild(r);
+          r.layoutSizingHorizontal = 'FILL';
+          // Narrow context columns: a short third label.
+          contexts(c, () => {
+            const g = cg();
+            label(g, 3, 'Push');
+            return [g];
+          });
+        }
+      ],
+      [
+        'States',
+        'The group passes its state to every checkbox: readonly keeps the checked boxes and lets the keyboard reach them without changing them, invalid paints every box in the danger color (the message comes from the Field), disabled dims the group and removes it from the keyboard order. Hover and focus apply to one checkbox at a time.',
+        (c) => {
+          const r = card('Group states', 'HORIZONTAL', 40);
+          r.counterAxisAlignItems = 'MIN';
+          r.appendChild(caption(cg(), 'default'));
+          const f = cg();
+          label(f, 2, 'Text message', { Focus: true });
+          r.appendChild(caption(f, 'focus on one checkbox'));
+          for (const st of ['readonly', 'invalid', 'disabled'])
+            r.appendChild(caption(options(cg(), { State: st }), st));
+          c.appendChild(r);
+          r.layoutSizingHorizontal = 'FILL';
+        }
+      ],
+      [
+        'Behavior & sizing',
+        'A vertical group is as wide as its longest checkbox. A horizontal group wraps its checkboxes on further lines, still in source order, when its width runs out: in Figma, give the instance a fixed width. The density changes the gaps; the checkboxes keep their size.',
+        (c) => {
+          densities(c, () => [cg()], {
+            compact: 'gap 4 px',
+            standard: 'gap 8 px',
+            comfortable: 'gap 12 px'
+          });
+          const w = card('Wrapping', 'VERTICAL', 16);
+          const h = cg({ Orientation: 'horizontal' });
+          h.resize(220, h.height);
+          w.appendChild(caption(h, 'horizontal, fixed width 220 px: the third checkbox wraps'));
+          c.appendChild(w);
+          w.layoutSizingHorizontal = 'FILL';
+        }
+      ],
+      [
+        'Usage examples',
+        'Put the group in a Field: the field label asks the question and names the group, the description says how many answers are expected (Select at least one channel), the message explains what is missing. The group never validates: the application decides when a required group is invalid. A select-all checkbox stays outside the group, above it; its state follows the group. The full guidance will be in the documentation page of the component.',
+        (c) => {
+          const ex = card('Examples', 'HORIZONTAL', 24);
+          ex.counterAxisAlignItems = 'MIN';
+          ex.layoutWrap = 'WRAP';
+          ex.counterAxisSpacing = 24;
+          c.appendChild(ex);
+          ex.layoutSizingHorizontal = 'FILL';
+          const f1 = mk(
+            'field',
+            {},
+            { Label: 'How can we reach you?', Description: 'Select at least one channel.', Required: true }
+          );
+          const g1 = swapControl(f1, 'checkbox-group');
+          label(g1, 1, 'Email');
+          label(g1, 2, 'Phone call');
+          label(g1, 3, 'Post');
+          ex.appendChild(caption(f1, 'required: at least one, said in words'));
+          const f2 = mk(
+            'field',
+            { State: 'invalid' },
+            {
+              Label: 'How can we reach you?',
+              Description: 'Select at least one channel.',
+              Required: true,
+              Message: 'Select at least one channel.'
+            }
+          );
+          const g2 = swapControl(f2, 'checkbox-group');
+          label(g2, 1, 'Email');
+          label(g2, 2, 'Phone call');
+          label(g2, 3, 'Post');
+          options(g2, { State: 'invalid', Selection: 'off' });
+          ex.appendChild(caption(f2, 'nothing checked after submit'));
+          const f3 = mk('field', {}, { Label: 'Delivery days', 'Show description': false });
+          const g3 = swapControl(f3, 'checkbox-group', { Orientation: 'horizontal' });
+          label(g3, 1, 'Monday');
+          label(g3, 2, 'Tuesday', { Selection: 'on' });
+          label(g3, 3, 'Wednesday');
+          addBox(g3, 'Thursday', 'on');
+          addBox(g3, 'Friday');
+          g3.resize(240, g3.height);
+          ex.appendChild(caption(f3, 'horizontal, wrapping'));
+          const all = stack('Select all', 'VERTICAL', 8);
+          all.appendChild(mk('checkbox', { Selection: 'indeterminate' }, { Label: 'All toppings' }));
+          const g4 = cg();
+          label(g4, 1, 'Cheese', { Selection: 'off' });
+          label(g4, 2, 'Ham', { Selection: 'on' });
+          label(g4, 3, 'Mushrooms');
+          const indent = stack('Indent', 'VERTICAL', 0, [0, 0, 0, 24]);
+          indent.appendChild(g4);
+          all.appendChild(indent);
+          ex.appendChild(caption(all, 'select all outside the group'));
+        }
+      ]
+    ]
+  };
+};
+// </spec:checkbox-group>
 
 // <spec:switch>
 SPECS.switch = () => {
@@ -1671,7 +1849,7 @@ SPECS.field = () => {
   return {
     path: 'FORMS / FIELD',
     intro:
-      'A field gives one form control its visible label, an optional description, the required asterisk and the error message. It wraps an InputText, a Textarea, a RadioGroup or a Checkbox and passes its required, invalid and disabled state to it. It never validates: the application decides when it is invalid and what the message says.',
+      'A field gives one form control its visible label, an optional description, the required asterisk and the error message. It wraps an InputText, a Textarea, a RadioGroup, a CheckboxGroup or a Checkbox and passes its required, invalid and disabled state to it. It never validates: the application decides when it is invalid and what the message says.',
     hero: () => [
       fd({}, { Label: 'Email', Required: true }),
       fd({ State: 'invalid' }, { Label: 'Email', Required: true })
@@ -1717,7 +1895,7 @@ SPECS.field = () => {
       ],
       [
         'Behavior & sizing',
-        'The field fills the width it is given and its control fills the field (a Checkbox or a RadioGroup keeps its own width). The description and the message wrap and the message icon stays on their first line. In code the label wraps too; in Figma it stays on one line, so keep it short. The density changes the gaps.',
+        'The field fills the width it is given and its control fills the field (a Checkbox, a RadioGroup or a CheckboxGroup keeps its own width). The description and the message wrap and the message icon stays on their first line. In code the label wraps too; in Figma it stays on one line, so keep it short. The density changes the gaps.',
         (c) => {
           densities(c, () => [fd({ State: 'invalid' }, { Required: true }, 280)], {
             compact: 'gaps 2 and 4 px',

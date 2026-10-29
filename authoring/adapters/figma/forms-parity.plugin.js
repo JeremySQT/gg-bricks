@@ -21,6 +21,7 @@ const PAGE = {
   'input-text': '288:5',
   radio: '288:6',
   'radio-group': '288:7',
+  'checkbox-group': '347:243',
   switch: '288:8',
   textarea: '288:9'
 }[ID];
@@ -30,6 +31,7 @@ const SET = {
   'input-text': 'InputText',
   radio: 'Radio',
   'radio-group': 'RadioGroup',
+  'checkbox-group': 'CheckboxGroup',
   switch: 'Switch',
   textarea: 'Textarea'
 }[ID];
@@ -45,11 +47,13 @@ const set = await figma.getNodeByIdAsync(
     'input-text': '293:1046',
     radio: '290:257',
     'radio-group': '292:327',
+    'checkbox-group': '347:303',
     switch: '291:434',
     textarea: '294:291'
   }[ID]
 );
 if (set.name !== SET) throw new Error('unexpected set ' + set.name);
+const CHECKBOX = await figma.getNodeByIdAsync('289:428');
 const PROPS = Object.keys(set.componentPropertyDefinitions);
 const P = (name) => PROPS.find((k) => k.split('#')[0] === name);
 const variant = (name) => {
@@ -147,6 +151,30 @@ if (ID === 'checkbox' || ID === 'radio' || ID === 'switch') {
   );
 } else if (ID === 'radio-group') {
   for (const o of ['horizontal', 'vertical']) add({ orientation: o }, 'default', `Orientation=${o}`);
+} else if (ID === 'checkbox-group') {
+  // The first checkbox of the Options slot takes the variant of the case (the review page measures the checkboxes
+  // of a group per size, condition and selection); the gaps are those of the slot.
+  const box = (s, sel, st) => `Size=${s}, Selection=${sel}, State=${st}`;
+  for (const s of S)
+    for (const st of ['default', 'readonly', 'disabled', 'invalid'])
+      for (const sel of ['off', 'on'])
+        add({ size: s, selection: sel }, st, 'Orientation=vertical', {}, { box: box(s, sel, st) });
+  for (const sel of ['off', 'on'])
+    add(
+      { size: 'md', selection: sel },
+      'hover',
+      'Orientation=vertical',
+      {},
+      { box: box('md', sel, 'hover'), rep: true }
+    );
+  add(
+    { size: 'md', selection: 'off' },
+    'focus',
+    'Orientation=vertical',
+    {},
+    { box: box('md', 'off', 'default'), focus: true, rep: true }
+  );
+  for (const o of ['vertical', 'horizontal']) add({ orientation: o }, 'default', `Orientation=${o}`, {}, { gap: true });
 } else if (ID === 'input-text') {
   const v = (s, content, st) => `Size=${s}, Action=none, Content=${content}, State=${st}`;
   // Sizes beside Buttons: leading magnifying glass, placeholder; then the empty inputs of the conditions.
@@ -271,6 +299,32 @@ const measure = async (inst, c, valueInst) => {
         r3(inst.width),
         r3(ax(inst) + inst.width - ax(track) - track.width)
       ]
+    };
+  }
+  if (ID === 'checkbox-group') {
+    const slot = inst.findAllWithCriteria({ types: ['SLOT'] })[0];
+    if (c.gap) {
+      const gap =
+        slot.layoutMode === 'HORIZONTAL'
+          ? `${await res(slot, 'counterAxisSpacing')} ${await res(slot, 'itemSpacing')}`
+          : `${await res(slot, 'itemSpacing')}`;
+      return { exact: [gap, '', '', '', '', ''], num: [] };
+    }
+    const cb = slot.children[0];
+    cb.swapComponent(CHECKBOX.children.find((v) => v.name === c.box));
+    if (c.focus) cb.setProperties({ [Object.keys(cb.componentProperties).find((k) => k.startsWith('Focus'))]: true });
+    const ctl = named(cb, 'Control');
+    const label = text(cb, 'Label');
+    return {
+      exact: [
+        await paint(ctl),
+        await stroke(ctl),
+        await glyph(named(cb, 'Mark')),
+        await paint(label),
+        await outline(named(cb, 'Focus ring')),
+        await res(label, 'fontSize')
+      ],
+      num: [r3(ctl.width)]
     };
   }
   if (ID === 'radio-group') {

@@ -12,6 +12,7 @@ const SPECS = [
   ['149:4', 'Content', 'Icon'],
   ['149:1569', 'Content', 'Shortcut'],
   ['288:3', 'Forms', 'Checkbox'],
+  ['347:243', 'Forms', 'CheckboxGroup'],
   ['288:4', 'Forms', 'Field'],
   ['288:5', 'Forms', 'InputText'],
   ['288:6', 'Forms', 'Radio'],

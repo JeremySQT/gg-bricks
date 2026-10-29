@@ -31,8 +31,31 @@
       "sha256": "335fb582b8a283cb2fb32e483e6a89c2eceb16a874ff0966e8431f4fcbeb3bcb"
     },
     "tokens": ["foundations/tokens/base/semantic/common.tokens.json"],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/checkbox-group (347:243)",
+      "library": "Forms (343:1640), section CheckboxGroup (347:244)",
+      "componentSet": "347:303",
+      "specification": "348:2",
+      "ledger": "reports/components/checkbox-group/figma/ledger.json",
+      "parity": "reports/components/checkbox-group/figma/parity.json",
+      "screenshots": [
+        "reports/components/checkbox-group/figma/master-set.png",
+        "reports/components/checkbox-group/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/checkbox-group/figma/blueprint-anatomy.png",
+          "node": "348:212"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/checkbox-group-master.plugin.js",
+        "authoring/adapters/figma/forms-spec.plugin.js",
+        "authoring/adapters/figma/spec-master-links.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/checkbox-group/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "entry": "packages/svelte/src/components/checkbox-group/CheckboxGroup.svelte",
@@ -130,6 +153,14 @@
       "command": "npm run build && npm run build:preview checkbox-group",
       "date": "2026-10-28",
       "note": "dist/previews/checkbox-group.html mounts from file:// without errors."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID checkbox-group); node authoring/adapters/figma/forms-parity-report.mjs checkbox-group <result>",
+      "report": "reports/components/checkbox-group/figma/parity.json",
+      "date": "2026-10-29",
+      "note": "3144 records in 18 contexts, 0 failures (224 justified: no mark on an unchecked box)."
     }
   ],
   "decisionsTaken": [
@@ -144,7 +175,7 @@
     "Figma: same slot model as RadioGroup, now approved (2026-10-29); the master goes to the Forms library page in a section CheckboxGroup. User in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-29): \"Très bien pour moi, je valide cette organisation et l'approche pour le RadioButtonGroup\""
   ],
   "openDecisions": [],
-  "nextAction": "Figma master on the Forms library page (Options slot of Checkbox, Orientation variants), specification page forms/checkbox-group, parity; then the Figma parity gate.",
+  "nextAction": "Figma parity gate (with the wave 2 gate), then documentation (ggb-docs).",
   "implementationNotes": [
     "Wave 2 addition, branch wave/2-form-foundations, contract drafted on 2026-10-28. Bits UI 2.19.3 provides Checkbox.Group (value string[], role group); its required puts aria-required on every checkbox, which the contract excludes.",
     "Implemented on 2026-10-28: CheckboxGroup.svelte, Checkbox value amendment, Field fixture; review page examples/checkbox-group."
