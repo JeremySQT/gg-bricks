@@ -2,7 +2,7 @@
 
 ## Overview
 
-- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), page **actions/icon-button** (`211:2`), after actions/button; it holds the master and this specification.
+- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), component page **actions/icon-button** (`211:2`): this specification and its instances. Master: library page **Actions** (`343:2`), section **IconButton** ([`343:4`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=343-4)), since 2026-10-29; the specification links to the section under its title.
 - Master: component set **IconButton** ([`211:1167`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=211-1167)), 135 variants, built by `authoring/adapters/figma/icon-button-master.plugin.js`.
 - Specification frame: **IconButton — Specification** ([`219:1828`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=219-1828)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples, in plain sentences for designers; built by `authoring/adapters/figma/icon-button-spec.plugin.js`. Its instances are explanatory, never masters.
 - Reproduces: contract `foundations/components/actions/icon-button/contract.json` (sha256 `b9298af0…`, approved 2026-10-17) and the implementation approved on 2026-10-19 (`packages/svelte/src/components/icon-button`).

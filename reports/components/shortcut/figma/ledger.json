@@ -221,6 +221,10 @@
     {
       "date": "2026-10-26",
       "change": "Internal part _Shortcut/Nested (278:1153) created (authoring/adapters/figma/nested-parts.plugin.js). User decision at the wave 1 Figma parity review (2026-10-26, option 2): inside a host, a Counter or Shortcut must not show its Size; Counter and Shortcut keep their Size for use on their own. Equal to Shortcut in 18 contexts × 3 sizes × 4 variants (216 cases, 0 differences). Shortcut itself is unchanged apart from its description, which points to the nested part."
+    },
+    {
+      "date": "2026-10-29",
+      "change": "Library pages (user decision): the master and its internal parts moved to the section Shortcut of the Content library page (IDs kept, instances linked; library-pages.plugin.js); the component page keeps the specification, which now links to the section (spec-master-links.plugin.js)."
     }
   ],
   "nestedPart": {
@@ -245,5 +249,24 @@
     "bindings": "as the md Shortcut, without the explicit Components mode: the host's mode sets the size",
     "use": "inside a host only (the trailing item of Button, 91:7)",
     "screenshot": "reports/components/shortcut/figma/nested-set.png"
+  },
+  "library": {
+    "page": {
+      "name": "Content",
+      "id": "343:1635"
+    },
+    "section": {
+      "name": "Shortcut",
+      "id": "343:1639"
+    },
+    "members": [
+      "151:110",
+      "149:1581",
+      "149:1582",
+      "278:1153"
+    ],
+    "since": "2026-10-29",
+    "builder": "authoring/adapters/figma/library-pages.plugin.js",
+    "specLink": "authoring/adapters/figma/spec-master-links.plugin.js"
   }
 }

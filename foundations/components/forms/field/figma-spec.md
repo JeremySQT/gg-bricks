@@ -2,7 +2,7 @@
 
 ## Overview
 
-- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), page **forms/field** (`288:4`); it holds the master and this specification.
+- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), component page **forms/field** (`288:4`): this specification and its instances. Master: library page **Forms** (`343:1640`), section **Field** ([`343:1642`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=343-1642)), since 2026-10-29; the specification links to the section under its title.
 - Master: component set **Field** ([`295:77`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=295-77)), 3 variants, built by `authoring/adapters/figma/field-master.plugin.js`.
 - Specification frame: **Field — Specification** ([`307:897`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=307-897)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples, in plain sentences for designers; built by `authoring/adapters/figma/forms-spec.plugin.js`. Its instances are explanatory, never masters.
 - Reproduces: contract `foundations/components/forms/field/contract.json` (sha256 `61eb96cd…`, approved 2026-10-26) and the implementation approved on 2026-10-27 (`packages/svelte/src/components/field`).

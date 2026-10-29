@@ -37,7 +37,19 @@ const REP = ['base-light-standard', 'base-dark-standard', 'brick-light-compact',
 const page = await figma.getNodeByIdAsync(PAGE);
 await figma.setCurrentPageAsync(page);
 for (const n of page.children.filter((n) => n.name.startsWith('_parity '))) n.remove();
-const set = page.children.find((n) => n.type === 'COMPONENT_SET' && n.name === SET);
+// The component set, on the Forms library page since 2026-10-29 (the temporary frames go on the component page).
+const set = await figma.getNodeByIdAsync(
+  {
+    checkbox: '289:428',
+    field: '295:77',
+    'input-text': '293:1046',
+    radio: '290:257',
+    'radio-group': '292:327',
+    switch: '291:434',
+    textarea: '294:291'
+  }[ID]
+);
+if (set.name !== SET) throw new Error('unexpected set ' + set.name);
 const PROPS = Object.keys(set.componentPropertyDefinitions);
 const P = (name) => PROPS.find((k) => k.split('#')[0] === name);
 const variant = (name) => {

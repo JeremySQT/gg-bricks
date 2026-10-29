@@ -438,6 +438,28 @@
     {
       "date": "2026-10-26",
       "change": "Trailing item (authoring/adapters/figma/nested-parts.plugin.js, part 3): _Button/Trailing reduced from Type × Size (9 variants) to Type (75:2, 75:8, 91:7); its Counter and Shortcut are the internal parts _Counter/Nested and _Shortcut/Nested, sized by the Button variant's Components mode. User decision at the wave 1 Figma parity review (2026-10-26, option 2): inside a host, a Counter or Shortcut must not show its Size; Counter and Shortcut keep their Size for use on their own. 339 trailing instances in the file kept their content (94 moved from sm/lg variants). Checked: slot geometry, content size and content color with icon, counter and shortcut in 18 contexts × 3 sizes, 1 080 checks, 0 failures. Specification: the lg counter is 1 px wider than before (tabular figures, as in the code)."
+    },
+    {
+      "date": "2026-10-29",
+      "change": "Library pages (user decision): the master and its internal parts moved to the section Button of the Actions library page (IDs kept, instances linked; library-pages.plugin.js); the component page keeps the specification, which now links to the section (spec-master-links.plugin.js)."
     }
-  ]
+  ],
+  "library": {
+    "page": {
+      "name": "Actions",
+      "id": "343:2"
+    },
+    "section": {
+      "name": "Button",
+      "id": "343:3"
+    },
+    "members": [
+      "48:1586",
+      "75:14",
+      "42:28"
+    ],
+    "since": "2026-10-29",
+    "builder": "authoring/adapters/figma/library-pages.plugin.js",
+    "specLink": "authoring/adapters/figma/spec-master-links.plugin.js"
+  }
 }

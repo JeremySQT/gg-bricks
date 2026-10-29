@@ -10,20 +10,19 @@
 const IDS = ['checkbox'];
 const ANATOMY_ONLY = false;
 figma.skipInvisibleInstanceChildren = false;
+// Component page (the specification and its instances), name, and component set (on the Forms library page,
+// in the section of the component, since 2026-10-29).
 const PAGES = {
-  checkbox: ['288:3', 'Checkbox'],
-  field: ['288:4', 'Field'],
-  'input-text': ['288:5', 'InputText'],
-  radio: ['288:6', 'Radio'],
-  'radio-group': ['288:7', 'RadioGroup'],
-  switch: ['288:8', 'Switch'],
-  textarea: ['288:9', 'Textarea']
+  checkbox: ['288:3', 'Checkbox', '289:428'],
+  field: ['288:4', 'Field', '295:77'],
+  'input-text': ['288:5', 'InputText', '293:1046'],
+  radio: ['288:6', 'Radio', '290:257'],
+  'radio-group': ['288:7', 'RadioGroup', '292:327'],
+  switch: ['288:8', 'Switch', '291:434'],
+  textarea: ['288:9', 'Textarea', '294:291']
 };
 const SETS = {};
-for (const [id, [pid, name]] of Object.entries(PAGES)) {
-  const p = await figma.getNodeByIdAsync(pid);
-  SETS[id] = p.children.find((n) => n.type === 'COMPONENT_SET' && n.name === name);
-}
+for (const [id, [, , setId]] of Object.entries(PAGES)) SETS[id] = await figma.getNodeByIdAsync(setId);
 const vars = await figma.variables.getLocalVariablesAsync();
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
 const col = (n) => cols.find((c) => c.name === n || c.name === 'Foundations · ' + n);
@@ -576,10 +575,8 @@ const build = async (ID, spec) => {
     c.layoutSizingHorizontal = 'FILL';
     fn(c);
   }
-  const set = SETS[ID];
-  set.x = root.width + 160;
-  set.y = 0;
-  return { root: root.id, h: Math.round(root.height), board: dg.id, set: set.id };
+  // The master stays in its section of the Forms library page; spec-master-links.plugin.js adds the link to it.
+  return { root: root.id, h: Math.round(root.height), board: dg.id, set: SETS[ID].id };
 };
 // Anatomy boards: one block per component (also run alone with ANATOMY_ONLY to redraw the boards in place).
 const ANATOMY = {};

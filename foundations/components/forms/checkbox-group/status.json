@@ -140,10 +140,11 @@
     "required means at least one; not exposed as aria-required on each checkbox (it would announce every option as mandatory); the Field label or description states it in words.",
     "Selection limits and a select-all child are out of scope.",
     "Required exposure (user, 2026-10-28): stated in words by the Field label or description, not as required on each checkbox.",
-    "Implementation: the Bits UI group required is not passed (it would set aria-required on every checkbox); the group sorts its value by the source order of the checkboxes; the group shares its value through the context so that the server markup shows checked boxes before hydration."
+    "Implementation: the Bits UI group required is not passed (it would set aria-required on every checkbox); the group sorts its value by the source order of the checkboxes; the group shares its value through the context so that the server markup shows checked boxes before hydration.",
+    "Figma: same slot model as RadioGroup, now approved (2026-10-29); the master goes to the Forms library page in a section CheckboxGroup. User in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-29): \"Très bien pour moi, je valide cette organisation et l'approche pour le RadioButtonGroup\""
   ],
   "openDecisions": [],
-  "nextAction": "Figma master once the RadioGroup option model with Figma slots is approved: same model for CheckboxGroup, then specification page and parity.",
+  "nextAction": "Figma master on the Forms library page (Options slot of Checkbox, Orientation variants), specification page forms/checkbox-group, parity; then the Figma parity gate.",
   "implementationNotes": [
     "Wave 2 addition, branch wave/2-form-foundations, contract drafted on 2026-10-28. Bits UI 2.19.3 provides Checkbox.Group (value string[], role group); its required puts aria-required on every checkbox, which the contract excludes.",
     "Implemented on 2026-10-28: CheckboxGroup.svelte, Checkbox value amendment, Field fixture; review page examples/checkbox-group."

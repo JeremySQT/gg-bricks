@@ -2,7 +2,7 @@
 
 ## Overview
 
-- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), page **forms/input-text** (`288:5`); it holds the master and this specification.
+- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), component page **forms/input-text** (`288:5`): this specification and its instances. Master: library page **Forms** (`343:1640`), section **InputText** ([`343:1643`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=343-1643)), since 2026-10-29; the specification links to the section under its title.
 - Master: component set **InputText** ([`293:1046`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=293-1046)), 60 variants, built by `authoring/adapters/figma/input-text-master.plugin.js`.
 - Specification frame: **InputText — Specification** ([`306:1344`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=306-1344)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples, in plain sentences for designers; built by `authoring/adapters/figma/forms-spec.plugin.js`. Its instances are explanatory, never masters.
 - Reproduces: contract `foundations/components/forms/input-text/contract.json` (sha256 `c3e5118a…`, approved 2026-10-26) and the implementation approved on 2026-10-27 (`packages/svelte/src/components/input-text`).

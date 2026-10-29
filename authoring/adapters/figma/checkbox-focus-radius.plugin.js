@@ -30,8 +30,7 @@ for (const m of brand.modes) {
   values[m.name] = (await value(V('radius/indicator'), m.modeId)) + (await value(V('focus/offset'), m.modeId));
   fr.setValueForMode(m.modeId, values[m.name]);
 }
-const page = await figma.getNodeByIdAsync('288:3');
-const set = page.children.find((n) => n.type === 'COMPONENT_SET' && n.name === 'Checkbox');
+const set = await figma.getNodeByIdAsync('289:428'); // Checkbox, Forms library page
 let rings = 0;
 for (const v of set.children) {
   const ring = v.findOne((n) => n.name === 'Focus ring');

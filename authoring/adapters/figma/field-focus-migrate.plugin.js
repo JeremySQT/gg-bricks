@@ -102,8 +102,7 @@ for (const [setId, name] of [
     );
   out[name] = { swapped, removed: focusVariants.length, variants: set.children.length };
 }
-const fieldPage = await figma.getNodeByIdAsync('288:4');
-const field = fieldPage.children.find((n) => n.type === 'COMPONENT_SET' && n.name === 'Field');
+const field = await figma.getNodeByIdAsync('295:77'); // Field, Forms library page
 for (const v of field.children)
   for (const n of v.findAll((n) => ['Header', 'Body', 'Label row'].includes(n.name))) n.clipsContent = false;
 out.field = 'Header, Body and Label row no longer clip';

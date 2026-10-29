@@ -2,7 +2,7 @@
 
 ## Overview
 
-- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), page **forms/textarea** (`288:9`); it holds the master and this specification.
+- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), component page **forms/textarea** (`288:9`): this specification and its instances. Master: library page **Forms** (`343:1640`), section **Textarea** ([`343:1647`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=343-1647)), since 2026-10-29; the specification links to the section under its title.
 - Master: component set **Textarea** ([`294:291`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=294-291)), 36 variants, built by `authoring/adapters/figma/textarea-master.plugin.js`.
 - Specification frame: **Textarea — Specification** ([`307:320`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=307-320)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples, in plain sentences for designers; built by `authoring/adapters/figma/forms-spec.plugin.js`. Its instances are explanatory, never masters.
 - Reproduces: contract `foundations/components/forms/textarea/contract.json` (sha256 `80fd0379…`, approved 2026-10-26) and the implementation approved on 2026-10-27 (`packages/svelte/src/components/textarea`).

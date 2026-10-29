@@ -7,7 +7,7 @@
   "page": {
     "name": "forms/radio",
     "id": "288:6",
-    "position": "forms pages after the content pages, in alphabetical order (authoring/adapters/figma/forms-setup.plugin.js)"
+    "holds": "the specification and its instances (since 2026-10-29)"
   },
   "componentSet": {
     "id": "290:257",
@@ -169,6 +169,26 @@
     {
       "date": "2026-10-28",
       "change": "Anatomy board redrawn (user review of the Figma parity gate): the enlarged instance is drawn in the blueprint ink (surfaces in tint/16 with tint/48 borders, text and glyphs in ink, secondary texts at 60 %, layout boxes dashed) instead of the dark appearance, and every leader is straight (vertical above or below its target, horizontal beside it). forms-spec.plugin.js with ANATOMY_ONLY."
+    },
+    {
+      "date": "2026-10-29",
+      "change": "Library pages (user decision): the master moved to the section Radio of the Forms library page (IDs kept, instances linked; library-pages.plugin.js); the component page keeps the specification, which now links to the section (spec-master-links.plugin.js)."
     }
-  ]
+  ],
+  "library": {
+    "page": {
+      "name": "Forms",
+      "id": "343:1640"
+    },
+    "section": {
+      "name": "Radio",
+      "id": "343:1644"
+    },
+    "members": [
+      "290:257"
+    ],
+    "since": "2026-10-29",
+    "builder": "authoring/adapters/figma/library-pages.plugin.js",
+    "specLink": "authoring/adapters/figma/spec-master-links.plugin.js"
+  }
 }
