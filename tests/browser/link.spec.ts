@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import fs from 'node:fs';
+import { capture, computedJson, writeEvidence } from './helpers.ts';
 
 type Token = { $type: string; $value: unknown };
 type TokenMap = Record<string, Token>;
@@ -64,7 +65,9 @@ async function measure(page: Page, selector: string) {
       glyphColor: glyph ? getComputedStyle(glyph).fill : '',
       glyphOpacity: glyph ? getComputedStyle(glyph).opacity : '',
       glyphGap: glyph ? getComputedStyle(glyph).marginInlineStart : '',
-      outline: `${c.outlineStyle} ${c.outlineWidth} ${c.outlineColor} ${c.outlineOffset}`,
+      // A hidden outline (style none) is recorded 0 px wide: Chromium versions disagree on its computed width
+      // (0 px or the specified 3 px), and the Figma parity ignores it (no focus ring layer).
+      outline: `${c.outlineStyle} ${c.outlineStyle === 'none' ? '0px' : c.outlineWidth} ${c.outlineColor} ${c.outlineOffset}`,
       radius: c.borderTopLeftRadius
     };
   });
@@ -249,11 +252,7 @@ test('computed values match the resolved tokens in every context; tone inherit t
         record(context, { tone: 'accent', destination: 'page' }, 'focus', focus);
         await page.locator('#dest-page').blur();
       }
-  fs.mkdirSync(out, { recursive: true });
-  fs.writeFileSync(
-    `${out}/computed.json`,
-    `{ "records": [\n${records.map((r) => JSON.stringify(r)).join(',\n')}\n] }\n`
-  );
+  writeEvidence(`${out}/computed.json`, computedJson(records));
   expect(records.length).toBeGreaterThan(0);
 });
 
@@ -274,12 +273,10 @@ test('forced colors use the system link color and keep the underline and the foc
   await page.keyboard.press('Shift+Tab');
   await page.keyboard.press('Tab');
   await expect(page.locator('#dest-page')).toHaveCSS('outline-style', 'solid');
-  fs.mkdirSync(out, { recursive: true });
-  await page.screenshot({ path: `${out}/forced-colors.png`, fullPage: true });
+  await capture(page, `${out}/forced-colors.png`, { fullPage: true });
 });
 
 test('automated accessibility audit and screenshots in light and dark, desktop and mobile', async ({ page }) => {
-  fs.mkdirSync(out, { recursive: true });
   for (const mode of modes) {
     await page.selectOption('#ctx-mode', mode);
     await settle(page);
@@ -288,10 +285,10 @@ test('automated accessibility audit and screenshots in light and dark, desktop a
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
       .analyze();
     expect(results.violations.flatMap((v) => v.nodes.map((n) => `${v.id}: ${n.target}`))).toEqual([]);
-    await page.screenshot({ path: `${out}/review-${mode}.png`, fullPage: true });
+    await capture(page, `${out}/review-${mode}.png`, { fullPage: true });
   }
   await page.setViewportSize({ width: 390, height: 844 });
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(0);
-  await page.screenshot({ path: `${out}/review-mobile.png`, fullPage: true });
+  await capture(page, `${out}/review-mobile.png`, { fullPage: true });
 });

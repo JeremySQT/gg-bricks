@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import fs from 'node:fs';
+import { capture, computedJson, writeEvidence } from './helpers.ts';
 
 type Token = { $type: string; $value: unknown };
 type TokenMap = Record<string, Token>;
@@ -61,11 +62,7 @@ test('sizes follow size.icon in every context and never change with density', as
             records.push({ context, props: { size }, state: 'default', part: 'box', property, value });
         }
       }
-  fs.mkdirSync(out, { recursive: true });
-  fs.writeFileSync(
-    `${out}/computed.json`,
-    `{ "records": [\n${records.map((r) => JSON.stringify(r)).join(',\n')}\n] }\n`
-  );
+  writeEvidence(`${out}/computed.json`, computedJson(records));
   expect(records.length).toBe(18 * sizes.length * 3);
 });
 
@@ -135,7 +132,6 @@ test('next to text, the box is centered on the cap height of the surrounding tex
 });
 
 test('automated accessibility audit and screenshots in light and dark', async ({ page }) => {
-  fs.mkdirSync(out, { recursive: true });
   for (const mode of modes) {
     await page.selectOption('#ctx-mode', mode);
     await settle(page);
@@ -144,8 +140,8 @@ test('automated accessibility audit and screenshots in light and dark', async ({
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
       .analyze();
     expect(results.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target).join(', ')}`)).toEqual([]);
-    await page.screenshot({ path: `${out}/review-${mode}.png`, fullPage: true });
+    await capture(page, `${out}/review-${mode}.png`, { fullPage: true });
   }
   await page.emulateMedia({ forcedColors: 'active' });
-  await page.screenshot({ path: `${out}/forced-colors.png`, fullPage: true });
+  await capture(page, `${out}/forced-colors.png`, { fullPage: true });
 });

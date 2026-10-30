@@ -36,7 +36,9 @@ export async function closeServer(): Promise<void> {
   if (serverPromise) await (await serverPromise).close();
 }
 
+/** Writes reports/components/<id>/svelte/ssr.json, only on explicit request (GGB_EVIDENCE=1), like the browser evidence. */
 export function writeSsrReport(componentId: string, checks: string[]): void {
+  if (process.env.GGB_EVIDENCE !== '1') return;
   const dir = path.join(root, 'reports/components', componentId, 'svelte');
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'ssr.json'), JSON.stringify({ result: 'passed', checks }, null, 2) + '\n');

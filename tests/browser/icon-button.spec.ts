@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import fs from 'node:fs';
+import { capture, computedJson, writeEvidence } from './helpers.ts';
 
 type Token = { $type: string; $value: unknown };
 type TokenMap = Record<string, Token>;
@@ -299,11 +300,7 @@ test('computed values match the resolved tokens for every option, state and cont
         await page.mouse.move(0, 0);
       }
   }
-  fs.mkdirSync(out, { recursive: true });
-  fs.writeFileSync(
-    `${out}/computed.json`,
-    `{ "records": [\n${records.map((r) => JSON.stringify(r)).join(',\n')}\n] }\n`
-  );
+  writeEvidence(`${out}/computed.json`, computedJson(records));
   expect(records.length).toBeGreaterThan(0);
 });
 
@@ -327,12 +324,10 @@ test('transitions follow the motion tokens and stop under reduced motion; forced
   await page.keyboard.press('Shift+Tab');
   await page.keyboard.press('Tab');
   await expect(page.locator('#card-close .ggb-icon-button__container')).toHaveCSS('outline-width', '2px');
-  fs.mkdirSync(out, { recursive: true });
-  await page.screenshot({ path: `${out}/forced-colors.png`, fullPage: true });
+  await capture(page, `${out}/forced-colors.png`, { fullPage: true });
 });
 
 test('automated accessibility audit and screenshots in light and dark, desktop and mobile', async ({ page }) => {
-  fs.mkdirSync(out, { recursive: true });
   for (const mode of modes) {
     await page.selectOption('#ctx-mode', mode);
     await settle(page);
@@ -341,10 +336,10 @@ test('automated accessibility audit and screenshots in light and dark, desktop a
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
       .analyze();
     expect(results.violations.flatMap((v) => v.nodes.map((n) => `${v.id}: ${n.target}`))).toEqual([]);
-    await page.screenshot({ path: `${out}/review-${mode}.png`, fullPage: true });
+    await capture(page, `${out}/review-${mode}.png`, { fullPage: true });
   }
   await page.setViewportSize({ width: 390, height: 844 });
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(0);
-  await page.screenshot({ path: `${out}/review-mobile.png`, fullPage: true });
+  await capture(page, `${out}/review-mobile.png`, { fullPage: true });
 });

@@ -35,12 +35,13 @@ jobs:
           npm init -y >/dev/null
           npm install --no-audit --no-fund svelte@5.57.1 "$GITHUB_WORKSPACE"/dist/ggbrick-svelte-*.tgz
           node -e "const fs=require('fs');const idx=JSON.parse(fs.readFileSync('node_modules/@ggbrick/svelte/docs/index.json'));const {compile}=require('svelte/compiler');const imports=idx.components.map(c=>c.import).join(', ');const r=compile('<script>import {'+imports+'} from \"@ggbrick/svelte\";</script>',{generate:'server'});if(r.warnings.length)throw new Error(JSON.stringify(r.warnings));console.log('consumer ok:',idx.components.length,'components')"
+      - name: Working tree clean after the full run (evidence is written only with GGB_EVIDENCE=1)
+        run: |
+          git status --porcelain
+          test -z "$(git status --porcelain)"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: reports
-          path: |
-            reports/components/*/svelte/*.png
-            reports/components/*/svelte/browser-results.json
-            test-results
+          name: test-results
+          path: test-results
           if-no-files-found: ignore
