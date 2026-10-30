@@ -135,7 +135,23 @@
       "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
       "note": null
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of switch.",
+      "revision": {
+        "paths": [
+          "documentation/components/switch.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/switch.svelte"
+        ],
+        "sha256": {
+          "documentation/components/switch.md": "9b7ed7067cc7b47d0716997b790ebb313771ce35a511446cbba52b509f56ca2a",
+          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "apps/docs/src/playgrounds/switch.svelte": "fbf232496bc1a8dcb3fef81f359e22b4a5d4cc5d7ee8981a9d1456449466ab6f"
+        }
+      },
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [

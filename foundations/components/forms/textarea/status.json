@@ -133,7 +133,23 @@
       "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
       "note": null
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of textarea.",
+      "revision": {
+        "paths": [
+          "documentation/components/textarea.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/textarea.svelte"
+        ],
+        "sha256": {
+          "documentation/components/textarea.md": "55761abd49975aa42a2aa62d11e3deb4e9ab032f948e319f27db70b4a2158672",
+          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "apps/docs/src/playgrounds/textarea.svelte": "7bebd512ed85da5b4a7f579177b6ed7289be6f531566ed9239285784d87d00b0"
+        }
+      },
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [

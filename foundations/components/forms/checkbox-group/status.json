@@ -137,7 +137,23 @@
       "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
       "note": null
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of checkbox-group.",
+      "revision": {
+        "paths": [
+          "documentation/components/checkbox-group.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/checkbox-group.svelte"
+        ],
+        "sha256": {
+          "documentation/components/checkbox-group.md": "033950f950555a6f01bef4ab4d93764f99aa74f1592afeb6ec4c4879244d1e51",
+          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "apps/docs/src/playgrounds/checkbox-group.svelte": "b107b88c9e89c8f2afd2ed53d0ef6d0d5764d194384af1de583de524e250388a"
+        }
+      },
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [
