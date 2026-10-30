@@ -3,7 +3,7 @@
   "componentId": "checkbox",
   "family": "forms",
   "wave": 2,
-  "phase": "figma",
+  "phase": "done",
   "scope": {
     "purpose": "Let the user turn one option on or off, independently of other options, in a choice that is confirmed later (form submission) or that selects items.",
     "useCases": [
@@ -70,7 +70,8 @@
     "examples": {
       "page": "examples/checkbox",
       "preview": "dist/previews/checkbox.html (npm run build:preview checkbox)",
-      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 2, review round 2: SVG circles, lighter field borders)"
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 2, review round 2: SVG circles, lighter field borders)",
+      "playground": "apps/docs/src/playgrounds/checkbox.svelte"
     },
     "tests": {
       "ssr": "tests/ssr/checkbox.test.ts",
@@ -78,8 +79,8 @@
       "computed": "reports/components/checkbox/svelte/computed.json",
       "screenshots": "reports/components/checkbox/svelte/*.png"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/checkbox.md",
+    "agentDocs": "documentation/index.json (entry checkbox); copied into packages/svelte by npm run build:svelte"
   },
   "approvals": {
     "contract": {
@@ -116,7 +117,23 @@
       "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
       "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master, specification page and parity of checkbox (library page Forms, component page forms/checkbox), after the review rounds of 2026-10-28/29 (blueprint boards, focus as a property, option slots for groups, library pages).",
+      "revision": {
+        "paths": [
+          "reports/components/checkbox/figma/parity.json",
+          "reports/components/checkbox/figma/ledger.json",
+          "foundations/components/forms/checkbox/figma-spec.md"
+        ],
+        "sha256": {
+          "reports/components/checkbox/figma/parity.json": "679666e530a55d8eacced7f6eb0c111c1710dd4aa072b1f1111994b9ce8d465c",
+          "reports/components/checkbox/figma/ledger.json": "99038cefbef54891abb25bd0438a0801b5c5924139e6fcb28cac17a24fb42fdd",
+          "foundations/components/forms/checkbox/figma-spec.md": "f14eb62c79d0da27f3abb310dea5a0caecdc98c389571baa3e3121a53490c9e9"
+        }
+      },
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "note": null
+    },
     "documentation": null,
     "delivery": null
   },
@@ -182,6 +199,13 @@
       "report": "reports/components/checkbox/figma/parity.json",
       "date": "2026-10-27",
       "note": "7968 records (3 sizes × 3 selections × 4 conditions in 18 contexts, hover and focus in 4), 0 failures, 224 justified (no mark when off). The first run showed the hover records of three representative contexts carrying the focus ring left by the previous context: the browser spec now blurs before hovering (tests/browser/checkbox.spec.ts, computed.json regenerated); the 18 hashes are then equal."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs; PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npx playwright test tests/browser/docs-site.spec.ts",
+      "date": "2026-10-30",
+      "note": "Page documentation/components/checkbox.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/checkbox/ renders its playground, blueprint and every live block without console errors and without axe violations in light and dark (Chromium; text of disabled components exempt from contrast, the documented exception)."
     }
   ],
   "decisionsTaken": [
@@ -199,7 +223,7 @@
     "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity gate (grouped wave 2 review): the user reviews the masters, the specification pages and the parity reports; then documentation (ggb-docs).",
+  "nextAction": "Delivery with wave 2: pull request of wave/2-form-foundations to main (user merge); publication needs explicit authorization.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
     "Implemented on 2026-10-26 on the approved contract; see reports/components/checkbox/svelte/implementation.md for the rule-by-rule evidence and the limitations.",

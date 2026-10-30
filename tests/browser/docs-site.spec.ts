@@ -55,12 +55,19 @@ for (const theme of ['light', 'dark'] as const) {
           // Documented exception (user decision at the wave 1 implementation gate, 2026-10-14), the same as in
           // tests/browser/button.spec.ts and shortcut.spec.ts: a plain Shortcut in a Button trailing slot is
           // attenuated to opacity.muted, which takes its hint text below 4.5:1 inside some buttons.
+          // Documented exception (wave 2, raised at the implementation gate), the same as in auditAndCapture of
+          // tests/browser/helpers.ts: text of an inactive component (inside an element marked data-disabled) is
+          // exempt from contrast (WCAG 1.4.3); axe flags the description of a disabled Radio or Switch.
           const exception =
             v.id === 'color-contrast' &&
             (await page
               .locator(target)
               .first()
-              .evaluate((el) => !!el.closest('.ggb-button__trailing .ggb-shortcut[data-appearance="plain"]')));
+              .evaluate(
+                (el) =>
+                  !!el.closest('.ggb-button__trailing .ggb-shortcut[data-appearance="plain"]') ||
+                  !!el.closest('[data-disabled]')
+              ));
           if (!exception) failures.push(`${path}: ${v.id} ${target}`);
         }
       }

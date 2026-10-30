@@ -3,7 +3,7 @@
   "componentId": "radio-group",
   "family": "forms",
   "wave": 2,
-  "phase": "figma",
+  "phase": "done",
   "scope": {
     "purpose": "Ask for exactly one choice among a few mutually exclusive options that should all stay visible.",
     "useCases": [
@@ -74,7 +74,8 @@
     "examples": {
       "page": "examples/radio-group",
       "preview": "dist/previews/radio-group.html (npm run build:preview radio-group)",
-      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 2, review round 2: SVG circles, lighter field borders)"
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 2, review round 2: SVG circles, lighter field borders)",
+      "playground": "apps/docs/src/playgrounds/radio-group.svelte"
     },
     "tests": {
       "ssr": "tests/ssr/radio-group.test.ts",
@@ -82,8 +83,8 @@
       "computed": "reports/components/radio-group/svelte/computed.json",
       "screenshots": "reports/components/radio-group/svelte/*.png"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/radio-group.md",
+    "agentDocs": "documentation/index.json (entry radio-group); copied into packages/svelte by npm run build:svelte"
   },
   "approvals": {
     "contract": {
@@ -120,7 +121,23 @@
       "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
       "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master, specification page and parity of radio-group (library page Forms, component page forms/radio-group), after the review rounds of 2026-10-28/29 (blueprint boards, focus as a property, option slots for groups, library pages).",
+      "revision": {
+        "paths": [
+          "reports/components/radio-group/figma/parity.json",
+          "reports/components/radio-group/figma/ledger.json",
+          "foundations/components/forms/radio-group/figma-spec.md"
+        ],
+        "sha256": {
+          "reports/components/radio-group/figma/parity.json": "4bb85f670cbec1cade95484eb38b7ff44fde51baff7c3a941c102ff0c548ed08",
+          "reports/components/radio-group/figma/ledger.json": "1b05629f6c23061ec42afc8023b4a38b0627020dcb607f59556504881daf90a9",
+          "foundations/components/forms/radio-group/figma-spec.md": "d6bd1a6ef1b39040f8e511e189b6925eab6306681b07e2a768bd4e618a80f92c"
+        }
+      },
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "note": null
+    },
     "documentation": null,
     "delivery": null
   },
@@ -194,6 +211,13 @@
       "report": "reports/components/radio-group/figma/parity.json",
       "date": "2026-10-28",
       "note": "After the move of the options to a Figma slot: gaps read on the Options slot, 36 records, 0 failures."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs; PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npx playwright test tests/browser/docs-site.spec.ts",
+      "date": "2026-10-30",
+      "note": "Page documentation/components/radio-group.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/radio-group/ renders its playground, blueprint and every live block without console errors and without axe violations in light and dark (Chromium; text of disabled components exempt from contrast, the documented exception)."
     }
   ],
   "decisionsTaken": [
@@ -210,7 +234,7 @@
     "Library pages (2026-10-29): the master moved to the section RadioGroup of the Forms library page; forms/radio-group keeps the specification. User in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-29): \"Très bien pour moi, je valide cette organisation et l'approche pour le RadioButtonGroup\""
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity gate (grouped wave 2 review): the user reviews the masters, the specification pages and the parity reports; then documentation (ggb-docs).",
+  "nextAction": "Delivery with wave 2: pull request of wave/2-form-foundations to main (user merge); publication needs explicit authorization.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
     "Implemented on 2026-10-26 on the approved contract; see reports/components/radio-group/svelte/implementation.md for the rule-by-rule evidence and the limitations.",

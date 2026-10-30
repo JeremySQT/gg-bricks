@@ -3,7 +3,7 @@
   "componentId": "input-text",
   "family": "forms",
   "wave": 2,
-  "phase": "figma",
+  "phase": "done",
   "scope": {
     "purpose": "Let the user enter or edit a short single-line text value (name, email, search query, password, URL, phone number).",
     "useCases": [
@@ -76,7 +76,8 @@
     "examples": {
       "page": "examples/input-text",
       "preview": "dist/previews/input-text.html (npm run build:preview input-text)",
-      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 2, review round 2: SVG circles, lighter field borders)"
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 2, review round 2: SVG circles, lighter field borders)",
+      "playground": "apps/docs/src/playgrounds/input-text.svelte"
     },
     "tests": {
       "ssr": "tests/ssr/input-text.test.ts",
@@ -84,8 +85,8 @@
       "computed": "reports/components/input-text/svelte/computed.json",
       "screenshots": "reports/components/input-text/svelte/*.png"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/input-text.md",
+    "agentDocs": "documentation/index.json (entry input-text); copied into packages/svelte by npm run build:svelte"
   },
   "approvals": {
     "contract": {
@@ -122,7 +123,23 @@
       "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
       "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master, specification page and parity of input-text (library page Forms, component page forms/input-text), after the review rounds of 2026-10-28/29 (blueprint boards, focus as a property, option slots for groups, library pages).",
+      "revision": {
+        "paths": [
+          "reports/components/input-text/figma/parity.json",
+          "reports/components/input-text/figma/ledger.json",
+          "foundations/components/forms/input-text/figma-spec.md"
+        ],
+        "sha256": {
+          "reports/components/input-text/figma/parity.json": "c3b86edc05711c658563146f513c1a34f9f0eca6a081a2d92f194f233b110a31",
+          "reports/components/input-text/figma/ledger.json": "9d21810cac49101ac51dc0bf62c6e00aefab4209676b42422815ab0046bc3992",
+          "foundations/components/forms/input-text/figma-spec.md": "4536e4ef182bfbc7c1eb2a6cd61c2c9155701e892ca856d3d43a28fe04d8536b"
+        }
+      },
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "note": null
+    },
     "documentation": null,
     "delivery": null
   },
@@ -196,6 +213,13 @@
       "report": "reports/components/input-text/figma/parity.json",
       "date": "2026-10-28",
       "note": "Re-measured after Focus became a property only (State=focus removed, Focus border added): the 18 hashes and numeric fields are unchanged (focus case: State default with Focus on)."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs; PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npx playwright test tests/browser/docs-site.spec.ts",
+      "date": "2026-10-30",
+      "note": "Page documentation/components/input-text.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/input-text/ renders its playground, blueprint and every live block without console errors and without axe violations in light and dark (Chromium; text of disabled components exempt from contrast, the documented exception)."
     }
   ],
   "decisionsTaken": [
@@ -215,7 +239,7 @@
     "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity gate (grouped wave 2 review): the user reviews the masters, the specification pages and the parity reports; then documentation (ggb-docs).",
+  "nextAction": "Delivery with wave 2: pull request of wave/2-form-foundations to main (user merge); publication needs explicit authorization.",
   "implementationNotes": [
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
     "Svelte: the trailing snippet receives the imposed IconButton props as a parameter (size, intent, appearance, disabled), so that InputText does not import IconButton and IconButton does not read a context from InputText; both folders stay self-contained. A trailing IconButton at size sm is reported as a usage error in development.",
