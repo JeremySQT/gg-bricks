@@ -449,7 +449,7 @@
     },
     {
       "date": "2026-10-30",
-      "change": "Library page layout (user request): the Actions page opens with the overview frame (369:743: description, isometric cover, a card per component); the section Button starts with a Section header (369:2152: summary, specification link, properties) and the master sits under it, its internal parts on its right (_Button/Trailing packed into a tight grid, variant order kept) (family-pages.plugin.js; IDs of the masters unchanged). The specification's link to the master moved to the top right of the title row (367:2; spec-header-links.plugin.js, replacing spec-master-links.plugin.js); Documentation and Contract links follow at the first publication."
+      "change": "Library page layout (user request): the Actions page opens with the overview frame (379:982: description, isometric masonry cover of live instances, a card per component); the section Button starts with a Section header (379:2869: summary, specification link, properties) and the master sits under it, its internal parts on its right (_Button/Trailing packed into a tight grid, variant order kept) (family-pages.plugin.js; IDs of the masters unchanged). The specification's link to the master moved to the top right of the title row (367:2; spec-header-links.plugin.js, replacing spec-master-links.plugin.js); Documentation and Contract links follow at the first publication."
     }
   ],
   "library": {
@@ -470,8 +470,8 @@
     "builder": "authoring/adapters/figma/library-pages.plugin.js",
     "specLink": "authoring/adapters/figma/spec-header-links.plugin.js",
     "layout": "authoring/adapters/figma/family-pages.plugin.js",
-    "overview": "369:743",
-    "sectionHeader": "369:2152",
+    "overview": "379:982",
+    "sectionHeader": "379:2869",
     "specTitleRow": "367:2"
   }
 }

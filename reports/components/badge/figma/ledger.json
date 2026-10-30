@@ -178,7 +178,7 @@
     },
     {
       "date": "2026-10-30",
-      "change": "Library page layout (user request): the Content page opens with the overview frame (372:319: description, isometric cover, a card per component); the section Badge starts with a Section header (372:1113: summary, specification link, properties) and the master sits under it (family-pages.plugin.js; IDs of the masters unchanged). The specification's link to the master moved to the top right of the title row (373:17; spec-header-links.plugin.js, replacing spec-master-links.plugin.js); Documentation and Contract links follow at the first publication."
+      "change": "Library page layout (user request): the Content page opens with the overview frame (380:319: description, isometric masonry cover of live instances, a card per component); the section Badge starts with a Section header (380:1653: summary, specification link, properties) and the master sits under it (family-pages.plugin.js; IDs of the masters unchanged). The specification's link to the master moved to the top right of the title row (373:17; spec-header-links.plugin.js, replacing spec-master-links.plugin.js); Documentation and Contract links follow at the first publication."
     }
   ],
   "library": {
@@ -197,8 +197,8 @@
     "builder": "authoring/adapters/figma/library-pages.plugin.js",
     "specLink": "authoring/adapters/figma/spec-header-links.plugin.js",
     "layout": "authoring/adapters/figma/family-pages.plugin.js",
-    "overview": "372:319",
-    "sectionHeader": "372:1113",
+    "overview": "380:319",
+    "sectionHeader": "380:1653",
     "specTitleRow": "373:17"
   }
 }

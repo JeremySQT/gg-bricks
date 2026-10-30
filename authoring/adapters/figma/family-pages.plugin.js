@@ -281,7 +281,44 @@ const COVERS = {
     [{ appearance: 'dark' }, () => inst(B, { Label: 'Learn more', Appearance: 'ghost', 'Show leading': true })],
     [{ brand: 'orchid' }, () => inst(IB, { Icon: 'heart', Intent: 'accent', Appearance: 'solid', Size: 'lg' })],
     [{}, () => inst(B, { Label: 'Focused', Appearance: 'outline', Focus: true })],
-    [{ brand: 'brick' }, () => inst(L, { Label: 'Terms of service', Size: 'lg' })]
+    [{ brand: 'brick' }, () => inst(L, { Label: 'Terms of service', Size: 'lg' })],
+    [
+      {},
+      () =>
+        column(
+          [
+            inst(L, { Label: 'Privacy policy' }),
+            inst(L, { Label: 'Terms of service' }),
+            inst(L, { Label: 'Contact us' })
+          ],
+          14
+        )
+    ],
+    [
+      { appearance: 'dark', brand: 'orchid' },
+      () =>
+        column(
+          [
+            inst(B, { Label: 'Sign in' }),
+            inst(B, { Label: 'Create an account', Intent: 'neutral', Appearance: 'outline' })
+          ],
+          12
+        )
+    ],
+    [
+      { brand: 'brick' },
+      () =>
+        column(
+          [
+            row([inst(IB, { Icon: 'star', Appearance: 'outline' }), inst(IB, { Icon: 'bell', Appearance: 'outline' })]),
+            row([
+              inst(IB, { Icon: 'user', Appearance: 'outline' }),
+              inst(IB, { Icon: 'lock-simple', Appearance: 'outline' })
+            ])
+          ],
+          12
+        )
+    ]
   ],
   Content: [
     [
@@ -357,6 +394,35 @@ const COVERS = {
     [
       { appearance: 'dark' },
       () => row([inst('Icon', { Glyph: 'envelope-simple', Size: 'lg' }), inst('Counter', { Value: '3' })], 10)
+    ],
+    [
+      {},
+      () =>
+        column(
+          [
+            inst('Shortcut', { Appearance: 'Keycap' }),
+            inst('Shortcut', { Appearance: 'Keycap', Platform: 'Other' }),
+            inst('Shortcut', { Appearance: 'Keycap', 'Show key 3': true })
+          ],
+          10
+        )
+    ],
+    [
+      { brand: 'brick' },
+      () =>
+        column(
+          [
+            row(
+              ['heart', 'bell', 'star'].map((g) => inst('Icon', { Glyph: g, Size: 'lg' })),
+              14
+            ),
+            row(
+              ['user', 'eye', 'lock-simple'].map((g) => inst('Icon', { Glyph: g, Size: 'lg' })),
+              14
+            )
+          ],
+          14
+        )
     ]
   ],
   Forms: [
@@ -387,6 +453,18 @@ const COVERS = {
     [
       { appearance: 'dark' },
       () => column([inst('Radio', { Label: 'Standard', Selection: 'on' }), inst('Radio', { Label: 'Express' })], 12)
+    ],
+    [
+      { brand: 'orchid' },
+      () =>
+        column(
+          [
+            inst('Checkbox', { Label: 'Email', Selection: 'on' }),
+            inst('Checkbox', { Label: 'Text message' }),
+            inst('Checkbox', { Label: 'Push notification', Selection: 'on' })
+          ],
+          10
+        )
     ]
   ]
 };
@@ -401,19 +479,36 @@ async function cover() {
   plane.name = 'Isometric plane';
   plane.fills = [];
   plane.clipsContent = false;
-  // Cards smaller than the box, enough of them to overflow it on every side once projected.
-  const [CW, CH, G, COLS, ROWS, SCALE] = [380, 250, 44, 7, 6, 0.6];
+  // Masonry: cards of one width whose height follows their content (same vertical padding everywhere), each
+  // dropped into the shortest column until every column is taller than the plane.
+  const [CW, G, COLS, HEIGHT, VPAD, SCALE] = [380, 44, 7, 1720, 56, 0.6];
   const items = COVERS[FAMILY];
-  plane.resize(COLS * CW + (COLS - 1) * G, ROWS * CH + (ROWS - 1) * G);
-  for (let i = 0; i < COLS * ROWS; i++) {
-    const [ctx, make] = items[(i * 5 + Math.floor(i / COLS) * 3) % items.length];
+  const columns = Array(COLS).fill(0);
+  // A seeded pseudo-random order (the same at every run) that avoids the cards already placed nearby (same column
+  // or the two next to it, within 400 px), so equal cards never touch and the columns form no visible pattern.
+  let seed = 2026;
+  const random = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const placed = [];
+  for (let i = 0; Math.min(...columns) < HEIGHT && i < 200; i++) {
+    const col = columns.indexOf(Math.min(...columns));
+    const y0 = columns[col];
+    const near = placed
+      .filter((p) => Math.abs(p.col - col) <= 1 && p.y1 > y0 - 400 && p.y0 < y0 + 400)
+      .map((p) => p.pick);
+    const pool = items.map((_, k) => k).filter((k) => !near.includes(k));
+    const choices = pool.length ? pool : items.map((_, k) => k);
+    const pick = choices[Math.floor(random() * choices.length)];
+    const [ctx, make] = items[pick];
     const card = figma.createAutoLayout('VERTICAL', {
       name: 'Card',
       primaryAxisAlignItems: 'CENTER',
       counterAxisAlignItems: 'CENTER'
     });
-    card.primaryAxisSizingMode = card.counterAxisSizingMode = 'FIXED';
-    card.resize(CW, CH);
+    card.paddingTop = card.paddingBottom = VPAD;
+    card.paddingLeft = card.paddingRight = 28;
+    card.resize(CW, card.height);
+    card.counterAxisSizingMode = 'FIXED';
+    card.primaryAxisSizingMode = 'AUTO';
     card.cornerRadius = 32;
     card.fills = [paint('color/surface/default')];
     await card.setEffectStyleIdAsync(shadow.id);
@@ -426,11 +521,14 @@ async function cover() {
       );
     const content = make();
     card.appendChild(content);
-    fit(content, ZOOM[0], CW - 56, CH - 56);
+    fit(content, ZOOM[0], CW - 56, 360);
     plane.appendChild(card);
-    card.x = (i % COLS) * (CW + G);
-    card.y = Math.floor(i / COLS) * (CH + G);
+    card.x = col * (CW + G);
+    card.y = columns[col];
+    columns[col] += card.height + G;
+    placed.push({ col, y0, y1: columns[col], pick });
   }
+  plane.resize(COLS * CW + (COLS - 1) * G, Math.min(...columns) - G);
   box.appendChild(plane);
   // Figma normalizes the scale out of relativeTransform: scale the plane and its content first, then project.
   plane.rescale(SCALE);
@@ -586,11 +684,14 @@ for (const [name, , summary, parts] of fam.components) {
   // Compact layout under the header: the master on the left with what is drawn over it (the Link's backdrop), the
   // internal parts stacked on its right, each internal set packed as a tight grid.
   const top = SECTION_PAD + h.height + 72;
+  // Backdrops (`_Backdrop …`, locked rectangles drawn behind a set or a part, such as the Link's on inverse rows or
+  // the white Checkbox glyphs) travel with the node they sit behind.
   const others = s.children.filter((n) => n !== h && n !== set);
-  const over = (n) =>
-    n.x < set.x + set.width && n.x + n.width > set.x && n.y < set.y + set.height && n.y + n.height > set.y;
-  const attached = others.filter(over);
-  const internals = others.filter((n) => !attached.includes(n)).sort((p, q) => p.y - q.y || p.x - q.x);
+  const over = (a, b) => a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
+  const backdrops = others.filter((n) => n.name.startsWith('_Backdrop'));
+  const behind = (n) => backdrops.filter((b) => over(b, n));
+  const attached = behind(set);
+  const internals = others.filter((n) => !backdrops.includes(n)).sort((p, q) => p.y - q.y || p.x - q.x);
   const move = (n, x, y) => {
     const locked = n.locked;
     n.locked = false;
@@ -604,8 +705,11 @@ for (const [name, , summary, parts] of fam.components) {
   move(set, SECTION_PAD, top);
   let py = top;
   for (const p of internals) {
+    const carried = behind(p);
     if (p.type === 'COMPONENT_SET') packVariants(p, 32);
-    move(p, set.x + set.width + 120, py);
+    const [ex, ey] = [set.x + set.width + 120 - p.x, py - p.y];
+    for (const n of carried) move(n, n.x + ex, n.y + ey);
+    move(p, p.x + ex, p.y + ey);
     py += p.height + 64;
   }
   s.resizeWithoutConstraints(
