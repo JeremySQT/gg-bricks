@@ -3,13 +3,13 @@ import type { HTMLAttributes } from 'svelte/elements';
 
 /**
  * What a Field shares with the control it wraps, through the Svelte context key `ggb:field` (a string, so that
- * neither component folder imports the other). InputText, Textarea, Checkbox and RadioGroup read it when present
- * and declare the same shape locally.
+ * neither component folder imports the other). InputText, Textarea, Checkbox, RadioGroup and CheckboxGroup read it
+ * when present and declare the same shape locally.
  */
 export interface FieldContext {
   /** Id for a text entry: the field label points to it. */
   readonly controlId: string;
-  /** Id of the field label: names a RadioGroup, or the question a Checkbox answers. */
+  /** Id of the field label: names a RadioGroup or a CheckboxGroup, or the question a Checkbox answers. */
   readonly labelId: string;
   /** Ids of the description and of the visible message, in that order; undefined when neither shows. */
   readonly describedBy: string | undefined;
@@ -26,7 +26,10 @@ export interface FieldContext {
 type Owned = 'children' | 'role';
 
 export interface FieldOptions {
-  /** Visible label, required and non-empty. Names a text entry or a radio group, or the question a checkbox answers. */
+  /**
+   * Visible label, required and non-empty. Names a text entry, a radio group or a checkbox group, or the question a
+   * checkbox answers.
+   */
   label: string;
   /** Help text between the label and the control, read as the control's description. */
   description?: string;
@@ -38,7 +41,7 @@ export interface FieldOptions {
   invalid?: boolean;
   /** Disables the control and dims the label and description. */
   disabled?: boolean;
-  /** Exactly one control: InputText, Textarea, Checkbox or RadioGroup. */
+  /** Exactly one control: InputText, Textarea, Checkbox, RadioGroup or CheckboxGroup. */
   children: Snippet;
 }
 
