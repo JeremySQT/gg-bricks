@@ -442,6 +442,10 @@
     {
       "date": "2026-10-29",
       "change": "Library pages (user decision): the master and its internal parts moved to the section Button of the Actions library page (IDs kept, instances linked; library-pages.plugin.js); the component page keeps the specification, which now links to the section (spec-master-links.plugin.js)."
+    },
+    {
+      "date": "2026-10-30",
+      "change": "Cleanup (user): the working frame _check slots (164:4616, seven Button instances with leading and trailing icon, counter and shortcut, left 200 px above the specification and recorded nowhere) was deleted from the page actions/button by the user; the page holds only the specification frame (126:1904)."
     }
   ],
   "library": {
