@@ -446,6 +446,10 @@
     {
       "date": "2026-10-30",
       "change": "Cleanup (user): the working frame _check slots (164:4616, seven Button instances with leading and trailing icon, counter and shortcut, left 200 px above the specification and recorded nowhere) was deleted from the page actions/button by the user; the page holds only the specification frame (126:1904)."
+    },
+    {
+      "date": "2026-10-30",
+      "change": "Library page layout (user request): the Actions page opens with the overview frame (369:743: description, isometric cover, a card per component); the section Button starts with a Section header (369:2152: summary, specification link, properties) and the master sits under it, its internal parts on its right (_Button/Trailing packed into a tight grid, variant order kept) (family-pages.plugin.js; IDs of the masters unchanged). The specification's link to the master moved to the top right of the title row (367:2; spec-header-links.plugin.js, replacing spec-master-links.plugin.js); Documentation and Contract links follow at the first publication."
     }
   ],
   "library": {
@@ -464,6 +468,10 @@
     ],
     "since": "2026-10-29",
     "builder": "authoring/adapters/figma/library-pages.plugin.js",
-    "specLink": "authoring/adapters/figma/spec-master-links.plugin.js"
+    "specLink": "authoring/adapters/figma/spec-header-links.plugin.js",
+    "layout": "authoring/adapters/figma/family-pages.plugin.js",
+    "overview": "369:743",
+    "sectionHeader": "369:2152",
+    "specTitleRow": "367:2"
   }
 }

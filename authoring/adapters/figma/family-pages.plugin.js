@@ -34,6 +34,68 @@ const FAMILIES = {
         {}
       ]
     ]
+  },
+  Content: {
+    page: '343:1635',
+    description:
+      'Components that show information inside other components or in running text: an icon, a count, a status or a keyboard shortcut. None of them is interactive on its own.',
+    components: [
+      [
+        'Badge',
+        '220:2',
+        'Labels an item with a short status or category: Paid, Draft, New.',
+        [],
+        { Label: 'Paid', Intent: 'success' }
+      ],
+      [
+        'Counter',
+        '149:1547',
+        'Shows a quantity, such as unread messages, next to the thing it counts.',
+        ['_Counter/Nested'],
+        {}
+      ],
+      [
+        'Icon',
+        '149:4',
+        'Shows a small drawing from the icon set, in the color of the text around it.',
+        [],
+        { Size: 'xl', Glyph: 'star' }
+      ],
+      [
+        'Shortcut',
+        '149:1569',
+        'Shows the keys of a keyboard command next to the action it triggers.',
+        ['_Shortcut/Key', '_Shortcut/Separator', '_Shortcut/Nested'],
+        { Appearance: 'Keycap' }
+      ]
+    ]
+  },
+  Forms: {
+    page: '343:1640',
+    description:
+      'Components that collect what people type or choose: text entries, choices and settings. A Field gives each control its label, its help text and its error message.',
+    components: [
+      [
+        'Checkbox',
+        '288:3',
+        'Turns one option on or off, for a choice confirmed when the form is submitted.',
+        ['_Checkbox/Check', '_Checkbox/Minus'],
+        { Selection: 'on' }
+      ],
+      [
+        'CheckboxGroup',
+        '347:243',
+        'Gathers related checkboxes that answer one question; any number of them can be checked.',
+        [],
+        {}
+      ],
+      ['Field', '288:4', 'Gives one form control its label, description, required asterisk and error message.', [], {}],
+      ['InputText', '288:5', 'Takes one line of free text: a name, an email address, a search.', [], {}],
+      ['Radio', '288:6', 'One option of a RadioGroup, never used on its own.', [], { Selection: 'on' }],
+      ['RadioGroup', '288:7', 'Asks for exactly one choice among a few options that all stay visible.', [], {}],
+      ['Switch', '288:8', 'Turns a setting on or off, with immediate effect.', [], { Selection: 'on' }],
+      ['Textarea', '288:9', 'Takes free text on several lines: a comment, a description, an address.', [], {}]
+    ]
   }
 };
 const fam = FAMILIES[FAMILY];
@@ -41,6 +103,8 @@ const W = 1232;
 const PAD = 72;
 const SECTION_PAD = 80;
 const GAP = 160;
+// Largest enlargement of the cover content and of the card previews: Content's components are small boxes.
+const ZOOM = { Actions: [1.5, 1.25], Content: [2.6, 2], Forms: [1.5, 1.25] }[FAMILY];
 
 // Resources: variables, text styles, effect styles, collections, Phosphor glyphs.
 const vars = await figma.variables.getLocalVariablesAsync();
@@ -107,8 +171,9 @@ async function chip(label, target) {
   return c;
 }
 // Instances with properties set by name (component property keys carry a #suffix).
-function inst(setId, props = {}) {
-  const set = SETS[setId];
+// SETS maps a component name of the family to its component set (filled from the sections below).
+function inst(name, props = {}) {
+  const set = SETS[name];
   const i = set.defaultVariant.createInstance();
   const keys = Object.keys(i.componentProperties);
   const p = {};
@@ -135,12 +200,41 @@ function column(nodes, gap = 12) {
   return r;
 }
 
+// Scales an instance (or a row of them) up to `max`, never beyond the box it must fit in.
+function fit(node, max, w, h) {
+  node.rescale(Math.min(max, w / node.width, h / node.height));
+}
+
+// Packs the variants of an internal set into a tight grid: columns and rows keep their order (the top-left variant
+// stays the default), the space between them becomes `gap`.
+function packVariants(set, gap) {
+  const kids = set.children;
+  const [padX, padY] = [Math.min(...kids.map((k) => k.x)), Math.min(...kids.map((k) => k.y))];
+  const axis = (pos, size) => {
+    const keys = [...new Set(kids.map((k) => Math.round(k[pos])))].sort((a, b) => a - b);
+    const at = {};
+    let cursor = pos === 'x' ? padX : padY;
+    for (const key of keys) {
+      at[key] = cursor;
+      cursor += Math.max(...kids.filter((k) => Math.round(k[pos]) === key).map((k) => k[size])) + gap;
+    }
+    return at;
+  };
+  const [xs, ys] = [axis('x', 'width'), axis('y', 'height')];
+  for (const k of kids) {
+    const [x, y] = [xs[Math.round(k.x)], ys[Math.round(k.y)]];
+    k.x = x;
+    k.y = y;
+  }
+  set.resizeWithoutConstraints(
+    Math.max(...kids.map((k) => k.x + k.width)) + padX,
+    Math.max(...kids.map((k) => k.y + k.height)) + padY
+  );
+}
+
 // Cover cards: live instances on cards, some in another brand or appearance.
-const B = '48:1586';
-const IB = '211:1167';
-const L = '232:659';
+const [B, IB, L] = ['Button', 'IconButton', 'Link'];
 const SETS = {};
-for (const id of [B, IB, L]) SETS[id] = await figma.getNodeByIdAsync(id);
 const COVERS = {
   Actions: [
     [{}, () => inst(B, { Label: 'Create project', 'Show leading': true })],
@@ -188,6 +282,112 @@ const COVERS = {
     [{ brand: 'orchid' }, () => inst(IB, { Icon: 'heart', Intent: 'accent', Appearance: 'solid', Size: 'lg' })],
     [{}, () => inst(B, { Label: 'Focused', Appearance: 'outline', Focus: true })],
     [{ brand: 'brick' }, () => inst(L, { Label: 'Terms of service', Size: 'lg' })]
+  ],
+  Content: [
+    [
+      {},
+      () =>
+        row(
+          [
+            inst('Badge', { Label: 'Paid', Intent: 'success' }),
+            inst('Badge', { Label: 'Draft' }),
+            inst('Badge', { Label: 'Overdue', Intent: 'danger', Appearance: 'strong' })
+          ],
+          8
+        )
+    ],
+    [{ appearance: 'dark' }, () => inst('Shortcut', { Appearance: 'Keycap', Size: 'lg' })],
+    [
+      { brand: 'brick' },
+      () =>
+        row([
+          inst('Counter', { Size: 'sm' }),
+          inst('Counter', { Value: '24' }),
+          inst('Counter', { Value: '128', Size: 'lg' })
+        ])
+    ],
+    [
+      {},
+      () =>
+        row(
+          ['heart', 'bell', 'star', 'user', 'calendar-blank'].map((g) => inst('Icon', { Glyph: g, Size: 'lg' })),
+          16
+        )
+    ],
+    [
+      { brand: 'orchid' },
+      () =>
+        inst('Badge', {
+          Label: 'New',
+          Intent: 'accent',
+          Appearance: 'strong',
+          'Show leading': true,
+          'Leading icon': 'star',
+          Size: 'lg'
+        })
+    ],
+    [
+      { appearance: 'dark', brand: 'orchid' },
+      () =>
+        column(
+          [
+            inst('Badge', { Label: 'Info', Intent: 'info' }),
+            inst('Badge', { Label: 'Success', Intent: 'success' }),
+            inst('Badge', { Label: 'Warning', Intent: 'warning' })
+          ],
+          10
+        )
+    ],
+    [{}, () => inst('Shortcut', { Platform: 'Other', 'Show key 3': true, Size: 'lg' })],
+    [{ brand: 'brick' }, () => inst('Counter', { Overflow: 'true', Size: 'lg' })],
+    [{ appearance: 'dark', brand: 'brick' }, () => inst('Icon', { Glyph: 'bell', Size: 'xl' })],
+    [
+      {},
+      () =>
+        column(
+          [
+            inst('Badge', { Label: 'Beta', Intent: 'accent', Size: 'sm' }),
+            inst('Badge', { Label: 'Beta', Intent: 'accent' }),
+            inst('Badge', { Label: 'Beta', Intent: 'accent', Size: 'lg' })
+          ],
+          10
+        )
+    ],
+    [{ brand: 'orchid' }, () => inst('Shortcut', { Appearance: 'Keycap', Platform: 'Other' })],
+    [
+      { appearance: 'dark' },
+      () => row([inst('Icon', { Glyph: 'envelope-simple', Size: 'lg' }), inst('Counter', { Value: '3' })], 10)
+    ]
+  ],
+  Forms: [
+    [{}, () => inst('Field')],
+    [{ appearance: 'dark' }, () => inst('Switch', { Label: 'Notifications', Selection: 'on' })],
+    [{ brand: 'brick' }, () => inst('Checkbox', { Label: 'Remember me', Selection: 'on' })],
+    [
+      {},
+      () =>
+        inst('InputText', {
+          'Show leading': true,
+          'Leading icon': 'magnifying-glass',
+          Content: 'value',
+          Value: 'Lisbon'
+        })
+    ],
+    [{ brand: 'orchid' }, () => inst('RadioGroup')],
+    [{}, () => inst('Checkbox', { Label: 'Select all', Selection: 'indeterminate' })],
+    [{ appearance: 'dark', brand: 'orchid' }, () => inst('InputText', { Content: 'value' })],
+    [
+      {},
+      () =>
+        column([inst('Switch', { Label: 'Dark mode' }), inst('Switch', { Label: 'Auto-renew', Selection: 'on' })], 12)
+    ],
+    [{ brand: 'brick' }, () => inst('Field', { State: 'invalid' })],
+    [{ appearance: 'dark', brand: 'brick' }, () => inst('CheckboxGroup')],
+    [{}, () => inst('Textarea', { Content: 'value' })],
+    [
+      { appearance: 'dark' },
+      () => column([inst('Radio', { Label: 'Standard', Selection: 'on' }), inst('Radio', { Label: 'Express' })], 12)
+    ]
   ]
 };
 async function cover() {
@@ -226,7 +426,7 @@ async function cover() {
       );
     const content = make();
     card.appendChild(content);
-    content.rescale(1.5);
+    fit(content, ZOOM[0], CW - 56, CH - 56);
     plane.appendChild(card);
     card.x = (i % COLS) * (CW + G);
     card.y = Math.floor(i / COLS) * (CH + G);
@@ -259,6 +459,7 @@ for (const [name, pid] of fam.components) {
   const p = await figma.getNodeByIdAsync(pid);
   await p.loadAsync();
   specRoot[name] = p.children.find((n) => n.name === `${name} — Specification`).id;
+  SETS[name] = sections[name].children.find((n) => n.type === 'COMPONENT_SET' && n.name === name);
 }
 
 // 1. Overview frame at the top of the page.
@@ -309,10 +510,9 @@ for (const [name, , summary, , sampleProps] of fam.components) {
   preview.counterAxisSizingMode = 'FIXED';
   preview.resize(preview.width, 120);
   const set = sections[name].children.find((n) => n.type === 'COMPONENT_SET' && n.name === name);
-  SETS[set.id] = set;
-  const sample = inst(set.id, sampleProps);
+  const sample = inst(name, sampleProps);
   preview.appendChild(sample);
-  sample.rescale(1.25);
+  fit(sample, ZOOM[1], preview.width - 32, 96);
   const title = await text(name, 'typography/heading/sm', 'color/content/primary');
   title.setRangeHyperlink(0, name.length, { type: 'NODE', value: sections[name].id });
   card.appendChild(title);
@@ -347,7 +547,7 @@ for (const [name, , summary, parts] of fam.components) {
   );
   left.appendChild(await text(name, 'typography/display/sm', 'color/content/primary'));
   left.appendChild(await text(summary, 'typography/body/lg', 'color/content/secondary', 600));
-  left.appendChild(row([await chip('Specification', specRoot[name]), await chip(`${FAMILY} overview`, ov.id)], 8));
+  left.appendChild(row([await chip('Specification', specRoot[name])], 8));
   if (parts.length)
     left.appendChild(
       await text(
@@ -374,22 +574,39 @@ for (const [name, , summary, parts] of fam.components) {
           ? 'on / off'
           : def.type === 'TEXT'
             ? 'text'
-            : 'swap';
+            : def.type === 'SLOT'
+              ? 'slot'
+              : 'swap';
     const line = await text(`${label}   ${value}`, 'typography/body/sm', 'color/content/secondary', 400);
     line.setRangeFills(0, label.length, [paint('color/content/primary')]);
     props.appendChild(line);
   }
   h.x = SECTION_PAD;
   h.y = SECTION_PAD;
-  const others = s.children.filter((n) => n !== h);
-  const top = Math.min(...others.map((n) => n.y));
-  const dy = SECTION_PAD + h.height + 72 - top;
-  for (const n of others) {
+  // Compact layout under the header: the master on the left with what is drawn over it (the Link's backdrop), the
+  // internal parts stacked on its right, each internal set packed as a tight grid.
+  const top = SECTION_PAD + h.height + 72;
+  const others = s.children.filter((n) => n !== h && n !== set);
+  const over = (n) =>
+    n.x < set.x + set.width && n.x + n.width > set.x && n.y < set.y + set.height && n.y + n.height > set.y;
+  const attached = others.filter(over);
+  const internals = others.filter((n) => !attached.includes(n)).sort((p, q) => p.y - q.y || p.x - q.x);
+  const move = (n, x, y) => {
     const locked = n.locked;
     n.locked = false;
-    n.y += dy;
+    n.x = x;
+    n.y = y;
     n.locked = locked;
     out.moved++;
+  };
+  const [dx, dy] = [SECTION_PAD - set.x, top - set.y];
+  for (const n of attached) move(n, n.x + dx, n.y + dy);
+  move(set, SECTION_PAD, top);
+  let py = top;
+  for (const p of internals) {
+    if (p.type === 'COMPONENT_SET') packVariants(p, 32);
+    move(p, set.x + set.width + 120, py);
+    py += p.height + 64;
   }
   s.resizeWithoutConstraints(
     Math.max(...s.children.map((c) => c.x + c.width)) + SECTION_PAD,
@@ -398,9 +615,9 @@ for (const [name, , summary, parts] of fam.components) {
   out.headers[name] = h.id;
 }
 
-// 3. Sections stack below the overview, in their current order.
+// 3. Sections stack below the overview, in the order of the list.
 let y = ov.height + GAP;
-for (const s of page.children.filter((n) => n.type === 'SECTION').sort((p, q) => p.y - q.y)) {
+for (const s of fam.components.map(([name]) => sections[name])) {
   s.x = 0;
   s.y = y;
   y += s.height + GAP;

@@ -576,7 +576,7 @@ const build = async (ID, spec) => {
     c.layoutSizingHorizontal = 'FILL';
     fn(c);
   }
-  // The master stays in its section of the Forms library page; spec-master-links.plugin.js adds the link to it.
+  // The master stays in its section of the Forms library page; spec-header-links.plugin.js adds the link to it in the title row.
   return { root: root.id, h: Math.round(root.height), board: dg.id, set: SETS[ID].id };
 };
 // Anatomy boards: one block per component (also run alone with ANATOMY_ONLY to redraw the boards in place).
