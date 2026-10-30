@@ -78,9 +78,10 @@ body {
   align-items: center;
   font: var(--ggb-typography-label-md);
 }
+/* Native review controls only: the components under review style their own inputs. */
 .page select,
-.page input:not([type]),
-.page input[type='text'] {
+.page input:not([type]):not([class^='ggb-']),
+.page input[type='text']:not([class^='ggb-']) {
   font: inherit;
   color: var(--ggb-color-field-default-content);
   background: var(--ggb-color-field-default-surface);
@@ -91,7 +92,7 @@ body {
   min-inline-size: 0;
 }
 .page select:focus-visible,
-.page input:focus-visible {
+.page input:not([class^='ggb-']):focus-visible {
   outline: var(--ggb-focus-width) solid var(--ggb-color-focus-ring);
   outline-offset: var(--ggb-focus-offset);
 }

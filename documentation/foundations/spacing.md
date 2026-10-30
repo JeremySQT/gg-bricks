@@ -34,10 +34,12 @@ Spacing comes in three families: layout spacing separates regions of a page, con
 
 ## Icons and avatars
 
-`size.icon.{xs, sm, md, lg, xl}` sizes icons next to text: `sm` with small text and in `sm` controls, `md` by default, `lg` and `xl` for standalone icons. `size.avatar.{xs … xl}` sizes avatars. Neither changes with density.
+`size.icon.{xs, sm, md, lg, xl}` sizes icons next to text: `sm` with small text and in `sm` controls, `md` by default, `lg` and `xl` for standalone icons. `size.avatar.{xs … xl}` sizes avatars. `size.choice.{sm, md, lg}` sizes the box of a checkbox or a radio and `size.switch.{sm, md, lg}` the block size of a switch track at each control size. None of them changes with density.
 
 <!-- site:tokens prefix=size.icon preview=width -->
 <!-- site:tokens prefix=size.avatar preview=width -->
+<!-- site:tokens prefix=size.choice preview=width -->
+<!-- site:tokens prefix=size.switch preview=width -->
 
 ## Rules
 

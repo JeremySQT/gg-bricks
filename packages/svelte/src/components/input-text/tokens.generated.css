@@ -1,0 +1,72 @@
+/* Generated token bindings from the input-text contract. Do not edit. */
+.ggb-input-text {
+  --ggb-input-text-surface-default: var(--ggb-color-field-default-surface);
+  --ggb-input-text-surface-hover: var(--ggb-color-field-hover-surface);
+  --ggb-input-text-surface-focus: var(--ggb-color-field-focus-surface);
+  --ggb-input-text-surface-readonly: var(--ggb-color-field-readonly-surface);
+  --ggb-input-text-surface-disabled: var(--ggb-color-field-disabled-surface);
+  --ggb-input-text-surface-invalid: var(--ggb-color-field-invalid-surface);
+  --ggb-input-text-content-default: var(--ggb-color-field-default-content);
+  --ggb-input-text-content-hover: var(--ggb-color-field-hover-content);
+  --ggb-input-text-content-focus: var(--ggb-color-field-focus-content);
+  --ggb-input-text-content-readonly: var(--ggb-color-field-readonly-content);
+  --ggb-input-text-content-disabled: var(--ggb-color-field-disabled-content);
+  --ggb-input-text-content-invalid: var(--ggb-color-field-invalid-content);
+  --ggb-input-text-border-default: var(--ggb-color-field-default-border);
+  --ggb-input-text-border-hover: var(--ggb-color-field-hover-border);
+  --ggb-input-text-border-focus: var(--ggb-color-field-focus-border);
+  --ggb-input-text-border-readonly: var(--ggb-color-field-readonly-border);
+  --ggb-input-text-border-disabled: var(--ggb-color-field-disabled-border);
+  --ggb-input-text-border-invalid: var(--ggb-color-field-invalid-border);
+  --ggb-input-text-placeholderColor-default: var(--ggb-color-field-default-placeholder);
+  --ggb-input-text-placeholderColor-hover: var(--ggb-color-field-hover-placeholder);
+  --ggb-input-text-placeholderColor-focus: var(--ggb-color-field-focus-placeholder);
+  --ggb-input-text-placeholderColor-readonly: var(--ggb-color-field-readonly-placeholder);
+  --ggb-input-text-placeholderColor-disabled: var(--ggb-color-field-disabled-placeholder);
+  --ggb-input-text-placeholderColor-invalid: var(--ggb-color-field-invalid-placeholder);
+  --ggb-input-text-slotColor-default: var(--ggb-color-field-default-placeholder);
+  --ggb-input-text-slotColor-hover: var(--ggb-color-field-hover-placeholder);
+  --ggb-input-text-slotColor-focus: var(--ggb-color-field-focus-placeholder);
+  --ggb-input-text-slotColor-readonly: var(--ggb-color-field-readonly-placeholder);
+  --ggb-input-text-slotColor-disabled: var(--ggb-color-field-disabled-placeholder);
+  --ggb-input-text-slotColor-invalid: var(--ggb-color-field-invalid-placeholder);
+  --ggb-input-text-borderWidth: var(--ggb-border-width-default);
+  --ggb-input-text-radius: var(--ggb-radius-control);
+  --ggb-input-text-minTarget: var(--ggb-size-target-min);
+  --ggb-input-text-focusColor: var(--ggb-color-focus-ring);
+  --ggb-input-text-focusWidth: var(--ggb-focus-width);
+  --ggb-input-text-focusOffset: var(--ggb-focus-offset);
+  --ggb-input-text-focusRadius: var(--ggb-radius-focus);
+  --ggb-input-text-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-input-text-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-input-text[data-size="sm"] {
+  --ggb-input-text-minHeight: var(--ggb-size-control-sm);
+  --ggb-input-text-edgeInline: var(--ggb-space-control-edge-inline-sm);
+  --ggb-input-text-textInline: var(--ggb-space-control-label-inline-sm);
+  --ggb-input-text-slotInline: var(--ggb-space-control-slot-inline-sm);
+  --ggb-input-text-typography: var(--ggb-typography-body-sm);
+  --ggb-input-text-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-input-text-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+  --ggb-input-text-iconSize: var(--ggb-size-icon-sm);
+}
+.ggb-input-text[data-size="md"] {
+  --ggb-input-text-minHeight: var(--ggb-size-control-md);
+  --ggb-input-text-edgeInline: var(--ggb-space-control-edge-inline-md);
+  --ggb-input-text-textInline: var(--ggb-space-control-label-inline-md);
+  --ggb-input-text-slotInline: var(--ggb-space-control-slot-inline-md);
+  --ggb-input-text-typography: var(--ggb-typography-body-md);
+  --ggb-input-text-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-input-text-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+  --ggb-input-text-iconSize: var(--ggb-size-icon-md);
+}
+.ggb-input-text[data-size="lg"] {
+  --ggb-input-text-minHeight: var(--ggb-size-control-lg);
+  --ggb-input-text-edgeInline: var(--ggb-space-control-edge-inline-lg);
+  --ggb-input-text-textInline: var(--ggb-space-control-label-inline-lg);
+  --ggb-input-text-slotInline: var(--ggb-space-control-slot-inline-lg);
+  --ggb-input-text-typography: var(--ggb-typography-body-lg);
+  --ggb-input-text-typography-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);
+  --ggb-input-text-typography-fontFeatureSettings: var(--ggb-typography-body-lg-fontFeatureSettings);
+  --ggb-input-text-iconSize: var(--ggb-size-icon-lg);
+}

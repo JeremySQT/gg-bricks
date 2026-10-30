@@ -118,6 +118,26 @@
     {
       "date": "2026-10-26",
       "change": "Description and specification text: components with an icon (Button, IconButton, Badge, Link) no longer nest Icon; they place the Phosphor glyph themselves, impose its size and offer an instance-swap property for the glyph (user decision at the wave 1 Figma parity review). Icon itself is unchanged."
+    },
+    {
+      "date": "2026-10-29",
+      "change": "Library pages (user decision): the master moved to the section Icon of the Content library page (IDs kept, instances linked; library-pages.plugin.js); the component page keeps the specification, which now links to the section (spec-master-links.plugin.js)."
     }
-  ]
+  ],
+  "library": {
+    "page": {
+      "name": "Content",
+      "id": "343:1635"
+    },
+    "section": {
+      "name": "Icon",
+      "id": "343:1638"
+    },
+    "members": [
+      "149:20"
+    ],
+    "since": "2026-10-29",
+    "builder": "authoring/adapters/figma/library-pages.plugin.js",
+    "specLink": "authoring/adapters/figma/spec-master-links.plugin.js"
+  }
 }

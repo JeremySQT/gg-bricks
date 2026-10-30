@@ -1,0 +1,12 @@
+{
+  "result": "passed",
+  "checks": [
+    "order label, description, control, message; for/id; aria-describedby description then message",
+    "message absent unless invalid with text; description alone",
+    "required asterisk hidden, required/disabled/invalid passed to the control, control props kept",
+    "radiogroup aria-labelledby and describedby; checkbox wrapped in a named group",
+    "custom control id named through aria-labelledby (the label for follows after registration)",
+    "textarea id from the field",
+    "invalid label rejected on the server"
+  ]
+}

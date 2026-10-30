@@ -1,0 +1,259 @@
+{
+  "formatStatus": "v1",
+  "componentId": "radio-group",
+  "family": "forms",
+  "wave": 2,
+  "phase": "done",
+  "scope": {
+    "purpose": "Ask for exactly one choice among a few mutually exclusive options that should all stay visible.",
+    "useCases": [
+      "A required question in a form (delivery method) inside Field.",
+      "Options with descriptions (plans, shipping speeds).",
+      "A short horizontal group (Yes / No) with orientation horizontal."
+    ],
+    "exclusions": [
+      "Long lists or limited space: Select (wave 4).",
+      "Card-style options and segmented buttons: later (SegmentedControl).",
+      "Deselecting back to no value."
+    ],
+    "alternatives": [
+      "Select for many options.",
+      "Checkbox for independent options.",
+      "Switch for an immediate on/off setting."
+    ]
+  },
+  "dependencies": ["radio"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/radio-group/contract.json",
+      "sha256": "3bff76a8646fc9a485caede752faf14ff9cebdca0aa5711fe5345a23888a7222"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "foundations/tokens/base/semantic/common.tokens.json"
+    ],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/radio-group (288:7)",
+      "componentSet": "292:327",
+      "specification": "338:844",
+      "ledger": "reports/components/radio-group/figma/ledger.json",
+      "parity": "reports/components/radio-group/figma/parity.json",
+      "screenshots": [
+        "reports/components/radio-group/figma/master-set.png",
+        "reports/components/radio-group/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/radio-group/figma/blueprint-anatomy.png",
+          "node": "338:1001"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/radio-group-master.plugin.js",
+        "authoring/adapters/figma/forms-spec.plugin.js",
+        "authoring/adapters/figma/forms-setup.plugin.js",
+        "authoring/adapters/figma/radio-group-options.plugin.js",
+        "authoring/adapters/figma/radio-group-slot.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/radio-group/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/radio-group/RadioGroup.svelte",
+      "folder": "packages/svelte/src/components/radio-group",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 RadioGroup.Root"
+      },
+      "report": "reports/components/radio-group/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/radio-group",
+      "preview": "dist/previews/radio-group.html (npm run build:preview radio-group)",
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 2, review round 2: SVG circles, lighter field borders)",
+      "playground": "apps/docs/src/playgrounds/radio-group.svelte"
+    },
+    "tests": {
+      "ssr": "tests/ssr/radio-group.test.ts",
+      "browser": "tests/browser/radio-group.spec.ts",
+      "computed": "reports/components/radio-group/svelte/computed.json",
+      "screenshots": "reports/components/radio-group/svelte/*.png"
+    },
+    "humanDocs": "documentation/components/radio-group.md",
+    "agentDocs": "documentation/index.json (entry radio-group); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "RadioGroup contract: bindable value, label, orientation vertical/horizontal, size, disabled, readonly, invalid, required; items accepting at least two Radio; valueChange; WAI-ARIA radio group keyboard; space.content.sm and lg gaps. Foundation additions of the wave (color.choice, size.choice, size.switch, readonly border) recorded in the semantic approval.",
+      "revision": {
+        "paths": ["foundations/components/forms/radio-group/contract.json"],
+        "sha256": {
+          "foundations/components/forms/radio-group/contract.json": "3bff76a8646fc9a485caede752faf14ff9cebdca0aa5711fe5345a23888a7222"
+        }
+      },
+      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\"",
+      "note": "Conversational approval of the whole wave contract set; the reviewer expects adjustments at the implementation review."
+    },
+    "implementation": {
+      "scope": "RadioGroup: Bits UI RadioGroup with the first-arrow selection and keyboard entry completions, orientations, ggb:radio-group context.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/radio-group/RadioGroup.svelte",
+          "packages/svelte/src/components/radio-group/contract.generated.ts",
+          "packages/svelte/src/components/radio-group/radio-group.css",
+          "packages/svelte/src/components/radio-group/tokens.generated.css",
+          "packages/svelte/src/components/radio-group/types.ts",
+          "examples/radio-group/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/radio-group/RadioGroup.svelte": "df91f16973c6d198640d165ee6706cc0e0c0c0f1bfbc1b8b304eae3d32952f20",
+          "packages/svelte/src/components/radio-group/contract.generated.ts": "9ccfe98d15642a84b145ec8f67e80fb5733c1664d4627e597811d17bc13ca270",
+          "packages/svelte/src/components/radio-group/radio-group.css": "73c4b5d568242df1c841faf95aa6f078d36efe8126f6e7e452c265ff8ec69304",
+          "packages/svelte/src/components/radio-group/tokens.generated.css": "6f9b7dbc677b211e388255753a3f021b8e1106fa633f207c80853c954bd6beea",
+          "packages/svelte/src/components/radio-group/types.ts": "4bef50e7f76a59dc5c7b904b22e3a7a81fc888de695ba09b5a12f7988415835c",
+          "examples/radio-group/App.svelte": "17960ce04cab329ab1d6c7cc5c8cee6f6ba1d1a5fe073c1c0769dd91c4392912"
+        }
+      },
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
+    },
+    "figmaParity": {
+      "scope": "Figma master, specification page and parity of radio-group (library page Forms, component page forms/radio-group), after the review rounds of 2026-10-28/29 (blueprint boards, focus as a property, option slots for groups, library pages).",
+      "revision": {
+        "paths": [
+          "reports/components/radio-group/figma/parity.json",
+          "reports/components/radio-group/figma/ledger.json",
+          "foundations/components/forms/radio-group/figma-spec.md"
+        ],
+        "sha256": {
+          "reports/components/radio-group/figma/parity.json": "4bb85f670cbec1cade95484eb38b7ff44fde51baff7c3a941c102ff0c548ed08",
+          "reports/components/radio-group/figma/ledger.json": "1b05629f6c23061ec42afc8023b4a38b0627020dcb607f59556504881daf90a9",
+          "foundations/components/forms/radio-group/figma-spec.md": "d6bd1a6ef1b39040f8e511e189b6925eab6306681b07e2a768bd4e618a80f92c"
+        }
+      },
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "note": null
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of radio-group.",
+      "revision": {
+        "paths": [
+          "documentation/components/radio-group.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/radio-group.svelte"
+        ],
+        "sha256": {
+          "documentation/components/radio-group.md": "21b79a98ffe393d7e1f50c929ba48b9253161731e28d46972d429e9ae237d8ef",
+          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "apps/docs/src/playgrounds/radio-group.svelte": "2bdadbd6c8d473f8d42157c26696df441c1ded79d91a38019455195bb72a48f1"
+        }
+      },
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate; node tooling/validate-contracts.ts --tokens --dependencies",
+      "report": "reports/components/radio-group/contract-validation.json",
+      "date": "2026-10-26",
+      "note": "Schema, consistency, token coverage (2 paths) in 18 contexts and accepted components; check-foundations passes (425 roles, 2196 contrast checks, 0 failures). Intrinsic rules: manual review at the contract gate."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/radio-group/token-coverage.json",
+      "date": "2026-10-26",
+      "note": "No surface, content or border role: no component contrast records; the colors it binds are covered by the inventory pairs."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors), SSR (64), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/radio-group/svelte/ssr.json",
+      "date": "2026-10-26",
+      "note": "3 checks recorded for RadioGroup."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-26",
+      "note": "Chromium 153, full suite 102 passed; computed values: 36 records (reports/components/radio-group/svelte/computed.json). Details in reports/components/radio-group/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview radio-group",
+      "date": "2026-10-26",
+      "note": "dist/previews/radio-group.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-27",
+      "note": "After review round 1 (SVG circles for Switch and Radio, lighter field borders): npm run verify passed (SSR 64), full browser suite 102 passed; computed.json regenerated."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID radio-group); node authoring/adapters/figma/forms-parity-report.mjs radio-group <result>",
+      "report": "reports/components/radio-group/figma/parity.json",
+      "date": "2026-10-27",
+      "note": "36 records (vertical and horizontal gaps in 18 contexts), 0 failures."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID radio-group); node authoring/adapters/figma/forms-parity-report.mjs radio-group <result>",
+      "report": "reports/components/radio-group/figma/parity.json",
+      "date": "2026-10-28",
+      "note": "After the move of the options to a Figma slot: gaps read on the Options slot, 36 records, 0 failures."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs; PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npx playwright test tests/browser/docs-site.spec.ts",
+      "date": "2026-10-30",
+      "note": "Page documentation/components/radio-group.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/radio-group/ renders its playground, blueprint and every live block without console errors and without axe violations in light and dark (Chromium; text of disabled components exempt from contrast, the documented exception)."
+    }
+  ],
+  "decisionsTaken": [
+    "A standalone text entry or radio group takes its accessible name from an optional, non-displayed label prop (the IconButton precedent); inside a Field the Field label wins. There is no visually hidden Field label: a control without a visible label is used without Field.",
+    "RadioGroup is a compound component: its options are Radio children (contract-format: the child component is declared in accepts with min 2). Radio gets its own contract and status in the same wave; it is only usable inside a RadioGroup.",
+    "Keyboard per the WAI-ARIA radio group pattern: one tab stop, arrows move and select (both axes in either orientation, wrapping), Space selects; a readonly group lets arrows move focus without selecting.",
+    "Gaps space.content.sm between stacked radios and space.content.lg between radios on a line (density aware); size, readonly, invalid and disabled are set on the group and apply to every radio.",
+    "Two completions of Bits UI: the first arrow press in a group without a value selects the radio focus moved to; keyboard focus entering the group goes to the selected radio, or to the first enabled one when none is selected (Bits UI kept the last focused radio after the application cleared the value).",
+    "RadioGroup shares size, readonly, invalid and disabled with its radios through the context key `ggb:radio-group`.",
+    "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges).",
+    "Implementation review, round 1 (user, 2026-10-27: selected dots flattened or off-center, outer circles odd): ring and dot are drawn as SVG circles (ring stroke inside the box, dot 3/8 of the box), centered by SVG geometry instead of CSS boxes snapped to device pixels at fractional display scales.",
+    "Figma options (user, 2026-10-28): the eight hidden options with Show option 3–8 booleans are not approved (\"trop saturé d'options\"); the options of RadioGroup (and CheckboxGroup) use a Figma slot instead, so designers add options freely.",
+    "Figma slot model approved (2026-10-29): options in the Options slot (Radio only, two at least), Orientation as the only variant, Size set on each Radio. User in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-29): \"Très bien pour moi, je valide cette organisation et l'approche pour le RadioButtonGroup\"",
+    "Library pages (2026-10-29): the master moved to the section RadioGroup of the Forms library page; forms/radio-group keeps the specification. User in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-29): \"Très bien pour moi, je valide cette organisation et l'approche pour le RadioButtonGroup\""
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 2: pull request of wave/2-form-foundations to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/radio-group/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
+    "Figma on 2026-10-27: component set 292:327 (6 variants) and specification 305:780 on page forms/radio-group; see foundations/components/forms/radio-group/figma-spec.md."
+  ]
+}

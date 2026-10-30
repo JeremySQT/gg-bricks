@@ -1,0 +1,57 @@
+/* Generated token bindings from the textarea contract. Do not edit. */
+.ggb-textarea {
+  --ggb-textarea-surface-default: var(--ggb-color-field-default-surface);
+  --ggb-textarea-surface-hover: var(--ggb-color-field-hover-surface);
+  --ggb-textarea-surface-focus: var(--ggb-color-field-focus-surface);
+  --ggb-textarea-surface-readonly: var(--ggb-color-field-readonly-surface);
+  --ggb-textarea-surface-disabled: var(--ggb-color-field-disabled-surface);
+  --ggb-textarea-surface-invalid: var(--ggb-color-field-invalid-surface);
+  --ggb-textarea-content-default: var(--ggb-color-field-default-content);
+  --ggb-textarea-content-hover: var(--ggb-color-field-hover-content);
+  --ggb-textarea-content-focus: var(--ggb-color-field-focus-content);
+  --ggb-textarea-content-readonly: var(--ggb-color-field-readonly-content);
+  --ggb-textarea-content-disabled: var(--ggb-color-field-disabled-content);
+  --ggb-textarea-content-invalid: var(--ggb-color-field-invalid-content);
+  --ggb-textarea-border-default: var(--ggb-color-field-default-border);
+  --ggb-textarea-border-hover: var(--ggb-color-field-hover-border);
+  --ggb-textarea-border-focus: var(--ggb-color-field-focus-border);
+  --ggb-textarea-border-readonly: var(--ggb-color-field-readonly-border);
+  --ggb-textarea-border-disabled: var(--ggb-color-field-disabled-border);
+  --ggb-textarea-border-invalid: var(--ggb-color-field-invalid-border);
+  --ggb-textarea-placeholderColor-default: var(--ggb-color-field-default-placeholder);
+  --ggb-textarea-placeholderColor-hover: var(--ggb-color-field-hover-placeholder);
+  --ggb-textarea-placeholderColor-focus: var(--ggb-color-field-focus-placeholder);
+  --ggb-textarea-placeholderColor-readonly: var(--ggb-color-field-readonly-placeholder);
+  --ggb-textarea-placeholderColor-disabled: var(--ggb-color-field-disabled-placeholder);
+  --ggb-textarea-placeholderColor-invalid: var(--ggb-color-field-invalid-placeholder);
+  --ggb-textarea-borderWidth: var(--ggb-border-width-default);
+  --ggb-textarea-radius: var(--ggb-radius-control);
+  --ggb-textarea-minTarget: var(--ggb-size-target-min);
+  --ggb-textarea-focusColor: var(--ggb-color-focus-ring);
+  --ggb-textarea-focusWidth: var(--ggb-focus-width);
+  --ggb-textarea-focusOffset: var(--ggb-focus-offset);
+  --ggb-textarea-focusRadius: var(--ggb-radius-focus);
+  --ggb-textarea-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-textarea-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-textarea[data-size="sm"] {
+  --ggb-textarea-minHeight: var(--ggb-size-control-sm);
+  --ggb-textarea-paddingInline: var(--ggb-space-control-padding-inline-sm);
+  --ggb-textarea-typography: var(--ggb-typography-body-sm);
+  --ggb-textarea-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-textarea-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+}
+.ggb-textarea[data-size="md"] {
+  --ggb-textarea-minHeight: var(--ggb-size-control-md);
+  --ggb-textarea-paddingInline: var(--ggb-space-control-padding-inline-md);
+  --ggb-textarea-typography: var(--ggb-typography-body-md);
+  --ggb-textarea-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-textarea-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+}
+.ggb-textarea[data-size="lg"] {
+  --ggb-textarea-minHeight: var(--ggb-size-control-lg);
+  --ggb-textarea-paddingInline: var(--ggb-space-control-padding-inline-lg);
+  --ggb-textarea-typography: var(--ggb-typography-body-lg);
+  --ggb-textarea-typography-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);
+  --ggb-textarea-typography-fontFeatureSettings: var(--ggb-typography-body-lg-fontFeatureSettings);
+}

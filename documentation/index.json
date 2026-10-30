@@ -134,6 +134,158 @@
         "API",
         "Accessibility"
       ]
+    },
+    {
+      "id": "field",
+      "import": "Field",
+      "from": "@ggbrick/svelte",
+      "purpose": "Gives one form control (InputText, Textarea, Checkbox, RadioGroup or CheckboxGroup) its visible label, optional description, required asterisk and error message with an icon; names and describes the control and passes it the required, invalid and disabled state; never validates.",
+      "whenNotToUse": "A toolbar search without a visible label (InputText with its label prop), a Switch (its own label), several fields under one heading (Fieldset, planned), a message about the whole form (Alert, planned).",
+      "documentation": "field.md",
+      "contract": "foundations/components/forms/field/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "input-text",
+      "import": "InputText",
+      "from": "@ggbrick/svelte",
+      "purpose": "Lets the user type a short value on one line (text, email, password, search, phone, URL) at the height of a Button of the same size, with an optional decorative leading or trailing icon or one IconButton action (clear, show password) at md and lg.",
+      "whenNotToUse": "Multi-line text (Textarea), a choice among known options (RadioGroup, Select planned), numbers with steppers and dates (NumberInput, DatePicker planned), a value that cannot change (plain text).",
+      "documentation": "input-text.md",
+      "contract": "foundations/components/forms/input-text/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "textarea",
+      "import": "Textarea",
+      "from": "@ggbrick/svelte",
+      "purpose": "Lets the user write text over several lines (comments, notes, messages); one row is as tall as an InputText of the same size; resize vertical, auto (grows up to maxRows) or none; Enter inserts a line break.",
+      "whenNotToUse": "A short value on one line (InputText), formatted text (rich text editor, planned), a composer that sends on Enter (planned).",
+      "documentation": "textarea.md",
+      "contract": "foundations/components/forms/textarea/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "checkbox",
+      "import": "Checkbox",
+      "from": "@ggbrick/svelte",
+      "purpose": "Lets the user turn one option on or off, or shows that some of a set is selected (indeterminate, for select all); label and optional description; the choice usually applies when a form is submitted.",
+      "whenNotToUse": "A setting applied at once (Switch), exactly one choice (RadioGroup), several options under one question (CheckboxGroup), an immediate action (Button).",
+      "documentation": "checkbox.md",
+      "contract": "foundations/components/forms/checkbox/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "checkbox-group",
+      "import": "CheckboxGroup",
+      "from": "@ggbrick/svelte",
+      "purpose": "Gathers two or more related checkboxes that answer one question, any number of which can be checked; value lists the checked values in page order; required means at least one, stated in words by the Field; each checkbox is its own tab stop.",
+      "whenNotToUse": "One independent option (Checkbox), exactly one choice (RadioGroup), settings applied at once (Switch), long or searchable lists (multi-select, planned), selection limits (validate in the application).",
+      "documentation": "checkbox-group.md",
+      "contract": "foundations/components/forms/checkbox-group/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "switch",
+      "import": "Switch",
+      "from": "@ggbrick/svelte",
+      "purpose": "Turns a setting on or off with immediate effect (notifications, dark mode); the label names the setting, not its state; label at the end or at the start for aligned settings lists; no invalid or required state.",
+      "whenNotToUse": "A choice confirmed later, validated or required (Checkbox), one choice among several (RadioGroup, SegmentedControl planned), an action (Button).",
+      "documentation": "switch.md",
+      "contract": "foundations/components/forms/switch/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "radio-group",
+      "import": "RadioGroup",
+      "from": "@ggbrick/svelte",
+      "purpose": "Asks for exactly one choice among a few options that all stay visible (Radio children with labels and descriptions), stacked or on a wrapping row; one tab stop with arrow keys; no return to no selection.",
+      "whenNotToUse": "Many options or known names (Select, planned), several answers (CheckboxGroup), one on/off option (Checkbox or Switch), options as buttons or cards (SegmentedControl, planned).",
+      "documentation": "radio-group.md",
+      "contract": "foundations/components/forms/radio-group/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "radio",
+      "import": "Radio",
+      "from": "@ggbrick/svelte",
+      "purpose": "One option of a RadioGroup: a circle, a label and an optional description; value unique within the group; size, readonly and invalid come from the group; only usable inside a RadioGroup.",
+      "whenNotToUse": "On its own or outside a RadioGroup (Checkbox for one on/off option), options that can all be checked (Checkbox items in a CheckboxGroup).",
+      "documentation": "radio.md",
+      "contract": "foundations/components/forms/radio/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
     }
   ],
   "foundations": [

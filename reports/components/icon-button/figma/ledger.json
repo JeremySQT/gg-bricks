@@ -7,7 +7,7 @@
   "page": {
     "name": "actions/icon-button",
     "id": "211:2",
-    "position": "after actions/button"
+    "holds": "the specification and its instances (since 2026-10-29)"
   },
   "componentSet": {
     "id": "211:1167",
@@ -270,6 +270,26 @@
     {
       "date": "2026-10-26",
       "change": "Icon slot (authoring/adapters/figma/icon-slot-migrate.plugin.js): the nested, exposed Icon (sm/md/lg) is replaced in the 135 variants by the Phosphor glyph itself, width and height bound to size/icon/{size}, fill button/foreground, hidden in the loading variants, behind the new instance-swap property Icon#254:0. User decision at the wave 1 Figma parity review (2026-10-26): a component imposes the size of its icon, so the designer chooses the glyph only; an exposed nested Icon showed its Size property. 168 specification instances re-given their glyph; 18 loading instances had their glyph shown again by the swap (Figma shows a hidden glyph when it is swapped) and were hidden again. Description and texts updated; parity re-measured: the 18 hashes are those of computed.json (specification pixel-identical before the text change)."
+    },
+    {
+      "date": "2026-10-29",
+      "change": "Library pages (user decision): the master moved to the section IconButton of the Actions library page (IDs kept, instances linked; library-pages.plugin.js); the component page keeps the specification, which now links to the section (spec-master-links.plugin.js)."
     }
-  ]
+  ],
+  "library": {
+    "page": {
+      "name": "Actions",
+      "id": "343:2"
+    },
+    "section": {
+      "name": "IconButton",
+      "id": "343:4"
+    },
+    "members": [
+      "211:1167"
+    ],
+    "since": "2026-10-29",
+    "builder": "authoring/adapters/figma/library-pages.plugin.js",
+    "specLink": "authoring/adapters/figma/spec-master-links.plugin.js"
+  }
 }

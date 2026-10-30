@@ -2,7 +2,7 @@
 
 ## Overview
 
-- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), page **actions/button** (`144:2`), which holds the master, its internal parts and this specification (moved from the former Actions page on 2026-10-13).
+- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), component page **actions/button** (`144:2`): this specification and its instances. Master and its internal parts: library page **Actions** (`343:2`), section **Button** ([`343:3`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=343-3)), since 2026-10-29; the specification links to the section under its title.
 - Master: component set **Button** ([`48:1586`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=48-1586)), 135 variants. Since 2026-10-14 the slots hold the wave 1 components (Icon `149:20`, Counter `149:1568`, Shortcut `151:110`) instead of fixtures; internal part `_Button/Trailing` (`75:14`, Type × Size).
 - Specification frame: **Button — Specification** ([`126:1904`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=126-1904)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples, written in plain sentences for designers; token paths and mechanics stay in this file. Its instances are explanatory, never masters. Built by `authoring/adapters/figma/button-spec.plugin.js`.
 - Reproduces: contract `foundations/components/actions/button/contract.json` (sha256 `6e15acb0…47ca`, revision of 2026-10-13 with the focusRadius role) and the implementation approved on 2026-10-07 (`packages/svelte/src/components/button`).

@@ -1,0 +1,128 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=288-7"
+  },
+  "recordedOn": "2026-10-27",
+  "page": {
+    "name": "forms/radio-group",
+    "id": "288:7",
+    "holds": "the specification and its instances (since 2026-10-29)"
+  },
+  "componentSet": {
+    "id": "292:327",
+    "name": "RadioGroup",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=292-327",
+    "builder": "authoring/adapters/figma/radio-group-master.plugin.js, then authoring/adapters/figma/radio-group-slot.plugin.js",
+    "defaultVariant": "Orientation=vertical",
+    "variantCount": 2
+  },
+  "properties": {
+    "Label#292:7": {
+      "type": "TEXT",
+      "default": "Delivery speed",
+      "layer": "Label (accessible name, not shown)"
+    },
+    "Options#337:0": {
+      "type": "SLOT",
+      "layer": "Options (one slot per variant, both bound)",
+      "settings": {
+        "minChildren": 2,
+        "allowPreferredValuesOnly": true
+      },
+      "preferredValues": [
+        "Radio 290:257 (COMPONENT_SET key b93a4acaefe9260a6edea662546c3bc600bc9578)"
+      ],
+      "default": "Radio 1, Radio 2 (selected), Radio 3: Radio md"
+    },
+    "Orientation": {
+      "type": "VARIANT",
+      "default": "vertical",
+      "options": [
+        "vertical",
+        "horizontal"
+      ]
+    }
+  },
+  "layers": [
+    "Options (SLOT, carries the layout and the gap bindings; Radio 1–3 by default)",
+    "Label (accessible name, not shown) (hidden text layer, typography/label/md, behind Label)"
+  ],
+  "bindings": {
+    "Options slot, vertical: itemSpacing": "space/content/sm",
+    "Options slot, horizontal: itemSpacing": "space/content/lg",
+    "Options slot, horizontal: counterAxisSpacing (wrap)": "space/content/sm"
+  },
+  "adapterVariables": {},
+  "variants": {
+    "Orientation=vertical": "292:165",
+    "Orientation=horizontal": "292:246"
+  },
+  "specification": {
+    "id": "338:844",
+    "name": "RadioGroup — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=338-844",
+    "builder": "authoring/adapters/figma/forms-spec.plugin.js (IDS ['radio-group'])",
+    "anatomyBoard": "338:1001",
+    "uses": {
+      "_Spec/Callout": "115:6",
+      "_Spec/Marker": "115:8",
+      "Wireframe": "VariableCollectionId:105:1565",
+      "Radio": "290:257"
+    }
+  },
+  "evidence": {
+    "parity": "reports/components/radio-group/figma/parity.json",
+    "parityScripts": [
+      "authoring/adapters/figma/forms-parity.plugin.js",
+      "authoring/adapters/figma/forms-parity-report.mjs"
+    ],
+    "screenshots": [
+      "reports/components/radio-group/figma/master-set.png",
+      "reports/components/radio-group/figma/specification.png",
+      "reports/components/radio-group/figma/blueprint-anatomy.png"
+    ]
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-27",
+      "change": "Built: 6 variants and the specification page. Parity measured in the 18 contexts (forms-parity.plugin.js)."
+    },
+    {
+      "date": "2026-10-28",
+      "change": "Anatomy board redrawn (user review of the Figma parity gate): the enlarged instance is drawn in the blueprint ink (surfaces in tint/16 with tint/48 borders, text and glyphs in ink, secondary texts at 60 %, layout boxes dashed) instead of the dark appearance, and every leader is straight (vertical above or below its target, horizontal beside it). forms-spec.plugin.js with ANATOMY_ONLY."
+    },
+    {
+      "date": "2026-10-28",
+      "change": "Options as properties (user: designers should add options without detaching): radio-group-options.plugin.js renamed Radio 1–3 to Option 1–3, added Option 4–8 (copies of Option 3), exposed the eight options and bound options 3 to 8 to the new booleans Show option 3 … Show option 8 (3 on by default). Checked: an option’s selection and label survive a change of Size."
+    },
+    {
+      "date": "2026-10-28",
+      "change": "Options in a Figma slot (user: the eight hidden options were \"trop saturé\"; use slots): radio-group-slot.plugin.js recorded the 30 instances of the forms pages, swapped the 5 sm/lg instances to md, removed the Size variants (a slot cannot pass the group size to its content: Size is set on each Radio), created the SLOT property Options shared by both variants (min 2, Radio only), moved the gap bindings onto the slot, deleted Show option 3–8 and refilled every instance with its options (30/30, no limit violation, nested Field controls included). Specification page rebuilt (338:844, anatomy 338:1001). Parity re-measured on the slot: 36 records, 0 failures."
+    },
+    {
+      "date": "2026-10-29",
+      "change": "Library pages (user decision): the master moved to the section RadioGroup of the Forms library page (IDs kept, instances linked; library-pages.plugin.js); the component page keeps the specification, which now links to the section (spec-master-links.plugin.js)."
+    }
+  ],
+  "slots": {
+    "Orientation=vertical": "337:6048",
+    "Orientation=horizontal": "337:6116"
+  },
+  "library": {
+    "page": {
+      "name": "Forms",
+      "id": "343:1640"
+    },
+    "section": {
+      "name": "RadioGroup",
+      "id": "343:1645"
+    },
+    "members": [
+      "292:327"
+    ],
+    "since": "2026-10-29",
+    "builder": "authoring/adapters/figma/library-pages.plugin.js",
+    "specLink": "authoring/adapters/figma/spec-master-links.plugin.js"
+  }
+}

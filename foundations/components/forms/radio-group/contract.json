@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "radio-group",
+  "props": {
+    "value": {
+      "type": "string",
+      "default": "",
+      "bindable": true
+    },
+    "label": {
+      "type": "string"
+    },
+    "orientation": {
+      "values": ["vertical", "horizontal"],
+      "default": "vertical"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "readonly": {
+      "type": "boolean",
+      "default": false
+    },
+    "invalid": {
+      "type": "boolean",
+      "default": false
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "container": {},
+    "items": {
+      "accepts": ["radio"],
+      "min": 2
+    }
+  },
+  "states": {},
+  "events": {
+    "valueChange": {
+      "when": "The user selects a radio (pointer, arrow keys or Space) while the group is neither disabled nor readonly.",
+      "payload": "The value of the selected radio."
+    }
+  },
+  "tokens": {
+    "verticalGap": "space.content.sm",
+    "horizontalGap": "space.content.lg"
+  },
+  "rules": [
+    "A radio group asks for exactly one choice among two or more mutually exclusive options, all visible at once. value is the value of the selected radio; when it matches no radio, none is selected. The user can select a radio but cannot return to no selection.",
+    "The accessible name of the group is the label of the enclosing Field, otherwise the label prop; one of them is present and non-empty. label is not displayed. Invalid and required are exposed on the group.",
+    "size, readonly and invalid apply to every radio; disabled disables every radio.",
+    "orientation vertical stacks the radios in source order separated by verticalGap. orientation horizontal places them on one line separated by horizontalGap and wraps to further lines, still in source order, when the inline size runs out.",
+    "The group is a single stop in sequential focus: focus enters on the selected radio, or on the first enabled radio when none is selected. Arrow keys (Down and Right forward, Up and Left backward, in either orientation) move focus to the next or previous enabled radio, wrapping at the ends, and select it. Space selects the focused radio when it is not selected.",
+    "In a readonly group arrow keys move focus without changing the selection and Space does nothing; the group is exposed as read-only. A disabled group is skipped by sequential focus.",
+    "Selecting a radio sets value and emits valueChange; setting value from the application does not emit it."
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=288-8"
+  },
+  "recordedOn": "2026-10-27",
+  "page": {
+    "name": "forms/switch",
+    "id": "288:8",
+    "holds": "the specification and its instances (since 2026-10-29)"
+  },
+  "componentSet": {
+    "id": "291:434",
+    "name": "Switch",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=291-434",
+    "builder": "authoring/adapters/figma/switch-master.plugin.js",
+    "defaultVariant": "Label position=end, Size=md, Selection=off, State=default",
+    "variantCount": 48
+  },
+  "properties": {
+    "Label#291:0": {
+      "type": "TEXT",
+      "default": "Setting",
+      "layer": "Label"
+    },
+    "Description#291:49": {
+      "type": "TEXT",
+      "default": "Description",
+      "layer": "Description"
+    },
+    "Show description#291:98": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Description (visible)"
+    },
+    "Show label#291:147": {
+      "type": "BOOLEAN",
+      "default": true,
+      "layer": "Text (visible)"
+    },
+    "Focus#291:196": {
+      "type": "BOOLEAN",
+      "default": false,
+      "layer": "Focus ring (visible; State=focus variants show it always)"
+    },
+    "Label position": {
+      "type": "VARIANT",
+      "default": "end",
+      "options": [
+        "end",
+        "start"
+      ]
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ]
+    },
+    "Selection": {
+      "type": "VARIANT",
+      "default": "off",
+      "options": [
+        "off",
+        "on"
+      ]
+    },
+    "State": {
+      "type": "VARIANT",
+      "default": "default",
+      "options": [
+        "default",
+        "hover",
+        "readonly",
+        "disabled"
+      ]
+    }
+  },
+  "exposedInstances": {},
+  "layers": [
+    "First line (height typography/body/{size}/lineHeight)",
+    "First line/Track (auto layout, width switch/track-width, height size/switch/{size}, padding switch/inset, radius/full; thumb at MIN when off, MAX when on)",
+    "First line/Track/Thumb (ellipse switch/thumb)",
+    "First line/Track/Focus ring (absolute, radius/full, visible = Focus)",
+    "Text (visible = Show label): Label, Description (visible = Show description)",
+    "Target (size/target/min, absolute)"
+  ],
+  "bindings": {
+    "Track fill / inside stroke": "color/choice/{off|on}/{state}/surface, border; border/width/default",
+    "Thumb": "color/choice/{off|on}/{state}/content",
+    "row gap": "space/control/gap/{size}",
+    "Label": "typography/body/{size}; color/content/primary (disabled: color/content/disabled)",
+    "Description": "typography/body/sm; color/content/secondary (disabled: color/content/disabled)",
+    "Focus ring": "color/focus/ring, focus/width, 2 px outside the track",
+    "Label position start": "text first, primaryAxisAlignItems SPACE_BETWEEN, fixed width (resize the instance)"
+  },
+  "adapterVariables": {
+    "switch/track-width": {
+      "id": "VariableID:288:13",
+      "collection": "Components (VariableCollectionId:181:2)",
+      "type": "FLOAT",
+      "values": {
+        "md": 36,
+        "sm": 28,
+        "lg": 44
+      },
+      "scopes": [
+        "WIDTH_HEIGHT",
+        "GAP"
+      ],
+      "hiddenFromPublishing": true
+    },
+    "switch/thumb": {
+      "id": "VariableID:288:14",
+      "collection": "Components (VariableCollectionId:181:2)",
+      "type": "FLOAT",
+      "values": {
+        "md": 16,
+        "sm": 12,
+        "lg": 20
+      },
+      "scopes": [
+        "WIDTH_HEIGHT",
+        "GAP"
+      ],
+      "hiddenFromPublishing": true
+    },
+    "switch/inset": {
+      "id": "VariableID:288:15",
+      "collection": "Components (VariableCollectionId:181:2)",
+      "type": "FLOAT",
+      "values": {
+        "md": 2,
+        "sm": 2,
+        "lg": 2
+      },
+      "scopes": [
+        "WIDTH_HEIGHT",
+        "GAP"
+      ],
+      "hiddenFromPublishing": true
+    }
+  },
+  "variants": {
+    "Label position=end, Size=md, Selection=off, State=default": "291:2",
+    "Label position=end, Size=sm, Selection=off, State=default": "291:11",
+    "Label position=end, Size=lg, Selection=off, State=default": "291:20",
+    "Label position=end, Size=md, Selection=off, State=hover": "291:29",
+    "Label position=end, Size=sm, Selection=off, State=hover": "291:38",
+    "Label position=end, Size=lg, Selection=off, State=hover": "291:47",
+    "Label position=end, Size=md, Selection=off, State=readonly": "291:56",
+    "Label position=end, Size=sm, Selection=off, State=readonly": "291:65",
+    "Label position=end, Size=lg, Selection=off, State=readonly": "291:74",
+    "Label position=end, Size=md, Selection=off, State=disabled": "291:83",
+    "Label position=end, Size=sm, Selection=off, State=disabled": "291:92",
+    "Label position=end, Size=lg, Selection=off, State=disabled": "291:101",
+    "Label position=end, Size=md, Selection=on, State=default": "291:110",
+    "Label position=end, Size=sm, Selection=on, State=default": "291:119",
+    "Label position=end, Size=lg, Selection=on, State=default": "291:128",
+    "Label position=end, Size=md, Selection=on, State=hover": "291:137",
+    "Label position=end, Size=sm, Selection=on, State=hover": "291:146",
+    "Label position=end, Size=lg, Selection=on, State=hover": "291:155",
+    "Label position=end, Size=md, Selection=on, State=readonly": "291:164",
+    "Label position=end, Size=sm, Selection=on, State=readonly": "291:173",
+    "Label position=end, Size=lg, Selection=on, State=readonly": "291:182",
+    "Label position=end, Size=md, Selection=on, State=disabled": "291:191",
+    "Label position=end, Size=sm, Selection=on, State=disabled": "291:200",
+    "Label position=end, Size=lg, Selection=on, State=disabled": "291:209",
+    "Label position=start, Size=md, Selection=off, State=default": "291:218",
+    "Label position=start, Size=sm, Selection=off, State=default": "291:227",
+    "Label position=start, Size=lg, Selection=off, State=default": "291:236",
+    "Label position=start, Size=md, Selection=off, State=hover": "291:245",
+    "Label position=start, Size=sm, Selection=off, State=hover": "291:254",
+    "Label position=start, Size=lg, Selection=off, State=hover": "291:263",
+    "Label position=start, Size=md, Selection=off, State=readonly": "291:272",
+    "Label position=start, Size=sm, Selection=off, State=readonly": "291:281",
+    "Label position=start, Size=lg, Selection=off, State=readonly": "291:290",
+    "Label position=start, Size=md, Selection=off, State=disabled": "291:299",
+    "Label position=start, Size=sm, Selection=off, State=disabled": "291:308",
+    "Label position=start, Size=lg, Selection=off, State=disabled": "291:317",
+    "Label position=start, Size=md, Selection=on, State=default": "291:326",
+    "Label position=start, Size=sm, Selection=on, State=default": "291:335",
+    "Label position=start, Size=lg, Selection=on, State=default": "291:344",
+    "Label position=start, Size=md, Selection=on, State=hover": "291:353",
+    "Label position=start, Size=sm, Selection=on, State=hover": "291:362",
+    "Label position=start, Size=lg, Selection=on, State=hover": "291:371",
+    "Label position=start, Size=md, Selection=on, State=readonly": "291:380",
+    "Label position=start, Size=sm, Selection=on, State=readonly": "291:389",
+    "Label position=start, Size=lg, Selection=on, State=readonly": "291:398",
+    "Label position=start, Size=md, Selection=on, State=disabled": "291:407",
+    "Label position=start, Size=sm, Selection=on, State=disabled": "291:416",
+    "Label position=start, Size=lg, Selection=on, State=disabled": "291:425"
+  },
+  "specification": {
+    "id": "306:454",
+    "name": "Switch — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=306-454",
+    "builder": "authoring/adapters/figma/forms-spec.plugin.js (IDS ['switch'])",
+    "anatomyBoard": "315:2597",
+    "uses": {
+      "_Spec/Callout": "115:6",
+      "_Spec/Marker": "115:8",
+      "Wireframe": "VariableCollectionId:105:1565"
+    }
+  },
+  "evidence": {
+    "parity": "reports/components/switch/figma/parity.json",
+    "parityScripts": [
+      "authoring/adapters/figma/forms-parity.plugin.js",
+      "authoring/adapters/figma/forms-parity-report.mjs"
+    ],
+    "screenshots": [
+      "reports/components/switch/figma/master-set.png",
+      "reports/components/switch/figma/specification.png",
+      "reports/components/switch/figma/blueprint-anatomy.png"
+    ]
+  },
+  "maintenance": [
+    {
+      "date": "2026-10-27",
+      "change": "Built: 48 variants and the specification page. Parity measured in the 18 contexts (forms-parity.plugin.js)."
+    },
+    {
+      "date": "2026-10-28",
+      "change": "Anatomy board redrawn (user review of the Figma parity gate): the enlarged instance is drawn in the blueprint ink (surfaces in tint/16 with tint/48 borders, text and glyphs in ink, secondary texts at 60 %, layout boxes dashed) instead of the dark appearance, and every leader is straight (vertical above or below its target, horizontal beside it). forms-spec.plugin.js with ANATOMY_ONLY."
+    },
+    {
+      "date": "2026-10-29",
+      "change": "Library pages (user decision): the master moved to the section Switch of the Forms library page (IDs kept, instances linked; library-pages.plugin.js); the component page keeps the specification, which now links to the section (spec-master-links.plugin.js)."
+    }
+  ],
+  "library": {
+    "page": {
+      "name": "Forms",
+      "id": "343:1640"
+    },
+    "section": {
+      "name": "Switch",
+      "id": "343:1646"
+    },
+    "members": [
+      "291:434"
+    ],
+    "since": "2026-10-29",
+    "builder": "authoring/adapters/figma/library-pages.plugin.js",
+    "specLink": "authoring/adapters/figma/spec-master-links.plugin.js"
+  }
+}

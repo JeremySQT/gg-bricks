@@ -824,7 +824,7 @@
         },
         "border": {
           "$type": "color",
-          "$value": "{color.palette.neutral.700}"
+          "$value": "{color.field.default.border}"
         },
         "placeholder": {
           "$type": "color",
@@ -865,6 +865,152 @@
         "placeholder": {
           "$type": "color",
           "$value": "{color.palette.neutral.400}"
+        }
+      }
+    },
+    "choice": {
+      "off": {
+        "default": {
+          "surface": {
+            "$type": "color",
+            "$value": "{color.field.default.surface}"
+          },
+          "content": {
+            "$type": "color",
+            "$value": "{color.field.default.placeholder}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{color.field.default.border}"
+          }
+        },
+        "hover": {
+          "surface": {
+            "$type": "color",
+            "$value": "{color.field.hover.surface}"
+          },
+          "content": {
+            "$type": "color",
+            "$value": "{color.field.hover.placeholder}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{color.field.hover.border}"
+          }
+        },
+        "readonly": {
+          "surface": {
+            "$type": "color",
+            "$value": "{color.field.readonly.surface}"
+          },
+          "content": {
+            "$type": "color",
+            "$value": "{color.field.readonly.placeholder}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{color.field.readonly.border}"
+          }
+        },
+        "disabled": {
+          "surface": {
+            "$type": "color",
+            "$value": "{color.field.disabled.surface}"
+          },
+          "content": {
+            "$type": "color",
+            "$value": "{color.field.disabled.placeholder}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{color.field.disabled.border}"
+          }
+        },
+        "invalid": {
+          "surface": {
+            "$type": "color",
+            "$value": "{color.field.invalid.surface}"
+          },
+          "content": {
+            "$type": "color",
+            "$value": "{color.field.invalid.placeholder}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{color.field.invalid.border}"
+          }
+        }
+      },
+      "on": {
+        "default": {
+          "surface": {
+            "$type": "color",
+            "$value": "{color.palette.accent.400}"
+          },
+          "content": {
+            "$type": "color",
+            "$value": "{color.palette.neutral.900}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{color.palette.accent.400}"
+          }
+        },
+        "hover": {
+          "surface": {
+            "$type": "color",
+            "$value": "{color.palette.accent.300}"
+          },
+          "content": {
+            "$type": "color",
+            "$value": "{color.palette.neutral.900}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{color.palette.accent.300}"
+          }
+        },
+        "readonly": {
+          "surface": {
+            "$type": "color",
+            "$value": "{color.field.readonly.surface}"
+          },
+          "content": {
+            "$type": "color",
+            "$value": "{color.field.readonly.content}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{color.field.readonly.border}"
+          }
+        },
+        "disabled": {
+          "surface": {
+            "$type": "color",
+            "$value": "{color.field.disabled.surface}"
+          },
+          "content": {
+            "$type": "color",
+            "$value": "{color.field.disabled.content}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{color.field.disabled.border}"
+          }
+        },
+        "invalid": {
+          "surface": {
+            "$type": "color",
+            "$value": "{color.field.invalid.border}"
+          },
+          "content": {
+            "$type": "color",
+            "$value": "{color.palette.neutral.900}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{color.field.invalid.border}"
+          }
         }
       }
     },

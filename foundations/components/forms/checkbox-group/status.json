@@ -1,0 +1,223 @@
+{
+  "formatStatus": "v1",
+  "componentId": "checkbox-group",
+  "family": "forms",
+  "wave": 2,
+  "phase": "done",
+  "scope": {
+    "purpose": "Gather two or more related checkboxes that answer one question, any number of which can be checked, with one group name, one required rule (at least one) and one validation message through Field.",
+    "useCases": [
+      "A required question with several possible answers (Select at least one notification channel).",
+      "Optional filters or preferences listed under one label.",
+      "A horizontal row of two or three short options (days of the week)."
+    ],
+    "exclusions": [
+      "Selection limits (at most N, exactly N): later, the application validates them meanwhile.",
+      "A select-all checkbox inside the group: it stays outside and the application derives its state from value.",
+      "Nested groups and indeterminate children.",
+      "Long or searchable option lists (a multi-select, later)."
+    ],
+    "alternatives": [
+      "Checkbox alone for a single independent option.",
+      "RadioGroup for exactly one choice.",
+      "Switch for settings applied at once."
+    ]
+  },
+  "dependencies": ["checkbox"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/checkbox-group/contract.json",
+      "sha256": "335fb582b8a283cb2fb32e483e6a89c2eceb16a874ff0966e8431f4fcbeb3bcb"
+    },
+    "tokens": ["foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/checkbox-group (347:243)",
+      "library": "Forms (343:1640), section CheckboxGroup (347:244)",
+      "componentSet": "347:303",
+      "specification": "348:2",
+      "ledger": "reports/components/checkbox-group/figma/ledger.json",
+      "parity": "reports/components/checkbox-group/figma/parity.json",
+      "screenshots": [
+        "reports/components/checkbox-group/figma/master-set.png",
+        "reports/components/checkbox-group/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/checkbox-group/figma/blueprint-anatomy.png",
+          "node": "348:212"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/checkbox-group-master.plugin.js",
+        "authoring/adapters/figma/forms-spec.plugin.js",
+        "authoring/adapters/figma/spec-master-links.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/checkbox-group/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/checkbox-group/CheckboxGroup.svelte",
+      "folder": "packages/svelte/src/components/checkbox-group",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 Checkbox.Group"
+      },
+      "report": "reports/components/checkbox-group/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/checkbox-group",
+      "preview": "dist/previews/checkbox-group.html (npm run build:preview checkbox-group)",
+      "artifact": "https://claude.ai/artifact/Gk82eEnq6GMYxucRXpH5Nf (version 1)",
+      "playground": "apps/docs/src/playgrounds/checkbox-group.svelte"
+    },
+    "tests": {
+      "ssr": "tests/ssr/checkbox-group.test.ts",
+      "browser": "tests/browser/checkbox-group.spec.ts",
+      "computed": "reports/components/checkbox-group/svelte/computed.json",
+      "screenshots": "reports/components/checkbox-group/svelte/*.png"
+    },
+    "humanDocs": "documentation/components/checkbox-group.md",
+    "agentDocs": "documentation/index.json (entry checkbox-group); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "CheckboxGroup contract: bindable list value, label (when no Field), orientation, size, disabled, readonly, invalid, required (at least one, stated in words by the Field); container and 2+ Checkbox items; valueChange; verticalGap space.content.sm, horizontalGap space.content.lg; each checkbox its own tab stop; no validation, no select-all child. With the list prop type added to the contract format.",
+      "revision": {
+        "paths": ["foundations/components/forms/checkbox-group/contract.json"],
+        "sha256": {
+          "foundations/components/forms/checkbox-group/contract.json": "335fb582b8a283cb2fb32e483e6a89c2eceb16a874ff0966e8431f4fcbeb3bcb"
+        }
+      },
+      "provenance": "User at the CheckboxGroup contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-28): \"Je valide le contrat, avec ces trois modifications. Pour obligatoire je préfère qu'on soit accessible, donc plutôt sur le label ou la description du field.\"",
+      "note": null
+    },
+    "implementation": {
+      "scope": "CheckboxGroup on Bits UI Checkbox.Group (Field naming, value in source order, size and conditions passed to every checkbox, required kept off the checkboxes) and the Checkbox value amendment.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/checkbox-group/CheckboxGroup.svelte",
+          "packages/svelte/src/components/checkbox-group/contract.generated.ts",
+          "packages/svelte/src/components/checkbox-group/checkbox-group.css",
+          "packages/svelte/src/components/checkbox-group/tokens.generated.css",
+          "packages/svelte/src/components/checkbox-group/types.ts",
+          "packages/svelte/src/components/checkbox/Checkbox.svelte",
+          "packages/svelte/src/components/checkbox/types.ts",
+          "examples/checkbox-group/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/checkbox-group/CheckboxGroup.svelte": "6ca38d77448b8232073b6bfa2de91ea6d97a6e595da7a947a0daef070695bd71",
+          "packages/svelte/src/components/checkbox-group/contract.generated.ts": "9a822ed23b76ecc220721c2b7920f66882ff1e822319257df41aac1d12c1d725",
+          "packages/svelte/src/components/checkbox-group/checkbox-group.css": "a1e5f177206a6cb5458dcf0b0500c71073df13043468c13cf2de92460186da49",
+          "packages/svelte/src/components/checkbox-group/tokens.generated.css": "34491bf7538f0c4bfaa88d574c1339711f5a929e549fb7acc7ac2bf9073dffd5",
+          "packages/svelte/src/components/checkbox-group/types.ts": "9d38dd6fbcc55bc5a22a0ad2cd44f07beae6ce512debe97dd3868007edf8fb78",
+          "packages/svelte/src/components/checkbox/Checkbox.svelte": "b4a4a95b5d0cdcab1372a5d2cf824546326f827f3def07722e3fc7e7432eef17",
+          "packages/svelte/src/components/checkbox/types.ts": "86568aacd4634bf97c4b43fadbcd60e08e8d48f045b07ae383df7067b4459b04",
+          "examples/checkbox-group/App.svelte": "67dc738972b1a4e2fc066e4209e9b706ccffde0779297c066f84212a267d44ea"
+        }
+      },
+      "provenance": "User at the CheckboxGroup implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on https://claude.ai/artifact/Gk82eEnq6GMYxucRXpH5Nf (2026-10-28): \"Ok pour moi pour l'implémentation du checkbox group, à traiter comme le radiogroup sur figma quand ce sera valide du coup.\"",
+      "note": "The Figma master follows the RadioGroup option model once the user approves it (Figma slots requested on 2026-10-28)."
+    },
+    "figmaParity": {
+      "scope": "Figma master, specification page and parity of checkbox-group (library page Forms, component page forms/checkbox-group), after the review rounds of 2026-10-28/29 (blueprint boards, focus as a property, option slots for groups, library pages).",
+      "revision": {
+        "paths": [
+          "reports/components/checkbox-group/figma/parity.json",
+          "reports/components/checkbox-group/figma/ledger.json",
+          "foundations/components/forms/checkbox-group/figma-spec.md"
+        ],
+        "sha256": {
+          "reports/components/checkbox-group/figma/parity.json": "b1a61a8db4072bdfbdd2ec717b5fcb2a1bb900db459ea4a28359cec7e4e598dd",
+          "reports/components/checkbox-group/figma/ledger.json": "3e6bb90f0df0817afb5e76f8d0eca30a623d114b071a0846916f7ccedc13974e",
+          "foundations/components/forms/checkbox-group/figma-spec.md": "953fed6d7195724e6f8f131c4597419cb78e74e49e2414d968039b6acba96f96"
+        }
+      },
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "note": null
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of checkbox-group.",
+      "revision": {
+        "paths": [
+          "documentation/components/checkbox-group.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/checkbox-group.svelte"
+        ],
+        "sha256": {
+          "documentation/components/checkbox-group.md": "033950f950555a6f01bef4ab4d93764f99aa74f1592afeb6ec4c4879244d1e51",
+          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "apps/docs/src/playgrounds/checkbox-group.svelte": "b107b88c9e89c8f2afd2ed53d0ef6d0d5764d194384af1de583de524e250388a"
+        }
+      },
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-28",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors, 0 warnings), SSR (69), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/checkbox-group/svelte/ssr.json",
+      "date": "2026-10-28",
+      "note": "5 tests; 6 checks recorded for CheckboxGroup."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-28",
+      "note": "Full suite 111 passed (9 CheckboxGroup tests). Details in reports/components/checkbox-group/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview checkbox-group",
+      "date": "2026-10-28",
+      "note": "dist/previews/checkbox-group.html mounts from file:// without errors."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID checkbox-group); node authoring/adapters/figma/forms-parity-report.mjs checkbox-group <result>",
+      "report": "reports/components/checkbox-group/figma/parity.json",
+      "date": "2026-10-29",
+      "note": "3144 records in 18 contexts, 0 failures (224 justified: no mark on an unchecked box)."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs; PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npx playwright test tests/browser/docs-site.spec.ts",
+      "date": "2026-10-30",
+      "note": "Page documentation/components/checkbox-group.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/checkbox-group/ renders its playground, blueprint and every live block without console errors and without axe violations in light and dark (Chromium; text of disabled components exempt from contrast, the documented exception)."
+    }
+  ],
+  "decisionsTaken": [
+    "Added to wave 2 by the user on 2026-10-28 (Figma parity review): \"Je valide l'ajout du Checkboxgroup pour la vague 2.\"",
+    "Built on the RadioGroup model: Field gives the visible label, description and message; label prop only for use without Field; orientation, size, readonly, invalid and disabled passed to every checkbox; gaps space.content.sm (vertical) and space.content.lg (horizontal), no new token.",
+    "value is a list of the checked values (new list prop type in the contract format), in the source order of the checkboxes; each Checkbox gains an optional value prop (contract amendment).",
+    "Each checkbox stays its own tab stop and toggles with Space (checkbox convention), unlike the single stop of a RadioGroup.",
+    "required means at least one; not exposed as aria-required on each checkbox (it would announce every option as mandatory); the Field label or description states it in words.",
+    "Selection limits and a select-all child are out of scope.",
+    "Required exposure (user, 2026-10-28): stated in words by the Field label or description, not as required on each checkbox.",
+    "Implementation: the Bits UI group required is not passed (it would set aria-required on every checkbox); the group sorts its value by the source order of the checkboxes; the group shares its value through the context so that the server markup shows checked boxes before hydration.",
+    "Figma: same slot model as RadioGroup, now approved (2026-10-29); the master goes to the Forms library page in a section CheckboxGroup. User in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-29): \"Très bien pour moi, je valide cette organisation et l'approche pour le RadioButtonGroup\""
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 2: pull request of wave/2-form-foundations to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "Wave 2 addition, branch wave/2-form-foundations, contract drafted on 2026-10-28. Bits UI 2.19.3 provides Checkbox.Group (value string[], role group); its required puts aria-required on every checkbox, which the contract excludes.",
+    "Implemented on 2026-10-28: CheckboxGroup.svelte, Checkbox value amendment, Field fixture; review page examples/checkbox-group."
+  ]
+}

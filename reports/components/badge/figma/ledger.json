@@ -7,7 +7,7 @@
   "page": {
     "name": "content/badge",
     "id": "220:2",
-    "position": "before content/counter (component pages in alphabetical order within a family)"
+    "holds": "the specification and its instances (since 2026-10-29)"
   },
   "componentSet": {
     "id": "220:293",
@@ -171,6 +171,26 @@
     {
       "date": "2026-10-26",
       "change": "Icon slot (authoring/adapters/figma/icon-slot-migrate.plugin.js): the nested Icon xs instance (exposed, showing Size) is replaced in the 36 variants by the Phosphor glyph itself, width and height bound to size/icon/xs, glyph colors kept, behind the new instance-swap property Leading icon#252:0. User decision at the wave 1 Figma parity review (2026-10-26): a component imposes the size of its icon, so the designer chooses the glyph only; an exposed nested Icon showed its Size property. A swap property has one default for the set: the first run left warning-circle everywhere; the default is now pencil-simple and the 88 specification instances were given back their intent's glyph (76) or their chosen one (sparkle, clock, lock-simple). Descriptions and the Anatomy text updated; parity re-measured, identical (18 hashes and numeric fields)."
+    },
+    {
+      "date": "2026-10-29",
+      "change": "Library pages (user decision): the master moved to the section Badge of the Content library page (IDs kept, instances linked; library-pages.plugin.js); the component page keeps the specification, which now links to the section (spec-master-links.plugin.js)."
     }
-  ]
+  ],
+  "library": {
+    "page": {
+      "name": "Content",
+      "id": "343:1635"
+    },
+    "section": {
+      "name": "Badge",
+      "id": "343:1636"
+    },
+    "members": [
+      "220:293"
+    ],
+    "since": "2026-10-29",
+    "builder": "authoring/adapters/figma/library-pages.plugin.js",
+    "specLink": "authoring/adapters/figma/spec-master-links.plugin.js"
+  }
 }

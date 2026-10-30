@@ -228,6 +228,10 @@
     {
       "date": "2026-10-26",
       "change": "Internal part _Counter/Nested (278:261) and the adapter variables counter/* created (authoring/adapters/figma/nested-parts.plugin.js). User decision at the wave 1 Figma parity review (2026-10-26, option 2): inside a host, a Counter or Shortcut must not show its Size; Counter and Shortcut keep their Size for use on their own. Equal to Counter in 18 contexts × 3 sizes × 2 overflow states except the lg digits: the Counter lg master lacks tabular figures (limitation above), the nested part has them like the code, so an lg value can be 1 px wider. Counter itself is unchanged apart from its description, which points to the nested part."
+    },
+    {
+      "date": "2026-10-29",
+      "change": "Library pages (user decision): the master and its internal parts moved to the section Counter of the Content library page (IDs kept, instances linked; library-pages.plugin.js); the component page keeps the specification, which now links to the section (spec-master-links.plugin.js)."
     }
   ],
   "nestedPart": {
@@ -248,5 +252,22 @@
     "bindings": "as the md Counter, with height, minimum width and the Value typography bound to counter/font-family, counter/font-weight, counter/font-size, counter/line-height, counter/letter-spacing (Components, aliases of typography/indicator/{mode}/*); fills counter/foreground",
     "use": "inside a host only (the trailing item of Button, 75:8); the host variant sets the Components mode",
     "screenshot": "reports/components/counter/figma/nested-set.png"
+  },
+  "library": {
+    "page": {
+      "name": "Content",
+      "id": "343:1635"
+    },
+    "section": {
+      "name": "Counter",
+      "id": "343:1637"
+    },
+    "members": [
+      "149:1568",
+      "278:261"
+    ],
+    "since": "2026-10-29",
+    "builder": "authoring/adapters/figma/library-pages.plugin.js",
+    "specLink": "authoring/adapters/figma/spec-master-links.plugin.js"
   }
 }

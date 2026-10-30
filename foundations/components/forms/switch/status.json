@@ -1,0 +1,257 @@
+{
+  "formatStatus": "v1",
+  "componentId": "switch",
+  "family": "forms",
+  "wave": 2,
+  "phase": "done",
+  "scope": {
+    "purpose": "Turn a setting on or off with immediate effect (notifications, dark mode, a feature flag).",
+    "useCases": [
+      "A settings list with the label at the start and the switch aligned at the end (labelPosition start).",
+      "A single setting next to its description.",
+      "A compact switch in a table row with hideLabel."
+    ],
+    "exclusions": [
+      "Choices confirmed by a form submission, required or validated: Checkbox.",
+      "On/off text or icons inside the track.",
+      "Loading state while the setting is saved: open to a later change."
+    ],
+    "alternatives": [
+      "Checkbox when the choice is submitted later.",
+      "RadioGroup or SegmentedControl (later) for more than two values."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/switch/contract.json",
+      "sha256": "c43a5de4b9258453baf6ac46cbeee950dda8e5abfe28cd4a5e0805e8fc11d827"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "foundations/tokens/base/semantic/common.tokens.json"
+    ],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/switch (288:8)",
+      "componentSet": "291:434",
+      "specification": "306:454",
+      "ledger": "reports/components/switch/figma/ledger.json",
+      "parity": "reports/components/switch/figma/parity.json",
+      "screenshots": [
+        "reports/components/switch/figma/master-set.png",
+        "reports/components/switch/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/switch/figma/blueprint-anatomy.png",
+          "node": "315:2597"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/switch-master.plugin.js",
+        "authoring/adapters/figma/forms-spec.plugin.js",
+        "authoring/adapters/figma/forms-setup.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/switch/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/switch/Switch.svelte",
+      "folder": "packages/svelte/src/components/switch",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 Switch.Root and Switch.Thumb"
+      },
+      "report": "reports/components/switch/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/switch",
+      "preview": "dist/previews/switch.html (npm run build:preview switch)",
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 2, review round 2: SVG circles, lighter field borders)",
+      "playground": "apps/docs/src/playgrounds/switch.svelte"
+    },
+    "tests": {
+      "ssr": "tests/ssr/switch.test.ts",
+      "browser": "tests/browser/switch.spec.ts",
+      "computed": "reports/components/switch/svelte/computed.json",
+      "screenshots": "reports/components/switch/svelte/*.png"
+    },
+    "humanDocs": "documentation/components/switch.md",
+    "agentDocs": "documentation/index.json (entry switch); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Switch contract: bindable checked, required label, hideLabel, description, labelPosition end/start, size, disabled, readonly (no invalid, no required); track, thumb, label, description; selection, condition and focus states; checkedChange; color.choice.* roles, size.switch.{size}, radius.full, motion.duration.base. Foundation additions of the wave (color.choice, size.choice, size.switch, readonly border) recorded in the semantic approval.",
+      "revision": {
+        "paths": ["foundations/components/forms/switch/contract.json"],
+        "sha256": {
+          "foundations/components/forms/switch/contract.json": "c43a5de4b9258453baf6ac46cbeee950dda8e5abfe28cd4a5e0805e8fc11d827"
+        }
+      },
+      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\"",
+      "note": "Conversational approval of the whole wave contract set; the reviewer expects adjustments at the implementation review."
+    },
+    "implementation": {
+      "scope": "Switch: Bits UI Switch in a label container, SVG thumb centered at any display scale, readonly guard, label at the end or start.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/switch/Switch.svelte",
+          "packages/svelte/src/components/switch/contract.generated.ts",
+          "packages/svelte/src/components/switch/switch.css",
+          "packages/svelte/src/components/switch/tokens.generated.css",
+          "packages/svelte/src/components/switch/types.ts",
+          "examples/switch/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/switch/Switch.svelte": "3f388f0bd30fe261cfe020647d9157514252f0978f717b185ca115480c01d3e3",
+          "packages/svelte/src/components/switch/contract.generated.ts": "e0721ef891d2296b4859a7d682272f1cc5418bf99bb68169b8177684ea046fdf",
+          "packages/svelte/src/components/switch/switch.css": "0cbf0bbc949cbb1e41fa8fe0578f0c66ee02926b149f5f834659e103631810ea",
+          "packages/svelte/src/components/switch/tokens.generated.css": "bebc0c0e7366ab5ccf9ec5ca45d613409331ecf95941cf72f39279340b083333",
+          "packages/svelte/src/components/switch/types.ts": "357abc1a0b857fd00133b2bf576f1147b69afc005b0e55a0356b634f97b41824",
+          "examples/switch/App.svelte": "d0ad42fb3686ac64c101c4d4f0caf529f58cc47fbaa775f3e655a47dbc31433f"
+        }
+      },
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
+    },
+    "figmaParity": {
+      "scope": "Figma master, specification page and parity of switch (library page Forms, component page forms/switch), after the review rounds of 2026-10-28/29 (blueprint boards, focus as a property, option slots for groups, library pages).",
+      "revision": {
+        "paths": [
+          "reports/components/switch/figma/parity.json",
+          "reports/components/switch/figma/ledger.json",
+          "foundations/components/forms/switch/figma-spec.md"
+        ],
+        "sha256": {
+          "reports/components/switch/figma/parity.json": "6f7d0ab1d7498f4d31acb4fe4d6b4d89d1d1cc7c45e831e65e142bd15c778bcc",
+          "reports/components/switch/figma/ledger.json": "fc40584090a825f8f0383131349bc36dbe8ec2530cd703ab2726ecd90c2a260d",
+          "foundations/components/forms/switch/figma-spec.md": "be4f38c5467ea52b4f9a89d1d7a0aea33a3be144b4a2dc096e63d936c74f2029"
+        }
+      },
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "note": null
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of switch.",
+      "revision": {
+        "paths": [
+          "documentation/components/switch.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/switch.svelte"
+        ],
+        "sha256": {
+          "documentation/components/switch.md": "9b7ed7067cc7b47d0716997b790ebb313771ce35a511446cbba52b509f56ca2a",
+          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "apps/docs/src/playgrounds/switch.svelte": "fbf232496bc1a8dcb3fef81f359e22b4a5d4cc5d7ee8981a9d1456449466ab6f"
+        }
+      },
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate; node tooling/validate-contracts.ts --tokens --dependencies",
+      "report": "reports/components/switch/contract-validation.json",
+      "date": "2026-10-26",
+      "note": "Schema, consistency, token coverage (44 paths) in 18 contexts and accepted components; check-foundations passes (425 roles, 2196 contrast checks, 0 failures). Intrinsic rules: manual review at the contract gate."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/switch/contrast.json",
+      "date": "2026-10-26",
+      "note": "1620 contrast records on the contrastScope backdrops in 18 contexts, 0 failures; minimum active text 5.11."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors), SSR (64), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/switch/svelte/ssr.json",
+      "date": "2026-10-26",
+      "note": "3 checks recorded for Switch."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-26",
+      "note": "Chromium 153, full suite 102 passed; computed values: 4368 records (reports/components/switch/svelte/computed.json). Details in reports/components/switch/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview switch",
+      "date": "2026-10-26",
+      "note": "dist/previews/switch.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-27",
+      "note": "After review round 1 (SVG circles for Switch and Radio, lighter field borders): npm run verify passed (SSR 64), full browser suite 102 passed; computed.json regenerated."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID switch); node authoring/adapters/figma/forms-parity-report.mjs switch <result>",
+      "report": "reports/components/switch/figma/parity.json",
+      "date": "2026-10-27",
+      "note": "4368 records, 0 failures; root width and track end gap within 1.80 px (text layout, tolerance ±2 px). Same hover measurement fix in tests/browser/switch.spec.ts."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs; PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npx playwright test tests/browser/docs-site.spec.ts",
+      "date": "2026-10-30",
+      "note": "Page documentation/components/switch.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/switch/ renders its playground, blueprint and every live block without console errors and without axe violations in light and dark (Chromium; text of disabled components exempt from contrast, the documented exception)."
+    }
+  ],
+  "decisionsTaken": [
+    "No invalid and no required: a switch applies immediately; the condition axis is default, hover, readonly, disabled.",
+    "Shares color.choice.* with Checkbox and Radio: off is an outlined track with a neutral thumb (field placeholder color, at least 4.5:1 on the field surface), on an accent track with a contrasting thumb.",
+    "New sizes size.switch.{sm,md,lg} = 16, 20, 24 px for the track block size; the inline size (2 x block - 4 x border width: 28, 36, 44 px) and the thumb (block - 4 x border width) are derived in rules, no further token.",
+    "labelPosition end (default, like Checkbox) or start (settings rows: the switch aligns at the inline end of the row).",
+    "Thumb and colors animate over motion.duration.base with motion.easing.standard; instant under reduced motion.",
+    "Bits UI has no readonly switch: the component cancels click and Space/Enter before the primitive and sets aria-readonly. Enter also toggles (Bits UI, allowed by the WAI-ARIA switch pattern).",
+    "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges).",
+    "Implementation review, round 1 (user, 2026-10-27: the white thumb is not vertically centered): the thumb is drawn as an SVG circle over the track, centered by SVG geometry (antialiased) instead of a CSS box snapped to device pixels, which was off by one pixel at fractional display scales (125 %, 150 %); it moves by transitioning cx. Bits UI Switch.Thumb is no longer used.",
+    "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 2: pull request of wave/2-form-foundations to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/switch/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
+    "Figma on 2026-10-27: component set 291:434 (48 variants) and specification 306:454 on page forms/switch; see foundations/components/forms/switch/figma-spec.md."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Accepted at the wave 2 contract gate (2026-10-26, \"4 ok\"), as for the Button outline border (2026-09-26): color.field.default.border (and the readonly border that now aliases it) reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected."
+      }
+    ]
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "formatStatus": "v1",
+  "componentId": "checkbox",
+  "family": "forms",
+  "wave": 2,
+  "phase": "done",
+  "scope": {
+    "purpose": "Let the user turn one option on or off, independently of other options, in a choice that is confirmed later (form submission) or that selects items.",
+    "useCases": [
+      "An independent option in a form (subscribe to the newsletter).",
+      "A required acceptance (terms) inside Field with an error message.",
+      "A row selector in a table with hideLabel, and a select-all checkbox with the indeterminate state.",
+      "A list of independent options, each with a description."
+    ],
+    "exclusions": [
+      "A grouped list with a group label and group validation (CheckboxGroup): later; until then, stack Checkboxes under a heading.",
+      "A setting applied immediately: Switch.",
+      "Mutually exclusive options: RadioGroup."
+    ],
+    "alternatives": ["Switch for an immediate setting.", "RadioGroup for one choice among several."]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/checkbox/contract.json",
+      "sha256": "b972854175614a242538b37eadc840b6386d4cdeef8aaf8fdb3c8d7ef2db6c72"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "foundations/tokens/base/semantic/common.tokens.json"
+    ],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/checkbox (288:3)",
+      "componentSet": "289:428",
+      "specification": "307:2597",
+      "ledger": "reports/components/checkbox/figma/ledger.json",
+      "parity": "reports/components/checkbox/figma/parity.json",
+      "screenshots": [
+        "reports/components/checkbox/figma/master-set.png",
+        "reports/components/checkbox/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/checkbox/figma/blueprint-anatomy.png",
+          "node": "315:691"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/checkbox-master.plugin.js",
+        "authoring/adapters/figma/forms-spec.plugin.js",
+        "authoring/adapters/figma/forms-setup.plugin.js",
+        "authoring/adapters/figma/checkbox-focus-radius.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/checkbox/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/checkbox/Checkbox.svelte",
+      "folder": "packages/svelte/src/components/checkbox",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 Checkbox.Root"
+      },
+      "report": "reports/components/checkbox/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/checkbox",
+      "preview": "dist/previews/checkbox.html (npm run build:preview checkbox)",
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 2, review round 2: SVG circles, lighter field borders)",
+      "playground": "apps/docs/src/playgrounds/checkbox.svelte"
+    },
+    "tests": {
+      "ssr": "tests/ssr/checkbox.test.ts",
+      "browser": "tests/browser/checkbox.spec.ts",
+      "computed": "reports/components/checkbox/svelte/computed.json",
+      "screenshots": "reports/components/checkbox/svelte/*.png"
+    },
+    "humanDocs": "documentation/components/checkbox.md",
+    "agentDocs": "documentation/index.json (entry checkbox); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Checkbox contract: bindable checked and indeterminate, required label, hideLabel, description, size, disabled, readonly, invalid, required; control, mark, label, description; selection, condition and focus states; checkedChange; color.choice.{selection}.{condition}.* roles, size.choice.{size}, radius.indicator. Foundation additions of the wave (color.choice, size.choice, size.switch, readonly border) recorded in the semantic approval.",
+      "revision": {
+        "paths": ["foundations/components/forms/checkbox/contract.json"],
+        "sha256": {
+          "foundations/components/forms/checkbox/contract.json": "b972854175614a242538b37eadc840b6386d4cdeef8aaf8fdb3c8d7ef2db6c72"
+        }
+      },
+      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\"",
+      "note": "Conversational approval of the whole wave contract set; the reviewer expects adjustments at the implementation review. Amended at the CheckboxGroup contract gate (2026-10-28): optional value prop and its group rule. User at the CheckboxGroup contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-28): \"Je valide le contrat, avec ces trois modifications. Pour obligatoire je préfère qu'on soit accessible, donc plutôt sur le label ou la description du field.\""
+    },
+    "implementation": {
+      "scope": "Checkbox: Bits UI Checkbox in a label container, bold Phosphor marks, indeterminate, readonly, hidden label, two-level condition and selection colors.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/checkbox/Checkbox.svelte",
+          "packages/svelte/src/components/checkbox/checkbox.css",
+          "packages/svelte/src/components/checkbox/contract.generated.ts",
+          "packages/svelte/src/components/checkbox/tokens.generated.css",
+          "packages/svelte/src/components/checkbox/types.ts",
+          "examples/checkbox/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/checkbox/Checkbox.svelte": "b10a4172f35b17210fb242b2bba6a6e502f47af039a6f8fae7ac34de894d80a8",
+          "packages/svelte/src/components/checkbox/checkbox.css": "fa5c08a2ff96311d8b0026e798843af81bb6ed56d5d29100eab5cd9e9029fedd",
+          "packages/svelte/src/components/checkbox/contract.generated.ts": "e7a3cb310f1280024047115dd738d6726f8004b9d653862c2582d5f2a7c9f644",
+          "packages/svelte/src/components/checkbox/tokens.generated.css": "9bf60b6814f8b5a9c289b893299df145badf6b54f2aea2cf67efc561fcea9864",
+          "packages/svelte/src/components/checkbox/types.ts": "a442ae604c59ab199e073a3728e4f72e7e99d2045446c264b544fe7ccd0839e9",
+          "examples/checkbox/App.svelte": "c4efb2a1275a134378309ebc7d34625cfb1c76654771ce1273766f75fef0462e"
+        }
+      },
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
+    },
+    "figmaParity": {
+      "scope": "Figma master, specification page and parity of checkbox (library page Forms, component page forms/checkbox), after the review rounds of 2026-10-28/29 (blueprint boards, focus as a property, option slots for groups, library pages).",
+      "revision": {
+        "paths": [
+          "reports/components/checkbox/figma/parity.json",
+          "reports/components/checkbox/figma/ledger.json",
+          "foundations/components/forms/checkbox/figma-spec.md"
+        ],
+        "sha256": {
+          "reports/components/checkbox/figma/parity.json": "679666e530a55d8eacced7f6eb0c111c1710dd4aa072b1f1111994b9ce8d465c",
+          "reports/components/checkbox/figma/ledger.json": "99038cefbef54891abb25bd0438a0801b5c5924139e6fcb28cac17a24fb42fdd",
+          "foundations/components/forms/checkbox/figma-spec.md": "f14eb62c79d0da27f3abb310dea5a0caecdc98c389571baa3e3121a53490c9e9"
+        }
+      },
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "note": null
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of checkbox.",
+      "revision": {
+        "paths": [
+          "documentation/components/checkbox.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/checkbox.svelte"
+        ],
+        "sha256": {
+          "documentation/components/checkbox.md": "9cf1228e044da635672db91c8969050edb78be5623456b84126948c8e302764b",
+          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "apps/docs/src/playgrounds/checkbox.svelte": "cd940499923a9d028a2d67621d09aec4505af7ad8c38818a012e58820dcea0e2"
+        }
+      },
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate; node tooling/validate-contracts.ts --tokens --dependencies",
+      "report": "reports/components/checkbox/contract-validation.json",
+      "date": "2026-10-26",
+      "note": "Schema, consistency, token coverage (50 paths) in 18 contexts and accepted components; check-foundations passes (425 roles, 2196 contrast checks, 0 failures). Intrinsic rules: manual review at the contract gate."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/checkbox/contrast.json",
+      "date": "2026-10-26",
+      "note": "2052 contrast records on the contrastScope backdrops in 18 contexts, 0 failures; minimum active text 5.11."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors), SSR (64), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/checkbox/svelte/ssr.json",
+      "date": "2026-10-26",
+      "note": "4 checks recorded for Checkbox."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-26",
+      "note": "Chromium 153, full suite 102 passed; computed values: 7968 records (reports/components/checkbox/svelte/computed.json). Details in reports/components/checkbox/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview checkbox",
+      "date": "2026-10-26",
+      "note": "dist/previews/checkbox.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-27",
+      "note": "After review round 1 (SVG circles for Switch and Radio, lighter field borders): npm run verify passed (SSR 64), full browser suite 102 passed; computed.json regenerated."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID checkbox); node authoring/adapters/figma/forms-parity-report.mjs checkbox <result>",
+      "report": "reports/components/checkbox/figma/parity.json",
+      "date": "2026-10-27",
+      "note": "7968 records (3 sizes × 3 selections × 4 conditions in 18 contexts, hover and focus in 4), 0 failures, 224 justified (no mark when off). The first run showed the hover records of three representative contexts carrying the focus ring left by the previous context: the browser spec now blurs before hovering (tests/browser/checkbox.spec.ts, computed.json regenerated); the 18 hashes are then equal."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs; PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npx playwright test tests/browser/docs-site.spec.ts",
+      "date": "2026-10-30",
+      "note": "Page documentation/components/checkbox.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/checkbox/ renders its playground, blueprint and every live block without console errors and without axe violations in light and dark (Chromium; text of disabled components exempt from contrast, the documented exception)."
+    }
+  ],
+  "decisionsTaken": [
+    "One derived state axis `condition` keys the field and choice color families (color.field.{condition}.*, color.choice.{selection}.{condition}.*), resolved from the disabled, readonly and invalid props and pointer hover with a fixed precedence (disabled, readonly, invalid, [focus,] hover, default). The props stay separate (contract-guide: validation is not an interaction state); only the token lookup is flattened, as the approved field family already is.",
+    "Controls perform no validation and expose invalid/required only; the visible error message and required marker belong to Field (catalog composition rule: controls are standalone, Field wraps them).",
+    "New semantic family color.choice.{off,on}.{default,hover,readonly,disabled,invalid}.{surface,content,border} shared by Checkbox, Radio and Switch (foundation change, listed at the gate). off aliases the field family (surface, border; content = the field placeholder color, used as the off switch thumb). on: accent fill with a contrasting mark (light accent.600/700 with white; dark accent.400/300 with neutral.900 so that the fill reaches 3:1 on dark surfaces), readonly and disabled alias the field family (no fill, dark or grey mark), invalid fills with color.field.invalid.border.",
+    "New sizes size.choice.{sm,md,lg} = 14, 16, 20 px (common axis: like icons, they do not shrink with density); box radius radius.indicator; gap space.control.gap.{size}; label typography.body.{size}; description typography.body.sm in color.content.secondary.",
+    "The box is centered on the first line of the label; label and description wrap.",
+    "Indeterminate is a bindable prop; activation from indeterminate checks the box (the common select-all behavior).",
+    "Readonly is supported (focusable, announced read-only, ignores activation) because the approved field family has a readonly condition and forms show readonly values.",
+    "The focus ring surrounds the box only, with corners of radius plus focus.offset (concentric, computed; no new token).",
+    "The mark uses the Phosphor bold weight (check, minus) drawn at the box size: the regular weight is 1 px thin in a 16 px box.",
+    "Colors are chosen in two levels: each condition sets the off and on sets, then the selection picks one (equal-specificity condition selectors, source order is the precedence).",
+    "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges).",
+    "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 2: pull request of wave/2-form-foundations to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/checkbox/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
+    "Figma on 2026-10-27: component set 289:428 (45 variants) and specification 307:2597 on page forms/checkbox; see foundations/components/forms/checkbox/figma-spec.md.",
+    "2026-10-28: contract amended (CheckboxGroup); the implementation follows with the CheckboxGroup implementation.",
+    "2026-10-28 (CheckboxGroup): value prop; inside a CheckboxGroup the checkbox takes the group's size, value-driven selection (also on the server) and conditions, ignores the Field and is never indeterminate. Checkbox computed values and tests unchanged (full browser suite 111 passed)."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Accepted at the wave 2 contract gate (2026-10-26, \"4 ok\"), as for the Button outline border (2026-09-26): color.field.default.border (and the readonly border that now aliases it) reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected."
+      }
+    ]
+  }
+}

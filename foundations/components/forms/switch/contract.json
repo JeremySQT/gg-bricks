@@ -1,0 +1,101 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "switch",
+  "props": {
+    "checked": {
+      "type": "boolean",
+      "default": false,
+      "bindable": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "hideLabel": {
+      "type": "boolean",
+      "default": false
+    },
+    "description": {
+      "type": "string"
+    },
+    "labelPosition": {
+      "values": ["end", "start"],
+      "default": "end"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "readonly": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "container": {},
+    "track": {},
+    "thumb": {},
+    "label": {},
+    "description": {}
+  },
+  "states": {
+    "selection": {
+      "values": ["off", "on"],
+      "default": "off"
+    },
+    "condition": {
+      "values": ["default", "hover", "readonly", "disabled"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "events": {
+    "checkedChange": {
+      "when": "The user turns the switch on or off (pointer on the track or the label, or Space) while it is neither disabled nor readonly.",
+      "payload": "The new checked value."
+    }
+  },
+  "tokens": {
+    "surface": "color.choice.{selection}.{condition}.surface",
+    "content": "color.choice.{selection}.{condition}.content",
+    "border": "color.choice.{selection}.{condition}.border",
+    "borderWidth": "border.width.default",
+    "radius": "radius.full",
+    "trackSize": "size.switch.{size}",
+    "minTarget": "size.target.min",
+    "gap": "space.control.gap.{size}",
+    "labelColor": "color.content.primary",
+    "descriptionColor": "color.content.secondary",
+    "disabledColor": "color.content.disabled",
+    "typography": "typography.body.{size}",
+    "typographyDescription": "typography.body.sm",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "motionDuration": "motion.duration.base",
+    "easingStandard": "motion.easing.standard"
+  },
+  "rules": [
+    "A switch turns a setting on or off and the change takes effect immediately; it has no invalid or required state. A choice that is confirmed later, validated or required is a Checkbox.",
+    "label is required and non-empty; it names the setting, not its current value, and is the accessible name; description is the accessible description. The switch is exposed as on when checked is true and off otherwise. hideLabel hides label and description visually and keeps them as name and description.",
+    "labelPosition end: track, then label with description beneath it, separated by gap. labelPosition start: label with description first, then track; the container fills the inline size it is given and track sits at its inline end, so that stacked switches align.",
+    "track has a block size of trackSize and an inline size of twice trackSize minus four borderWidth, fully rounded with radius, painted in surface with a border of borderWidth in border inside its boundary. It is centered on the first line of the label.",
+    "thumb is a circle of trackSize minus four borderWidth in content, inset by twice borderWidth from the track edge: at the inline start when off, at the inline end when on (mirrored in right-to-left layouts).",
+    "label is set in typography in labelColor and wraps; description is set in typographyDescription in descriptionColor directly below the label and wraps.",
+    "selection is on when checked is true. Activation (pointer press on track or label, or Space while focused) inverts checked and emits checkedChange. Disabled and readonly switches ignore activation.",
+    "Resolve condition in this order: disabled, readonly, hover, default; hover applies while the pointer is over track or label. focus is an independent axis.",
+    "Disabled removes the switch from sequential focus and paints label and description in disabledColor. Readonly keeps it focusable, is exposed as read-only and shows the readonly colors.",
+    "Track, label and description form a single interaction target that meets minTarget in the block dimension; with hideLabel the target around track meets minTarget in both dimensions without enlarging the visible track.",
+    "When focus is true and was reached by keyboard, draw a focus indicator of focusWidth in focusColor at focusOffset outside track, fully rounded.",
+    "Sizes are named like Button sizes. trackSize and the typographies do not change with density; gap does.",
+    "The thumb moves and the colors change over motionDuration with easingStandard; the thumb jumps and colors change instantly when reduced motion is requested.",
+    "In forced-colors mode track keeps a visible boundary in the system text color; an on track is filled with the system highlight color and its thumb drawn in the system highlight text color; an off thumb uses the system text color; disabled content uses the system disabled text color and the focus indicator stays visible."
+  ]
+}

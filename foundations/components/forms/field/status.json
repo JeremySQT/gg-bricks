@@ -1,0 +1,255 @@
+{
+  "formatStatus": "v1",
+  "componentId": "field",
+  "family": "forms",
+  "wave": 2,
+  "phase": "done",
+  "scope": {
+    "purpose": "Give one form control a visible label, an optional description, a required marker and a validation message, and link them to the control for assistive technology.",
+    "useCases": [
+      "A labelled InputText or Textarea in a form, with a hint (format, constraints) and an error message after validation.",
+      "A RadioGroup with its question as the group label.",
+      "A single Checkbox that must be checked (terms acceptance) with an error message.",
+      "Required fields marked next to the label."
+    ],
+    "exclusions": [
+      "Visually hidden labels: use the control alone with its label prop.",
+      "Horizontal layouts (label beside the control) and multi-control groups (FieldGroup, CheckboxGroup): later candidates.",
+      "Switch: a setting applied immediately has no validation; it carries its own label and description.",
+      "Validation logic, error summaries, focus management and live announcements after a submission: the application.",
+      "Success and warning messages: only the invalid message is in scope.",
+      "Character counters and prefix/suffix text."
+    ],
+    "alternatives": [
+      "The control alone with its own label for a self-explanatory control (search box, table row selector).",
+      "TextField (later): Field + InputText as one component."
+    ]
+  },
+  "dependencies": ["input-text", "textarea", "checkbox", "radio-group", "checkbox-group"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/field/contract.json",
+      "sha256": "d436ed24196dd07ea3b9602d27e8767460a1f46224c6b18daacfd2a4f8a3b596"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "foundations/tokens/base/semantic/common.tokens.json"
+    ],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/field (288:4)",
+      "componentSet": "295:77",
+      "specification": "307:897",
+      "ledger": "reports/components/field/figma/ledger.json",
+      "parity": "reports/components/field/figma/parity.json",
+      "screenshots": [
+        "reports/components/field/figma/master-set.png",
+        "reports/components/field/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/field/figma/blueprint-anatomy.png",
+          "node": "316:650"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/field-master.plugin.js",
+        "authoring/adapters/figma/forms-spec.plugin.js",
+        "authoring/adapters/figma/forms-setup.plugin.js",
+        "authoring/adapters/figma/field-focus-migrate.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/field/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/field/Field.svelte",
+      "folder": "packages/svelte/src/components/field",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (label, texts and links around the control, which owns the native semantics)"
+      },
+      "report": "reports/components/field/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/field",
+      "preview": "dist/previews/field.html (npm run build:preview field)",
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 2, review round 2: SVG circles, lighter field borders)",
+      "playground": "apps/docs/src/playgrounds/field.svelte"
+    },
+    "tests": {
+      "ssr": "tests/ssr/field.test.ts",
+      "browser": "tests/browser/field.spec.ts",
+      "computed": "reports/components/field/svelte/computed.json",
+      "screenshots": "reports/components/field/svelte/*.png"
+    },
+    "humanDocs": "documentation/components/field.md",
+    "agentDocs": "documentation/index.json (entry field); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Field contract: required label, description, message, required, invalid, disabled; label, requiredIndicator, description, control (InputText, Textarea, Checkbox or RadioGroup, exactly one), message and messageIcon parts; fixed label.md / body.sm typography, space.content gaps, danger message with the warning-circle glyph; required marker A (asterisk in color.content.secondary, hidden from assistive technology); eleven rules. Foundation additions of the wave (color.choice, size.choice, size.switch, readonly border) recorded in the semantic approval.",
+      "revision": {
+        "paths": ["foundations/components/forms/field/contract.json"],
+        "sha256": {
+          "foundations/components/forms/field/contract.json": "d436ed24196dd07ea3b9602d27e8767460a1f46224c6b18daacfd2a4f8a3b596"
+        }
+      },
+      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\"",
+      "note": "Conversational approval of the whole wave contract set; the reviewer expects adjustments at the implementation review. Amended at the CheckboxGroup contract gate (2026-10-28): control accepts checkbox-group; the label and description name and describe the group. User at the CheckboxGroup contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-28): \"Je valide le contrat, avec ces trois modifications. Pour obligatoire je préfère qu'on soit accessible, donc plutôt sur le label ou la description du field.\""
+    },
+    "implementation": {
+      "scope": "Field: label, description, required asterisk, error message with icon, links to the control through the ggb:field context (id registration, aria-labelledby, aria-describedby), state pass-through.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/field/Field.svelte",
+          "packages/svelte/src/components/field/contract.generated.ts",
+          "packages/svelte/src/components/field/field.css",
+          "packages/svelte/src/components/field/tokens.generated.css",
+          "packages/svelte/src/components/field/types.ts",
+          "examples/field/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/field/Field.svelte": "375b2bfff1a2e815324c9aeadb293e56be198d3369d1fac5df471ed45933490c",
+          "packages/svelte/src/components/field/contract.generated.ts": "7af77e5f32a58ee21d8837d9262c7cf4dff3ba9ef4390d2e06e7b9b3746abccc",
+          "packages/svelte/src/components/field/field.css": "cecc33350ceb0e8401056b7e8fe93f7a341fdf20fa04b144317a4fe53669fbc4",
+          "packages/svelte/src/components/field/tokens.generated.css": "2951a518058fd0357be2c0480166bfdda7ed0a4f3d457d700fd8be7280bc71fd",
+          "packages/svelte/src/components/field/types.ts": "5975a5bbcc55c836b5d71de0eafe0537b24e30e28e2f97236e5fcebda7c35eff",
+          "examples/field/App.svelte": "2845635321972d1d91082b67dd1ef214f89ba3c562994015abafd55be08b0362"
+        }
+      },
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
+    },
+    "figmaParity": {
+      "scope": "Figma master, specification page and parity of field (library page Forms, component page forms/field), after the review rounds of 2026-10-28/29 (blueprint boards, focus as a property, option slots for groups, library pages).",
+      "revision": {
+        "paths": [
+          "reports/components/field/figma/parity.json",
+          "reports/components/field/figma/ledger.json",
+          "foundations/components/forms/field/figma-spec.md"
+        ],
+        "sha256": {
+          "reports/components/field/figma/parity.json": "0b566f20b95b1cfff6aab0f4266f5fddcdb014d10ad7e9c6a95884716ff37ef1",
+          "reports/components/field/figma/ledger.json": "c20574e47c60d6ff9b3cec69d6e38c06f49f299823fdb7748531e9452b81817d",
+          "foundations/components/forms/field/figma-spec.md": "57532174f8451956ec13709d29d330628f67f48f388e696c8b6727a17abe8eca"
+        }
+      },
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "note": null
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of field.",
+      "revision": {
+        "paths": [
+          "documentation/components/field.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/field.svelte"
+        ],
+        "sha256": {
+          "documentation/components/field.md": "45ec9a9a143e9f00fdc7a6a056e28e4adaead5958b4fa1bb85b7e30ef6ecf3b7",
+          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "apps/docs/src/playgrounds/field.svelte": "0bd4d021c60d878f0fd7aeab8ea6a7b7d50b0fc67081377c92afe7b3561fc87e"
+        }
+      },
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate; node tooling/validate-contracts.ts --tokens --dependencies",
+      "report": "reports/components/field/contract-validation.json",
+      "date": "2026-10-26",
+      "note": "Schema, consistency, token coverage (10 paths) in 18 contexts and accepted components; check-foundations passes (425 roles, 2196 contrast checks, 0 failures). Intrinsic rules: manual review at the contract gate."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/field/token-coverage.json",
+      "date": "2026-10-26",
+      "note": "No surface, content or border role: no component contrast records; the colors it binds are covered by the inventory pairs."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors), SSR (64), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/field/svelte/ssr.json",
+      "date": "2026-10-26",
+      "note": "7 checks recorded for Field."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-26",
+      "note": "Chromium 153, full suite 102 passed; computed values: 504 records (reports/components/field/svelte/computed.json). Details in reports/components/field/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview field",
+      "date": "2026-10-26",
+      "note": "dist/previews/field.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-27",
+      "note": "After review round 1 (SVG circles for Switch and Radio, lighter field borders): npm run verify passed (SSR 64), full browser suite 102 passed; computed.json regenerated."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID field); node authoring/adapters/figma/forms-parity-report.mjs field <result>",
+      "report": "reports/components/field/figma/parity.json",
+      "date": "2026-10-27",
+      "note": "504 records (invalid and disabled fields in 18 contexts), 0 failures."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs; PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npx playwright test tests/browser/docs-site.spec.ts",
+      "date": "2026-10-30",
+      "note": "Page documentation/components/field.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/field/ renders its playground, blueprint and every live block without console errors and without axe violations in light and dark (Chromium; text of disabled components exempt from contrast, the documented exception)."
+    }
+  ],
+  "decisionsTaken": [
+    "Controls perform no validation and expose invalid/required only; the visible error message and required marker belong to Field (catalog composition rule: controls are standalone, Field wraps them).",
+    "Order: label, description, control, message. The description sits before the control so it is read before typing; the error message sits below the control, where the eye returns after typing.",
+    "Field typography is fixed (label typography.label.md, description and message typography.body.sm) whatever the control size: the label is a question in medium weight, option labels inside controls are answers in regular weight. Gaps use space.content.* and follow density.",
+    "Field passes required, invalid and disabled to its control (OR with the control props) so that one source of truth drives both the marker and the control state.",
+    "The message shows only when invalid and non-empty, with the intrinsic warning-circle glyph (Phosphor, inline SVG in the component folder) so that the error is not conveyed by color alone; color.status.danger.content is reused for the text, with a new inventory contrast pair on surface.default (4.5).",
+    "Field accepts InputText, Textarea, Checkbox and RadioGroup; Select, Combobox and later entries will be added to accepts when they exist.",
+    "Required marker A: an asterisk after the label in color.content.secondary, hidden from assistive technology; the control exposes required (user at the contract gate, 2026-10-26, \"A pour 1\").",
+    "Field shares its state with the control through the Svelte context key `ggb:field` (a string, so no component folder imports another); each control declares the same shape locally. Text entries register their element id (the label `for` follows it) and every control is also named through aria-labelledby, which holds before hydration and with an id of the consumer.",
+    "Description and message are div elements rather than paragraphs, so that application paragraph styles cannot move them.",
+    "Around a Checkbox, the checkbox wraps itself in role=\"group\" named by the field label; a press on the field label does not toggle it.",
+    "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 2: pull request of wave/2-form-foundations to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/field/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
+    "Figma on 2026-10-27: component set 295:77 (3 variants) and specification 307:897 on page forms/field; see foundations/components/forms/field/figma-spec.md.",
+    "2026-10-28: contract amended (CheckboxGroup); the implementation follows with the CheckboxGroup implementation.",
+    "2026-10-28 (CheckboxGroup): accepts checkbox-group; the group registers as a choice control (named by the Field label, described by its description and message). SSR fixture FieldWith gains a checkbox-group control."
+  ]
+}

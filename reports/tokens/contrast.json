@@ -1,8 +1,8 @@
 {
   "method": "WCAG 2 relative luminance and contrast ratio on resolved sRGB values. Content is composited on its surface; a translucent surface is first composited on color.surface.default (recorded as backdrop). Minimum 4.5 for text, 3 for borders, icons and focus indicators. Pairs come from foundations/tokens/inventory.json.",
   "contexts": 18,
-  "pairs": 109,
-  "checks": 1962,
+  "pairs": 122,
+  "checks": 2196,
   "failures": [],
   "results": [
     {
@@ -595,7 +595,7 @@
       "content": "color.field.default.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 4.19,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -622,7 +622,7 @@
       "content": "color.field.hover.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 5.99,
+      "ratio": 4.19,
       "minimum": 3,
       "passed": true
     },
@@ -650,6 +650,15 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.32,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -696,6 +705,114 @@
       "backdrop": null,
       "ratio": 5.79,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.73,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 5.32,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 7.01,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 16.33,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.32,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 7.01,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 10.01,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -1576,7 +1693,7 @@
       "content": "color.field.default.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 4.19,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -1603,7 +1720,7 @@
       "content": "color.field.hover.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 5.99,
+      "ratio": 4.19,
       "minimum": 3,
       "passed": true
     },
@@ -1631,6 +1748,15 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.32,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -1677,6 +1803,114 @@
       "backdrop": null,
       "ratio": 5.79,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.73,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 5.32,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 7.01,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 16.33,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.32,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 7.01,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 10.01,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -2557,7 +2791,7 @@
       "content": "color.field.default.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 4.19,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -2584,7 +2818,7 @@
       "content": "color.field.hover.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 5.99,
+      "ratio": 4.19,
       "minimum": 3,
       "passed": true
     },
@@ -2612,6 +2846,15 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.32,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -2658,6 +2901,114 @@
       "backdrop": null,
       "ratio": 5.79,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.73,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 5.32,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 7.01,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 16.33,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.32,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 7.01,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 10.01,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -3598,6 +3949,15 @@
     },
     {
       "context": "base-dark-compact",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 4.08,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
       "content": "color.field.readonly.content",
       "surface": "color.field.readonly.surface",
       "backdrop": null,
@@ -3639,6 +3999,114 @@
       "backdrop": null,
       "ratio": 6.39,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 6.85,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 9.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.85,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 9.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 12.04,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -4579,6 +5047,15 @@
     },
     {
       "context": "base-dark-standard",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 4.08,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
       "content": "color.field.readonly.content",
       "surface": "color.field.readonly.surface",
       "backdrop": null,
@@ -4620,6 +5097,114 @@
       "backdrop": null,
       "ratio": 6.39,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 6.85,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 9.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.85,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 9.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 12.04,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -5560,6 +6145,15 @@
     },
     {
       "context": "base-dark-comfortable",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 4.08,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
       "content": "color.field.readonly.content",
       "surface": "color.field.readonly.surface",
       "backdrop": null,
@@ -5601,6 +6195,114 @@
       "backdrop": null,
       "ratio": 6.39,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 6.85,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 9.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.85,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 9.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 12.04,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -6481,7 +7183,7 @@
       "content": "color.field.default.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 4.19,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -6508,7 +7210,7 @@
       "content": "color.field.hover.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 5.99,
+      "ratio": 4.19,
       "minimum": 3,
       "passed": true
     },
@@ -6536,6 +7238,15 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.46,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -6582,6 +7293,114 @@
       "backdrop": null,
       "ratio": 5.79,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.73,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 5.46,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 7.17,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 16.33,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.46,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 7.17,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 10.01,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -7462,7 +8281,7 @@
       "content": "color.field.default.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 4.19,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -7489,7 +8308,7 @@
       "content": "color.field.hover.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 5.99,
+      "ratio": 4.19,
       "minimum": 3,
       "passed": true
     },
@@ -7517,6 +8336,15 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.46,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -7563,6 +8391,114 @@
       "backdrop": null,
       "ratio": 5.79,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.73,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 5.46,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 7.17,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 16.33,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.46,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 7.17,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 10.01,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -8443,7 +9379,7 @@
       "content": "color.field.default.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 4.19,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -8470,7 +9406,7 @@
       "content": "color.field.hover.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 5.99,
+      "ratio": 4.19,
       "minimum": 3,
       "passed": true
     },
@@ -8498,6 +9434,15 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.46,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -8544,6 +9489,114 @@
       "backdrop": null,
       "ratio": 5.79,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.73,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 5.46,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 7.17,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 16.33,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.46,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 7.17,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 10.01,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -9484,6 +10537,15 @@
     },
     {
       "context": "brick-dark-compact",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 4.08,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
       "content": "color.field.readonly.content",
       "surface": "color.field.readonly.surface",
       "backdrop": null,
@@ -9525,6 +10587,114 @@
       "backdrop": null,
       "ratio": 6.39,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 6.54,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 9.49,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.54,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 9.49,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 12.04,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -10465,6 +11635,15 @@
     },
     {
       "context": "brick-dark-standard",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 4.08,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
       "content": "color.field.readonly.content",
       "surface": "color.field.readonly.surface",
       "backdrop": null,
@@ -10506,6 +11685,114 @@
       "backdrop": null,
       "ratio": 6.39,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 6.54,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 9.49,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.54,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 9.49,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 12.04,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -11446,6 +12733,15 @@
     },
     {
       "context": "brick-dark-comfortable",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 4.08,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
       "content": "color.field.readonly.content",
       "surface": "color.field.readonly.surface",
       "backdrop": null,
@@ -11487,6 +12783,114 @@
       "backdrop": null,
       "ratio": 6.39,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 6.54,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 9.49,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.54,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 9.49,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 12.04,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -12367,7 +13771,7 @@
       "content": "color.field.default.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 4.19,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -12394,7 +13798,7 @@
       "content": "color.field.hover.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 5.99,
+      "ratio": 4.19,
       "minimum": 3,
       "passed": true
     },
@@ -12422,6 +13826,15 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.67,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -12468,6 +13881,114 @@
       "backdrop": null,
       "ratio": 5.79,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.73,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 5.67,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 7.43,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 16.33,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.67,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 7.43,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 10.01,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -13348,7 +14869,7 @@
       "content": "color.field.default.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 4.19,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -13375,7 +14896,7 @@
       "content": "color.field.hover.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 5.99,
+      "ratio": 4.19,
       "minimum": 3,
       "passed": true
     },
@@ -13403,6 +14924,15 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.67,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -13449,6 +14979,114 @@
       "backdrop": null,
       "ratio": 5.79,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.73,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 5.67,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 7.43,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 16.33,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.67,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 7.43,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 10.01,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -14329,7 +15967,7 @@
       "content": "color.field.default.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 4.19,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -14356,7 +15994,7 @@
       "content": "color.field.hover.border",
       "surface": "color.surface.default",
       "backdrop": null,
-      "ratio": 5.99,
+      "ratio": 4.19,
       "minimum": 3,
       "passed": true
     },
@@ -14384,6 +16022,15 @@
       "surface": "color.surface.default",
       "backdrop": null,
       "ratio": 5.67,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 3.43,
       "minimum": 3,
       "passed": true
     },
@@ -14430,6 +16077,114 @@
       "backdrop": null,
       "ratio": 5.79,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.73,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.99,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 5.67,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 7.43,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 16.33,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.67,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 7.43,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 5.79,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 10.01,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -15370,6 +17125,15 @@
     },
     {
       "context": "orchid-dark-compact",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 4.08,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
       "content": "color.field.readonly.content",
       "surface": "color.field.readonly.surface",
       "backdrop": null,
@@ -15411,6 +17175,114 @@
       "backdrop": null,
       "ratio": 6.39,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 6.53,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 9.54,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.53,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 9.54,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 12.04,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -16351,6 +18223,15 @@
     },
     {
       "context": "orchid-dark-standard",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 4.08,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
       "content": "color.field.readonly.content",
       "surface": "color.field.readonly.surface",
       "backdrop": null,
@@ -16392,6 +18273,114 @@
       "backdrop": null,
       "ratio": 6.39,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 6.53,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 9.54,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.53,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 9.54,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 12.04,
+      "minimum": 4.5,
       "passed": true
     },
     {
@@ -17332,6 +19321,15 @@
     },
     {
       "context": "orchid-dark-comfortable",
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 4.08,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
       "content": "color.field.readonly.content",
       "surface": "color.field.readonly.surface",
       "backdrop": null,
@@ -17373,6 +19371,114 @@
       "backdrop": null,
       "ratio": 6.39,
       "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "backdrop": null,
+      "ratio": 5.11,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.77,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "backdrop": null,
+      "ratio": 6.53,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "backdrop": null,
+      "ratio": 9.54,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "backdrop": null,
+      "ratio": 11.44,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.53,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 9.54,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 6.39,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "backdrop": null,
+      "ratio": 12.04,
+      "minimum": 4.5,
       "passed": true
     },
     {

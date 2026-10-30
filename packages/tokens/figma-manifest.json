@@ -322,6 +322,24 @@
     },
     {
       "collection": "Foundations · Primitives",
+      "name": "primitive/color/neutral/450",
+      "path": "primitive.color.neutral.450",
+      "type": "COLOR",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-color-neutral-450)"
+      },
+      "values": {
+        "default": {
+          "r": 0.524916,
+          "g": 0.54557,
+          "b": 0.572526,
+          "a": 1
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Primitives",
       "name": "primitive/color/neutral/500",
       "path": "primitive.color.neutral.500",
       "type": "COLOR",
@@ -3907,6 +3925,30 @@
     },
     {
       "collection": "Foundations · Brand",
+      "name": "color/palette/neutral/450",
+      "path": "color.palette.neutral.450",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-palette-neutral-450)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/color/neutral/450"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/color/neutral/450"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/color/neutral/450"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
       "name": "color/palette/neutral/500",
       "path": "color.palette.neutral.500",
       "type": "COLOR",
@@ -5756,6 +5798,144 @@
         },
         "orchid": {
           "alias": "Foundations · Primitives:primitive/dimension/v32"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/choice/sm",
+      "path": "size.choice.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-choice-sm)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v14"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v14"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v14"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/choice/md",
+      "path": "size.choice.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-choice-md)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/choice/lg",
+      "path": "size.choice.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-choice-lg)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/switch/sm",
+      "path": "size.switch.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-switch-sm)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/switch/md",
+      "path": "size.switch.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-switch-md)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/switch/lg",
+      "path": "size.switch.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-switch-lg)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
         }
       }
     },
@@ -13150,7 +13330,7 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Brand:color/palette/neutral/500"
+          "alias": "Foundations · Brand:color/palette/neutral/450"
         },
         "dark": {
           "alias": "Foundations · Brand:color/palette/neutral/500"
@@ -13235,7 +13415,7 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Brand:color/palette/neutral/600"
+          "alias": "Foundations · Brand:color/palette/neutral/500"
         },
         "dark": {
           "alias": "Foundations · Brand:color/palette/neutral/400"
@@ -13405,10 +13585,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Brand:color/palette/neutral/200"
+          "alias": "Foundations · Appearance:color/field/default/border"
         },
         "dark": {
-          "alias": "Foundations · Brand:color/palette/neutral/700"
+          "alias": "Foundations · Appearance:color/field/default/border"
         }
       }
     },
@@ -13601,6 +13781,636 @@
         },
         "dark": {
           "alias": "Foundations · Brand:color/palette/neutral/400"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/default/surface",
+      "path": "color.choice.off.default.surface",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-default-surface)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/default/surface"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/default/surface"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/default/content",
+      "path": "color.choice.off.default.content",
+      "type": "COLOR",
+      "scopes": [
+        "TEXT_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-default-content)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/default/placeholder"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/default/placeholder"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/default/border",
+      "path": "color.choice.off.default.border",
+      "type": "COLOR",
+      "scopes": [
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-default-border)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/default/border"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/default/border"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/hover/surface",
+      "path": "color.choice.off.hover.surface",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-hover-surface)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/hover/surface"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/hover/surface"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/hover/content",
+      "path": "color.choice.off.hover.content",
+      "type": "COLOR",
+      "scopes": [
+        "TEXT_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-hover-content)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/hover/placeholder"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/hover/placeholder"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/hover/border",
+      "path": "color.choice.off.hover.border",
+      "type": "COLOR",
+      "scopes": [
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-hover-border)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/hover/border"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/hover/border"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/readonly/surface",
+      "path": "color.choice.off.readonly.surface",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-readonly-surface)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/readonly/surface"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/readonly/surface"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/readonly/content",
+      "path": "color.choice.off.readonly.content",
+      "type": "COLOR",
+      "scopes": [
+        "TEXT_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-readonly-content)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/readonly/placeholder"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/readonly/placeholder"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/readonly/border",
+      "path": "color.choice.off.readonly.border",
+      "type": "COLOR",
+      "scopes": [
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-readonly-border)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/readonly/border"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/readonly/border"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/disabled/surface",
+      "path": "color.choice.off.disabled.surface",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-disabled-surface)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/disabled/surface"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/disabled/surface"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/disabled/content",
+      "path": "color.choice.off.disabled.content",
+      "type": "COLOR",
+      "scopes": [
+        "TEXT_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-disabled-content)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/disabled/placeholder"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/disabled/placeholder"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/disabled/border",
+      "path": "color.choice.off.disabled.border",
+      "type": "COLOR",
+      "scopes": [
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-disabled-border)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/disabled/border"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/disabled/border"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/invalid/surface",
+      "path": "color.choice.off.invalid.surface",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-invalid-surface)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/invalid/surface"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/invalid/surface"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/invalid/content",
+      "path": "color.choice.off.invalid.content",
+      "type": "COLOR",
+      "scopes": [
+        "TEXT_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-invalid-content)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/invalid/placeholder"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/invalid/placeholder"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/off/invalid/border",
+      "path": "color.choice.off.invalid.border",
+      "type": "COLOR",
+      "scopes": [
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-off-invalid-border)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/invalid/border"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/invalid/border"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/default/surface",
+      "path": "color.choice.on.default.surface",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-default-surface)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/accent/600"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/accent/400"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/default/content",
+      "path": "color.choice.on.default.content",
+      "type": "COLOR",
+      "scopes": [
+        "TEXT_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-default-content)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/neutral/0"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/neutral/900"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/default/border",
+      "path": "color.choice.on.default.border",
+      "type": "COLOR",
+      "scopes": [
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-default-border)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/accent/600"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/accent/400"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/hover/surface",
+      "path": "color.choice.on.hover.surface",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-hover-surface)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/accent/700"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/accent/300"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/hover/content",
+      "path": "color.choice.on.hover.content",
+      "type": "COLOR",
+      "scopes": [
+        "TEXT_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-hover-content)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/neutral/0"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/neutral/900"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/hover/border",
+      "path": "color.choice.on.hover.border",
+      "type": "COLOR",
+      "scopes": [
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-hover-border)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/accent/700"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/accent/300"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/readonly/surface",
+      "path": "color.choice.on.readonly.surface",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-readonly-surface)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/readonly/surface"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/readonly/surface"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/readonly/content",
+      "path": "color.choice.on.readonly.content",
+      "type": "COLOR",
+      "scopes": [
+        "TEXT_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-readonly-content)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/readonly/content"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/readonly/content"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/readonly/border",
+      "path": "color.choice.on.readonly.border",
+      "type": "COLOR",
+      "scopes": [
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-readonly-border)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/readonly/border"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/readonly/border"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/disabled/surface",
+      "path": "color.choice.on.disabled.surface",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-disabled-surface)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/disabled/surface"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/disabled/surface"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/disabled/content",
+      "path": "color.choice.on.disabled.content",
+      "type": "COLOR",
+      "scopes": [
+        "TEXT_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-disabled-content)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/disabled/content"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/disabled/content"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/disabled/border",
+      "path": "color.choice.on.disabled.border",
+      "type": "COLOR",
+      "scopes": [
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-disabled-border)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/disabled/border"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/disabled/border"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/invalid/surface",
+      "path": "color.choice.on.invalid.surface",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-invalid-surface)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/invalid/border"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/invalid/border"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/invalid/content",
+      "path": "color.choice.on.invalid.content",
+      "type": "COLOR",
+      "scopes": [
+        "TEXT_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-invalid-content)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Brand:color/palette/neutral/0"
+        },
+        "dark": {
+          "alias": "Foundations · Brand:color/palette/neutral/900"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/choice/on/invalid/border",
+      "path": "color.choice.on.invalid.border",
+      "type": "COLOR",
+      "scopes": [
+        "STROKE_COLOR"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-choice-on-invalid-border)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Appearance:color/field/invalid/border"
+        },
+        "dark": {
+          "alias": "Foundations · Appearance:color/field/invalid/border"
         }
       }
     },

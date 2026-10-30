@@ -2,7 +2,7 @@
 
 ## Overview
 
-- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), page **content/badge** (`220:2`), first of the content pages; it holds the master and this specification.
+- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), component page **content/badge** (`220:2`): this specification and its instances. Master: library page **Content** (`343:1635`), section **Badge** ([`343:1636`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=343-1636)), since 2026-10-29; the specification links to the section under its title.
 - Master: component set **Badge** ([`220:293`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=220-293)), 36 variants, built by `authoring/adapters/figma/badge-master.plugin.js`.
 - Specification frame: **Badge — Specification** ([`223:2`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=223-2)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples, in plain sentences for designers; built by `authoring/adapters/figma/badge-spec.plugin.js`. Its instances are explanatory, never masters.
 - Reproduces: contract `foundations/components/content/badge/contract.json` (sha256 `87242b5e…`, approved 2026-10-17) and the implementation approved on 2026-10-19 (`packages/svelte/src/components/badge`).

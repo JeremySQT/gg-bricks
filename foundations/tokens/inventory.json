@@ -32,6 +32,11 @@
       "axis": "common"
     },
     {
+      "path": "color.palette.neutral.450",
+      "type": "color",
+      "axis": "common"
+    },
+    {
       "path": "color.palette.neutral.500",
       "type": "color",
       "axis": "common"
@@ -418,6 +423,36 @@
     },
     {
       "path": "size.icon.xl",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.choice.sm",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.choice.md",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.choice.lg",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.switch.sm",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.switch.md",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "size.switch.lg",
       "type": "dimension",
       "axis": "common"
     },
@@ -1592,6 +1627,156 @@
       "axis": "appearance"
     },
     {
+      "path": "color.choice.off.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.readonly.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.readonly.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.readonly.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.invalid.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.invalid.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.off.invalid.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.readonly.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.readonly.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.readonly.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.invalid.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.invalid.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.choice.on.invalid.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
       "path": "color.status.neutral.surface",
       "type": "color",
       "axis": "appearance"
@@ -2309,6 +2494,11 @@
       "minimum": 3
     },
     {
+      "content": "color.field.readonly.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
       "content": "color.field.readonly.content",
       "surface": "color.field.readonly.surface",
       "minimum": 4.5
@@ -2332,6 +2522,66 @@
       "content": "color.field.invalid.border",
       "surface": "color.surface.default",
       "minimum": 3
+    },
+    {
+      "content": "color.choice.off.default.content",
+      "surface": "color.choice.off.default.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.choice.off.hover.content",
+      "surface": "color.choice.off.hover.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.choice.off.readonly.content",
+      "surface": "color.choice.off.readonly.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.choice.off.invalid.content",
+      "surface": "color.choice.off.invalid.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.choice.on.default.content",
+      "surface": "color.choice.on.default.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.choice.on.hover.content",
+      "surface": "color.choice.on.hover.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.choice.on.readonly.content",
+      "surface": "color.choice.on.readonly.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.choice.on.invalid.content",
+      "surface": "color.choice.on.invalid.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.choice.on.default.surface",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.choice.on.hover.surface",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.choice.on.invalid.surface",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.status.danger.content",
+      "surface": "color.surface.default",
+      "minimum": 4.5
     },
     {
       "content": "color.status.neutral.content",

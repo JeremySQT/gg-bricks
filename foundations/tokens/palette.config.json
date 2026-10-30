@@ -8,6 +8,7 @@
       "200": 0.915,
       "300": 0.855,
       "400": 0.715,
+      "450": 0.635,
       "500": 0.585,
       "600": 0.5,
       "700": 0.415,
@@ -43,18 +44,51 @@
     "900": 0.62,
     "950": 0.45
   },
-  "neutral": { "hue": 255, "chroma": 0.012 },
+  "neutral": {
+    "hue": 255,
+    "chroma": 0.012
+  },
   "hues": {
-    "red": { "hue": 25, "chroma": 0.22 },
-    "orange": { "hue": 50, "chroma": 0.19 },
-    "amber": { "hue": 72, "chroma": 0.17 },
-    "yellow": { "hue": 95, "chroma": 0.16 },
-    "green": { "hue": 148, "chroma": 0.18 },
-    "teal": { "hue": 178, "chroma": 0.13 },
-    "cyan": { "hue": 218, "chroma": 0.14 },
-    "blue": { "hue": 258, "chroma": 0.2 },
-    "violet": { "hue": 295, "chroma": 0.2 },
-    "pink": { "hue": 350, "chroma": 0.2 }
+    "red": {
+      "hue": 25,
+      "chroma": 0.22
+    },
+    "orange": {
+      "hue": 50,
+      "chroma": 0.19
+    },
+    "amber": {
+      "hue": 72,
+      "chroma": 0.17
+    },
+    "yellow": {
+      "hue": 95,
+      "chroma": 0.16
+    },
+    "green": {
+      "hue": 148,
+      "chroma": 0.18
+    },
+    "teal": {
+      "hue": 178,
+      "chroma": 0.13
+    },
+    "cyan": {
+      "hue": 218,
+      "chroma": 0.14
+    },
+    "blue": {
+      "hue": 258,
+      "chroma": 0.2
+    },
+    "violet": {
+      "hue": 295,
+      "chroma": 0.2
+    },
+    "pink": {
+      "hue": 350,
+      "chroma": 0.2
+    }
   },
   "alpha": {
     "black": [5, 10, 20, 30, 40, 50, 60, 70, 80, 90],

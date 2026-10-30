@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "checkbox-group",
+  "props": {
+    "value": {
+      "type": "list",
+      "default": [],
+      "bindable": true
+    },
+    "label": {
+      "type": "string"
+    },
+    "orientation": {
+      "values": ["vertical", "horizontal"],
+      "default": "vertical"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "readonly": {
+      "type": "boolean",
+      "default": false
+    },
+    "invalid": {
+      "type": "boolean",
+      "default": false
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "container": {},
+    "items": {
+      "accepts": ["checkbox"],
+      "min": 2
+    }
+  },
+  "states": {},
+  "events": {
+    "valueChange": {
+      "when": "The user checks or unchecks a checkbox of the group (pointer or Space) while the group is neither disabled nor readonly.",
+      "payload": "The new list of checked values."
+    }
+  },
+  "tokens": {
+    "verticalGap": "space.content.sm",
+    "horizontalGap": "space.content.lg"
+  },
+  "rules": [
+    "A checkbox group gathers two or more related checkboxes that answer one question, any number of which can be checked. Each checkbox has a value, unique within the group. value lists the values of the checked checkboxes, in the source order of the checkboxes; a checkbox is checked exactly when its value is in the list, and values that match no checkbox are ignored.",
+    "The accessible name of the group is the label of the enclosing Field, otherwise the label prop; one of them is present and non-empty. label is not displayed. Each checkbox keeps its own label as its accessible name.",
+    "size, readonly and invalid apply to every checkbox; disabled disables every checkbox. invalid is exposed on each checkbox; the message of the enclosing Field describes the group.",
+    "required means that at least one checkbox must be checked. It is not exposed as required on the individual checkboxes, where it would announce each of them as mandatory; the requirement is stated in words by the Field label or description (Select at least one option), and the Field shows its required indicator.",
+    "orientation vertical stacks the checkboxes in source order separated by verticalGap. orientation horizontal places them on one line separated by horizontalGap and wraps to further lines, still in source order, when the inline size runs out.",
+    "Every enabled checkbox is its own stop in sequential focus, in source order; Space toggles the focused checkbox. A disabled group is skipped by sequential focus; in a readonly group the checkboxes stay focusable and ignore activation, and the group is exposed as read-only.",
+    "Checking or unchecking a checkbox updates value and emits valueChange; setting value from the application does not emit it.",
+    "The group never validates: deciding that a required group is invalid (nothing checked) and writing the message belong to the application.",
+    "Checkboxes of a group are never indeterminate. A select-all checkbox that summarizes the group stays outside it; the application derives its checked and indeterminate state from value."
+  ]
+}

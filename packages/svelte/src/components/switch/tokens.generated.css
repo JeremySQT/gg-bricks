@@ -1,0 +1,62 @@
+/* Generated token bindings from the switch contract. Do not edit. */
+.ggb-switch {
+  --ggb-switch-surface-off-default: var(--ggb-color-choice-off-default-surface);
+  --ggb-switch-surface-off-hover: var(--ggb-color-choice-off-hover-surface);
+  --ggb-switch-surface-off-readonly: var(--ggb-color-choice-off-readonly-surface);
+  --ggb-switch-surface-off-disabled: var(--ggb-color-choice-off-disabled-surface);
+  --ggb-switch-surface-on-default: var(--ggb-color-choice-on-default-surface);
+  --ggb-switch-surface-on-hover: var(--ggb-color-choice-on-hover-surface);
+  --ggb-switch-surface-on-readonly: var(--ggb-color-choice-on-readonly-surface);
+  --ggb-switch-surface-on-disabled: var(--ggb-color-choice-on-disabled-surface);
+  --ggb-switch-content-off-default: var(--ggb-color-choice-off-default-content);
+  --ggb-switch-content-off-hover: var(--ggb-color-choice-off-hover-content);
+  --ggb-switch-content-off-readonly: var(--ggb-color-choice-off-readonly-content);
+  --ggb-switch-content-off-disabled: var(--ggb-color-choice-off-disabled-content);
+  --ggb-switch-content-on-default: var(--ggb-color-choice-on-default-content);
+  --ggb-switch-content-on-hover: var(--ggb-color-choice-on-hover-content);
+  --ggb-switch-content-on-readonly: var(--ggb-color-choice-on-readonly-content);
+  --ggb-switch-content-on-disabled: var(--ggb-color-choice-on-disabled-content);
+  --ggb-switch-border-off-default: var(--ggb-color-choice-off-default-border);
+  --ggb-switch-border-off-hover: var(--ggb-color-choice-off-hover-border);
+  --ggb-switch-border-off-readonly: var(--ggb-color-choice-off-readonly-border);
+  --ggb-switch-border-off-disabled: var(--ggb-color-choice-off-disabled-border);
+  --ggb-switch-border-on-default: var(--ggb-color-choice-on-default-border);
+  --ggb-switch-border-on-hover: var(--ggb-color-choice-on-hover-border);
+  --ggb-switch-border-on-readonly: var(--ggb-color-choice-on-readonly-border);
+  --ggb-switch-border-on-disabled: var(--ggb-color-choice-on-disabled-border);
+  --ggb-switch-borderWidth: var(--ggb-border-width-default);
+  --ggb-switch-radius: var(--ggb-radius-full);
+  --ggb-switch-minTarget: var(--ggb-size-target-min);
+  --ggb-switch-labelColor: var(--ggb-color-content-primary);
+  --ggb-switch-descriptionColor: var(--ggb-color-content-secondary);
+  --ggb-switch-disabledColor: var(--ggb-color-content-disabled);
+  --ggb-switch-typographyDescription: var(--ggb-typography-body-sm);
+  --ggb-switch-typographyDescription-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-switch-typographyDescription-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+  --ggb-switch-focusColor: var(--ggb-color-focus-ring);
+  --ggb-switch-focusWidth: var(--ggb-focus-width);
+  --ggb-switch-focusOffset: var(--ggb-focus-offset);
+  --ggb-switch-motionDuration: var(--ggb-motion-duration-base);
+  --ggb-switch-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-switch[data-size="sm"] {
+  --ggb-switch-trackSize: var(--ggb-size-switch-sm);
+  --ggb-switch-gap: var(--ggb-space-control-gap-sm);
+  --ggb-switch-typography: var(--ggb-typography-body-sm);
+  --ggb-switch-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-switch-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+}
+.ggb-switch[data-size="md"] {
+  --ggb-switch-trackSize: var(--ggb-size-switch-md);
+  --ggb-switch-gap: var(--ggb-space-control-gap-md);
+  --ggb-switch-typography: var(--ggb-typography-body-md);
+  --ggb-switch-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-switch-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+}
+.ggb-switch[data-size="lg"] {
+  --ggb-switch-trackSize: var(--ggb-size-switch-lg);
+  --ggb-switch-gap: var(--ggb-space-control-gap-lg);
+  --ggb-switch-typography: var(--ggb-typography-body-lg);
+  --ggb-switch-typography-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);
+  --ggb-switch-typography-fontFeatureSettings: var(--ggb-typography-body-lg-fontFeatureSettings);
+}

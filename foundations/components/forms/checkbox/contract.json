@@ -1,0 +1,114 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "checkbox",
+  "props": {
+    "checked": {
+      "type": "boolean",
+      "default": false,
+      "bindable": true
+    },
+    "indeterminate": {
+      "type": "boolean",
+      "default": false,
+      "bindable": true
+    },
+    "value": {
+      "type": "string",
+      "default": ""
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "hideLabel": {
+      "type": "boolean",
+      "default": false
+    },
+    "description": {
+      "type": "string"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "readonly": {
+      "type": "boolean",
+      "default": false
+    },
+    "invalid": {
+      "type": "boolean",
+      "default": false
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "container": {},
+    "control": {},
+    "mark": {},
+    "label": {},
+    "description": {}
+  },
+  "states": {
+    "selection": {
+      "values": ["off", "on"],
+      "default": "off"
+    },
+    "condition": {
+      "values": ["default", "hover", "readonly", "disabled", "invalid"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "events": {
+    "checkedChange": {
+      "when": "The user toggles the checkbox (pointer on the control or the label, or Space) while it is neither disabled nor readonly.",
+      "payload": "The new checked value."
+    }
+  },
+  "tokens": {
+    "surface": "color.choice.{selection}.{condition}.surface",
+    "content": "color.choice.{selection}.{condition}.content",
+    "border": "color.choice.{selection}.{condition}.border",
+    "borderWidth": "border.width.default",
+    "radius": "radius.indicator",
+    "boxSize": "size.choice.{size}",
+    "minTarget": "size.target.min",
+    "gap": "space.control.gap.{size}",
+    "labelColor": "color.content.primary",
+    "descriptionColor": "color.content.secondary",
+    "disabledColor": "color.content.disabled",
+    "typography": "typography.body.{size}",
+    "typographyDescription": "typography.body.sm",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "motionDuration": "motion.duration.fast",
+    "easingStandard": "motion.easing.standard"
+  },
+  "rules": [
+    "Arrange control, then label with description beneath it, in that order inside container, separated by gap. label is required and non-empty; it is the accessible name and description is the accessible description. hideLabel hides label and description visually and keeps them as name and description (a row selector in a table).",
+    "control is a square of boxSize with corners of radius and a border of borderWidth in border inside its boundary, painted in surface. It is centered on the first line of the label, not on the whole label block.",
+    "label is set in typography in labelColor and wraps on as many lines as needed; description is set in typographyDescription in descriptionColor directly below the label and wraps.",
+    "selection is on when checked or indeterminate is true. When on, mark shows in content, centered in control: a check glyph when checked, a horizontal bar when indeterminate (indeterminate takes precedence for display). When off, mark is empty.",
+    "Activation (pointer press on control or label, or Space while focused) sets checked to true and indeterminate to false when indeterminate was true, and otherwise inverts checked; it emits checkedChange. Disabled and readonly checkboxes ignore activation. Enter does not toggle.",
+    "Resolve condition in this order: disabled, readonly, invalid, hover, default; hover applies while the pointer is over control or label. focus is an independent axis.",
+    "Disabled removes the checkbox from sequential focus and paints label and description in disabledColor. Readonly keeps it focusable, is exposed as read-only and shows the readonly colors; its value is submitted.",
+    "Invalid paints the empty control with the invalid border and fills the checked control with the invalid color; it is exposed to assistive technology. The explanation of an error and the required marker belong to the enclosing Field, so that an error is never conveyed by color alone. Required is exposed to assistive technology.",
+    "Control, label and description form a single interaction target that meets minTarget in the block dimension; with hideLabel the target around control meets minTarget in both dimensions without enlarging the visible control.",
+    "When focus is true and was reached by keyboard, draw a focus indicator of focusWidth in focusColor at focusOffset outside control, with corners of radius plus focusOffset.",
+    "Sizes are named like Button sizes. boxSize and the typographies do not change with density; gap does.",
+    "Color changes transition over motionDuration with easingStandard; the mark appears and disappears without motion; no transition when reduced motion is requested.",
+    "In forced-colors mode control keeps a visible boundary in the system text color, an on control is filled with the system highlight color and its mark drawn in the system highlight text color, disabled content uses the system disabled text color and the focus indicator stays visible.",
+    "value identifies the checkbox: it is submitted with a form when the checkbox is checked. Inside a CheckboxGroup it is required and unique within the group, checked is controlled by the group (checked exactly when value is in the group value), size, readonly, invalid and disabled come from the group as for a Field, and indeterminate is not used."
+  ]
+}

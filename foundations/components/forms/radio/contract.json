@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "radio",
+  "props": {
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "container": {},
+    "control": {},
+    "mark": {},
+    "label": {},
+    "description": {}
+  },
+  "states": {
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "selection": {
+      "values": ["off", "on"],
+      "default": "off"
+    },
+    "condition": {
+      "values": ["default", "hover", "readonly", "disabled", "invalid"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "tokens": {
+    "surface": "color.choice.{selection}.{condition}.surface",
+    "content": "color.choice.{selection}.{condition}.content",
+    "border": "color.choice.{selection}.{condition}.border",
+    "borderWidth": "border.width.default",
+    "radius": "radius.full",
+    "boxSize": "size.choice.{size}",
+    "minTarget": "size.target.min",
+    "gap": "space.control.gap.{size}",
+    "labelColor": "color.content.primary",
+    "descriptionColor": "color.content.secondary",
+    "disabledColor": "color.content.disabled",
+    "typography": "typography.body.{size}",
+    "typographyDescription": "typography.body.sm",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "motionDuration": "motion.duration.fast",
+    "easingStandard": "motion.easing.standard"
+  },
+  "rules": [
+    "A radio is one option of a RadioGroup and exists only inside one. Its value is unique within the group. size, readonly and invalid come from the group; disabled is true when the radio or the group is disabled.",
+    "Arrange control, then label with description beneath it, in that order inside container, separated by gap. label is required and non-empty; it is the accessible name and description is the accessible description.",
+    "control is a circle of boxSize (corners of radius) with a border of borderWidth in border inside its boundary, painted in surface. It is centered on the first line of the label, not on the whole label block.",
+    "label is set in typography in labelColor and wraps; description is set in typographyDescription in descriptionColor directly below the label and wraps.",
+    "selection is on when the group value equals value. When on, mark is a centered dot of 3/8 of boxSize in content; when off, mark is empty.",
+    "A pointer press on control or label selects the radio; it never deselects it. Keyboard selection is handled by the group. A disabled radio, or any radio of a readonly group, ignores selection.",
+    "Resolve condition in this order: disabled, readonly, invalid, hover, default; hover applies while the pointer is over control or label. focus is an independent axis.",
+    "A disabled radio is skipped by the keyboard and paints label and description in disabledColor.",
+    "Control, label and description form a single interaction target that meets minTarget in the block dimension.",
+    "When focus is true and was reached by keyboard, draw a focus indicator of focusWidth in focusColor at focusOffset outside control, fully rounded.",
+    "boxSize and the typographies do not change with density; gap does.",
+    "Color changes transition over motionDuration with easingStandard; the dot appears and disappears without motion; no transition when reduced motion is requested.",
+    "In forced-colors mode control keeps a visible boundary in the system text color, an on control is filled with the system highlight color and its dot drawn in the system highlight text color, disabled content uses the system disabled text color and the focus indicator stays visible."
+  ]
+}

@@ -92,7 +92,12 @@ export interface NumberDecl {
   max?: number;
   bindable?: boolean;
 }
-export type PropDecl = EnumDecl | BooleanDecl | StringDecl | NumberDecl;
+export interface ListDecl {
+  type: 'list';
+  default: string[];
+  bindable?: boolean;
+}
+export type PropDecl = EnumDecl | BooleanDecl | StringDecl | NumberDecl | ListDecl;
 export type StateDecl = EnumDecl | BooleanDecl;
 export interface SlotPart {
   accepts: string[];

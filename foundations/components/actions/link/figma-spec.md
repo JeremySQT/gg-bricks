@@ -2,7 +2,7 @@
 
 ## Overview
 
-- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), page **actions/link** (`225:2`), after actions/icon-button; it holds the master and this specification.
+- File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), component page **actions/link** (`225:2`): this specification and its instances. Master and its internal parts: library page **Actions** (`343:2`), section **Link** ([`343:5`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=343-5)), since 2026-10-29; the specification links to the section under its title.
 - Master: component set **Link** ([`232:659`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=232-659)), 54 variants, with the internal part **\_Link/Destination** ([`232:442`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=232-442)), 6 variants; both built by `authoring/adapters/figma/link-master.plugin.js` (rebuilt on 2026-10-20, see the ledger's maintenance).
 - Specification frame: **Link — Specification** ([`234:13`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=234-13)) with Overview, Anatomy, Variants, States, Behavior & sizing and Usage examples, in plain sentences for designers; built by `authoring/adapters/figma/link-spec.plugin.js`. Its instances are explanatory, never masters.
 - Reproduces: contract `foundations/components/actions/link/contract.json` (sha256 `d482a8b7…`, approved 2026-10-17, glyph and meta roles of 2026-10-19) and the implementation approved on 2026-10-19 (`packages/svelte/src/components/link`).

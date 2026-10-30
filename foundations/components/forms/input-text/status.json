@@ -1,0 +1,276 @@
+{
+  "formatStatus": "v1",
+  "componentId": "input-text",
+  "family": "forms",
+  "wave": 2,
+  "phase": "done",
+  "scope": {
+    "purpose": "Let the user enter or edit a short single-line text value (name, email, search query, password, URL, phone number).",
+    "useCases": [
+      "A form field inside Field, with label, description and error message.",
+      "A standalone search box in a toolbar, named by its label prop, with a leading magnifying-glass icon.",
+      "A readonly value that can still be selected and copied (an identifier, an API key).",
+      "Masked password entry.",
+      "A search box with a clear button, or a password field with a show/hide button, as a trailing IconButton at sizes md and lg."
+    ],
+    "exclusions": [
+      "Numbers with steppers (NumberInput), dates and times (DatePicker, TimeInput), suggestions (Combobox): their own components.",
+      "Prefix/suffix text (units, currency), character counters, input masks and formatting.",
+      "Multi-line text: Textarea.",
+      "A trailing IconButton at size sm (too little room for a second target), and built-in clear or show-password logic: the application supplies the IconButton and its action."
+    ],
+    "alternatives": [
+      "Textarea for multi-line text.",
+      "Combobox (wave 4) for a value chosen among suggestions.",
+      "DataField (wave 5) to display a value that cannot be edited at all."
+    ]
+  },
+  "dependencies": ["icon", "icon-button"],
+  "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading/trailing icon examples."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/input-text/contract.json",
+      "sha256": "c3e5118af4cd9599f49489b3c65c4b18ef02c8ec59b68c9cb168d15bf9298beb"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "foundations/tokens/base/semantic/common.tokens.json"
+    ],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/input-text (288:5)",
+      "componentSet": "293:1046",
+      "specification": "306:1344",
+      "ledger": "reports/components/input-text/figma/ledger.json",
+      "parity": "reports/components/input-text/figma/parity.json",
+      "screenshots": [
+        "reports/components/input-text/figma/master-set.png",
+        "reports/components/input-text/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/input-text/figma/blueprint-anatomy.png",
+          "node": "315:3676"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/input-text-master.plugin.js",
+        "authoring/adapters/figma/forms-spec.plugin.js",
+        "authoring/adapters/figma/forms-setup.plugin.js",
+        "authoring/adapters/figma/field-focus-migrate.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/input-text/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "entry": "packages/svelte/src/components/input-text/InputText.svelte",
+      "folder": "packages/svelte/src/components/input-text",
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (native input; Bits UI has no text input primitive)"
+      },
+      "report": "reports/components/input-text/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/input-text",
+      "preview": "dist/previews/input-text.html (npm run build:preview input-text)",
+      "artifact": "https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 2, review round 2: SVG circles, lighter field borders)",
+      "playground": "apps/docs/src/playgrounds/input-text.svelte"
+    },
+    "tests": {
+      "ssr": "tests/ssr/input-text.test.ts",
+      "browser": "tests/browser/input-text.spec.ts",
+      "computed": "reports/components/input-text/svelte/computed.json",
+      "screenshots": "reports/components/input-text/svelte/*.png"
+    },
+    "humanDocs": "documentation/components/input-text.md",
+    "agentDocs": "documentation/index.json (entry input-text); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "InputText contract: bindable value, type (text, email, password, search, tel, url), size, placeholder, label (accessible name outside a Field), disabled, readonly, invalid, required; container, leading (Icon), input and trailing (Icon, or an IconButton at md and lg set to the next smaller size, neutral ghost) parts; condition and focus states; valueChange; color.field.{condition}.* roles, Button spacing, typography.body.{size}, focus ring on every focus.",
+      "revision": {
+        "paths": ["foundations/components/forms/input-text/contract.json"],
+        "sha256": {
+          "foundations/components/forms/input-text/contract.json": "c3e5118af4cd9599f49489b3c65c4b18ef02c8ec59b68c9cb168d15bf9298beb"
+        }
+      },
+      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): option B for trailing actions with sm forbidding the action (\"2 je partirai sur B\"), then the proposed mechanism confirmed: \"Ok pour la proposition, lance l'implémentation\".",
+      "note": "The reviewer expects adjustments at the implementation review."
+    },
+    "implementation": {
+      "scope": "InputText: native input in a Button-aligned container, decorative slots, trailing IconButton action at md and lg, conditions with the focus ring, lighter light border (neutral.450).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/input-text/InputText.svelte",
+          "packages/svelte/src/components/input-text/contract.generated.ts",
+          "packages/svelte/src/components/input-text/input-text.css",
+          "packages/svelte/src/components/input-text/tokens.generated.css",
+          "packages/svelte/src/components/input-text/types.ts",
+          "examples/input-text/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/input-text/InputText.svelte": "c61fce2a98da9ceab4b0affe322b33efa2ffd7d79eafa0d947ec47f06a5cfec9",
+          "packages/svelte/src/components/input-text/contract.generated.ts": "65e7dff8c1c30f700af22f16e8d306ffd1485800939a4478bfeca927ef3a6484",
+          "packages/svelte/src/components/input-text/input-text.css": "a587bc72dfd6f548c25882d30186fa08be94de3f61fd0240b148e2bcff031470",
+          "packages/svelte/src/components/input-text/tokens.generated.css": "de5fc879861cb6791cb5eed4e3d76fdc4a9353b73661640f77a3972a3f088d93",
+          "packages/svelte/src/components/input-text/types.ts": "d6079ba5518687533e834dd7a2246dacddf6b72db4f939dcbd90e30db4b98477",
+          "examples/input-text/App.svelte": "989f5de929d5bcf84bcc08ca858072e5529485931d75a9f1a6fa72e2e834f3c7"
+        }
+      },
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
+    },
+    "figmaParity": {
+      "scope": "Figma master, specification page and parity of input-text (library page Forms, component page forms/input-text), after the review rounds of 2026-10-28/29 (blueprint boards, focus as a property, option slots for groups, library pages).",
+      "revision": {
+        "paths": [
+          "reports/components/input-text/figma/parity.json",
+          "reports/components/input-text/figma/ledger.json",
+          "foundations/components/forms/input-text/figma-spec.md"
+        ],
+        "sha256": {
+          "reports/components/input-text/figma/parity.json": "c3b86edc05711c658563146f513c1a34f9f0eca6a081a2d92f194f233b110a31",
+          "reports/components/input-text/figma/ledger.json": "9d21810cac49101ac51dc0bf62c6e00aefab4209676b42422815ab0046bc3992",
+          "foundations/components/forms/input-text/figma-spec.md": "4536e4ef182bfbc7c1eb2a6cd61c2c9155701e892ca856d3d43a28fe04d8536b"
+        }
+      },
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "note": null
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of input-text.",
+      "revision": {
+        "paths": [
+          "documentation/components/input-text.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/input-text.svelte"
+        ],
+        "sha256": {
+          "documentation/components/input-text.md": "0a3fb4e2e13803af966d556801931e575c1a0d714ae373c1a1088ecf632b72c8",
+          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "apps/docs/src/playgrounds/input-text.svelte": "0f5ad59a3279bcd248d74b2df9ba548578aa8e9681565bf98da6186bbb481f2c"
+        }
+      },
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "kind": "contract-validation",
+      "result": "passed",
+      "command": "npm run validate; node tooling/validate-contracts.ts --tokens --dependencies",
+      "report": "reports/components/input-text/contract-validation.json",
+      "date": "2026-10-26",
+      "note": "Schema, consistency, token coverage (51 paths) in 18 contexts and accepted components; check-foundations passes (425 roles, 2196 contrast checks, 0 failures). Intrinsic rules: manual review at the contract gate."
+    },
+    {
+      "kind": "build-tokens",
+      "result": "passed",
+      "command": "npm run build:tokens",
+      "report": "reports/components/input-text/contrast.json",
+      "date": "2026-10-26",
+      "note": "1296 contrast records on the contrastScope backdrops in 18 contexts, 0 failures; minimum active text 11.44."
+    },
+    {
+      "kind": "verify",
+      "result": "passed",
+      "command": "npm run verify",
+      "date": "2026-10-26",
+      "note": "generate, lint, validate, unit tests (40), svelte-check (0 errors), SSR (64), build, docs build."
+    },
+    {
+      "kind": "ssr",
+      "result": "passed",
+      "command": "npm run test:ssr",
+      "report": "reports/components/input-text/svelte/ssr.json",
+      "date": "2026-10-26",
+      "note": "5 checks recorded for InputText."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-26",
+      "note": "Chromium 153, full suite 102 passed; computed values: 1656 records (reports/components/input-text/svelte/computed.json). Details in reports/components/input-text/svelte/implementation.md."
+    },
+    {
+      "kind": "preview",
+      "result": "passed",
+      "command": "npm run build && npm run build:preview input-text",
+      "date": "2026-10-26",
+      "note": "dist/previews/input-text.html mounts from file:// without errors; published in https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz (version 1: index of the six wave 2 review pages)."
+    },
+    {
+      "kind": "browser",
+      "result": "passed",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npm run test:browser",
+      "report": "reports/browser-results.json",
+      "date": "2026-10-27",
+      "note": "After review round 1 (SVG circles for Switch and Radio, lighter field borders): npm run verify passed (SSR 64), full browser suite 102 passed; computed.json regenerated."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/forms-parity.plugin.js (ID input-text); node authoring/adapters/figma/forms-parity-report.mjs input-text <result>",
+      "report": "reports/components/input-text/figma/parity.json",
+      "date": "2026-10-27",
+      "note": "1656 records (sizes with the leading icon, conditions without, hover, focus and invalid + focus), 0 failures."
+    },
+    {
+      "kind": "figmaParity",
+      "result": "passed",
+      "command": "use_figma authoring/adapters/figma/field-focus-migrate.plugin.js; use_figma authoring/adapters/figma/forms-parity.plugin.js (ID input-text)",
+      "report": "reports/components/input-text/figma/parity.json",
+      "date": "2026-10-28",
+      "note": "Re-measured after Focus became a property only (State=focus removed, Focus border added): the 18 hashes and numeric fields are unchanged (focus case: State default with Focus on)."
+    },
+    {
+      "kind": "documentation",
+      "result": "passed",
+      "command": "npm run build:svelte && npm run build:docs; PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium npx playwright test tests/browser/docs-site.spec.ts",
+      "date": "2026-10-30",
+      "note": "Page documentation/components/input-text.md (eight sections, live examples compiled by the site), index entry, playground; the site page /components/input-text/ renders its playground, blueprint and every live block without console errors and without axe violations in light and dark (Chromium; text of disabled components exempt from contrast, the documented exception)."
+    }
+  ],
+  "decisionsTaken": [
+    "One derived state axis `condition` keys the field and choice color families (color.field.{condition}.*, color.choice.{selection}.{condition}.*), resolved from the disabled, readonly and invalid props and pointer hover with a fixed precedence (disabled, readonly, invalid, [focus,] hover, default). The props stay separate (contract-guide: validation is not an interaction state); only the token lookup is flattened, as the approved field family already is.",
+    "A standalone text entry or radio group takes its accessible name from an optional, non-displayed label prop (the IconButton precedent); inside a Field the Field label wins. There is no visually hidden Field label: a control without a visible label is used without Field.",
+    "Controls perform no validation and expose invalid/required only; the visible error message and required marker belong to Field (catalog composition rule: controls are standalone, Field wraps them).",
+    "Same horizontal spacing as Button (edge-inline, label-inline, slot-inline, optical icon placement), so an InputText and a Button of the same size align their text and icons side by side; heights from size.control.{size}.",
+    "Value typography typography.body.{size} (14, 16, 18 px): entered text is content, not a control label; md at 16 px also avoids the automatic zoom of mobile browsers on focus.",
+    "Focus shows the approved color.field.focus.border and, on every focus (text entry shows a caret whatever the modality), the same outer focus ring as Button; an invalid field keeps its invalid border while focused, the ring shows focus.",
+    "Readonly keeps the field focusable, selectable and submitted; disabled is neither focusable nor submitted.",
+    "type limited to text, email, password, search, tel, url; number is NumberInput (wave 6).",
+    "The interaction target meets 44 px in block size without enlarging the visible field (decisions.md minimum target), as Button.",
+    "Trailing actions B (user at the contract gate, 2026-10-26: \"2 je partirai sur B\", with the rule that sm forbids the action): trailing accepts an IconButton at sizes md and lg only. The input imposes on it an existing IconButton size one step smaller (sm in md, md in lg), intent neutral and appearance ghost, without any local override of IconButton: its tokens and behavior are unchanged, the host only chooses its options (the host-imposes-size principle of decisions.md, 2026-10-26). Block and inline-end inset (minHeight − box)/2: 4 px in standard, 2 to 6 px across densities. Mechanism confirmed by the user (\"Ok pour la proposition\", 2026-10-26).",
+    "The trailing part maps to two snippet props: `trailing` (decorative icon) and `action` (IconButton). `action` receives the imposed IconButton options (size one step smaller, neutral, ghost, disabled with the input) to spread on the IconButton: InputText imports no IconButton and IconButton reads no context. At sm the action is not rendered and a console warning is logged.",
+    "Condition selectors are wrapped in :where() so that source order alone is the precedence (disabled, readonly, invalid, focus, hover); the focus ring is drawn while the input itself has focus (not its action).",
+    "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges).",
+    "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 2: pull request of wave/2-form-foundations to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
+    "Svelte: the trailing snippet receives the imposed IconButton props as a parameter (size, intent, appearance, disabled), so that InputText does not import IconButton and IconButton does not read a context from InputText; both folders stay self-contained. A trailing IconButton at size sm is reported as a usage error in development.",
+    "Implemented on 2026-10-26 on the approved contract; see reports/components/input-text/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
+    "Figma on 2026-10-27: component set 293:1046 (60 variants) and specification 306:1344 on page forms/input-text; see foundations/components/forms/input-text/figma-spec.md."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Accepted at the wave 2 contract gate (2026-10-26, \"4 ok\"), as for the Button outline border (2026-09-26): color.field.default.border (and the readonly border that now aliases it) reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected."
+      }
+    ]
+  }
+}
