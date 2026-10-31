@@ -1,0 +1,138 @@
+/*
+ * Top-layer overlays: the reset of the browser's popover and dialog styles, anchor positioning, the entry and exit
+ * motion (CSS only: @starting-style for the entry, transition-behavior: allow-discrete for the exit; a fade without
+ * movement under reduced motion) and the modal backdrop. Colors, radii, shadows and distances come from the
+ * component that uses the class; this file sets geometry and motion only (decision of 2026-10-31).
+ */
+@layer ggb {
+  /* Reset at zero specificity, so that the component's own rules (surface, border, radius) win in the same layer. */
+  :where(.ggb-overlay[popover], dialog.ggb-overlay) {
+    --_offset: var(--ggb-overlay-offset, 0px);
+    --_distance: var(--ggb-overlay-distance, var(--ggb-motion-distance-sm));
+    --_duration: var(--ggb-overlay-duration, var(--ggb-motion-duration-base));
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    overflow: visible;
+  }
+  /* The browser centers a modal dialog with inset 0 and auto margins; popovers are anchored instead. */
+  :where(dialog.ggb-overlay) {
+    inset: 0;
+    margin: auto;
+  }
+
+  /* Closed overlays are not rendered, whatever display the component sets for the open state (the browser's own
+     rule has a lower precedence than author rules). The exit transition keeps them displayed until it ends. */
+  .ggb-overlay[popover]:not(:popover-open),
+  dialog.ggb-overlay:not([open]) {
+    display: none;
+  }
+
+  /* Anchored popovers: the browser places them from the anchor the attachment names, flips when room is short. */
+  :where(.ggb-overlay[popover]) {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    inline-size: max-content;
+    max-inline-size: calc(100vi - 2 * var(--ggb-space-layout-sm));
+  }
+  @supports (position-area: block-end) {
+    .ggb-overlay[popover][data-side='bottom'] {
+      position-area: block-end span-inline-end;
+      margin-block-start: var(--_offset);
+      position-try-fallbacks:
+        flip-block,
+        flip-inline,
+        flip-block flip-inline;
+    }
+    .ggb-overlay[popover][data-side='top'] {
+      position-area: block-start span-inline-end;
+      margin-block-end: var(--_offset);
+      position-try-fallbacks:
+        flip-block,
+        flip-inline,
+        flip-block flip-inline;
+    }
+    .ggb-overlay[popover][data-align='center'] {
+      position-area: block-end;
+    }
+    .ggb-overlay[popover][data-side='top'][data-align='center'] {
+      position-area: block-start;
+    }
+    .ggb-overlay[popover][data-align='end'] {
+      position-area: block-end span-inline-start;
+    }
+    .ggb-overlay[popover][data-side='top'][data-align='end'] {
+      position-area: block-start span-inline-start;
+    }
+  }
+
+  /* Modal dialogs: centered by the browser; the backdrop is the scrim. */
+  :where(dialog.ggb-overlay) {
+    max-inline-size: calc(100vi - 2 * var(--ggb-space-layout-md));
+    max-block-size: calc(100vb - 2 * var(--ggb-space-layout-md));
+  }
+  dialog.ggb-overlay::backdrop {
+    background: var(--ggb-color-surface-scrim);
+  }
+
+  /* Entry and exit. Closed: faded and shifted towards the anchor (popovers) or upwards (dialogs). */
+  .ggb-overlay[popover],
+  dialog.ggb-overlay {
+    opacity: 0;
+    translate: 0 calc(-1 * var(--_distance));
+    transition:
+      opacity var(--_duration) var(--ggb-motion-easing-exit),
+      translate var(--_duration) var(--ggb-motion-easing-exit),
+      display var(--_duration) allow-discrete,
+      overlay var(--_duration) allow-discrete;
+  }
+  .ggb-overlay[popover][data-side='top'],
+  .ggb-overlay[popover][data-placed-side='top'] {
+    translate: 0 var(--_distance);
+  }
+  .ggb-overlay[popover]:popover-open,
+  dialog.ggb-overlay[open] {
+    opacity: 1;
+    translate: 0 0;
+    transition-timing-function: var(--ggb-motion-easing-enter);
+    @starting-style {
+      opacity: 0;
+      translate: 0 calc(-1 * var(--_distance));
+    }
+  }
+  .ggb-overlay[popover][data-side='top']:popover-open,
+  .ggb-overlay[popover][data-placed-side='top']:popover-open {
+    @starting-style {
+      translate: 0 var(--_distance);
+    }
+  }
+  dialog.ggb-overlay::backdrop {
+    opacity: 0;
+    transition:
+      opacity var(--_duration) var(--ggb-motion-easing-exit),
+      display var(--_duration) allow-discrete,
+      overlay var(--_duration) allow-discrete;
+  }
+  dialog.ggb-overlay[open]::backdrop {
+    opacity: 1;
+    transition-timing-function: var(--ggb-motion-easing-enter);
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-overlay[popover],
+    dialog.ggb-overlay,
+    .ggb-overlay[popover]:popover-open,
+    dialog.ggb-overlay[open] {
+      translate: 0 0;
+      @starting-style {
+        translate: 0 0;
+      }
+    }
+  }
+}

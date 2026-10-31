@@ -1,12 +1,10 @@
 // Generate the Svelte adapter's mechanical artifacts from every component contract:
-// enum types + defaults, CSS custom-property bindings, and the consumer copies
+// enum types + defaults and CSS custom-property bindings (tooling/lib/bindings.ts), and the consumer copies
 // (tokens.css, contracts/, docs/) shipped inside packages/svelte. Implementations live in packages/svelte/src/components/<id>/.
 import fs from 'node:fs';
 import { abs, paths, write, readJson, readText, exists } from './lib/paths.ts';
-import { cssVariable } from './lib/tokens.ts';
-import { expandCombinations, expectedRoleType, templateParameters } from './lib/contract.ts';
-import { listComponents, pascal } from './lib/catalog.ts';
-import { isEnum, type Contract } from './lib/types.ts';
+import { listComponents } from './lib/catalog.ts';
+import { generateCss, generateTypes } from './lib/bindings.ts';
 
 interface DocIndex {
   package: string;
@@ -17,60 +15,6 @@ interface DocIndex {
 
 const pkg = paths.sveltePackage;
 const generated: string[] = [];
-
-/** Enum types and defaults for one contract. */
-export function generateTypes(contract: Contract, family = '<family>'): string {
-  const name = pascal(contract.id);
-  const enums = Object.entries(contract.props).filter(([, p]) => isEnum(p));
-  const defaults = Object.fromEntries(
-    Object.entries(contract.props)
-      .filter(([, p]) => 'default' in p)
-      .map(([k, p]) => [k, (p as { default: unknown }).default])
-  );
-  return (
-    `// Generated from foundations/components/${family}/${contract.id}/contract.json. Do not edit.\n` +
-    enums
-      .map(
-        ([key, p]) =>
-          `export type ${name}${pascal(key)} = ${(p as { values: string[] }).values.map((v) => JSON.stringify(v)).join(' | ')};`
-      )
-      .join('\n') +
-    `\nexport const defaults = ${JSON.stringify(defaults, null, 2)} as const;\n`
-  );
-}
-
-/**
- * CSS bindings for one contract. Enum *props* become data-attribute selectors;
- * enum *states* become suffixes of the custom property, so handwritten CSS
- * selects the state (hover, pressed, loading…) and reads `--ggb-<id>-<role>-<state>`.
- * Typography roles also bind the letter-spacing and font-feature helpers that the
- * font shorthand cannot carry (`--ggb-<id>-<role>-letterSpacing`…); they are unset
- * when the token defines none, so handwritten CSS reads them with a fallback.
- */
-export function generateCss(contract: Contract): string {
-  const id = contract.id;
-  const props = Object.keys(contract.props);
-  const blocks = new Map<string, string[]>();
-  for (const [role, list] of Object.entries(expandCombinations(contract))) {
-    const params = templateParameters(contract.tokens[role]);
-    const propParams = params.filter((p) => props.includes(p));
-    const stateParams = params.filter((p) => !props.includes(p));
-    for (const { params: values, path } of list) {
-      const selector = `.ggb-${id}` + propParams.map((p) => `[data-${p}="${values[p]}"]`).join('');
-      const variable = [`--ggb-${id}-${role}`, ...stateParams.map((p) => values[p])].join('-');
-      if (!blocks.has(selector)) blocks.set(selector, []);
-      blocks.get(selector)?.push(`  ${variable}: var(${cssVariable(path)});`);
-      if (expectedRoleType(role) === 'typography')
-        for (const helper of ['letterSpacing', 'fontFeatureSettings'])
-          blocks.get(selector)?.push(`  ${variable}-${helper}: var(${cssVariable(`${path}.${helper}`)});`);
-    }
-  }
-  // Every component stylesheet lives in the cascade layer `ggb`, so that any unlayered application rule wins over the
-  // component's own declarations whatever its specificity (decision of 2026-10-31, audit).
-  let css = `/* Generated token bindings from the ${id} contract. Do not edit. */\n@layer ggb {\n`;
-  for (const [selector, lines] of blocks) css += `${selector} {\n${lines.join('\n')}\n}\n`;
-  return css + '}\n';
-}
 
 const components = listComponents();
 fs.rmSync(abs(pkg, 'contracts'), { recursive: true, force: true }); // stale consumer copies never survive a rebuild

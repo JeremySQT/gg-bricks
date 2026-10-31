@@ -12,7 +12,8 @@ type Rgb = [number, number, number];
 interface ContrastRecord {
   context: string;
   backdrop: string;
-  role: 'content' | 'border' | 'focus';
+  /** content, border or focus for the generic evidence; the content role of an explicit `contrast` pair otherwise. */
+  role: string;
   ratio: number;
   minimum: number | null;
   passed: boolean;
@@ -185,6 +186,29 @@ for (const c of components) {
         });
       }
     }
+    // Explicit pairs (contract `contrast`): the content role against its surface role (same parameters) or against a
+    // color token; a translucent surface is composited on color.surface.default first. Disabled values are
+    // informational, as above.
+    const page = colorOf(t['color.surface.default']).components;
+    for (const pair of contract.contrast ?? []) {
+      for (const { params, path } of combos[pair.content] ?? []) {
+        const surfacePath = pair.surface.startsWith('color.')
+          ? pair.surface
+          : resolveTemplate(contract, pair.surface, params);
+        const surface = blend(colorOf(t[surfacePath]), page);
+        const informational = Object.values(params).includes('disabled');
+        const r = ratio(blend(colorOf(t[path]), surface), surface);
+        contrast.push({
+          context: ctx.id,
+          backdrop: pair.surface,
+          ...params,
+          role: pair.content,
+          ratio: r,
+          minimum: informational ? null : pair.minimum,
+          passed: informational || r >= pair.minimum
+        });
+      }
+    }
   }
   write(`${reportFor(c.id)}/token-requirements.json`, requirements);
   write(`${reportFor(c.id)}/token-coverage.json`, {
@@ -197,7 +221,7 @@ for (const c of components) {
     const failures = contrast.filter((x) => !x.passed);
     write(`${reportFor(c.id)}/contrast.json`, {
       method:
-        'WCAG relative luminance; alpha composited on each color.surface.* backdrop of the status contrastScope (all of them when absent). Parameters valued "disabled" and contrastScope.informational pairs are informational (minimum null), not a conformance claim.',
+        'WCAG relative luminance; alpha composited on each color.surface.* backdrop of the status contrastScope (all of them when absent); the explicit pairs of the contract `contrast` block are measured against their surface role (composited on color.surface.default) or color token. Parameters valued "disabled" and contrastScope.informational pairs are informational (minimum null), not a conformance claim.',
       checks: contrast.length,
       failures,
       minimumActiveText: Math.min(
