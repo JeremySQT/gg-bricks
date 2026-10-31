@@ -1171,6 +1171,90 @@
           "$value": "{color.palette.danger.400}"
         }
       }
+    },
+    "item": {
+      "$description": "Items of lists the user browses and picks from: menu items, listbox options, tabs, pages of a pagination, toolbar toggles. default sits on the surface that holds the list (transparent); selected marks the current choice; indicator paints the active mark (tab bar, check). Decided on 2026-10-31 (decisions.md, Overlays, composition and shared code).",
+      "default": {
+        "surface": {
+          "$type": "color",
+          "$value": "{primitive.color.transparent}"
+        },
+        "content": {
+          "$type": "color",
+          "$value": "{color.content.primary}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{primitive.color.transparent}"
+        }
+      },
+      "hover": {
+        "surface": {
+          "$type": "color",
+          "$value": "{color.palette.neutral.700}"
+        },
+        "content": {
+          "$type": "color",
+          "$value": "{color.content.primary}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{primitive.color.transparent}"
+        }
+      },
+      "selected": {
+        "surface": {
+          "$type": "color",
+          "$value": "{color.palette.accent.950}"
+        },
+        "content": {
+          "$type": "color",
+          "$value": "{color.content.primary}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{primitive.color.transparent}"
+        }
+      },
+      "selected-hover": {
+        "surface": {
+          "$type": "color",
+          "$value": "{color.palette.accent.900}"
+        },
+        "content": {
+          "$type": "color",
+          "$value": "{color.content.primary}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{primitive.color.transparent}"
+        }
+      },
+      "disabled": {
+        "surface": {
+          "$type": "color",
+          "$value": "{primitive.color.transparent}"
+        },
+        "content": {
+          "$type": "color",
+          "$value": "{color.content.disabled}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{primitive.color.transparent}"
+        }
+      },
+      "indicator": {
+        "$type": "color",
+        "$value": "{color.palette.accent.400}"
+      }
+    },
+    "elevation": {
+      "$description": "Separation of raised and floating surfaces in addition to their shadow: invisible in light, a thin contour in dark where shadows carry little (decided on 2026-10-31, approval pending the visual review).",
+      "border": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.700}"
+      }
     }
   }
 }

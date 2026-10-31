@@ -4128,6 +4128,18 @@
       "value": "{primitive.easing.accelerate}"
     }
   ],
+  "motion.distance.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v4}"
+    }
+  ],
+  "motion.distance.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v8}"
+    }
+  ],
   "layer.base": [
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
@@ -5686,6 +5698,108 @@
     {
       "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
       "value": "{color.palette.danger.600}"
+    }
+  ],
+  "color.item.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.item.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.content.primary}"
+    }
+  ],
+  "color.item.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.item.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.item.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.content.primary}"
+    }
+  ],
+  "color.item.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.item.selected.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.50}"
+    }
+  ],
+  "color.item.selected.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.content.primary}"
+    }
+  ],
+  "color.item.selected.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.item.selected-hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.100}"
+    }
+  ],
+  "color.item.selected-hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.content.primary}"
+    }
+  ],
+  "color.item.selected-hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.item.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.item.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.content.disabled}"
+    }
+  ],
+  "color.item.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.item.indicator": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{color.palette.accent.600}"
+    }
+  ],
+  "color.elevation.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.transparent}"
     }
   ],
   "size.control.sm": [

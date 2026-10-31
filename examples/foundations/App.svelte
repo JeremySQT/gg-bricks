@@ -109,6 +109,7 @@
   };
 
   const surfaces = ['canvas', 'default', 'subtle', 'muted', 'raised', 'overlay', 'inverse'];
+  const itemStates = ['default', 'hover', 'selected', 'selected-hover', 'disabled'];
   const contents = ['primary', 'secondary', 'tertiary', 'disabled', 'link'];
   const intents = ['accent', 'neutral', 'danger'];
   const actionAppearances = ['solid', 'outline', 'ghost'];
@@ -250,6 +251,36 @@
             <div class="surface-card selection" style:background="var(--ggb-color-selection-surface)">
               <strong style:color="var(--ggb-color-selection-content)">selection</strong>
             </div>
+          </div>
+          <!-- Items (pre-wave 3 foundations, 2026-10-31): a list on the default surface and one on the overlay surface. -->
+          <div class="items-pair">
+            {#each ['default', 'overlay'] as host (host)}
+              <div
+                class="items-host"
+                style:background={`var(--ggb-color-surface-${host})`}
+                style:box-shadow={host === 'overlay' ? 'var(--ggb-shadow-overlay)' : 'none'}
+                style:border-color={host === 'overlay' ? 'var(--ggb-color-elevation-border)' : 'transparent'}
+              >
+                <small>items on surface.{host}</small>
+                {#each itemStates as st (st)}
+                  <div
+                    class="item"
+                    style:background={`var(--ggb-color-item-${st}-surface)`}
+                    style:color={`var(--ggb-color-item-${st}-content)`}
+                    style:border-color={`var(--ggb-color-item-${st}-border)`}
+                  >
+                    <span
+                      class="item-indicator"
+                      style:background={st.startsWith('selected') ? 'var(--ggb-color-item-indicator)' : 'transparent'}
+                    ></span>
+                    <span>item.{st}</span>
+                    <span class="item-hex"
+                      >{hex(maps[`${brand}-${a}-${density}`][`color.item.${st}.surface`]) || 'transparent'}</span
+                    >
+                  </div>
+                {/each}
+              </div>
+            {/each}
           </div>
         </div>
       {/each}
@@ -543,6 +574,44 @@
         </div>
       {/each}
     </div>
+    <h3>Elevation border (proposal, 2026-10-31)</h3>
+    <p>
+      <code>color.elevation.border</code> is drawn by raised and floating surfaces together with their shadow: transparent
+      in light, a thin contour in dark. Both appearances side by side, with and without the border, on the default surface
+      and on the canvas.
+    </p>
+    <div class="pair">
+      {#each appearances as a (a)}
+        <div class="panel" data-ggb-appearance={a}>
+          <p class="panel-title">
+            {a} · elevation.border = {hex(maps[`${brand}-${a}-${density}`]['color.elevation.border']) || 'transparent'}
+          </p>
+          {#each ['default', 'canvas'] as host (host)}
+            <div class="elevation-host" style:background={`var(--ggb-color-surface-${host})`}>
+              <small>on surface.{host}</small>
+              <div class="row wrap">
+                {#each [['raised', 'raised'], ['overlay', 'overlay'], ['overlay', 'modal']] as [surface, shadow] (surface + shadow)}
+                  <div
+                    class="elevation-card"
+                    style:background={`var(--ggb-color-surface-${surface})`}
+                    style:box-shadow={`var(--ggb-shadow-${shadow})`}
+                  >
+                    <strong>surface.{surface}</strong><small>shadow.{shadow}, no border</small>
+                  </div>
+                  <div
+                    class="elevation-card bordered"
+                    style:background={`var(--ggb-color-surface-${surface})`}
+                    style:box-shadow={`var(--ggb-shadow-${shadow})`}
+                  >
+                    <strong>surface.{surface}</strong><small>shadow.{shadow} + elevation.border</small>
+                  </div>
+                {/each}
+              </div>
+            </div>
+          {/each}
+        </div>
+      {/each}
+    </div>
     <div class="row wrap">
       {#each keys('primitive.shadow.') as k (k)}
         <div class="card small" style:box-shadow={`var(--ggb-${k.replaceAll('.', '-')})`}>
@@ -559,6 +628,11 @@
   <section id="motion">
     <h2>Motion</h2>
     <p>Hover a box: it slides with its duration and easing. Durations do not depend on brand or appearance.</p>
+    <div class="row wrap">
+      {#each keys('motion.distance.') as k (k)}<span class="tag"
+          >{k} = {describe(tokens[k])} (overlay entry and exit offset)</span
+        >{/each}
+    </div>
     <div class="row wrap">
       {#each keys('motion.duration.') as d (d)}
         {#each keys('motion.easing.') as e (e)}
@@ -1051,5 +1125,66 @@
     .swatch small {
       display: none;
     }
+  }
+
+  /* Items and elevation border previews (pre-wave 3 foundations). */
+  .items-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--ggb-space-content-md);
+    margin-block-start: var(--ggb-space-content-md);
+  }
+  .items-host {
+    padding: var(--ggb-space-content-sm);
+    border: var(--ggb-border-width-default) solid transparent;
+    border-radius: var(--ggb-radius-overlay);
+    color: var(--ggb-color-content-secondary);
+  }
+  .items-host small {
+    display: block;
+    margin-block-end: var(--ggb-space-content-xs);
+    font: var(--ggb-typography-caption-md);
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    gap: var(--ggb-space-content-sm);
+    padding: var(--ggb-space-content-xs) var(--ggb-space-content-sm);
+    border: var(--ggb-border-width-default) solid transparent;
+    border-radius: var(--ggb-radius-control);
+    font: var(--ggb-typography-body-md);
+  }
+  .item-indicator {
+    inline-size: 3px;
+    block-size: 1em;
+    border-radius: var(--ggb-radius-full);
+    flex: none;
+  }
+  .item-hex {
+    margin-inline-start: auto;
+    font: var(--ggb-typography-code-sm);
+    opacity: var(--ggb-opacity-muted);
+  }
+  .elevation-host {
+    padding: var(--ggb-space-content-md);
+    margin-block-start: var(--ggb-space-content-sm);
+    border-radius: var(--ggb-radius-container);
+  }
+  .elevation-host > small {
+    display: block;
+    margin-block-end: var(--ggb-space-content-sm);
+    color: var(--ggb-color-content-secondary);
+  }
+  .elevation-card {
+    display: grid;
+    gap: 2px;
+    min-inline-size: 11rem;
+    padding: var(--ggb-space-content-md);
+    border: var(--ggb-border-width-default) solid transparent;
+    border-radius: var(--ggb-radius-container);
+    color: var(--ggb-color-content-primary);
+  }
+  .elevation-card.bordered {
+    border-color: var(--ggb-color-elevation-border);
   }
 </style>

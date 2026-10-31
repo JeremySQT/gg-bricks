@@ -13,6 +13,12 @@
       "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
       "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
       "ledger": "reports/tokens/figma/ledger.json"
+    },
+    "reviewArtifact": {
+      "url": "https://claude.ai/artifact/F5G8i8a8fDCnDVew7itxq5",
+      "version": "1793470526-f615",
+      "date": "2026-10-31",
+      "scope": "Pre-wave 3 tokens gate: color.item, color.elevation.border, motion.distance (sections Surfaces, Elevation, Motion)."
     }
   },
   "approvals": {
@@ -146,7 +152,7 @@
     "Brands: brick (orange accent, radii xs/sm/md) and orchid (violet accent, radii xl/2xl/2xl).",
     "Typography composites carry letterSpacing and optional fontFeatures (OpenType tags); CSS exposes --ggb-typography-<role>-letterSpacing and -fontFeatureSettings; the Figma manifest carries both."
   ],
-  "nextAction": "Wave 1 components (Icon first). Repository structure settled on 2026-10-13: tokens sources and records live in foundations/tokens, evidence in reports/tokens.",
+  "nextAction": "Tokens gate of the pre-wave 3 batch (color.item, color.elevation.border, motion.distance): present dist/previews/foundations.html, record approvals.semantic with the new digests, then sync the Figma variables (ggb-figma) and record approvals.figmaVariables.",
   "decided": [
     "Brand names brick and orchid (round 1).",
     "Fonts: Inter for every brand, IBM Plex Mono for code roles (round 1).",
@@ -305,6 +311,17 @@
       "review": "Presented with the wave 2 implementation review (second round).",
       "figma": "Not synced yet: synced at the wave 2 Figma parity phase with the 2026-10-26 additions.",
       "recorded": "approvals.primitives and approvals.semantic re-recorded with this change on 2026-10-27 (wave 2 implementation gate)."
+    },
+    {
+      "date": "2026-10-31",
+      "change": "Wave 3 foundations decided with the user on 2026-10-31 (decisions.md, Overlays, composition and shared code): color.item.{default,hover,selected,selected-hover,disabled}.{surface,content,border} and color.item.indicator (items of menus, listboxes, tabs, paginations, toolbars; light: hover neutral.100, selected accent.50, selected-hover accent.100, indicator accent.600; dark: hover neutral.700, selected accent.950, selected-hover accent.900, indicator accent.400; content aliases content.primary and content.disabled), color.elevation.border (transparent in light, neutral.700 in dark; drawn by raised and floating surfaces with their shadow), motion.distance.{sm,md} (4 px and 8 px, overlay entry and exit offsets). Eight inventory contrast pairs (item content on default and overlay surfaces and on the item surfaces, indicator at 3:1). check-foundations: 445 roles, 2340 contrast checks, 0 failures.",
+      "invalidates": "approvals.semantic for the four files below until the tokens gate of the pre-wave 3 batch records them (the elevation border waits for the user's visual review on the foundations preview).",
+      "sha256": {
+        "foundations/tokens/base/semantic/appearance.light.tokens.json": "307470f7a1d2ee67a53a1f2e4365862bd6516b396aa1bae558e9d55d588b72ca",
+        "foundations/tokens/base/semantic/appearance.dark.tokens.json": "1b295af46c5092830a0161f54093f55165372002a5fcafeb24366735eb0b5e19",
+        "foundations/tokens/base/semantic/common.tokens.json": "fa2faa9580dcefca73026f074460f52788055e7d30e48056a91103a58ffefc2d",
+        "foundations/tokens/inventory.json": "bc5f9b211dfc8acdf6c7908ef80cc1486615e5f7ad1f44bc349b0386e4bea397"
+      }
     }
   ]
 }

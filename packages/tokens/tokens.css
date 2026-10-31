@@ -476,6 +476,8 @@
   --ggb-motion-easing-emphasized: var(--ggb-primitive-easing-emphasized);
   --ggb-motion-easing-enter: var(--ggb-primitive-easing-decelerate);
   --ggb-motion-easing-exit: var(--ggb-primitive-easing-accelerate);
+  --ggb-motion-distance-sm: var(--ggb-primitive-dimension-v4);
+  --ggb-motion-distance-md: var(--ggb-primitive-dimension-v8);
   --ggb-layer-base: var(--ggb-primitive-layer-base);
   --ggb-layer-raised: var(--ggb-primitive-layer-raised);
   --ggb-layer-dropdown: var(--ggb-primitive-layer-dropdown);
@@ -738,6 +740,23 @@
   --ggb-color-status-danger-contentStrong: var(--ggb-color-palette-neutral-0);
   --ggb-color-status-danger-border: var(--ggb-color-palette-danger-300);
   --ggb-color-status-danger-icon: var(--ggb-color-palette-danger-600);
+  --ggb-color-item-default-surface: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-default-content: var(--ggb-color-content-primary);
+  --ggb-color-item-default-border: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-hover-surface: var(--ggb-color-palette-neutral-100);
+  --ggb-color-item-hover-content: var(--ggb-color-content-primary);
+  --ggb-color-item-hover-border: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-selected-surface: var(--ggb-color-palette-accent-50);
+  --ggb-color-item-selected-content: var(--ggb-color-content-primary);
+  --ggb-color-item-selected-border: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-selected-hover-surface: var(--ggb-color-palette-accent-100);
+  --ggb-color-item-selected-hover-content: var(--ggb-color-content-primary);
+  --ggb-color-item-selected-hover-border: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-disabled-surface: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-disabled-content: var(--ggb-color-content-disabled);
+  --ggb-color-item-disabled-border: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-indicator: var(--ggb-color-palette-accent-600);
+  --ggb-color-elevation-border: var(--ggb-primitive-color-transparent);
 }
 [data-ggb-appearance="dark"] {
   --ggb-color-surface-canvas: var(--ggb-color-palette-neutral-950);
@@ -988,6 +1007,23 @@
   --ggb-color-status-danger-contentStrong: var(--ggb-color-palette-neutral-0);
   --ggb-color-status-danger-border: var(--ggb-color-palette-danger-800);
   --ggb-color-status-danger-icon: var(--ggb-color-palette-danger-400);
+  --ggb-color-item-default-surface: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-default-content: var(--ggb-color-content-primary);
+  --ggb-color-item-default-border: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-hover-surface: var(--ggb-color-palette-neutral-700);
+  --ggb-color-item-hover-content: var(--ggb-color-content-primary);
+  --ggb-color-item-hover-border: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-selected-surface: var(--ggb-color-palette-accent-950);
+  --ggb-color-item-selected-content: var(--ggb-color-content-primary);
+  --ggb-color-item-selected-border: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-selected-hover-surface: var(--ggb-color-palette-accent-900);
+  --ggb-color-item-selected-hover-content: var(--ggb-color-content-primary);
+  --ggb-color-item-selected-hover-border: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-disabled-surface: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-disabled-content: var(--ggb-color-content-disabled);
+  --ggb-color-item-disabled-border: var(--ggb-primitive-color-transparent);
+  --ggb-color-item-indicator: var(--ggb-color-palette-accent-400);
+  --ggb-color-elevation-border: var(--ggb-color-palette-neutral-700);
 }
 :root, [data-ggb-brand], [data-ggb-density="standard"] {
   --ggb-size-control-sm: var(--ggb-primitive-dimension-v32);

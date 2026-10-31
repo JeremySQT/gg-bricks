@@ -1,5 +1,5 @@
 {
-  "$description": "Semantic inventory checked by tooling/check-foundations.ts in every brand × appearance × density context: every role must exist with its type on its axis (the file layer that defines it), and every contrast pair must reach its WCAG minimum (4.5 text, 3 borders, icons and focus). Translucent surfaces are composited on color.surface.default before measuring. Pairs are explicit: a role is tested on the backdrops it is designed for. color.surface.muted is a de-emphasized backdrop and is tested with primary and secondary content only; color.status.*.border is decorative (the tinted surface identifies the status) and is not tested. `invariants` lists dimension roles that must equal the sum of other dimension roles in every context (a derived role maintained by hand in each brand or density).",
+  "$description": "Semantic inventory checked by tooling/check-foundations.ts in every brand × appearance × density context: every role must exist with its type on its axis (the file layer that defines it), and every contrast pair must reach its WCAG minimum (4.5 text, 3 borders, icons and focus). Translucent surfaces are composited on color.surface.default before measuring. Pairs are explicit: a role is tested on the backdrops it is designed for. color.surface.muted is a de-emphasized backdrop and is tested with primary and secondary content only; color.status.*.border is decorative (the tinted surface identifies the status) and is not tested. `invariants` lists dimension roles that must equal the sum of other dimension roles in every context (a derived role maintained by hand in each brand or density). color.item.* pairs are measured on the surfaces that hold lists (default, overlay) and on the item's own surfaces; color.elevation.border is decorative (the shadow and the surface identify the element) and is not tested.",
   "roles": [
     {
       "path": "color.palette.neutral.0",
@@ -669,6 +669,16 @@
     {
       "path": "motion.easing.exit",
       "type": "cubicBezier",
+      "axis": "common"
+    },
+    {
+      "path": "motion.distance.sm",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
+      "path": "motion.distance.md",
+      "type": "dimension",
       "axis": "common"
     },
     {
@@ -1967,6 +1977,91 @@
       "axis": "appearance"
     },
     {
+      "path": "color.item.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.selected.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.selected.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.selected.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.selected-hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.selected-hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.selected-hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.item.indicator",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.elevation.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
       "path": "color.focus.ring",
       "type": "color",
       "axis": "appearance"
@@ -2741,6 +2836,46 @@
     {
       "content": "color.border.focus",
       "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.item.default.content",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.item.default.content",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.item.hover.content",
+      "surface": "color.item.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.item.selected.content",
+      "surface": "color.item.selected.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.item.selected-hover.content",
+      "surface": "color.item.selected-hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.item.indicator",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.item.indicator",
+      "surface": "color.surface.overlay",
+      "minimum": 3
+    },
+    {
+      "content": "color.item.indicator",
+      "surface": "color.item.selected.surface",
       "minimum": 3
     }
   ],

@@ -25,6 +25,17 @@ Motion is short and functional: it shows where something comes from or that a st
 
 <!-- site:tokens preview=easing -->
 
+## Distance
+
+| Role                 | Use for                                                                                                   |
+| -------------------- | --------------------------------------------------------------------------------------------------------- |
+| `motion.distance.sm` | The offset an overlay attached to a trigger travels while entering or leaving: menus, popovers, tooltips. |
+| `motion.distance.md` | The offset of layers that block the page: dialogs, drawers.                                               |
+
+<!-- site:tokens preview=width -->
+
+Overlays enter with `motion.easing.enter` over `motion.duration.base` (`slow` for dialogs) from their distance away, and leave with `motion.easing.exit` towards it; under reduced motion they fade in place.
+
 ## Rules
 
 - Honor `prefers-reduced-motion: reduce`: remove movement and keep at most an opacity change.
