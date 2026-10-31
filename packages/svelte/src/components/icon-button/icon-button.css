@@ -4,148 +4,150 @@
  * by a centered pseudo-element that takes no layout space. The container is the visible square.
  * Treatments, transitions and the focus indicator follow Button so that the two sit side by side.
  */
-.ggb-icon-button {
-  --_surface: var(--ggb-icon-button-surface-default);
-  --_content: var(--ggb-icon-button-content-default);
-  --_border: var(--ggb-icon-button-border-default);
-  position: relative;
-  box-sizing: border-box;
-  display: inline-flex;
-  flex: none;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  inline-size: var(--ggb-icon-button-boxSize);
-  block-size: var(--ggb-icon-button-boxSize);
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--_content);
-  text-decoration: none;
-  cursor: pointer;
-  user-select: none;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  appearance: none;
-  outline: none;
-}
-
-.ggb-icon-button::before {
-  content: '';
-  position: absolute;
-  top: 50%; /* physical on purpose: centering is symmetric in both directions */
-  left: 50%;
-  inline-size: max(100%, var(--ggb-icon-button-minTarget));
-  block-size: max(100%, var(--ggb-icon-button-minTarget));
-  transform: translate(-50%, -50%);
-}
-
-/* Interaction state, lowest precedence first: hover, pressed, loading, disabled. */
-@media (hover: hover) {
-  .ggb-icon-button:hover {
-    --_surface: var(--ggb-icon-button-surface-hover);
-    --_content: var(--ggb-icon-button-content-hover);
-    --_border: var(--ggb-icon-button-border-hover);
+@layer ggb {
+  .ggb-icon-button {
+    --_surface: var(--ggb-icon-button-surface-default);
+    --_content: var(--ggb-icon-button-content-default);
+    --_border: var(--ggb-icon-button-border-default);
+    position: relative;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    inline-size: var(--ggb-icon-button-boxSize);
+    block-size: var(--ggb-icon-button-boxSize);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--_content);
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    appearance: none;
+    outline: none;
   }
-}
-.ggb-icon-button:active {
-  --_surface: var(--ggb-icon-button-surface-pressed);
-  --_content: var(--ggb-icon-button-content-pressed);
-  --_border: var(--ggb-icon-button-border-pressed);
-}
-.ggb-icon-button[data-loading] {
-  --_surface: var(--ggb-icon-button-surface-loading);
-  --_content: var(--ggb-icon-button-content-loading);
-  --_border: var(--ggb-icon-button-border-loading);
-  cursor: progress;
-}
-.ggb-icon-button[data-disabled] {
-  --_surface: var(--ggb-icon-button-surface-disabled);
-  --_content: var(--ggb-icon-button-content-disabled);
-  --_border: var(--ggb-icon-button-border-disabled);
-  cursor: not-allowed;
-}
 
-.ggb-icon-button__container {
-  position: relative;
-  box-sizing: border-box;
-  display: grid;
-  place-items: center;
-  inline-size: 100%;
-  block-size: 100%;
-  border-radius: var(--ggb-icon-button-radius);
-  background-color: var(--_surface);
-  /* Transparent outline: invisible normally, drawn by the system in forced-colors mode. */
-  outline: var(--ggb-icon-button-borderWidth) solid transparent;
-  outline-offset: calc(-1 * var(--ggb-icon-button-borderWidth));
-  transition-property: background-color, color, box-shadow;
-  transition-duration: var(--ggb-icon-button-motionDuration);
-  transition-timing-function: var(--ggb-icon-button-easingStandard);
-}
+  .ggb-icon-button::before {
+    content: '';
+    position: absolute;
+    top: 50%; /* physical on purpose: centering is symmetric in both directions */
+    left: 50%;
+    inline-size: max(100%, var(--ggb-icon-button-minTarget));
+    block-size: max(100%, var(--ggb-icon-button-minTarget));
+    transform: translate(-50%, -50%);
+  }
 
-/* The border is drawn inside the container so that it never changes the outer dimensions. */
-.ggb-icon-button[data-appearance='outline'] .ggb-icon-button__container {
-  box-shadow: inset 0 0 0 var(--ggb-icon-button-borderWidth) var(--_border);
-}
+  /* Interaction state, lowest precedence first: hover, pressed, loading, disabled. */
+  @media (hover: hover) {
+    .ggb-icon-button:hover {
+      --_surface: var(--ggb-icon-button-surface-hover);
+      --_content: var(--ggb-icon-button-content-hover);
+      --_border: var(--ggb-icon-button-border-hover);
+    }
+  }
+  .ggb-icon-button:active {
+    --_surface: var(--ggb-icon-button-surface-pressed);
+    --_content: var(--ggb-icon-button-content-pressed);
+    --_border: var(--ggb-icon-button-border-pressed);
+  }
+  .ggb-icon-button[data-loading] {
+    --_surface: var(--ggb-icon-button-surface-loading);
+    --_content: var(--ggb-icon-button-content-loading);
+    --_border: var(--ggb-icon-button-border-loading);
+    cursor: progress;
+  }
+  .ggb-icon-button[data-disabled] {
+    --_surface: var(--ggb-icon-button-surface-disabled);
+    --_content: var(--ggb-icon-button-content-disabled);
+    --_border: var(--ggb-icon-button-border-disabled);
+    cursor: not-allowed;
+  }
 
-/*
+  .ggb-icon-button__container {
+    position: relative;
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    inline-size: 100%;
+    block-size: 100%;
+    border-radius: var(--ggb-icon-button-radius);
+    background-color: var(--_surface);
+    /* Transparent outline: invisible normally, drawn by the system in forced-colors mode. */
+    outline: var(--ggb-icon-button-borderWidth) solid transparent;
+    outline-offset: calc(-1 * var(--ggb-icon-button-borderWidth));
+    transition-property: background-color, color, box-shadow;
+    transition-duration: var(--ggb-icon-button-motionDuration);
+    transition-timing-function: var(--ggb-icon-button-easingStandard);
+  }
+
+  /* The border is drawn inside the container so that it never changes the outer dimensions. */
+  .ggb-icon-button[data-appearance='outline'] .ggb-icon-button__container {
+    box-shadow: inset 0 0 0 var(--ggb-icon-button-borderWidth) var(--_border);
+  }
+
+  /*
  * The icon is centered by its box: the reference set draws its 1/8 inset on every side, so the box center
  * is the drawing center. The host size replaces the icon's own size option.
  */
-.ggb-icon-button__icon,
-.ggb-icon-button__loadingIndicator {
-  display: grid;
-  place-items: center;
-  color: inherit;
-}
-.ggb-icon-button__icon > svg,
-.ggb-icon-button__loadingIndicator > svg {
-  display: block;
-  inline-size: var(--ggb-icon-button-iconSize);
-  block-size: var(--ggb-icon-button-iconSize);
-  flex: none;
-  vertical-align: baseline;
-}
-.ggb-icon-button__loadingIndicator > svg {
-  animation: ggb-icon-button-spin 800ms linear infinite;
-}
-@keyframes ggb-icon-button-spin {
-  to {
-    transform: rotate(360deg);
+  .ggb-icon-button__icon,
+  .ggb-icon-button__loadingIndicator {
+    display: grid;
+    place-items: center;
+    color: inherit;
   }
-}
-
-.ggb-icon-button:focus-visible .ggb-icon-button__container {
-  outline: var(--ggb-icon-button-focusWidth) solid var(--ggb-icon-button-focusColor);
-  outline-offset: var(--ggb-icon-button-focusOffset);
-  /* Outline corners resolve to radius + offset, the value of --ggb-icon-button-focusRadius (radius.focus). */
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ggb-icon-button__container {
-    transition: none;
+  .ggb-icon-button__icon > svg,
+  .ggb-icon-button__loadingIndicator > svg {
+    display: block;
+    inline-size: var(--ggb-icon-button-iconSize);
+    block-size: var(--ggb-icon-button-iconSize);
+    flex: none;
+    vertical-align: baseline;
   }
   .ggb-icon-button__loadingIndicator > svg {
-    animation-duration: 2400ms;
+    animation: ggb-icon-button-spin 800ms linear infinite;
   }
-}
+  @keyframes ggb-icon-button-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
-@media (forced-colors: active) {
-  .ggb-icon-button {
-    color: ButtonText;
-  }
-  .ggb-icon-button__container {
-    box-shadow: none;
-    outline-color: ButtonText;
-  }
-  .ggb-icon-button[data-disabled] {
-    color: GrayText;
-  }
-  .ggb-icon-button[data-disabled] .ggb-icon-button__container {
-    outline-color: GrayText;
-  }
   .ggb-icon-button:focus-visible .ggb-icon-button__container {
-    outline-color: Highlight;
+    outline: var(--ggb-icon-button-focusWidth) solid var(--ggb-icon-button-focusColor);
+    outline-offset: var(--ggb-icon-button-focusOffset);
+    /* Outline corners resolve to radius + offset, the value of --ggb-icon-button-focusRadius (radius.focus). */
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-icon-button__container {
+      transition: none;
+    }
+    .ggb-icon-button__loadingIndicator > svg {
+      animation-duration: 2400ms;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .ggb-icon-button {
+      color: ButtonText;
+    }
+    .ggb-icon-button__container {
+      box-shadow: none;
+      outline-color: ButtonText;
+    }
+    .ggb-icon-button[data-disabled] {
+      color: GrayText;
+    }
+    .ggb-icon-button[data-disabled] .ggb-icon-button__container {
+      outline-color: GrayText;
+    }
+    .ggb-icon-button:focus-visible .ggb-icon-button__container {
+      outline-color: Highlight;
+    }
   }
 }

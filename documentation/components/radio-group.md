@@ -42,7 +42,7 @@ A gap: vertical, `space.content.sm` between radios (4, 8 or 12 px in compact, st
 
 ## Examples
 
-The review page `examples/radio-group/App.svelte` covers every case.
+Every case is exercised on the component's review page in the ggbrick repository (`examples/radio-group/App.svelte`, not shipped in the package).
 
 ### The usual case
 

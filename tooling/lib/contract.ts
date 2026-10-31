@@ -98,6 +98,7 @@ export function expectedRoleType(role: string): TokenType {
   if (/^easing/.test(role)) return 'cubicBezier';
   if (/^shadow/.test(role)) return 'shadow';
   if (/Opacity$/.test(role)) return 'number';
+  if (/^(layer|zIndex)$|Layer$/.test(role)) return 'number'; // stacking roles bound to layer.* tokens
   return 'dimension';
 }
 

@@ -9,7 +9,7 @@ let serverPromise: Promise<ViteDevServer> | undefined;
 async function server(): Promise<ViteDevServer> {
   serverPromise ??= createServer({
     configFile: path.join(root, 'vite.config.ts'),
-    server: { middlewareMode: true },
+    server: { middlewareMode: true, hmr: false, ws: false }, // no HMR WebSocket: one server per test file would fight for the port
     appType: 'custom',
     logLevel: 'error'
   });

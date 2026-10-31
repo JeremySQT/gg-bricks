@@ -41,7 +41,7 @@ A track height (16, 20 or 24 px; it does not change with the density), B track w
 
 ## Examples
 
-The review page `examples/switch/App.svelte` covers every case.
+Every case is exercised on the component's review page in the ggbrick repository (`examples/switch/App.svelte`, not shipped in the package).
 
 ### The usual case
 

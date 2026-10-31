@@ -66,6 +66,20 @@ test('requires every expanded path when an inventory is supplied', () => {
   tokens['color.action.neutral.ghost.loading.content'] = { $type: 'dimension', $value: 0 };
   assert.ok(checkContract(source, { tokens }).errors.some((e) => e.code === 'role-type'));
 });
+test('infers the token type of a role from its name', () => {
+  assert.equal(expectedRoleType('surface'), 'color');
+  assert.equal(expectedRoleType('focusColor'), 'color');
+  assert.equal(expectedRoleType('typography'), 'typography');
+  assert.equal(expectedRoleType('motionDuration'), 'duration');
+  assert.equal(expectedRoleType('easingStandard'), 'cubicBezier');
+  assert.equal(expectedRoleType('shadow'), 'shadow');
+  assert.equal(expectedRoleType('mutedOpacity'), 'number');
+  // Stacking roles bind layer.* tokens, which are numbers (audit of 2026-10-31).
+  assert.equal(expectedRoleType('layer'), 'number');
+  assert.equal(expectedRoleType('zIndex'), 'number');
+  assert.equal(expectedRoleType('panelLayer'), 'number');
+  assert.equal(expectedRoleType('minHeight'), 'dimension');
+});
 test('rejects invalid slot cardinality and missing accepted components', () => {
   const c = copy();
   c.parts.trailing.max = 0;

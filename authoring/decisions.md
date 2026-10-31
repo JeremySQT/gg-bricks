@@ -36,6 +36,7 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 - Token roles use parameterized paths; enum props become `data-*` selectors, enum states become custom-property suffixes in generated CSS; role types follow the naming convention.
 - Svelte 5 with runes and snippets; Bits UI primitives for native semantics; CSS inheritance and `currentColor` for slot content; logical CSS properties; `prefers-reduced-motion` and `forced-colors` handled in every component with motion or borders. Prettier and ESLint enforce formatting and lint rules across sessions.
 - Snippet slots cannot statically enforce component identity; allowed content is a contract rule documented in usage docs.
+- Every component stylesheet (handwritten `<id>.css` and generated `tokens.generated.css`) is wrapped in the cascade layer `@layer ggb`, so that an application's unlayered rule overrides a component declaration whatever the selector specificity (a generated `.ggb-button[data-intent][data-appearance]` selector has specificity 0,3,0). `tokens.css` stays unlayered. Decided on 2026-10-31 (audit, lot 1); the browser suite checks that computed values are unchanged.
 
 - The whole repository is TypeScript: components and package in strict TypeScript, tooling and tests in TypeScript executed natively by Node (type stripping, Node 22.18 or newer, erasable syntax only: no enums, namespaces or parameter properties). Shared tooling types live in `tooling/lib/types.ts`. No build step for scripts.
 

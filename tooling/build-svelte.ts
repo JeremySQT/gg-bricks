@@ -19,7 +19,7 @@ const pkg = paths.sveltePackage;
 const generated: string[] = [];
 
 /** Enum types and defaults for one contract. */
-export function generateTypes(contract: Contract): string {
+export function generateTypes(contract: Contract, family = '<family>'): string {
   const name = pascal(contract.id);
   const enums = Object.entries(contract.props).filter(([, p]) => isEnum(p));
   const defaults = Object.fromEntries(
@@ -28,7 +28,7 @@ export function generateTypes(contract: Contract): string {
       .map(([k, p]) => [k, (p as { default: unknown }).default])
   );
   return (
-    `// Generated from foundations/components/<family>/${contract.id}/contract.json. Do not edit.\n` +
+    `// Generated from foundations/components/${family}/${contract.id}/contract.json. Do not edit.\n` +
     enums
       .map(
         ([key, p]) =>
@@ -65,9 +65,11 @@ export function generateCss(contract: Contract): string {
           blocks.get(selector)?.push(`  ${variable}-${helper}: var(${cssVariable(`${path}.${helper}`)});`);
     }
   }
-  let css = `/* Generated token bindings from the ${id} contract. Do not edit. */\n`;
+  // Every component stylesheet lives in the cascade layer `ggb`, so that any unlayered application rule wins over the
+  // component's own declarations whatever its specificity (decision of 2026-10-31, audit).
+  let css = `/* Generated token bindings from the ${id} contract. Do not edit. */\n@layer ggb {\n`;
   for (const [selector, lines] of blocks) css += `${selector} {\n${lines.join('\n')}\n}\n`;
-  return css;
+  return css + '}\n';
 }
 
 const components = listComponents();
@@ -75,7 +77,7 @@ fs.rmSync(abs(pkg, 'contracts'), { recursive: true, force: true }); // stale con
 for (const c of components) {
   const dir = `${pkg}/src/components/${c.id}`;
   if (!exists(dir)) continue; // Contract without an implementation yet: nothing to generate.
-  write(`${dir}/contract.generated.ts`, generateTypes(c.contract));
+  write(`${dir}/contract.generated.ts`, generateTypes(c.contract, c.family));
   write(`${dir}/tokens.generated.css`, generateCss(c.contract));
   write(`${pkg}/contracts/${c.id}.json`, c.contract);
   generated.push(c.id);
@@ -123,7 +125,11 @@ for (const entry of index.foundations ?? []) {
   }
   write(`${pkg}/docs/${entry.documentation}`, text);
 }
-write(`${pkg}/docs/index.json`, index);
+// The installed copy points at the contracts shipped in the package, not at the repository sources.
+write(`${pkg}/docs/index.json`, {
+  ...index,
+  components: index.components.map((entry) => ({ ...entry, contract: `contracts/${entry.id}.json` }))
+});
 write(`${pkg}/docs/AGENTS.md`, readText(`${paths.documentation}/AGENTS.md`));
 const documented = new Set(index.components.map((e) => e.id));
 const undocumented = generated.filter((id) => !documented.has(id));

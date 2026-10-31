@@ -113,14 +113,14 @@
         ],
         "sha256": {
           "packages/svelte/src/components/field/Field.svelte": "375b2bfff1a2e815324c9aeadb293e56be198d3369d1fac5df471ed45933490c",
-          "packages/svelte/src/components/field/contract.generated.ts": "7af77e5f32a58ee21d8837d9262c7cf4dff3ba9ef4390d2e06e7b9b3746abccc",
-          "packages/svelte/src/components/field/field.css": "cecc33350ceb0e8401056b7e8fe93f7a341fdf20fa04b144317a4fe53669fbc4",
-          "packages/svelte/src/components/field/tokens.generated.css": "2951a518058fd0357be2c0480166bfdda7ed0a4f3d457d700fd8be7280bc71fd",
-          "packages/svelte/src/components/field/types.ts": "5975a5bbcc55c836b5d71de0eafe0537b24e30e28e2f97236e5fcebda7c35eff",
+          "packages/svelte/src/components/field/contract.generated.ts": "9ed36c09385a6196efbe62732b3949205ebbefa106bd011e7f35283ffa764c86",
+          "packages/svelte/src/components/field/field.css": "4013ef8632a59ba6563c096f590f6b6f7c4d5f26f40b0fe1874fa3f60804750b",
+          "packages/svelte/src/components/field/tokens.generated.css": "b935f4e620a4c7306d16a46d9def516c1957d382780fe7a87a69a441fe3e85fa",
+          "packages/svelte/src/components/field/types.ts": "5612b14a34d736d55b5d1ffda90969f1d73462189f07b7cc6c06708ebbfa9097",
           "examples/field/App.svelte": "2845635321972d1d91082b67dd1ef214f89ba3c562994015abafd55be08b0362"
         }
       },
-      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27). Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded. types.ts had changed on 2026-10-30 (commit 284bff0): a comment naming CheckboxGroup among the accepted controls, nothing else.",
       "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
     },
     "figmaParity": {
@@ -133,11 +133,11 @@
         ],
         "sha256": {
           "reports/components/field/figma/parity.json": "0b566f20b95b1cfff6aab0f4266f5fddcdb014d10ad7e9c6a95884716ff37ef1",
-          "reports/components/field/figma/ledger.json": "c20574e47c60d6ff9b3cec69d6e38c06f49f299823fdb7748531e9452b81817d",
-          "foundations/components/forms/field/figma-spec.md": "57532174f8451956ec13709d29d330628f67f48f388e696c8b6727a17abe8eca"
+          "reports/components/field/figma/ledger.json": "993212011d0b1a3c71bc94cd5c96c586041eec0904f68f90df64cd6723c488de",
+          "foundations/components/forms/field/figma-spec.md": "026efe3623b7ff2cf75552bd8edfb90753b3458ddcf7a9d023296833bc022b40"
         }
       },
-      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\" Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged.",
       "note": null
     },
     "documentation": {
@@ -149,12 +149,12 @@
           "apps/docs/src/playgrounds/field.svelte"
         ],
         "sha256": {
-          "documentation/components/field.md": "45ec9a9a143e9f00fdc7a6a056e28e4adaead5958b4fa1bb85b7e30ef6ecf3b7",
+          "documentation/components/field.md": "f172883ca0770e240353dc87b433e42e0aceebe558f3d333230303a6a558ef95",
           "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
           "apps/docs/src/playgrounds/field.svelte": "0bd4d021c60d878f0fd7aeab8ea6a7b7d50b0fc67081377c92afe7b3561fc87e"
         }
       },
-      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded.",
       "note": null
     },
     "delivery": null

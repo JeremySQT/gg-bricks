@@ -109,14 +109,14 @@
         ],
         "sha256": {
           "packages/svelte/src/components/badge/Badge.svelte": "7870d9f2c00ca017ce96321c7bfd839a7dff999170e12c06e55c62f1b9dcf986",
-          "packages/svelte/src/components/badge/badge.css": "79eec37494cbe9a6fe6609535c0f8867a2c8d474bdaaa0c4ca442829f6752dd7",
-          "packages/svelte/src/components/badge/contract.generated.ts": "9c76153ddaf6cbe88a6e7597249ced0b528e65e0150b0062d8b1e9c23915c058",
-          "packages/svelte/src/components/badge/tokens.generated.css": "61f6f5b730021ae7f86da1c91ee0c62d213c19b53da5f0ad3466d213d2c5f8ca",
+          "packages/svelte/src/components/badge/badge.css": "934dcae4a0a825b2eaa518b7acbe52ddb1e5aa2cb005e16c675b0668a1e56d1f",
+          "packages/svelte/src/components/badge/contract.generated.ts": "2527fd3e241d1f4fb4f1331eba55c264e0fb28c545cedbcb6f0625280a1a1787",
+          "packages/svelte/src/components/badge/tokens.generated.css": "3dc857217c2db1e03399988ab5dfadaa85d3d3d8ea3029b8aaf1a76bb654a697",
           "packages/svelte/src/components/badge/types.ts": "079e439d142074a11c39bd3dc756125076248e73b3e5e3e9141588b9ecf3f9e9",
           "examples/badge/App.svelte": "4960d8788e068fae6551745c1cc6c66150c7db4e129392f5c5ceca45434ff557"
         }
       },
-      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/6D7aXkYH7NsK7HDygz8dSk version 2. Amendment of 2026-10-20 (user at the Figma parity review, seeing the badge with its icon: \"je trouve l'icône un poil trop espacée du label\"): the glyph inset is compensated on both sides of the icon box, as in Button (margin-inline instead of margin-inline-start), so the drawing sits at leadingGap from the label (4 px in standard instead of 5.5 px); the contract is unchanged (its rule already places the icon by its drawing). Digest of badge.css re-recorded; confirmed at the Figma parity gate of 2026-10-26 (\"je valide la parité figma des 3 composants\", after the before/after comparison).",
+      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/6D7aXkYH7NsK7HDygz8dSk version 2. Amendment of 2026-10-20 (user at the Figma parity review, seeing the badge with its icon: \"je trouve l'icône un poil trop espacée du label\"): the glyph inset is compensated on both sides of the icon box, as in Button (margin-inline instead of margin-inline-start), so the drawing sits at leadingGap from the label (4 px in standard instead of 5.5 px); the contract is unchanged (its rule already places the icon by its drawing). Digest of badge.css re-recorded; confirmed at the Figma parity gate of 2026-10-26 (\"je valide la parité figma des 3 composants\", after the before/after comparison). Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded.",
       "note": "Automated evidence: Chromium only; Safari behavior of the label clip reasoned, not observed."
     },
     "figmaParity": {
@@ -128,9 +128,9 @@
           "reports/components/badge/figma/ledger.json"
         ],
         "sha256": {
-          "foundations/components/content/badge/figma-spec.md": "fce8b4ea919911f637fee5cc0e8518b2118065134d1136a1abfca4738bf4c468",
+          "foundations/components/content/badge/figma-spec.md": "2b4cd2969fe915f889735dce69deea1eb10160852f06171d52ac71a9e1b13c86",
           "reports/components/badge/figma/parity.json": "457fa52ea145db30bc8cb894115e665d1c3e65dbb9892e7855922d50fff49cd4",
-          "reports/components/badge/figma/ledger.json": "151124fe03fffe05c1e1d73eb610081755e625d81a4243f2efdbfb91f3196b39"
+          "reports/components/badge/figma/ledger.json": "c8993e09a5a81f14871eea87e1ecdf6d1fc543a5df697b020556aa824ca097f8"
         },
         "figma": {
           "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
@@ -139,7 +139,7 @@
           "specificationFrame": "223:2"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU on 2026-10-26, at the grouped wave 1 Figma parity gate (IconButton, Link, Badge), after the review rounds of 2026-10-20 to 2026-10-26 (Link rebuilt as variants, IconButton gaps on space.control.gap, Link anatomy ring dashed, Badge icon gap, icon slots without a nested Icon): \"Sinon je valide la parité figma des 3 composants\".",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU on 2026-10-26, at the grouped wave 1 Figma parity gate (IconButton, Link, Badge), after the review rounds of 2026-10-20 to 2026-10-26 (Link rebuilt as variants, IconButton gaps on space.control.gap, Link anatomy ring dashed, Badge icon gap, icon slots without a nested Icon): \"Sinon je valide la parité figma des 3 composants\". Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged.",
       "note": null
     },
     "documentation": null,

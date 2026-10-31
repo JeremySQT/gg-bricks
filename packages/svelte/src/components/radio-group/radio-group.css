@@ -2,16 +2,18 @@
  * RadioGroup structure. Values come from tokens.generated.css; this file holds structural literals only.
  * Vertical stacks the radios; horizontal places them on a line and wraps, both in source order.
  */
-.ggb-radio-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--ggb-radio-group-verticalGap);
-  min-inline-size: 0;
-}
-.ggb-radio-group[data-orientation='horizontal'] {
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: var(--ggb-radio-group-verticalGap) var(--ggb-radio-group-horizontalGap);
+@layer ggb {
+  .ggb-radio-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ggb-radio-group-verticalGap);
+    min-inline-size: 0;
+  }
+  .ggb-radio-group[data-orientation='horizontal'] {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--ggb-radio-group-verticalGap) var(--ggb-radio-group-horizontalGap);
+  }
 }

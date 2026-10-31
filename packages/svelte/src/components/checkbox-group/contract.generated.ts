@@ -1,4 +1,4 @@
-// Generated from foundations/components/<family>/checkbox-group/contract.json. Do not edit.
+// Generated from foundations/components/forms/checkbox-group/contract.json. Do not edit.
 export type CheckboxGroupOrientation = "vertical" | "horizontal";
 export type CheckboxGroupSize = "sm" | "md" | "lg";
 export const defaults = {

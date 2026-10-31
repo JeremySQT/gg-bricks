@@ -35,7 +35,7 @@ If a visual iteration changes an intrinsic rule or option, reconcile the contrac
 
 ## Component folder rule
 
-A consumer must be able to copy `packages/svelte/src/components/<id>/` into a Svelte 5 project that has Bits UI and `tokens.css`, plus the internal dependencies declared in the component status, and use it. Therefore: no shared runtime helpers outside a component folder unless a decision creates a documented `src/lib/` module that is itself copyable; styles are plain CSS files imported by the component; no build-time preprocessors.
+A consumer must be able to copy `packages/svelte/src/components/<id>/` into a Svelte 5 project that has Bits UI and `tokens.css`, plus the internal dependencies and the `packages/svelte/src/lib/` modules declared in the component status, and use it. Component stylesheets live in the cascade layer `ggb` (decisions.md). Therefore: no shared runtime helpers outside a component folder unless a decision creates a documented `src/lib/` module that is itself copyable; styles are plain CSS files imported by the component; no build-time preprocessors.
 
 ## Documentation distribution
 

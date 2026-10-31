@@ -3,97 +3,99 @@
  * The link is inline text: it takes the font of its context and wraps with it. The underline belongs to the
  * label spans; meta and glyph follow the last word without underline, kept with it on one line.
  */
-.ggb-link {
-  color: var(--ggb-link-content);
-  font: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: var(--ggb-link-focusRadius);
-  /* Each line box of a wrapped link gets its own corners and focus ring. */
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-}
-.ggb-link[data-tone='inherit'] {
-  color: inherit;
-}
+@layer ggb {
+  .ggb-link {
+    color: var(--ggb-link-content);
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: var(--ggb-link-focusRadius);
+    /* Each line box of a wrapped link gets its own corners and focus ring. */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ggb-link[data-tone='inherit'] {
+    color: inherit;
+  }
 
-.ggb-link__label {
-  text-decoration-line: underline;
-  text-decoration-color: currentColor;
-  text-decoration-thickness: var(--ggb-link-underlineWidth);
-  text-underline-offset: from-font;
-  /* Underline skips descenders; the thickness change on hover is immediate (no transition). */
-  text-decoration-skip-ink: auto;
-}
-@media (hover: hover) {
-  .ggb-link:hover .ggb-link__label {
+  .ggb-link__label {
+    text-decoration-line: underline;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: var(--ggb-link-underlineWidth);
+    text-underline-offset: from-font;
+    /* Underline skips descenders; the thickness change on hover is immediate (no transition). */
+    text-decoration-skip-ink: auto;
+  }
+  @media (hover: hover) {
+    .ggb-link:hover .ggb-link__label {
+      text-decoration-thickness: var(--ggb-link-underlineHoverWidth);
+    }
+  }
+  .ggb-link:active .ggb-link__label {
     text-decoration-thickness: var(--ggb-link-underlineHoverWidth);
   }
-}
-.ggb-link:active .ggb-link__label {
-  text-decoration-thickness: var(--ggb-link-underlineHoverWidth);
-}
 
-/* Last word, meta and glyph: one unbreakable group. */
-.ggb-link__tail {
-  white-space: nowrap;
-}
+  /* Last word, meta and glyph: one unbreakable group. */
+  .ggb-link__tail {
+    white-space: nowrap;
+  }
 
-/*
+  /*
  * Meta and glyph are a subtle complement, so that only the underlined words read as the link: a neutral
  * color with the accent tone; the context color with tone inherit (the glyph attenuated, the meta text at
  * full strength for its contrast).
  */
-.ggb-link__meta {
-  color: var(--ggb-link-metaColor);
-}
-.ggb-link[data-tone='inherit'] .ggb-link__meta {
-  color: inherit;
-}
-
-/* One em square, centered on the capital height of the text like an Icon next to text. */
-.ggb-link__indicator {
-  display: inline-block;
-  inline-size: 1em;
-  block-size: 1em;
-  margin-inline-start: var(--ggb-link-indicatorGap);
-  vertical-align: middle;
-  vertical-align: calc((1cap - 1em) / 2);
-  color: var(--ggb-link-indicatorColor);
-  fill: currentColor;
-  overflow: hidden;
-}
-.ggb-link[data-tone='inherit'] .ggb-link__indicator {
-  color: inherit;
-  opacity: var(--ggb-link-inheritIndicatorOpacity);
-}
-
-/* Announced after the name, never shown. */
-.ggb-link__suffix {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: pre;
-}
-
-.ggb-link:focus-visible {
-  outline: var(--ggb-link-focusWidth) solid var(--ggb-link-focusColor);
-  outline-offset: var(--ggb-link-focusOffset);
-}
-
-@media (forced-colors: active) {
-  .ggb-link,
-  .ggb-link[data-tone='inherit'],
-  .ggb-link .ggb-link__meta,
-  .ggb-link .ggb-link__indicator {
-    color: LinkText;
-    opacity: 1;
+  .ggb-link__meta {
+    color: var(--ggb-link-metaColor);
   }
+  .ggb-link[data-tone='inherit'] .ggb-link__meta {
+    color: inherit;
+  }
+
+  /* One em square, centered on the capital height of the text like an Icon next to text. */
+  .ggb-link__indicator {
+    display: inline-block;
+    inline-size: 1em;
+    block-size: 1em;
+    margin-inline-start: var(--ggb-link-indicatorGap);
+    vertical-align: middle;
+    vertical-align: calc((1cap - 1em) / 2);
+    color: var(--ggb-link-indicatorColor);
+    fill: currentColor;
+    overflow: hidden;
+  }
+  .ggb-link[data-tone='inherit'] .ggb-link__indicator {
+    color: inherit;
+    opacity: var(--ggb-link-inheritIndicatorOpacity);
+  }
+
+  /* Announced after the name, never shown. */
+  .ggb-link__suffix {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: pre;
+  }
+
   .ggb-link:focus-visible {
-    outline-color: Highlight;
+    outline: var(--ggb-link-focusWidth) solid var(--ggb-link-focusColor);
+    outline-offset: var(--ggb-link-focusOffset);
+  }
+
+  @media (forced-colors: active) {
+    .ggb-link,
+    .ggb-link[data-tone='inherit'],
+    .ggb-link .ggb-link__meta,
+    .ggb-link .ggb-link__indicator {
+      color: LinkText;
+      opacity: 1;
+    }
+    .ggb-link:focus-visible {
+      outline-color: Highlight;
+    }
   }
 }

@@ -1,6 +1,6 @@
 # Component contract format — v1
 
-Status: compact encoding accepted during the design discussion; future component types may extend it. The five substantive blocks are agreed; this schema is deliberately limited to enum, boolean and string inputs; extend it through a reviewed schema change when a component needs more.
+Status: compact encoding accepted during the design discussion; future component types may extend it. The five substantive blocks are agreed; prop types are enum, boolean, string, number and list (the `children`, `records` and `contrast` extensions decided on 2026-10-31 are added through a reviewed schema change before the first wave 3 contract); extend it through a reviewed schema change when a component needs more.
 
 ## Representation
 
@@ -38,7 +38,7 @@ No completed token set or production catalog is included. Never manufacture toke
 
 ## Role naming convention
 
-Generic checks infer the expected token type from the role name: `surface`, `content`, `border` and roles ending in `Color` are colors; roles starting with `typography` are typography; `motion*`/`duration*` durations; `easing*` cubic Béziers; `shadow*` shadows; roles ending in `Opacity` numbers; everything else is a dimension. The validator rejects a resolved token whose `$type` does not match. Contrast evidence uses `surface`/`content`/`border`/`focusColor`.
+Generic checks infer the expected token type from the role name: `surface`, `content`, `border` and roles ending in `Color` are colors; roles starting with `typography` are typography; `motion*`/`duration*` durations; `easing*` cubic Béziers; `shadow*` shadows; roles ending in `Opacity` numbers; `layer`, `zIndex` and roles ending in `Layer` numbers (stacking, bound to `layer.*`); everything else is a dimension. The validator rejects a resolved token whose `$type` does not match. Contrast evidence uses `surface`/`content`/`border`/`focusColor`.
 
 ## Commands
 

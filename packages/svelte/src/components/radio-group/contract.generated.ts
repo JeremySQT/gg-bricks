@@ -1,4 +1,4 @@
-// Generated from foundations/components/<family>/radio-group/contract.json. Do not edit.
+// Generated from foundations/components/forms/radio-group/contract.json. Do not edit.
 export type RadioGroupOrientation = "vertical" | "horizontal";
 export type RadioGroupSize = "sm" | "md" | "lg";
 export const defaults = {

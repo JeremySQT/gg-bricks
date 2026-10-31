@@ -109,14 +109,14 @@
         ],
         "sha256": {
           "packages/svelte/src/components/icon-button/IconButton.svelte": "5747d1987f4da9052e6351061e9af041dfb8a40cbe50ece04366e401ec7b68a2",
-          "packages/svelte/src/components/icon-button/contract.generated.ts": "4a524955ac3998c543b83afee2a1ea6a9dff1e68b09922761d460086fcd12166",
-          "packages/svelte/src/components/icon-button/icon-button.css": "28f3143225c86afc219b816a6823e6a9f4667cfceced717a2a3e073b07b4fc00",
-          "packages/svelte/src/components/icon-button/tokens.generated.css": "226deddd2a209cf061c4ba516895acab195fd6bfafe2490880db8769583f2b4c",
+          "packages/svelte/src/components/icon-button/contract.generated.ts": "09a5f56b1003f9d462ec18b499457a53a089b41ab9af62cf81b7b2cf3acf8d59",
+          "packages/svelte/src/components/icon-button/icon-button.css": "2d4c943d40c844c367f153b39efb9f1221def5e109964a3b07de511f8f2ff98b",
+          "packages/svelte/src/components/icon-button/tokens.generated.css": "d8b7a6662699e705007c114b68aaeb1c1769e00f2d77ef967980596c0ae7ed80",
           "packages/svelte/src/components/icon-button/types.ts": "946087207d9a24c9426021e4d9a43efa0da704e9bb5e639d25d0e68e68f1446b",
           "examples/icon-button/App.svelte": "696ffe20ac17840d442a56befdfe2bb5c19ee6f5f2e9919abf1fafc1fe5302ec"
         }
       },
-      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/M41vUxuVssusHawLkXvhhH version 1.",
+      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/M41vUxuVssusHawLkXvhhH version 1. Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded.",
       "note": "Automated evidence: Chromium only; Safari behavior of the label clip reasoned, not observed."
     },
     "figmaParity": {
@@ -128,9 +128,9 @@
           "reports/components/icon-button/figma/ledger.json"
         ],
         "sha256": {
-          "foundations/components/actions/icon-button/figma-spec.md": "144baed8290bf81962f11676a67e776bce6a2551aa66a28cf7c66b204a85e661",
+          "foundations/components/actions/icon-button/figma-spec.md": "8be8835de38adbe0b0f113080098d4a73f11fa77c522360aebd7b9cb9e89b66f",
           "reports/components/icon-button/figma/parity.json": "1a94b85a96b25774a9d73589ced389c34adc2e293eee8f7827eea8a4419af092",
-          "reports/components/icon-button/figma/ledger.json": "2bade03743874fc1fab5ab9e1503068c29b0ad1ee7bdd1d176ac3e9281048541"
+          "reports/components/icon-button/figma/ledger.json": "28e0ae07f87b67749321769644819364c112b2d41bc765adfb11cd9c3ce298d6"
         },
         "figma": {
           "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
@@ -139,7 +139,7 @@
           "specificationFrame": "219:1828"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU on 2026-10-26, at the grouped wave 1 Figma parity gate (IconButton, Link, Badge), after the review rounds of 2026-10-20 to 2026-10-26 (Link rebuilt as variants, IconButton gaps on space.control.gap, Link anatomy ring dashed, Badge icon gap, icon slots without a nested Icon): \"Sinon je valide la parité figma des 3 composants\".",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU on 2026-10-26, at the grouped wave 1 Figma parity gate (IconButton, Link, Badge), after the review rounds of 2026-10-20 to 2026-10-26 (Link rebuilt as variants, IconButton gaps on space.control.gap, Link anatomy ring dashed, Badge icon gap, icon slots without a nested Icon): \"Sinon je valide la parité figma des 3 composants\". Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged.",
       "note": null
     },
     "documentation": null,

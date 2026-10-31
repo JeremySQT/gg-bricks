@@ -1,4 +1,4 @@
-// Generated from foundations/components/<family>/switch/contract.json. Do not edit.
+// Generated from foundations/components/forms/switch/contract.json. Do not edit.
 export type SwitchLabelPosition = "end" | "start";
 export type SwitchSize = "sm" | "md" | "lg";
 export const defaults = {

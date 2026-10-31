@@ -43,7 +43,7 @@ A is the inset, B the box size. Hosts rely on the inset: a Button places an icon
 
 ## Examples
 
-Glyphs come from `./glyphs`, a handful of Phosphor paths standing in for your icon set. The review page `examples/icon/App.svelte` covers every case.
+Glyphs come from `./glyphs`, a handful of Phosphor paths standing in for your icon set. Every case is exercised on the component's review page in the ggbrick repository (`examples/icon/App.svelte`, not shipped in the package).
 
 ### A decorative icon next to text
 

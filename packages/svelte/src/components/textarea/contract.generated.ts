@@ -1,4 +1,4 @@
-// Generated from foundations/components/<family>/textarea/contract.json. Do not edit.
+// Generated from foundations/components/forms/textarea/contract.json. Do not edit.
 export type TextareaSize = "sm" | "md" | "lg";
 export type TextareaResize = "vertical" | "auto" | "none";
 export const defaults = {

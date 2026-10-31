@@ -43,7 +43,7 @@ A gap: vertical, `space.content.sm` between checkboxes (4, 8 or 12 px in compact
 
 ## Examples
 
-The review page `examples/checkbox-group/App.svelte` covers every case.
+Every case is exercised on the component's review page in the ggbrick repository (`examples/checkbox-group/App.svelte`, not shipped in the package).
 
 ### A required question
 

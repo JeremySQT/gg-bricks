@@ -43,7 +43,7 @@ Keycap dimensions: A side padding and C gap between caps (2, 4 or 6 px with the 
 
 ## Examples
 
-The review page `examples/shortcut/App.svelte` covers every case.
+Every case is exercised on the component's review page in the ggbrick repository (`examples/shortcut/App.svelte`, not shipped in the package).
 
 ### The usual case
 

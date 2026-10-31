@@ -45,7 +45,7 @@ A height (the Button height of the size: 32, 40 or 44 px at md in compact, stand
 
 ## Examples
 
-The review page `examples/input-text/App.svelte` covers every case.
+Every case is exercised on the component's review page in the ggbrick repository (`examples/input-text/App.svelte`, not shipped in the package).
 
 ### The usual case
 

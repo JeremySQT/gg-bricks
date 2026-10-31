@@ -46,7 +46,7 @@ A gap before the indicator (2, 4 or 6 px with the density), B indicator size (on
 
 ## Examples
 
-The review page `examples/link/App.svelte` covers every case.
+Every case is exercised on the component's review page in the ggbrick repository (`examples/link/App.svelte`, not shipped in the package).
 
 ### The usual case
 

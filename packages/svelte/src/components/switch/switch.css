@@ -4,206 +4,208 @@
  * trackSize tall and 2 x trackSize - 4 x borderWidth wide; the thumb is trackSize - 4 x borderWidth, inset by
  * 2 x borderWidth, at the inline start when off and the inline end when on.
  */
-.ggb-switch {
-  --_condition-surface-off: var(--ggb-switch-surface-off-default);
-  --_condition-content-off: var(--ggb-switch-content-off-default);
-  --_condition-border-off: var(--ggb-switch-border-off-default);
-  --_condition-surface-on: var(--ggb-switch-surface-on-default);
-  --_condition-content-on: var(--ggb-switch-content-on-default);
-  --_condition-border-on: var(--ggb-switch-border-on-default);
-  --_surface: var(--_condition-surface-off);
-  --_content: var(--_condition-content-off);
-  --_border: var(--_condition-border-off);
-  --_inset: calc(2 * var(--ggb-switch-borderWidth));
-  --_thumb: calc(var(--ggb-switch-trackSize) - 2 * var(--_inset));
-  --_track-inline: calc(2 * var(--ggb-switch-trackSize) - 2 * var(--_inset));
-  position: relative;
-  display: inline-flex;
-  align-items: flex-start;
-  gap: var(--ggb-switch-gap);
-  max-inline-size: 100%;
-  font: var(--ggb-switch-typography);
-  letter-spacing: var(--ggb-switch-typography-letterSpacing, normal);
-  color: var(--ggb-switch-labelColor);
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-.ggb-switch[data-label-position='start'] {
-  display: flex;
-  justify-content: space-between;
-  inline-size: 100%;
-}
-.ggb-switch::before {
-  content: '';
-  position: absolute;
-  inset-inline: 0;
-  top: 50%;
-  block-size: max(100%, var(--ggb-switch-minTarget));
-  transform: translateY(-50%);
-}
-.ggb-switch[data-hide-label]::before {
-  inset: auto;
-  top: 50%;
-  left: 50%;
-  inline-size: max(100%, var(--ggb-switch-minTarget));
-  transform: translate(-50%, -50%);
-}
+@layer ggb {
+  .ggb-switch {
+    --_condition-surface-off: var(--ggb-switch-surface-off-default);
+    --_condition-content-off: var(--ggb-switch-content-off-default);
+    --_condition-border-off: var(--ggb-switch-border-off-default);
+    --_condition-surface-on: var(--ggb-switch-surface-on-default);
+    --_condition-content-on: var(--ggb-switch-content-on-default);
+    --_condition-border-on: var(--ggb-switch-border-on-default);
+    --_surface: var(--_condition-surface-off);
+    --_content: var(--_condition-content-off);
+    --_border: var(--_condition-border-off);
+    --_inset: calc(2 * var(--ggb-switch-borderWidth));
+    --_thumb: calc(var(--ggb-switch-trackSize) - 2 * var(--_inset));
+    --_track-inline: calc(2 * var(--ggb-switch-trackSize) - 2 * var(--_inset));
+    position: relative;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--ggb-switch-gap);
+    max-inline-size: 100%;
+    font: var(--ggb-switch-typography);
+    letter-spacing: var(--ggb-switch-typography-letterSpacing, normal);
+    color: var(--ggb-switch-labelColor);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ggb-switch[data-label-position='start'] {
+    display: flex;
+    justify-content: space-between;
+    inline-size: 100%;
+  }
+  .ggb-switch::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 50%;
+    block-size: max(100%, var(--ggb-switch-minTarget));
+    transform: translateY(-50%);
+  }
+  .ggb-switch[data-hide-label]::before {
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    inline-size: max(100%, var(--ggb-switch-minTarget));
+    transform: translate(-50%, -50%);
+  }
 
-.ggb-switch__track {
-  position: relative;
-  box-sizing: border-box;
-  display: block;
-  flex: none;
-  inline-size: var(--_track-inline);
-  block-size: var(--ggb-switch-trackSize);
-  /* Centered on the first line of the label: 1lh resolves with the inherited line height. */
-  margin: calc((1lh - var(--ggb-switch-trackSize)) / 2) 0 0;
-  padding: 0;
-  border: 0;
-  border-radius: var(--ggb-switch-radius);
-  background-color: var(--_surface);
-  box-shadow: inset 0 0 0 var(--ggb-switch-borderWidth) var(--_border);
-  font: inherit;
-  cursor: inherit;
-  appearance: none;
-  outline: var(--ggb-switch-borderWidth) solid transparent;
-  outline-offset: calc(-1 * var(--ggb-switch-borderWidth));
-  transition-property: background-color, box-shadow;
-  transition-duration: var(--ggb-switch-motionDuration);
-  transition-timing-function: var(--ggb-switch-easingStandard);
-}
-.ggb-switch__thumbLayer {
-  position: absolute;
-  inset: 0;
-  display: block;
-  inline-size: 100%;
-  block-size: 100%;
-  overflow: visible;
-  pointer-events: none;
-}
-/* Off: at the inline start, inset by 2 x borderWidth; on: at the inline end. Mirrored in right-to-left layouts. */
-.ggb-switch__thumb {
-  --_start: calc(var(--_inset) + var(--_thumb) / 2);
-  --_end: calc(100% - var(--_inset) - var(--_thumb) / 2);
-  cx: var(--_start);
-  cy: 50%;
-  r: calc(var(--_thumb) / 2);
-  fill: var(--_content);
-  transition-property: cx, fill;
-  transition-duration: var(--ggb-switch-motionDuration);
-  transition-timing-function: var(--ggb-switch-easingStandard);
-}
-.ggb-switch[data-selection='on'] .ggb-switch__thumb,
-.ggb-switch:dir(rtl) .ggb-switch__thumb {
-  cx: var(--_end);
-}
-.ggb-switch[data-selection='on']:dir(rtl) .ggb-switch__thumb {
-  cx: var(--_start);
-}
+  .ggb-switch__track {
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    flex: none;
+    inline-size: var(--_track-inline);
+    block-size: var(--ggb-switch-trackSize);
+    /* Centered on the first line of the label: 1lh resolves with the inherited line height. */
+    margin: calc((1lh - var(--ggb-switch-trackSize)) / 2) 0 0;
+    padding: 0;
+    border: 0;
+    border-radius: var(--ggb-switch-radius);
+    background-color: var(--_surface);
+    box-shadow: inset 0 0 0 var(--ggb-switch-borderWidth) var(--_border);
+    font: inherit;
+    cursor: inherit;
+    appearance: none;
+    outline: var(--ggb-switch-borderWidth) solid transparent;
+    outline-offset: calc(-1 * var(--ggb-switch-borderWidth));
+    transition-property: background-color, box-shadow;
+    transition-duration: var(--ggb-switch-motionDuration);
+    transition-timing-function: var(--ggb-switch-easingStandard);
+  }
+  .ggb-switch__thumbLayer {
+    position: absolute;
+    inset: 0;
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+  /* Off: at the inline start, inset by 2 x borderWidth; on: at the inline end. Mirrored in right-to-left layouts. */
+  .ggb-switch__thumb {
+    --_start: calc(var(--_inset) + var(--_thumb) / 2);
+    --_end: calc(100% - var(--_inset) - var(--_thumb) / 2);
+    cx: var(--_start);
+    cy: 50%;
+    r: calc(var(--_thumb) / 2);
+    fill: var(--_content);
+    transition-property: cx, fill;
+    transition-duration: var(--ggb-switch-motionDuration);
+    transition-timing-function: var(--ggb-switch-easingStandard);
+  }
+  .ggb-switch[data-selection='on'] .ggb-switch__thumb,
+  .ggb-switch:dir(rtl) .ggb-switch__thumb {
+    cx: var(--_end);
+  }
+  .ggb-switch[data-selection='on']:dir(rtl) .ggb-switch__thumb {
+    cx: var(--_start);
+  }
 
-.ggb-switch__text {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-inline-size: 0;
-  overflow-wrap: anywhere;
-}
-.ggb-switch__description {
-  font: var(--ggb-switch-typographyDescription);
-  letter-spacing: var(--ggb-switch-typographyDescription-letterSpacing, normal);
-  color: var(--ggb-switch-descriptionColor);
-}
-.ggb-switch[data-hide-label] .ggb-switch__text {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
+  .ggb-switch__text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+  .ggb-switch__description {
+    font: var(--ggb-switch-typographyDescription);
+    letter-spacing: var(--ggb-switch-typographyDescription-letterSpacing, normal);
+    color: var(--ggb-switch-descriptionColor);
+  }
+  .ggb-switch[data-hide-label] .ggb-switch__text {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 
-/*
+  /*
  * Condition sets both selections' colors, lowest precedence first (hover, readonly, disabled); every condition
  * selector has the same specificity, so source order is the precedence. Selection then picks one set.
  */
-@media (hover: hover) {
-  .ggb-switch:where(:hover) {
-    --_condition-surface-off: var(--ggb-switch-surface-off-hover);
-    --_condition-content-off: var(--ggb-switch-content-off-hover);
-    --_condition-border-off: var(--ggb-switch-border-off-hover);
-    --_condition-surface-on: var(--ggb-switch-surface-on-hover);
-    --_condition-content-on: var(--ggb-switch-content-on-hover);
-    --_condition-border-on: var(--ggb-switch-border-on-hover);
+  @media (hover: hover) {
+    .ggb-switch:where(:hover) {
+      --_condition-surface-off: var(--ggb-switch-surface-off-hover);
+      --_condition-content-off: var(--ggb-switch-content-off-hover);
+      --_condition-border-off: var(--ggb-switch-border-off-hover);
+      --_condition-surface-on: var(--ggb-switch-surface-on-hover);
+      --_condition-content-on: var(--ggb-switch-content-on-hover);
+      --_condition-border-on: var(--ggb-switch-border-on-hover);
+    }
   }
-}
-.ggb-switch:where([data-readonly]) {
-  --_condition-surface-off: var(--ggb-switch-surface-off-readonly);
-  --_condition-content-off: var(--ggb-switch-content-off-readonly);
-  --_condition-border-off: var(--ggb-switch-border-off-readonly);
-  --_condition-surface-on: var(--ggb-switch-surface-on-readonly);
-  --_condition-content-on: var(--ggb-switch-content-on-readonly);
-  --_condition-border-on: var(--ggb-switch-border-on-readonly);
-  cursor: default;
-}
-.ggb-switch:where([data-disabled]) {
-  --_condition-surface-off: var(--ggb-switch-surface-off-disabled);
-  --_condition-content-off: var(--ggb-switch-content-off-disabled);
-  --_condition-border-off: var(--ggb-switch-border-off-disabled);
-  --_condition-surface-on: var(--ggb-switch-surface-on-disabled);
-  --_condition-content-on: var(--ggb-switch-content-on-disabled);
-  --_condition-border-on: var(--ggb-switch-border-on-disabled);
-  color: var(--ggb-switch-disabledColor);
-  cursor: not-allowed;
-}
-.ggb-switch[data-selection='on'] {
-  --_surface: var(--_condition-surface-on);
-  --_content: var(--_condition-content-on);
-  --_border: var(--_condition-border-on);
-}
-.ggb-switch[data-disabled] .ggb-switch__description {
-  color: var(--ggb-switch-disabledColor);
-}
-
-.ggb-switch__track:focus-visible {
-  outline: var(--ggb-switch-focusWidth) solid var(--ggb-switch-focusColor);
-  outline-offset: var(--ggb-switch-focusOffset);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ggb-switch__track,
-  .ggb-switch__thumb {
-    transition: none;
+  .ggb-switch:where([data-readonly]) {
+    --_condition-surface-off: var(--ggb-switch-surface-off-readonly);
+    --_condition-content-off: var(--ggb-switch-content-off-readonly);
+    --_condition-border-off: var(--ggb-switch-border-off-readonly);
+    --_condition-surface-on: var(--ggb-switch-surface-on-readonly);
+    --_condition-content-on: var(--ggb-switch-content-on-readonly);
+    --_condition-border-on: var(--ggb-switch-border-on-readonly);
+    cursor: default;
   }
-}
-
-@media (forced-colors: active) {
-  .ggb-switch__track {
-    box-shadow: none;
-    outline-color: CanvasText;
-    background-color: Canvas;
+  .ggb-switch:where([data-disabled]) {
+    --_condition-surface-off: var(--ggb-switch-surface-off-disabled);
+    --_condition-content-off: var(--ggb-switch-content-off-disabled);
+    --_condition-border-off: var(--ggb-switch-border-off-disabled);
+    --_condition-surface-on: var(--ggb-switch-surface-on-disabled);
+    --_condition-content-on: var(--ggb-switch-content-on-disabled);
+    --_condition-border-on: var(--ggb-switch-border-on-disabled);
+    color: var(--ggb-switch-disabledColor);
+    cursor: not-allowed;
   }
-  .ggb-switch__thumb {
-    fill: CanvasText;
+  .ggb-switch[data-selection='on'] {
+    --_surface: var(--_condition-surface-on);
+    --_content: var(--_condition-content-on);
+    --_border: var(--_condition-border-on);
   }
-  .ggb-switch[data-selection='on'] .ggb-switch__track {
-    background-color: Highlight;
-    outline-color: Highlight;
-  }
-  .ggb-switch[data-selection='on'] .ggb-switch__thumb {
-    fill: HighlightText;
-  }
-  .ggb-switch[data-disabled],
   .ggb-switch[data-disabled] .ggb-switch__description {
-    color: GrayText;
+    color: var(--ggb-switch-disabledColor);
   }
-  .ggb-switch[data-disabled] .ggb-switch__track {
-    outline-color: GrayText;
-  }
-  .ggb-switch[data-disabled] .ggb-switch__thumb {
-    fill: GrayText;
-  }
+
   .ggb-switch__track:focus-visible {
-    outline: var(--ggb-switch-focusWidth) solid Highlight;
+    outline: var(--ggb-switch-focusWidth) solid var(--ggb-switch-focusColor);
     outline-offset: var(--ggb-switch-focusOffset);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-switch__track,
+    .ggb-switch__thumb {
+      transition: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .ggb-switch__track {
+      box-shadow: none;
+      outline-color: CanvasText;
+      background-color: Canvas;
+    }
+    .ggb-switch__thumb {
+      fill: CanvasText;
+    }
+    .ggb-switch[data-selection='on'] .ggb-switch__track {
+      background-color: Highlight;
+      outline-color: Highlight;
+    }
+    .ggb-switch[data-selection='on'] .ggb-switch__thumb {
+      fill: HighlightText;
+    }
+    .ggb-switch[data-disabled],
+    .ggb-switch[data-disabled] .ggb-switch__description {
+      color: GrayText;
+    }
+    .ggb-switch[data-disabled] .ggb-switch__track {
+      outline-color: GrayText;
+    }
+    .ggb-switch[data-disabled] .ggb-switch__thumb {
+      fill: GrayText;
+    }
+    .ggb-switch__track:focus-visible {
+      outline: var(--ggb-switch-focusWidth) solid Highlight;
+      outline-offset: var(--ggb-switch-focusOffset);
+    }
   }
 }
