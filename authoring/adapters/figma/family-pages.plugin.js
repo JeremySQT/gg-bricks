@@ -480,10 +480,21 @@ async function cover() {
   plane.fills = [];
   plane.clipsContent = false;
   // Masonry: cards of one width whose height follows their content (same vertical padding everywhere), each
-  // dropped into the shortest column until every column is taller than the plane.
+  // dropped into the shortest column until every column is taller than the plane. Each column is a vertical auto
+  // layout with a fixed gap, so the gaps stay equal whatever the heights Figma settles on (heights read back while
+  // the script runs can be stale: placing cards by coordinates made them overlap).
   const [CW, G, COLS, HEIGHT, VPAD, SCALE] = [380, 44, 7, 1720, 56, 0.6];
   const items = COVERS[FAMILY];
   const columns = Array(COLS).fill(0);
+  const stacks = columns.map((_, k) => {
+    const stack = figma.createAutoLayout('VERTICAL', { name: `Column ${k + 1}`, itemSpacing: G });
+    stack.fills = [];
+    stack.clipsContent = false;
+    plane.appendChild(stack);
+    stack.x = k * (CW + G);
+    stack.y = 0;
+    return stack;
+  });
   // A seeded pseudo-random order (the same at every run) that avoids the cards already placed nearby (same column
   // or the two next to it, within 400 px), so equal cards never touch and the columns form no visible pattern.
   let seed = 2026;
@@ -506,9 +517,6 @@ async function cover() {
     });
     card.paddingTop = card.paddingBottom = VPAD;
     card.paddingLeft = card.paddingRight = 28;
-    card.resize(CW, card.height);
-    card.counterAxisSizingMode = 'FIXED';
-    card.primaryAxisSizingMode = 'AUTO';
     card.cornerRadius = 32;
     card.fills = [paint('color/surface/default')];
     await card.setEffectStyleIdAsync(shadow.id);
@@ -522,10 +530,11 @@ async function cover() {
     const content = make();
     card.appendChild(content);
     fit(content, ZOOM[0], CW - 56, 360);
-    plane.appendChild(card);
-    card.x = col * (CW + G);
-    card.y = columns[col];
-    columns[col] += card.height + G;
+    stacks[col].appendChild(card);
+    card.resize(CW, card.height);
+    card.counterAxisSizingMode = 'FIXED';
+    card.primaryAxisSizingMode = 'AUTO';
+    columns[col] += content.height + 2 * VPAD + G;
     placed.push({ col, y0, y1: columns[col], pick });
   }
   plane.resize(COLS * CW + (COLS - 1) * G, Math.min(...columns) - G);
