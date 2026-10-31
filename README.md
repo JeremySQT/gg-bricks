@@ -47,6 +47,7 @@ npm run build:docs      # static documentation site in apps/docs/dist
 npm run figma:batches   # dist/figma/*.js scripts for the Figma MCP server (variables, styles, verification)
 npm run figma:check -- <result.json>   # compare a verification result with figma-expectations.json
 npm run test:browser    # Playwright (Chromium); PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH reuses a local browser
+GGB_EVIDENCE=1 npm run test:browser   # same checks, and writes screenshots and reports to reports/ (default: nothing written)
 npm run verify          # generate, validate, test, check, ssr, build, docs site build
 npm run verify:generated       # fails when generated outputs drift from sources
 npm run pack:svelte     # dist/ggbrick-svelte-<version>.tgz

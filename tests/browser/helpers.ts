@@ -1,6 +1,7 @@
 // Shared helpers of the wave 2 browser specs (form controls): resolved tokens, context switching, settled
-// transitions, accessibility tree reads and the computed-value report used by the Figma parity check.
-import { expect, type Page } from '@playwright/test';
+// transitions, accessibility tree reads and the computed-value report used by the Figma parity check. Evidence
+// helpers (every spec): screenshots and reports are written to reports/ only when GGB_EVIDENCE=1.
+import { expect, type Page, type PageScreenshotOptions } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import fs from 'node:fs';
 
@@ -19,6 +20,27 @@ export const representative = [
   ['brick', 'light', 'compact'],
   ['orchid', 'dark', 'comfortable']
 ];
+
+/**
+ * Evidence (screenshots, computed.json, browser-results.json) is written to reports/ only on explicit request
+ * (`GGB_EVIDENCE=1 npm run test:browser`). Without it every check still runs, screenshots included, but nothing is
+ * written, so that a run leaves the working tree clean (anti-aliasing changes a few pixels from one run to another).
+ */
+export const evidence = process.env.GGB_EVIDENCE === '1';
+
+/** Takes the screenshot in every run; writes it to `path` only when evidence is requested. */
+export async function capture(page: Page, path: string, options: Omit<PageScreenshotOptions, 'path'> = {}) {
+  if (!evidence) return page.screenshot(options);
+  fs.mkdirSync(path.slice(0, path.lastIndexOf('/')), { recursive: true });
+  return page.screenshot({ ...options, path });
+}
+
+/** Writes a report file only when evidence is requested. */
+export function writeEvidence(path: string, content: string) {
+  if (!evidence) return;
+  fs.mkdirSync(path.slice(0, path.lastIndexOf('/')), { recursive: true });
+  fs.writeFileSync(path, content);
+}
 
 export const tokensFor = (context: string): TokenMap =>
   JSON.parse(fs.readFileSync(`packages/tokens/resolved/${context}.json`, 'utf8'));
@@ -70,6 +92,10 @@ export async function accessible(
   }
 }
 
+/** The computed.json layout: one record per line. */
+export const computedJson = (records: Record<string, unknown>[]) =>
+  `{ "records": [\n${records.map((r) => JSON.stringify(r)).join(',\n')}\n] }\n`;
+
 /** Collects computed records and writes reports/components/<id>/svelte/computed.json. */
 export class ComputedReport {
   records: Record<string, unknown>[] = [];
@@ -78,20 +104,14 @@ export class ComputedReport {
       this.records.push({ context, props, state, property, value });
   }
   write(id: string) {
-    const out = `reports/components/${id}/svelte`;
-    fs.mkdirSync(out, { recursive: true });
-    fs.writeFileSync(
-      `${out}/computed.json`,
-      `{ "records": [\n${this.records.map((r) => JSON.stringify(r)).join(',\n')}\n] }\n`
-    );
     expect(this.records.length).toBeGreaterThan(0);
+    writeEvidence(`reports/components/${id}/svelte/computed.json`, computedJson(this.records));
   }
 }
 
 /** axe audit of the review page in light and dark, screenshots on desktop and mobile, no horizontal overflow. */
 export async function auditAndCapture(page: Page, id: string) {
   const out = `reports/components/${id}/svelte`;
-  fs.mkdirSync(out, { recursive: true });
   for (const mode of modes) {
     await page.selectOption('#ctx-mode', mode);
     await settle(page);
@@ -113,12 +133,12 @@ export async function auditAndCapture(page: Page, id: string) {
         if (!inactive) violations.push(`${mode} ${v.id}: ${n.target}`);
       }
     expect(violations).toEqual([]);
-    await page.screenshot({ path: `${out}/review-${mode}.png`, fullPage: true });
+    await capture(page, `${out}/review-${mode}.png`, { fullPage: true });
   }
   await page.setViewportSize({ width: 390, height: 844 });
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(0);
-  await page.screenshot({ path: `${out}/review-mobile.png`, fullPage: true });
+  await capture(page, `${out}/review-mobile.png`, { fullPage: true });
 }
 
 /** Ids of the elements a Tab press sequence focuses, starting from `from`. */

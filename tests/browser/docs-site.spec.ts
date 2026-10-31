@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import fs from 'node:fs';
+import { capture } from './helpers.ts';
 
 // Documentation site (apps/docs): every page renders without errors and without axe violations in light
 // and dark, every live block of documentation/ is rendered and hydrated, and the context selects drive
@@ -113,8 +114,7 @@ for (const component of index.components) {
       `https://github.com/JeremySQT/design-system/edit/main/documentation/components/${component.documentation}`
     );
     expect(errors).toEqual([]);
-    fs.mkdirSync(out, { recursive: true });
-    await page.screenshot({ path: `${out}/${component.id}-light.png`, fullPage: false });
+    await capture(page, `${out}/${component.id}-light.png`, { fullPage: false });
   });
 }
 
@@ -148,9 +148,8 @@ test('the context selects set the attributes, persist and reveal the matching to
 });
 
 test('home page screenshots in both appearances', async ({ page }) => {
-  fs.mkdirSync(out, { recursive: true });
   for (const theme of ['light', 'dark'] as const) {
     await open(page, '/', theme);
-    await page.screenshot({ path: `${out}/home-${theme}.png` });
+    await capture(page, `${out}/home-${theme}.png`);
   }
 });

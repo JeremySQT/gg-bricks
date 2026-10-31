@@ -6,6 +6,8 @@ Revision-bound evidence written by the tooling and tests. Layout:
 - `tokens/figma/`: variable sync ledger and verification evidence; `tokens/changes/`: change records of token modifications.
 - `components/<id>/`: token requirements, coverage, contract validation and contrast reports (generated), plus Svelte/Figma evidence recorded by the component's phases (browser results, screenshots, SSR results, Figma ledgers).
 - `assets/<name>/`: ledgers of libraries imported into the Figma file (`assets/phosphor/ledger.json`).
-- `browser-results.json`: last Playwright run.
+- `browser-results.json`: last Playwright run recorded as evidence.
 
 Generated JSON is committed so that source changes show their impact in diffs. Screenshots are committed when they are the recorded evidence of a review.
+
+Tests write their evidence (screenshots, `computed.json`, `ssr.json`, `browser-results.json`) only on explicit request, `GGB_EVIDENCE=1 npm run test:browser` (and `GGB_EVIDENCE=1 npm run test:ssr`); without it they run every check and leave this folder unchanged.

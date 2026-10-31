@@ -16,7 +16,7 @@ Read `authoring/figma.md` and `authoring/templates/figma-specification.md`. Insp
 
 ## Component masters (parity phase, after the implementation gate)
 
-1. Read the contract, the approved implementation (`packages/svelte/src/components/<id>/`), the example page screenshots and `reports/components/<id>/svelte/computed.json` (computed colors and dimensions per option and state). Inspect existing fixtures in the Utilities page and the ledger.
+1. Read the contract, the approved implementation (`packages/svelte/src/components/<id>/`), the example page screenshots and `reports/components/<id>/svelte/computed.json` (computed colors and dimensions per option and state; when the implementation changed since it was recorded, refresh it with `GGB_EVIDENCE=1 npm run test:browser -- tests/browser/<id>.spec.ts`). Inspect existing fixtures in the Utilities page and the ledger.
 2. Map the contract: enum props → variant properties (or a boolean when two values), boolean props → booleans, string props → text properties, slot parts → instance-swap properties limited to compatible fixtures, parts → named layers, token roles → variable bindings, states → variants. Keep each variant set under about 30 variants by nesting an internal set when the matrix is large. Reserve the minimum interaction target around the visible surface.
 3. Build in small batches verified by screenshot. Bind every visual property to a variable; no literal colors or sizes in masters. Read every ID from the file.
 4. Build the specification page from the template with explanatory instances: Overview, Anatomy, Variants, States, Behavior & sizing, Usage examples.

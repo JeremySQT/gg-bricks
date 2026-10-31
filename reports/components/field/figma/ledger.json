@@ -140,6 +140,10 @@
     {
       "date": "2026-10-29",
       "change": "Specification texts (307:903, 307:1051, 307:1183, 307:1645) edited in place to list the CheckboxGroup among the controls a Field wraps (the contract accepts it since 2026-10-28); the master is unchanged (its Control swaps to any form control)."
+    },
+    {
+      "date": "2026-10-30",
+      "change": "Library page layout (user request): the Forms page opens with the overview frame (381:1033: description, isometric masonry cover of live instances, a card per component); the section Field starts with a Section header (381:2791: summary, specification link, properties) and the master sits under it (family-pages.plugin.js; IDs of the masters unchanged). The specification's link to the master moved to the top right of the title row (373:53; spec-header-links.plugin.js, replacing spec-master-links.plugin.js); Documentation and Contract links follow at the first publication. A test instance of the Field left on the Utilities page (319:4479) was deleted (user, 2026-10-30)."
     }
   ],
   "library": {
@@ -156,6 +160,10 @@
     ],
     "since": "2026-10-29",
     "builder": "authoring/adapters/figma/library-pages.plugin.js",
-    "specLink": "authoring/adapters/figma/spec-master-links.plugin.js"
+    "specLink": "authoring/adapters/figma/spec-header-links.plugin.js",
+    "layout": "authoring/adapters/figma/family-pages.plugin.js",
+    "overview": "381:1033",
+    "sectionHeader": "381:2791",
+    "specTitleRow": "373:53"
   }
 }

@@ -1,10 +1,13 @@
 import { defineConfig } from '@playwright/test';
+// Evidence (reports/browser-results.json, screenshots, computed.json) is written only with GGB_EVIDENCE=1; see
+// tests/browser/helpers.ts.
+const evidence = process.env.GGB_EVIDENCE === '1';
 export default defineConfig({
   testDir: './tests/browser',
   fullyParallel: false,
   workers: 1,
   timeout: 30000,
-  reporter: [['list'], ['json', { outputFile: 'reports/browser-results.json' }]],
+  reporter: evidence ? [['list'], ['json', { outputFile: 'reports/browser-results.json' }]] : [['list']],
   use: {
     baseURL: 'http://127.0.0.1:5173',
     browserName: 'chromium',

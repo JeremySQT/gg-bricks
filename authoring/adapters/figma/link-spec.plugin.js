@@ -671,5 +671,5 @@ const centerBoards = (frame) => {
   }
 };
 centerBoards(root);
-// The master stays in its section of the library page (2026-10-29); spec-master-links.plugin.js links to it.
+// The master stays in its section of the library page (2026-10-29); spec-header-links.plugin.js links to it from the title row.
 return { root: root.id, h: Math.round(root.height), board: dg.id };

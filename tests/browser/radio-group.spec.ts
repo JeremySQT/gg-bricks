@@ -1,10 +1,10 @@
 import { test, expect, type Page } from '@playwright/test';
-import fs from 'node:fs';
 import {
   ComputedReport,
   accessible,
   allContexts,
   auditAndCapture,
+  capture,
   densities,
   px,
   representative,
@@ -244,8 +244,7 @@ test('transitions follow the motion tokens and stop under reduced motion; forced
     return { stroke: getComputedStyle(el).stroke, text };
   });
   expect(forced.stroke).toBe(forced.text);
-  fs.mkdirSync(out, { recursive: true });
-  await page.screenshot({ path: `${out}/forced-colors.png`, fullPage: true });
+  await capture(page, `${out}/forced-colors.png`, { fullPage: true });
 });
 
 test('automated accessibility audit and screenshots in light and dark, desktop and mobile', async ({ page }) => {

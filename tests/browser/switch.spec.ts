@@ -1,10 +1,10 @@
 import { test, expect, type Page } from '@playwright/test';
-import fs from 'node:fs';
 import {
   ComputedReport,
   accessible,
   allContexts,
   auditAndCapture,
+  capture,
   densities,
   insetBorder,
   px,
@@ -187,8 +187,7 @@ test('the thumb moves over the base duration and jumps under reduced motion; for
   await page.emulateMedia({ forcedColors: 'active', reducedMotion: 'no-preference' });
   await expect(page.locator('#sw-default-off-md')).toHaveCSS('outline-style', 'solid');
   await expect(page.locator('#sw-default-off-md')).toHaveCSS('outline-width', '1px');
-  fs.mkdirSync(out, { recursive: true });
-  await page.screenshot({ path: `${out}/forced-colors.png`, fullPage: true });
+  await capture(page, `${out}/forced-colors.png`, { fullPage: true });
 });
 
 test('automated accessibility audit and screenshots in light and dark, desktop and mobile', async ({ page }) => {

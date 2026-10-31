@@ -1,10 +1,10 @@
 import { test, expect, type Page } from '@playwright/test';
-import fs from 'node:fs';
 import {
   ComputedReport,
   accessible,
   allContexts,
   auditAndCapture,
+  capture,
   densities,
   insetBorder,
   px,
@@ -242,8 +242,7 @@ test('computed values match the resolved tokens for every size, condition and co
 test('forced colors keep the boxes', async ({ page }) => {
   await page.emulateMedia({ forcedColors: 'active' });
   await settle(page);
-  fs.mkdirSync(out, { recursive: true });
-  await page.screenshot({ path: `${out}/forced-colors.png`, fullPage: true });
+  await capture(page, `${out}/forced-colors.png`, { fullPage: true });
 });
 
 test('automated accessibility audit and screenshots in light and dark, desktop and mobile', async ({ page }) => {

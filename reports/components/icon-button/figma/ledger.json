@@ -274,6 +274,10 @@
     {
       "date": "2026-10-29",
       "change": "Library pages (user decision): the master moved to the section IconButton of the Actions library page (IDs kept, instances linked; library-pages.plugin.js); the component page keeps the specification, which now links to the section (spec-master-links.plugin.js)."
+    },
+    {
+      "date": "2026-10-30",
+      "change": "Library page layout (user request): the Actions page opens with the overview frame (379:982: description, isometric masonry cover of live instances, a card per component); the section IconButton starts with a Section header (379:2891: summary, specification link, properties) and the master sits under it (family-pages.plugin.js; IDs of the masters unchanged). The specification's link to the master moved to the top right of the title row (367:8; spec-header-links.plugin.js, replacing spec-master-links.plugin.js); Documentation and Contract links follow at the first publication."
     }
   ],
   "library": {
@@ -290,6 +294,10 @@
     ],
     "since": "2026-10-29",
     "builder": "authoring/adapters/figma/library-pages.plugin.js",
-    "specLink": "authoring/adapters/figma/spec-master-links.plugin.js"
+    "specLink": "authoring/adapters/figma/spec-header-links.plugin.js",
+    "layout": "authoring/adapters/figma/family-pages.plugin.js",
+    "overview": "379:982",
+    "sectionHeader": "379:2891",
+    "specTitleRow": "367:8"
   }
 }
