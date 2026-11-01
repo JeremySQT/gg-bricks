@@ -1,0 +1,77 @@
+{
+  "formatStatus": "v1",
+  "componentId": "menu",
+  "family": "overlays",
+  "wave": 3,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Offer a short list of actions or links in a panel opened from a trigger.",
+    "useCases": [
+      "Row actions (More button).",
+      "An account menu with links.",
+      "A grouped action menu with a destructive item."
+    ],
+    "exclusions": [
+      "Choosing a form value: Select (wave 4).",
+      "Checkable items and submenus in v1 (open question 3).",
+      "Context menus on right-click.",
+      "Menubars."
+    ],
+    "alternatives": [
+      "Select for a value in a form.",
+      "Popover for free content.",
+      "ButtonGroup when the actions fit on screen."
+    ]
+  },
+  "dependencies": ["icon", "shortcut", "lib/overlay"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/overlays/menu/contract.json",
+      "sha256": "35e48e8241cb47a6b042a0a75c7a174aba686b6c98659fb6ce3c13af84a64822"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/menu/"
+    }
+  ],
+  "decisionsTaken": [
+    "One compound contract with children item, separator and group (decision of 2026-10-31).",
+    "Items use color.item.{default,hover,disabled}; hover is the single highlighted item (pointer or keyboard). intent danger paints the label in color.status.danger.content (contrast pairs on the panel and on the highlighted item: 0 failures).",
+    "Items 32 px minimum (size.control.sm), typography.body.sm, padding space.control.padding-inline.sm; item radius.container (8) inside a panel of radius.overlay (12) with space.content.xs padding, so that corners stay concentric.",
+    "Keyboard per the WAI-ARIA menu button pattern: arrows wrap, Home and End, typeahead, Enter and Space activate, Escape and Tab close; disabled items are reached but not activated.",
+    "Opening by pointer focuses the menu without a highlight; by keyboard highlights the first item.",
+    "Inline size: widest item, at least the trigger, at most size.overlay.panel (360 px).",
+    "Items accept a leading Icon and a trailing Shortcut (display only)."
+  ],
+  "openDecisions": [
+    "3. Menu v1 scope: actions and links only (item, separator, group); checkable items (checkbox and radio items) and submenus later, on demand, as new children of the same contract. Alternative: include them now.",
+    "2. Contract versus Bits UI (shared with Dialog): Menu is built on Bits UI DropdownMenu with its portal disabled; the contract wins where they disagree."
+  ],
+  "nextAction": "Wave 3 contract gate: present the contract with the other wave 3 contracts and record the approval.",
+  "implementationNotes": []
+}

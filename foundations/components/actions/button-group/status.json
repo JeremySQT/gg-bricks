@@ -1,0 +1,72 @@
+{
+  "formatStatus": "v1",
+  "componentId": "button-group",
+  "family": "actions",
+  "wave": 3,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Place related actions together with one size and a consistent spacing, and reflow them when space runs out.",
+    "useCases": [
+      "Dialog footer (Cancel, Save) aligned at the end.",
+      "Form actions under a form.",
+      "Actions of an Alert or a Toast, of a card or a page header.",
+      "A stacked full-width group on a narrow screen (reflow stack)."
+    ],
+    "exclusions": [
+      "Arrow-key navigation and one tab stop: Toolbar (wave 4).",
+      "Attached buttons for a choice: SegmentedControl (later).",
+      "Overflow into a More menu: a composition with Menu, not an option."
+    ],
+    "alternatives": [
+      "Toolbar for a set of controls acting on one object.",
+      "SegmentedControl for a single choice among options."
+    ]
+  },
+  "dependencies": ["button", "icon-button"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/actions/button-group/contract.json",
+      "sha256": "5673ff77318c8b96c5900fd732ce89e4978dc9dfddd0f39133f3065f74ae733e"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/button-group/"
+    }
+  ],
+  "decisionsTaken": [
+    "Gap space.control.gap.{size} (6, 8, 10 px, density aware), as the catalog note of 2026-10-20 says.",
+    "size is set on the group and applies to every item (the RadioGroup precedent); an item's own size is ignored inside a group.",
+    "align start, center, end and stretch for both orientations; no space-between option: a split footer (a destructive action at the start) is two groups in a layout, which keeps reading order explicit.",
+    "reflow wrap (default) or stack: stack switches the whole group to vertical full width when it does not fit, observed as the state stacked; the group never reorders items.",
+    "No disabled prop: each action is disabled on its own.",
+    "label optional: the group is a named group only when it has one."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 3 contract gate: present the contract with the other wave 3 contracts and record the approval.",
+  "implementationNotes": []
+}

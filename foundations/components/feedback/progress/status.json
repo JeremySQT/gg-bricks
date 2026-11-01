@@ -1,0 +1,67 @@
+{
+  "formatStatus": "v1",
+  "componentId": "progress",
+  "family": "feedback",
+  "wave": 3,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Show how far a task of known size has gone, or that a longer task is under way.",
+    "useCases": [
+      "Upload or import with a known size.",
+      "A multi-step process (step 3 of 5 shown as a fraction).",
+      "An indeterminate long task (server processing)."
+    ],
+    "exclusions": [
+      "Circular progress: later on demand.",
+      "Steppers with labelled steps.",
+      "Meters (a static value in a range, like disk usage): a separate semantic, later."
+    ],
+    "alternatives": ["Spinner for a short wait in a small place.", "Skeleton for loading content."]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/feedback/progress/contract.json",
+      "sha256": "76e8e13f1a75e5eaa6bfc3eadfd6c9c497ab79f8fe55fa5b90cd6b41fd1bcd2d"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/progress/"
+    }
+  ],
+  "decisionsTaken": [
+    "Linear bar only, with a required label shown above it by default (showLabel) and an optional percentage (showValue, tabular figures).",
+    "Indicator colors reuse color.status.{intent}.icon (accent, success, warning, danger): these roles already reach 3:1 on surfaces; the contract contrast block measures them against the track (color.surface.muted), surface.default and surface.overlay in 18 contexts: 0 failures.",
+    "Track color.surface.muted, fully rounded (radius.full).",
+    "New common roles size.progress.{sm,md,lg} = 4, 6, 8 px.",
+    "Indeterminate: a one-third segment sweeping once per motion.duration.loop (new, 1500 ms), three times slower under reduced motion; value changes transition over motion.duration.base."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 3 contract gate: present the contract with the other wave 3 contracts and record the approval.",
+  "implementationNotes": []
+}

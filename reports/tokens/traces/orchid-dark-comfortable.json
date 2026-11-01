@@ -2380,6 +2380,51 @@
       }
     }
   ],
+  "primitive.dimension.v240": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 240,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v360": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 360,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v400": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 400,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v560": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 560,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v720": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 720,
+        "unit": "px"
+      }
+    }
+  ],
   "primitive.layer.base": [
     {
       "source": "foundations/tokens/base/primitives/layers.tokens.json",
@@ -2487,6 +2532,15 @@
       "source": "foundations/tokens/base/primitives/motion.tokens.json",
       "value": {
         "value": 700,
+        "unit": "ms"
+      }
+    }
+  ],
+  "primitive.duration.1500": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": {
+        "value": 1500,
         "unit": "ms"
       }
     }
@@ -3777,6 +3831,54 @@
       "value": "{primitive.dimension.v64}"
     }
   ],
+  "size.progress.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v4}"
+    }
+  ],
+  "size.progress.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v6}"
+    }
+  ],
+  "size.progress.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v8}"
+    }
+  ],
+  "size.overlay.hint": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v240}"
+    }
+  ],
+  "size.overlay.panel": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v360}"
+    }
+  ],
+  "size.overlay.sm": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v400}"
+    }
+  ],
+  "size.overlay.md": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v560}"
+    }
+  ],
+  "size.overlay.lg": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v720}"
+    }
+  ],
   "typography.display.xl": [
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
@@ -4167,6 +4269,18 @@
       "value": "{primitive.duration.300}"
     }
   ],
+  "motion.duration.spin": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.duration.700}"
+    }
+  ],
+  "motion.duration.loop": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.duration.1500}"
+    }
+  ],
   "motion.easing.standard": [
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
@@ -4201,6 +4315,12 @@
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
       "value": "{primitive.dimension.v8}"
+    }
+  ],
+  "motion.delay.hint": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.duration.500}"
     }
   ],
   "layer.base": [
@@ -4273,6 +4393,12 @@
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
       "value": "{primitive.opacity.12}"
+    }
+  ],
+  "opacity.track": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.opacity.20}"
     }
   ],
   "color.surface.canvas": [

@@ -1,0 +1,69 @@
+{
+  "formatStatus": "v1",
+  "componentId": "tooltip",
+  "family": "overlays",
+  "wave": 3,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Show a short text about a control when the user points at it or focuses it.",
+    "useCases": [
+      "The name of an IconButton.",
+      "The keyboard shortcut of an action.",
+      "A short clarification of a truncated label."
+    ],
+    "exclusions": [
+      "Interactive or essential content: Popover or text on the page.",
+      "Rich tooltips with titles or images.",
+      "Arrows.",
+      "Tooltips on disabled controls."
+    ],
+    "alternatives": ["Popover for interactive content.", "Visible help text (Field description)."]
+  },
+  "dependencies": ["lib/overlay"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/overlays/tooltip/contract.json",
+      "sha256": "6e22df7495696fb83100d3d2dc67a66feb552d3c53c17eac2d6b4d380e08b027"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/tooltip/"
+    }
+  ],
+  "decisionsTaken": [
+    "Inverse surface (color.surface.inverse, color.content.inverse), typography.caption.md, radius.control, padding space.content.sm × xs, max inline size size.overlay.hint (new, 240 px).",
+    "Side top or bottom (what lib/overlay positions today), align center by default; flips and shifts; no arrow.",
+    "Hover delay motion.delay.hint (new, 500 ms); focus opens at once; once one tooltip is open, the next opens at once.",
+    "Accessible description of the trigger, except when the text equals an IconButton's name.",
+    "Trigger restricted to Button, IconButton and Link (focusable components); other content gets a Popover or visible text.",
+    "Entry over motion.duration.fast with motion.distance.sm."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 3 contract gate: present the contract with the other wave 3 contracts and record the approval.",
+  "implementationNotes": []
+}

@@ -1,0 +1,69 @@
+{
+  "formatStatus": "v1",
+  "componentId": "spinner",
+  "family": "feedback",
+  "wave": 3,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Show that something is loading when the duration is unknown and the place is small.",
+    "useCases": [
+      "Next to a label (Loading comments).",
+      "In an empty panel while its content loads.",
+      "The loading state of a control (Button and IconButton draw the same ring today)."
+    ],
+    "exclusions": [
+      "Known progress: Progress.",
+      "Content placeholders: Skeleton.",
+      "Color options: the spinner inherits the current content color."
+    ],
+    "alternatives": ["Progress for a known amount.", "Skeleton for the first load of a region."]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/feedback/spinner/contract.json",
+      "sha256": "57daf4d10e868e0b7740b9a2e46a8f11492431ca3bad0a612d001e56f4fe20af"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/spinner/"
+    }
+  ],
+  "decisionsTaken": [
+    "Same drawing as the Button loading indicator (ring r 9 in a 24 box, stroke 2.5, quarter arc), so that a later Modify can make Button and IconButton use the Spinner without a visual change.",
+    "Sizes sm, md, lg, xl on size.icon.* (16, 20, 24, 32 px).",
+    "Color inherited (currentColor); track at the new opacity.track (0.2; Button uses 0.25 hard-coded).",
+    "label empty by default: decorative; a non-empty label makes it a polite status.",
+    "One turn per motion.duration.spin (new role, primitive 700 ms; Button hard-codes 800 ms), three times slower under reduced motion (the Button rule)."
+  ],
+  "openDecisions": [
+    "5. Spinner speed: motion.duration.spin aliases the existing primitive 700 ms (Button and IconButton hard-code 800 ms today); after the wave, a Modify makes Button and IconButton draw the Spinner and use the role (a 100 ms faster turn). Alternative: a new primitive 800 ms to keep the reviewed speed."
+  ],
+  "nextAction": "Wave 3 contract gate: present the contract with the other wave 3 contracts and record the approval.",
+  "implementationNotes": []
+}

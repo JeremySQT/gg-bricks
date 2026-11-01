@@ -1,0 +1,64 @@
+{
+  "formatStatus": "v1",
+  "componentId": "popover",
+  "family": "overlays",
+  "wave": 3,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Show free, interactive content in a non-modal panel anchored to a trigger.",
+    "useCases": ["Filters next to a list.", "A short form (rename, share).", "Details of an item."],
+    "exclusions": [
+      "Action lists: Menu.",
+      "Blocking tasks: Dialog.",
+      "Hover-only content: Tooltip.",
+      "Arrows; open on hover."
+    ],
+    "alternatives": ["Menu for actions.", "Dialog for a task that must be finished.", "Tooltip for a short hint."]
+  },
+  "dependencies": ["lib/overlay"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/overlays/popover/contract.json",
+      "sha256": "d6b71e44809af5922418ef1942119938ff815302d988724dbada74eecfc93072"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/popover/"
+    }
+  ],
+  "decisionsTaken": [
+    "Focus policy for non-modal popovers (left open by the spike): focus moves to the first focusable element of the content, or to the panel; Tab order follows the trigger; focus leaving closes it.",
+    "label required: the panel is a named non-modal dialog.",
+    "Surface color.surface.overlay, shadow.overlay, elevation border, radius.overlay, padding space.content.md, max inline size size.overlay.panel (new, 360 px), offset space.content.xs.",
+    "Side bottom or top, align start by default; flips, shifts and follows the trigger on scroll.",
+    "No built-in close button: content adds one when it needs it (Escape and a press outside always close)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 3 contract gate: present the contract with the other wave 3 contracts and record the approval.",
+  "implementationNotes": []
+}

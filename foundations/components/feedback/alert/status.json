@@ -1,0 +1,74 @@
+{
+  "formatStatus": "v1",
+  "componentId": "alert",
+  "family": "feedback",
+  "wave": 3,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Give a durable message about the page, a section or a task, in the flow of the page.",
+    "useCases": [
+      "A failed save at the top of a form.",
+      "An expiring plan or a maintenance notice.",
+      "A success after a long import, with a follow-up action."
+    ],
+    "exclusions": [
+      "Transient notifications: Toast.",
+      "Blocking questions: Dialog.",
+      "A field error: Field.",
+      "Page-wide banners fixed at the top: a composition."
+    ],
+    "alternatives": [
+      "Toast for a brief confirmation.",
+      "Dialog for a message that needs an answer.",
+      "Field message for one field."
+    ]
+  },
+  "dependencies": ["icon", "icon-button", "button-group"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/feedback/alert/contract.json",
+      "sha256": "6bcdec125e8233b8a83d287bfed1333d6e0567f7ce1303cdffc6af04f866e7f2"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/alert/"
+    }
+  ],
+  "decisionsTaken": [
+    "Colors from color.status.{intent}.* (surface, content, border, icon), like Badge subtle; intents neutral, info, success, warning, danger (no accent: an alert is a status).",
+    "Edge role named edgeColor because color.status.*.border is decorative (the Badge precedent) and the generic border check would require 3:1.",
+    "Intrinsic Phosphor glyphs per intent (info, check-circle, warning, warning-circle), replaceable through the icon slot.",
+    "Title typography.label.md, content typography.body.sm, padding space.content.md, radius.container.",
+    "dismissible shows a small ghost neutral IconButton named dismissLabel and emits dismiss; the application removes the alert.",
+    "live false by default (an alert present at load is not announced); live true announces assertively for danger and warning, politely otherwise.",
+    "Actions: one ButtonGroup of sm buttons under the content."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 3 contract gate: present the contract with the other wave 3 contracts and record the approval.",
+  "implementationNotes": []
+}

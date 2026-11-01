@@ -1,0 +1,93 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "progress",
+  "props": {
+    "value": {
+      "type": "number",
+      "default": 0,
+      "min": 0
+    },
+    "max": {
+      "type": "number",
+      "default": 100,
+      "min": 1
+    },
+    "indeterminate": {
+      "type": "boolean",
+      "default": false
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "showLabel": {
+      "type": "boolean",
+      "default": true
+    },
+    "showValue": {
+      "type": "boolean",
+      "default": false
+    },
+    "intent": {
+      "values": ["accent", "success", "warning", "danger"],
+      "default": "accent"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    }
+  },
+  "parts": {
+    "container": {},
+    "label": {},
+    "valueText": {},
+    "track": {},
+    "indicator": {}
+  },
+  "states": {},
+  "tokens": {
+    "trackColor": "color.surface.muted",
+    "indicatorColor": "color.status.{intent}.icon",
+    "labelColor": "color.content.primary",
+    "valueColor": "color.content.secondary",
+    "typography": "typography.label.md",
+    "typographyValue": "typography.numeral.sm",
+    "thickness": "size.progress.{size}",
+    "radius": "radius.full",
+    "labelGap": "space.content.xs",
+    "motionDuration": "motion.duration.base",
+    "easingStandard": "motion.easing.standard",
+    "motionLoop": "motion.duration.loop"
+  },
+  "contrast": [
+    {
+      "content": "indicatorColor",
+      "surface": "trackColor",
+      "minimum": 3,
+      "note": "The filled part of the track is told from the empty part."
+    },
+    {
+      "content": "indicatorColor",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "indicatorColor",
+      "surface": "color.surface.overlay",
+      "minimum": 3
+    }
+  ],
+  "rules": [
+    "A progress bar shows how far a task of known size has gone (an upload, a multi-step import) or, when indeterminate, that a longer task is under way without a known end. A short wait in a small place is a Spinner.",
+    "Layout: label at the start and valueText at the end of a first line, separated from the track below by labelGap; the track takes the full inline size of the container. With showLabel false and showValue false the first line is not rendered.",
+    "label is required and non-empty; it is the accessible name of the progress bar whether or not it is shown. It is set in typography and labelColor on one line and truncated with an ellipsis when space runs out.",
+    "The fraction is value divided by max, clamped between 0 and 1; a value above max shows a full track. valueText shows the fraction as a whole percentage in typographyValue and valueColor, with tabular figures so that it does not shift as it changes; it is not rendered when indeterminate.",
+    "The track is a bar of thickness with fully rounded ends (radius), painted in trackColor. The indicator starts at the inline start edge of the track and covers the fraction of its inline size, in indicatorColor, with the same rounded ends; a fraction of 0 shows no indicator.",
+    "A change of value moves the indicator end over motionDuration with easingStandard; no transition when reduced motion is requested.",
+    "When indeterminate, value is ignored: an indicator of one third of the track sweeps from the inline start to the inline end, once per motionLoop, repeated. When reduced motion is requested the sweep runs three times slower.",
+    "intent names the color of the indicator: accent for an ordinary task, success for a completed one, warning for a task that needs attention, danger for a failed one. The meaning is also stated in words (the label or nearby text), never by color alone.",
+    "The progress bar is exposed as a progress indicator with value, minimum 0 and max; when indeterminate it exposes no current value. It is not interactive: never focusable, no events.",
+    "Sizes change only the thickness of the track; they do not change with density.",
+    "In forced-colors mode the track keeps a visible edge in the system text color and the indicator is painted in the system highlight color."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "formatStatus": "v1",
+  "componentId": "skeleton",
+  "family": "feedback",
+  "wave": 3,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Stand in for content that is loading with its shape and size, so that the layout does not move when it arrives.",
+    "useCases": ["Lines of text in a card or a list.", "An image or chart block.", "An avatar circle."],
+    "exclusions": [
+      "Composite skeletons (a card skeleton): compositions of Skeletons in examples.",
+      "Shimmer gradients: a pulse only."
+    ],
+    "alternatives": ["Spinner for a short action on existing content.", "Progress for a known amount."]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/feedback/skeleton/contract.json",
+      "sha256": "4bf3db0a1e4a047aca7f25a7b9c3309a9e7968f4fe39965176c1d9a5eb97ea24"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/skeleton/"
+    }
+  ],
+  "decisionsTaken": [
+    "Three shapes (text, block, circle); text lines follow typography.body.{size}: a bar of the font size centered in the line box, so that a skeleton paragraph has the height of the real one.",
+    "Painted in color.surface.muted, pulsing to opacity.muted (0.7) once per motion.duration.loop, no pulse under reduced motion.",
+    "Radii: radius.indicator for text, radius.container for blocks, radius.full for circles.",
+    "Hidden from assistive technology; the busy state belongs to the loading region (integration)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 3 contract gate: present the contract with the other wave 3 contracts and record the approval.",
+  "implementationNotes": []
+}

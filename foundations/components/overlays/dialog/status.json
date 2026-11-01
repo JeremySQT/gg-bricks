@@ -1,0 +1,72 @@
+{
+  "formatStatus": "v1",
+  "componentId": "dialog",
+  "family": "overlays",
+  "wave": 3,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Ask the user to complete or abandon a short task or decision before going back to the page.",
+    "useCases": [
+      "Confirm a destructive action (alert dialog).",
+      "Edit a record in a short form.",
+      "Show terms that must be accepted."
+    ],
+    "exclusions": [
+      "Side sheets: Drawer (later).",
+      "Full-screen dialogs and multi-step wizards: compositions later.",
+      "Non-modal windows."
+    ],
+    "alternatives": ["Popover for non-blocking content.", "Alert for a message that needs no answer."]
+  },
+  "dependencies": ["icon-button", "button-group", "lib/overlay"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/overlays/dialog/contract.json",
+      "sha256": "13be94f03f554d839a57744cf05a08ed512aa4101582a677720e6b73dbda0a28"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/dialog/"
+    }
+  ],
+  "decisionsTaken": [
+    "Native modal dialog in the top layer (decision of 2026-10-31): inert page, focus trap and focus return from the platform; backdrop color.surface.scrim (open question 1).",
+    "Header (required title, optional description, close button), scrolling body, footer with one ButtonGroup aligned at the end; dividers appear only when the body scrolls (state scrolled).",
+    "Sizes sm, md, lg on the new size.overlay.{sm,md,lg} (400, 560, 720 px), capped by the viewport less space.layout.md.",
+    "alert true: alert dialog, never closed by a backdrop press; dismissible false removes the close button, Escape and the backdrop press.",
+    "Initial focus: the element the application marks, else the first focusable element of the body, then of the footer, else the panel.",
+    "Title typography.heading.sm, description typography.body.sm, body typography.body.md, padding space.layout.md, shadow.modal, radius.overlay, entry with motion.distance.md.",
+    "No trigger part: the application opens the dialog by setting open (a Button or a Menu item)."
+  ],
+  "openDecisions": [
+    "1. Canonical scrim (decisions.md open decision 3): the backdrop uses color.surface.scrim (already used by lib/overlay and the spike); opacity.scrim stays in the inventory for an image or video overlay and is documented as not for overlays. Alternative: opacity.scrim over a surface color.",
+    "2. Contract versus Bits UI (decisions.md open decision 3): when a Bits UI behavior disagrees with a contract rule, the contract wins; the component overrides or completes the primitive locally, pins the Bits UI version and covers the override with a browser test (the RadioGroup precedent). Alternative: adapt the contract to Bits UI."
+  ],
+  "nextAction": "Wave 3 contract gate: present the contract with the other wave 3 contracts and record the approval.",
+  "implementationNotes": []
+}

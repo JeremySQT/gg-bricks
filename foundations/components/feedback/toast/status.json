@@ -1,0 +1,67 @@
+{
+  "formatStatus": "v1",
+  "componentId": "toast",
+  "family": "feedback",
+  "wave": 3,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Notify briefly about something the user just did or that just happened, without blocking the page.",
+    "useCases": ["Saved, Message sent.", "Upload failed with a Retry action.", "Item deleted with an Undo action."],
+    "exclusions": [
+      "Durable messages: Alert.",
+      "Questions: Dialog.",
+      "Rich content (images, forms) in a toast.",
+      "A keyboard shortcut to jump to the region: later on demand."
+    ],
+    "alternatives": ["Alert for a durable message.", "Dialog for a message that must be answered."]
+  },
+  "dependencies": ["icon", "icon-button", "button", "lib/overlay"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/feedback/toast/contract.json",
+      "sha256": "ab9f6f5db1acb16dbdb56da53a3f450f73477c146a5b604ecfd6b1d18f38495e"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/toast/"
+    }
+  ],
+  "decisionsTaken": [
+    "One compound contract (decision of 2026-10-31): the root is the region (placement, max, label); the child item is one toast. The application owns the list and removes a toast when it emits dismiss; the Svelte adapter may add a small helper to manage the list (implementation).",
+    "Toast surface neutral (color.surface.overlay, shadow.overlay, elevation border, radius.overlay) with the status icon in color: the words carry the message.",
+    "Width size.overlay.panel (new, 360 px); region at space.layout.sm from the viewport edges; default placement bottom-end; max 3 visible.",
+    "Duration 5 s; the countdown pauses on hover, on focus inside and when the document is hidden.",
+    "A toast with an action never dismisses itself (WCAG 2.2.1), and its action must exist elsewhere (open question 4).",
+    "Announcements: polite except danger (assertive); appearing never moves focus."
+  ],
+  "openDecisions": [
+    "4. A toast with an action never dismisses itself (WCAG 2.2.1 Timing adjustable) and its action must also exist elsewhere. Alternative: a longer duration (10 s) for toasts with an action."
+  ],
+  "nextAction": "Wave 3 contract gate: present the contract with the other wave 3 contracts and record the approval.",
+  "implementationNotes": []
+}

@@ -3144,6 +3144,71 @@
     },
     {
       "collection": "Foundations · Primitives",
+      "name": "primitive/dimension/v240",
+      "path": "primitive.dimension.v240",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-dimension-v240)"
+      },
+      "values": {
+        "default": 240
+      }
+    },
+    {
+      "collection": "Foundations · Primitives",
+      "name": "primitive/dimension/v360",
+      "path": "primitive.dimension.v360",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-dimension-v360)"
+      },
+      "values": {
+        "default": 360
+      }
+    },
+    {
+      "collection": "Foundations · Primitives",
+      "name": "primitive/dimension/v400",
+      "path": "primitive.dimension.v400",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-dimension-v400)"
+      },
+      "values": {
+        "default": 400
+      }
+    },
+    {
+      "collection": "Foundations · Primitives",
+      "name": "primitive/dimension/v560",
+      "path": "primitive.dimension.v560",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-dimension-v560)"
+      },
+      "values": {
+        "default": 560
+      }
+    },
+    {
+      "collection": "Foundations · Primitives",
+      "name": "primitive/dimension/v720",
+      "path": "primitive.dimension.v720",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-dimension-v720)"
+      },
+      "values": {
+        "default": 720
+      }
+    },
+    {
+      "collection": "Foundations · Primitives",
       "name": "primitive/layer/base",
       "path": "primitive.layer.base",
       "type": "FLOAT",
@@ -6051,6 +6116,190 @@
         },
         "orchid": {
           "alias": "Foundations · Primitives:primitive/dimension/v64"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/progress/sm",
+      "path": "size.progress.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-progress-sm)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v4"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v4"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v4"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/progress/md",
+      "path": "size.progress.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-progress-md)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v6"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v6"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v6"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/progress/lg",
+      "path": "size.progress.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-progress-lg)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v8"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v8"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v8"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/overlay/hint",
+      "path": "size.overlay.hint",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-overlay-hint)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v240"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v240"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v240"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/overlay/panel",
+      "path": "size.overlay.panel",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-overlay-panel)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v360"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v360"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v360"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/overlay/sm",
+      "path": "size.overlay.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-overlay-sm)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v400"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v400"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v400"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/overlay/md",
+      "path": "size.overlay.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-overlay-md)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v560"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v560"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v560"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/overlay/lg",
+      "path": "size.overlay.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-overlay-lg)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v720"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v720"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v720"
         }
       }
     },
@@ -9997,6 +10246,29 @@
         },
         "orchid": {
           "alias": "Foundations · Primitives:primitive/opacity/12"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "opacity/track",
+      "path": "opacity.track",
+      "type": "FLOAT",
+      "scopes": [
+        "OPACITY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-opacity-track)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/opacity/20"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/opacity/20"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/opacity/20"
         }
       }
     },
