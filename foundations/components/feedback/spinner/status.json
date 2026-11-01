@@ -64,6 +64,6 @@
   "openDecisions": [
     "5. Spinner speed: motion.duration.spin aliases the existing primitive 700 ms (Button and IconButton hard-code 800 ms today); after the wave, a Modify makes Button and IconButton draw the Spinner and use the role (a 100 ms faster turn). Alternative: a new primitive 800 ms to keep the reviewed speed."
   ],
-  "nextAction": "Wave 3 contract gate: present the contract with the other wave 3 contracts and record the approval.",
+  "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",
   "implementationNotes": []
 }
