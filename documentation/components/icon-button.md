@@ -49,7 +49,7 @@ A side of the square (the Button height of the size, following the density: 32, 
 
 ## Examples
 
-Glyphs come from `./glyphs`, a handful of Phosphor paths standing in for your icon set. The review page `examples/icon-button/App.svelte` covers every case.
+Glyphs come from `./glyphs`, a handful of Phosphor paths standing in for your icon set. Every case is exercised on the component's review page in the ggbrick repository (`examples/icon-button/App.svelte`, not shipped in the package).
 
 ### The usual case
 

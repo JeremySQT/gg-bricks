@@ -43,7 +43,7 @@ A side padding (2, 4 or 6 px with the density), B height (the line box of the di
 
 ## Examples
 
-The review page `examples/counter/App.svelte` covers every case.
+Every case is exercised on the component's review page in the ggbrick repository (`examples/counter/App.svelte`, not shipped in the package).
 
 ### The usual case
 

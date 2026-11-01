@@ -1,4 +1,4 @@
-// Generated from foundations/components/<family>/button/contract.json. Do not edit.
+// Generated from foundations/components/actions/button/contract.json. Do not edit.
 export type ButtonIntent = "accent" | "neutral" | "danger";
 export type ButtonAppearance = "solid" | "outline" | "ghost";
 export type ButtonSize = "sm" | "md" | "lg";

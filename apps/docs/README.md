@@ -1,6 +1,6 @@
 # @ggbrick/docs
 
-The documentation site, docs.ggbrick.design: Astro and Starlight rendering `documentation/` with live Svelte examples. Static output, deployable on any static host (hosting is open decision 3 in `authoring/decisions.md`).
+The documentation site, docs.ggbrick.design: Astro and Starlight rendering `documentation/` with live Svelte examples. Static output, deployed on Cloudflare Workers (see Deployment below and `authoring/decisions.md`, Identity and delivery).
 
 ```sh
 npm run dev:docs     # from the repository root: http://localhost:4321, regenerates component pages on change

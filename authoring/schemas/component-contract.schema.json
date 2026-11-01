@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "ggbrick component contract — v1",
-  "description": "Structural schema for the compact contract. Semantic consistency and source token coverage are separate checks (tooling/lib/contract.ts).",
+  "title": "ggbrick component contract — v1.1",
+  "description": "Structural schema for the compact contract. Semantic consistency and source token coverage are separate checks (tooling/lib/contract.ts). v1.1 (2026-10-31) adds children (compound components), the records prop type and the contrast block.",
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "props", "parts", "states", "tokens", "rules"],
@@ -73,6 +73,45 @@
       },
       "additionalProperties": {
         "$ref": "#/$defs/event"
+      }
+    },
+    "children": {
+      "type": "object",
+      "description": "Named children of a compound component (menu items, tab triggers, dialog parts): each one is a contract fragment generated and reproduced as an internal part of the parent. A parent part lists children in `accepts` by name.",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z][a-zA-Z0-9]*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/child"
+      }
+    },
+    "contrast": {
+      "type": "array",
+      "description": "Explicit contrast pairs measured in every context, for roles the generic surface/content/border evidence does not cover (children, several surfaces). `content` is a role (`item.content`), `surface` a role or a color token path; `minimum` 4.5 for text, 3 for borders, icons and indicators.",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["content", "surface", "minimum"],
+        "properties": {
+          "content": {
+            "type": "string",
+            "pattern": "^(?:[a-z][a-zA-Z0-9]*\\.)?[a-z][a-zA-Z0-9]*$"
+          },
+          "surface": {
+            "type": "string",
+            "pattern": "^(?:[a-z][a-zA-Z0-9]*\\.)?[a-z][a-zA-Z0-9]*$|^color\\.[a-z0-9]+(?:\\.[a-z0-9-]+)+$"
+          },
+          "minimum": {
+            "type": "number",
+            "enum": [3, 4.5]
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
       }
     }
   },
@@ -150,6 +189,9 @@
         },
         {
           "$ref": "#/$defs/list"
+        },
+        {
+          "$ref": "#/$defs/records"
         }
       ]
     },
@@ -252,6 +294,103 @@
         }
       },
       "description": "An unordered set of string values (the checked values of a group). Values are unique."
+    },
+    "records": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "fields", "default"],
+      "description": "An ordered list of records with declared fields (the options of a select, the rows of a table). `required` names the fields every record carries; the others are optional.",
+      "properties": {
+        "type": {
+          "const": "records"
+        },
+        "fields": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[a-z][a-zA-Z0-9]*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "enum": ["string", "boolean", "number"]
+          }
+        },
+        "required": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "default": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "bindable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "child": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["props", "states", "tokens", "rules"],
+      "properties": {
+        "props": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[a-z][a-zA-Z0-9]*$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/prop"
+          }
+        },
+        "parts": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[a-z][a-zA-Z0-9]*$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/part"
+          }
+        },
+        "states": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[a-z][a-zA-Z0-9]*$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/state"
+          }
+        },
+        "tokens": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[a-z][a-zA-Z0-9]*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^(?:[a-z][a-zA-Z0-9-]*|\\{[a-z][a-zA-Z0-9]*\\})(?:\\.(?:[a-z0-9][a-zA-Z0-9-]*|\\{[a-z][a-zA-Z0-9]*\\}))*$"
+          }
+        },
+        "rules": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        }
+      }
     }
   }
 }

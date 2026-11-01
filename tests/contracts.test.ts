@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import path from 'node:path';
 import { checkContract, expandTokenPaths, expandCombinations, expectedRoleType } from '../tooling/lib/contract.ts';
 import type { Contract, TokenMap } from '../tooling/lib/types.ts';
 const source: Contract = JSON.parse(
@@ -66,6 +67,20 @@ test('requires every expanded path when an inventory is supplied', () => {
   tokens['color.action.neutral.ghost.loading.content'] = { $type: 'dimension', $value: 0 };
   assert.ok(checkContract(source, { tokens }).errors.some((e) => e.code === 'role-type'));
 });
+test('infers the token type of a role from its name', () => {
+  assert.equal(expectedRoleType('surface'), 'color');
+  assert.equal(expectedRoleType('focusColor'), 'color');
+  assert.equal(expectedRoleType('typography'), 'typography');
+  assert.equal(expectedRoleType('motionDuration'), 'duration');
+  assert.equal(expectedRoleType('easingStandard'), 'cubicBezier');
+  assert.equal(expectedRoleType('shadow'), 'shadow');
+  assert.equal(expectedRoleType('mutedOpacity'), 'number');
+  // Stacking roles bind layer.* tokens, which are numbers (audit of 2026-10-31).
+  assert.equal(expectedRoleType('layer'), 'number');
+  assert.equal(expectedRoleType('zIndex'), 'number');
+  assert.equal(expectedRoleType('panelLayer'), 'number');
+  assert.equal(expectedRoleType('minHeight'), 'dimension');
+});
 test('rejects invalid slot cardinality and missing accepted components', () => {
   const c = copy();
   c.parts.trailing.max = 0;
@@ -96,4 +111,51 @@ test('number props, bindable props, events and open-ended slots validate', () =>
   const e = copy();
   e.events = { activate: {} };
   assert.equal(checkContract(e).checks.schema, 'failed');
+});
+
+// Compound contracts (schema v1.1): children, records and explicit contrast pairs.
+const compound = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'fixtures/compound.contract.json'), 'utf8'));
+const compoundCopy = () => JSON.parse(JSON.stringify(compound));
+test('a compound contract is valid and expands its children with the parent parameters', () => {
+  const r = checkContract(compound);
+  assert.deepEqual(r.errors, []);
+  assert.equal(r.valid, true);
+  const paths = expandTokenPaths(compound);
+  assert.equal(paths['item.surface'].length, 5);
+  assert.deepEqual(paths['item.typography'], ['typography.body.sm', 'typography.body.md', 'typography.body.lg']);
+  assert.deepEqual(paths['separator.border'], ['color.border.subtle']);
+  assert.equal(expectedRoleType('item.indicatorColor'), 'color');
+  assert.equal(expectedRoleType('item.paddingInline'), 'dimension');
+  assert.equal(expectedRoleType('layer'), 'number');
+  // Children are internal parts, not dependencies; a child's slot still declares one.
+  assert.deepEqual(r.dependencies, ['icon']);
+});
+test('records props declare their fields; defaults must match them', () => {
+  const c = compoundCopy();
+  c.props.options.required = ['value', 'missing'];
+  assert.ok(checkContract(c).errors.some((e) => e.code === 'records-field'));
+  const d = compoundCopy();
+  d.props.options.default = [{ value: 'a', label: 'A', extra: 1 }, { value: 'b' }];
+  const errors = checkContract(d).errors.filter((e) => e.code === 'records-default');
+  assert.equal(errors.length, 2);
+});
+test('contrast pairs reference color roles and share their parameters', () => {
+  const c = compoundCopy();
+  c.contrast.push({ content: 'item.nothing', surface: 'item.surface', minimum: 4.5 });
+  assert.ok(checkContract(c).errors.some((e) => e.code === 'contrast-role' && e.message.includes('item.nothing')));
+  const d = compoundCopy();
+  d.contrast.push({ content: 'content', surface: 'item.surface', minimum: 4.5 });
+  assert.ok(checkContract(d).errors.some((e) => e.code === 'contrast-parameters'));
+  const e = compoundCopy();
+  e.contrast.push({ content: 'item.paddingInline', surface: 'surface', minimum: 3 });
+  assert.ok(checkContract(e).errors.some((e) => e.code === 'contrast-role'));
+  const f = compoundCopy();
+  f.children.item.states.condition.values = ['default'];
+  f.contrast = [{ content: 'item.content', surface: 'item.surface', minimum: 4.5 }];
+  assert.equal(checkContract(f).valid, true);
+});
+test('a child name cannot shadow a prop or state', () => {
+  const c = compoundCopy();
+  c.props.item = { type: 'boolean', default: false };
+  assert.ok(checkContract(c).errors.some((e) => e.code === 'ambiguous-name'));
 });

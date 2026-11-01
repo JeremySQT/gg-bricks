@@ -97,7 +97,14 @@ export interface ListDecl {
   default: string[];
   bindable?: boolean;
 }
-export type PropDecl = EnumDecl | BooleanDecl | StringDecl | NumberDecl | ListDecl;
+export interface RecordsDecl {
+  type: 'records';
+  fields: Record<string, 'string' | 'boolean' | 'number'>;
+  required?: string[];
+  default: Record<string, unknown>[];
+  bindable?: boolean;
+}
+export type PropDecl = EnumDecl | BooleanDecl | StringDecl | NumberDecl | ListDecl | RecordsDecl;
 export type StateDecl = EnumDecl | BooleanDecl;
 export interface SlotPart {
   accepts: string[];
@@ -110,6 +117,22 @@ export interface EventDecl {
   payload?: string;
 }
 
+/** A contract fragment of a compound component: an internal part with its own options, states, roles and rules. */
+export interface ChildContract {
+  props: Record<string, PropDecl>;
+  parts?: Record<string, Part>;
+  states: Record<string, StateDecl>;
+  tokens: Record<string, string>;
+  rules: string[];
+}
+/** An explicit contrast pair: roles are `role` (parent) or `child.role`; the surface may also be a color token path. */
+export interface ContrastPair {
+  content: string;
+  surface: string;
+  minimum: 3 | 4.5;
+  note?: string;
+}
+
 export interface Contract {
   $schema?: string;
   id: string;
@@ -119,6 +142,8 @@ export interface Contract {
   events?: Record<string, EventDecl>;
   tokens: Record<string, string>;
   rules: string[];
+  children?: Record<string, ChildContract>;
+  contrast?: ContrastPair[];
 }
 
 export const isEnum = (d: PropDecl | StateDecl): d is EnumDecl => Array.isArray((d as EnumDecl).values);

@@ -108,9 +108,21 @@ write(
 );
 const cfg = readJson<{ brands: string[]; appearances: string[]; densities: string[] }>(paths.config);
 // The verification script resolves every brand × appearance × density explicitly; defaults do not matter to it.
+// It hashes exactly the manifest's semantic variables (names per collection, in the check-figma order) and
+// reports any other variable of those collections (an adapter variable such as checkbox/focus-radius) apart.
+const semantic = ['Foundations · Brand', 'Foundations · Appearance', 'Foundations · Density'];
+const names = Object.fromEntries(
+  semantic.map((c) => [
+    c,
+    manifest.variables
+      .filter((v) => v.collection === c && !v.name.startsWith('primitive/') && !v.name.startsWith('_resolved/'))
+      .map((v) => v.name)
+      .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
+  ])
+);
 write(
   `${out}/verify.js`,
-  `const defs = ${JSON.stringify({ brands: cfg.brands, appearances: cfg.appearances, densities: cfg.densities })};\n` +
+  `const defs = ${JSON.stringify({ brands: cfg.brands, appearances: cfg.appearances, densities: cfg.densities, names })};\n` +
     readText(`${adapters}/verify-resolution.plugin.js`)
 );
 console.log(JSON.stringify({ variableBatches: files.length, variables: ordered.length, dir: out }));

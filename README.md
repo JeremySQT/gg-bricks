@@ -54,7 +54,7 @@ npm run pack:svelte     # dist/ggbrick-svelte-<version>.tgz
 npm run new:component -- <family> <id>
 ```
 
-Node 22.18 or newer (scripts and tests are TypeScript run natively by Node). Svelte 5.57.1 and Bits UI 2.19.3 are pinned.
+Node 22.18 or newer (scripts and tests are TypeScript run natively by Node). The repository pins Svelte 5.57.1 and Bits UI 2.19.3 (tested versions); the package declares `svelte ^5.57.1` and `bits-ui ^2.19.3` so that an application keeps one copy of each.
 
 ## Branches
 

@@ -1,4 +1,4 @@
-// Generated from foundations/components/<family>/shortcut/contract.json. Do not edit.
+// Generated from foundations/components/content/shortcut/contract.json. Do not edit.
 export type ShortcutPlatform = "auto" | "mac" | "other";
 export type ShortcutAppearance = "plain" | "keycap";
 export type ShortcutSize = "sm" | "md" | "lg";

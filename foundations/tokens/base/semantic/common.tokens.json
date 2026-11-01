@@ -786,6 +786,17 @@
         "$type": "cubicBezier",
         "$value": "{primitive.easing.accelerate}"
       }
+    },
+    "distance": {
+      "$description": "Offset travelled by an overlay entering or leaving (popover, menu, tooltip: sm; dialog, drawer: md). Under reduced motion the overlay fades without moving.",
+      "sm": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v4}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v8}"
+      }
     }
   },
   "layer": {

@@ -120,13 +120,13 @@
           "packages/svelte/src/components/shortcut/Shortcut.svelte": "5daf33afc71f32b2ffa80f11b15029e811d5134e14a6a6ca31293fd6b09489cb",
           "packages/svelte/src/components/shortcut/keys.ts": "bb2c44c8224289d3b9a75a1457779db1c440f3f00f4a5649e31491a6cdbf8bcd",
           "packages/svelte/src/components/shortcut/types.ts": "f99477d945870699f56c3b6a9fe1158bcceac1c8124388427b58d750e3efe057",
-          "packages/svelte/src/components/shortcut/shortcut.css": "e39a51fa79e56998ca1525b87d59dfb7f36d782306d0cadace95e5b358ed66cb",
-          "packages/svelte/src/components/shortcut/contract.generated.ts": "f6b0eeb26d7c019a821bf7fe749bf4b2eaf826935a1831810462e041e5003731",
-          "packages/svelte/src/components/shortcut/tokens.generated.css": "cf018ee07b67e2f6695e181dd58c202776ce50a8f8795a7e25ecbbdbaf2b85f0",
+          "packages/svelte/src/components/shortcut/shortcut.css": "7b569279c4eca5de3da8643fa8e0663c3f9f3b8a06fcd95e8d665d62b6d8e7ea",
+          "packages/svelte/src/components/shortcut/contract.generated.ts": "4e6897cbad1f20ed7eb73ea8b8136415526897e2fe1e12d8a54bd7fa5dffa651",
+          "packages/svelte/src/components/shortcut/tokens.generated.css": "1e1c1518db16f9b9ef0e7a5ea193d2d7ba5fbe25d9114c4b61b9ca7e1c4d429b",
           "examples/shortcut/App.svelte": "4c3ba3739d9023510f073c258ac62989b0c435120a559efd54631cc20d11b14f"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, after reviewing the published preview artifacts (grouped implementation gate of Icon, Counter and Shortcut): \"Ok pour la dernière proposition sur la densité, je valide l'approche recommandée\", then \"Pour le counter ça me semble bon, mais visuellement je verrai bien un contour à 70% d'opacité\" (applied), then, for the Shortcut, after comparing 100 %, 85 %, 70 % and a lighter weight on a lab page (https://claude.ai/artifact/L1agvDLoc2hBK3Hqz91reB): \"85% ne me semble pas assez atténué. 70% me semble mieux\" (applied). Approval recorded on the revisions that include these adjustments.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, after reviewing the published preview artifacts (grouped implementation gate of Icon, Counter and Shortcut): \"Ok pour la dernière proposition sur la densité, je valide l'approche recommandée\", then \"Pour le counter ça me semble bon, mais visuellement je verrai bien un contour à 70% d'opacité\" (applied), then, for the Shortcut, after comparing 100 %, 85 %, 70 % and a lighter weight on a lab page (https://claude.ai/artifact/L1agvDLoc2hBK3Hqz91reB): \"85% ne me semble pas assez atténué. 70% me semble mieux\" (applied). Approval recorded on the revisions that include these adjustments. Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded.",
       "note": "Automated evidence: Chromium only (SSR and Playwright tests in tests/); no assistive-technology test."
     },
     "figmaParity": {
@@ -138,9 +138,9 @@
           "reports/components/shortcut/figma/ledger.json"
         ],
         "sha256": {
-          "foundations/components/content/shortcut/figma-spec.md": "29d897dcb11f647a998f7f2331c851cb41afe2d79bb84d2baf493b93be356da0",
+          "foundations/components/content/shortcut/figma-spec.md": "d8a2d9921ea96d42a561401939f81dad6c13370fb58a03d204ec4e92d69abc11",
           "reports/components/shortcut/figma/parity.json": "d3bf34baa5ea520076140e4a3d3aaa1326d86f2817a54cf9ffa566234d2b11ec",
-          "reports/components/shortcut/figma/ledger.json": "8cf0627cb79cbd7e5e6445eb74efa50a283e8ca8e9c265f5df006a3ddaa3674c"
+          "reports/components/shortcut/figma/ledger.json": "1ba338098a452ff4b90807f15d37a37aa75bc3db3368770a8a464c4ce77fabee"
         },
         "figma": {
           "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
@@ -149,7 +149,7 @@
           "specificationFrame": "154:32"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, at the grouped wave 1 Figma parity gate (Icon, Counter, Shortcut and the Button with the real slot content), after reviewing the Figma pages, the master and specification screenshots, the parity reports and the preview artifacts: \"Très bien le counter comme ça, jolie travail.\" then, asked whether the validation covered the whole gate, \"La validation porte sur la parité figma de la vague 1. On peut avancer.\" Keys typed per nested part: user in the same session, \"Pour le shortcut, tu peux rester avec les sous-parts pour l'instant, on verra à l'usage si on doit faire une update\". Amendment of 2026-10-26 at the wave 1 Figma parity review (session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU), requested by the user: components impose the size of what they hold (\"la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\"; option 2 for Counter and Shortcut: \"Va pour l'option 2, tu peux la faire maintenant\"). Shortcut itself is unchanged apart from its description; the internal part _Shortcut/Nested is its copy for hosts, checked equal in 18 contexts × 3 sizes × 4 variants. Digests re-recorded.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01Ti2atQcjCDdiUH36iC7vUH on 2026-10-14, at the grouped wave 1 Figma parity gate (Icon, Counter, Shortcut and the Button with the real slot content), after reviewing the Figma pages, the master and specification screenshots, the parity reports and the preview artifacts: \"Très bien le counter comme ça, jolie travail.\" then, asked whether the validation covered the whole gate, \"La validation porte sur la parité figma de la vague 1. On peut avancer.\" Keys typed per nested part: user in the same session, \"Pour le shortcut, tu peux rester avec les sous-parts pour l'instant, on verra à l'usage si on doit faire une update\". Amendment of 2026-10-26 at the wave 1 Figma parity review (session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU), requested by the user: components impose the size of what they hold (\"la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\"; option 2 for Counter and Shortcut: \"Va pour l'option 2, tu peux la faire maintenant\"). Shortcut itself is unchanged apart from its description; the internal part _Shortcut/Nested is its copy for hosts, checked equal in 18 contexts × 3 sizes × 4 variants. Digests re-recorded. Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged.",
       "note": "Library not published (publication needs explicit authorization). The nested-part key typing is accepted for now; a flat Key 1/2/3 text property on the set is a possible later update (decision taken, no longer open)."
     },
     "documentation": null,

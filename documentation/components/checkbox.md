@@ -44,7 +44,7 @@ A box size (14, 16 or 20 px; it does not change with the density), B gap between
 
 ## Examples
 
-The review page `examples/checkbox/App.svelte` covers every case.
+Every case is exercised on the component's review page in the ggbrick repository (`examples/checkbox/App.svelte`, not shipped in the package).
 
 ### The usual case
 

@@ -2,84 +2,86 @@
  * Field structure. Values come from tokens.generated.css; this file holds structural literals only.
  * Label (with the required asterisk), description, control and message stack at the inline start.
  */
-.ggb-field {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-inline-size: 0;
-}
+@layer ggb {
+  .ggb-field {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-inline-size: 0;
+  }
 
-.ggb-field__label {
-  font: var(--ggb-field-typographyLabel);
-  letter-spacing: var(--ggb-field-typographyLabel-letterSpacing, normal);
-  color: var(--ggb-field-labelColor);
-  overflow-wrap: anywhere;
-}
-.ggb-field__requiredIndicator {
-  color: var(--ggb-field-requiredColor);
-}
+  .ggb-field__label {
+    font: var(--ggb-field-typographyLabel);
+    letter-spacing: var(--ggb-field-typographyLabel-letterSpacing, normal);
+    color: var(--ggb-field-labelColor);
+    overflow-wrap: anywhere;
+  }
+  .ggb-field__requiredIndicator {
+    color: var(--ggb-field-requiredColor);
+  }
 
-.ggb-field__description,
-.ggb-field__message {
-  margin: 0;
-  font: var(--ggb-field-typography);
-  letter-spacing: var(--ggb-field-typography-letterSpacing, normal);
-  overflow-wrap: anywhere;
-}
-.ggb-field__description {
-  margin-block-start: var(--ggb-field-descriptionGap);
-  color: var(--ggb-field-descriptionColor);
-}
+  .ggb-field__description,
+  .ggb-field__message {
+    margin: 0;
+    font: var(--ggb-field-typography);
+    letter-spacing: var(--ggb-field-typography-letterSpacing, normal);
+    overflow-wrap: anywhere;
+  }
+  .ggb-field__description {
+    margin-block-start: var(--ggb-field-descriptionGap);
+    color: var(--ggb-field-descriptionColor);
+  }
 
-.ggb-field__control {
-  display: flex;
-  flex-direction: column;
-  /* Text entries stretch to the field width; choice controls keep their own size. */
-  align-items: stretch;
-  margin-block-start: var(--ggb-field-controlGap);
-  min-inline-size: 0;
-}
+  .ggb-field__control {
+    display: flex;
+    flex-direction: column;
+    /* Text entries stretch to the field width; choice controls keep their own size. */
+    align-items: stretch;
+    margin-block-start: var(--ggb-field-controlGap);
+    min-inline-size: 0;
+  }
 
-.ggb-field__message {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--ggb-field-messageIconGap);
-  margin-block-start: var(--ggb-field-messageGap);
-  color: var(--ggb-field-messageColor);
-}
-/*
+  .ggb-field__message {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ggb-field-messageIconGap);
+    margin-block-start: var(--ggb-field-messageGap);
+    color: var(--ggb-field-messageColor);
+  }
+  /*
  * The icon box is centered on the first line (1lh is the message line height). The reference set draws 1/8 of the
  * box inside it, so the box overlaps the start edge and the gap by that amount: the drawing sits at the text start.
  */
-.ggb-field__messageIcon {
-  flex: none;
-  inline-size: var(--ggb-field-iconSize);
-  block-size: var(--ggb-field-iconSize);
-  margin-block-start: calc((1lh - var(--ggb-field-iconSize)) / 2);
-  margin-inline: calc(var(--ggb-field-iconSize) / -8);
-  color: var(--ggb-field-messageIconColor);
-}
-.ggb-field__messageText {
-  min-inline-size: 0;
-}
-
-.ggb-field[data-disabled] .ggb-field__label,
-.ggb-field[data-disabled] .ggb-field__requiredIndicator,
-.ggb-field[data-disabled] .ggb-field__description {
-  color: var(--ggb-field-disabledColor);
-}
-
-@media (forced-colors: active) {
-  .ggb-field__label,
-  .ggb-field__requiredIndicator,
-  .ggb-field__description,
-  .ggb-field__message,
   .ggb-field__messageIcon {
-    color: CanvasText;
+    flex: none;
+    inline-size: var(--ggb-field-iconSize);
+    block-size: var(--ggb-field-iconSize);
+    margin-block-start: calc((1lh - var(--ggb-field-iconSize)) / 2);
+    margin-inline: calc(var(--ggb-field-iconSize) / -8);
+    color: var(--ggb-field-messageIconColor);
   }
+  .ggb-field__messageText {
+    min-inline-size: 0;
+  }
+
   .ggb-field[data-disabled] .ggb-field__label,
   .ggb-field[data-disabled] .ggb-field__requiredIndicator,
   .ggb-field[data-disabled] .ggb-field__description {
-    color: GrayText;
+    color: var(--ggb-field-disabledColor);
+  }
+
+  @media (forced-colors: active) {
+    .ggb-field__label,
+    .ggb-field__requiredIndicator,
+    .ggb-field__description,
+    .ggb-field__message,
+    .ggb-field__messageIcon {
+      color: CanvasText;
+    }
+    .ggb-field[data-disabled] .ggb-field__label,
+    .ggb-field[data-disabled] .ggb-field__requiredIndicator,
+    .ggb-field[data-disabled] .ggb-field__description {
+      color: GrayText;
+    }
   }
 }

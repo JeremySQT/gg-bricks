@@ -1,4 +1,4 @@
-// Generated from foundations/components/<family>/field/contract.json. Do not edit.
+// Generated from foundations/components/forms/field/contract.json. Do not edit.
 
 export const defaults = {
   "required": false,

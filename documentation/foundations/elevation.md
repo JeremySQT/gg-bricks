@@ -14,7 +14,17 @@ Elevation tells what sits above what. A shadow draws the separation, a layer ord
 
 <!-- site:tokens preview=shadow -->
 
-Pair each shadow with the matching surface: `color.surface.raised` with `shadow.raised`, `color.surface.overlay` with `shadow.overlay` and `shadow.modal`. In the dark appearance shadows are less visible; the lighter overlay surface carries the separation.
+Pair each shadow with the matching surface: `color.surface.raised` with `shadow.raised`, `color.surface.overlay` with `shadow.overlay` and `shadow.modal`.
+
+## Elevation border
+
+| Role                     | Use for                                                                                                                                                                                                          |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `color.elevation.border` | A `border.width.default` contour drawn by every raised or floating surface together with its shadow. Transparent in light; in dark, where a shadow on a dark background carries little, it draws the separation. |
+
+<!-- site:tokens preview=color -->
+
+Draw it on the same element as the shadow, inside the radius of the surface. It is decorative: the shadow and the surface identify the element, so it has no contrast minimum.
 
 ## Layers
 

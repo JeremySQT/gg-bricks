@@ -46,7 +46,7 @@ A label to description (`space.content.xs`), B to the control (`space.content.sm
 
 ## Examples
 
-The review page `examples/field/App.svelte` covers every case.
+Every case is exercised on the component's review page in the ggbrick repository (`examples/field/App.svelte`, not shipped in the package).
 
 ### The usual case
 

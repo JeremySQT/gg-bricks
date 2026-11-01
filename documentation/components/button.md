@@ -53,7 +53,7 @@ Spacing, the same in every size and density: A side padding of the container, B 
 
 ## Examples
 
-Glyphs come from `./glyphs`, a handful of Phosphor paths standing in for your icon set. The review page `examples/button/App.svelte` covers every case.
+Glyphs come from `./glyphs`, a handful of Phosphor paths standing in for your icon set. Every case is exercised on the component's review page in the ggbrick repository (`examples/button/App.svelte`, not shipped in the package).
 
 ### The usual case
 

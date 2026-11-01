@@ -106,14 +106,14 @@
         ],
         "sha256": {
           "packages/svelte/src/components/textarea/Textarea.svelte": "f6eecf32e3f0992509e36a8dc1db46730f7fdc93ec8eec3929bb039965263950",
-          "packages/svelte/src/components/textarea/contract.generated.ts": "3d8f28eedcda240c1d5bd5f8c92f308c0a7043598a5aa08fdb505714b433a9da",
-          "packages/svelte/src/components/textarea/textarea.css": "1909d0101c4cb48604eef14345f8febb680227a73b9c3d2a0cf65a79bfe5344a",
-          "packages/svelte/src/components/textarea/tokens.generated.css": "7f04ed9a8584447ca192ec80cff9350779b84c86aaf70afd12346236a67e9433",
+          "packages/svelte/src/components/textarea/contract.generated.ts": "43f7d98bcdaab5f1fc5a8a8e324fd65383793c328d7cf65c2e9e43ffd370d4fa",
+          "packages/svelte/src/components/textarea/textarea.css": "665299ff6d3d9b74356b2c31d93096bb82e170d18a33708f9b9fb39accedd307",
+          "packages/svelte/src/components/textarea/tokens.generated.css": "56f24edc2bfb982920e98b3d54a2532ec47a75d738cbc87c0df6372c2cb78859",
           "packages/svelte/src/components/textarea/types.ts": "6c353f669057c6abaded1706b3cdd7b0b8a5581a3eb2e53e28d68602abf14434",
           "examples/textarea/App.svelte": "b9f7f5fafc1c81ea66c4e2dc345ede262704b7be063b17f215f3064f6c456040"
         }
       },
-      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27). Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded.",
       "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
     },
     "figmaParity": {
@@ -126,11 +126,11 @@
         ],
         "sha256": {
           "reports/components/textarea/figma/parity.json": "9f9b66b8d77551a6945aa9d95f35ee693db7f6e039d83b6c15777d8f9be698ae",
-          "reports/components/textarea/figma/ledger.json": "3dcf09f33ee7dc0320206bd880f80f607e684edf0352cf5d030bdd3c4729d8bd",
-          "foundations/components/forms/textarea/figma-spec.md": "a984a13b579d1717587377fbf88b444ebacd9ff1f383b0770f3472012792a314"
+          "reports/components/textarea/figma/ledger.json": "81eff7320e32f8dfbd30dc0c540d4f29b17ec4470956b1f69590ddeb931b64d9",
+          "foundations/components/forms/textarea/figma-spec.md": "7b087f9b81765a45eee5d3447895ec5258a54e0a9c9875ca4b8f7672edff0782"
         }
       },
-      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\" Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged.",
       "note": null
     },
     "documentation": {
@@ -142,12 +142,12 @@
           "apps/docs/src/playgrounds/textarea.svelte"
         ],
         "sha256": {
-          "documentation/components/textarea.md": "55761abd49975aa42a2aa62d11e3deb4e9ab032f948e319f27db70b4a2158672",
+          "documentation/components/textarea.md": "8def48bc983bc5d365207896e29b9417f9ca2ef5df2e81aae12c3fffb58ec8d1",
           "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
           "apps/docs/src/playgrounds/textarea.svelte": "7bebd512ed85da5b4a7f579177b6ed7289be6f531566ed9239285784d87d00b0"
         }
       },
-      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded.",
       "note": null
     },
     "delivery": null

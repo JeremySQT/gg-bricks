@@ -1,4 +1,4 @@
-// Generated from foundations/components/<family>/checkbox/contract.json. Do not edit.
+// Generated from foundations/components/forms/checkbox/contract.json. Do not edit.
 export type CheckboxSize = "sm" | "md" | "lg";
 export const defaults = {
   "checked": false,

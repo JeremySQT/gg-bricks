@@ -1,4 +1,5 @@
 /* Generated token bindings from the button contract. Do not edit. */
+@layer ggb {
 .ggb-button[data-intent="accent"][data-appearance="solid"] {
   --ggb-button-surface-default: var(--ggb-color-action-accent-solid-default-surface);
   --ggb-button-surface-hover: var(--ggb-color-action-accent-solid-hover-surface);
@@ -171,4 +172,5 @@
   --ggb-button-typography-letterSpacing: var(--ggb-typography-label-lg-letterSpacing);
   --ggb-button-typography-fontFeatureSettings: var(--ggb-typography-label-lg-fontFeatureSettings);
   --ggb-button-iconSize: var(--ggb-size-icon-lg);
+}
 }

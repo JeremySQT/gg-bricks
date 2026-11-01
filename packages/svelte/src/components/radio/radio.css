@@ -3,203 +3,205 @@
  * The container is a label: a press anywhere on the box, the label or the description selects the radio. The box
  * is centered on the first line of the label (1lh), and the row is at least minTarget tall without growing.
  */
-.ggb-radio {
-  --_box: var(--ggb-radio-boxSize-md);
-  --_gap: var(--ggb-radio-gap-md);
-  --_typography: var(--ggb-radio-typography-md);
-  --_typography-letterSpacing: var(--ggb-radio-typography-md-letterSpacing, normal);
-  --_condition-surface-off: var(--ggb-radio-surface-off-default);
-  --_condition-content-off: var(--ggb-radio-content-off-default);
-  --_condition-border-off: var(--ggb-radio-border-off-default);
-  --_condition-surface-on: var(--ggb-radio-surface-on-default);
-  --_condition-content-on: var(--ggb-radio-content-on-default);
-  --_condition-border-on: var(--ggb-radio-border-on-default);
-  --_surface: var(--_condition-surface-off);
-  --_content: var(--_condition-content-off);
-  --_border: var(--_condition-border-off);
-  position: relative;
-  display: inline-flex;
-  align-items: flex-start;
-  gap: var(--_gap);
-  max-inline-size: 100%;
-  font: var(--_typography);
-  letter-spacing: var(--_typography-letterSpacing);
-  color: var(--ggb-radio-labelColor);
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-.ggb-radio[data-size='sm'] {
-  --_box: var(--ggb-radio-boxSize-sm);
-  --_gap: var(--ggb-radio-gap-sm);
-  --_typography: var(--ggb-radio-typography-sm);
-  --_typography-letterSpacing: var(--ggb-radio-typography-sm-letterSpacing, normal);
-}
-.ggb-radio[data-size='lg'] {
-  --_box: var(--ggb-radio-boxSize-lg);
-  --_gap: var(--ggb-radio-gap-lg);
-  --_typography: var(--ggb-radio-typography-lg);
-  --_typography-letterSpacing: var(--ggb-radio-typography-lg-letterSpacing, normal);
-}
+@layer ggb {
+  .ggb-radio {
+    --_box: var(--ggb-radio-boxSize-md);
+    --_gap: var(--ggb-radio-gap-md);
+    --_typography: var(--ggb-radio-typography-md);
+    --_typography-letterSpacing: var(--ggb-radio-typography-md-letterSpacing, normal);
+    --_condition-surface-off: var(--ggb-radio-surface-off-default);
+    --_condition-content-off: var(--ggb-radio-content-off-default);
+    --_condition-border-off: var(--ggb-radio-border-off-default);
+    --_condition-surface-on: var(--ggb-radio-surface-on-default);
+    --_condition-content-on: var(--ggb-radio-content-on-default);
+    --_condition-border-on: var(--ggb-radio-border-on-default);
+    --_surface: var(--_condition-surface-off);
+    --_content: var(--_condition-content-off);
+    --_border: var(--_condition-border-off);
+    position: relative;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--_gap);
+    max-inline-size: 100%;
+    font: var(--_typography);
+    letter-spacing: var(--_typography-letterSpacing);
+    color: var(--ggb-radio-labelColor);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ggb-radio[data-size='sm'] {
+    --_box: var(--ggb-radio-boxSize-sm);
+    --_gap: var(--ggb-radio-gap-sm);
+    --_typography: var(--ggb-radio-typography-sm);
+    --_typography-letterSpacing: var(--ggb-radio-typography-sm-letterSpacing, normal);
+  }
+  .ggb-radio[data-size='lg'] {
+    --_box: var(--ggb-radio-boxSize-lg);
+    --_gap: var(--ggb-radio-gap-lg);
+    --_typography: var(--ggb-radio-typography-lg);
+    --_typography-letterSpacing: var(--ggb-radio-typography-lg-letterSpacing, normal);
+  }
 
-.ggb-radio::before {
-  content: '';
-  position: absolute;
-  inset-inline: 0;
-  top: 50%;
-  block-size: max(100%, var(--ggb-radio-minTarget));
-  transform: translateY(-50%);
-}
+  .ggb-radio::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 50%;
+    block-size: max(100%, var(--ggb-radio-minTarget));
+    transform: translateY(-50%);
+  }
 
-.ggb-radio__control {
-  position: relative;
-  display: block;
-  flex: none;
-  inline-size: var(--_box);
-  block-size: var(--_box);
-  /* The control box is centered on the first line of the label: 1lh resolves with the inherited line height. */
-  margin: calc((1lh - var(--_box)) / 2) 0 0;
-  padding: 0;
-  border: 0;
-  border-radius: var(--ggb-radio-radius);
-  background: transparent;
-  font: inherit;
-  cursor: inherit;
-  appearance: none;
-  outline: none;
-}
-/*
+  .ggb-radio__control {
+    position: relative;
+    display: block;
+    flex: none;
+    inline-size: var(--_box);
+    block-size: var(--_box);
+    /* The control box is centered on the first line of the label: 1lh resolves with the inherited line height. */
+    margin: calc((1lh - var(--_box)) / 2) 0 0;
+    padding: 0;
+    border: 0;
+    border-radius: var(--ggb-radio-radius);
+    background: transparent;
+    font: inherit;
+    cursor: inherit;
+    appearance: none;
+    outline: none;
+  }
+  /*
  * The circle fills the control: the ring is centered on the box with its stroke inside it, the dot is 3/8 of the box.
  * In a square SVG viewport a percentage radius is a share of the side.
  */
-.ggb-radio__circle {
-  display: block;
-  inline-size: 100%;
-  block-size: 100%;
-  overflow: visible;
-}
-.ggb-radio__ring {
-  cx: 50%;
-  cy: 50%;
-  r: calc(50% - var(--ggb-radio-borderWidth) / 2);
-  fill: var(--_surface);
-  stroke: var(--_border);
-  stroke-width: var(--ggb-radio-borderWidth);
-  transition-property: fill, stroke;
-  transition-duration: var(--ggb-radio-motionDuration);
-  transition-timing-function: var(--ggb-radio-easingStandard);
-}
-.ggb-radio__mark {
-  cx: 50%;
-  cy: 50%;
-  r: calc(50% * 3 / 8);
-  fill: var(--_content);
-}
+  .ggb-radio__circle {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    overflow: visible;
+  }
+  .ggb-radio__ring {
+    cx: 50%;
+    cy: 50%;
+    r: calc(50% - var(--ggb-radio-borderWidth) / 2);
+    fill: var(--_surface);
+    stroke: var(--_border);
+    stroke-width: var(--ggb-radio-borderWidth);
+    transition-property: fill, stroke;
+    transition-duration: var(--ggb-radio-motionDuration);
+    transition-timing-function: var(--ggb-radio-easingStandard);
+  }
+  .ggb-radio__mark {
+    cx: 50%;
+    cy: 50%;
+    r: calc(50% * 3 / 8);
+    fill: var(--_content);
+  }
 
-.ggb-radio__text {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-inline-size: 0;
-  overflow-wrap: anywhere;
-}
-.ggb-radio__description {
-  font: var(--ggb-radio-typographyDescription);
-  letter-spacing: var(--ggb-radio-typographyDescription-letterSpacing, normal);
-  color: var(--ggb-radio-descriptionColor);
-}
+  .ggb-radio__text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+  .ggb-radio__description {
+    font: var(--ggb-radio-typographyDescription);
+    letter-spacing: var(--ggb-radio-typographyDescription-letterSpacing, normal);
+    color: var(--ggb-radio-descriptionColor);
+  }
 
-/*
+  /*
  * Condition sets both selections' colors, lowest precedence first (hover, invalid, readonly, disabled); every
  * condition selector has the same specificity, so source order is the precedence. Selection then picks one set.
  */
-@media (hover: hover) {
-  .ggb-radio:where(:hover) {
-    --_condition-surface-off: var(--ggb-radio-surface-off-hover);
-    --_condition-content-off: var(--ggb-radio-content-off-hover);
-    --_condition-border-off: var(--ggb-radio-border-off-hover);
-    --_condition-surface-on: var(--ggb-radio-surface-on-hover);
-    --_condition-content-on: var(--ggb-radio-content-on-hover);
-    --_condition-border-on: var(--ggb-radio-border-on-hover);
+  @media (hover: hover) {
+    .ggb-radio:where(:hover) {
+      --_condition-surface-off: var(--ggb-radio-surface-off-hover);
+      --_condition-content-off: var(--ggb-radio-content-off-hover);
+      --_condition-border-off: var(--ggb-radio-border-off-hover);
+      --_condition-surface-on: var(--ggb-radio-surface-on-hover);
+      --_condition-content-on: var(--ggb-radio-content-on-hover);
+      --_condition-border-on: var(--ggb-radio-border-on-hover);
+    }
   }
-}
-.ggb-radio:where([data-invalid]) {
-  --_condition-surface-off: var(--ggb-radio-surface-off-invalid);
-  --_condition-content-off: var(--ggb-radio-content-off-invalid);
-  --_condition-border-off: var(--ggb-radio-border-off-invalid);
-  --_condition-surface-on: var(--ggb-radio-surface-on-invalid);
-  --_condition-content-on: var(--ggb-radio-content-on-invalid);
-  --_condition-border-on: var(--ggb-radio-border-on-invalid);
-}
-.ggb-radio:where([data-readonly]) {
-  --_condition-surface-off: var(--ggb-radio-surface-off-readonly);
-  --_condition-content-off: var(--ggb-radio-content-off-readonly);
-  --_condition-border-off: var(--ggb-radio-border-off-readonly);
-  --_condition-surface-on: var(--ggb-radio-surface-on-readonly);
-  --_condition-content-on: var(--ggb-radio-content-on-readonly);
-  --_condition-border-on: var(--ggb-radio-border-on-readonly);
-  cursor: default;
-}
-.ggb-radio:where([data-disabled]) {
-  --_condition-surface-off: var(--ggb-radio-surface-off-disabled);
-  --_condition-content-off: var(--ggb-radio-content-off-disabled);
-  --_condition-border-off: var(--ggb-radio-border-off-disabled);
-  --_condition-surface-on: var(--ggb-radio-surface-on-disabled);
-  --_condition-content-on: var(--ggb-radio-content-on-disabled);
-  --_condition-border-on: var(--ggb-radio-border-on-disabled);
-  color: var(--ggb-radio-disabledColor);
-  cursor: not-allowed;
-}
-.ggb-radio:has(.ggb-radio__control[data-state='checked']) {
-  --_surface: var(--_condition-surface-on);
-  --_content: var(--_condition-content-on);
-  --_border: var(--_condition-border-on);
-}
-.ggb-radio[data-disabled] .ggb-radio__description {
-  color: var(--ggb-radio-disabledColor);
-}
-
-.ggb-radio__control:focus-visible {
-  outline: var(--ggb-radio-focusWidth) solid var(--ggb-radio-focusColor);
-  outline-offset: var(--ggb-radio-focusOffset);
-  /* Outline corners resolve to radius + focusOffset: fully rounded, like the circle. */
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ggb-radio__ring {
-    transition: none;
+  .ggb-radio:where([data-invalid]) {
+    --_condition-surface-off: var(--ggb-radio-surface-off-invalid);
+    --_condition-content-off: var(--ggb-radio-content-off-invalid);
+    --_condition-border-off: var(--ggb-radio-border-off-invalid);
+    --_condition-surface-on: var(--ggb-radio-surface-on-invalid);
+    --_condition-content-on: var(--ggb-radio-content-on-invalid);
+    --_condition-border-on: var(--ggb-radio-border-on-invalid);
   }
-}
-
-@media (forced-colors: active) {
-  .ggb-radio__ring {
-    fill: Canvas;
-    stroke: CanvasText;
+  .ggb-radio:where([data-readonly]) {
+    --_condition-surface-off: var(--ggb-radio-surface-off-readonly);
+    --_condition-content-off: var(--ggb-radio-content-off-readonly);
+    --_condition-border-off: var(--ggb-radio-border-off-readonly);
+    --_condition-surface-on: var(--ggb-radio-surface-on-readonly);
+    --_condition-content-on: var(--ggb-radio-content-on-readonly);
+    --_condition-border-on: var(--ggb-radio-border-on-readonly);
+    cursor: default;
   }
-  .ggb-radio__mark {
-    fill: CanvasText;
+  .ggb-radio:where([data-disabled]) {
+    --_condition-surface-off: var(--ggb-radio-surface-off-disabled);
+    --_condition-content-off: var(--ggb-radio-content-off-disabled);
+    --_condition-border-off: var(--ggb-radio-border-off-disabled);
+    --_condition-surface-on: var(--ggb-radio-surface-on-disabled);
+    --_condition-content-on: var(--ggb-radio-content-on-disabled);
+    --_condition-border-on: var(--ggb-radio-border-on-disabled);
+    color: var(--ggb-radio-disabledColor);
+    cursor: not-allowed;
   }
-  .ggb-radio:has(.ggb-radio__control[data-state='checked']) .ggb-radio__ring {
-    fill: Highlight;
-    stroke: Highlight;
+  .ggb-radio:has(.ggb-radio__control[data-state='checked']) {
+    --_surface: var(--_condition-surface-on);
+    --_content: var(--_condition-content-on);
+    --_border: var(--_condition-border-on);
   }
-  .ggb-radio:has(.ggb-radio__control[data-state='checked']) .ggb-radio__mark {
-    fill: HighlightText;
-  }
-  .ggb-radio[data-disabled],
   .ggb-radio[data-disabled] .ggb-radio__description {
-    color: GrayText;
+    color: var(--ggb-radio-disabledColor);
   }
-  .ggb-radio[data-disabled] .ggb-radio__ring {
-    stroke: GrayText;
-  }
-  .ggb-radio[data-disabled]:has(.ggb-radio__control[data-state='checked']) .ggb-radio__ring {
-    fill: GrayText;
-  }
-  .ggb-radio[data-disabled] .ggb-radio__mark {
-    fill: Canvas;
-  }
+
   .ggb-radio__control:focus-visible {
-    outline: var(--ggb-radio-focusWidth) solid Highlight;
+    outline: var(--ggb-radio-focusWidth) solid var(--ggb-radio-focusColor);
     outline-offset: var(--ggb-radio-focusOffset);
+    /* Outline corners resolve to radius + focusOffset: fully rounded, like the circle. */
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-radio__ring {
+      transition: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .ggb-radio__ring {
+      fill: Canvas;
+      stroke: CanvasText;
+    }
+    .ggb-radio__mark {
+      fill: CanvasText;
+    }
+    .ggb-radio:has(.ggb-radio__control[data-state='checked']) .ggb-radio__ring {
+      fill: Highlight;
+      stroke: Highlight;
+    }
+    .ggb-radio:has(.ggb-radio__control[data-state='checked']) .ggb-radio__mark {
+      fill: HighlightText;
+    }
+    .ggb-radio[data-disabled],
+    .ggb-radio[data-disabled] .ggb-radio__description {
+      color: GrayText;
+    }
+    .ggb-radio[data-disabled] .ggb-radio__ring {
+      stroke: GrayText;
+    }
+    .ggb-radio[data-disabled]:has(.ggb-radio__control[data-state='checked']) .ggb-radio__ring {
+      fill: GrayText;
+    }
+    .ggb-radio[data-disabled] .ggb-radio__mark {
+      fill: Canvas;
+    }
+    .ggb-radio__control:focus-visible {
+      outline: var(--ggb-radio-focusWidth) solid Highlight;
+      outline-offset: var(--ggb-radio-focusOffset);
+    }
   }
 }

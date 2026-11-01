@@ -111,14 +111,14 @@
         ],
         "sha256": {
           "packages/svelte/src/components/radio-group/RadioGroup.svelte": "df91f16973c6d198640d165ee6706cc0e0c0c0f1bfbc1b8b304eae3d32952f20",
-          "packages/svelte/src/components/radio-group/contract.generated.ts": "9ccfe98d15642a84b145ec8f67e80fb5733c1664d4627e597811d17bc13ca270",
-          "packages/svelte/src/components/radio-group/radio-group.css": "73c4b5d568242df1c841faf95aa6f078d36efe8126f6e7e452c265ff8ec69304",
-          "packages/svelte/src/components/radio-group/tokens.generated.css": "6f9b7dbc677b211e388255753a3f021b8e1106fa633f207c80853c954bd6beea",
+          "packages/svelte/src/components/radio-group/contract.generated.ts": "d169f9003a4fe7c9e9ab0d9dcdf64829b91ca90fb2cccb0f9a6e5f8a35126dfd",
+          "packages/svelte/src/components/radio-group/radio-group.css": "e6d5f6f6ed9adc40755725bf60f33819da7b4398755aac17bb19e70b9a6ea070",
+          "packages/svelte/src/components/radio-group/tokens.generated.css": "bfa52a6a8370e24843209cf837acffe5165074bfc9ce0824ba964e962faf652e",
           "packages/svelte/src/components/radio-group/types.ts": "4bef50e7f76a59dc5c7b904b22e3a7a81fc888de695ba09b5a12f7988415835c",
           "examples/radio-group/App.svelte": "17960ce04cab329ab1d6c7cc5c8cee6f6ba1d1a5fe073c1c0769dd91c4392912"
         }
       },
-      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27). Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded.",
       "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
     },
     "figmaParity": {
@@ -131,11 +131,11 @@
         ],
         "sha256": {
           "reports/components/radio-group/figma/parity.json": "4bb85f670cbec1cade95484eb38b7ff44fde51baff7c3a941c102ff0c548ed08",
-          "reports/components/radio-group/figma/ledger.json": "1b05629f6c23061ec42afc8023b4a38b0627020dcb607f59556504881daf90a9",
-          "foundations/components/forms/radio-group/figma-spec.md": "d6bd1a6ef1b39040f8e511e189b6925eab6306681b07e2a768bd4e618a80f92c"
+          "reports/components/radio-group/figma/ledger.json": "e526b26936986d542e2d6d8dc9e9494a576601ae285af63a4feb3492f4f17581",
+          "foundations/components/forms/radio-group/figma-spec.md": "c1932927c26a9c0bee4c1ff4757c4e2b1196d276e6d35a94b985ebf0efb85cb1"
         }
       },
-      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\" Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged.",
       "note": null
     },
     "documentation": {
@@ -147,12 +147,12 @@
           "apps/docs/src/playgrounds/radio-group.svelte"
         ],
         "sha256": {
-          "documentation/components/radio-group.md": "21b79a98ffe393d7e1f50c929ba48b9253161731e28d46972d429e9ae237d8ef",
+          "documentation/components/radio-group.md": "fa9f03c4172ed1bf1957957e8f9ebfaceab4168cc23e059bcfa54906d41bfca1",
           "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
           "apps/docs/src/playgrounds/radio-group.svelte": "2bdadbd6c8d473f8d42157c26696df441c1ded79d91a38019455195bb72a48f1"
         }
       },
-      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded.",
       "note": null
     },
     "delivery": null

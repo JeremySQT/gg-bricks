@@ -1,4 +1,5 @@
 /* Generated token bindings from the icon-button contract. Do not edit. */
+@layer ggb {
 .ggb-icon-button[data-intent="accent"][data-appearance="solid"] {
   --ggb-icon-button-surface-default: var(--ggb-color-action-accent-solid-default-surface);
   --ggb-icon-button-surface-hover: var(--ggb-color-action-accent-solid-hover-surface);
@@ -150,4 +151,5 @@
 .ggb-icon-button[data-size="lg"] {
   --ggb-icon-button-boxSize: var(--ggb-size-control-lg);
   --ggb-icon-button-iconSize: var(--ggb-size-icon-lg);
+}
 }

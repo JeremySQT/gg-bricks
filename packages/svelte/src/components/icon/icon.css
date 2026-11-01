@@ -4,14 +4,16 @@
  * centered on the cap height of the surrounding text, as the Button centers its content: `middle` would center
  * it on the x-height and sit it low next to capitals. The glyph is painted in the current content color.
  */
-.ggb-icon {
-  display: inline-block;
-  inline-size: var(--ggb-icon-size);
-  block-size: var(--ggb-icon-size);
-  flex: none;
-  /* Raise the bottom edge from the baseline so that the box center meets the middle of the capitals. */
-  vertical-align: middle;
-  vertical-align: calc((1cap - var(--ggb-icon-size)) / 2);
-  fill: currentColor;
-  overflow: hidden;
+@layer ggb {
+  .ggb-icon {
+    display: inline-block;
+    inline-size: var(--ggb-icon-size);
+    block-size: var(--ggb-icon-size);
+    flex: none;
+    /* Raise the bottom edge from the baseline so that the box center meets the middle of the capitals. */
+    vertical-align: middle;
+    vertical-align: calc((1cap - var(--ggb-icon-size)) / 2);
+    fill: currentColor;
+    overflow: hidden;
+  }
 }

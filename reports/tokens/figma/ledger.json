@@ -4,7 +4,7 @@
     "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
     "plan": "team::1308046554739244831 (Jeremy SQT, pro)"
   },
-  "syncedOn": "2026-09-26 (primitives moved to their own collection the same day)",
+  "syncedOn": "2026-09-26 (primitives moved to their own collection the same day); pre-wave 3 delta on 2026-11-01",
   "source": {
     "manifest": "packages/tokens/figma-manifest.json",
     "expectations": "packages/tokens/figma-expectations.json",
@@ -57,7 +57,7 @@
     }
   },
   "variables": {
-    "total": 789,
+    "total": 808,
     "batches": [
       {
         "batch": 1,
@@ -93,6 +93,13 @@
         "content": "primitive/color/neutral/450; color/palette/neutral/450; size/choice/{sm,md,lg}; size/switch/{sm,md,lg}; color/choice/{off,on}/{default,hover,readonly,disabled,invalid}/{surface,content,border}; updated: color/field/{default,hover,readonly}/border",
         "count": 41,
         "ids": "created VariableID:286:2 to VariableID:286:39 (38); updated the three field border variables in place"
+      },
+      {
+        "batch": "pre-wave 3 delta (2026-11-01)",
+        "collection": "Brand, Appearance",
+        "content": "motion/distance/{sm,md} (Brand); color/item/{default,hover,selected,selected-hover,disabled}/{surface,content,border}, color/item/indicator, color/elevation/border (Appearance); aliases to existing primitives, palette and content variables",
+        "count": 19,
+        "ids": "created VariableID:395:2 to VariableID:395:20 (dist/figma/variables-delta-2026-11-01.js, sync-variables.plugin.js body); verification 2026-11-01: 575 manifest variables, 18 contexts, 0 failures (reports/tokens/figma/verification.json)"
       }
     ],
     "migrations": [
@@ -222,6 +229,7 @@
   "effectStyles": 3,
   "limitations": [
     "OpenType features (tnum on typography/numeral/*) cannot be set on text styles through the Plugin API; the style description records them and the text layer sets them.",
-    "Style IDs are file-local (S:… keys) and are read from the file when needed."
+    "Style IDs are file-local (S:… keys) and are read from the file when needed.",
+    "checkbox/focus-radius is an adapter variable kept in Foundations · Brand (its value changes with the brand; see authoring/adapters/figma/checkbox-focus-radius.plugin.js). Since 2026-11-01 the verification hashes exactly the manifest variables and lists it under unexpected instead of failing."
   ]
 }

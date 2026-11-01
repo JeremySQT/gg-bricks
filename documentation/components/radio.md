@@ -37,7 +37,7 @@ A circle size (14, 16 or 20 px, the size of a Checkbox box), B gap between circl
 
 ## Examples
 
-The review page `examples/radio-group/App.svelte` shows radios in every size and condition.
+The review page `examples/radio-group/App.svelte` of the ggbrick repository (not shipped in the package) shows radios in every size and condition.
 
 ### Options with descriptions
 

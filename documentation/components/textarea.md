@@ -39,7 +39,7 @@ A block padding (half the InputText height minus one line: 8 px at md in standar
 
 ## Examples
 
-The review page `examples/textarea/App.svelte` covers every case.
+Every case is exercised on the component's review page in the ggbrick repository (`examples/textarea/App.svelte`, not shipped in the package).
 
 ### The usual case
 

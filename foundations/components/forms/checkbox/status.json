@@ -106,15 +106,15 @@
           "examples/checkbox/App.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/components/checkbox/Checkbox.svelte": "b10a4172f35b17210fb242b2bba6a6e502f47af039a6f8fae7ac34de894d80a8",
-          "packages/svelte/src/components/checkbox/checkbox.css": "fa5c08a2ff96311d8b0026e798843af81bb6ed56d5d29100eab5cd9e9029fedd",
-          "packages/svelte/src/components/checkbox/contract.generated.ts": "e7a3cb310f1280024047115dd738d6726f8004b9d653862c2582d5f2a7c9f644",
-          "packages/svelte/src/components/checkbox/tokens.generated.css": "9bf60b6814f8b5a9c289b893299df145badf6b54f2aea2cf67efc561fcea9864",
-          "packages/svelte/src/components/checkbox/types.ts": "a442ae604c59ab199e073a3728e4f72e7e99d2045446c264b544fe7ccd0839e9",
+          "packages/svelte/src/components/checkbox/Checkbox.svelte": "b4a4a95b5d0cdcab1372a5d2cf824546326f827f3def07722e3fc7e7432eef17",
+          "packages/svelte/src/components/checkbox/checkbox.css": "04221561b601d41899073de2b351bfed525f190b2dd54c840dd2590293860fdb",
+          "packages/svelte/src/components/checkbox/contract.generated.ts": "8f31ebb389f7421c02c760385e04ea6cc04a8ddc827eb2e51e1024c89fd2f15d",
+          "packages/svelte/src/components/checkbox/tokens.generated.css": "9ee2e8a488cc7e49620a9c9c8671fdfbcaa58a5e25aeb20609cc442c4c326f32",
+          "packages/svelte/src/components/checkbox/types.ts": "86568aacd4634bf97c4b43fadbcd60e08e8d48f045b07ae383df7067b4459b04",
           "examples/checkbox/App.svelte": "c4efb2a1275a134378309ebc7d34625cfb1c76654771ce1273766f75fef0462e"
         }
       },
-      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27).",
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27). Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded. Checkbox.svelte, types.ts and contract.generated.ts had changed on 2026-10-28 for the CheckboxGroup integration (commit 08b561c), covered by the CheckboxGroup implementation approval of the same day (commit 6c96acf).",
       "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
     },
     "figmaParity": {
@@ -127,11 +127,11 @@
         ],
         "sha256": {
           "reports/components/checkbox/figma/parity.json": "679666e530a55d8eacced7f6eb0c111c1710dd4aa072b1f1111994b9ce8d465c",
-          "reports/components/checkbox/figma/ledger.json": "99038cefbef54891abb25bd0438a0801b5c5924139e6fcb28cac17a24fb42fdd",
-          "foundations/components/forms/checkbox/figma-spec.md": "f14eb62c79d0da27f3abb310dea5a0caecdc98c389571baa3e3121a53490c9e9"
+          "reports/components/checkbox/figma/ledger.json": "2c84e74281ad0fbbc5e5a2e83a7c6a4c120af25d5a2753d990b29b4d18d6e7f5",
+          "foundations/components/forms/checkbox/figma-spec.md": "9386def88978a12d63318b8eadaa96a64edb84539a8d9393a69712e3d4781c26"
         }
       },
-      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\"",
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\" Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged.",
       "note": null
     },
     "documentation": {
@@ -143,12 +143,12 @@
           "apps/docs/src/playgrounds/checkbox.svelte"
         ],
         "sha256": {
-          "documentation/components/checkbox.md": "9cf1228e044da635672db91c8969050edb78be5623456b84126948c8e302764b",
+          "documentation/components/checkbox.md": "c3f8e233d6fa324cc07c9406c014d476ed864ef1257439a49b2454c7dc974d15",
           "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
           "apps/docs/src/playgrounds/checkbox.svelte": "cd940499923a9d028a2d67621d09aec4505af7ad8c38818a012e58820dcea0e2"
         }
       },
-      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\"",
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded.",
       "note": null
     },
     "delivery": null

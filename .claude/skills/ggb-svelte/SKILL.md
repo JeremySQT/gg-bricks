@@ -11,9 +11,10 @@ Read `authoring/architecture.md` (Svelte adapter generation, Component folder ru
 
 - Folder `packages/svelte/src/components/<id>/`: `<Name>.svelte`, `types.ts`, `<id>.css`, generated `contract.generated.ts` and `tokens.generated.css` (`npm run build:svelte`); export from `src/index.ts`. The folder must be copyable on its own (plus `tokens.css`, Bits UI and declared internal dependencies).
 - Root class `ggb-<id>`, parts `ggb-<id>__<part>`, enum props as `data-<prop>` attributes, boolean states as `data-<state>` presence. Bindable props use `$bindable()`; contract events map to `on<Event>` callback props.
-- Colors and dimensions come only from `tokens.generated.css` custom properties; `<id>.css` holds structural literals only (0, 100%, transparent, currentColor).
+- Colors and dimensions come only from `tokens.generated.css` custom properties; `<id>.css` holds structural literals only (0, 100%, transparent, currentColor). Both files are wrapped in `@layer ggb` (the generator does it for `tokens.generated.css`; write `@layer ggb { … }` around the handwritten rules, the file comment staying outside).
 - Use logical properties (`inline-size`, `padding-inline`, `margin-block`, `inset-inline-start`) so the component works in RTL without changes.
-- Use the Bits UI primitive that owns the native semantics; add ggbrick's anatomy, guards and styles on top; do not re-implement what the primitive provides.
+- Use the Bits UI primitive that owns the native semantics; add ggbrick's anatomy, guards and styles on top; do not re-implement what the primitive provides. Overlays (Dialog, Drawer, Popover, Menu, Tooltip, Select, Combobox) use the browser top layer through `packages/svelte/src/lib/overlay/` (`floating` for `popover` elements written in the markup, `modal` for `<dialog>`, `overlay.css`), never a portal; Bits UI content is used static (`ContentStatic`) and placed by the same attachment (decision of 2026-10-31; findings in `reports/spikes/2026-10-31-overlays.md`).
+- Shared code lives in `packages/svelte/src/lib/<module>/` (copyable, no import outside `src/lib/`); a component that imports a module lists `lib/<module>` under `dependencies` in its status.
 - Slot content inherits `color`; icons use `currentColor`. Handle `prefers-reduced-motion` and `forced-colors`. Respect `size.target.min` without growing the visible surface.
 - Implement every contract rule literally (order, sizing, activation guards, state precedence, accessible name); document what snippets cannot enforce.
 

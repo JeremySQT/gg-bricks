@@ -1,0 +1,61 @@
+/* Spike only: the look of the prototype popover and dialog, from tokens. Geometry and motion come from overlay.css. */
+@layer ggb {
+  .spike-popover {
+    --ggb-overlay-offset: var(--ggb-space-content-xs);
+    --ggb-overlay-distance: var(--ggb-motion-distance-sm);
+    --ggb-overlay-duration: var(--ggb-motion-duration-base);
+    display: grid;
+    gap: var(--ggb-space-content-sm);
+    min-inline-size: 14rem;
+    padding: var(--ggb-space-content-md);
+    border: var(--ggb-border-width-default) solid var(--ggb-color-elevation-border);
+    border-radius: var(--ggb-radius-overlay);
+    background: var(--ggb-color-surface-overlay);
+    box-shadow: var(--ggb-shadow-overlay);
+    color: var(--ggb-color-content-primary);
+    font: var(--ggb-typography-body-md);
+  }
+  .spike-dialog {
+    --ggb-overlay-distance: var(--ggb-motion-distance-md);
+    --ggb-overlay-duration: var(--ggb-motion-duration-slow);
+    inline-size: 28rem;
+    padding: var(--ggb-space-content-lg);
+    border: var(--ggb-border-width-default) solid var(--ggb-color-elevation-border);
+    border-radius: var(--ggb-radius-overlay);
+    background: var(--ggb-color-surface-overlay);
+    box-shadow: var(--ggb-shadow-modal);
+    color: var(--ggb-color-content-primary);
+    font: var(--ggb-typography-body-md);
+  }
+  .spike-dialog[open] {
+    display: grid;
+    gap: var(--ggb-space-content-md);
+  }
+  .spike-dialog h2 {
+    margin: 0;
+    font: var(--ggb-typography-heading-sm);
+  }
+  .spike-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--ggb-space-control-gap-md);
+  }
+  .spike-item {
+    display: flex;
+    align-items: center;
+    gap: var(--ggb-space-content-sm);
+    padding: var(--ggb-space-content-xs) var(--ggb-space-content-sm);
+    border-radius: var(--ggb-radius-control);
+    background: var(--ggb-color-item-default-surface);
+    color: var(--ggb-color-item-default-content);
+  }
+  .spike-item:hover {
+    background: var(--ggb-color-item-hover-surface);
+    color: var(--ggb-color-item-hover-content);
+  }
+  .spike-item[aria-selected='true'] {
+    background: var(--ggb-color-item-selected-surface);
+    color: var(--ggb-color-item-selected-content);
+    box-shadow: inset 3px 0 0 var(--ggb-color-item-indicator);
+  }
+}

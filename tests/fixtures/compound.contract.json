@@ -1,0 +1,110 @@
+{
+  "$schema": "../../authoring/schemas/component-contract.schema.json",
+  "id": "menu",
+  "props": {
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "open": {
+      "type": "boolean",
+      "default": false,
+      "bindable": true
+    },
+    "options": {
+      "type": "records",
+      "fields": {
+        "value": "string",
+        "label": "string",
+        "disabled": "boolean"
+      },
+      "required": ["value", "label"],
+      "default": []
+    }
+  },
+  "parts": {
+    "trigger": {},
+    "panel": {},
+    "items": {
+      "accepts": ["item", "separator"],
+      "min": 1
+    }
+  },
+  "states": {},
+  "events": {
+    "select": {
+      "when": "The user activates an enabled item.",
+      "payload": "The item value."
+    }
+  },
+  "tokens": {
+    "surface": "color.surface.overlay",
+    "content": "color.content.primary",
+    "border": "color.elevation.border",
+    "shadow": "shadow.overlay",
+    "layer": "layer.dropdown",
+    "radius": "radius.overlay",
+    "motionDuration": "motion.duration.base",
+    "easingEnter": "motion.easing.enter",
+    "distance": "motion.distance.sm"
+  },
+  "children": {
+    "item": {
+      "props": {
+        "disabled": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "parts": {
+        "icon": {
+          "accepts": ["icon"],
+          "max": 1
+        },
+        "label": {}
+      },
+      "states": {
+        "condition": {
+          "values": ["default", "hover", "selected", "selected-hover", "disabled"],
+          "default": "default"
+        }
+      },
+      "tokens": {
+        "surface": "color.item.{condition}.surface",
+        "content": "color.item.{condition}.content",
+        "indicatorColor": "color.item.indicator",
+        "typography": "typography.body.{size}",
+        "paddingInline": "space.control.edge-inline.{size}"
+      },
+      "rules": ["An item fills the panel width; its label never wraps."]
+    },
+    "separator": {
+      "props": {},
+      "states": {},
+      "tokens": {
+        "border": "color.border.subtle"
+      },
+      "rules": ["A separator is one border.width.default line, hidden from assistive technology."]
+    }
+  },
+  "contrast": [
+    {
+      "content": "item.content",
+      "surface": "item.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "item.indicatorColor",
+      "surface": "surface",
+      "minimum": 3
+    },
+    {
+      "content": "item.content",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5
+    }
+  ],
+  "rules": [
+    "The panel opens in the top layer below its trigger and closes on Escape, on a press outside and after a selection."
+  ]
+}

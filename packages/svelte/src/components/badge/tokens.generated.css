@@ -1,4 +1,5 @@
 /* Generated token bindings from the badge contract. Do not edit. */
+@layer ggb {
 .ggb-badge[data-intent="neutral"] {
   --ggb-badge-surface: var(--ggb-color-status-neutral-surface);
   --ggb-badge-content: var(--ggb-color-status-neutral-content);
@@ -68,4 +69,5 @@
   --ggb-badge-typography: var(--ggb-typography-indicator-lg);
   --ggb-badge-typography-letterSpacing: var(--ggb-typography-indicator-lg-letterSpacing);
   --ggb-badge-typography-fontFeatureSettings: var(--ggb-typography-indicator-lg-fontFeatureSettings);
+}
 }

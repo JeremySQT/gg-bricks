@@ -46,7 +46,7 @@ A height (the line box of the label: 15.4, 16.8 or 19.6 px, the same in every de
 
 ## Examples
 
-Glyphs come from `./glyphs`, a handful of Phosphor paths standing in for your icon set. The review page `examples/badge/App.svelte` covers every case.
+Glyphs come from `./glyphs`, a handful of Phosphor paths standing in for your icon set. Every case is exercised on the component's review page in the ggbrick repository (`examples/badge/App.svelte`, not shipped in the package).
 
 ### The usual case
 

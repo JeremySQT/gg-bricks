@@ -59,6 +59,12 @@ Draw focus as an outline of `focus.width` in `color.focus.ring`, `focus.offset` 
 
 <!-- site:tokens preview=color -->
 
+## Items
+
+Item roles are named `color.item.{state}.{surface|content|border}` with states `default`, `hover`, `selected`, `selected-hover`, `disabled`, plus `color.item.indicator`. They paint the entries of a list the user browses and picks from: menu items, listbox and select options, tabs, pages of a pagination, toggles of a toolbar. Items sit on the surface that holds the list (`color.surface.default` for tabs, `color.surface.overlay` for menus), so the default item is transparent and its content is the primary content color. `hover` is the highlighted item (pointer or keyboard focus inside the list), `selected` the chosen item, active tab or current page, with a subtle tint and readable content (4.5:1), `selected-hover` both at once. `indicator` is the mark of the choice (the bar under the active tab, the check of a selected option), 3:1 on the list surfaces and on the selected surface. Disabled items keep their place in the list and carry no needed information.
+
+<!-- site:tokens prefix=color.item preview=color -->
+
 ## Actions
 
 Action roles are named `color.action.{intent}.{appearance}.{state}.{surface|content|border}`: intents `accent`, `neutral`, `danger`; appearances `solid`, `outline`, `ghost`; states `default`, `hover`, `pressed`, `loading`, `disabled`. They paint the Button. Use the Button rather than these roles; reach for them only for a custom control that must read as a button of the same intent.

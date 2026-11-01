@@ -53,6 +53,12 @@ async function measure(page: Page, selector: string) {
     const c = getComputedStyle(container);
     const r = container.getBoundingClientRect();
     const glyph = el.querySelector('.ggb-icon-button__icon > svg, .ggb-icon-button__loadingIndicator > svg');
+    // The loading indicator rotates: its bounding box grows with the angle. Measure it at angle 0 (the test was
+    // timing-dependent before, 20 px expected, 22.44 px observed mid-rotation).
+    for (const animation of glyph?.getAnimations() ?? []) {
+      animation.pause();
+      animation.currentTime = 0;
+    }
     const g = glyph?.getBoundingClientRect();
     return {
       content: getComputedStyle(el).color,

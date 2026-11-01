@@ -11,6 +11,9 @@ interface Manifest {
 }
 interface Result {
   variables: number;
+  /** Manifest variables absent from the file (fails) and file variables absent from the manifest (reported). */
+  missing?: string[];
+  unexpected?: string[];
   results: Record<string, { count: number; hash: string; sample: string[] }>;
 }
 const canonical = (value: FigmaValue): string =>
@@ -64,13 +67,25 @@ const records = Object.entries(expected).map(([ctx, e]) => {
   };
 });
 const failures = records.filter((r) => !r.passed);
+const missing = result.missing ?? [];
+const unexpected = result.unexpected ?? [];
 write(`${paths.reports}/tokens/figma/verification.json`, {
   method:
-    'Native Figma resolution (resolveForConsumer on a frame with explicit Brand, Appearance and Density modes) of every semantic variable, in deterministic order, hashed with FNV-1a over canonical values (8-digit hex colors from float32 channels, as Figma stores them; 4-decimal numbers) and compared with the same hash of packages/tokens/figma-expectations.json.',
+    'Native Figma resolution (resolveForConsumer on a frame with explicit Brand, Appearance and Density modes) of every semantic variable of the manifest, in deterministic order, hashed with FNV-1a over canonical values (8-digit hex colors from float32 channels, as Figma stores them; 4-decimal numbers) and compared with the same hash of packages/tokens/figma-expectations.json. Variables of the three collections that the manifest does not list are reported under unexpected (adapter variables), not hashed.',
   variables: ordered.length,
   contexts: records.length,
   failures: failures.length,
+  missing,
+  unexpected,
   records
 });
-console.log(JSON.stringify({ variables: ordered.length, contexts: records.length, failures: failures.length }));
-if (failures.length) process.exitCode = 1;
+console.log(
+  JSON.stringify({
+    variables: ordered.length,
+    contexts: records.length,
+    failures: failures.length,
+    missing: missing.length,
+    unexpected
+  })
+);
+if (failures.length || missing.length) process.exitCode = 1;

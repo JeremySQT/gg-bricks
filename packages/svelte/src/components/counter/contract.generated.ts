@@ -1,4 +1,4 @@
-// Generated from foundations/components/<family>/counter/contract.json. Do not edit.
+// Generated from foundations/components/content/counter/contract.json. Do not edit.
 export type CounterSize = "sm" | "md" | "lg";
 export const defaults = {
   "value": 0,

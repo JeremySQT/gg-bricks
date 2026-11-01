@@ -15,7 +15,8 @@
     "build:palette": "node tooling/generate-palette.ts",
     "build:tokens": "node tooling/build-tokens.ts",
     "build:svelte": "node tooling/build-svelte.ts",
-    "validate": "node tooling/validate-contracts.ts --tokens && node tooling/check-foundations.ts",
+    "validate": "node tooling/validate-contracts.ts --tokens --dependencies && node tooling/check-foundations.ts",
+    "check:approvals": "node tooling/check-approvals.ts",
     "test": "node --test tests/*.test.ts",
     "test:ssr": "node --test tests/ssr/*.test.ts",
     "test:browser": "node tooling/test-browser.ts",
@@ -31,7 +32,7 @@
     "digest": "node tooling/digest.ts",
     "figma:batches": "node tooling/figma-batches.ts",
     "figma:check": "node tooling/check-figma.ts",
-    "verify": "npm run generate && npm run lint && npm run validate && npm test && npm run check && npm run test:ssr && npm run build && npm run build:docs",
+    "verify": "npm run generate && npm run lint && npm run validate && npm run check:approvals && npm test && npm run check && npm run test:ssr && npm run build && npm run build:docs",
     "verify:generated": "npm run generate && npm run validate && git diff --exit-code --stat -- packages reports foundations/tokens/base/primitives/colors.tokens.json",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write ."

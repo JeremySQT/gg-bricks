@@ -1,10 +1,10 @@
 # Component contract format — v1
 
-Status: compact encoding accepted during the design discussion; future component types may extend it. The five substantive blocks are agreed; this schema is deliberately limited to enum, boolean and string inputs; extend it through a reviewed schema change when a component needs more.
+Status: compact encoding accepted during the design discussion; future component types may extend it. The five substantive blocks are agreed; prop types are enum, boolean, string, number and list (the `children`, `records` and `contrast` extensions decided on 2026-10-31 are added through a reviewed schema change before the first wave 3 contract); extend it through a reviewed schema change when a component needs more.
 
 ## Representation
 
-- $schema: optional local editor reference.
+- $schema: optional local editor reference. Schema v1.1 (`authoring/schemas/component-contract.schema.json`) adds `children`, `records` and `contrast` to v1; every v1 contract stays valid.
 - id: stable lowercase kebab-case ID.
 - props: enum = values + default; boolean = type + default; string = type and optional required or default; number = type + default with optional min/max; list = `"type": "list"` + default (an array of unique strings, often `[]`), for a set of values such as the checked values of a group. A required prop cannot also declare a fallback default. `bindable: true` marks a prop whose value flows both ways (an input's value, an open state a parent can control); the implementation exposes it as a two-way binding.
 - parts: named anatomy. An empty object declares an internal part. `accepts` declares a slot accepting component IDs, with optional `min` (default 0) and `max` (unbounded when omitted). A compound component (RadioGroup and its radios) declares the child component in `accepts` with `min: 1`. Part names do not automatically create public API.
@@ -12,6 +12,9 @@ Status: compact encoding accepted during the design discussion; future component
 - tokens: visual role to literal or parameterized token path.
 - events: optional conceptual outputs, name → `when` (English condition) and optional `payload`. Target-specific event names, DOM events and handler signatures belong to the implementation.
 - rules: short English intrinsic requirements, manually reviewed and implemented/tested per target.
+- children (v1.1, 2026-10-31): the named children of a compound component (`item`, `separator`, `group` of a Menu; `trigger` and `panel` of Tabs), each a fragment with its own `props`, optional `parts`, `states`, `tokens` and `rules`. A parent part lists children by name in `accepts` (`"items": { "accepts": ["item", "separator"], "min": 1 }`); a child name is not a dependency. A child's token template may reference the child's enum props and states and the parent's (`typography.body.{size}` with the parent's `size`). Children generate their own types, defaults, selectors (`.ggb-<id>__<child>[data-…]`, the parent's parameters on the root) and variables (`--ggb-<id>-<child>-<role>`), and Figma reproduces them as internal parts (`_<Name>/<Child>`). One contract, one status, one gate per compound component; a child that is also useful on its own is a component of its own (Radio).
+- records (v1.1): `"type": "records"` + `fields` (name → string, boolean or number) + optional `required` (field names every record carries) + `default` (an array of records, usually `[]`), for ordered lists of objects such as the options of a Select or the rows of a Table. The Svelte adapter generates an interface per records prop.
+- contrast (v1.1): explicit pairs `{ content, surface, minimum, note? }` measured in every context by `npm run build:tokens`, for the roles the generic evidence (`surface`, `content`, `border`, `focusColor` of the parent on the status backdrops) does not cover: children and secondary surfaces. `content` is a color role (`item.content`), `surface` a color role with no parameter the content lacks (`item.surface`) or a color token path (`color.surface.overlay`); `minimum` 4.5 for text, 3 for borders, icons and indicators. Disabled values stay informational.
 
 Keep approval metadata outside the contract. Add new types only when a real component needs a reviewed schema extension. No Svelte/DOM/Figma mechanisms belong here.
 
@@ -38,7 +41,7 @@ No completed token set or production catalog is included. Never manufacture toke
 
 ## Role naming convention
 
-Generic checks infer the expected token type from the role name: `surface`, `content`, `border` and roles ending in `Color` are colors; roles starting with `typography` are typography; `motion*`/`duration*` durations; `easing*` cubic Béziers; `shadow*` shadows; roles ending in `Opacity` numbers; everything else is a dimension. The validator rejects a resolved token whose `$type` does not match. Contrast evidence uses `surface`/`content`/`border`/`focusColor`.
+Generic checks infer the expected token type from the role name (for a child role, the part after the child prefix: `item.surface` is a `surface`): `surface`, `content`, `border` and roles ending in `Color` are colors; roles starting with `typography` are typography; `motion*`/`duration*` durations; `easing*` cubic Béziers; `shadow*` shadows; roles ending in `Opacity` numbers; `layer`, `zIndex` and roles ending in `Layer` numbers (stacking, bound to `layer.*`); everything else is a dimension. The validator rejects a resolved token whose `$type` does not match. Contrast evidence uses `surface`/`content`/`border`/`focusColor`.
 
 ## Commands
 
