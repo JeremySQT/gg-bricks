@@ -23,9 +23,13 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/feedback/spinner/contract.json",
-      "sha256": "57daf4d10e868e0b7740b9a2e46a8f11492431ca3bad0a612d001e56f4fe20af"
+      "sha256": "64f551bc4bb36ec76a036df69faf42e99808ed68a27eedfbe98de5133553b9b0"
     },
-    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/common.tokens.json",
+      "foundations/tokens/base/components/spinner.tokens.json"
+    ],
     "figma": null,
     "figmaSpec": null,
     "svelte": null,
@@ -57,12 +61,12 @@
   "decisionsTaken": [
     "Same drawing as the Button loading indicator (ring r 9 in a 24 box, stroke 2.5, quarter arc), so that a later Modify can make Button and IconButton use the Spinner without a visual change.",
     "Sizes sm, md, lg, xl on size.icon.* (16, 20, 24, 32 px).",
-    "Color inherited (currentColor); track at the new opacity.track (0.2; Button uses 0.25 hard-coded).",
+    "Color inherited (currentColor); track at the component token component.spinner.track-opacity (0.2; Button uses 0.25 hard-coded).",
     "label empty by default: decorative; a non-empty label makes it a polite status.",
-    "One turn per motion.duration.spin (new role, primitive 700 ms; Button hard-codes 800 ms), three times slower under reduced motion (the Button rule)."
+    "One turn per component.spinner.duration (component token, primitive 700 ms; Button hard-codes 800 ms), three times slower under reduced motion (the Button rule). Spinner values are component tokens: Button and IconButton will compose the Spinner rather than share the tokens."
   ],
   "openDecisions": [
-    "5. Spinner speed: motion.duration.spin aliases the existing primitive 700 ms (Button and IconButton hard-code 800 ms today); after the wave, a Modify makes Button and IconButton draw the Spinner and use the role (a 100 ms faster turn). Alternative: a new primitive 800 ms to keep the reviewed speed."
+    "5. Spinner speed: component.spinner.duration aliases the existing primitive 700 ms (Button and IconButton hard-code 800 ms today); after the wave, a Modify makes Button and IconButton compose the Spinner (a 100 ms faster turn). Alternative: a new primitive 800 ms to keep the reviewed speed."
   ],
   "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",
   "implementationNotes": []

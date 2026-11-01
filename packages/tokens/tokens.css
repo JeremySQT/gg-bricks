@@ -346,22 +346,12 @@
   --ggb-size-choice-sm: var(--ggb-primitive-dimension-v14);
   --ggb-size-choice-md: var(--ggb-primitive-dimension-v16);
   --ggb-size-choice-lg: var(--ggb-primitive-dimension-v20);
-  --ggb-size-switch-sm: var(--ggb-primitive-dimension-v16);
-  --ggb-size-switch-md: var(--ggb-primitive-dimension-v20);
-  --ggb-size-switch-lg: var(--ggb-primitive-dimension-v24);
   --ggb-size-avatar-xs: var(--ggb-primitive-dimension-v24);
   --ggb-size-avatar-sm: var(--ggb-primitive-dimension-v32);
   --ggb-size-avatar-md: var(--ggb-primitive-dimension-v40);
   --ggb-size-avatar-lg: var(--ggb-primitive-dimension-v48);
   --ggb-size-avatar-xl: var(--ggb-primitive-dimension-v64);
-  --ggb-size-progress-sm: var(--ggb-primitive-dimension-v4);
-  --ggb-size-progress-md: var(--ggb-primitive-dimension-v6);
-  --ggb-size-progress-lg: var(--ggb-primitive-dimension-v8);
-  --ggb-size-overlay-hint: var(--ggb-primitive-dimension-v240);
   --ggb-size-overlay-panel: var(--ggb-primitive-dimension-v360);
-  --ggb-size-overlay-sm: var(--ggb-primitive-dimension-v400);
-  --ggb-size-overlay-md: var(--ggb-primitive-dimension-v560);
-  --ggb-size-overlay-lg: var(--ggb-primitive-dimension-v720);
   --ggb-typography-display-xl: var(--ggb-primitive-font-weight-700) var(--ggb-primitive-font-size-64)/var(--ggb-primitive-font-lineHeight-none) var(--ggb-primitive-font-family-sans);
   --ggb-typography-display-xl-fontSize: var(--ggb-primitive-font-size-64);
   --ggb-typography-display-xl-lineHeight: calc(var(--ggb-primitive-font-lineHeight-none) * var(--ggb-primitive-font-size-64));
@@ -486,7 +476,6 @@
   --ggb-motion-duration-fast: var(--ggb-primitive-duration-100);
   --ggb-motion-duration-base: var(--ggb-primitive-duration-200);
   --ggb-motion-duration-slow: var(--ggb-primitive-duration-300);
-  --ggb-motion-duration-spin: var(--ggb-primitive-duration-700);
   --ggb-motion-duration-loop: var(--ggb-primitive-duration-1500);
   --ggb-motion-easing-standard: var(--ggb-primitive-easing-standard);
   --ggb-motion-easing-emphasized: var(--ggb-primitive-easing-emphasized);
@@ -494,7 +483,6 @@
   --ggb-motion-easing-exit: var(--ggb-primitive-easing-accelerate);
   --ggb-motion-distance-sm: var(--ggb-primitive-dimension-v4);
   --ggb-motion-distance-md: var(--ggb-primitive-dimension-v8);
-  --ggb-motion-delay-hint: var(--ggb-primitive-duration-500);
   --ggb-layer-base: var(--ggb-primitive-layer-base);
   --ggb-layer-raised: var(--ggb-primitive-layer-raised);
   --ggb-layer-dropdown: var(--ggb-primitive-layer-dropdown);
@@ -507,7 +495,19 @@
   --ggb-opacity-scrim: var(--ggb-primitive-opacity-60);
   --ggb-opacity-muted: var(--ggb-primitive-opacity-70);
   --ggb-opacity-tint: var(--ggb-primitive-opacity-12);
-  --ggb-opacity-track: var(--ggb-primitive-opacity-20);
+  --ggb-component-dialog-inline-size-sm: var(--ggb-primitive-dimension-v400);
+  --ggb-component-dialog-inline-size-md: var(--ggb-primitive-dimension-v560);
+  --ggb-component-dialog-inline-size-lg: var(--ggb-primitive-dimension-v720);
+  --ggb-component-progress-thickness-sm: var(--ggb-primitive-dimension-v4);
+  --ggb-component-progress-thickness-md: var(--ggb-primitive-dimension-v6);
+  --ggb-component-progress-thickness-lg: var(--ggb-primitive-dimension-v8);
+  --ggb-component-spinner-duration: var(--ggb-primitive-duration-700);
+  --ggb-component-spinner-track-opacity: var(--ggb-primitive-opacity-20);
+  --ggb-component-switch-track-size-sm: var(--ggb-primitive-dimension-v16);
+  --ggb-component-switch-track-size-md: var(--ggb-primitive-dimension-v20);
+  --ggb-component-switch-track-size-lg: var(--ggb-primitive-dimension-v24);
+  --ggb-component-tooltip-delay: var(--ggb-primitive-duration-500);
+  --ggb-component-tooltip-max-inline-size: var(--ggb-primitive-dimension-v240);
 }
 :root, [data-ggb-brand], [data-ggb-appearance="light"] {
   --ggb-color-surface-canvas: var(--ggb-color-palette-neutral-0);

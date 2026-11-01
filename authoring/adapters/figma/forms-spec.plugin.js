@@ -798,7 +798,7 @@ ANATOMY['switch'] = () => {
       ],
       ['3', 'Label: names the setting (Notifications, not “On”). It wraps and is the accessible name.'],
       ['4', 'Description (optional): body/sm in the secondary color, under the label.'],
-      ['A', 'Track height: size/switch/{size}, 16, 20 or 24 px. It does not change with the density.'],
+      ['A', 'Track height: component/switch/track-size/{size}, 16, 20 or 24 px. It does not change with the density.'],
       ['B', 'Track width: twice the height minus four borders (switch/track-width): 28, 36 or 44 px.'],
       ['C', 'Gap: space/control/gap/{size}; at md 6, 8 or 10 px. The track is centered on the first line of the label.']
     ],

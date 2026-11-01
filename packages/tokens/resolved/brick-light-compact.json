@@ -3642,27 +3642,6 @@
       "unit": "px"
     }
   },
-  "size.switch.sm": {
-    "$type": "dimension",
-    "$value": {
-      "value": 16,
-      "unit": "px"
-    }
-  },
-  "size.switch.md": {
-    "$type": "dimension",
-    "$value": {
-      "value": 20,
-      "unit": "px"
-    }
-  },
-  "size.switch.lg": {
-    "$type": "dimension",
-    "$value": {
-      "value": 24,
-      "unit": "px"
-    }
-  },
   "size.avatar.xs": {
     "$type": "dimension",
     "$value": {
@@ -3698,59 +3677,10 @@
       "unit": "px"
     }
   },
-  "size.progress.sm": {
-    "$type": "dimension",
-    "$value": {
-      "value": 4,
-      "unit": "px"
-    }
-  },
-  "size.progress.md": {
-    "$type": "dimension",
-    "$value": {
-      "value": 6,
-      "unit": "px"
-    }
-  },
-  "size.progress.lg": {
-    "$type": "dimension",
-    "$value": {
-      "value": 8,
-      "unit": "px"
-    }
-  },
-  "size.overlay.hint": {
-    "$type": "dimension",
-    "$value": {
-      "value": 240,
-      "unit": "px"
-    }
-  },
   "size.overlay.panel": {
     "$type": "dimension",
     "$value": {
       "value": 360,
-      "unit": "px"
-    }
-  },
-  "size.overlay.sm": {
-    "$type": "dimension",
-    "$value": {
-      "value": 400,
-      "unit": "px"
-    }
-  },
-  "size.overlay.md": {
-    "$type": "dimension",
-    "$value": {
-      "value": 560,
-      "unit": "px"
-    }
-  },
-  "size.overlay.lg": {
-    "$type": "dimension",
-    "$value": {
-      "value": 720,
       "unit": "px"
     }
   },
@@ -4614,14 +4544,6 @@
       "unit": "ms"
     }
   },
-  "motion.duration.spin": {
-    "$type": "duration",
-    "$value": {
-      "value": 700,
-      "unit": "ms"
-    },
-    "$description": "One turn of a spinning loading indicator (Spinner, the loading state of Button and IconButton)."
-  },
   "motion.duration.loop": {
     "$type": "duration",
     "$value": {
@@ -4680,14 +4602,6 @@
       "unit": "px"
     }
   },
-  "motion.delay.hint": {
-    "$type": "duration",
-    "$value": {
-      "value": 500,
-      "unit": "ms"
-    },
-    "$description": "Hover delay before a tooltip opens; keyboard focus opens it at once."
-  },
   "layer.base": {
     "$type": "number",
     "$value": 0
@@ -4737,11 +4651,6 @@
     "$type": "number",
     "$value": 0.12,
     "$description": "A faint surface in the inherited content color behind small companion content (a counter's box), so that it follows its host without a border."
-  },
-  "opacity.track": {
-    "$type": "number",
-    "$value": 0.2,
-    "$description": "Track drawn in the current color under a moving indicator (Spinner ring), so that it reads on any surface the indicator inherits its color from."
   },
   "color.surface.canvas": {
     "$type": "color",
@@ -8146,5 +8055,97 @@
       "value": 48,
       "unit": "px"
     }
+  },
+  "component.dialog.inline-size.sm": {
+    "$type": "dimension",
+    "$value": {
+      "value": 400,
+      "unit": "px"
+    }
+  },
+  "component.dialog.inline-size.md": {
+    "$type": "dimension",
+    "$value": {
+      "value": 560,
+      "unit": "px"
+    }
+  },
+  "component.dialog.inline-size.lg": {
+    "$type": "dimension",
+    "$value": {
+      "value": 720,
+      "unit": "px"
+    }
+  },
+  "component.progress.thickness.sm": {
+    "$type": "dimension",
+    "$value": {
+      "value": 4,
+      "unit": "px"
+    }
+  },
+  "component.progress.thickness.md": {
+    "$type": "dimension",
+    "$value": {
+      "value": 6,
+      "unit": "px"
+    }
+  },
+  "component.progress.thickness.lg": {
+    "$type": "dimension",
+    "$value": {
+      "value": 8,
+      "unit": "px"
+    }
+  },
+  "component.spinner.duration": {
+    "$type": "duration",
+    "$value": {
+      "value": 700,
+      "unit": "ms"
+    },
+    "$description": "One turn of the indicator."
+  },
+  "component.spinner.track-opacity": {
+    "$type": "number",
+    "$value": 0.2,
+    "$description": "Opacity of the full ring drawn in the current color under the indicator."
+  },
+  "component.switch.track-size.sm": {
+    "$type": "dimension",
+    "$value": {
+      "value": 16,
+      "unit": "px"
+    }
+  },
+  "component.switch.track-size.md": {
+    "$type": "dimension",
+    "$value": {
+      "value": 20,
+      "unit": "px"
+    }
+  },
+  "component.switch.track-size.lg": {
+    "$type": "dimension",
+    "$value": {
+      "value": 24,
+      "unit": "px"
+    }
+  },
+  "component.tooltip.delay": {
+    "$type": "duration",
+    "$value": {
+      "value": 500,
+      "unit": "ms"
+    },
+    "$description": "Hover delay before the tooltip opens; keyboard focus opens it at once."
+  },
+  "component.tooltip.max-inline-size": {
+    "$type": "dimension",
+    "$value": {
+      "value": 240,
+      "unit": "px"
+    },
+    "$description": "Maximum inline size; the text wraps beyond it."
   }
 }

@@ -1,6 +1,6 @@
 // Switch master builder (use_figma body), 2026-10-27.
 // On the page forms/switch (288:8): the component set “Switch” (Label position × Size × Selection × State,
-// 48 variants). The track is size/switch/{size} tall and switch/track-width wide (2 × trackSize − 4 × borderWidth,
+// 48 variants). The track is component/switch/track-size/{size} tall and switch/track-width wide (2 × trackSize − 4 × borderWidth,
 // Components adapter), fully rounded (radius/full), filled and outlined with color/choice/{off|on}/{state}/…; the
 // thumb is an ellipse of switch/thumb inset by switch/inset (padding) in color/choice/{off|on}/{state}/content, at the
 // start when off and the end when on. The track sits in a first-line frame (typography/body/{size}/lineHeight).
@@ -62,7 +62,7 @@ for (const p of P)
         track.primaryAxisSizingMode = 'FIXED';
         track.counterAxisSizingMode = 'FIXED';
         bind(track, ['width'], 'switch/track-width');
-        bind(track, ['height'], `size/switch/${s}`);
+        bind(track, ['height'], `component/switch/track-size/${s}`);
         bind(track, PADS, 'switch/inset');
         bind(track, RADII, 'radius/full');
         track.fills = [paint(role('surface'))];

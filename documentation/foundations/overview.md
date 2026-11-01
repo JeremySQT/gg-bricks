@@ -14,7 +14,7 @@ Each foundations page lists the roles of one family with what each role is for, 
 | Palette   | `color.palette.<ramp>.<step>`                                | Only for content no role describes (charts, illustrations). Follows the brand, not the appearance.   |
 | Primitive | `primitive.*`                                                | Never. Primitives are the raw scales roles pick from; a brand or an appearance does not change them. |
 
-Component tokens (`--ggb-<component>-…`) belong to their component and are not part of the application API.
+Component tokens (`component.<id>.*`, `--ggb-component-<id>-…`: values that mean something for one component only, such as the track size of a switch) and the bindings a component generates from its contract (`--ggb-<id>-…`) belong to their component and are not part of the application API.
 
 ## In CSS
 

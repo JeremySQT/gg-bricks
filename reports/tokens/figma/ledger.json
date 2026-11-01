@@ -126,6 +126,10 @@
       {
         "date": "2026-10-14",
         "change": "Collections renamed with the “Foundations · ” prefix (Primitives 14:2, Brand 4:2, Appearance 4:3, Density 4:4; IDs, modes and bindings unchanged) so that the flat collection list of the single library file reads as two families, Foundations and Components. Decision: one Figma file (not a separate tokens library) because a community or client distribution requires a self-contained file; recorded in authoring/figma.md. The manifest, the sync and verification scripts and the adapter scripts use the prefixed names (adapter scripts accept the short axis names); native resolution re-verified, hashes unchanged (506 variables, 0 failures)."
+      },
+      {
+        "date": "2026-11-01",
+        "change": "Component token layer (decisions.md, Semantic role or component token; user decision of 2026-11-01): size/switch/sm, md, lg renamed component/switch/track-size/sm, md, lg in Foundations · Brand (VariableID:286:7, 286:8, 286:9), WEB code syntax var(--ggb-component-switch-track-size-<size>); values (primitive/dimension/v16, v20, v24 in every brand mode), scopes and IDs unchanged; the 48 track height bindings of the Switch set 291:434 still resolve 16, 20, 24 px. Specification text 306:566 on forms/switch updated."
       }
     ],
     "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change). Wave 2 delta synced on 2026-10-27 with the same adapter body (authoring/adapters/figma/sync-variables.plugin.js) restricted to the new or changed manifest variables; native resolution verified in 18 contexts, 0 failures (reports/tokens/figma/verification.json).",

@@ -5937,75 +5937,6 @@
     },
     {
       "collection": "Foundations · Brand",
-      "name": "size/switch/sm",
-      "path": "size.switch.sm",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-switch-sm)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v16"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v16"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v16"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "size/switch/md",
-      "path": "size.switch.md",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-switch-md)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v20"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v20"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v20"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "size/switch/lg",
-      "path": "size.switch.lg",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-switch-lg)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v24"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v24"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v24"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
       "name": "size/avatar/xs",
       "path": "size.avatar.xs",
       "type": "FLOAT",
@@ -6121,98 +6052,6 @@
     },
     {
       "collection": "Foundations · Brand",
-      "name": "size/progress/sm",
-      "path": "size.progress.sm",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-progress-sm)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v4"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v4"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v4"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "size/progress/md",
-      "path": "size.progress.md",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-progress-md)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v6"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v6"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v6"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "size/progress/lg",
-      "path": "size.progress.lg",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-progress-lg)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v8"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v8"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v8"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "size/overlay/hint",
-      "path": "size.overlay.hint",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-overlay-hint)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v240"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v240"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v240"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
       "name": "size/overlay/panel",
       "path": "size.overlay.panel",
       "type": "FLOAT",
@@ -6231,75 +6070,6 @@
         },
         "orchid": {
           "alias": "Foundations · Primitives:primitive/dimension/v360"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "size/overlay/sm",
-      "path": "size.overlay.sm",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-overlay-sm)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v400"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v400"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v400"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "size/overlay/md",
-      "path": "size.overlay.md",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-overlay-md)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v560"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v560"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v560"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "size/overlay/lg",
-      "path": "size.overlay.lg",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-overlay-lg)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v720"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v720"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v720"
         }
       }
     },
@@ -10246,29 +10016,6 @@
         },
         "orchid": {
           "alias": "Foundations · Primitives:primitive/opacity/12"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "opacity/track",
-      "path": "opacity.track",
-      "type": "FLOAT",
-      "scopes": [
-        "OPACITY"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-opacity-track)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/opacity/20"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/opacity/20"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/opacity/20"
         }
       }
     },
@@ -16583,6 +16330,259 @@
         },
         "comfortable": {
           "alias": "Foundations · Primitives:primitive/dimension/v96"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/dialog/inline-size/sm",
+      "path": "component.dialog.inline-size.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-dialog-inline-size-sm)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v400"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v400"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v400"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/dialog/inline-size/md",
+      "path": "component.dialog.inline-size.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-dialog-inline-size-md)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v560"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v560"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v560"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/dialog/inline-size/lg",
+      "path": "component.dialog.inline-size.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-dialog-inline-size-lg)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v720"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v720"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v720"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/progress/thickness/sm",
+      "path": "component.progress.thickness.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-progress-thickness-sm)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v4"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v4"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v4"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/progress/thickness/md",
+      "path": "component.progress.thickness.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-progress-thickness-md)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v6"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v6"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v6"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/progress/thickness/lg",
+      "path": "component.progress.thickness.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-progress-thickness-lg)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v8"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v8"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v8"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/spinner/track-opacity",
+      "path": "component.spinner.track-opacity",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-spinner-track-opacity)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/opacity/20"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/opacity/20"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/opacity/20"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/switch/track-size/sm",
+      "path": "component.switch.track-size.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-switch-track-size-sm)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/switch/track-size/md",
+      "path": "component.switch.track-size.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-switch-track-size-md)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/switch/track-size/lg",
+      "path": "component.switch.track-size.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-switch-track-size-lg)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/tooltip/max-inline-size",
+      "path": "component.tooltip.max-inline-size",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-tooltip-max-inline-size)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v240"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v240"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v240"
         }
       }
     }

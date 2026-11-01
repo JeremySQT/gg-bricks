@@ -173,7 +173,7 @@ const NOTES = {
     outline:
       'Focus ring frame 2 px outside the Track, outside stroke bound to color/focus/ring and focus/width, shown by Focus; the hidden ring is the code’s transparent forced-colors outline',
     width: 'Track width bound to switch/track-width (Components adapter)',
-    height: 'Track height bound to size/switch/{size}',
+    height: 'Track height bound to component/switch/track-size/{size}',
     thumbSize: 'Thumb bound to switch/thumb (Components adapter)',
     thumbStart: 'Track padding switch/inset; the thumb at the start when off, at the end when on',
     thumbEnd: 'Track padding switch/inset; the thumb at the start when off, at the end when on',

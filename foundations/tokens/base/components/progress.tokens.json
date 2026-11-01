@@ -1,0 +1,22 @@
+{
+  "component": {
+    "progress": {
+      "$description": "Progress tokens: values that mean something only for the Progress bar. They do not change with density.",
+      "thickness": {
+        "$description": "Block size of the track and the indicator.",
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v4}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v6}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v8}"
+        }
+      }
+    }
+  }
+}

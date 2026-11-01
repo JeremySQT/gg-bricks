@@ -23,9 +23,13 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/feedback/progress/contract.json",
-      "sha256": "76e8e13f1a75e5eaa6bfc3eadfd6c9c497ab79f8fe55fa5b90cd6b41fd1bcd2d"
+      "sha256": "a36ad97d817fda003ef62cf7511c9ea907504aed3299b91ed4b3cd38d4079680"
     },
-    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/common.tokens.json",
+      "foundations/tokens/base/components/progress.tokens.json"
+    ],
     "figma": null,
     "figmaSpec": null,
     "svelte": null,
@@ -58,8 +62,8 @@
     "Linear bar only, with a required label shown above it by default (showLabel) and an optional percentage (showValue, tabular figures).",
     "Indicator colors reuse color.status.{intent}.icon (accent, success, warning, danger): these roles already reach 3:1 on surfaces; the contract contrast block measures them against the track (color.surface.muted), surface.default and surface.overlay in 18 contexts: 0 failures.",
     "Track color.surface.muted, fully rounded (radius.full).",
-    "New common roles size.progress.{sm,md,lg} = 4, 6, 8 px.",
-    "Indeterminate: a one-third segment sweeping once per motion.duration.loop (new, 1500 ms), three times slower under reduced motion; value changes transition over motion.duration.base."
+    "Component tokens component.progress.thickness.{sm,md,lg} = 4, 6, 8 px (a value meaningful for Progress only).",
+    "Indeterminate: a one-third segment sweeping once per motion.duration.loop (new semantic role shared with Skeleton, 1500 ms), three times slower under reduced motion; value changes transition over motion.duration.base."
   ],
   "openDecisions": [],
   "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",

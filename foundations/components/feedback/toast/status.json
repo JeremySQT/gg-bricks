@@ -54,7 +54,7 @@
   "decisionsTaken": [
     "One compound contract (decision of 2026-10-31): the root is the region (placement, max, label); the child item is one toast. The application owns the list and removes a toast when it emits dismiss; the Svelte adapter may add a small helper to manage the list (implementation).",
     "Toast surface neutral (color.surface.overlay, shadow.overlay, elevation border, radius.overlay) with the status icon in color: the words carry the message.",
-    "Width size.overlay.panel (new, 360 px); region at space.layout.sm from the viewport edges; default placement bottom-end; max 3 visible.",
+    "Width size.overlay.panel (new semantic role shared with Popover and Menu, 360 px); region at space.layout.sm from the viewport edges; default placement bottom-end; max 3 visible.",
     "Duration 5 s; the countdown pauses on hover, on focus inside and when the document is hidden.",
     "A toast with an action never dismisses itself (WCAG 2.2.1), and its action must exist elsewhere (open question 4).",
     "Announcements: polite except danger (assertive); appearing never moves focus."

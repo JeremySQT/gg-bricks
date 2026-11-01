@@ -54,7 +54,7 @@
   "decisionsTaken": [
     "Focus policy for non-modal popovers (left open by the spike): focus moves to the first focusable element of the content, or to the panel; Tab order follows the trigger; focus leaving closes it.",
     "label required: the panel is a named non-modal dialog.",
-    "Surface color.surface.overlay, shadow.overlay, elevation border, radius.overlay, padding space.content.md, max inline size size.overlay.panel (new, 360 px), offset space.content.xs.",
+    "Surface color.surface.overlay, shadow.overlay, elevation border, radius.overlay, padding space.content.md, max inline size size.overlay.panel (new semantic role, 360 px), offset space.content.xs.",
     "Side bottom or top, align start by default; flips, shifts and follows the trigger on scroll.",
     "No built-in close button: content adds one when it needs it (Escape and a press outside always close)."
   ],

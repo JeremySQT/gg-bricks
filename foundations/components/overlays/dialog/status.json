@@ -23,9 +23,13 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/overlays/dialog/contract.json",
-      "sha256": "13be94f03f554d839a57744cf05a08ed512aa4101582a677720e6b73dbda0a28"
+      "sha256": "6a0d87720ad1acb1ccd5cc390139e6005095a6ab6bc09e772f7c9d4f08a386f9"
     },
-    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/common.tokens.json",
+      "foundations/tokens/base/components/dialog.tokens.json"
+    ],
     "figma": null,
     "figmaSpec": null,
     "svelte": null,
@@ -57,7 +61,7 @@
   "decisionsTaken": [
     "Native modal dialog in the top layer (decision of 2026-10-31): inert page, focus trap and focus return from the platform; backdrop color.surface.scrim (open question 1).",
     "Header (required title, optional description, close button), scrolling body, footer with one ButtonGroup aligned at the end; dividers appear only when the body scrolls (state scrolled).",
-    "Sizes sm, md, lg on the new size.overlay.{sm,md,lg} (400, 560, 720 px), capped by the viewport less space.layout.md.",
+    "Sizes sm, md, lg on the component tokens component.dialog.inline-size.{sm,md,lg} (400, 560, 720 px), capped by the viewport less space.layout.md.",
     "alert true: alert dialog, never closed by a backdrop press; dismissible false removes the close button, Escape and the backdrop press.",
     "Initial focus: the element the application marks, else the first focusable element of the body, then of the footer, else the panel.",
     "Title typography.heading.sm, description typography.body.sm, body typography.body.md, padding space.layout.md, shadow.modal, radius.overlay, entry with motion.distance.md.",

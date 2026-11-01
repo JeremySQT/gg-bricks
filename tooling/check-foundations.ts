@@ -3,6 +3,9 @@
 //     (common, appearance or density file layer);
 //   - no undeclared semantic token exists (primitive.* and component tokens are exempt);
 //   - primitives hold no aliases; semantic colors hold no literal values;
+//   - component tokens (foundations/tokens/<brand>/components/<id>.tokens.json) are all under component.<id>.*,
+//     <id> is a component with a contract, and only that component's contract binds them (a value two components
+//     share is a semantic role; decision of 2026-11-01);
 //   - every declared invariant holds (a derived dimension role equals the sum of other roles);
 //   - every contrast pair reaches its WCAG minimum, written to reports/tokens/contrast.json.
 // Exit code 1 on any failure. Run by `npm run validate`.
@@ -10,6 +13,7 @@
 import { paths, readJson, write } from './lib/paths.ts';
 import { flatten, isAlias, resolveAllContexts, tokenFiles } from './lib/tokens.ts';
 import { composite, contrast, type Rgb } from './lib/color.ts';
+import { listComponents } from './lib/catalog.ts';
 import type { Color, Context, TokenGroup } from './lib/types.ts';
 
 type Axis = 'common' | 'appearance' | 'density';
@@ -81,6 +85,40 @@ for (const brand of cfg.brands) {
     }
   }
 }
+
+// 1b. Component tokens: one file per component, paths under component.<id>., bound by that component's contract only.
+const components = listComponents();
+const ids = new Set(components.map((c) => c.id));
+const templates = (c: (typeof components)[number]): string[] => [
+  ...Object.values(c.contract.tokens),
+  ...Object.values(c.contract.children ?? {}).flatMap((child) => Object.values(child.tokens))
+];
+const prefixOf = (template: string): string | null => /^component\.([a-z0-9-]+)\./.exec(template)?.[1] ?? null;
+for (const brand of cfg.brands) {
+  for (const file of tokenFiles(`${t}/${brand}/components`)) {
+    const id = file.slice(file.lastIndexOf('/') + 1).replace(/\.tokens\.json$/, '');
+    if (!ids.has(id)) errors.push(`${file}: no component contract with id ${id}`);
+    const paths_ = Object.keys(flatten(readJson<TokenGroup>(file)));
+    for (const p of paths_)
+      if (!p.startsWith(`component.${id}.`)) errors.push(`${file}: ${p} is not under component.${id}.`);
+    const own = components.find((c) => c.id === id);
+    if (own) {
+      const bound = templates(own).filter((x) => prefixOf(x) === id);
+      for (const p of paths_) {
+        const used = bound.some((x) =>
+          new RegExp('^' + x.replace(/\./g, '\\.').replace(/\{[a-zA-Z0-9]+\}/g, '[^.]+') + '$').test(p)
+        );
+        if (!used) errors.push(`${file}: ${p} is not bound by the ${id} contract`);
+      }
+    }
+  }
+}
+for (const c of components)
+  for (const x of templates(c)) {
+    const owner = prefixOf(x);
+    if (x.startsWith('component.') && owner !== c.id)
+      errors.push(`${c.contractPath}: binds ${x}, a token of another component (a shared value is a semantic role)`);
+  }
 
 // 2. Coverage, type and axis of every declared role in every context; no undeclared semantic token.
 const declared = new Map(inventory.roles.map((r) => [r.path, r]));

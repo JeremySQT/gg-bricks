@@ -41,21 +41,21 @@
   --ggb-switch-easingStandard: var(--ggb-motion-easing-standard);
 }
 .ggb-switch[data-size="sm"] {
-  --ggb-switch-trackSize: var(--ggb-size-switch-sm);
+  --ggb-switch-trackSize: var(--ggb-component-switch-track-size-sm);
   --ggb-switch-gap: var(--ggb-space-control-gap-sm);
   --ggb-switch-typography: var(--ggb-typography-body-sm);
   --ggb-switch-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
   --ggb-switch-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
 }
 .ggb-switch[data-size="md"] {
-  --ggb-switch-trackSize: var(--ggb-size-switch-md);
+  --ggb-switch-trackSize: var(--ggb-component-switch-track-size-md);
   --ggb-switch-gap: var(--ggb-space-control-gap-md);
   --ggb-switch-typography: var(--ggb-typography-body-md);
   --ggb-switch-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
   --ggb-switch-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
 }
 .ggb-switch[data-size="lg"] {
-  --ggb-switch-trackSize: var(--ggb-size-switch-lg);
+  --ggb-switch-trackSize: var(--ggb-component-switch-track-size-lg);
   --ggb-switch-gap: var(--ggb-space-control-gap-lg);
   --ggb-switch-typography: var(--ggb-typography-body-lg);
   --ggb-switch-typography-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);

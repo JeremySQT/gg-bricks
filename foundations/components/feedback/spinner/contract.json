@@ -19,8 +19,8 @@
   "states": {},
   "tokens": {
     "size": "size.icon.{size}",
-    "trackOpacity": "opacity.track",
-    "motionDuration": "motion.duration.spin"
+    "trackOpacity": "component.spinner.track-opacity",
+    "motionDuration": "component.spinner.duration"
   },
   "rules": [
     "A spinner shows that something is loading or working when its duration is unknown and its place is small (inside a control, next to a label, in an empty panel). A known amount of progress is a Progress; a placeholder of the content to come is a Skeleton.",

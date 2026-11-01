@@ -24,9 +24,13 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/overlays/tooltip/contract.json",
-      "sha256": "6e22df7495696fb83100d3d2dc67a66feb552d3c53c17eac2d6b4d380e08b027"
+      "sha256": "2f8e0068eaa703a98971b2ff23a5012f984b7b9c316df68234bf5578217276b9"
     },
-    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/common.tokens.json",
+      "foundations/tokens/base/components/tooltip.tokens.json"
+    ],
     "figma": null,
     "figmaSpec": null,
     "svelte": null,
@@ -56,9 +60,9 @@
     }
   ],
   "decisionsTaken": [
-    "Inverse surface (color.surface.inverse, color.content.inverse), typography.caption.md, radius.control, padding space.content.sm × xs, max inline size size.overlay.hint (new, 240 px).",
+    "Inverse surface (color.surface.inverse, color.content.inverse), typography.caption.md, radius.control, padding space.content.sm × xs, max inline size component.tooltip.max-inline-size (component token, 240 px).",
     "Side top or bottom (what lib/overlay positions today), align center by default; flips and shifts; no arrow.",
-    "Hover delay motion.delay.hint (new, 500 ms); focus opens at once; once one tooltip is open, the next opens at once.",
+    "Hover delay component.tooltip.delay (component token, 500 ms); focus opens at once; once one tooltip is open, the next opens at once.",
     "Accessible description of the trigger, except when the text equals an IconButton's name.",
     "Trigger restricted to Button, IconButton and Link (focusable components); other content gets a Popover or visible text.",
     "Entry over motion.duration.fast with motion.distance.sm."

@@ -3784,24 +3784,6 @@
       "value": "{primitive.dimension.v20}"
     }
   ],
-  "size.switch.sm": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v16}"
-    }
-  ],
-  "size.switch.md": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v20}"
-    }
-  ],
-  "size.switch.lg": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v24}"
-    }
-  ],
   "size.avatar.xs": [
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
@@ -3832,52 +3814,10 @@
       "value": "{primitive.dimension.v64}"
     }
   ],
-  "size.progress.sm": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v4}"
-    }
-  ],
-  "size.progress.md": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v6}"
-    }
-  ],
-  "size.progress.lg": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v8}"
-    }
-  ],
-  "size.overlay.hint": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v240}"
-    }
-  ],
   "size.overlay.panel": [
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
       "value": "{primitive.dimension.v360}"
-    }
-  ],
-  "size.overlay.sm": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v400}"
-    }
-  ],
-  "size.overlay.md": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v560}"
-    }
-  ],
-  "size.overlay.lg": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v720}"
     }
   ],
   "typography.display.xl": [
@@ -4270,12 +4210,6 @@
       "value": "{primitive.duration.300}"
     }
   ],
-  "motion.duration.spin": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.duration.700}"
-    }
-  ],
   "motion.duration.loop": [
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
@@ -4316,12 +4250,6 @@
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
       "value": "{primitive.dimension.v8}"
-    }
-  ],
-  "motion.delay.hint": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.duration.500}"
     }
   ],
   "layer.base": [
@@ -4394,12 +4322,6 @@
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
       "value": "{primitive.opacity.12}"
-    }
-  ],
-  "opacity.track": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.opacity.20}"
     }
   ],
   "color.surface.canvas": [
@@ -6182,6 +6104,84 @@
     {
       "source": "foundations/tokens/base/semantic/density.comfortable.tokens.json",
       "value": "{primitive.dimension.v96}"
+    }
+  ],
+  "component.dialog.inline-size.sm": [
+    {
+      "source": "foundations/tokens/base/components/dialog.tokens.json",
+      "value": "{primitive.dimension.v400}"
+    }
+  ],
+  "component.dialog.inline-size.md": [
+    {
+      "source": "foundations/tokens/base/components/dialog.tokens.json",
+      "value": "{primitive.dimension.v560}"
+    }
+  ],
+  "component.dialog.inline-size.lg": [
+    {
+      "source": "foundations/tokens/base/components/dialog.tokens.json",
+      "value": "{primitive.dimension.v720}"
+    }
+  ],
+  "component.progress.thickness.sm": [
+    {
+      "source": "foundations/tokens/base/components/progress.tokens.json",
+      "value": "{primitive.dimension.v4}"
+    }
+  ],
+  "component.progress.thickness.md": [
+    {
+      "source": "foundations/tokens/base/components/progress.tokens.json",
+      "value": "{primitive.dimension.v6}"
+    }
+  ],
+  "component.progress.thickness.lg": [
+    {
+      "source": "foundations/tokens/base/components/progress.tokens.json",
+      "value": "{primitive.dimension.v8}"
+    }
+  ],
+  "component.spinner.duration": [
+    {
+      "source": "foundations/tokens/base/components/spinner.tokens.json",
+      "value": "{primitive.duration.700}"
+    }
+  ],
+  "component.spinner.track-opacity": [
+    {
+      "source": "foundations/tokens/base/components/spinner.tokens.json",
+      "value": "{primitive.opacity.20}"
+    }
+  ],
+  "component.switch.track-size.sm": [
+    {
+      "source": "foundations/tokens/base/components/switch.tokens.json",
+      "value": "{primitive.dimension.v16}"
+    }
+  ],
+  "component.switch.track-size.md": [
+    {
+      "source": "foundations/tokens/base/components/switch.tokens.json",
+      "value": "{primitive.dimension.v20}"
+    }
+  ],
+  "component.switch.track-size.lg": [
+    {
+      "source": "foundations/tokens/base/components/switch.tokens.json",
+      "value": "{primitive.dimension.v24}"
+    }
+  ],
+  "component.tooltip.delay": [
+    {
+      "source": "foundations/tokens/base/components/tooltip.tokens.json",
+      "value": "{primitive.duration.500}"
+    }
+  ],
+  "component.tooltip.max-inline-size": [
+    {
+      "source": "foundations/tokens/base/components/tooltip.tokens.json",
+      "value": "{primitive.dimension.v240}"
     }
   ]
 }

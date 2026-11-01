@@ -1,0 +1,17 @@
+{
+  "component": {
+    "spinner": {
+      "$description": "Spinner tokens. Button and IconButton draw the same ring; a later Modify makes them compose the Spinner instead of using these tokens.",
+      "duration": {
+        "$type": "duration",
+        "$value": "{primitive.duration.700}",
+        "$description": "One turn of the indicator."
+      },
+      "track-opacity": {
+        "$type": "number",
+        "$value": "{primitive.opacity.20}",
+        "$description": "Opacity of the full ring drawn in the current color under the indicator."
+      }
+    }
+  }
+}
