@@ -3,12 +3,7 @@
   // orientations, and the compositions the catalog names (dialog footer, form actions, a split footer of two groups,
   // icon buttons, a narrow column that stacks), in any brand, appearance and density.
   import { Button, ButtonGroup, Icon, IconButton } from '../../packages/svelte/src/index.ts';
-  import type {
-    ButtonGroupAlign,
-    ButtonGroupOrientation,
-    ButtonGroupReflow,
-    ButtonGroupSize
-  } from '../../packages/svelte/src/index.ts';
+  import type { ButtonGroupAlign, ButtonGroupOrientation, ButtonGroupSize } from '../../packages/svelte/src/index.ts';
   import { glyphs } from '../icon-button/glyphs.ts';
 
   const brands = ['base', 'brick', 'orchid'];
@@ -17,7 +12,6 @@
   const sizes: ButtonGroupSize[] = ['sm', 'md', 'lg'];
   const orientations: ButtonGroupOrientation[] = ['horizontal', 'vertical'];
   const aligns: ButtonGroupAlign[] = ['start', 'center', 'end', 'stretch'];
-  const reflows: ButtonGroupReflow[] = ['wrap', 'stack'];
 
   let brand = $state('base');
   let mode = $state('light');
@@ -26,7 +20,6 @@
   let size = $state<ButtonGroupSize>('md');
   let orientation = $state<ButtonGroupOrientation>('horizontal');
   let align = $state<ButtonGroupAlign>('start');
-  let reflow = $state<ButtonGroupReflow>('wrap');
   let named = $state(false);
   let width = $state(100);
   let activations = $state(0);
@@ -45,8 +38,8 @@
     <h1>ButtonGroup</h1>
     <p class="lede">
       Related actions placed together with one size and one spacing. The group sets the size of every button, aligns
-      them, and wraps or stacks them when space runs out; each button stays its own tab stop and the order never
-      changes. Every control below is the real Svelte component on the approved tokens.
+      them on a line, and stacks them at full width when the line does not fit; each button stays its own tab stop and
+      the order never changes. Every control below is the real Svelte component on the approved tokens.
     </p>
     <div class="controls" role="group" aria-label="Context">
       <label
@@ -73,7 +66,7 @@
       <div class="stage">
         <button type="button" id="before">Before</button>
         <div class="frame" style:inline-size={`${width}%`} data-testid="frame">
-          <ButtonGroup id="play" {size} {orientation} {align} {reflow} label={named ? 'Document actions' : undefined}>
+          <ButtonGroup id="play" {size} {orientation} {align} label={named ? 'Document actions' : undefined}>
             <Button id="play-cancel" label="Cancel" intent="neutral" appearance="ghost" onactivate={act('cancel')} />
             <Button
               id="play-draft"
@@ -106,11 +99,6 @@
         <label
           >Align <select id="opt-align" bind:value={align}
             >{#each aligns as v (v)}<option value={v}>{v}</option>{/each}</select
-          ></label
-        >
-        <label
-          >Reflow <select id="opt-reflow" bind:value={reflow}
-            >{#each reflows as v (v)}<option value={v}>{v}</option>{/each}</select
           ></label
         >
         <label
@@ -182,21 +170,11 @@
         </ButtonGroup>
       </div>
       <div class="panel">
-        <p class="panel-title">Narrow column: reflow stack</p>
+        <p class="panel-title">Narrow column: the line stacks</p>
         <div class="narrow">
-          <ButtonGroup id="narrow" reflow="stack" align="end">
+          <ButtonGroup id="narrow" align="end">
             <Button id="narrow-later" label="Remind me later" intent="neutral" appearance="outline" />
             <Button id="narrow-update" label="Update now" />
-          </ButtonGroup>
-        </div>
-      </div>
-      <div class="panel">
-        <p class="panel-title">Narrow column: reflow wrap</p>
-        <div class="narrow">
-          <ButtonGroup id="wrapped">
-            <Button id="wrapped-a" label="Archive" intent="neutral" appearance="outline" />
-            <Button id="wrapped-b" label="Move to folder" intent="neutral" appearance="outline" />
-            <Button id="wrapped-c" label="Share" intent="neutral" appearance="outline" />
           </ButtonGroup>
         </div>
       </div>

@@ -20,7 +20,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/feedback/toast/contract.json",
-      "sha256": "ab9f6f5db1acb16dbdb56da53a3f450f73477c146a5b604ecfd6b1d18f38495e"
+      "sha256": "ca7c269cbd171e244b5ad066a073e7138f2570a3e23a132c010e7e23d73157a1"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
@@ -44,7 +44,7 @@
     "examples": {
       "page": "examples/toast",
       "preview": "dist/previews/toast.html (npm run build && npm run build:preview toast)",
-      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page toast.html)"
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page toast.html)"
     },
     "tests": {
       "ssr": ["tests/ssr/alert-toast.test.ts"],
@@ -103,6 +103,11 @@
       "name": "npm run build:preview toast",
       "result": "mounts from file:// without errors",
       "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
+      "date": "2026-11-03"
     }
   ],
   "decisionsTaken": [
@@ -113,7 +118,8 @@
     "A toast with an action never dismisses itself (WCAG 2.2.1), and its action must exist elsewhere (open question 4).",
     "Announcements: polite except danger (assertive); appearing never moves focus.",
     "Open question 4 resolved (user, 2026-11-03: \"Oui\"): a toast with an action never dismisses itself, and its action also exists elsewhere in the interface.",
-    "Toast leaving is the one JavaScript-driven transition of the wave: overlay motion stays CSS only (decisions.md), but a toast is removed from the DOM by the application, not hidden."
+    "Toast leaving is the one JavaScript-driven transition of the wave: overlay motion stays CSS only (decisions.md), but a toast is removed from the DOM by the application, not hidden.",
+    "Toast round 2 (user, 2026-11-03): appearance neutral|intense, automatic layout, 8 s with an action, danger persistent by default, closable; intense accent actions take the intent family."
   ],
   "openDecisions": [],
   "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
@@ -123,5 +129,14 @@
     "Platform limit: a modal dialog makes everything outside it inert, top layer included. A toast sent while a modal dialog is open is seen above the dialog but cannot be pressed, focused or announced until the dialog closes (checked in toast.spec.ts). The contract says the region stays above open dialogs; visually it does.",
     "The countdown is paused while the pointer is over the region, while focus is inside it, while the document is hidden and while the toast is queued (data-queued set by the region beyond max).",
     "Leaving uses a Svelte out transition (global) reading the motion tokens from CSS: the application removes the toast from the list, so a CSS exit transition has nothing to run on; under reduced motion it only fades. Entering uses @starting-style."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): centered layout, automatic single or multi line (actions under the description), appearance neutral or intense (named by the user), a toast with an action fades after 8 s by default, danger stays by default, closable prop; sending a toast from a modal dialog documented as not supported (\"ce n'est pas une bonne pratique d'ouvrir une toast depuis une dialog\"). To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/feedback/toast/contract.json": "ca7c269cbd171e244b5ad066a073e7138f2570a3e23a132c010e7e23d73157a1"
+      }
+    }
   ]
 }

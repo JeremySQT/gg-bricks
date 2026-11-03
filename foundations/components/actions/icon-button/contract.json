@@ -81,7 +81,7 @@
     "While loading, loadingIndicator replaces the icon at the same place and size, so the container does not change; when loading and disabled are both true, interaction resolves to disabled and loadingIndicator stays visible in the resolved content color.",
     "Draw border only for the outline appearance, inside the container; it never changes the outer dimensions.",
     "When focus is true and was reached by keyboard, draw a focus indicator of focusWidth in focusColor at focusOffset outside the container, with corners of focusRadius so that it stays concentric with the container.",
-    "Color changes between interaction states transition over motionDuration with easingStandard; no transition when reduced motion is requested. The loadingIndicator animation is slowed or stopped under reduced motion.",
+    "Color changes between interaction states transition over motionDuration with easingStandard; no transition when reduced motion is requested. The loadingIndicator is a Spinner of the icon button size in the resolved content color; its turn and its reduced-motion behavior are the Spinner's.",
     "Visual treatments, colors, corner radius and focus indicator are those of Button for the same intent, appearance and size, so that an icon button sits beside a Button of the same size at the same height.",
     "In forced-colors mode the container keeps a visible boundary, the icon is drawn in the system button text color and the focus indicator stays visible."
   ]

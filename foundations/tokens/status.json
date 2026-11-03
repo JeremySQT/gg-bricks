@@ -337,6 +337,17 @@
       },
       "review": "Approved at the wave 3 contract gate on 2026-11-03, review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8.",
       "recorded": "approvals.primitives and approvals.semantic re-recorded with this change on 2026-11-03 (wave 3 contract gate)."
+    },
+    {
+      "date": "2026-11-03",
+      "change": "Action families color.action.info, color.action.success and color.action.warning (solid, outline, ghost × default, hover, pressed, loading, disabled × surface, content, border: 135 roles per appearance), the accent family on the info, success and warning palette ramps, for the buttons of an Alert or an intense Toast of that intent (user choice at the wave 3 implementation review: \"Familles d'action\"). Contrast pairs: the accent pairs repeated per family, and action content on the tinted status surface of the same intent (also for neutral and danger); the solid boundary of danger and neutral on their status surface is not measured (danger solid 2.86:1 on the danger status surface in dark; the label identifies the button). check-foundations: 574 roles, 3384 contrast checks, 0 failures.",
+      "invalidates": "approvals.semantic for inventory.json and both appearance files until the tokens review of the wave 3 implementation gate; Figma variables for the new roles are synced at the Figma parity phase.",
+      "sha256": {
+        "foundations/tokens/inventory.json": "cea0e00cf385b41ce4fde81af1d5ee6828c7d4f425849b7629324d0d95ac6f76",
+        "foundations/tokens/base/semantic/appearance.light.tokens.json": "45dc9a94a243a9a69a870a3920c4642d0b1b7f9e5b04b74b3ed14185e874329a",
+        "foundations/tokens/base/semantic/appearance.dark.tokens.json": "cdaf191131fe2412c3181e9e123611afe1f589637476094133caa35d22b53a6b"
+      },
+      "review": "Wave 3 implementation gate (round 2), pending."
     }
   ]
 }

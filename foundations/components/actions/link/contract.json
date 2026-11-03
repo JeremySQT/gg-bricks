@@ -70,6 +70,7 @@
     "The link has no disabled state: a destination that cannot be followed is shown as plain text.",
     "When focus is true and was reached by keyboard, draw a focus indicator of focusWidth in focusColor at focusOffset around each line box of the link, with corners of focusRadius.",
     "The underline thickness change is immediate; there is no animation.",
-    "In forced-colors mode the link, its meta and its indicator use the system link color, the underline stays and the focus indicator stays visible."
+    "In forced-colors mode the link, its meta and its indicator use the system link color, the underline stays and the focus indicator stays visible.",
+    "A host whose text carries its own color (an Alert) may ask its links to inherit: a link that does not set tone then takes tone inherit. An explicit tone always wins."
   ]
 }

@@ -8,6 +8,7 @@ import {
   px,
   rgb,
   setContext,
+  settle,
   tokensFor
 } from './helpers.ts';
 
@@ -90,6 +91,34 @@ test('icon and dismiss sit on the first line; actions are small and under the co
   expect(m.dismiss).toBeCloseTo(m.title, 0);
   expect(m.actionsTop).toBeGreaterThan(m.contentBottom);
   await expect(page.locator('#play-choose')).toHaveAttribute('data-size', 'sm');
+});
+
+test('accent buttons take the action family of the alert intent; neutral buttons keep theirs; links inherit', async ({
+  page
+}) => {
+  for (const intent of ['neutral', 'info', 'success', 'warning', 'danger']) {
+    await page.selectOption('#opt-intent', intent);
+    await settle(page);
+    const tokens = tokensFor('base-light-standard');
+    const m = await page.locator('#play').evaluate((el) => {
+      const choose = el.querySelector('#play-choose .ggb-button__container') as HTMLElement;
+      const later = el.querySelector('#play-later .ggb-button__container') as HTMLElement;
+      const link = el.querySelector('.ggb-link') as HTMLElement;
+      return {
+        choose: getComputedStyle(choose).backgroundColor,
+        chooseContent: getComputedStyle(choose).color,
+        later: getComputedStyle(later).color,
+        link: getComputedStyle(link).color,
+        linkTone: link.dataset.tone,
+        content: getComputedStyle(el).color
+      };
+    });
+    expect(m.choose, intent).toBe(rgb(tokens[`color.action.${intent}.solid.default.surface`]));
+    expect(m.chooseContent).toBe(rgb(tokens[`color.action.${intent}.solid.default.content`]));
+    expect(m.later).toBe(rgb(tokens['color.action.neutral.ghost.default.content']));
+    expect(m.linkTone).toBe('inherit');
+    expect(m.link).toBe(m.content);
+  }
 });
 
 test('computed values match the resolved tokens for every intent and context', async ({ page }) => {

@@ -27,7 +27,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/actions/button-group/contract.json",
-      "sha256": "5673ff77318c8b96c5900fd732ce89e4978dc9dfddd0f39133f3065f74ae733e"
+      "sha256": "849371cd8815a83dc9435064918892a90022f94ac29602f38b1f9332d1cf634b"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
@@ -49,7 +49,7 @@
     "examples": {
       "page": "examples/button-group",
       "preview": "dist/previews/button-group.html (npm run build && npm run build:preview button-group)",
-      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page button-group.html)"
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page button-group.html)"
     },
     "tests": {
       "ssr": ["tests/ssr/button-group.test.ts"],
@@ -108,6 +108,11 @@
       "name": "npm run build:preview button-group",
       "result": "mounts from file:// without errors",
       "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
+      "date": "2026-11-03"
     }
   ],
   "decisionsTaken": [
@@ -117,7 +122,8 @@
     "reflow wrap (default) or stack: stack switches the whole group to vertical full width when it does not fit, observed as the state stacked; the group never reorders items.",
     "No disabled prop: each action is disabled on its own.",
     "label optional: the group is a named group only when it has one.",
-    "Stacking is measured, not a container query: a container query would need a threshold width the contract does not have."
+    "Stacking is measured, not a container query: a container query would need a threshold width the contract does not have.",
+    "Vertical always stretched; no wrap: a line that does not fit stacks (user, 2026-11-03)."
   ],
   "openDecisions": [],
   "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
@@ -126,5 +132,14 @@
     "A host (Alert) may ask for a default size through the context key ggb:button-group-host; an explicit size on the group wins.",
     "reflow stack: a ResizeObserver compares the extent of the items (first start edge to last end edge, whatever the alignment) with the inline size, stacks the group and remembers that extent to return to the line. In the horizontal layout items never shrink below their content.",
     "Overlays (Popover, Dialog, Menu) clear the ggb:button-group context for their content, so that a group around their declaration does not size their buttons."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): vertical groups always give their Buttons the full inline size (IconButtons stay square at the start); the reflow prop and the wrap behavior are removed, a line that does not fit always stacks. To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/actions/button-group/contract.json": "849371cd8815a83dc9435064918892a90022f94ac29602f38b1f9332d1cf634b"
+      }
+    }
   ]
 }

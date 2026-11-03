@@ -100,22 +100,14 @@
     place-items: center;
     color: inherit;
   }
-  .ggb-icon-button__icon > svg,
-  .ggb-icon-button__loadingIndicator > svg {
+  .ggb-icon-button__icon > svg {
     display: block;
     inline-size: var(--ggb-icon-button-iconSize);
     block-size: var(--ggb-icon-button-iconSize);
     flex: none;
     vertical-align: baseline;
   }
-  .ggb-icon-button__loadingIndicator > svg {
-    animation: ggb-icon-button-spin 800ms linear infinite;
-  }
-  @keyframes ggb-icon-button-spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
+  /* The loading indicator is a Spinner of the icon button size (size, turn and reduced motion from the Spinner). */
 
   .ggb-icon-button:focus-visible .ggb-icon-button__container {
     outline: var(--ggb-icon-button-focusWidth) solid var(--ggb-icon-button-focusColor);
@@ -126,9 +118,6 @@
   @media (prefers-reduced-motion: reduce) {
     .ggb-icon-button__container {
       transition: none;
-    }
-    .ggb-icon-button__loadingIndicator > svg {
-      animation-duration: 2400ms;
     }
   }
 

@@ -20,5 +20,7 @@ Component: `packages/svelte/src/components/toast/` (Svelte 5.57.1, Bits UI 2.19.
 
 ## Fixed during implementation
 
+- Round 2: appearance neutral or intense, automatic single or multi line layout, centered; default countdowns 5 s, 8 s with an action, none for danger; closable; in intense, accent actions take the intent family. The browser tests use Playwright's clock for the default countdowns.
+
 - The region was a section: a page rule on section margins moved it 48 px from the viewport edge; it is a div with role region.
 - Title and description were p elements (same problem as Alert).

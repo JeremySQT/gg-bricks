@@ -10,12 +10,9 @@ after(async () => {
   await closeServer();
 });
 
-test('defaults: horizontal, start, wrap, md; no group semantics without a label', async () => {
+test('defaults: horizontal, start, md; no group semantics without a label', async () => {
   const html = await render({});
-  assert.match(
-    html,
-    /<div class="ggb-button-group" data-size="md" data-orientation="horizontal" data-align="start" data-reflow="wrap">/
-  );
+  assert.match(html, /<div class="ggb-button-group" data-size="md" data-orientation="horizontal" data-align="start">/);
   assert.doesNotMatch(html, /role="group"/);
   assert.doesNotMatch(html, /data-stacked/);
   checks.push('default options as data attributes; no role or name without a label; not stacked on the server');
@@ -31,12 +28,9 @@ test('the group size applies to every Button and IconButton, whatever their own 
   checks.push('group size sm, md, lg reaches the two Buttons (one asking for lg) and the IconButton');
 });
 
-test('a label makes it a named group; orientation, align and reflow are exposed for the layout', async () => {
-  const html = await render({ label: 'Document actions', orientation: 'vertical', align: 'stretch', reflow: 'stack' });
-  assert.match(
-    html,
-    /data-orientation="vertical" data-align="stretch" data-reflow="stack" role="group" aria-label="Document actions"/
-  );
+test('a label makes it a named group; orientation and align are exposed for the layout', async () => {
+  const html = await render({ label: 'Document actions', orientation: 'vertical', align: 'stretch' });
+  assert.match(html, /data-orientation="vertical" data-align="stretch" role="group" aria-label="Document actions"/);
   const blank = await render({ label: '   ' });
   assert.doesNotMatch(blank, /role="group"/);
   checks.push('label: role group with that name; a blank label adds no semantics; options rendered');

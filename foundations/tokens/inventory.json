@@ -1,5 +1,5 @@
 {
-  "$description": "Semantic inventory checked by tooling/check-foundations.ts in every brand × appearance × density context: every role must exist with its type on its axis (the file layer that defines it), and every contrast pair must reach its WCAG minimum (4.5 text, 3 borders, icons and focus). Translucent surfaces are composited on color.surface.default before measuring. Pairs are explicit: a role is tested on the backdrops it is designed for. color.surface.muted is a de-emphasized backdrop and is tested with primary and secondary content only; color.status.*.border is decorative (the tinted surface identifies the status) and is not tested. `invariants` lists dimension roles that must equal the sum of other dimension roles in every context (a derived role maintained by hand in each brand or density). color.input.* (formerly color.field.*) paints text entry boxes. `concepts` lists the component ids a semantic role may contain because the role names a general concept, not that component (decisions.md, Semantic role or component token). color.item.* pairs are measured on the surfaces that hold lists (default, overlay) and on the item's own surfaces; color.elevation.border is decorative (the shadow and the surface identify the element) and is not tested.",
+  "$description": "Semantic inventory checked by tooling/check-foundations.ts in every brand × appearance × density context: every role must exist with its type on its axis (the file layer that defines it), and every contrast pair must reach its WCAG minimum (4.5 text, 3 borders, icons and focus). Translucent surfaces are composited on color.surface.default before measuring. Pairs are explicit: a role is tested on the backdrops it is designed for. color.surface.muted is a de-emphasized backdrop and is tested with primary and secondary content only; color.status.*.border is decorative (the tinted surface identifies the status) and is not tested. `invariants` lists dimension roles that must equal the sum of other dimension roles in every context (a derived role maintained by hand in each brand or density). color.input.* (formerly color.field.*) paints text entry boxes. color.action.{info,success,warning}.* (added 2026-11-03) mirror the accent family on their palette ramp, for the buttons of an Alert of that intent; action content is also measured on the tinted status surface of the same intent (the solid surface of the new families too; for danger and neutral, whose solid surface is not measured there, the label identifies the button: danger solid reaches 2.86:1 on the danger status surface in dark). `concepts` lists the component ids a semantic role may contain because the role names a general concept, not that component (decisions.md, Semantic role or component token). color.item.* pairs are measured on the surfaces that hold lists (default, overlay) and on the item's own surfaces; color.elevation.border is decorative (the shadow and the surface identify the element) and is not tested.",
   "roles": [
     {
       "path": "color.palette.neutral.0",
@@ -1487,6 +1487,681 @@
       "axis": "appearance"
     },
     {
+      "path": "color.action.info.solid.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.solid.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.outline.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.info.ghost.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.solid.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.outline.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.success.ghost.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.solid.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.outline.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.default.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.default.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.default.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.hover.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.hover.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.hover.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.pressed.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.pressed.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.pressed.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.loading.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.loading.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.loading.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.disabled.surface",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.disabled.content",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.action.warning.ghost.disabled.border",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
       "path": "color.input.default.surface",
       "type": "color",
       "axis": "appearance"
@@ -2847,6 +3522,296 @@
       "content": "color.item.indicator",
       "surface": "color.item.selected.surface",
       "minimum": 3
+    },
+    {
+      "content": "color.content.onAccent",
+      "surface": "color.action.info.solid.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.onAccent",
+      "surface": "color.action.info.solid.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.onAccent",
+      "surface": "color.action.info.solid.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.info.solid.default.content",
+      "surface": "color.action.info.solid.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.info.solid.hover.content",
+      "surface": "color.action.info.solid.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.info.solid.pressed.content",
+      "surface": "color.action.info.solid.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.info.outline.default.content",
+      "surface": "color.action.info.outline.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.info.outline.default.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.info.outline.hover.content",
+      "surface": "color.action.info.outline.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.info.outline.hover.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.info.outline.pressed.content",
+      "surface": "color.action.info.outline.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.info.outline.pressed.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.info.ghost.default.content",
+      "surface": "color.action.info.ghost.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.info.ghost.hover.content",
+      "surface": "color.action.info.ghost.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.info.ghost.pressed.content",
+      "surface": "color.action.info.ghost.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.info.outline.default.content",
+      "surface": "color.status.info.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.info.ghost.default.content",
+      "surface": "color.status.info.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.info.solid.default.surface",
+      "surface": "color.status.info.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.content.onAccent",
+      "surface": "color.action.success.solid.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.onAccent",
+      "surface": "color.action.success.solid.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.onAccent",
+      "surface": "color.action.success.solid.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.success.solid.default.content",
+      "surface": "color.action.success.solid.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.success.solid.hover.content",
+      "surface": "color.action.success.solid.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.success.solid.pressed.content",
+      "surface": "color.action.success.solid.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.success.outline.default.content",
+      "surface": "color.action.success.outline.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.success.outline.default.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.success.outline.hover.content",
+      "surface": "color.action.success.outline.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.success.outline.hover.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.success.outline.pressed.content",
+      "surface": "color.action.success.outline.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.success.outline.pressed.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.success.ghost.default.content",
+      "surface": "color.action.success.ghost.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.success.ghost.hover.content",
+      "surface": "color.action.success.ghost.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.success.ghost.pressed.content",
+      "surface": "color.action.success.ghost.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.success.outline.default.content",
+      "surface": "color.status.success.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.success.ghost.default.content",
+      "surface": "color.status.success.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.success.solid.default.surface",
+      "surface": "color.status.success.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.content.onAccent",
+      "surface": "color.action.warning.solid.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.onAccent",
+      "surface": "color.action.warning.solid.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.onAccent",
+      "surface": "color.action.warning.solid.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.warning.solid.default.content",
+      "surface": "color.action.warning.solid.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.warning.solid.hover.content",
+      "surface": "color.action.warning.solid.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.warning.solid.pressed.content",
+      "surface": "color.action.warning.solid.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.warning.outline.default.content",
+      "surface": "color.action.warning.outline.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.warning.outline.default.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.warning.outline.hover.content",
+      "surface": "color.action.warning.outline.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.warning.outline.hover.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.warning.outline.pressed.content",
+      "surface": "color.action.warning.outline.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.warning.outline.pressed.border",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.warning.ghost.default.content",
+      "surface": "color.action.warning.ghost.default.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.warning.ghost.hover.content",
+      "surface": "color.action.warning.ghost.hover.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.warning.ghost.pressed.content",
+      "surface": "color.action.warning.ghost.pressed.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.warning.outline.default.content",
+      "surface": "color.status.warning.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.warning.ghost.default.content",
+      "surface": "color.status.warning.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.warning.solid.default.surface",
+      "surface": "color.status.warning.surface",
+      "minimum": 3
+    },
+    {
+      "content": "color.action.neutral.outline.default.content",
+      "surface": "color.status.neutral.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.neutral.ghost.default.content",
+      "surface": "color.status.neutral.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.danger.outline.default.content",
+      "surface": "color.status.danger.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.action.danger.ghost.default.content",
+      "surface": "color.status.danger.surface",
+      "minimum": 4.5
     }
   ],
   "invariants": [

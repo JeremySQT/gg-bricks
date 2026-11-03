@@ -2,10 +2,8 @@
 export type ButtonGroupSize = "sm" | "md" | "lg";
 export type ButtonGroupOrientation = "horizontal" | "vertical";
 export type ButtonGroupAlign = "start" | "center" | "end" | "stretch";
-export type ButtonGroupReflow = "wrap" | "stack";
 export const defaults = {
   "size": "md",
   "orientation": "horizontal",
-  "align": "start",
-  "reflow": "wrap"
+  "align": "start"
 } as const;

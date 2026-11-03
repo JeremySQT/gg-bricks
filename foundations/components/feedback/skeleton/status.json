@@ -40,7 +40,7 @@
     "examples": {
       "page": "examples/skeleton",
       "preview": "dist/previews/skeleton.html (npm run build && npm run build:preview skeleton)",
-      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page skeleton.html)"
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page skeleton.html)"
     },
     "tests": {
       "ssr": ["tests/ssr/feedback-simple.test.ts"],
@@ -98,6 +98,11 @@
     {
       "name": "npm run build:preview skeleton",
       "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
       "date": "2026-11-03"
     }
   ],

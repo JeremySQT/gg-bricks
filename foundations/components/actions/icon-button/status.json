@@ -26,14 +26,14 @@
       "Menu (wave 3) for a list of actions behind a single trigger."
     ]
   },
-  "dependencies": ["icon"],
+  "dependencies": ["icon", "spinner"],
   "fixtures": [
     "Phosphor glyphs re-exported by examples/icon/glyphs.ts for the examples and tests (fixtures, not dependencies)."
   ],
   "artifacts": {
     "contract": {
       "path": "foundations/components/actions/icon-button/contract.json",
-      "sha256": "b9298af06953dbb94216c3e65a257e6db283443d3fe69698105de1ec3919ba79"
+      "sha256": "57850d5ade5d58af75313ca136cc00f86599c4c90f292763c36eefe1979e85da"
     },
     "tokens": [],
     "figma": {
@@ -232,7 +232,8 @@
     "Box: a square of size.control.{size} (32/40/48 px in standard density, following density like Button heights); the interaction target is extended to 44 px without enlarging the visible box.",
     "The icon is centered by its box: the reference set draws its 1/8 inset symmetrically, so the box center is the drawing center and no optical compensation is needed.",
     "Contrast checked on the same contrastScope as Button (six neutral backdrops, outline border on muted in dark informational, accepted at the Button contract gate).",
-    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
+    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size).",
+    "Loading indicator: the Spinner component (2026-11-03)."
   ],
   "openDecisions": [],
   "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",
@@ -258,6 +259,15 @@
       "change": "Wave 3 ButtonGroup: inside a ButtonGroup the group's size applies (context key ggb:button-group); outside a group nothing changes (icon-button.spec.ts and SSR tests pass unchanged). To be re-presented at the wave 3 implementation gate.",
       "sha256": {
         "packages/svelte/src/components/icon-button/IconButton.svelte": "69f53e39392728d63f8b03535c32b0d97fdb6267fd6de3549b4a6ee85ad9840d"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): the loading indicator is now the Spinner (same change as Button); the browser test reads the Spinner token for the reduced-motion duration and measures the Spinner's svg. To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/actions/icon-button/contract.json": "57850d5ade5d58af75313ca136cc00f86599c4c90f292763c36eefe1979e85da",
+        "packages/svelte/src/components/icon-button/IconButton.svelte": "9a06623f0f4902dc2a9956758540f6ad17a0e1583e93515d276ed70bd011e740",
+        "packages/svelte/src/components/icon-button/icon-button.css": "d84794aff00afe3df3e5f803fa18adf8e8c2d70d630015e1c488a42434a2237c"
       }
     }
   ]

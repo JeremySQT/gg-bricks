@@ -19,5 +19,7 @@ Component: `packages/svelte/src/components/button-group/` (Svelte 5.57.1, Bits U
 
 ## Fixed during implementation
 
+- Round 2 (user feedback): vertical groups stretch their Buttons (IconButtons stay square at the start); the reflow prop and wrapping are removed, a line that does not fit stacks.
+
 - reflow stack first compared scrollWidth with clientWidth, which misses an overflow towards the inline start (end alignment): it now compares the extent of the items.
 - The measuring effect read and wrote its own state (an update loop): the measure runs untracked.

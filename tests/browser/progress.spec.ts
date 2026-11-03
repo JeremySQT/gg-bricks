@@ -117,7 +117,7 @@ test('computed values match the resolved tokens for every intent, size and conte
         expect(m.trackColor, `${context} ${intent} ${size}`).toBe(rgb(tokens['color.surface.muted']));
         expect(m.indicatorColor).toBe(rgb(tokens[`color.status.${intent}.icon`]));
         expect(m.trackHeight).toBe(px(tokens[`component.progress.thickness.${size}`]));
-        expect(m.trackRadius).toBe(`${px(tokens['radius.full'])}px`);
+        expect(m.trackRadius).toBe(`${px(tokens['component.progress.radius'])}px`);
         expect(m.labelColor).toBe(rgb(tokens['color.content.primary']));
         expect(m.labelFont).toBe(
           `${px({ $type: '', $value: (tokens['typography.label.md'].$value as { fontSize: unknown }).fontSize })}px`

@@ -3,7 +3,7 @@
   // persistent toasts, the max and the queue, the six placements, a toast over an open dialog, in any brand,
   // appearance and density. The application owns the list: it adds a toast and removes it when the toast asks to.
   import { Button, ButtonGroup, Toast, ToastRegion } from '../../packages/svelte/src/index.ts';
-  import type { ToastItemIntent, ToastPlacement } from '../../packages/svelte/src/index.ts';
+  import type { ToastItemAppearance, ToastItemIntent, ToastPlacement } from '../../packages/svelte/src/index.ts';
 
   const brands = ['base', 'brick', 'orchid'];
   const modes = ['light', 'dark'];
@@ -22,7 +22,10 @@
   let density = $state('standard');
   let placement = $state<ToastPlacement>('bottom-end');
   let max = $state(3);
-  let duration = $state(5000);
+  // Empty: the component's defaults (5 s, 8 s with an action, none for danger).
+  let duration = $state<number | null>(null);
+  let appearance = $state<ToastItemAppearance>('neutral');
+  let closable = $state(true);
 
   type Item = {
     id: number;
@@ -129,8 +132,29 @@
               })}
           />
           <Button
+            id="send-all"
+            label="All intents"
+            intent="neutral"
+            appearance="ghost"
+            onactivate={() => {
+              for (const [intent, title] of [
+                ['neutral', 'Draft saved'],
+                ['info', 'New version available'],
+                ['success', 'Payment received'],
+                ['warning', 'Storage almost full'],
+                ['danger', 'Upload failed']
+              ] as const)
+                show({
+                  intent,
+                  title,
+                  description: intent === 'info' ? 'Reload to update.' : undefined,
+                  action: intent === 'danger' ? 'Retry' : undefined
+                });
+            }}
+          />
+          <Button
             id="send-dialog"
-            label="Open a dialog"
+            label="Open a dialog (not supported)"
             intent="neutral"
             appearance="ghost"
             onactivate={() => dialog?.showModal()}
@@ -151,7 +175,21 @@
           ></label
         >
         <label>Max <input id="opt-max" type="number" min="1" max="6" bind:value={max} /></label>
-        <label>Duration (ms) <input id="opt-duration" type="number" min="0" step="500" bind:value={duration} /></label>
+        <label
+          >Appearance <select id="opt-appearance" bind:value={appearance}
+            >{#each ['neutral', 'intense'] as v (v)}<option value={v}>{v}</option>{/each}</select
+          ></label
+        >
+        <label
+          >Duration (ms, empty = default) <input
+            id="opt-duration"
+            type="number"
+            min="0"
+            step="500"
+            bind:value={duration}
+          /></label
+        >
+        <label class="check"><input id="opt-closable" type="checkbox" bind:checked={closable} /> Closable</label>
         <Button
           id="opt-clear"
           label="Clear all (application)"
@@ -165,7 +203,10 @@
   </section>
 
   <dialog bind:this={dialog} id="demo-dialog" class="demo-dialog">
-    <p>A native modal dialog. Send a toast from here: it appears above the dialog.</p>
+    <p>
+      Not a supported use: a modal dialog makes the toast region inert until it closes. A toast sent from here is seen
+      above the dialog but cannot be pressed or announced; give feedback about the dialog's task inside the dialog.
+    </p>
     <ButtonGroup>
       <Button
         id="dialog-send"
@@ -188,8 +229,6 @@
         <Button
           id={`toast-${t.id}-action`}
           label={t.action ?? ''}
-          intent="neutral"
-          appearance="outline"
           onactivate={() => {
             undone++;
             log = [`${t.title}: ${t.action}`, ...log].slice(0, 6);
@@ -201,7 +240,9 @@
         intent={t.intent}
         title={t.title}
         description={t.description}
-        duration={t.duration ?? duration}
+        duration={t.duration ?? duration ?? undefined}
+        {appearance}
+        {closable}
         action={t.action ? act : undefined}
         ondismiss={() => remove(t.id)}
       />

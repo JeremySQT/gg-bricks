@@ -53,7 +53,7 @@
     "examples": {
       "page": "examples/menu",
       "preview": "dist/previews/menu.html (npm run build && npm run build:preview menu)",
-      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page menu.html)"
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page menu.html)"
     },
     "tests": {
       "ssr": ["tests/ssr/overlays.test.ts"],
@@ -111,6 +111,11 @@
     {
       "name": "npm run build:preview menu",
       "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
       "date": "2026-11-03"
     }
   ],

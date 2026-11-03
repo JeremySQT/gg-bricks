@@ -52,7 +52,9 @@ test('a named notifications landmark in the top layer; toasts announced by role,
   expect(newerTop).toBeLessThan(olderTop);
 });
 
-test('a toast leaves after its duration; the countdown pauses on hover and while focus is inside', async ({ page }) => {
+test('a set duration: the toast leaves after it; the countdown pauses on hover and while focus is inside', async ({
+  page
+}) => {
   await page.fill('#opt-duration', '800');
   await page.click('#send-saved');
   await expect(items(page)).toHaveCount(1);
@@ -70,13 +72,36 @@ test('a toast leaves after its duration; the countdown pauses on hover and while
   await expect(items(page)).toHaveCount(0, { timeout: 3000 });
 });
 
-test('a toast with an action stays; its action runs then the toast leaves; Escape and the dismiss button dismiss', async ({
+test('default countdowns: 5 s, 8 s with an action (time to undo), none for danger; a set duration wins', async ({
   page
 }) => {
-  await page.fill('#opt-duration', '500');
+  await page.clock.install();
+  await page.goto('/toast/');
+  await page.click('#send-saved');
   await page.click('#send-undo');
-  await page.waitForTimeout(1000);
+  await page.click('#send-danger');
+  await page.mouse.move(5, 5);
+  await expect(items(page)).toHaveCount(3);
+  await page.clock.runFor(5500);
+  await expect(items(page)).toHaveCount(2);
+  await expect(page.getByTestId('log')).toContainText('Changes saved: dismissed');
+  await page.clock.runFor(3000);
   await expect(items(page)).toHaveCount(1);
+  await expect(page.getByTestId('log')).toContainText('Report deleted: dismissed');
+  await page.clock.runFor(60000);
+  await expect(items(page)).toHaveCount(1);
+  await expect(items(page).first()).toHaveAttribute('data-intent', 'danger');
+  await page.fill('#opt-duration', '0');
+  await page.click('#send-saved');
+  await page.clock.runFor(60000);
+  await expect(items(page)).toHaveCount(2);
+});
+
+test('the action runs then the toast leaves; Escape and the dismiss button dismiss; closable hides the button', async ({
+  page
+}) => {
+  await page.fill('#opt-duration', '0');
+  await page.click('#send-undo');
   await expect(page.locator('#region .ggb-toast__action button')).toHaveAttribute('data-size', 'sm');
   await page.click('#region .ggb-toast__action button');
   await expect(page.getByTestId('undone')).toHaveText('Undone: 1');
@@ -89,11 +114,84 @@ test('a toast with an action stays; its action runs then the toast leaves; Escap
   expect((await accessible(page, '#region .ggb-toast__dismiss button')).name).toBe('Dismiss');
   await page.click('#region .ggb-toast__dismiss button');
   await expect(items(page)).toHaveCount(0);
+  // closable false removes the button when the toast has a countdown; a toast without one keeps it.
+  await page.uncheck('#opt-closable');
+  await page.click('#send-warning');
+  await expect(page.locator('#region .ggb-toast__dismiss')).toHaveCount(1);
+  await page.fill('#opt-duration', '4000');
+  await page.click('#send-saved');
+  await expect(page.locator('#region .ggb-toast__item').nth(1).locator('.ggb-toast__dismiss')).toHaveCount(0);
+});
+
+test('layout: one line centered without a description; with one, the action goes under the text', async ({ page }) => {
+  await page.fill('#opt-duration', '0');
+  await page.click('#send-saved');
+  await page.click('#send-undo');
+  await settle(page);
+  const single = await items(page)
+    .nth(0)
+    .evaluate((el) => {
+      const mid = (s: string) => {
+        const r = el.querySelector(s)!.getBoundingClientRect();
+        return r.top + r.height / 2;
+      };
+      const own = el.getBoundingClientRect();
+      return {
+        layout: el.dataset.layout,
+        box: own.top + own.height / 2,
+        icon: mid('.ggb-toast__icon svg'),
+        title: mid('.ggb-toast__title'),
+        dismiss: mid('.ggb-toast__dismiss .ggb-icon-button__container')
+      };
+    });
+  expect(single.layout).toBe('single');
+  expect(single.icon).toBeCloseTo(single.box, 0);
+  expect(single.title).toBeCloseTo(single.box, 0);
+  expect(single.dismiss).toBeCloseTo(single.box, 0);
+  const multi = await items(page)
+    .nth(1)
+    .evaluate((el) => {
+      const r = (s: string) => el.querySelector(s)!.getBoundingClientRect();
+      return {
+        layout: el.dataset.layout,
+        icon: r('.ggb-toast__icon svg').top + r('.ggb-toast__icon svg').height / 2,
+        title: r('.ggb-toast__title').top + r('.ggb-toast__title').height / 2,
+        description: r('.ggb-toast__description').bottom,
+        action: r('.ggb-toast__action').top,
+        actionLeft: r('.ggb-toast__action').left,
+        textLeft: r('.ggb-toast__title').left
+      };
+    });
+  expect(multi.layout).toBe('multi');
+  expect(multi.icon).toBeCloseTo(multi.title, 0);
+  expect(multi.action).toBeGreaterThan(multi.description);
+  expect(multi.actionLeft).toBeCloseTo(multi.textLeft, 0);
+});
+
+test('intense: tinted by the intent like an Alert; accent actions take the intent family', async ({ page }) => {
+  await page.fill('#opt-duration', '0');
+  await page.selectOption('#opt-appearance', 'intense');
+  await page.click('#send-danger');
+  await settle(page);
+  const tokens = tokensFor('base-light-standard');
+  const m = await items(page)
+    .first()
+    .evaluate((el) => ({
+      surface: getComputedStyle(el).backgroundColor,
+      content: getComputedStyle(el).color,
+      description: getComputedStyle(el.querySelector('.ggb-toast__description')!).color,
+      action: getComputedStyle(el.querySelector('.ggb-toast__action .ggb-button__container')!).backgroundColor
+    }));
+  expect(m.surface).toBe(rgb(tokens['color.status.danger.surface']));
+  expect(m.content).toBe(rgb(tokens['color.status.danger.content']));
+  expect(m.description).toBe(rgb(tokens['color.status.danger.content']));
+  expect(m.action).toBe(rgb(tokens['color.action.danger.solid.default.surface']));
 });
 
 test('at most max toasts are shown; the next one waits, then appears as one leaves', async ({ page }) => {
   await page.fill('#opt-duration', '0');
-  for (const id of ['send-saved', 'send-info', 'send-warning', 'send-danger']) await page.click(`#${id}`);
+  for (const id of ['send-saved', 'send-info', 'send-warning', 'send-danger'])
+    await page.locator(`#${id}`).evaluate((b) => (b as HTMLElement).click());
   await expect(items(page)).toHaveCount(4);
   await expect(page.locator('#region .ggb-toast__item[data-queued]')).toHaveCount(1);
   await expect(page.locator('#region .ggb-toast__item:visible')).toHaveCount(3);

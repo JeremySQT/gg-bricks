@@ -1,6 +1,7 @@
 <script lang="ts">
   import { flushSync, getContext } from 'svelte';
   import { Button as Primitive } from 'bits-ui';
+  import Spinner from '../spinner/Spinner.svelte';
   import type { ButtonProps } from './types.js';
   import { defaults } from './contract.generated.js';
   import './tokens.generated.css';
@@ -149,10 +150,7 @@
     {/if}
     {#if loading}
       <span class="ggb-button__loadingIndicator" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" focusable="false">
-          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" opacity="0.25" />
-          <path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-        </svg>
+        <Spinner {size} />
       </span>
     {/if}
   </span>

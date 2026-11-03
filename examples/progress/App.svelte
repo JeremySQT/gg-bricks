@@ -162,6 +162,12 @@
         </div>
       </div>
       <div class="panel">
+        <p class="panel-title">A brand with square bars (component.progress.radius = 0)</p>
+        <div class="square">
+          <Progress id="square" label="Exporting the archive" value={45} showValue />
+        </div>
+      </div>
+      <div class="panel">
         <p class="panel-title">Empty and full</p>
         <div class="stack">
           <Progress id="empty" label="Not started" value={0} showValue />
@@ -188,5 +194,9 @@
   }
   .check {
     gap: var(--ggb-space-content-xs);
+  }
+  /* What a brand override of the component token does: rectangular bars. */
+  .square {
+    --ggb-component-progress-radius: 0px;
   }
 </style>

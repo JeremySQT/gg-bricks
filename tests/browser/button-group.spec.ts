@@ -81,7 +81,7 @@ test('the group size sets every item height, the item asking for lg included; th
   }
 });
 
-test('alignment: start, center, end, stretch on a line; vertical stacks at own width or stretched', async ({
+test('alignment: start, center, end, stretch on a line; vertical always stacks every item at full width', async ({
   page
 }) => {
   const f = await frame(page, '#play');
@@ -98,36 +98,34 @@ test('alignment: start, center, end, stretch on a line; vertical stacks at own w
   expect(items[0].width).toBeCloseTo(items[1].width, 0);
   expect(items[2].right).toBeCloseTo(f.right, 0);
   await page.selectOption('#opt-orientation', 'vertical');
-  items = await boxes(page, '#play');
-  for (let i = 1; i < items.length; i++) expect(items[i].top).toBeGreaterThan(items[i - 1].bottom - 0.5);
-  for (const item of items) expect(item.width).toBeCloseTo(f.width, 0);
-  await page.selectOption('#opt-align', 'start');
-  items = await boxes(page, '#play');
-  for (const item of items) expect(item.left).toBeCloseTo(f.left, 0);
-  expect(items[0].width).toBeLessThan(f.width);
+  for (const align of ['start', 'center', 'end', 'stretch']) {
+    await page.selectOption('#opt-align', align);
+    items = await boxes(page, '#play');
+    for (let i = 1; i < items.length; i++) expect(items[i].top).toBeGreaterThan(items[i - 1].bottom - 0.5);
+    for (const item of items) expect(item.width, align).toBeCloseTo(f.width, 0);
+  }
+  // The vertical groups of the matrix: Buttons at full width, the IconButton square at the inline start.
+  const matrix = await frame(page, '#bg-vertical-md');
+  const [back, next, more] = await boxes(page, '#bg-vertical-md');
+  expect(back.width).toBeCloseTo(matrix.width, 0);
+  expect(next.width).toBeCloseTo(matrix.width, 0);
+  expect(more.width).toBeCloseTo(more.height, 0);
+  expect(more.left).toBeCloseTo(matrix.left, 0);
 });
 
-test('reflow wrap moves items to further lines in source order; reflow stack stacks the whole group and comes back', async ({
+test('a line that does not fit stacks at full width, in source order, and comes back; it never wraps', async ({
   page
 }) => {
   await page.fill('#opt-width', '20');
-  await settle(page);
-  let items = await boxes(page, '#play');
-  expect(new Set(items.map((i) => Math.round(i.top))).size).toBeGreaterThan(1);
-  for (let i = 1; i < items.length; i++)
-    expect(items[i].top > items[i - 1].top + 0.5 || items[i].left > items[i - 1].left).toBe(true);
-  await expect(page.locator('#play')).not.toHaveAttribute('data-stacked', '');
-  await page.selectOption('#opt-reflow', 'stack');
   await expect(page.locator('#play')).toHaveAttribute('data-stacked', '');
   const f = await frame(page, '#play');
-  items = await boxes(page, '#play');
+  let items = await boxes(page, '#play');
   for (const item of items) expect(item.width).toBeCloseTo(f.width, 0);
   expect(items.map((i) => i.top)).toEqual([...items.map((i) => i.top)].sort((a, b) => a - b));
   await page.fill('#opt-width', '100');
   await expect(page.locator('#play')).not.toHaveAttribute('data-stacked', '');
   items = await boxes(page, '#play');
   expect(new Set(items.map((i) => Math.round(i.top))).size).toBe(1);
-  // The narrow column composition stacks; vertical stretched fills its column.
   await expect(page.locator('#narrow')).toHaveAttribute('data-stacked', '');
 });
 

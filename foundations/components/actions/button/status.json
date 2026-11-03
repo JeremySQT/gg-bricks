@@ -27,7 +27,7 @@
       "Menu for a list of actions behind one trigger."
     ]
   },
-  "dependencies": ["icon", "counter", "shortcut"],
+  "dependencies": ["icon", "counter", "shortcut", "spinner"],
   "fixtures": [
     "Phosphor Icons 2.1.1 regular paths (examples/icon/glyphs.ts) as the review glyphs of the Icon component, standing in for the application's icon set.",
     "Browser and SSR tests keep local inline svg glyphs for the slot measurements (the Icon root is an svg element, so the measurements are the same)."
@@ -35,7 +35,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/actions/button/contract.json",
-      "sha256": "49ef863145fa06f3e0783023e615c24f0e30266837fbe4029acd755b71a8c243"
+      "sha256": "9b9aa3a3aef86e455cdb81ced6770b363d03c6bb85682b2abe0c16a7951ccda0"
     },
     "tokens": [
       "foundations/tokens/inventory.json",
@@ -292,7 +292,8 @@
     "Repository and Figma structure (user, 2026-10-13, branch chore/repo-structure): sources of truth under foundations/ (foundations/tokens with its config, inventory, palette config and status; foundations/components/<family>/<id> with contract, status and figma-spec), implementations under packages/svelte/src/components/<id>, token evidence under reports/tokens, one Figma page per component named by its path (actions/button) holding the master, its internal parts and its specification; family pages removed. The contract's $schema pointer and the generated header comment changed with the paths; approvals re-digested under the user's authorization.",
     "Figma (user review of 2026-10-14): the component adapter variables are grouped in one hidden collection “Components” (modes sm, md, lg) by component name prefix; the former per-component collections were deleted after rebinding. The Button keeps “Components · button style” and “Components · button state” because its shared trailing part needs two independent mode axes (9 pairs × 5 states exceed one collection's modes).",
     "Done (2026-10-14): documentation page documentation/components/button.md and index entry written after the wave 1 Figma parity gate; phase set to done within the declared scope. The Figma library and the npm package are not published (delivery approval pending).",
-    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
+    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size).",
+    "Loading indicator: the Spinner component (2026-11-03), replacing the inline ring; size follows the button size."
   ],
   "openDecisions": [],
   "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",
@@ -331,6 +332,15 @@
       "change": "Wave 3 ButtonGroup: inside a ButtonGroup the group's size applies (context key ggb:button-group, the contract rule of ButtonGroup); outside a group nothing changes (button.spec.ts and button SSR tests pass unchanged). To be re-presented at the wave 3 implementation gate.",
       "sha256": {
         "packages/svelte/src/components/button/Button.svelte": "c0bbce3ad2b8664dfb88aa6ff31ef1d7a0001dd31489845b47048987c19c28f0"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): \"c'est bien ce composant qu'on va utiliser dans les boutons\" — the loading indicator is now the Spinner (component.spinner.duration 700 ms instead of the hard-coded 800 ms, track opacity 0.2 instead of 0.25); contract rule on the loading indicator updated, dependency spinner declared. browser test: the reduced-motion duration assertion now reads the Spinner token (2.1 s instead of the hard-coded 2.4 s). To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/actions/button/contract.json": "9b9aa3a3aef86e455cdb81ced6770b363d03c6bb85682b2abe0c16a7951ccda0",
+        "packages/svelte/src/components/button/Button.svelte": "9571f5f9dddc91c22ecc8a00532dead65bf209a0d06a1df12127b4ce2a79051f",
+        "packages/svelte/src/components/button/button.css": "0cde9313a6d06c72aeac71edb6215417e3a03aa5379aaa8802dde36403a7493b"
       }
     }
   ]

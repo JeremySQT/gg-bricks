@@ -6,11 +6,14 @@ export const defaults = {
   "label": "Notifications"
 } as const;
 export type ToastItemIntent = "neutral" | "info" | "success" | "warning" | "danger";
+export type ToastItemAppearance = "neutral" | "intense";
 export const childDefaults = {
   "item": {
     "intent": "neutral",
+    "appearance": "neutral",
     "description": "",
     "duration": 5000,
-    "dismissLabel": "Dismiss"
+    "dismissLabel": "Dismiss",
+    "closable": true
   }
 } as const;

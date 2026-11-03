@@ -28,20 +28,36 @@
   --ggb-toast-item-motionDuration: var(--ggb-motion-duration-base);
   --ggb-toast-item-easingEnter: var(--ggb-motion-easing-enter);
   --ggb-toast-item-easingExit: var(--ggb-motion-easing-exit);
+  --ggb-toast-item-actionsGap: var(--ggb-space-content-sm);
 }
 .ggb-toast .ggb-toast__item[data-intent="neutral"] {
   --ggb-toast-item-iconColor: var(--ggb-color-status-neutral-icon);
+  --ggb-toast-item-intenseSurfaceColor: var(--ggb-color-status-neutral-surface);
+  --ggb-toast-item-intenseContentColor: var(--ggb-color-status-neutral-content);
+  --ggb-toast-item-intenseEdgeColor: var(--ggb-color-status-neutral-border);
 }
 .ggb-toast .ggb-toast__item[data-intent="info"] {
   --ggb-toast-item-iconColor: var(--ggb-color-status-info-icon);
+  --ggb-toast-item-intenseSurfaceColor: var(--ggb-color-status-info-surface);
+  --ggb-toast-item-intenseContentColor: var(--ggb-color-status-info-content);
+  --ggb-toast-item-intenseEdgeColor: var(--ggb-color-status-info-border);
 }
 .ggb-toast .ggb-toast__item[data-intent="success"] {
   --ggb-toast-item-iconColor: var(--ggb-color-status-success-icon);
+  --ggb-toast-item-intenseSurfaceColor: var(--ggb-color-status-success-surface);
+  --ggb-toast-item-intenseContentColor: var(--ggb-color-status-success-content);
+  --ggb-toast-item-intenseEdgeColor: var(--ggb-color-status-success-border);
 }
 .ggb-toast .ggb-toast__item[data-intent="warning"] {
   --ggb-toast-item-iconColor: var(--ggb-color-status-warning-icon);
+  --ggb-toast-item-intenseSurfaceColor: var(--ggb-color-status-warning-surface);
+  --ggb-toast-item-intenseContentColor: var(--ggb-color-status-warning-content);
+  --ggb-toast-item-intenseEdgeColor: var(--ggb-color-status-warning-border);
 }
 .ggb-toast .ggb-toast__item[data-intent="danger"] {
   --ggb-toast-item-iconColor: var(--ggb-color-status-danger-icon);
+  --ggb-toast-item-intenseSurfaceColor: var(--ggb-color-status-danger-surface);
+  --ggb-toast-item-intenseContentColor: var(--ggb-color-status-danger-content);
+  --ggb-toast-item-intenseEdgeColor: var(--ggb-color-status-danger-border);
 }
 }

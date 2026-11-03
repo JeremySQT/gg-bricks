@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { ToastItemIntent, ToastPlacement } from './contract.generated.js';
+import type { ToastItemAppearance, ToastItemIntent, ToastPlacement } from './contract.generated.js';
 
 /** What the region shares with its toasts, through the Svelte context key `ggb:toast`. */
 export interface ToastRegionContext {
@@ -26,17 +26,21 @@ export interface ToastRegionProps extends Omit<HTMLAttributes<HTMLDivElement>, R
 type ToastOwned = 'children' | 'role' | 'title' | 'aria-live' | 'aria-atomic';
 
 export interface ToastProps extends Omit<HTMLAttributes<HTMLDivElement>, ToastOwned> {
-  /** Glyph and icon color: neutral (default), info, success, warning, danger. The surface stays neutral. */
+  /** Glyph and icon color: neutral (default), info, success, warning, danger. */
   intent?: ToastItemIntent;
+  /** neutral (default): overlay surface, the icon carries the intent. intense: tinted by the intent, for a stronger message. */
+  appearance?: ToastItemAppearance;
   /** What happened (Message sent). Required and non-empty. */
   title: string;
   /** A short detail under the title. */
   description?: string;
   /**
-   * Milliseconds before the toast leaves by itself (default 5000); 0 keeps it until dismissed. A toast with an action
-   * never leaves by itself.
+   * Milliseconds before the toast leaves by itself. Not set: none for danger (even with an action), 8000 with an action (time to undo), 5000 otherwise.
+   * 0 keeps the toast until it is dismissed or its action is activated.
    */
   duration?: number;
+  /** Shows the dismiss button (default true). Ignored for a toast without a countdown, which always keeps it. */
+  closable?: boolean;
   /** Accessible name of the dismiss button. Default Dismiss. */
   dismissLabel?: string;
   /** Replaces the intrinsic glyph of the intent (decorative, drawn in currentColor). */

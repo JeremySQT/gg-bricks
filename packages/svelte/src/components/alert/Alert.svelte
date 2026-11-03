@@ -45,6 +45,8 @@
   setContext('ggb:button-group-host', { size: 'sm' });
   // A ButtonGroup around the alert does not size the dismiss button.
   setContext('ggb:button-group', undefined);
+  // Links in the content take the alert's text color (tone inherit) unless they set their own tone.
+  setContext('ggb:link-tone', { tone: 'inherit' });
 </script>
 
 <div {...rest} bind:this={ref} class={['ggb-alert', className]} data-intent={intent} {role}>

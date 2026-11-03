@@ -1,11 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
-import type {
-  ButtonGroupAlign,
-  ButtonGroupOrientation,
-  ButtonGroupReflow,
-  ButtonGroupSize
-} from './contract.generated.js';
+import type { ButtonGroupAlign, ButtonGroupOrientation, ButtonGroupSize } from './contract.generated.js';
 
 /**
  * What a ButtonGroup shares with its Button and IconButton items, through the Svelte context key
@@ -26,10 +21,11 @@ export interface ButtonGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, O
   size?: ButtonGroupSize;
   /** horizontal: one line (default). vertical: one item per line. */
   orientation?: ButtonGroupOrientation;
-  /** start, center or end: where the items sit; stretch: they share the inline size equally. Default start. */
+  /**
+   * Horizontal groups: start, center or end place the line; stretch shares the inline size equally. Default start.
+   * A vertical group always gives every item the full inline size. A horizontal group that does not fit stacks.
+   */
   align?: ButtonGroupAlign;
-  /** When a horizontal group does not fit: wrap to further lines (default) or stack every item at full width. */
-  reflow?: ButtonGroupReflow;
   /** Names the group for assistive technology (a group of related actions); without it the group adds no semantics. */
   label?: string;
   /** Buttons and IconButtons, in priority reading order. */

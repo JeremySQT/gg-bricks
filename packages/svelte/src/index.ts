@@ -51,8 +51,7 @@ export type { ButtonGroupProps } from './components/button-group/types.js';
 export type {
   ButtonGroupSize,
   ButtonGroupOrientation,
-  ButtonGroupAlign,
-  ButtonGroupReflow
+  ButtonGroupAlign
 } from './components/button-group/contract.generated.js';
 export { default as Spinner } from './components/spinner/Spinner.svelte';
 export type { SpinnerProps } from './components/spinner/types.js';
@@ -69,7 +68,7 @@ export type { AlertIntent } from './components/alert/contract.generated.js';
 export { default as ToastRegion } from './components/toast/ToastRegion.svelte';
 export { default as Toast } from './components/toast/Toast.svelte';
 export type { ToastRegionProps, ToastProps } from './components/toast/types.js';
-export type { ToastPlacement, ToastItemIntent } from './components/toast/contract.generated.js';
+export type { ToastPlacement, ToastItemIntent, ToastItemAppearance } from './components/toast/contract.generated.js';
 export { default as Tooltip } from './components/tooltip/Tooltip.svelte';
 export type { TooltipProps } from './components/tooltip/types.js';
 export type { TooltipSide, TooltipAlign } from './components/tooltip/contract.generated.js';

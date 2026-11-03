@@ -10,7 +10,6 @@
     size,
     orientation = defaults.orientation,
     align = defaults.align,
-    reflow = defaults.reflow,
     label,
     children,
     ref = $bindable(null),
@@ -30,14 +29,14 @@
 
   const name = $derived(typeof label === 'string' && label.trim() ? label : undefined);
 
-  // reflow stack: a horizontal group that does not fit its inline size lays out as a vertical stretched stack. While
+  // A horizontal group that does not fit its inline size lays out as a vertical stretched stack. While
   // horizontal the items never wrap and never shrink below their content, so the group compares the extent of its
   // items (from the first item's start edge to the last item's end edge, whatever the alignment) with its own inline
   // size; once stacked it remembers that extent and returns to its line when the inline size holds it again.
   let stacked = $state(false);
   $effect(() => {
     const element = ref;
-    if (!element || orientation !== 'horizontal' || reflow !== 'stack' || typeof ResizeObserver === 'undefined') {
+    if (!element || orientation !== 'horizontal' || typeof ResizeObserver === 'undefined') {
       stacked = false;
       return;
     }
@@ -73,7 +72,6 @@
   data-size={resolvedSize}
   data-orientation={orientation}
   data-align={align}
-  data-reflow={reflow}
   data-stacked={stacked ? '' : undefined}
   role={name ? 'group' : undefined}
   aria-label={name}

@@ -28,7 +28,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/feedback/alert/contract.json",
-      "sha256": "6bcdec125e8233b8a83d287bfed1333d6e0567f7ce1303cdffc6af04f866e7f2"
+      "sha256": "11f53248dabb24d3dc66b221112aa798b64f1afbd1f096518c61b8c2851879e1"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
@@ -51,7 +51,7 @@
     "examples": {
       "page": "examples/alert",
       "preview": "dist/previews/alert.html (npm run build && npm run build:preview alert)",
-      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page alert.html)"
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page alert.html)"
     },
     "tests": {
       "ssr": ["tests/ssr/alert-toast.test.ts"],
@@ -110,6 +110,11 @@
       "name": "npm run build:preview alert",
       "result": "mounts from file:// without errors",
       "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
+      "date": "2026-11-03"
     }
   ],
   "decisionsTaken": [
@@ -119,7 +124,8 @@
     "Title typography.label.md, content typography.body.sm, padding space.content.md, radius.container.",
     "dismissible shows a small ghost neutral IconButton named dismissLabel and emits dismiss; the application removes the alert.",
     "live false by default (an alert present at load is not announced); live true announces assertively for danger and warning, politely otherwise.",
-    "Actions: one ButtonGroup of sm buttons under the content."
+    "Actions: one ButtonGroup of sm buttons under the content.",
+    "Accent buttons follow the alert intent by pointing the accent action tokens at the intent family in the subtree (no Button change); links take tone inherit through the context ggb:link-tone (2026-11-03)."
   ],
   "openDecisions": [],
   "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
@@ -127,5 +133,14 @@
     "Imports IconButton from ../icon-button (declared dependency; build:svelte now checks every import against the status dependencies).",
     "Title and content are div elements, not p: an application's unlayered element styles (paragraph margins and colors) would otherwise win over the component's cascade layer.",
     "The edge is an inset box-shadow, like the other components' borders, so that it never changes the outer size."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): buttons of intent accent take the action family of the alert intent (new color.action.info, success, warning families; neutral and danger existing), links inherit the content color. Implemented by pointing the accent action tokens at the intent family in the alert's subtree. To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/feedback/alert/contract.json": "11f53248dabb24d3dc66b221112aa798b64f1afbd1f096518c61b8c2851879e1"
+      }
+    }
   ]
 }

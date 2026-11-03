@@ -534,7 +534,12 @@ test('transitions follow the motion tokens and stop under reduced motion; forced
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(container).toHaveCSS('transition-duration', '0s');
   await page.check('#opt-loading');
-  await expect(page.locator('#play-action .ggb-button__loadingIndicator svg')).toHaveCSS('animation-duration', '2.4s');
+  // The loading indicator is the Spinner: one turn per component.spinner.duration, three times slower here.
+  const spin = (tokens['component.spinner.duration'].$value as { value: number }).value;
+  await expect(page.locator('#play-action .ggb-button__loadingIndicator svg')).toHaveCSS(
+    'animation-duration',
+    `${(3 * spin) / 1000}s`
+  );
 
   await page.emulateMedia({ forcedColors: 'active', reducedMotion: 'no-preference' });
   await expect(page.locator('#matrix-accent-ghost-md .ggb-button__container')).toHaveCSS('outline-style', 'solid');

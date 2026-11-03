@@ -77,15 +77,30 @@ test('Toast: title, description, glyph, role per intent, dismiss button; the act
       { title: 'Upload failed', intent: 'danger', description: 'Too large.', actionLabel: 'Retry' }
     ]
   });
-  assert.match(html, /<div id="t0" class="ggb-toast__item" data-intent="success" role="status" aria-atomic="true"/);
-  assert.match(html, /<div id="t1" class="ggb-toast__item" data-intent="danger" role="alert" aria-atomic="true"/);
+  assert.match(
+    html,
+    /<div id="t0" class="ggb-toast__item" data-intent="success" data-appearance="neutral" data-layout="single" role="status" aria-atomic="true"/
+  );
+  assert.match(
+    html,
+    /<div id="t1" class="ggb-toast__item" data-intent="danger" data-appearance="neutral" data-layout="multi" role="alert" aria-atomic="true"/
+  );
   assert.match(html, /<div class="ggb-toast__title">Saved<\/div>/);
   assert.match(html, /<div class="ggb-toast__description">Too large.<\/div>/);
   assert.equal(html.match(/class="ggb-toast__dismiss"/g)?.length, 2);
   assert.equal(html.match(/aria-label="Dismiss"/g)?.length, 2);
   assert.match(html, /<button[^>]*id="a1"[^>]*data-size="sm"/);
   assert.equal(html.match(/class="ggb-toast__action"/g)?.length, 1);
+  const intense = await toast({ items: [{ title: 'Saved', appearance: 'intense', closable: false, duration: 3000 }] });
+  assert.match(intense, /data-appearance="intense" data-layout="single"/);
+  assert.doesNotMatch(intense, /ggb-toast__dismiss/);
+  // closable false is ignored for a toast that would stay forever (danger without duration keeps its button).
+  const stays = await toast({ items: [{ title: 'Failed', intent: 'danger', closable: false }] });
+  assert.match(stays, /ggb-toast__dismiss/);
   await assert.rejects(toast({ items: [{ title: ' ' }] }), /non-empty title/);
   checks.toast.push('toast: role status (alert for danger), atomic; title, description, dismiss button named Dismiss');
   checks.toast.push('the action Button is small whatever it asks for; an empty title is rejected');
+  checks.toast.push(
+    'appearance and layout attributes (single without description, multi with); closable false hides the dismiss button only when the toast has a countdown'
+  );
 });

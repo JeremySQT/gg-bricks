@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { getContext } from 'svelte';
   import type { LinkProps } from './types.js';
   import { defaults } from './contract.generated.js';
   import { glyphs } from './glyphs.js';
@@ -9,7 +10,7 @@
   let {
     label,
     href,
-    tone = defaults.tone,
+    tone: ownTone,
     destination = defaults.destination,
     fileType,
     fileSize,
@@ -19,6 +20,11 @@
     class: className,
     ...rest
   }: LinkProps = $props();
+
+  // A host whose text carries its own color (an Alert) asks links to inherit it, through the context key
+  // `ggb:link-tone` (a string, so that the folders stay independent); an explicit tone wins.
+  const host = getContext<{ readonly tone: 'accent' | 'inherit' } | undefined>('ggb:link-tone');
+  const tone = $derived(ownTone ?? host?.tone ?? defaults.tone);
 
   // Fail identically on the server and in the browser rather than render a link without a name or a target.
   const name = $derived.by(() => {

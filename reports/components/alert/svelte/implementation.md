@@ -18,4 +18,6 @@ Component: `packages/svelte/src/components/alert/` (Svelte 5.57.1, Bits UI 2.19.
 
 ## Fixed during implementation
 
+- Round 2: accent buttons take the action family of the alert intent (the accent action tokens are pointed at the intent family in the alert's subtree; neutral and danger buttons keep theirs) and links inherit the content color (context ggb:link-tone).
+
 - The title was a p element: unlayered page styles (paragraph color and margins) won over the component layer; title and content are divs.

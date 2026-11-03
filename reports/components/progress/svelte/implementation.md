@@ -17,4 +17,6 @@ Component: `packages/svelte/src/components/progress/` (Svelte 5.57.1, Bits UI 2.
 
 ## Fixed during implementation
 
+- Round 2: corners bind the component token component.progress.radius (a brand sets it to 0 for rectangular bars; the review page shows it).
+
 - Bits UI Progress.Root does not render its id: the child snippet places it on the progress bar.

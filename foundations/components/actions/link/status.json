@@ -34,7 +34,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/actions/link/contract.json",
-      "sha256": "d482a8b7b9ed7a260e1d184267b95dfd61d88dc662a77cb1f535fcbc010daaab"
+      "sha256": "141f976096aa10e19e3e4be0599e12c5fe3b2aec048d39e8c72f30133d2d413e"
     },
     "tokens": [],
     "figma": {
@@ -258,7 +258,8 @@
     "User at the contract gate (2026-10-17): destinations confirmed as drafted (phone included, print = a link to a printable version); dark link color changed to color.palette.accent.300 (4.80:1 or more on every neutral backdrop in the 18 contexts; recommendation A).",
     "User at the implementation review (2026-10-19): variant D, glyph and meta as a subtle neutral complement; the meta in color.content.tertiary rather than color.content.secondary after the dark-mode remark. With tone inherit the meta keeps the context color at full strength (text contrast) and only the glyph is attenuated (opacity.muted).",
     "User at the Figma parity review (2026-10-20): the link is configured by variants rather than variable modes chosen by the designer (\"Est-ce qu'on ne pourrais pas gérer plutôt tout ça par des variantes plutôt que des modes ?\"), and the secondary and tertiary contexts are dropped (a dimmed link is harder to find). Recommendation A adopted (\"je suis tes recommendations, à voir à l'usage\"): variants Color (accent, on info, on success, on warning, on danger, on inverse) × Size (md, sm, lg) × State, the destination in the exposed nested part _Link/Destination; each variant sets the modes of the hidden Components · link size and Components · link color collections on itself.",
-    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
+    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size).",
+    "Links inherit the color of an Alert (context ggb:link-tone) unless they set a tone (2026-11-03)."
   ],
   "openDecisions": [
     {
@@ -279,5 +280,15 @@
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
     "informational": []
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): \"Les links et buttons à l'intérieur d'une alert doivent suivre l'intent de cette alerte\" — a host (Alert) may ask its links to inherit (context key ggb:link-tone); a link that does not set tone then takes tone inherit; an explicit tone wins. New contract rule. To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/actions/link/contract.json": "141f976096aa10e19e3e4be0599e12c5fe3b2aec048d39e8c72f30133d2d413e",
+        "packages/svelte/src/components/link/Link.svelte": "903a7ba617e0dc6477b28d6d6dfb95246d8b77514f20439f2d8268ec47cdfb1f"
+      }
+    }
+  ]
 }

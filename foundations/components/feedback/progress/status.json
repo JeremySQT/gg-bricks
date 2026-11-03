@@ -23,7 +23,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/feedback/progress/contract.json",
-      "sha256": "a36ad97d817fda003ef62cf7511c9ea907504aed3299b91ed4b3cd38d4079680"
+      "sha256": "8b6ca20ad671c8df38376460897830a26eca055b1da47d5d054038461098585e"
     },
     "tokens": [
       "foundations/tokens/inventory.json",
@@ -49,7 +49,7 @@
     "examples": {
       "page": "examples/progress",
       "preview": "dist/previews/progress.html (npm run build && npm run build:preview progress)",
-      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page progress.html)"
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page progress.html)"
     },
     "tests": {
       "ssr": ["tests/ssr/feedback-simple.test.ts"],
@@ -112,6 +112,11 @@
       "name": "npm run build:preview progress",
       "result": "mounts from file:// without errors",
       "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
+      "date": "2026-11-03"
     }
   ],
   "decisionsTaken": [
@@ -119,12 +124,23 @@
     "Indicator colors reuse color.status.{intent}.icon (accent, success, warning, danger): these roles already reach 3:1 on surfaces; the contract contrast block measures them against the track (color.surface.muted), surface.default and surface.overlay in 18 contexts: 0 failures.",
     "Track color.surface.muted, fully rounded (radius.full).",
     "Component tokens component.progress.thickness.{sm,md,lg} = 4, 6, 8 px (a value meaningful for Progress only).",
-    "Indeterminate: a one-third segment sweeping once per motion.duration.loop (new semantic role shared with Skeleton, 1500 ms), three times slower under reduced motion; value changes transition over motion.duration.base."
+    "Indeterminate: a one-third segment sweeping once per motion.duration.loop (new semantic role shared with Skeleton, 1500 ms), three times slower under reduced motion; value changes transition over motion.duration.base.",
+    "Corners: component token component.progress.radius, so that a brand can draw rectangular bars (user, 2026-11-03)."
   ],
   "openDecisions": [],
   "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
   "implementationNotes": [
     "Bits UI Progress.Root (2.19.3) does not render the id it receives: the component uses its child snippet to place the id on the progress bar itself.",
     "The label stays in the DOM, visually hidden, when showLabel is false, and names the bar through aria-labelledby."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): \"Il faut aussi un token pour les border radius de la progress\" — radius now binds the component token component.progress.radius (primitive radius full in base; a brand overrides it, 0 for rectangular bars). To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/feedback/progress/contract.json": "8b6ca20ad671c8df38376460897830a26eca055b1da47d5d054038461098585e",
+        "foundations/tokens/base/components/progress.tokens.json": "5940280c0a6c7e01cec664daf9e1cce6ce712537189fc4b6d7d69f1164da829a"
+      }
+    }
   ]
 }

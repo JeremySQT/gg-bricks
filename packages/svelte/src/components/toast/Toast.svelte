@@ -11,10 +11,12 @@
 
   let {
     intent = defaults.intent,
+    appearance = defaults.appearance,
     title,
     description = defaults.description,
-    duration = defaults.duration,
+    duration,
     dismissLabel = defaults.dismissLabel,
+    closable = defaults.closable,
     icon,
     action,
     ondismiss,
@@ -60,10 +62,24 @@
     queued = element.hasAttribute('data-queued');
     return () => observer.disconnect();
   });
-  const timed = $derived(!action && Number.isFinite(duration) && duration > 0);
+  // Countdown when duration is not set: none for danger (even with an action), 8 s with an action (time to undo),
+  // 5 s otherwise; a set duration wins.
+  const effective = $derived(
+    duration !== undefined && Number.isFinite(duration)
+      ? Math.max(0, duration)
+      : intent === 'danger'
+        ? 0
+        : action
+          ? 8000
+          : defaults.duration
+  );
+  const timed = $derived(effective > 0);
+  // A toast without a countdown keeps its dismiss button whatever closable says.
+  const showDismiss = $derived(closable || !timed);
+  const layout = $derived(description ? 'multi' : 'single');
   const paused = $derived(queued || !!region?.paused);
   // Time left before the toast leaves; reset when the duration changes, lowered while the countdown is paused.
-  let remaining = $derived(timed ? duration : 0);
+  let remaining = $derived(timed ? effective : 0);
   $effect(() => {
     if (!timed || paused || remaining <= 0) return;
     const started = performance.now();
@@ -97,6 +113,8 @@
   bind:this={ref}
   class={['ggb-toast__item', className]}
   data-intent={intent}
+  data-appearance={appearance}
+  data-layout={layout}
   role={intent === 'danger' ? 'alert' : 'status'}
   aria-atomic="true"
   onkeydown={(event) => {
@@ -117,25 +135,28 @@
   <div class="ggb-toast__text">
     <div class="ggb-toast__title">{heading}</div>
     {#if description}<div class="ggb-toast__description">{description}</div>{/if}
+    {#if action}
+      <!-- Activating the action performs it (its own handler), then the toast asks to leave. A keyboard activation of
+           the button also arrives as a click. -->
+      <span
+        class="ggb-toast__action"
+        role="none"
+        onclick={(event) => {
+          if ((event.target as Element).closest('button, a')) queueMicrotask(dismiss);
+        }}
+      >
+        {@render action()}
+      </span>
+    {/if}
   </div>
-  {#if action}
-    <!-- Activating the action performs it (its own handler), then the toast asks to leave. A keyboard activation of
-         the button also arrives as a click. -->
-    <span
-      class="ggb-toast__action"
-      role="none"
-      onclick={(event) => {
-        if ((event.target as Element).closest('button, a')) queueMicrotask(dismiss);
-      }}
-    >
-      {@render action()}
+  {#if showDismiss}
+    <span class="ggb-toast__dismiss">
+      <IconButton label={dismissLabel} size="sm" intent="neutral" appearance="ghost" onactivate={dismiss}>
+        {#snippet icon()}
+          <svg viewBox="0 0 256 256" fill="currentColor" focusable="false" aria-hidden="true"><path d={glyphs.x} /></svg
+          >
+        {/snippet}
+      </IconButton>
     </span>
   {/if}
-  <span class="ggb-toast__dismiss">
-    <IconButton label={dismissLabel} size="sm" intent="neutral" appearance="ghost" onactivate={dismiss}>
-      {#snippet icon()}
-        <svg viewBox="0 0 256 256" fill="currentColor" focusable="false" aria-hidden="true"><path d={glyphs.x} /></svg>
-      {/snippet}
-    </IconButton>
-  </span>
 </div>
