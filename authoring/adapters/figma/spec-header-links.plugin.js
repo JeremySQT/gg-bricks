@@ -25,7 +25,17 @@ const SPECS = [
   ['288:6', 'Forms', 'Radio', 'radio'],
   ['288:7', 'Forms', 'RadioGroup', 'radio-group'],
   ['288:8', 'Forms', 'Switch', 'switch'],
-  ['288:9', 'Forms', 'Textarea', 'textarea']
+  ['288:9', 'Forms', 'Textarea', 'textarea'],
+  ['407:110', 'Actions', 'ButtonGroup', 'button-group'],
+  ['407:113', 'Feedback', 'Alert', 'alert'],
+  ['407:114', 'Feedback', 'Progress', 'progress'],
+  ['407:115', 'Feedback', 'Skeleton', 'skeleton'],
+  ['407:116', 'Feedback', 'Spinner', 'spinner'],
+  ['407:117', 'Feedback', 'Toast', 'toast'],
+  ['407:120', 'Overlays', 'Dialog', 'dialog'],
+  ['407:121', 'Overlays', 'Menu', 'menu'],
+  ['407:122', 'Overlays', 'Popover', 'popover'],
+  ['407:123', 'Overlays', 'Tooltip', 'tooltip']
 ];
 const vars = await figma.variables.getLocalVariablesAsync();
 const V = (name) => vars.find((v) => v.name === name);
@@ -67,7 +77,8 @@ async function chip(label, target) {
   return c;
 }
 const families = {};
-for (const p of figma.root.children) if (['Actions', 'Content', 'Forms'].includes(p.name)) families[p.name] = p;
+for (const p of figma.root.children)
+  if (['Actions', 'Content', 'Forms', 'Feedback', 'Overlays'].includes(p.name)) families[p.name] = p;
 const out = {};
 for (const [pid, family, name, id] of SPECS) {
   if (ONLY && !ONLY.includes(name)) continue;
