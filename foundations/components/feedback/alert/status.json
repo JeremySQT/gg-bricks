@@ -31,8 +31,34 @@
       "sha256": "11f53248dabb24d3dc66b221112aa798b64f1afbd1f096518c61b8c2851879e1"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "feedback/alert (407:113)",
+      "library": "Feedback (407:112), section Alert (422:26)",
+      "componentSet": "422:715",
+      "specification": "423:2",
+      "ledger": "reports/components/alert/figma/ledger.json",
+      "parity": "reports/components/alert/figma/parity.json",
+      "screenshots": [
+        "reports/components/alert/figma/master-set.png",
+        "reports/components/alert/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/alert/figma/blueprint-anatomy.png",
+          "node": "423:370"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/action-family.plugin.js",
+        "authoring/adapters/figma/alert-master.plugin.js",
+        "authoring/adapters/figma/alert-spec.plugin.js",
+        "authoring/adapters/figma/alert-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/feedback/alert/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/alert",
@@ -139,6 +165,12 @@
       "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
       "result": "passed",
       "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (990 records, 0 failures; 450 extra checks)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/alert/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -152,7 +184,7 @@
     "Accent buttons follow the alert intent by pointing the accent action tokens at the intent family in the subtree (no Button change); links take tone inherit through the context ggb:link-tone (2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
+  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
   "implementationNotes": [
     "Imports IconButton from ../icon-button (declared dependency; build:svelte now checks every import against the status dependencies).",
     "Title and content are div elements, not p: an application's unlayered element styles (paragraph margins and colors) would otherwise win over the component's cascade layer.",

@@ -1,0 +1,116 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "feedback/alert",
+      "id": "407:113"
+    },
+    "library": {
+      "name": "Feedback",
+      "id": "407:112"
+    }
+  },
+  "recordedOn": "2026-11-03",
+  "componentSet": {
+    "id": "422:715",
+    "name": "Alert",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=422-715"
+  },
+  "section": {
+    "name": "Alert",
+    "id": "422:26"
+  },
+  "properties": {
+    "Intent": {
+      "type": "VARIANT",
+      "default": "info",
+      "options": [
+        "info",
+        "neutral",
+        "success",
+        "warning",
+        "danger"
+      ]
+    },
+    "Title": {
+      "type": "VARIANT",
+      "default": "yes",
+      "options": [
+        "yes",
+        "no"
+      ]
+    },
+    "Title text#422:11": {
+      "type": "TEXT"
+    },
+    "Content#422:22": {
+      "type": "TEXT"
+    },
+    "Show actions#422:33": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Dismissible#422:44": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Actions#422:10": {
+      "type": "SLOT",
+      "preferred": [
+        "ButtonGroup 419:2913"
+      ],
+      "allowPreferredValuesOnly": true
+    }
+  },
+  "variants": {
+    "Intent=info, Title=yes": "422:27",
+    "Intent=neutral, Title=yes": "422:144",
+    "Intent=success, Title=yes": "422:208",
+    "Intent=warning, Title=yes": "422:272",
+    "Intent=danger, Title=yes": "422:336",
+    "Intent=info, Title=no": "422:400",
+    "Intent=neutral, Title=no": "422:463",
+    "Intent=success, Title=no": "422:526",
+    "Intent=warning, Title=no": "422:589",
+    "Intent=danger, Title=no": "422:652"
+  },
+  "parts": {
+    "Icon box/Icon": "Phosphor glyph instance per intent (info 200:5169, check-circle 200:4685, warning 200:5834, warning-circle 200:5831)",
+    "Body/Text/Title, Content": "text",
+    "Body/Actions": "SLOT, default ButtonGroup sm",
+    "Dismiss box/Dismiss": "IconButton sm neutral ghost, glyph x 200:4368"
+  },
+  "specification": {
+    "id": "423:2",
+    "name": "Alert — Specification",
+    "anatomyBoard": "423:370",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=423-2"
+  },
+  "adapterVariables": {
+    "Components · action family": {
+      "id": "VariableCollectionId:421:1499",
+      "modes": {
+        "default": "421:0",
+        "neutral": "421:1",
+        "info": "421:2",
+        "success": "421:3",
+        "warning": "421:4",
+        "danger": "421:5"
+      },
+      "variables": "action-family/{accent,neutral}/{solid,outline,ghost}/{default,hover,pressed,loading,disabled}/{surface,content,border} (90, hidden from publishing, no scopes)",
+      "consumers": "Button 48:1586 and IconButton 211:1167 accent and neutral paints (690 rebound), Components · button state aliases (30); every Alert variant sets the mode of its intent"
+    }
+  },
+  "builders": [
+    "authoring/adapters/figma/action-family.plugin.js",
+    "authoring/adapters/figma/alert-master.plugin.js",
+    "authoring/adapters/figma/alert-spec.plugin.js",
+    "authoring/adapters/figma/alert-parity.plugin.js",
+    "authoring/adapters/figma/wave3-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js"
+  ],
+  "notes": [
+    "Extra checks (not in computed.json), 450 passed: in every context and intent the accent solid surface and the neutral outline label of the actions and the dismiss glyph resolve to the action family of the intent, and the icon and dismiss are centered on the title line (±0.6 px)."
+  ]
+}

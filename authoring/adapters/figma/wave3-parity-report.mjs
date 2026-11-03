@@ -78,6 +78,25 @@ COMPONENTS['button-group'] = {
   fields: { gap: px, itemHeight: (v) => num(v, 2) },
   justified: {}
 };
+// "rgb(…) 0px 0px 0px 1px inset" (an inset edge) → "hex/width".
+const edge = (v) => `${hex(v)}/${parseFloat(String(v).match(/([\d.]+)px inset$/)[1])}`;
+COMPONENTS.alert = {
+  key: (r) => r.props.intent,
+  fields: {
+    surface: hex,
+    content: hex,
+    edge,
+    radius: px,
+    padding: px,
+    gap: px,
+    fontSize: px,
+    iconColor: hex,
+    iconSize: (v) => num(v, 2),
+    titleSize: px,
+    titleWeight: String
+  },
+  justified: {}
+};
 const C = COMPONENTS[id];
 if (!C) throw new Error('unknown component ' + id);
 const byCtx = {};
