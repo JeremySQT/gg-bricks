@@ -1,0 +1,68 @@
+/*
+ * Skeleton structure. Color, typography, radii, pulse opacity and duration come from tokens.generated.css; this file
+ * holds structural literals only. Text lines take the line box of the body typography and draw a bar of its font
+ * size, centered; block fills the size the layout gives; circle is a disc as wide as its box. No pulse under reduced
+ * motion.
+ */
+@layer ggb {
+  .ggb-skeleton {
+    box-sizing: border-box;
+    display: block;
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+  .ggb-skeleton[data-shape='text'] {
+    display: flex;
+    flex-direction: column;
+    font: var(--ggb-skeleton-typography);
+  }
+  .ggb-skeleton__line {
+    display: flex;
+    align-items: center;
+    block-size: 1lh;
+  }
+  .ggb-skeleton__line::before {
+    content: '';
+    display: block;
+    inline-size: 100%;
+    block-size: 1em;
+    border-radius: var(--ggb-skeleton-textRadius);
+    background: var(--ggb-skeleton-surfaceColor);
+    animation: ggb-skeleton-pulse var(--ggb-skeleton-motionLoop) ease-in-out infinite;
+  }
+  .ggb-skeleton__line:last-child:not(:first-child)::before {
+    inline-size: 60%;
+  }
+  .ggb-skeleton[data-shape='block'],
+  .ggb-skeleton[data-shape='circle'] {
+    background: var(--ggb-skeleton-surfaceColor);
+    animation: ggb-skeleton-pulse var(--ggb-skeleton-motionLoop) ease-in-out infinite;
+  }
+  .ggb-skeleton[data-shape='block'] {
+    block-size: 100%;
+    border-radius: var(--ggb-skeleton-blockRadius);
+  }
+  .ggb-skeleton[data-shape='circle'] {
+    aspect-ratio: 1;
+    border-radius: var(--ggb-skeleton-circleRadius);
+  }
+  @keyframes ggb-skeleton-pulse {
+    50% {
+      opacity: var(--ggb-skeleton-pulseOpacity);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-skeleton[data-shape='block'],
+    .ggb-skeleton[data-shape='circle'],
+    .ggb-skeleton__line::before {
+      animation: none;
+    }
+  }
+  @media (forced-colors: active) {
+    .ggb-skeleton[data-shape='block'],
+    .ggb-skeleton[data-shape='circle'],
+    .ggb-skeleton__line::before {
+      border: 1px solid CanvasText;
+    }
+  }
+}

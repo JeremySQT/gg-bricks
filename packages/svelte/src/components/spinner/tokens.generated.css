@@ -1,0 +1,19 @@
+/* Generated token bindings from the spinner contract. Do not edit. */
+@layer ggb {
+.ggb-spinner[data-size="sm"] {
+  --ggb-spinner-size: var(--ggb-size-icon-sm);
+}
+.ggb-spinner[data-size="md"] {
+  --ggb-spinner-size: var(--ggb-size-icon-md);
+}
+.ggb-spinner[data-size="lg"] {
+  --ggb-spinner-size: var(--ggb-size-icon-lg);
+}
+.ggb-spinner[data-size="xl"] {
+  --ggb-spinner-size: var(--ggb-size-icon-xl);
+}
+.ggb-spinner {
+  --ggb-spinner-trackOpacity: var(--ggb-component-spinner-track-opacity);
+  --ggb-spinner-motionDuration: var(--ggb-component-spinner-duration);
+}
+}

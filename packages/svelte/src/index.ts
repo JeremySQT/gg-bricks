@@ -54,3 +54,12 @@ export type {
   ButtonGroupAlign,
   ButtonGroupReflow
 } from './components/button-group/contract.generated.js';
+export { default as Spinner } from './components/spinner/Spinner.svelte';
+export type { SpinnerProps } from './components/spinner/types.js';
+export type { SpinnerSize } from './components/spinner/contract.generated.js';
+export { default as Progress } from './components/progress/Progress.svelte';
+export type { ProgressProps } from './components/progress/types.js';
+export type { ProgressIntent, ProgressSize } from './components/progress/contract.generated.js';
+export { default as Skeleton } from './components/skeleton/Skeleton.svelte';
+export type { SkeletonProps } from './components/skeleton/types.js';
+export type { SkeletonShape, SkeletonSize } from './components/skeleton/contract.generated.js';

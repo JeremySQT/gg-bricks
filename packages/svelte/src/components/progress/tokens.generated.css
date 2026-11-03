@@ -1,0 +1,40 @@
+/* Generated token bindings from the progress contract. Do not edit. */
+@layer ggb {
+.ggb-progress {
+  --ggb-progress-trackColor: var(--ggb-color-surface-muted);
+  --ggb-progress-labelColor: var(--ggb-color-content-primary);
+  --ggb-progress-valueColor: var(--ggb-color-content-secondary);
+  --ggb-progress-typography: var(--ggb-typography-label-md);
+  --ggb-progress-typography-letterSpacing: var(--ggb-typography-label-md-letterSpacing);
+  --ggb-progress-typography-fontFeatureSettings: var(--ggb-typography-label-md-fontFeatureSettings);
+  --ggb-progress-typographyValue: var(--ggb-typography-numeral-sm);
+  --ggb-progress-typographyValue-letterSpacing: var(--ggb-typography-numeral-sm-letterSpacing);
+  --ggb-progress-typographyValue-fontFeatureSettings: var(--ggb-typography-numeral-sm-fontFeatureSettings);
+  --ggb-progress-radius: var(--ggb-radius-full);
+  --ggb-progress-labelGap: var(--ggb-space-content-xs);
+  --ggb-progress-motionDuration: var(--ggb-motion-duration-base);
+  --ggb-progress-easingStandard: var(--ggb-motion-easing-standard);
+  --ggb-progress-motionLoop: var(--ggb-motion-duration-loop);
+}
+.ggb-progress[data-intent="accent"] {
+  --ggb-progress-indicatorColor: var(--ggb-color-status-accent-icon);
+}
+.ggb-progress[data-intent="success"] {
+  --ggb-progress-indicatorColor: var(--ggb-color-status-success-icon);
+}
+.ggb-progress[data-intent="warning"] {
+  --ggb-progress-indicatorColor: var(--ggb-color-status-warning-icon);
+}
+.ggb-progress[data-intent="danger"] {
+  --ggb-progress-indicatorColor: var(--ggb-color-status-danger-icon);
+}
+.ggb-progress[data-size="sm"] {
+  --ggb-progress-thickness: var(--ggb-component-progress-thickness-sm);
+}
+.ggb-progress[data-size="md"] {
+  --ggb-progress-thickness: var(--ggb-component-progress-thickness-md);
+}
+.ggb-progress[data-size="lg"] {
+  --ggb-progress-thickness: var(--ggb-component-progress-thickness-lg);
+}
+}

@@ -1,0 +1,51 @@
+/*
+ * Spinner structure. Size, track opacity and turn duration come from tokens.generated.css; this file holds structural
+ * literals only. Both parts are drawn in the inherited current color; the ring turns linearly, three times slower
+ * under reduced motion. The label, when present, is the visually hidden name of the status.
+ */
+@layer ggb {
+  .ggb-spinner {
+    position: relative;
+    display: inline-block;
+    flex: none;
+    inline-size: var(--ggb-spinner-size);
+    block-size: var(--ggb-spinner-size);
+    vertical-align: middle;
+    color: inherit;
+  }
+  .ggb-spinner__svg {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    animation: ggb-spinner-turn var(--ggb-spinner-motionDuration) linear infinite;
+  }
+  .ggb-spinner__track {
+    opacity: var(--ggb-spinner-trackOpacity);
+  }
+  .ggb-spinner__label {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+  @keyframes ggb-spinner-turn {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-spinner__svg {
+      animation-duration: calc(3 * var(--ggb-spinner-motionDuration));
+    }
+  }
+  @media (forced-colors: active) {
+    .ggb-spinner {
+      color: CanvasText;
+    }
+  }
+}
