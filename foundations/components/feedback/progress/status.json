@@ -32,9 +32,30 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/progress",
+      "files": [
+        "packages/svelte/src/components/progress/Progress.svelte",
+        "packages/svelte/src/components/progress/types.ts",
+        "packages/svelte/src/components/progress/progress.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 Progress.Root"
+      },
+      "report": "reports/components/progress/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/progress",
+      "preview": "dist/previews/progress.html (npm run build && npm run build:preview progress)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page progress.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/feedback-simple.test.ts"],
+      "browser": ["tests/browser/progress.spec.ts"],
+      "evidence": "reports/components/progress/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -70,6 +91,27 @@
       "result": "passed",
       "date": "2026-11-01",
       "evidence": "reports/components/progress/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (2376 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/progress/svelte/"
+    },
+    {
+      "name": "npm run build:preview progress",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
     }
   ],
   "decisionsTaken": [
@@ -80,6 +122,9 @@
     "Indeterminate: a one-third segment sweeping once per motion.duration.loop (new semantic role shared with Skeleton, 1500 ms), three times slower under reduced motion; value changes transition over motion.duration.base."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
-  "implementationNotes": []
+  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "implementationNotes": [
+    "Bits UI Progress.Root (2.19.3) does not render the id it receives: the component uses its child snippet to place the id on the progress bar itself.",
+    "The label stays in the DOM, visually hidden, when showLabel is false, and names the bar through aria-labelledby."
+  ]
 }

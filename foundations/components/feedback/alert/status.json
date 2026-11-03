@@ -33,9 +33,31 @@
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/alert",
+      "files": [
+        "packages/svelte/src/components/alert/Alert.svelte",
+        "packages/svelte/src/components/alert/types.ts",
+        "packages/svelte/src/components/alert/alert.css",
+        "packages/svelte/src/components/alert/glyphs.ts"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/alert/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/alert",
+      "preview": "dist/previews/alert.html (npm run build && npm run build:preview alert)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page alert.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/alert-toast.test.ts"],
+      "browser": ["tests/browser/alert.spec.ts"],
+      "evidence": "reports/components/alert/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -67,6 +89,27 @@
       "result": "passed",
       "date": "2026-11-01",
       "evidence": "reports/components/alert/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (990 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/alert/svelte/"
+    },
+    {
+      "name": "npm run build:preview alert",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
     }
   ],
   "decisionsTaken": [
@@ -79,6 +122,10 @@
     "Actions: one ButtonGroup of sm buttons under the content."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
-  "implementationNotes": []
+  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "implementationNotes": [
+    "Imports IconButton from ../icon-button (declared dependency; build:svelte now checks every import against the status dependencies).",
+    "Title and content are div elements, not p: an application's unlayered element styles (paragraph margins and colors) would otherwise win over the component's cascade layer.",
+    "The edge is an inset box-shadow, like the other components' borders, so that it never changes the outer size."
+  ]
 }

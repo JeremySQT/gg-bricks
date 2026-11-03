@@ -33,9 +33,30 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/tooltip",
+      "files": [
+        "packages/svelte/src/components/tooltip/Tooltip.svelte",
+        "packages/svelte/src/components/tooltip/types.ts",
+        "packages/svelte/src/components/tooltip/tooltip.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/tooltip/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/tooltip",
+      "preview": "dist/previews/tooltip.html (npm run build && npm run build:preview tooltip)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page tooltip.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/overlays.test.ts"],
+      "browser": ["tests/browser/tooltip.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
+      "evidence": "reports/components/tooltip/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -71,6 +92,27 @@
       "result": "passed",
       "date": "2026-11-01",
       "evidence": "reports/components/tooltip/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (32 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/tooltip/svelte/"
+    },
+    {
+      "name": "npm run build:preview tooltip",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
     }
   ],
   "decisionsTaken": [
@@ -82,6 +124,10 @@
     "Entry over motion.duration.fast with motion.distance.sm."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
-  "implementationNotes": []
+  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "implementationNotes": [
+    "The trigger is the first element of the children snippet, wrapped in a display: contents span that listens to pointer and focus events; the tooltip is a manual popover placed by lib/overlay floating.",
+    "One tooltip at a time and the skip delay (300 ms after a tooltip closed, the next opens at once) are module-level state.",
+    "aria-describedby is added to the trigger unless its aria-label equals the tooltip text."
+  ]
 }

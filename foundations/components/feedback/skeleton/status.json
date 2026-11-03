@@ -23,9 +23,30 @@
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/skeleton",
+      "files": [
+        "packages/svelte/src/components/skeleton/Skeleton.svelte",
+        "packages/svelte/src/components/skeleton/types.ts",
+        "packages/svelte/src/components/skeleton/skeleton.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/skeleton/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/skeleton",
+      "preview": "dist/previews/skeleton.html (npm run build && npm run build:preview skeleton)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page skeleton.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/feedback-simple.test.ts"],
+      "browser": ["tests/browser/skeleton.spec.ts"],
+      "evidence": "reports/components/skeleton/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -57,6 +78,27 @@
       "result": "passed",
       "date": "2026-11-01",
       "evidence": "reports/components/skeleton/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (558 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/skeleton/svelte/"
+    },
+    {
+      "name": "npm run build:preview skeleton",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
     }
   ],
   "decisionsTaken": [
@@ -66,6 +108,9 @@
     "Hidden from assistive technology; the busy state belongs to the loading region (integration)."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
-  "implementationNotes": []
+  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "implementationNotes": [
+    "Pulses stay in phase across the page: each pulse animation's startTime is set to 0 (the document timeline origin) when the skeleton mounts.",
+    "Text lines use the lh unit for the line box and a bar of 1em: the skeleton paragraph has the height of the real paragraph (checked against real text in the browser test)."
+  ]
 }

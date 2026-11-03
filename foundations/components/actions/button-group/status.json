@@ -32,9 +32,30 @@
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/button-group",
+      "files": [
+        "packages/svelte/src/components/button-group/ButtonGroup.svelte",
+        "packages/svelte/src/components/button-group/types.ts",
+        "packages/svelte/src/components/button-group/button-group.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/button-group/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/button-group",
+      "preview": "dist/previews/button-group.html (npm run build && npm run build:preview button-group)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page button-group.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/button-group.test.ts"],
+      "browser": ["tests/browser/button-group.spec.ts"],
+      "evidence": "reports/components/button-group/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -66,6 +87,27 @@
       "result": "passed",
       "date": "2026-11-01",
       "evidence": "reports/components/button-group/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (216 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/button-group/svelte/"
+    },
+    {
+      "name": "npm run build:preview button-group",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
     }
   ],
   "decisionsTaken": [
@@ -74,9 +116,15 @@
     "align start, center, end and stretch for both orientations; no space-between option: a split footer (a destructive action at the start) is two groups in a layout, which keeps reading order explicit.",
     "reflow wrap (default) or stack: stack switches the whole group to vertical full width when it does not fit, observed as the state stacked; the group never reorders items.",
     "No disabled prop: each action is disabled on its own.",
-    "label optional: the group is a named group only when it has one."
+    "label optional: the group is a named group only when it has one.",
+    "Stacking is measured, not a container query: a container query would need a threshold width the contract does not have."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
-  "implementationNotes": []
+  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "implementationNotes": [
+    "Button and IconButton read the group size through the context key ggb:button-group (a string; each folder declares the shape again), so an item's own size is ignored inside a group.",
+    "A host (Alert) may ask for a default size through the context key ggb:button-group-host; an explicit size on the group wins.",
+    "reflow stack: a ResizeObserver compares the extent of the items (first start edge to last end edge, whatever the alignment) with the inline size, stacks the group and remembers that extent to return to the line. In the horizontal layout items never shrink below their content.",
+    "Overlays (Popover, Dialog, Menu) clear the ggb:button-group context for their content, so that a group around their declaration does not size their buttons."
+  ]
 }

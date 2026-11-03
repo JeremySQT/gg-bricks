@@ -32,9 +32,30 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/spinner",
+      "files": [
+        "packages/svelte/src/components/spinner/Spinner.svelte",
+        "packages/svelte/src/components/spinner/types.ts",
+        "packages/svelte/src/components/spinner/spinner.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/spinner/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/spinner",
+      "preview": "dist/previews/spinner.html (npm run build && npm run build:preview spinner)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page spinner.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/feedback-simple.test.ts"],
+      "browser": ["tests/browser/spinner.spec.ts"],
+      "evidence": "reports/components/spinner/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -70,6 +91,27 @@
       "result": "passed",
       "date": "2026-11-01",
       "evidence": "reports/components/spinner/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (648 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/spinner/svelte/"
+    },
+    {
+      "name": "npm run build:preview spinner",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
     }
   ],
   "decisionsTaken": [
@@ -81,6 +123,8 @@
     "Open question 5 accepted for the implementation review (user, 2026-11-03: \"Ok, à juger dans l'implémentation\"): component.spinner.duration = 700 ms; the speed is judged on the real rendering at the implementation gate, and Button and IconButton adopt the Spinner after the wave."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
-  "implementationNotes": []
+  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "implementationNotes": [
+    "A labelled spinner is a role status named by aria-label (a status takes no name from its content in Chromium) with the same text visually hidden inside it as the announced content. Whether a status inserted already filled is announced varies between screen readers: the application may keep a status region on the page and fill it instead."
+  ]
 }

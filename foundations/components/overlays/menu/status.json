@@ -28,14 +28,38 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/overlays/menu/contract.json",
-      "sha256": "35e48e8241cb47a6b042a0a75c7a174aba686b6c98659fb6ce3c13af84a64822"
+      "sha256": "dd9d08534d616451c8061301deb10ffb9bd320fa323f9f7578dc2b12eafcf0f3"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/menu",
+      "files": [
+        "packages/svelte/src/components/menu/Menu.svelte",
+        "packages/svelte/src/components/menu/MenuItem.svelte",
+        "packages/svelte/src/components/menu/MenuSeparator.svelte",
+        "packages/svelte/src/components/menu/MenuGroup.svelte",
+        "packages/svelte/src/components/menu/types.ts",
+        "packages/svelte/src/components/menu/menu.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/menu/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/menu",
+      "preview": "dist/previews/menu.html (npm run build && npm run build:preview menu)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page menu.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/overlays.test.ts"],
+      "browser": ["tests/browser/menu.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
+      "evidence": "reports/components/menu/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -67,6 +91,27 @@
       "result": "passed",
       "date": "2026-11-01",
       "evidence": "reports/components/menu/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (60 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/menu/svelte/"
+    },
+    {
+      "name": "npm run build:preview menu",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
     }
   ],
   "decisionsTaken": [
@@ -78,9 +123,25 @@
     "Inline size: widest item, at least the trigger, at most size.overlay.panel (360 px).",
     "Items accept a leading Icon and a trailing Shortcut (display only).",
     "Open question 3 resolved (user, 2026-11-03: \"Ok\"): Menu v1 holds actions and links only (item, separator, group); checkable items and submenus come later, on demand, as new children of the same contract.",
-    "Open question 2 resolved (user, 2026-11-03: \"Ok\"): the contract wins over Bits UI DropdownMenu where they disagree, with a local, pinned and tested override."
+    "Open question 2 resolved (user, 2026-11-03: \"Ok\"): the contract wins over Bits UI DropdownMenu where they disagree, with a local, pinned and tested override.",
+    "Bits UI DropdownMenu is not used: its content unmounts when closed (no exit transition) and it manages focus in its own focus scope; decisions.md (2026-10-31) lets ggbrick write its own overlay primitive in that case. The Menu implements the WAI-ARIA menu button pattern on the native auto popover.",
+    "Contract fact added during implementation: group leadingSize and leadingGap roles (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
-  "implementationNotes": []
+  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "implementationNotes": [
+    "Exports Menu, MenuItem, MenuSeparator and MenuGroup.",
+    "The highlighted item is the focused item (roving focus through focus(), not aria-activedescendant); opening by pointer focuses the menu itself, so no item is highlighted until an arrow key or the pointer.",
+    "The trigger opens the menu through popovertarget; ArrowDown and ArrowUp on the trigger open it on the first or last item; Enter or Space mark a keyboard opening.",
+    "On opening, the panel is at least as wide as the trigger and never taller than the larger room above or below it."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "Contract fact found during implementation: group roles leadingSize (size.icon.sm) and leadingGap (space.control.gap.sm) so that the group heading aligns with item labels when items have a leading icon (the item roles are scoped to items and invisible to the group). To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/overlays/menu/contract.json": "dd9d08534d616451c8061301deb10ffb9bd320fa323f9f7578dc2b12eafcf0f3"
+      }
+    }
+  ]
 }

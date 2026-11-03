@@ -23,7 +23,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/overlays/dialog/contract.json",
-      "sha256": "6a0d87720ad1acb1ccd5cc390139e6005095a6ab6bc09e772f7c9d4f08a386f9"
+      "sha256": "43f642e4e522e722f750c6566ff245270e0e7d754d1b6b0daafba83b73dd60df"
     },
     "tokens": [
       "foundations/tokens/inventory.json",
@@ -32,9 +32,31 @@
     ],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/dialog",
+      "files": [
+        "packages/svelte/src/components/dialog/Dialog.svelte",
+        "packages/svelte/src/components/dialog/types.ts",
+        "packages/svelte/src/components/dialog/dialog.css",
+        "packages/svelte/src/components/dialog/glyphs.ts"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/dialog/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/dialog",
+      "preview": "dist/previews/dialog.html (npm run build && npm run build:preview dialog)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793704735-8d89, page dialog.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/overlays.test.ts"],
+      "browser": ["tests/browser/dialog.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
+      "evidence": "reports/components/dialog/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -70,6 +92,27 @@
       "result": "passed",
       "date": "2026-11-01",
       "evidence": "reports/components/dialog/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (96 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/dialog/svelte/"
+    },
+    {
+      "name": "npm run build:preview dialog",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
     }
   ],
   "decisionsTaken": [
@@ -81,9 +124,24 @@
     "Title typography.heading.sm, description typography.body.sm, body typography.body.md, padding space.layout.md, shadow.modal, radius.overlay, entry with motion.distance.md.",
     "No trigger part: the application opens the dialog by setting open (a Button or a Menu item).",
     "Open question 1 resolved (user, 2026-11-03: \"ok (meme si le wording scrim n'est pas très parlant...)\"): color.surface.scrim is the canonical modal backdrop; opacity.scrim stays for an image or video veil and is documented as not for overlays. The user finds the word scrim unclear: the foundations documentation explains it in plain words (the dimming layer behind a modal window); a rename is not decided.",
-    "Open question 2 resolved (user, 2026-11-03: \"Ok\"): when a Bits UI behavior disagrees with a contract rule, the contract wins; the component overrides or completes the primitive locally, pins the Bits UI version and covers the override with a browser test."
+    "Open question 2 resolved (user, 2026-11-03: \"Ok\"): when a Bits UI behavior disagrees with a contract rule, the contract wins; the component overrides or completes the primitive locally, pins the Bits UI version and covers the override with a browser test.",
+    "Contract fact added during implementation: focusWidth and focusOffset roles for the body room (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
-  "implementationNotes": []
+  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "implementationNotes": [
+    "lib/overlay modal gained a closeRequest option (closedby none and a cancelled cancel event) for a dialog that is not dismissible.",
+    "The page does not scroll while a dialog is open (:root:has(dialog.ggb-dialog[open]) { overflow: hidden }).",
+    "Header, title and footer are divs (the title has role heading, level 2) so that an application's element styles never reach them.",
+    "Enters moving upwards: the dialog negates the overlay distance of overlay.css."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "Contract fact found during implementation: roles focusWidth (focus.width) and focusOffset (focus.offset) and the rule that the body keeps that room around its content, so that a focus indicator or a 44 px target at its edge is never clipped and never makes the body scroll. To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/overlays/dialog/contract.json": "43f642e4e522e722f750c6566ff245270e0e7d754d1b6b0daafba83b73dd60df"
+      }
+    }
+  ]
 }

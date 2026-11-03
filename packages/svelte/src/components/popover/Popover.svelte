@@ -50,6 +50,9 @@
     const box = anchor()?.getBoundingClientRect();
     if (box) ref.style.setProperty('--_room', `${Math.max(box.top, innerHeight - box.bottom)}px`);
     await tick();
+    // Only when focus has not moved since the trigger opened the panel: a user who already went elsewhere keeps it.
+    const active = document.activeElement;
+    if (!ref.matches(':popover-open') || (active && active !== document.body && active !== anchor())) return;
     const focusable = ref.querySelector<HTMLElement>(
       'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]), [contenteditable="true"]'
     );
@@ -60,7 +63,10 @@
   function focusOut(event: FocusEvent) {
     const next = event.relatedTarget as Node | null;
     if (!next || ref?.contains(next) || anchor()?.contains(next)) return;
-    set(false);
+    // Hide the element itself: its toggle event may still be on its way (a fast Tab right after opening), and the
+    // open state would then be set back to true by it.
+    if (ref?.matches(':popover-open')) ref.hidePopover();
+    else set(false);
   }
 </script>
 

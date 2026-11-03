@@ -59,6 +59,10 @@
     const dialog = ref;
     void tick().then(() => {
       if (!dialog.open || dialog.querySelector('[autofocus]')) return;
+      // The browser has focused the first focusable element (the close button) or the dialog; a user who already
+      // moved focus inside the dialog keeps it.
+      const active = document.activeElement;
+      if (active && active !== dialog && !active.closest('.ggb-dialog__close')) return;
       const target =
         body?.querySelector<HTMLElement>(focusable) ?? footerElement?.querySelector<HTMLElement>(focusable) ?? dialog;
       target.focus();

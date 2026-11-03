@@ -51,6 +51,12 @@
     ref.style.setProperty('--_anchor-inline-size', `${box?.width ?? 0}px`);
     if (box) ref.style.setProperty('--_room', `${Math.max(box.top, innerHeight - box.bottom)}px`);
     await tick();
+    // Only when focus has not moved since the menu opened (from its trigger or the document).
+    const active = document.activeElement;
+    if (!ref.matches(':popover-open') || (active && active !== document.body && active !== anchor())) {
+      pending = 'none';
+      return;
+    }
     const list = items();
     if (pending === 'first') highlight(list[0]);
     else if (pending === 'last') highlight(list.at(-1));

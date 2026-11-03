@@ -251,5 +251,14 @@
         "reason": "Accepted at the contract gate (2026-09-26): outline border reaches 2.06 to 2.37 on surface.muted in dark; the label identifies the button, WCAG 1.4.11 does not require the boundary."
       }
     ]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "Wave 3 ButtonGroup: inside a ButtonGroup the group's size applies (context key ggb:button-group); outside a group nothing changes (icon-button.spec.ts and SSR tests pass unchanged). To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "packages/svelte/src/components/icon-button/IconButton.svelte": "69f53e39392728d63f8b03535c32b0d97fdb6267fd6de3549b4a6ee85ad9840d"
+      }
+    }
+  ]
 }

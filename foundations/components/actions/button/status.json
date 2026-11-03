@@ -325,6 +325,13 @@
       "scope": "Figma masters (approvals.figmaParity paths figma-spec.md, parity.json, ledger.json): the Leading icon of the 135 variants is the Icon component, _Button/Trailing is Type × Size with the Icon, Counter and Shortcut masters (each variant sets Size), the specification's six glyph choices re-applied and its Anatomy sentence updated; fixtures _Fixture/Counter and _Fixture/Shortcut removed. Colors, geometry and typography of the masters unchanged (666 measured cases identical to the approved measurement); slot geometry re-measured with the real Counter (108 records, 0 failures).",
       "evidence": "reports/components/button/figma/parity.json (re-generated 2026-10-14), reports/components/button/figma/trailing-set.png, ledger maintenance entry.",
       "approval": "To re-record at the wave 1 Figma parity gate together with the implementation change (review page on the real components)."
+    },
+    {
+      "date": "2026-11-03",
+      "change": "Wave 3 ButtonGroup: inside a ButtonGroup the group's size applies (context key ggb:button-group, the contract rule of ButtonGroup); outside a group nothing changes (button.spec.ts and button SSR tests pass unchanged). To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "packages/svelte/src/components/button/Button.svelte": "c0bbce3ad2b8664dfb88aa6ff31ef1d7a0001dd31489845b47048987c19c28f0"
+      }
     }
   ]
 }
