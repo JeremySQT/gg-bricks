@@ -1,0 +1,80 @@
+/*
+ * Alert structure. Colors, spacing, typography, radius and icon size come from tokens.generated.css; this file holds
+ * structural literals only. Icon at the inline start, a column with title, content and actions, the dismiss button
+ * at the inline end; icon and dismiss align with the first line of the column.
+ */
+@layer ggb {
+  .ggb-alert {
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ggb-alert-iconGap);
+    inline-size: 100%;
+    padding: var(--ggb-alert-padding);
+    border-radius: var(--ggb-alert-radius);
+    background: var(--ggb-alert-surface);
+    box-shadow: inset 0 0 0 var(--ggb-alert-borderWidth) var(--ggb-alert-edgeColor);
+    color: var(--ggb-alert-content);
+    font: var(--ggb-alert-typography);
+    letter-spacing: var(--ggb-alert-typography-letterSpacing, normal);
+    overflow-wrap: anywhere;
+  }
+  /* The icon box is as tall as the first line of the column (the title line, or the content line), so that the
+     glyph is centered on that line. */
+  .ggb-alert__icon {
+    display: flex;
+    flex: none;
+    align-items: center;
+    block-size: 1lh;
+    color: var(--ggb-alert-iconColor);
+  }
+  .ggb-alert:has(.ggb-alert__title) .ggb-alert__icon,
+  .ggb-alert:has(.ggb-alert__title) .ggb-alert__dismiss {
+    font: var(--ggb-alert-typographyTitle);
+  }
+  .ggb-alert__icon > svg {
+    display: block;
+    inline-size: var(--ggb-alert-iconSize);
+    block-size: var(--ggb-alert-iconSize);
+  }
+  .ggb-alert__body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-inline-size: 0;
+  }
+  .ggb-alert__title {
+    margin: 0;
+    font: var(--ggb-alert-typographyTitle);
+    letter-spacing: var(--ggb-alert-typographyTitle-letterSpacing, normal);
+  }
+  .ggb-alert__title + .ggb-alert__content {
+    margin-block-start: var(--ggb-alert-titleGap);
+  }
+  .ggb-alert__content > :first-child {
+    margin-block-start: 0;
+  }
+  .ggb-alert__content > :last-child {
+    margin-block-end: 0;
+  }
+  .ggb-alert__actions {
+    margin-block-start: var(--ggb-alert-actionsGap);
+  }
+  /* The dismiss button (a small IconButton) is centered on the first line, its 44 px target overlapping the
+     padding without moving the layout. */
+  .ggb-alert__dismiss {
+    display: flex;
+    flex: none;
+    align-items: center;
+    block-size: 1lh;
+  }
+  @media (forced-colors: active) {
+    .ggb-alert {
+      border: 1px solid CanvasText;
+      box-shadow: none;
+    }
+    .ggb-alert__icon {
+      color: CanvasText;
+    }
+  }
+}

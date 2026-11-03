@@ -27,6 +27,26 @@ for (const c of components) {
   generated.push(c.id);
 }
 
+// Copy rule (decisions.md, shared code): a component folder imports only its own files, the folders of the
+// components its status declares under `dependencies` and the `src/lib/<module>` modules declared as `lib/<module>`.
+const importPattern = /(?:import|from)\s+['"](\.\.\/[^'"]+)['"]/g;
+for (const c of components) {
+  const dir = `${pkg}/src/components/${c.id}`;
+  if (!exists(dir)) continue;
+  const declared = new Set(c.status?.dependencies ?? []);
+  for (const file of fs.readdirSync(abs(dir))) {
+    if (!/\.(svelte|ts|css)$/.test(file) || file.endsWith('.generated.ts')) continue;
+    for (const [, target] of readText(`${dir}/${file}`).matchAll(importPattern)) {
+      const lib = /^\.\.\/\.\.\/lib\/([^/]+)/.exec(target);
+      const component = /^\.\.\/([^./][^/]*)\//.exec(target);
+      const needed = lib ? `lib/${lib[1]}` : component ? component[1] : null;
+      if (!needed) throw Error(`${dir}/${file} imports ${target}, outside its folder and src/lib`);
+      if (!declared.has(needed))
+        throw Error(`${dir}/${file} imports ${target}: declare ${needed} under dependencies in the ${c.id} status`);
+    }
+  }
+}
+
 // Consumer copies. The maintained sources stay in documentation/ and packages/tokens.
 fs.copyFileSync(abs(paths.tokensPackage, 'tokens.css'), abs(pkg, 'tokens.css'));
 fs.rmSync(abs(pkg, 'docs'), { recursive: true, force: true });

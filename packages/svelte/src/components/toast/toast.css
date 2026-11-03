@@ -1,0 +1,132 @@
+/*
+ * Toast structure. Colors, spacing, typography, shadow, radius, sizes and motion come from tokens.generated.css; this
+ * file holds structural literals only. The region is a manual popover in the top layer, fixed at `edge` from the
+ * viewport edges named by its placement; it lets presses through between toasts. Toasts stack with the newest
+ * nearest the placement edge, enter from that edge and leave by fading (the component collapses them).
+ */
+@layer ggb {
+  .ggb-toast[popover] {
+    position: fixed;
+    inset: auto;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: var(--ggb-toast-gap);
+    inline-size: max-content;
+    max-inline-size: 100vi;
+    max-block-size: 100vb;
+    margin: 0;
+    padding: var(--ggb-toast-edge);
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    pointer-events: none;
+  }
+  .ggb-toast[popover]:popover-open {
+    display: flex;
+  }
+  .ggb-toast[data-placement^='bottom'] {
+    inset-block-end: 0;
+  }
+  .ggb-toast[data-placement^='top'] {
+    inset-block-start: 0;
+    flex-direction: column-reverse;
+  }
+  .ggb-toast[data-placement$='-start'] {
+    inset-inline-start: 0;
+    align-items: flex-start;
+  }
+  .ggb-toast[data-placement$='-end'] {
+    inset-inline-end: 0;
+    align-items: flex-end;
+  }
+  .ggb-toast[data-placement$='-center'] {
+    inset-inline: 0;
+    margin-inline: auto;
+    align-items: center;
+  }
+
+  .ggb-toast__item {
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ggb-toast-item-iconGap);
+    inline-size: min(var(--ggb-toast-item-inlineSize), calc(100vi - 2 * var(--ggb-toast-edge)));
+    padding: var(--ggb-toast-item-padding);
+    border-radius: var(--ggb-toast-item-radius);
+    background: var(--ggb-toast-item-surface);
+    box-shadow:
+      inset 0 0 0 var(--ggb-toast-item-borderWidth) var(--ggb-toast-item-elevationColor),
+      var(--ggb-toast-item-shadow);
+    color: var(--ggb-toast-item-content);
+    font: var(--ggb-toast-item-typography);
+    letter-spacing: var(--ggb-toast-item-typography-letterSpacing, normal);
+    overflow-wrap: anywhere;
+    pointer-events: auto;
+    transition:
+      opacity var(--ggb-toast-item-motionDuration) var(--ggb-toast-item-easingEnter),
+      translate var(--ggb-toast-item-motionDuration) var(--ggb-toast-item-easingEnter);
+    @starting-style {
+      opacity: 0;
+      translate: 0 var(--ggb-toast-item-enterDistance);
+    }
+  }
+  .ggb-toast[data-placement^='top'] .ggb-toast__item {
+    @starting-style {
+      opacity: 0;
+      translate: 0 calc(-1 * var(--ggb-toast-item-enterDistance));
+    }
+  }
+  .ggb-toast__item[data-queued] {
+    display: none;
+  }
+  /* Icon, action and dismiss are centered on the title line. */
+  .ggb-toast__icon,
+  .ggb-toast__action,
+  .ggb-toast__dismiss {
+    display: flex;
+    flex: none;
+    align-items: center;
+    block-size: 1lh;
+    font: var(--ggb-toast-item-typographyTitle);
+  }
+  .ggb-toast__icon {
+    color: var(--ggb-toast-item-iconColor);
+  }
+  .ggb-toast__icon > svg {
+    display: block;
+    inline-size: var(--ggb-toast-item-iconSize);
+    block-size: var(--ggb-toast-item-iconSize);
+  }
+  .ggb-toast__text {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: var(--ggb-toast-item-titleGap);
+    min-inline-size: 0;
+  }
+  .ggb-toast__title,
+  .ggb-toast__description {
+    margin: 0;
+  }
+  .ggb-toast__title {
+    font: var(--ggb-toast-item-typographyTitle);
+    letter-spacing: var(--ggb-toast-item-typographyTitle-letterSpacing, normal);
+  }
+  .ggb-toast__description {
+    color: var(--ggb-toast-item-descriptionColor);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-toast__item,
+    .ggb-toast[data-placement^='top'] .ggb-toast__item {
+      @starting-style {
+        translate: 0 0;
+      }
+    }
+  }
+  @media (forced-colors: active) {
+    .ggb-toast__item {
+      border: 1px solid CanvasText;
+    }
+  }
+}

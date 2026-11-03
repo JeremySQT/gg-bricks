@@ -1,0 +1,47 @@
+/* Generated token bindings from the toast contract. Do not edit. */
+@layer ggb {
+.ggb-toast {
+  --ggb-toast-edge: var(--ggb-space-layout-sm);
+  --ggb-toast-gap: var(--ggb-space-content-sm);
+  --ggb-toast-layer: var(--ggb-layer-toast);
+}
+.ggb-toast .ggb-toast__item {
+  --ggb-toast-item-surface: var(--ggb-color-surface-overlay);
+  --ggb-toast-item-content: var(--ggb-color-content-primary);
+  --ggb-toast-item-descriptionColor: var(--ggb-color-content-secondary);
+  --ggb-toast-item-elevationColor: var(--ggb-color-elevation-border);
+  --ggb-toast-item-borderWidth: var(--ggb-border-width-default);
+  --ggb-toast-item-shadow: var(--ggb-shadow-overlay);
+  --ggb-toast-item-radius: var(--ggb-radius-overlay);
+  --ggb-toast-item-inlineSize: var(--ggb-size-overlay-panel);
+  --ggb-toast-item-padding: var(--ggb-space-content-md);
+  --ggb-toast-item-iconGap: var(--ggb-space-content-sm);
+  --ggb-toast-item-titleGap: var(--ggb-space-content-xs);
+  --ggb-toast-item-typographyTitle: var(--ggb-typography-label-md);
+  --ggb-toast-item-typographyTitle-letterSpacing: var(--ggb-typography-label-md-letterSpacing);
+  --ggb-toast-item-typographyTitle-fontFeatureSettings: var(--ggb-typography-label-md-fontFeatureSettings);
+  --ggb-toast-item-typography: var(--ggb-typography-body-sm);
+  --ggb-toast-item-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-toast-item-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+  --ggb-toast-item-iconSize: var(--ggb-size-icon-md);
+  --ggb-toast-item-enterDistance: var(--ggb-motion-distance-md);
+  --ggb-toast-item-motionDuration: var(--ggb-motion-duration-base);
+  --ggb-toast-item-easingEnter: var(--ggb-motion-easing-enter);
+  --ggb-toast-item-easingExit: var(--ggb-motion-easing-exit);
+}
+.ggb-toast .ggb-toast__item[data-intent="neutral"] {
+  --ggb-toast-item-iconColor: var(--ggb-color-status-neutral-icon);
+}
+.ggb-toast .ggb-toast__item[data-intent="info"] {
+  --ggb-toast-item-iconColor: var(--ggb-color-status-info-icon);
+}
+.ggb-toast .ggb-toast__item[data-intent="success"] {
+  --ggb-toast-item-iconColor: var(--ggb-color-status-success-icon);
+}
+.ggb-toast .ggb-toast__item[data-intent="warning"] {
+  --ggb-toast-item-iconColor: var(--ggb-color-status-warning-icon);
+}
+.ggb-toast .ggb-toast__item[data-intent="danger"] {
+  --ggb-toast-item-iconColor: var(--ggb-color-status-danger-icon);
+}
+}

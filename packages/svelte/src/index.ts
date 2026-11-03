@@ -63,3 +63,10 @@ export type { ProgressIntent, ProgressSize } from './components/progress/contrac
 export { default as Skeleton } from './components/skeleton/Skeleton.svelte';
 export type { SkeletonProps } from './components/skeleton/types.js';
 export type { SkeletonShape, SkeletonSize } from './components/skeleton/contract.generated.js';
+export { default as Alert } from './components/alert/Alert.svelte';
+export type { AlertProps } from './components/alert/types.js';
+export type { AlertIntent } from './components/alert/contract.generated.js';
+export { default as ToastRegion } from './components/toast/ToastRegion.svelte';
+export { default as Toast } from './components/toast/Toast.svelte';
+export type { ToastRegionProps, ToastProps } from './components/toast/types.js';
+export type { ToastPlacement, ToastItemIntent } from './components/toast/contract.generated.js';

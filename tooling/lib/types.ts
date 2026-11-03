@@ -162,6 +162,8 @@ export interface ComponentStatus {
   componentId: string | null;
   phase: string;
   contrastScope?: ContrastScope;
+  /** Component ids and `lib/<module>` shared modules the component needs (the copy rule). */
+  dependencies?: string[];
   [key: string]: unknown;
 }
 
