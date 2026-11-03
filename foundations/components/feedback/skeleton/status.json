@@ -21,8 +21,33 @@
       "sha256": "4bf3db0a1e4a047aca7f25a7b9c3309a9e7968f4fe39965176c1d9a5eb97ea24"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "feedback/skeleton (407:115)",
+      "library": "Feedback (407:112), section Skeleton (417:26)",
+      "componentSet": "417:74",
+      "specification": "418:2",
+      "ledger": "reports/components/skeleton/figma/ledger.json",
+      "parity": "reports/components/skeleton/figma/parity.json",
+      "screenshots": [
+        "reports/components/skeleton/figma/master-set.png",
+        "reports/components/skeleton/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/skeleton/figma/blueprint-anatomy.png",
+          "node": "418:47"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/skeleton-master.plugin.js",
+        "authoring/adapters/figma/skeleton-spec.plugin.js",
+        "authoring/adapters/figma/skeleton-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/feedback/skeleton/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/skeleton",
@@ -126,6 +151,12 @@
       "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
       "result": "passed",
       "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (558 records, 0 failures, 162 justified)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/skeleton/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -135,7 +166,7 @@
     "Hidden from assistive technology; the busy state belongs to the loading region (integration)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
+  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
   "implementationNotes": [
     "Pulses stay in phase across the page: each pulse animation's startTime is set to 0 (the document timeline origin) when the skeleton mounts.",
     "Text lines use the lh unit for the line box and a bar of 1em: the skeleton paragraph has the height of the real paragraph (checked against real text in the browser test)."

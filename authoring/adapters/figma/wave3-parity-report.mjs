@@ -52,6 +52,27 @@ const COMPONENTS = {
     }
   }
 };
+COMPONENTS.skeleton = {
+  key: (r) => `${r.props.shape},${r.props.size ?? ''}`,
+  fields: {
+    lineHeights: (v) => v.map((x) => num(x, 1)).join('/'),
+    barHeight: px,
+    barColor: hex,
+    barRadius: px,
+    lastWidth: (v) => num(v, 1),
+    lineWidth: (v) => num(v, 1),
+    radius: px,
+    color: hex,
+    height: (v) => num(v, 1),
+    parent: (v) => num(v, 1)
+  },
+  justified: {
+    hidden:
+      'Justified: aria-hidden is an attribute of the code; the set description says the skeleton is hidden from assistive technology.',
+    pulse: 'Justified: the pulse (opacity 1 → opacity/muted) is an animation of the code; Figma masters are static.',
+    duration: 'Justified: the pulse duration (motion/duration/loop) belongs to the animation of the code.'
+  }
+};
 const C = COMPONENTS[id];
 if (!C) throw new Error('unknown component ' + id);
 const byCtx = {};

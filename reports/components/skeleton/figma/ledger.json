@@ -1,0 +1,89 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "feedback/skeleton",
+      "id": "407:115"
+    },
+    "library": {
+      "name": "Feedback",
+      "id": "407:112"
+    }
+  },
+  "recordedOn": "2026-11-03",
+  "componentSet": {
+    "id": "417:74",
+    "name": "Skeleton",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=417-74"
+  },
+  "section": {
+    "name": "Skeleton",
+    "id": "417:26"
+  },
+  "properties": {
+    "Shape": {
+      "type": "VARIANT",
+      "default": "text",
+      "options": [
+        "text",
+        "block",
+        "circle"
+      ]
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ],
+      "note": "text only"
+    },
+    "Lines": {
+      "type": "VARIANT",
+      "default": "1",
+      "options": [
+        "1",
+        "2",
+        "3"
+      ],
+      "note": "text only"
+    }
+  },
+  "variants": {
+    "Shape=text, Size=md, Lines=1": "417:27",
+    "Shape=text, Size=md, Lines=2": "417:30",
+    "Shape=text, Size=md, Lines=3": "417:35",
+    "Shape=text, Size=sm, Lines=1": "417:42",
+    "Shape=text, Size=sm, Lines=2": "417:45",
+    "Shape=text, Size=sm, Lines=3": "417:50",
+    "Shape=text, Size=lg, Lines=1": "417:57",
+    "Shape=text, Size=lg, Lines=2": "417:60",
+    "Shape=text, Size=lg, Lines=3": "417:65",
+    "Shape=block, Size=md, Lines=1": "417:72",
+    "Shape=circle, Size=md, Lines=1": "417:73"
+  },
+  "parts": {
+    "Line": "frame bound to typography/body/{size}/lineHeight",
+    "Bar": "frame bound to typography/body/{size}/fontSize, radius/indicator, centered; last bar 60 % (scale constraint)"
+  },
+  "specification": {
+    "id": "418:2",
+    "name": "Skeleton — Specification",
+    "anatomyBoard": "418:47",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=418-2"
+  },
+  "adapterVariables": {},
+  "builders": [
+    "authoring/adapters/figma/skeleton-master.plugin.js",
+    "authoring/adapters/figma/skeleton-spec.plugin.js",
+    "authoring/adapters/figma/skeleton-parity.plugin.js",
+    "authoring/adapters/figma/wave3-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js"
+  ],
+  "notes": [
+    "Full-width bars use a stretch constraint, which Figma rounds to whole pixels in an instance of fractional width (369 for 368.66): a difference of at most 0.5 px, not part of computed.json."
+  ]
+}
