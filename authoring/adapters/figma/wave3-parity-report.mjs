@@ -97,6 +97,32 @@ COMPONENTS.alert = {
   },
   justified: {}
 };
+// A CSS box-shadow list → "edge hex/width;alpha x,y,blur,spread;…" (the inset edge, then each drop shadow).
+const shadowList = (v) =>
+  [...String(v).matchAll(/(rgba?\([^)]*\)) (-?[\d.]+)px (-?[\d.]+)px (-?[\d.]+)px (-?[\d.]+)px( inset)?/g)]
+    .map(([, c, x, y, b, sp, inset]) => {
+      if (inset) return `${hex(c)}/${parseFloat(sp)}`;
+      const a = c.match(/rgba\([^,]+,[^,]+,[^,]+,\s*([\d.]+)\)/);
+      return `${a ? num(a[1], 3) : '1'} ${parseFloat(x)},${parseFloat(y)},${parseFloat(b)},${parseFloat(sp)}`;
+    })
+    .join(';');
+COMPONENTS.toast = {
+  key: (r) => r.props.intent,
+  fields: {
+    surface: hex,
+    content: hex,
+    shadow: shadowList,
+    radius: px,
+    padding: px,
+    width: (v) => num(v, 1),
+    icon: hex,
+    description: hex
+  },
+  justified: {
+    transition:
+      'Justified: the enter and leave transitions (motion/duration/base) are animations of the code; Figma masters are static.'
+  }
+};
 const C = COMPONENTS[id];
 if (!C) throw new Error('unknown component ' + id);
 const byCtx = {};

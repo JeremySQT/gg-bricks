@@ -1,0 +1,112 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "feedback/toast",
+      "id": "407:117"
+    },
+    "library": {
+      "name": "Feedback",
+      "id": "407:112"
+    }
+  },
+  "recordedOn": "2026-11-03",
+  "componentSet": {
+    "id": "426:819",
+    "name": "Toast",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=426-819"
+  },
+  "section": {
+    "name": "Toast",
+    "id": "426:36"
+  },
+  "properties": {
+    "Layout": {
+      "type": "VARIANT",
+      "default": "single",
+      "options": [
+        "single",
+        "multi"
+      ]
+    },
+    "Appearance": {
+      "type": "VARIANT",
+      "default": "neutral",
+      "options": [
+        "neutral",
+        "intense"
+      ]
+    },
+    "Intent": {
+      "type": "VARIANT",
+      "default": "neutral",
+      "options": [
+        "neutral",
+        "info",
+        "success",
+        "warning",
+        "danger"
+      ]
+    },
+    "Title#426:0": {
+      "type": "TEXT"
+    },
+    "Description#426:21": {
+      "type": "TEXT",
+      "note": "multi only"
+    },
+    "Show action#426:42": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Closable#426:63": {
+      "type": "BOOLEAN",
+      "default": true
+    },
+    "Action": {
+      "type": "exposed nested Button sm (neutral outline by default)"
+    }
+  },
+  "variants": {
+    "count": 20,
+    "first": "Layout=single, Appearance=neutral, Intent=neutral 426:37"
+  },
+  "parts": {
+    "ToastRegion": {
+      "id": "426:1471",
+      "properties": {
+        "Placement": [
+          "bottom-end",
+          "bottom-start",
+          "bottom-center",
+          "top-start",
+          "top-center",
+          "top-end"
+        ],
+        "Toasts#426:90": "SLOT (Toast preferred and only, at least one)",
+        "Label#426:91": "TEXT, hidden region name"
+      },
+      "variants": "Placement=bottom-end 426:1009; Placement=bottom-start 426:1086; Placement=bottom-center 426:1163; Placement=top-start 426:1240; Placement=top-center 426:1317; Placement=top-end 426:1394"
+    }
+  },
+  "specification": {
+    "id": "429:2",
+    "name": "Toast — Specification",
+    "anatomyBoard": "429:302",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=429-2"
+  },
+  "adapterVariables": {
+    "Components · action family": "intense variants set the mode of their intent; neutral variants the default mode"
+  },
+  "builders": [
+    "authoring/adapters/figma/toast-master.plugin.js",
+    "authoring/adapters/figma/toast-spec.plugin.js",
+    "authoring/adapters/figma/toast-parity.plugin.js",
+    "authoring/adapters/figma/wave3-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js"
+  ],
+  "notes": [
+    "computed.json records only the danger neutral toast in the four representative contexts (36 records); 1548 extra checks in the 18 contexts: intense surface, edge, title and description colors per intent, action label and border and dismiss glyph in the action family of the intent, neutral appearance actions kept neutral, single layout centered, multi icon and dismiss on the title line."
+  ]
+}

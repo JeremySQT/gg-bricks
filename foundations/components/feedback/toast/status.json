@@ -23,8 +23,33 @@
       "sha256": "719a33fe39efed30524f517eb0b0f3b6f81bab76caa2437b0b243fcdd89a74b7"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "feedback/toast (407:117)",
+      "library": "Feedback (407:112), section Toast (426:36)",
+      "componentSet": "426:819",
+      "specification": "429:2",
+      "ledger": "reports/components/toast/figma/ledger.json",
+      "parity": "reports/components/toast/figma/parity.json",
+      "screenshots": [
+        "reports/components/toast/figma/master-set.png",
+        "reports/components/toast/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/toast/figma/blueprint-anatomy.png",
+          "node": "429:302"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/toast-master.plugin.js",
+        "authoring/adapters/figma/toast-spec.plugin.js",
+        "authoring/adapters/figma/toast-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/feedback/toast/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/toast",
@@ -134,6 +159,12 @@
       "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
       "result": "passed",
       "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (36 records, 0 failures, 4 justified; 1548 extra checks)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/toast/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -149,7 +180,7 @@
     "Toast actions are secondary only (user, 2026-11-03): ghost or outline, neutral or danger, never accent; a snippet cannot enforce it, the rule is documented (decisions.md, snippet slots)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
+  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
   "implementationNotes": [
     "Exports ToastRegion (the region, root of the contract) and Toast (the item child).",
     "The region is a div with role region (not a section: an application's section styles moved it) shown as a manual popover in the top layer; it raises itself again whenever another overlay enters the top layer after it (a capture listener on toggle events).",
