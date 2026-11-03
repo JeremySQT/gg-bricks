@@ -3,7 +3,7 @@
   "componentId": "progress",
   "family": "feedback",
   "wave": 3,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Show how far a task of known size has gone, or that a longer task is under way.",
     "useCases": [
@@ -39,7 +39,21 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Progress contract: value, max, indeterminate, required label (showLabel), showValue, intent accent/success/warning/danger, size; indicator color.status.{intent}.icon on a color.surface.muted track with explicit 3:1 contrast pairs; component tokens component.progress.thickness.{sm,md,lg}; motion.duration.loop sweep.",
+      "revision": {
+        "paths": [
+          "foundations/components/feedback/progress/contract.json",
+          "foundations/tokens/base/components/progress.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/feedback/progress/contract.json": "a36ad97d817fda003ef62cf7511c9ea907504aed3299b91ed4b3cd38d4079680",
+          "foundations/tokens/base/components/progress.tokens.json": "24fb0c85ba5c20bd1ecfd093ae17ec93419e9f09c586e76df68a63f63836fb70"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -66,6 +80,6 @@
     "Indeterminate: a one-third segment sweeping once per motion.duration.loop (new semantic role shared with Skeleton, 1500 ms), three times slower under reduced motion; value changes transition over motion.duration.base."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",
+  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
   "implementationNotes": []
 }

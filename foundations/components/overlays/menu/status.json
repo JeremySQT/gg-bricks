@@ -3,7 +3,7 @@
   "componentId": "menu",
   "family": "overlays",
   "wave": 3,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Offer a short list of actions or links in a panel opened from a trigger.",
     "useCases": [
@@ -40,7 +40,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Menu compound contract: bindable open, label, side, align; trigger Button or IconButton; children item (label, value, intent neutral/danger, href, disabled, leading Icon, trailing Shortcut), separator, group; color.item.* roles; WAI-ARIA menu button keyboard with typeahead; select event; v1 without checkable items or submenus.",
+      "revision": {
+        "paths": ["foundations/components/overlays/menu/contract.json"],
+        "sha256": {
+          "foundations/components/overlays/menu/contract.json": "35e48e8241cb47a6b042a0a75c7a174aba686b6c98659fb6ce3c13af84a64822"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -66,12 +76,11 @@
     "Keyboard per the WAI-ARIA menu button pattern: arrows wrap, Home and End, typeahead, Enter and Space activate, Escape and Tab close; disabled items are reached but not activated.",
     "Opening by pointer focuses the menu without a highlight; by keyboard highlights the first item.",
     "Inline size: widest item, at least the trigger, at most size.overlay.panel (360 px).",
-    "Items accept a leading Icon and a trailing Shortcut (display only)."
+    "Items accept a leading Icon and a trailing Shortcut (display only).",
+    "Open question 3 resolved (user, 2026-11-03: \"Ok\"): Menu v1 holds actions and links only (item, separator, group); checkable items and submenus come later, on demand, as new children of the same contract.",
+    "Open question 2 resolved (user, 2026-11-03: \"Ok\"): the contract wins over Bits UI DropdownMenu where they disagree, with a local, pinned and tested override."
   ],
-  "openDecisions": [
-    "3. Menu v1 scope: actions and links only (item, separator, group); checkable items (checkbox and radio items) and submenus later, on demand, as new children of the same contract. Alternative: include them now.",
-    "2. Contract versus Bits UI (shared with Dialog): Menu is built on Bits UI DropdownMenu with its portal disabled; the contract wins where they disagree."
-  ],
-  "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",
+  "openDecisions": [],
+  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
   "implementationNotes": []
 }

@@ -3,7 +3,7 @@
   "componentId": "spinner",
   "family": "feedback",
   "wave": 3,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Show that something is loading when the duration is unknown and the place is small.",
     "useCases": [
@@ -39,7 +39,21 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Spinner contract: size sm/md/lg/xl on size.icon.*, optional label (decorative when empty, polite status otherwise); track and quarter-arc indicator in the current color; component tokens component.spinner.duration (700 ms) and component.spinner.track-opacity (0.2); three times slower under reduced motion.",
+      "revision": {
+        "paths": [
+          "foundations/components/feedback/spinner/contract.json",
+          "foundations/tokens/base/components/spinner.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/feedback/spinner/contract.json": "64f551bc4bb36ec76a036df69faf42e99808ed68a27eedfbe98de5133553b9b0",
+          "foundations/tokens/base/components/spinner.tokens.json": "914aa9d84502083bed8b8dba190748155c902e366f464faa5bea6066d9c238df"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": "The turn speed (700 ms) is to be judged on the real rendering at the implementation review."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -63,11 +77,10 @@
     "Sizes sm, md, lg, xl on size.icon.* (16, 20, 24, 32 px).",
     "Color inherited (currentColor); track at the component token component.spinner.track-opacity (0.2; Button uses 0.25 hard-coded).",
     "label empty by default: decorative; a non-empty label makes it a polite status.",
-    "One turn per component.spinner.duration (component token, primitive 700 ms; Button hard-codes 800 ms), three times slower under reduced motion (the Button rule). Spinner values are component tokens: Button and IconButton will compose the Spinner rather than share the tokens."
+    "One turn per component.spinner.duration (component token, primitive 700 ms; Button hard-codes 800 ms), three times slower under reduced motion (the Button rule). Spinner values are component tokens: Button and IconButton will compose the Spinner rather than share the tokens.",
+    "Open question 5 accepted for the implementation review (user, 2026-11-03: \"Ok, à juger dans l'implémentation\"): component.spinner.duration = 700 ms; the speed is judged on the real rendering at the implementation gate, and Button and IconButton adopt the Spinner after the wave."
   ],
-  "openDecisions": [
-    "5. Spinner speed: component.spinner.duration aliases the existing primitive 700 ms (Button and IconButton hard-code 800 ms today); after the wave, a Modify makes Button and IconButton compose the Spinner (a 100 ms faster turn). Alternative: a new primitive 800 ms to keep the reviewed speed."
-  ],
-  "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",
+  "openDecisions": [],
+  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
   "implementationNotes": []
 }

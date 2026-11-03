@@ -3,7 +3,7 @@
   "componentId": "alert",
   "family": "feedback",
   "wave": 3,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Give a durable message about the page, a section or a task, in the flow of the page.",
     "useCases": [
@@ -40,7 +40,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Alert contract: intent neutral/info/success/warning/danger on color.status.*, optional title, free content, intrinsic glyph per intent (replaceable icon slot), one ButtonGroup of actions, dismissible with dismissLabel and a dismiss event, live announcements (assertive for danger and warning).",
+      "revision": {
+        "paths": ["foundations/components/feedback/alert/contract.json"],
+        "sha256": {
+          "foundations/components/feedback/alert/contract.json": "6bcdec125e8233b8a83d287bfed1333d6e0567f7ce1303cdffc6af04f866e7f2"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -69,6 +79,6 @@
     "Actions: one ButtonGroup of sm buttons under the content."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",
+  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
   "implementationNotes": []
 }

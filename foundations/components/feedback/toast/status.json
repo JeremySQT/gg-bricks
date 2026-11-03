@@ -3,7 +3,7 @@
   "componentId": "toast",
   "family": "feedback",
   "wave": 3,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Notify briefly about something the user just did or that just happened, without blocking the page.",
     "useCases": ["Saved, Message sent.", "Upload failed with a Retry action.", "Item deleted with an Undo action."],
@@ -32,7 +32,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Toast compound contract: region (placement, max 3, label) and item children (intent, required title, description, duration 5 s, one action Button, dismiss IconButton); countdown paused on hover, focus and hidden document; a toast with an action never dismisses itself; dismiss event, list owned by the application; size.overlay.panel width.",
+      "revision": {
+        "paths": ["foundations/components/feedback/toast/contract.json"],
+        "sha256": {
+          "foundations/components/feedback/toast/contract.json": "ab9f6f5db1acb16dbdb56da53a3f450f73477c146a5b604ecfd6b1d18f38495e"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -57,11 +67,10 @@
     "Width size.overlay.panel (new semantic role shared with Popover and Menu, 360 px); region at space.layout.sm from the viewport edges; default placement bottom-end; max 3 visible.",
     "Duration 5 s; the countdown pauses on hover, on focus inside and when the document is hidden.",
     "A toast with an action never dismisses itself (WCAG 2.2.1), and its action must exist elsewhere (open question 4).",
-    "Announcements: polite except danger (assertive); appearing never moves focus."
+    "Announcements: polite except danger (assertive); appearing never moves focus.",
+    "Open question 4 resolved (user, 2026-11-03: \"Oui\"): a toast with an action never dismisses itself, and its action also exists elsewhere in the interface."
   ],
-  "openDecisions": [
-    "4. A toast with an action never dismisses itself (WCAG 2.2.1 Timing adjustable) and its action must also exist elsewhere. Alternative: a longer duration (10 s) for toasts with an action."
-  ],
-  "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",
+  "openDecisions": [],
+  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
   "implementationNotes": []
 }

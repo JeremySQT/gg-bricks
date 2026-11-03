@@ -3,7 +3,7 @@
   "componentId": "skeleton",
   "family": "feedback",
   "wave": 3,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Stand in for content that is loading with its shape and size, so that the layout does not move when it arrives.",
     "useCases": ["Lines of text in a card or a list.", "An image or chart block.", "An avatar circle."],
@@ -30,7 +30,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Skeleton contract: shape text/block/circle, lines, size (text lines on typography.body.{size}); color.surface.muted pulsing to opacity.muted once per motion.duration.loop, no pulse under reduced motion; hidden from assistive technology.",
+      "revision": {
+        "paths": ["foundations/components/feedback/skeleton/contract.json"],
+        "sha256": {
+          "foundations/components/feedback/skeleton/contract.json": "4bf3db0a1e4a047aca7f25a7b9c3309a9e7968f4fe39965176c1d9a5eb97ea24"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -56,6 +66,6 @@
     "Hidden from assistive technology; the busy state belongs to the loading region (integration)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",
+  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
   "implementationNotes": []
 }

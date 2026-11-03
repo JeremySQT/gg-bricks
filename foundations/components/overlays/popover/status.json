@@ -3,7 +3,7 @@
   "componentId": "popover",
   "family": "overlays",
   "wave": 3,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Show free, interactive content in a non-modal panel anchored to a trigger.",
     "useCases": ["Filters next to a list.", "A short form (rename, share).", "Details of an item."],
@@ -32,7 +32,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Popover contract: bindable open, required label, side, align; trigger Button or IconButton; non-modal dialog panel on color.surface.overlay with size.overlay.panel maximum; focus moves into the content, Escape, outside press and focus leaving close it; top layer.",
+      "revision": {
+        "paths": ["foundations/components/overlays/popover/contract.json"],
+        "sha256": {
+          "foundations/components/overlays/popover/contract.json": "d6b71e44809af5922418ef1942119938ff815302d988724dbada74eecfc93072"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -59,6 +69,6 @@
     "No built-in close button: content adds one when it needs it (Escape and a press outside always close)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",
+  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
   "implementationNotes": []
 }

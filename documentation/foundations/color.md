@@ -17,7 +17,7 @@ Color is organized in three layers. Primitive ramps are generated in OKLCH with 
 | `color.surface.raised`  | Elements lifted above the default surface with `shadow.raised`: cards that must stand out, sticky bars.                                 |
 | `color.surface.overlay` | Floating layers above the page: menus, popovers, dialogs, with `shadow.overlay` or `shadow.modal`.                                      |
 | `color.surface.inverse` | Small elements in the opposite appearance: tooltips, snackbars. Text on it uses `color.content.inverse`.                                |
-| `color.surface.scrim`   | The translucent veil behind a modal dialog. Never a background for content.                                                             |
+| `color.surface.scrim`   | The dimming layer behind a modal window: it darkens the page while a dialog is open. Never a background for content.                    |
 
 <!-- site:tokens preview=color -->
 

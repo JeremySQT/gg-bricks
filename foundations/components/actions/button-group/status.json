@@ -3,7 +3,7 @@
   "componentId": "button-group",
   "family": "actions",
   "wave": 3,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Place related actions together with one size and a consistent spacing, and reflow them when space runs out.",
     "useCases": [
@@ -39,7 +39,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "ButtonGroup contract: size (applied to every item), orientation, align start/center/end/stretch, reflow wrap/stack (stacked state), optional label; Button and IconButton items; gap space.control.gap.{size}; no arrow-key navigation, no reordering.",
+      "revision": {
+        "paths": ["foundations/components/actions/button-group/contract.json"],
+        "sha256": {
+          "foundations/components/actions/button-group/contract.json": "5673ff77318c8b96c5900fd732ce89e4978dc9dfddd0f39133f3065f74ae733e"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -67,6 +77,6 @@
     "label optional: the group is a named group only when it has one."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",
+  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
   "implementationNotes": []
 }

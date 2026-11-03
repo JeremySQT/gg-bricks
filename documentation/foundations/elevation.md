@@ -34,12 +34,12 @@ Draw it on the same element as the shadow, inside the radius of the surface. It 
 
 ## Opacity
 
-| Role               | Use for                                                                                          |
-| ------------------ | ------------------------------------------------------------------------------------------------ |
-| `opacity.disabled` | Dimming a disabled element as a whole when no disabled color role applies.                       |
-| `opacity.scrim`    | Strength of a veil built from a color (prefer `color.surface.scrim`, which already includes it). |
-| `opacity.muted`    | Attenuating companion content next to a label (a shortcut hint).                                 |
-| `opacity.tint`     | A faint surface in the inherited text color behind small companion content (a counter's box).    |
+| Role               | Use for                                                                                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `opacity.disabled` | Dimming a disabled element as a whole when no disabled color role applies.                                                                            |
+| `opacity.scrim`    | Strength of a veil an application builds from another color, over an image or a video. Overlays use `color.surface.scrim`, which already includes it. |
+| `opacity.muted`    | Attenuating companion content next to a label (a shortcut hint).                                                                                      |
+| `opacity.tint`     | A faint surface in the inherited text color behind small companion content (a counter's box).                                                         |
 
 <!-- site:tokens preview=opacity -->
 

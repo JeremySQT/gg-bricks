@@ -3,7 +3,7 @@
   "componentId": "dialog",
   "family": "overlays",
   "wave": 3,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Ask the user to complete or abandon a short task or decision before going back to the page.",
     "useCases": [
@@ -39,7 +39,21 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Dialog contract: bindable open, required title, description, size sm/md/lg (component tokens component.dialog.inline-size.*), alert, dismissible, closeLabel; header, scrolling body, footer ButtonGroup, backdrop color.surface.scrim; initial focus rule; native modal dialog in the top layer.",
+      "revision": {
+        "paths": [
+          "foundations/components/overlays/dialog/contract.json",
+          "foundations/tokens/base/components/dialog.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/overlays/dialog/contract.json": "6a0d87720ad1acb1ccd5cc390139e6005095a6ab6bc09e772f7c9d4f08a386f9",
+          "foundations/tokens/base/components/dialog.tokens.json": "70b02973d5635d5901d8a09bd463782a40166a33fdd0d5e5d6f67823ae70c5b5"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": "The user finds the word scrim unclear; the documentation explains the role in plain words. A rename is not decided."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -65,12 +79,11 @@
     "alert true: alert dialog, never closed by a backdrop press; dismissible false removes the close button, Escape and the backdrop press.",
     "Initial focus: the element the application marks, else the first focusable element of the body, then of the footer, else the panel.",
     "Title typography.heading.sm, description typography.body.sm, body typography.body.md, padding space.layout.md, shadow.modal, radius.overlay, entry with motion.distance.md.",
-    "No trigger part: the application opens the dialog by setting open (a Button or a Menu item)."
+    "No trigger part: the application opens the dialog by setting open (a Button or a Menu item).",
+    "Open question 1 resolved (user, 2026-11-03: \"ok (meme si le wording scrim n'est pas très parlant...)\"): color.surface.scrim is the canonical modal backdrop; opacity.scrim stays for an image or video veil and is documented as not for overlays. The user finds the word scrim unclear: the foundations documentation explains it in plain words (the dimming layer behind a modal window); a rename is not decided.",
+    "Open question 2 resolved (user, 2026-11-03: \"Ok\"): when a Bits UI behavior disagrees with a contract rule, the contract wins; the component overrides or completes the primitive locally, pins the Bits UI version and covers the override with a browser test."
   ],
-  "openDecisions": [
-    "1. Canonical scrim (decisions.md open decision 3): the backdrop uses color.surface.scrim (already used by lib/overlay and the spike); opacity.scrim stays in the inventory for an image or video overlay and is documented as not for overlays. Alternative: opacity.scrim over a surface color.",
-    "2. Contract versus Bits UI (decisions.md open decision 3): when a Bits UI behavior disagrees with a contract rule, the contract wins; the component overrides or completes the primitive locally, pins the Bits UI version and covers the override with a browser test (the RadioGroup precedent). Alternative: adapt the contract to Bits UI."
-  ],
-  "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",
+  "openDecisions": [],
+  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
   "implementationNotes": []
 }

@@ -3,7 +3,7 @@
   "componentId": "tooltip",
   "family": "overlays",
   "wave": 3,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Show a short text about a control when the user points at it or focuses it.",
     "useCases": [
@@ -40,7 +40,21 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Tooltip contract: required label, side top/bottom, align, bindable open; trigger Button, IconButton or Link; inverse surface, caption.md, component tokens component.tooltip.delay (500 ms) and component.tooltip.max-inline-size (240 px); focus opens at once; accessible description; top layer.",
+      "revision": {
+        "paths": [
+          "foundations/components/overlays/tooltip/contract.json",
+          "foundations/tokens/base/components/tooltip.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/overlays/tooltip/contract.json": "2f8e0068eaa703a98971b2ff23a5012f984b7b9c316df68234bf5578217276b9",
+          "foundations/tokens/base/components/tooltip.tokens.json": "0e02e9e8bbe8486e95cc20d80312449daa41a9a6adc87214072ebb2fc30eb1f6"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -68,6 +82,6 @@
     "Entry over motion.duration.fast with motion.distance.sm."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 contract gate: review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 1793523253-9fde, generated from the contracts of commit on branch wave/3); record the approval, then start the implementation phase (ggb-svelte), adding Firefox and WebKit smoke projects before the first overlay implementation gate.",
+  "nextAction": "Implementation phase (ggb-svelte): component folder, examples page, SSR and browser tests, self-contained preview; Firefox and WebKit smoke projects before the first overlay implementation gate; then the grouped wave 3 implementation review.",
   "implementationNotes": []
 }
