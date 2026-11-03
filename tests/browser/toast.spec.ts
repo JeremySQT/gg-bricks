@@ -168,7 +168,9 @@ test('layout: one line centered without a description; with one, the action goes
   expect(multi.actionLeft).toBeCloseTo(multi.textLeft, 0);
 });
 
-test('intense: tinted by the intent like an Alert; accent actions take the intent family', async ({ page }) => {
+test('intense: tinted by the intent like an Alert; the secondary action keeps its own neutral colors', async ({
+  page
+}) => {
   await page.fill('#opt-duration', '0');
   await page.selectOption('#opt-appearance', 'intense');
   await page.click('#send-danger');
@@ -180,12 +182,12 @@ test('intense: tinted by the intent like an Alert; accent actions take the inten
       surface: getComputedStyle(el).backgroundColor,
       content: getComputedStyle(el).color,
       description: getComputedStyle(el.querySelector('.ggb-toast__description')!).color,
-      action: getComputedStyle(el.querySelector('.ggb-toast__action .ggb-button__container')!).backgroundColor
+      action: getComputedStyle(el.querySelector('.ggb-toast__action .ggb-button__container')!).color
     }));
   expect(m.surface).toBe(rgb(tokens['color.status.danger.surface']));
   expect(m.content).toBe(rgb(tokens['color.status.danger.content']));
   expect(m.description).toBe(rgb(tokens['color.status.danger.content']));
-  expect(m.action).toBe(rgb(tokens['color.action.danger.solid.default.surface']));
+  expect(m.action).toBe(rgb(tokens['color.action.neutral.outline.default.content']));
 });
 
 test('at most max toasts are shown; the next one waits, then appears as one leaves', async ({ page }) => {

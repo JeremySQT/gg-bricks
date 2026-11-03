@@ -45,7 +45,10 @@ export interface ToastProps extends Omit<HTMLAttributes<HTMLDivElement>, ToastOw
   dismissLabel?: string;
   /** Replaces the intrinsic glyph of the intent (decorative, drawn in currentColor). */
   icon?: Snippet;
-  /** One small Button for an immediate follow-up (Undo, View), also reachable elsewhere in the interface. */
+  /**
+   * One small Button for a secondary follow-up (Undo, View, Retry), also reachable elsewhere in the interface: ghost or
+   * outline, neutral (or danger for a destructive follow-up); never an accent call to action.
+   */
   action?: Snippet;
   /**
    * Called when the toast asks to leave: dismiss button, end of the countdown, Escape inside it, or after its action.

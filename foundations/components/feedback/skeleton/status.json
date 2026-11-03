@@ -3,7 +3,7 @@
   "componentId": "skeleton",
   "family": "feedback",
   "wave": 3,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Stand in for content that is loading with its shape and size, so that the layout does not move when it arrives.",
     "useCases": ["Lines of text in a card or a list.", "An image or chart block.", "An avatar circle."],
@@ -62,7 +62,29 @@
       "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Skeleton: text lines on the body typography, block and circle, in-phase pulse, hidden from assistive technology.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/skeleton/Skeleton.svelte",
+          "packages/svelte/src/components/skeleton/contract.generated.ts",
+          "packages/svelte/src/components/skeleton/skeleton.css",
+          "packages/svelte/src/components/skeleton/tokens.generated.css",
+          "packages/svelte/src/components/skeleton/types.ts",
+          "examples/skeleton/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/skeleton/Skeleton.svelte": "8067882432f9fe52931562617cdba7aa528bc8913911ccbc534c3a5717079d6c",
+          "packages/svelte/src/components/skeleton/contract.generated.ts": "27c0b070c7815243b28aab8a8fb0ac32a7753cbfc93e422c8d554a66aef1502f",
+          "packages/svelte/src/components/skeleton/skeleton.css": "141f7cf3e32d495b1975dbb99e1c7b2c627268ad13f7226fced5f506442a9ada",
+          "packages/svelte/src/components/skeleton/tokens.generated.css": "cdc3693b66321a38982b094c7d62919d2b9f6ed5554c16f3e03809ac2c67d283",
+          "packages/svelte/src/components/skeleton/types.ts": "ad126eb9b6943a887910fb620f4348dc752fa3af09b9c87d3271b8f625e75074",
+          "examples/skeleton/App.svelte": "0be8658bbd765a6a7a99eee3e9d82604ca758aa53a77e34a72901ba2e5bd103d"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "note": null
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -113,7 +135,7 @@
     "Hidden from assistive technology; the busy state belongs to the loading region (integration)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
   "implementationNotes": [
     "Pulses stay in phase across the page: each pulse animation's startTime is set to 0 (the document timeline origin) when the skeleton mounts.",
     "Text lines use the lh unit for the line box and a bar of 1em: the skeleton paragraph has the height of the real paragraph (checked against real text in the browser test)."

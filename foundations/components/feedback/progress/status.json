@@ -3,7 +3,7 @@
   "componentId": "progress",
   "family": "feedback",
   "wave": 3,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Show how far a task of known size has gone, or that a longer task is under way.",
     "useCases": [
@@ -68,14 +68,36 @@
           "foundations/tokens/base/components/progress.tokens.json"
         ],
         "sha256": {
-          "foundations/components/feedback/progress/contract.json": "a36ad97d817fda003ef62cf7511c9ea907504aed3299b91ed4b3cd38d4079680",
-          "foundations/tokens/base/components/progress.tokens.json": "24fb0c85ba5c20bd1ecfd093ae17ec93419e9f09c586e76df68a63f63836fb70"
+          "foundations/components/feedback/progress/contract.json": "8b6ca20ad671c8df38376460897830a26eca055b1da47d5d054038461098585e",
+          "foundations/tokens/base/components/progress.tokens.json": "5940280c0a6c7e01cec664daf9e1cce6ce712537189fc4b6d7d69f1164da829a"
         }
       },
-      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 found or requested at the implementation review (User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqm…) accepted with the implementation: \"Je valide le reste\".",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Progress on Bits UI Progress.Root: label (shown or hidden) as the name, percentage, clamping, indeterminate sweep, intents, thickness and component.progress.radius.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/progress/Progress.svelte",
+          "packages/svelte/src/components/progress/contract.generated.ts",
+          "packages/svelte/src/components/progress/progress.css",
+          "packages/svelte/src/components/progress/tokens.generated.css",
+          "packages/svelte/src/components/progress/types.ts",
+          "examples/progress/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/progress/Progress.svelte": "90c17c1305a4013a91d658aa16331326ea4f8edf07f8bdfc49f5ca735ecef007",
+          "packages/svelte/src/components/progress/contract.generated.ts": "401874e07910378f16f9298cdea8f6d71f2a1e8af9c4b2dd4e0d771a9b0badee",
+          "packages/svelte/src/components/progress/progress.css": "825376632e8f2d083b124e5b7c4c02edfc400c796e41e860fa0b6c91797fc4ca",
+          "packages/svelte/src/components/progress/tokens.generated.css": "9454d860c405d8742491e4cd0091ad53e1be1508213f433c91fa340bf62ce5fd",
+          "packages/svelte/src/components/progress/types.ts": "4005e7cc3a009176032b541bf27d941eb403afa1f7e25369b45e334bbc93c626",
+          "examples/progress/App.svelte": "98ec0b6598f4d20601cc560dceadd616340d5f799410a29476ebee32e7bcaeb2"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "note": null
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -128,7 +150,7 @@
     "Corners: component token component.progress.radius, so that a brand can draw rectangular bars (user, 2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
   "implementationNotes": [
     "Bits UI Progress.Root (2.19.3) does not render the id it receives: the component uses its child snippet to place the id on the progress bar itself.",
     "The label stays in the DOM, visually hidden, when showLabel is false, and names the bar through aria-labelledby."
@@ -140,7 +162,8 @@
       "sha256": {
         "foundations/components/feedback/progress/contract.json": "8b6ca20ad671c8df38376460897830a26eca055b1da47d5d054038461098585e",
         "foundations/tokens/base/components/progress.tokens.json": "5940280c0a6c7e01cec664daf9e1cce6ce712537189fc4b6d7d69f1164da829a"
-      }
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
     }
   ]
 }

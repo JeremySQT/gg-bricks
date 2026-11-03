@@ -229,6 +229,8 @@
         <Button
           id={`toast-${t.id}-action`}
           label={t.action ?? ''}
+          intent="neutral"
+          appearance="outline"
           onactivate={() => {
             undone++;
             log = [`${t.title}: ${t.action}`, ...log].slice(0, 6);

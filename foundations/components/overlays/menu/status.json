@@ -3,7 +3,7 @@
   "componentId": "menu",
   "family": "overlays",
   "wave": 3,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Offer a short list of actions or links in a panel opened from a trigger.",
     "useCases": [
@@ -69,13 +69,41 @@
       "revision": {
         "paths": ["foundations/components/overlays/menu/contract.json"],
         "sha256": {
-          "foundations/components/overlays/menu/contract.json": "35e48e8241cb47a6b042a0a75c7a174aba686b6c98659fb6ce3c13af84a64822"
+          "foundations/components/overlays/menu/contract.json": "dd9d08534d616451c8061301deb10ffb9bd320fa323f9f7578dc2b12eafcf0f3"
         }
       },
-      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 found or requested at the implementation review (Contract fact found during implementation: group roles leadingSize (size.icon.sm) and leadingGap (space.control.gap.sm) …) accepted with the implementation: \"Je valide le reste\".",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Menu (own primitive on the native popover): WAI-ARIA menu button keyboard, typeahead, pointer highlight, items, links, disabled, danger, separator, groups, room-limited height; visual pass and features later.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/menu/Menu.svelte",
+          "packages/svelte/src/components/menu/MenuGroup.svelte",
+          "packages/svelte/src/components/menu/MenuItem.svelte",
+          "packages/svelte/src/components/menu/MenuSeparator.svelte",
+          "packages/svelte/src/components/menu/contract.generated.ts",
+          "packages/svelte/src/components/menu/menu.css",
+          "packages/svelte/src/components/menu/tokens.generated.css",
+          "packages/svelte/src/components/menu/types.ts",
+          "examples/menu/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/menu/Menu.svelte": "b6f6ab1e7d4229239cfe1e9ba5a78e4cdfb150e052215c002e4b9522f7587c7f",
+          "packages/svelte/src/components/menu/MenuGroup.svelte": "5ddc02cca2e1946b8aa0557c0066da30ab201f7a9f2cf52d4d01dd0a98c51246",
+          "packages/svelte/src/components/menu/MenuItem.svelte": "fc793e6590e76c9f19d1945af9d1fd8e2d2258f28fee14264026c6ca3af9cee4",
+          "packages/svelte/src/components/menu/MenuSeparator.svelte": "b396588e41a299fb8c9259fd18b7030d2482b11964f523c3ad8bf87e4622d32d",
+          "packages/svelte/src/components/menu/contract.generated.ts": "977aed7865aece02d837177d3583ca9070a5e5d78852fe55e76c665400cc6c19",
+          "packages/svelte/src/components/menu/menu.css": "39c5297a18c82b8a593e5178318b26c967db0a310bc771c1d667e839b02c951e",
+          "packages/svelte/src/components/menu/tokens.generated.css": "b0fc62065a17acf4428600df5cbee6e53f61db85145caf75fdcc94ba34778658",
+          "packages/svelte/src/components/menu/types.ts": "a131e3b740f2b471b15d127f304613cb655623c6e5eac96a9ef9ced741814733",
+          "examples/menu/App.svelte": "407958110de1faff4f520f1a842b8d7f0a838244b6ed8390d067e472eddd44da"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -133,7 +161,7 @@
     "Contract fact added during implementation: group leadingSize and leadingGap roles (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
   "implementationNotes": [
     "Exports Menu, MenuItem, MenuSeparator and MenuGroup.",
     "The highlighted item is the focused item (roving focus through focus(), not aria-activedescendant); opening by pointer focuses the menu itself, so no item is highlighted until an arrow key or the pointer.",
@@ -146,7 +174,8 @@
       "change": "Contract fact found during implementation: group roles leadingSize (size.icon.sm) and leadingGap (space.control.gap.sm) so that the group heading aligns with item labels when items have a leading icon (the item roles are scoped to items and invisible to the group). To be re-presented at the wave 3 implementation gate.",
       "sha256": {
         "foundations/components/overlays/menu/contract.json": "dd9d08534d616451c8061301deb10ffb9bd320fa323f9f7578dc2b12eafcf0f3"
-      }
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
     }
   ]
 }

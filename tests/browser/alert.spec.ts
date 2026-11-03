@@ -6,6 +6,7 @@ import {
   auditAndCapture,
   capture,
   px,
+  representative,
   rgb,
   setContext,
   settle,
@@ -118,6 +119,23 @@ test('accent buttons take the action family of the alert intent; neutral buttons
     expect(m.later).toBe(rgb(tokens['color.action.neutral.ghost.default.content']));
     expect(m.linkTone).toBe('inherit');
     expect(m.link).toBe(m.content);
+  }
+});
+
+test('accent outline and ghost buttons take the intent family too, in every context', async ({ page }) => {
+  for (const [brand, mode, density] of representative) {
+    const context = `${brand}-${mode}-${density}`;
+    const tokens = tokensFor(context);
+    await setContext(page, brand, mode, density);
+    for (const intent of ['neutral', 'info', 'success', 'warning', 'danger'])
+      for (const appearance of ['solid', 'outline', 'ghost']) {
+        const color = await page
+          .locator(`#act-${intent}-${appearance} .ggb-button__container`)
+          .evaluate((c) => getComputedStyle(c).color);
+        expect(color, `${context} ${intent} ${appearance}`).toBe(
+          rgb(tokens[`color.action.${intent}.${appearance}.default.content`])
+        );
+      }
   }
 });
 

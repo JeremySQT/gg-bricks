@@ -128,6 +128,29 @@
     </div>
   </section>
 
+  <section id="actions" aria-labelledby="actions-title">
+    <h2 id="actions-title">Actions in every intent</h2>
+    <p>
+      Accent buttons take the action family of the alert, in solid, outline and ghost; neutral and danger buttons keep
+      their own.
+    </p>
+    <div class="stack">
+      {#each intents as i (i)}
+        <Alert id={`act-${i}`} intent={i} title={`${i[0].toUpperCase()}${i.slice(1)}`}>
+          Accent solid, outline and ghost, then neutral ghost. <Link href="#details" label="A link" />
+          {#snippet actions()}
+            <ButtonGroup>
+              <Button id={`act-${i}-solid`} label="Solid" />
+              <Button id={`act-${i}-outline`} label="Outline" appearance="outline" />
+              <Button id={`act-${i}-ghost`} label="Ghost" appearance="ghost" />
+              <Button id={`act-${i}-neutral`} label="Neutral" intent="neutral" appearance="ghost" />
+            </ButtonGroup>
+          {/snippet}
+        </Alert>
+      {/each}
+    </div>
+  </section>
+
   <section id="compositions" aria-labelledby="compositions-title">
     <h2 id="compositions-title">Compositions</h2>
     <div class="grid">

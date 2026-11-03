@@ -90,10 +90,10 @@
       "revision": {
         "paths": ["foundations/components/actions/icon-button/contract.json"],
         "sha256": {
-          "foundations/components/actions/icon-button/contract.json": "b9298af06953dbb94216c3e65a257e6db283443d3fe69698105de1ec3919ba79"
+          "foundations/components/actions/icon-button/contract.json": "57850d5ade5d58af75313ca136cc00f86599c4c90f292763c36eefe1979e85da"
         }
       },
-      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU (2026-10-16): the only open question (default treatment) answered with \"Pareil pour le neutral+ghost par défaut sur le bouton icône\"; no other remark on this contract across two review rounds. Approval recorded on that basis; the user may object to the record.",
+      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU (2026-10-16): the only open question (default treatment) answered with \"Pareil pour le neutral+ghost par défaut sur le bouton icône\"; no other remark on this contract across two review rounds. Approval recorded on that basis; the user may object to the record. Amendment of 2026-11-03 (wave 3 implementation review, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Je valide le reste\"): inside a ButtonGroup the group size applies; the loading indicator is the Spinner. Digests re-recorded.",
       "note": "No token change; Link and Badge await their final confirmation at the same gate."
     },
     "implementation": {
@@ -108,15 +108,15 @@
           "examples/icon-button/App.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/components/icon-button/IconButton.svelte": "5747d1987f4da9052e6351061e9af041dfb8a40cbe50ece04366e401ec7b68a2",
+          "packages/svelte/src/components/icon-button/IconButton.svelte": "9a06623f0f4902dc2a9956758540f6ad17a0e1583e93515d276ed70bd011e740",
           "packages/svelte/src/components/icon-button/contract.generated.ts": "09a5f56b1003f9d462ec18b499457a53a089b41ab9af62cf81b7b2cf3acf8d59",
-          "packages/svelte/src/components/icon-button/icon-button.css": "2d4c943d40c844c367f153b39efb9f1221def5e109964a3b07de511f8f2ff98b",
+          "packages/svelte/src/components/icon-button/icon-button.css": "d84794aff00afe3df3e5f803fa18adf8e8c2d70d630015e1c488a42434a2237c",
           "packages/svelte/src/components/icon-button/tokens.generated.css": "d8b7a6662699e705007c114b68aaeb1c1769e00f2d77ef967980596c0ae7ed80",
           "packages/svelte/src/components/icon-button/types.ts": "946087207d9a24c9426021e4d9a43efa0da704e9bb5e639d25d0e68e68f1446b",
           "examples/icon-button/App.svelte": "696ffe20ac17840d442a56befdfe2bb5c19ee6f5f2e9919abf1fafc1fe5302ec"
         }
       },
-      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/M41vUxuVssusHawLkXvhhH version 1. Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded.",
+      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/M41vUxuVssusHawLkXvhhH version 1. Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded. Amendment of 2026-11-03 (wave 3 implementation review, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Je valide le reste\"): inside a ButtonGroup the group size applies; the loading indicator is the Spinner. Digests re-recorded.",
       "note": "Automated evidence: Chromium only; Safari behavior of the label clip reasoned, not observed."
     },
     "figmaParity": {
@@ -259,7 +259,8 @@
       "change": "Wave 3 ButtonGroup: inside a ButtonGroup the group's size applies (context key ggb:button-group); outside a group nothing changes (icon-button.spec.ts and SSR tests pass unchanged). To be re-presented at the wave 3 implementation gate.",
       "sha256": {
         "packages/svelte/src/components/icon-button/IconButton.svelte": "69f53e39392728d63f8b03535c32b0d97fdb6267fd6de3549b4a6ee85ad9840d"
-      }
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
     },
     {
       "date": "2026-11-03",
@@ -268,7 +269,8 @@
         "foundations/components/actions/icon-button/contract.json": "57850d5ade5d58af75313ca136cc00f86599c4c90f292763c36eefe1979e85da",
         "packages/svelte/src/components/icon-button/IconButton.svelte": "9a06623f0f4902dc2a9956758540f6ad17a0e1583e93515d276ed70bd011e740",
         "packages/svelte/src/components/icon-button/icon-button.css": "d84794aff00afe3df3e5f803fa18adf8e8c2d70d630015e1c488a42434a2237c"
-      }
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
     }
   ]
 }

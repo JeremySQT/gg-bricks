@@ -3,7 +3,7 @@
   "componentId": "spinner",
   "family": "feedback",
   "wave": 3,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Show that something is loading when the duration is unknown and the place is small.",
     "useCases": [
@@ -75,7 +75,29 @@
       "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
       "note": "The turn speed (700 ms) is to be judged on the real rendering at the implementation review."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Spinner: icon-scale sizes, current color, track at component.spinner.track-opacity, one turn per component.spinner.duration (700 ms, judged on the rendering), decorative or named status.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/spinner/Spinner.svelte",
+          "packages/svelte/src/components/spinner/contract.generated.ts",
+          "packages/svelte/src/components/spinner/spinner.css",
+          "packages/svelte/src/components/spinner/tokens.generated.css",
+          "packages/svelte/src/components/spinner/types.ts",
+          "examples/spinner/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/spinner/Spinner.svelte": "6734ba70f07a719e7fb9d55085d6a606d9effcf56f718fec5f932eb98f391304",
+          "packages/svelte/src/components/spinner/contract.generated.ts": "a675633c2966d25769c407e98b039a39101c749a5ec50cc436d3d0258bcfd615",
+          "packages/svelte/src/components/spinner/spinner.css": "70a90588d9ef096015d6e10eb141359807e08f3c34d2a097f045db148ff6a3bd",
+          "packages/svelte/src/components/spinner/tokens.generated.css": "a43ec067bae715004735628b4181470f1481b80db87069cce57a9bdc126b4571",
+          "packages/svelte/src/components/spinner/types.ts": "22cf471984109424b2e40827e2b8e7fc453e4b618a0eaf534b6f18c0f3e52889",
+          "examples/spinner/App.svelte": "019b7a53b662fc82a8529aa9c08f5f27c6bf713a33ca58320cc4464559173c43"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "note": null
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -128,7 +150,7 @@
     "Open question 5 accepted for the implementation review (user, 2026-11-03: \"Ok, à juger dans l'implémentation\"): component.spinner.duration = 700 ms; the speed is judged on the real rendering at the implementation gate, and Button and IconButton adopt the Spinner after the wave."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
   "implementationNotes": [
     "A labelled spinner is a role status named by aria-label (a status takes no name from its content in Chromium) with the same text visually hidden inside it as the announced content. Whether a status inserted already filled is announced varies between screen readers: the application may keep a status region on the page and fill it instead."
   ]

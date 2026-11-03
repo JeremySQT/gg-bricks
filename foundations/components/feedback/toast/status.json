@@ -20,7 +20,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/feedback/toast/contract.json",
-      "sha256": "ca7c269cbd171e244b5ad066a073e7138f2570a3e23a132c010e7e23d73157a1"
+      "sha256": "719a33fe39efed30524f517eb0b0f3b6f81bab76caa2437b0b243fcdd89a74b7"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
@@ -119,7 +119,8 @@
     "Announcements: polite except danger (assertive); appearing never moves focus.",
     "Open question 4 resolved (user, 2026-11-03: \"Oui\"): a toast with an action never dismisses itself, and its action also exists elsewhere in the interface.",
     "Toast leaving is the one JavaScript-driven transition of the wave: overlay motion stays CSS only (decisions.md), but a toast is removed from the DOM by the application, not hidden.",
-    "Toast round 2 (user, 2026-11-03): appearance neutral|intense, automatic layout, 8 s with an action, danger persistent by default, closable; intense accent actions take the intent family."
+    "Toast round 2 (user, 2026-11-03): appearance neutral|intense, automatic layout, 8 s with an action, danger persistent by default, closable; intense accent actions take the intent family.",
+    "Toast actions are secondary only (user, 2026-11-03): ghost or outline, neutral or danger, never accent; a snippet cannot enforce it, the rule is documented (decisions.md, snippet slots)."
   ],
   "openDecisions": [],
   "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
@@ -136,6 +137,13 @@
       "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): centered layout, automatic single or multi line (actions under the description), appearance neutral or intense (named by the user), a toast with an action fades after 8 s by default, danger stays by default, closable prop; sending a toast from a modal dialog documented as not supported (\"ce n'est pas une bonne pratique d'ouvrir une toast depuis une dialog\"). To be re-presented at the wave 3 implementation gate.",
       "sha256": {
         "foundations/components/feedback/toast/contract.json": "ca7c269cbd171e244b5ad066a073e7138f2570a3e23a132c010e7e23d73157a1"
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "change": "User at the implementation review round 2: \"Jamais de bouton en accent, c'est des actions secondaires […] des btn en ghost, border et à la limite danger, pas plus de complexité\" — the action is a ghost or outline Button, neutral or danger; the intense redirection of accent buttons is removed.",
+      "sha256": {
+        "foundations/components/feedback/toast/contract.json": "719a33fe39efed30524f517eb0b0f3b6f81bab76caa2437b0b243fcdd89a74b7"
       }
     }
   ]

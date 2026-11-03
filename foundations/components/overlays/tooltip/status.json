@@ -3,7 +3,7 @@
   "componentId": "tooltip",
   "family": "overlays",
   "wave": 3,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Show a short text about a control when the user points at it or focuses it.",
     "useCases": [
@@ -76,7 +76,29 @@
       "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Tooltip on lib/overlay: hover delay, focus at once, skip delay, Escape, description of the trigger, one at a time; visual pass later.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/tooltip/Tooltip.svelte",
+          "packages/svelte/src/components/tooltip/contract.generated.ts",
+          "packages/svelte/src/components/tooltip/tokens.generated.css",
+          "packages/svelte/src/components/tooltip/tooltip.css",
+          "packages/svelte/src/components/tooltip/types.ts",
+          "examples/tooltip/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/tooltip/Tooltip.svelte": "972e7064f0ea4359a3d82de9a056ebdf7f734b14a37f5fe8b8c85a1c7a7226d6",
+          "packages/svelte/src/components/tooltip/contract.generated.ts": "8900e11a2168afe2b27fb6dd869aab8ee04935f21d15dbc875c3ac1487706b35",
+          "packages/svelte/src/components/tooltip/tokens.generated.css": "1241f0f483baf3c1645bfd14df26db75922869b89ade100f54c00b156e8f0c64",
+          "packages/svelte/src/components/tooltip/tooltip.css": "65326657fc7d2764e81dbfa821ceeaeb84d3f0c696f212c0155eebc87d6e2b54",
+          "packages/svelte/src/components/tooltip/types.ts": "ff627d35a51335440d50449c002cb686cf244d0628c47bb9df597c7c69d0a380",
+          "examples/tooltip/App.svelte": "4ea1c3da2016913fe1c23e06b9d66b13b4217aa4e9c16a54f003d00a7b716313"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -129,7 +151,7 @@
     "Entry over motion.duration.fast with motion.distance.sm."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
   "implementationNotes": [
     "The trigger is the first element of the children snippet, wrapped in a display: contents span that listens to pointer and focus events; the tooltip is a manual popover placed by lib/overlay floating.",
     "One tooltip at a time and the skip delay (300 ms after a tooltip closed, the next opens at once) are module-level state.",

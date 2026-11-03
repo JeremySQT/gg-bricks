@@ -3,7 +3,7 @@
   "componentId": "dialog",
   "family": "overlays",
   "wave": 3,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Ask the user to complete or abandon a short task or decision before going back to the page.",
     "useCases": [
@@ -69,14 +69,38 @@
           "foundations/tokens/base/components/dialog.tokens.json"
         ],
         "sha256": {
-          "foundations/components/overlays/dialog/contract.json": "6a0d87720ad1acb1ccd5cc390139e6005095a6ab6bc09e772f7c9d4f08a386f9",
+          "foundations/components/overlays/dialog/contract.json": "43f642e4e522e722f750c6566ff245270e0e7d754d1b6b0daafba83b73dd60df",
           "foundations/tokens/base/components/dialog.tokens.json": "70b02973d5635d5901d8a09bd463782a40166a33fdd0d5e5d6f67823ae70c5b5"
         }
       },
-      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 found or requested at the implementation review (Contract fact found during implementation: roles focusWidth (focus.width) and focusOffset (focus.offset) and the rule th…) accepted with the implementation: \"Je valide le reste\".",
       "note": "The user finds the word scrim unclear; the documentation explains the role in plain words. A rename is not decided."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Dialog on lib/overlay modal: title and description, initial focus, close button, alert dialog, not dismissible, scrolling body with dividers and focus room, nested dialogs, page scroll locked.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/dialog/Dialog.svelte",
+          "packages/svelte/src/components/dialog/contract.generated.ts",
+          "packages/svelte/src/components/dialog/dialog.css",
+          "packages/svelte/src/components/dialog/glyphs.ts",
+          "packages/svelte/src/components/dialog/tokens.generated.css",
+          "packages/svelte/src/components/dialog/types.ts",
+          "examples/dialog/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/dialog/Dialog.svelte": "5f2b20b932c32c5482441661542cda55b33d0189e11708a6d28248055bb223a1",
+          "packages/svelte/src/components/dialog/contract.generated.ts": "bf4159c95ef47b2552fc5091ba6e96ae3f5812ccff1617caae2a4373c32e0b30",
+          "packages/svelte/src/components/dialog/dialog.css": "9cf4e1d8499514a57037a02723a75610326c47282abdd98f05275f946c20a96c",
+          "packages/svelte/src/components/dialog/glyphs.ts": "b7c10ae6a1c501fbca339d2349e370e60ec6d9d8deca03b101f25f7fa4958dce",
+          "packages/svelte/src/components/dialog/tokens.generated.css": "de1acc24698ce147eb680194a5a92f8d6862e5ac17526b08e0703ba7488e3573",
+          "packages/svelte/src/components/dialog/types.ts": "650da0276fb8345e62e07e938498f64785560150437c22dabb3e6e3f1e693e9f",
+          "examples/dialog/App.svelte": "b5565b63ed5540a966474dd4e9857d55de57a7aad4dfaf035ceae5ffafbf29d4"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "note": null
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -133,7 +157,7 @@
     "Contract fact added during implementation: focusWidth and focusOffset roles for the body room (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
   "implementationNotes": [
     "lib/overlay modal gained a closeRequest option (closedby none and a cancelled cancel event) for a dialog that is not dismissible.",
     "The page does not scroll while a dialog is open (:root:has(dialog.ggb-dialog[open]) { overflow: hidden }).",
@@ -146,7 +170,8 @@
       "change": "Contract fact found during implementation: roles focusWidth (focus.width) and focusOffset (focus.offset) and the rule that the body keeps that room around its content, so that a focus indicator or a 44 px target at its edge is never clipped and never makes the body scroll. To be re-presented at the wave 3 implementation gate.",
       "sha256": {
         "foundations/components/overlays/dialog/contract.json": "43f642e4e522e722f750c6566ff245270e0e7d754d1b6b0daafba83b73dd60df"
-      }
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
     }
   ]
 }
