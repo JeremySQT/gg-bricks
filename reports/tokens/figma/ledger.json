@@ -23,7 +23,20 @@
     "content/icon": "149:4",
     "content/shortcut": "149:1569",
     "assets/phosphor": "199:2",
-    "Utilities": "8:10"
+    "Utilities": "8:10",
+    "Feedback": "407:112",
+    "feedback/alert": "407:113",
+    "feedback/progress": "407:114",
+    "feedback/skeleton": "407:115",
+    "feedback/spinner": "407:116",
+    "feedback/toast": "407:117",
+    "Overlays": "407:119",
+    "overlays/dialog": "407:120",
+    "overlays/menu": "407:121",
+    "overlays/popover": "407:122",
+    "overlays/tooltip": "407:123",
+    "actions/button-group": "407:110",
+    "--- (wave 3 dividers)": "407:111, 407:118"
   },
   "collections": {
     "Foundations · Primitives": {
@@ -246,5 +259,34 @@
     "OpenType features (tnum on typography/numeral/*) cannot be set on text styles through the Plugin API; the style description records them and the text layer sets them.",
     "Style IDs are file-local (S:… keys) and are read from the file when needed.",
     "checkbox/focus-radius is an adapter variable kept in Foundations · Brand (its value changes with the brand; see authoring/adapters/figma/checkbox-focus-radius.plugin.js). Since 2026-11-01 the verification hashes exactly the manifest variables and lists it under unexpected instead of failing."
-  ]
+  ],
+  "scripts": {
+    "_Script/spec-lib": {
+      "id": "411:2",
+      "page": "Utilities (8:10)",
+      "source": "authoring/adapters/figma/spec-lib.plugin.js"
+    },
+    "_Script/family-pages": {
+      "id": "440:2",
+      "page": "Utilities (8:10)",
+      "source": "authoring/adapters/figma/family-pages.plugin.js (function form)"
+    }
+  },
+  "adapterCollections": {
+    "Components · action family": {
+      "id": "VariableCollectionId:421:1499",
+      "modes": {
+        "default": "421:0",
+        "neutral": "421:1",
+        "info": "421:2",
+        "success": "421:3",
+        "warning": "421:4",
+        "danger": "421:5"
+      },
+      "variables": 90,
+      "hiddenFromPublishing": true,
+      "created": "2026-11-03",
+      "builder": "authoring/adapters/figma/action-family.plugin.js"
+    }
+  }
 }
