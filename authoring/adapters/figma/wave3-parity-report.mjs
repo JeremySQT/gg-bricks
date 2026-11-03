@@ -15,9 +15,10 @@ export const hex = (v) => {
   if (!m) return String(v);
   const p = m[1].split(',').map((s) => parseFloat(s));
   if (p.length === 3) p.push(1);
+  // The alpha is rounded from its float32 value, as Figma stores it (0.7 → 178, b2), like tooling/check-figma.ts.
   return p
     .map((x, i) =>
-      Math.round(i === 3 ? x * 255 : x)
+      Math.round(i === 3 ? Math.fround(x) * 255 : x)
         .toString(16)
         .padStart(2, '0')
     )
@@ -142,6 +143,20 @@ COMPONENTS.tooltip = {
 COMPONENTS.popover = {
   key: () => 'default',
   fields: { surface: hex, content: hex, shadow: shadowList, radius: px, padding: px, maxInlineSize: px, fontSize: px },
+  justified: {}
+};
+COMPONENTS.dialog = {
+  key: (r) => r.props.size,
+  fields: {
+    surface: hex,
+    content: hex,
+    width: (v) => num(v, 1),
+    padding: px,
+    radius: px,
+    backdrop: hex,
+    title: px,
+    description: hex
+  },
   justified: {}
 };
 const C = COMPONENTS[id];

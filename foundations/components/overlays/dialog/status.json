@@ -30,8 +30,33 @@
       "foundations/tokens/base/semantic/common.tokens.json",
       "foundations/tokens/base/components/dialog.tokens.json"
     ],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "overlays/dialog (407:120)",
+      "library": "Overlays (407:119), section Dialog (433:87)",
+      "componentSet": "433:525",
+      "specification": "435:2",
+      "ledger": "reports/components/dialog/figma/ledger.json",
+      "parity": "reports/components/dialog/figma/parity.json",
+      "screenshots": [
+        "reports/components/dialog/figma/master-set.png",
+        "reports/components/dialog/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/dialog/figma/blueprint-anatomy.png",
+          "node": "435:319"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/dialog-master.plugin.js",
+        "authoring/adapters/figma/dialog-spec.plugin.js",
+        "authoring/adapters/figma/dialog-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/overlays/dialog/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/dialog",
@@ -142,6 +167,12 @@
       "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
       "result": "passed",
       "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (96 records, 0 failures; 216 layout checks)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/dialog/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -157,7 +188,7 @@
     "Contract fact added during implementation: focusWidth and focusOffset roles for the body room (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
+  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
   "implementationNotes": [
     "lib/overlay modal gained a closeRequest option (closedby none and a cancelled cancel event) for a dialog that is not dismissible.",
     "The page does not scroll while a dialog is open (:root:has(dialog.ggb-dialog[open]) { overflow: hidden }).",

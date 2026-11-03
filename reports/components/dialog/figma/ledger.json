@@ -1,0 +1,104 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "overlays/dialog",
+      "id": "407:120"
+    },
+    "library": {
+      "name": "Overlays",
+      "id": "407:119"
+    }
+  },
+  "recordedOn": "2026-11-03",
+  "componentSet": {
+    "id": "433:525",
+    "name": "Dialog",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=433-525"
+  },
+  "section": {
+    "name": "Dialog",
+    "id": "433:87"
+  },
+  "properties": {
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ]
+    },
+    "Scrolled": {
+      "type": "VARIANT",
+      "default": "no",
+      "options": [
+        "no",
+        "yes"
+      ]
+    },
+    "Title#433:14": {
+      "type": "TEXT"
+    },
+    "Description#433:21": {
+      "type": "TEXT"
+    },
+    "Show description#433:28": {
+      "type": "BOOLEAN",
+      "default": true
+    },
+    "Dismissible#433:35": {
+      "type": "BOOLEAN",
+      "default": true
+    },
+    "Show footer#433:42": {
+      "type": "BOOLEAN",
+      "default": true
+    },
+    "Body#433:12": {
+      "type": "SLOT"
+    },
+    "Footer#433:13": {
+      "type": "SLOT",
+      "preferred": [
+        "ButtonGroup 419:2913"
+      ]
+    }
+  },
+  "variants": {
+    "Size=md, Scrolled=no": "433:88",
+    "Size=sm, Scrolled=no": "433:204",
+    "Size=lg, Scrolled=no": "433:267",
+    "Size=md, Scrolled=yes": "433:330",
+    "Size=sm, Scrolled=yes": "433:395",
+    "Size=lg, Scrolled=yes": "433:460"
+  },
+  "parts": {
+    "_Dialog/Backdrop": {
+      "id": "433:526",
+      "note": "1280 × 800 scrim (color/surface/scrim) with the slot Dialog centered, padding space/layout/md"
+    },
+    "Header/Close box/Close": "IconButton sm neutral ghost, glyph x",
+    "Divider (header), Divider (footer)": "Scrolled=yes, color/border/subtle, border/width/default"
+  },
+  "specification": {
+    "id": "435:2",
+    "name": "Dialog — Specification",
+    "anatomyBoard": "435:319",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=435-2"
+  },
+  "adapterVariables": {},
+  "builders": [
+    "authoring/adapters/figma/dialog-master.plugin.js",
+    "authoring/adapters/figma/dialog-spec.plugin.js",
+    "authoring/adapters/figma/dialog-parity.plugin.js",
+    "authoring/adapters/figma/wave3-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js"
+  ],
+  "notes": [
+    "computed.json covers four representative contexts (96 records); 216 extra checks in the 18 contexts passed (close button on the title line, footer group at the end, space/content/lg between header, body and footer).",
+    "The default action of the footer is a danger Button Delete after the neutral outline Cancel (the default example is a deletion; the primary action is last)."
+  ]
+}
