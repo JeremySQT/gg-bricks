@@ -116,7 +116,7 @@
             label="Storage warning"
             intent="neutral"
             appearance="outline"
-            onactivate={() => show({ intent: 'warning', title: 'Storage almost full', duration: 0 })}
+            onactivate={() => show({ intent: 'warning', title: 'Storage almost full' })}
           />
           <Button
             id="send-danger"

@@ -94,9 +94,7 @@ test('icon and dismiss sit on the first line; actions are small and under the co
   await expect(page.locator('#play-choose')).toHaveAttribute('data-size', 'sm');
 });
 
-test('accent buttons take the action family of the alert intent; neutral buttons keep theirs; links inherit', async ({
-  page
-}) => {
+test('accent and neutral buttons take the action family of the alert intent; links inherit', async ({ page }) => {
   for (const intent of ['neutral', 'info', 'success', 'warning', 'danger']) {
     await page.selectOption('#opt-intent', intent);
     await settle(page);
@@ -116,7 +114,7 @@ test('accent buttons take the action family of the alert intent; neutral buttons
     });
     expect(m.choose, intent).toBe(rgb(tokens[`color.action.${intent}.solid.default.surface`]));
     expect(m.chooseContent).toBe(rgb(tokens[`color.action.${intent}.solid.default.content`]));
-    expect(m.later).toBe(rgb(tokens['color.action.neutral.ghost.default.content']));
+    expect(m.later).toBe(rgb(tokens[`color.action.${intent}.ghost.default.content`]));
     expect(m.linkTone).toBe('inherit');
     expect(m.link).toBe(m.content);
   }

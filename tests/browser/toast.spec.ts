@@ -168,26 +168,47 @@ test('layout: one line centered without a description; with one, the action goes
   expect(multi.actionLeft).toBeCloseTo(multi.textLeft, 0);
 });
 
-test('intense: tinted by the intent like an Alert; the secondary action keeps its own neutral colors', async ({
+test('intense: tinted by the intent like an Alert; its neutral action and dismiss buttons take the intent family', async ({
   page
 }) => {
   await page.fill('#opt-duration', '0');
-  await page.selectOption('#opt-appearance', 'intense');
-  await page.click('#send-danger');
-  await settle(page);
+  await page.fill('#opt-max', '6');
   const tokens = tokensFor('base-light-standard');
-  const m = await items(page)
-    .first()
-    .evaluate((el) => ({
-      surface: getComputedStyle(el).backgroundColor,
-      content: getComputedStyle(el).color,
-      description: getComputedStyle(el.querySelector('.ggb-toast__description')!).color,
-      action: getComputedStyle(el.querySelector('.ggb-toast__action .ggb-button__container')!).color
-    }));
-  expect(m.surface).toBe(rgb(tokens['color.status.danger.surface']));
-  expect(m.content).toBe(rgb(tokens['color.status.danger.content']));
-  expect(m.description).toBe(rgb(tokens['color.status.danger.content']));
-  expect(m.action).toBe(rgb(tokens['color.action.neutral.outline.default.content']));
+  const read = () =>
+    items(page).evaluateAll((els) =>
+      els.map((el) => ({
+        intent: el.getAttribute('data-intent')!,
+        surface: getComputedStyle(el).backgroundColor,
+        content: getComputedStyle(el).color,
+        description: el.querySelector('.ggb-toast__description')
+          ? getComputedStyle(el.querySelector('.ggb-toast__description')!).color
+          : null,
+        dismiss: getComputedStyle(el.querySelector('.ggb-toast__dismiss .ggb-icon-button__container')!).color,
+        action: el.querySelector('.ggb-toast__action .ggb-button__container')
+          ? getComputedStyle(el.querySelector('.ggb-toast__action .ggb-button__container')!).color
+          : null
+      }))
+    );
+  // Neutral appearance: the action and dismiss buttons keep their own neutral colors.
+  await page.click('#send-all');
+  await settle(page);
+  for (const m of await read()) {
+    expect(m.dismiss, `neutral ${m.intent}`).toBe(rgb(tokens['color.action.neutral.ghost.default.content']));
+    if (m.action) expect(m.action).toBe(rgb(tokens['color.action.neutral.outline.default.content']));
+  }
+  await page.click('#opt-clear');
+  await page.selectOption('#opt-appearance', 'intense');
+  await page.click('#send-all');
+  await settle(page);
+  const intense = await read();
+  expect(intense).toHaveLength(5);
+  for (const m of intense) {
+    expect(m.surface, `intense ${m.intent}`).toBe(rgb(tokens[`color.status.${m.intent}.surface`]));
+    expect(m.content).toBe(rgb(tokens[`color.status.${m.intent}.content`]));
+    if (m.description) expect(m.description).toBe(rgb(tokens[`color.status.${m.intent}.content`]));
+    expect(m.dismiss).toBe(rgb(tokens[`color.action.${m.intent}.ghost.default.content`]));
+    if (m.action) expect(m.action).toBe(rgb(tokens[`color.action.${m.intent}.outline.default.content`]));
+  }
 });
 
 test('at most max toasts are shown; the next one waits, then appears as one leaves', async ({ page }) => {

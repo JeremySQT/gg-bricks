@@ -136,6 +136,8 @@ export async function auditAndCapture(page: Page, id: string) {
     await capture(page, `${out}/review-${mode}.png`, { fullPage: true });
   }
   await page.setViewportSize({ width: 390, height: 844 });
+  // Two frames: components that adapt to their size (a ButtonGroup that stacks) do so in a ResizeObserver callback.
+  await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(0);
   await capture(page, `${out}/review-mobile.png`, { fullPage: true });

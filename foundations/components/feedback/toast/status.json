@@ -145,6 +145,13 @@
       "sha256": {
         "foundations/components/feedback/toast/contract.json": "719a33fe39efed30524f517eb0b0f3b6f81bab76caa2437b0b243fcdd89a74b7"
       }
+    },
+    {
+      "date": "2026-11-03",
+      "change": "User at the implementation review round 3: \"les boutons ne suivent pas l'intent non plus en mode intense\". In appearance intense, buttons of intent accent or neutral (action and dismiss) take the action family of the toast's intent, as in an Alert; danger keeps its own.",
+      "sha256": {
+        "foundations/components/feedback/toast/contract.json": "13b4ee1abefa4b79f51d242c046be53419bf0bcae784244b8dc0a90cbe6cecc1"
+      }
     }
   ]
 }
