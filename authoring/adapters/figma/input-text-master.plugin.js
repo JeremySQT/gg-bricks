@@ -1,13 +1,13 @@
 // InputText master builder (use_figma body), 2026-10-27.
 // On the page forms/input-text (288:5): the component set “InputText” (Size × Action × Content × State, 50
 // variants; Action icon-button exists at md and lg only, as in the code). The root is the visible field: height
-// size/control/{size}, fill color/field/{state}/surface, inner border color/field/{state}/border of
+// size/control/{size}, fill color/input/{state}/surface, inner border color/input/{state}/border of
 // border/width/default (outside the layout, as the code's inset shadow), corners radius/control, inline padding
 // space/control/edge-inline/{size} (0 at the end with the action, as the code). Slots follow Button: a Leading or
 // Trailing frame with space/control/slot-inline/{size} on both sides holds a drawing box of input-text/icon-box
 // (iconSize − iconSize/4, Components adapter) with the Phosphor glyph at size/icon/{size} centered in it, in
-// color/field/{state}/placeholder. The Input frame has space/control/label-inline/{size} on both sides and holds
-// the value (color/field/{state}/content) or the placeholder (color/field/{state}/placeholder) in
+// color/input/{state}/placeholder. The Input frame has space/control/label-inline/{size} on both sides and holds
+// the value (color/input/{state}/content) or the placeholder (color/input/{state}/placeholder) in
 // typography/body/{size}, one line, truncated. The action is a square of size/control/{size} holding an IconButton
 // (211:1167) one size smaller, neutral ghost, with the x glyph; disabled with the field. The focus ring (focus/width,
 // color/focus/ring, radius/focus, outside) and, on default and hover, the Focus border follow the Focus property
@@ -65,7 +65,7 @@ const slot = (name, glyph, s, st) => {
   icon.name = name + ' icon';
   draw.appendChild(icon);
   bind(icon, ['width', 'height'], `size/icon/${s}`);
-  glyphs.push([icon, `color/field/${st}/placeholder`]);
+  glyphs.push([icon, `color/input/${st}/placeholder`]);
   return f;
 };
 for (const s of S)
@@ -86,8 +86,8 @@ for (const s of S)
         bind(c, ['paddingLeft'], `space/control/edge-inline/${s}`);
         if (a === 'none') bind(c, ['paddingRight'], `space/control/edge-inline/${s}`);
         else c.paddingRight = 0;
-        c.fills = [paint(`color/field/${st}/surface`)];
-        c.strokes = [paint(`color/field/${st}/border`)];
+        c.fills = [paint(`color/input/${st}/surface`)];
+        c.strokes = [paint(`color/input/${st}/border`)];
         c.strokeAlign = 'INSIDE';
         c.strokesIncludedInLayout = false;
         bind(c, STROKES, 'border/width/default');
@@ -106,7 +106,7 @@ for (const s of S)
         t.name = content === 'value' ? 'Value' : 'Placeholder';
         await t.setTextStyleIdAsync(style(`body/${s}`).id);
         t.characters = content === 'value' ? 'Ada Lovelace' : 'Placeholder';
-        t.fills = [paint(`color/field/${st}/${content === 'value' ? 'content' : 'placeholder'}`)];
+        t.fills = [paint(`color/input/${st}/${content === 'value' ? 'content' : 'placeholder'}`)];
         input.appendChild(t);
         t.layoutSizingHorizontal = 'FILL';
         t.textAutoResize = 'HEIGHT';
@@ -150,7 +150,7 @@ for (const s of S)
           fb.y = 0;
           fb.resize(c.width, c.height);
           fb.constraints = { horizontal: 'STRETCH', vertical: 'STRETCH' };
-          fb.strokes = [paint('color/field/focus/border')];
+          fb.strokes = [paint('color/input/focus/border')];
           fb.strokeAlign = 'INSIDE';
           bind(fb, STROKES, 'border/width/default');
           bind(fb, RADII, 'radius/control');

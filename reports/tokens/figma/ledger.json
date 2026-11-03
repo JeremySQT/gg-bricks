@@ -130,6 +130,10 @@
       {
         "date": "2026-11-01",
         "change": "Component token layer (decisions.md, Semantic role or component token; user decision of 2026-11-01): size/switch/sm, md, lg renamed component/switch/track-size/sm, md, lg in Foundations · Brand (VariableID:286:7, 286:8, 286:9), WEB code syntax var(--ggb-component-switch-track-size-<size>); values (primitive/dimension/v16, v20, v24 in every brand mode), scopes and IDs unchanged; the 48 track height bindings of the Switch set 291:434 still resolve 16, 20, 24 px. Specification text 306:566 on forms/switch updated."
+      },
+      {
+        "date": "2026-11-03",
+        "change": "Naming rule (decisions.md, Semantic role or component token): the 24 Appearance variables color/field/{default,hover,focus,readonly,disabled,invalid}/{surface,content,border,placeholder} renamed color/input/… in place (VariableID:7:160 to 7:183), WEB code syntax var(--ggb-color-input-…); values, aliases and bindings unchanged. size/avatar/xs, sm, md, lg, xl (VariableID:5:84 to 5:88, Brand) deleted after a scan found no binding on the Foundations, Getting started, Forms, forms/input-text, forms/textarea and Utilities pages and no alias. Specification text 306:1491 on forms/input-text updated."
       }
     ],
     "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change). Wave 2 delta synced on 2026-10-27 with the same adapter body (authoring/adapters/figma/sync-variables.plugin.js) restricted to the new or changed manifest variables; native resolution verified in 18 contexts, 0 failures (reports/tokens/figma/verification.json).",

@@ -32,12 +32,11 @@ Spacing comes in three families: layout spacing separates regions of a page, con
 <!-- site:tokens prefix=space.control preview=width -->
 <!-- site:tokens paths=size.control.sm,size.control.md,size.control.lg,size.target.min preview=width -->
 
-## Icons and avatars
+## Icons
 
-`size.icon.{xs, sm, md, lg, xl}` sizes icons next to text: `sm` with small text and in `sm` controls, `md` by default, `lg` and `xl` for standalone icons. `size.avatar.{xs … xl}` sizes avatars. `size.choice.{sm, md, lg}` sizes the box of a checkbox or a radio at each control size. None of them changes with density.
+`size.icon.{xs, sm, md, lg, xl}` sizes icons next to text: `sm` with small text and in `sm` controls, `md` by default, `lg` and `xl` for standalone icons. `size.choice.{sm, md, lg}` sizes the box of a checkbox or a radio at each control size. None of them changes with density.
 
 <!-- site:tokens prefix=size.icon preview=width -->
-<!-- site:tokens prefix=size.avatar preview=width -->
 <!-- site:tokens prefix=size.choice preview=width -->
 
 ## Rules

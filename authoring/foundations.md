@@ -54,14 +54,14 @@ Color roles (appearance files):
 - `color.content.{primary,secondary,tertiary,disabled,inverse,link,onAccent}`
 - `color.border.{default,subtle,strong,disabled,focus}`
 - `color.action.{accent,neutral,danger}.{solid,outline,ghost}.{default,hover,pressed,loading,disabled}.{surface,content,border}`
-- `color.field.{default,hover,focus,readonly,disabled,invalid}.{surface,content,border,placeholder}`
+- `color.input.{default,hover,focus,readonly,disabled,invalid}.{surface,content,border,placeholder}`
 - `color.status.{info,success,warning,danger}.{surface,surfaceStrong,content,contentStrong,border,icon}`
 - `color.selection.{surface,content}` and `color.focus.ring`
 
 Mode-independent roles (common file):
 
 - `radius.{control,container,overlay,full}`, `border.width.{default,strong}`, `focus.{width,offset}`
-- `size.target.min`, `size.icon.{xs,sm,md,lg,xl}`, `size.avatar.{xs…xl}`
+- `size.target.min`, `size.icon.{xs,sm,md,lg,xl}`
 - `typography.{display,heading}.{xl…xs}`, `typography.body.{lg,md,sm}`, `typography.label.{lg,md,sm}`, `typography.code.{md,sm}` as composite typography tokens
 - `size.overlay.panel` (maximum inline size of a floating panel)
 - `shadow.{raised,overlay,modal}`, `motion.duration.{fast,base,slow,loop}`, `motion.easing.{standard,emphasized,enter,exit}`, `motion.distance.{sm,md}`, `layer.*` aliases

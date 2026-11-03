@@ -4,8 +4,9 @@
 //   - no undeclared semantic token exists (primitive.* and component tokens are exempt);
 //   - primitives hold no aliases; semantic colors hold no literal values;
 //   - component tokens (foundations/tokens/<brand>/components/<id>.tokens.json) are all under component.<id>.*,
-//     <id> is a component with a contract, and only that component's contract binds them (a value two components
-//     share is a semantic role; decision of 2026-11-01);
+//     <id> is a component with a contract, and only that component's contract binds them;
+//   - no semantic role is named after a component unless the inventory declares the word as a concept
+//     (decisions.md, Semantic role or component token);
 //   - every declared invariant holds (a derived dimension role equals the sum of other roles);
 //   - every contrast pair reaches its WCAG minimum, written to reports/tokens/contrast.json.
 // Exit code 1 on any failure. Run by `npm run validate`.
@@ -22,6 +23,8 @@ interface Inventory {
   contrast: { content: string; surface: string; minimum: number; note?: string }[];
   /** Dimension roles that must equal the sum of other dimension roles, in every context. */
   invariants?: { equals: string; sum: string[]; note?: string }[];
+  /** Component ids that a semantic role may contain because they name a general concept (icon, link…). */
+  concepts?: { name: string; note: string }[];
 }
 export interface ContrastRecord {
   context: string;
@@ -117,8 +120,24 @@ for (const c of components)
   for (const x of templates(c)) {
     const owner = prefixOf(x);
     if (x.startsWith('component.') && owner !== c.id)
-      errors.push(`${c.contractPath}: binds ${x}, a token of another component (a shared value is a semantic role)`);
+      errors.push(
+        `${c.contractPath}: binds ${x}, a token of another component (a value two components need is a semantic role named by what it describes)`
+      );
   }
+
+// 1c. A semantic role is named by what it describes, never by a component: a segment equal to a component id is an
+// error unless the inventory declares that word as a general concept (decisions.md, Semantic role or component token).
+const concepts = new Map((inventory.concepts ?? []).map((c) => [c.name, c]));
+for (const name of concepts.keys())
+  if (!ids.has(name)) errors.push(`${inventoryPath}: concept ${name} is not a component id (remove it)`);
+for (const role of inventory.roles) {
+  if (role.path.startsWith('color.palette.')) continue;
+  for (const segment of role.path.split('.'))
+    if (ids.has(segment) && !concepts.has(segment))
+      errors.push(
+        `${inventoryPath}: semantic role ${role.path} is named after the component ${segment}: make it component.${segment}.* or declare ${segment} under concepts with its reason`
+      );
+}
 
 // 2. Coverage, type and axis of every declared role in every context; no undeclared semantic token.
 const declared = new Map(inventory.roles.map((r) => [r.path, r]));

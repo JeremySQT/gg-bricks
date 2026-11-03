@@ -842,7 +842,7 @@ ANATOMY['input-text'] = () => {
     legend: [
       [
         '1',
-        'Container: the field surface with a thin border inside its edge (color/field/{state}/…, border/width/default) and the control radius (radius/control).'
+        'Container: the field surface with a thin border inside its edge (color/input/{state}/…, border/width/default) and the control radius (radius/control).'
       ],
       [
         '2',

@@ -196,10 +196,10 @@ const NOTES = {
     gap: 'Options slot: vertical itemSpacing space/content/sm; horizontal wrap with itemSpacing space/content/lg and counterAxisSpacing space/content/sm'
   },
   'input-text': {
-    surface: 'root fill bound to color/field/{state}/surface',
-    content: 'Value fill bound to color/field/{state}/content (Content=value)',
-    boxShadow: 'root inside stroke bound to color/field/{state}/border and border/width/default',
-    placeholder: 'Placeholder fill bound to color/field/{state}/placeholder',
+    surface: 'root fill bound to color/input/{state}/surface',
+    content: 'Value fill bound to color/input/{state}/content (Content=value)',
+    boxShadow: 'root inside stroke bound to color/input/{state}/border and border/width/default',
+    placeholder: 'Placeholder fill bound to color/input/{state}/placeholder',
     outline:
       'Focus ring frame 2 px outside the root, outside stroke bound to color/focus/ring and focus/width; shown on State=focus and by Focus (invalid+focus: State=invalid with Focus)',
     radius: 'root corners bound to radius/control',
@@ -213,10 +213,10 @@ const NOTES = {
       'edge-inline padding and slot-inline padding, then the icon centered in its drawing box of input-text/icon-box (iconSize − iconSize/4): it starts iconSize/8 before the box'
   },
   textarea: {
-    surface: 'root fill bound to color/field/{state}/surface',
-    content: 'Value fill bound to color/field/{state}/content (Content=value)',
-    boxShadow: 'root inside stroke bound to color/field/{state}/border and border/width/default',
-    placeholder: 'Placeholder fill bound to color/field/{state}/placeholder',
+    surface: 'root fill bound to color/input/{state}/surface',
+    content: 'Value fill bound to color/input/{state}/content (Content=value)',
+    boxShadow: 'root inside stroke bound to color/input/{state}/border and border/width/default',
+    placeholder: 'Placeholder fill bound to color/input/{state}/placeholder',
     outline:
       'Focus ring frame 2 px outside the root, outside stroke bound to color/focus/ring and focus/width; shown on State=focus and by Focus (invalid+focus: State=invalid with Focus)',
     radius: 'root corners bound to radius/control',

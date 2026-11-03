@@ -1,6 +1,6 @@
 // Textarea master builder (use_figma body), 2026-10-27.
 // On the page forms/textarea (288:9): the component set “Textarea” (Size × Content × State, 30 variants) at the
-// default 3 rows. Same field treatment as InputText (color/field/{state}/…, border/width/default inside,
+// default 3 rows. Same field treatment as InputText (color/input/{state}/…, border/width/default inside,
 // radius/control, inline padding space/control/padding-inline/{size}). The code's block padding is
 // (size/control − one line) / 2, which Figma cannot compute: the Area stacks a first row of size/control/{size} and
 // the other rows (textarea/more-rows: 2 lines, Components adapter), and the text box (3 lines tall,
@@ -53,8 +53,8 @@ for (const s of S)
       c.setExplicitVariableModeForCollection(AC, AC.modes.find((m) => m.name === s).modeId);
       c.resize(280, 100);
       bind(c, ['paddingLeft', 'paddingRight'], `space/control/padding-inline/${s}`);
-      c.fills = [paint(`color/field/${st}/surface`)];
-      c.strokes = [paint(`color/field/${st}/border`)];
+      c.fills = [paint(`color/input/${st}/surface`)];
+      c.strokes = [paint(`color/input/${st}/border`)];
       c.strokeAlign = 'INSIDE';
       c.strokesIncludedInLayout = false;
       bind(c, STROKES, 'border/width/default');
@@ -92,7 +92,7 @@ for (const s of S)
       t.name = content === 'value' ? 'Value' : 'Placeholder';
       await t.setTextStyleIdAsync(style(`body/${s}`).id);
       t.characters = content === 'value' ? VALUE : 'What went well, what could be better…';
-      t.fills = [paint(`color/field/${st}/${content === 'value' ? 'content' : 'placeholder'}`)];
+      t.fills = [paint(`color/input/${st}/${content === 'value' ? 'content' : 'placeholder'}`)];
       box.appendChild(t);
       t.layoutSizingHorizontal = 'FILL';
       t.textAutoResize = 'HEIGHT';
@@ -108,7 +108,7 @@ for (const s of S)
         fb.y = 0;
         fb.resize(c.width, c.height);
         fb.constraints = { horizontal: 'STRETCH', vertical: 'STRETCH' };
-        fb.strokes = [paint('color/field/focus/border')];
+        fb.strokes = [paint('color/input/focus/border')];
         fb.strokeAlign = 'INSIDE';
         bind(fb, STROKES, 'border/width/default');
         bind(fb, RADII, 'radius/control');

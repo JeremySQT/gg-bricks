@@ -23,7 +23,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/textarea/contract.json",
-      "sha256": "80fd037998c744d9af6c7128ee72a5fef8e7044a07ced885c03ec5f69533321e"
+      "sha256": "4c9e4598fd0ca2c1d870efcc6a7624de3ab37c988381f4627701df6beb48a89d"
     },
     "tokens": [
       "foundations/tokens/inventory.json",
@@ -87,10 +87,10 @@
       "revision": {
         "paths": ["foundations/components/forms/textarea/contract.json"],
         "sha256": {
-          "foundations/components/forms/textarea/contract.json": "80fd037998c744d9af6c7128ee72a5fef8e7044a07ced885c03ec5f69533321e"
+          "foundations/components/forms/textarea/contract.json": "4c9e4598fd0ca2c1d870efcc6a7624de3ab37c988381f4627701df6beb48a89d"
         }
       },
-      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\"",
+      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\" Amendment of 2026-11-03 (naming rule, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Et si il y a des choses à corriger, autant les corriger tout de suite on va les oublier sinon\"): the semantic family color.field.* was renamed color.input.* (same values; the family paints text entry boxes, not the Field component); Figma variables color/field/* renamed color/input/* in place (VariableID:7:160 to 7:183, IDs and bindings kept); rendering unchanged; digests re-recorded.",
       "note": "Conversational approval of the whole wave contract set; the reviewer expects adjustments at the implementation review."
     },
     "implementation": {
@@ -108,12 +108,12 @@
           "packages/svelte/src/components/textarea/Textarea.svelte": "f6eecf32e3f0992509e36a8dc1db46730f7fdc93ec8eec3929bb039965263950",
           "packages/svelte/src/components/textarea/contract.generated.ts": "43f7d98bcdaab5f1fc5a8a8e324fd65383793c328d7cf65c2e9e43ffd370d4fa",
           "packages/svelte/src/components/textarea/textarea.css": "665299ff6d3d9b74356b2c31d93096bb82e170d18a33708f9b9fb39accedd307",
-          "packages/svelte/src/components/textarea/tokens.generated.css": "56f24edc2bfb982920e98b3d54a2532ec47a75d738cbc87c0df6372c2cb78859",
+          "packages/svelte/src/components/textarea/tokens.generated.css": "ff1d4c05dc0df1eaad6abaaea9aeb18ad28d45e43c66cb518c6b4dbe5d0430c8",
           "packages/svelte/src/components/textarea/types.ts": "6c353f669057c6abaded1706b3cdd7b0b8a5581a3eb2e53e28d68602abf14434",
           "examples/textarea/App.svelte": "b9f7f5fafc1c81ea66c4e2dc345ede262704b7be063b17f215f3064f6c456040"
         }
       },
-      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27). Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded.",
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27). Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded. Amendment of 2026-11-03 (naming rule, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Et si il y a des choses à corriger, autant les corriger tout de suite on va les oublier sinon\"): the semantic family color.field.* was renamed color.input.* (same values; the family paints text entry boxes, not the Field component); Figma variables color/field/* renamed color/input/* in place (VariableID:7:160 to 7:183, IDs and bindings kept); rendering unchanged; digests re-recorded.",
       "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
     },
     "figmaParity": {
@@ -127,10 +127,10 @@
         "sha256": {
           "reports/components/textarea/figma/parity.json": "9f9b66b8d77551a6945aa9d95f35ee693db7f6e039d83b6c15777d8f9be698ae",
           "reports/components/textarea/figma/ledger.json": "81eff7320e32f8dfbd30dc0c540d4f29b17ec4470956b1f69590ddeb931b64d9",
-          "foundations/components/forms/textarea/figma-spec.md": "7b087f9b81765a45eee5d3447895ec5258a54e0a9c9875ca4b8f7672edff0782"
+          "foundations/components/forms/textarea/figma-spec.md": "d6c91100bc66aa90078ce385de870188cc28de74502b6d544b44b0d5c1f962ad"
         }
       },
-      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\" Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged.",
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\" Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged. Amendment of 2026-11-03 (naming rule, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Et si il y a des choses à corriger, autant les corriger tout de suite on va les oublier sinon\"): the semantic family color.field.* was renamed color.input.* (same values; the family paints text entry boxes, not the Field component); Figma variables color/field/* renamed color/input/* in place (VariableID:7:160 to 7:183, IDs and bindings kept); rendering unchanged; digests re-recorded. parity.json unchanged.",
       "note": null
     },
     "documentation": {
@@ -239,7 +239,8 @@
     "resize vertical (default), auto (grows from rows to maxRows, default 3 and 8) or none; never inline resizing.",
     "Resize auto measures scrollHeight after every value change and CSS clamps it between rows and maxRows; the block padding is (minHeight − 1lh) / 2.",
     "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges).",
-    "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
+    "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass.",
+    "Color family renamed on 2026-11-03: color.field.{condition}.* became color.input.{condition}.* (decisions.md, Semantic role or component token: a semantic name never names a component, and Field is a component). Same values, Figma variables renamed in place."
   ],
   "openDecisions": [],
   "nextAction": "Delivery with wave 2: pull request of wave/2-form-foundations to main (user merge); publication needs explicit authorization.",

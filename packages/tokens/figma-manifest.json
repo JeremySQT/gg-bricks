@@ -5937,121 +5937,6 @@
     },
     {
       "collection": "Foundations · Brand",
-      "name": "size/avatar/xs",
-      "path": "size.avatar.xs",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-avatar-xs)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v24"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v24"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v24"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "size/avatar/sm",
-      "path": "size.avatar.sm",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-avatar-sm)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v32"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v32"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v32"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "size/avatar/md",
-      "path": "size.avatar.md",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-avatar-md)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v40"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v40"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v40"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "size/avatar/lg",
-      "path": "size.avatar.lg",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-avatar-lg)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v48"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v48"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v48"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
-      "name": "size/avatar/xl",
-      "path": "size.avatar.xl",
-      "type": "FLOAT",
-      "scopes": [
-        "WIDTH_HEIGHT"
-      ],
-      "codeSyntax": {
-        "WEB": "var(--ggb-size-avatar-xl)"
-      },
-      "values": {
-        "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v64"
-        },
-        "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v64"
-        },
-        "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v64"
-        }
-      }
-    },
-    {
-      "collection": "Foundations · Brand",
       "name": "size/overlay/panel",
       "path": "size.overlay.panel",
       "type": "FLOAT",
@@ -13341,15 +13226,15 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/default/surface",
-      "path": "color.field.default.surface",
+      "name": "color/input/default/surface",
+      "path": "color.input.default.surface",
       "type": "COLOR",
       "scopes": [
         "FRAME_FILL",
         "SHAPE_FILL"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-default-surface)"
+        "WEB": "var(--ggb-color-input-default-surface)"
       },
       "values": {
         "light": {
@@ -13362,8 +13247,8 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/default/content",
-      "path": "color.field.default.content",
+      "name": "color/input/default/content",
+      "path": "color.input.default.content",
       "type": "COLOR",
       "scopes": [
         "TEXT_FILL",
@@ -13371,7 +13256,7 @@
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-default-content)"
+        "WEB": "var(--ggb-color-input-default-content)"
       },
       "values": {
         "light": {
@@ -13384,14 +13269,14 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/default/border",
-      "path": "color.field.default.border",
+      "name": "color/input/default/border",
+      "path": "color.input.default.border",
       "type": "COLOR",
       "scopes": [
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-default-border)"
+        "WEB": "var(--ggb-color-input-default-border)"
       },
       "values": {
         "light": {
@@ -13404,8 +13289,8 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/default/placeholder",
-      "path": "color.field.default.placeholder",
+      "name": "color/input/default/placeholder",
+      "path": "color.input.default.placeholder",
       "type": "COLOR",
       "scopes": [
         "TEXT_FILL",
@@ -13413,7 +13298,7 @@
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-default-placeholder)"
+        "WEB": "var(--ggb-color-input-default-placeholder)"
       },
       "values": {
         "light": {
@@ -13426,15 +13311,15 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/hover/surface",
-      "path": "color.field.hover.surface",
+      "name": "color/input/hover/surface",
+      "path": "color.input.hover.surface",
       "type": "COLOR",
       "scopes": [
         "FRAME_FILL",
         "SHAPE_FILL"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-hover-surface)"
+        "WEB": "var(--ggb-color-input-hover-surface)"
       },
       "values": {
         "light": {
@@ -13447,8 +13332,8 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/hover/content",
-      "path": "color.field.hover.content",
+      "name": "color/input/hover/content",
+      "path": "color.input.hover.content",
       "type": "COLOR",
       "scopes": [
         "TEXT_FILL",
@@ -13456,7 +13341,7 @@
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-hover-content)"
+        "WEB": "var(--ggb-color-input-hover-content)"
       },
       "values": {
         "light": {
@@ -13469,14 +13354,14 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/hover/border",
-      "path": "color.field.hover.border",
+      "name": "color/input/hover/border",
+      "path": "color.input.hover.border",
       "type": "COLOR",
       "scopes": [
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-hover-border)"
+        "WEB": "var(--ggb-color-input-hover-border)"
       },
       "values": {
         "light": {
@@ -13489,8 +13374,8 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/hover/placeholder",
-      "path": "color.field.hover.placeholder",
+      "name": "color/input/hover/placeholder",
+      "path": "color.input.hover.placeholder",
       "type": "COLOR",
       "scopes": [
         "TEXT_FILL",
@@ -13498,7 +13383,7 @@
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-hover-placeholder)"
+        "WEB": "var(--ggb-color-input-hover-placeholder)"
       },
       "values": {
         "light": {
@@ -13511,15 +13396,15 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/focus/surface",
-      "path": "color.field.focus.surface",
+      "name": "color/input/focus/surface",
+      "path": "color.input.focus.surface",
       "type": "COLOR",
       "scopes": [
         "FRAME_FILL",
         "SHAPE_FILL"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-focus-surface)"
+        "WEB": "var(--ggb-color-input-focus-surface)"
       },
       "values": {
         "light": {
@@ -13532,8 +13417,8 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/focus/content",
-      "path": "color.field.focus.content",
+      "name": "color/input/focus/content",
+      "path": "color.input.focus.content",
       "type": "COLOR",
       "scopes": [
         "TEXT_FILL",
@@ -13541,7 +13426,7 @@
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-focus-content)"
+        "WEB": "var(--ggb-color-input-focus-content)"
       },
       "values": {
         "light": {
@@ -13554,14 +13439,14 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/focus/border",
-      "path": "color.field.focus.border",
+      "name": "color/input/focus/border",
+      "path": "color.input.focus.border",
       "type": "COLOR",
       "scopes": [
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-focus-border)"
+        "WEB": "var(--ggb-color-input-focus-border)"
       },
       "values": {
         "light": {
@@ -13574,8 +13459,8 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/focus/placeholder",
-      "path": "color.field.focus.placeholder",
+      "name": "color/input/focus/placeholder",
+      "path": "color.input.focus.placeholder",
       "type": "COLOR",
       "scopes": [
         "TEXT_FILL",
@@ -13583,7 +13468,7 @@
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-focus-placeholder)"
+        "WEB": "var(--ggb-color-input-focus-placeholder)"
       },
       "values": {
         "light": {
@@ -13596,15 +13481,15 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/readonly/surface",
-      "path": "color.field.readonly.surface",
+      "name": "color/input/readonly/surface",
+      "path": "color.input.readonly.surface",
       "type": "COLOR",
       "scopes": [
         "FRAME_FILL",
         "SHAPE_FILL"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-readonly-surface)"
+        "WEB": "var(--ggb-color-input-readonly-surface)"
       },
       "values": {
         "light": {
@@ -13617,8 +13502,8 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/readonly/content",
-      "path": "color.field.readonly.content",
+      "name": "color/input/readonly/content",
+      "path": "color.input.readonly.content",
       "type": "COLOR",
       "scopes": [
         "TEXT_FILL",
@@ -13626,7 +13511,7 @@
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-readonly-content)"
+        "WEB": "var(--ggb-color-input-readonly-content)"
       },
       "values": {
         "light": {
@@ -13639,28 +13524,28 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/readonly/border",
-      "path": "color.field.readonly.border",
+      "name": "color/input/readonly/border",
+      "path": "color.input.readonly.border",
       "type": "COLOR",
       "scopes": [
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-readonly-border)"
+        "WEB": "var(--ggb-color-input-readonly-border)"
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/default/border"
+          "alias": "Foundations · Appearance:color/input/default/border"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/default/border"
+          "alias": "Foundations · Appearance:color/input/default/border"
         }
       }
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/readonly/placeholder",
-      "path": "color.field.readonly.placeholder",
+      "name": "color/input/readonly/placeholder",
+      "path": "color.input.readonly.placeholder",
       "type": "COLOR",
       "scopes": [
         "TEXT_FILL",
@@ -13668,7 +13553,7 @@
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-readonly-placeholder)"
+        "WEB": "var(--ggb-color-input-readonly-placeholder)"
       },
       "values": {
         "light": {
@@ -13681,15 +13566,15 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/disabled/surface",
-      "path": "color.field.disabled.surface",
+      "name": "color/input/disabled/surface",
+      "path": "color.input.disabled.surface",
       "type": "COLOR",
       "scopes": [
         "FRAME_FILL",
         "SHAPE_FILL"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-disabled-surface)"
+        "WEB": "var(--ggb-color-input-disabled-surface)"
       },
       "values": {
         "light": {
@@ -13702,8 +13587,8 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/disabled/content",
-      "path": "color.field.disabled.content",
+      "name": "color/input/disabled/content",
+      "path": "color.input.disabled.content",
       "type": "COLOR",
       "scopes": [
         "TEXT_FILL",
@@ -13711,7 +13596,7 @@
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-disabled-content)"
+        "WEB": "var(--ggb-color-input-disabled-content)"
       },
       "values": {
         "light": {
@@ -13724,14 +13609,14 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/disabled/border",
-      "path": "color.field.disabled.border",
+      "name": "color/input/disabled/border",
+      "path": "color.input.disabled.border",
       "type": "COLOR",
       "scopes": [
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-disabled-border)"
+        "WEB": "var(--ggb-color-input-disabled-border)"
       },
       "values": {
         "light": {
@@ -13744,8 +13629,8 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/disabled/placeholder",
-      "path": "color.field.disabled.placeholder",
+      "name": "color/input/disabled/placeholder",
+      "path": "color.input.disabled.placeholder",
       "type": "COLOR",
       "scopes": [
         "TEXT_FILL",
@@ -13753,7 +13638,7 @@
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-disabled-placeholder)"
+        "WEB": "var(--ggb-color-input-disabled-placeholder)"
       },
       "values": {
         "light": {
@@ -13766,15 +13651,15 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/invalid/surface",
-      "path": "color.field.invalid.surface",
+      "name": "color/input/invalid/surface",
+      "path": "color.input.invalid.surface",
       "type": "COLOR",
       "scopes": [
         "FRAME_FILL",
         "SHAPE_FILL"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-invalid-surface)"
+        "WEB": "var(--ggb-color-input-invalid-surface)"
       },
       "values": {
         "light": {
@@ -13787,8 +13672,8 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/invalid/content",
-      "path": "color.field.invalid.content",
+      "name": "color/input/invalid/content",
+      "path": "color.input.invalid.content",
       "type": "COLOR",
       "scopes": [
         "TEXT_FILL",
@@ -13796,7 +13681,7 @@
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-invalid-content)"
+        "WEB": "var(--ggb-color-input-invalid-content)"
       },
       "values": {
         "light": {
@@ -13809,14 +13694,14 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/invalid/border",
-      "path": "color.field.invalid.border",
+      "name": "color/input/invalid/border",
+      "path": "color.input.invalid.border",
       "type": "COLOR",
       "scopes": [
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-invalid-border)"
+        "WEB": "var(--ggb-color-input-invalid-border)"
       },
       "values": {
         "light": {
@@ -13829,8 +13714,8 @@
     },
     {
       "collection": "Foundations · Appearance",
-      "name": "color/field/invalid/placeholder",
-      "path": "color.field.invalid.placeholder",
+      "name": "color/input/invalid/placeholder",
+      "path": "color.input.invalid.placeholder",
       "type": "COLOR",
       "scopes": [
         "TEXT_FILL",
@@ -13838,7 +13723,7 @@
         "STROKE_COLOR"
       ],
       "codeSyntax": {
-        "WEB": "var(--ggb-color-field-invalid-placeholder)"
+        "WEB": "var(--ggb-color-input-invalid-placeholder)"
       },
       "values": {
         "light": {
@@ -13863,10 +13748,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/default/surface"
+          "alias": "Foundations · Appearance:color/input/default/surface"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/default/surface"
+          "alias": "Foundations · Appearance:color/input/default/surface"
         }
       }
     },
@@ -13885,10 +13770,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/default/placeholder"
+          "alias": "Foundations · Appearance:color/input/default/placeholder"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/default/placeholder"
+          "alias": "Foundations · Appearance:color/input/default/placeholder"
         }
       }
     },
@@ -13905,10 +13790,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/default/border"
+          "alias": "Foundations · Appearance:color/input/default/border"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/default/border"
+          "alias": "Foundations · Appearance:color/input/default/border"
         }
       }
     },
@@ -13926,10 +13811,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/hover/surface"
+          "alias": "Foundations · Appearance:color/input/hover/surface"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/hover/surface"
+          "alias": "Foundations · Appearance:color/input/hover/surface"
         }
       }
     },
@@ -13948,10 +13833,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/hover/placeholder"
+          "alias": "Foundations · Appearance:color/input/hover/placeholder"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/hover/placeholder"
+          "alias": "Foundations · Appearance:color/input/hover/placeholder"
         }
       }
     },
@@ -13968,10 +13853,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/hover/border"
+          "alias": "Foundations · Appearance:color/input/hover/border"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/hover/border"
+          "alias": "Foundations · Appearance:color/input/hover/border"
         }
       }
     },
@@ -13989,10 +13874,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/readonly/surface"
+          "alias": "Foundations · Appearance:color/input/readonly/surface"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/readonly/surface"
+          "alias": "Foundations · Appearance:color/input/readonly/surface"
         }
       }
     },
@@ -14011,10 +13896,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/readonly/placeholder"
+          "alias": "Foundations · Appearance:color/input/readonly/placeholder"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/readonly/placeholder"
+          "alias": "Foundations · Appearance:color/input/readonly/placeholder"
         }
       }
     },
@@ -14031,10 +13916,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/readonly/border"
+          "alias": "Foundations · Appearance:color/input/readonly/border"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/readonly/border"
+          "alias": "Foundations · Appearance:color/input/readonly/border"
         }
       }
     },
@@ -14052,10 +13937,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/disabled/surface"
+          "alias": "Foundations · Appearance:color/input/disabled/surface"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/disabled/surface"
+          "alias": "Foundations · Appearance:color/input/disabled/surface"
         }
       }
     },
@@ -14074,10 +13959,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/disabled/placeholder"
+          "alias": "Foundations · Appearance:color/input/disabled/placeholder"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/disabled/placeholder"
+          "alias": "Foundations · Appearance:color/input/disabled/placeholder"
         }
       }
     },
@@ -14094,10 +13979,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/disabled/border"
+          "alias": "Foundations · Appearance:color/input/disabled/border"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/disabled/border"
+          "alias": "Foundations · Appearance:color/input/disabled/border"
         }
       }
     },
@@ -14115,10 +14000,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/invalid/surface"
+          "alias": "Foundations · Appearance:color/input/invalid/surface"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/invalid/surface"
+          "alias": "Foundations · Appearance:color/input/invalid/surface"
         }
       }
     },
@@ -14137,10 +14022,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/invalid/placeholder"
+          "alias": "Foundations · Appearance:color/input/invalid/placeholder"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/invalid/placeholder"
+          "alias": "Foundations · Appearance:color/input/invalid/placeholder"
         }
       }
     },
@@ -14157,10 +14042,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/invalid/border"
+          "alias": "Foundations · Appearance:color/input/invalid/border"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/invalid/border"
+          "alias": "Foundations · Appearance:color/input/invalid/border"
         }
       }
     },
@@ -14304,10 +14189,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/readonly/surface"
+          "alias": "Foundations · Appearance:color/input/readonly/surface"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/readonly/surface"
+          "alias": "Foundations · Appearance:color/input/readonly/surface"
         }
       }
     },
@@ -14326,10 +14211,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/readonly/content"
+          "alias": "Foundations · Appearance:color/input/readonly/content"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/readonly/content"
+          "alias": "Foundations · Appearance:color/input/readonly/content"
         }
       }
     },
@@ -14346,10 +14231,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/readonly/border"
+          "alias": "Foundations · Appearance:color/input/readonly/border"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/readonly/border"
+          "alias": "Foundations · Appearance:color/input/readonly/border"
         }
       }
     },
@@ -14367,10 +14252,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/disabled/surface"
+          "alias": "Foundations · Appearance:color/input/disabled/surface"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/disabled/surface"
+          "alias": "Foundations · Appearance:color/input/disabled/surface"
         }
       }
     },
@@ -14389,10 +14274,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/disabled/content"
+          "alias": "Foundations · Appearance:color/input/disabled/content"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/disabled/content"
+          "alias": "Foundations · Appearance:color/input/disabled/content"
         }
       }
     },
@@ -14409,10 +14294,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/disabled/border"
+          "alias": "Foundations · Appearance:color/input/disabled/border"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/disabled/border"
+          "alias": "Foundations · Appearance:color/input/disabled/border"
         }
       }
     },
@@ -14430,10 +14315,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/invalid/border"
+          "alias": "Foundations · Appearance:color/input/invalid/border"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/invalid/border"
+          "alias": "Foundations · Appearance:color/input/invalid/border"
         }
       }
     },
@@ -14472,10 +14357,10 @@
       },
       "values": {
         "light": {
-          "alias": "Foundations · Appearance:color/field/invalid/border"
+          "alias": "Foundations · Appearance:color/input/invalid/border"
         },
         "dark": {
-          "alias": "Foundations · Appearance:color/field/invalid/border"
+          "alias": "Foundations · Appearance:color/input/invalid/border"
         }
       }
     },

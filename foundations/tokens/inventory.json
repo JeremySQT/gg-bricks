@@ -1,5 +1,5 @@
 {
-  "$description": "Semantic inventory checked by tooling/check-foundations.ts in every brand × appearance × density context: every role must exist with its type on its axis (the file layer that defines it), and every contrast pair must reach its WCAG minimum (4.5 text, 3 borders, icons and focus). Translucent surfaces are composited on color.surface.default before measuring. Pairs are explicit: a role is tested on the backdrops it is designed for. color.surface.muted is a de-emphasized backdrop and is tested with primary and secondary content only; color.status.*.border is decorative (the tinted surface identifies the status) and is not tested. `invariants` lists dimension roles that must equal the sum of other dimension roles in every context (a derived role maintained by hand in each brand or density). color.item.* pairs are measured on the surfaces that hold lists (default, overlay) and on the item's own surfaces; color.elevation.border is decorative (the shadow and the surface identify the element) and is not tested.",
+  "$description": "Semantic inventory checked by tooling/check-foundations.ts in every brand × appearance × density context: every role must exist with its type on its axis (the file layer that defines it), and every contrast pair must reach its WCAG minimum (4.5 text, 3 borders, icons and focus). Translucent surfaces are composited on color.surface.default before measuring. Pairs are explicit: a role is tested on the backdrops it is designed for. color.surface.muted is a de-emphasized backdrop and is tested with primary and secondary content only; color.status.*.border is decorative (the tinted surface identifies the status) and is not tested. `invariants` lists dimension roles that must equal the sum of other dimension roles in every context (a derived role maintained by hand in each brand or density). color.input.* (formerly color.field.*) paints text entry boxes. `concepts` lists the component ids a semantic role may contain because the role names a general concept, not that component (decisions.md, Semantic role or component token). color.item.* pairs are measured on the surfaces that hold lists (default, overlay) and on the item's own surfaces; color.elevation.border is decorative (the shadow and the surface identify the element) and is not tested.",
   "roles": [
     {
       "path": "color.palette.neutral.0",
@@ -443,31 +443,6 @@
     },
     {
       "path": "size.overlay.panel",
-      "type": "dimension",
-      "axis": "common"
-    },
-    {
-      "path": "size.avatar.xs",
-      "type": "dimension",
-      "axis": "common"
-    },
-    {
-      "path": "size.avatar.sm",
-      "type": "dimension",
-      "axis": "common"
-    },
-    {
-      "path": "size.avatar.md",
-      "type": "dimension",
-      "axis": "common"
-    },
-    {
-      "path": "size.avatar.lg",
-      "type": "dimension",
-      "axis": "common"
-    },
-    {
-      "path": "size.avatar.xl",
       "type": "dimension",
       "axis": "common"
     },
@@ -1512,122 +1487,122 @@
       "axis": "appearance"
     },
     {
-      "path": "color.field.default.surface",
+      "path": "color.input.default.surface",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.default.content",
+      "path": "color.input.default.content",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.default.border",
+      "path": "color.input.default.border",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.default.placeholder",
+      "path": "color.input.default.placeholder",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.hover.surface",
+      "path": "color.input.hover.surface",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.hover.content",
+      "path": "color.input.hover.content",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.hover.border",
+      "path": "color.input.hover.border",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.hover.placeholder",
+      "path": "color.input.hover.placeholder",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.focus.surface",
+      "path": "color.input.focus.surface",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.focus.content",
+      "path": "color.input.focus.content",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.focus.border",
+      "path": "color.input.focus.border",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.focus.placeholder",
+      "path": "color.input.focus.placeholder",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.readonly.surface",
+      "path": "color.input.readonly.surface",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.readonly.content",
+      "path": "color.input.readonly.content",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.readonly.border",
+      "path": "color.input.readonly.border",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.readonly.placeholder",
+      "path": "color.input.readonly.placeholder",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.disabled.surface",
+      "path": "color.input.disabled.surface",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.disabled.content",
+      "path": "color.input.disabled.content",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.disabled.border",
+      "path": "color.input.disabled.border",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.disabled.placeholder",
+      "path": "color.input.disabled.placeholder",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.invalid.surface",
+      "path": "color.input.invalid.surface",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.invalid.content",
+      "path": "color.input.invalid.content",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.invalid.border",
+      "path": "color.input.invalid.border",
       "type": "color",
       "axis": "appearance"
     },
     {
-      "path": "color.field.invalid.placeholder",
+      "path": "color.input.invalid.placeholder",
       "type": "color",
       "axis": "appearance"
     },
@@ -2539,77 +2514,77 @@
       "minimum": 4.5
     },
     {
-      "content": "color.field.default.content",
-      "surface": "color.field.default.surface",
+      "content": "color.input.default.content",
+      "surface": "color.input.default.surface",
       "minimum": 4.5
     },
     {
-      "content": "color.field.default.placeholder",
-      "surface": "color.field.default.surface",
+      "content": "color.input.default.placeholder",
+      "surface": "color.input.default.surface",
       "minimum": 4.5
     },
     {
-      "content": "color.field.default.border",
+      "content": "color.input.default.border",
       "surface": "color.surface.default",
       "minimum": 3
     },
     {
-      "content": "color.field.hover.content",
-      "surface": "color.field.hover.surface",
+      "content": "color.input.hover.content",
+      "surface": "color.input.hover.surface",
       "minimum": 4.5
     },
     {
-      "content": "color.field.hover.placeholder",
-      "surface": "color.field.hover.surface",
+      "content": "color.input.hover.placeholder",
+      "surface": "color.input.hover.surface",
       "minimum": 4.5
     },
     {
-      "content": "color.field.hover.border",
+      "content": "color.input.hover.border",
       "surface": "color.surface.default",
       "minimum": 3
     },
     {
-      "content": "color.field.focus.content",
-      "surface": "color.field.focus.surface",
+      "content": "color.input.focus.content",
+      "surface": "color.input.focus.surface",
       "minimum": 4.5
     },
     {
-      "content": "color.field.focus.placeholder",
-      "surface": "color.field.focus.surface",
+      "content": "color.input.focus.placeholder",
+      "surface": "color.input.focus.surface",
       "minimum": 4.5
     },
     {
-      "content": "color.field.focus.border",
+      "content": "color.input.focus.border",
       "surface": "color.surface.default",
       "minimum": 3
     },
     {
-      "content": "color.field.readonly.border",
+      "content": "color.input.readonly.border",
       "surface": "color.surface.default",
       "minimum": 3
     },
     {
-      "content": "color.field.readonly.content",
-      "surface": "color.field.readonly.surface",
+      "content": "color.input.readonly.content",
+      "surface": "color.input.readonly.surface",
       "minimum": 4.5
     },
     {
-      "content": "color.field.readonly.placeholder",
-      "surface": "color.field.readonly.surface",
+      "content": "color.input.readonly.placeholder",
+      "surface": "color.input.readonly.surface",
       "minimum": 4.5
     },
     {
-      "content": "color.field.invalid.content",
-      "surface": "color.field.invalid.surface",
+      "content": "color.input.invalid.content",
+      "surface": "color.input.invalid.surface",
       "minimum": 4.5
     },
     {
-      "content": "color.field.invalid.placeholder",
-      "surface": "color.field.invalid.surface",
+      "content": "color.input.invalid.placeholder",
+      "surface": "color.input.invalid.surface",
       "minimum": 4.5
     },
     {
-      "content": "color.field.invalid.border",
+      "content": "color.input.invalid.border",
       "surface": "color.surface.default",
       "minimum": 3
     },
@@ -2892,6 +2867,24 @@
     {
       "equals": "space.control.padding-inline.lg",
       "sum": ["space.control.edge-inline.lg", "space.control.label-inline.lg"]
+    }
+  ],
+  "concepts": [
+    {
+      "name": "icon",
+      "note": "An icon next to text in any component: size.icon.* sizes it and color.status.*.icon colors it; the Icon component is one consumer among many."
+    },
+    {
+      "name": "link",
+      "note": "color.content.link is the color of a hyperlink in running text, also used outside the Link component."
+    },
+    {
+      "name": "toast",
+      "note": "layer.toast is a level of the layer scale, which is read as a whole (stacking order)."
+    },
+    {
+      "name": "tooltip",
+      "note": "layer.tooltip is a level of the layer scale, which is read as a whole (stacking order)."
     }
   ]
 }

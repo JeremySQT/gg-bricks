@@ -264,9 +264,9 @@
   select,
   input:not([type]) {
     font: inherit;
-    color: var(--ggb-color-field-default-content);
-    background: var(--ggb-color-field-default-surface);
-    border: var(--ggb-border-width-default) solid var(--ggb-color-field-default-border);
+    color: var(--ggb-color-input-default-content);
+    background: var(--ggb-color-input-default-surface);
+    border: var(--ggb-border-width-default) solid var(--ggb-color-input-default-border);
     border-radius: var(--ggb-radius-control);
     min-height: var(--ggb-size-control-md);
     padding-inline: var(--ggb-space-control-padding-inline-sm);

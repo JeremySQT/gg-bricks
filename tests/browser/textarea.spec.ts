@@ -44,10 +44,10 @@ async function measure(page: Page, selector: string) {
 }
 
 const fieldColors = (tokens: TokenMap, condition: string) => ({
-  surface: rgb(tokens[`color.field.${condition}.surface`]),
-  content: rgb(tokens[`color.field.${condition}.content`]),
-  boxShadow: insetBorder(tokens[`color.field.${condition}.border`], tokens['border.width.default']),
-  placeholder: rgb(tokens[`color.field.${condition}.placeholder`])
+  surface: rgb(tokens[`color.input.${condition}.surface`]),
+  content: rgb(tokens[`color.input.${condition}.content`]),
+  boxShadow: insetBorder(tokens[`color.input.${condition}.border`], tokens['border.width.default']),
+  placeholder: rgb(tokens[`color.input.${condition}.placeholder`])
 });
 
 test.beforeEach(async ({ page }) => {

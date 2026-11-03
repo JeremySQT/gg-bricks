@@ -758,7 +758,7 @@
         }
       }
     },
-    "field": {
+    "input": {
       "default": {
         "surface": {
           "$type": "color",
@@ -824,7 +824,7 @@
         },
         "border": {
           "$type": "color",
-          "$value": "{color.field.default.border}"
+          "$value": "{color.input.default.border}"
         },
         "placeholder": {
           "$type": "color",
@@ -873,71 +873,71 @@
         "default": {
           "surface": {
             "$type": "color",
-            "$value": "{color.field.default.surface}"
+            "$value": "{color.input.default.surface}"
           },
           "content": {
             "$type": "color",
-            "$value": "{color.field.default.placeholder}"
+            "$value": "{color.input.default.placeholder}"
           },
           "border": {
             "$type": "color",
-            "$value": "{color.field.default.border}"
+            "$value": "{color.input.default.border}"
           }
         },
         "hover": {
           "surface": {
             "$type": "color",
-            "$value": "{color.field.hover.surface}"
+            "$value": "{color.input.hover.surface}"
           },
           "content": {
             "$type": "color",
-            "$value": "{color.field.hover.placeholder}"
+            "$value": "{color.input.hover.placeholder}"
           },
           "border": {
             "$type": "color",
-            "$value": "{color.field.hover.border}"
+            "$value": "{color.input.hover.border}"
           }
         },
         "readonly": {
           "surface": {
             "$type": "color",
-            "$value": "{color.field.readonly.surface}"
+            "$value": "{color.input.readonly.surface}"
           },
           "content": {
             "$type": "color",
-            "$value": "{color.field.readonly.placeholder}"
+            "$value": "{color.input.readonly.placeholder}"
           },
           "border": {
             "$type": "color",
-            "$value": "{color.field.readonly.border}"
+            "$value": "{color.input.readonly.border}"
           }
         },
         "disabled": {
           "surface": {
             "$type": "color",
-            "$value": "{color.field.disabled.surface}"
+            "$value": "{color.input.disabled.surface}"
           },
           "content": {
             "$type": "color",
-            "$value": "{color.field.disabled.placeholder}"
+            "$value": "{color.input.disabled.placeholder}"
           },
           "border": {
             "$type": "color",
-            "$value": "{color.field.disabled.border}"
+            "$value": "{color.input.disabled.border}"
           }
         },
         "invalid": {
           "surface": {
             "$type": "color",
-            "$value": "{color.field.invalid.surface}"
+            "$value": "{color.input.invalid.surface}"
           },
           "content": {
             "$type": "color",
-            "$value": "{color.field.invalid.placeholder}"
+            "$value": "{color.input.invalid.placeholder}"
           },
           "border": {
             "$type": "color",
-            "$value": "{color.field.invalid.border}"
+            "$value": "{color.input.invalid.border}"
           }
         }
       },
@@ -973,35 +973,35 @@
         "readonly": {
           "surface": {
             "$type": "color",
-            "$value": "{color.field.readonly.surface}"
+            "$value": "{color.input.readonly.surface}"
           },
           "content": {
             "$type": "color",
-            "$value": "{color.field.readonly.content}"
+            "$value": "{color.input.readonly.content}"
           },
           "border": {
             "$type": "color",
-            "$value": "{color.field.readonly.border}"
+            "$value": "{color.input.readonly.border}"
           }
         },
         "disabled": {
           "surface": {
             "$type": "color",
-            "$value": "{color.field.disabled.surface}"
+            "$value": "{color.input.disabled.surface}"
           },
           "content": {
             "$type": "color",
-            "$value": "{color.field.disabled.content}"
+            "$value": "{color.input.disabled.content}"
           },
           "border": {
             "$type": "color",
-            "$value": "{color.field.disabled.border}"
+            "$value": "{color.input.disabled.border}"
           }
         },
         "invalid": {
           "surface": {
             "$type": "color",
-            "$value": "{color.field.invalid.border}"
+            "$value": "{color.input.invalid.border}"
           },
           "content": {
             "$type": "color",
@@ -1009,7 +1009,7 @@
           },
           "border": {
             "$type": "color",
-            "$value": "{color.field.invalid.border}"
+            "$value": "{color.input.invalid.border}"
           }
         }
       }

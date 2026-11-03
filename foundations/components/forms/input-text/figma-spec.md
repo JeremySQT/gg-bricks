@@ -24,11 +24,11 @@ Every color, dimension, radius, stroke and typography value of the masters is bo
 
 ## Construction notes
 
-- **Container** (the variant): height `size/control/{size}`, padding `space/control/edge-inline/{size}` (0 at the end with the action), fill and inside stroke from `color/field/{state}/…`, `radius/control`: the height and padding of a Button of the same size.
+- **Container** (the variant): height `size/control/{size}`, padding `space/control/edge-inline/{size}` (0 at the end with the action), fill and inside stroke from `color/input/{state}/…`, `radius/control`: the height and padding of a Button of the same size.
 - **Slots** follow Button: a frame with `space/control/slot-inline/{size}` on both sides holds a drawing box of `input-text/icon-box` (iconSize − iconSize/4) with the Phosphor glyph at `size/icon/{size}` centered, so the drawing starts at the padding (the icon box overlaps it by iconSize/8). Icons use the placeholder color of the state.
 - **Input** frame with `space/control/label-inline/{size}` on both sides holds the Value (content color) or the Placeholder, one line, truncated at the end.
 - **Action**: a square of `size/control/{size}` holding an IconButton neutral ghost one size smaller with the x glyph, disabled with the field.
-- **Focus** is a property only (2026-10-28): the ring (`radius/focus`, outside stroke) follows Focus, and on default and hover a **Focus border** layer (inside stroke `color/field/focus/border`) follows it too, as the code's precedence disabled, readonly, invalid, focus, hover paints the focus border only there; a disabled field is never focused.
+- **Focus** is a property only (2026-10-28): the ring (`radius/focus`, outside stroke) follows Focus, and on default and hover a **Focus border** layer (inside stroke `color/input/focus/border`) follows it too, as the code's precedence disabled, readonly, invalid, focus, hover paints the focus border only there; a disabled field is never focused.
 
 ## Justified differences
 

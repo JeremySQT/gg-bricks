@@ -100,10 +100,10 @@
   select {
     min-block-size: var(--ggb-size-control-sm);
     padding-inline: var(--ggb-space-control-padding-inline-sm);
-    border: var(--ggb-border-width-default) solid var(--ggb-color-field-default-border);
+    border: var(--ggb-border-width-default) solid var(--ggb-color-input-default-border);
     border-radius: var(--ggb-radius-control);
-    background: var(--ggb-color-field-default-surface);
-    color: var(--ggb-color-field-default-content);
+    background: var(--ggb-color-input-default-surface);
+    color: var(--ggb-color-input-default-content);
     font: var(--ggb-typography-label-sm);
   }
   select:focus-visible {
