@@ -340,8 +340,8 @@
     },
     "_Button/Loading indicator": {
       "id": "42:28",
-      "page": "actions/button (144:2)",
-      "note": "Intrinsic part (loadingIndicator); moved from the Utilities fixtures frame on 2026-10-13."
+      "removed": "2026-11-03",
+      "note": "Since 2026-11-03 the loading indicator is an instance of the Spinner set (feedback/spinner, 408:15) of the button's icon size, with the stroke color of the variant; the former part _Button/Loading indicator (42:28) was removed after its 270 instances were swapped (authoring/adapters/figma/button-spinner-swap.plugin.js)."
     }
   },
   "wireframe": {
@@ -473,5 +473,11 @@
     "overview": "379:982",
     "sectionHeader": "379:2869",
     "specTitleRow": "367:2"
-  }
+  },
+  "migrations": [
+    {
+      "date": "2026-11-03",
+      "change": "Since 2026-11-03 the loading indicator is an instance of the Spinner set (feedback/spinner, 408:15) of the button's icon size, with the stroke color of the variant; the former part _Button/Loading indicator (42:28) was removed after its 270 instances were swapped (authoring/adapters/figma/button-spinner-swap.plugin.js)."
+    }
+  ]
 }

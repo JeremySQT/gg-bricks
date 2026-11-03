@@ -30,8 +30,34 @@
       "foundations/tokens/base/semantic/common.tokens.json",
       "foundations/tokens/base/components/spinner.tokens.json"
     ],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "feedback/spinner (407:116)",
+      "library": "Feedback (407:112), section Spinner (408:2)",
+      "componentSet": "408:15",
+      "specification": "412:2",
+      "ledger": "reports/components/spinner/figma/ledger.json",
+      "parity": "reports/components/spinner/figma/parity.json",
+      "screenshots": [
+        "reports/components/spinner/figma/master-set.png",
+        "reports/components/spinner/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/spinner/figma/blueprint-anatomy.png",
+          "node": "412:61"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/spinner-master.plugin.js",
+        "authoring/adapters/figma/spinner-spec.plugin.js",
+        "authoring/adapters/figma/spec-lib.plugin.js",
+        "authoring/adapters/figma/spinner-parity.plugin.js",
+        "authoring/adapters/figma/spinner-parity-report.mjs",
+        "authoring/adapters/figma/button-spinner-swap.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/feedback/spinner/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/spinner",
@@ -139,6 +165,12 @@
       "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
       "result": "passed",
       "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (864 records, 0 failures, 144 justified)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/spinner/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -150,7 +182,7 @@
     "Open question 5 accepted for the implementation review (user, 2026-11-03: \"Ok, à juger dans l'implémentation\"): component.spinner.duration = 700 ms; the speed is judged on the real rendering at the implementation gate, and Button and IconButton adopt the Spinner after the wave."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
+  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
   "implementationNotes": [
     "A labelled spinner is a role status named by aria-label (a status takes no name from its content in Chromium) with the same text visually hidden inside it as the announced content. Whether a status inserted already filled is announced varies between screen readers: the application may keep a status region on the page and fill it instead."
   ]

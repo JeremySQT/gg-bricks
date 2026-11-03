@@ -11,17 +11,17 @@
 
 ## Mapping from the contract
 
-| Contract                       | Figma                                                                                                                                                             |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `intent`, `appearance`, `size` | Variant properties Intent, Appearance, Size (default neutral · ghost · md, the top-left variant)                                                                  |
-| `interaction` state            | Variant property State: default, hover, pressed, loading, disabled                                                                                                |
-| `focus` state                  | Boolean **Focus** (independent axis, combines with every state)                                                                                                   |
-| `label`                        | Text property **Label** on a hidden text layer “Label (accessible name, not shown)”: never drawn, read in Dev Mode                                                |
-| part `icon` (one icon)         | Instance-swap property **Icon** (default `phosphor/plus`): the glyph sits directly in the variant at `size/icon/{size}`; any glyph of the page `assets/phosphor`  |
-| part `loadingIndicator`        | Layer **Loading indicator** (instance of `_Button/Loading indicator`), visible in State=loading, hidden elsewhere so that an instance can show loading + disabled |
-| part `container`               | Layer **Container**                                                                                                                                               |
-| `href`, `disabled`, `loading`  | Not properties: href has no visual effect; disabled and loading are State values                                                                                  |
-| `minTarget`                    | Layer **Target**: absolute, empty, `size/target/min` square centered on the container                                                                             |
+| Contract                       | Figma                                                                                                                                                                                                                     |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `intent`, `appearance`, `size` | Variant properties Intent, Appearance, Size (default neutral · ghost · md, the top-left variant)                                                                                                                          |
+| `interaction` state            | Variant property State: default, hover, pressed, loading, disabled                                                                                                                                                        |
+| `focus` state                  | Boolean **Focus** (independent axis, combines with every state)                                                                                                                                                           |
+| `label`                        | Text property **Label** on a hidden text layer “Label (accessible name, not shown)”: never drawn, read in Dev Mode                                                                                                        |
+| part `icon` (one icon)         | Instance-swap property **Icon** (default `phosphor/plus`): the glyph sits directly in the variant at `size/icon/{size}`; any glyph of the page `assets/phosphor`                                                          |
+| part `loadingIndicator`        | Layer **Loading indicator** (instance of the **Spinner** set `408:15` since 2026-11-03, formerly `_Button/Loading indicator`), visible in State=loading, hidden elsewhere so that an instance can show loading + disabled |
+| part `container`               | Layer **Container**                                                                                                                                                                                                       |
+| `href`, `disabled`, `loading`  | Not properties: href has no visual effect; disabled and loading are State values                                                                                                                                          |
+| `minTarget`                    | Layer **Target**: absolute, empty, `size/target/min` square centered on the container                                                                                                                                     |
 
 Every color, dimension, radius and stroke of the masters is bound to a variable of the Brand, Appearance and Density collections or to the Button adapter variables; brand, appearance and density are chosen by the consuming frame's variable modes, never by component properties.
 

@@ -271,6 +271,14 @@
         "packages/svelte/src/components/icon-button/icon-button.css": "d84794aff00afe3df3e5f803fa18adf8e8c2d70d630015e1c488a42434a2237c"
       },
       "recorded": "Re-recorded with the approvals of 2026-11-03."
+    },
+    {
+      "date": "2026-11-03",
+      "change": "Figma: the loading indicator of the master is now an instance of the Spinner set (408:15) of the icon size, as the amended contract says (the Button loading indicator is the Spinner); the part _Button/Loading indicator (42:28) was removed after its 270 instances were swapped. Track opacity 20 % (was 25 %). To be re-presented at the wave 3 Figma parity gate.",
+      "sha256": {
+        "foundations/components/actions/icon-button/figma-spec.md": "a1ac78bf6cbf4fc0b0580527af0bcecc263b60c71d08471676d548e69cd44adc",
+        "reports/components/icon-button/figma/ledger.json": "ff0846febc5ae8bcd62a9948b35c1dd2d04bb3753bc50b44ad3fa5604274089f"
+      }
     }
   ]
 }
