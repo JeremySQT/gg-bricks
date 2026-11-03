@@ -30,8 +30,33 @@
       "sha256": "849371cd8815a83dc9435064918892a90022f94ac29602f38b1f9332d1cf634b"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "actions/button-group (407:110)",
+      "library": "Actions (343:2), section ButtonGroup (419:2294)",
+      "componentSet": "419:2913",
+      "specification": "420:2",
+      "ledger": "reports/components/button-group/figma/ledger.json",
+      "parity": "reports/components/button-group/figma/parity.json",
+      "screenshots": [
+        "reports/components/button-group/figma/master-set.png",
+        "reports/components/button-group/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/button-group/figma/blueprint-anatomy.png",
+          "node": "420:316"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/button-group-master.plugin.js",
+        "authoring/adapters/figma/button-group-spec.plugin.js",
+        "authoring/adapters/figma/button-group-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/actions/button-group/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/button-group",
@@ -135,6 +160,12 @@
       "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
       "result": "passed",
       "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (216 records, 0 failures)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/button-group/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -148,7 +179,7 @@
     "Vertical always stretched; no wrap: a line that does not fit stacks (user, 2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
+  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
   "implementationNotes": [
     "Button and IconButton read the group size through the context key ggb:button-group (a string; each folder declares the shape again), so an item's own size is ignored inside a group.",
     "A host (Alert) may ask for a default size through the context key ggb:button-group-host; an explicit size on the group wins.",

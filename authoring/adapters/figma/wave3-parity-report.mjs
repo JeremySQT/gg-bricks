@@ -73,6 +73,11 @@ COMPONENTS.skeleton = {
     duration: 'Justified: the pulse duration (motion/duration/loop) belongs to the animation of the code.'
   }
 };
+COMPONENTS['button-group'] = {
+  key: (r) => `${r.props.size},${r.props.orientation}`,
+  fields: { gap: px, itemHeight: (v) => num(v, 2) },
+  justified: {}
+};
 const C = COMPONENTS[id];
 if (!C) throw new Error('unknown component ' + id);
 const byCtx = {};
