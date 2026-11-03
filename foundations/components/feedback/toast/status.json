@@ -3,7 +3,7 @@
   "componentId": "toast",
   "family": "feedback",
   "wave": 3,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Notify briefly about something the user just did or that just happened, without blocking the page.",
     "useCases": ["Saved, Message sent.", "Upload failed with a Retry action.", "Item deleted with an Undo action."],
@@ -60,13 +60,39 @@
       "revision": {
         "paths": ["foundations/components/feedback/toast/contract.json"],
         "sha256": {
-          "foundations/components/feedback/toast/contract.json": "ab9f6f5db1acb16dbdb56da53a3f450f73477c146a5b604ecfd6b1d18f38495e"
+          "foundations/components/feedback/toast/contract.json": "13b4ee1abefa4b79f51d242c046be53419bf0bcae784244b8dc0a90cbe6cecc1"
         }
       },
-      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 requested at the implementation review (rounds 1 to 4: buttons and links follow the intent; Toast appearance, layout, countdowns, closable and secondary actions) accepted with the implementation: \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\".",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "ToastRegion in the top layer (placement, max, queue, paused on hover, focus and hidden document) and Toast items: intent, appearance neutral or intense (intense: accent and neutral buttons take the intent family), automatic single or multi layout, default countdowns 5 s, 8 s with an action, none for danger, closable, one secondary action, dismiss event.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/toast/Toast.svelte",
+          "packages/svelte/src/components/toast/ToastRegion.svelte",
+          "packages/svelte/src/components/toast/contract.generated.ts",
+          "packages/svelte/src/components/toast/glyphs.ts",
+          "packages/svelte/src/components/toast/toast.css",
+          "packages/svelte/src/components/toast/tokens.generated.css",
+          "packages/svelte/src/components/toast/types.ts",
+          "examples/toast/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/toast/Toast.svelte": "8d21139899bcf4f303405ba8346798eab401eb675b8db989840b91ae71937414",
+          "packages/svelte/src/components/toast/ToastRegion.svelte": "a9e47464e8327ef644dcc08d30e47eddd9d8358c5626e9210c91b95b1d7e6f92",
+          "packages/svelte/src/components/toast/contract.generated.ts": "87e238d378faaca4888c123ba3983ceefd45c8bdbd1aa2f858582775749756cd",
+          "packages/svelte/src/components/toast/glyphs.ts": "f6da0f4d3ea9f3c0b69ff3d574bde4551708494d175bc9ce36d4310f15efde7f",
+          "packages/svelte/src/components/toast/toast.css": "fc7438d442bc2bc7a7cc3992fbc6d4f4ef7f9efd1a3a4a6347c61ddc5056f5fa",
+          "packages/svelte/src/components/toast/tokens.generated.css": "bd6a50e3aa2d9f3d2c443662fd120f0ff86cb77ae14f42c48bc2907afdd345dc",
+          "packages/svelte/src/components/toast/types.ts": "bb307b021cfcdb616c30eecafea43c4690de86cdaf624e5da3f106a7ce60d2bc",
+          "examples/toast/App.svelte": "89b17f0d3d0491cb40ea990198ee314ac8528e218e06ef2f5c8f938c3ffb3781"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 4) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793725323-4aae): \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\" (danger toasts keep no default countdown and keep their dismiss button without one, for accessibility).",
+      "note": null
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -123,7 +149,7 @@
     "Toast actions are secondary only (user, 2026-11-03): ghost or outline, neutral or danger, never accent; a snippet cannot enforce it, the rule is documented (decisions.md, snippet slots)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
   "implementationNotes": [
     "Exports ToastRegion (the region, root of the contract) and Toast (the item child).",
     "The region is a div with role region (not a section: an application's section styles moved it) shown as a manual popover in the top layer; it raises itself again whenever another overlay enters the top layer after it (a capture listener on toggle events).",
@@ -137,21 +163,24 @@
       "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): centered layout, automatic single or multi line (actions under the description), appearance neutral or intense (named by the user), a toast with an action fades after 8 s by default, danger stays by default, closable prop; sending a toast from a modal dialog documented as not supported (\"ce n'est pas une bonne pratique d'ouvrir une toast depuis une dialog\"). To be re-presented at the wave 3 implementation gate.",
       "sha256": {
         "foundations/components/feedback/toast/contract.json": "ca7c269cbd171e244b5ad066a073e7138f2570a3e23a132c010e7e23d73157a1"
-      }
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
     },
     {
       "date": "2026-11-03",
       "change": "User at the implementation review round 2: \"Jamais de bouton en accent, c'est des actions secondaires […] des btn en ghost, border et à la limite danger, pas plus de complexité\" — the action is a ghost or outline Button, neutral or danger; the intense redirection of accent buttons is removed.",
       "sha256": {
         "foundations/components/feedback/toast/contract.json": "719a33fe39efed30524f517eb0b0f3b6f81bab76caa2437b0b243fcdd89a74b7"
-      }
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
     },
     {
       "date": "2026-11-03",
       "change": "User at the implementation review round 3: \"les boutons ne suivent pas l'intent non plus en mode intense\". In appearance intense, buttons of intent accent or neutral (action and dismiss) take the action family of the toast's intent, as in an Alert; danger keeps its own.",
       "sha256": {
         "foundations/components/feedback/toast/contract.json": "13b4ee1abefa4b79f51d242c046be53419bf0bcae784244b8dc0a90cbe6cecc1"
-      }
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
     }
   ]
 }

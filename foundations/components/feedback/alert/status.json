@@ -3,7 +3,7 @@
   "componentId": "alert",
   "family": "feedback",
   "wave": 3,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Give a durable message about the page, a section or a task, in the flow of the page.",
     "useCases": [
@@ -67,13 +67,37 @@
       "revision": {
         "paths": ["foundations/components/feedback/alert/contract.json"],
         "sha256": {
-          "foundations/components/feedback/alert/contract.json": "6bcdec125e8233b8a83d287bfed1333d6e0567f7ce1303cdffc6af04f866e7f2"
+          "foundations/components/feedback/alert/contract.json": "7e954b1c0b270911638e3aa26bbf687527453d4cdd737d9cbb71530753986d5c"
         }
       },
-      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 requested at the implementation review (rounds 1 to 4: buttons and links follow the intent; Toast appearance, layout, countdowns, closable and secondary actions) accepted with the implementation: \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\".",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Alert on the native elements: intent surfaces, optional title, free content, intrinsic glyph per intent, one ButtonGroup of sm actions whose accent and neutral buttons take the intent action family (danger keeps its own), links inherit the content color, dismissible, live announcements.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/alert/Alert.svelte",
+          "packages/svelte/src/components/alert/alert.css",
+          "packages/svelte/src/components/alert/contract.generated.ts",
+          "packages/svelte/src/components/alert/glyphs.ts",
+          "packages/svelte/src/components/alert/tokens.generated.css",
+          "packages/svelte/src/components/alert/types.ts",
+          "examples/alert/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/alert/Alert.svelte": "efd49386004c9bf22ded91cd03b990148bcd0c9955f1a4e1a6dbc84dd99c4c48",
+          "packages/svelte/src/components/alert/alert.css": "32658339ea64cfa37ae3bd60f5969e019d6263853afc477e353f8bb5121d2a45",
+          "packages/svelte/src/components/alert/contract.generated.ts": "cb728449dfaba3860cfdbad4b7f223e73b384ff3f16a210f77908a77a2961f34",
+          "packages/svelte/src/components/alert/glyphs.ts": "f6da0f4d3ea9f3c0b69ff3d574bde4551708494d175bc9ce36d4310f15efde7f",
+          "packages/svelte/src/components/alert/tokens.generated.css": "07b4bb497cf832cee7809526f6dd4f6683ee54cdfb46ea9937fed863df9330b1",
+          "packages/svelte/src/components/alert/types.ts": "8c79529419ae9c11b49b1f00a6aad765ad0cd2bd1bbbdc1246ef27bbd3b8da2e",
+          "examples/alert/App.svelte": "b56fe1898614916acfb779c38c2a22aa436154c0cc349a5ee04d3b674e059a4a"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 4) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793725323-4aae): \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\".",
+      "note": null
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -128,7 +152,7 @@
     "Accent buttons follow the alert intent by pointing the accent action tokens at the intent family in the subtree (no Button change); links take tone inherit through the context ggb:link-tone (2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 implementation gate: review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn; record the approval with source digests (and the pending contract facts for Dialog and Menu, the ButtonGroup context in Button and IconButton), then the Figma parity phase.",
+  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
   "implementationNotes": [
     "Imports IconButton from ../icon-button (declared dependency; build:svelte now checks every import against the status dependencies).",
     "Title and content are div elements, not p: an application's unlayered element styles (paragraph margins and colors) would otherwise win over the component's cascade layer.",
@@ -140,14 +164,16 @@
       "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): buttons of intent accent take the action family of the alert intent (new color.action.info, success, warning families; neutral and danger existing), links inherit the content color. Implemented by pointing the accent action tokens at the intent family in the alert's subtree. To be re-presented at the wave 3 implementation gate.",
       "sha256": {
         "foundations/components/feedback/alert/contract.json": "11f53248dabb24d3dc66b221112aa798b64f1afbd1f096518c61b8c2851879e1"
-      }
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
     },
     {
       "date": "2026-11-03",
       "change": "User at the implementation review round 3: the neutral outline button of the Compositions example did not follow the intent (\"le bouton ne suit pas l'intent\"). Buttons and icon buttons of intent neutral now take the intent family too, the dismiss button included; only danger keeps its own.",
       "sha256": {
         "foundations/components/feedback/alert/contract.json": "7e954b1c0b270911638e3aa26bbf687527453d4cdd737d9cbb71530753986d5c"
-      }
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
     }
   ]
 }
