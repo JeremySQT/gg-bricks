@@ -1,0 +1,85 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "overlays/popover",
+      "id": "407:122"
+    },
+    "library": {
+      "name": "Overlays",
+      "id": "407:119"
+    }
+  },
+  "recordedOn": "2026-11-03",
+  "componentSet": {
+    "id": "430:239",
+    "name": "Popover",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=430-239"
+  },
+  "section": {
+    "name": "Popover",
+    "id": "430:104"
+  },
+  "properties": {
+    "Side": {
+      "type": "VARIANT",
+      "default": "bottom",
+      "options": [
+        "bottom",
+        "top"
+      ]
+    },
+    "Align": {
+      "type": "VARIANT",
+      "default": "start",
+      "options": [
+        "start",
+        "center",
+        "end"
+      ]
+    },
+    "Label#430:63": {
+      "type": "TEXT",
+      "default": "Filters",
+      "note": "hidden panel name"
+    },
+    "Trigger#430:20": {
+      "type": "SLOT",
+      "preferred": [
+        "Button 48:1586",
+        "IconButton 211:1167"
+      ],
+      "minChildren": 1
+    },
+    "Content#430:21": {
+      "type": "SLOT"
+    }
+  },
+  "variants": {
+    "count": 6,
+    "default": "Side=bottom, Align=start 430:134"
+  },
+  "parts": {
+    "Panel": "frame with the Content slot, max width size/overlay/panel",
+    "Trigger": "SLOT"
+  },
+  "specification": {
+    "id": "431:613",
+    "name": "Popover — Specification",
+    "anatomyBoard": "431:709",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=431-613"
+  },
+  "adapterVariables": {},
+  "builders": [
+    "authoring/adapters/figma/overlays-master.plugin.js",
+    "authoring/adapters/figma/overlays-spec.plugin.js",
+    "authoring/adapters/figma/overlays-parity.plugin.js",
+    "authoring/adapters/figma/wave3-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js"
+  ],
+  "notes": [
+    "computed.json covers four representative contexts (28 records); 216 extra checks of the offset and the alignment of every placement in the 18 contexts passed.",
+    "Variants reordered on 2026-11-03 so that Side=bottom, Align=start (the contract default) is the default variant."
+  ]
+}

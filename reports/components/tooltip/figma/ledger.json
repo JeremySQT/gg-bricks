@@ -1,0 +1,85 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "overlays/tooltip",
+      "id": "407:123"
+    },
+    "library": {
+      "name": "Overlays",
+      "id": "407:119"
+    }
+  },
+  "recordedOn": "2026-11-03",
+  "componentSet": {
+    "id": "430:103",
+    "name": "Tooltip",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=430-103"
+  },
+  "section": {
+    "name": "Tooltip",
+    "id": "430:2"
+  },
+  "properties": {
+    "Side": {
+      "type": "VARIANT",
+      "default": "top",
+      "options": [
+        "top",
+        "bottom"
+      ]
+    },
+    "Align": {
+      "type": "VARIANT",
+      "default": "center",
+      "options": [
+        "center",
+        "start",
+        "end"
+      ]
+    },
+    "Label#430:7": {
+      "type": "TEXT",
+      "default": "More actions"
+    },
+    "Trigger#430:6": {
+      "type": "SLOT",
+      "preferred": [
+        "Button 48:1586",
+        "IconButton 211:1167",
+        "Link 232:659"
+      ],
+      "minChildren": 1
+    }
+  },
+  "variants": {
+    "Side=top, Align=center": "430:3",
+    "Side=top, Align=start": "430:23",
+    "Side=top, Align=end": "430:39",
+    "Side=bottom, Align=center": "430:55",
+    "Side=bottom, Align=start": "430:71",
+    "Side=bottom, Align=end": "430:87"
+  },
+  "parts": {
+    "Tooltip": "bubble, max width component/tooltip/max-inline-size, the label fills it and wraps",
+    "Trigger": "SLOT"
+  },
+  "specification": {
+    "id": "431:2",
+    "name": "Tooltip — Specification",
+    "anatomyBoard": "431:91",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=431-2"
+  },
+  "adapterVariables": {},
+  "builders": [
+    "authoring/adapters/figma/overlays-master.plugin.js",
+    "authoring/adapters/figma/overlays-spec.plugin.js",
+    "authoring/adapters/figma/overlays-parity.plugin.js",
+    "authoring/adapters/figma/wave3-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js"
+  ],
+  "notes": [
+    "computed.json covers four representative contexts (32 records); 216 extra checks (with the Popover's, 432) of the offset space/content/xs and the start, center or end alignment of every placement in the 18 contexts passed."
+  ]
+}

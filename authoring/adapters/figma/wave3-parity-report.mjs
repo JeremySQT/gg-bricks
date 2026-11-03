@@ -123,6 +123,27 @@ COMPONENTS.toast = {
       'Justified: the enter and leave transitions (motion/duration/base) are animations of the code; Figma masters are static.'
   }
 };
+COMPONENTS.tooltip = {
+  key: () => 'default',
+  fields: {
+    surface: hex,
+    content: hex,
+    radius: px,
+    paddingInline: px,
+    paddingBlock: px,
+    fontSize: px,
+    maxInlineSize: px
+  },
+  justified: {
+    duration:
+      'Justified: the enter and leave transitions (motion/duration/fast) and the opening delay are behaviors of the code.'
+  }
+};
+COMPONENTS.popover = {
+  key: () => 'default',
+  fields: { surface: hex, content: hex, shadow: shadowList, radius: px, padding: px, maxInlineSize: px, fontSize: px },
+  justified: {}
+};
 const C = COMPONENTS[id];
 if (!C) throw new Error('unknown component ' + id);
 const byCtx = {};
