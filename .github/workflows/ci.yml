@@ -28,8 +28,8 @@ jobs:
       - run: npm run build
       - name: Documentation site (compiles every live example)
         run: npm run build:docs
-      - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+      - name: Install Chromium, Firefox and WebKit (Firefox and WebKit run the overlay smoke spec)
+        run: npx playwright install --with-deps chromium firefox webkit
       - run: npm run test:browser
       - name: Packed consumer check
         run: |

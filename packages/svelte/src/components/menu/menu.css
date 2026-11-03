@@ -12,7 +12,10 @@
     flex-direction: column;
     min-inline-size: min(var(--_anchor-inline-size, 0px), var(--ggb-menu-maxInlineSize));
     max-inline-size: min(var(--ggb-menu-maxInlineSize), calc(100vi - 2 * var(--ggb-space-layout-sm)));
-    max-block-size: calc(100vb - 2 * var(--ggb-space-layout-sm));
+    max-block-size: min(
+      calc(100vb - 2 * var(--ggb-space-layout-sm)),
+      calc(var(--_room, 100vb) - var(--ggb-menu-offset) - var(--ggb-space-layout-sm))
+    );
     padding: var(--ggb-menu-padding);
     overflow: auto;
     border-radius: var(--ggb-menu-radius);

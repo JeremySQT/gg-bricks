@@ -1,7 +1,7 @@
 <script lang="ts">
   // Tooltip implementation review: icon buttons named and described, sides and alignments, a disabled control,
   // tooltips in a dark subtree and in a clipped container, in any brand, appearance and density.
-  import { Button, Icon, IconButton, Link, Shortcut, Tooltip } from '../../packages/svelte/src/index.ts';
+  import { Button, Icon, IconButton, Link, Tooltip } from '../../packages/svelte/src/index.ts';
   import type { TooltipAlign, TooltipSide } from '../../packages/svelte/src/index.ts';
   import { glyphs } from '../icon-button/glyphs.ts';
   const brands = ['base', 'brick', 'orchid'];
@@ -135,7 +135,7 @@
     color: var(--ggb-color-content-primary);
   }
   .clip {
-    block-size: 6rem;
+    block-size: 3.5rem;
     overflow: hidden;
     padding: var(--ggb-space-content-sm);
     border: var(--ggb-border-width-default) dashed var(--ggb-color-border-default);

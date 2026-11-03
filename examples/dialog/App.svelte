@@ -1,9 +1,8 @@
 <script lang="ts">
   // Dialog implementation review: a playground with every option, an alert dialog, a dialog that requires an
   // explicit choice, a long body that scrolls, a form, nested dialogs, a dialog in a dark subtree, in any context.
-  import { Button, ButtonGroup, Dialog, Field, Icon, InputText } from '../../packages/svelte/src/index.ts';
+  import { Button, ButtonGroup, Dialog, Field, InputText } from '../../packages/svelte/src/index.ts';
   import type { DialogSize } from '../../packages/svelte/src/index.ts';
-  import { glyphs } from '../icon-button/glyphs.ts';
   const brands = ['base', 'brick', 'orchid'];
   const modes = ['light', 'dark'];
   const densities = ['compact', 'standard', 'comfortable'];
@@ -25,8 +24,6 @@
   let dark = $state(false);
   let title = $state('Quarterly report');
 </script>
-
-{#snippet icon(name: string)}<Icon><path d={glyphs[name]} /></Icon>{/snippet}
 
 <div class="page" data-ggb-brand={brand} data-ggb-appearance={mode} data-ggb-density={density}>
   <header>

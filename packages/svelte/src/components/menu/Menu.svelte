@@ -45,8 +45,11 @@
   async function toggled(isOpen: boolean) {
     set(isOpen);
     if (!isOpen || !ref) return;
-    const width = anchor()?.getBoundingClientRect().width ?? 0;
-    ref.style.setProperty('--_anchor-inline-size', `${width}px`);
+    // The panel is at least as wide as its trigger, and never taller than the larger room above or below it (it
+    // flips to that side and scrolls when its items do not fit).
+    const box = anchor()?.getBoundingClientRect();
+    ref.style.setProperty('--_anchor-inline-size', `${box?.width ?? 0}px`);
+    if (box) ref.style.setProperty('--_room', `${Math.max(box.top, innerHeight - box.bottom)}px`);
     await tick();
     const list = items();
     if (pending === 'first') highlight(list[0]);

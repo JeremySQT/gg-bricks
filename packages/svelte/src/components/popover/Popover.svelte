@@ -46,6 +46,9 @@
   async function opened(isOpen: boolean) {
     set(isOpen);
     if (!isOpen || !ref) return;
+    // Never taller than the larger room above or below the trigger: the panel flips to that side and scrolls.
+    const box = anchor()?.getBoundingClientRect();
+    if (box) ref.style.setProperty('--_room', `${Math.max(box.top, innerHeight - box.bottom)}px`);
     await tick();
     const focusable = ref.querySelector<HTMLElement>(
       'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]), [contenteditable="true"]'

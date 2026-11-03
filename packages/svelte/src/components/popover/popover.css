@@ -9,7 +9,10 @@
     --ggb-overlay-duration: var(--ggb-popover-motionDuration);
     box-sizing: border-box;
     max-inline-size: min(var(--ggb-popover-maxInlineSize), calc(100vi - 2 * var(--ggb-space-layout-sm)));
-    max-block-size: calc(100vb - 2 * var(--ggb-space-layout-sm));
+    max-block-size: min(
+      calc(100vb - 2 * var(--ggb-space-layout-sm)),
+      calc(var(--_room, 100vb) - var(--ggb-popover-offset) - var(--ggb-space-layout-sm))
+    );
     padding: var(--ggb-popover-padding);
     overflow: auto;
     border-radius: var(--ggb-popover-radius);

@@ -10,15 +10,26 @@ export default defineConfig({
   reporter: evidence ? [['list'], ['json', { outputFile: 'reports/browser-results.json' }]] : [['list']],
   use: {
     baseURL: 'http://127.0.0.1:5173',
-    browserName: 'chromium',
-    viewport: { width: 1280, height: 1000 },
-    launchOptions: {
-      executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,
-      args: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
-        ? ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--no-zygote']
-        : []
-    }
+    viewport: { width: 1280, height: 1000 }
   },
+  // Every spec runs in Chromium; the overlay smoke spec also runs in Firefox and WebKit, where CSS anchor positioning
+  // or the dialog closedby attribute may be missing (decision of 2026-10-31, due before the first overlay gate).
+  projects: [
+    {
+      name: 'chromium',
+      use: {
+        browserName: 'chromium',
+        launchOptions: {
+          executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,
+          args: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
+            ? ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--no-zygote']
+            : []
+        }
+      }
+    },
+    { name: 'firefox', use: { browserName: 'firefox' }, testMatch: /overlays-smoke\.spec\.ts$/ },
+    { name: 'webkit', use: { browserName: 'webkit' }, testMatch: /overlays-smoke\.spec\.ts$/ }
+  ],
   webServer: [
     { command: 'npm run dev', url: 'http://127.0.0.1:5173', reuseExistingServer: !process.env.CI },
     {

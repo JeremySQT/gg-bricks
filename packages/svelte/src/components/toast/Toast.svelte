@@ -62,10 +62,8 @@
   });
   const timed = $derived(!action && Number.isFinite(duration) && duration > 0);
   const paused = $derived(queued || !!region?.paused);
-  let remaining = $state(0);
-  $effect(() => {
-    remaining = timed ? duration : 0;
-  });
+  // Time left before the toast leaves; reset when the duration changes, lowered while the countdown is paused.
+  let remaining = $derived(timed ? duration : 0);
   $effect(() => {
     if (!timed || paused || remaining <= 0) return;
     const started = performance.now();
@@ -123,7 +121,6 @@
   {#if action}
     <!-- Activating the action performs it (its own handler), then the toast asks to leave. A keyboard activation of
          the button also arrives as a click. -->
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
     <span
       class="ggb-toast__action"
       role="none"
