@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { getContext } from 'svelte';
   import { Button as Primitive } from 'bits-ui';
   import type { IconButtonProps } from './types.js';
   import { defaults } from './contract.generated.js';
@@ -10,7 +11,7 @@
     icon,
     intent = defaults.intent,
     appearance = defaults.appearance,
-    size = defaults.size,
+    size: ownSize = defaults.size,
     disabled = defaults.disabled,
     loading = defaults.loading,
     href,
@@ -20,6 +21,11 @@
     class: className,
     ...rest
   }: IconButtonProps = $props();
+
+  // Inside a ButtonGroup the group's size applies to every item (context key `ggb:button-group`, a string so that the
+  // folders stay independent; the shape is declared again here) and the item's own size is ignored.
+  const group = getContext<{ readonly size: typeof ownSize } | undefined>('ggb:button-group');
+  const size = $derived(group ? group.size : ownSize);
 
   // Fail identically on the server and in the browser rather than render a control without a name.
   const name = $derived.by(() => {

@@ -1,0 +1,53 @@
+/*
+ * ButtonGroup structure. The gap comes from tokens.generated.css; this file holds structural literals only.
+ * Horizontal: one line, aligned start, center or end, or items sharing the line (stretch); reflow wrap moves the
+ * items that do not fit to further lines, reflow stack (data-stacked, set by the component) lays the whole group out
+ * vertically at full width. Vertical: one item per line, at its own width or stretched. Never reordered.
+ */
+@layer ggb {
+  .ggb-button-group {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--ggb-button-group-gap);
+    min-inline-size: 0;
+    max-inline-size: 100%;
+  }
+  .ggb-button-group[data-reflow='wrap'] {
+    flex-wrap: wrap;
+  }
+  .ggb-button-group[data-align='center'] {
+    justify-content: center;
+  }
+  .ggb-button-group[data-align='end'] {
+    justify-content: flex-end;
+  }
+  .ggb-button-group[data-align='stretch'] > * {
+    flex: 1 1 0;
+  }
+
+  .ggb-button-group[data-orientation='vertical'],
+  .ggb-button-group[data-stacked] {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .ggb-button-group[data-orientation='vertical'][data-align='center'] {
+    align-items: center;
+  }
+  .ggb-button-group[data-orientation='vertical'][data-align='end'] {
+    align-items: flex-end;
+  }
+  .ggb-button-group[data-orientation='vertical'][data-align='stretch'],
+  .ggb-button-group[data-stacked] {
+    align-items: stretch;
+  }
+  .ggb-button-group[data-orientation='vertical'] > *,
+  .ggb-button-group[data-stacked] > * {
+    flex: 0 0 auto;
+  }
+}

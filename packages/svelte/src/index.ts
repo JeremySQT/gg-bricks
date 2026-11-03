@@ -46,3 +46,11 @@ export type { RadioGroupProps } from './components/radio-group/types.js';
 export type { RadioGroupOrientation, RadioGroupSize } from './components/radio-group/contract.generated.js';
 export { default as Radio } from './components/radio/Radio.svelte';
 export type { RadioProps } from './components/radio/types.js';
+export { default as ButtonGroup } from './components/button-group/ButtonGroup.svelte';
+export type { ButtonGroupProps } from './components/button-group/types.js';
+export type {
+  ButtonGroupSize,
+  ButtonGroupOrientation,
+  ButtonGroupAlign,
+  ButtonGroupReflow
+} from './components/button-group/contract.generated.js';
