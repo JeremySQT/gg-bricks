@@ -31,8 +31,33 @@
       "sha256": "dd9d08534d616451c8061301deb10ffb9bd320fa323f9f7578dc2b12eafcf0f3"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "overlays/menu (407:121)",
+      "library": "Overlays (407:119), section Menu (437:273)",
+      "componentSet": "437:795",
+      "specification": "439:2",
+      "ledger": "reports/components/menu/figma/ledger.json",
+      "parity": "reports/components/menu/figma/parity.json",
+      "screenshots": [
+        "reports/components/menu/figma/master-set.png",
+        "reports/components/menu/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/menu/figma/blueprint-anatomy.png",
+          "node": "439:240"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/menu-master.plugin.js",
+        "authoring/adapters/figma/menu-spec.plugin.js",
+        "authoring/adapters/figma/menu-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/overlays/menu/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/menu",
@@ -145,6 +170,12 @@
       "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
       "result": "passed",
       "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (60 records, 0 failures; 270 extra checks)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/menu/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -161,7 +192,7 @@
     "Contract fact added during implementation: group leadingSize and leadingGap roles (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity phase (ggb-figma): sync the new variables, build the masters from the approved implementation, specification page, parity report.",
+  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
   "implementationNotes": [
     "Exports Menu, MenuItem, MenuSeparator and MenuGroup.",
     "The highlighted item is the focused item (roving focus through focus(), not aria-activedescendant); opening by pointer focuses the menu itself, so no item is highlighted until an arrow key or the pointer.",

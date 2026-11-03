@@ -159,6 +159,11 @@ COMPONENTS.dialog = {
   },
   justified: {}
 };
+COMPONENTS.menu = {
+  key: (r) => r.props.item ?? 'panel',
+  fields: { surface: hex, content: hex, height: (v) => num(v, 1), radius: px, padding: px },
+  justified: {}
+};
 const C = COMPONENTS[id];
 if (!C) throw new Error('unknown component ' + id);
 const byCtx = {};
