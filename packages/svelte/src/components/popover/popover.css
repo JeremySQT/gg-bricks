@@ -1,0 +1,35 @@
+/*
+ * Popover structure. Colors, shadow, radius, spacing, sizes and motion come from tokens.generated.css; geometry,
+ * anchoring and entry/exit motion come from lib/overlay/overlay.css.
+ */
+@layer ggb {
+  .ggb-popover {
+    --ggb-overlay-offset: var(--ggb-popover-offset);
+    --ggb-overlay-distance: var(--ggb-popover-enterDistance);
+    --ggb-overlay-duration: var(--ggb-popover-motionDuration);
+    box-sizing: border-box;
+    max-inline-size: min(var(--ggb-popover-maxInlineSize), calc(100vi - 2 * var(--ggb-space-layout-sm)));
+    max-block-size: calc(100vb - 2 * var(--ggb-space-layout-sm));
+    padding: var(--ggb-popover-padding);
+    overflow: auto;
+    border-radius: var(--ggb-popover-radius);
+    background: var(--ggb-popover-surface);
+    box-shadow:
+      inset 0 0 0 var(--ggb-popover-borderWidth) var(--ggb-popover-elevationColor),
+      var(--ggb-popover-shadow);
+    color: var(--ggb-popover-content);
+    font: var(--ggb-popover-typography);
+    letter-spacing: var(--ggb-popover-typography-letterSpacing, normal);
+    outline: none;
+    /* Stacking where the platform has no top layer. */
+    z-index: var(--ggb-popover-layer);
+  }
+  .ggb-popover:popover-open {
+    display: block;
+  }
+  @media (forced-colors: active) {
+    .ggb-popover {
+      border: 1px solid CanvasText;
+    }
+  }
+}

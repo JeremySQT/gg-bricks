@@ -82,7 +82,9 @@
     "motionDuration": "motion.duration.base",
     "easingEnter": "motion.easing.enter",
     "easingExit": "motion.easing.exit",
-    "layer": "layer.modal"
+    "layer": "layer.modal",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset"
   },
   "contrast": [
     {
@@ -96,6 +98,7 @@
     "Layout inside panel: header (title, then description, with the close button at the inline end of the title line), body, footer, separated by sectionGap; padding surrounds them and headerGap separates title from description. title is required plain text in typographyTitle and content; description is optional plain text in typographyDescription and descriptionColor; body holds free content in typography and content.",
     "panel is painted in surface with shadow, an edge of borderWidth in elevationColor and radius corners. It is centered in the viewport; its inline size is inlineSize, or the viewport inline size less viewportMargin on each side when smaller, and its block size follows the content up to the viewport block size less viewportMargin on each side.",
     "When the content is taller than the panel allows, the body scrolls while the header and the footer stay in place, and scrolled is true; header and footer are then separated from the body by a line of borderWidth in dividerColor.",
+    "The body keeps a room of focusWidth plus focusOffset around its content, inside its scrolling area, so that the focus indicator of a control at its edge is never clipped and never makes the body scroll.",
     "footer holds at most one ButtonGroup aligned at the end; the primary action is the last item.",
     "backdrop covers the whole viewport behind the panel in backdropColor; the page under it does not scroll.",
     "The dialog is exposed as a modal dialog named by title and described by description; with alert true it is an alert dialog, which asks for a decision.",

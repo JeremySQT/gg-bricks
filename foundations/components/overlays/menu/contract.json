@@ -153,10 +153,12 @@
         "headingColor": "color.content.secondary",
         "typography": "typography.caption.md",
         "paddingInline": "space.control.padding-inline.sm",
-        "paddingBlock": "space.content.xs"
+        "paddingBlock": "space.content.xs",
+        "leadingSize": "size.icon.sm",
+        "leadingGap": "space.control.gap.sm"
       },
       "rules": [
-        "A group gathers related items under a heading that shows label in typography and headingColor, with paddingInline and paddingBlock, aligned with the item labels. The heading is not an item: it is never highlighted. The group is exposed as a group named by label."
+        "A group gathers related items under a heading that shows label in typography and headingColor, with paddingInline and paddingBlock, aligned with the item labels: when items of the menu have a leading icon, the heading is indented by leadingSize plus leadingGap. The heading is not an item: it is never highlighted. The group is exposed as a group named by label."
       ]
     }
   },

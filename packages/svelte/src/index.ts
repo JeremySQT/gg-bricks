@@ -70,3 +70,24 @@ export { default as ToastRegion } from './components/toast/ToastRegion.svelte';
 export { default as Toast } from './components/toast/Toast.svelte';
 export type { ToastRegionProps, ToastProps } from './components/toast/types.js';
 export type { ToastPlacement, ToastItemIntent } from './components/toast/contract.generated.js';
+export { default as Tooltip } from './components/tooltip/Tooltip.svelte';
+export type { TooltipProps } from './components/tooltip/types.js';
+export type { TooltipSide, TooltipAlign } from './components/tooltip/contract.generated.js';
+export { default as Popover } from './components/popover/Popover.svelte';
+export type { PopoverProps, PopoverTriggerProps } from './components/popover/types.js';
+export type { PopoverSide, PopoverAlign } from './components/popover/contract.generated.js';
+export { default as Dialog } from './components/dialog/Dialog.svelte';
+export type { DialogProps } from './components/dialog/types.js';
+export type { DialogSize } from './components/dialog/contract.generated.js';
+export { default as Menu } from './components/menu/Menu.svelte';
+export { default as MenuItem } from './components/menu/MenuItem.svelte';
+export { default as MenuSeparator } from './components/menu/MenuSeparator.svelte';
+export { default as MenuGroup } from './components/menu/MenuGroup.svelte';
+export type {
+  MenuProps,
+  MenuTriggerProps,
+  MenuItemProps,
+  MenuGroupProps,
+  MenuSeparatorProps
+} from './components/menu/types.js';
+export type { MenuSide, MenuAlign, MenuItemIntent } from './components/menu/contract.generated.js';

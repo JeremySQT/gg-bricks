@@ -1,0 +1,128 @@
+/*
+ * Menu structure. Colors, shadow, radius, spacing, typography, sizes and motion come from tokens.generated.css;
+ * geometry, anchoring and entry/exit motion come from lib/overlay/overlay.css. The highlighted item is the focused
+ * one (pointer or keyboard). Items without a leading icon keep the label alignment of those with one.
+ */
+@layer ggb {
+  .ggb-menu {
+    --ggb-overlay-offset: var(--ggb-menu-offset);
+    --ggb-overlay-distance: var(--ggb-menu-enterDistance);
+    --ggb-overlay-duration: var(--ggb-menu-motionDuration);
+    box-sizing: border-box;
+    flex-direction: column;
+    min-inline-size: min(var(--_anchor-inline-size, 0px), var(--ggb-menu-maxInlineSize));
+    max-inline-size: min(var(--ggb-menu-maxInlineSize), calc(100vi - 2 * var(--ggb-space-layout-sm)));
+    max-block-size: calc(100vb - 2 * var(--ggb-space-layout-sm));
+    padding: var(--ggb-menu-padding);
+    overflow: auto;
+    border-radius: var(--ggb-menu-radius);
+    background: var(--ggb-menu-surface);
+    box-shadow:
+      inset 0 0 0 var(--ggb-menu-borderWidth) var(--ggb-menu-elevationColor),
+      var(--ggb-menu-shadow);
+    outline: none;
+    z-index: var(--ggb-menu-layer);
+  }
+  .ggb-menu:popover-open {
+    display: flex;
+  }
+
+  .ggb-menu__item {
+    --_surface: var(--ggb-menu-item-surface-default);
+    --_content: var(--ggb-menu-item-content-default);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: var(--ggb-menu-item-gap);
+    min-block-size: var(--ggb-menu-item-minHeight);
+    padding: var(--ggb-menu-item-paddingBlock) var(--ggb-menu-item-paddingInline);
+    border-radius: var(--ggb-menu-item-radius);
+    background: var(--_surface);
+    color: var(--_content);
+    font: var(--ggb-menu-item-typography);
+    letter-spacing: var(--ggb-menu-item-typography-letterSpacing, normal);
+    text-decoration: none;
+    cursor: default;
+    outline: none;
+    user-select: none;
+    transition-property: background-color, color;
+    transition-duration: var(--ggb-menu-item-motionDuration);
+    transition-timing-function: var(--ggb-menu-item-easingStandard);
+  }
+  .ggb-menu__item:focus {
+    --_surface: var(--ggb-menu-item-surface-hover);
+    --_content: var(--ggb-menu-item-content-hover);
+  }
+  .ggb-menu__item[data-intent='danger'] {
+    --_content: var(--ggb-menu-item-dangerColor);
+  }
+  .ggb-menu__item[data-disabled] {
+    --_surface: var(--ggb-menu-item-surface-disabled);
+    --_content: var(--ggb-menu-item-content-disabled);
+  }
+  .ggb-menu__item[data-disabled]:focus {
+    --_surface: var(--ggb-menu-item-surface-hover);
+  }
+  .ggb-menu__item-label {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .ggb-menu__item-leading {
+    display: flex;
+    flex: none;
+    color: currentColor;
+  }
+  .ggb-menu__item-leading > * {
+    inline-size: var(--ggb-menu-item-iconSize);
+    block-size: var(--ggb-menu-item-iconSize);
+  }
+  .ggb-menu:has(.ggb-menu__item-leading) .ggb-menu__item:not(:has(.ggb-menu__item-leading))::before {
+    content: '';
+    flex: none;
+    inline-size: var(--ggb-menu-item-iconSize);
+  }
+  .ggb-menu__item-trailing {
+    display: flex;
+    flex: none;
+    margin-inline-start: auto;
+  }
+
+  .ggb-menu__separator {
+    flex: none;
+    block-size: var(--ggb-menu-separator-thickness);
+    margin-block: var(--ggb-menu-separator-margin);
+    background: var(--ggb-menu-separator-lineColor);
+  }
+  .ggb-menu__group {
+    display: flex;
+    flex-direction: column;
+  }
+  .ggb-menu__group-heading {
+    padding: var(--ggb-menu-group-paddingBlock) var(--ggb-menu-group-paddingInline);
+    color: var(--ggb-menu-group-headingColor);
+    font: var(--ggb-menu-group-typography);
+    letter-spacing: var(--ggb-menu-group-typography-letterSpacing, normal);
+  }
+  .ggb-menu:has(.ggb-menu__item-leading) .ggb-menu__group-heading {
+    padding-inline-start: calc(
+      var(--ggb-menu-group-paddingInline) + var(--ggb-menu-group-leadingSize) + var(--ggb-menu-group-leadingGap)
+    );
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-menu__item {
+      transition: none;
+    }
+  }
+  @media (forced-colors: active) {
+    .ggb-menu {
+      border: 1px solid CanvasText;
+    }
+    .ggb-menu__item:focus {
+      background: Highlight;
+      color: HighlightText;
+    }
+  }
+}

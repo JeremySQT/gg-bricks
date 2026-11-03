@@ -1,0 +1,43 @@
+/* Generated token bindings from the dialog contract. Do not edit. */
+@layer ggb {
+.ggb-dialog {
+  --ggb-dialog-surface: var(--ggb-color-surface-overlay);
+  --ggb-dialog-content: var(--ggb-color-content-primary);
+  --ggb-dialog-descriptionColor: var(--ggb-color-content-secondary);
+  --ggb-dialog-elevationColor: var(--ggb-color-elevation-border);
+  --ggb-dialog-dividerColor: var(--ggb-color-border-subtle);
+  --ggb-dialog-backdropColor: var(--ggb-color-surface-scrim);
+  --ggb-dialog-borderWidth: var(--ggb-border-width-default);
+  --ggb-dialog-shadow: var(--ggb-shadow-modal);
+  --ggb-dialog-radius: var(--ggb-radius-overlay);
+  --ggb-dialog-viewportMargin: var(--ggb-space-layout-md);
+  --ggb-dialog-padding: var(--ggb-space-layout-md);
+  --ggb-dialog-headerGap: var(--ggb-space-content-xs);
+  --ggb-dialog-sectionGap: var(--ggb-space-content-lg);
+  --ggb-dialog-typographyTitle: var(--ggb-typography-heading-sm);
+  --ggb-dialog-typographyTitle-letterSpacing: var(--ggb-typography-heading-sm-letterSpacing);
+  --ggb-dialog-typographyTitle-fontFeatureSettings: var(--ggb-typography-heading-sm-fontFeatureSettings);
+  --ggb-dialog-typographyDescription: var(--ggb-typography-body-sm);
+  --ggb-dialog-typographyDescription-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-dialog-typographyDescription-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+  --ggb-dialog-typography: var(--ggb-typography-body-md);
+  --ggb-dialog-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-dialog-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+  --ggb-dialog-enterDistance: var(--ggb-motion-distance-md);
+  --ggb-dialog-motionDuration: var(--ggb-motion-duration-base);
+  --ggb-dialog-easingEnter: var(--ggb-motion-easing-enter);
+  --ggb-dialog-easingExit: var(--ggb-motion-easing-exit);
+  --ggb-dialog-layer: var(--ggb-layer-modal);
+  --ggb-dialog-focusWidth: var(--ggb-focus-width);
+  --ggb-dialog-focusOffset: var(--ggb-focus-offset);
+}
+.ggb-dialog[data-size="sm"] {
+  --ggb-dialog-inlineSize: var(--ggb-component-dialog-inline-size-sm);
+}
+.ggb-dialog[data-size="md"] {
+  --ggb-dialog-inlineSize: var(--ggb-component-dialog-inline-size-md);
+}
+.ggb-dialog[data-size="lg"] {
+  --ggb-dialog-inlineSize: var(--ggb-component-dialog-inline-size-lg);
+}
+}

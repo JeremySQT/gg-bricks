@@ -1,0 +1,53 @@
+/* Generated token bindings from the menu contract. Do not edit. */
+@layer ggb {
+.ggb-menu {
+  --ggb-menu-surface: var(--ggb-color-surface-overlay);
+  --ggb-menu-elevationColor: var(--ggb-color-elevation-border);
+  --ggb-menu-borderWidth: var(--ggb-border-width-default);
+  --ggb-menu-shadow: var(--ggb-shadow-overlay);
+  --ggb-menu-radius: var(--ggb-radius-overlay);
+  --ggb-menu-padding: var(--ggb-space-content-xs);
+  --ggb-menu-maxInlineSize: var(--ggb-size-overlay-panel);
+  --ggb-menu-offset: var(--ggb-space-content-xs);
+  --ggb-menu-enterDistance: var(--ggb-motion-distance-sm);
+  --ggb-menu-motionDuration: var(--ggb-motion-duration-base);
+  --ggb-menu-easingEnter: var(--ggb-motion-easing-enter);
+  --ggb-menu-easingExit: var(--ggb-motion-easing-exit);
+  --ggb-menu-layer: var(--ggb-layer-dropdown);
+}
+.ggb-menu .ggb-menu__item {
+  --ggb-menu-item-surface-default: var(--ggb-color-item-default-surface);
+  --ggb-menu-item-surface-hover: var(--ggb-color-item-hover-surface);
+  --ggb-menu-item-surface-disabled: var(--ggb-color-item-disabled-surface);
+  --ggb-menu-item-content-default: var(--ggb-color-item-default-content);
+  --ggb-menu-item-content-hover: var(--ggb-color-item-hover-content);
+  --ggb-menu-item-content-disabled: var(--ggb-color-item-disabled-content);
+  --ggb-menu-item-dangerColor: var(--ggb-color-status-danger-content);
+  --ggb-menu-item-radius: var(--ggb-radius-container);
+  --ggb-menu-item-minHeight: var(--ggb-size-control-sm);
+  --ggb-menu-item-paddingInline: var(--ggb-space-control-padding-inline-sm);
+  --ggb-menu-item-paddingBlock: var(--ggb-space-control-padding-block-sm);
+  --ggb-menu-item-gap: var(--ggb-space-control-gap-sm);
+  --ggb-menu-item-typography: var(--ggb-typography-body-sm);
+  --ggb-menu-item-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-menu-item-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+  --ggb-menu-item-iconSize: var(--ggb-size-icon-sm);
+  --ggb-menu-item-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-menu-item-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-menu .ggb-menu__separator {
+  --ggb-menu-separator-lineColor: var(--ggb-color-border-subtle);
+  --ggb-menu-separator-thickness: var(--ggb-border-width-default);
+  --ggb-menu-separator-margin: var(--ggb-space-content-xs);
+}
+.ggb-menu .ggb-menu__group {
+  --ggb-menu-group-headingColor: var(--ggb-color-content-secondary);
+  --ggb-menu-group-typography: var(--ggb-typography-caption-md);
+  --ggb-menu-group-typography-letterSpacing: var(--ggb-typography-caption-md-letterSpacing);
+  --ggb-menu-group-typography-fontFeatureSettings: var(--ggb-typography-caption-md-fontFeatureSettings);
+  --ggb-menu-group-paddingInline: var(--ggb-space-control-padding-inline-sm);
+  --ggb-menu-group-paddingBlock: var(--ggb-space-content-xs);
+  --ggb-menu-group-leadingSize: var(--ggb-size-icon-sm);
+  --ggb-menu-group-leadingGap: var(--ggb-space-control-gap-sm);
+}
+}

@@ -1,0 +1,36 @@
+/*
+ * Tooltip structure. Colors, typography, radius, spacing, sizes and motion come from tokens.generated.css; geometry,
+ * anchoring and entry/exit motion come from lib/overlay/overlay.css. The trigger wrapper takes no box of its own.
+ */
+@layer ggb {
+  .ggb-tooltip-trigger {
+    display: contents;
+  }
+  .ggb-tooltip {
+    --ggb-overlay-offset: var(--ggb-tooltip-offset);
+    --ggb-overlay-distance: var(--ggb-tooltip-enterDistance);
+    --ggb-overlay-duration: var(--ggb-tooltip-motionDuration);
+    box-sizing: border-box;
+    max-inline-size: min(var(--ggb-tooltip-maxInlineSize), calc(100vi - 2 * var(--ggb-space-layout-sm)));
+    padding: var(--ggb-tooltip-paddingBlock) var(--ggb-tooltip-paddingInline);
+    border-radius: var(--ggb-tooltip-radius);
+    background: var(--ggb-tooltip-surface);
+    color: var(--ggb-tooltip-content);
+    font: var(--ggb-tooltip-typography);
+    letter-spacing: var(--ggb-tooltip-typography-letterSpacing, normal);
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: start;
+    pointer-events: auto;
+    /* Stacking where the platform has no top layer. */
+    z-index: var(--ggb-tooltip-layer);
+  }
+  .ggb-tooltip:popover-open {
+    display: block;
+  }
+  @media (forced-colors: active) {
+    .ggb-tooltip {
+      border: 1px solid CanvasText;
+    }
+  }
+}
