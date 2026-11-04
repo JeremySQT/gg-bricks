@@ -123,6 +123,22 @@ test('opening by keyboard starts on the first or last enabled item; disabled ite
   await expect.poll(() => focused(page)).toBe('locked-export');
 });
 
+test('inside a dark section of a light page, the panel and its items follow the section, not the page', async ({
+  page
+}) => {
+  await page.click('#dark-trigger');
+  await expect.poll(() => isOpen(page, 'dark')).toBe(true);
+  await settle(page);
+  const dark = tokensFor('base-dark-standard');
+  const light = tokensFor('base-light-standard');
+  expect(await page.locator('#dark').evaluate((m) => getComputedStyle(m).backgroundColor)).toBe(
+    rgb(dark['color.surface.overlay'])
+  );
+  const item = await page.locator('#dark-a').evaluate((i) => getComputedStyle(i).color);
+  expect(item).toBe(rgb(dark['color.item.default.content']));
+  expect(item).not.toBe(rgb(light['color.item.default.content']));
+});
+
 test('pointer: opening focuses the menu without a highlight; hover highlights; a press activates; outside closes', async ({
   page
 }) => {
