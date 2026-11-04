@@ -49,7 +49,7 @@ The region (ToastRegion) sits at `space.layout.sm` (8, 16 or 24 px) from the vie
 
 ## Examples
 
-Every case is exercised on the component's review page in the ggbrick repository (`examples/toast/App.svelte`, not shipped in the package). A page holds one notifications region, so these examples are shown as code; the playground at the top of the documentation site renders the live region.
+Every case is exercised on the component's review page in the ggbrick repository (`examples/toast/App.svelte`, not shipped in the package). A page holds one notifications region, so these examples are shown as code; the playground at the top of the documentation site previews the toast and its Show live button sends it into the page's region.
 
 ### Send a toast
 

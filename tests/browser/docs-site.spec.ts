@@ -79,6 +79,9 @@ for (const theme of ['light', 'dark'] as const) {
 }
 
 // A page without live blocks, with the reason: its examples are code and the playground is the live case.
+// The element a playground shows, when it is not the component root: the Toast playground previews a toast in its
+// frame and sends live ones into the page's region with Show live.
+const playgroundTarget: Record<string, string> = { toast: '.ggb-toast__item' };
 const noLiveBlocks: Record<string, string> = {
   toast: 'one notifications region per page: the playground renders it, the examples are shown as code'
 };
@@ -123,7 +126,7 @@ for (const component of index.components) {
     const playground = page.locator('.ggb-docs-playground');
     await expect(playground).toHaveCount(1);
     await playground.scrollIntoViewIfNeeded();
-    const target = await reveal(page, playground, `.ggb-${component.id}`);
+    const target = await reveal(page, playground, playgroundTarget[component.id] ?? `.ggb-${component.id}`);
     const select = playground.locator('select').first();
     const options = await select.locator('option').allTextContents();
     const before = await target.evaluate((el) => el.outerHTML);
