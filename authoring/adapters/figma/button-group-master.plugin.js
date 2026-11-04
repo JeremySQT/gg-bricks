@@ -1,4 +1,5 @@
 // ButtonGroup master builder (use_figma body), 2026-11-03.
+// 2026-11-04 (user review of the Figma parity): the items of horizontal groups are centered on the cross axis.
 // On the Actions library page (343:2), section ButtonGroup: the set “ButtonGroup” (15 variants: horizontal × Align
 // start, center, end, stretch × Size md, sm, lg, and vertical × Size). Each variant is a vertical auto layout (400 wide
 // horizontal, 240 vertical) holding one Figma slot “Items” (one SLOT property shared by the variants, Button and
@@ -70,8 +71,11 @@ for (const [o, al, s] of cases) {
   slot.counterAxisSizingMode = 'AUTO';
   slot.setBoundVariable('itemSpacing', V(`space/control/gap/${s}`));
   slot.layoutSizingHorizontal = 'FILL';
-  if (o === 'horizontal')
+  if (o === 'horizontal') {
     slot.primaryAxisAlignItems = { start: 'MIN', center: 'CENTER', end: 'MAX', stretch: 'MIN' }[al];
+    // Centered on the cross axis, so that an IconButton lines up with the buttons (user review, 2026-11-04).
+    slot.counterAxisAlignItems = 'CENTER';
+  }
   for (const [want, label] of [
     [{ Intent: 'accent', Appearance: 'solid', Size: s, State: 'default' }, 'Save'],
     [{ Intent: 'neutral', Appearance: 'outline', Size: s, State: 'default' }, 'Cancel']

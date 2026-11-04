@@ -74,27 +74,20 @@
   },
   "parts": {
     "ToastRegion": {
-      "id": "426:1471",
+      "id": "455:1602",
+      "type": "COMPONENT",
       "properties": {
-        "Placement": [
-          "bottom-end",
-          "bottom-start",
-          "bottom-center",
-          "top-start",
-          "top-center",
-          "top-end"
-        ],
-        "Toasts#426:90": "SLOT (Toast preferred and only, at least one)",
-        "Label#426:91": "TEXT, hidden region name"
+        "Toasts#455:0": "SLOT (Toast preferred and only, at least one); ordered by the designer",
+        "Label#455:1": "TEXT, hidden region name"
       },
-      "variants": "Placement=bottom-end 426:1009; Placement=bottom-start 426:1086; Placement=bottom-center 426:1163; Placement=top-start 426:1240; Placement=top-center 426:1317; Placement=top-end 426:1394"
+      "previous": "set 426:1471 (Placement, 6 variants), removed 2026-11-04"
     }
   },
   "specification": {
-    "id": "429:2",
+    "id": "461:855",
     "name": "Toast — Specification",
-    "anatomyBoard": "429:302",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=429-2"
+    "anatomyBoard": "461:1116",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=461-855"
   },
   "adapterVariables": {
     "Components · action family": "intense variants set the mode of their intent; neutral variants the default mode"
@@ -107,6 +100,8 @@
     "authoring/adapters/figma/spec-lib.plugin.js"
   ],
   "notes": [
-    "computed.json records only the danger neutral toast in the four representative contexts (36 records); 1548 extra checks in the 18 contexts: intense surface, edge, title and description colors per intent, action label and border and dismiss glyph in the action family of the intent, neutral appearance actions kept neutral, single layout centered, multi icon and dismiss on the title line."
-  ]
+    "computed.json records only the danger neutral toast in the four representative contexts (36 records); 1548 extra checks in the 18 contexts: intense surface, edge, title and description colors per intent, action label and border and dismiss glyph in the action family of the intent, neutral appearance actions kept neutral, single layout centered, multi icon and dismiss on the title line.",
+    "2026-11-04, user review of the Figma parity: ToastRegion is a single component (455:1602) instead of six Placement variants, which changed nothing since a slot cannot reverse its order; the placement is where the designer puts the region, and the designer orders the toasts (newest nearest that edge)."
+  ],
+  "updatedOn": "2026-11-04"
 }

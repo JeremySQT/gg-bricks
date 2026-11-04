@@ -1,10 +1,12 @@
-// Skeleton master builder (use_figma body), 2026-11-03.
-// On the Feedback library page (407:112), section Skeleton: the set “Skeleton” (11 variants). Shape=text × Size (md, sm,
-// lg) × Lines (1, 2, 3): a vertical auto layout 320 wide that hugs its Lines, each Line a frame of
+// Skeleton master builder (use_figma body), 2026-11-03, restructured 2026-11-04.
+// On the Feedback library page (407:112), section Skeleton: the internal part “_Skeleton/Text” (Size md, sm, lg ×
+// Lines 1, 2, 3, 9 variants): a vertical auto layout 320 wide that hugs its Lines, each Line a frame of
 // typography/body/{size}/lineHeight holding a Bar of typography/body/{size}/fontSize, centered (center constraint),
 // corners radius/indicator, color/surface/muted; full bars stretch, the last bar of several covers 60 % (scale
-// constraint). Shape=block: 320 × 160, radius/container. Shape=circle: 48 × 48, radius/full. Paints bound with their
-// resolved fallback. Rerunning replaces the set.
+// constraint). The set “Skeleton” (Shape, 3 variants): text holds the exposed Text instance (FILL), so that Size and
+// Lines show only for that shape (user review of the Figma parity, 2026-11-04; done in place on the set 417:74, whose
+// former Shape × Size × Lines variants became the part); block: 320 × 160, radius/container; circle: 48 × 48,
+// radius/full. Paints bound with their resolved fallback. Rerunning replaces the set and the part.
 const page = await figma.getNodeByIdAsync('407:112');
 await figma.setCurrentPageAsync(page);
 const vars = await figma.variables.getLocalVariablesAsync();
@@ -36,7 +38,7 @@ if (!section) {
     figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }, 'color', canvas)
   ];
 }
-for (const n of section.children.filter((n) => n.name === 'Skeleton')) n.remove();
+for (const n of section.children.filter((n) => n.name === 'Skeleton' || n.name === '_Skeleton/Text')) n.remove();
 const FS = { sm: 14, md: 16, lg: 18 },
   LH = { sm: 21, md: 24, lg: 28.8 };
 const line = (s, last) => {
@@ -58,11 +60,12 @@ const line = (s, last) => {
   bar.constraints = { horizontal: last ? 'SCALE' : 'STRETCH', vertical: 'CENTER' };
   return l;
 };
-const comps = [];
+const q = (v) => Object.fromEntries(v.name.split(', ').map((p) => p.split('=')));
+const texts = [];
 for (const s of ['md', 'sm', 'lg'])
   for (const n of [1, 2, 3]) {
     const c = figma.createComponent();
-    c.name = `Shape=text, Size=${s}, Lines=${n}`;
+    c.name = `Size=${s}, Lines=${n}`;
     c.layoutMode = 'VERTICAL';
     c.counterAxisSizingMode = 'FIXED';
     c.resize(320, 10);
@@ -75,17 +78,45 @@ for (const s of ['md', 'sm', 'lg'])
       c.appendChild(l);
       l.layoutSizingHorizontal = 'FILL';
     }
-    comps.push(c);
+    texts.push(c);
   }
+const part = figma.combineAsVariants(texts, section);
+part.name = '_Skeleton/Text';
+part.description =
+  'Internal part of Skeleton (Shape=text): Lines bars of the body/{size} font size, each centered in a line box of the body/{size} line height, corners radius/indicator, color/surface/muted; with more than one line the last covers 60 %. Choose Size and Lines on the Skeleton instance (the nested instance is exposed).';
+let py = 24;
+for (const s of ['md', 'sm', 'lg']) {
+  const row = part.children.filter((v) => q(v).Size === s);
+  for (const v of row) {
+    v.x = 24 + (Number(q(v).Lines) - 1) * 368;
+    v.y = py;
+  }
+  py += Math.max(...row.map((v) => v.height)) + 32;
+}
+part.resizeWithoutConstraints(24 * 2 + 3 * 368 - 48, py - 8);
+const comps = [];
+const text = figma.createComponent();
+text.name = 'Shape=text';
+text.layoutMode = 'VERTICAL';
+text.counterAxisSizingMode = 'FIXED';
+text.resize(320, 10);
+text.primaryAxisSizingMode = 'AUTO';
+text.fills = [];
+text.clipsContent = false;
+const inst = part.children.find((v) => v.name === 'Size=md, Lines=1').createInstance();
+inst.name = 'Text';
+text.appendChild(inst);
+inst.layoutSizingHorizontal = 'FILL';
+comps.push(text);
 const block = figma.createComponent();
-block.name = 'Shape=block, Size=md, Lines=1';
+block.name = 'Shape=block';
 block.resize(320, 160);
 block.clipsContent = true;
 bind(block, RADII, 'radius/container');
 block.fills = [paint('color/surface/muted', block)];
 comps.push(block);
 const circle = figma.createComponent();
-circle.name = 'Shape=circle, Size=md, Lines=1';
+circle.name = 'Shape=circle';
 circle.resize(48, 48);
 bind(circle, RADII, 'radius/full');
 circle.fills = [paint('color/surface/muted', circle)];
@@ -93,23 +124,18 @@ comps.push(circle);
 const set = figma.combineAsVariants(comps, section);
 set.name = 'Skeleton';
 set.description =
-  'Skeleton (feedback/skeleton): a placeholder with the shape and size of content that is loading, so that the layout does not move when it arrives. Shape text: Lines bars of the body/{size} font size, centered in its line box, corners radius/indicator; with more than one line the last covers 60 %. Shape block fills the size the layout gives it (radius/container); circle is a disc of the given width (radius/full); Size and Lines do not apply to them. Painted in color/surface/muted. The pulse (opacity 1 → opacity/muted, motion/duration/loop) is a code-only animation; the skeleton is hidden from assistive technology.';
-const q = (v) => Object.fromEntries(v.name.split(', ').map((p) => p.split('=')));
-let y = 32;
-for (const s of ['md', 'sm', 'lg']) {
-  const rowV = set.children.filter((v) => q(v).Shape === 'text' && q(v).Size === s);
-  for (const v of rowV) {
-    v.x = 32 + (Number(q(v).Lines) - 1) * 368;
-    v.y = y;
-  }
-  y += Math.max(...rowV.map((v) => v.height)) + 40;
-}
+  'Skeleton (feedback/skeleton): a placeholder with the shape and size of content that is loading, so that the layout does not move when it arrives. Shape text: choose Size and Lines on the exposed Text (bars of the body/{size} font size, centered in their line box, corners radius/indicator; with more than one line the last covers 60 %); they appear only for this shape. Shape block fills the size the layout gives it (radius/container); circle is a disc of the given width (radius/full). Painted in color/surface/muted. The pulse (opacity 1 → opacity/muted, motion/duration/loop) is a code-only animation; the skeleton is hidden from assistive technology.';
+set.children.find((v) => v.name === 'Shape=text').findOne((n) => n.name === 'Text').isExposedInstance = true;
+text.x = 32;
+text.y = 32;
 block.x = 32;
-block.y = y;
+block.y = 32 + text.height + 40;
 circle.x = 400;
-circle.y = y;
-set.resizeWithoutConstraints(32 * 2 + 3 * 368 - 48, y + block.height + 32);
+circle.y = block.y;
+set.resizeWithoutConstraints(32 * 2 + 320 + 48 + 48 + 32, block.y + block.height + 32);
 set.x = 80;
 set.y = 80;
-section.resizeWithoutConstraints(set.width + 160, set.height + 160);
-return { section: section.id, set: set.id };
+part.x = set.x + set.width + 80;
+part.y = set.y;
+section.resizeWithoutConstraints(part.x + part.width + 80, Math.max(set.y + set.height, part.y + part.height) + 80);
+return { section: section.id, set: set.id, part: part.id };

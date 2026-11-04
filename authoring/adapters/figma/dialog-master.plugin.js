@@ -5,8 +5,9 @@
 // overlay with an inside edge color/elevation/border and the effect style shadow/modal, clipping. Header: Heading (Title
 // heading/sm color/content/primary, Description body/sm color/content/secondary, gap space/content/xs) and the Close box
 // as tall as the title line with the IconButton sm neutral ghost (close glyph, label Close). Slots Body (a body/md text)
-// and Footer (a ButtonGroup md aligned at the end: Cancel neutral outline, then Delete danger solid, the primary action
-// last). Scrolled=yes adds the dividers (color/border/subtle, border/width/default) around the body. Properties Title,
+// and Footer (a ButtonGroup md aligned at the end: Cancel neutral outline, then Save accent solid, the primary action
+// last; the default example was a deletion in danger until the user review of the Figma parity, 2026-11-04: the footer
+// is a slot, a destructive dialog swaps its last button to danger). Scrolled=yes adds the dividers (color/border/subtle, border/width/default) around the body. Properties Title,
 // Description, Show description, Dismissible, Show footer. _Dialog/Backdrop: a 1280 × 800 frame in color/surface/scrim
 // with the slot Dialog centered and padding space/layout/md. Rerunning replaces both.
 figma.skipInvisibleInstanceChildren = false;
@@ -48,7 +49,7 @@ const ibSm = IB.children.find(
     /State=default/.test(c.name)
 );
 const bgEnd = BG.children.find((c) => c.name === 'Orientation=horizontal, Align=end, Size=md');
-const danger = BTN.children.find((c) => c.name === 'Intent=danger, Appearance=solid, Size=md, State=default');
+const primary = BTN.children.find((c) => c.name === 'Intent=accent, Appearance=solid, Size=md, State=default');
 const setP = (inst, name, val) => {
   const k = Object.keys(inst.componentProperties).find((x) => x.split('#')[0] === name);
   inst.setProperties({ [k]: val });
@@ -110,8 +111,8 @@ for (const sc of ['no', 'yes'])
     head.appendChild(ht);
     ht.layoutSizingHorizontal = 'FILL';
     bind(ht, ['itemSpacing'], 'space/content/xs');
-    text('Title', 'heading/sm', 'Delete this report?', 'color/content/primary', ht);
-    text('Description', 'body/sm', 'It stays in the trash for 30 days.', 'color/content/secondary', ht);
+    text('Title', 'heading/sm', 'Rename the report', 'color/content/primary', ht);
+    text('Description', 'body/sm', 'The new name is shown to everyone who can open it.', 'color/content/secondary', ht);
     const cb = figma.createAutoLayout('HORIZONTAL', { name: 'Close box' });
     cb.fills = [];
     cb.clipsContent = false;
@@ -137,7 +138,7 @@ for (const sc of ['no', 'yes'])
     text(
       'Text',
       'body/md',
-      'Quarterly report.pdf will be moved to the trash. Members who shared it will lose access.',
+      'Quarterly report.pdf will keep its link; members who shared it keep their access.',
       'color/content/primary',
       body
     );
@@ -170,8 +171,8 @@ for (const sc of ['no', 'yes'])
     const [save, cancel] = gslot.children;
     setP(cancel, 'Label', 'Cancel');
     gslot.insertChild(0, cancel);
-    save.swapComponent(danger);
-    setP(save, 'Label', 'Delete');
+    save.swapComponent(primary);
+    setP(save, 'Label', 'Save');
     save.setBoundVariable('minHeight', null);
     save.minHeight = null;
     comps.push(c);
@@ -199,8 +200,8 @@ set.editComponentProperty(slots.Footer[0], {
   preferredValues: [{ type: 'COMPONENT_SET', key: BG.key }],
   slotSettings: { allowPreferredValuesOnly: true }
 });
-const pTitle = set.addComponentProperty('Title', 'TEXT', 'Delete this report?');
-const pDesc = set.addComponentProperty('Description', 'TEXT', 'It stays in the trash for 30 days.');
+const pTitle = set.addComponentProperty('Title', 'TEXT', 'Rename the report');
+const pDesc = set.addComponentProperty('Description', 'TEXT', 'The new name is shown to everyone who can open it.');
 const pShowDesc = set.addComponentProperty('Show description', 'BOOLEAN', true);
 const pDis = set.addComponentProperty('Dismissible', 'BOOLEAN', true);
 const pFoot = set.addComponentProperty('Show footer', 'BOOLEAN', true);

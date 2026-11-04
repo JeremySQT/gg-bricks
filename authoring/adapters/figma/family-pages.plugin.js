@@ -111,7 +111,13 @@ const FAMILIES = {
         ['_Progress/Track'],
         { 'Show value': true }
       ],
-      ['Skeleton', '407:115', 'Stands in for content that is loading, with its shape and size.', [], { Lines: '3' }],
+      [
+        'Skeleton',
+        '407:115',
+        'Stands in for content that is loading, with its shape and size.',
+        ['_Skeleton/Text'],
+        { Lines: '3' }
+      ],
       [
         'Spinner',
         '407:116',
@@ -233,14 +239,23 @@ function inst(name, props = {}) {
   const i = set.defaultVariant.createInstance();
   const keys = Object.keys(i.componentProperties);
   const p = {};
+  const nested = [];
+  const match = (k, name) => k === name || k.startsWith(name + '#');
   for (const [name, value] of Object.entries(props)) {
-    const k = keys.find((k) => k === name || k.startsWith(name + '#'));
-    if (!k) throw new Error(`no property ${name} on ${set.name}`);
+    const k = keys.find((k) => match(k, name));
+    if (!k) {
+      // A property of an exposed nested instance (Skeleton Size and Lines, the Value of the Progress Track).
+      const e = (i.exposedInstances || []).find((x) => Object.keys(x.componentProperties).some((q) => match(q, name)));
+      if (!e) throw new Error(`no property ${name} on ${set.name}`);
+      nested.push([e, Object.keys(e.componentProperties).find((q) => match(q, name)), value]);
+      continue;
+    }
     const swap = i.componentProperties[k].type === 'INSTANCE_SWAP';
     if (swap && !glyphs[value]) throw new Error('no glyph ' + value);
     p[k] = swap ? glyphs[value].id : value;
   }
   i.setProperties(p);
+  for (const [e, k, value] of nested) e.setProperties({ [k]: value });
   return i;
 }
 function row(nodes, gap = 12) {
@@ -386,7 +401,7 @@ const COVERS = {
     [{ appearance: 'dark' }, () => inst('Toast', { Title: 'Changes saved', Intent: 'success' })],
     [{ brand: 'brick' }, () => inst('Progress', { 'Show value': true })],
     [{}, () => row([inst('Spinner', { Size: 'lg' }), inst('Spinner', { Size: 'xl' })], 24)],
-    [{ brand: 'orchid' }, () => inst('Alert', { Intent: 'warning', 'Show actions': true, Dismissible: true })],
+    [{ brand: 'orchid' }, () => inst('Alert', { Intent: 'warning', 'Show actions': 'yes', Dismissible: true })],
     [
       { appearance: 'dark', brand: 'orchid' },
       () => inst('Progress', { Intent: 'success', Label: 'Import complete', 'Show value': true })
@@ -399,17 +414,17 @@ const COVERS = {
     ],
     [{}, () => inst('Toast', { Appearance: 'intense', Intent: 'info', Title: 'New version available' })],
     [{ appearance: 'dark', brand: 'brick' }, () => inst('Spinner', { Size: 'xl' })],
-    [{}, () => inst('Progress', { Type: 'indeterminate', Label: 'Preparing the export' })]
+    [{}, () => inst('Progress', { Value: 'indeterminate', Label: 'Preparing the export' })]
   ],
   Overlays: [
     [{}, () => inst('Menu')],
     [{ appearance: 'dark' }, () => inst('Tooltip')],
     [{ brand: 'brick' }, () => inst('Popover')],
     [{}, () => inst('Dialog', { Size: 'sm' })],
-    [{ brand: 'orchid' }, () => inst('Tooltip', { Side: 'bottom', Label: 'Copy link' })],
+    [{ brand: 'orchid' }, () => inst('Tooltip', { Side: 'bottom', Label: 'Copy link', 'Show trigger': true })],
     [{ appearance: 'dark', brand: 'orchid' }, () => inst('Menu')],
     [{ appearance: 'dark' }, () => inst('Dialog', { Size: 'sm', Dismissible: false })],
-    [{}, () => inst('Popover', { Side: 'top', Align: 'end' })],
+    [{}, () => inst('Popover', { Side: 'top', Align: 'end', 'Show trigger': true })],
     [{ appearance: 'dark', brand: 'brick' }, () => inst('Popover')]
   ],
   Content: [

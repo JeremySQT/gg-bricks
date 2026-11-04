@@ -2,11 +2,14 @@
 // In each of the 18 contexts, the Align=start variants of both orientations and the three sizes: line
 // "size,orientation=gap,item surface height" (the item's Container), hashed per context for
 // `wave3-parity-report.mjs button-group`; also checks that the visible distance between consecutive item surfaces
-// equals the gap (bad lists any difference).
+// equals the gap (bad lists any difference), and that an IconButton dropped into a horizontal group is centered on the
+// cross axis with the buttons (checks, 2026-11-04).
 figma.skipInvisibleInstanceChildren = false;
 const page = await figma.getNodeByIdAsync('407:110');
 await figma.setCurrentPageAsync(page);
 const set = await figma.getNodeByIdAsync('419:2913');
+const IB = await figma.getNodeByIdAsync('211:1167');
+let checks = 0;
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
 const col = (n) => cols.find((c) => c.name === 'Foundations · ' + n);
 const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
@@ -52,9 +55,27 @@ for (const b of ['base', 'brick', 'orchid'])
             const vis = o === 'horizontal' ? ax(q) - (ax(p) + p.width) : ay(q) - (ay(p) + p.height);
             if (num(vis, 2) !== num(g, 2)) bad.push(`${ctx} ${s} ${o} ${k}: ${num(vis, 2)} vs ${g}`);
           }
+          // Items of a horizontal group are centered on the cross axis (user review, 2026-11-04): an IconButton
+          // dropped from the library, with its own target height, lines up with the buttons.
+          if (o === 'horizontal') {
+            const ib = IB.children
+              .find(
+                (c) =>
+                  /Intent=neutral/.test(c.name) &&
+                  /Appearance=outline/.test(c.name) &&
+                  new RegExp(`Size=${s}(,|$)`).test(c.name) &&
+                  /State=default/.test(c.name)
+              )
+              .createInstance();
+            slot.appendChild(ib);
+            checks++;
+            const cy = (n) => ay(n) + n.height / 2;
+            const off = cy(box(ib)) - cy(box(items[0]));
+            if (Math.abs(off) > 0.51) bad.push(`${ctx} ${s} icon button off center ${num(off, 2)}`);
+          }
         }
       f.remove();
       L.sort();
       hashes[ctx] = fnv(L.join('\n'));
     }
-return { hashes, bad };
+return { hashes, checks, bad };

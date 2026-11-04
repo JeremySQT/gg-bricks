@@ -40,10 +40,12 @@
       ]
     },
     "Title#433:14": {
-      "type": "TEXT"
+      "type": "TEXT",
+      "default": "Rename the report"
     },
     "Description#433:21": {
-      "type": "TEXT"
+      "type": "TEXT",
+      "default": "The new name is shown to everyone who can open it."
     },
     "Show description#433:28": {
       "type": "BOOLEAN",
@@ -99,6 +101,8 @@
   ],
   "notes": [
     "computed.json covers four representative contexts (96 records); 216 extra checks in the 18 contexts passed (close button on the title line, footer group at the end, space/content/lg between header, body and footer).",
-    "The default action of the footer is a danger Button Delete after the neutral outline Cancel (the default example is a deletion; the primary action is last)."
-  ]
+    "The default action of the footer is a danger Button Delete after the neutral outline Cancel (the default example is a deletion; the primary action is last).",
+    "2026-11-04, user review of the Figma parity: the default example is neutral (Rename the report, Cancel then Save accent solid); a destructive dialog swaps the last footer button to danger. Parity rerun: 96 records, 0 failures; 216 extra checks."
+  ],
+  "updatedOn": "2026-11-04"
 }

@@ -85,6 +85,8 @@ for (const b of ['base', 'brick', 'orchid'])
       for (const v of menu.children) {
         const i = v.createInstance();
         f.appendChild(i);
+        // Show trigger is off by default (2026-11-04); the placement is measured against the trigger.
+        i.setProperties({ [Object.keys(i.componentProperties).find((k) => k.startsWith('Show trigger#'))]: true });
         const o = i.findChild((n) => n.name === 'Panel');
         const tr = i.findChild((n) => n.type === 'SLOT').children[0];
         const q = Object.fromEntries(v.name.split(', ').map((x) => x.split('=')));

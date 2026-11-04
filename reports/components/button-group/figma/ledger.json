@@ -101,6 +101,8 @@
   ],
   "notes": [
     "Button instances in the slot clear their minimum height (size/target/min, 44 px) so that the gap separates the surfaces as in the code, where the target overflows the button.",
-    "Stretch and vertical Buttons fill the width: the instance and its Container are set to fill (the Button master hugs its label)."
-  ]
+    "Stretch and vertical Buttons fill the width: the instance and its Container are set to fill (the Button master hugs its label).",
+    "2026-11-04, user review of the Figma parity: the items of horizontal groups are centered on the cross axis, so that an IconButton dropped in lines up with the buttons (the slots aligned them at the top). Parity rerun: 216 records, 0 failures; 54 new checks that an IconButton dropped into each horizontal group is centered with the buttons in the 18 contexts."
+  ],
+  "updatedOn": "2026-11-04"
 }

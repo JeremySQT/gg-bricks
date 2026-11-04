@@ -29,7 +29,7 @@ const spec = {
         '100'
       )
     );
-    s.appendChild(pr({ Type: 'indeterminate', Size: 'lg' }, { Label: 'Preparing the export' }, 420));
+    s.appendChild(pr({ Size: 'lg' }, { Label: 'Preparing the export' }, 420, 'indeterminate'));
     return [s];
   },
   anatomy: {
@@ -67,7 +67,7 @@ const spec = {
       ['A', 'Thickness: component/progress/thickness/{size}, 4, 6 or 8 px. The density does not change it.'],
       [
         'B',
-        'Label gap: space/content/xs (2, 4, 6 px by density). Without label and value the first line is not rendered.'
+        'Label gap: space/content/xs (2, 4, 6 px by density). Show label off removes the first line, label and value, with this gap.'
       ]
     ],
     real: () => [
@@ -76,12 +76,12 @@ const spec = {
       [pr({ Size: 'lg' }, {}, 200), 'lg']
     ],
     figma:
-      'The fraction is the Value property of the exposed Track (0 to 100 % in steps of 10; the code takes any value). Type=indeterminate shows a still of the sweep (one third of the track); the sweep (motion/duration/loop) and the value transition are animations of the code. Tabular figures of the value are switched on by hand (the Plugin API cannot set them).'
+      'The fraction is the Value property of the exposed Track (0 to 100 % in steps of 10; the code takes any value). Indeterminate is a state, not a variant: Value=indeterminate on the Track shows a still of the sweep (one third of the track), so a bar can start indeterminate and take a value later; the sweep (motion/duration/loop) and the value transition are animations of the code. Tabular figures of the value are switched on by hand (the Plugin API cannot set them).'
   },
   sections: [
     [
       'Variants',
-      'Intent names the meaning of the indicator color: accent for an ordinary task, success for a completed one, warning for one that needs attention, danger for a failed one; the label also says it in words. Size changes only the thickness. Type indeterminate is a task under way without a known end.',
+      'Intent names the meaning of the indicator color: accent for an ordinary task, success for a completed one, warning for one that needs attention, danger for a failed one; the label also says it in words. Size changes only the thickness. Indeterminate, a task under way without a known end, is a state chosen by the Value of the Track, not a variant.',
       (c) => {
         const m = matrix(
           'Intent × size',
@@ -92,13 +92,13 @@ const spec = {
         );
         c.appendChild(m);
         m.layoutSizingHorizontal = 'FILL';
-        const t = card('Type', 'HORIZONTAL', 40);
+        const t = card('Determinate and indeterminate', 'HORIZONTAL', 40);
         t.counterAxisAlignItems = 'MIN';
         t.appendChild(caption(pr({}, { 'Show value': true }, 300), 'determinate, 60 %, value shown'));
         t.appendChild(
           caption(
-            pr({ Type: 'indeterminate' }, { Label: 'Preparing the export' }, 300),
-            'indeterminate: a still of the sweep'
+            pr({}, { Label: 'Preparing the export' }, 300, 'indeterminate'),
+            'Track Value=indeterminate: a still of the sweep'
           )
         );
         c.appendChild(t);
@@ -111,7 +111,7 @@ const spec = {
     ],
     [
       'States',
-      'A progress bar has no interaction state: it is never focusable and emits no events. What changes is the fraction (0 to full; a value above max shows a full track) and the type. A change of value moves the end of the indicator over motion/duration/base, not under reduced motion.',
+      'A progress bar has no interaction state: it is never focusable and emits no events. What changes is the fraction (0 to full; a value above max shows a full track) and whether it is indeterminate. A change of value moves the end of the indicator over motion/duration/base, not under reduced motion.',
       (c) => {
         const m = card('Fractions', 'HORIZONTAL', 32);
         m.counterAxisAlignItems = 'MIN';
@@ -133,7 +133,7 @@ const spec = {
     ],
     [
       'Behavior & sizing',
-      'The bar fills the width it is given; the label truncates on one line and the value stays at the end. Show label off keeps the label as the accessible name. The density changes only the gap between the first line and the track.',
+      'The bar fills the width it is given; the label truncates on one line and the value stays at the end. Show label off removes the whole first line, leaving no empty band above the track, and keeps the label as the accessible name. To show the percentage without a visible label, keep Show label on and empty the Label text. The density changes only the gap between the first line and the track.',
       (c) => {
         densities(c, () => [pr({}, { 'Show value': true }, 260)], {
           compact: 'label gap 2 px',
@@ -148,14 +148,22 @@ const spec = {
             '260 px: the label truncates, the value stays'
           )
         );
-        w.appendChild(caption(pr({}, { 'Show label': false }, 260), 'label hidden (still the accessible name)'));
+        w.appendChild(
+          caption(
+            pr({}, { 'Show label': false }, 260),
+            'label hidden: the first line goes, the label stays the accessible name'
+          )
+        );
+        w.appendChild(
+          caption(pr({}, { 'Show value': true, Label: '' }, 260), 'value without a visible label: Label text emptied')
+        );
         c.appendChild(w);
         w.layoutSizingHorizontal = 'FILL';
       }
     ],
     [
       'Usage examples',
-      'Use a progress bar when the size of the task is known; state its meaning in words next to the color. Use the indeterminate type only for a longer task whose end is unknown; for a short wait in a small place, use a Spinner. The full guidance will be in the documentation page of the component.',
+      'Use a progress bar when the size of the task is known; state its meaning in words next to the color. Use the indeterminate state only for a longer task whose end is unknown; for a short wait in a small place, use a Spinner. The full guidance will be in the documentation page of the component.',
       (c) => {
         const ex = card('Examples', 'HORIZONTAL', 24);
         ex.counterAxisAlignItems = 'MIN';
@@ -173,7 +181,7 @@ const spec = {
         ex.appendChild(caption(up, 'uploads, the failure stated in words'));
         const idx = surface('Export', 'VERTICAL', 12, 20);
         idx.appendChild(text('Preparing the export', 'heading/sm'));
-        idx.appendChild(pr({ Type: 'indeterminate' }, { 'Show label': false, Label: 'Preparing the export' }, 280));
+        idx.appendChild(pr({}, { 'Show label': false, Label: 'Preparing the export' }, 280, 'indeterminate'));
         idx.appendChild(text('This can take a few minutes.', 'body/sm', 'color/content/secondary'));
         ex.appendChild(caption(idx, 'indeterminate, the heading names the task'));
         c.appendChild(ex);

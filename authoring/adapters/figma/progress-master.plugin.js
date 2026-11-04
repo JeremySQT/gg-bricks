@@ -1,12 +1,15 @@
 // Progress master builder (use_figma body), 2026-11-03.
 // On the Feedback library page (407:112), section Progress: the internal part _Progress/Track (Value 60, 0…100 by 10,
 // indeterminate: a 320 × 6 frame in color/surface/muted with corners component/progress/radius, clipping an Indicator
-// rectangle from the start over the fraction, scale/stretch constraints) and the set “Progress” (Type × Intent × Size,
-// 24 variants): a vertical auto layout 320 wide, gap space/content/xs, holding a First line (Label label/md
+// rectangle from the start over the fraction, scale/stretch constraints) and the set “Progress” (Intent × Size,
+// 12 variants): a vertical auto layout 320 wide, gap space/content/xs, holding a First line (Label label/md
 // color/content/primary truncated, Value numeral/sm color/content/secondary) and an exposed Track instance (FILL,
 // height component/progress/thickness/{size}, indicator fill color/status/{intent}/icon bound with its resolved
-// fallback). Properties Show label, Show value, Label, Value text. As run on 2026-11-03 (the set was built first with a
-// Track frame, then the frame was replaced by the part: an instance sublayer cannot be resized). Rerunning replaces both.
+// fallback). Properties Show label (the visibility of the whole First line, so that hiding the label leaves no empty
+// band), Show value, Label, Value text. Indeterminate is a state, not a variant: Value=indeterminate on the Track
+// (user review of the Figma parity, 2026-11-04: the Type variant was removed in place and the First line bound to
+// Show label). As run on 2026-11-03 (the set was built first with a Track frame, then the frame was replaced by the
+// part: an instance sublayer cannot be resized). Rerunning replaces both.
 figma.skipInvisibleInstanceChildren = false;
 const page = await figma.getNodeByIdAsync('407:112');
 await figma.setCurrentPageAsync(page);
@@ -83,65 +86,62 @@ part.resizeWithoutConstraints(24 * 2 + 4 * 352 - 32, 24 * 2 + 3 * 40 - 34);
 const byVal = (v) => part.children.find((c) => c.name === 'Value=' + v);
 // The set.
 const I = ['accent', 'success', 'warning', 'danger'],
-  S = ['md', 'sm', 'lg'],
-  T = ['determinate', 'indeterminate'];
+  S = ['md', 'sm', 'lg'];
 const comps = [];
-for (const t of T)
-  for (const i of I)
-    for (const s of S) {
-      const c = figma.createComponent();
-      c.name = `Type=${t}, Intent=${i}, Size=${s}`;
-      c.layoutMode = 'VERTICAL';
-      c.primaryAxisSizingMode = 'AUTO';
-      c.counterAxisSizingMode = 'FIXED';
-      c.resize(320, c.height);
-      c.fills = [];
-      c.clipsContent = false;
-      bind(c, ['itemSpacing'], 'space/content/xs');
-      const first = figma.createAutoLayout('HORIZONTAL', { name: 'First line', itemSpacing: 8 });
-      first.fills = [];
-      first.counterAxisAlignItems = 'CENTER';
-      c.appendChild(first);
-      first.layoutSizingHorizontal = 'FILL';
-      const label = figma.createText();
-      label.name = 'Label';
-      label.textStyleId = style('label/md').id;
-      label.characters = 'Uploading report.pdf';
-      label.fills = [paint('color/content/primary')];
-      first.appendChild(label);
-      label.layoutSizingHorizontal = 'FILL';
-      label.textTruncation = 'ENDING';
-      label.maxLines = 1;
-      const value = figma.createText();
-      value.name = 'Value';
-      value.textStyleId = style('numeral/sm').id;
-      value.characters = '60%';
-      value.fills = [paint('color/content/secondary')];
-      first.appendChild(value);
-      value.visible = false;
-      const track = byVal(t === 'indeterminate' ? 'indeterminate' : '60').createInstance();
-      track.name = 'Track';
-      c.appendChild(track);
-      track.layoutSizingHorizontal = 'FILL';
-      bind(track, ['height'], `component/progress/thickness/${s}`);
-      const ind = track.findOne((n) => n.name === 'Indicator');
-      ind.fills = [paint(`color/status/${i}/icon`, ind)];
-      track.isExposedInstance = true;
-      comps.push(c);
-    }
+for (const i of I)
+  for (const s of S) {
+    const c = figma.createComponent();
+    c.name = `Intent=${i}, Size=${s}`;
+    c.layoutMode = 'VERTICAL';
+    c.primaryAxisSizingMode = 'AUTO';
+    c.counterAxisSizingMode = 'FIXED';
+    c.resize(320, c.height);
+    c.fills = [];
+    c.clipsContent = false;
+    bind(c, ['itemSpacing'], 'space/content/xs');
+    const first = figma.createAutoLayout('HORIZONTAL', { name: 'First line', itemSpacing: 8 });
+    first.fills = [];
+    first.counterAxisAlignItems = 'CENTER';
+    c.appendChild(first);
+    first.layoutSizingHorizontal = 'FILL';
+    const label = figma.createText();
+    label.name = 'Label';
+    label.textStyleId = style('label/md').id;
+    label.characters = 'Uploading report.pdf';
+    label.fills = [paint('color/content/primary')];
+    first.appendChild(label);
+    label.layoutSizingHorizontal = 'FILL';
+    label.textTruncation = 'ENDING';
+    label.maxLines = 1;
+    const value = figma.createText();
+    value.name = 'Value';
+    value.textStyleId = style('numeral/sm').id;
+    value.characters = '60%';
+    value.fills = [paint('color/content/secondary')];
+    first.appendChild(value);
+    value.visible = false;
+    const track = byVal('60').createInstance();
+    track.name = 'Track';
+    c.appendChild(track);
+    track.layoutSizingHorizontal = 'FILL';
+    bind(track, ['height'], `component/progress/thickness/${s}`);
+    const ind = track.findOne((n) => n.name === 'Indicator');
+    ind.fills = [paint(`color/status/${i}/icon`, ind)];
+    track.isExposedInstance = true;
+    comps.push(c);
+  }
 const set = figma.combineAsVariants(comps, section);
 set.name = 'Progress';
 set.description =
-  'Progress (feedback/progress): how far a task of known size has gone, or (Type=indeterminate) that a longer task is under way. Label: the accessible name, required even when hidden (Show label off). Value: the whole percentage in numeral/sm (tabular figures, set by hand in Figma). The fraction is the Value of the exposed Track (0 to 100 by 10). The indeterminate sweep (motion/duration/loop) and the value transition are code-only animations. Size changes only the track thickness (component/progress/thickness/{size}); corners: component/progress/radius.';
+  'Progress (feedback/progress): how far a task of known size has gone, or that a longer task is under way. Indeterminate is a state, not a variant: choose Value=indeterminate on the exposed Track (the fraction is its Value, 0 to 100 by 10), and switch Show value off since the code draws no percentage then. Label: the accessible name, required even when hidden. Show label off removes the whole first line (label and value), with its gap. To show the percentage without a visible label, as the code does with showLabel false and showValue true, keep Show label on and empty the Label text. Value: the whole percentage in numeral/sm (tabular figures, set by hand in Figma). The indeterminate sweep (motion/duration/loop) and the value transition are code-only animations. Size changes only the track thickness (component/progress/thickness/{size}); corners: component/progress/radius.';
 const showLabel = set.addComponentProperty('Show label', 'BOOLEAN', true);
 const showValue = set.addComponentProperty('Show value', 'BOOLEAN', false);
 const labelText = set.addComponentProperty('Label', 'TEXT', 'Uploading report.pdf');
 const valueText = set.addComponentProperty('Value text', 'TEXT', '60%');
 for (const v of set.children) {
-  v.findOne((n) => n.name === 'Label').componentPropertyReferences = { characters: labelText, visible: showLabel };
-  v.findOne((n) => n.name === 'Value').componentPropertyReferences = v.name.startsWith('Type=determinate')
-    ? { characters: valueText, visible: showValue }
-    : { characters: valueText };
+  v.findOne((n) => n.name === 'First line').componentPropertyReferences = { visible: showLabel };
+  v.findOne((n) => n.name === 'Label').componentPropertyReferences = { characters: labelText };
+  v.findOne((n) => n.name === 'Value').componentPropertyReferences = { characters: valueText, visible: showValue };
 }
 const cw = 320,
   gx = 48,
@@ -151,9 +151,9 @@ for (const v of set.children) maxH = Math.max(maxH, v.height);
 set.children.forEach((v) => {
   const q = Object.fromEntries(v.name.split(', ').map((p) => p.split('=')));
   v.x = 32 + S.indexOf(q.Size) * (cw + gx);
-  v.y = 32 + (T.indexOf(q.Type) * I.length + I.indexOf(q.Intent)) * (maxH + gy);
+  v.y = 32 + I.indexOf(q.Intent) * (maxH + gy);
 });
-set.resizeWithoutConstraints(64 + 3 * cw + 2 * gx, 64 + 8 * maxH + 7 * gy);
+set.resizeWithoutConstraints(64 + 3 * cw + 2 * gx, 64 + 4 * maxH + 3 * gy);
 set.x = 80;
 set.y = 80;
 part.x = set.x + set.width + 80;

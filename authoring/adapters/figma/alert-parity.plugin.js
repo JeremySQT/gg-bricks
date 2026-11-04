@@ -3,7 +3,8 @@
 // "intent=surface,content,edge hex/width,radius,padding,icon gap,content font size,icon color,icon size,title font
 // size,title weight", hashed per context for `wave3-parity-report.mjs alert`. Extra checks (bad lists failures): the
 // accent solid surface and neutral outline label of the actions and the dismiss glyph resolve to the action family of
-// the intent; the icon and the dismiss button are centered on the title line (±0.6 px).
+// the intent; the icon and the dismiss button are centered on the title line (±0.6 px); with actions (Show actions=yes) the
+// block-end padding resolves to space/content/lg (padEnd: its value per density).
 figma.skipInvisibleInstanceChildren = false;
 const page = await figma.getNodeByIdAsync('407:113');
 await figma.setCurrentPageAsync(page);
@@ -43,6 +44,7 @@ const num = (v, d = 1) => String(Math.round(parseFloat(v) * 10 ** d) / 10 ** d);
 const cy = (n) => n.absoluteTransform[1][2] + n.height / 2;
 const P = (inst, name) => Object.keys(inst.componentProperties).find((k) => k.split('#')[0] === name);
 const hashes = {};
+const padEnd = {};
 const bad = [];
 let checks = 0;
 for (const b of ['base', 'brick', 'orchid'])
@@ -56,9 +58,9 @@ for (const b of ['base', 'brick', 'orchid'])
       f.setExplicitVariableModeForCollection(col('Density'), mode(col('Density'), d));
       const L = [];
       for (const i of ['neutral', 'info', 'success', 'warning', 'danger']) {
-        const inst = set.children.find((c) => c.name === `Intent=${i}, Title=yes`).createInstance();
+        const inst = set.children.find((c) => c.name === `Intent=${i}, Title=yes, Show actions=yes`).createInstance();
         f.appendChild(inst);
-        inst.setProperties({ [P(inst, 'Show actions')]: true, [P(inst, 'Dismissible')]: true });
+        inst.setProperties({ [P(inst, 'Dismissible')]: true });
         const icon = inst.findOne((n) => n.name === 'Icon');
         const glyph = icon.findOne((n) => n.type === 'VECTOR');
         const ti = inst.findOne((n) => n.name === 'Title');
@@ -107,9 +109,15 @@ for (const b of ['base', 'brick', 'orchid'])
         checks += 2;
         if (Math.abs(cy(icon) - cy(ti)) > 0.6) bad.push(`${ctx} ${i} icon off the title line`);
         if (Math.abs(cy(dis) - cy(ti)) > 0.6) bad.push(`${ctx} ${i} dismiss off the title line`);
+        // With actions, the block-end padding is actionsPaddingEnd (space/content/lg), 2026-11-04.
+        checks++;
+        const pb = await res(inst, 'paddingBottom');
+        const lgv = all.find((v) => v.name === 'space/content/lg').resolveForConsumer(f).value;
+        if (pb !== lgv) bad.push(`${ctx} ${i} actions padding end ${pb} vs ${lgv}`);
+        padEnd[d] = pb;
       }
       f.remove();
       L.sort();
       hashes[ctx] = fnv(L.join('\n'));
     }
-return { hashes, checks, bad };
+return { hashes, checks, bad, padEnd };

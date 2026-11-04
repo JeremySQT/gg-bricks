@@ -1,5 +1,5 @@
 // Skeleton Figma parity measurement (use_figma body), 2026-11-03.
-// In each of the 18 contexts: the three text sizes with 3 lines at the width of the code's review page, and a block of
+// In each of the 18 contexts: the three text sizes with 3 lines (Size and Lines of the exposed Text) at the width of the code's review page, and a block of
 // 160 px; lines "shape,size=line heights,bar height,bar color,bar radius,last width,line width,radius,color,height,parent"
 // hashed per context (wave3-parity-report.mjs skeleton). Also checks the centering of the bars, the full-line widths and
 // the circle radius (extra).
@@ -49,10 +49,12 @@ for (const b of ['base', 'brick', 'orchid'])
       f.setExplicitVariableModeForCollection(col('Density'), mode(col('Density'), d));
       const L = [];
       for (const s of ['sm', 'md', 'lg']) {
-        const i = set.children.find((c) => c.name === `Shape=text, Size=${s}, Lines=3`).createInstance();
+        const i = set.children.find((c) => c.name === 'Shape=text').createInstance();
         f.appendChild(i);
+        const T = i.findOne((n) => n.name === 'Text');
+        T.setProperties({ Size: s, Lines: '3' });
         i.resize(W[d], i.height);
-        const lines = i.children;
+        const lines = T.children;
         const bars = lines.map((l) => l.children[0]);
         L.push(
           `text,${s}=${[
@@ -72,13 +74,13 @@ for (const b of ['base', 'brick', 'orchid'])
           `${s}:${num(bars[0].y, 2)}=${num((lines[0].height - bars[0].height) / 2, 2)},${num(bars[1].width, 1)}=${num(lines[1].width, 1)}`
         );
       }
-      const bl = set.children.find((c) => c.name === 'Shape=block, Size=md, Lines=1').createInstance();
+      const bl = set.children.find((c) => c.name === 'Shape=block').createInstance();
       f.appendChild(bl);
       bl.resize(W[d], 160);
       L.push(
         `block,=${['', '', '', '', '', '', num(await res(bl, 'topLeftRadius'), 2), await paint(bl), num(bl.height, 1), num(bl.height, 1)].join(',')}`
       );
-      const ci = set.children.find((c) => c.name === 'Shape=circle, Size=md, Lines=1').createInstance();
+      const ci = set.children.find((c) => c.name === 'Shape=circle').createInstance();
       f.appendChild(ci);
       ci.resize(64, 64);
       extra.add(`circle:${await res(ci, 'topLeftRadius')}/${(await paint(ci)) === (await paint(bl))}`);

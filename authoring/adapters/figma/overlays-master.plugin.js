@@ -1,4 +1,5 @@
 // Tooltip and Popover master builder (use_figma body), 2026-11-03.
+// 2026-11-04 (user review of the Figma parity): the boolean Show trigger, off by default, shows the Trigger slot of both sets.
 // On the Overlays library page (407:119), sections Tooltip and Popover: two sets of six placements (Side × Align). Each
 // variant is a vertical auto layout with the gap space/content/xs (the offset), its children aligned at the start, the
 // center or the end (Align), holding the slot Trigger and the overlay above it (Side=top) or under it (Side=bottom).
@@ -124,6 +125,13 @@ const placementSet = (name, sides, aligns, makeOverlay, makeTrigger, triggers, d
     preferredValues: triggers.map((t) => ({ type: 'COMPONENT_SET', key: t.key })),
     slotSettings: { minChildren: 1, allowPreferredValuesOnly: true }
   });
+  // Show trigger, off by default (user review of the Figma parity, 2026-11-04): a designer places the overlay over a
+  // control already in the design; switched on, the slot shows the placement against one trigger.
+  const pTrig = set.addComponentProperty('Show trigger', 'BOOLEAN', false);
+  for (const v of set.children) {
+    const sl = v.findChild((n) => n.type === 'SLOT');
+    sl.componentPropertyReferences = { ...sl.componentPropertyReferences, visible: pTrig };
+  }
   set.description = describe;
   const maxW = Math.max(...set.children.map((c) => c.width));
   const maxH = Math.max(...set.children.map((c) => c.height));

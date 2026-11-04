@@ -1,4 +1,5 @@
 // Menu master builder (use_figma body), 2026-11-03.
+// 2026-11-04 (user review of the Figma parity): the boolean Show trigger of Menu, off by default, shows its Trigger slot.
 // On the Overlays library page (407:119), section Menu: MenuItem (Intent neutral, danger × State default, hover,
 // disabled; 6 variants), MenuSeparator, MenuGroup (Indent yes, no) and Menu (Side × Align, 6 variants).
 // MenuItem: a horizontal auto layout 240 wide, min height size/control/sm, padding space/control/padding-inline/sm ×
@@ -333,6 +334,13 @@ menuSet.editComponentProperty(mSlots.Items, {
   ],
   slotSettings: { minChildren: 1, allowPreferredValuesOnly: true }
 });
+// Show trigger, off by default (user review of the Figma parity, 2026-11-04): the menu is placed under a control
+// already in the design; switched on, the Trigger slot shows the placement.
+const mTrig = menuSet.addComponentProperty('Show trigger', 'BOOLEAN', false);
+for (const v of menuSet.children) {
+  const sl = v.findChild((n) => n.type === 'SLOT' && n.name === 'Trigger');
+  sl.componentPropertyReferences = { ...sl.componentPropertyReferences, visible: mTrig };
+}
 const mLabel = menuSet.addComponentProperty('Label', 'TEXT', ' ');
 for (const v of menuSet.children) {
   const t = figma.createText();

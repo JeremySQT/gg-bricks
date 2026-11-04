@@ -52,7 +52,7 @@ for (const b of ['base', 'brick', 'orchid'])
       const L = [];
       for (const i of ['accent', 'success', 'warning', 'danger'])
         for (const s of ['sm', 'md', 'lg']) {
-          const inst = set.children.find((c) => c.name === `Type=determinate, Intent=${i}, Size=${s}`).createInstance();
+          const inst = set.children.find((c) => c.name === `Intent=${i}, Size=${s}`).createInstance();
           f.appendChild(inst);
           inst.setProperties({ [P('Show value')]: true });
           inst.resize(W[d], inst.height);
@@ -80,7 +80,7 @@ for (const b of ['base', 'brick', 'orchid'])
       hashes[`${b}-${a}-${d}`] = fnv(L.join('\n'));
     }
 const steps = [];
-const v0 = set.children.find((c) => c.name === 'Type=determinate, Intent=accent, Size=lg');
+const v0 = set.children.find((c) => c.name === 'Intent=accent, Size=lg');
 for (const val of ['0', '10', '20', '30', '40', '50', '60', '70', '80', '90', '100']) {
   const inst = v0.createInstance();
   inst.resize(355.328125, inst.height);

@@ -36,7 +36,7 @@
       "page": "overlays/menu (407:121)",
       "library": "Overlays (407:119), section Menu (437:273)",
       "componentSet": "437:795",
-      "specification": "439:2",
+      "specification": "463:533",
       "ledger": "reports/components/menu/figma/ledger.json",
       "parity": "reports/components/menu/figma/parity.json",
       "screenshots": [
@@ -46,7 +46,7 @@
       "blueprints": [
         {
           "path": "reports/components/menu/figma/blueprint-anatomy.png",
-          "node": "439:240"
+          "node": "463:729"
         }
       ],
       "builders": [
@@ -176,6 +176,12 @@
       "result": "passed",
       "date": "2026-11-03",
       "evidence": "reports/components/menu/figma/parity.json"
+    },
+    {
+      "name": "Figma parity after the review (Show trigger, off by default): 60 records, 0 failures; 270 extra checks",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/menu/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -192,7 +198,7 @@
     "Contract fact added during implementation: group leadingSize and leadingGap roles (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
+  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
   "implementationNotes": [
     "Exports Menu, MenuItem, MenuSeparator and MenuGroup.",
     "The highlighted item is the focused item (roving focus through focus(), not aria-activedescendant); opening by pointer focuses the menu itself, so no item is highlighted until an arrow key or the pointer.",

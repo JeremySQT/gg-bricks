@@ -1,6 +1,8 @@
 // Alert specification page (use_figma body), 2026-11-03. Runs _Script/spec-lib (411:2, spec-lib.plugin.js) and builds
 // “Alert — Specification” on feedback/alert (407:113). After the run the five alerts of the Anatomy real parts were
-// set to 182 px with a 24 px gap, so that nothing overflows the frame. Rerunning replaces the frame.
+// set to 182 px with a 24 px gap, so that nothing overflows the frame. 2026-11-04: Show actions became the Actions
+// variant Show actions (yes pads the bottom with space/content/lg; a variant property cannot share the name of the
+// Actions slot). Rerunning replaces the frame.
 const libNode = await figma.getNodeByIdAsync('411:2');
 const CFG = { PAGES: { alert: ['407:113', 'Alert', '422:715'], button: ['144:2', 'Button', '48:1586'] } };
 const H = await eval('(' + libNode.characters + ')')(figma, CFG);
@@ -35,7 +37,7 @@ const spec = {
     'An alert is a durable message in the flow of the page about the page, a section or a task: a failed save, an expiring plan, a successful import. It stays until the situation changes or the user dismisses it. A brief confirmation that leaves by itself is a Toast; a message that must be answered first is a Dialog; an error on one field belongs to Field.',
   hero: () => {
     const s = stack('Alerts', 'VERTICAL', 16);
-    s.appendChild(al({ Intent: 'danger' }, { 'Show actions': true, Dismissible: true }, 560));
+    s.appendChild(al({ Intent: 'danger', 'Show actions': 'yes' }, { Dismissible: true }, 560));
     s.appendChild(
       al(
         { Intent: 'success', Title: 'no' },
@@ -52,9 +54,8 @@ const spec = {
     dashed: ['Body', 'Text', 'Actions', 'Icon box', 'Dismiss box'],
     instance: () =>
       al(
-        { Intent: 'info' },
+        { Intent: 'info', 'Show actions': 'yes' },
         {
-          'Show actions': true,
           Dismissible: true,
           'Title text': 'Scheduled maintenance',
           Content: 'Exports are unavailable on Saturday night between two and four.'
@@ -71,7 +72,8 @@ const spec = {
     dims: [
       { k: 'y', a: ['', 't'], b: ['Text', 't'], c: 'A', side: 'left' },
       { k: 'x', a: ['Icon', 'r'], b: ['Text', 'l'], c: 'B' },
-      { k: 'y', a: ['Text', 'b'], b: ['Actions', 't'], c: 'C', side: 'right' }
+      { k: 'y', a: ['Text', 'b'], b: ['Actions', 't'], c: 'C', side: 'right' },
+      { k: 'y', a: ['Actions', 'b'], b: ['', 'b'], c: 'D', side: 'right' }
     ],
     legend: [
       [
@@ -85,7 +87,7 @@ const spec = {
       ],
       [
         '4',
-        'Actions (slot, Show actions): one ButtonGroup of sm buttons under the content. Accent and neutral buttons take the action family of the intent; danger keeps its own.'
+        'Actions (Show actions=yes, the slot Actions): one ButtonGroup of sm buttons under the content. Accent and neutral buttons take the action family of the intent; danger keeps its own.'
       ],
       [
         '5',
@@ -96,7 +98,11 @@ const spec = {
         'Padding: space/content/md; edge border/width/default in color/status/{intent}/border inside the radius/container corners; surface color/status/{intent}/surface.'
       ],
       ['B', 'Icon gap: space/content/sm, also before the dismiss button. Title gap: space/content/xs.'],
-      ['C', 'Actions gap: space/content/md.']
+      ['C', 'Actions gap: space/content/md.'],
+      [
+        'D',
+        'Block-end padding with actions: space/content/lg (actionsPaddingEnd: 12, 16, 24 px by density) instead of space/content/md, so that the buttons do not sit tight against the edge.'
+      ]
     ],
     real: () =>
       ['neutral', 'info', 'success', 'warning', 'danger'].map((i) => [
@@ -104,7 +110,7 @@ const spec = {
         i
       ]),
     figma:
-      'Each variant sets the mode of the hidden collection Components · action family to its intent, so that the accent and neutral Buttons and IconButtons it holds (the dismiss button and the slot content) resolve to the action family of the intent, as the code points the accent and neutral action tokens in its subtree. Title is a variant (yes, no) because the first line that aligns the icon and the dismiss button is the title line or the content line. Live announcements are behaviors of the code.'
+      'Each variant sets the mode of the hidden collection Components · action family to its intent, so that the accent and neutral Buttons and IconButtons it holds (the dismiss button and the slot content) resolve to the action family of the intent, as the code points the accent and neutral action tokens in its subtree. Title is a variant (yes, no) because the first line that aligns the icon and the dismiss button is the title line or the content line; Show actions is a variant (yes, no) because with actions the block-end padding is space/content/lg. Live announcements are behaviors of the code.'
   },
   sections: [
     [
@@ -136,10 +142,9 @@ const spec = {
         for (const i of ['neutral', 'info', 'success', 'warning', 'danger'])
           m.appendChild(
             al(
-              { Intent: i, Title: 'no' },
+              { Intent: i, Title: 'no', 'Show actions': 'yes' },
               {
                 Content: 'Accent solid, neutral outline: both take the family of the alert.',
-                'Show actions': true,
                 Dismissible: true
               },
               640,
@@ -152,8 +157,8 @@ const spec = {
         m.appendChild(
           caption(
             al(
-              { Intent: 'warning', Title: 'no' },
-              { Content: 'A danger button keeps its own family.', 'Show actions': true },
+              { Intent: 'warning', Title: 'no', 'Show actions': 'yes' },
+              { Content: 'A danger button keeps its own family.' },
               640,
               [
                 ['danger', 'solid', 'Delete'],
@@ -207,7 +212,7 @@ const spec = {
         const form = surface('Form', 'VERTICAL', 16, 20);
         form.appendChild(text('Billing address', 'heading/sm'));
         form.appendChild(
-          al({ Intent: 'danger' }, { 'Show actions': true, Dismissible: true }, 420, [
+          al({ Intent: 'danger', 'Show actions': 'yes' }, { Dismissible: true }, 420, [
             ['accent', 'solid', 'Try again'],
             null
           ])
@@ -216,11 +221,10 @@ const spec = {
         const plan = surface('Plan', 'VERTICAL', 16, 20);
         plan.appendChild(
           al(
-            { Intent: 'warning' },
+            { Intent: 'warning', 'Show actions': 'yes' },
             {
               'Title text': 'Your plan expires in 3 days',
-              Content: 'Renew it to keep your projects and members.',
-              'Show actions': true
+              Content: 'Renew it to keep your projects and members.'
             },
             360,
             [

@@ -166,6 +166,12 @@
       "result": "passed",
       "date": "2026-11-03",
       "evidence": "reports/components/button-group/figma/parity.json"
+    },
+    {
+      "name": "Figma parity after the review (items centered on the cross axis): 216 records, 0 failures; 54 centering checks with an IconButton",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/button-group/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -179,7 +185,7 @@
     "Vertical always stretched; no wrap: a line that does not fit stacks (user, 2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
+  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
   "implementationNotes": [
     "Button and IconButton read the group size through the context key ggb:button-group (a string; each folder declares the shape again), so an item's own size is ignored inside a group.",
     "A host (Alert) may ask for a default size through the context key ggb:button-group-host; an explicit size on the group wins.",

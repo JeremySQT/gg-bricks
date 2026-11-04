@@ -24,7 +24,9 @@
 
 ## Construction notes
 
-- The panel is a vertical auto layout bound to the size width, with the header (heading and the close box as tall as the title line), the Body slot and the Footer slot (a ButtonGroup aligned at the end: Cancel, then Delete in danger, the primary action last).
+- **A neutral default** (user review of the Figma parity, 2026-11-04): the default example renames a report (Cancel, Save accent solid) instead of deleting one in danger. Dialog has no intent: the footer is a slot, and a destructive dialog swaps its last button to a danger Button.
+
+- The panel is a vertical auto layout bound to the size width, with the header (heading and the close box as tall as the title line), the Body slot and the Footer slot (a ButtonGroup aligned at the end: Cancel, then Save in accent solid, the primary action last; a destructive dialog swaps it to danger).
 - The body room of the code (focus/width + focus/offset inside the scrolling area) is compensated in the code and invisible at rest; it is not drawn.
 
 ## Justified differences

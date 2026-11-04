@@ -51,6 +51,10 @@
         "Link 232:659"
       ],
       "minChildren": 1
+    },
+    "Show trigger#451:0": {
+      "type": "BOOLEAN",
+      "default": false
     }
   },
   "variants": {
@@ -66,10 +70,10 @@
     "Trigger": "SLOT"
   },
   "specification": {
-    "id": "431:2",
+    "id": "462:95",
     "name": "Tooltip — Specification",
-    "anatomyBoard": "431:91",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=431-2"
+    "anatomyBoard": "462:184",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=462-95"
   },
   "adapterVariables": {},
   "builders": [
@@ -80,6 +84,8 @@
     "authoring/adapters/figma/spec-lib.plugin.js"
   ],
   "notes": [
-    "computed.json covers four representative contexts (32 records); 216 extra checks (with the Popover's, 432) of the offset space/content/xs and the start, center or end alignment of every placement in the 18 contexts passed."
-  ]
+    "computed.json covers four representative contexts (32 records); 216 extra checks (with the Popover's, 432) of the offset space/content/xs and the start, center or end alignment of every placement in the 18 contexts passed.",
+    "2026-11-04, user review of the Figma parity: the boolean Show trigger (off by default) shows the Trigger slot; a designer places the tooltip over a control already in the design. The placement checks switch it on. Parity rerun: 32 records, 0 failures; 432 extra checks."
+  ],
+  "updatedOn": "2026-11-04"
 }

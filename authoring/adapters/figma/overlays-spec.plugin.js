@@ -12,7 +12,9 @@ const CFG = {
 };
 const H = await eval('(' + libNode.characters + ')')(figma, CFG);
 const { mk, card, caption, contexts, surface, setProps } = H;
-const tt = (v = {}, label) => mk('tooltip', v, label ? { Label: label } : {});
+// Show trigger is off by default (2026-11-04): the pages switch it on to show the placement, except where noted.
+const tt = (v = {}, label, trigger = true) =>
+  mk('tooltip', v, { ...(label ? { Label: label } : {}), 'Show trigger': trigger });
 const triggerOf = (i) => i.findChild((n) => n.type === 'SLOT').children[0];
 const tipSpec = {
   path: 'OVERLAYS / TOOLTIP',
@@ -55,7 +57,7 @@ const tipSpec = {
       [tt({ Side: 'top', Align: 'end' }), 'top, end']
     ],
     figma:
-      'The trigger is a slot so that the master shows the placement; in the code the tooltip opens after component/tooltip/delay on pointer hover, at once on keyboard focus, closes on Escape, sits above every overlay and enters and leaves over motion/duration/fast. Those are behaviors of the code.'
+      'Show trigger is off by default: place the tooltip over a control already in the design. Switched on, the Trigger slot shows the placement against one control. In the code the tooltip opens after component/tooltip/delay on pointer hover, at once on keyboard focus, closes on Escape, sits above every overlay and enters and leaves over motion/duration/fast. Those are behaviors of the code.'
   },
   sections: [
     [
@@ -84,6 +86,7 @@ const tipSpec = {
         );
         setProps(triggerOf(b), { Label: 'Documentation' });
         m.appendChild(caption(b, 'a Button: a short clarification'));
+        m.appendChild(caption(tt({}, 'More actions', false), 'Show trigger off (default): placed over a control'));
         c.appendChild(m);
         m.layoutSizingHorizontal = 'FILL';
       }
@@ -123,7 +126,7 @@ const tipSpec = {
     ]
   ]
 };
-const pp = (v = {}) => mk('popover', v);
+const pp = (v = {}, trigger = true) => mk('popover', v, { 'Show trigger': trigger });
 const popSpec = {
   path: 'OVERLAYS / POPOVER',
   repo: 'foundations/components/overlays/popover',
@@ -168,7 +171,7 @@ const popSpec = {
       [pp({ Side: 'top', Align: 'end' }), 'top, end']
     ],
     figma:
-      'Trigger and Content are slots. Focus management, closing on Escape, on a press outside or when focus leaves, nesting and the enter and leave motion (motion/duration/base) are behaviors of the code; the panel inherits the brand, appearance and density around the trigger.'
+      'Show trigger is off by default: place the panel next to a control already in the design. Switched on, the Trigger slot shows the placement against one control. Content is a slot. Focus management, closing on Escape, on a press outside or when focus leaves, nesting and the enter and leave motion (motion/duration/base) are behaviors of the code; the panel inherits the brand, appearance and density around the trigger.'
   },
   sections: [
     [
@@ -202,6 +205,7 @@ const popSpec = {
         setProps(closed, { Label: 'Filters' });
         m.appendChild(caption(closed, 'closed: only the trigger'));
         m.appendChild(caption(pp({}), 'open: the panel at the trigger'));
+        m.appendChild(caption(pp({}, false), 'Show trigger off (default): the panel alone'));
         c.appendChild(m);
         m.layoutSizingHorizontal = 'FILL';
       }

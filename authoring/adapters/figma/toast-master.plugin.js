@@ -1,6 +1,6 @@
 // Toast master builder (use_figma body), 2026-11-03.
 // On the Feedback library page (407:112), section Toast: the item set “Toast” (Layout single, multi × Appearance
-// neutral, intense × Intent, 20 variants) and the region set “ToastRegion” (Placement, 6 variants).
+// neutral, intense × Intent, 20 variants) and the region component “ToastRegion”.
 // Toast: a horizontal auto layout bound to size/overlay/panel, padding space/content/md, gap space/content/sm,
 // radius/overlay, effect style shadow/overlay, inside edge border/width/default; neutral: color/surface/overlay, edge
 // color/elevation/border, title color/content/primary, description color/content/secondary; intense: color/status/
@@ -10,9 +10,11 @@
 // Dismiss box (IconButton sm neutral ghost, close glyph). Single centers the row; multi aligns at the top with the icon
 // and dismiss boxes as tall as the title line. Intense variants set the mode of Components · action family to their
 // intent (action-family.plugin.js). Properties Title, Description, Show action, Closable.
-// ToastRegion: a vertical auto layout holding the slot Toasts (gap space/content/sm, Toast preferred and only), the
-// newest toast nearest the edge (last for bottom placements, first for top), aligned by the placement; a hidden text
-// behind the Label property. Rerunning replaces both sets.
+// ToastRegion: a single component, a vertical auto layout holding the slot Toasts (gap space/content/sm, Toast
+// preferred and only) and a hidden text behind the Label property. It was a set of six Placement variants until the
+// user review of the Figma parity (2026-11-04): a slot cannot reverse its order, so the variant changed nothing; the
+// placement is where the designer puts the region, and the designer orders the toasts (newest nearest that edge). The
+// component was rebuilt in place by the same code (455:1602). Rerunning replaces the set and the region.
 figma.skipInvisibleInstanceChildren = false;
 const page = await figma.getNodeByIdAsync('407:112');
 await figma.setCurrentPageAsync(page);
@@ -200,72 +202,51 @@ set.y = 80;
 await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
 const lst = style('label/md');
 const T = (name) => set.children.find((c) => c.name === name);
-const rcomps = [];
-for (const p of ['bottom-end', 'bottom-start', 'bottom-center', 'top-start', 'top-center', 'top-end']) {
-  const c = figma.createComponent();
-  c.name = `Placement=${p}`;
-  c.layoutMode = 'VERTICAL';
-  c.primaryAxisSizingMode = 'AUTO';
-  c.counterAxisSizingMode = 'AUTO';
-  c.itemSpacing = 0;
-  c.fills = [];
-  c.clipsContent = false;
-  const slot = c.createSlot();
-  slot.name = 'Toasts';
-  slot.fills = [];
-  slot.clipsContent = false;
-  slot.layoutMode = 'VERTICAL';
-  slot.primaryAxisSizingMode = 'AUTO';
-  slot.counterAxisSizingMode = 'AUTO';
-  slot.setBoundVariable('itemSpacing', V('space/content/sm'));
-  slot.counterAxisAlignItems = p.endsWith('start') ? 'MIN' : p.endsWith('end') ? 'MAX' : 'CENTER';
-  const older = T('Layout=single, Appearance=neutral, Intent=success').createInstance();
-  setP(older, 'Title', 'Changes saved');
-  const newer = T('Layout=single, Appearance=neutral, Intent=neutral').createInstance();
-  setP(newer, 'Title', 'Report deleted');
-  setP(newer, 'Show action', true);
-  if (p.startsWith('bottom')) {
-    slot.appendChild(older);
-    slot.appendChild(newer);
-  } else {
-    slot.appendChild(newer);
-    slot.appendChild(older);
-  }
-  const t = figma.createText();
-  c.appendChild(t);
-  t.name = 'Region name (not shown)';
-  t.textStyleId = lst.id;
-  t.characters = 'Notifications';
-  t.visible = false;
-  rcomps.push(c);
-}
-const region = figma.combineAsVariants(rcomps, section);
+const region = figma.createComponent();
+section.appendChild(region);
 region.name = 'ToastRegion';
-let slotDefs = Object.keys(region.componentPropertyDefinitions).filter(
+region.layoutMode = 'VERTICAL';
+region.primaryAxisSizingMode = 'AUTO';
+region.counterAxisSizingMode = 'AUTO';
+region.itemSpacing = 0;
+region.fills = [];
+region.clipsContent = false;
+const slot = region.createSlot();
+slot.name = 'Toasts';
+slot.fills = [];
+slot.clipsContent = false;
+slot.layoutMode = 'VERTICAL';
+slot.primaryAxisSizingMode = 'AUTO';
+slot.counterAxisSizingMode = 'AUTO';
+slot.setBoundVariable('itemSpacing', V('space/content/sm'));
+slot.counterAxisAlignItems = 'MIN';
+const older = T('Layout=single, Appearance=neutral, Intent=success').createInstance();
+setP(older, 'Title', 'Changes saved');
+const newer = T('Layout=single, Appearance=neutral, Intent=neutral').createInstance();
+setP(newer, 'Title', 'Report deleted');
+setP(newer, 'Show action', true);
+slot.appendChild(older);
+slot.appendChild(newer);
+const t = figma.createText();
+region.appendChild(t);
+t.name = 'Region name (not shown)';
+t.textStyleId = lst.id;
+t.characters = 'Notifications';
+t.visible = false;
+const sk = Object.keys(region.componentPropertyDefinitions).find(
   (q) => region.componentPropertyDefinitions[q].type === 'SLOT'
 );
-if (slotDefs.length > 1) {
-  for (const v of region.children)
-    v.findChild((n) => n.type === 'SLOT').componentPropertyReferences = { slotContentId: slotDefs[0] };
-  for (const q of slotDefs.slice(1)) if (region.componentPropertyDefinitions[q]) region.deleteComponentProperty(q);
-  slotDefs = [slotDefs[0]];
-}
-region.editComponentProperty(slotDefs[0], {
+region.editComponentProperty(sk, {
   name: 'Toasts',
   description:
-    'The toasts shown, separated by space/content/sm; the newest is nearest the edge named by Placement (last for bottom, first for top). At most max (3 by default) are shown; others wait.',
+    'The toasts shown, separated by space/content/sm, in the order you give them: put the newest nearest the edge where the region is placed (last for a region at the bottom of the screen, first for one at the top). At most max (3 by default) are shown; others wait.',
   preferredValues: [{ type: 'COMPONENT_SET', key: set.key }],
   slotSettings: { minChildren: 1, allowPreferredValuesOnly: true }
 });
 const lk = region.addComponentProperty('Label', 'TEXT', 'Notifications');
-for (const v of region.children) v.findChild((n) => n.type === 'TEXT').componentPropertyReferences = { characters: lk };
+t.componentPropertyReferences = { characters: lk };
 region.description =
-  'ToastRegion (feedback/toast, region): the single landmark that holds the toasts, named by Label, above the page and above open dialogs, outside the flow. Place it at space/layout/sm from the viewport edges named by Placement; the newest toast is nearest that edge. In the code it sits in the top layer (layer/toast); its position, the queue (max) and the pause on hover and focus are behaviors of the code.';
-region.children.forEach((v, j) => {
-  v.x = 32 + (j % 3) * 420;
-  v.y = 32 + Math.floor(j / 3) * 220;
-});
-region.resizeWithoutConstraints(32 + 3 * 420, 32 + 2 * 220);
+  'ToastRegion (feedback/toast, region): the single landmark that holds the toasts, named by Label, above the page and above open dialogs, outside the flow. Placement is where you put it: at space/layout/sm from the viewport edges you choose (bottom-end by default in the code). Figma cannot reverse the order of a slot, so order the toasts yourself, the newest nearest that edge. In the code it sits in the top layer (layer/toast); its position, the order of arrival, the queue (max) and the pause on hover and focus are behaviors of the code.';
 region.x = set.x;
 region.y = set.y + set.height + 80;
 section.resizeWithoutConstraints(Math.max(set.width, region.width) + 160, region.y + region.height + 80);

@@ -34,8 +34,8 @@
       "type": "VARIANT",
       "default": "start",
       "options": [
-        "start",
         "center",
+        "start",
         "end"
       ]
     },
@@ -54,6 +54,10 @@
     },
     "Content#430:21": {
       "type": "SLOT"
+    },
+    "Show trigger#451:7": {
+      "type": "BOOLEAN",
+      "default": false
     }
   },
   "variants": {
@@ -65,10 +69,10 @@
     "Trigger": "SLOT"
   },
   "specification": {
-    "id": "431:613",
+    "id": "462:855",
     "name": "Popover — Specification",
-    "anatomyBoard": "431:709",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=431-613"
+    "anatomyBoard": "462:951",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=462-855"
   },
   "adapterVariables": {},
   "builders": [
@@ -80,6 +84,8 @@
   ],
   "notes": [
     "computed.json covers four representative contexts (28 records); 216 extra checks of the offset and the alignment of every placement in the 18 contexts passed.",
-    "Variants reordered on 2026-11-03 so that Side=bottom, Align=start (the contract default) is the default variant."
-  ]
+    "Variants reordered on 2026-11-03 so that Side=bottom, Align=start (the contract default) is the default variant.",
+    "2026-11-04, user review of the Figma parity: the boolean Show trigger (off by default) shows the Trigger slot. The placement checks switch it on. Parity rerun: 28 records, 0 failures."
+  ],
+  "updatedOn": "2026-11-04"
 }

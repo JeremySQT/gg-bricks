@@ -5,8 +5,12 @@ const libNode = await figma.getNodeByIdAsync('411:2');
 const CFG = { PAGES: { skeleton: ['407:115', 'Skeleton', '417:74'] } };
 const H = await eval('(' + libNode.characters + ')')(figma, CFG);
 const { mk, card, caption, contexts, surface, row, col_ } = H;
+// Size and Lines belong to the exposed Text of the text variant (2026-11-04).
 const sk = (v = {}, w = 320, h) => {
-  const i = mk('skeleton', v);
+  const { Size, Lines, ...rest } = v;
+  const i = mk('skeleton', rest);
+  if (Size || Lines)
+    i.findOne((n) => n.name === 'Text').setProperties({ ...(Size ? { Size } : {}), ...(Lines ? { Lines } : {}) });
   i.resize(w, h ?? i.height);
   return i;
 };
@@ -59,7 +63,7 @@ const spec = {
       [sk({ Shape: 'circle' }, 48, 48), 'circle']
     ],
     figma:
-      'Size and Lines apply to the text shape only; block takes the width and height the layout gives it (radius/container), circle a diameter (radius/full). The pulse (opacity from 1 to opacity/muted and back, once per motion/duration/loop, all skeletons in phase, none under reduced motion) is an animation of the code. The skeleton is hidden from assistive technology: the region that loads is the busy element.'
+      'Size and Lines apply to the text shape only: they are properties of its exposed Text, so Figma shows them only when Shape is text; block takes the width and height the layout gives it (radius/container), circle a diameter (radius/full). The pulse (opacity from 1 to opacity/muted and back, once per motion/duration/loop, all skeletons in phase, none under reduced motion) is an animation of the code. The skeleton is hidden from assistive technology: the region that loads is the busy element.'
   },
   sections: [
     [

@@ -20,8 +20,9 @@ const mi = (v = {}, p = {}, w = 240) => {
   return i;
 };
 // A menu with its own items: '-' a separator, { group, indent } a MenuGroup, { v, p } a MenuItem.
-const menuWith = (v, list) => {
-  const m = mk('menu', v);
+// Show trigger is off by default (2026-11-04); trigger false shows the menu alone.
+const menuWith = (v, list, trigger = true) => {
+  const m = mk('menu', v, { 'Show trigger': trigger });
   if (list) {
     const s = m.findChild((n) => n.name === 'Panel').findOne((n) => n.type === 'SLOT');
     for (const c of [...s.children]) c.remove();
@@ -88,7 +89,7 @@ const spec = {
       [SEP.createInstance(), 'MenuSeparator']
     ],
     figma:
-      'The highlighted item is State=hover: the code moves the highlight with the pointer and the arrow keys. Keyboard navigation (arrows, Home, End, typeahead), focus, closing on activation, Escape or a press outside, and the motion are behaviors of the code. A link item (href) looks like an action item.'
+      'Show trigger is off by default: place the menu under a control already in the design; switched on, the Trigger slot shows the placement against one control. The highlighted item is State=hover: the code moves the highlight with the pointer and the arrow keys. Keyboard navigation (arrows, Home, End, typeahead), focus, closing on activation, Escape or a press outside, and the motion are behaviors of the code. A link item (href) looks like an action item.'
   },
   sections: [
     [
@@ -142,6 +143,7 @@ const spec = {
             'the highlight on Move to…; Publish is disabled'
           )
         );
+        m.appendChild(caption(menuWith({}, null, false), 'Show trigger off (default): the menu alone'));
         c.appendChild(m);
         m.layoutSizingHorizontal = 'FILL';
       }

@@ -26,7 +26,7 @@
       "page": "feedback/skeleton (407:115)",
       "library": "Feedback (407:112), section Skeleton (417:26)",
       "componentSet": "417:74",
-      "specification": "418:2",
+      "specification": "458:860",
       "ledger": "reports/components/skeleton/figma/ledger.json",
       "parity": "reports/components/skeleton/figma/parity.json",
       "screenshots": [
@@ -36,7 +36,7 @@
       "blueprints": [
         {
           "path": "reports/components/skeleton/figma/blueprint-anatomy.png",
-          "node": "418:47"
+          "node": "458:918"
         }
       ],
       "builders": [
@@ -45,7 +45,8 @@
         "authoring/adapters/figma/skeleton-parity.plugin.js",
         "authoring/adapters/figma/wave3-parity-report.mjs",
         "authoring/adapters/figma/spec-lib.plugin.js"
-      ]
+      ],
+      "parts": ["453:1264 (_Skeleton/Text)"]
     },
     "figmaSpec": "foundations/components/feedback/skeleton/figma-spec.md",
     "svelte": {
@@ -157,6 +158,12 @@
       "result": "passed",
       "date": "2026-11-03",
       "evidence": "reports/components/skeleton/figma/parity.json"
+    },
+    {
+      "name": "Figma parity after the review (Size and Lines on the exposed _Skeleton/Text): 558 records, 0 failures, 18 equal hashes",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/skeleton/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -166,7 +173,7 @@
     "Hidden from assistive technology; the busy state belongs to the loading region (integration)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
+  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
   "implementationNotes": [
     "Pulses stay in phase across the page: each pulse animation's startTime is set to 0 (the document timeline origin) when the skeleton mounts.",
     "Text lines use the lh unit for the line box and a bar of 1em: the skeleton paragraph has the height of the real paragraph (checked against real text in the browser test)."

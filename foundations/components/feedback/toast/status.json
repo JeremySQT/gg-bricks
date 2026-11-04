@@ -28,7 +28,7 @@
       "page": "feedback/toast (407:117)",
       "library": "Feedback (407:112), section Toast (426:36)",
       "componentSet": "426:819",
-      "specification": "429:2",
+      "specification": "461:855",
       "ledger": "reports/components/toast/figma/ledger.json",
       "parity": "reports/components/toast/figma/parity.json",
       "screenshots": [
@@ -38,7 +38,7 @@
       "blueprints": [
         {
           "path": "reports/components/toast/figma/blueprint-anatomy.png",
-          "node": "429:302"
+          "node": "461:1116"
         }
       ],
       "builders": [
@@ -47,7 +47,8 @@
         "authoring/adapters/figma/toast-parity.plugin.js",
         "authoring/adapters/figma/wave3-parity-report.mjs",
         "authoring/adapters/figma/spec-lib.plugin.js"
-      ]
+      ],
+      "region": "455:1602"
     },
     "figmaSpec": "foundations/components/feedback/toast/figma-spec.md",
     "svelte": {
@@ -165,6 +166,12 @@
       "result": "passed",
       "date": "2026-11-03",
       "evidence": "reports/components/toast/figma/parity.json"
+    },
+    {
+      "name": "Figma after the review: ToastRegion is a single component (455:1602); the Toast set and its parity are unchanged (36 records, 0 failures)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/toast/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -180,7 +187,7 @@
     "Toast actions are secondary only (user, 2026-11-03): ghost or outline, neutral or danger, never accent; a snippet cannot enforce it, the rule is documented (decisions.md, snippet slots)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
+  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
   "implementationNotes": [
     "Exports ToastRegion (the region, root of the contract) and Toast (the item child).",
     "The region is a div with role region (not a section: an application's section styles moved it) shown as a manual popover in the top layer; it raises itself again whenever another overlay enters the top layer after it (a capture listener on toggle events).",

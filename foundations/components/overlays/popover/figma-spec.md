@@ -4,9 +4,9 @@
 
 - File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), component page **overlays/popover** (`407:122`). Master: library page **Overlays** (`407:119`), section **Popover** (`430:104`).
 - Master: component set **Popover** ([`430:239`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=430-239)), 6 variants, built by `authoring/adapters/figma/overlays-master.plugin.js`.
-- Specification frame: **Popover — Specification** ([`431:613`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=431-613)); built by `overlays-spec.plugin.js` on `spec-lib.plugin.js`.
+- Specification frame: **Popover — Specification** ([`462:855`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=462-855)); built by `overlays-spec.plugin.js` on `spec-lib.plugin.js`.
 - Reproduces: contract `foundations/components/overlays/popover/contract.json` and the implementation approved on 2026-11-03 (`packages/svelte/src/components/popover`).
-- Node IDs: `reports/components/popover/figma/ledger.json`. Parity: `reports/components/popover/figma/parity.json` (28 records, 0 failures) plus 216 placement checks. Screenshots: `master-set.png`, `specification.png`, `blueprint-anatomy.png`.
+- Node IDs: `reports/components/popover/figma/ledger.json`. Parity: `reports/components/popover/figma/parity.json` (28 records, 0 failures) plus 216 placement checks (with Show trigger on). Screenshots: `master-set.png`, `specification.png`, `blueprint-anatomy.png`.
 - The library is not published (publication needs explicit authorization).
 
 ## Mapping from the contract
@@ -21,6 +21,8 @@
 | tokens                                           | `color/surface/overlay`, `color/elevation/border`, `border/width/default`, `shadow/overlay`, `radius/overlay`, `space/content/md`, `size/overlay/panel`, `space/content/xs`, `typography/body/sm`, `color/content/primary` |
 
 ## Construction notes
+
+- **The trigger is optional** (user review of the Figma parity, 2026-11-04): the boolean **Show trigger**, off by default, shows the Trigger slot. A designer builds the interface first and places the panel over a control already in it; switched on, the slot shows the placement against one trigger. The placement checks of the parity switch it on.
 
 - Each variant stacks the trigger and the panel with the gap `space/content/xs` and aligns them at the start, the center or the end.
 - The panel hugs its content up to `size/overlay/panel`; the Content slot fills the panel and its texts wrap.

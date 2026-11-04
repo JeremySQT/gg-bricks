@@ -6,7 +6,7 @@
 - Master: component set **ButtonGroup** ([`419:2913`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=419-2913)), 15 variants, built by `authoring/adapters/figma/button-group-master.plugin.js`.
 - Specification frame: **ButtonGroup — Specification** ([`420:2`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=420-2)); built by `button-group-spec.plugin.js` on `spec-lib.plugin.js`.
 - Reproduces: contract `foundations/components/actions/button-group/contract.json` (approved 2026-11-03 with the no-reflow amendment) and the implementation approved on 2026-11-03 (`packages/svelte/src/components/button-group`).
-- Node IDs: `reports/components/button-group/figma/ledger.json`. Parity: `reports/components/button-group/figma/parity.json` (216 records, 0 failures). Screenshots: `master-set.png`, `specification.png`, `blueprint-anatomy.png`.
+- Node IDs: `reports/components/button-group/figma/ledger.json`. Parity: `reports/components/button-group/figma/parity.json` (216 records, 0 failures) plus 54 centering checks. Screenshots: `master-set.png`, `specification.png`, `blueprint-anatomy.png`.
 - The library is not published (publication needs explicit authorization).
 
 ## Mapping from the contract
@@ -20,6 +20,8 @@
 | token `gap`                                     | `space/control/gap/{size}` on the slot's item spacing                                                                                    |
 
 ## Construction notes
+
+- **Items centered on the cross axis** (user review of the Figma parity, 2026-11-04): the Items slot of horizontal groups centers its items, so that an IconButton dropped into a group lines up with the buttons (they were aligned at the top). `button-group-parity.plugin.js` drops an outline IconButton into each horizontal group and checks that its surface is centered with the first button's, in the 18 contexts (54 checks).
 
 - The group has no fill, border or padding; the slot lays the items out in the orientation with the gap and fills the width of the variant (400 px horizontal, 240 px vertical).
 - **Item size.** A slot cannot pass the group's Size to its content: set every item to the Size of the group (the code sets it once).

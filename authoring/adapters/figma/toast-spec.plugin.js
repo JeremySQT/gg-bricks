@@ -1,12 +1,23 @@
 // Toast specification page (use_figma body), 2026-11-03. Runs _Script/spec-lib (411:2, spec-lib.plugin.js) and builds
-// “Toast — Specification” on feedback/toast (407:117), with the ToastRegion set. After the run the six context cards
+// “Toast — Specification” on feedback/toast (407:117), with the ToastRegion component (a single component since
+// 2026-11-04: a Figma slot cannot reverse its order, so the placement is where the designer puts the region). After the run the six context cards
 // were regrouped in a wrapping grid (346 px cards, toasts at 306 px) so that the toasts keep their text on one line.
 // The action of an instance is changed through the variant properties of the exposed Action (a nested instance cannot
 // override its minimum height after a swap). Rerunning replaces the frame.
 const libNode = await figma.getNodeByIdAsync('411:2');
-const CFG = { PAGES: { toast: ['407:117', 'Toast', '426:819'], region: ['407:117', 'ToastRegion', '426:1471'] } };
+const CFG = { PAGES: { toast: ['407:117', 'Toast', '426:819'] } };
 const H = await eval('(' + libNode.characters + ')')(figma, CFG);
 const { mk, stack, card, caption, contexts, surface, setProps, fill } = H;
+const REGION = await figma.getNodeByIdAsync('455:1602');
+// A region; edge 'top' puts the newest toast (the second of the slot) first, as the designer does for a top placement.
+const region = (edge = 'bottom') => {
+  const r = REGION.createInstance();
+  if (edge === 'top') {
+    const sl = r.findOne((n) => n.type === 'SLOT');
+    sl.insertChild(0, sl.children[1]);
+  }
+  return r;
+};
 const to = (v = {}, p = {}, action) => {
   const i = mk('toast', v, p);
   if (action) {
@@ -25,7 +36,7 @@ const spec = {
   repo: 'foundations/components/feedback/toast',
   intro:
     'A toast is a brief notification about something the user just did or that just happened in the background: Saved, Message sent, Upload failed. It appears above the page, does not block it and leaves by itself unless the user must act on it. A durable message is an Alert; a message that must be answered is a Dialog.',
-  hero: () => [mk('region', { Placement: 'bottom-end' })],
+  hero: () => [region()],
   anatomy: {
     intro: 'How a toast is built. The instance is enlarged twice; the real toasts are shown underneath.',
     zoom: 2,
@@ -167,17 +178,12 @@ const spec = {
     ],
     [
       'Behavior & sizing',
-      'The region holds the toasts at space/layout/sm from the viewport edges named by its placement; the newest is nearest that edge and the others are separated by space/content/sm. At most max (3) are shown; the next ones wait. A toast takes size/overlay/panel, or the width of the region when it is narrower, and grows with its text.',
+      'The region holds the toasts at space/layout/sm from the viewport edges named by its placement; the newest is nearest that edge and the others are separated by space/content/sm. In Figma the placement is where you put the region, and you order the toasts of its slot yourself (a slot cannot reverse its order). At most max (3) are shown; the next ones wait. A toast takes size/overlay/panel, or the width of the region when it is narrower, and grows with its text.',
       (c) => {
         const m = card('Placements', 'HORIZONTAL', 24);
         m.counterAxisAlignItems = 'MIN';
-        for (const p of ['top-end', 'bottom-center'])
-          m.appendChild(
-            caption(
-              mk('region', { Placement: p }),
-              `placement ${p}: the newest ${p.startsWith('top') ? 'first' : 'last'}`
-            )
-          );
+        m.appendChild(caption(region('top'), 'region placed at the top: the newest first'));
+        m.appendChild(caption(region('bottom'), 'region placed at the bottom: the newest last'));
         c.appendChild(m);
         m.layoutSizingHorizontal = 'FILL';
         const w = card('Long text', 'HORIZONTAL', 24);
@@ -208,7 +214,7 @@ const spec = {
         scr.primaryAxisAlignItems = 'MAX';
         scr.counterAxisAlignItems = 'MAX';
         fill(scr, 'color/surface/canvas');
-        scr.appendChild(mk('region', { Placement: 'bottom-end' }));
+        scr.appendChild(region());
         ex.appendChild(caption(scr, 'bottom-end region on a page'));
         c.appendChild(ex);
         ex.layoutSizingHorizontal = 'FILL';

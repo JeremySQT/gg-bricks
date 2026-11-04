@@ -143,3 +143,14 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - `combineAsVariants` merges slots of the same name into one SLOT property; `isExposedInstance` can be set only once the instance sits in a component; a nested instance cannot override its minimum height after a swap (change its variant properties instead).
 - The Button master reserves its 44 px target as a minimum height: inside a group the instances clear it so that gaps separate the surfaces.
 - An alpha of 0.7 is stored as float32 (178.49, `b2`): reports round alpha from `Math.fround`, like `tooling/check-figma.ts`.
+
+## Mechanics learned on 2026-11-04 (user review of the wave 3 Figma parity)
+
+- A slot cannot reverse the order of its children: a placement variant that should put the newest item first changes nothing (ToastRegion became a single component; the designer orders the toasts).
+- A boolean cannot change a padding: a property that adds room (the Alert actions and `actionsPaddingEnd`) is a variant.
+- A slot layer is named after its SLOT property: renaming one renames the other, so a variant property cannot share the name of a slot (Show actions beside the slot Actions).
+- `clone()` of a variant inside its set turns its slots into plain frames: keep the slots in the original variants and give the clones the variant value without them.
+- An auto layout whose children are all hidden does not collapse: bind the visibility of the wrapping frame (the Progress First line) rather than of each child.
+- Properties of an exposed nested instance show on the host only in the variants that hold it (Size and Lines of `_Skeleton/Text`, only for Shape=text).
+- An overlay meant to sit over an existing control takes an optional trigger: a boolean bound to the visibility of its Trigger slot, off by default (Tooltip, Popover, Menu).
+- In-place changes keep node IDs and the instances placed by designers; the builders record the resulting structure for a rerun from scratch.

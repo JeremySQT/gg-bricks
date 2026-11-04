@@ -35,7 +35,7 @@
       "page": "feedback/progress (407:114)",
       "library": "Feedback (407:112), section Progress (413:2)",
       "componentSet": "413:147",
-      "specification": "416:2049",
+      "specification": "458:233",
       "ledger": "reports/components/progress/figma/ledger.json",
       "parity": "reports/components/progress/figma/parity.json",
       "screenshots": [
@@ -45,7 +45,7 @@
       "blueprints": [
         {
           "path": "reports/components/progress/figma/blueprint-anatomy.png",
-          "node": "416:2092"
+          "node": "458:277"
         }
       ],
       "builders": [
@@ -170,6 +170,12 @@
       "result": "passed",
       "date": "2026-11-03",
       "evidence": "reports/components/progress/figma/parity.json"
+    },
+    {
+      "name": "Figma parity after the review (Type variant removed, First line bound to Show label): 2376 records, 0 failures, 18 equal hashes",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/progress/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -181,7 +187,7 @@
     "Corners: component token component.progress.radius, so that a brand can draw rectangular bars (user, 2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
+  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
   "implementationNotes": [
     "Bits UI Progress.Root (2.19.3) does not render the id it receives: the component uses its child snippet to place the id on the progress bar itself.",
     "The label stays in the DOM, visually hidden, when showLabel is false, and names the bar through aria-labelledby."

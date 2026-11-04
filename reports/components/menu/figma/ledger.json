@@ -56,7 +56,12 @@
     },
     "Label#437:48": {
       "type": "TEXT",
-      "note": "hidden menu name"
+      "note": "hidden menu name",
+      "default": " "
+    },
+    "Show trigger#451:14": {
+      "type": "BOOLEAN",
+      "default": false
     }
   },
   "variants": {
@@ -93,10 +98,10 @@
     }
   },
   "specification": {
-    "id": "439:2",
+    "id": "463:533",
     "name": "Menu — Specification",
-    "anatomyBoard": "439:240",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=439-2"
+    "anatomyBoard": "463:729",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=463-533"
   },
   "adapterVariables": {},
   "builders": [
@@ -107,6 +112,8 @@
     "authoring/adapters/figma/spec-lib.plugin.js"
   ],
   "notes": [
-    "computed.json covers four representative contexts (60 records); 270 extra checks in the 18 contexts passed: a plain item as tall as the code (line + 2 × padding-block, at least size/control/sm), the offset and alignment of the six placements, the group heading aligned with the labels (Indent yes and no)."
-  ]
+    "computed.json covers four representative contexts (60 records); 270 extra checks in the 18 contexts passed: a plain item as tall as the code (line + 2 × padding-block, at least size/control/sm), the offset and alignment of the six placements, the group heading aligned with the labels (Indent yes and no).",
+    "2026-11-04, user review of the Figma parity: the boolean Show trigger (off by default) shows the Trigger slot. The placement checks switch it on. Parity rerun: 60 records, 0 failures; 270 extra checks."
+  ],
+  "updatedOn": "2026-11-04"
 }

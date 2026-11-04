@@ -31,49 +31,46 @@
         "circle"
       ]
     },
-    "Size": {
-      "type": "VARIANT",
+    "Text › Size": {
+      "type": "VARIANT (exposed nested instance, Shape=text only)",
       "default": "md",
       "options": [
         "md",
         "sm",
         "lg"
-      ],
-      "note": "text only"
+      ]
     },
-    "Lines": {
-      "type": "VARIANT",
+    "Text › Lines": {
+      "type": "VARIANT (exposed nested instance, Shape=text only)",
       "default": "1",
       "options": [
         "1",
         "2",
         "3"
-      ],
-      "note": "text only"
+      ]
     }
   },
   "variants": {
-    "Shape=text, Size=md, Lines=1": "417:27",
-    "Shape=text, Size=md, Lines=2": "417:30",
-    "Shape=text, Size=md, Lines=3": "417:35",
-    "Shape=text, Size=sm, Lines=1": "417:42",
-    "Shape=text, Size=sm, Lines=2": "417:45",
-    "Shape=text, Size=sm, Lines=3": "417:50",
-    "Shape=text, Size=lg, Lines=1": "417:57",
-    "Shape=text, Size=lg, Lines=2": "417:60",
-    "Shape=text, Size=lg, Lines=3": "417:65",
-    "Shape=block, Size=md, Lines=1": "417:72",
-    "Shape=circle, Size=md, Lines=1": "417:73"
+    "count": 3,
+    "default": "Shape=text",
+    "Shape=text": "417:27",
+    "Shape=block": "417:72",
+    "Shape=circle": "417:73"
   },
   "parts": {
+    "_Skeleton/Text": {
+      "id": "453:1264",
+      "variants": "Size=md, Lines=1 453:1219; Size=md, Lines=2 453:1222; Size=md, Lines=3 453:1227; Size=sm, Lines=1 453:1234; Size=sm, Lines=2 453:1237; Size=sm, Lines=3 453:1242; Size=lg, Lines=1 453:1249; Size=lg, Lines=2 453:1252; Size=lg, Lines=3 453:1257",
+      "layers": "Line (typography/body/{size}/lineHeight) › Bar (fontSize, radius/indicator, color/surface/muted)"
+    },
     "Line": "frame bound to typography/body/{size}/lineHeight",
     "Bar": "frame bound to typography/body/{size}/fontSize, radius/indicator, centered; last bar 60 % (scale constraint)"
   },
   "specification": {
-    "id": "418:2",
+    "id": "458:860",
     "name": "Skeleton — Specification",
-    "anatomyBoard": "418:47",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=418-2"
+    "anatomyBoard": "458:918",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=458-860"
   },
   "adapterVariables": {},
   "builders": [
@@ -84,6 +81,8 @@
     "authoring/adapters/figma/spec-lib.plugin.js"
   ],
   "notes": [
-    "Full-width bars use a stretch constraint, which Figma rounds to whole pixels in an instance of fractional width (369 for 368.66): a difference of at most 0.5 px, not part of computed.json."
-  ]
+    "Full-width bars use a stretch constraint, which Figma rounds to whole pixels in an instance of fractional width (369 for 368.66): a difference of at most 0.5 px, not part of computed.json.",
+    "2026-11-04, user review of the Figma parity: Size and Lines moved to the internal set _Skeleton/Text, an exposed nested instance of the text variant, so that they show only for Shape=text; done in place on the set (block and circle keep their IDs). Parity rerun: unchanged (18 equal hashes)."
+  ],
+  "updatedOn": "2026-11-04"
 }

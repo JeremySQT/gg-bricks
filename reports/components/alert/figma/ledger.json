@@ -42,14 +42,12 @@
       ]
     },
     "Title text#422:11": {
-      "type": "TEXT"
+      "type": "TEXT",
+      "default": "The changes were not saved"
     },
     "Content#422:22": {
-      "type": "TEXT"
-    },
-    "Show actions#422:33": {
-      "type": "BOOLEAN",
-      "default": false
+      "type": "TEXT",
+      "default": "The connection was lost. Your edits are kept on this device."
     },
     "Dismissible#422:44": {
       "type": "BOOLEAN",
@@ -61,19 +59,39 @@
         "ButtonGroup 419:2913"
       ],
       "allowPreferredValuesOnly": true
+    },
+    "Show actions": {
+      "type": "VARIANT",
+      "default": "no",
+      "options": [
+        "no",
+        "yes"
+      ]
     }
   },
   "variants": {
-    "Intent=info, Title=yes": "422:27",
-    "Intent=neutral, Title=yes": "422:144",
-    "Intent=success, Title=yes": "422:208",
-    "Intent=warning, Title=yes": "422:272",
-    "Intent=danger, Title=yes": "422:336",
-    "Intent=info, Title=no": "422:400",
-    "Intent=neutral, Title=no": "422:463",
-    "Intent=success, Title=no": "422:526",
-    "Intent=warning, Title=no": "422:589",
-    "Intent=danger, Title=no": "422:652"
+    "count": 20,
+    "default": "Intent=info, Title=yes, Show actions=no",
+    "Intent=info, Title=yes, Show actions=no": "454:1694",
+    "Intent=info, Title=yes, Show actions=yes": "422:27",
+    "Intent=neutral, Title=yes, Show actions=yes": "422:144",
+    "Intent=success, Title=yes, Show actions=yes": "422:208",
+    "Intent=warning, Title=yes, Show actions=yes": "422:272",
+    "Intent=danger, Title=yes, Show actions=yes": "422:336",
+    "Intent=info, Title=no, Show actions=yes": "422:400",
+    "Intent=neutral, Title=no, Show actions=yes": "422:463",
+    "Intent=success, Title=no, Show actions=yes": "422:526",
+    "Intent=warning, Title=no, Show actions=yes": "422:589",
+    "Intent=danger, Title=no, Show actions=yes": "422:652",
+    "Intent=neutral, Title=yes, Show actions=no": "454:1757",
+    "Intent=success, Title=yes, Show actions=no": "454:1820",
+    "Intent=warning, Title=yes, Show actions=no": "454:1883",
+    "Intent=danger, Title=yes, Show actions=no": "454:1946",
+    "Intent=info, Title=no, Show actions=no": "454:2009",
+    "Intent=neutral, Title=no, Show actions=no": "454:2071",
+    "Intent=success, Title=no, Show actions=no": "454:2133",
+    "Intent=warning, Title=no, Show actions=no": "454:2195",
+    "Intent=danger, Title=no, Show actions=no": "454:2257"
   },
   "parts": {
     "Icon box/Icon": "Phosphor glyph instance per intent (info 200:5169, check-circle 200:4685, warning 200:5834, warning-circle 200:5831)",
@@ -82,10 +100,10 @@
     "Dismiss box/Dismiss": "IconButton sm neutral ghost, glyph x 200:4368"
   },
   "specification": {
-    "id": "423:2",
+    "id": "460:1133",
     "name": "Alert — Specification",
-    "anatomyBoard": "423:370",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=423-2"
+    "anatomyBoard": "460:1370",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=460-1133"
   },
   "adapterVariables": {
     "Components · action family": {
@@ -111,6 +129,8 @@
     "authoring/adapters/figma/spec-lib.plugin.js"
   ],
   "notes": [
-    "Extra checks (not in computed.json), 450 passed: in every context and intent the accent solid surface and the neutral outline label of the actions and the dismiss glyph resolve to the action family of the intent, and the icon and dismiss are centered on the title line (±0.6 px)."
-  ]
+    "Extra checks (not in computed.json), 450 passed: in every context and intent the accent solid surface and the neutral outline label of the actions and the dismiss glyph resolve to the action family of the intent, and the icon and dismiss are centered on the title line (±0.6 px).",
+    "2026-11-04, user review of the Figma parity: Show actions became a variant (no, yes); yes holds the Actions slot and binds paddingBottom to space/content/lg (actionsPaddingEnd, 12, 16, 24 px by density), as the code does under its actions. The yes variants kept the slot (cloning a variant turns its slot into a frame, so the clones became the no variants and lost the frame). A variant property cannot share the name of the slot, whose layer name is its property name. Parity rerun: 990 records, 0 failures; 540 extra checks, among them the actions padding end in every context."
+  ],
+  "updatedOn": "2026-11-04"
 }
