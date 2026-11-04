@@ -53,7 +53,8 @@
     display: flex;
     align-items: center;
     gap: var(--ggb-toast-item-iconGap);
-    inline-size: min(var(--ggb-toast-item-inlineSize), calc(100vi - 2 * var(--ggb-toast-edge)));
+    /* size.overlay.panel, never wider than the viewport less the region's edges (none outside a region). */
+    inline-size: min(var(--ggb-toast-item-inlineSize), calc(100vi - 2 * var(--ggb-toast-edge, 0px)));
     padding: var(--ggb-toast-item-padding);
     border-radius: var(--ggb-toast-item-radius);
     background: var(--ggb-toast-item-surface);

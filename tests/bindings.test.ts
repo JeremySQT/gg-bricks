@@ -27,14 +27,16 @@ test('types: enum unions, record interfaces, defaults and child defaults', () =>
 });
 
 test('css: parent roles on the root, child roles on the child part, parent parameters on the root', () => {
+  // A child is a unit: its roles sit on its own class unless they read a parent prop (decision of 2026-11-04).
   const css = generateCss(read('compound.contract.json'));
   assert.match(css, /^\/\* Generated token bindings from the menu contract\. Do not edit\. \*\/\n@layer ggb \{\n/);
   assert.match(css, /\.ggb-menu \{\n(.*\n)*? {2}--ggb-menu-layer: var\(--ggb-layer-dropdown\);/);
-  // Child state: a suffix of the variable, on the child part.
+  // Child state: a suffix of the variable, on the child part's own class (not nested under the parent).
   assert.match(
     css,
-    /\.ggb-menu \.ggb-menu__item \{\n(.*\n)*? {2}--ggb-menu-item-surface-selected-hover: var\(--ggb-color-item-selected-hover-surface\);/
+    /(^|\n)\.ggb-menu__item \{\n(.*\n)*? {2}--ggb-menu-item-surface-selected-hover: var\(--ggb-color-item-selected-hover-surface\);/
   );
+  assert.doesNotMatch(css, /\.ggb-menu \.ggb-menu__item \{/);
   // Parent prop used by a child role: attribute on the root, variable on the child.
   assert.match(
     css,
@@ -42,7 +44,7 @@ test('css: parent roles on the root, child roles on the child part, parent param
   );
   assert.match(
     css,
-    /\.ggb-menu \.ggb-menu__separator \{\n {2}--ggb-menu-separator-border: var\(--ggb-color-border-subtle\);\n\}/
+    /(^|\n)\.ggb-menu__separator \{\n {2}--ggb-menu-separator-border: var\(--ggb-color-border-subtle\);\n\}/
   );
   assert.ok(css.trimEnd().endsWith('}'));
 });

@@ -15,7 +15,7 @@
   --ggb-menu-easingExit: var(--ggb-motion-easing-exit);
   --ggb-menu-layer: var(--ggb-layer-dropdown);
 }
-.ggb-menu .ggb-menu__item {
+.ggb-menu__item {
   --ggb-menu-item-surface-default: var(--ggb-color-item-default-surface);
   --ggb-menu-item-surface-hover: var(--ggb-color-item-hover-surface);
   --ggb-menu-item-surface-disabled: var(--ggb-color-item-disabled-surface);
@@ -35,12 +35,12 @@
   --ggb-menu-item-motionDuration: var(--ggb-motion-duration-fast);
   --ggb-menu-item-easingStandard: var(--ggb-motion-easing-standard);
 }
-.ggb-menu .ggb-menu__separator {
+.ggb-menu__separator {
   --ggb-menu-separator-lineColor: var(--ggb-color-border-subtle);
   --ggb-menu-separator-thickness: var(--ggb-border-width-default);
   --ggb-menu-separator-margin: var(--ggb-space-content-xs);
 }
-.ggb-menu .ggb-menu__group {
+.ggb-menu__group {
   --ggb-menu-group-headingColor: var(--ggb-color-content-secondary);
   --ggb-menu-group-typography: var(--ggb-typography-caption-md);
   --ggb-menu-group-typography-letterSpacing: var(--ggb-typography-caption-md-letterSpacing);

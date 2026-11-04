@@ -5,7 +5,7 @@
   --ggb-toast-gap: var(--ggb-space-content-sm);
   --ggb-toast-layer: var(--ggb-layer-toast);
 }
-.ggb-toast .ggb-toast__item {
+.ggb-toast__item {
   --ggb-toast-item-surface: var(--ggb-color-surface-overlay);
   --ggb-toast-item-content: var(--ggb-color-content-primary);
   --ggb-toast-item-descriptionColor: var(--ggb-color-content-secondary);
@@ -30,31 +30,31 @@
   --ggb-toast-item-easingExit: var(--ggb-motion-easing-exit);
   --ggb-toast-item-actionsGap: var(--ggb-space-content-sm);
 }
-.ggb-toast .ggb-toast__item[data-intent="neutral"] {
+.ggb-toast__item[data-intent="neutral"] {
   --ggb-toast-item-iconColor: var(--ggb-color-status-neutral-icon);
   --ggb-toast-item-intenseSurfaceColor: var(--ggb-color-status-neutral-surface);
   --ggb-toast-item-intenseContentColor: var(--ggb-color-status-neutral-content);
   --ggb-toast-item-intenseEdgeColor: var(--ggb-color-status-neutral-border);
 }
-.ggb-toast .ggb-toast__item[data-intent="info"] {
+.ggb-toast__item[data-intent="info"] {
   --ggb-toast-item-iconColor: var(--ggb-color-status-info-icon);
   --ggb-toast-item-intenseSurfaceColor: var(--ggb-color-status-info-surface);
   --ggb-toast-item-intenseContentColor: var(--ggb-color-status-info-content);
   --ggb-toast-item-intenseEdgeColor: var(--ggb-color-status-info-border);
 }
-.ggb-toast .ggb-toast__item[data-intent="success"] {
+.ggb-toast__item[data-intent="success"] {
   --ggb-toast-item-iconColor: var(--ggb-color-status-success-icon);
   --ggb-toast-item-intenseSurfaceColor: var(--ggb-color-status-success-surface);
   --ggb-toast-item-intenseContentColor: var(--ggb-color-status-success-content);
   --ggb-toast-item-intenseEdgeColor: var(--ggb-color-status-success-border);
 }
-.ggb-toast .ggb-toast__item[data-intent="warning"] {
+.ggb-toast__item[data-intent="warning"] {
   --ggb-toast-item-iconColor: var(--ggb-color-status-warning-icon);
   --ggb-toast-item-intenseSurfaceColor: var(--ggb-color-status-warning-surface);
   --ggb-toast-item-intenseContentColor: var(--ggb-color-status-warning-content);
   --ggb-toast-item-intenseEdgeColor: var(--ggb-color-status-warning-border);
 }
-.ggb-toast .ggb-toast__item[data-intent="danger"] {
+.ggb-toast__item[data-intent="danger"] {
   --ggb-toast-item-iconColor: var(--ggb-color-status-danger-icon);
   --ggb-toast-item-intenseSurfaceColor: var(--ggb-color-status-danger-surface);
   --ggb-toast-item-intenseContentColor: var(--ggb-color-status-danger-content);

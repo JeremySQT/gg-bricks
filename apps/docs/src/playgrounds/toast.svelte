@@ -65,20 +65,15 @@
   <div style="display: flex; flex-direction: column; align-items: center; gap: var(--ggb-space-content-md)">
     {#if preview}
       {#snippet previewAction()}{@render follow(messages[intent].action)}{/snippet}
-      <!-- A toast takes its tokens from its region, which always sits in the top layer at a viewport edge. This plain
-           element carries the region's class only, so that the preview is drawn in the frame; applications never
-           do this, their toasts live in their ToastRegion (Show live). -->
-      <div class="ggb-toast">
-        <Toast
-          {intent}
-          {appearance}
-          duration={0}
-          title={messages[intent].title}
-          description={description === 'yes' ? messages[intent].description : ''}
-          action={action === 'yes' ? previewAction : undefined}
-          ondismiss={() => (preview = false)}
-        />
-      </div>
+      <Toast
+        {intent}
+        {appearance}
+        duration={0}
+        title={messages[intent].title}
+        description={description === 'yes' ? messages[intent].description : ''}
+        action={action === 'yes' ? previewAction : undefined}
+        ondismiss={() => (preview = false)}
+      />
     {:else}
       <Button label="Show the preview again" intent="neutral" appearance="ghost" onactivate={() => (preview = true)} />
     {/if}

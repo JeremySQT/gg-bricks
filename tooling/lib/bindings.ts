@@ -1,6 +1,6 @@
 // Mechanical Svelte bindings generated from a contract: enum types and defaults (contract.generated.ts) and the
 // CSS custom-property bindings of every token role (tokens.generated.css). Children of a compound component
-// (contract `children`) get their own types, defaults, selectors (`.ggb-<id>__<child>`) and variables
+// (contract `children`) get their own types, defaults, selectors (`.ggb-<id>__<child>`, not nested under the parent unless a role reads a parent prop) and variables
 // (`--ggb-<id>-<child>-<role>`); a parameter that belongs to the parent selects on the root element.
 import { cssVariable } from './tokens.ts';
 import {
@@ -88,9 +88,14 @@ export function generateCss(contract: Contract): string {
     const onRoot = params.filter((p) => !childProps.includes(p) && !childStates.includes(p) && parentProps.includes(p));
     const stateParams = params.filter((p) => !onChild.includes(p) && !onRoot.includes(p));
     for (const { params: values, path } of list) {
-      let selector = `.ggb-${id}` + onRoot.map((p) => `[data-${p}="${values[p]}"]`).join('');
-      if (childName)
-        selector += ` .ggb-${id}__${childName}` + onChild.map((p) => `[data-${p}="${values[p]}"]`).join('');
+      // A child is a unit: its bindings sit on its own class and depend only on its own props and on the theme
+      // (brand, appearance, density) around it. Only a role whose template reads a parent prop is scoped under the
+      // parent (user, 2026-11-04: a toast depends only on itself; the region only places it).
+      const childSelector = childName
+        ? `.ggb-${id}__${childName}` + onChild.map((p) => `[data-${p}="${values[p]}"]`).join('')
+        : '';
+      const rootSelector = `.ggb-${id}` + onRoot.map((p) => `[data-${p}="${values[p]}"]`).join('');
+      const selector = !childName ? rootSelector : onRoot.length ? `${rootSelector} ${childSelector}` : childSelector;
       const variable = [
         `--ggb-${id}`,
         ...(childName ? [childName] : []),
