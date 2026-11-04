@@ -72,8 +72,11 @@
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       event.preventDefault();
       pending = event.key === 'ArrowDown' ? 'first' : 'last';
-      if (open) toggled(true);
-      else ref?.showPopover();
+      // Run the opening at once rather than waiting for the toggle event: a close by Escape followed at once by a
+      // reopening coalesces both into one event that reports no change. A second run from the event is harmless
+      // (the highlight is placed only while focus has not moved).
+      if (!ref?.matches(':popover-open')) ref?.showPopover();
+      toggled(true);
     } else if (event.key === 'Enter' || event.key === ' ') {
       pending = 'first';
     }
