@@ -117,7 +117,8 @@
   "notes": [
     "computed.json covers four representative contexts (60 records); 270 extra checks in the 18 contexts passed: a plain item as tall as the code (line + 2 × padding-block, at least size/control/sm), the offset and alignment of the six placements, the group heading aligned with the labels (Indent yes and no).",
     "2026-11-04, user review of the Figma parity: the boolean Show trigger (off by default) shows the Trigger slot. The placement checks switch it on. Parity rerun: 60 records, 0 failures; 270 extra checks.",
-    "2026-11-04, user decision at the Figma parity gate: the public children are named Menu/Item, Menu/Separator and Menu/Group (Assets grouping under Menu); renamed in place, IDs unchanged; 49 instance layers renamed back to MenuItem, MenuSeparator, MenuGroup (an instance takes the name of its main component)."
+    "2026-11-04, user decision at the Figma parity gate: the public children are named Menu/Item, Menu/Separator and Menu/Group (Assets grouping under Menu); renamed in place, IDs unchanged; 49 instance layers renamed back to MenuItem, MenuSeparator, MenuGroup (an instance takes the name of its main component).",
+    "2026-11-04, reported by the user after the gate (\"il fait 24px de large quand on l'importe\"): every item filled a panel that hugged them, so the menu collapsed to its padding (32 px). Fixed in place: the six Menu variants are 240 px wide (fixed, resizable on the instance), the Panel and the Items slot fill them. Parity rerun: hashes unchanged; 288 extra checks, the 18 new ones check that the items fill a panel of at least 200 px."
   ],
   "updatedOn": "2026-11-04"
 }

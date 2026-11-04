@@ -62,6 +62,10 @@ for (const b of ['base', 'brick', 'orchid'])
       const [edit, dup, arch, del] = panel
         .findOne((n) => n.type === 'SLOT')
         .children.filter((n) => n.name === 'MenuItem');
+      // The items fill the panel of a 240 px menu (it collapsed to 32 px until 2026-11-04).
+      checks++;
+      if (Math.abs(edit.width - (panel.width - 2 * (await res(panel, 'paddingLeft')))) > 0.51 || panel.width < 200)
+        bad.push(`${ctx} item width ${edit.width} in panel ${panel.width}`);
       const line = async (k, n) =>
         `${k}=${[await paint(n), await paint(n.findChild((x) => x.name === 'Label')), num(n.height, 1), '', ''].join(',')}`;
       const L = [

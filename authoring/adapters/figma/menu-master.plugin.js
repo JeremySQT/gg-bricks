@@ -1,7 +1,8 @@
 // Menu master builder (use_figma body), 2026-11-03.
 // 2026-11-04 (user review of the Figma parity): the boolean Show trigger of Menu, off by default, shows its Trigger slot;
 // the public children are named Menu/Item, Menu/Separator and Menu/Group, so that the Assets panel groups them under
-// Menu (renamed in place; user decision at the gate, 2026-11-04). Their instance layers keep the code names.
+// Menu (renamed in place; user decision at the gate, 2026-11-04). Their instance layers keep the code names. The menu is
+// 240 px wide by default and resizable (it collapsed to 32 px, reported by the user on 2026-11-04; fixed in place).
 // On the Overlays library page (407:119), section Menu: MenuItem (Intent neutral, danger × State default, hover,
 // disabled; 6 variants), MenuSeparator, MenuGroup (Indent yes, no) and Menu (Side × Align, 6 variants).
 // MenuItem: a horizontal auto layout 240 wide, min height size/control/sm, padding space/control/padding-inline/sm ×
@@ -308,9 +309,14 @@ for (const side of ['bottom', 'top'])
     it('Archive', null, false, 'neutral', 'disabled');
     add(sep.createInstance());
     it('Delete', TRASH, false, 'danger');
-    s.counterAxisSizingMode = 'FIXED';
-    s.resize(220, s.height);
-    s.counterAxisSizingMode = 'AUTO';
+    // The items fill the panel, so the panel cannot hug them (a hugging frame whose children all fill collapses to
+    // its padding: the Menu was 32 px wide until the user reported it, 2026-11-04). The menu is 240 px wide by default,
+    // resizable on the instance; the Panel and the Items slot fill it.
+    c.counterAxisSizingMode = 'FIXED';
+    c.resize(240, c.height);
+    c.primaryAxisSizingMode = 'AUTO';
+    s.parent.layoutSizingHorizontal = 'FILL';
+    s.layoutSizingHorizontal = 'FILL';
     menus.push(c);
   }
 const menuSet = figma.combineAsVariants(menus, section);

@@ -139,9 +139,9 @@
           "reports/components/menu/figma/ledger.json"
         ],
         "sha256": {
-          "foundations/components/overlays/menu/figma-spec.md": "85f6e82e236e8c78358e0410a522be81989efcb0ca6ae1c066219bb7b19094fe",
+          "foundations/components/overlays/menu/figma-spec.md": "4de9f02a60cc002021ec5b4b7018799714d951369de9b77f19fdda8231b3e3b5",
           "reports/components/menu/figma/parity.json": "e82c1678e9e9a7312c26f81034bd3e01bd301d016c3426bb450a92f546899ec0",
-          "reports/components/menu/figma/ledger.json": "265c074199937e5c8cf6cd8d1105d5e4f544698b1d9de2ed85fcb4e3a60827e9"
+          "reports/components/menu/figma/ledger.json": "15b1dd815cfe1621465d5848f2b2ff2f7c2215ee76bbdc4087ffd552357bc100"
         },
         "figma": {
           "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
@@ -150,7 +150,7 @@
           "children": ["437:343 Menu/Item", "437:344 Menu/Separator", "437:401 Menu/Group"]
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB, after the gate: \"Attention, tu as l'air d'avoir intégré un bug dans le composant figma du menu. Il fait 24px de large quand on l'importe.\"): the menu collapsed because its items filled a hugging panel; the six variants are now 240 px wide and resizable, the panel and the items fill them. Colors, heights, placements and the parity hashes are unchanged; a width check was added. To be shown to the user with the fix."
     },
     "documentation": null,
     "delivery": null
@@ -216,6 +216,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "documentation/components/menu.md"
+    },
+    {
+      "name": "Figma: Menu width fixed (240 px, resizable; it collapsed to 32 px), parity rerun: 60 records, 0 failures; 288 extra checks",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/menu/figma/parity.json"
     }
   ],
   "decisionsTaken": [

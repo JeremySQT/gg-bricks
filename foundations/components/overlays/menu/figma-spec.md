@@ -6,7 +6,7 @@
 - Masters: **Menu** ([`437:795`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=437-795)), 6 variants; **Menu/Item** (`437:343`, the code's MenuItem), 6 variants; **Menu/Separator** (`437:344`, MenuSeparator); **Menu/Group** (`437:401`, MenuGroup), 2 variants. Built by `authoring/adapters/figma/menu-master.plugin.js`.
 - Specification frame: **Menu — Specification** ([`463:533`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=463-533)); built by `menu-spec.plugin.js` on `spec-lib.plugin.js`.
 - Reproduces: contract `foundations/components/overlays/menu/contract.json` (approved 2026-11-03 with the group alignment amendment) and the implementation approved on 2026-11-03 (`packages/svelte/src/components/menu`).
-- Node IDs: `reports/components/menu/figma/ledger.json`. Parity: `reports/components/menu/figma/parity.json` (60 records, 0 failures) plus 270 extra checks. Screenshots: `master-set.png`, `specification.png`, `blueprint-anatomy.png`.
+- Node IDs: `reports/components/menu/figma/ledger.json`. Parity: `reports/components/menu/figma/parity.json` (60 records, 0 failures) plus 288 extra checks. Screenshots: `master-set.png`, `specification.png`, `blueprint-anatomy.png`.
 - The library is not published (publication needs explicit authorization).
 
 ## Mapping from the contract
@@ -25,6 +25,8 @@
 | `open`, keyboard, typeahead, focus, motion, layer | Not drawn: behaviors of the code                                                                                          |
 
 ## Construction notes
+
+- **Width** (fixed on 2026-11-04 after a user report): the menu is 240 px wide by default and resizable on the instance; the Panel and the Items slot fill it, and the items fill the panel. Figma cannot make filling children as wide as the widest of them (a hugging panel whose items all fill collapses to its padding), so the code's rule, as wide as the widest item up to size.overlay.panel, becomes a width the designer sets.
 
 - **The trigger is optional** (user review of the Figma parity, 2026-11-04): the boolean **Show trigger**, off by default, shows the Trigger slot. A designer builds the interface first and places the menu over a control already in it; switched on, the slot shows the placement against one trigger. The placement checks of the parity switch it on.
 - **Menu/Item, Menu/Separator and Menu/Group** are published components: they are the public children of the contract (`item`, `separator`, `group`, MenuItem, MenuSeparator and MenuGroup in the code) that a designer drops into the Items slot. Their names group them under Menu in the Assets panel (user decision at the Figma parity gate, 2026-11-04; renamed in place, IDs unchanged). Their instance layers keep the code names (MenuItem…), since the specification helpers split layer paths on `/`.
