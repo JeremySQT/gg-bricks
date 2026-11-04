@@ -3,7 +3,7 @@
   "componentId": "spinner",
   "family": "feedback",
   "wave": 3,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Show that something is loading when the duration is unknown and the place is small.",
     "useCases": [
@@ -94,11 +94,11 @@
           "foundations/tokens/base/components/spinner.tokens.json"
         ],
         "sha256": {
-          "foundations/components/feedback/spinner/contract.json": "64f551bc4bb36ec76a036df69faf42e99808ed68a27eedfbe98de5133553b9b0",
-          "foundations/tokens/base/components/spinner.tokens.json": "914aa9d84502083bed8b8dba190748155c902e366f464faa5bea6066d9c238df"
+          "foundations/components/feedback/spinner/contract.json": "6196ac23af3a2fd15cc93d7922ca120ba79f4fd1959ad8f595d2d6e38e4dd15a",
+          "foundations/tokens/base/components/spinner.tokens.json": "4a4ef5ef3b175ab4af7678d3bd8ee1f9b3275c19c171e7759bd87325542b94d9"
         }
       },
-      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB, at the wave 3 Figma parity gate, on the stroke wording: \"Corrige pour que ce soit le plus propre possible\", and on the token description: \"Oui tu peux\"): the rule states the 24-unit drawing (ring of radius 9, stroke 2.5 units, 2.5/24 of size) instead of \"1/9 of size\", which did not match 2.5/24; the description of the spinner tokens says that Button and IconButton compose the Spinner; the comment of Spinner.svelte says 2.5/24. Wording only: values, drawing and rendering unchanged. Digests re-recorded.",
       "note": "The turn speed (700 ms) is to be judged on the real rendering at the implementation review."
     },
     "implementation": {
@@ -113,7 +113,7 @@
           "examples/spinner/App.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/components/spinner/Spinner.svelte": "6734ba70f07a719e7fb9d55085d6a606d9effcf56f718fec5f932eb98f391304",
+          "packages/svelte/src/components/spinner/Spinner.svelte": "cf6677d4c000ce1717fb1a958f51139425ad7b810f978394635bf1f5ae008bd5",
           "packages/svelte/src/components/spinner/contract.generated.ts": "a675633c2966d25769c407e98b039a39101c749a5ec50cc436d3d0258bcfd615",
           "packages/svelte/src/components/spinner/spinner.css": "70a90588d9ef096015d6e10eb141359807e08f3c34d2a097f045db148ff6a3bd",
           "packages/svelte/src/components/spinner/tokens.generated.css": "a43ec067bae715004735628b4181470f1481b80db87069cce57a9bdc126b4571",
@@ -121,10 +121,30 @@
           "examples/spinner/App.svelte": "019b7a53b662fc82a8529aa9c08f5f27c6bf713a33ca58320cc4464559173c43"
         }
       },
-      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB, at the wave 3 Figma parity gate, on the stroke wording: \"Corrige pour que ce soit le plus propre possible\", and on the token description: \"Oui tu peux\"): the rule states the 24-unit drawing (ring of radius 9, stroke 2.5 units, 2.5/24 of size) instead of \"1/9 of size\", which did not match 2.5/24; the description of the spinner tokens says that Button and IconButton compose the Spinner; the comment of Spinner.svelte says 2.5/24. Wording only: values, drawing and rendering unchanged. Digests re-recorded.",
       "note": null
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 408:15 and specification frame 412:2 of the spinner component, parity report (864 records, 0 failures, 144 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/feedback/spinner/figma-spec.md",
+          "reports/components/spinner/figma/parity.json",
+          "reports/components/spinner/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/feedback/spinner/figma-spec.md": "716f831f4c7b7ba54d6f95d72f41dd0edb6642a03201ef1a37a5cbd62b41cb8d",
+          "reports/components/spinner/figma/parity.json": "ac2aa7bbfd28ca6fbc7cc4f431917d9e405411c708bd185f8545ae832f501d7b",
+          "reports/components/spinner/figma/ledger.json": "099da1cf5d1fce62faf5873afbf20fdcf5897df7ffa65d3afdd07b273f57e850"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "408:15",
+          "specificationFrame": "412:2"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -171,6 +191,12 @@
       "result": "passed",
       "date": "2026-11-03",
       "evidence": "reports/components/spinner/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/spinner/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -182,7 +208,7 @@
     "Open question 5 accepted for the implementation review (user, 2026-11-03: \"Ok, à juger dans l'implémentation\"): component.spinner.duration = 700 ms; the speed is judged on the real rendering at the implementation gate, and Button and IconButton adopt the Spinner after the wave."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped): review the master, the specification page and parity.json; then documentation (ggb-docs).",
+  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
   "implementationNotes": [
     "A labelled spinner is a role status named by aria-label (a status takes no name from its content in Chromium) with the same text visually hidden inside it as the announced content. Whether a status inserted already filled is announced varies between screen readers: the application may keep a status region on the page and fill it instead."
   ]

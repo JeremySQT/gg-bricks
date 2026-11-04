@@ -3,7 +3,7 @@
   "componentId": "menu",
   "family": "overlays",
   "wave": 3,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Offer a short list of actions or links in a panel opened from a trigger.",
     "useCases": [
@@ -129,7 +129,28 @@
       "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 437:795 and specification frame 463:533 of the menu component, parity report (60 records, 0 failures, 0 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/overlays/menu/figma-spec.md",
+          "reports/components/menu/figma/parity.json",
+          "reports/components/menu/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/overlays/menu/figma-spec.md": "85f6e82e236e8c78358e0410a522be81989efcb0ca6ae1c066219bb7b19094fe",
+          "reports/components/menu/figma/parity.json": "e82c1678e9e9a7312c26f81034bd3e01bd301d016c3426bb450a92f546899ec0",
+          "reports/components/menu/figma/ledger.json": "265c074199937e5c8cf6cd8d1105d5e4f544698b1d9de2ed85fcb4e3a60827e9"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "437:795",
+          "specificationFrame": "463:533",
+          "children": ["437:343 Menu/Item", "437:344 Menu/Separator", "437:401 Menu/Group"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -182,6 +203,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/menu/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/menu/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -198,7 +225,7 @@
     "Contract fact added during implementation: group leadingSize and leadingGap roles (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
+  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
   "implementationNotes": [
     "Exports Menu, MenuItem, MenuSeparator and MenuGroup.",
     "The highlighted item is the focused item (roving focus through focus(), not aria-activedescendant); opening by pointer focuses the menu itself, so no item is highlighted until an arrow key or the pointer.",

@@ -3,7 +3,7 @@
   "componentId": "tooltip",
   "family": "overlays",
   "wave": 3,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Show a short text about a control when the user points at it or focuses it.",
     "useCases": [
@@ -124,7 +124,27 @@
       "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 430:103 and specification frame 462:95 of the tooltip component, parity report (32 records, 0 failures, 4 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/overlays/tooltip/figma-spec.md",
+          "reports/components/tooltip/figma/parity.json",
+          "reports/components/tooltip/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/overlays/tooltip/figma-spec.md": "cfe2a4f0b4e7ed0d72be6a0a16e748bc23df59efc7366c136e9560f3a2132383",
+          "reports/components/tooltip/figma/parity.json": "8dadee289e98781ced79d1790b5f829844deec1dc52ee010cd619de79699b62c",
+          "reports/components/tooltip/figma/ledger.json": "542ea034002527c79e1647d16fe34bdb66449bff4e5e81d594450947fa7e500e"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "430:103",
+          "specificationFrame": "462:95"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -177,6 +197,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/tooltip/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/tooltip/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -188,7 +214,7 @@
     "Entry over motion.duration.fast with motion.distance.sm."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
+  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
   "implementationNotes": [
     "The trigger is the first element of the children snippet, wrapped in a display: contents span that listens to pointer and focus events; the tooltip is a manual popover placed by lib/overlay floating.",
     "One tooltip at a time and the skip delay (300 ms after a tooltip closed, the next opens at once) are module-level state.",

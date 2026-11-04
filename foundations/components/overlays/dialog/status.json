@@ -3,7 +3,7 @@
   "componentId": "dialog",
   "family": "overlays",
   "wave": 3,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Ask the user to complete or abandon a short task or decision before going back to the page.",
     "useCases": [
@@ -126,7 +126,27 @@
       "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
       "note": null
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 433:525 and specification frame 435:2 of the dialog component, parity report (96 records, 0 failures, 0 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/overlays/dialog/figma-spec.md",
+          "reports/components/dialog/figma/parity.json",
+          "reports/components/dialog/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/overlays/dialog/figma-spec.md": "6129de10035c38bcfd1ab91c73ce4e952fe405e119dc79ff3a645c8679fbcd15",
+          "reports/components/dialog/figma/parity.json": "65e82fe7649743bc85661a8c724f9599a65bb011ac6fee10117cd5dab2848507",
+          "reports/components/dialog/figma/ledger.json": "37c0f244ba7f4a7f34f62ec5f50298939ccdb8b45b612b057ee281d7f3904d21"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "433:525",
+          "specificationFrame": "435:2"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -179,6 +199,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/dialog/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/dialog/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -194,7 +220,7 @@
     "Contract fact added during implementation: focusWidth and focusOffset roles for the body room (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
+  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
   "implementationNotes": [
     "lib/overlay modal gained a closeRequest option (closedby none and a cancelled cancel event) for a dialog that is not dismissible.",
     "The page does not scroll while a dialog is open (:root:has(dialog.ggb-dialog[open]) { overflow: hidden }).",

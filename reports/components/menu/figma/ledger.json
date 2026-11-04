@@ -74,6 +74,7 @@
   },
   "parts": {
     "MenuItem": {
+      "name": "Menu/Item",
       "id": "437:343",
       "properties": [
         "Intent (neutral, danger)",
@@ -86,9 +87,11 @@
       "variants": "Intent=neutral, State=default 437:274; Intent=neutral, State=hover 437:288; Intent=neutral, State=disabled 437:299; Intent=danger, State=default 437:310; Intent=danger, State=hover 437:321; Intent=danger, State=disabled 437:332"
     },
     "MenuSeparator": {
+      "name": "Menu/Separator",
       "id": "437:344"
     },
     "MenuGroup": {
+      "name": "Menu/Group",
       "id": "437:401",
       "properties": [
         "Indent (yes, no)",
@@ -113,7 +116,8 @@
   ],
   "notes": [
     "computed.json covers four representative contexts (60 records); 270 extra checks in the 18 contexts passed: a plain item as tall as the code (line + 2 × padding-block, at least size/control/sm), the offset and alignment of the six placements, the group heading aligned with the labels (Indent yes and no).",
-    "2026-11-04, user review of the Figma parity: the boolean Show trigger (off by default) shows the Trigger slot. The placement checks switch it on. Parity rerun: 60 records, 0 failures; 270 extra checks."
+    "2026-11-04, user review of the Figma parity: the boolean Show trigger (off by default) shows the Trigger slot. The placement checks switch it on. Parity rerun: 60 records, 0 failures; 270 extra checks.",
+    "2026-11-04, user decision at the Figma parity gate: the public children are named Menu/Item, Menu/Separator and Menu/Group (Assets grouping under Menu); renamed in place, IDs unchanged; 49 instance layers renamed back to MenuItem, MenuSeparator, MenuGroup (an instance takes the name of its main component)."
   ],
   "updatedOn": "2026-11-04"
 }

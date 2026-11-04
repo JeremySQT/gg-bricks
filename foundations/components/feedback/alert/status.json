@@ -3,7 +3,7 @@
   "componentId": "alert",
   "family": "feedback",
   "wave": 3,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Give a durable message about the page, a section or a task, in the flow of the page.",
     "useCases": [
@@ -124,7 +124,27 @@
       "provenance": "User at the grouped wave 3 implementation review (round 4) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793725323-4aae): \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\". Amendment of 2026-11-04 requested by the user at the wave 3 Figma parity review: \"Alert : les paddings bottom est un peu serré quand on ajoute les actions (voir screenshot) possible de l'augmenter un peu ? 16 me semble un bon compromis pour le moment.\" The block-end padding of an alert with actions is actionsPaddingEnd (space.content.lg: 12, 16, 24 px by density).",
       "note": null
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 422:715 and specification frame 460:1133 of the alert component, parity report (990 records, 0 failures, 0 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/feedback/alert/figma-spec.md",
+          "reports/components/alert/figma/parity.json",
+          "reports/components/alert/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/feedback/alert/figma-spec.md": "607fc5b124030f6fbfb2d3af7d2589c27dae969f48585f6b1780b3fd3851b74d",
+          "reports/components/alert/figma/parity.json": "0eeb5a4b70340d6ec698474f3b96a2837582d73eea64f243cf726ca86de30197",
+          "reports/components/alert/figma/ledger.json": "218ad3e50f27076d88f1b4b3de89dd02008ce9527294004e1ee179760fa089d6"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "422:715",
+          "specificationFrame": "460:1133"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -183,6 +203,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/alert/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/alert/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -196,7 +222,7 @@
     "Accent buttons follow the alert intent by pointing the accent action tokens at the intent family in the subtree (no Button change); links take tone inherit through the context ggb:link-tone (2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
+  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
   "implementationNotes": [
     "Imports IconButton from ../icon-button (declared dependency; build:svelte now checks every import against the status dependencies).",
     "Title and content are div elements, not p: an application's unlayered element styles (paragraph margins and colors) would otherwise win over the component's cascade layer.",

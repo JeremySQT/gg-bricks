@@ -1,7 +1,7 @@
 {
   "component": {
     "spinner": {
-      "$description": "Spinner tokens. Button and IconButton draw the same ring; a later Modify makes them compose the Spinner instead of using these tokens.",
+      "$description": "Spinner tokens. The Spinner is also the loading indicator of Button and IconButton, which compose it and pass their size and content color.",
       "duration": {
         "$type": "duration",
         "$value": "{primitive.duration.700}",

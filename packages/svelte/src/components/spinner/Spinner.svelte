@@ -24,7 +24,7 @@
   aria-label={name || undefined}
   aria-hidden={name ? undefined : 'true'}
 >
-  <!-- The drawing of the Button loading indicator: a ring of radius 9 in a 24-unit box, stroke 2.5 (1/9 of the size). -->
+  <!-- The drawing of the Button loading indicator: a ring of radius 9 in a 24-unit box, stroke 2.5 (2.5/24 of the size). -->
   <svg class="ggb-spinner__svg" viewBox="0 0 24 24" fill="none" focusable="false" aria-hidden="true">
     <circle class="ggb-spinner__track" cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" />
     <path

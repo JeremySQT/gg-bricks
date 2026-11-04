@@ -3,7 +3,7 @@
   "componentId": "button-group",
   "family": "actions",
   "wave": 3,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Place related actions together with one size and a consistent spacing, and reflow them when space runs out.",
     "useCases": [
@@ -119,7 +119,27 @@
       "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
       "note": null
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 419:2913 and specification frame 420:2 of the button-group component, parity report (216 records, 0 failures, 0 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/actions/button-group/figma-spec.md",
+          "reports/components/button-group/figma/parity.json",
+          "reports/components/button-group/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/actions/button-group/figma-spec.md": "4fdd048a53f5b8b792eafb4c0a4ea2b7a98d762397619460895930cb8c3fc7d3",
+          "reports/components/button-group/figma/parity.json": "ec8c698f458feb280fcbcd21c7b81ef48720f2a17237f778074aabe7e929baa7",
+          "reports/components/button-group/figma/ledger.json": "cbe94578c816a84cd77073c0102f19a26bc6d2840c3bea27da152ebdfabb8def"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "419:2913",
+          "specificationFrame": "420:2"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -172,6 +192,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/button-group/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/button-group/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -185,7 +211,7 @@
     "Vertical always stretched; no wrap: a line that does not fit stacks (user, 2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
+  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
   "implementationNotes": [
     "Button and IconButton read the group size through the context key ggb:button-group (a string; each folder declares the shape again), so an item's own size is ignored inside a group.",
     "A host (Alert) may ask for a default size through the context key ggb:button-group-host; an explicit size on the group wins.",

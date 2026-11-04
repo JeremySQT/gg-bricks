@@ -3,7 +3,7 @@
   "componentId": "progress",
   "family": "feedback",
   "wave": 3,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Show how far a task of known size has gone, or that a longer task is under way.",
     "useCases": [
@@ -123,7 +123,27 @@
       "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
       "note": null
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 413:147 and specification frame 458:233 of the progress component, parity report (2376 records, 0 failures, 216 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/feedback/progress/figma-spec.md",
+          "reports/components/progress/figma/parity.json",
+          "reports/components/progress/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/feedback/progress/figma-spec.md": "070a0d95c6329173d44d0b136d37ac546932bb48d021e118027d07d0eedb6354",
+          "reports/components/progress/figma/parity.json": "0691ab2a10fd51142bf7235464a9bdf02013f004c8fd7fa70c52da0b560c427a",
+          "reports/components/progress/figma/ledger.json": "eda93390fe36b62e2a88e93caa5f26621d0662d36d412dbbd54f236dee6a6fbb"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "413:147",
+          "specificationFrame": "458:233"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -176,6 +196,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/progress/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/progress/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -187,7 +213,7 @@
     "Corners: component token component.progress.radius, so that a brand can draw rectangular bars (user, 2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
+  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
   "implementationNotes": [
     "Bits UI Progress.Root (2.19.3) does not render the id it receives: the component uses its child snippet to place the id on the progress bar itself.",
     "The label stays in the DOM, visually hidden, when showLabel is false, and names the bar through aria-labelledby."

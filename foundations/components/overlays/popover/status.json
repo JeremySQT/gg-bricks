@@ -3,7 +3,7 @@
   "componentId": "popover",
   "family": "overlays",
   "wave": 3,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Show free, interactive content in a non-modal panel anchored to a trigger.",
     "useCases": ["Filters next to a list.", "A short form (rename, share).", "Details of an item."],
@@ -112,7 +112,27 @@
       "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 430:239 and specification frame 462:855 of the popover component, parity report (28 records, 0 failures, 0 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/overlays/popover/figma-spec.md",
+          "reports/components/popover/figma/parity.json",
+          "reports/components/popover/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/overlays/popover/figma-spec.md": "2501c42d5a9c8df53a4eee74902a243a1161d239ba65b1d8914bf47154b8441e",
+          "reports/components/popover/figma/parity.json": "d0e06dd8b2dd73dd67f4b3dc0e584d02483d315e8ac5a70bfb0be6a8d70831b1",
+          "reports/components/popover/figma/ledger.json": "9424d9e1e21d44a4ad2f500f39d97c26d9931741c3674d405c38c29356e128b8"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "430:239",
+          "specificationFrame": "462:855"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -165,6 +185,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/popover/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/popover/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -175,7 +201,7 @@
     "No built-in close button: content adds one when it needs it (Escape and a press outside always close)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
+  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
   "implementationNotes": [
     "The trigger is rendered by a snippet that spreads popovertarget and the popup attributes on a Button or IconButton: the browser toggles the auto popover, which spares the trigger from light dismiss (no close-then-reopen on the same press) and restores focus to it on Escape.",
     "On opening, the panel's max block size is the larger room above or below the trigger, so that it flips and scrolls instead of overflowing the viewport."

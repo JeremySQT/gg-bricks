@@ -3,7 +3,7 @@
   "componentId": "skeleton",
   "family": "feedback",
   "wave": 3,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Stand in for content that is loading with its shape and size, so that the layout does not move when it arrives.",
     "useCases": ["Lines of text in a card or a list.", "An image or chart block.", "An avatar circle."],
@@ -111,7 +111,28 @@
       "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
       "note": null
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 417:74 and specification frame 458:860 of the skeleton component, parity report (558 records, 0 failures, 162 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/feedback/skeleton/figma-spec.md",
+          "reports/components/skeleton/figma/parity.json",
+          "reports/components/skeleton/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/feedback/skeleton/figma-spec.md": "7ebc335365b283a5f3eabaa74803757c3cd917b3162c77903db9173f23f11e98",
+          "reports/components/skeleton/figma/parity.json": "995ebe692012f92cc8de280c7a1962ea36e3bd28b517dad4ca2003f913d87574",
+          "reports/components/skeleton/figma/ledger.json": "fe0cda5d206af549bd3a86facfed765633f90faf3d3710522826d1af308a8a63"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "417:74",
+          "specificationFrame": "458:860",
+          "parts": ["453:1264"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -164,6 +185,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/skeleton/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/skeleton/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -173,7 +200,7 @@
     "Hidden from assistive technology; the busy state belongs to the loading region (integration)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 3 Figma parity gate (grouped), second round after the user review of 2026-11-04: review the changes; then documentation (ggb-docs).",
+  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
   "implementationNotes": [
     "Pulses stay in phase across the page: each pulse animation's startTime is set to 0 (the document timeline origin) when the skeleton mounts.",
     "Text lines use the lh unit for the line box and a bar of 1em: the skeleton paragraph has the height of the real paragraph (checked against real text in the browser test)."

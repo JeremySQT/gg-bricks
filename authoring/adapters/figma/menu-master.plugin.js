@@ -1,5 +1,7 @@
 // Menu master builder (use_figma body), 2026-11-03.
-// 2026-11-04 (user review of the Figma parity): the boolean Show trigger of Menu, off by default, shows its Trigger slot.
+// 2026-11-04 (user review of the Figma parity): the boolean Show trigger of Menu, off by default, shows its Trigger slot;
+// the public children are named Menu/Item, Menu/Separator and Menu/Group, so that the Assets panel groups them under
+// Menu (renamed in place; user decision at the gate, 2026-11-04). Their instance layers keep the code names.
 // On the Overlays library page (407:119), section Menu: MenuItem (Intent neutral, danger × State default, hover,
 // disabled; 6 variants), MenuSeparator, MenuGroup (Indent yes, no) and Menu (Side × Align, 6 variants).
 // MenuItem: a horizontal auto layout 240 wide, min height size/control/sm, padding space/control/padding-inline/sm ×
@@ -123,7 +125,7 @@ for (const intent of ['neutral', 'danger'])
     items.push(c);
   }
 const itemSet = figma.combineAsVariants(items, section);
-itemSet.name = 'MenuItem';
+itemSet.name = 'Menu/Item';
 const pLabel = itemSet.addComponentProperty('Label', 'TEXT', 'Edit');
 const pLead = itemSet.addComponentProperty('Show leading', 'BOOLEAN', true);
 const pTrail = itemSet.addComponentProperty('Show trailing', 'BOOLEAN', false);
@@ -148,7 +150,7 @@ itemSet.x = 80;
 itemSet.y = 80;
 // MenuSeparator.
 const sep = figma.createComponent();
-sep.name = 'MenuSeparator';
+sep.name = 'Menu/Separator';
 section.appendChild(sep);
 sep.layoutMode = 'VERTICAL';
 sep.resize(240, 9);
@@ -223,7 +225,7 @@ for (const ind of ['yes', 'no']) {
   groups.push(c);
 }
 const groupSet = figma.combineAsVariants(groups, section);
-groupSet.name = 'MenuGroup';
+groupSet.name = 'Menu/Group';
 const gSlots = mergeSlots(groupSet);
 groupSet.editComponentProperty(gSlots.Items, {
   name: 'Items',
@@ -366,4 +368,8 @@ section.resizeWithoutConstraints(
   Math.max(menuSet.x + menuSet.width, groupSet.x + groupSet.width) + 80,
   Math.max(menuSet.y + menuSet.height, groupSet.y + groupSet.height) + 80
 );
+// The instance layers keep the code names (an instance takes the name of its main component, and the specification
+// helpers split layer paths on '/').
+const LAYER = { 'Menu/Item': 'MenuItem', 'Menu/Separator': 'MenuSeparator', 'Menu/Group': 'MenuGroup' };
+for (const i of section.findAllWithCriteria({ types: ['INSTANCE'] })) if (LAYER[i.name]) i.name = LAYER[i.name];
 return { section: section.id, item: itemSet.id, separator: sep.id, group: groupSet.id, menu: menuSet.id };
