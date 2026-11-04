@@ -239,5 +239,14 @@
         "reason": "Accepted at the wave 2 contract gate (2026-10-26, \"4 ok\"), as for the Button outline border (2026-09-26): color.field.default.border (and the readonly border that now aliases it) reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected."
       }
     ]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-04",
+      "change": "Wave 3 documentation: documentation/index.json gains the ten wave 3 entries, and the existing entries no longer mark Menu, ButtonGroup, Tooltip, Spinner and Alert as planned. Cross-references only; the guidance is unchanged. To be re-presented with the wave 3 documentation review.",
+      "sha256": {
+        "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
+      }
+    }
+  ]
 }

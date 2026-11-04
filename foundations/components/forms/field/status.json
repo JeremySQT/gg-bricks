@@ -251,5 +251,15 @@
     "Figma on 2026-10-27: component set 295:77 (3 variants) and specification 307:897 on page forms/field; see foundations/components/forms/field/figma-spec.md.",
     "2026-10-28: contract amended (CheckboxGroup); the implementation follows with the CheckboxGroup implementation.",
     "2026-10-28 (CheckboxGroup): accepts checkbox-group; the group registers as a choice control (named by the Field label, described by its description and message). SSR fixture FieldWith gains a checkbox-group control."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-04",
+      "change": "Wave 3 documentation: documentation/index.json gains the ten wave 3 entries, and the existing entries no longer mark Menu, ButtonGroup, Tooltip, Spinner and Alert as planned; the page's When not to use names them as alternatives (Alert is an export now). Cross-references only; the guidance is unchanged. To be re-presented with the wave 3 documentation review.",
+      "sha256": {
+        "documentation/components/field.md": "b3d185331a07c968792b516da6ecc4b76fadb202e09f1a5df26ccb4aced21f1c",
+        "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
+      }
+    }
   ]
 }

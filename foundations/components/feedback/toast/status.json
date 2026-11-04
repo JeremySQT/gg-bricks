@@ -77,8 +77,9 @@
       "browser": ["tests/browser/toast.spec.ts"],
       "evidence": "reports/components/toast/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/toast.md",
+    "agentDocs": "documentation/index.json (entry toast); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/toast.svelte"
   },
   "approvals": {
     "contract": {
@@ -199,6 +200,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/toast/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/toast.md"
     }
   ],
   "decisionsTaken": [
@@ -211,10 +218,11 @@
     "Open question 4 resolved (user, 2026-11-03: \"Oui\"): a toast with an action never dismisses itself, and its action also exists elsewhere in the interface.",
     "Toast leaving is the one JavaScript-driven transition of the wave: overlay motion stays CSS only (decisions.md), but a toast is removed from the DOM by the application, not hidden.",
     "Toast round 2 (user, 2026-11-03): appearance neutral|intense, automatic layout, 8 s with an action, danger persistent by default, closable; intense accent actions take the intent family.",
-    "Toast actions are secondary only (user, 2026-11-03): ghost or outline, neutral or danger, never accent; a snippet cannot enforce it, the rule is documented (decisions.md, snippet slots)."
+    "Toast actions are secondary only (user, 2026-11-03): ghost or outline, neutral or danger, never accent; a snippet cannot enforce it, the rule is documented (decisions.md, snippet slots).",
+    "Round 2 of the implementation review (2026-11-03) supersedes the entries above that say a toast with an action never dismisses itself: it leaves after 8 s (time to undo), a danger toast stays until dismissed, another leaves after 5 s, a set duration wins (contract, code and tests)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
+  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
   "implementationNotes": [
     "Exports ToastRegion (the region, root of the contract) and Toast (the item child).",
     "The region is a div with role region (not a section: an application's section styles moved it) shown as a manual popover in the top layer; it raises itself again whenever another overlay enters the top layer after it (a capture listener on toggle events).",

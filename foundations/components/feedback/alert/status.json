@@ -84,8 +84,9 @@
       "browser": ["tests/browser/alert.spec.ts"],
       "evidence": "reports/components/alert/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/alert.md",
+    "agentDocs": "documentation/index.json (entry alert); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/alert.svelte"
   },
   "approvals": {
     "contract": {
@@ -209,6 +210,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/alert/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/alert.md"
     }
   ],
   "decisionsTaken": [
@@ -222,7 +229,7 @@
     "Accent buttons follow the alert intent by pointing the accent action tokens at the intent family in the subtree (no Button change); links take tone inherit through the context ggb:link-tone (2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
+  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
   "implementationNotes": [
     "Imports IconButton from ../icon-button (declared dependency; build:svelte now checks every import against the status dependencies).",
     "Title and content are div elements, not p: an application's unlayered element styles (paragraph margins and colors) would otherwise win over the component's cascade layer.",

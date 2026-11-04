@@ -82,8 +82,9 @@
       "browser": ["tests/browser/spinner.spec.ts"],
       "evidence": "reports/components/spinner/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/spinner.md",
+    "agentDocs": "documentation/index.json (entry spinner); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/spinner.svelte"
   },
   "approvals": {
     "contract": {
@@ -197,6 +198,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/spinner/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/spinner.md"
     }
   ],
   "decisionsTaken": [
@@ -209,7 +216,7 @@
     "Wave 3 implementation review (user, 2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"c'est bien ce composant qu'on va utiliser dans les boutons\"): Button and IconButton compose the Spinner within wave 3, not after it (their loading indicator is a Spinner of their size; the Figma masters swap it too). Supersedes the timing of the previous entry."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
+  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
   "implementationNotes": [
     "A labelled spinner is a role status named by aria-label (a status takes no name from its content in Chromium) with the same text visually hidden inside it as the announced content. Whether a status inserted already filled is announced varies between screen readers: the application may keep a status region on the page and fill it instead."
   ]

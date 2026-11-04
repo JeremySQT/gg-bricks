@@ -81,8 +81,9 @@
       "browser": ["tests/browser/button-group.spec.ts"],
       "evidence": "reports/components/button-group/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/button-group.md",
+    "agentDocs": "documentation/index.json (entry button-group); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/button-group.svelte"
   },
   "approvals": {
     "contract": {
@@ -198,6 +199,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/button-group/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/button-group.md"
     }
   ],
   "decisionsTaken": [
@@ -211,7 +218,7 @@
     "Vertical always stretched; no wrap: a line that does not fit stacks (user, 2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
+  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
   "implementationNotes": [
     "Button and IconButton read the group size through the context key ggb:button-group (a string; each folder declares the shape again), so an item's own size is ignored inside a group.",
     "A host (Alert) may ask for a default size through the context key ggb:button-group-host; an explicit size on the group wins.",

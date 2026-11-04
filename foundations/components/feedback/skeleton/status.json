@@ -73,8 +73,9 @@
       "browser": ["tests/browser/skeleton.spec.ts"],
       "evidence": "reports/components/skeleton/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/skeleton.md",
+    "agentDocs": "documentation/index.json (entry skeleton); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/skeleton.svelte"
   },
   "approvals": {
     "contract": {
@@ -191,6 +192,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/skeleton/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/skeleton.md"
     }
   ],
   "decisionsTaken": [
@@ -200,7 +207,7 @@
     "Hidden from assistive technology; the busy state belongs to the loading region (integration)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
+  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
   "implementationNotes": [
     "Pulses stay in phase across the page: each pulse animation's startTime is set to 0 (the document timeline origin) when the skeleton mounts.",
     "Text lines use the lh unit for the line box and a bar of 1em: the skeleton paragraph has the height of the real paragraph (checked against real text in the browser test)."

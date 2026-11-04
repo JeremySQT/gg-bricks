@@ -286,6 +286,196 @@
         "API",
         "Accessibility"
       ]
+    },
+    {
+      "id": "button-group",
+      "import": "ButtonGroup",
+      "from": "@ggbrick/svelte",
+      "purpose": "Places related Buttons and IconButtons together (dialog footer, form actions, alert or card actions) with one size passed to every item, a density-aware gap and items centered on the cross axis; aligned start, center, end or stretched, or vertical at full width; a line that does not fit stacks at full width and is never reordered; a named group with label.",
+      "whenNotToUse": "Controls acting on one object with one tab stop (Toolbar, planned), attached buttons for a single choice (SegmentedControl, planned), overflow actions behind a trigger (Menu next to the group), a single action (Button), a split footer (two groups in a layout).",
+      "documentation": "button-group.md",
+      "contract": "foundations/components/actions/button-group/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "spinner",
+      "import": "Spinner",
+      "from": "@ggbrick/svelte",
+      "purpose": "Shows that something is loading when its duration is unknown and its place is small, as a turning ring in the inherited content color at one of four icon-scale sizes (sm 16 to xl 32 px); decorative by default, a polite status named by its label when one is given; the loading indicator that Button and IconButton compose.",
+      "whenNotToUse": "Busy buttons (the loading prop of Button and IconButton), known or long tasks (Progress, indeterminate when the end is unknown), first loads of a region with a known layout (Skeleton), colored or branded loading animations.",
+      "documentation": "spinner.md",
+      "contract": "foundations/components/feedback/spinner/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "progress",
+      "import": "Progress",
+      "from": "@ggbrick/svelte",
+      "purpose": "Shows how far a task of known size has gone, as a linear bar named by a required label shown above it (showLabel) with an optional percentage (showValue); value and max, an indeterminate state for a task without a known end, accent, success, warning or danger intents and three thicknesses.",
+      "whenNotToUse": "Short waits in a small place (Spinner, or the loading prop of Button and IconButton), first loads of content (Skeleton), static values in a range (meter, planned), labelled steps (stepper, planned), circular progress.",
+      "documentation": "progress.md",
+      "contract": "foundations/components/feedback/progress/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "skeleton",
+      "import": "Skeleton",
+      "from": "@ggbrick/svelte",
+      "purpose": "Stands in for content that is loading with its shape and size, so that the layout does not move: text lines with the height of the body text of a size (lines, the last at 60 %), a block filling its container or a circle as wide as its box, pulsing in phase and hidden from assistive technology.",
+      "whenNotToUse": "Short actions on content already shown (Spinner, or the loading prop of Button and IconButton), known or long tasks (Progress), regions with an unknown layout (Spinner), ready-made card or list skeletons (compose Skeletons), failed loads (Alert).",
+      "documentation": "skeleton.md",
+      "contract": "foundations/components/feedback/skeleton/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "alert",
+      "import": "Alert",
+      "from": "@ggbrick/svelte",
+      "purpose": "Shows a durable message in the flow of the page about the page, a section or a task, colored by intent (neutral, info, success, warning, danger) with its glyph; optional title, content with links, one ButtonGroup of small actions and a dismiss button that follow the intent (danger buttons keep their own); announced only with live, assertively for danger and warning.",
+      "whenNotToUse": "Brief confirmations that leave by themselves (Toast), messages that must be answered (Dialog), an error on one field (Field), a status word on an item (Badge), page-wide banners fixed at the top (a composition in the layout).",
+      "documentation": "alert.md",
+      "contract": "foundations/components/feedback/alert/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "toast",
+      "import": "ToastRegion, Toast",
+      "from": "@ggbrick/svelte",
+      "purpose": "Notifies briefly about something that just happened, in one notifications region above the page (placement, max with a queue): a title, an optional description, one small secondary action and a dismiss button, neutral or intense by intent; leaves after 5 s, 8 s with an action, never by default for danger; countdown paused on hover and focus; the application owns the list and removes a toast on dismiss.",
+      "whenNotToUse": "Durable messages (Alert), messages that must be answered (Dialog), an error on one field (Field), feedback from an open modal dialog (inside the Dialog), rich content such as images or forms (Popover or Dialog), calls to action (the action is a secondary follow-up).",
+      "documentation": "toast.md",
+      "contract": "foundations/components/feedback/toast/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "tooltip",
+      "import": "Tooltip",
+      "from": "@ggbrick/svelte",
+      "purpose": "Shows a short plain text about one focusable Button, IconButton or Link (its name, a keyboard shortcut, a short clarification) on hover after a delay and at once on keyboard focus, in an inverse bubble of the top layer without an arrow; describes the trigger unless it repeats an IconButton's name; side top or bottom, align start, center or end, flips; Escape closes it without moving focus; one at a time; never opens on touch.",
+      "whenNotToUse": "Interactive content or help opened by a press (Popover), information needed to complete a task (text on the page, Field description), explaining a disabled control (visible text next to it), messages after an action (Toast).",
+      "documentation": "tooltip.md",
+      "contract": "foundations/components/overlays/tooltip/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "popover",
+      "import": "Popover",
+      "from": "@ggbrick/svelte",
+      "purpose": "Opens a non-modal panel of free content (filters, a short form, details) anchored to one Button or IconButton rendered by a trigger snippet that spreads popovertarget and the popup attributes; the panel is a dialog named by label in the browser top layer, at most 360 px wide, side bottom or top, align start, center or end, flips; focus moves into the content, and Escape (back to the trigger), a press outside or focus leaving closes it; nests; bindable open.",
+      "whenNotToUse": "Lists of actions (Menu), blocking tasks and confirmations (Dialog), text on hover or focus (Tooltip), one choice in a list (RadioGroup, Select planned, Combobox planned), long forms or wide content (Dialog, Drawer planned).",
+      "documentation": "popover.md",
+      "contract": "foundations/components/overlays/popover/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "dialog",
+      "import": "Dialog",
+      "from": "@ggbrick/svelte",
+      "purpose": "Asks the user to complete or abandon a short task or decision in a native modal window in the top layer: required title, optional description, close button, a body that scrolls between fixed header and footer, and a footer ButtonGroup with the primary action last; sizes sm, md, lg; alert dialog for decisions; can require an explicit choice; the page behind is dimmed and inert, focus is kept inside and returned on close.",
+      "whenNotToUse": "Non-blocking content next to a trigger (Popover), messages that need no answer (Alert, Toast), lists of actions behind a button (Menu), side panels (Drawer, planned), full-screen windows and multi-step wizards (compositions, planned).",
+      "documentation": "dialog.md",
+      "contract": "foundations/components/overlays/dialog/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "menu",
+      "import": "Menu, MenuItem, MenuSeparator, MenuGroup",
+      "from": "@ggbrick/svelte",
+      "purpose": "Offers a short list of actions or links in a top-layer panel opened from one Button or IconButton trigger, with the menu button keyboard pattern (arrows, Home, End, typeahead, Escape and Tab close); items with a leading icon, a trailing Shortcut, danger intent, disabled state or href, separators and labelled groups; reports the value of the activated item and closes.",
+      "whenNotToUse": "Choosing a value in a form (RadioGroup, Select, planned), free content or forms in an anchored panel (Popover), actions that fit on screen (ButtonGroup), checkable items and submenus (not built in), right-click menus (ContextMenu, planned), bars of controls (Toolbar, planned).",
+      "documentation": "menu.md",
+      "contract": "foundations/components/overlays/menu/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
     }
   ],
   "foundations": [

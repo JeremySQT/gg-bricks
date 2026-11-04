@@ -220,5 +220,14 @@
   "implementationNotes": [
     "Wave 2 addition, branch wave/2-form-foundations, contract drafted on 2026-10-28. Bits UI 2.19.3 provides Checkbox.Group (value string[], role group); its required puts aria-required on every checkbox, which the contract excludes.",
     "Implemented on 2026-10-28: CheckboxGroup.svelte, Checkbox value amendment, Field fixture; review page examples/checkbox-group."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-04",
+      "change": "Wave 3 documentation: documentation/index.json gains the ten wave 3 entries, and the existing entries no longer mark Menu, ButtonGroup, Tooltip, Spinner and Alert as planned. Cross-references only; the guidance is unchanged. To be re-presented with the wave 3 documentation review.",
+      "sha256": {
+        "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
+      }
+    }
   ]
 }

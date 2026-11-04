@@ -81,8 +81,9 @@
       "browser": ["tests/browser/progress.spec.ts"],
       "evidence": "reports/components/progress/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/progress.md",
+    "agentDocs": "documentation/index.json (entry progress); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/progress.svelte"
   },
   "approvals": {
     "contract": {
@@ -202,6 +203,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/progress/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/progress.md"
     }
   ],
   "decisionsTaken": [
@@ -213,7 +220,7 @@
     "Corners: component token component.progress.radius, so that a brand can draw rectangular bars (user, 2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
+  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
   "implementationNotes": [
     "Bits UI Progress.Root (2.19.3) does not render the id it receives: the component uses its child snippet to place the id on the progress bar itself.",
     "The label stays in the DOM, visually hidden, when showLabel is false, and names the bar through aria-labelledby."

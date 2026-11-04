@@ -49,13 +49,13 @@ The region (ToastRegion) sits at `space.layout.sm` (8, 16 or 24 px) from the vie
 
 ## Examples
 
-Every case is exercised on the component's review page in the ggbrick repository (`examples/toast/App.svelte`, not shipped in the package).
+Every case is exercised on the component's review page in the ggbrick repository (`examples/toast/App.svelte`, not shipped in the package). A page holds one notifications region, so these examples are shown as code; the playground at the top of the documentation site renders the live region.
 
 ### Send a toast
 
 The usual case: the application keeps the list, adds a toast to show it and removes it when it asks to leave.
 
-```svelte live
+```svelte
 <script lang="ts">
   import { Button, Toast, ToastRegion } from '@ggbrick/svelte';
   import type { ToastItemIntent } from '@ggbrick/svelte';
@@ -84,7 +84,7 @@ The usual case: the application keeps the list, adds a toast to show it and remo
 
 With an action, the toast leaves after 8 seconds by default, and right after its action runs. The same action stays available elsewhere.
 
-```svelte live
+```svelte
 <script lang="ts">
   import { Button, Toast, ToastRegion } from '@ggbrick/svelte';
 
@@ -118,7 +118,7 @@ With an action, the toast leaves after 8 seconds by default, and right after its
 
 A danger toast has no countdown by default and keeps its dismiss button; the intense appearance tints it by its intent, and its neutral action follows the intent too.
 
-```svelte live
+```svelte
 <script lang="ts">
   import { Button, Toast, ToastRegion } from '@ggbrick/svelte';
 

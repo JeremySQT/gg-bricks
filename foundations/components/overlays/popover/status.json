@@ -74,8 +74,9 @@
       "browser": ["tests/browser/popover.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
       "evidence": "reports/components/popover/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/popover.md",
+    "agentDocs": "documentation/index.json (entry popover); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/popover.svelte"
   },
   "approvals": {
     "contract": {
@@ -191,6 +192,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/popover/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/popover.md"
     }
   ],
   "decisionsTaken": [
@@ -201,7 +208,7 @@
     "No built-in close button: content adds one when it needs it (Escape and a press outside always close)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
+  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
   "implementationNotes": [
     "The trigger is rendered by a snippet that spreads popovertarget and the popup attributes on a Button or IconButton: the browser toggles the auto popover, which spares the trigger from light dismiss (no close-then-reopen on the same press) and restores focus to it on Escape.",
     "On opening, the panel's max block size is the larger room above or below the trigger, so that it flips and scrolls instead of overflowing the viewport."

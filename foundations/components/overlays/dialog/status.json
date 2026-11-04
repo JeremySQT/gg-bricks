@@ -82,8 +82,9 @@
       "browser": ["tests/browser/dialog.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
       "evidence": "reports/components/dialog/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/dialog.md",
+    "agentDocs": "documentation/index.json (entry dialog); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/dialog.svelte"
   },
   "approvals": {
     "contract": {
@@ -205,6 +206,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "reports/components/dialog/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/dialog.md"
     }
   ],
   "decisionsTaken": [
@@ -220,7 +227,7 @@
     "Contract fact added during implementation: focusWidth and focusOffset roles for the body room (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
+  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
   "implementationNotes": [
     "lib/overlay modal gained a closeRequest option (closedby none and a cancelled cancel event) for a dialog that is not dismissible.",
     "The page does not scroll while a dialog is open (:root:has(dialog.ggb-dialog[open]) { overflow: hidden }).",
