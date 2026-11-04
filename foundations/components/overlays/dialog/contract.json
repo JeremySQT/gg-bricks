@@ -56,7 +56,7 @@
   },
   "events": {
     "openChange": {
-      "when": "The dialog asks to close because of the user: its close button, Escape, a press on the backdrop.",
+      "when": "The dialog asks to close because of the user: its close button, Escape, a press on the backdrop, or the submission of a form with method dialog inside it.",
       "payload": "The new open state (false)."
     }
   },
@@ -104,7 +104,7 @@
     "The dialog is exposed as a modal dialog named by title and described by description; with alert true it is an alert dialog, which asks for a decision.",
     "On opening, focus moves to the element the application marks as the initial focus, otherwise to the first focusable element of the body, then of the footer, otherwise to the panel itself. Sequential focus stays inside the dialog. On closing, focus returns to the element that had it before opening, normally the trigger.",
     "When dismissible is true, the close button shows a small ghost neutral IconButton with the intrinsic close glyph and closeLabel as its accessible name, and Escape and a press on the backdrop also ask to close. When dismissible is false (a dialog that requires an explicit choice), there is no close button, the backdrop ignores presses and Escape does nothing; the footer offers the way out. An alert dialog is never closed by a press on the backdrop.",
-    "Asking to close emits openChange with false and closes the dialog; setting open from the application opens or closes it without emitting openChange. A dialog opened from inside another dialog stacks above it, and Escape closes the innermost first.",
+    "Asking to close emits openChange with false and closes the dialog; setting open from the application opens or closes it without emitting openChange. Submitting a form with method dialog inside the dialog closes it and emits openChange with false, whatever dismissible (the platform behavior of such a form); a form that must not close the dialog uses another method. A dialog opened from inside another dialog stacks above it, and Escape closes the innermost first.",
     "The dialog inherits the brand, appearance and density of the place it is declared in. Where the platform has no top layer, it is stacked at layer.",
     "It enters by fading in and moving enterDistance upwards over motionDuration with easingEnter, the backdrop fading in with it, and leaves by fading out over motionDuration with easingExit; under reduced motion it only fades.",
     "In forced-colors mode the panel keeps a visible edge in the system text color."

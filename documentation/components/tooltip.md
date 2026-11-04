@@ -166,7 +166,7 @@ The tooltip adds its id to the trigger's `aria-describedby`, after the ids alrea
 Keyboard and pointer:
 
 - Keyboard focus on the trigger opens the tooltip at once; focus given by a pointer press does not open it. A pointer opens it after `component.tooltip.delay` (500 ms), and at once when another tooltip was open a moment before.
-- The tooltip stays open while the pointer is on the trigger or on the tooltip, so that magnified text can be read. It closes when the pointer leaves both, when the trigger loses focus, when the trigger is activated (click, Enter, Space) and on Escape, which keeps focus on the trigger.
+- The tooltip stays open while the pointer is on the trigger or on the tooltip, so that magnified text can be read. It closes when the pointer leaves both, when the trigger loses focus, when the trigger is activated (click, Enter, Space) and on Escape, which keeps focus on the trigger. Escape closes only the tooltip: a Popover, Menu or Dialog that holds the trigger stays open until the next Escape.
 - On a touch screen a press activates the trigger and never opens the tooltip.
 
 The component provides:
@@ -193,4 +193,4 @@ The integration provides:
 | [3.3.2 Labels or Instructions](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)        | A     | Integration (instructions on the page, not only in a tooltip) |
 | [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)                    | A     | Component (role tooltip); integration (the trigger's name)    |
 
-Validated by automated checks in Chromium (axe-core in light and dark, keyboard focus and Escape, the hover delay and the next tooltip at once, pointing at the tooltip, closing on leave and on activation, the accessible description, a disabled trigger, placement at the offset, a dark subtree and a clipping container, computed values in four representative contexts, reduced motion, forced colors) and text contrast in the 18 contexts; a smoke test in Firefox and WebKit (keyboard focus opens it, Escape closes it); no touch-device or assistive-technology test yet. This list is not a conformance claim.
+Validated by automated checks in Chromium (Escape inside a Popover and a Dialog closing only the tooltip, axe-core in light and dark, keyboard focus and Escape, the hover delay and the next tooltip at once, pointing at the tooltip, closing on leave and on activation, the accessible description, a disabled trigger, placement at the offset, a dark subtree and a clipping container, computed values in four representative contexts, reduced motion, forced colors) and text contrast in the 18 contexts; a smoke test in Firefox and WebKit (keyboard focus opens it, Escape closes it); no touch-device or assistive-technology test yet. This list is not a conformance claim.

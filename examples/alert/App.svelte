@@ -27,6 +27,15 @@
   let saved = $state<'idle' | 'failed'>('idle');
 </script>
 
+<!-- Passed only when the Actions option is on: an empty actions snippet would still render the actions row (and its
+     gap and actionsPaddingEnd). -->
+{#snippet playActions()}
+  <ButtonGroup>
+    <Button id="play-choose" label="Choose a plan" onactivate={() => retried++} />
+    <Button id="play-later" label="Later" intent="neutral" appearance="ghost" />
+  </ButtonGroup>
+{/snippet}
+
 <div class="page" data-ggb-brand={brand} data-ggb-appearance={mode} data-ggb-density={density}>
   <header>
     <p class="eyebrow">ggbrick · implementation review</p>
@@ -66,6 +75,7 @@
               title={withTitle ? 'Your trial ends in 3 days' : ''}
               {dismissible}
               {live}
+              actions={withActions ? playActions : undefined}
               ondismiss={() => {
                 visible = false;
                 dismissals++;
@@ -74,14 +84,6 @@
               {#if withContent}
                 Choose a plan to keep your projects and invitations. <Link href="#plans" label="Compare plans" />
               {/if}
-              {#snippet actions()}
-                {#if withActions}
-                  <ButtonGroup>
-                    <Button id="play-choose" label="Choose a plan" onactivate={() => retried++} />
-                    <Button id="play-later" label="Later" intent="neutral" appearance="ghost" />
-                  </ButtonGroup>
-                {/if}
-              {/snippet}
             </Alert>
           {:else}
             <Button

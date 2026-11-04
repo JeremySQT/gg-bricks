@@ -26,6 +26,10 @@ test('a named notifications landmark in the top layer; toasts announced by role,
   await expect(page.locator('#region')).toHaveJSProperty('popover', 'manual');
   expect(await page.locator('#region').evaluate((r) => r.matches(':popover-open'))).toBe(true);
   expect((await accessible(page, '#region')).name).toBe('Notifications');
+  // Where the platform has no top layer, the region is stacked at layer.toast.
+  expect(await page.locator('#region').evaluate((r) => getComputedStyle(r).zIndex)).toBe(
+    String(tokensFor('base-light-standard')['layer.toast'].$value)
+  );
   await page.click('#send-saved');
   await page.click('#send-danger');
   await expect(items(page)).toHaveCount(2);

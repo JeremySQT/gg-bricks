@@ -185,7 +185,7 @@ There is no sending function: the application keeps the list of toasts in its st
 
 ### ToastRegion
 
-Renders a `<div class="ggb-toast">` (plus any class you pass) with `role="region"`, `aria-label`, `data-placement` and `popover="manual"`, shown in the top layer once mounted and raised again whenever another overlay enters the top layer after it. It lets presses through between its toasts.
+Renders a `<div class="ggb-toast">` (plus any class you pass) with `role="region"`, `aria-label`, `data-placement` and `popover="manual"`, shown in the top layer once mounted and raised again whenever another overlay enters the top layer after it; where the platform has no top layer it is stacked at `layer.toast`. It lets presses through between its toasts.
 
 | Prop        | Type                                                                                            | Default           | Description                                                                                |
 | ----------- | ----------------------------------------------------------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------ |

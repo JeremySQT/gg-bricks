@@ -164,7 +164,7 @@ With `dismissible={false}` there is no close button, Escape and the backdrop do 
 
 ### Initial focus and the user's closing
 
-`autofocus` marks the element that receives focus first. `onopenchange` reports a close asked by the user (close button, Escape, backdrop); closing from the application, as Save does, reports nothing.
+`autofocus` marks the element that receives focus first. `onopenchange` reports a close asked by the user (close button, Escape, backdrop, or a form with `method="dialog"` submitted inside the dialog, which closes it even when it is not dismissible); closing from the application, as Save does, reports nothing.
 
 ```svelte live
 <script lang="ts">
@@ -204,21 +204,21 @@ import type { DialogProps, DialogSize } from '@ggbrick/svelte';
 
 Renders a native `<dialog class="ggb-dialog ggb-overlay">` (plus any class you pass), opened with `showModal()` so that the browser places it in the top layer above the page; where the platform has no top layer, it is stacked at `layer.modal`. There is no portal: the element stays where it is declared and inherits the brand, appearance and density of that place. It carries `data-size`, `data-scrolled` while the body scrolls, `role="alertdialog"` with `alert`, `aria-labelledby` (the title), `aria-describedby` (the description, when there is one) and `tabindex="-1"`. Inside, the header holds the title (`role="heading"`, `aria-level="2"`), the close IconButton and the description, followed by the body and the footer. While a dialog is open the page under it does not scroll. It enters by fading in and moving up by `motion.distance.md` and leaves by fading out, in CSS only; under reduced motion it only fades.
 
-| Prop           | Type                                   | Default   | Description                                                                                                                         |
-| -------------- | -------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `open`         | `boolean` (bindable)                   | `false`   | Open state; bind it with `bind:open` and set it from the Button or menu item that opens the dialog.                                 |
-| `title`        | `string`                               | required  | The question or task, in heading typography; it names the dialog. An empty or blank title throws, on the server and in the browser. |
-| `description`  | `string`                               | `''`      | A short sentence under the title; it describes the dialog. Not rendered when empty.                                                 |
-| `size`         | `'sm' \| 'md' \| 'lg'`                 | `'md'`    | Panel width: 400, 560 or 720 px, never wider than the viewport less its margins.                                                    |
-| `alert`        | `boolean`                              | `false`   | An alert dialog, which asks for a decision (confirm a deletion); never closed by a press on the backdrop.                           |
-| `dismissible`  | `boolean`                              | `true`    | The close button, Escape and a press on the backdrop ask to close. `false`: none of them; the footer offers the way out.            |
-| `closeLabel`   | `string`                               | `'Close'` | Accessible name of the close button.                                                                                                |
-| `children`     | `Snippet`                              | —         | The body: free content that scrolls when the dialog is taller than the viewport. Mark the element to focus first with `autofocus`.  |
-| `footer`       | `Snippet`                              | —         | One ButtonGroup, aligned at the end, the primary action last.                                                                       |
-| `onopenchange` | `(open: boolean) => void`              | —         | Called with `false` when the user asks to close (close button, Escape, backdrop press); not when the application sets `open`.       |
-| `id`           | `string`                               | generated | The dialog's id; the title and the description get `<id>-title` and `<id>-description`.                                             |
-| `ref`          | `HTMLDialogElement \| null` (bindable) | `null`    | The dialog element.                                                                                                                 |
-| `class`        | `string`                               | —         | Merged with `ggb-dialog`.                                                                                                           |
+| Prop           | Type                                   | Default   | Description                                                                                                                                                       |
+| -------------- | -------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `open`         | `boolean` (bindable)                   | `false`   | Open state; bind it with `bind:open` and set it from the Button or menu item that opens the dialog.                                                               |
+| `title`        | `string`                               | required  | The question or task, in heading typography; it names the dialog. An empty or blank title throws, on the server and in the browser.                               |
+| `description`  | `string`                               | `''`      | A short sentence under the title; it describes the dialog. Not rendered when empty.                                                                               |
+| `size`         | `'sm' \| 'md' \| 'lg'`                 | `'md'`    | Panel width: 400, 560 or 720 px, never wider than the viewport less its margins.                                                                                  |
+| `alert`        | `boolean`                              | `false`   | An alert dialog, which asks for a decision (confirm a deletion); never closed by a press on the backdrop.                                                         |
+| `dismissible`  | `boolean`                              | `true`    | The close button, Escape and a press on the backdrop ask to close. `false`: none of them; the footer offers the way out.                                          |
+| `closeLabel`   | `string`                               | `'Close'` | Accessible name of the close button.                                                                                                                              |
+| `children`     | `Snippet`                              | —         | The body: free content that scrolls when the dialog is taller than the viewport. Mark the element to focus first with `autofocus`.                                |
+| `footer`       | `Snippet`                              | —         | One ButtonGroup, aligned at the end, the primary action last.                                                                                                     |
+| `onopenchange` | `(open: boolean) => void`              | —         | Called with `false` when the user asks to close (close button, Escape, backdrop press, a submitted `method="dialog"` form); not when the application sets `open`. |
+| `id`           | `string`                               | generated | The dialog's id; the title and the description get `<id>-title` and `<id>-description`.                                                                           |
+| `ref`          | `HTMLDialogElement \| null` (bindable) | `null`    | The dialog element.                                                                                                                                               |
+| `class`        | `string`                               | —         | Merged with `ggb-dialog`.                                                                                                                                         |
 
 On opening, focus moves to the element marked `autofocus`, otherwise to the first focusable element of the body, then of the footer, otherwise to the panel; on closing, the browser returns it to the element that had it before. Buttons in the dialog are not sized by a ButtonGroup around its declaration. Every other attribute of `HTMLDialogAttributes` is forwarded to the `<dialog>` element, except those the component owns: `children`, `role`, `open`, `title` (the prop is the heading, not the HTML tooltip attribute), `aria-labelledby`, `aria-describedby` and `aria-modal`. The platform-independent contract ships as `contracts/dialog.json`.
 
@@ -253,4 +253,4 @@ The integration provides:
 
 Beyond A and AA, the fade without movement under reduced motion serves [2.3.3 Animation from Interactions](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html) (AAA).
 
-Validated by automated checks in Chromium (axe-core in light and dark, role, name and description, focus moving in, staying inside and returning, Escape, close button and backdrop, alert and not dismissible dialogs, nested dialogs, the scrolling body, forced colors, computed values in four representative contexts) and by a smoke test in Firefox and WebKit (modal, initial focus, Escape with focus return, backdrop press); no assistive-technology test yet. This list is not a conformance claim.
+Validated by automated checks in Chromium (closing by a submitted method dialog form, axe-core in light and dark, role, name and description, focus moving in, staying inside and returning, Escape, close button and backdrop, alert and not dismissible dialogs, nested dialogs, the scrolling body, forced colors, computed values in four representative contexts) and by a smoke test in Firefox and WebKit (modal, initial focus, Escape with focus return, backdrop press); no assistive-technology test yet. This list is not a conformance claim.

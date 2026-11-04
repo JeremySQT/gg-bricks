@@ -21,6 +21,8 @@
     background: transparent;
     color: inherit;
     pointer-events: none;
+    /* Stacking where the platform has no top layer (the contract's layer role). */
+    z-index: var(--ggb-toast-layer);
   }
   .ggb-toast[popover]:popover-open {
     display: flex;

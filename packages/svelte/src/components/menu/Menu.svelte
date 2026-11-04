@@ -39,6 +39,11 @@
 
   const items = () => (ref ? [...ref.querySelectorAll<HTMLElement>('.ggb-menu__item')] : []);
   const highlight = (item: HTMLElement | undefined) => item?.focus({ preventScroll: false });
+  // Opening the menu, or the first arrow key when no item is highlighted, starts on an enabled item (the contract):
+  // disabled items are reached afterwards by the arrow keys, Home and End.
+  const isEnabled = (item: HTMLElement) => item.getAttribute('aria-disabled') !== 'true';
+  const firstEnabled = (list: HTMLElement[]) => list.find(isEnabled);
+  const lastEnabled = (list: HTMLElement[]) => [...list].reverse().find(isEnabled);
 
   // How the menu opens decides the first highlight: by keyboard the first (or last) item, by pointer none.
   let pending: 'first' | 'last' | 'none' = 'none';
@@ -58,8 +63,8 @@
       return;
     }
     const list = items();
-    if (pending === 'first') highlight(list[0]);
-    else if (pending === 'last') highlight(list.at(-1));
+    if (pending === 'first') highlight(firstEnabled(list));
+    else if (pending === 'last') highlight(lastEnabled(list));
     else ref.focus();
     pending = 'none';
   }
@@ -114,11 +119,11 @@
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
-        highlight(list[(index + 1) % list.length]);
+        highlight(index < 0 ? firstEnabled(list) : list[(index + 1) % list.length]);
         break;
       case 'ArrowUp':
         event.preventDefault();
-        highlight(list[index <= 0 ? list.length - 1 : index - 1]);
+        highlight(index < 0 ? lastEnabled(list) : list[index === 0 ? list.length - 1 : index - 1]);
         break;
       case 'Home':
         event.preventDefault();

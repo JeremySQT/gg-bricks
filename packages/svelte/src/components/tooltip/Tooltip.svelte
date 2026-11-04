@@ -48,9 +48,13 @@
     if (current && current !== close) current();
     current = close;
     lastShown = performance.now();
-    // Escape closes the tooltip without moving focus.
+    // Escape closes the tooltip without moving focus, and only the tooltip: the key is consumed, so that a Popover,
+    // Menu or Dialog holding the trigger stays open until the next Escape.
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') close();
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      event.stopPropagation();
+      close();
     };
     document.addEventListener('keydown', onKey, true);
     return () => {

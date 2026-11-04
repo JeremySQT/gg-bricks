@@ -158,7 +158,7 @@ A disabled item is reached by the arrow keys and announced as unavailable, but a
 
 ### Difficult cases
 
-- Keyboard: arrows wrap and skip separators and headings, Home, End and typeahead; Down or Up Arrow on the trigger opens on the first or last item; Escape and Tab close (`#playground`).
+- Keyboard: arrows wrap and skip separators and headings, Home, End and typeahead; Down or Up Arrow on the trigger opens on the first or last enabled item; Escape and Tab close (`#playground`).
 - Opening by pointer focuses the menu without highlighting an item; the pointer moves the single highlight (`#playground`).
 - A label too long for the panel ends with an ellipsis, and a link item navigates and still reports its value (`#compositions`).
 - A long menu in a short viewport scrolls and keeps the highlighted item visible (`#compositions`).
@@ -230,7 +230,7 @@ MenuSeparator renders a `<div class="ggb-menu__separator" role="separator">` and
 The component provides:
 
 - The menu button pattern: the trigger has `aria-haspopup="menu"`, `aria-expanded` and `aria-controls`; the panel is a menu named by `label` or by the trigger, with menu items, groups named by their heading and separators.
-- Opening by keyboard (Enter, Space or Down Arrow) highlights the first item, Up Arrow the last; opening by pointer focuses the menu without a highlight. The highlighted item is the focused one, and only one item is highlighted.
+- Opening by keyboard (Enter, Space or Down Arrow) highlights the first enabled item, Up Arrow the last enabled one; opening by pointer focuses the menu without a highlight, and the first arrow key then highlights the first or last enabled item. The highlighted item is the focused one, and only one item is highlighted.
 - Down and Up Arrow move the highlight and wrap, skipping separators and headings; Home and End go to the first and last item; typing characters moves to the next item whose label starts with them; Enter and Space activate. Disabled items are reached and announced unavailable, but not activated.
 - Activating an item closes the menu and returns focus to the trigger, unless it navigates; Escape closes back to the trigger; Tab closes and moves focus on from the trigger; a press outside closes the menu.
 - The highlighted item kept visible in a scrolling panel; a visible panel edge and the system highlight colors in forced colors; motion reduced to a fade under reduced motion.
@@ -258,4 +258,4 @@ The integration provides:
 
 Beyond A and AA, the fade without movement under reduced motion serves [2.3.3 Animation from Interactions](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html) (AAA).
 
-Validated by automated checks in Chromium (axe-core in light and dark, roles and names, the trigger state, keyboard navigation and typeahead, pointer highlight, closing by Escape, Tab and a press outside, link items, truncation, scrolling, forced colors, computed values in four representative contexts) and by a smoke test in Firefox and WebKit (Down Arrow opens on the first item, Enter selects and returns focus to the trigger); no assistive-technology test yet. This list is not a conformance claim.
+Validated by automated checks in Chromium (opening on the first or last enabled item, axe-core in light and dark, roles and names, the trigger state, keyboard navigation and typeahead, pointer highlight, closing by Escape, Tab and a press outside, link items, truncation, scrolling, forced colors, computed values in four representative contexts) and by a smoke test in Firefox and WebKit (Down Arrow opens on the first item, Enter selects and returns focus to the trigger); no assistive-technology test yet. This list is not a conformance claim.

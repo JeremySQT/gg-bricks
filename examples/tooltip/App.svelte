@@ -1,7 +1,7 @@
 <script lang="ts">
   // Tooltip implementation review: icon buttons named and described, sides and alignments, a disabled control,
   // tooltips in a dark subtree and in a clipped container, in any brand, appearance and density.
-  import { Button, Icon, IconButton, Link, Tooltip } from '../../packages/svelte/src/index.ts';
+  import { Button, Dialog, Icon, IconButton, Link, Popover, Tooltip } from '../../packages/svelte/src/index.ts';
   import type { TooltipAlign, TooltipSide } from '../../packages/svelte/src/index.ts';
   import { glyphs } from '../icon-button/glyphs.ts';
   const brands = ['base', 'brick', 'orchid'];
@@ -14,6 +14,7 @@
   let align = $state<TooltipAlign>('center');
   let open = $state(false);
   let changes = $state(0);
+  let dialogOpen = $state(false);
 </script>
 
 {#snippet icon(name: string)}<Icon><path d={glyphs[name]} /></Icon>{/snippet}
@@ -101,6 +102,38 @@
           <Tooltip id="tip-disabled" label="Never shown"
             ><Button id="disabled" label="Archive" disabled intent="neutral" appearance="outline" /></Tooltip
           >
+        </div>
+      </div>
+      <div class="panel">
+        <p class="panel-title">Inside a Popover and a Dialog: Escape closes the tooltip first</p>
+        <div class="row">
+          <Popover id="host-pop" label="Formatting">
+            {#snippet trigger(props)}<Button
+                label="Formatting"
+                intent="neutral"
+                appearance="outline"
+                {...props}
+              />{/snippet}
+            <Tooltip id="tip-in-pop" label="Italic (Ctrl+I)">
+              <IconButton id="in-pop" label="Italic" intent="neutral" appearance="ghost"
+                >{#snippet icon()}{@render iconFor('star')}{/snippet}</IconButton
+              >
+            </Tooltip>
+          </Popover>
+          <Button
+            id="host-dialog-open"
+            label="Open a dialog"
+            intent="neutral"
+            appearance="outline"
+            onactivate={() => (dialogOpen = true)}
+          />
+          <Dialog id="host-dialog" bind:open={dialogOpen} title="Share the report">
+            <Tooltip id="tip-in-dialog" label="Copy the link">
+              <IconButton id="in-dialog" label="Copy" intent="neutral" appearance="outline"
+                >{#snippet icon()}{@render iconFor('info')}{/snippet}</IconButton
+              >
+            </Tooltip>
+          </Dialog>
         </div>
       </div>
       <div class="panel">

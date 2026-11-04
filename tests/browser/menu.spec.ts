@@ -91,6 +91,38 @@ test('ArrowDown and ArrowUp on the trigger open on the first and the last item; 
   await expect(page.locator('#after')).toBeFocused();
 });
 
+test('opening by keyboard starts on the first or last enabled item; disabled items stay reachable', async ({
+  page
+}) => {
+  await page.focus('#locked-trigger');
+  await page.keyboard.press('Enter');
+  await expect.poll(() => focused(page)).toBe('locked-copy');
+  await page.keyboard.press('ArrowUp');
+  await expect.poll(() => focused(page)).toBe('locked-edit'); // reached, not skipped
+  await page.keyboard.press('Escape');
+  await expect.poll(() => isOpen(page, 'locked')).toBe(false);
+  await page.keyboard.press('ArrowDown');
+  await expect.poll(() => focused(page)).toBe('locked-copy');
+  await page.keyboard.press('Escape');
+  await expect.poll(() => isOpen(page, 'locked')).toBe(false);
+  await page.keyboard.press('ArrowUp');
+  await expect.poll(() => focused(page)).toBe('locked-export');
+  await page.keyboard.press('End');
+  await expect.poll(() => focused(page)).toBe('locked-delete');
+  await page.keyboard.press('Escape');
+  await expect.poll(() => isOpen(page, 'locked')).toBe(false);
+  // Opened by pointer: the first arrow key starts on an enabled item too.
+  await page.click('#locked-trigger');
+  await expect.poll(() => focused(page)).toBe('locked');
+  await page.keyboard.press('ArrowDown');
+  await expect.poll(() => focused(page)).toBe('locked-copy');
+  await page.keyboard.press('Escape');
+  await expect.poll(() => isOpen(page, 'locked')).toBe(false);
+  await page.click('#locked-trigger');
+  await page.keyboard.press('ArrowUp');
+  await expect.poll(() => focused(page)).toBe('locked-export');
+});
+
 test('pointer: opening focuses the menu without a highlight; hover highlights; a press activates; outside closes', async ({
   page
 }) => {

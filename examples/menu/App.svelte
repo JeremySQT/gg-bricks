@@ -134,6 +134,21 @@
         </Menu>
       </div>
       <div class="panel">
+        <p class="panel-title">Disabled first and last items: opening starts on an enabled one</p>
+        <Menu id="locked" onselect={select}>
+          {#snippet trigger(props)}<Button
+              label="Locked report"
+              intent="neutral"
+              appearance="outline"
+              {...props}
+            />{/snippet}
+          <MenuItem id="locked-edit" label="Edit" disabled />
+          <MenuItem id="locked-copy" label="Duplicate" />
+          <MenuItem id="locked-export" label="Export" />
+          <MenuItem id="locked-delete" label="Delete" intent="danger" disabled />
+        </Menu>
+      </div>
+      <div class="panel">
         <p class="panel-title">Inside a dark subtree and a clipped container</p>
         <div class="dark-panel" data-ggb-appearance="dark">
           <div class="clip">

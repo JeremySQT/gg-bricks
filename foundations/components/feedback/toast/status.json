@@ -107,17 +107,17 @@
           "examples/toast/App.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/components/toast/Toast.svelte": "8d21139899bcf4f303405ba8346798eab401eb675b8db989840b91ae71937414",
+          "packages/svelte/src/components/toast/Toast.svelte": "f9581d225f0e9fc7b283432caae202e0fcfa152b64b0c08d8eaa208cde9afdfa",
           "packages/svelte/src/components/toast/ToastRegion.svelte": "a9e47464e8327ef644dcc08d30e47eddd9d8358c5626e9210c91b95b1d7e6f92",
           "packages/svelte/src/components/toast/contract.generated.ts": "87e238d378faaca4888c123ba3983ceefd45c8bdbd1aa2f858582775749756cd",
           "packages/svelte/src/components/toast/glyphs.ts": "f6da0f4d3ea9f3c0b69ff3d574bde4551708494d175bc9ce36d4310f15efde7f",
-          "packages/svelte/src/components/toast/toast.css": "fc7438d442bc2bc7a7cc3992fbc6d4f4ef7f9efd1a3a4a6347c61ddc5056f5fa",
+          "packages/svelte/src/components/toast/toast.css": "cf5533f6d244ae010e2f05c5c53be9bd9e8acaa5a9e537e01e113be1165138a7",
           "packages/svelte/src/components/toast/tokens.generated.css": "bd6a50e3aa2d9f3d2c443662fd120f0ff86cb77ae14f42c48bc2907afdd345dc",
           "packages/svelte/src/components/toast/types.ts": "bb307b021cfcdb616c30eecafea43c4690de86cdaf624e5da3f106a7ce60d2bc",
           "examples/toast/App.svelte": "89b17f0d3d0491cb40ea990198ee314ac8528e218e06ef2f5c8f938c3ffb3781"
         }
       },
-      "provenance": "User at the grouped wave 3 implementation review (round 4) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793725323-4aae): \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\" (danger toasts keep no default countdown and keep their dismiss button without one, for accessibility).",
+      "provenance": "User at the grouped wave 3 implementation review (round 4) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793725323-4aae): \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\" (danger toasts keep no default countdown and keep their dismiss button without one, for accessibility). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui corrige les quatre points et ajoute-le au contrat\"): where the platform has no top layer the region is stacked at layer.toast, as the contract says (the token was generated but unused); a stale code comment about the countdown corrected. Browser test asserts the stacking. Digests re-recorded.",
       "note": null
     },
     "figmaParity": {
@@ -206,6 +206,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "documentation/components/toast.md"
+    },
+    {
+      "name": "Fix after the documentation review: where the platform has no top layer the region is stacked at layer.toast, as the contract says (the token was generated but unused); a stale code comment about ",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "tests/browser/toast.spec.ts"
     }
   ],
   "decisionsTaken": [

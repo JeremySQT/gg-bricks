@@ -41,6 +41,38 @@ test('keyboard focus opens at once; the tooltip describes its trigger unless it 
   expect(await isOpen(page, 'tip-edit')).toBe(true);
 });
 
+test('inside a Popover or a Dialog, Escape closes the tooltip only; the next Escape closes the host', async ({
+  page
+}) => {
+  // Opened from the keyboard, so that focus moving into the host is keyboard focus, which opens a tooltip.
+  const popOpen = () => page.locator('#host-pop').evaluate((p) => p.matches(':popover-open'));
+  await page.focus('#host-pop-trigger');
+  await page.keyboard.press('Enter');
+  await expect.poll(popOpen).toBe(true);
+  await expect(page.locator('#in-pop')).toBeFocused();
+  await expect.poll(() => isOpen(page, 'tip-in-pop')).toBe(true);
+  await page.keyboard.press('Escape');
+  await expect.poll(() => isOpen(page, 'tip-in-pop')).toBe(false);
+  expect(await popOpen()).toBe(true);
+  await expect(page.locator('#in-pop')).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect.poll(popOpen).toBe(false);
+
+  const dialogOpen = () => page.locator('#host-dialog').evaluate((d) => (d as HTMLDialogElement).open);
+  await page.focus('#host-dialog-open');
+  await page.keyboard.press('Enter');
+  await expect.poll(dialogOpen).toBe(true);
+  for (let k = 0; k < 4 && !(await page.locator('#in-dialog').evaluate((b) => b === document.activeElement)); k++)
+    await page.keyboard.press('Tab');
+  await expect(page.locator('#in-dialog')).toBeFocused();
+  await expect.poll(() => isOpen(page, 'tip-in-dialog')).toBe(true);
+  await page.keyboard.press('Escape');
+  await expect.poll(() => isOpen(page, 'tip-in-dialog')).toBe(false);
+  expect(await dialogOpen()).toBe(true);
+  await page.keyboard.press('Escape');
+  await expect.poll(dialogOpen).toBe(false);
+});
+
 test('hover opens after the delay, then at once on the next trigger; leaving and activation close it', async ({
   page
 }) => {

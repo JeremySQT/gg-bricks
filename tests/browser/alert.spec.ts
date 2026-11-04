@@ -158,6 +158,14 @@ test('an alert with actions has actionsPaddingEnd under them; without actions th
       bottom: `${px(tokens['space.content.md'])}px`
     });
   }
+  // The review page passes the actions only when they are shown: no empty actions row, the padding is even again.
+  await page.uncheck('#opt-actions');
+  await expect(page.locator('#play .ggb-alert__actions')).toHaveCount(0);
+  const play = await page.locator('#play').evaluate((el) => {
+    const c = getComputedStyle(el);
+    return c.paddingTop === c.paddingBottom;
+  });
+  expect(play).toBe(true);
 });
 
 test('computed values match the resolved tokens for every intent and context', async ({ page }) => {

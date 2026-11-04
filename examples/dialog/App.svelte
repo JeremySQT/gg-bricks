@@ -23,6 +23,8 @@
   let nested = $state(false);
   let dark = $state(false);
   let title = $state('Quarterly report');
+  let note = $state(false);
+  let noteChanges = $state(0);
 </script>
 
 <div class="page" data-ggb-brand={brand} data-ggb-appearance={mode} data-ggb-density={density}>
@@ -175,6 +177,23 @@
               />
             </ButtonGroup>
           {/snippet}
+        </Dialog>
+      </div>
+      <div class="panel">
+        <p class="panel-title">A form with method dialog: submitting it closes the dialog</p>
+        <Button id="note" label="Add a note" intent="neutral" appearance="outline" onactivate={() => (note = true)} />
+        <p class="readout" data-testid="note-changes">Note changes: {noteChanges}</p>
+        <Dialog
+          id="note-dialog"
+          bind:open={note}
+          dismissible={false}
+          title="Add a note"
+          onopenchange={() => noteChanges++}
+        >
+          <form id="note-form" method="dialog">
+            <Field label="Note"><InputText id="note-text" /></Field>
+            <Button id="note-submit" type="submit" label="Add" />
+          </form>
         </Dialog>
       </div>
       <div class="panel">

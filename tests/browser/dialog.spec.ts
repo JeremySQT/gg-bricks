@@ -76,6 +76,17 @@ test('an alert dialog ignores backdrop presses; a dialog that is not dismissible
   await expect(page.getByTestId('accepted')).toHaveText('Accepted: true');
 });
 
+test('submitting a form with method dialog closes the dialog and emits openChange, even when not dismissible', async ({
+  page
+}) => {
+  await page.click('#note');
+  expect(await isOpen(page, 'note-dialog')).toBe(true);
+  await page.fill('#note-text', 'Check the totals');
+  await page.click('#note-submit');
+  await expect.poll(() => isOpen(page, 'note-dialog')).toBe(false);
+  await expect(page.getByTestId('note-changes')).toHaveText('Note changes: 1');
+});
+
 test('autofocus wins the initial focus; a nested dialog stacks above and Escape closes the innermost first', async ({
   page
 }) => {

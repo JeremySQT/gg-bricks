@@ -52,7 +52,7 @@
     ondismiss?.();
   }
 
-  // Countdown: only for a toast without an action and with a duration; paused with the region and while queued.
+  // Countdown, when the toast has one (see effective below); paused with the region and while queued.
   let queued = $state(false);
   $effect(() => {
     const element = ref;
