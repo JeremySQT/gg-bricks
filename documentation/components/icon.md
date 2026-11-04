@@ -23,7 +23,7 @@ A is the inset, B the box size. Hosts rely on the inset: a Button places an icon
 
 - An action without visible text: IconButton.
 - Multi-color artwork, logos, photographs; avatars: Avatar (planned).
-- A loading indicator: Spinner (planned); the Button has its own.
+- A loading indicator: Spinner; Button and IconButton show it with `loading`.
 - A status or a category in words: Badge.
 - Icon fonts and sprite sheets: the component takes inline vector content.
 

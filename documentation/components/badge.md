@@ -25,7 +25,7 @@ A height (the line box of the label: 15.4, 16.8 or 19.6 px, the same in every de
 - A quantity: Counter.
 - A value the user can remove or select (a filter, a keyword): Tag (planned).
 - A dot without text, or a badge over an avatar or an icon: a later indicator (planned).
-- A message that explains the status: Alert (planned).
+- A message that explains the status: Alert.
 - A status inside a sentence: plain text.
 - Inside a Button: a quantity in a Button is a Counter.
 

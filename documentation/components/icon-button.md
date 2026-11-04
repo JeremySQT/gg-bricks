@@ -28,8 +28,8 @@ A side of the square (the Button height of the size, following the density: 32, 
 - When there is room for a visible label: Button with a leading icon is always clearer.
 - A link inside text: Link.
 - A toggle that stays pressed (bold, mute): SegmentedControl (planned).
-- A list of actions behind one trigger: Menu (planned).
-- A visible hint on hover: compose a Tooltip (planned); the icon button does not show its label.
+- A list of actions behind one trigger: Menu, with the icon button as its trigger.
+- A visible hint on hover: wrap it in a Tooltip; the icon button does not show its label.
 - A dot or a number over the icon: a later indicator (planned).
 
 ## Best practices

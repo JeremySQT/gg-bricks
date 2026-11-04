@@ -7,7 +7,7 @@
       "import": "Button",
       "from": "@ggbrick/svelte",
       "purpose": "Starts an action or moves to the next step of a task with a short text label; optional leading icon and trailing icon, counter or shortcut; loading and disabled states; renders as a link with href.",
-      "whenNotToUse": "Icon-only actions (IconButton), navigation inside text (Link), toggles with a pressed state (SegmentedControl, planned), menu triggers (Menu, planned), button groups and toolbars (composition), width as a prop (layout decides).",
+      "whenNotToUse": "Icon-only actions (IconButton), navigation inside text (Link), toggles with a pressed state (SegmentedControl, planned), lists of actions behind a trigger (Menu), rows of related buttons (ButtonGroup), toolbars (planned), width as a prop (layout decides).",
       "documentation": "button.md",
       "contract": "foundations/components/actions/button/contract.json",
       "sections": [
@@ -26,7 +26,7 @@
       "import": "Icon",
       "from": "@ggbrick/svelte",
       "purpose": "Shows a vector glyph from the application's icon set (Phosphor conventions) at one of five system sizes in the current text color; decorative unless it carries a label, which makes it a named image; content of Button slots.",
-      "whenNotToUse": "Actions without visible text (IconButton), multi-color artwork, logos and avatars (Avatar, planned), activity indicators (Spinner, planned), statuses with text (Badge), icon fonts and sprite sheets.",
+      "whenNotToUse": "Actions without visible text (IconButton), multi-color artwork, logos and avatars (Avatar, planned), activity indicators (Spinner), statuses with text (Badge), icon fonts and sprite sheets.",
       "documentation": "icon.md",
       "contract": "foundations/components/content/icon/contract.json",
       "sections": [
@@ -83,7 +83,7 @@
       "import": "IconButton",
       "from": "@ggbrick/svelte",
       "purpose": "Starts an action, or navigates to a task with href, from a compact square showing only an icon; the required label is the accessible name and is never shown; Button treatments and heights; loading and disabled states; 44 px target.",
-      "whenNotToUse": "Room for a visible label (Button with a leading icon), links inside text (Link), toggles with a pressed state (SegmentedControl, planned), menu triggers (Menu, planned), visible hints (Tooltip, planned), dots or numbers over the icon (indicator, planned).",
+      "whenNotToUse": "Room for a visible label (Button with a leading icon), links inside text (Link), toggles with a pressed state (SegmentedControl, planned), lists of actions behind a trigger (Menu), visible hints (Tooltip), dots or numbers over the icon (indicator, planned).",
       "documentation": "icon-button.md",
       "contract": "foundations/components/actions/icon-button/contract.json",
       "sections": [
@@ -121,7 +121,7 @@
       "import": "Badge",
       "from": "@ggbrick/svelte",
       "purpose": "Labels an item with a short read-only status or category word (Paid, Draft, Overdue, Beta) in a small box colored by intent (neutral, accent, info, success, warning, danger) and appearance (subtle, strong), with an optional decorative leading icon; never interactive.",
-      "whenNotToUse": "Quantities (Counter), values the user removes or selects (Tag, planned), dots without text or badges over another element (indicator, planned), explanations of a status (Alert, planned), statuses inside a sentence (plain text), content of a Button slot (Counter).",
+      "whenNotToUse": "Quantities (Counter), values the user removes or selects (Tag, planned), dots without text or badges over another element (indicator, planned), explanations of a status (Alert), statuses inside a sentence (plain text), content of a Button slot (Counter).",
       "documentation": "badge.md",
       "contract": "foundations/components/content/badge/contract.json",
       "sections": [
@@ -140,7 +140,7 @@
       "import": "Field",
       "from": "@ggbrick/svelte",
       "purpose": "Gives one form control (InputText, Textarea, Checkbox, RadioGroup or CheckboxGroup) its visible label, optional description, required asterisk and error message with an icon; names and describes the control and passes it the required, invalid and disabled state; never validates.",
-      "whenNotToUse": "A toolbar search without a visible label (InputText with its label prop), a Switch (its own label), several fields under one heading (Fieldset, planned), a message about the whole form (Alert, planned).",
+      "whenNotToUse": "A toolbar search without a visible label (InputText with its label prop), a Switch (its own label), several fields under one heading (Fieldset, planned), a message about the whole form (Alert).",
       "documentation": "field.md",
       "contract": "foundations/components/forms/field/contract.json",
       "sections": [

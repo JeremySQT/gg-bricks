@@ -28,7 +28,7 @@ A label to description (`space.content.xs`), B to the control (`space.content.sm
 - A search box or a filter in a toolbar with no visible label: use InputText with its `label` prop alone.
 - A switch: it applies a setting at once and has no error state; use Switch with its own label.
 - A group of several fields under one heading: compose a fieldset with a legend (Fieldset, planned) around the fields.
-- A message about the whole form: show it near the submit button or at the top of the form (Alert, planned).
+- A message about the whole form: show it near the submit button or at the top of the form (Alert).
 
 ## Best practices
 
