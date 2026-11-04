@@ -1,5 +1,5 @@
 <script lang="ts">
-  // Toast playground: intent, appearance and content of the next toast, sent into the page's region with a button.
+  // Toast playground: a preview toast in the page's region (the only one of the page) that follows the selects.
   import { Button, Toast, ToastRegion } from '@ggbrick/svelte';
   import type { ToastItemAppearance, ToastItemIntent } from '@ggbrick/svelte';
   import PlaygroundFrame from '../components/PlaygroundFrame.svelte';
@@ -13,32 +13,12 @@
     danger: { title: 'Upload failed', description: 'quarterly-report.pdf is larger than 50 MB.', action: 'Retry' }
   };
 
-  type Item = {
-    id: number;
-    intent: ToastItemIntent;
-    appearance: ToastItemAppearance;
-    description: boolean;
-    action: boolean;
-  };
-
   let intent = $state<ToastItemIntent>('success');
   let appearance = $state<ToastItemAppearance>('neutral');
   let content = $state('title only');
-  let toasts = $state<Item[]>([]);
-  let next = 1;
-
-  function send() {
-    toasts.push({
-      id: next++,
-      intent,
-      appearance,
-      description: content !== 'title only',
-      action: content === 'with an action'
-    });
-  }
-  function remove(id: number) {
-    toasts = toasts.filter((t) => t.id !== id);
-  }
+  // One preview toast that follows the selects and stays until dismissed (duration 0); dismissing it shows a button
+  // that brings it back.
+  let shown = $state(true);
 </script>
 
 <PlaygroundFrame
@@ -69,20 +49,27 @@
     ]
   }}
 >
-  <Button label="Send a toast" onactivate={send} />
-  <Button label="Clear all" intent="neutral" appearance="ghost" onactivate={() => (toasts = [])} />
+  <p style="margin: 0; color: var(--ggb-color-content-secondary); font: var(--ggb-typography-body-sm)">
+    The toast is shown at the bottom end of the window, in the page's notifications region.
+  </p>
+  {#if !shown}<Button
+      label="Show the toast again"
+      intent="neutral"
+      appearance="outline"
+      onactivate={() => (shown = true)}
+    />{/if}
+  <ToastRegion>
+    {#if shown}
+      {#snippet follow()}<Button label={messages[intent].action} intent="neutral" appearance="outline" />{/snippet}
+      <Toast
+        {intent}
+        {appearance}
+        duration={0}
+        title={messages[intent].title}
+        description={content !== 'title only' ? messages[intent].description : ''}
+        action={content === 'with an action' ? follow : undefined}
+        ondismiss={() => (shown = false)}
+      />
+    {/if}
+  </ToastRegion>
 </PlaygroundFrame>
-
-<ToastRegion>
-  {#each toasts as t (t.id)}
-    {#snippet follow()}<Button label={messages[t.intent].action} intent="neutral" appearance="outline" />{/snippet}
-    <Toast
-      intent={t.intent}
-      appearance={t.appearance}
-      title={messages[t.intent].title}
-      description={t.description ? messages[t.intent].description : ''}
-      action={t.action ? follow : undefined}
-      ondismiss={() => remove(t.id)}
-    />
-  {/each}
-</ToastRegion>

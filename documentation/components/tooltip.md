@@ -61,9 +61,11 @@ The tooltip shows the IconButton's label; because both say the same thing, it ad
 
 {#snippet trash()}<Icon><path d={phosphor.trash} /></Icon>{/snippet}
 
-<Tooltip label="Delete invoice">
-  <IconButton label="Delete invoice" icon={trash} onactivate={remove} />
-</Tooltip>
+<div>
+  <Tooltip label="Delete invoice">
+    <IconButton label="Delete invoice" icon={trash} onactivate={remove} />
+  </Tooltip>
+</div>
 ```
 
 ### A shortcut, a clarification, a link
@@ -103,9 +105,11 @@ The tooltip takes the preferred side and alignment, and flips when the viewport 
 
 {#snippet download()}<Icon><path d={phosphor['download-simple']} /></Icon>{/snippet}
 
-<Tooltip label="Download the report as a PDF file" side="bottom" align="start">
-  <IconButton label="Download report" icon={download} appearance="outline" />
-</Tooltip>
+<div>
+  <Tooltip label="Download the report as a PDF file" side="bottom" align="start">
+    <IconButton label="Download report" icon={download} appearance="outline" />
+  </Tooltip>
+</div>
 ```
 
 ### Controlled from the application
