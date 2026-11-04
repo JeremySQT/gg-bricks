@@ -137,6 +137,29 @@ test('accent outline and ghost buttons take the intent family too, in every cont
   }
 });
 
+test('an alert with actions has actionsPaddingEnd under them; without actions the padding is even', async ({
+  page
+}) => {
+  for (const [brand, mode, density] of representative) {
+    const context = `${brand}-${mode}-${density}`;
+    const tokens = tokensFor(context);
+    await setContext(page, brand, mode, density);
+    const pad = (sel: string) =>
+      page.locator(sel).evaluate((el) => {
+        const s = getComputedStyle(el);
+        return { top: s.paddingTop, bottom: s.paddingBottom };
+      });
+    expect(await pad('#act-info'), context).toEqual({
+      top: `${px(tokens['space.content.md'])}px`,
+      bottom: `${px(tokens['space.content.lg'])}px`
+    });
+    expect(await pad('#al-info')).toEqual({
+      top: `${px(tokens['space.content.md'])}px`,
+      bottom: `${px(tokens['space.content.md'])}px`
+    });
+  }
+});
+
 test('computed values match the resolved tokens for every intent and context', async ({ page }) => {
   test.setTimeout(300_000);
   const report = new ComputedReport();

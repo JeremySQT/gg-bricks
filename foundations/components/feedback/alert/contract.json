@@ -57,13 +57,14 @@
     "iconGap": "space.content.sm",
     "titleGap": "space.content.xs",
     "actionsGap": "space.content.md",
+    "actionsPaddingEnd": "space.content.lg",
     "typographyTitle": "typography.label.md",
     "typography": "typography.body.sm",
     "iconSize": "size.icon.md"
   },
   "rules": [
     "An alert is a durable message in the flow of the page about the page, a section or a task (a failed save, an expiring plan, a successful import). It stays until the situation changes or the user dismisses it. A brief confirmation that leaves by itself is a Toast; a message that must be answered before going on is a Dialog; an error on one field belongs to Field.",
-    "Layout: icon at the inline start, then a column with title, content and actions in that order, then dismiss at the inline end. The icon and dismiss are aligned with the first line of the column. padding surrounds everything; iconGap separates the icon and dismiss from the column; titleGap separates title from content; actionsGap separates the content from actions.",
+    "Layout: icon at the inline start, then a column with title, content and actions in that order, then dismiss at the inline end. The icon and dismiss are aligned with the first line of the column. padding surrounds everything, except below the actions: when the alert holds actions, its block-end padding is actionsPaddingEnd, so that the buttons do not sit tight against the edge; iconGap separates the icon and dismiss from the column; titleGap separates title from content; actionsGap separates the content from actions.",
     "title is optional plain text set in typographyTitle; content is free text and inline content (a sentence, a link, a short list) set in typography. One of title and content is non-empty. Both are painted in content; links inside keep their own color.",
     "intent names the color family and the default icon: neutral (info glyph) for a remark without valence, info (info glyph), success (check-circle glyph), warning (warning glyph) and danger (warning-circle glyph). The glyphs are intrinsic Phosphor icons at iconSize in iconColor, hidden from assistive technology; the icon part may replace the glyph. The meaning is always stated in words, never by color or icon alone.",
     "The container is painted in surface with an edge of borderWidth in edgeColor inside its boundary and radius corners; it takes the full inline size it is given and its content wraps.",

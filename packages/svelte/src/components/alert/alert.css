@@ -60,6 +60,10 @@
   .ggb-alert__actions {
     margin-block-start: var(--ggb-alert-actionsGap);
   }
+  /* With actions, more room under the buttons (actionsPaddingEnd), user review of the Figma parity, 2026-11-04. */
+  .ggb-alert:has(> .ggb-alert__body > .ggb-alert__actions) {
+    padding-block-end: var(--ggb-alert-actionsPaddingEnd);
+  }
   /* The dismiss button (a small IconButton) is centered on the first line, its 44 px target overlapping the
      padding without moving the layout. */
   .ggb-alert__dismiss {
