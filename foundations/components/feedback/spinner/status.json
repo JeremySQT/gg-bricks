@@ -205,7 +205,8 @@
     "Color inherited (currentColor); track at the component token component.spinner.track-opacity (0.2; Button uses 0.25 hard-coded).",
     "label empty by default: decorative; a non-empty label makes it a polite status.",
     "One turn per component.spinner.duration (component token, primitive 700 ms; Button hard-codes 800 ms), three times slower under reduced motion (the Button rule). Spinner values are component tokens: Button and IconButton will compose the Spinner rather than share the tokens.",
-    "Open question 5 accepted for the implementation review (user, 2026-11-03: \"Ok, à juger dans l'implémentation\"): component.spinner.duration = 700 ms; the speed is judged on the real rendering at the implementation gate, and Button and IconButton adopt the Spinner after the wave."
+    "Open question 5 accepted for the implementation review (user, 2026-11-03: \"Ok, à juger dans l'implémentation\"): component.spinner.duration = 700 ms; the speed is judged on the real rendering at the implementation gate, and Button and IconButton adopt the Spinner after the wave.",
+    "Wave 3 implementation review (user, 2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"c'est bien ce composant qu'on va utiliser dans les boutons\"): Button and IconButton compose the Spinner within wave 3, not after it (their loading indicator is a Spinner of their size; the Figma masters swap it too). Supersedes the timing of the previous entry."
   ],
   "openDecisions": [],
   "nextAction": "Documentation (ggb-docs), then the pull request of wave 3 to main.",
