@@ -101,7 +101,8 @@
   ],
   "notes": [
     "computed.json records only the danger neutral toast in the four representative contexts (36 records); 1548 extra checks in the 18 contexts: intense surface, edge, title and description colors per intent, action label and border and dismiss glyph in the action family of the intent, neutral appearance actions kept neutral, single layout centered, multi icon and dismiss on the title line.",
-    "2026-11-04, user review of the Figma parity: ToastRegion is a single component (455:1602) instead of six Placement variants, which changed nothing since a slot cannot reverse its order; the placement is where the designer puts the region, and the designer orders the toasts (newest nearest that edge)."
+    "2026-11-04, user review of the Figma parity: ToastRegion is a single component (455:1602) instead of six Placement variants, which changed nothing since a slot cannot reverse its order; the placement is where the designer puts the region, and the designer orders the toasts (newest nearest that edge).",
+    "2026-11-04, user request: a single toast keeps one height (size/control/sm plus padding) with or without action and dismiss; the Body of the ten single variants has minHeight size/control/sm and centers the text (in place). Parity rerun: 36 records, 0 failures; 1620 extra checks, the 72 new ones check the four single heights in the 18 contexts."
   ],
   "updatedOn": "2026-11-04"
 }

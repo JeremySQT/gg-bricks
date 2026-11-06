@@ -127,6 +127,31 @@ test('the action runs then the toast leaves; Escape and the dismiss button dismi
   await expect(page.locator('#region .ggb-toast__item').nth(1).locator('.ggb-toast__dismiss')).toHaveCount(0);
 });
 
+test('one line: the toast keeps one height (a small control plus padding) with or without its action', async ({
+  page
+}) => {
+  for (const [brand, mode, density] of representative) {
+    const context = `${brand}-${mode}-${density}`;
+    const tokens = tokensFor(context);
+    await page.goto('/toast/');
+    await setContext(page, brand, mode, density);
+    await page.click('#send-saved');
+    await page.click('#send-archived');
+    await expect(items(page)).toHaveCount(2);
+    await settle(page);
+    const [plain, withAction] = await items(page).evaluateAll((els) =>
+      els.map((e) => ({ layout: e.getAttribute('data-layout'), height: e.getBoundingClientRect().height }))
+    );
+    const want = px(tokens['size.control.sm']) + 2 * px(tokens['space.content.md']);
+    expect(plain.layout, context).toBe('single');
+    expect(withAction.layout, context).toBe('single');
+    expect(plain.height, context).toBeCloseTo(want, 1);
+    expect(withAction.height, context).toBeCloseTo(want, 1);
+    // The action is a small Button.
+    await expect(items(page).nth(1).locator('.ggb-toast__action .ggb-button')).toHaveAttribute('data-size', 'sm');
+  }
+});
+
 test('layout: one line centered without a description; with one, the action goes under the text', async ({ page }) => {
   await page.fill('#opt-duration', '0');
   await page.click('#send-saved');

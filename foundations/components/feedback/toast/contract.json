@@ -111,10 +111,11 @@
         "intenseSurfaceColor": "color.status.{intent}.surface",
         "intenseContentColor": "color.status.{intent}.content",
         "intenseEdgeColor": "color.status.{intent}.border",
-        "actionsGap": "space.content.sm"
+        "actionsGap": "space.content.sm",
+        "rowHeight": "size.control.sm"
       },
       "rules": [
-        "layout is single when description is empty and multi otherwise. single: icon, title, action and dismiss on one row, all centered vertically. multi: icon, a column with title and description, and dismiss on the first row, icon and dismiss centered on the title line; the action sits under the description, aligned with the text, separated by actionsGap. padding surrounds everything; iconGap separates the icon, the column, the action and dismiss; titleGap separates title from description.",
+        "layout is single when description is empty and multi otherwise. single: icon, title, action and dismiss on one row, all centered vertically; the row is rowHeight high (the height of a small control) whatever it holds, so the toast keeps one height with or without an action or a dismiss button: their 44 px targets overlap the padding instead of growing the toast. multi: icon, a column with title and description, and dismiss on the first row, icon and dismiss centered on the title line; the action sits under the description, aligned with the text, separated by actionsGap. padding surrounds everything; iconGap separates the icon, the column, the action and dismiss; titleGap separates title from description.",
         "title is required plain text in typographyTitle; description is optional plain text in typography. Both wrap; the toast grows in block size.",
         "intent sets the intrinsic glyph (neutral and info: info, success: check-circle, warning: warning, danger: warning-circle) at iconSize in iconColor, hidden from assistive technology; the icon part may replace it. The words carry the message, the icon and the colors only reinforce it.",
         "appearance neutral paints the container in surface with an edge of borderWidth in elevationColor, the title in content and the description in descriptionColor. appearance intense conveys a stronger message: the container in intenseSurfaceColor with an edge in intenseEdgeColor, title and description in intenseContentColor, like an Alert of the same intent. Both have shadow and radius corners; the inline size is inlineSize, or the available inline size of the region when smaller.",

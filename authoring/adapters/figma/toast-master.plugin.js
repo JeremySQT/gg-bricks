@@ -1,4 +1,5 @@
-// Toast master builder (use_figma body), 2026-11-03.
+// Toast master builder (use_figma body), 2026-11-03. 2026-11-04 (user request): a single toast keeps one height, its Body
+// being at least size/control/sm high (done in place on the ten single variants).
 // On the Feedback library page (407:112), section Toast: the item set “Toast” (Layout single, multi × Appearance
 // neutral, intense × Intent, 20 variants) and the region component “ToastRegion”.
 // Toast: a horizontal auto layout bound to size/overlay/panel, padding space/content/md, gap space/content/sm,
@@ -123,6 +124,11 @@ for (const ly of ['single', 'multi'])
       c.appendChild(col);
       col.layoutSizingHorizontal = 'FILL';
       bind(col, ['itemSpacing'], 'space/content/sm');
+      if (ly === 'single') {
+        // One height whatever the row holds: Body at least size/control/sm, the text centered (rowHeight, 2026-11-04).
+        bind(col, ['minHeight'], 'size/control/sm');
+        col.primaryAxisAlignItems = 'CENTER';
+      }
       const txt = figma.createAutoLayout('VERTICAL', { name: 'Text' });
       txt.fills = [];
       txt.clipsContent = false;

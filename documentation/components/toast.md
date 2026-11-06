@@ -6,15 +6,15 @@ A toast is a brief notification about something the user just did or that just h
 
 ## Anatomy
 
-| #   | Part        | Required | Role                                                                                                                                                                |
-| --- | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Icon        | yes      | The glyph of the intent (info for neutral and info, check-circle, warning, warning-circle) in the status icon color, hidden from assistive technology; replaceable. |
-| 2   | Title       | yes      | What happened, in label typography; plain text that wraps.                                                                                                          |
-| 3   | Description | no       | A short detail in body typography under the title; with a description, the toast lays out on several lines.                                                         |
-| 4   | Action      | no       | One small Button for a secondary follow-up (Undo, Retry, View): on the row without a description, under the description with one.                                   |
-| 5   | Dismiss     | no       | A small ghost IconButton with the close glyph, named by `dismissLabel`; shown by default, and always kept by a toast that never leaves by itself.                   |
+| #   | Part        | Required | Role                                                                                                                                                                              |
+| --- | ----------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Icon        | yes      | The glyph of the intent (info for neutral and info, check-circle, warning, warning-circle) in the status icon color, hidden from assistive technology; replaceable.               |
+| 2   | Title       | yes      | What happened, in label typography; plain text that wraps.                                                                                                                        |
+| 3   | Description | no       | A short detail in body typography under the title; with a description, the toast lays out on several lines.                                                                       |
+| 4   | Action      | no       | One small Button for a secondary follow-up (Undo, Retry, View): on the row without a description, under the description with one. On one row it never changes the toast's height. |
+| 5   | Dismiss     | no       | A small ghost IconButton with the close glyph, named by `dismissLabel`; shown by default, and always kept by a toast that never leaves by itself.                                 |
 
-A width: `size.overlay.panel` (360 px), or the region when narrower; padding `space.content.md` (8, 12 or 16 px in compact, standard and comfortable density), gaps `space.content.sm` (4, 8 or 12 px), `radius.overlay` corners, `shadow.overlay`, an edge of `border.width.default` in `color.elevation.border` on `color.surface.overlay` (intense: `color.status.{intent}.border` on `color.status.{intent}.surface`). B action gap: `space.content.sm` under the description; title gap `space.content.xs` (2, 4 or 6 px).
+A width: `size.overlay.panel` (360 px), or the region when narrower; on one row, a height of `size.control.sm` (28, 32 or 36 px) plus the padding, with or without the action and the dismiss button; padding `space.content.md` (8, 12 or 16 px in compact, standard and comfortable density), gaps `space.content.sm` (4, 8 or 12 px), `radius.overlay` corners, `shadow.overlay`, an edge of `border.width.default` in `color.elevation.border` on `color.surface.overlay` (intense: `color.status.{intent}.border` on `color.status.{intent}.surface`). B action gap: `space.content.sm` under the description; title gap `space.content.xs` (2, 4 or 6 px).
 
 The region (ToastRegion) sits at `space.layout.sm` (8, 16 or 24 px) from the viewport edges named by its placement and separates its toasts by `space.content.sm`; the newest toast is nearest that edge.
 

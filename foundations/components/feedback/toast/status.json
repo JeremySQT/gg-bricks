@@ -87,10 +87,10 @@
       "revision": {
         "paths": ["foundations/components/feedback/toast/contract.json"],
         "sha256": {
-          "foundations/components/feedback/toast/contract.json": "13b4ee1abefa4b79f51d242c046be53419bf0bcae784244b8dc0a90cbe6cecc1"
+          "foundations/components/feedback/toast/contract.json": "5465df5a6225e9e6b0a1563e1190939c31c988295f73e2a4f11e15a1adcb06dc"
         }
       },
-      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 requested at the implementation review (rounds 1 to 4: buttons and links follow the intent; Toast appearance, layout, countdowns, closable and secondary actions) accepted with the implementation: \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\".",
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 requested at the implementation review (rounds 1 to 4: buttons and links follow the intent; Toast appearance, layout, countdowns, closable and secondary actions) accepted with the implementation: \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\". Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Pour continuer sur la Toast, un seul truc me dérange c'est que ça hauteur n'est pas fixe dans le cas où on est en mode \\\"single line\\\". Ce qui fait qu'ajouter une action fait varier sa hauteur. Il faudrait que le bouton d'action soit forcément un SM au vu du contexte, et qu'il ne fasse pas varier la hauteur du toast que ce soit avec ou sans.\"): the contract gains the role rowHeight (size.control.sm): on one row the toast is a small control high plus its padding whatever it holds, the action Button (always sm) keeping its 44 px target over the padding; the code sets it (toast.css), the review page adds a one-line toast with an action, a browser test checks both heights in the representative contexts (it fails on the previous CSS: 68 instead of 56 px); Figma: the single variants keep one height (72 parity checks). Digests re-recorded.",
       "note": null
     },
     "implementation": {
@@ -111,13 +111,13 @@
           "packages/svelte/src/components/toast/ToastRegion.svelte": "a9e47464e8327ef644dcc08d30e47eddd9d8358c5626e9210c91b95b1d7e6f92",
           "packages/svelte/src/components/toast/contract.generated.ts": "87e238d378faaca4888c123ba3983ceefd45c8bdbd1aa2f858582775749756cd",
           "packages/svelte/src/components/toast/glyphs.ts": "f6da0f4d3ea9f3c0b69ff3d574bde4551708494d175bc9ce36d4310f15efde7f",
-          "packages/svelte/src/components/toast/toast.css": "9b5bbf2e3395ce9b60109fa2d8b0b7ea59353ec03df89b507468c81181e09077",
-          "packages/svelte/src/components/toast/tokens.generated.css": "0639524036ed638bae305aa7f5802da58f9be75da34db1b63057216b1981d979",
+          "packages/svelte/src/components/toast/toast.css": "138a274e60162a9fe7c26a3c08bb6d0410c15f4515a852262f61acafeaaceb0a",
+          "packages/svelte/src/components/toast/tokens.generated.css": "d6b15839d986a00912f12060336780f5b8c79f1813bc6a32414244d167862154",
           "packages/svelte/src/components/toast/types.ts": "bb307b021cfcdb616c30eecafea43c4690de86cdaf624e5da3f106a7ce60d2bc",
-          "examples/toast/App.svelte": "89b17f0d3d0491cb40ea990198ee314ac8528e218e06ef2f5c8f938c3ffb3781"
+          "examples/toast/App.svelte": "6d52d680c5a3ec1b4d6095c7591284f5aac4efef3f269ee83ef97361b9d7f6bd"
         }
       },
-      "provenance": "User at the grouped wave 3 implementation review (round 4) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793725323-4aae): \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\" (danger toasts keep no default countdown and keep their dismiss button without one, for accessibility). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui corrige les quatre points et ajoute-le au contrat\"): where the platform has no top layer the region is stacked at layer.toast, as the contract says (the token was generated but unused); a stale code comment about the countdown corrected. Browser test asserts the stacking. Digests re-recorded. Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Chaque toast est un composant unitaire qui ne dépend que d'elle même, la seule limite est en effet qu'elle doit être placé dans une toastRegion\"): the generated bindings of the children sit on their own class (.ggb-toast__…) instead of being nested under the parent (tooling/lib/bindings.ts, authoring/decisions.md); values and rendering unchanged (computed values identical in the browser tests). toast.css: the width of a toast falls back to no edge outside a region, so a toast keeps size.overlay.panel on its own. Digests re-recorded.",
+      "provenance": "User at the grouped wave 3 implementation review (round 4) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793725323-4aae): \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\" (danger toasts keep no default countdown and keep their dismiss button without one, for accessibility). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui corrige les quatre points et ajoute-le au contrat\"): where the platform has no top layer the region is stacked at layer.toast, as the contract says (the token was generated but unused); a stale code comment about the countdown corrected. Browser test asserts the stacking. Digests re-recorded. Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Chaque toast est un composant unitaire qui ne dépend que d'elle même, la seule limite est en effet qu'elle doit être placé dans une toastRegion\"): the generated bindings of the children sit on their own class (.ggb-toast__…) instead of being nested under the parent (tooling/lib/bindings.ts, authoring/decisions.md); values and rendering unchanged (computed values identical in the browser tests). toast.css: the width of a toast falls back to no edge outside a region, so a toast keeps size.overlay.panel on its own. Digests re-recorded. Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Pour continuer sur la Toast, un seul truc me dérange c'est que ça hauteur n'est pas fixe dans le cas où on est en mode \\\"single line\\\". Ce qui fait qu'ajouter une action fait varier sa hauteur. Il faudrait que le bouton d'action soit forcément un SM au vu du contexte, et qu'il ne fasse pas varier la hauteur du toast que ce soit avec ou sans.\"): the contract gains the role rowHeight (size.control.sm): on one row the toast is a small control high plus its padding whatever it holds, the action Button (always sm) keeping its 44 px target over the padding; the code sets it (toast.css), the review page adds a one-line toast with an action, a browser test checks both heights in the representative contexts (it fails on the previous CSS: 68 instead of 56 px); Figma: the single variants keep one height (72 parity checks). Digests re-recorded.",
       "note": null
     },
     "figmaParity": {
@@ -129,9 +129,9 @@
           "reports/components/toast/figma/ledger.json"
         ],
         "sha256": {
-          "foundations/components/feedback/toast/figma-spec.md": "ca78d3fa6ae38b1f898beccbdc666b7c7d7bbbaa8f93607f0493b9b2aeeacfbd",
+          "foundations/components/feedback/toast/figma-spec.md": "a95a0903aa472ef3ee848d4f643f11ccfe5e01c01b8118a0bce17a4211f97dad",
           "reports/components/toast/figma/parity.json": "517ab87b479961542c5d7df547c80958e68193d64d87f6c04c2f7fbc6b4da810",
-          "reports/components/toast/figma/ledger.json": "a1d05c6b4b792cd399d1376b8a8a1354da3b4d3806e47d333f3c9a370251b465"
+          "reports/components/toast/figma/ledger.json": "42d349d13b1474a906023291d473923bbc1ededbdf7d5b862482a9566b53128d"
         },
         "figma": {
           "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
@@ -140,7 +140,7 @@
           "region": "455:1602"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Pour continuer sur la Toast, un seul truc me dérange c'est que ça hauteur n'est pas fixe dans le cas où on est en mode \\\"single line\\\". Ce qui fait qu'ajouter une action fait varier sa hauteur. Il faudrait que le bouton d'action soit forcément un SM au vu du contexte, et qu'il ne fasse pas varier la hauteur du toast que ce soit avec ou sans.\"): the contract gains the role rowHeight (size.control.sm): on one row the toast is a small control high plus its padding whatever it holds, the action Button (always sm) keeping its 44 px target over the padding; the code sets it (toast.css), the review page adds a one-line toast with an action, a browser test checks both heights in the representative contexts (it fails on the previous CSS: 68 instead of 56 px); Figma: the single variants keep one height (72 parity checks). Digests re-recorded."
     },
     "documentation": null,
     "delivery": null
@@ -217,6 +217,12 @@
       "name": "Children bindings on their own class: browser tests unchanged (computed values identical); a toast is styled outside a region",
       "result": "passed",
       "date": "2026-11-04",
+      "evidence": "tests/browser/toast.spec.ts"
+    },
+    {
+      "name": "One-line toast keeps one height with or without its action (browser, representative contexts; Figma, 18 contexts)",
+      "result": "passed",
+      "date": "2026-11-06",
       "evidence": "tests/browser/toast.spec.ts"
     }
   ],

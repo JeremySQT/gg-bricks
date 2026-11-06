@@ -117,6 +117,8 @@
     flex-direction: row;
     align-items: center;
     gap: var(--ggb-toast-item-iconGap);
+    /* One height whatever the row holds: a small control high (rowHeight). */
+    min-block-size: var(--ggb-toast-item-rowHeight);
   }
   .ggb-toast__title {
     font: var(--ggb-toast-item-typographyTitle);
@@ -132,6 +134,11 @@
   .ggb-toast__action {
     display: flex;
     flex: none;
+    align-items: center;
+  }
+  /* In a single row the action Button keeps its 44 px target, which overlaps the padding instead of growing the row. */
+  .ggb-toast__item[data-layout='single'] .ggb-toast__action {
+    block-size: var(--ggb-toast-item-rowHeight);
   }
   .ggb-toast__item[data-layout='multi'] .ggb-toast__action {
     align-self: flex-start;

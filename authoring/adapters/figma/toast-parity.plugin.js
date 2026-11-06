@@ -4,7 +4,7 @@
 // hashed per context for `wave3-parity-report.mjs toast`. Extra checks in the 18 contexts (bad lists failures): intense
 // surface, edge, title and description per intent; the action label and border and the dismiss glyph in the action
 // family of the intent; the action of a neutral toast kept neutral; single layout centered, multi icon and dismiss on
-// the title line.
+// the title line; a single toast keeps one height (size/control/sm plus padding) with or without action and dismiss.
 figma.skipInvisibleInstanceChildren = false;
 const page = await figma.getNodeByIdAsync('407:117');
 await figma.setCurrentPageAsync(page);
@@ -139,6 +139,26 @@ for (const b of ['base', 'brick', 'orchid'])
       const gl = await paint(n0.findOne((n) => n.name === 'Action').findOne((n) => n.type === 'TEXT'));
       if (gl !== want('color/action/neutral/outline/default/content'))
         bad.push(`${ctx} neutral appearance action ${gl}`);
+      // One line keeps one height (size/control/sm plus padding) with or without action and dismiss (2026-11-04).
+      const rowH = all.find((v) => v.name === 'size/control/sm').resolveForConsumer(f).value;
+      const s0 = set.children
+        .find((c) => c.name === 'Layout=single, Appearance=neutral, Intent=neutral')
+        .createInstance();
+      f.appendChild(s0);
+      const pad = await res(s0, 'paddingTop');
+      for (const [act, close] of [
+        [false, true],
+        [true, true],
+        [true, false],
+        [false, false]
+      ]) {
+        s0.setProperties({ [P(s0, 'Show action')]: act, [P(s0, 'Closable')]: close });
+        checks++;
+        if (Math.abs(s0.height - (rowH + 2 * pad)) > 0.01)
+          bad.push(
+            `${ctx} single ${act ? 'action' : '-'}/${close ? 'close' : '-'} height ${s0.height} vs ${rowH + 2 * pad}`
+          );
+      }
       f.remove();
     }
 return { hashes, checks, bad };

@@ -45,7 +45,9 @@
   color: var(--ggb-color-selection-content);
 }
 
-:focus-visible {
+/* The site's focus outline, for its own controls only: ggbrick components draw their own focus ring, and an unlayered
+   outline here would win over their layered `outline: none` and add a second ring. */
+:focus-visible:not([class*='ggb-']) {
   outline: var(--ggb-focus-width) solid var(--ggb-color-focus-ring);
   outline-offset: var(--ggb-focus-offset);
 }

@@ -6,7 +6,7 @@
 - Masters: the item set **Toast** ([`426:819`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=426-819)), 20 variants, and the region component **ToastRegion** ([`455:1602`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=455-1602)); built by `authoring/adapters/figma/toast-master.plugin.js` on the adapter `action-family.plugin.js`.
 - Specification frame: **Toast — Specification** ([`461:855`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=461-855)); built by `toast-spec.plugin.js` on `spec-lib.plugin.js`.
 - Reproduces: contract `foundations/components/feedback/toast/contract.json` (approved 2026-11-03 with the review amendments) and the implementation approved on 2026-11-03 (`packages/svelte/src/components/toast`).
-- Node IDs: `reports/components/toast/figma/ledger.json`. Parity: `reports/components/toast/figma/parity.json` (36 records, 0 failures, 4 justified) plus 1548 extra checks. Screenshots: `master-set.png`, `specification.png`, `blueprint-anatomy.png`.
+- Node IDs: `reports/components/toast/figma/ledger.json`. Parity: `reports/components/toast/figma/parity.json` (36 records, 0 failures, 4 justified) plus 1620 extra checks. Screenshots: `master-set.png`, `specification.png`, `blueprint-anatomy.png`.
 - The library is not published (publication needs explicit authorization).
 
 ## Mapping from the contract
@@ -24,6 +24,8 @@
 | tokens                                          | `color/surface/overlay`, `color/elevation/border`, `color/content/primary, secondary`, `color/status/{intent}/surface, border, content, icon`, `shadow/overlay`, `radius/overlay`, `size/overlay/panel`, `space/content/md, sm, xs`, `typography/label/md`, `typography/body/sm`, `size/icon/md`; region `space/content/sm` (gap), `space/layout/sm` (edge, a placement rule) |
 
 ## Construction notes
+
+- **One height on one row** (user request, 2026-11-04, in the code too: `rowHeight`): the Body of the single variants is at least `size/control/sm` high and centers the text, so the toast keeps one height with or without the action and the dismiss button (the action Button is sm and its minimum height is cleared).
 
 - Single centers the icon, the title, the action and the dismiss button on one row; multi aligns at the top, with the icon and dismiss boxes as tall as the title line, and puts the action under the description.
 - **ToastRegion is a single component** (user review of the Figma parity, 2026-11-04): a slot cannot reverse its order, so the six Placement variants changed nothing. The placement is where the designer puts the region (space/layout/sm from the chosen viewport edges, bottom-end by default in the code), and the designer orders the toasts of its slot, the newest nearest that edge.

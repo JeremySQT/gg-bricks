@@ -112,6 +112,13 @@
               })}
           />
           <Button
+            id="send-archived"
+            label="Archived (Undo, one line)"
+            intent="neutral"
+            appearance="outline"
+            onactivate={() => show({ intent: 'neutral', title: 'Report archived', action: 'Undo' })}
+          />
+          <Button
             id="send-warning"
             label="Storage warning"
             intent="neutral"

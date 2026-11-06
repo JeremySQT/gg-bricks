@@ -47,6 +47,16 @@ import '@fontsource/inter/700.css';
 import '@fontsource/ibm-plex-mono/400.css';
 ```
 
+## Keep your global styles off the components
+
+Component styles live in the `ggb` cascade layer, so any rule of your application that is not in a layer wins over them, whatever its specificity: that is how you adjust a component. It also means that a global rule meant for your own elements reaches the components too. The common case is a focus outline: components draw their own focus ring, and a global `:focus-visible { outline: … }` adds a second one. Scope such rules away from them:
+
+```css
+:focus-visible:not([class*='ggb-']) {
+  outline: 2px solid var(--ggb-color-focus-ring);
+}
+```
+
 ## Render a first component
 
 <Demo source={firstComponent}>
