@@ -6,12 +6,12 @@ A skeleton stands in for content that is loading, with the shape and size of tha
 
 ## Anatomy
 
-| #   | Part | Required   | Role                                                                                                                                                                        |
-| --- | ---- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Line | text shape | One per line of the text to come, as tall as the line box of `typography.body.{size}`; the lines fill the width.                                                            |
-| 2   | Bar  | text shape | The font size of that text, centered in its line, with `radius.indicator` corners, in `color.surface.muted`; with more than one line the last bar covers 60 % of the width. |
+| #   | Part | Required   | Role                                                                                                                                                  |
+| --- | ---- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Line | text shape | One per line of the text to come, as tall as a line of the body text of its `size`, so that the paragraph keeps its height; the lines fill the width. |
+| 2   | Bar  | text shape | The placeholder drawn in each line, as tall as the text it stands for; with more than one line the last bar is shorter, like the end of a paragraph.  |
 
-A line height: `typography.body.{size}` line height, 21, 24 or 28.8 px. B bar height: its font size, 14, 16 or 18 px. Neither changes with the density. The block and circle shapes have no lines: a block fills the size the layout gives it with `radius.container` corners, a circle is a disc as wide as its box with `radius.full` corners.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/skeleton.json`.
 
 ## When to use
 
@@ -126,12 +126,12 @@ Renders a `<div class="ggb-skeleton">` (plus any class you pass) with `data-shap
 | Prop    | Type                                | Default  | Description                                                                                                                  |
 | ------- | ----------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `shape` | `'text' \| 'block' \| 'circle'`     | `'text'` | `text`: lines of running text. `block`: fills the width and height the layout gives it. `circle`: a disc as wide as its box. |
-| `lines` | `number`                            | `1`      | Number of text lines, rounded down, at least 1; the last one covers 60 % of the width when there are several. Text only.     |
+| `lines` | `number`                            | `1`      | Number of text lines, rounded down, at least 1; the last one is shorter when there are several. Text only.                   |
 | `size`  | `'sm' \| 'md' \| 'lg'`              | `'md'`   | Body typography the text lines stand for. Text only.                                                                         |
 | `ref`   | `HTMLDivElement \| null` (bindable) | `null`   | The rendered element.                                                                                                        |
 | `class` | `string`                            | —        | Merged with `ggb-skeleton`.                                                                                                  |
 
-Every other attribute of `HTMLAttributes<HTMLDivElement>` (`id`, `style`, `data-*`…) is forwarded to the root, except those the component owns: `children`, `role`, `aria-hidden` and `tabindex`. There are no events. Every shape pulses from full opacity to `opacity.muted` and back once per `motion.duration.loop`, all the skeletons of the page in phase, wherever they were inserted. Brand, appearance and density apply through the tokens, without any prop. The platform-independent contract ships as `contracts/skeleton.json`.
+Every other attribute of `HTMLAttributes<HTMLDivElement>` (`id`, `style`, `data-*`…) is forwarded to the root, except those the component owns: `children`, `role`, `aria-hidden` and `tabindex`. There are no events. Every shape pulses gently, all the skeletons of the page in phase, wherever they were inserted. Brand, appearance and density apply through the tokens, without any prop. The platform-independent contract ships as `contracts/skeleton.json`.
 
 ## Accessibility
 

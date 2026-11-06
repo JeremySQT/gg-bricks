@@ -6,12 +6,12 @@ A progress bar shows how far a task of known size has gone, such as an upload, a
 
 ## Anatomy
 
-| #   | Part      | Required | Role                                                                                                                             |
-| --- | --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| #   | Part      | Required | Role                                                                                                                                                                                     |
+| --- | --------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | Label     | yes      | What is in progress, on one line, shortened when too long; the accessible name of the bar, kept even when it is not shown. With neither label nor value shown, their line takes no room. |
-| 2   | Value     | no       | The whole percentage at the end of the label line, steady in width as it changes; not shown when indeterminate. |
-| 3   | Track     | yes      | The whole bar, standing for the whole task; it fills the width of its container. |
-| 4   | Indicator | yes      | The part done, from the start edge over `value ÷ max` of the track, following the intent; none at 0; a sweeping segment when indeterminate. |
+| 2   | Value     | no       | The whole percentage at the end of the label line, steady in width as it changes; not shown when indeterminate.                                                                          |
+| 3   | Track     | yes      | The whole bar, standing for the whole task; it fills the width of its container.                                                                                                         |
+| 4   | Indicator | yes      | The part done, from the start edge over `value ÷ max` of the track, following the intent; none at 0; a sweeping segment when indeterminate.                                              |
 
 Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/progress.json`.
 
@@ -151,11 +151,11 @@ Renders a `<div class="ggb-progress">` (plus any class you pass) with `data-inte
 | `label`         | `string`                                         | required   | What is in progress; the accessible name, shown by default. Must be non-empty: an empty or blank label throws, on the server and in the browser. |
 | `value`         | `number`                                         | `0`        | Progress so far, clamped between 0 and `max` (a value above `max` shows a full bar). Ignored when indeterminate.                                 |
 | `max`           | `number`                                         | `100`      | The value of a completed task; a value that is not a positive number falls back to 100.                                                          |
-| `indeterminate` | `boolean`                                        | `false`    | A task under way without a known end: a segment of the track sweeps from start to end, no value and no percentage are exposed. |
+| `indeterminate` | `boolean`                                        | `false`    | A task under way without a known end: a segment of the track sweeps from start to end, no value and no percentage are exposed.                   |
 | `showLabel`     | `boolean`                                        | `true`     | Shows the label above the track; false keeps it as the visually hidden accessible name.                                                          |
 | `showValue`     | `boolean`                                        | `false`    | Shows the whole percentage of `value ÷ max` at the end of the label line (not when indeterminate).                                               |
 | `intent`        | `'accent' \| 'success' \| 'warning' \| 'danger'` | `'accent'` | Color of the indicator: an ordinary task, a completed one, one that needs attention, a failed one.                                               |
-| `size`          | `'sm' \| 'md' \| 'lg'`                           | `'md'`     | Thickness of the track. It does not change with the density. |
+| `size`          | `'sm' \| 'md' \| 'lg'`                           | `'md'`     | Thickness of the track. It does not change with the density.                                                                                     |
 | `ref`           | `HTMLElement \| null` (bindable)                 | `null`     | The progress bar element.                                                                                                                        |
 | `class`         | `string`                                         | —          | Merged with `ggb-progress` on the outer element.                                                                                                 |
 

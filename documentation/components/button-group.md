@@ -9,7 +9,7 @@ A button group places related actions together with one size and one spacing: th
 | #   | Part  | Required | Role                                                                                                                    |
 | --- | ----- | -------- | ----------------------------------------------------------------------------------------------------------------------- |
 | 1   | Items | yes      | The Buttons and IconButtons of the group in source order, one at least; the order is the priority and is never changed. |
-| 2   | Item  | yes      | One Button or IconButton; it takes the size of the group, whatever its own size. |
+| 2   | Item  | yes      | One Button or IconButton; it takes the size of the group, whatever its own size.                                        |
 
 Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/button-group.json`.
 

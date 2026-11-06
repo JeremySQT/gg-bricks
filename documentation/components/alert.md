@@ -6,15 +6,15 @@ An alert is a durable message in the flow of the page about the page, a section 
 
 ## Anatomy
 
-| #   | Part    | Required | Role                                                                                                                                                   |
-| --- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1   | Icon    | yes      | The glyph of the intent (info, check-circle, warning or warning-circle), centered on the first line and hidden from assistive technology; replaceable. |
-| 2   | Title   | no       | A short heading in label typography, in the content color of the intent.                                                                               |
-| 3   | Content | no       | The message: a sentence, a link, a short list, wrapping as needed; links inside follow the content color. One of title and content at least.           |
-| 4   | Actions | no       | One ButtonGroup of small buttons under the content; accent and neutral buttons take the action family of the intent, danger keeps its own.             |
-| 5   | Dismiss | no       | A small ghost IconButton with the close glyph, named by `dismissLabel`, at the inline end; it follows the intent too.                                  |
+| #   | Part    | Required | Role                                                                                                                                                                   |
+| --- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Icon    | yes      | The glyph of the intent (info, check-circle, warning or warning-circle), beside the first line; decorative, hidden from assistive technology; replaceable with `icon`. |
+| 2   | Title   | no       | A short heading that names the situation in a few words.                                                                                                               |
+| 3   | Content | no       | The message: a sentence, a link, a short list, wrapping as needed; links inside follow the intent. One of title and content at least.                                  |
+| 4   | Actions | no       | One ButtonGroup of small buttons under the content; accent and neutral buttons follow the intent, danger keeps its own.                                                |
+| 5   | Dismiss | no       | A small close IconButton at the inline end, named by `dismissLabel`; it follows the intent too.                                                                        |
 
-A padding: `space.content.md` (8, 12 or 16 px in compact, standard and comfortable density), with an edge of `border.width.default` in `color.status.{intent}.border` inside `radius.container` corners on `color.status.{intent}.surface`. B icon gap: `space.content.sm` (4, 8 or 12 px), also before the dismiss button; title gap `space.content.xs` (2, 4 or 6 px). C actions gap: `space.content.md` (8, 12 or 16 px). D block-end padding with actions: `space.content.lg` (12, 16 or 24 px) instead of `space.content.md`, so that the buttons do not sit tight against the edge.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/alert.json`.
 
 ## When to use
 
@@ -136,7 +136,7 @@ With `live`, an alert that appears after an action is announced: assertively for
 
 ### A custom icon
 
-The `icon` snippet replaces the glyph of the intent; it is decorative and drawn in the icon color.
+The `icon` snippet replaces the glyph of the intent; it is decorative and colored by the intent like the default glyph.
 
 ```svelte live
 <script lang="ts">
@@ -168,18 +168,18 @@ import type { AlertProps, AlertIntent } from '@ggbrick/svelte';
 
 Renders a `<div class="ggb-alert">` (plus any class you pass) with `data-intent`, taking the full inline size it is given. With `live`, it carries `role="alert"` for danger and warning and `role="status"` for the other intents; without it, no role. The title and content are `div` elements, the dismiss button an IconButton.
 
-| Prop           | Type                                                        | Default     | Description                                                                                                                  |
-| -------------- | ----------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `intent`       | `'neutral' \| 'info' \| 'success' \| 'warning' \| 'danger'` | `'info'`    | Color family and default glyph; the action family of the buttons inside.                                                     |
-| `title`        | `string`                                                    | `''`        | A short heading, in label typography. An alert without a title and without content throws, on the server and in the browser. |
-| `children`     | `Snippet`                                                   | —           | The message, in body typography: a sentence, a link, a short list. Links take the content color unless they set a tone.      |
-| `icon`         | `Snippet`                                                   | —           | Replaces the glyph of the intent: an Icon, or an `svg` drawn in `currentColor`. Decorative.                                  |
-| `actions`      | `Snippet`                                                   | —           | One ButtonGroup of follow-up actions under the content; its buttons are small (`sm`) unless the group sets a `size`.         |
-| `dismissible`  | `boolean`                                                   | `false`     | Shows the dismiss button at the inline end.                                                                                  |
-| `dismissLabel` | `string`                                                    | `'Dismiss'` | Accessible name of the dismiss button.                                                                                       |
-| `live`         | `boolean`                                                   | `false`     | Announces the alert when it appears or its text changes: assertive for danger and warning, polite otherwise.                 |
-| `ondismiss`    | `() => void`                                                | —           | Called when the user activates the dismiss button; remove the alert from the page there.                                     |
-| `ref`          | `HTMLDivElement \| null` (bindable)                         | `null`      | The alert element.                                                                                                           |
+| Prop           | Type                                                        | Default     | Description                                                                                                          |
+| -------------- | ----------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------- |
+| `intent`       | `'neutral' \| 'info' \| 'success' \| 'warning' \| 'danger'` | `'info'`    | Color family and default glyph; the action family of the buttons inside.                                             |
+| `title`        | `string`                                                    | `''`        | A short heading. An alert without a title and without content throws, on the server and in the browser.              |
+| `children`     | `Snippet`                                                   | —           | The message: a sentence, a link, a short list. Links follow the intent unless they set a tone.                       |
+| `icon`         | `Snippet`                                                   | —           | Replaces the glyph of the intent: an Icon, or an `svg` drawn in `currentColor`. Decorative.                          |
+| `actions`      | `Snippet`                                                   | —           | One ButtonGroup of follow-up actions under the content; its buttons are small (`sm`) unless the group sets a `size`. |
+| `dismissible`  | `boolean`                                                   | `false`     | Shows the dismiss button at the inline end.                                                                          |
+| `dismissLabel` | `string`                                                    | `'Dismiss'` | Accessible name of the dismiss button.                                                                               |
+| `live`         | `boolean`                                                   | `false`     | Announces the alert when it appears or its text changes: assertive for danger and warning, polite otherwise.         |
+| `ondismiss`    | `() => void`                                                | —           | Called when the user activates the dismiss button; remove the alert from the page there.                             |
+| `ref`          | `HTMLDivElement \| null` (bindable)                         | `null`      | The alert element.                                                                                                   |
 
 Every other attribute of `HTMLAttributes<HTMLDivElement>` (`id`, `class`, `aria-labelledby`…) goes to the alert element, except those the component owns: `children`, `role`, `aria-live` and `title` (the `title` prop is the heading, not the native tooltip attribute). Inside the alert, Buttons and IconButtons of intent accent or neutral, the dismiss button included, take the action family of the intent in every appearance; danger buttons keep their own. A ButtonGroup around the alert does not size its dismiss button. The platform-independent contract ships as `contracts/alert.json`.
 
@@ -190,8 +190,8 @@ The component provides:
 - Plain content by default, not announced; with `live`, `role="alert"` (assertive) for danger and warning and `role="status"` (polite) for the other intents, announced when the alert appears or its text changes.
 - An alert that is never focusable and never moves focus.
 - A decorative glyph hidden from assistive technology; the title and content are the text that is read.
-- A dismiss button that is a native button named by `dismissLabel`, with a 44 × 44 px target and a visible focus ring; the action buttons keep their own keyboard behavior.
-- Colors from the status roles of the intent, buttons and links that follow it, and in forced-colors mode a visible edge with the icon and text in the system text color.
+- A dismiss button that is a native button named by `dismissLabel`, with the minimum interaction target and a visible focus ring; the action buttons keep their own keyboard behavior.
+- Colors that follow the intent, buttons and links that follow it too, and in forced-colors mode a visible edge with the icon and text in the system text color.
 
 The integration provides:
 
@@ -203,7 +203,7 @@ The integration provides:
 | ------------------------------------------------------------------------------------------------------- | ----- | ---------------------------------------------------------------- |
 | [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html) | A     | Component (glyph hidden, text read in order)                     |
 | [1.4.1 Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)                     | A     | Integration (the meaning in words); the icon reinforces it       |
-| [1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)           | AA    | Component (status content on the status surface)                 |
+| [1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)           | AA    | Component (the text of each intent on its background)            |
 | [1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)          | AA    | Component (buttons in the intent family); the edge is decorative |
 | [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)                             | A     | Component (dismiss and action buttons)                           |
 | [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)     | AA    | Component (dismiss button)                                       |

@@ -6,10 +6,10 @@ A spinner shows that something is loading or working when the time it takes is u
 
 ## Anatomy
 
-| #   | Part      | Required | Role                                                                                                                                   |
-| --- | --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| #   | Part      | Required | Role                                                                                  |
+| --- | --------- | -------- | ------------------------------------------------------------------------------------- |
 | 1   | Track     | yes      | The full ring the indicator turns along; both take the color of the text around them. |
-| 2   | Indicator | yes      | The part of the ring that keeps turning, showing that work is under way. |
+| 2   | Indicator | yes      | The part of the ring that keeps turning, showing that work is under way.              |
 
 Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/spinner.json`.
 
@@ -145,7 +145,7 @@ Renders a `<span class="ggb-spinner">` (plus any class you pass) with `data-size
 
 | Prop    | Type                                 | Default | Description                                                                                                                           |
 | ------- | ------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `size`  | `'sm' \| 'md' \| 'lg' \| 'xl'`       | `'md'`  | The icon scale: the same size as an Icon of the same name. It does not change with the density. |
+| `size`  | `'sm' \| 'md' \| 'lg' \| 'xl'`       | `'md'`  | The icon scale: the same size as an Icon of the same name. It does not change with the density.                                       |
 | `label` | `string`                             | `''`    | Empty or blank: decorative, hidden from assistive technology. Non-empty: the spinner is a polite status named by this text (trimmed). |
 | `ref`   | `HTMLSpanElement \| null` (bindable) | `null`  | The rendered element.                                                                                                                 |
 | `class` | `string`                             | —       | Merged with `ggb-spinner`.                                                                                                            |
