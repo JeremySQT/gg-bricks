@@ -222,7 +222,7 @@ The component provides:
 - A region landmark named by `label`, in the top layer above the page; toasts appear in it without moving focus.
 - `role="status"` (polite) on every toast except danger, which has `role="alert"` (assertive), with `aria-atomic="true"`.
 - A countdown paused on hover, on focus inside the region and while the document is hidden; no countdown by default for danger, and a dismiss button always kept by a toast that never leaves by itself.
-- The action and dismiss buttons as Tab stops in the region's reading order, Escape inside a toast to dismiss it, a dismiss button named by `dismissLabel` with a pointer target larger than the minimum size and a visible focus ring.
+- The action and dismiss buttons as Tab stops in the region's reading order, Escape inside a toast to dismiss it, a dismiss button named by `dismissLabel` with a 44 × 44 px target and a visible focus ring.
 - Contrast pairs checked for the neutral and intense appearances, an entry that only fades under reduced motion, and a visible edge in forced-colors mode.
 
 The integration provides:

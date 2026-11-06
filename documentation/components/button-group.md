@@ -165,7 +165,7 @@ import { ButtonGroup } from '@ggbrick/svelte';
 import type { ButtonGroupProps, ButtonGroupSize, ButtonGroupOrientation, ButtonGroupAlign } from '@ggbrick/svelte';
 ```
 
-Renders a `<div class="ggb-button-group">` (plus any class you pass) with `data-size`, `data-orientation`, `data-align` and, while a horizontal group is stacked, `data-stacked`; with a non-empty `label` it also carries `role="group"` and `aria-label`. The items are its direct children.
+Renders a `<div class="ggb-button-group">` (plus any class you pass) with `data-size`, `data-orientation`, `data-align` and, while a horizontal group is stacked, `data-stacked`; with a non-empty `label` it also carries `role="group"` and `aria-label`. The items are its direct children; the group adds no surface, border or padding of its own.
 
 | Prop          | Type                                        | Default        | Description                                                                                                                                                       |
 | ------------- | ------------------------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -185,7 +185,7 @@ The component provides:
 - Every enabled item as its own Tab stop, in source order; the group adds no arrow-key navigation and never reorders its items, whatever the alignment or the stacking.
 - `role="group"` named by `label` when one is given; otherwise the items are read as ordinary buttons.
 - Stacking at full width instead of overflowing when the line does not fit.
-- One size for every item, so that each keeps the minimum interaction target and the focus ring of its own component.
+- One size for every item, so that each keeps its 44 × 44 px target and the focus ring of its own component.
 
 The integration provides:
 

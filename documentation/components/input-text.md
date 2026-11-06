@@ -166,7 +166,7 @@ The component provides:
 - A native `<input>` named by the Field label or the `label` prop; the placeholder is never the name.
 - `type` for the matching keyboard and autofill; `aria-invalid` and `required` exposed; decorative icons hidden.
 - The action as a separate IconButton after the input in the tab order, with its own label; disabled with the input.
-- A visible focus ring, a target tall enough for touch in every size, reduced motion and forced colors handled.
+- A visible focus ring, a target at least 44 px tall in every size, reduced motion and forced colors handled.
 
 The integration provides:
 
@@ -182,7 +182,7 @@ The integration provides:
 | [1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)          | AA    | Component (field border at least 3:1)                    |
 | [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)                             | A     | Component                                                |
 | [2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)                   | AA    | Component                                                |
-| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)     | AA    | Component (target height in every size)                  |
+| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)     | AA    | Component (44 px target height in every size)            |
 | [3.3.1 Error Identification](https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html)     | A     | Integration, through Field                               |
 | [3.3.2 Labels or Instructions](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html) | A     | Integration (Field label and description)                |
 | [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)             | A     | Component                                                |

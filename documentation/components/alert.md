@@ -190,7 +190,7 @@ The component provides:
 - Plain content by default, not announced; with `live`, `role="alert"` (assertive) for danger and warning and `role="status"` (polite) for the other intents, announced when the alert appears or its text changes.
 - An alert that is never focusable and never moves focus.
 - A decorative glyph hidden from assistive technology; the title and content are the text that is read.
-- A dismiss button that is a native button named by `dismissLabel`, with the minimum interaction target and a visible focus ring; the action buttons keep their own keyboard behavior.
+- A dismiss button that is a native button named by `dismissLabel`, with a 44 × 44 px target and a visible focus ring; the action buttons keep their own keyboard behavior.
 - Colors that follow the intent, buttons and links that follow it too, and in forced-colors mode a visible edge with the icon and text in the system text color.
 
 The integration provides:

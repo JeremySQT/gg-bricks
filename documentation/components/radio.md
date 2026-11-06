@@ -79,13 +79,13 @@ Size, readonly and invalid come from the group. Every other attribute of the Bit
 
 ## Accessibility
 
-The component provides `role="radio"` with `aria-checked`, named by its label and described by its description; one target for circle, label and description, tall enough for touch; a focus ring on keyboard focus; a dot that does not rely on color alone; forced colors handled. The keyboard, the group name and the group state are described on the RadioGroup page.
+The component provides `role="radio"` with `aria-checked`, named by its label and described by its description; one target for circle, label and description, at least 44 px tall; a focus ring on keyboard focus; a dot that does not rely on color alone; forced colors handled. The keyboard, the group name and the group state are described on the RadioGroup page.
 
 | WCAG 2.2 criterion                                                                                  | Level | Responsibility                          |
 | --------------------------------------------------------------------------------------------------- | ----- | --------------------------------------- |
 | [1.4.1 Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)                 | A     | Component (the dot shows the selection) |
 | [1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)      | AA    | Component, on the system surfaces       |
-| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) | AA    | Component (target height)               |
+| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) | AA    | Component (44 px target height)         |
 | [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)         | A     | Component                               |
 
 Validated by automated checks in Chromium as part of the RadioGroup tests; no assistive-technology test yet. This list is not a conformance claim.

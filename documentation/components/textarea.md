@@ -125,7 +125,7 @@ The component provides:
 
 - A native `<textarea>` named by the Field label or the `label` prop; the placeholder is never the name.
 - `aria-invalid` and `required` exposed; Enter inserts a line break and never submits.
-- A visible focus ring, a target tall enough for touch, reduced motion and forced colors handled.
+- A visible focus ring, a target at least 44 px tall, reduced motion and forced colors handled.
 
 The integration provides:
 

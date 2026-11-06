@@ -154,22 +154,22 @@ The component provides:
 - `role="checkbox"` with `aria-checked` (`true`, `false` or `mixed`), named by the label and described by the description.
 - Space toggles (Enter does not); disabled boxes leave the tab order, readonly ones stay focusable with `aria-readonly`.
 - `aria-invalid` and `aria-required`; in a Field, the field label names the question and the message describes it.
-- One target for box, label and description, tall enough for touch; a focus ring on keyboard focus; reduced motion and forced colors handled.
+- One target for box, label and description, at least 44 px tall; a focus ring on keyboard focus; reduced motion and forced colors handled.
 
 The integration provides:
 
 - Positive, specific labels, and a hidden label that names the row in tables.
 - The select-all state derived from the rows, and validation with a message for a required acceptance.
 
-| WCAG 2.2 criterion                                                                                      | Level | Responsibility                                       |
-| ------------------------------------------------------------------------------------------------------- | ----- | ---------------------------------------------------- |
-| [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html) | A     | Component                                            |
-| [1.4.1 Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)                     | A     | Component (check and bar glyphs, not only color)     |
-| [1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)          | AA    | Component, on the system surfaces                    |
-| [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)                             | A     | Component                                            |
-| [2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)                   | AA    | Component                                            |
-| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)     | AA    | Component (target height, also with a hidden label)  |
-| [3.3.2 Labels or Instructions](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html) | A     | Component (visible label), integration (its wording) |
-| [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)             | A     | Component                                            |
+| WCAG 2.2 criterion                                                                                      | Level | Responsibility                                            |
+| ------------------------------------------------------------------------------------------------------- | ----- | --------------------------------------------------------- |
+| [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html) | A     | Component                                                 |
+| [1.4.1 Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)                     | A     | Component (check and bar glyphs, not only color)          |
+| [1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)          | AA    | Component, on the system surfaces                         |
+| [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)                             | A     | Component                                                 |
+| [2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)                   | AA    | Component                                                 |
+| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)     | AA    | Component (44 px target height, also with a hidden label) |
+| [3.3.2 Labels or Instructions](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html) | A     | Component (visible label), integration (its wording)      |
+| [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)             | A     | Component                                                 |
 
 Validated by automated checks in Chromium (axe-core in light and dark, keyboard, accessible names and states, forced colors, target sizes, computed values in the 18 contexts); no assistive-technology test yet. This list is not a conformance claim.
