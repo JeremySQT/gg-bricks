@@ -1,6 +1,6 @@
 # Consumer entry point
 
-You are working in an application that uses `@ggbrick/svelte`. Read `index.json`, then only the relevant sections of the component page you need. Prefer exported ggbrick components over rebuilding their appearance; the page's API section documents the actual Svelte API, the contract records platform-independent options and rules.
+You are working in an application that uses `@ggbrick/svelte`. Read `index.json` to choose a component, then only the relevant sections of its page: the page is the recipe (when and how to use it, its API). Open its contract (`contracts/<id>.json`: tokens, measurements, rules) only when you need that detail, to style around the component, extend it or audit it; placing a component never requires it. Prefer exported ggbrick components over rebuilding their appearance; the page's API section documents the actual Svelte API, the contract records platform-independent options and rules.
 
 For styles the components do not cover (page layout, cards, custom content), read the `foundations` entries of `index.json`: `foundations/overview.md` first, then the page of the family you style (color, typography, spacing, shape, elevation, motion). Use role tokens (`var(--ggb-color-surface-default)`, `var(--ggb-space-layout-md)`), never hard-coded values, palette steps for UI or primitives.
 

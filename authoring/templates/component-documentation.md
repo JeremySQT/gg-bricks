@@ -8,7 +8,9 @@ One or two sentences: what the component is and what it lets the user do, with c
 
 ## Anatomy
 
-A table of parts (#, part, required, role in one sentence) whose numbers match the callouts of the Figma blueprint board, then one line for its lettered dimensions. The site shows the blueprint captures (`reports/components/<id>/figma/blueprint-*.png`, exported from the specification page at the Figma parity phase) under the heading.
+A table of parts (#, part, required, role in one sentence) whose numbers match the callouts of the Figma blueprint board. Describe each part by what it is and what it holds or accepts, in the words a designer or a developer uses to compose the component: no token names, measurements or colors, which the component applies by itself and the contract records. Then one line, always the same: “Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/<id>.json`.” The site shows the blueprint captures (`reports/components/<id>/figma/blueprint-*.png`, exported from the specification page at the Figma parity phase) under the heading.
+
+The page is the recipe for using the component, read first; the contract is the technical detail, read only when needed (styling around the component, extending or auditing it). Outside Anatomy too, name a token only where the reader acts on it (an application layer or role an integration must use); visual values stay in the contract.
 
 ## When to use
 
