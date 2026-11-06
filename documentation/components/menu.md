@@ -10,11 +10,11 @@ A menu offers a short list of actions or links in a panel opened from a button: 
 | --- | ------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | 1   | Trigger       | yes      | Exactly one Button or IconButton; it opens the menu, Down and Up Arrow open it too, and it exposes whether the menu is expanded.     |
 | 2   | Panel         | yes      | The surface that holds the MenuItem, MenuSeparator and MenuGroup children, as wide as its widest item, at least the trigger's width. |
-| 3   | Leading       | no       | One decorative icon before the item label, in the item's color; the label is required, on one line, shortened with an ellipsis.      |
+| 3   | Leading       | no       | One decorative icon before the item label; the label is required, on one line, shortened with an ellipsis.                           |
 | 4   | Trailing      | no       | One Shortcut showing the keyboard shortcut of the same action elsewhere in the page; it does not make the shortcut work.             |
 | 5   | MenuSeparator | no       | A line across the panel between two items or groups; it is never focused or highlighted.                                             |
 
-A item height, at least `size.control.sm` (28, 32 or 36 px in compact, standard and comfortable density; in practice the `typography.body.sm` line plus `space.control.padding-block.sm` above and below, 29, 33 or 37 px), with `space.control.padding-inline.sm` on each side (8, 12 or 16 px), `space.control.gap.sm` between its parts (4, 6 or 8 px) and `radius.container` corners; colors `color.item.{default,hover,disabled}.*`, danger `color.status.danger.content`. B offset between trigger and panel, `space.content.xs` (2, 4 or 6 px), which is also the panel padding and the margin around a separator. The panel is painted in `color.surface.overlay` with `shadow.overlay`, an edge in `color.elevation.border` and `radius.overlay` corners, and is at most `size.overlay.panel` (360 px) wide. A MenuGroup heading shows its label in `typography.caption.md` and `color.content.secondary`, aligned with the item labels.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/menu.json`.
 
 ## When to use
 
@@ -182,7 +182,7 @@ import type {
 } from '@ggbrick/svelte';
 ```
 
-Menu renders its trigger snippet, then a `<div class="ggb-menu ggb-overlay">` (plus any class you pass) with `role="menu"`, `tabindex="-1"` and the `popover="auto"` attribute, which places it in the top layer above the page; where the platform has no top layer, it is stacked at `layer.dropdown`. There is no portal: the panel stays next to its trigger in the DOM and inherits the brand, appearance and density of that place. It is named by `aria-label` when `label` is set and by `aria-labelledby` (the trigger) otherwise, and carries `data-side` and `data-align`. It is placed with CSS anchor positioning, or measured by a script where the browser lacks it (`data-positioning="measured"`, `data-placed-side`). It enters by fading in and moving `motion.distance.sm` away from the trigger and leaves by fading out, in CSS only; under reduced motion it only fades.
+Menu renders its trigger snippet, then a `<div class="ggb-menu ggb-overlay">` (plus any class you pass) with `role="menu"`, `tabindex="-1"` and the `popover="auto"` attribute, which places it in the top layer above the page; where the platform has no top layer, it is stacked at `layer.dropdown`. There is no portal: the panel stays next to its trigger in the DOM and inherits the brand, appearance and density of that place. It is named by `aria-label` when `label` is set and by `aria-labelledby` (the trigger) otherwise, and carries `data-side` and `data-align`. It is placed with CSS anchor positioning, or measured by a script where the browser lacks it (`data-positioning="measured"`, `data-placed-side`). It enters by fading in and moving slightly away from the trigger and leaves by fading out, in CSS only; under reduced motion it only fades.
 
 | Prop           | Type                                | Default    | Description                                                                                                               |
 | -------------- | ----------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -209,7 +209,7 @@ MenuItem renders a `<div class="ggb-menu__item" role="menuitem" tabindex="-1">`,
 | `intent`   | `'neutral' \| 'danger'` | `'neutral'` | `danger` paints the label and the leading icon in the danger color, for a destructive action.                              |
 | `href`     | `string`                | —           | Renders a link: activating the item navigates there and still reports `onselect`. A disabled item has no destination.      |
 | `disabled` | `boolean`               | `false`     | Stays in the menu, reached by the arrow keys and announced unavailable; activating it does nothing.                        |
-| `leading`  | `Snippet`               | —           | One decorative Icon before the label, sized to `size.icon.sm` in the item's color.                                         |
+| `leading`  | `Snippet`               | —           | One decorative Icon before the label, sized and colored by the item.                                                       |
 | `trailing` | `Snippet`               | —           | One Shortcut (size `sm`) showing the keyboard shortcut of the same action elsewhere; display only.                         |
 | `class`    | `string`                | —           | Merged with `ggb-menu__item`.                                                                                              |
 
@@ -252,7 +252,7 @@ The integration provides:
 | [2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)                              | AA    | Component (the highlighted item)                                     |
 | [2.4.11 Focus Not Obscured (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html) | AA    | Component (highlighted item kept visible); integration (sticky bars) |
 | [2.5.3 Label in Name](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html)                              | A     | Component (items); integration (the trigger's label)                 |
-| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)                | AA    | Component (items at least 28 px tall across the panel)               |
+| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)                | AA    | Component (items across the panel, taller than the minimum target)   |
 | [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)                        | A     | Component                                                            |
 | [4.1.3 Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html)                          | AA    | Integration                                                          |
 

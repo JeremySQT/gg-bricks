@@ -8,10 +8,10 @@ A spinner shows that something is loading or working when the time it takes is u
 
 | #   | Part      | Required | Role                                                                                                                                   |
 | --- | --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Track     | yes      | The full ring, drawn in the surrounding content color at `component.spinner.track-opacity` (20 %).                                     |
-| 2   | Indicator | yes      | A quarter of the same ring at full opacity, with rounded ends; it turns clockwise, one turn per `component.spinner.duration` (700 ms). |
+| 1   | Track     | yes      | The full ring the indicator turns along; both take the color of the text around them. |
+| 2   | Indicator | yes      | The part of the ring that keeps turning, showing that work is under way. |
 
-A is the size of the square that holds the ring: `size.icon.{size}`, 16, 20, 24 or 32 px, the same in every density; the stroke is 2.5/24 of the size (1.67 to 3.33 px).
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/spinner.json`.
 
 ## When to use
 
@@ -145,12 +145,12 @@ Renders a `<span class="ggb-spinner">` (plus any class you pass) with `data-size
 
 | Prop    | Type                                 | Default | Description                                                                                                                           |
 | ------- | ------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `size`  | `'sm' \| 'md' \| 'lg' \| 'xl'`       | `'md'`  | The icon scale: 16, 20, 24 or 32 px. It does not change with the density.                                                             |
+| `size`  | `'sm' \| 'md' \| 'lg' \| 'xl'`       | `'md'`  | The icon scale: the same size as an Icon of the same name. It does not change with the density. |
 | `label` | `string`                             | `''`    | Empty or blank: decorative, hidden from assistive technology. Non-empty: the spinner is a polite status named by this text (trimmed). |
 | `ref`   | `HTMLSpanElement \| null` (bindable) | `null`  | The rendered element.                                                                                                                 |
 | `class` | `string`                             | —       | Merged with `ggb-spinner`.                                                                                                            |
 
-Every other attribute of `HTMLAttributes<HTMLSpanElement>` (`id`, `style`, `data-*`…) is forwarded to the root, except those the component owns: `children`, `role`, `aria-label` and `aria-hidden`. There are no events. The color is the inherited content color, the turn speed and the track opacity are tokens; brand, appearance and density apply through the tokens, without any prop. The platform-independent contract ships as `contracts/spinner.json`.
+Every other attribute of `HTMLAttributes<HTMLSpanElement>` (`id`, `style`, `data-*`…) is forwarded to the root, except those the component owns: `children`, `role`, `aria-label` and `aria-hidden`. There are no events. The color is the inherited content color; brand, appearance and density apply through the tokens, without any prop. The platform-independent contract ships as `contracts/spinner.json`.
 
 ## Accessibility
 
@@ -158,7 +158,7 @@ The component provides:
 
 - Without a label, a spinner hidden from assistive technology; with a label, `role="status"` named by the label, a polite live region.
 - Never focusable, no events; the ring is drawn in the content color of its parent, so it reads wherever the text around it reads.
-- One turn per 700 ms, three times slower when reduced motion is requested; the system text color in forced colors.
+- A turn three times slower when reduced motion is requested; the system text color in forced colors.
 
 The integration provides:
 

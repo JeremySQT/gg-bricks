@@ -6,13 +6,13 @@ A textarea lets the user write text that can span several lines: a comment, a de
 
 ## Anatomy
 
-| #   | Part       | Required | Role                                                                                                       |
-| --- | ---------- | -------- | ---------------------------------------------------------------------------------------------------------- |
-| 1   | Container  | yes      | The field surface with a thin border and the control radius, as an InputText; fills the width it is given. |
-| 2   | Value      | yes      | The text; it wraps and keeps line breaks. The placeholder shows while it is empty.                         |
-| —   | Focus ring | state    | Drawn outside the container while the textarea has focus.                                                  |
+| #   | Part       | Required | Role                                                                                               |
+| --- | ---------- | -------- | -------------------------------------------------------------------------------------------------- |
+| 1   | Container  | yes      | The field that holds the text, like an InputText; fills the width it is given.                     |
+| 2   | Value      | yes      | The text the user writes; it wraps and keeps line breaks. The placeholder shows while it is empty. |
+| —   | Focus ring | state    | Shown around the container while the textarea has focus.                                           |
 
-A block padding (half the InputText height minus one line: 8 px at md in standard density), B inline padding (the padding of an InputText without icon), C first row (one line and its padding, as tall as an InputText of the same size).
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/textarea.json`.
 
 ## When to use
 
@@ -125,7 +125,7 @@ The component provides:
 
 - A native `<textarea>` named by the Field label or the `label` prop; the placeholder is never the name.
 - `aria-invalid` and `required` exposed; Enter inserts a line break and never submits.
-- A visible focus ring, a 44 px target height, reduced motion and forced colors handled.
+- A visible focus ring, a target tall enough for touch, reduced motion and forced colors handled.
 
 The integration provides:
 

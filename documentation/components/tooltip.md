@@ -6,13 +6,13 @@ A tooltip shows a short text about a control when the user points at it or reach
 
 ## Anatomy
 
-| #   | Part    | Required | Role                                                                                                                                                          |
-| --- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Tooltip | yes      | The bubble in `color.surface.inverse` with `radius.control` corners and no arrow; it hugs its text and wraps at `component.tooltip.max-inline-size` (240 px). |
-| 2   | Label   | yes      | Plain text in `typography.caption.md` and `color.content.inverse`; it describes the trigger, unless it repeats the name of an IconButton.                     |
-| 3   | Trigger | yes      | Exactly one focusable Button, IconButton or Link; a disabled control shows no tooltip.                                                                        |
+| #   | Part    | Required | Role                                                                                                     |
+| --- | ------- | -------- | -------------------------------------------------------------------------------------------------------- |
+| 1   | Tooltip | yes      | The bubble next to the trigger, with no arrow; it fits its text and wraps a longer one onto a few lines. |
+| 2   | Label   | yes      | Plain text that describes the trigger, unless it repeats the name of an IconButton.                      |
+| 3   | Trigger | yes      | Exactly one focusable Button, IconButton or Link; a disabled control shows no tooltip.                   |
 
-A offset: `space.content.xs` between the trigger and the tooltip on the chosen side (2, 4 or 6 px in compact, standard and comfortable density). The bubble's padding is `space.content.sm` inline (4, 8 or 12 px) and `space.content.xs` block (2, 4 or 6 px).
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/tooltip.json`.
 
 ## When to use
 
@@ -32,7 +32,7 @@ A offset: `space.content.xs` between the trigger and the tooltip on the chosen s
 
 | Guidance | Topic      | Practice                                                                                                                      |
 | -------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Do       | Text       | Keep the text to a few words on one or two lines; it wraps at 240 px.                                                         |
+| Do       | Text       | Keep the text to a few words on one or two lines; a longer text wraps in a narrow bubble.                                     |
 | Do       | IconButton | Give the tooltip the same text as the IconButton's label: it shows the name without announcing it twice.                      |
 | Do       | Shortcut   | Add a keyboard shortcut after the name (“Bold (Ctrl+B)”), written in the user's platform convention, since the text is plain. |
 | Do       | Placement  | Keep the default top and center; choose bottom or another alignment when the trigger sits at the edge of a view.              |
@@ -169,7 +169,7 @@ The tooltip adds its id to the trigger's `aria-describedby`, after the ids alrea
 
 Keyboard and pointer:
 
-- Keyboard focus on the trigger opens the tooltip at once; focus given by a pointer press does not open it. A pointer opens it after `component.tooltip.delay` (500 ms), and at once when another tooltip was open a moment before.
+- Keyboard focus on the trigger opens the tooltip at once; focus given by a pointer press does not open it. A pointer opens it after 500 ms, and at once when another tooltip was open a moment before.
 - The tooltip stays open while the pointer is on the trigger or on the tooltip, so that magnified text can be read. It closes when the pointer leaves both, when the trigger loses focus, when the trigger is activated (click, Enter, Space) and on Escape, which keeps focus on the trigger. Escape closes only the tooltip: a Popover, Menu or Dialog that holds the trigger stays open until the next Escape.
 - On a touch screen a press activates the trigger and never opens the tooltip.
 
@@ -189,8 +189,8 @@ The integration provides:
 | WCAG 2.2 criterion                                                                                             | Level | Responsibility                                                |
 | -------------------------------------------------------------------------------------------------------------- | ----- | ------------------------------------------------------------- |
 | [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)        | A     | Component (the text as the trigger's description)             |
-| [1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)                  | AA    | Component (inverse text on the inverse surface)               |
-| [1.4.10 Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html)                                       | AA    | Component (wraps within 240 px and the viewport)              |
+| [1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)                  | AA    | Component (the text on the tooltip's surface)                 |
+| [1.4.10 Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html)                                       | AA    | Component (wraps within its maximum width and the viewport)   |
 | [1.4.13 Content on Hover or Focus](https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html) | AA    | Component (dismissible with Escape, hoverable, persistent)    |
 | [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)                                    | A     | Component (keyboard focus opens it)                           |
 | [3.2.1 On Focus](https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html)                                    | A     | Component (opening moves no focus and changes no context)     |

@@ -6,15 +6,15 @@ A checkbox lets the user turn one option on or off, or state that some of a set 
 
 ## Anatomy
 
-| #   | Part        | Required | Role                                                                                                    |
-| --- | ----------- | -------- | ------------------------------------------------------------------------------------------------------- |
-| 1   | Control     | yes      | A square box with a small radius and a thin border; light when off, filled in the accent color when on. |
-| 2   | Mark        | state    | The check (checked) or the bar (indeterminate), in the content color of the state; none when off.       |
-| 3   | Label       | yes      | The accessible name; it wraps, and a press on it toggles the box.                                       |
-| 4   | Description | no       | Help text under the label, the accessible description.                                                  |
-| —   | Focus ring  | state    | Drawn outside the box on keyboard focus.                                                                |
+| #   | Part        | Required | Role                                                                                |
+| --- | ----------- | -------- | ----------------------------------------------------------------------------------- |
+| 1   | Control     | yes      | The box the user checks; it shows whether the option is off, on or partly selected. |
+| 2   | Mark        | state    | The check (checked) or the bar (indeterminate) inside the box; none when off.       |
+| 3   | Label       | yes      | The option, and the accessible name; it wraps, and a press on it toggles the box.   |
+| 4   | Description | no       | Help text under the label, the accessible description.                              |
+| —   | Focus ring  | state    | Shown around the box on keyboard focus.                                             |
 
-A box size (14, 16 or 20 px; it does not change with the density), B gap between box and label (8 px at md in standard density), C first line: the box is centered on the first line of the label.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/checkbox.json`.
 
 ## When to use
 
@@ -154,7 +154,7 @@ The component provides:
 - `role="checkbox"` with `aria-checked` (`true`, `false` or `mixed`), named by the label and described by the description.
 - Space toggles (Enter does not); disabled boxes leave the tab order, readonly ones stay focusable with `aria-readonly`.
 - `aria-invalid` and `aria-required`; in a Field, the field label names the question and the message describes it.
-- One target for box, label and description, at least 44 px high; a focus ring on keyboard focus; reduced motion and forced colors handled.
+- One target for box, label and description, tall enough for touch; a focus ring on keyboard focus; reduced motion and forced colors handled.
 
 The integration provides:
 
@@ -168,7 +168,7 @@ The integration provides:
 | [1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)          | AA    | Component, on the system surfaces                    |
 | [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)                             | A     | Component                                            |
 | [2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)                   | AA    | Component                                            |
-| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)     | AA    | Component (44 px target, also with a hidden label)   |
+| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)     | AA    | Component (target height, also with a hidden label)  |
 | [3.3.2 Labels or Instructions](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html) | A     | Component (visible label), integration (its wording) |
 | [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)             | A     | Component                                            |
 

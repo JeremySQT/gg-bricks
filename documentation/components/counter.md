@@ -6,13 +6,13 @@ A counter shows a quantity next to the thing it counts: unread messages after a 
 
 ## Anatomy
 
-| #   | Part      | Required | Role                                                                                              |
-| --- | --------- | -------- | ------------------------------------------------------------------------------------------------- |
-| 1   | Container | yes      | The box: as tall as the line of digits, at least as wide as it is tall, slightly rounded corners. |
-| 2   | Value     | yes      | The digits, centered, with tabular figures; the maximum followed by “+” above the maximum.        |
-| 3   | Tint      | yes      | The box filled with the color of the digits at 12 % opacity.                                      |
+| #   | Part      | Required | Role                                                                                           |
+| --- | --------- | -------- | ---------------------------------------------------------------------------------------------- |
+| 1   | Container | yes      | The box that holds the value: square for one digit, wider as digits are added.                 |
+| 2   | Value     | yes      | The digits, centered, with tabular figures; above the maximum, the maximum followed by “+”.    |
+| 3   | Tint      | yes      | A faint fill in the color of the digits, so the counter follows the text color of its context. |
 
-A side padding (2, 4 or 6 px with the density), B height (the line box of the digits), C minimum width, equal to the height.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/counter.json`.
 
 ## When to use
 

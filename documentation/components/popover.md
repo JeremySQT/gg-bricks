@@ -6,13 +6,13 @@ A popover opens a panel next to a button for content the user works with without
 
 ## Anatomy
 
-| #   | Part    | Required | Role                                                                                                                                                                                                                             |
-| --- | ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Trigger | yes      | Exactly one Button or IconButton; activating it opens or closes the popover, and it tells assistive technology that it controls a popup and whether it is expanded.                                                              |
-| 2   | Panel   | yes      | The non-modal dialog named by `label`, in `color.surface.overlay` with `shadow.overlay`, an edge of `border.width.default` in `color.elevation.border` and `radius.overlay` corners; at most `size.overlay.panel` (360 px) wide. |
-| 3   | Content | yes      | Free content, set in `typography.body.sm` and `color.content.primary` by default; focus moves to its first focusable element on opening.                                                                                         |
+| #   | Part    | Required | Role                                                                                                                                                                |
+| --- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Trigger | yes      | Exactly one Button or IconButton; activating it opens or closes the popover, and it tells assistive technology that it controls a popup and whether it is expanded. |
+| 2   | Panel   | yes      | The non-modal dialog named by `label`, above the page next to its trigger; its width is limited, so it suits compact content.                                       |
+| 3   | Content | yes      | Free content, in the body text style by default; focus moves to its first focusable element on opening.                                                             |
 
-A offset: `space.content.xs` between the trigger and the panel on the chosen side (2, 4 or 6 px in compact, standard and comfortable density). B padding: `space.content.md` inside the panel (8, 12 or 16 px).
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/popover.json`.
 
 ## When to use
 
@@ -26,7 +26,7 @@ A offset: `space.content.xs` between the trigger and the panel on the chosen sid
 - A task that must be completed or abandoned before going on, or a confirmation: Dialog.
 - A few words about a control on hover or focus: Tooltip.
 - One choice in a list of options: RadioGroup, or Select (planned) and Combobox (planned) for long lists.
-- A long form or content wider than 360 px: Dialog, or Drawer (planned).
+- A long form or content wider than a narrow panel: Dialog, or Drawer (planned).
 
 ## Best practices
 

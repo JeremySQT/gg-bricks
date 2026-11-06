@@ -8,15 +8,13 @@ A toast is a brief notification about something the user just did or that just h
 
 | #   | Part        | Required | Role                                                                                                                                                                              |
 | --- | ----------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Icon        | yes      | The glyph of the intent (info for neutral and info, check-circle, warning, warning-circle) in the status icon color, hidden from assistive technology; replaceable.               |
-| 2   | Title       | yes      | What happened, in label typography; plain text that wraps.                                                                                                                        |
-| 3   | Description | no       | A short detail in body typography under the title; with a description, the toast lays out on several lines.                                                                       |
+| 1   | Icon        | yes      | The glyph of the intent (info for neutral and info, check-circle, warning, warning-circle), hidden from assistive technology; replaceable.                                        |
+| 2   | Title       | yes      | What happened; plain text that wraps.                                                                                                                                             |
+| 3   | Description | no       | A short detail under the title; with a description, the toast lays out on several lines.                                                                                          |
 | 4   | Action      | no       | One small Button for a secondary follow-up (Undo, Retry, View): on the row without a description, under the description with one. On one row it never changes the toast's height. |
 | 5   | Dismiss     | no       | A small ghost IconButton with the close glyph, named by `dismissLabel`; shown by default, and always kept by a toast that never leaves by itself.                                 |
 
-A width: `size.overlay.panel` (360 px), or the region when narrower; on one row, a height of `size.control.sm` (28, 32 or 36 px) plus the padding, with or without the action and the dismiss button; padding `space.content.md` (8, 12 or 16 px in compact, standard and comfortable density), gaps `space.content.sm` (4, 8 or 12 px), `radius.overlay` corners, `shadow.overlay`, an edge of `border.width.default` in `color.elevation.border` on `color.surface.overlay` (intense: `color.status.{intent}.border` on `color.status.{intent}.surface`). B action gap: `space.content.sm` under the description; title gap `space.content.xs` (2, 4 or 6 px).
-
-The region (ToastRegion) sits at `space.layout.sm` (8, 16 or 24 px) from the viewport edges named by its placement and separates its toasts by `space.content.sm`; the newest toast is nearest that edge.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/toast.json`.
 
 ## When to use
 
@@ -224,7 +222,7 @@ The component provides:
 - A region landmark named by `label`, in the top layer above the page; toasts appear in it without moving focus.
 - `role="status"` (polite) on every toast except danger, which has `role="alert"` (assertive), with `aria-atomic="true"`.
 - A countdown paused on hover, on focus inside the region and while the document is hidden; no countdown by default for danger, and a dismiss button always kept by a toast that never leaves by itself.
-- The action and dismiss buttons as Tab stops in the region's reading order, Escape inside a toast to dismiss it, a dismiss button named by `dismissLabel` with a 44 × 44 px target and a visible focus ring.
+- The action and dismiss buttons as Tab stops in the region's reading order, Escape inside a toast to dismiss it, a dismiss button named by `dismissLabel` with a pointer target larger than the minimum size and a visible focus ring.
 - Contrast pairs checked for the neutral and intense appearances, an entry that only fades under reduced motion, and a visible edge in forced-colors mode.
 
 The integration provides:

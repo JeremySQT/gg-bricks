@@ -9,9 +9,9 @@ A button group places related actions together with one size and one spacing: th
 | #   | Part  | Required | Role                                                                                                                    |
 | --- | ----- | -------- | ----------------------------------------------------------------------------------------------------------------------- |
 | 1   | Items | yes      | The Buttons and IconButtons of the group in source order, one at least; the order is the priority and is never changed. |
-| 2   | Item  | yes      | One Button or IconButton; it takes the size of the group, whatever its own size, and is centered on the cross axis.     |
+| 2   | Item  | yes      | One Button or IconButton; it takes the size of the group, whatever its own size. |
 
-A gap: `space.control.gap.{size}`, the same between items in both directions and following the density: 4, 6 or 8 px for `sm`, 6, 8 or 10 px for `md` and 8, 10 or 12 px for `lg` in compact, standard and comfortable density. The group adds no surface, border or padding of its own.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/button-group.json`.
 
 ## When to use
 
@@ -185,7 +185,7 @@ The component provides:
 - Every enabled item as its own Tab stop, in source order; the group adds no arrow-key navigation and never reorders its items, whatever the alignment or the stacking.
 - `role="group"` named by `label` when one is given; otherwise the items are read as ordinary buttons.
 - Stacking at full width instead of overflowing when the line does not fit.
-- One size for every item, so that each keeps the 44 × 44 px interaction target and the focus ring of its own component.
+- One size for every item, so that each keeps the minimum interaction target and the focus ring of its own component.
 
 The integration provides:
 

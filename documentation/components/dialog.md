@@ -6,15 +6,15 @@ A dialog is a modal window for a short task or a decision that the user complete
 
 ## Anatomy
 
-| #   | Part        | Required | Role                                                                                                                             |
-| --- | ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Title       | yes      | Plain text in `typography.heading.sm` and `color.content.primary` that asks the question or names the task; it names the dialog. |
-| 2   | Description | no       | A short sentence under the title in `typography.body.sm` and `color.content.secondary`; it describes the dialog.                 |
-| 3   | Close       | no       | A small ghost neutral IconButton on the title line, shown while the dialog is dismissible; its accessible name is “Close”.       |
-| 4   | Body        | no       | Free content in `typography.body.md`; it scrolls when the dialog is taller than the viewport allows, header and footer staying.  |
-| 5   | Footer      | no       | One ButtonGroup aligned at the end, the primary action last.                                                                     |
+| #   | Part        | Required | Role                                                                                                                       |
+| --- | ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Title       | yes      | Plain text that asks the question or names the task; it names the dialog.                                                  |
+| 2   | Description | no       | A short sentence under the title; it describes the dialog.                                                                 |
+| 3   | Close       | no       | A small ghost neutral IconButton on the title line, shown while the dialog is dismissible; its accessible name is “Close”. |
+| 4   | Body        | no       | Free content; it scrolls when the dialog is taller than the viewport allows, header and footer staying.                    |
+| 5   | Footer      | no       | One ButtonGroup aligned at the end, the primary action last.                                                               |
 
-A padding of the panel, `space.layout.md` (16, 24 or 32 px in compact, standard and comfortable density); the panel is painted in `color.surface.overlay` with `shadow.modal`, an edge in `color.elevation.border` and `radius.overlay` corners. B gap between header, body and footer, `space.content.lg` (12, 16 or 24 px); `space.content.xs` (2, 4 or 6 px) separates title and description. C width, `component.dialog.inline-size.{size}` (400, 560 or 720 px for `sm`, `md` and `lg`), never more than the viewport less `space.layout.md` on each side. Behind the panel, the backdrop, the dimming layer over the whole page, is painted in `color.surface.scrim`, a color that already carries its transparency.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/dialog.json`.
 
 ## When to use
 
@@ -202,14 +202,14 @@ import { Dialog } from '@ggbrick/svelte';
 import type { DialogProps, DialogSize } from '@ggbrick/svelte';
 ```
 
-Renders a native `<dialog class="ggb-dialog ggb-overlay">` (plus any class you pass), opened with `showModal()` so that the browser places it in the top layer above the page; where the platform has no top layer, it is stacked at `layer.modal`. There is no portal: the element stays where it is declared and inherits the brand, appearance and density of that place. It carries `data-size`, `data-scrolled` while the body scrolls, `role="alertdialog"` with `alert`, `aria-labelledby` (the title), `aria-describedby` (the description, when there is one) and `tabindex="-1"`. Inside, the header holds the title (`role="heading"`, `aria-level="2"`), the close IconButton and the description, followed by the body and the footer. While a dialog is open the page under it does not scroll. It enters by fading in and moving up by `motion.distance.md` and leaves by fading out, in CSS only; under reduced motion it only fades.
+Renders a native `<dialog class="ggb-dialog ggb-overlay">` (plus any class you pass), opened with `showModal()` so that the browser places it in the top layer above the page; where the platform has no top layer, it is stacked at `layer.modal`. There is no portal: the element stays where it is declared and inherits the brand, appearance and density of that place. It carries `data-size`, `data-scrolled` while the body scrolls, `role="alertdialog"` with `alert`, `aria-labelledby` (the title), `aria-describedby` (the description, when there is one) and `tabindex="-1"`. Inside, the header holds the title (`role="heading"`, `aria-level="2"`), the close IconButton and the description, followed by the body and the footer. While a dialog is open the page under it does not scroll. It enters by fading in and moving up slightly and leaves by fading out, in CSS only; under reduced motion it only fades.
 
 | Prop           | Type                                   | Default   | Description                                                                                                                                                       |
 | -------------- | -------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `open`         | `boolean` (bindable)                   | `false`   | Open state; bind it with `bind:open` and set it from the Button or menu item that opens the dialog.                                                               |
 | `title`        | `string`                               | required  | The question or task, in heading typography; it names the dialog. An empty or blank title throws, on the server and in the browser.                               |
 | `description`  | `string`                               | `''`      | A short sentence under the title; it describes the dialog. Not rendered when empty.                                                                               |
-| `size`         | `'sm' \| 'md' \| 'lg'`                 | `'md'`    | Panel width: 400, 560 or 720 px, never wider than the viewport less its margins.                                                                                  |
+| `size`         | `'sm' \| 'md' \| 'lg'`                 | `'md'`    | Panel width: narrow, medium or wide, never wider than the viewport less its margins.                                                                              |
 | `alert`        | `boolean`                              | `false`   | An alert dialog, which asks for a decision (confirm a deletion); never closed by a press on the backdrop.                                                         |
 | `dismissible`  | `boolean`                              | `true`    | The close button, Escape and a press on the backdrop ask to close. `false`: none of them; the footer offers the way out.                                          |
 | `closeLabel`   | `string`                               | `'Close'` | Accessible name of the close button.                                                                                                                              |

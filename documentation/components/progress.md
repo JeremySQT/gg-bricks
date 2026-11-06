@@ -8,12 +8,12 @@ A progress bar shows how far a task of known size has gone, such as an upload, a
 
 | #   | Part      | Required | Role                                                                                                                             |
 | --- | --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Label     | yes      | What is in progress, on one line, shortened with an ellipsis; the accessible name of the bar, kept even when it is not shown.    |
-| 2   | Value     | no       | The whole percentage at the end of the label line, in tabular figures so that it does not shift; not shown when indeterminate.   |
-| 3   | Track     | yes      | The full width of the bar, in `color.surface.muted`, with `component.progress.radius` corners (fully rounded in the base brand). |
-| 4   | Indicator | yes      | From the start edge over `value ÷ max` of the track, in the color of the intent; none at 0; a sweeping third when indeterminate. |
+| 1   | Label     | yes      | What is in progress, on one line, shortened when too long; the accessible name of the bar, kept even when it is not shown. With neither label nor value shown, their line takes no room. |
+| 2   | Value     | no       | The whole percentage at the end of the label line, steady in width as it changes; not shown when indeterminate. |
+| 3   | Track     | yes      | The whole bar, standing for the whole task; it fills the width of its container. |
+| 4   | Indicator | yes      | The part done, from the start edge over `value ÷ max` of the track, following the intent; none at 0; a sweeping segment when indeterminate. |
 
-A thickness: `component.progress.thickness.{size}`, 4, 6 or 8 px, the same in every density. B label gap: `space.content.xs` (2, 4 or 6 px in compact, standard and comfortable density); with neither label nor value shown, the first line and this gap are removed.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/progress.json`.
 
 ## When to use
 
@@ -151,15 +151,15 @@ Renders a `<div class="ggb-progress">` (plus any class you pass) with `data-inte
 | `label`         | `string`                                         | required   | What is in progress; the accessible name, shown by default. Must be non-empty: an empty or blank label throws, on the server and in the browser. |
 | `value`         | `number`                                         | `0`        | Progress so far, clamped between 0 and `max` (a value above `max` shows a full bar). Ignored when indeterminate.                                 |
 | `max`           | `number`                                         | `100`      | The value of a completed task; a value that is not a positive number falls back to 100.                                                          |
-| `indeterminate` | `boolean`                                        | `false`    | A task under way without a known end: a third of the track sweeps from start to end, no value and no percentage are exposed.                     |
+| `indeterminate` | `boolean`                                        | `false`    | A task under way without a known end: a segment of the track sweeps from start to end, no value and no percentage are exposed. |
 | `showLabel`     | `boolean`                                        | `true`     | Shows the label above the track; false keeps it as the visually hidden accessible name.                                                          |
 | `showValue`     | `boolean`                                        | `false`    | Shows the whole percentage of `value ÷ max` at the end of the label line (not when indeterminate).                                               |
 | `intent`        | `'accent' \| 'success' \| 'warning' \| 'danger'` | `'accent'` | Color of the indicator: an ordinary task, a completed one, one that needs attention, a failed one.                                               |
-| `size`          | `'sm' \| 'md' \| 'lg'`                           | `'md'`     | Thickness of the track: 4, 6 or 8 px. It does not change with the density.                                                                       |
+| `size`          | `'sm' \| 'md' \| 'lg'`                           | `'md'`     | Thickness of the track. It does not change with the density. |
 | `ref`           | `HTMLElement \| null` (bindable)                 | `null`     | The progress bar element.                                                                                                                        |
 | `class`         | `string`                                         | —          | Merged with `ggb-progress` on the outer element.                                                                                                 |
 
-`id` and every other attribute of the Bits UI `Progress.Root` props (`aria-describedby`, `data-*`…) go to the progress bar element, except those the component owns: `children`, `child`, `value`, `max`, `min`, `aria-label` and `aria-labelledby`. With an `id`, the label's id is `<id>-label`. There are no events. The fill moves over `motion.duration.base` with `motion.easing.standard`; the sweep lasts one `motion.duration.loop`. Brand, appearance and density apply through the tokens, without any prop; a brand can square the corners through `component.progress.radius`. The platform-independent contract ships as `contracts/progress.json`.
+`id` and every other attribute of the Bits UI `Progress.Root` props (`aria-describedby`, `data-*`…) go to the progress bar element, except those the component owns: `children`, `child`, `value`, `max`, `min`, `aria-label` and `aria-labelledby`. With an `id`, the label's id is `<id>-label`. There are no events. The fill moves smoothly to each new value, and the indeterminate sweep repeats while the bar is shown. Brand, appearance and density apply through the tokens, without any prop; a brand can square the corners. The platform-independent contract ships as `contracts/progress.json`.
 
 ## Accessibility
 
@@ -167,7 +167,7 @@ The component provides:
 
 - `role="progressbar"` named by the label through `aria-labelledby`, whether the label is shown or not, with `aria-valuenow`, `aria-valuemin` and `aria-valuemax`; no current value when indeterminate.
 - The percentage hidden from assistive technology, since the value is exposed by the bar; never focusable, no events.
-- An indicator with a contrast of at least 3:1 against the track and the default and overlay surfaces, for every intent in the 18 brand, appearance and density contexts.
+- An indicator with a contrast of at least 3:1 against the track and the system surfaces, for every intent in the 18 brand, appearance and density contexts.
 - No fill transition under reduced motion and a sweep three times slower; a visible track edge and the system highlight color in forced colors.
 
 The integration provides:

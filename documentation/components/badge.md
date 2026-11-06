@@ -6,13 +6,13 @@ A badge labels an item with a short status or category set by the application: P
 
 ## Anatomy
 
-| #   | Part         | Required | Role                                                                                                  |
-| --- | ------------ | -------- | ----------------------------------------------------------------------------------------------------- |
-| 1   | Container    | yes      | The box: as tall as the line of the label, at least as wide as it is tall, slightly rounded corners.  |
-| 2   | Leading icon | no       | One decorative icon before the label, placed by its drawing; its size is set by the badge.            |
-| 3   | Label        | yes      | The word, on one line, centered on its capital height; shortened with an ellipsis when room runs out. |
+| #   | Part         | Required | Role                                                                                    |
+| --- | ------------ | -------- | --------------------------------------------------------------------------------------- |
+| 1   | Container    | yes      | The box that holds the icon and the label; its color follows `intent` and `appearance`. |
+| 2   | Leading icon | no       | One icon before the label (an Icon), sized and colored by the badge. Decorative.        |
+| 3   | Label        | yes      | The word, on one line; shortened with an ellipsis when room runs out.                   |
 
-A height (the line box of the label: 15.4, 16.8 or 19.6 px, the same in every density), B side padding (2, 4 or 6 px with the density), C gap between the drawing of the icon and the label (the same value as the padding).
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/badge.json`.
 
 ## When to use
 
@@ -92,7 +92,7 @@ Glyphs come from `./glyphs`, a handful of Phosphor paths standing in for your ic
 
 ### With a leading icon
 
-The badge sizes the icon (12 px) and places it by its drawing; the icon is decorative.
+The badge sizes and places the icon; the icon is decorative.
 
 ```svelte live
 <script lang="ts">

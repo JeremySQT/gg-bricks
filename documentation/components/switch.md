@@ -8,13 +8,13 @@ A switch turns a setting on or off, and the change takes effect immediately: not
 
 | #   | Part        | Required | Role                                                                                           |
 | --- | ----------- | -------- | ---------------------------------------------------------------------------------------------- |
-| 1   | Track       | yes      | A fully rounded bar with a thin border; light when off, filled in the accent color when on.    |
-| 2   | Thumb       | yes      | A circle inside the track: at the start when off, at the end when on (mirrored right to left). |
+| 1   | Track       | yes      | The bar the user turns on or off; it shows the state of the setting.                           |
+| 2   | Thumb       | yes      | The knob inside the track: at the start when off, at the end when on (mirrored right to left). |
 | 3   | Label       | yes      | Names the setting; it wraps, is the accessible name, and a press on it toggles the switch.     |
 | 4   | Description | no       | Help text under the label, the accessible description.                                         |
-| —   | Focus ring  | state    | Drawn around the track on keyboard focus.                                                      |
+| —   | Focus ring  | state    | Shown around the track on keyboard focus.                                                      |
 
-A track height (16, 20 or 24 px; it does not change with the density), B track width (28, 36 or 44 px), C gap between track and label (8 px at md in standard density); the track is centered on the first line of the label.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/switch.json`.
 
 ## When to use
 
@@ -107,7 +107,7 @@ The component provides:
 
 - `role="switch"` with `aria-checked`, named by the label and described by the description.
 - Space and Enter toggle; disabled switches leave the tab order, readonly ones stay focusable with `aria-readonly`.
-- One target for track, label and description, at least 44 px high; a focus ring on keyboard focus; the thumb jumps under reduced motion; forced colors handled.
+- One target for track, label and description, tall enough for touch; a focus ring on keyboard focus; the thumb jumps under reduced motion; forced colors handled.
 
 The integration provides:
 
@@ -121,7 +121,7 @@ The integration provides:
 | [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)                                       | A     | Component                                                                |
 | [2.3.3 Animation from Interactions](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html) | AAA   | Component (no motion under reduced motion), an AAA objective             |
 | [2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)                             | AA    | Component                                                                |
-| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)               | AA    | Component (44 px target)                                                 |
+| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)               | AA    | Component (target height)                                                |
 | [3.2.2 On Input](https://www.w3.org/WAI/WCAG22/Understanding/on-input.html)                                       | A     | Integration (an immediate effect the user expects, no change of context) |
 | [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)                       | A     | Component                                                                |
 
