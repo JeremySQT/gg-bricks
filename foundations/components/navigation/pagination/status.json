@@ -78,5 +78,15 @@
   "implementationNotes": [],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Contract fact found during implementation: item and ellipsis typography typography.numeral.{size} -> typography.label.{size} (numeral.lg is 24 px, out of proportion with an lg control; label matches Button); the component sets tabular figures itself. To re-present at the wave 4 implementation gate.",
+      "sha256": {
+        "foundations/components/navigation/pagination/contract.json": "c0369d5ae7b339ae1a5f581e586f7e082a8b9eb0d27e3d3e0ae95188c35375e7"
+      },
+      "review": "Wave 4 implementation gate"
+    }
+  ]
 }

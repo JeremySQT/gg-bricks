@@ -86,7 +86,7 @@
         "radius": "radius.control",
         "minSize": "size.control.{size}",
         "paddingInline": "space.control.label-inline.{size}",
-        "typography": "typography.numeral.{size}",
+        "typography": "typography.label.{size}",
         "focusColor": "color.focus.ring",
         "focusWidth": "focus.width",
         "focusOffset": "focus.offset",
@@ -95,7 +95,7 @@
         "easingStandard": "motion.easing.standard"
       },
       "rules": [
-        "An item is one page: it shows its number in typography with tabular figures, centered in a box at least minSize wide and exactly minSize tall, growing with paddingInline on both sides for long numbers, with radius corners. Its accessible name is the number.",
+        "An item is one page: it shows its number in typography, with tabular figures so that numbers keep their width, centered in a box at least minSize wide and exactly minSize tall, growing with paddingInline on both sides for long numbers, with radius corners. Its accessible name is the number.",
         "The current page uses interaction selected (selected-hover under the pointer): surface and content of the selected item and an inner edge of indicatorThickness in indicatorColor, so that the current page is not conveyed by the tint alone; it is exposed as the current page. Other pages use default, and hover under the pointer.",
         "When focus is true from the keyboard, a focus indicator of focusWidth in focusColor at focusOffset with focusRadius corners is drawn outside the box.",
         "Colors change over motionDuration with easingStandard; no transition under reduced motion."
@@ -107,7 +107,7 @@
       "tokens": {
         "content": "color.content.secondary",
         "minSize": "size.control.{size}",
-        "typography": "typography.numeral.{size}"
+        "typography": "typography.label.{size}"
       },
       "rules": [
         "An ellipsis stands for a run of hidden pages: a horizontal ellipsis in content and typography, centered in a box of minSize. It is not interactive, never focused, and hidden from assistive technology."

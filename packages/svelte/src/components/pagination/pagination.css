@@ -1,0 +1,90 @@
+/*
+ * Pagination structure. Colors, sizes, spacing, typography and motion come from tokens.generated.css; previous and
+ * next are IconButtons with their own styles. The current page carries an inner edge in the indicator color, so that
+ * it is not conveyed by the tint alone.
+ */
+@layer ggb {
+  .ggb-pagination__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ggb-pagination-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ggb-pagination__entry,
+  .ggb-pagination__control {
+    display: flex;
+  }
+  .ggb-pagination__chevron:dir(rtl) {
+    scale: -1 1;
+  }
+  .ggb-pagination__item {
+    --_surface: var(--ggb-pagination-item-surface-default);
+    --_content: var(--ggb-pagination-item-content-default);
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: var(--ggb-pagination-item-minSize);
+    block-size: var(--ggb-pagination-item-minSize);
+    margin: 0;
+    padding: 0 var(--ggb-pagination-item-paddingInline);
+    border: 0;
+    border-radius: var(--ggb-pagination-item-radius);
+    background: var(--_surface);
+    color: var(--_content);
+    font: var(--ggb-pagination-item-typography);
+    letter-spacing: var(--ggb-pagination-item-typography-letterSpacing, normal);
+    font-variant-numeric: tabular-nums;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    transition-property: background-color, color, box-shadow;
+    transition-duration: var(--ggb-pagination-item-motionDuration);
+    transition-timing-function: var(--ggb-pagination-item-easingStandard);
+  }
+  @media (hover: hover) {
+    .ggb-pagination__item:hover {
+      --_surface: var(--ggb-pagination-item-surface-hover);
+      --_content: var(--ggb-pagination-item-content-hover);
+    }
+  }
+  .ggb-pagination__item[aria-current='page'] {
+    --_surface: var(--ggb-pagination-item-surface-selected);
+    --_content: var(--ggb-pagination-item-content-selected);
+    box-shadow: inset 0 0 0 var(--ggb-pagination-item-indicatorThickness) var(--ggb-pagination-item-indicatorColor);
+  }
+  @media (hover: hover) {
+    .ggb-pagination__item[aria-current='page']:hover {
+      --_surface: var(--ggb-pagination-item-surface-selected-hover);
+      --_content: var(--ggb-pagination-item-content-selected-hover);
+    }
+  }
+  .ggb-pagination__item:focus-visible {
+    outline: var(--ggb-pagination-item-focusWidth) solid var(--ggb-pagination-item-focusColor);
+    outline-offset: var(--ggb-pagination-item-focusOffset);
+  }
+  .ggb-pagination__ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: var(--ggb-pagination-ellipsis-minSize);
+    block-size: var(--ggb-pagination-ellipsis-minSize);
+    color: var(--ggb-pagination-ellipsis-content);
+    font: var(--ggb-pagination-ellipsis-typography);
+    user-select: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-pagination__item {
+      transition: none;
+    }
+  }
+  @media (forced-colors: active) {
+    .ggb-pagination__item[aria-current='page'] {
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+  }
+}

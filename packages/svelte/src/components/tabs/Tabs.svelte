@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { setContext } from 'svelte';
+  import { onMount, setContext } from 'svelte';
   import { SvelteMap } from 'svelte/reactivity';
   import { rovingFocus } from '../../lib/roving-focus/index.js';
   import type { TabsContext, TabsProps } from './types.js';
@@ -33,7 +33,7 @@
   // register after the earlier ones render; the fallback applies to an empty value at once and to any other value
   // once every trigger is known.
   let mounted = $state(false);
-  $effect(() => {
+  onMount(() => {
     mounted = true;
   });
   // A function, not $derived: during server rendering a derived value is computed once, before the later triggers

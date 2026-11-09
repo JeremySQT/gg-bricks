@@ -1,0 +1,130 @@
+/*
+ * Accordion structure. Colors, sizes, spacing, typography and motion come from tokens.generated.css. The content
+ * animates its block size through grid rows (0fr to 1fr); a collapsed section is hidden from every user by
+ * visibility, which switches at the end of the collapse and at the start of the expansion.
+ */
+@layer ggb {
+  .ggb-accordion {
+    display: flex;
+    flex-direction: column;
+    border-block-start: var(--ggb-accordion-lineThickness) solid var(--ggb-accordion-lineColor);
+  }
+  .ggb-accordion__item {
+    border-block-end: var(--ggb-accordion-lineThickness) solid var(--ggb-accordion-lineColor);
+  }
+  .ggb-accordion__item-heading {
+    margin: 0;
+    font: inherit;
+  }
+  .ggb-accordion__trigger {
+    --_surface: var(--ggb-accordion-item-surface-default);
+    --_content: var(--ggb-accordion-item-content-default);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: var(--ggb-accordion-item-gap);
+    inline-size: 100%;
+    min-block-size: var(--ggb-accordion-item-minHeight);
+    margin: 0;
+    padding: var(--ggb-accordion-item-paddingBlock) var(--ggb-accordion-item-paddingInline);
+    border: 0;
+    border-radius: var(--ggb-accordion-item-radius);
+    background: var(--_surface);
+    color: var(--_content);
+    font: var(--ggb-accordion-item-typography);
+    letter-spacing: var(--ggb-accordion-item-typography-letterSpacing, normal);
+    text-align: start;
+    cursor: pointer;
+    outline: none;
+    transition-property: background-color, color;
+    transition-duration: var(--ggb-accordion-item-motionDuration);
+    transition-timing-function: var(--ggb-accordion-item-easingStandard);
+  }
+  @media (hover: hover) {
+    .ggb-accordion__trigger:not(:disabled):hover {
+      --_surface: var(--ggb-accordion-item-surface-hover);
+      --_content: var(--ggb-accordion-item-content-hover);
+    }
+  }
+  .ggb-accordion__trigger:disabled {
+    --_surface: var(--ggb-accordion-item-surface-disabled);
+    --_content: var(--ggb-accordion-item-content-disabled);
+    cursor: default;
+  }
+  /* Inside the accordion's inline size: the ring is drawn inward by its offset plus width. */
+  .ggb-accordion__trigger:focus-visible {
+    outline: var(--ggb-accordion-item-focusWidth) solid var(--ggb-accordion-item-focusColor);
+    outline-offset: calc(-1 * var(--ggb-accordion-item-focusWidth));
+  }
+  .ggb-accordion__item-label {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+  .ggb-accordion__item-leading {
+    display: flex;
+    flex: none;
+  }
+  .ggb-accordion__item-leading > svg,
+  .ggb-accordion__item-indicator {
+    display: block;
+    flex: none;
+    inline-size: var(--ggb-accordion-item-iconSize);
+    block-size: var(--ggb-accordion-item-iconSize);
+  }
+  .ggb-accordion__item-indicator {
+    color: var(--ggb-accordion-item-indicatorColor);
+    transition: rotate var(--ggb-accordion-item-motionDuration) var(--ggb-accordion-item-easingStandard);
+  }
+  .ggb-accordion__trigger:disabled .ggb-accordion__item-indicator {
+    color: currentColor;
+  }
+  .ggb-accordion__trigger[aria-expanded='true'] > .ggb-accordion__item-indicator {
+    rotate: 180deg;
+  }
+
+  .ggb-accordion__item-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows var(--ggb-accordion-item-motionDuration) var(--ggb-accordion-item-easingStandard),
+      visibility var(--ggb-accordion-item-motionDuration);
+  }
+  /* Expanding shows the content at once (it can take focus right away); collapsing hides it at the end. */
+  .ggb-accordion__item-content[data-expanded] {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition-duration: var(--ggb-accordion-item-motionDuration), 0s;
+  }
+  .ggb-accordion__item-body {
+    min-block-size: 0;
+    overflow: hidden;
+  }
+  .ggb-accordion__item-inner {
+    padding: 0 var(--ggb-accordion-item-paddingInline) var(--ggb-accordion-item-bodyPaddingBlockEnd);
+    color: var(--ggb-accordion-item-bodyColor);
+    font: var(--ggb-accordion-item-typographyBody);
+    letter-spacing: var(--ggb-accordion-item-typographyBody-letterSpacing, normal);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-accordion__trigger,
+    .ggb-accordion__item-indicator,
+    .ggb-accordion__item-content {
+      transition: none;
+    }
+  }
+  @media (forced-colors: active) {
+    .ggb-accordion,
+    .ggb-accordion__item {
+      border-color: CanvasText;
+    }
+    .ggb-accordion__item-indicator {
+      color: CanvasText;
+    }
+    .ggb-accordion__trigger:disabled {
+      color: GrayText;
+    }
+  }
+}

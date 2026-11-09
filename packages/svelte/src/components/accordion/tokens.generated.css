@@ -1,0 +1,36 @@
+/* Generated token bindings from the accordion contract. Do not edit. */
+@layer ggb {
+.ggb-accordion {
+  --ggb-accordion-lineColor: var(--ggb-color-border-subtle);
+  --ggb-accordion-lineThickness: var(--ggb-border-width-default);
+}
+.ggb-accordion__item {
+  --ggb-accordion-item-surface-default: var(--ggb-color-item-default-surface);
+  --ggb-accordion-item-surface-hover: var(--ggb-color-item-hover-surface);
+  --ggb-accordion-item-surface-disabled: var(--ggb-color-item-disabled-surface);
+  --ggb-accordion-item-content-default: var(--ggb-color-item-default-content);
+  --ggb-accordion-item-content-hover: var(--ggb-color-item-hover-content);
+  --ggb-accordion-item-content-disabled: var(--ggb-color-item-disabled-content);
+  --ggb-accordion-item-indicatorColor: var(--ggb-color-content-secondary);
+  --ggb-accordion-item-bodyColor: var(--ggb-color-content-primary);
+  --ggb-accordion-item-radius: var(--ggb-radius-control);
+  --ggb-accordion-item-minHeight: var(--ggb-size-control-lg);
+  --ggb-accordion-item-paddingInline: var(--ggb-space-content-sm);
+  --ggb-accordion-item-paddingBlock: var(--ggb-space-control-padding-block-lg);
+  --ggb-accordion-item-gap: var(--ggb-space-control-gap-lg);
+  --ggb-accordion-item-typography: var(--ggb-typography-label-lg);
+  --ggb-accordion-item-typography-letterSpacing: var(--ggb-typography-label-lg-letterSpacing);
+  --ggb-accordion-item-typography-fontFeatureSettings: var(--ggb-typography-label-lg-fontFeatureSettings);
+  --ggb-accordion-item-typographyBody: var(--ggb-typography-body-md);
+  --ggb-accordion-item-typographyBody-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-accordion-item-typographyBody-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+  --ggb-accordion-item-iconSize: var(--ggb-size-icon-md);
+  --ggb-accordion-item-bodyPaddingBlockEnd: var(--ggb-space-content-lg);
+  --ggb-accordion-item-focusColor: var(--ggb-color-focus-ring);
+  --ggb-accordion-item-focusWidth: var(--ggb-focus-width);
+  --ggb-accordion-item-focusOffset: var(--ggb-focus-offset);
+  --ggb-accordion-item-focusRadius: var(--ggb-radius-focus);
+  --ggb-accordion-item-motionDuration: var(--ggb-motion-duration-base);
+  --ggb-accordion-item-easingStandard: var(--ggb-motion-easing-standard);
+}
+}

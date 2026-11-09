@@ -1,0 +1,67 @@
+/* Generated token bindings from the pagination contract. Do not edit. */
+@layer ggb {
+.ggb-pagination {
+  --ggb-pagination-gap: var(--ggb-space-content-xs);
+}
+.ggb-pagination__item {
+  --ggb-pagination-item-surface-default: var(--ggb-color-item-default-surface);
+  --ggb-pagination-item-surface-hover: var(--ggb-color-item-hover-surface);
+  --ggb-pagination-item-surface-selected: var(--ggb-color-item-selected-surface);
+  --ggb-pagination-item-surface-selected-hover: var(--ggb-color-item-selected-hover-surface);
+  --ggb-pagination-item-content-default: var(--ggb-color-item-default-content);
+  --ggb-pagination-item-content-hover: var(--ggb-color-item-hover-content);
+  --ggb-pagination-item-content-selected: var(--ggb-color-item-selected-content);
+  --ggb-pagination-item-content-selected-hover: var(--ggb-color-item-selected-hover-content);
+  --ggb-pagination-item-indicatorColor: var(--ggb-color-item-indicator);
+  --ggb-pagination-item-indicatorThickness: var(--ggb-border-width-default);
+  --ggb-pagination-item-radius: var(--ggb-radius-control);
+  --ggb-pagination-item-focusColor: var(--ggb-color-focus-ring);
+  --ggb-pagination-item-focusWidth: var(--ggb-focus-width);
+  --ggb-pagination-item-focusOffset: var(--ggb-focus-offset);
+  --ggb-pagination-item-focusRadius: var(--ggb-radius-focus);
+  --ggb-pagination-item-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-pagination-item-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-pagination[data-size="sm"] .ggb-pagination__item {
+  --ggb-pagination-item-minSize: var(--ggb-size-control-sm);
+  --ggb-pagination-item-paddingInline: var(--ggb-space-control-label-inline-sm);
+  --ggb-pagination-item-typography: var(--ggb-typography-label-sm);
+  --ggb-pagination-item-typography-letterSpacing: var(--ggb-typography-label-sm-letterSpacing);
+  --ggb-pagination-item-typography-fontFeatureSettings: var(--ggb-typography-label-sm-fontFeatureSettings);
+}
+.ggb-pagination[data-size="md"] .ggb-pagination__item {
+  --ggb-pagination-item-minSize: var(--ggb-size-control-md);
+  --ggb-pagination-item-paddingInline: var(--ggb-space-control-label-inline-md);
+  --ggb-pagination-item-typography: var(--ggb-typography-label-md);
+  --ggb-pagination-item-typography-letterSpacing: var(--ggb-typography-label-md-letterSpacing);
+  --ggb-pagination-item-typography-fontFeatureSettings: var(--ggb-typography-label-md-fontFeatureSettings);
+}
+.ggb-pagination[data-size="lg"] .ggb-pagination__item {
+  --ggb-pagination-item-minSize: var(--ggb-size-control-lg);
+  --ggb-pagination-item-paddingInline: var(--ggb-space-control-label-inline-lg);
+  --ggb-pagination-item-typography: var(--ggb-typography-label-lg);
+  --ggb-pagination-item-typography-letterSpacing: var(--ggb-typography-label-lg-letterSpacing);
+  --ggb-pagination-item-typography-fontFeatureSettings: var(--ggb-typography-label-lg-fontFeatureSettings);
+}
+.ggb-pagination__ellipsis {
+  --ggb-pagination-ellipsis-content: var(--ggb-color-content-secondary);
+}
+.ggb-pagination[data-size="sm"] .ggb-pagination__ellipsis {
+  --ggb-pagination-ellipsis-minSize: var(--ggb-size-control-sm);
+  --ggb-pagination-ellipsis-typography: var(--ggb-typography-label-sm);
+  --ggb-pagination-ellipsis-typography-letterSpacing: var(--ggb-typography-label-sm-letterSpacing);
+  --ggb-pagination-ellipsis-typography-fontFeatureSettings: var(--ggb-typography-label-sm-fontFeatureSettings);
+}
+.ggb-pagination[data-size="md"] .ggb-pagination__ellipsis {
+  --ggb-pagination-ellipsis-minSize: var(--ggb-size-control-md);
+  --ggb-pagination-ellipsis-typography: var(--ggb-typography-label-md);
+  --ggb-pagination-ellipsis-typography-letterSpacing: var(--ggb-typography-label-md-letterSpacing);
+  --ggb-pagination-ellipsis-typography-fontFeatureSettings: var(--ggb-typography-label-md-fontFeatureSettings);
+}
+.ggb-pagination[data-size="lg"] .ggb-pagination__ellipsis {
+  --ggb-pagination-ellipsis-minSize: var(--ggb-size-control-lg);
+  --ggb-pagination-ellipsis-typography: var(--ggb-typography-label-lg);
+  --ggb-pagination-ellipsis-typography-letterSpacing: var(--ggb-typography-label-lg-letterSpacing);
+  --ggb-pagination-ellipsis-typography-fontFeatureSettings: var(--ggb-typography-label-lg-fontFeatureSettings);
+}
+}
