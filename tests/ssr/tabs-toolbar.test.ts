@@ -14,7 +14,10 @@ after(async () => {
 
 test('Tabs: a named tab list; without a value the first enabled tab is selected and its panel shown', async () => {
   const html = await tabs({ label: 'Project' });
-  assert.match(html, /<div class="ggb-tabs" data-size="md" data-orientation="horizontal" data-activation="automatic">/);
+  assert.match(
+    html,
+    /<div id="t" class="ggb-tabs" data-size="md" data-orientation="horizontal" data-activation="automatic">/
+  );
   assert.match(html, /class="ggb-tabs__list" role="tablist" aria-label="Project" aria-orientation="horizontal"/);
   assert.match(
     html,

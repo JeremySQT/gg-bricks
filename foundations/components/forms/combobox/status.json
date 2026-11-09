@@ -32,9 +32,30 @@
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/combobox",
+      "files": [
+        "packages/svelte/src/components/combobox/Combobox.svelte",
+        "packages/svelte/src/components/combobox/types.ts",
+        "packages/svelte/src/components/combobox/combobox.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/combobox/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/combobox",
+      "preview": "dist/previews/combobox.html (npm run build && npm run build:preview combobox)",
+      "artifact": null
+    },
+    "tests": {
+      "ssr": ["tests/ssr/choice.test.ts"],
+      "browser": ["tests/browser/combobox.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
+      "evidence": "reports/components/combobox/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -82,12 +103,16 @@
     "Keyboard per the WAI-ARIA combobox pattern: focus stays in the input, the highlighted option is the active descendant; Home, End and horizontal arrows edit the text; no wrapping; Alt+Down opens.",
     "Empty state: emptyLabel (default \"No results\") shown in the panel and announced politely; English default strings as for Dialog closeLabel and Alert dismissLabel.",
     "Gate question 1 resolved (user, 2026-11-09: \"ok pour tes 5 recommandations\"): the shift along the viewport edge is fixed in lib/overlay for every overlay (Popover, Menu, Tooltip, Select, Combobox), with a browser test per overlay near the edge, presented at the implementation gate.",
-    "Gate question 2 resolved (user, 2026-11-09): size.overlay.list = 256 px for Select and Combobox; Menu unchanged (viewport room only), to revisit at the visual pass (roadmap 4b)."
+    "Gate question 2 resolved (user, 2026-11-09): size.overlay.list = 256 px for Select and Combobox; Menu unchanged (viewport room only), to revisit at the visual pass (roadmap 4b).",
+    "Bits UI Combobox is not used, for the same reasons as Select; the panel is a manual popover (focus stays in the input, presses outside and focus leaving are handled by the component).",
+    "Filtering folds case and diacritics (Unicode NFD); filter none leaves the options to the application."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 4 implementation gate.",
+  "nextAction": "Wave 4 implementation gate: interactive review of the preview pages, then record the approval.",
   "implementationNotes": [
-    "Bits UI Combobox likely reused for roles only, or replaced by an own primitive on the native popover (decided at implementation)."
+    "Exports Combobox and the ComboboxOptionsRecord type.",
+    "The empty state is a polite status kept in the panel; it takes no room while options match.",
+    "`name` submits the value (not the text) through a hidden input."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

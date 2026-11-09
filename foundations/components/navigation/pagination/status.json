@@ -24,9 +24,32 @@
     "tokens": [],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/pagination",
+      "files": [
+        "packages/svelte/src/components/pagination/Pagination.svelte",
+        "packages/svelte/src/components/pagination/pages.ts",
+        "packages/svelte/src/components/pagination/types.ts",
+        "packages/svelte/src/components/pagination/pagination.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/pagination/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/pagination",
+      "preview": "dist/previews/pagination.html (npm run build && npm run build:preview pagination)",
+      "artifact": null
+    },
+    "tests": {
+      "ssr": ["tests/ssr/navigation.test.ts"],
+      "browser": ["tests/browser/pagination.spec.ts"],
+      "evidence": "reports/components/pagination/svelte/",
+      "unit": ["tests/pagination-entries.test.ts"]
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -71,11 +94,16 @@
     "Previous and next are IconButtons (neutral ghost, pagination's size) with intrinsic chevrons; they stay in place when disabled at the bounds.",
     "Constant item count (siblingCount × 2 + 5): first, last, current and siblings, ellipses for gaps of two pages or more, so that the controls do not move while paging (the usual algorithm).",
     "href with a {page} placeholder turns every control into a link; otherwise buttons and pageChange.",
-    "No roving focus: each control is a tab stop (WAI-ARIA has no pagination pattern; links in a navigation landmark)."
+    "No roving focus: each control is a tab stop (WAI-ARIA has no pagination pattern; links in a navigation landmark).",
+    "Contract fact found during implementation: typography.numeral.{size} became typography.label.{size} (numeral.lg is 24 px), with tabular figures set by the component. Recorded in pendingChanges for the implementation gate."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 4 implementation gate.",
-  "implementationNotes": [],
+  "nextAction": "Wave 4 implementation gate: interactive review of the preview pages, then record the approval.",
+  "implementationNotes": [
+    "Exports Pagination.",
+    "The item algorithm lives in pages.ts with a unit test (tests/pagination-entries.test.ts) over every page of counts 1 to 40 and siblings 0 to 3.",
+    "Previous and next reset the ButtonGroup size context (their size is the pagination size)."
+  ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
   },

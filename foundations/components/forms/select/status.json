@@ -33,9 +33,30 @@
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/select",
+      "files": [
+        "packages/svelte/src/components/select/Select.svelte",
+        "packages/svelte/src/components/select/types.ts",
+        "packages/svelte/src/components/select/select.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/select/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/select",
+      "preview": "dist/previews/select.html (npm run build && npm run build:preview select)",
+      "artifact": null
+    },
+    "tests": {
+      "ssr": ["tests/ssr/choice.test.ts"],
+      "browser": ["tests/browser/select.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
+      "evidence": "reports/components/select/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -86,12 +107,18 @@
     "Panel: at least the trigger's width, up to max(trigger, size.overlay.panel); block size capped by the new role size.overlay.list (256 px, about 7.5 options visible so that the cut row signals the scroll) and by the viewport room.",
     "The value never changes while the list is closed (arrow keys open it), unlike some native selects.",
     "Gate question 1 resolved (user, 2026-11-09: \"ok pour tes 5 recommandations\"): the shift along the viewport edge is fixed in lib/overlay for every overlay (Popover, Menu, Tooltip, Select, Combobox), with a browser test per overlay near the edge, presented at the implementation gate.",
-    "Gate question 2 resolved (user, 2026-11-09): size.overlay.list = 256 px for Select and Combobox; Menu unchanged (viewport room only), to revisit at the visual pass (roadmap 4b)."
+    "Gate question 2 resolved (user, 2026-11-09): size.overlay.list = 256 px for Select and Combobox; Menu unchanged (viewport room only), to revisit at the visual pass (roadmap 4b).",
+    "Bits UI Select is not used: its content assumes its own portal and focus scope, and it unmounts when closed (no exit transition); as for Menu (decision of 2026-10-31), the component is written on the native auto popover with lib/overlay. Recorded for the implementation gate.",
+    "The trigger is a button with the combobox role (WAI-ARIA select-only combobox): it keeps focus; the highlighted option is aria-activedescendant; presses in the panel never take focus.",
+    "Options API: records (`options` prop) as the contract says; groups from consecutive records with the same group."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 4 implementation gate.",
+  "nextAction": "Wave 4 implementation gate: interactive review of the preview pages, then record the approval.",
   "implementationNotes": [
-    "Bits UI Select assumes its own portal and focus scope; as for Menu, the component is likely written on the native popover with lib/overlay (decided at implementation, contract versus Bits UI rule)."
+    "Exports Select and the SelectOptionsRecord type.",
+    "The trigger toggles the panel through popovertarget (exempt from light dismiss); keys open it through the open state.",
+    "`name` submits the value through a hidden input.",
+    "A press on the Field label activates the trigger, as for any button, and opens the list."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

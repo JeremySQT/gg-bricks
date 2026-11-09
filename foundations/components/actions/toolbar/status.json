@@ -31,9 +31,31 @@
     "tokens": [],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/toolbar",
+      "files": [
+        "packages/svelte/src/components/toolbar/Toolbar.svelte",
+        "packages/svelte/src/components/toolbar/ToolbarSeparator.svelte",
+        "packages/svelte/src/components/toolbar/types.ts",
+        "packages/svelte/src/components/toolbar/toolbar.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/toolbar/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/toolbar",
+      "preview": "dist/previews/toolbar.html (npm run build && npm run build:preview toolbar)",
+      "artifact": null
+    },
+    "tests": {
+      "ssr": ["tests/ssr/tabs-toolbar.test.ts"],
+      "browser": ["tests/browser/toolbar.spec.ts"],
+      "evidence": "reports/components/toolbar/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -82,9 +104,14 @@
     "Separator child: a 1 px color.border.subtle line perpendicular to the orientation.",
     "Gate question 3 resolved (user, 2026-11-09): the Tooltip skip and close delays become component tokens component.tooltip.skip-delay (300 ms) and component.tooltip.close-delay (100 ms) through a Tooltip Modify (rendering unchanged).",
     "Gate question 4 resolved (user, 2026-11-09): the size a group imposes reaches Menu and Popover triggers; the same fix is applied to ButtonGroup, with a browser test in Toolbar and ButtonGroup.",
-    "Gate question 5 resolved (user, 2026-11-09): Toolbar v1 without toggle buttons; toggles later with a dedicated component or an IconButton pressed prop, on demand."
+    "Gate question 5 resolved (user, 2026-11-09): Toolbar v1 without toggle buttons; toggles later with a dedicated component or an IconButton pressed prop, on demand.",
+    "The toolbar size reaches its items through the ButtonGroup context key (ggb:button-group); Popover content resets it and Menu no longer does (gate question 4).",
+    "Roving focus from lib/roving-focus: keys handled in the capture phase and only when they come from an item, so that a Menu trigger in a vertical toolbar moves focus instead of opening, and keys inside an open menu or popover stay with it."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 4 implementation gate.",
-  "implementationNotes": []
+  "nextAction": "Wave 4 implementation gate: interactive review of the preview pages, then record the approval.",
+  "implementationNotes": [
+    "Exports Toolbar and ToolbarSeparator.",
+    "The module writes tabindex on the items (one 0, others -1) and keeps it in sync with a MutationObserver."
+  ]
 }

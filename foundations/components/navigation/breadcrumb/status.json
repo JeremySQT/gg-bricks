@@ -27,9 +27,30 @@
     "tokens": [],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/breadcrumb",
+      "files": [
+        "packages/svelte/src/components/breadcrumb/Breadcrumb.svelte",
+        "packages/svelte/src/components/breadcrumb/types.ts",
+        "packages/svelte/src/components/breadcrumb/breadcrumb.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/breadcrumb/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/breadcrumb",
+      "preview": "dist/previews/breadcrumb.html (npm run build && npm run build:preview breadcrumb)",
+      "artifact": null
+    },
+    "tests": {
+      "ssr": ["tests/ssr/navigation.test.ts"],
+      "browser": ["tests/browser/breadcrumb.spec.ts"],
+      "evidence": "reports/components/breadcrumb/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -76,11 +97,16 @@
     "Collapse: maxItems keeps the first and the last maxItems - 1 items and puts the hidden ones in a Menu opened by an ellipsis IconButton (neutral ghost, breadcrumb's size); 0 never collapses.",
     "When the line lacks room, labels shrink with an ellipsis, ancestors first; the full label stays the accessible name.",
     "Link targets meet 44 px in the block dimension without changing the line (invisible extension).",
-    "Gate question 1 resolved (user, 2026-11-09: \"ok pour tes 5 recommandations\"): the shift along the viewport edge is fixed in lib/overlay for every overlay (Popover, Menu, Tooltip, Select, Combobox), with a browser test per overlay near the edge, presented at the implementation gate."
+    "Gate question 1 resolved (user, 2026-11-09: \"ok pour tes 5 recommandations\"): the shift along the viewport edge is fixed in lib/overlay for every overlay (Popover, Menu, Tooltip, Select, Combobox), with a browser test per overlay near the edge, presented at the implementation gate.",
+    "Svelte API: the items are an `items` array (label, href) with a `leading` snippet receiving the item and its index, instead of child components, so that the current page (last item) and the collapsed items are known during server rendering. The contract child item is unchanged. Recorded for the implementation gate.",
+    "The slash separator is drawn on the 256-unit grid (Phosphor has no slash glyph); the chevron is Phosphor caret-right."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 4 implementation gate.",
-  "implementationNotes": [],
+  "nextAction": "Wave 4 implementation gate: interactive review of the preview pages, then record the approval.",
+  "implementationNotes": [
+    "Exports Breadcrumb and the BreadcrumbItem type.",
+    "An ancestor keeps 4em of label before its ellipsis; the full label is set as title when truncated."
+  ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
   }

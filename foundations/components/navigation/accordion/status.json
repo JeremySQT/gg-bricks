@@ -31,9 +31,31 @@
     "tokens": [],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/accordion",
+      "files": [
+        "packages/svelte/src/components/accordion/Accordion.svelte",
+        "packages/svelte/src/components/accordion/AccordionItem.svelte",
+        "packages/svelte/src/components/accordion/types.ts",
+        "packages/svelte/src/components/accordion/accordion.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/accordion/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/accordion",
+      "preview": "dist/previews/accordion.html (npm run build && npm run build:preview accordion)",
+      "artifact": null
+    },
+    "tests": {
+      "ssr": ["tests/ssr/navigation.test.ts"],
+      "browser": ["tests/browser/accordion.spec.ts"],
+      "evidence": "reports/components/accordion/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -79,12 +101,15 @@
     "Line-separated items (color.border.subtle, also above the first and below the last), hover tint color.item.hover.surface with radius.control, chevron in color.content.secondary rotating 180°.",
     "headingLevel (2 to 6, default 3) wraps each trigger in a heading, per the WAI-ARIA accordion pattern.",
     "Optional WAI-ARIA arrow keys included (Down, Up wrapping, Home, End), as Bits UI Accordion provides them.",
-    "Expansion animates the block size and the chevron over motion.duration.base; immediate under reduced motion."
+    "Expansion animates the block size and the chevron over motion.duration.base; immediate under reduced motion.",
+    "Bits UI Accordion is not used: a native button in a heading and a region are enough, and the block-size animation is CSS (grid rows 0fr to 1fr, visibility switching at the end of a collapse)."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 4 implementation gate.",
+  "nextAction": "Wave 4 implementation gate: interactive review of the preview pages, then record the approval.",
   "implementationNotes": [
-    "Bits UI Accordion is the probable base; the block-size animation in CSS (interpolate-size or grid rows) rather than JavaScript."
+    "Exports Accordion and AccordionItem.",
+    "The focus ring is drawn inside the trigger (outline-offset of minus its width) so that it stays inside the accordion inline size, as the contract asks.",
+    "A heading level outside 2 to 6 falls back to 3."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]

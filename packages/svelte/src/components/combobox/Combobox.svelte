@@ -74,7 +74,6 @@
   const isReadonly = $derived(readonly && !isDisabled);
   const describedByIds = $derived([field?.describedBy, describedBy].filter(Boolean).join(' ') || undefined);
 
-  const selected = $derived(list.find((o) => o.value === value));
   const labelOf = (v: string) => list.find((o) => o.value === v)?.label ?? '';
 
   // Filtering applies only once the user typed since the list opened or the last choice.
