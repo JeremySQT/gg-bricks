@@ -1,0 +1,152 @@
+/* Generated token bindings from the combobox contract. Do not edit. */
+@layer ggb {
+.ggb-combobox {
+  --ggb-combobox-surface-default: var(--ggb-color-input-default-surface);
+  --ggb-combobox-surface-hover: var(--ggb-color-input-hover-surface);
+  --ggb-combobox-surface-focus: var(--ggb-color-input-focus-surface);
+  --ggb-combobox-surface-readonly: var(--ggb-color-input-readonly-surface);
+  --ggb-combobox-surface-disabled: var(--ggb-color-input-disabled-surface);
+  --ggb-combobox-surface-invalid: var(--ggb-color-input-invalid-surface);
+  --ggb-combobox-content-default: var(--ggb-color-input-default-content);
+  --ggb-combobox-content-hover: var(--ggb-color-input-hover-content);
+  --ggb-combobox-content-focus: var(--ggb-color-input-focus-content);
+  --ggb-combobox-content-readonly: var(--ggb-color-input-readonly-content);
+  --ggb-combobox-content-disabled: var(--ggb-color-input-disabled-content);
+  --ggb-combobox-content-invalid: var(--ggb-color-input-invalid-content);
+  --ggb-combobox-border-default: var(--ggb-color-input-default-border);
+  --ggb-combobox-border-hover: var(--ggb-color-input-hover-border);
+  --ggb-combobox-border-focus: var(--ggb-color-input-focus-border);
+  --ggb-combobox-border-readonly: var(--ggb-color-input-readonly-border);
+  --ggb-combobox-border-disabled: var(--ggb-color-input-disabled-border);
+  --ggb-combobox-border-invalid: var(--ggb-color-input-invalid-border);
+  --ggb-combobox-placeholderColor-default: var(--ggb-color-input-default-placeholder);
+  --ggb-combobox-placeholderColor-hover: var(--ggb-color-input-hover-placeholder);
+  --ggb-combobox-placeholderColor-focus: var(--ggb-color-input-focus-placeholder);
+  --ggb-combobox-placeholderColor-readonly: var(--ggb-color-input-readonly-placeholder);
+  --ggb-combobox-placeholderColor-disabled: var(--ggb-color-input-disabled-placeholder);
+  --ggb-combobox-placeholderColor-invalid: var(--ggb-color-input-invalid-placeholder);
+  --ggb-combobox-slotColor-default: var(--ggb-color-input-default-placeholder);
+  --ggb-combobox-slotColor-hover: var(--ggb-color-input-hover-placeholder);
+  --ggb-combobox-slotColor-focus: var(--ggb-color-input-focus-placeholder);
+  --ggb-combobox-slotColor-readonly: var(--ggb-color-input-readonly-placeholder);
+  --ggb-combobox-slotColor-disabled: var(--ggb-color-input-disabled-placeholder);
+  --ggb-combobox-slotColor-invalid: var(--ggb-color-input-invalid-placeholder);
+  --ggb-combobox-borderWidth: var(--ggb-border-width-default);
+  --ggb-combobox-radius: var(--ggb-radius-control);
+  --ggb-combobox-minTarget: var(--ggb-size-target-min);
+  --ggb-combobox-focusColor: var(--ggb-color-focus-ring);
+  --ggb-combobox-focusWidth: var(--ggb-focus-width);
+  --ggb-combobox-focusOffset: var(--ggb-focus-offset);
+  --ggb-combobox-focusRadius: var(--ggb-radius-focus);
+  --ggb-combobox-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-combobox-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-combobox[data-size="sm"] {
+  --ggb-combobox-minHeight: var(--ggb-size-control-sm);
+  --ggb-combobox-edgeInline: var(--ggb-space-control-edge-inline-sm);
+  --ggb-combobox-textInline: var(--ggb-space-control-label-inline-sm);
+  --ggb-combobox-slotInline: var(--ggb-space-control-slot-inline-sm);
+  --ggb-combobox-typography: var(--ggb-typography-body-sm);
+  --ggb-combobox-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-combobox-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+  --ggb-combobox-iconSize: var(--ggb-size-icon-sm);
+}
+.ggb-combobox[data-size="md"] {
+  --ggb-combobox-minHeight: var(--ggb-size-control-md);
+  --ggb-combobox-edgeInline: var(--ggb-space-control-edge-inline-md);
+  --ggb-combobox-textInline: var(--ggb-space-control-label-inline-md);
+  --ggb-combobox-slotInline: var(--ggb-space-control-slot-inline-md);
+  --ggb-combobox-typography: var(--ggb-typography-body-md);
+  --ggb-combobox-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-combobox-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+  --ggb-combobox-iconSize: var(--ggb-size-icon-md);
+}
+.ggb-combobox[data-size="lg"] {
+  --ggb-combobox-minHeight: var(--ggb-size-control-lg);
+  --ggb-combobox-edgeInline: var(--ggb-space-control-edge-inline-lg);
+  --ggb-combobox-textInline: var(--ggb-space-control-label-inline-lg);
+  --ggb-combobox-slotInline: var(--ggb-space-control-slot-inline-lg);
+  --ggb-combobox-typography: var(--ggb-typography-body-lg);
+  --ggb-combobox-typography-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);
+  --ggb-combobox-typography-fontFeatureSettings: var(--ggb-typography-body-lg-fontFeatureSettings);
+  --ggb-combobox-iconSize: var(--ggb-size-icon-lg);
+}
+.ggb-combobox__panel {
+  --ggb-combobox-panel-surface: var(--ggb-color-surface-overlay);
+  --ggb-combobox-panel-elevationColor: var(--ggb-color-elevation-border);
+  --ggb-combobox-panel-borderWidth: var(--ggb-border-width-default);
+  --ggb-combobox-panel-shadow: var(--ggb-shadow-overlay);
+  --ggb-combobox-panel-radius: var(--ggb-radius-overlay);
+  --ggb-combobox-panel-padding: var(--ggb-space-content-xs);
+  --ggb-combobox-panel-maxInlineSize: var(--ggb-size-overlay-panel);
+  --ggb-combobox-panel-maxBlockSize: var(--ggb-size-overlay-list);
+  --ggb-combobox-panel-offset: var(--ggb-space-content-xs);
+  --ggb-combobox-panel-emptyColor: var(--ggb-color-content-secondary);
+  --ggb-combobox-panel-emptyPaddingInline: var(--ggb-space-control-padding-inline-sm);
+  --ggb-combobox-panel-emptyPaddingBlock: var(--ggb-space-control-padding-block-sm);
+  --ggb-combobox-panel-enterDistance: var(--ggb-motion-distance-sm);
+  --ggb-combobox-panel-motionDuration: var(--ggb-motion-duration-base);
+  --ggb-combobox-panel-easingEnter: var(--ggb-motion-easing-enter);
+  --ggb-combobox-panel-easingExit: var(--ggb-motion-easing-exit);
+  --ggb-combobox-panel-layer: var(--ggb-layer-dropdown);
+}
+.ggb-combobox[data-size="sm"] .ggb-combobox__panel {
+  --ggb-combobox-panel-typographyEmpty: var(--ggb-typography-body-sm);
+  --ggb-combobox-panel-typographyEmpty-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-combobox-panel-typographyEmpty-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+}
+.ggb-combobox[data-size="md"] .ggb-combobox__panel {
+  --ggb-combobox-panel-typographyEmpty: var(--ggb-typography-body-md);
+  --ggb-combobox-panel-typographyEmpty-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-combobox-panel-typographyEmpty-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+}
+.ggb-combobox[data-size="lg"] .ggb-combobox__panel {
+  --ggb-combobox-panel-typographyEmpty: var(--ggb-typography-body-lg);
+  --ggb-combobox-panel-typographyEmpty-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);
+  --ggb-combobox-panel-typographyEmpty-fontFeatureSettings: var(--ggb-typography-body-lg-fontFeatureSettings);
+}
+.ggb-combobox__option {
+  --ggb-combobox-option-surface-default: var(--ggb-color-item-default-surface);
+  --ggb-combobox-option-surface-hover: var(--ggb-color-item-hover-surface);
+  --ggb-combobox-option-surface-selected: var(--ggb-color-item-selected-surface);
+  --ggb-combobox-option-surface-selected-hover: var(--ggb-color-item-selected-hover-surface);
+  --ggb-combobox-option-surface-disabled: var(--ggb-color-item-disabled-surface);
+  --ggb-combobox-option-content-default: var(--ggb-color-item-default-content);
+  --ggb-combobox-option-content-hover: var(--ggb-color-item-hover-content);
+  --ggb-combobox-option-content-selected: var(--ggb-color-item-selected-content);
+  --ggb-combobox-option-content-selected-hover: var(--ggb-color-item-selected-hover-content);
+  --ggb-combobox-option-content-disabled: var(--ggb-color-item-disabled-content);
+  --ggb-combobox-option-checkColor: var(--ggb-color-item-indicator);
+  --ggb-combobox-option-radius: var(--ggb-radius-container);
+  --ggb-combobox-option-minHeight: var(--ggb-size-control-sm);
+  --ggb-combobox-option-paddingInline: var(--ggb-space-control-padding-inline-sm);
+  --ggb-combobox-option-paddingBlock: var(--ggb-space-control-padding-block-sm);
+  --ggb-combobox-option-gap: var(--ggb-space-control-gap-sm);
+  --ggb-combobox-option-checkSize: var(--ggb-size-icon-sm);
+  --ggb-combobox-option-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-combobox-option-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-combobox[data-size="sm"] .ggb-combobox__option {
+  --ggb-combobox-option-typography: var(--ggb-typography-body-sm);
+  --ggb-combobox-option-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-combobox-option-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+}
+.ggb-combobox[data-size="md"] .ggb-combobox__option {
+  --ggb-combobox-option-typography: var(--ggb-typography-body-md);
+  --ggb-combobox-option-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-combobox-option-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+}
+.ggb-combobox[data-size="lg"] .ggb-combobox__option {
+  --ggb-combobox-option-typography: var(--ggb-typography-body-lg);
+  --ggb-combobox-option-typography-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);
+  --ggb-combobox-option-typography-fontFeatureSettings: var(--ggb-typography-body-lg-fontFeatureSettings);
+}
+.ggb-combobox__group {
+  --ggb-combobox-group-headingColor: var(--ggb-color-content-secondary);
+  --ggb-combobox-group-typography: var(--ggb-typography-caption-md);
+  --ggb-combobox-group-typography-letterSpacing: var(--ggb-typography-caption-md-letterSpacing);
+  --ggb-combobox-group-typography-fontFeatureSettings: var(--ggb-typography-caption-md-fontFeatureSettings);
+  --ggb-combobox-group-paddingInline: var(--ggb-space-control-padding-inline-sm);
+  --ggb-combobox-group-paddingBlock: var(--ggb-space-content-xs);
+}
+}

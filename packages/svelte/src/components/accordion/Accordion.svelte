@@ -59,7 +59,6 @@
   }
 </script>
 
-<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div {...rest} bind:this={ref} class={['ggb-accordion', className]} onkeydown={keydown}>
   {@render children()}
 </div>

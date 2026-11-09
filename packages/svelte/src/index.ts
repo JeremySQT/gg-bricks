@@ -108,3 +108,9 @@ export type { BreadcrumbSize, BreadcrumbSeparator } from './components/breadcrum
 export { default as Pagination } from './components/pagination/Pagination.svelte';
 export type { PaginationProps } from './components/pagination/types.js';
 export type { PaginationSize } from './components/pagination/contract.generated.js';
+export { default as Select } from './components/select/Select.svelte';
+export type { SelectProps, SelectOptionsRecord } from './components/select/types.js';
+export type { SelectSize } from './components/select/contract.generated.js';
+export { default as Combobox } from './components/combobox/Combobox.svelte';
+export type { ComboboxProps, ComboboxOptionsRecord } from './components/combobox/types.js';
+export type { ComboboxSize, ComboboxFilter } from './components/combobox/contract.generated.js';

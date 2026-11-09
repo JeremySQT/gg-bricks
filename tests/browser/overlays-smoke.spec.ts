@@ -121,3 +121,55 @@ test('edge: popover, menu and tooltip shift along the inline end of the viewport
   await expect.poll(() => isOpen(page, 'tip-copy')).toBe(true);
   await insideViewport(page, 'tip-copy');
 });
+
+// Wave 4 list panels in every engine: keyboard opening, choice, focus kept on the field, and the edge.
+test('select: Down Arrow opens on the first option, Enter chooses, focus stays on the trigger', async ({ page }) => {
+  await page.goto('/select/');
+  const panel = page.locator('#play ~ .ggb-select__panel');
+  await page.focus('#play');
+  await page.keyboard.press('ArrowDown');
+  await expect.poll(() => panel.evaluate((p) => p.matches(':popover-open'))).toBe(true);
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('Enter');
+  await expect(page.getByTestId('value')).toHaveText('Value: fr');
+  await expect.poll(() => panel.evaluate((p) => p.matches(':popover-open'))).toBe(false);
+  await expect.poll(() => focused(page)).toBe('play');
+});
+
+test('combobox: typing filters and Enter chooses; focus stays in the input', async ({ page }) => {
+  await page.goto('/combobox/');
+  await page.focus('#play');
+  await page.keyboard.type('jap');
+  await page.keyboard.press('Enter');
+  await expect(page.getByTestId('value')).toHaveText('Value: japan');
+  await expect(page.locator('#play')).toHaveValue('Japan');
+  await expect.poll(() => focused(page)).toBe('play');
+});
+
+test('edge: select and combobox panels stay inside a narrow viewport', async ({ page }) => {
+  await page.goto('/select/');
+  await pinToEnd(page, '#narrow');
+  await page.locator('#narrow').evaluate((el) => ((el as HTMLElement).style.inlineSize = '8rem'));
+  await page.focus('#narrow');
+  await page.keyboard.press('ArrowDown');
+  const select = page.locator('#narrow ~ .ggb-select__panel');
+  await expect.poll(() => select.evaluate((p) => p.matches(':popover-open'))).toBe(true);
+  await settle(page);
+  const box = (await select.boundingBox())!;
+  expect(box.x).toBeGreaterThanOrEqual(-0.5);
+  expect(box.x + box.width).toBeLessThanOrEqual(page.viewportSize()!.width + 0.5);
+
+  await page.goto('/combobox/');
+  await page.setViewportSize({ width: 360, height: 640 });
+  await page.focus('#people');
+  await page.keyboard.press('ArrowDown');
+  const combo = page
+    .locator('.ggb-combobox')
+    .filter({ has: page.locator('#people') })
+    .locator('.ggb-combobox__panel');
+  await expect.poll(() => combo.evaluate((p) => p.matches(':popover-open'))).toBe(true);
+  await settle(page);
+  const c = (await combo.boundingBox())!;
+  expect(c.x).toBeGreaterThanOrEqual(-0.5);
+  expect(c.x + c.width).toBeLessThanOrEqual(360.5);
+});
