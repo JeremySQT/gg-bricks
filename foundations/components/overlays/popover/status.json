@@ -55,6 +55,7 @@
       "folder": "packages/svelte/src/components/popover",
       "files": [
         "packages/svelte/src/components/popover/Popover.svelte",
+        "packages/svelte/src/components/popover/PopoverContent.svelte",
         "packages/svelte/src/components/popover/types.ts",
         "packages/svelte/src/components/popover/popover.css"
       ],
@@ -234,5 +235,16 @@
   "implementationNotes": [
     "The trigger is rendered by a snippet that spreads popovertarget and the popup attributes on a Button or IconButton: the browser toggles the auto popover, which spares the trigger from light dismiss (no close-then-reopen on the same press) and restores focus to it on Escape.",
     "On opening, the panel's max block size is the larger room above or below the trigger, so that it flips and scrolls instead of overflowing the viewport."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Group size reaches the trigger (wave 4 contract gate, question 4): the reset of the ButtonGroup size moved from Popover.svelte into the new inner PopoverContent.svelte, so that a trigger in a ButtonGroup or Toolbar takes the group size while the content keeps its own (it was reset for the trigger too). To re-present at the wave 4 implementation gate.",
+      "sha256": {
+        "packages/svelte/src/components/popover/Popover.svelte": "a4173300faa69a6b6e829115899751b14d553241a1d7a4b03acad24bec70c438",
+        "packages/svelte/src/components/popover/PopoverContent.svelte": "32fcfbdd457680ddc004a7e8447aaa2e83e46f4e983fcd00c9f2b384c6f8a5c4"
+      },
+      "review": "Wave 4 implementation gate"
+    }
   ]
 }

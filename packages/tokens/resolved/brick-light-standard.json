@@ -9740,6 +9740,22 @@
     },
     "$description": "Hover delay before the tooltip opens; keyboard focus opens it at once."
   },
+  "component.tooltip.skip-delay": {
+    "$type": "duration",
+    "$value": {
+      "value": 300,
+      "unit": "ms"
+    },
+    "$description": "After a tooltip closed, moving to another trigger within this time opens its tooltip at once (no hover delay)."
+  },
+  "component.tooltip.close-delay": {
+    "$type": "duration",
+    "$value": {
+      "value": 100,
+      "unit": "ms"
+    },
+    "$description": "Grace after the pointer leaves the trigger, so that it can travel to the tooltip, which keeps it open."
+  },
   "component.tooltip.max-inline-size": {
     "$type": "dimension",
     "$value": {

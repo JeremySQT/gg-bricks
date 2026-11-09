@@ -255,6 +255,14 @@
         "foundations/components/actions/button-group/contract.json": "849371cd8815a83dc9435064918892a90022f94ac29602f38b1f9332d1cf634b"
       },
       "recorded": "Re-recorded with the approvals of 2026-11-03."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Wave 4 contract gate, question 4: review page panel with Menu and Popover triggers in an lg group, and a browser test that they take the group size while the popover content keeps its own. ButtonGroup code unchanged (the fix is in Popover and Menu). To re-present at the wave 4 implementation gate.",
+      "sha256": {
+        "examples/button-group/App.svelte": "9606c812642f09c47fa081276c8ccf86090a45b876cd5694575bddcf66a3bfc1"
+      },
+      "review": "Wave 4 implementation gate"
     }
   ]
 }

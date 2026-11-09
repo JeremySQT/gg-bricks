@@ -100,6 +100,36 @@ test('hover opens after the delay, then at once on the next trigger; leaving and
   expect(await isOpen(page, 'tip-copy')).toBe(false);
 });
 
+test('the skip and close delays follow their tokens (component.tooltip.skip-delay and close-delay)', async ({
+  page
+}) => {
+  // Lengthen both delays on the page: a slower close keeps the tooltip open well past the default 100 ms grace, and
+  // a longer skip window still opens the next tooltip at once after the first one closed.
+  // Set on the tooltips themselves: the page's [data-ggb-brand] wrapper redefines the component tokens below <html>.
+  await page.locator('.ggb-tooltip').evaluateAll((tips) =>
+    tips.forEach((tip) => {
+      (tip as HTMLElement).style.setProperty('--ggb-tooltip-motionCloseDelay', '600ms');
+      (tip as HTMLElement).style.setProperty('--ggb-tooltip-motionSkipDelay', '2s');
+    })
+  );
+  await page.focus('#before');
+  await page.keyboard.press('Tab');
+  expect(await isOpen(page, 'tip-copy')).toBe(true);
+  await page.keyboard.press('Escape');
+  await page.hover('#save');
+  await page.waitForTimeout(150);
+  expect(await isOpen(page, 'tip-save')).toBe(true);
+  await page.mouse.move(5, 5);
+  await page.waitForTimeout(300);
+  expect(await isOpen(page, 'tip-save')).toBe(true);
+  await expect.poll(() => isOpen(page, 'tip-save')).toBe(false);
+  // Closed for more than the default 300 ms window, yet within the 2 s one: the next tooltip opens at once.
+  await page.waitForTimeout(500);
+  await page.hover('#edit');
+  await page.waitForTimeout(120);
+  expect(await isOpen(page, 'tip-edit')).toBe(true);
+});
+
 test('a disabled control shows no tooltip; the application controls open silently', async ({ page }) => {
   await page.hover('#disabled', { force: true });
   await page.waitForTimeout(900);

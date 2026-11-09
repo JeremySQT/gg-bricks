@@ -81,6 +81,23 @@ test('the group size sets every item height, the item asking for lg included; th
   }
 });
 
+test('Menu and Popover triggers in a group take its size; the popover content keeps its own size', async ({ page }) => {
+  const tokens = tokensFor('base-light-standard');
+  const lg = px(tokens['size.control.lg']);
+  for (const id of ['#triggers-save', '#triggers-pop-trigger', '#triggers-menu-trigger'])
+    await expect(page.locator(id), id).toHaveAttribute('data-size', 'lg');
+  const heights = await page
+    .locator(
+      ['#triggers-save', '#triggers-pop-trigger', '#triggers-menu-trigger']
+        .map((id) => `${id} .ggb-button__container, ${id} .ggb-icon-button__container`)
+        .join(', ')
+    )
+    .evaluateAll((els) => els.map((e) => e.getBoundingClientRect().height));
+  expect(heights).toEqual([lg, lg, lg]);
+  await page.click('#triggers-pop-trigger');
+  await expect(page.locator('#triggers-pop-copy')).toHaveAttribute('data-size', 'sm');
+});
+
 test('alignment: start, center, end, stretch on a line; vertical always stacks every item at full width', async ({
   page
 }) => {

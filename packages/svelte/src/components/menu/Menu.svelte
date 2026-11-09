@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { setContext, tick } from 'svelte';
+  import { tick } from 'svelte';
   import { floating } from '../../lib/overlay/index.js';
   import '../../lib/overlay/overlay.css';
   import type { MenuProps } from './types.js';
@@ -28,8 +28,8 @@
   const anchor = () => document.getElementById(triggerId);
   const name = $derived(typeof label === 'string' && label.trim() ? label : undefined);
 
-  // Items are not sized by a ButtonGroup around the menu.
-  setContext('ggb:button-group', undefined);
+  // The trigger, a Button or IconButton, takes the size a ButtonGroup or Toolbar around the menu imposes; the items
+  // are not buttons and keep their own size.
 
   function set(next: boolean) {
     if (next === open) return;

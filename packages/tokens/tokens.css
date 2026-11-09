@@ -504,6 +504,8 @@
   --ggb-component-switch-track-size-md: var(--ggb-primitive-dimension-v20);
   --ggb-component-switch-track-size-lg: var(--ggb-primitive-dimension-v24);
   --ggb-component-tooltip-delay: var(--ggb-primitive-duration-500);
+  --ggb-component-tooltip-skip-delay: var(--ggb-primitive-duration-300);
+  --ggb-component-tooltip-close-delay: var(--ggb-primitive-duration-100);
   --ggb-component-tooltip-max-inline-size: var(--ggb-primitive-dimension-v240);
 }
 :root, [data-ggb-brand], [data-ggb-appearance="light"] {

@@ -7,6 +7,16 @@
         "$value": "{primitive.duration.500}",
         "$description": "Hover delay before the tooltip opens; keyboard focus opens it at once."
       },
+      "skip-delay": {
+        "$type": "duration",
+        "$value": "{primitive.duration.300}",
+        "$description": "After a tooltip closed, moving to another trigger within this time opens its tooltip at once (no hover delay)."
+      },
+      "close-delay": {
+        "$type": "duration",
+        "$value": "{primitive.duration.100}",
+        "$description": "Grace after the pointer leaves the trigger, so that it can travel to the tooltip, which keeps it open."
+      },
       "max-inline-size": {
         "$type": "dimension",
         "$value": "{primitive.dimension.v240}",

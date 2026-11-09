@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { setContext, tick } from 'svelte';
+  import { tick } from 'svelte';
   import { floating } from '../../lib/overlay/index.js';
   import '../../lib/overlay/overlay.css';
+  import PopoverContent from './PopoverContent.svelte';
   import type { PopoverProps } from './types.js';
   import { defaults } from './contract.generated.js';
   import './tokens.generated.css';
@@ -31,9 +32,6 @@
   const panelId = $derived(id ?? `${uid}-popover`);
   const triggerId = $derived(`${panelId}-trigger`);
   const anchor = () => document.getElementById(triggerId);
-
-  // Content inside the panel is not sized by a ButtonGroup around the popover.
-  setContext('ggb:button-group', undefined);
 
   function set(next: boolean) {
     if (next === open) return;
@@ -89,5 +87,5 @@
   onfocusout={focusOut}
   {@attach floating({ anchor, open: () => open, onOpenChange: opened, side, align })}
 >
-  {@render children()}
+  <PopoverContent>{@render children()}</PopoverContent>
 </div>

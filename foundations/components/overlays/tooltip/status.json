@@ -95,11 +95,11 @@
           "foundations/tokens/base/components/tooltip.tokens.json"
         ],
         "sha256": {
-          "foundations/components/overlays/tooltip/contract.json": "2f8e0068eaa703a98971b2ff23a5012f984b7b9c316df68234bf5578217276b9",
-          "foundations/tokens/base/components/tooltip.tokens.json": "0e02e9e8bbe8486e95cc20d80312449daa41a9a6adc87214072ebb2fc30eb1f6"
+          "foundations/components/overlays/tooltip/contract.json": "a68acce9a5c02a7fbcf8b48cbe9ed1b05a0843627088133d5b90388702b91715",
+          "foundations/tokens/base/components/tooltip.tokens.json": "2039bbd94a7413fa039a5424a3f4a02c4d18fb6b315a7027b445c85fd0c30ef6"
         }
       },
-      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendment of 2026-11-09 (wave 4 contract gate, question 3, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"ok pour tes 5 recommandations\"): roles motionSkipDelay (component.tooltip.skip-delay, 300 ms) and motionCloseDelay (component.tooltip.close-delay, 100 ms) replace the two durations written in the code; the rule names them. Values unchanged. Digests re-recorded.",
       "note": null
     },
     "implementation": {
@@ -254,5 +254,16 @@
     "The trigger is the first element of the children snippet, wrapped in a display: contents span that listens to pointer and focus events; the tooltip is a manual popover placed by lib/overlay floating.",
     "One tooltip at a time and the skip delay (300 ms after a tooltip closed, the next opens at once) are module-level state.",
     "aria-describedby is added to the trigger unless its aria-label equals the tooltip text."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Tooltip Modify (wave 4 contract gate, question 3): the skip and close delays are read from the new tokens instead of literals (300 ms and 100 ms, unchanged); new browser test lengthening both through the tokens. To re-present at the wave 4 implementation gate.",
+      "sha256": {
+        "packages/svelte/src/components/tooltip/Tooltip.svelte": "41cff0752c6fdc6b31a6c24e1fd83af72596ebf20a37e4025c18d30e9ed47723",
+        "packages/svelte/src/components/tooltip/tokens.generated.css": "ebdef229ff632629896eefa926ff06ca3fd0be3b0c052af81bf1c6774d595d8e"
+      },
+      "review": "Wave 4 implementation gate"
+    }
   ]
 }
