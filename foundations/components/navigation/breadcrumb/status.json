@@ -44,7 +44,7 @@
     "examples": {
       "page": "examples/breadcrumb",
       "preview": "dist/previews/breadcrumb.html (npm run build && npm run build:preview breadcrumb)",
-      "artifact": null
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794240385-375a), page breadcrumb.html"
     },
     "tests": {
       "ssr": ["tests/ssr/navigation.test.ts"],
@@ -88,6 +88,21 @@
       "result": "passed",
       "date": "2026-11-09",
       "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium, overlay smoke spec in Firefox and WebKit, docs site)",
+      "result": "300 passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:preview breadcrumb",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-09"
     }
   ],
   "decisionsTaken": [
@@ -102,7 +117,7 @@
     "The slash separator is drawn on the 256-unit grid (Phosphor has no slash glyph); the chevron is Phosphor caret-right."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate: interactive review of the preview pages, then record the approval.",
+  "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",
   "implementationNotes": [
     "Exports Breadcrumb and the BreadcrumbItem type.",
     "An ancestor keeps 4em of label before its ellipsis; the full label is set as title when truncated."

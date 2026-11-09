@@ -49,7 +49,7 @@
     "examples": {
       "page": "examples/toolbar",
       "preview": "dist/previews/toolbar.html (npm run build && npm run build:preview toolbar)",
-      "artifact": null
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794240385-375a), page toolbar.html"
     },
     "tests": {
       "ssr": ["tests/ssr/tabs-toolbar.test.ts"],
@@ -93,6 +93,21 @@
       "result": "passed",
       "date": "2026-11-09",
       "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium, overlay smoke spec in Firefox and WebKit, docs site)",
+      "result": "300 passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:preview toolbar",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-09"
     }
   ],
   "decisionsTaken": [
@@ -109,7 +124,7 @@
     "Roving focus from lib/roving-focus: keys handled in the capture phase and only when they come from an item, so that a Menu trigger in a vertical toolbar moves focus instead of opening, and keys inside an open menu or popover stay with it."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate: interactive review of the preview pages, then record the approval.",
+  "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",
   "implementationNotes": [
     "Exports Toolbar and ToolbarSeparator.",
     "The module writes tabindex on the items (one 0, others -1) and keeps it in sync with a MutationObserver."

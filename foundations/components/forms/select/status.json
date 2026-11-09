@@ -50,7 +50,7 @@
     "examples": {
       "page": "examples/select",
       "preview": "dist/previews/select.html (npm run build && npm run build:preview select)",
-      "artifact": null
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794240385-375a), page select.html"
     },
     "tests": {
       "ssr": ["tests/ssr/choice.test.ts"],
@@ -94,6 +94,21 @@
       "result": "passed",
       "date": "2026-11-09",
       "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium, overlay smoke spec in Firefox and WebKit, docs site)",
+      "result": "300 passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:preview select",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-09"
     }
   ],
   "decisionsTaken": [
@@ -113,7 +128,7 @@
     "Options API: records (`options` prop) as the contract says; groups from consecutive records with the same group."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate: interactive review of the preview pages, then record the approval.",
+  "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",
   "implementationNotes": [
     "Exports Select and the SelectOptionsRecord type.",
     "The trigger toggles the panel through popovertarget (exempt from light dismiss); keys open it through the open state.",
