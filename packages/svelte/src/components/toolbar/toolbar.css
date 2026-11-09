@@ -1,0 +1,41 @@
+/*
+ * Toolbar structure. The gap and the separator come from tokens.generated.css; the items keep their own styles and
+ * take the toolbar's size through the shared ButtonGroup context.
+ */
+@layer ggb {
+  .ggb-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ggb-toolbar-gap);
+  }
+  .ggb-toolbar[data-orientation='vertical'] {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    inline-size: max-content;
+  }
+  /* Wrappers (Tooltip) take no room of their own. */
+  .ggb-toolbar > :not(.ggb-toolbar__separator, button, a, [popover]) {
+    flex: none;
+  }
+
+  .ggb-toolbar__separator {
+    flex: none;
+    align-self: stretch;
+    background: var(--ggb-toolbar-separator-lineColor);
+  }
+  .ggb-toolbar[data-orientation='horizontal'] > .ggb-toolbar__separator {
+    inline-size: var(--ggb-toolbar-separator-thickness);
+    margin-inline: var(--ggb-toolbar-separator-margin);
+  }
+  .ggb-toolbar[data-orientation='vertical'] > .ggb-toolbar__separator {
+    block-size: var(--ggb-toolbar-separator-thickness);
+    margin-block: var(--ggb-toolbar-separator-margin);
+  }
+  @media (forced-colors: active) {
+    .ggb-toolbar__separator {
+      background: CanvasText;
+    }
+  }
+}
