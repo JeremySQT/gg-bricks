@@ -1,0 +1,275 @@
+{
+  "formatStatus": "v1",
+  "componentId": "dialog",
+  "family": "overlays",
+  "wave": 3,
+  "phase": "done",
+  "scope": {
+    "purpose": "Ask the user to complete or abandon a short task or decision before going back to the page.",
+    "useCases": [
+      "Confirm a destructive action (alert dialog).",
+      "Edit a record in a short form.",
+      "Show terms that must be accepted."
+    ],
+    "exclusions": [
+      "Side sheets: Drawer (later).",
+      "Full-screen dialogs and multi-step wizards: compositions later.",
+      "Non-modal windows."
+    ],
+    "alternatives": ["Popover for non-blocking content.", "Alert for a message that needs no answer."]
+  },
+  "dependencies": ["icon-button", "button-group", "lib/overlay"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/overlays/dialog/contract.json",
+      "sha256": "43f642e4e522e722f750c6566ff245270e0e7d754d1b6b0daafba83b73dd60df"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/common.tokens.json",
+      "foundations/tokens/base/components/dialog.tokens.json"
+    ],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "overlays/dialog (407:120)",
+      "library": "Overlays (407:119), section Dialog (433:87)",
+      "componentSet": "433:525",
+      "specification": "435:2",
+      "ledger": "reports/components/dialog/figma/ledger.json",
+      "parity": "reports/components/dialog/figma/parity.json",
+      "screenshots": [
+        "reports/components/dialog/figma/master-set.png",
+        "reports/components/dialog/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/dialog/figma/blueprint-anatomy.png",
+          "node": "435:319"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/dialog-master.plugin.js",
+        "authoring/adapters/figma/dialog-spec.plugin.js",
+        "authoring/adapters/figma/dialog-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/overlays/dialog/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/dialog",
+      "files": [
+        "packages/svelte/src/components/dialog/Dialog.svelte",
+        "packages/svelte/src/components/dialog/types.ts",
+        "packages/svelte/src/components/dialog/dialog.css",
+        "packages/svelte/src/components/dialog/glyphs.ts"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/dialog/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/dialog",
+      "preview": "dist/previews/dialog.html (npm run build && npm run build:preview dialog)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page dialog.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/overlays.test.ts"],
+      "browser": ["tests/browser/dialog.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
+      "evidence": "reports/components/dialog/svelte/"
+    },
+    "humanDocs": "documentation/components/dialog.md",
+    "agentDocs": "documentation/index.json (entry dialog); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/dialog.svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Dialog contract: bindable open, required title, description, size sm/md/lg (component tokens component.dialog.inline-size.*), alert, dismissible, closeLabel; header, scrolling body, footer ButtonGroup, backdrop color.surface.scrim; initial focus rule; native modal dialog in the top layer.",
+      "revision": {
+        "paths": [
+          "foundations/components/overlays/dialog/contract.json",
+          "foundations/tokens/base/components/dialog.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/overlays/dialog/contract.json": "4ae24361ad3a9b20d1a499561d8ae48f5800dc3497f05c265ceb58698a88ec70",
+          "foundations/tokens/base/components/dialog.tokens.json": "70b02973d5635d5901d8a09bd463782a40166a33fdd0d5e5d6f67823ae70c5b5"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 found or requested at the implementation review (Contract fact found during implementation: roles focusWidth (focus.width) and focusOffset (focus.offset) and the rule th…) accepted with the implementation: \"Je valide le reste\". Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui corrige les quatre points et ajoute-le au contrat\"): openChange and the closing rule name the submission of a form with method dialog inside the dialog, which closes it whatever dismissible (the platform behavior the implementation already had). Digests re-recorded.",
+      "note": "The user finds the word scrim unclear; the documentation explains the role in plain words. A rename is not decided."
+    },
+    "implementation": {
+      "scope": "Dialog on lib/overlay modal: title and description, initial focus, close button, alert dialog, not dismissible, scrolling body with dividers and focus room, nested dialogs, page scroll locked.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/dialog/Dialog.svelte",
+          "packages/svelte/src/components/dialog/contract.generated.ts",
+          "packages/svelte/src/components/dialog/dialog.css",
+          "packages/svelte/src/components/dialog/glyphs.ts",
+          "packages/svelte/src/components/dialog/tokens.generated.css",
+          "packages/svelte/src/components/dialog/types.ts",
+          "examples/dialog/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/dialog/Dialog.svelte": "5f2b20b932c32c5482441661542cda55b33d0189e11708a6d28248055bb223a1",
+          "packages/svelte/src/components/dialog/contract.generated.ts": "bf4159c95ef47b2552fc5091ba6e96ae3f5812ccff1617caae2a4373c32e0b30",
+          "packages/svelte/src/components/dialog/dialog.css": "9cf4e1d8499514a57037a02723a75610326c47282abdd98f05275f946c20a96c",
+          "packages/svelte/src/components/dialog/glyphs.ts": "b7c10ae6a1c501fbca339d2349e370e60ec6d9d8deca03b101f25f7fa4958dce",
+          "packages/svelte/src/components/dialog/tokens.generated.css": "de1acc24698ce147eb680194a5a92f8d6862e5ac17526b08e0703ba7488e3573",
+          "packages/svelte/src/components/dialog/types.ts": "650da0276fb8345e62e07e938498f64785560150437c22dabb3e6e3f1e693e9f",
+          "examples/dialog/App.svelte": "b6f0a2623a18c438e18f1052aae3aa823671e7be131f7cae356db1f58ecaa1a2"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui corrige les quatre points et ajoute-le au contrat\"): review page case of a form with method dialog inside a dialog that is not dismissible (#compositions); browser test. Component files unchanged. Digests re-recorded.",
+      "note": null
+    },
+    "figmaParity": {
+      "scope": "Figma master 433:525 and specification frame 435:2 of the dialog component, parity report (96 records, 0 failures, 0 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/overlays/dialog/figma-spec.md",
+          "reports/components/dialog/figma/parity.json",
+          "reports/components/dialog/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/overlays/dialog/figma-spec.md": "6129de10035c38bcfd1ab91c73ce4e952fe405e119dc79ff3a645c8679fbcd15",
+          "reports/components/dialog/figma/parity.json": "65e82fe7649743bc85661a8c724f9599a65bb011ac6fee10117cd5dab2848507",
+          "reports/components/dialog/figma/ledger.json": "37c0f244ba7f4a7f34f62ec5f50298939ccdb8b45b612b057ee281d7f3904d21"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "433:525",
+          "specificationFrame": "435:2"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of dialog (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/dialog.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/dialog.svelte"
+        ],
+        "sha256": {
+          "documentation/components/dialog.md": "050a01794118e92d5a74f2a665f1ddb7534925b5b2f04e696ed38c67fe2d827f",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/dialog.svelte": "19136df9abb37947771a13578f673dada1fc6f4e0dc675c1178a993eab7cb410"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/dialog/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (96 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/dialog/svelte/"
+    },
+    {
+      "name": "npm run build:preview dialog",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (96 records, 0 failures; 216 layout checks)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/dialog/figma/parity.json"
+    },
+    {
+      "name": "Figma parity after the review (neutral default example): 96 records, 0 failures; 216 layout checks",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/dialog/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/dialog/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/dialog.md"
+    },
+    {
+      "name": "Fix after the documentation review: review page case of a form with method dialog inside a dialog that is not dismissible (#compositions); browser test. Component files unchanged.",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "tests/browser/dialog.spec.ts"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/dialog.md"
+    }
+  ],
+  "decisionsTaken": [
+    "Native modal dialog in the top layer (decision of 2026-10-31): inert page, focus trap and focus return from the platform; backdrop color.surface.scrim (open question 1).",
+    "Header (required title, optional description, close button), scrolling body, footer with one ButtonGroup aligned at the end; dividers appear only when the body scrolls (state scrolled).",
+    "Sizes sm, md, lg on the component tokens component.dialog.inline-size.{sm,md,lg} (400, 560, 720 px), capped by the viewport less space.layout.md.",
+    "alert true: alert dialog, never closed by a backdrop press; dismissible false removes the close button, Escape and the backdrop press.",
+    "Initial focus: the element the application marks, else the first focusable element of the body, then of the footer, else the panel.",
+    "Title typography.heading.sm, description typography.body.sm, body typography.body.md, padding space.layout.md, shadow.modal, radius.overlay, entry with motion.distance.md.",
+    "No trigger part: the application opens the dialog by setting open (a Button or a Menu item).",
+    "Open question 1 resolved (user, 2026-11-03: \"ok (meme si le wording scrim n'est pas très parlant...)\"): color.surface.scrim is the canonical modal backdrop; opacity.scrim stays for an image or video veil and is documented as not for overlays. The user finds the word scrim unclear: the foundations documentation explains it in plain words (the dimming layer behind a modal window); a rename is not decided.",
+    "Open question 2 resolved (user, 2026-11-03: \"Ok\"): when a Bits UI behavior disagrees with a contract rule, the contract wins; the component overrides or completes the primitive locally, pins the Bits UI version and covers the override with a browser test.",
+    "Contract fact added during implementation: focusWidth and focusOffset roles for the body room (pending re-presentation)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "lib/overlay modal gained a closeRequest option (closedby none and a cancelled cancel event) for a dialog that is not dismissible.",
+    "The page does not scroll while a dialog is open (:root:has(dialog.ggb-dialog[open]) { overflow: hidden }).",
+    "Header, title and footer are divs (the title has role heading, level 2) so that an application's element styles never reach them.",
+    "Enters moving upwards: the dialog negates the overlay distance of overlay.css."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "Contract fact found during implementation: roles focusWidth (focus.width) and focusOffset (focus.offset) and the rule that the body keeps that room around its content, so that a focus indicator or a 44 px target at its edge is never clipped and never makes the body scroll. To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/overlays/dialog/contract.json": "43f642e4e522e722f750c6566ff245270e0e7d754d1b6b0daafba83b73dd60df"
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
+    }
+  ]
+}

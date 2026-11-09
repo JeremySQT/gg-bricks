@@ -1,0 +1,168 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "toast",
+  "props": {
+    "placement": {
+      "values": ["top-start", "top-center", "top-end", "bottom-start", "bottom-center", "bottom-end"],
+      "default": "bottom-end"
+    },
+    "max": {
+      "type": "number",
+      "default": 3,
+      "min": 1
+    },
+    "label": {
+      "type": "string",
+      "default": "Notifications"
+    }
+  },
+  "parts": {
+    "region": {},
+    "items": {
+      "accepts": ["item"]
+    }
+  },
+  "states": {},
+  "tokens": {
+    "edge": "space.layout.sm",
+    "gap": "space.content.sm",
+    "layer": "layer.toast"
+  },
+  "children": {
+    "item": {
+      "props": {
+        "intent": {
+          "values": ["neutral", "info", "success", "warning", "danger"],
+          "default": "neutral"
+        },
+        "appearance": {
+          "values": ["neutral", "intense"],
+          "default": "neutral"
+        },
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string",
+          "default": ""
+        },
+        "duration": {
+          "type": "number",
+          "default": 5000,
+          "min": 0
+        },
+        "dismissLabel": {
+          "type": "string",
+          "default": "Dismiss"
+        },
+        "closable": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "parts": {
+        "container": {},
+        "icon": {
+          "accepts": ["icon"],
+          "max": 1
+        },
+        "title": {},
+        "description": {},
+        "action": {
+          "accepts": ["button"],
+          "max": 1
+        },
+        "dismiss": {
+          "accepts": ["icon-button"],
+          "max": 1
+        }
+      },
+      "states": {
+        "layout": {
+          "values": ["single", "multi"],
+          "default": "single"
+        },
+        "paused": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "tokens": {
+        "surface": "color.surface.overlay",
+        "content": "color.content.primary",
+        "descriptionColor": "color.content.secondary",
+        "iconColor": "color.status.{intent}.icon",
+        "elevationColor": "color.elevation.border",
+        "borderWidth": "border.width.default",
+        "shadow": "shadow.overlay",
+        "radius": "radius.overlay",
+        "inlineSize": "size.overlay.panel",
+        "padding": "space.content.md",
+        "iconGap": "space.content.sm",
+        "titleGap": "space.content.xs",
+        "typographyTitle": "typography.label.md",
+        "typography": "typography.body.sm",
+        "iconSize": "size.icon.md",
+        "enterDistance": "motion.distance.md",
+        "motionDuration": "motion.duration.base",
+        "easingEnter": "motion.easing.enter",
+        "easingExit": "motion.easing.exit",
+        "intenseSurfaceColor": "color.status.{intent}.surface",
+        "intenseContentColor": "color.status.{intent}.content",
+        "intenseEdgeColor": "color.status.{intent}.border",
+        "actionsGap": "space.content.sm",
+        "rowHeight": "size.control.sm"
+      },
+      "rules": [
+        "layout is single when description is empty and multi otherwise. single: icon, title, action and dismiss on one row, all centered vertically; the row is rowHeight high (the height of a small control) whatever it holds, so the toast keeps one height with or without an action or a dismiss button: their 44 px targets overlap the padding instead of growing the toast. multi: icon, a column with title and description, and dismiss on the first row, icon and dismiss centered on the title line; the action sits under the description, aligned with the text, separated by actionsGap. padding surrounds everything; iconGap separates the icon, the column, the action and dismiss; titleGap separates title from description.",
+        "title is required plain text in typographyTitle; description is optional plain text in typography. Both wrap; the toast grows in block size.",
+        "intent sets the intrinsic glyph (neutral and info: info, success: check-circle, warning: warning, danger: warning-circle) at iconSize in iconColor, hidden from assistive technology; the icon part may replace it. The words carry the message, the icon and the colors only reinforce it.",
+        "appearance neutral paints the container in surface with an edge of borderWidth in elevationColor, the title in content and the description in descriptionColor. appearance intense conveys a stronger message: the container in intenseSurfaceColor with an edge in intenseEdgeColor, title and description in intenseContentColor, like an Alert of the same intent. Both have shadow and radius corners; the inline size is inlineSize, or the available inline size of the region when smaller.",
+        "action holds at most one small (sm) Button for a secondary follow-up (Undo, View, Retry), never a call to action: appearance ghost or outline, intent neutral, or danger for a destructive follow-up. In appearance intense, buttons and icon buttons of intent accent or neutral inside the toast (the action and the dismiss button) take the action family of the toast's intent, as in an Alert; danger buttons keep their own. The same action stays available elsewhere in the interface.",
+        "When closable is true (default), dismiss shows a small ghost neutral IconButton with the intrinsic close glyph and dismissLabel as its accessible name. When closable is false the toast has no dismiss button; it is then only allowed with a countdown (closable false is ignored when the toast would stay forever).",
+        "Countdown: when duration is not set, a toast of intent danger never leaves by itself, even with an action; another toast leaves after 8000 ms when it holds an action (time to undo) and after 5000 ms otherwise; a set duration wins, 0 keeping the toast until it is dismissed or its action is activated. The countdown is paused while the pointer is over the region, while focus is inside the region and while the document is hidden; it resumes with the time that was left.",
+        "The toast emits dismiss when its dismiss button is activated, when its countdown ends, when Escape is pressed while focus is inside it, and after its action is activated; the application removes it from the region.",
+        "A toast enters from the region's edge, moving enterDistance towards its place and fading in over motionDuration with easingEnter, and leaves by fading out over motionDuration with easingExit while the others close the gap; under reduced motion it only fades."
+      ]
+    }
+  },
+  "events": {
+    "dismiss": {
+      "when": "A toast asks to leave the region: its dismiss button, the end of its countdown, Escape inside it, or the activation of its action.",
+      "payload": "The toast that asks to leave."
+    }
+  },
+  "contrast": [
+    {
+      "content": "item.descriptionColor",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5
+    },
+    {
+      "content": "item.iconColor",
+      "surface": "color.surface.overlay",
+      "minimum": 3
+    },
+    {
+      "content": "item.intenseContentColor",
+      "surface": "item.intenseSurfaceColor",
+      "minimum": 4.5,
+      "note": "Title and description of an intense toast."
+    },
+    {
+      "content": "item.iconColor",
+      "surface": "item.intenseSurfaceColor",
+      "minimum": 3
+    }
+  ],
+  "rules": [
+    "A toast is a brief notification about something the user just did or that just happened in the background (Saved, Message sent, Upload failed); it appears above the page, does not block it and leaves by itself unless it holds an action. A durable message is an Alert; a message that must be answered is a Dialog.",
+    "The region is a single landmark per page, named by label, that holds the toasts in the order the application provides them. It stays above the page and above open dialogs, outside the flow, at edge from the viewport edges named by placement (top or bottom, start, center or end), and stacks its toasts separated by gap: the newest toast is nearest the edge named by placement.",
+    "At most max toasts are shown; further toasts wait and appear, in order, as shown toasts leave.",
+    "The application owns the list of toasts: it adds a toast to show it and removes it when the toast emits dismiss.",
+    "Toasts are announced when they appear, politely for every intent except danger, which is announced assertively; appearing never moves focus. Sending a toast from an open modal dialog is not a supported use: the dialog makes the region inert until it closes (feedback about a dialog's task belongs in the dialog). The region is reachable by keyboard in its reading order: each action and dismiss button is a stop in sequential focus.",
+    "Where the platform has no top layer, the region is stacked at layer.",
+    "In forced-colors mode each toast keeps a visible edge in the system text color."
+  ]
+}

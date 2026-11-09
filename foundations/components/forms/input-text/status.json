@@ -30,7 +30,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/input-text/contract.json",
-      "sha256": "c3e5118af4cd9599f49489b3c65c4b18ef02c8ec59b68c9cb168d15bf9298beb"
+      "sha256": "e92267c4c0850ded6323c2b74eefd0682403becf5feb5f379bc18e8a0595e339"
     },
     "tokens": [
       "foundations/tokens/inventory.json",
@@ -94,10 +94,10 @@
       "revision": {
         "paths": ["foundations/components/forms/input-text/contract.json"],
         "sha256": {
-          "foundations/components/forms/input-text/contract.json": "c3e5118af4cd9599f49489b3c65c4b18ef02c8ec59b68c9cb168d15bf9298beb"
+          "foundations/components/forms/input-text/contract.json": "e92267c4c0850ded6323c2b74eefd0682403becf5feb5f379bc18e8a0595e339"
         }
       },
-      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): option B for trailing actions with sm forbidding the action (\"2 je partirai sur B\"), then the proposed mechanism confirmed: \"Ok pour la proposition, lance l'implémentation\".",
+      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): option B for trailing actions with sm forbidding the action (\"2 je partirai sur B\"), then the proposed mechanism confirmed: \"Ok pour la proposition, lance l'implémentation\". Amendment of 2026-11-03 (naming rule, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Et si il y a des choses à corriger, autant les corriger tout de suite on va les oublier sinon\"): the semantic family color.field.* was renamed color.input.* (same values; the family paints text entry boxes, not the Field component); Figma variables color/field/* renamed color/input/* in place (VariableID:7:160 to 7:183, IDs and bindings kept); rendering unchanged; digests re-recorded.",
       "note": "The reviewer expects adjustments at the implementation review."
     },
     "implementation": {
@@ -115,12 +115,12 @@
           "packages/svelte/src/components/input-text/InputText.svelte": "c61fce2a98da9ceab4b0affe322b33efa2ffd7d79eafa0d947ec47f06a5cfec9",
           "packages/svelte/src/components/input-text/contract.generated.ts": "2ce5eefd225f28f0744b8e962b6288b3b7705b0e99f442e85f63c804e44a8699",
           "packages/svelte/src/components/input-text/input-text.css": "43edd65e8d3fda6e971e11fb399ae24b7ce7089fe4e97c6b48f5c73827a2b321",
-          "packages/svelte/src/components/input-text/tokens.generated.css": "911199310aad652728d8e85b4bff9b3e7bac727cd03be53aa7a013b929f828cb",
+          "packages/svelte/src/components/input-text/tokens.generated.css": "e43f48b3192da39bf528550094008cc4a7beede599e9f2037bed474aeddd62c9",
           "packages/svelte/src/components/input-text/types.ts": "d6079ba5518687533e834dd7a2246dacddf6b72db4f939dcbd90e30db4b98477",
           "examples/input-text/App.svelte": "989f5de929d5bcf84bcc08ca858072e5529485931d75a9f1a6fa72e2e834f3c7"
         }
       },
-      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27). Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded.",
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27). Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded. Amendment of 2026-11-03 (naming rule, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Et si il y a des choses à corriger, autant les corriger tout de suite on va les oublier sinon\"): the semantic family color.field.* was renamed color.input.* (same values; the family paints text entry boxes, not the Field component); Figma variables color/field/* renamed color/input/* in place (VariableID:7:160 to 7:183, IDs and bindings kept); rendering unchanged; digests re-recorded.",
       "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
     },
     "figmaParity": {
@@ -134,10 +134,10 @@
         "sha256": {
           "reports/components/input-text/figma/parity.json": "c3b86edc05711c658563146f513c1a34f9f0eca6a081a2d92f194f233b110a31",
           "reports/components/input-text/figma/ledger.json": "d6ddbfd3bea469a2b7d3e72bce294744ef31568b1393bfe9f84bf4255b5caa47",
-          "foundations/components/forms/input-text/figma-spec.md": "5762b73081090fa73622e9bf28487525e34c0e4be2e66f040106a4088b748956"
+          "foundations/components/forms/input-text/figma-spec.md": "49dce3e91b08ebc05f03a67b5ab591b0f8951bbf2e1121fab1eb0ce7004531bd"
         }
       },
-      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\" Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged.",
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\" Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged. Amendment of 2026-11-03 (naming rule, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Et si il y a des choses à corriger, autant les corriger tout de suite on va les oublier sinon\"): the semantic family color.field.* was renamed color.input.* (same values; the family paints text entry boxes, not the Field component); Figma variables color/field/* renamed color/input/* in place (VariableID:7:160 to 7:183, IDs and bindings kept); rendering unchanged; digests re-recorded. Specification text 306:1491 updated; parity.json unchanged.",
       "note": null
     },
     "documentation": {
@@ -149,12 +149,12 @@
           "apps/docs/src/playgrounds/input-text.svelte"
         ],
         "sha256": {
-          "documentation/components/input-text.md": "96af12b4d0e709fec95e189831813121c4d11ecca5c9b954378f3b32158d1841",
-          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "documentation/components/input-text.md": "363dc3f14f66f5b79bbc411001d6dc6a8a1f1ac2c0a1e5783dbbfaf5ab70382e",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
           "apps/docs/src/playgrounds/input-text.svelte": "0f5ad59a3279bcd248d74b2df9ba548578aa8e9681565bf98da6186bbb481f2c"
         }
       },
-      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded.",
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded. Re-recorded on 2026-11-09 with the wave 3 documentation review: User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\". The review covered the cross-references to the wave 3 components and the progressive detail rule (Anatomy in usage terms, the contract for tokens and measurements).",
       "note": null
     },
     "delivery": null
@@ -252,7 +252,8 @@
     "The trailing part maps to two snippet props: `trailing` (decorative icon) and `action` (IconButton). `action` receives the imposed IconButton options (size one step smaller, neutral, ghost, disabled with the input) to spread on the IconButton: InputText imports no IconButton and IconButton reads no context. At sm the action is not rendered and a console warning is logged.",
     "Condition selectors are wrapped in :where() so that source order alone is the precedence (disabled, readonly, invalid, focus, hover); the focus ring is drawn while the input itself has focus (not its action).",
     "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges).",
-    "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
+    "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass.",
+    "Color family renamed on 2026-11-03: color.field.{condition}.* became color.input.{condition}.* (decisions.md, Semantic role or component token: a semantic name never names a component, and Field is a component). Same values, Figma variables renamed in place."
   ],
   "openDecisions": [],
   "nextAction": "Delivery with wave 2: pull request of wave/2-form-foundations to main (user merge); publication needs explicit authorization.",
@@ -272,5 +273,24 @@
         "reason": "Accepted at the wave 2 contract gate (2026-10-26, \"4 ok\"), as for the Button outline border (2026-09-26): color.field.default.border (and the readonly border that now aliases it) reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected."
       }
     ]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-04",
+      "change": "Wave 3 documentation: documentation/index.json gains the ten wave 3 entries, and the existing entries no longer mark Menu, ButtonGroup, Tooltip, Spinner and Alert as planned. Cross-references only; the guidance is unchanged. To be re-presented with the wave 3 documentation review.",
+      "sha256": {
+        "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
+      },
+      "recorded": "Re-recorded with the wave 3 documentation approval of 2026-11-09."
+    },
+    {
+      "date": "2026-11-06",
+      "change": "User decision of 2026-11-06 (session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui vas-y, applique-le aux 25 pages\"), progressive detail: Anatomy lists the parts in usage terms without token names, measurements or colors and points to contracts/input-text.json; token names and visual values removed from the rest of the page except where the reader acts on them. Guidance unchanged. To be re-presented with the wave 3 documentation review.",
+      "sha256": {
+        "documentation/components/input-text.md": "363dc3f14f66f5b79bbc411001d6dc6a8a1f1ac2c0a1e5783dbbfaf5ab70382e",
+        "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
+      },
+      "recorded": "Re-recorded with the wave 3 documentation approval of 2026-11-09."
+    }
+  ]
 }

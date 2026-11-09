@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "tooltip",
+  "props": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "side": {
+      "values": ["top", "bottom"],
+      "default": "top"
+    },
+    "align": {
+      "values": ["start", "center", "end"],
+      "default": "center"
+    },
+    "open": {
+      "type": "boolean",
+      "default": false,
+      "bindable": true
+    }
+  },
+  "parts": {
+    "trigger": {
+      "accepts": ["button", "icon-button", "link"],
+      "min": 1,
+      "max": 1
+    },
+    "content": {}
+  },
+  "states": {},
+  "events": {
+    "openChange": {
+      "when": "The tooltip opens or closes because of the user (hover, focus, Escape, pointer leaving, blur).",
+      "payload": "The new open state."
+    }
+  },
+  "tokens": {
+    "surface": "color.surface.inverse",
+    "content": "color.content.inverse",
+    "typography": "typography.caption.md",
+    "radius": "radius.control",
+    "paddingInline": "space.content.sm",
+    "paddingBlock": "space.content.xs",
+    "maxInlineSize": "component.tooltip.max-inline-size",
+    "offset": "space.content.xs",
+    "motionDelay": "component.tooltip.delay",
+    "enterDistance": "motion.distance.sm",
+    "motionDuration": "motion.duration.fast",
+    "easingEnter": "motion.easing.enter",
+    "easingExit": "motion.easing.exit",
+    "layer": "layer.tooltip"
+  },
+  "rules": [
+    "A tooltip shows a short text about a control when the user points at it or focuses it: the name of an IconButton, the keyboard shortcut of an action, a short clarification. It holds plain text only, never interactive content or information needed to complete a task (that is a Popover or text on the page).",
+    "trigger is exactly one focusable Button, IconButton or Link. A disabled control is not focusable and shows no tooltip.",
+    "The tooltip opens motionDelay after the pointer enters the trigger, and at once when the trigger receives keyboard focus; once a tooltip is open, moving the pointer to another trigger opens its tooltip at once. It closes when the pointer leaves both the trigger and the tooltip, when the trigger loses focus, when the trigger is activated, and on Escape, which closes it without moving focus. Pointing at the tooltip keeps it open, so that a magnified text can be read.",
+    "label is the text of the tooltip, set in typography and content on surface, with paddingInline and paddingBlock and radius corners, wrapping within maxInlineSize. It describes the trigger: for an IconButton whose accessible name is the same text, it adds no description; otherwise it is the trigger's accessible description.",
+    "The tooltip is placed at offset from the trigger on side, aligned with the trigger's start, center or end; it flips to the other side and shifts along the edge when the viewport lacks room. It has no arrow.",
+    "It appears above every other overlay, including an open dialog, without moving focus or changing the page; opening one tooltip closes any other. Where the platform has no top layer, it is stacked at layer.",
+    "It enters by fading in and moving enterDistance away from the trigger over motionDuration with easingEnter and leaves by fading out over motionDuration with easingExit; under reduced motion it only fades.",
+    "Setting open from the application shows or hides the tooltip without emitting openChange.",
+    "On touch devices a tooltip does not open on a press, which activates the trigger; the information the tooltip gives is therefore never essential.",
+    "In forced-colors mode the tooltip keeps a visible edge in the system text color."
+  ]
+}

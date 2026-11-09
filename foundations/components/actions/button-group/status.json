@@ -1,0 +1,260 @@
+{
+  "formatStatus": "v1",
+  "componentId": "button-group",
+  "family": "actions",
+  "wave": 3,
+  "phase": "done",
+  "scope": {
+    "purpose": "Place related actions together with one size and a consistent spacing, and reflow them when space runs out.",
+    "useCases": [
+      "Dialog footer (Cancel, Save) aligned at the end.",
+      "Form actions under a form.",
+      "Actions of an Alert or a Toast, of a card or a page header.",
+      "A stacked full-width group on a narrow screen (reflow stack)."
+    ],
+    "exclusions": [
+      "Arrow-key navigation and one tab stop: Toolbar (wave 4).",
+      "Attached buttons for a choice: SegmentedControl (later).",
+      "Overflow into a More menu: a composition with Menu, not an option."
+    ],
+    "alternatives": [
+      "Toolbar for a set of controls acting on one object.",
+      "SegmentedControl for a single choice among options."
+    ]
+  },
+  "dependencies": ["button", "icon-button"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/actions/button-group/contract.json",
+      "sha256": "849371cd8815a83dc9435064918892a90022f94ac29602f38b1f9332d1cf634b"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "actions/button-group (407:110)",
+      "library": "Actions (343:2), section ButtonGroup (419:2294)",
+      "componentSet": "419:2913",
+      "specification": "420:2",
+      "ledger": "reports/components/button-group/figma/ledger.json",
+      "parity": "reports/components/button-group/figma/parity.json",
+      "screenshots": [
+        "reports/components/button-group/figma/master-set.png",
+        "reports/components/button-group/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/button-group/figma/blueprint-anatomy.png",
+          "node": "420:316"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/button-group-master.plugin.js",
+        "authoring/adapters/figma/button-group-spec.plugin.js",
+        "authoring/adapters/figma/button-group-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/actions/button-group/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/button-group",
+      "files": [
+        "packages/svelte/src/components/button-group/ButtonGroup.svelte",
+        "packages/svelte/src/components/button-group/types.ts",
+        "packages/svelte/src/components/button-group/button-group.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/button-group/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/button-group",
+      "preview": "dist/previews/button-group.html (npm run build && npm run build:preview button-group)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page button-group.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/button-group.test.ts"],
+      "browser": ["tests/browser/button-group.spec.ts"],
+      "evidence": "reports/components/button-group/svelte/"
+    },
+    "humanDocs": "documentation/components/button-group.md",
+    "agentDocs": "documentation/index.json (entry button-group); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/button-group.svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "ButtonGroup contract: size (applied to every item), orientation, align start/center/end/stretch, reflow wrap/stack (stacked state), optional label; Button and IconButton items; gap space.control.gap.{size}; no arrow-key navigation, no reordering.",
+      "revision": {
+        "paths": ["foundations/components/actions/button-group/contract.json"],
+        "sha256": {
+          "foundations/components/actions/button-group/contract.json": "849371cd8815a83dc9435064918892a90022f94ac29602f38b1f9332d1cf634b"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 found or requested at the implementation review (User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqm…) accepted with the implementation: \"Je valide le reste\".",
+      "note": null
+    },
+    "implementation": {
+      "scope": "ButtonGroup: size passed to every Button and IconButton, alignment on a line, vertical stretched (IconButtons square), a line that does not fit stacks; named group when labelled.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/button-group/ButtonGroup.svelte",
+          "packages/svelte/src/components/button-group/button-group.css",
+          "packages/svelte/src/components/button-group/contract.generated.ts",
+          "packages/svelte/src/components/button-group/tokens.generated.css",
+          "packages/svelte/src/components/button-group/types.ts",
+          "examples/button-group/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/button-group/ButtonGroup.svelte": "c4db59e64a6a86ffd021ebe1e937903ee7fd6c5987ded91fbd4274fd96a34d65",
+          "packages/svelte/src/components/button-group/button-group.css": "045686e78489cd28aa19d3f69355d9c536cd96c943b59076a35dee8cabe40242",
+          "packages/svelte/src/components/button-group/contract.generated.ts": "fb91000ccae536935fcbe97a8c0dcce61a77d5f9989440802251e43bc48dcbf2",
+          "packages/svelte/src/components/button-group/tokens.generated.css": "0e22838a03e486e410bc9a991fd4c40fc0d7df867921f51f1e80a280922161fe",
+          "packages/svelte/src/components/button-group/types.ts": "6de7d270e18f7768bcce9be9f393914c6fdb8d71e53a055186f03979e6b06556",
+          "examples/button-group/App.svelte": "d57908bbb3bbc50b8b11d410bafad1b7d5fcd6bb9e74f3bcd2351da8b4a41835"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "note": null
+    },
+    "figmaParity": {
+      "scope": "Figma master 419:2913 and specification frame 420:2 of the button-group component, parity report (216 records, 0 failures, 0 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/actions/button-group/figma-spec.md",
+          "reports/components/button-group/figma/parity.json",
+          "reports/components/button-group/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/actions/button-group/figma-spec.md": "4fdd048a53f5b8b792eafb4c0a4ea2b7a98d762397619460895930cb8c3fc7d3",
+          "reports/components/button-group/figma/parity.json": "ec8c698f458feb280fcbcd21c7b81ef48720f2a17237f778074aabe7e929baa7",
+          "reports/components/button-group/figma/ledger.json": "cbe94578c816a84cd77073c0102f19a26bc6d2840c3bea27da152ebdfabb8def"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "419:2913",
+          "specificationFrame": "420:2"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of button-group (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/button-group.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/button-group.svelte"
+        ],
+        "sha256": {
+          "documentation/components/button-group.md": "030ed925d10701424fc27ed47b68afd1d26838230b72191be0ea0812cd970a8f",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/button-group.svelte": "9d2de3db2be1c79d07f6c7a798653c415e4fc2d3dbd91385c39f3cad92a9776d"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/button-group/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (216 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/button-group/svelte/"
+    },
+    {
+      "name": "npm run build:preview button-group",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (216 records, 0 failures)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/button-group/figma/parity.json"
+    },
+    {
+      "name": "Figma parity after the review (items centered on the cross axis): 216 records, 0 failures; 54 centering checks with an IconButton",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/button-group/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/button-group/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/button-group.md"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/button-group.md"
+    }
+  ],
+  "decisionsTaken": [
+    "Gap space.control.gap.{size} (6, 8, 10 px, density aware), as the catalog note of 2026-10-20 says.",
+    "size is set on the group and applies to every item (the RadioGroup precedent); an item's own size is ignored inside a group.",
+    "align start, center, end and stretch for both orientations; no space-between option: a split footer (a destructive action at the start) is two groups in a layout, which keeps reading order explicit.",
+    "reflow wrap (default) or stack: stack switches the whole group to vertical full width when it does not fit, observed as the state stacked; the group never reorders items.",
+    "No disabled prop: each action is disabled on its own.",
+    "label optional: the group is a named group only when it has one.",
+    "Stacking is measured, not a container query: a container query would need a threshold width the contract does not have.",
+    "Vertical always stretched; no wrap: a line that does not fit stacks (user, 2026-11-03)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "Button and IconButton read the group size through the context key ggb:button-group (a string; each folder declares the shape again), so an item's own size is ignored inside a group.",
+    "A host (Alert) may ask for a default size through the context key ggb:button-group-host; an explicit size on the group wins.",
+    "reflow stack: a ResizeObserver compares the extent of the items (first start edge to last end edge, whatever the alignment) with the inline size, stacks the group and remembers that extent to return to the line. In the horizontal layout items never shrink below their content.",
+    "Overlays (Popover, Dialog, Menu) clear the ggb:button-group context for their content, so that a group around their declaration does not size their buttons."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): vertical groups always give their Buttons the full inline size (IconButtons stay square at the start); the reflow prop and the wrap behavior are removed, a line that does not fit always stacks. To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/actions/button-group/contract.json": "849371cd8815a83dc9435064918892a90022f94ac29602f38b1f9332d1cf634b"
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
+    }
+  ]
+}

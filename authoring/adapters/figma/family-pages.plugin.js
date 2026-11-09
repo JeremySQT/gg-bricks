@@ -1,5 +1,5 @@
 // Family pages layout (use_figma body), 2026-10-30.
-// User request: the library pages (Actions, Content, Forms) open with an overview frame (family description, an
+// User request: the library pages (Actions, Content, Forms, and Feedback and Overlays since 2026-11-03) open with an overview frame (family description, an
 // isometric cover of live instances, one card per component linking to its section and its specification) and each
 // component section starts with a header (name, short description, links). Set FAMILY and run once per family; a
 // rerun replaces the overview and the headers, never duplicates them. Masters keep their IDs: only their position
@@ -10,15 +10,10 @@ const FAMILIES = {
   Actions: {
     page: '343:2',
     description:
-      'Components people press or click to do something or to go somewhere: a Button or an IconButton starts an action, a Link leads to another page or resource.',
+      'Components people press or click to do something or to go somewhere: a Button or an IconButton starts an action, a ButtonGroup gathers related actions, a Link leads to another page or resource.',
     components: [
-      [
-        'Button',
-        '144:2',
-        'Starts an action or moves the user to the next step of a task.',
-        ['_Button/Trailing', '_Button/Loading indicator'],
-        {}
-      ],
+      ['Button', '144:2', 'Starts an action or moves the user to the next step of a task.', ['_Button/Trailing'], {}],
+      ['ButtonGroup', '407:110', 'Places related actions together with one spacing and one size.', [], {}],
       [
         'IconButton',
         '211:2',
@@ -96,6 +91,71 @@ const FAMILIES = {
       ['Switch', '288:8', 'Turns a setting on or off, with immediate effect.', [], { Selection: 'on' }],
       ['Textarea', '288:9', 'Takes free text on several lines: a comment, a description, an address.', [], {}]
     ]
+  },
+  Feedback: {
+    page: '407:112',
+    description:
+      'Components that tell people what is happening: a message in the page, a passing notification, a loading or progress indicator, a placeholder of the content to come.',
+    components: [
+      [
+        'Alert',
+        '407:113',
+        'A durable message in the flow of the page about the page, a section or a task.',
+        [],
+        { Title: 'no', Content: 'Your changes were saved.', Intent: 'success' }
+      ],
+      [
+        'Progress',
+        '407:114',
+        'Shows how far a task of known size has gone, or that a longer task is under way.',
+        ['_Progress/Track'],
+        { 'Show value': true }
+      ],
+      [
+        'Skeleton',
+        '407:115',
+        'Stands in for content that is loading, with its shape and size.',
+        ['_Skeleton/Text'],
+        { Lines: '3' }
+      ],
+      [
+        'Spinner',
+        '407:116',
+        'Shows that something is loading when its duration is unknown and its place is small.',
+        [],
+        { Size: 'xl' }
+      ],
+      [
+        'Toast',
+        '407:117',
+        'A brief notification about something that just happened; it leaves by itself.',
+        [],
+        { Title: 'Changes saved', Intent: 'success' }
+      ]
+    ]
+  },
+  Overlays: {
+    page: '407:119',
+    description:
+      'Components that appear above the page, next to a trigger or over it: a short text about a control, a panel of content, a list of actions, a modal window.',
+    components: [
+      [
+        'Dialog',
+        '407:120',
+        'A modal window for a short task or a decision that must be completed or abandoned first.',
+        ['_Dialog/Backdrop'],
+        { Size: 'sm' }
+      ],
+      ['Menu', '407:121', 'A short list of actions or links in a panel opened from a trigger.', [], {}],
+      [
+        'Popover',
+        '407:122',
+        'A non-modal panel anchored to a trigger, holding content the user may interact with.',
+        [],
+        {}
+      ],
+      ['Tooltip', '407:123', 'A short text about a control, shown when the user points at it or focuses it.', [], {}]
+    ]
   }
 };
 const fam = FAMILIES[FAMILY];
@@ -104,7 +164,9 @@ const PAD = 72;
 const SECTION_PAD = 80;
 const GAP = 160;
 // Largest enlargement of the cover content and of the card previews: Content's components are small boxes.
-const ZOOM = { Actions: [1.5, 1.25], Content: [2.6, 2], Forms: [1.5, 1.25] }[FAMILY];
+const ZOOM = { Actions: [1.5, 1.25], Content: [2.6, 2], Forms: [1.5, 1.25], Feedback: [1.2, 1], Overlays: [1.2, 0.8] }[
+  FAMILY
+];
 
 // Resources: variables, text styles, effect styles, collections, Phosphor glyphs.
 const vars = await figma.variables.getLocalVariablesAsync();
@@ -177,14 +239,23 @@ function inst(name, props = {}) {
   const i = set.defaultVariant.createInstance();
   const keys = Object.keys(i.componentProperties);
   const p = {};
+  const nested = [];
+  const match = (k, name) => k === name || k.startsWith(name + '#');
   for (const [name, value] of Object.entries(props)) {
-    const k = keys.find((k) => k === name || k.startsWith(name + '#'));
-    if (!k) throw new Error(`no property ${name} on ${set.name}`);
+    const k = keys.find((k) => match(k, name));
+    if (!k) {
+      // A property of an exposed nested instance (Skeleton Size and Lines, the Value of the Progress Track).
+      const e = (i.exposedInstances || []).find((x) => Object.keys(x.componentProperties).some((q) => match(q, name)));
+      if (!e) throw new Error(`no property ${name} on ${set.name}`);
+      nested.push([e, Object.keys(e.componentProperties).find((q) => match(q, name)), value]);
+      continue;
+    }
     const swap = i.componentProperties[k].type === 'INSTANCE_SWAP';
     if (swap && !glyphs[value]) throw new Error('no glyph ' + value);
     p[k] = swap ? glyphs[value].id : value;
   }
   i.setProperties(p);
+  for (const [e, k, value] of nested) e.setProperties({ [k]: value });
   return i;
 }
 function row(nodes, gap = 12) {
@@ -282,6 +353,8 @@ const COVERS = {
     [{ brand: 'orchid' }, () => inst(IB, { Icon: 'heart', Intent: 'accent', Appearance: 'solid', Size: 'lg' })],
     [{}, () => inst(B, { Label: 'Focused', Appearance: 'outline', Focus: true })],
     [{ brand: 'brick' }, () => inst(L, { Label: 'Terms of service', Size: 'lg' })],
+    [{}, () => inst('ButtonGroup')],
+    [{ brand: 'orchid', appearance: 'dark' }, () => inst('ButtonGroup', { Align: 'end' })],
     [
       {},
       () =>
@@ -319,6 +392,40 @@ const COVERS = {
           12
         )
     ]
+  ],
+  Feedback: [
+    [
+      {},
+      () => inst('Alert', { Intent: 'success', Title: 'no', Content: 'Import complete: 1,204 contacts were added.' })
+    ],
+    [{ appearance: 'dark' }, () => inst('Toast', { Title: 'Changes saved', Intent: 'success' })],
+    [{ brand: 'brick' }, () => inst('Progress', { 'Show value': true })],
+    [{}, () => row([inst('Spinner', { Size: 'lg' }), inst('Spinner', { Size: 'xl' })], 24)],
+    [{ brand: 'orchid' }, () => inst('Alert', { Intent: 'warning', 'Show actions': 'yes', Dismissible: true })],
+    [
+      { appearance: 'dark', brand: 'orchid' },
+      () => inst('Progress', { Intent: 'success', Label: 'Import complete', 'Show value': true })
+    ],
+    [{}, () => inst('Skeleton', { Lines: '3' })],
+    [{ appearance: 'dark' }, () => inst('Alert', { Intent: 'danger' })],
+    [
+      { brand: 'brick' },
+      () => inst('Toast', { Layout: 'multi', Appearance: 'intense', Intent: 'danger', 'Show action': true })
+    ],
+    [{}, () => inst('Toast', { Appearance: 'intense', Intent: 'info', Title: 'New version available' })],
+    [{ appearance: 'dark', brand: 'brick' }, () => inst('Spinner', { Size: 'xl' })],
+    [{}, () => inst('Progress', { Value: 'indeterminate', Label: 'Preparing the export' })]
+  ],
+  Overlays: [
+    [{}, () => inst('Menu')],
+    [{ appearance: 'dark' }, () => inst('Tooltip')],
+    [{ brand: 'brick' }, () => inst('Popover')],
+    [{}, () => inst('Dialog', { Size: 'sm' })],
+    [{ brand: 'orchid' }, () => inst('Tooltip', { Side: 'bottom', Label: 'Copy link', 'Show trigger': true })],
+    [{ appearance: 'dark', brand: 'orchid' }, () => inst('Menu')],
+    [{ appearance: 'dark' }, () => inst('Dialog', { Size: 'sm', Dismissible: false })],
+    [{}, () => inst('Popover', { Side: 'top', Align: 'end', 'Show trigger': true })],
+    [{ appearance: 'dark', brand: 'brick' }, () => inst('Popover')]
   ],
   Content: [
     [

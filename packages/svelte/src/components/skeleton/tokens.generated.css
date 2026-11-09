@@ -1,0 +1,26 @@
+/* Generated token bindings from the skeleton contract. Do not edit. */
+@layer ggb {
+.ggb-skeleton {
+  --ggb-skeleton-surfaceColor: var(--ggb-color-surface-muted);
+  --ggb-skeleton-textRadius: var(--ggb-radius-indicator);
+  --ggb-skeleton-blockRadius: var(--ggb-radius-container);
+  --ggb-skeleton-circleRadius: var(--ggb-radius-full);
+  --ggb-skeleton-pulseOpacity: var(--ggb-opacity-muted);
+  --ggb-skeleton-motionLoop: var(--ggb-motion-duration-loop);
+}
+.ggb-skeleton[data-size="sm"] {
+  --ggb-skeleton-typography: var(--ggb-typography-body-sm);
+  --ggb-skeleton-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-skeleton-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+}
+.ggb-skeleton[data-size="md"] {
+  --ggb-skeleton-typography: var(--ggb-typography-body-md);
+  --ggb-skeleton-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-skeleton-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+}
+.ggb-skeleton[data-size="lg"] {
+  --ggb-skeleton-typography: var(--ggb-typography-body-lg);
+  --ggb-skeleton-typography-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);
+  --ggb-skeleton-typography-fontFeatureSettings: var(--ggb-typography-body-lg-fontFeatureSettings);
+}
+}

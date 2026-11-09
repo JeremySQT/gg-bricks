@@ -22,7 +22,7 @@ Every color, dimension, radius, stroke and typography value of the masters is bo
 
 ## Construction notes
 
-- **Track**: horizontal auto layout, width `switch/track-width` (2 × trackSize − 4 × borderWidth: 28, 36, 44), height `size/switch/{size}`, padding `switch/inset` (2 × borderWidth), `radius/full`, fill and inside stroke from `color/choice/{off|on}/{state}/…`. The thumb sits at the start (MIN) when off and at the end (MAX) when on.
+- **Track**: horizontal auto layout, width `switch/track-width` (2 × trackSize − 4 × borderWidth: 28, 36, 44), height `component/switch/track-size/{size}`, padding `switch/inset` (2 × borderWidth), `radius/full`, fill and inside stroke from `color/choice/{off|on}/{state}/…`. The thumb sits at the start (MIN) when off and at the end (MAX) when on.
 - **Thumb**: an ellipse of `switch/thumb` (trackSize − 4 × borderWidth) in `color/choice/{off|on}/{state}/content`.
 - **First line** frame (`typography/body/{size}/lineHeight`) centers the track on the first line of the label; **Label position start** puts the text first and spreads the row (SPACE_BETWEEN) on a fixed width, as the code fills its container.
 
@@ -40,7 +40,7 @@ Same layout as the wave 1 pages (white header on a gray page, hero card, bluepri
 
 ## Adapter mechanics
 
-- **Components** collection (hidden): `switch/track-width` = 28 · 36 · 44, `switch/thumb` = 12 · 16 · 20, `switch/inset` = 2 (sm · md · lg). Derived from `size/switch/{size}` and `border/width/default`, which Figma cannot compute.
+- **Components** collection (hidden): `switch/track-width` = 28 · 36 · 44, `switch/thumb` = 12 · 16 · 20, `switch/inset` = 2 (sm · md · lg). Derived from `component/switch/track-size/{size}` and `border/width/default`, which Figma cannot compute.
 - `figma.skipInvisibleInstanceChildren = false` is required when scripts read hidden layers (Description, Focus ring, slots).
 - Adapter variables are Figma mechanics only: never source tokens, contract fields or code requirements.
 

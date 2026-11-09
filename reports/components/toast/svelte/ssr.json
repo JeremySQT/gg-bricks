@@ -1,0 +1,9 @@
+{
+  "result": "passed",
+  "checks": [
+    "region: role region named by label (a landmark), popover manual, placement attribute",
+    "toast: role status (alert for danger), atomic; title, description, dismiss button named Dismiss",
+    "the action Button is small whatever it asks for; an empty title is rejected",
+    "appearance and layout attributes (single without description, multi with); closable false hides the dismiss button only when the toast has a countdown"
+  ]
+}

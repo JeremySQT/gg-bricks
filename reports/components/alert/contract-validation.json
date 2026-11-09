@@ -1,0 +1,47 @@
+{
+  "valid": true,
+  "checks": {
+    "schema": "passed",
+    "consistency": "passed",
+    "tokenCoverage": "passed",
+    "dependencies": "not-provided",
+    "intrinsicRules": "manual-review-required"
+  },
+  "errors": [],
+  "requiredTokenPaths": [
+    "color.status.neutral.surface",
+    "color.status.info.surface",
+    "color.status.success.surface",
+    "color.status.warning.surface",
+    "color.status.danger.surface",
+    "color.status.neutral.content",
+    "color.status.info.content",
+    "color.status.success.content",
+    "color.status.warning.content",
+    "color.status.danger.content",
+    "color.status.neutral.border",
+    "color.status.info.border",
+    "color.status.success.border",
+    "color.status.warning.border",
+    "color.status.danger.border",
+    "color.status.neutral.icon",
+    "color.status.info.icon",
+    "color.status.success.icon",
+    "color.status.warning.icon",
+    "color.status.danger.icon",
+    "border.width.default",
+    "radius.container",
+    "space.content.md",
+    "space.content.sm",
+    "space.content.xs",
+    "space.content.lg",
+    "typography.label.md",
+    "typography.body.sm",
+    "size.icon.md"
+  ],
+  "dependencies": [
+    "icon",
+    "button-group",
+    "icon-button"
+  ]
+}

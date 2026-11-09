@@ -17,7 +17,7 @@ Color is organized in three layers. Primitive ramps are generated in OKLCH with 
 | `color.surface.raised`  | Elements lifted above the default surface with `shadow.raised`: cards that must stand out, sticky bars.                                 |
 | `color.surface.overlay` | Floating layers above the page: menus, popovers, dialogs, with `shadow.overlay` or `shadow.modal`.                                      |
 | `color.surface.inverse` | Small elements in the opposite appearance: tooltips, snackbars. Text on it uses `color.content.inverse`.                                |
-| `color.surface.scrim`   | The translucent veil behind a modal dialog. Never a background for content.                                                             |
+| `color.surface.scrim`   | The dimming layer behind a modal window: it darkens the page while a dialog is open. Never a background for content.                    |
 
 <!-- site:tokens preview=color -->
 
@@ -77,15 +77,15 @@ Action roles are named `color.action.{intent}.{appearance}.{state}.{surface|cont
 
 <!-- site:tokens prefix=color.action preview=color collapsed="All action roles" -->
 
-## Fields
+## Inputs
 
-Field roles are named `color.field.{state}.{surface|content|border|placeholder}` with states `default`, `hover`, `focus`, `readonly`, `disabled`, `invalid`. They paint text inputs and their relatives. Content and placeholder are guaranteed 4.5:1 on the surface of the same state, borders 3:1 on `color.surface.default` (readonly keeps the default border on a tinted surface, so that a readonly field stays identifiable). Invalid fields also need a text message: the border color alone does not convey the error.
+Input roles are named `color.input.{state}.{surface|content|border|placeholder}` with states `default`, `hover`, `focus`, `readonly`, `disabled`, `invalid`. They paint the box of a text input and its relatives (a textarea, later a select or a combobox trigger), and any entry box an application draws itself. Content and placeholder are guaranteed 4.5:1 on the surface of the same state, borders 3:1 on `color.surface.default` (readonly keeps the default border on a tinted surface, so that a readonly input stays identifiable). Invalid inputs also need a text message: the border color alone does not convey the error.
 
-<!-- site:tokens prefix=color.field preview=color -->
+<!-- site:tokens prefix=color.input preview=color -->
 
 ## Choices
 
-Choice roles are named `color.choice.{off|on}.{state}.{surface|content|border}` with states `default`, `hover`, `readonly`, `disabled`, `invalid`. They paint the box of a checkbox or a radio and the track of a switch; `content` is the mark (check, dot) or the switch thumb. `off` repeats the field roles of the same state (the thumb of an off switch uses the field placeholder color); `on` fills the box in the accent color, or in the invalid color, with a contrasting mark. The mark and the thumb are guaranteed 3:1 on their surface, and the `on` fill 3:1 on `color.surface.default`. Readonly and disabled choices are not filled: the mark alone shows the choice.
+Choice roles are named `color.choice.{off|on}.{state}.{surface|content|border}` with states `default`, `hover`, `readonly`, `disabled`, `invalid`. They paint the box of a checkbox or a radio and the track of a switch; `content` is the mark (check, dot) or the switch thumb. `off` repeats the input roles of the same state (the thumb of an off switch uses the input placeholder color); `on` fills the box in the accent color, or in the invalid color, with a contrasting mark. The mark and the thumb are guaranteed 3:1 on their surface, and the `on` fill 3:1 on `color.surface.default`. Readonly and disabled choices are not filled: the mark alone shows the choice.
 
 <!-- site:tokens prefix=color.choice preview=color collapsed="All choice roles" -->
 

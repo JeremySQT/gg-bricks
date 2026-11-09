@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "skeleton",
+  "props": {
+    "shape": {
+      "values": ["text", "block", "circle"],
+      "default": "text"
+    },
+    "lines": {
+      "type": "number",
+      "default": 1,
+      "min": 1
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    }
+  },
+  "parts": {
+    "container": {},
+    "line": {}
+  },
+  "states": {},
+  "tokens": {
+    "surfaceColor": "color.surface.muted",
+    "typography": "typography.body.{size}",
+    "textRadius": "radius.indicator",
+    "blockRadius": "radius.container",
+    "circleRadius": "radius.full",
+    "pulseOpacity": "opacity.muted",
+    "motionLoop": "motion.duration.loop"
+  },
+  "rules": [
+    "A skeleton stands in for content that is loading, with the shape and size of that content, so that the layout does not move when it arrives. It is used for the first load of a region; a short action on existing content is a Spinner, a known amount of progress a Progress.",
+    "shape text draws lines placeholders for running text set in typography: each line takes the line box height of typography and shows a bar of the font size of typography, centered in it, with textRadius corners. Lines fill the inline size of the container; when lines is greater than 1, the last line covers 60 percent of it.",
+    "shape block fills the inline and block size the layout gives it (a card, an image, a chart) with blockRadius corners; lines and size are ignored.",
+    "shape circle is a disc whose diameter is the inline size the layout gives it (an avatar), with circleRadius corners; lines and size are ignored.",
+    "Every shape is painted in surfaceColor. Its opacity pulses from 1 to pulseOpacity and back once per motionLoop, with all the skeletons of a page in phase. When reduced motion is requested the skeleton does not pulse.",
+    "The skeleton is hidden from assistive technology and is never focusable. The region that is loading is exposed as busy by the integration and announces its content when it arrives; the skeleton does not state it.",
+    "In forced-colors mode each shape keeps a visible edge in the system text color."
+  ]
+}

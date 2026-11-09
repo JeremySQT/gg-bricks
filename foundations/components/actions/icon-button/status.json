@@ -26,14 +26,14 @@
       "Menu (wave 3) for a list of actions behind a single trigger."
     ]
   },
-  "dependencies": ["icon"],
+  "dependencies": ["icon", "spinner"],
   "fixtures": [
     "Phosphor glyphs re-exported by examples/icon/glyphs.ts for the examples and tests (fixtures, not dependencies)."
   ],
   "artifacts": {
     "contract": {
       "path": "foundations/components/actions/icon-button/contract.json",
-      "sha256": "b9298af06953dbb94216c3e65a257e6db283443d3fe69698105de1ec3919ba79"
+      "sha256": "57850d5ade5d58af75313ca136cc00f86599c4c90f292763c36eefe1979e85da"
     },
     "tokens": [],
     "figma": {
@@ -90,10 +90,10 @@
       "revision": {
         "paths": ["foundations/components/actions/icon-button/contract.json"],
         "sha256": {
-          "foundations/components/actions/icon-button/contract.json": "b9298af06953dbb94216c3e65a257e6db283443d3fe69698105de1ec3919ba79"
+          "foundations/components/actions/icon-button/contract.json": "57850d5ade5d58af75313ca136cc00f86599c4c90f292763c36eefe1979e85da"
         }
       },
-      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU (2026-10-16): the only open question (default treatment) answered with \"Pareil pour le neutral+ghost par défaut sur le bouton icône\"; no other remark on this contract across two review rounds. Approval recorded on that basis; the user may object to the record.",
+      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU (2026-10-16): the only open question (default treatment) answered with \"Pareil pour le neutral+ghost par défaut sur le bouton icône\"; no other remark on this contract across two review rounds. Approval recorded on that basis; the user may object to the record. Amendment of 2026-11-03 (wave 3 implementation review, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Je valide le reste\"): inside a ButtonGroup the group size applies; the loading indicator is the Spinner. Digests re-recorded.",
       "note": "No token change; Link and Badge await their final confirmation at the same gate."
     },
     "implementation": {
@@ -108,15 +108,15 @@
           "examples/icon-button/App.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/components/icon-button/IconButton.svelte": "5747d1987f4da9052e6351061e9af041dfb8a40cbe50ece04366e401ec7b68a2",
+          "packages/svelte/src/components/icon-button/IconButton.svelte": "9a06623f0f4902dc2a9956758540f6ad17a0e1583e93515d276ed70bd011e740",
           "packages/svelte/src/components/icon-button/contract.generated.ts": "09a5f56b1003f9d462ec18b499457a53a089b41ab9af62cf81b7b2cf3acf8d59",
-          "packages/svelte/src/components/icon-button/icon-button.css": "2d4c943d40c844c367f153b39efb9f1221def5e109964a3b07de511f8f2ff98b",
+          "packages/svelte/src/components/icon-button/icon-button.css": "d84794aff00afe3df3e5f803fa18adf8e8c2d70d630015e1c488a42434a2237c",
           "packages/svelte/src/components/icon-button/tokens.generated.css": "d8b7a6662699e705007c114b68aaeb1c1769e00f2d77ef967980596c0ae7ed80",
           "packages/svelte/src/components/icon-button/types.ts": "946087207d9a24c9426021e4d9a43efa0da704e9bb5e639d25d0e68e68f1446b",
           "examples/icon-button/App.svelte": "696ffe20ac17840d442a56befdfe2bb5c19ee6f5f2e9919abf1fafc1fe5302ec"
         }
       },
-      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/M41vUxuVssusHawLkXvhhH version 1. Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded.",
+      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/M41vUxuVssusHawLkXvhhH version 1. Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded. Amendment of 2026-11-03 (wave 3 implementation review, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Je valide le reste\"): inside a ButtonGroup the group size applies; the loading indicator is the Spinner. Digests re-recorded.",
       "note": "Automated evidence: Chromium only; Safari behavior of the label clip reasoned, not observed."
     },
     "figmaParity": {
@@ -128,9 +128,9 @@
           "reports/components/icon-button/figma/ledger.json"
         ],
         "sha256": {
-          "foundations/components/actions/icon-button/figma-spec.md": "8be8835de38adbe0b0f113080098d4a73f11fa77c522360aebd7b9cb9e89b66f",
+          "foundations/components/actions/icon-button/figma-spec.md": "4e1267f2477fc7467afb5b248d55bec3ede6e73c17ee9b84fa9190ca799c232f",
           "reports/components/icon-button/figma/parity.json": "1a94b85a96b25774a9d73589ced389c34adc2e293eee8f7827eea8a4419af092",
-          "reports/components/icon-button/figma/ledger.json": "28e0ae07f87b67749321769644819364c112b2d41bc765adfb11cd9c3ce298d6"
+          "reports/components/icon-button/figma/ledger.json": "ff0846febc5ae8bcd62a9948b35c1dd2d04bb3753bc50b44ad3fa5604274089f"
         },
         "figma": {
           "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
@@ -139,7 +139,7 @@
           "specificationFrame": "219:1828"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU on 2026-10-26, at the grouped wave 1 Figma parity gate (IconButton, Link, Badge), after the review rounds of 2026-10-20 to 2026-10-26 (Link rebuilt as variants, IconButton gaps on space.control.gap, Link anatomy ring dashed, Badge icon gap, icon slots without a nested Icon): \"Sinon je valide la parité figma des 3 composants\". Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU on 2026-10-26, at the grouped wave 1 Figma parity gate (IconButton, Link, Badge), after the review rounds of 2026-10-20 to 2026-10-26 (Link rebuilt as variants, IconButton gaps on space.control.gap, Link anatomy ring dashed, Badge icon gap, icon slots without a nested Icon): \"Sinon je valide la parité figma des 3 composants\". Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged. Re-recorded on 2026-11-04: User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record). The gate covered the Button and IconButton masters as changed in wave 3: the loading indicator is an instance of the Spinner (408:15), track 20 %; the accent and neutral paints and the button-state aliases go through the hidden collection Components · action family (default mode unchanged, 432 checks), so that an Alert or an intense Toast points them at its intent.",
       "note": null
     },
     "documentation": null,
@@ -232,7 +232,8 @@
     "Box: a square of size.control.{size} (32/40/48 px in standard density, following density like Button heights); the interaction target is extended to 44 px without enlarging the visible box.",
     "The icon is centered by its box: the reference set draws its 1/8 inset symmetrically, so the box center is the drawing center and no optical compensation is needed.",
     "Contrast checked on the same contrastScope as Button (six neutral backdrops, outline border on muted in dark informational, accepted at the Button contract gate).",
-    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
+    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size).",
+    "Loading indicator: the Spinner component (2026-11-03)."
   ],
   "openDecisions": [],
   "nextAction": "None: Done within the declared scope (wave 1). Delivery (package publication, Figma library publication) is a separate approval; see authoring/roadmap.md.",
@@ -251,5 +252,34 @@
         "reason": "Accepted at the contract gate (2026-09-26): outline border reaches 2.06 to 2.37 on surface.muted in dark; the label identifies the button, WCAG 1.4.11 does not require the boundary."
       }
     ]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "Wave 3 ButtonGroup: inside a ButtonGroup the group's size applies (context key ggb:button-group); outside a group nothing changes (icon-button.spec.ts and SSR tests pass unchanged). To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "packages/svelte/src/components/icon-button/IconButton.svelte": "69f53e39392728d63f8b03535c32b0d97fdb6267fd6de3549b4a6ee85ad9840d"
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
+    },
+    {
+      "date": "2026-11-03",
+      "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): the loading indicator is now the Spinner (same change as Button); the browser test reads the Spinner token for the reduced-motion duration and measures the Spinner's svg. To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/actions/icon-button/contract.json": "57850d5ade5d58af75313ca136cc00f86599c4c90f292763c36eefe1979e85da",
+        "packages/svelte/src/components/icon-button/IconButton.svelte": "9a06623f0f4902dc2a9956758540f6ad17a0e1583e93515d276ed70bd011e740",
+        "packages/svelte/src/components/icon-button/icon-button.css": "d84794aff00afe3df3e5f803fa18adf8e8c2d70d630015e1c488a42434a2237c"
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
+    },
+    {
+      "date": "2026-11-03",
+      "change": "Figma: the loading indicator of the master is now an instance of the Spinner set (408:15) of the icon size, as the amended contract says (the Button loading indicator is the Spinner); the part _Button/Loading indicator (42:28) was removed after its 270 instances were swapped. Track opacity 20 % (was 25 %). To be re-presented at the wave 3 Figma parity gate.",
+      "sha256": {
+        "foundations/components/actions/icon-button/figma-spec.md": "a1ac78bf6cbf4fc0b0580527af0bcecc263b60c71d08471676d548e69cd44adc",
+        "reports/components/icon-button/figma/ledger.json": "ff0846febc5ae8bcd62a9948b35c1dd2d04bb3753bc50b44ad3fa5604274089f"
+      },
+      "recorded": "Re-recorded with the wave 3 Figma parity approval of 2026-11-04."
+    }
+  ]
 }

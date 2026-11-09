@@ -384,40 +384,11 @@
         "$value": "{primitive.dimension.v20}"
       }
     },
-    "switch": {
-      "sm": {
+    "overlay": {
+      "$description": "Inline size of floating panels: panel is the maximum of a popover and a menu and the width of a toast. It does not change with density.",
+      "panel": {
         "$type": "dimension",
-        "$value": "{primitive.dimension.v16}"
-      },
-      "md": {
-        "$type": "dimension",
-        "$value": "{primitive.dimension.v20}"
-      },
-      "lg": {
-        "$type": "dimension",
-        "$value": "{primitive.dimension.v24}"
-      }
-    },
-    "avatar": {
-      "xs": {
-        "$type": "dimension",
-        "$value": "{primitive.dimension.v24}"
-      },
-      "sm": {
-        "$type": "dimension",
-        "$value": "{primitive.dimension.v32}"
-      },
-      "md": {
-        "$type": "dimension",
-        "$value": "{primitive.dimension.v40}"
-      },
-      "lg": {
-        "$type": "dimension",
-        "$value": "{primitive.dimension.v48}"
-      },
-      "xl": {
-        "$type": "dimension",
-        "$value": "{primitive.dimension.v64}"
+        "$value": "{primitive.dimension.v360}"
       }
     }
   },
@@ -767,6 +738,11 @@
       "slow": {
         "$type": "duration",
         "$value": "{primitive.duration.300}"
+      },
+      "loop": {
+        "$type": "duration",
+        "$value": "{primitive.duration.1500}",
+        "$description": "One cycle of a looping placeholder animation (Skeleton pulse, indeterminate Progress sweep)."
       }
     },
     "easing": {

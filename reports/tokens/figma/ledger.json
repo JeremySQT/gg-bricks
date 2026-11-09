@@ -4,7 +4,7 @@
     "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
     "plan": "team::1308046554739244831 (Jeremy SQT, pro)"
   },
-  "syncedOn": "2026-09-26 (primitives moved to their own collection the same day); pre-wave 3 delta on 2026-11-01",
+  "syncedOn": "2026-09-26 (primitives moved to their own collection the same day); wave 3 delta on 2026-11-03",
   "source": {
     "manifest": "packages/tokens/figma-manifest.json",
     "expectations": "packages/tokens/figma-expectations.json",
@@ -23,7 +23,20 @@
     "content/icon": "149:4",
     "content/shortcut": "149:1569",
     "assets/phosphor": "199:2",
-    "Utilities": "8:10"
+    "Utilities": "8:10",
+    "Feedback": "407:112",
+    "feedback/alert": "407:113",
+    "feedback/progress": "407:114",
+    "feedback/skeleton": "407:115",
+    "feedback/spinner": "407:116",
+    "feedback/toast": "407:117",
+    "Overlays": "407:119",
+    "overlays/dialog": "407:120",
+    "overlays/menu": "407:121",
+    "overlays/popover": "407:122",
+    "overlays/tooltip": "407:123",
+    "actions/button-group": "407:110",
+    "--- (wave 3 dividers)": "407:111, 407:118"
   },
   "collections": {
     "Foundations · Primitives": {
@@ -57,7 +70,7 @@
     }
   },
   "variables": {
-    "total": 808,
+    "total": 1011,
     "batches": [
       {
         "batch": 1,
@@ -100,6 +113,13 @@
         "content": "motion/distance/{sm,md} (Brand); color/item/{default,hover,selected,selected-hover,disabled}/{surface,content,border}, color/item/indicator, color/elevation/border (Appearance); aliases to existing primitives, palette and content variables",
         "count": 19,
         "ids": "created VariableID:395:2 to VariableID:395:20 (dist/figma/variables-delta-2026-11-01.js, sync-variables.plugin.js body); verification 2026-11-01: 575 manifest variables, 18 contexts, 0 failures (reports/tokens/figma/verification.json)"
+      },
+      {
+        "batch": "wave 3 delta (2026-11-03)",
+        "collection": "Primitives, Brand, Appearance",
+        "content": "primitive/dimension/{v240,v360,v400,v560,v720}; size/overlay/panel; component/dialog/inline-size/{sm,md,lg}, component/progress/thickness/{sm,md,lg}, component/progress/radius, component/spinner/track-opacity, component/tooltip/max-inline-size (Brand); color/action/{info,success,warning}/{solid,outline,ghost}/{default,hover,pressed,loading,disabled}/{surface,content,border} (Appearance); updated: the 23 color/choice aliases to color/input",
+        "count": 173,
+        "ids": "created VariableID:404:2 to VariableID:404:151 (150); 23 updated in place; total local variables 1011 (all collections); verification 2026-11-03: 715 manifest semantic variables, 18 contexts, 0 failures (reports/tokens/figma/verification.json)"
       }
     ],
     "migrations": [
@@ -126,6 +146,14 @@
       {
         "date": "2026-10-14",
         "change": "Collections renamed with the “Foundations · ” prefix (Primitives 14:2, Brand 4:2, Appearance 4:3, Density 4:4; IDs, modes and bindings unchanged) so that the flat collection list of the single library file reads as two families, Foundations and Components. Decision: one Figma file (not a separate tokens library) because a community or client distribution requires a self-contained file; recorded in authoring/figma.md. The manifest, the sync and verification scripts and the adapter scripts use the prefixed names (adapter scripts accept the short axis names); native resolution re-verified, hashes unchanged (506 variables, 0 failures)."
+      },
+      {
+        "date": "2026-11-01",
+        "change": "Component token layer (decisions.md, Semantic role or component token; user decision of 2026-11-01): size/switch/sm, md, lg renamed component/switch/track-size/sm, md, lg in Foundations · Brand (VariableID:286:7, 286:8, 286:9), WEB code syntax var(--ggb-component-switch-track-size-<size>); values (primitive/dimension/v16, v20, v24 in every brand mode), scopes and IDs unchanged; the 48 track height bindings of the Switch set 291:434 still resolve 16, 20, 24 px. Specification text 306:566 on forms/switch updated."
+      },
+      {
+        "date": "2026-11-03",
+        "change": "Naming rule (decisions.md, Semantic role or component token): the 24 Appearance variables color/field/{default,hover,focus,readonly,disabled,invalid}/{surface,content,border,placeholder} renamed color/input/… in place (VariableID:7:160 to 7:183), WEB code syntax var(--ggb-color-input-…); values, aliases and bindings unchanged. size/avatar/xs, sm, md, lg, xl (VariableID:5:84 to 5:88, Brand) deleted after a scan found no binding on the Foundations, Getting started, Forms, forms/input-text, forms/textarea and Utilities pages and no alias. Specification text 306:1491 on forms/input-text updated."
       }
     ],
     "note": "Variables are matched by collection and name; the sync script preserves IDs. The exact name to ID map is read from the file with a read-only script before any migration (rename, removal, type change). Wave 2 delta synced on 2026-10-27 with the same adapter body (authoring/adapters/figma/sync-variables.plugin.js) restricted to the new or changed manifest variables; native resolution verified in 18 contexts, 0 failures (reports/tokens/figma/verification.json).",
@@ -231,5 +259,34 @@
     "OpenType features (tnum on typography/numeral/*) cannot be set on text styles through the Plugin API; the style description records them and the text layer sets them.",
     "Style IDs are file-local (S:… keys) and are read from the file when needed.",
     "checkbox/focus-radius is an adapter variable kept in Foundations · Brand (its value changes with the brand; see authoring/adapters/figma/checkbox-focus-radius.plugin.js). Since 2026-11-01 the verification hashes exactly the manifest variables and lists it under unexpected instead of failing."
-  ]
+  ],
+  "scripts": {
+    "_Script/spec-lib": {
+      "id": "411:2",
+      "page": "Utilities (8:10)",
+      "source": "authoring/adapters/figma/spec-lib.plugin.js"
+    },
+    "_Script/family-pages": {
+      "id": "440:2",
+      "page": "Utilities (8:10)",
+      "source": "authoring/adapters/figma/family-pages.plugin.js (function form)"
+    }
+  },
+  "adapterCollections": {
+    "Components · action family": {
+      "id": "VariableCollectionId:421:1499",
+      "modes": {
+        "default": "421:0",
+        "neutral": "421:1",
+        "info": "421:2",
+        "success": "421:3",
+        "warning": "421:4",
+        "danger": "421:5"
+      },
+      "variables": 90,
+      "hiddenFromPublishing": true,
+      "created": "2026-11-03",
+      "builder": "authoring/adapters/figma/action-family.plugin.js"
+    }
+  }
 }

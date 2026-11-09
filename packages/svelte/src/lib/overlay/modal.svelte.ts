@@ -5,6 +5,8 @@ export interface ModalOptions {
   onOpenChange?: (open: boolean) => void;
   /** Close on a press on the backdrop. Default true. */
   lightDismiss?: boolean;
+  /** Close on Escape (the platform close request). Default true; false also disables the backdrop press. */
+  closeRequest?: boolean;
 }
 
 /**
@@ -14,10 +16,15 @@ export interface ModalOptions {
  */
 export function modal(options: ModalOptions) {
   return (node: HTMLDialogElement) => {
-    const lightDismiss = options.lightDismiss ?? true;
+    const closeRequest = options.closeRequest ?? true;
+    const lightDismiss = closeRequest && (options.lightDismiss ?? true);
     // Checked on the prototype so that TypeScript does not narrow `node` by the property's presence.
     const nativeClosedBy = 'closedBy' in HTMLDialogElement.prototype;
-    if (nativeClosedBy) node.setAttribute('closedby', lightDismiss ? 'any' : 'closerequest');
+    if (nativeClosedBy) node.setAttribute('closedby', lightDismiss ? 'any' : closeRequest ? 'closerequest' : 'none');
+    // Without closedby, Escape fires `cancel`, which is cancelled when close requests are refused.
+    const onCancel = (event: Event) => {
+      if (!closeRequest) event.preventDefault();
+    };
 
     const onClose = () => {
       if (options.open()) options.onOpenChange?.(false);
@@ -31,6 +38,7 @@ export function modal(options: ModalOptions) {
       if (!inside) node.close();
     };
     node.addEventListener('close', onClose);
+    node.addEventListener('cancel', onCancel);
     node.addEventListener('pointerdown', onPointerdown);
 
     $effect(() => {
@@ -42,6 +50,7 @@ export function modal(options: ModalOptions) {
 
     return () => {
       node.removeEventListener('close', onClose);
+      node.removeEventListener('cancel', onCancel);
       node.removeEventListener('pointerdown', onPointerdown);
       if (node.open) node.close();
     };

@@ -6,15 +6,15 @@ A radio is one option of a RadioGroup: a circle and a label, with an optional de
 
 ## Anatomy
 
-| #   | Part        | Required | Role                                                                             |
-| --- | ----------- | -------- | -------------------------------------------------------------------------------- |
-| 1   | Control     | yes      | A circle with a thin border; light when off, filled in the accent color when on. |
-| 2   | Mark        | state    | A dot of 3/8 of the circle in the content color of the state; none when off.     |
-| 3   | Label       | yes      | The accessible name; it wraps, and a press on it selects the radio.              |
-| 4   | Description | no       | Help text under the label, the accessible description.                           |
-| —   | Focus ring  | state    | Drawn around the circle on keyboard focus.                                       |
+| #   | Part        | Required | Role                                                                                |
+| --- | ----------- | -------- | ----------------------------------------------------------------------------------- |
+| 1   | Control     | yes      | The circle the user selects; it shows whether the option is chosen.                 |
+| 2   | Mark        | state    | The dot inside the circle when the radio is selected; none when off.                |
+| 3   | Label       | yes      | The option, and the accessible name; it wraps, and a press on it selects the radio. |
+| 4   | Description | no       | Help text under the label, the accessible description.                              |
+| —   | Focus ring  | state    | Shown around the circle on keyboard focus.                                          |
 
-A circle size (14, 16 or 20 px, the size of a Checkbox box), B gap between circle and label (8 px at md in standard density), C first line: the circle is centered on the first line of the label.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/radio.json`.
 
 ## When to use
 
@@ -79,13 +79,13 @@ Size, readonly and invalid come from the group. Every other attribute of the Bit
 
 ## Accessibility
 
-The component provides `role="radio"` with `aria-checked`, named by its label and described by its description; one target for circle, label and description at least 44 px high; a focus ring on keyboard focus; a dot that does not rely on color alone; forced colors handled. The keyboard, the group name and the group state are described on the RadioGroup page.
+The component provides `role="radio"` with `aria-checked`, named by its label and described by its description; one target for circle, label and description, at least 44 px tall; a focus ring on keyboard focus; a dot that does not rely on color alone; forced colors handled. The keyboard, the group name and the group state are described on the RadioGroup page.
 
 | WCAG 2.2 criterion                                                                                  | Level | Responsibility                          |
 | --------------------------------------------------------------------------------------------------- | ----- | --------------------------------------- |
 | [1.4.1 Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)                 | A     | Component (the dot shows the selection) |
 | [1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)      | AA    | Component, on the system surfaces       |
-| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) | AA    | Component (44 px target)                |
+| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) | AA    | Component (44 px target height)         |
 | [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)         | A     | Component                               |
 
 Validated by automated checks in Chromium as part of the RadioGroup tests; no assistive-technology test yet. This list is not a conformance claim.

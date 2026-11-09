@@ -1,0 +1,589 @@
+/*
+ * Toast structure. Colors, spacing, typography, shadow, radius, sizes and motion come from tokens.generated.css; this
+ * file holds structural literals only. The region is a manual popover in the top layer, fixed at `edge` from the
+ * viewport edges named by its placement; it lets presses through between toasts. Toasts stack with the newest
+ * nearest the placement edge, enter from that edge and leave by fading (the component collapses them).
+ */
+@layer ggb {
+  .ggb-toast[popover] {
+    position: fixed;
+    inset: auto;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: var(--ggb-toast-gap);
+    inline-size: max-content;
+    max-inline-size: 100vi;
+    max-block-size: 100vb;
+    margin: 0;
+    padding: var(--ggb-toast-edge);
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    pointer-events: none;
+    /* Stacking where the platform has no top layer (the contract's layer role). */
+    z-index: var(--ggb-toast-layer);
+  }
+  .ggb-toast[popover]:popover-open {
+    display: flex;
+  }
+  .ggb-toast[data-placement^='bottom'] {
+    inset-block-end: 0;
+  }
+  .ggb-toast[data-placement^='top'] {
+    inset-block-start: 0;
+    flex-direction: column-reverse;
+  }
+  .ggb-toast[data-placement$='-start'] {
+    inset-inline-start: 0;
+    align-items: flex-start;
+  }
+  .ggb-toast[data-placement$='-end'] {
+    inset-inline-end: 0;
+    align-items: flex-end;
+  }
+  .ggb-toast[data-placement$='-center'] {
+    inset-inline: 0;
+    margin-inline: auto;
+    align-items: center;
+  }
+
+  .ggb-toast__item {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: var(--ggb-toast-item-iconGap);
+    /* size.overlay.panel, never wider than the viewport less the region's edges (none outside a region). */
+    inline-size: min(var(--ggb-toast-item-inlineSize), calc(100vi - 2 * var(--ggb-toast-edge, 0px)));
+    padding: var(--ggb-toast-item-padding);
+    border-radius: var(--ggb-toast-item-radius);
+    background: var(--ggb-toast-item-surface);
+    box-shadow:
+      inset 0 0 0 var(--ggb-toast-item-borderWidth) var(--ggb-toast-item-elevationColor),
+      var(--ggb-toast-item-shadow);
+    color: var(--ggb-toast-item-content);
+    font: var(--ggb-toast-item-typography);
+    letter-spacing: var(--ggb-toast-item-typography-letterSpacing, normal);
+    overflow-wrap: anywhere;
+    pointer-events: auto;
+    transition:
+      opacity var(--ggb-toast-item-motionDuration) var(--ggb-toast-item-easingEnter),
+      translate var(--ggb-toast-item-motionDuration) var(--ggb-toast-item-easingEnter);
+    @starting-style {
+      opacity: 0;
+      translate: 0 var(--ggb-toast-item-enterDistance);
+    }
+  }
+  .ggb-toast[data-placement^='top'] .ggb-toast__item {
+    @starting-style {
+      opacity: 0;
+      translate: 0 calc(-1 * var(--ggb-toast-item-enterDistance));
+    }
+  }
+  .ggb-toast__item[data-queued] {
+    display: none;
+  }
+  /* single: icon, title, action and dismiss on one row, centered. multi: icon and dismiss centered on the title line,
+     the action under the description. */
+  .ggb-toast__item[data-layout='multi'] {
+    align-items: flex-start;
+  }
+  .ggb-toast__icon,
+  .ggb-toast__dismiss {
+    display: flex;
+    flex: none;
+    align-items: center;
+  }
+  .ggb-toast__item[data-layout='multi'] :is(.ggb-toast__icon, .ggb-toast__dismiss) {
+    block-size: 1lh;
+    font: var(--ggb-toast-item-typographyTitle);
+  }
+  .ggb-toast__icon {
+    color: var(--ggb-toast-item-iconColor);
+  }
+  .ggb-toast__icon > svg {
+    display: block;
+    inline-size: var(--ggb-toast-item-iconSize);
+    block-size: var(--ggb-toast-item-iconSize);
+  }
+  .ggb-toast__text {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: var(--ggb-toast-item-titleGap);
+    min-inline-size: 0;
+  }
+  .ggb-toast__item[data-layout='single'] .ggb-toast__text {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--ggb-toast-item-iconGap);
+    /* One height whatever the row holds: a small control high (rowHeight). */
+    min-block-size: var(--ggb-toast-item-rowHeight);
+  }
+  .ggb-toast__title {
+    font: var(--ggb-toast-item-typographyTitle);
+    letter-spacing: var(--ggb-toast-item-typographyTitle-letterSpacing, normal);
+  }
+  .ggb-toast__item[data-layout='single'] .ggb-toast__title {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+  }
+  .ggb-toast__description {
+    color: var(--ggb-toast-item-descriptionColor);
+  }
+  .ggb-toast__action {
+    display: flex;
+    flex: none;
+    align-items: center;
+  }
+  /* In a single row the action Button keeps its 44 px target, which overlaps the padding instead of growing the row. */
+  .ggb-toast__item[data-layout='single'] .ggb-toast__action {
+    block-size: var(--ggb-toast-item-rowHeight);
+  }
+  .ggb-toast__item[data-layout='multi'] .ggb-toast__action {
+    align-self: flex-start;
+    margin-block-start: calc(var(--ggb-toast-item-actionsGap) - var(--ggb-toast-item-titleGap));
+  }
+
+  .ggb-toast__item[data-appearance='intense'] {
+    background: var(--ggb-toast-item-intenseSurfaceColor);
+    box-shadow:
+      inset 0 0 0 var(--ggb-toast-item-borderWidth) var(--ggb-toast-item-intenseEdgeColor),
+      var(--ggb-toast-item-shadow);
+    color: var(--ggb-toast-item-intenseContentColor);
+  }
+  .ggb-toast__item[data-appearance='intense'] .ggb-toast__description {
+    color: var(--ggb-toast-item-intenseContentColor);
+  }
+  /* Intense: the action and dismiss buttons of intent accent or neutral take the action family of the toast's
+     intent, as in an Alert (those action tokens are pointed at that family for the toast's subtree). Danger buttons
+     keep their own family. */
+  .ggb-toast__item[data-appearance='intense'][data-intent='neutral'] {
+    --ggb-color-action-accent-solid-default-surface: var(--ggb-color-action-neutral-solid-default-surface);
+    --ggb-color-action-accent-solid-default-content: var(--ggb-color-action-neutral-solid-default-content);
+    --ggb-color-action-accent-solid-default-border: var(--ggb-color-action-neutral-solid-default-border);
+    --ggb-color-action-accent-solid-hover-surface: var(--ggb-color-action-neutral-solid-hover-surface);
+    --ggb-color-action-accent-solid-hover-content: var(--ggb-color-action-neutral-solid-hover-content);
+    --ggb-color-action-accent-solid-hover-border: var(--ggb-color-action-neutral-solid-hover-border);
+    --ggb-color-action-accent-solid-pressed-surface: var(--ggb-color-action-neutral-solid-pressed-surface);
+    --ggb-color-action-accent-solid-pressed-content: var(--ggb-color-action-neutral-solid-pressed-content);
+    --ggb-color-action-accent-solid-pressed-border: var(--ggb-color-action-neutral-solid-pressed-border);
+    --ggb-color-action-accent-solid-loading-surface: var(--ggb-color-action-neutral-solid-loading-surface);
+    --ggb-color-action-accent-solid-loading-content: var(--ggb-color-action-neutral-solid-loading-content);
+    --ggb-color-action-accent-solid-loading-border: var(--ggb-color-action-neutral-solid-loading-border);
+    --ggb-color-action-accent-solid-disabled-surface: var(--ggb-color-action-neutral-solid-disabled-surface);
+    --ggb-color-action-accent-solid-disabled-content: var(--ggb-color-action-neutral-solid-disabled-content);
+    --ggb-color-action-accent-solid-disabled-border: var(--ggb-color-action-neutral-solid-disabled-border);
+    --ggb-color-action-accent-outline-default-surface: var(--ggb-color-action-neutral-outline-default-surface);
+    --ggb-color-action-accent-outline-default-content: var(--ggb-color-action-neutral-outline-default-content);
+    --ggb-color-action-accent-outline-default-border: var(--ggb-color-action-neutral-outline-default-border);
+    --ggb-color-action-accent-outline-hover-surface: var(--ggb-color-action-neutral-outline-hover-surface);
+    --ggb-color-action-accent-outline-hover-content: var(--ggb-color-action-neutral-outline-hover-content);
+    --ggb-color-action-accent-outline-hover-border: var(--ggb-color-action-neutral-outline-hover-border);
+    --ggb-color-action-accent-outline-pressed-surface: var(--ggb-color-action-neutral-outline-pressed-surface);
+    --ggb-color-action-accent-outline-pressed-content: var(--ggb-color-action-neutral-outline-pressed-content);
+    --ggb-color-action-accent-outline-pressed-border: var(--ggb-color-action-neutral-outline-pressed-border);
+    --ggb-color-action-accent-outline-loading-surface: var(--ggb-color-action-neutral-outline-loading-surface);
+    --ggb-color-action-accent-outline-loading-content: var(--ggb-color-action-neutral-outline-loading-content);
+    --ggb-color-action-accent-outline-loading-border: var(--ggb-color-action-neutral-outline-loading-border);
+    --ggb-color-action-accent-outline-disabled-surface: var(--ggb-color-action-neutral-outline-disabled-surface);
+    --ggb-color-action-accent-outline-disabled-content: var(--ggb-color-action-neutral-outline-disabled-content);
+    --ggb-color-action-accent-outline-disabled-border: var(--ggb-color-action-neutral-outline-disabled-border);
+    --ggb-color-action-accent-ghost-default-surface: var(--ggb-color-action-neutral-ghost-default-surface);
+    --ggb-color-action-accent-ghost-default-content: var(--ggb-color-action-neutral-ghost-default-content);
+    --ggb-color-action-accent-ghost-default-border: var(--ggb-color-action-neutral-ghost-default-border);
+    --ggb-color-action-accent-ghost-hover-surface: var(--ggb-color-action-neutral-ghost-hover-surface);
+    --ggb-color-action-accent-ghost-hover-content: var(--ggb-color-action-neutral-ghost-hover-content);
+    --ggb-color-action-accent-ghost-hover-border: var(--ggb-color-action-neutral-ghost-hover-border);
+    --ggb-color-action-accent-ghost-pressed-surface: var(--ggb-color-action-neutral-ghost-pressed-surface);
+    --ggb-color-action-accent-ghost-pressed-content: var(--ggb-color-action-neutral-ghost-pressed-content);
+    --ggb-color-action-accent-ghost-pressed-border: var(--ggb-color-action-neutral-ghost-pressed-border);
+    --ggb-color-action-accent-ghost-loading-surface: var(--ggb-color-action-neutral-ghost-loading-surface);
+    --ggb-color-action-accent-ghost-loading-content: var(--ggb-color-action-neutral-ghost-loading-content);
+    --ggb-color-action-accent-ghost-loading-border: var(--ggb-color-action-neutral-ghost-loading-border);
+    --ggb-color-action-accent-ghost-disabled-surface: var(--ggb-color-action-neutral-ghost-disabled-surface);
+    --ggb-color-action-accent-ghost-disabled-content: var(--ggb-color-action-neutral-ghost-disabled-content);
+    --ggb-color-action-accent-ghost-disabled-border: var(--ggb-color-action-neutral-ghost-disabled-border);
+  }
+  .ggb-toast__item[data-appearance='intense'][data-intent='info'] {
+    --ggb-color-action-accent-solid-default-surface: var(--ggb-color-action-info-solid-default-surface);
+    --ggb-color-action-accent-solid-default-content: var(--ggb-color-action-info-solid-default-content);
+    --ggb-color-action-accent-solid-default-border: var(--ggb-color-action-info-solid-default-border);
+    --ggb-color-action-accent-solid-hover-surface: var(--ggb-color-action-info-solid-hover-surface);
+    --ggb-color-action-accent-solid-hover-content: var(--ggb-color-action-info-solid-hover-content);
+    --ggb-color-action-accent-solid-hover-border: var(--ggb-color-action-info-solid-hover-border);
+    --ggb-color-action-accent-solid-pressed-surface: var(--ggb-color-action-info-solid-pressed-surface);
+    --ggb-color-action-accent-solid-pressed-content: var(--ggb-color-action-info-solid-pressed-content);
+    --ggb-color-action-accent-solid-pressed-border: var(--ggb-color-action-info-solid-pressed-border);
+    --ggb-color-action-accent-solid-loading-surface: var(--ggb-color-action-info-solid-loading-surface);
+    --ggb-color-action-accent-solid-loading-content: var(--ggb-color-action-info-solid-loading-content);
+    --ggb-color-action-accent-solid-loading-border: var(--ggb-color-action-info-solid-loading-border);
+    --ggb-color-action-accent-solid-disabled-surface: var(--ggb-color-action-info-solid-disabled-surface);
+    --ggb-color-action-accent-solid-disabled-content: var(--ggb-color-action-info-solid-disabled-content);
+    --ggb-color-action-accent-solid-disabled-border: var(--ggb-color-action-info-solid-disabled-border);
+    --ggb-color-action-accent-outline-default-surface: var(--ggb-color-action-info-outline-default-surface);
+    --ggb-color-action-accent-outline-default-content: var(--ggb-color-action-info-outline-default-content);
+    --ggb-color-action-accent-outline-default-border: var(--ggb-color-action-info-outline-default-border);
+    --ggb-color-action-accent-outline-hover-surface: var(--ggb-color-action-info-outline-hover-surface);
+    --ggb-color-action-accent-outline-hover-content: var(--ggb-color-action-info-outline-hover-content);
+    --ggb-color-action-accent-outline-hover-border: var(--ggb-color-action-info-outline-hover-border);
+    --ggb-color-action-accent-outline-pressed-surface: var(--ggb-color-action-info-outline-pressed-surface);
+    --ggb-color-action-accent-outline-pressed-content: var(--ggb-color-action-info-outline-pressed-content);
+    --ggb-color-action-accent-outline-pressed-border: var(--ggb-color-action-info-outline-pressed-border);
+    --ggb-color-action-accent-outline-loading-surface: var(--ggb-color-action-info-outline-loading-surface);
+    --ggb-color-action-accent-outline-loading-content: var(--ggb-color-action-info-outline-loading-content);
+    --ggb-color-action-accent-outline-loading-border: var(--ggb-color-action-info-outline-loading-border);
+    --ggb-color-action-accent-outline-disabled-surface: var(--ggb-color-action-info-outline-disabled-surface);
+    --ggb-color-action-accent-outline-disabled-content: var(--ggb-color-action-info-outline-disabled-content);
+    --ggb-color-action-accent-outline-disabled-border: var(--ggb-color-action-info-outline-disabled-border);
+    --ggb-color-action-accent-ghost-default-surface: var(--ggb-color-action-info-ghost-default-surface);
+    --ggb-color-action-accent-ghost-default-content: var(--ggb-color-action-info-ghost-default-content);
+    --ggb-color-action-accent-ghost-default-border: var(--ggb-color-action-info-ghost-default-border);
+    --ggb-color-action-accent-ghost-hover-surface: var(--ggb-color-action-info-ghost-hover-surface);
+    --ggb-color-action-accent-ghost-hover-content: var(--ggb-color-action-info-ghost-hover-content);
+    --ggb-color-action-accent-ghost-hover-border: var(--ggb-color-action-info-ghost-hover-border);
+    --ggb-color-action-accent-ghost-pressed-surface: var(--ggb-color-action-info-ghost-pressed-surface);
+    --ggb-color-action-accent-ghost-pressed-content: var(--ggb-color-action-info-ghost-pressed-content);
+    --ggb-color-action-accent-ghost-pressed-border: var(--ggb-color-action-info-ghost-pressed-border);
+    --ggb-color-action-accent-ghost-loading-surface: var(--ggb-color-action-info-ghost-loading-surface);
+    --ggb-color-action-accent-ghost-loading-content: var(--ggb-color-action-info-ghost-loading-content);
+    --ggb-color-action-accent-ghost-loading-border: var(--ggb-color-action-info-ghost-loading-border);
+    --ggb-color-action-accent-ghost-disabled-surface: var(--ggb-color-action-info-ghost-disabled-surface);
+    --ggb-color-action-accent-ghost-disabled-content: var(--ggb-color-action-info-ghost-disabled-content);
+    --ggb-color-action-accent-ghost-disabled-border: var(--ggb-color-action-info-ghost-disabled-border);
+    --ggb-color-action-neutral-solid-default-surface: var(--ggb-color-action-info-solid-default-surface);
+    --ggb-color-action-neutral-solid-default-content: var(--ggb-color-action-info-solid-default-content);
+    --ggb-color-action-neutral-solid-default-border: var(--ggb-color-action-info-solid-default-border);
+    --ggb-color-action-neutral-solid-hover-surface: var(--ggb-color-action-info-solid-hover-surface);
+    --ggb-color-action-neutral-solid-hover-content: var(--ggb-color-action-info-solid-hover-content);
+    --ggb-color-action-neutral-solid-hover-border: var(--ggb-color-action-info-solid-hover-border);
+    --ggb-color-action-neutral-solid-pressed-surface: var(--ggb-color-action-info-solid-pressed-surface);
+    --ggb-color-action-neutral-solid-pressed-content: var(--ggb-color-action-info-solid-pressed-content);
+    --ggb-color-action-neutral-solid-pressed-border: var(--ggb-color-action-info-solid-pressed-border);
+    --ggb-color-action-neutral-solid-loading-surface: var(--ggb-color-action-info-solid-loading-surface);
+    --ggb-color-action-neutral-solid-loading-content: var(--ggb-color-action-info-solid-loading-content);
+    --ggb-color-action-neutral-solid-loading-border: var(--ggb-color-action-info-solid-loading-border);
+    --ggb-color-action-neutral-solid-disabled-surface: var(--ggb-color-action-info-solid-disabled-surface);
+    --ggb-color-action-neutral-solid-disabled-content: var(--ggb-color-action-info-solid-disabled-content);
+    --ggb-color-action-neutral-solid-disabled-border: var(--ggb-color-action-info-solid-disabled-border);
+    --ggb-color-action-neutral-outline-default-surface: var(--ggb-color-action-info-outline-default-surface);
+    --ggb-color-action-neutral-outline-default-content: var(--ggb-color-action-info-outline-default-content);
+    --ggb-color-action-neutral-outline-default-border: var(--ggb-color-action-info-outline-default-border);
+    --ggb-color-action-neutral-outline-hover-surface: var(--ggb-color-action-info-outline-hover-surface);
+    --ggb-color-action-neutral-outline-hover-content: var(--ggb-color-action-info-outline-hover-content);
+    --ggb-color-action-neutral-outline-hover-border: var(--ggb-color-action-info-outline-hover-border);
+    --ggb-color-action-neutral-outline-pressed-surface: var(--ggb-color-action-info-outline-pressed-surface);
+    --ggb-color-action-neutral-outline-pressed-content: var(--ggb-color-action-info-outline-pressed-content);
+    --ggb-color-action-neutral-outline-pressed-border: var(--ggb-color-action-info-outline-pressed-border);
+    --ggb-color-action-neutral-outline-loading-surface: var(--ggb-color-action-info-outline-loading-surface);
+    --ggb-color-action-neutral-outline-loading-content: var(--ggb-color-action-info-outline-loading-content);
+    --ggb-color-action-neutral-outline-loading-border: var(--ggb-color-action-info-outline-loading-border);
+    --ggb-color-action-neutral-outline-disabled-surface: var(--ggb-color-action-info-outline-disabled-surface);
+    --ggb-color-action-neutral-outline-disabled-content: var(--ggb-color-action-info-outline-disabled-content);
+    --ggb-color-action-neutral-outline-disabled-border: var(--ggb-color-action-info-outline-disabled-border);
+    --ggb-color-action-neutral-ghost-default-surface: var(--ggb-color-action-info-ghost-default-surface);
+    --ggb-color-action-neutral-ghost-default-content: var(--ggb-color-action-info-ghost-default-content);
+    --ggb-color-action-neutral-ghost-default-border: var(--ggb-color-action-info-ghost-default-border);
+    --ggb-color-action-neutral-ghost-hover-surface: var(--ggb-color-action-info-ghost-hover-surface);
+    --ggb-color-action-neutral-ghost-hover-content: var(--ggb-color-action-info-ghost-hover-content);
+    --ggb-color-action-neutral-ghost-hover-border: var(--ggb-color-action-info-ghost-hover-border);
+    --ggb-color-action-neutral-ghost-pressed-surface: var(--ggb-color-action-info-ghost-pressed-surface);
+    --ggb-color-action-neutral-ghost-pressed-content: var(--ggb-color-action-info-ghost-pressed-content);
+    --ggb-color-action-neutral-ghost-pressed-border: var(--ggb-color-action-info-ghost-pressed-border);
+    --ggb-color-action-neutral-ghost-loading-surface: var(--ggb-color-action-info-ghost-loading-surface);
+    --ggb-color-action-neutral-ghost-loading-content: var(--ggb-color-action-info-ghost-loading-content);
+    --ggb-color-action-neutral-ghost-loading-border: var(--ggb-color-action-info-ghost-loading-border);
+    --ggb-color-action-neutral-ghost-disabled-surface: var(--ggb-color-action-info-ghost-disabled-surface);
+    --ggb-color-action-neutral-ghost-disabled-content: var(--ggb-color-action-info-ghost-disabled-content);
+    --ggb-color-action-neutral-ghost-disabled-border: var(--ggb-color-action-info-ghost-disabled-border);
+  }
+  .ggb-toast__item[data-appearance='intense'][data-intent='success'] {
+    --ggb-color-action-accent-solid-default-surface: var(--ggb-color-action-success-solid-default-surface);
+    --ggb-color-action-accent-solid-default-content: var(--ggb-color-action-success-solid-default-content);
+    --ggb-color-action-accent-solid-default-border: var(--ggb-color-action-success-solid-default-border);
+    --ggb-color-action-accent-solid-hover-surface: var(--ggb-color-action-success-solid-hover-surface);
+    --ggb-color-action-accent-solid-hover-content: var(--ggb-color-action-success-solid-hover-content);
+    --ggb-color-action-accent-solid-hover-border: var(--ggb-color-action-success-solid-hover-border);
+    --ggb-color-action-accent-solid-pressed-surface: var(--ggb-color-action-success-solid-pressed-surface);
+    --ggb-color-action-accent-solid-pressed-content: var(--ggb-color-action-success-solid-pressed-content);
+    --ggb-color-action-accent-solid-pressed-border: var(--ggb-color-action-success-solid-pressed-border);
+    --ggb-color-action-accent-solid-loading-surface: var(--ggb-color-action-success-solid-loading-surface);
+    --ggb-color-action-accent-solid-loading-content: var(--ggb-color-action-success-solid-loading-content);
+    --ggb-color-action-accent-solid-loading-border: var(--ggb-color-action-success-solid-loading-border);
+    --ggb-color-action-accent-solid-disabled-surface: var(--ggb-color-action-success-solid-disabled-surface);
+    --ggb-color-action-accent-solid-disabled-content: var(--ggb-color-action-success-solid-disabled-content);
+    --ggb-color-action-accent-solid-disabled-border: var(--ggb-color-action-success-solid-disabled-border);
+    --ggb-color-action-accent-outline-default-surface: var(--ggb-color-action-success-outline-default-surface);
+    --ggb-color-action-accent-outline-default-content: var(--ggb-color-action-success-outline-default-content);
+    --ggb-color-action-accent-outline-default-border: var(--ggb-color-action-success-outline-default-border);
+    --ggb-color-action-accent-outline-hover-surface: var(--ggb-color-action-success-outline-hover-surface);
+    --ggb-color-action-accent-outline-hover-content: var(--ggb-color-action-success-outline-hover-content);
+    --ggb-color-action-accent-outline-hover-border: var(--ggb-color-action-success-outline-hover-border);
+    --ggb-color-action-accent-outline-pressed-surface: var(--ggb-color-action-success-outline-pressed-surface);
+    --ggb-color-action-accent-outline-pressed-content: var(--ggb-color-action-success-outline-pressed-content);
+    --ggb-color-action-accent-outline-pressed-border: var(--ggb-color-action-success-outline-pressed-border);
+    --ggb-color-action-accent-outline-loading-surface: var(--ggb-color-action-success-outline-loading-surface);
+    --ggb-color-action-accent-outline-loading-content: var(--ggb-color-action-success-outline-loading-content);
+    --ggb-color-action-accent-outline-loading-border: var(--ggb-color-action-success-outline-loading-border);
+    --ggb-color-action-accent-outline-disabled-surface: var(--ggb-color-action-success-outline-disabled-surface);
+    --ggb-color-action-accent-outline-disabled-content: var(--ggb-color-action-success-outline-disabled-content);
+    --ggb-color-action-accent-outline-disabled-border: var(--ggb-color-action-success-outline-disabled-border);
+    --ggb-color-action-accent-ghost-default-surface: var(--ggb-color-action-success-ghost-default-surface);
+    --ggb-color-action-accent-ghost-default-content: var(--ggb-color-action-success-ghost-default-content);
+    --ggb-color-action-accent-ghost-default-border: var(--ggb-color-action-success-ghost-default-border);
+    --ggb-color-action-accent-ghost-hover-surface: var(--ggb-color-action-success-ghost-hover-surface);
+    --ggb-color-action-accent-ghost-hover-content: var(--ggb-color-action-success-ghost-hover-content);
+    --ggb-color-action-accent-ghost-hover-border: var(--ggb-color-action-success-ghost-hover-border);
+    --ggb-color-action-accent-ghost-pressed-surface: var(--ggb-color-action-success-ghost-pressed-surface);
+    --ggb-color-action-accent-ghost-pressed-content: var(--ggb-color-action-success-ghost-pressed-content);
+    --ggb-color-action-accent-ghost-pressed-border: var(--ggb-color-action-success-ghost-pressed-border);
+    --ggb-color-action-accent-ghost-loading-surface: var(--ggb-color-action-success-ghost-loading-surface);
+    --ggb-color-action-accent-ghost-loading-content: var(--ggb-color-action-success-ghost-loading-content);
+    --ggb-color-action-accent-ghost-loading-border: var(--ggb-color-action-success-ghost-loading-border);
+    --ggb-color-action-accent-ghost-disabled-surface: var(--ggb-color-action-success-ghost-disabled-surface);
+    --ggb-color-action-accent-ghost-disabled-content: var(--ggb-color-action-success-ghost-disabled-content);
+    --ggb-color-action-accent-ghost-disabled-border: var(--ggb-color-action-success-ghost-disabled-border);
+    --ggb-color-action-neutral-solid-default-surface: var(--ggb-color-action-success-solid-default-surface);
+    --ggb-color-action-neutral-solid-default-content: var(--ggb-color-action-success-solid-default-content);
+    --ggb-color-action-neutral-solid-default-border: var(--ggb-color-action-success-solid-default-border);
+    --ggb-color-action-neutral-solid-hover-surface: var(--ggb-color-action-success-solid-hover-surface);
+    --ggb-color-action-neutral-solid-hover-content: var(--ggb-color-action-success-solid-hover-content);
+    --ggb-color-action-neutral-solid-hover-border: var(--ggb-color-action-success-solid-hover-border);
+    --ggb-color-action-neutral-solid-pressed-surface: var(--ggb-color-action-success-solid-pressed-surface);
+    --ggb-color-action-neutral-solid-pressed-content: var(--ggb-color-action-success-solid-pressed-content);
+    --ggb-color-action-neutral-solid-pressed-border: var(--ggb-color-action-success-solid-pressed-border);
+    --ggb-color-action-neutral-solid-loading-surface: var(--ggb-color-action-success-solid-loading-surface);
+    --ggb-color-action-neutral-solid-loading-content: var(--ggb-color-action-success-solid-loading-content);
+    --ggb-color-action-neutral-solid-loading-border: var(--ggb-color-action-success-solid-loading-border);
+    --ggb-color-action-neutral-solid-disabled-surface: var(--ggb-color-action-success-solid-disabled-surface);
+    --ggb-color-action-neutral-solid-disabled-content: var(--ggb-color-action-success-solid-disabled-content);
+    --ggb-color-action-neutral-solid-disabled-border: var(--ggb-color-action-success-solid-disabled-border);
+    --ggb-color-action-neutral-outline-default-surface: var(--ggb-color-action-success-outline-default-surface);
+    --ggb-color-action-neutral-outline-default-content: var(--ggb-color-action-success-outline-default-content);
+    --ggb-color-action-neutral-outline-default-border: var(--ggb-color-action-success-outline-default-border);
+    --ggb-color-action-neutral-outline-hover-surface: var(--ggb-color-action-success-outline-hover-surface);
+    --ggb-color-action-neutral-outline-hover-content: var(--ggb-color-action-success-outline-hover-content);
+    --ggb-color-action-neutral-outline-hover-border: var(--ggb-color-action-success-outline-hover-border);
+    --ggb-color-action-neutral-outline-pressed-surface: var(--ggb-color-action-success-outline-pressed-surface);
+    --ggb-color-action-neutral-outline-pressed-content: var(--ggb-color-action-success-outline-pressed-content);
+    --ggb-color-action-neutral-outline-pressed-border: var(--ggb-color-action-success-outline-pressed-border);
+    --ggb-color-action-neutral-outline-loading-surface: var(--ggb-color-action-success-outline-loading-surface);
+    --ggb-color-action-neutral-outline-loading-content: var(--ggb-color-action-success-outline-loading-content);
+    --ggb-color-action-neutral-outline-loading-border: var(--ggb-color-action-success-outline-loading-border);
+    --ggb-color-action-neutral-outline-disabled-surface: var(--ggb-color-action-success-outline-disabled-surface);
+    --ggb-color-action-neutral-outline-disabled-content: var(--ggb-color-action-success-outline-disabled-content);
+    --ggb-color-action-neutral-outline-disabled-border: var(--ggb-color-action-success-outline-disabled-border);
+    --ggb-color-action-neutral-ghost-default-surface: var(--ggb-color-action-success-ghost-default-surface);
+    --ggb-color-action-neutral-ghost-default-content: var(--ggb-color-action-success-ghost-default-content);
+    --ggb-color-action-neutral-ghost-default-border: var(--ggb-color-action-success-ghost-default-border);
+    --ggb-color-action-neutral-ghost-hover-surface: var(--ggb-color-action-success-ghost-hover-surface);
+    --ggb-color-action-neutral-ghost-hover-content: var(--ggb-color-action-success-ghost-hover-content);
+    --ggb-color-action-neutral-ghost-hover-border: var(--ggb-color-action-success-ghost-hover-border);
+    --ggb-color-action-neutral-ghost-pressed-surface: var(--ggb-color-action-success-ghost-pressed-surface);
+    --ggb-color-action-neutral-ghost-pressed-content: var(--ggb-color-action-success-ghost-pressed-content);
+    --ggb-color-action-neutral-ghost-pressed-border: var(--ggb-color-action-success-ghost-pressed-border);
+    --ggb-color-action-neutral-ghost-loading-surface: var(--ggb-color-action-success-ghost-loading-surface);
+    --ggb-color-action-neutral-ghost-loading-content: var(--ggb-color-action-success-ghost-loading-content);
+    --ggb-color-action-neutral-ghost-loading-border: var(--ggb-color-action-success-ghost-loading-border);
+    --ggb-color-action-neutral-ghost-disabled-surface: var(--ggb-color-action-success-ghost-disabled-surface);
+    --ggb-color-action-neutral-ghost-disabled-content: var(--ggb-color-action-success-ghost-disabled-content);
+    --ggb-color-action-neutral-ghost-disabled-border: var(--ggb-color-action-success-ghost-disabled-border);
+  }
+  .ggb-toast__item[data-appearance='intense'][data-intent='warning'] {
+    --ggb-color-action-accent-solid-default-surface: var(--ggb-color-action-warning-solid-default-surface);
+    --ggb-color-action-accent-solid-default-content: var(--ggb-color-action-warning-solid-default-content);
+    --ggb-color-action-accent-solid-default-border: var(--ggb-color-action-warning-solid-default-border);
+    --ggb-color-action-accent-solid-hover-surface: var(--ggb-color-action-warning-solid-hover-surface);
+    --ggb-color-action-accent-solid-hover-content: var(--ggb-color-action-warning-solid-hover-content);
+    --ggb-color-action-accent-solid-hover-border: var(--ggb-color-action-warning-solid-hover-border);
+    --ggb-color-action-accent-solid-pressed-surface: var(--ggb-color-action-warning-solid-pressed-surface);
+    --ggb-color-action-accent-solid-pressed-content: var(--ggb-color-action-warning-solid-pressed-content);
+    --ggb-color-action-accent-solid-pressed-border: var(--ggb-color-action-warning-solid-pressed-border);
+    --ggb-color-action-accent-solid-loading-surface: var(--ggb-color-action-warning-solid-loading-surface);
+    --ggb-color-action-accent-solid-loading-content: var(--ggb-color-action-warning-solid-loading-content);
+    --ggb-color-action-accent-solid-loading-border: var(--ggb-color-action-warning-solid-loading-border);
+    --ggb-color-action-accent-solid-disabled-surface: var(--ggb-color-action-warning-solid-disabled-surface);
+    --ggb-color-action-accent-solid-disabled-content: var(--ggb-color-action-warning-solid-disabled-content);
+    --ggb-color-action-accent-solid-disabled-border: var(--ggb-color-action-warning-solid-disabled-border);
+    --ggb-color-action-accent-outline-default-surface: var(--ggb-color-action-warning-outline-default-surface);
+    --ggb-color-action-accent-outline-default-content: var(--ggb-color-action-warning-outline-default-content);
+    --ggb-color-action-accent-outline-default-border: var(--ggb-color-action-warning-outline-default-border);
+    --ggb-color-action-accent-outline-hover-surface: var(--ggb-color-action-warning-outline-hover-surface);
+    --ggb-color-action-accent-outline-hover-content: var(--ggb-color-action-warning-outline-hover-content);
+    --ggb-color-action-accent-outline-hover-border: var(--ggb-color-action-warning-outline-hover-border);
+    --ggb-color-action-accent-outline-pressed-surface: var(--ggb-color-action-warning-outline-pressed-surface);
+    --ggb-color-action-accent-outline-pressed-content: var(--ggb-color-action-warning-outline-pressed-content);
+    --ggb-color-action-accent-outline-pressed-border: var(--ggb-color-action-warning-outline-pressed-border);
+    --ggb-color-action-accent-outline-loading-surface: var(--ggb-color-action-warning-outline-loading-surface);
+    --ggb-color-action-accent-outline-loading-content: var(--ggb-color-action-warning-outline-loading-content);
+    --ggb-color-action-accent-outline-loading-border: var(--ggb-color-action-warning-outline-loading-border);
+    --ggb-color-action-accent-outline-disabled-surface: var(--ggb-color-action-warning-outline-disabled-surface);
+    --ggb-color-action-accent-outline-disabled-content: var(--ggb-color-action-warning-outline-disabled-content);
+    --ggb-color-action-accent-outline-disabled-border: var(--ggb-color-action-warning-outline-disabled-border);
+    --ggb-color-action-accent-ghost-default-surface: var(--ggb-color-action-warning-ghost-default-surface);
+    --ggb-color-action-accent-ghost-default-content: var(--ggb-color-action-warning-ghost-default-content);
+    --ggb-color-action-accent-ghost-default-border: var(--ggb-color-action-warning-ghost-default-border);
+    --ggb-color-action-accent-ghost-hover-surface: var(--ggb-color-action-warning-ghost-hover-surface);
+    --ggb-color-action-accent-ghost-hover-content: var(--ggb-color-action-warning-ghost-hover-content);
+    --ggb-color-action-accent-ghost-hover-border: var(--ggb-color-action-warning-ghost-hover-border);
+    --ggb-color-action-accent-ghost-pressed-surface: var(--ggb-color-action-warning-ghost-pressed-surface);
+    --ggb-color-action-accent-ghost-pressed-content: var(--ggb-color-action-warning-ghost-pressed-content);
+    --ggb-color-action-accent-ghost-pressed-border: var(--ggb-color-action-warning-ghost-pressed-border);
+    --ggb-color-action-accent-ghost-loading-surface: var(--ggb-color-action-warning-ghost-loading-surface);
+    --ggb-color-action-accent-ghost-loading-content: var(--ggb-color-action-warning-ghost-loading-content);
+    --ggb-color-action-accent-ghost-loading-border: var(--ggb-color-action-warning-ghost-loading-border);
+    --ggb-color-action-accent-ghost-disabled-surface: var(--ggb-color-action-warning-ghost-disabled-surface);
+    --ggb-color-action-accent-ghost-disabled-content: var(--ggb-color-action-warning-ghost-disabled-content);
+    --ggb-color-action-accent-ghost-disabled-border: var(--ggb-color-action-warning-ghost-disabled-border);
+    --ggb-color-action-neutral-solid-default-surface: var(--ggb-color-action-warning-solid-default-surface);
+    --ggb-color-action-neutral-solid-default-content: var(--ggb-color-action-warning-solid-default-content);
+    --ggb-color-action-neutral-solid-default-border: var(--ggb-color-action-warning-solid-default-border);
+    --ggb-color-action-neutral-solid-hover-surface: var(--ggb-color-action-warning-solid-hover-surface);
+    --ggb-color-action-neutral-solid-hover-content: var(--ggb-color-action-warning-solid-hover-content);
+    --ggb-color-action-neutral-solid-hover-border: var(--ggb-color-action-warning-solid-hover-border);
+    --ggb-color-action-neutral-solid-pressed-surface: var(--ggb-color-action-warning-solid-pressed-surface);
+    --ggb-color-action-neutral-solid-pressed-content: var(--ggb-color-action-warning-solid-pressed-content);
+    --ggb-color-action-neutral-solid-pressed-border: var(--ggb-color-action-warning-solid-pressed-border);
+    --ggb-color-action-neutral-solid-loading-surface: var(--ggb-color-action-warning-solid-loading-surface);
+    --ggb-color-action-neutral-solid-loading-content: var(--ggb-color-action-warning-solid-loading-content);
+    --ggb-color-action-neutral-solid-loading-border: var(--ggb-color-action-warning-solid-loading-border);
+    --ggb-color-action-neutral-solid-disabled-surface: var(--ggb-color-action-warning-solid-disabled-surface);
+    --ggb-color-action-neutral-solid-disabled-content: var(--ggb-color-action-warning-solid-disabled-content);
+    --ggb-color-action-neutral-solid-disabled-border: var(--ggb-color-action-warning-solid-disabled-border);
+    --ggb-color-action-neutral-outline-default-surface: var(--ggb-color-action-warning-outline-default-surface);
+    --ggb-color-action-neutral-outline-default-content: var(--ggb-color-action-warning-outline-default-content);
+    --ggb-color-action-neutral-outline-default-border: var(--ggb-color-action-warning-outline-default-border);
+    --ggb-color-action-neutral-outline-hover-surface: var(--ggb-color-action-warning-outline-hover-surface);
+    --ggb-color-action-neutral-outline-hover-content: var(--ggb-color-action-warning-outline-hover-content);
+    --ggb-color-action-neutral-outline-hover-border: var(--ggb-color-action-warning-outline-hover-border);
+    --ggb-color-action-neutral-outline-pressed-surface: var(--ggb-color-action-warning-outline-pressed-surface);
+    --ggb-color-action-neutral-outline-pressed-content: var(--ggb-color-action-warning-outline-pressed-content);
+    --ggb-color-action-neutral-outline-pressed-border: var(--ggb-color-action-warning-outline-pressed-border);
+    --ggb-color-action-neutral-outline-loading-surface: var(--ggb-color-action-warning-outline-loading-surface);
+    --ggb-color-action-neutral-outline-loading-content: var(--ggb-color-action-warning-outline-loading-content);
+    --ggb-color-action-neutral-outline-loading-border: var(--ggb-color-action-warning-outline-loading-border);
+    --ggb-color-action-neutral-outline-disabled-surface: var(--ggb-color-action-warning-outline-disabled-surface);
+    --ggb-color-action-neutral-outline-disabled-content: var(--ggb-color-action-warning-outline-disabled-content);
+    --ggb-color-action-neutral-outline-disabled-border: var(--ggb-color-action-warning-outline-disabled-border);
+    --ggb-color-action-neutral-ghost-default-surface: var(--ggb-color-action-warning-ghost-default-surface);
+    --ggb-color-action-neutral-ghost-default-content: var(--ggb-color-action-warning-ghost-default-content);
+    --ggb-color-action-neutral-ghost-default-border: var(--ggb-color-action-warning-ghost-default-border);
+    --ggb-color-action-neutral-ghost-hover-surface: var(--ggb-color-action-warning-ghost-hover-surface);
+    --ggb-color-action-neutral-ghost-hover-content: var(--ggb-color-action-warning-ghost-hover-content);
+    --ggb-color-action-neutral-ghost-hover-border: var(--ggb-color-action-warning-ghost-hover-border);
+    --ggb-color-action-neutral-ghost-pressed-surface: var(--ggb-color-action-warning-ghost-pressed-surface);
+    --ggb-color-action-neutral-ghost-pressed-content: var(--ggb-color-action-warning-ghost-pressed-content);
+    --ggb-color-action-neutral-ghost-pressed-border: var(--ggb-color-action-warning-ghost-pressed-border);
+    --ggb-color-action-neutral-ghost-loading-surface: var(--ggb-color-action-warning-ghost-loading-surface);
+    --ggb-color-action-neutral-ghost-loading-content: var(--ggb-color-action-warning-ghost-loading-content);
+    --ggb-color-action-neutral-ghost-loading-border: var(--ggb-color-action-warning-ghost-loading-border);
+    --ggb-color-action-neutral-ghost-disabled-surface: var(--ggb-color-action-warning-ghost-disabled-surface);
+    --ggb-color-action-neutral-ghost-disabled-content: var(--ggb-color-action-warning-ghost-disabled-content);
+    --ggb-color-action-neutral-ghost-disabled-border: var(--ggb-color-action-warning-ghost-disabled-border);
+  }
+  .ggb-toast__item[data-appearance='intense'][data-intent='danger'] {
+    --ggb-color-action-accent-solid-default-surface: var(--ggb-color-action-danger-solid-default-surface);
+    --ggb-color-action-accent-solid-default-content: var(--ggb-color-action-danger-solid-default-content);
+    --ggb-color-action-accent-solid-default-border: var(--ggb-color-action-danger-solid-default-border);
+    --ggb-color-action-accent-solid-hover-surface: var(--ggb-color-action-danger-solid-hover-surface);
+    --ggb-color-action-accent-solid-hover-content: var(--ggb-color-action-danger-solid-hover-content);
+    --ggb-color-action-accent-solid-hover-border: var(--ggb-color-action-danger-solid-hover-border);
+    --ggb-color-action-accent-solid-pressed-surface: var(--ggb-color-action-danger-solid-pressed-surface);
+    --ggb-color-action-accent-solid-pressed-content: var(--ggb-color-action-danger-solid-pressed-content);
+    --ggb-color-action-accent-solid-pressed-border: var(--ggb-color-action-danger-solid-pressed-border);
+    --ggb-color-action-accent-solid-loading-surface: var(--ggb-color-action-danger-solid-loading-surface);
+    --ggb-color-action-accent-solid-loading-content: var(--ggb-color-action-danger-solid-loading-content);
+    --ggb-color-action-accent-solid-loading-border: var(--ggb-color-action-danger-solid-loading-border);
+    --ggb-color-action-accent-solid-disabled-surface: var(--ggb-color-action-danger-solid-disabled-surface);
+    --ggb-color-action-accent-solid-disabled-content: var(--ggb-color-action-danger-solid-disabled-content);
+    --ggb-color-action-accent-solid-disabled-border: var(--ggb-color-action-danger-solid-disabled-border);
+    --ggb-color-action-accent-outline-default-surface: var(--ggb-color-action-danger-outline-default-surface);
+    --ggb-color-action-accent-outline-default-content: var(--ggb-color-action-danger-outline-default-content);
+    --ggb-color-action-accent-outline-default-border: var(--ggb-color-action-danger-outline-default-border);
+    --ggb-color-action-accent-outline-hover-surface: var(--ggb-color-action-danger-outline-hover-surface);
+    --ggb-color-action-accent-outline-hover-content: var(--ggb-color-action-danger-outline-hover-content);
+    --ggb-color-action-accent-outline-hover-border: var(--ggb-color-action-danger-outline-hover-border);
+    --ggb-color-action-accent-outline-pressed-surface: var(--ggb-color-action-danger-outline-pressed-surface);
+    --ggb-color-action-accent-outline-pressed-content: var(--ggb-color-action-danger-outline-pressed-content);
+    --ggb-color-action-accent-outline-pressed-border: var(--ggb-color-action-danger-outline-pressed-border);
+    --ggb-color-action-accent-outline-loading-surface: var(--ggb-color-action-danger-outline-loading-surface);
+    --ggb-color-action-accent-outline-loading-content: var(--ggb-color-action-danger-outline-loading-content);
+    --ggb-color-action-accent-outline-loading-border: var(--ggb-color-action-danger-outline-loading-border);
+    --ggb-color-action-accent-outline-disabled-surface: var(--ggb-color-action-danger-outline-disabled-surface);
+    --ggb-color-action-accent-outline-disabled-content: var(--ggb-color-action-danger-outline-disabled-content);
+    --ggb-color-action-accent-outline-disabled-border: var(--ggb-color-action-danger-outline-disabled-border);
+    --ggb-color-action-accent-ghost-default-surface: var(--ggb-color-action-danger-ghost-default-surface);
+    --ggb-color-action-accent-ghost-default-content: var(--ggb-color-action-danger-ghost-default-content);
+    --ggb-color-action-accent-ghost-default-border: var(--ggb-color-action-danger-ghost-default-border);
+    --ggb-color-action-accent-ghost-hover-surface: var(--ggb-color-action-danger-ghost-hover-surface);
+    --ggb-color-action-accent-ghost-hover-content: var(--ggb-color-action-danger-ghost-hover-content);
+    --ggb-color-action-accent-ghost-hover-border: var(--ggb-color-action-danger-ghost-hover-border);
+    --ggb-color-action-accent-ghost-pressed-surface: var(--ggb-color-action-danger-ghost-pressed-surface);
+    --ggb-color-action-accent-ghost-pressed-content: var(--ggb-color-action-danger-ghost-pressed-content);
+    --ggb-color-action-accent-ghost-pressed-border: var(--ggb-color-action-danger-ghost-pressed-border);
+    --ggb-color-action-accent-ghost-loading-surface: var(--ggb-color-action-danger-ghost-loading-surface);
+    --ggb-color-action-accent-ghost-loading-content: var(--ggb-color-action-danger-ghost-loading-content);
+    --ggb-color-action-accent-ghost-loading-border: var(--ggb-color-action-danger-ghost-loading-border);
+    --ggb-color-action-accent-ghost-disabled-surface: var(--ggb-color-action-danger-ghost-disabled-surface);
+    --ggb-color-action-accent-ghost-disabled-content: var(--ggb-color-action-danger-ghost-disabled-content);
+    --ggb-color-action-accent-ghost-disabled-border: var(--ggb-color-action-danger-ghost-disabled-border);
+    --ggb-color-action-neutral-solid-default-surface: var(--ggb-color-action-danger-solid-default-surface);
+    --ggb-color-action-neutral-solid-default-content: var(--ggb-color-action-danger-solid-default-content);
+    --ggb-color-action-neutral-solid-default-border: var(--ggb-color-action-danger-solid-default-border);
+    --ggb-color-action-neutral-solid-hover-surface: var(--ggb-color-action-danger-solid-hover-surface);
+    --ggb-color-action-neutral-solid-hover-content: var(--ggb-color-action-danger-solid-hover-content);
+    --ggb-color-action-neutral-solid-hover-border: var(--ggb-color-action-danger-solid-hover-border);
+    --ggb-color-action-neutral-solid-pressed-surface: var(--ggb-color-action-danger-solid-pressed-surface);
+    --ggb-color-action-neutral-solid-pressed-content: var(--ggb-color-action-danger-solid-pressed-content);
+    --ggb-color-action-neutral-solid-pressed-border: var(--ggb-color-action-danger-solid-pressed-border);
+    --ggb-color-action-neutral-solid-loading-surface: var(--ggb-color-action-danger-solid-loading-surface);
+    --ggb-color-action-neutral-solid-loading-content: var(--ggb-color-action-danger-solid-loading-content);
+    --ggb-color-action-neutral-solid-loading-border: var(--ggb-color-action-danger-solid-loading-border);
+    --ggb-color-action-neutral-solid-disabled-surface: var(--ggb-color-action-danger-solid-disabled-surface);
+    --ggb-color-action-neutral-solid-disabled-content: var(--ggb-color-action-danger-solid-disabled-content);
+    --ggb-color-action-neutral-solid-disabled-border: var(--ggb-color-action-danger-solid-disabled-border);
+    --ggb-color-action-neutral-outline-default-surface: var(--ggb-color-action-danger-outline-default-surface);
+    --ggb-color-action-neutral-outline-default-content: var(--ggb-color-action-danger-outline-default-content);
+    --ggb-color-action-neutral-outline-default-border: var(--ggb-color-action-danger-outline-default-border);
+    --ggb-color-action-neutral-outline-hover-surface: var(--ggb-color-action-danger-outline-hover-surface);
+    --ggb-color-action-neutral-outline-hover-content: var(--ggb-color-action-danger-outline-hover-content);
+    --ggb-color-action-neutral-outline-hover-border: var(--ggb-color-action-danger-outline-hover-border);
+    --ggb-color-action-neutral-outline-pressed-surface: var(--ggb-color-action-danger-outline-pressed-surface);
+    --ggb-color-action-neutral-outline-pressed-content: var(--ggb-color-action-danger-outline-pressed-content);
+    --ggb-color-action-neutral-outline-pressed-border: var(--ggb-color-action-danger-outline-pressed-border);
+    --ggb-color-action-neutral-outline-loading-surface: var(--ggb-color-action-danger-outline-loading-surface);
+    --ggb-color-action-neutral-outline-loading-content: var(--ggb-color-action-danger-outline-loading-content);
+    --ggb-color-action-neutral-outline-loading-border: var(--ggb-color-action-danger-outline-loading-border);
+    --ggb-color-action-neutral-outline-disabled-surface: var(--ggb-color-action-danger-outline-disabled-surface);
+    --ggb-color-action-neutral-outline-disabled-content: var(--ggb-color-action-danger-outline-disabled-content);
+    --ggb-color-action-neutral-outline-disabled-border: var(--ggb-color-action-danger-outline-disabled-border);
+    --ggb-color-action-neutral-ghost-default-surface: var(--ggb-color-action-danger-ghost-default-surface);
+    --ggb-color-action-neutral-ghost-default-content: var(--ggb-color-action-danger-ghost-default-content);
+    --ggb-color-action-neutral-ghost-default-border: var(--ggb-color-action-danger-ghost-default-border);
+    --ggb-color-action-neutral-ghost-hover-surface: var(--ggb-color-action-danger-ghost-hover-surface);
+    --ggb-color-action-neutral-ghost-hover-content: var(--ggb-color-action-danger-ghost-hover-content);
+    --ggb-color-action-neutral-ghost-hover-border: var(--ggb-color-action-danger-ghost-hover-border);
+    --ggb-color-action-neutral-ghost-pressed-surface: var(--ggb-color-action-danger-ghost-pressed-surface);
+    --ggb-color-action-neutral-ghost-pressed-content: var(--ggb-color-action-danger-ghost-pressed-content);
+    --ggb-color-action-neutral-ghost-pressed-border: var(--ggb-color-action-danger-ghost-pressed-border);
+    --ggb-color-action-neutral-ghost-loading-surface: var(--ggb-color-action-danger-ghost-loading-surface);
+    --ggb-color-action-neutral-ghost-loading-content: var(--ggb-color-action-danger-ghost-loading-content);
+    --ggb-color-action-neutral-ghost-loading-border: var(--ggb-color-action-danger-ghost-loading-border);
+    --ggb-color-action-neutral-ghost-disabled-surface: var(--ggb-color-action-danger-ghost-disabled-surface);
+    --ggb-color-action-neutral-ghost-disabled-content: var(--ggb-color-action-danger-ghost-disabled-content);
+    --ggb-color-action-neutral-ghost-disabled-border: var(--ggb-color-action-danger-ghost-disabled-border);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-toast__item,
+    .ggb-toast[data-placement^='top'] .ggb-toast__item {
+      @starting-style {
+        translate: 0 0;
+      }
+    }
+  }
+  @media (forced-colors: active) {
+    .ggb-toast__item {
+      border: 1px solid CanvasText;
+    }
+  }
+}

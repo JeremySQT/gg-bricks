@@ -1,0 +1,88 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "feedback/skeleton",
+      "id": "407:115"
+    },
+    "library": {
+      "name": "Feedback",
+      "id": "407:112"
+    }
+  },
+  "recordedOn": "2026-11-03",
+  "componentSet": {
+    "id": "417:74",
+    "name": "Skeleton",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=417-74"
+  },
+  "section": {
+    "name": "Skeleton",
+    "id": "417:26"
+  },
+  "properties": {
+    "Shape": {
+      "type": "VARIANT",
+      "default": "text",
+      "options": [
+        "text",
+        "block",
+        "circle"
+      ]
+    },
+    "Text › Size": {
+      "type": "VARIANT (exposed nested instance, Shape=text only)",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ]
+    },
+    "Text › Lines": {
+      "type": "VARIANT (exposed nested instance, Shape=text only)",
+      "default": "1",
+      "options": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  },
+  "variants": {
+    "count": 3,
+    "default": "Shape=text",
+    "Shape=text": "417:27",
+    "Shape=block": "417:72",
+    "Shape=circle": "417:73"
+  },
+  "parts": {
+    "_Skeleton/Text": {
+      "id": "453:1264",
+      "variants": "Size=md, Lines=1 453:1219; Size=md, Lines=2 453:1222; Size=md, Lines=3 453:1227; Size=sm, Lines=1 453:1234; Size=sm, Lines=2 453:1237; Size=sm, Lines=3 453:1242; Size=lg, Lines=1 453:1249; Size=lg, Lines=2 453:1252; Size=lg, Lines=3 453:1257",
+      "layers": "Line (typography/body/{size}/lineHeight) › Bar (fontSize, radius/indicator, color/surface/muted)"
+    },
+    "Line": "frame bound to typography/body/{size}/lineHeight",
+    "Bar": "frame bound to typography/body/{size}/fontSize, radius/indicator, centered; last bar 60 % (scale constraint)"
+  },
+  "specification": {
+    "id": "458:860",
+    "name": "Skeleton — Specification",
+    "anatomyBoard": "458:918",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=458-860"
+  },
+  "adapterVariables": {},
+  "builders": [
+    "authoring/adapters/figma/skeleton-master.plugin.js",
+    "authoring/adapters/figma/skeleton-spec.plugin.js",
+    "authoring/adapters/figma/skeleton-parity.plugin.js",
+    "authoring/adapters/figma/wave3-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js"
+  ],
+  "notes": [
+    "Full-width bars use a stretch constraint, which Figma rounds to whole pixels in an instance of fractional width (369 for 368.66): a difference of at most 0.5 px, not part of computed.json.",
+    "2026-11-04, user review of the Figma parity: Size and Lines moved to the internal set _Skeleton/Text, an exposed nested instance of the text variant, so that they show only for Shape=text; done in place on the set (block and circle keep their IDs). Parity rerun: unchanged (18 equal hashes)."
+  ],
+  "updatedOn": "2026-11-04"
+}

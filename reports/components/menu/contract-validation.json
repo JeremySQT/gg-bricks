@@ -1,0 +1,50 @@
+{
+  "valid": true,
+  "checks": {
+    "schema": "passed",
+    "consistency": "passed",
+    "tokenCoverage": "passed",
+    "dependencies": "not-provided",
+    "intrinsicRules": "manual-review-required"
+  },
+  "errors": [],
+  "requiredTokenPaths": [
+    "color.surface.overlay",
+    "color.elevation.border",
+    "border.width.default",
+    "shadow.overlay",
+    "radius.overlay",
+    "space.content.xs",
+    "size.overlay.panel",
+    "motion.distance.sm",
+    "motion.duration.base",
+    "motion.easing.enter",
+    "motion.easing.exit",
+    "layer.dropdown",
+    "color.item.default.surface",
+    "color.item.hover.surface",
+    "color.item.disabled.surface",
+    "color.item.default.content",
+    "color.item.hover.content",
+    "color.item.disabled.content",
+    "color.status.danger.content",
+    "radius.container",
+    "size.control.sm",
+    "space.control.padding-inline.sm",
+    "space.control.padding-block.sm",
+    "space.control.gap.sm",
+    "typography.body.sm",
+    "size.icon.sm",
+    "motion.duration.fast",
+    "motion.easing.standard",
+    "color.border.subtle",
+    "color.content.secondary",
+    "typography.caption.md"
+  ],
+  "dependencies": [
+    "button",
+    "icon-button",
+    "icon",
+    "shortcut"
+  ]
+}

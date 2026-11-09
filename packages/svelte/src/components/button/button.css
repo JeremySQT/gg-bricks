@@ -147,8 +147,7 @@
     margin-inline: calc(var(--ggb-button-iconSize) / -8);
   }
   .ggb-button__leading > svg,
-  .ggb-button__trailing > svg,
-  .ggb-button__loadingIndicator > svg {
+  .ggb-button__trailing > svg {
     display: block;
     inline-size: var(--ggb-button-iconSize);
     block-size: var(--ggb-button-iconSize);
@@ -166,14 +165,7 @@
     place-items: center;
     pointer-events: none;
   }
-  .ggb-button__loadingIndicator > svg {
-    animation: ggb-button-spin 800ms linear infinite;
-  }
-  @keyframes ggb-button-spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
+  /* The loading indicator is a Spinner of the button size (its size, turn and reduced motion come from the Spinner). */
 
   .ggb-button:focus-visible .ggb-button__container {
     outline: var(--ggb-button-focusWidth) solid var(--ggb-button-focusColor);
@@ -186,9 +178,6 @@
   @media (prefers-reduced-motion: reduce) {
     .ggb-button__container {
       transition: none;
-    }
-    .ggb-button__loadingIndicator > svg {
-      animation-duration: 2400ms;
     }
   }
 

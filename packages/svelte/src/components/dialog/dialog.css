@@ -1,0 +1,103 @@
+/*
+ * Dialog structure. Colors, shadow, radius, spacing, typography, sizes and motion come from tokens.generated.css;
+ * centering, the backdrop and entry/exit motion come from lib/overlay/overlay.css. Header, scrolling body and footer
+ * in a column; dividers only while the body scrolls. The page under an open dialog does not scroll.
+ */
+@layer ggb {
+  :root:has(dialog.ggb-dialog[open]) {
+    overflow: hidden;
+  }
+  .ggb-dialog {
+    /* Enters moving upwards: the overlay distance is negated so that the panel starts below its place. */
+    --ggb-overlay-distance: calc(-1 * var(--ggb-dialog-enterDistance));
+    --ggb-overlay-duration: var(--ggb-dialog-motionDuration);
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: var(--ggb-dialog-sectionGap);
+    inline-size: min(var(--ggb-dialog-inlineSize), calc(100vi - 2 * var(--ggb-dialog-viewportMargin)));
+    max-inline-size: calc(100vi - 2 * var(--ggb-dialog-viewportMargin));
+    max-block-size: calc(100vb - 2 * var(--ggb-dialog-viewportMargin));
+    padding: var(--ggb-dialog-padding);
+    overflow: hidden;
+    border-radius: var(--ggb-dialog-radius);
+    background: var(--ggb-dialog-surface);
+    box-shadow:
+      inset 0 0 0 var(--ggb-dialog-borderWidth) var(--ggb-dialog-elevationColor),
+      var(--ggb-dialog-shadow);
+    color: var(--ggb-dialog-content);
+    outline: none;
+    z-index: var(--ggb-dialog-layer);
+  }
+  .ggb-dialog[open] {
+    display: flex;
+  }
+  .ggb-dialog::backdrop {
+    background: var(--ggb-dialog-backdropColor);
+  }
+  .ggb-dialog__header {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    gap: var(--ggb-dialog-headerGap);
+  }
+  .ggb-dialog__titleRow {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ggb-dialog-headerGap);
+  }
+  .ggb-dialog__title {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    margin: 0;
+    font: var(--ggb-dialog-typographyTitle);
+    letter-spacing: var(--ggb-dialog-typographyTitle-letterSpacing, normal);
+    overflow-wrap: anywhere;
+  }
+  /* The close button is centered on the title's first line. */
+  .ggb-dialog__close {
+    display: flex;
+    flex: none;
+    align-items: center;
+    block-size: 1lh;
+    font: var(--ggb-dialog-typographyTitle);
+  }
+  .ggb-dialog__description {
+    color: var(--ggb-dialog-descriptionColor);
+    font: var(--ggb-dialog-typographyDescription);
+    letter-spacing: var(--ggb-dialog-typographyDescription-letterSpacing, normal);
+  }
+  /* The body keeps room for focus indicators (focus width + offset) inside its scrolling area; negative margins keep
+     its content aligned with the header and the footer. */
+  .ggb-dialog__body {
+    --_room: calc(var(--ggb-dialog-focusWidth) + var(--ggb-dialog-focusOffset));
+    flex: 1 1 auto;
+    min-block-size: 0;
+    margin: calc(-1 * var(--_room));
+    padding: var(--_room);
+    overflow: auto;
+    font: var(--ggb-dialog-typography);
+    letter-spacing: var(--ggb-dialog-typography-letterSpacing, normal);
+  }
+  .ggb-dialog__body:empty {
+    display: none;
+  }
+  .ggb-dialog__footer {
+    display: flex;
+    flex: none;
+    justify-content: flex-end;
+  }
+  /* While the body scrolls, a line of borderWidth separates it from the header and the footer, centered in the gap. */
+  .ggb-dialog[data-scrolled] .ggb-dialog__body {
+    border-block: var(--ggb-dialog-borderWidth) solid var(--ggb-dialog-dividerColor);
+    margin-inline: calc(-1 * var(--ggb-dialog-padding));
+    padding-inline: var(--ggb-dialog-padding);
+  }
+  .ggb-dialog[data-scrolled]:not(:has(.ggb-dialog__footer)) .ggb-dialog__body {
+    border-block-end: 0;
+  }
+  @media (forced-colors: active) {
+    .ggb-dialog {
+      border: 1px solid CanvasText;
+    }
+  }
+}

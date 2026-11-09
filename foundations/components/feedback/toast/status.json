@@ -1,0 +1,299 @@
+{
+  "formatStatus": "v1",
+  "componentId": "toast",
+  "family": "feedback",
+  "wave": 3,
+  "phase": "done",
+  "scope": {
+    "purpose": "Notify briefly about something the user just did or that just happened, without blocking the page.",
+    "useCases": ["Saved, Message sent.", "Upload failed with a Retry action.", "Item deleted with an Undo action."],
+    "exclusions": [
+      "Durable messages: Alert.",
+      "Questions: Dialog.",
+      "Rich content (images, forms) in a toast.",
+      "A keyboard shortcut to jump to the region: later on demand."
+    ],
+    "alternatives": ["Alert for a durable message.", "Dialog for a message that must be answered."]
+  },
+  "dependencies": ["icon", "icon-button", "button", "lib/overlay"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/feedback/toast/contract.json",
+      "sha256": "719a33fe39efed30524f517eb0b0f3b6f81bab76caa2437b0b243fcdd89a74b7"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "feedback/toast (407:117)",
+      "library": "Feedback (407:112), section Toast (426:36)",
+      "componentSet": "426:819",
+      "specification": "461:855",
+      "ledger": "reports/components/toast/figma/ledger.json",
+      "parity": "reports/components/toast/figma/parity.json",
+      "screenshots": [
+        "reports/components/toast/figma/master-set.png",
+        "reports/components/toast/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/toast/figma/blueprint-anatomy.png",
+          "node": "461:1116"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/toast-master.plugin.js",
+        "authoring/adapters/figma/toast-spec.plugin.js",
+        "authoring/adapters/figma/toast-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ],
+      "region": "455:1602"
+    },
+    "figmaSpec": "foundations/components/feedback/toast/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/toast",
+      "files": [
+        "packages/svelte/src/components/toast/ToastRegion.svelte",
+        "packages/svelte/src/components/toast/Toast.svelte",
+        "packages/svelte/src/components/toast/types.ts",
+        "packages/svelte/src/components/toast/toast.css",
+        "packages/svelte/src/components/toast/glyphs.ts"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/toast/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/toast",
+      "preview": "dist/previews/toast.html (npm run build && npm run build:preview toast)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page toast.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/alert-toast.test.ts"],
+      "browser": ["tests/browser/toast.spec.ts"],
+      "evidence": "reports/components/toast/svelte/"
+    },
+    "humanDocs": "documentation/components/toast.md",
+    "agentDocs": "documentation/index.json (entry toast); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/toast.svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Toast compound contract: region (placement, max 3, label) and item children (intent, required title, description, duration 5 s, one action Button, dismiss IconButton); countdown paused on hover, focus and hidden document; a toast with an action never dismisses itself; dismiss event, list owned by the application; size.overlay.panel width.",
+      "revision": {
+        "paths": ["foundations/components/feedback/toast/contract.json"],
+        "sha256": {
+          "foundations/components/feedback/toast/contract.json": "5465df5a6225e9e6b0a1563e1190939c31c988295f73e2a4f11e15a1adcb06dc"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 requested at the implementation review (rounds 1 to 4: buttons and links follow the intent; Toast appearance, layout, countdowns, closable and secondary actions) accepted with the implementation: \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\". Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Pour continuer sur la Toast, un seul truc me dérange c'est que ça hauteur n'est pas fixe dans le cas où on est en mode \\\"single line\\\". Ce qui fait qu'ajouter une action fait varier sa hauteur. Il faudrait que le bouton d'action soit forcément un SM au vu du contexte, et qu'il ne fasse pas varier la hauteur du toast que ce soit avec ou sans.\"): the contract gains the role rowHeight (size.control.sm): on one row the toast is a small control high plus its padding whatever it holds, the action Button (always sm) keeping its 44 px target over the padding; the code sets it (toast.css), the review page adds a one-line toast with an action, a browser test checks both heights in the representative contexts (it fails on the previous CSS: 68 instead of 56 px); Figma: the single variants keep one height (72 parity checks). Digests re-recorded.",
+      "note": null
+    },
+    "implementation": {
+      "scope": "ToastRegion in the top layer (placement, max, queue, paused on hover, focus and hidden document) and Toast items: intent, appearance neutral or intense (intense: accent and neutral buttons take the intent family), automatic single or multi layout, default countdowns 5 s, 8 s with an action, none for danger, closable, one secondary action, dismiss event.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/toast/Toast.svelte",
+          "packages/svelte/src/components/toast/ToastRegion.svelte",
+          "packages/svelte/src/components/toast/contract.generated.ts",
+          "packages/svelte/src/components/toast/glyphs.ts",
+          "packages/svelte/src/components/toast/toast.css",
+          "packages/svelte/src/components/toast/tokens.generated.css",
+          "packages/svelte/src/components/toast/types.ts",
+          "examples/toast/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/toast/Toast.svelte": "f9581d225f0e9fc7b283432caae202e0fcfa152b64b0c08d8eaa208cde9afdfa",
+          "packages/svelte/src/components/toast/ToastRegion.svelte": "a9e47464e8327ef644dcc08d30e47eddd9d8358c5626e9210c91b95b1d7e6f92",
+          "packages/svelte/src/components/toast/contract.generated.ts": "87e238d378faaca4888c123ba3983ceefd45c8bdbd1aa2f858582775749756cd",
+          "packages/svelte/src/components/toast/glyphs.ts": "f6da0f4d3ea9f3c0b69ff3d574bde4551708494d175bc9ce36d4310f15efde7f",
+          "packages/svelte/src/components/toast/toast.css": "138a274e60162a9fe7c26a3c08bb6d0410c15f4515a852262f61acafeaaceb0a",
+          "packages/svelte/src/components/toast/tokens.generated.css": "d6b15839d986a00912f12060336780f5b8c79f1813bc6a32414244d167862154",
+          "packages/svelte/src/components/toast/types.ts": "bb307b021cfcdb616c30eecafea43c4690de86cdaf624e5da3f106a7ce60d2bc",
+          "examples/toast/App.svelte": "6d52d680c5a3ec1b4d6095c7591284f5aac4efef3f269ee83ef97361b9d7f6bd"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 4) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793725323-4aae): \"Non non c'est ok pour moi de rester accessible. Je valide aussi Alert et Toast\" (danger toasts keep no default countdown and keep their dismiss button without one, for accessibility). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui corrige les quatre points et ajoute-le au contrat\"): where the platform has no top layer the region is stacked at layer.toast, as the contract says (the token was generated but unused); a stale code comment about the countdown corrected. Browser test asserts the stacking. Digests re-recorded. Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Chaque toast est un composant unitaire qui ne dépend que d'elle même, la seule limite est en effet qu'elle doit être placé dans une toastRegion\"): the generated bindings of the children sit on their own class (.ggb-toast__…) instead of being nested under the parent (tooling/lib/bindings.ts, authoring/decisions.md); values and rendering unchanged (computed values identical in the browser tests). toast.css: the width of a toast falls back to no edge outside a region, so a toast keeps size.overlay.panel on its own. Digests re-recorded. Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Pour continuer sur la Toast, un seul truc me dérange c'est que ça hauteur n'est pas fixe dans le cas où on est en mode \\\"single line\\\". Ce qui fait qu'ajouter une action fait varier sa hauteur. Il faudrait que le bouton d'action soit forcément un SM au vu du contexte, et qu'il ne fasse pas varier la hauteur du toast que ce soit avec ou sans.\"): the contract gains the role rowHeight (size.control.sm): on one row the toast is a small control high plus its padding whatever it holds, the action Button (always sm) keeping its 44 px target over the padding; the code sets it (toast.css), the review page adds a one-line toast with an action, a browser test checks both heights in the representative contexts (it fails on the previous CSS: 68 instead of 56 px); Figma: the single variants keep one height (72 parity checks). Digests re-recorded.",
+      "note": null
+    },
+    "figmaParity": {
+      "scope": "Figma master 426:819 and specification frame 461:855 of the toast component, parity report (36 records, 0 failures, 4 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/feedback/toast/figma-spec.md",
+          "reports/components/toast/figma/parity.json",
+          "reports/components/toast/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/feedback/toast/figma-spec.md": "a95a0903aa472ef3ee848d4f643f11ccfe5e01c01b8118a0bce17a4211f97dad",
+          "reports/components/toast/figma/parity.json": "517ab87b479961542c5d7df547c80958e68193d64d87f6c04c2f7fbc6b4da810",
+          "reports/components/toast/figma/ledger.json": "42d349d13b1474a906023291d473923bbc1ededbdf7d5b862482a9566b53128d"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "426:819",
+          "specificationFrame": "461:855",
+          "region": "455:1602"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Pour continuer sur la Toast, un seul truc me dérange c'est que ça hauteur n'est pas fixe dans le cas où on est en mode \\\"single line\\\". Ce qui fait qu'ajouter une action fait varier sa hauteur. Il faudrait que le bouton d'action soit forcément un SM au vu du contexte, et qu'il ne fasse pas varier la hauteur du toast que ce soit avec ou sans.\"): the contract gains the role rowHeight (size.control.sm): on one row the toast is a small control high plus its padding whatever it holds, the action Button (always sm) keeping its 44 px target over the padding; the code sets it (toast.css), the review page adds a one-line toast with an action, a browser test checks both heights in the representative contexts (it fails on the previous CSS: 68 instead of 56 px); Figma: the single variants keep one height (72 parity checks). Digests re-recorded."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of toast (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/toast.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/toast.svelte"
+        ],
+        "sha256": {
+          "documentation/components/toast.md": "91b77e190c1d3462358d13ea6d5ce279ed1a6867310ec3fd847f53b4ba703ac4",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/toast.svelte": "916bc61aa5047e011d8b79578e4f3aed8f120b039e7d48513ad8a956d2c1d342"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/toast/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (36 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/toast/svelte/"
+    },
+    {
+      "name": "npm run build:preview toast",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (36 records, 0 failures, 4 justified; 1548 extra checks)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/toast/figma/parity.json"
+    },
+    {
+      "name": "Figma after the review: ToastRegion is a single component (455:1602); the Toast set and its parity are unchanged (36 records, 0 failures)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/toast/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/toast/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/toast.md"
+    },
+    {
+      "name": "Fix after the documentation review: where the platform has no top layer the region is stacked at layer.toast, as the contract says (the token was generated but unused); a stale code comment about ",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "tests/browser/toast.spec.ts"
+    },
+    {
+      "name": "Children bindings on their own class: browser tests unchanged (computed values identical); a toast is styled outside a region",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "tests/browser/toast.spec.ts"
+    },
+    {
+      "name": "One-line toast keeps one height with or without its action (browser, representative contexts; Figma, 18 contexts)",
+      "result": "passed",
+      "date": "2026-11-06",
+      "evidence": "tests/browser/toast.spec.ts"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/toast.md"
+    }
+  ],
+  "decisionsTaken": [
+    "One compound contract (decision of 2026-10-31): the root is the region (placement, max, label); the child item is one toast. The application owns the list and removes a toast when it emits dismiss; the Svelte adapter may add a small helper to manage the list (implementation).",
+    "Toast surface neutral (color.surface.overlay, shadow.overlay, elevation border, radius.overlay) with the status icon in color: the words carry the message.",
+    "Width size.overlay.panel (new semantic role shared with Popover and Menu, 360 px); region at space.layout.sm from the viewport edges; default placement bottom-end; max 3 visible.",
+    "Duration 5 s; the countdown pauses on hover, on focus inside and when the document is hidden.",
+    "A toast with an action never dismisses itself (WCAG 2.2.1), and its action must exist elsewhere (open question 4).",
+    "Announcements: polite except danger (assertive); appearing never moves focus.",
+    "Open question 4 resolved (user, 2026-11-03: \"Oui\"): a toast with an action never dismisses itself, and its action also exists elsewhere in the interface.",
+    "Toast leaving is the one JavaScript-driven transition of the wave: overlay motion stays CSS only (decisions.md), but a toast is removed from the DOM by the application, not hidden.",
+    "Toast round 2 (user, 2026-11-03): appearance neutral|intense, automatic layout, 8 s with an action, danger persistent by default, closable; intense accent actions take the intent family.",
+    "Toast actions are secondary only (user, 2026-11-03): ghost or outline, neutral or danger, never accent; a snippet cannot enforce it, the rule is documented (decisions.md, snippet slots).",
+    "Round 2 of the implementation review (2026-11-03) supersedes the entries above that say a toast with an action never dismisses itself: it leaves after 8 s (time to undo), a danger toast stays until dismissed, another leaves after 5 s, a set duration wins (contract, code and tests)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "Exports ToastRegion (the region, root of the contract) and Toast (the item child).",
+    "The region is a div with role region (not a section: an application's section styles moved it) shown as a manual popover in the top layer; it raises itself again whenever another overlay enters the top layer after it (a capture listener on toggle events).",
+    "Platform limit: a modal dialog makes everything outside it inert, top layer included. A toast sent while a modal dialog is open is seen above the dialog but cannot be pressed, focused or announced until the dialog closes (checked in toast.spec.ts). The contract says the region stays above open dialogs; visually it does.",
+    "The countdown is paused while the pointer is over the region, while focus is inside it, while the document is hidden and while the toast is queued (data-queued set by the region beyond max).",
+    "Leaving uses a Svelte out transition (global) reading the motion tokens from CSS: the application removes the toast from the list, so a CSS exit transition has nothing to run on; under reduced motion it only fades. Entering uses @starting-style."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): centered layout, automatic single or multi line (actions under the description), appearance neutral or intense (named by the user), a toast with an action fades after 8 s by default, danger stays by default, closable prop; sending a toast from a modal dialog documented as not supported (\"ce n'est pas une bonne pratique d'ouvrir une toast depuis une dialog\"). To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/feedback/toast/contract.json": "ca7c269cbd171e244b5ad066a073e7138f2570a3e23a132c010e7e23d73157a1"
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
+    },
+    {
+      "date": "2026-11-03",
+      "change": "User at the implementation review round 2: \"Jamais de bouton en accent, c'est des actions secondaires […] des btn en ghost, border et à la limite danger, pas plus de complexité\" — the action is a ghost or outline Button, neutral or danger; the intense redirection of accent buttons is removed.",
+      "sha256": {
+        "foundations/components/feedback/toast/contract.json": "719a33fe39efed30524f517eb0b0f3b6f81bab76caa2437b0b243fcdd89a74b7"
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
+    },
+    {
+      "date": "2026-11-03",
+      "change": "User at the implementation review round 3: \"les boutons ne suivent pas l'intent non plus en mode intense\". In appearance intense, buttons of intent accent or neutral (action and dismiss) take the action family of the toast's intent, as in an Alert; danger keeps its own.",
+      "sha256": {
+        "foundations/components/feedback/toast/contract.json": "13b4ee1abefa4b79f51d242c046be53419bf0bcae784244b8dc0a90cbe6cecc1"
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
+    }
+  ]
+}

@@ -1,0 +1,926 @@
+{
+  "method": "WCAG relative luminance; alpha composited on each color.surface.* backdrop of the status contrastScope (all of them when absent); the explicit pairs of the contract `contrast` block are measured against their surface role (composited on color.surface.default) or color token. Parameters valued \"disabled\" and contrastScope.informational pairs are informational (minimum null), not a conformance claim.",
+  "checks": 108,
+  "failures": [],
+  "minimumActiveText": null,
+  "results": [
+    {
+      "context": "base-light-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.524827,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 10.011651,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 8.866044,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.63622,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.524827,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 10.011651,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 8.866044,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.63622,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.524827,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 10.011651,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 8.866044,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.63622,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.154127,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 9.097413,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 6.084399,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.154127,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 9.097413,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 6.084399,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.154127,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 9.097413,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 6.084399,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.524827,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 10.011651,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 8.866044,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.63622,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.524827,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 10.011651,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 8.866044,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.63622,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.524827,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 10.011651,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 8.866044,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.63622,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.154127,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 9.097413,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 6.084399,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.154127,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 9.097413,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 6.084399,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.154127,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 9.097413,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 6.084399,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.524827,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 10.011651,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 8.866044,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.63622,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.524827,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 10.011651,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 8.866044,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.63622,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.524827,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 10.011651,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 8.866044,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.63622,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.154127,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 9.097413,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 6.084399,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.154127,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 9.097413,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 6.084399,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "default",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "hover",
+      "role": "item.content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "interaction": "disabled",
+      "role": "item.content",
+      "ratio": 2.154127,
+      "minimum": null,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "role": "item.dangerColor",
+      "ratio": 9.097413,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "color.item.hover.surface",
+      "role": "item.dangerColor",
+      "ratio": 6.084399,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "color.surface.overlay",
+      "role": "group.headingColor",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    }
+  ]
+}

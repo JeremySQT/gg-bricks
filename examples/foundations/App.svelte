@@ -339,12 +339,12 @@
               <div
                 class="field"
                 class:focus={st === 'focus'}
-                style:background={`var(--ggb-color-field-${st}-surface)`}
-                style:color={`var(--ggb-color-field-${st}-content)`}
-                style:border-color={`var(--ggb-color-field-${st}-border)`}
+                style:background={`var(--ggb-color-input-${st}-surface)`}
+                style:color={`var(--ggb-color-input-${st}-content)`}
+                style:border-color={`var(--ggb-color-input-${st}-border)`}
               >
                 <span>{st}</span>
-                <span style:color={`var(--ggb-color-field-${st}-placeholder)`}>placeholder</span>
+                <span style:color={`var(--ggb-color-input-${st}-placeholder)`}>placeholder</span>
               </div>
             {/each}
           </div>
@@ -522,7 +522,7 @@
   </section>
 
   <section id="shape">
-    <h2>Shape: radii, borders, icons and avatars</h2>
+    <h2>Shape: radii, borders and icons</h2>
     <div class="row wrap">
       {#each keys('radius.') as k (k)}
         <div class="shape" style:border-radius={`var(--ggb-${k.replaceAll('.', '-')})`}>
@@ -553,14 +553,6 @@
           style:height={`var(--ggb-${k.replaceAll('.', '-')})`}
           title={k}
         ></span>
-      {/each}
-      {#each keys('size.avatar.') as k (k)}
-        <span
-          class="avatar"
-          style:width={`var(--ggb-${k.replaceAll('.', '-')})`}
-          style:height={`var(--ggb-${k.replaceAll('.', '-')})`}
-          title={k}>{last(k)}</span
-        >
       {/each}
     </div>
   </section>
@@ -768,9 +760,9 @@
   }
   select {
     font: inherit;
-    color: var(--ggb-color-field-default-content);
-    background: var(--ggb-color-field-default-surface);
-    border: var(--ggb-border-width-default) solid var(--ggb-color-field-default-border);
+    color: var(--ggb-color-input-default-content);
+    background: var(--ggb-color-input-default-surface);
+    border: var(--ggb-border-width-default) solid var(--ggb-color-input-default-border);
     border-radius: var(--ggb-radius-control);
     min-height: var(--ggb-size-control-md);
     padding-inline: var(--ggb-space-control-padding-inline-md);
@@ -1022,14 +1014,6 @@
     display: inline-block;
     background: var(--ggb-color-content-secondary);
     border-radius: var(--ggb-primitive-radius-xs);
-  }
-  .avatar {
-    display: inline-grid;
-    place-items: center;
-    background: var(--ggb-color-action-accent-solid-default-surface);
-    color: var(--ggb-color-action-accent-solid-default-content);
-    border-radius: var(--ggb-radius-full);
-    font: var(--ggb-typography-label-sm);
   }
   .card {
     width: 200px;

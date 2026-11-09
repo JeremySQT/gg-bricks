@@ -1,4 +1,4 @@
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Locator, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import fs from 'node:fs';
 import { capture } from './helpers.ts';
@@ -78,25 +78,55 @@ for (const theme of ['light', 'dark'] as const) {
   });
 }
 
+// A page without live blocks, with the reason: its examples are code and the playground is the live case.
+// The element a playground shows, when it is not the component root: the Toast playground previews a toast in its
+// frame and sends live ones into the page's region with Show live.
+const playgroundTarget: Record<string, string> = { toast: '.ggb-toast__item' };
+const noLiveBlocks: Record<string, string> = {
+  toast: 'one notifications region per page: the playground renders it, the examples are shown as code'
+};
+
+// Overlays, and components an example shows after an action, are not visible until the reader acts: hover the first
+// button or link of the block (a tooltip), then press it (a popover, a menu, a dialog, an alert after a failed save);
+// the component must then be visible. Escape closes what opened, so that the rest of the page stays usable.
+async function reveal(page: Page, scope: Locator, selector: string) {
+  const target = scope.locator(selector).first();
+  if (await target.isVisible()) return target;
+  const control = scope.locator('button, a[href]').first();
+  await control.hover();
+  // A tooltip opens after its hover delay; anything else opens on a press.
+  await page.waitForTimeout(1500);
+  if (!(await target.isVisible())) await control.click();
+  await expect(target).toBeVisible();
+  await page.keyboard.press('Escape');
+  // A dialog that ignores Escape (an explicit choice) is closed by its last footer button.
+  for (let k = 0; k < 3 && (await page.locator('dialog[open]').count()); k++)
+    await page.locator('dialog[open]').last().locator('button').last().click();
+  await page.mouse.move(0, 0);
+  return target;
+}
+
 for (const component of index.components) {
   test(`${component.id}: playground, blueprints and every live block`, async ({ page }) => {
     const markdown = fs.readFileSync(`documentation/components/${component.documentation}`, 'utf8');
     const blocks = (markdown.match(/^```svelte live$/gm) ?? []).length;
-    expect(blocks).toBeGreaterThan(0);
+    if (noLiveBlocks[component.id]) expect(blocks, noLiveBlocks[component.id]).toBe(0);
+    else expect(blocks).toBeGreaterThan(0);
     const errors = await open(page, `/components/${component.id}/`, 'light');
     const frames = page.locator('[data-ggb-docs-live]');
     await expect(frames).toHaveCount(blocks);
     for (let i = 0; i < blocks; i++) {
       const frame = frames.nth(i);
       await frame.scrollIntoViewIfNeeded();
-      await expect(frame.locator(`.ggb-${component.id}`).first()).toBeVisible();
+      // Hydrated first (client:visible), so that hovering or pressing reaches the component.
       await expect(frame.locator('astro-island')).not.toHaveAttribute('ssr', /.*/);
+      await reveal(page, frame, `.ggb-${component.id}`);
     }
     // The page opens with a playground whose first select changes the component.
     const playground = page.locator('.ggb-docs-playground');
     await expect(playground).toHaveCount(1);
-    const target = playground.locator(`.ggb-${component.id}`).first();
-    await expect(target).toBeVisible();
+    await playground.scrollIntoViewIfNeeded();
+    const target = await reveal(page, playground, playgroundTarget[component.id] ?? `.ggb-${component.id}`);
     const select = playground.locator('select').first();
     const options = await select.locator('option').allTextContents();
     const before = await target.evaluate((el) => el.outerHTML);

@@ -6,15 +6,15 @@ An input text lets the user type a short value on one line: a name, an email add
 
 ## Anatomy
 
-| #   | Part         | Required | Role                                                                                                          |
-| --- | ------------ | -------- | ------------------------------------------------------------------------------------------------------------- |
-| 1   | Container    | yes      | The field surface with a thin border and the control radius; fills the width it is given.                     |
-| 2   | Leading icon | no       | One decorative icon before the value, in the placeholder color; a press on it focuses the input.              |
-| 3   | Value        | yes      | The text on one line; it scrolls to keep the caret visible. The placeholder shows while it is empty.          |
-| 4   | Action       | no       | One IconButton after the value (md and lg only), one size smaller; a trailing icon takes its place otherwise. |
-| —   | Focus ring   | state    | Drawn outside the container while the input has focus.                                                        |
+| #   | Part         | Required | Role                                                                                                                                            |
+| --- | ------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Container    | yes      | The field that holds the icon, the value and the action; fills the width it is given.                                                           |
+| 2   | Leading icon | no       | One decorative icon before the value; a press on it focuses the input.                                                                          |
+| 3   | Value        | yes      | The text the user types, on one line; it scrolls to keep the caret visible. The placeholder shows while it is empty.                            |
+| 4   | Action       | no       | One IconButton after the value (md and lg only), such as clearing or revealing the value; a decorative trailing icon takes its place otherwise. |
+| —   | Focus ring   | state    | Shown around the container while the input has focus.                                                                                           |
 
-A height (the Button height of the size: 32, 40 or 44 px at md in compact, standard and comfortable), B icon start, C text start (the padding of a text-only Button, or after the icon slot).
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/input-text.json`.
 
 ## When to use
 
@@ -166,7 +166,7 @@ The component provides:
 - A native `<input>` named by the Field label or the `label` prop; the placeholder is never the name.
 - `type` for the matching keyboard and autofill; `aria-invalid` and `required` exposed; decorative icons hidden.
 - The action as a separate IconButton after the input in the tab order, with its own label; disabled with the input.
-- A visible focus ring, a 44 px target height in every size, reduced motion and forced colors handled.
+- A visible focus ring, a target at least 44 px tall in every size, reduced motion and forced colors handled.
 
 The integration provides:
 
@@ -182,7 +182,7 @@ The integration provides:
 | [1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)          | AA    | Component (field border at least 3:1)                    |
 | [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)                             | A     | Component                                                |
 | [2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)                   | AA    | Component                                                |
-| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)     | AA    | Component (44 px target height)                          |
+| [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)     | AA    | Component (44 px target height in every size)            |
 | [3.3.1 Error Identification](https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html)     | A     | Integration, through Field                               |
 | [3.3.2 Labels or Instructions](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html) | A     | Integration (Field label and description)                |
 | [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)             | A     | Component                                                |

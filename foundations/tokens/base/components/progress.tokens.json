@@ -1,0 +1,27 @@
+{
+  "component": {
+    "progress": {
+      "$description": "Progress tokens: values that mean something only for the Progress bar. They do not change with density.",
+      "thickness": {
+        "$description": "Block size of the track and the indicator.",
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v4}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v6}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v8}"
+        }
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "{primitive.radius.full}",
+        "$description": "Corners of the track and the indicator: fully rounded in the base brand; a brand overrides it in its own components/progress.tokens.json (0 for rectangular bars)."
+      }
+    }
+  }
+}

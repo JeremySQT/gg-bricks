@@ -12,7 +12,7 @@ A radio group asks for exactly one choice among a few options that all stay visi
 | 2   | Selected radio | state    | Exactly one radio is on once the user has chosen; selecting another turns it off.                               |
 | 3   | Order          | yes      | The radios follow the order of the source; the arrow keys move through them in that order and wrap.             |
 
-A gap: vertical, `space.content.sm` between radios (4, 8 or 12 px in compact, standard and comfortable density); horizontal, `space.content.lg` between radios (12, 16 or 24 px) and `space.content.sm` between lines.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/radio-group.json`.
 
 ## When to use
 

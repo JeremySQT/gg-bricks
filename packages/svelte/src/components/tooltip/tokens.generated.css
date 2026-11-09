@@ -1,0 +1,21 @@
+/* Generated token bindings from the tooltip contract. Do not edit. */
+@layer ggb {
+.ggb-tooltip {
+  --ggb-tooltip-surface: var(--ggb-color-surface-inverse);
+  --ggb-tooltip-content: var(--ggb-color-content-inverse);
+  --ggb-tooltip-typography: var(--ggb-typography-caption-md);
+  --ggb-tooltip-typography-letterSpacing: var(--ggb-typography-caption-md-letterSpacing);
+  --ggb-tooltip-typography-fontFeatureSettings: var(--ggb-typography-caption-md-fontFeatureSettings);
+  --ggb-tooltip-radius: var(--ggb-radius-control);
+  --ggb-tooltip-paddingInline: var(--ggb-space-content-sm);
+  --ggb-tooltip-paddingBlock: var(--ggb-space-content-xs);
+  --ggb-tooltip-maxInlineSize: var(--ggb-component-tooltip-max-inline-size);
+  --ggb-tooltip-offset: var(--ggb-space-content-xs);
+  --ggb-tooltip-motionDelay: var(--ggb-component-tooltip-delay);
+  --ggb-tooltip-enterDistance: var(--ggb-motion-distance-sm);
+  --ggb-tooltip-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-tooltip-easingEnter: var(--ggb-motion-easing-enter);
+  --ggb-tooltip-easingExit: var(--ggb-motion-easing-exit);
+  --ggb-tooltip-layer: var(--ggb-layer-tooltip);
+}
+}

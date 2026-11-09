@@ -3,7 +3,7 @@
 // boolean) while the other controls use the boolean alone. This migration keeps the boolean:
 // - every instance of a State=focus variant on the forms pages is swapped to State=default with Focus on;
 // - the State=focus variants are removed (InputText 10, Textarea 6);
-// - default and hover variants get a “Focus border” layer (inside stroke color/field/focus/border at
+// - default and hover variants get a “Focus border” layer (inside stroke color/input/focus/border at
 //   border/width/default, radius/control, visible = Focus): the code paints the focus border by precedence
 //   disabled, readonly, invalid, focus, hover, so readonly and invalid keep their own border under the ring;
 // - disabled variants are never focused: their ring no longer follows Focus;
@@ -63,7 +63,7 @@ for (const [setId, name] of [
     fb.y = 0;
     fb.resize(v.width, v.height);
     fb.constraints = { horizontal: 'STRETCH', vertical: 'STRETCH' };
-    fb.strokes = [paint('color/field/focus/border')];
+    fb.strokes = [paint('color/input/focus/border')];
     fb.strokeAlign = 'INSIDE';
     for (const f of STROKES) fb.setBoundVariable(f, V('border/width/default'));
     for (const f of RADII) fb.setBoundVariable(f, V('radius/control'));

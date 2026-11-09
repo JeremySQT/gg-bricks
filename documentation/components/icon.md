@@ -6,12 +6,12 @@ An icon shows a small one-color drawing from your icon set at one of five sizes,
 
 ## Anatomy
 
-| #   | Part  | Required | Role                                                                                                                                    |
-| --- | ----- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Box   | yes      | A square of the chosen size (12, 16, 20, 24 or 32 px) that never shrinks or stretches, centered on the capitals of the text next to it. |
-| 2   | Glyph | yes      | The drawing you supply, in one color (`currentColor`), inset by one eighth of the box as in Phosphor Icons.                             |
+| #   | Part  | Required | Role                                                                                                                                            |
+| --- | ----- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Box   | yes      | A square of the chosen size that never shrinks or stretches, lined up with the text next to it.                                                 |
+| 2   | Glyph | yes      | The drawing you supply, in one color that follows the surrounding text, with the inner margin of Phosphor Icons that hosts rely on to place it. |
 
-A is the inset, B the box size. Hosts rely on the inset: a Button places an icon by its drawing, not by its box.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/icon.json`.
 
 ## When to use
 
@@ -23,7 +23,7 @@ A is the inset, B the box size. Hosts rely on the inset: a Button places an icon
 
 - An action without visible text: IconButton.
 - Multi-color artwork, logos, photographs; avatars: Avatar (planned).
-- A loading indicator: Spinner (planned); the Button has its own.
+- A loading indicator: Spinner; Button and IconButton show it with `loading`.
 - A status or a category in words: Badge.
 - Icon fonts and sprite sheets: the component takes inline vector content.
 
@@ -147,7 +147,7 @@ Renders a single `<svg>` element, so a host that selects its slot content (`.ggb
 
 | Prop       | Type                                   | Default         | Description                                                                                                         |
 | ---------- | -------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `size`     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`          | Box size: 12, 16, 20, 24 or 32 px (`size.icon.*`), identical in every density. A host slot that sizes icons wins.   |
+| `size`     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`          | Box size, identical in every density. A host slot that sizes icons wins.                                            |
 | `label`    | `string`                               | —               | Accessible name. Without it (or blank) the icon is decorative and hidden from assistive technology.                 |
 | `viewBox`  | `string`                               | `'0 0 256 256'` | Coordinate box of the glyph: the Phosphor grid by default; pass another set's grid when its glyphs are drawn on it. |
 | `children` | `Snippet`                              | —               | The glyph: paths and shapes in the coordinate box, one color, painted in `currentColor`.                            |
@@ -155,7 +155,7 @@ Renders a single `<svg>` element, so a host that selects its slot content (`.ggb
 
 Every other `SVGAttributes` of the element is forwarded, except those the component owns: `children`, `viewBox`, `width`, `height`, `fill`, `focusable`, `role`, `aria-label` and `aria-hidden`. There are no events and no bindable reference: an icon is static content.
 
-The size reads `size.icon.{size}`; color comes from the context. The platform-independent contract ships as `contracts/icon.json`.
+Color comes from the context. The platform-independent contract ships as `contracts/icon.json`.
 
 ## Accessibility
 

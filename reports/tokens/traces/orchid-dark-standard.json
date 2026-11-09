@@ -2380,6 +2380,51 @@
       }
     }
   ],
+  "primitive.dimension.v240": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 240,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v360": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 360,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v400": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 400,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v560": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 560,
+        "unit": "px"
+      }
+    }
+  ],
+  "primitive.dimension.v720": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 720,
+        "unit": "px"
+      }
+    }
+  ],
   "primitive.layer.base": [
     {
       "source": "foundations/tokens/base/primitives/layers.tokens.json",
@@ -2487,6 +2532,15 @@
       "source": "foundations/tokens/base/primitives/motion.tokens.json",
       "value": {
         "value": 700,
+        "unit": "ms"
+      }
+    }
+  ],
+  "primitive.duration.1500": [
+    {
+      "source": "foundations/tokens/base/primitives/motion.tokens.json",
+      "value": {
+        "value": 1500,
         "unit": "ms"
       }
     }
@@ -3729,52 +3783,10 @@
       "value": "{primitive.dimension.v20}"
     }
   ],
-  "size.switch.sm": [
+  "size.overlay.panel": [
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v16}"
-    }
-  ],
-  "size.switch.md": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v20}"
-    }
-  ],
-  "size.switch.lg": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v24}"
-    }
-  ],
-  "size.avatar.xs": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v24}"
-    }
-  ],
-  "size.avatar.sm": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v32}"
-    }
-  ],
-  "size.avatar.md": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v40}"
-    }
-  ],
-  "size.avatar.lg": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v48}"
-    }
-  ],
-  "size.avatar.xl": [
-    {
-      "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v64}"
+      "value": "{primitive.dimension.v360}"
     }
   ],
   "typography.display.xl": [
@@ -4165,6 +4177,12 @@
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
       "value": "{primitive.duration.300}"
+    }
+  ],
+  "motion.duration.loop": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.duration.1500}"
     }
   ],
   "motion.easing.standard": [
@@ -5223,145 +5241,955 @@
       "value": "{primitive.color.transparent}"
     }
   ],
-  "color.field.default.surface": [
+  "color.action.info.solid.default.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.900}"
+      "value": "{color.palette.info.600}"
     }
   ],
-  "color.field.default.content": [
+  "color.action.info.solid.default.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.100}"
+      "value": "{color.palette.neutral.0}"
     }
   ],
-  "color.field.default.border": [
+  "color.action.info.solid.default.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.500}"
+      "value": "{color.palette.info.600}"
     }
   ],
-  "color.field.default.placeholder": [
+  "color.action.info.solid.hover.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.400}"
+      "value": "{color.palette.info.700}"
     }
   ],
-  "color.field.hover.surface": [
+  "color.action.info.solid.hover.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.900}"
+      "value": "{color.palette.neutral.0}"
     }
   ],
-  "color.field.hover.content": [
+  "color.action.info.solid.hover.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.100}"
+      "value": "{color.palette.info.700}"
     }
   ],
-  "color.field.hover.border": [
+  "color.action.info.solid.pressed.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.400}"
+      "value": "{color.palette.info.800}"
     }
   ],
-  "color.field.hover.placeholder": [
+  "color.action.info.solid.pressed.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.400}"
+      "value": "{color.palette.neutral.0}"
     }
   ],
-  "color.field.focus.surface": [
+  "color.action.info.solid.pressed.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.900}"
+      "value": "{color.palette.info.800}"
     }
   ],
-  "color.field.focus.content": [
+  "color.action.info.solid.loading.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.100}"
+      "value": "{color.action.info.solid.default.surface}"
     }
   ],
-  "color.field.focus.border": [
+  "color.action.info.solid.loading.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.accent.400}"
+      "value": "{color.action.info.solid.default.content}"
     }
   ],
-  "color.field.focus.placeholder": [
+  "color.action.info.solid.loading.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.400}"
+      "value": "{color.action.info.solid.default.border}"
     }
   ],
-  "color.field.readonly.surface": [
-    {
-      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.800}"
-    }
-  ],
-  "color.field.readonly.content": [
-    {
-      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.100}"
-    }
-  ],
-  "color.field.readonly.border": [
-    {
-      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.default.border}"
-    }
-  ],
-  "color.field.readonly.placeholder": [
-    {
-      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.palette.neutral.400}"
-    }
-  ],
-  "color.field.disabled.surface": [
+  "color.action.info.solid.disabled.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "value": "{color.palette.neutral.800}"
     }
   ],
-  "color.field.disabled.content": [
+  "color.action.info.solid.disabled.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "value": "{color.palette.neutral.600}"
     }
   ],
-  "color.field.disabled.border": [
+  "color.action.info.solid.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.800}"
+    }
+  ],
+  "color.action.info.outline.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.info.outline.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.300}"
+    }
+  ],
+  "color.action.info.outline.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.500}"
+    }
+  ],
+  "color.action.info.outline.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.950}"
+    }
+  ],
+  "color.action.info.outline.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.300}"
+    }
+  ],
+  "color.action.info.outline.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.400}"
+    }
+  ],
+  "color.action.info.outline.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.900}"
+    }
+  ],
+  "color.action.info.outline.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.200}"
+    }
+  ],
+  "color.action.info.outline.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.400}"
+    }
+  ],
+  "color.action.info.outline.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.info.outline.default.surface}"
+    }
+  ],
+  "color.action.info.outline.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.info.outline.default.content}"
+    }
+  ],
+  "color.action.info.outline.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.info.outline.default.border}"
+    }
+  ],
+  "color.action.info.outline.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.info.outline.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.action.info.outline.disabled.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "value": "{color.palette.neutral.700}"
     }
   ],
-  "color.field.disabled.placeholder": [
+  "color.action.info.ghost.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.info.ghost.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.300}"
+    }
+  ],
+  "color.action.info.ghost.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.info.ghost.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.950}"
+    }
+  ],
+  "color.action.info.ghost.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.300}"
+    }
+  ],
+  "color.action.info.ghost.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.info.ghost.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.900}"
+    }
+  ],
+  "color.action.info.ghost.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.info.200}"
+    }
+  ],
+  "color.action.info.ghost.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.info.ghost.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.info.ghost.default.surface}"
+    }
+  ],
+  "color.action.info.ghost.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.info.ghost.default.content}"
+    }
+  ],
+  "color.action.info.ghost.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.info.ghost.default.border}"
+    }
+  ],
+  "color.action.info.ghost.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.info.ghost.disabled.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "value": "{color.palette.neutral.600}"
     }
   ],
-  "color.field.invalid.surface": [
+  "color.action.info.ghost.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.success.solid.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.600}"
+    }
+  ],
+  "color.action.success.solid.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.success.solid.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.600}"
+    }
+  ],
+  "color.action.success.solid.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.700}"
+    }
+  ],
+  "color.action.success.solid.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.success.solid.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.700}"
+    }
+  ],
+  "color.action.success.solid.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.800}"
+    }
+  ],
+  "color.action.success.solid.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.success.solid.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.800}"
+    }
+  ],
+  "color.action.success.solid.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.success.solid.default.surface}"
+    }
+  ],
+  "color.action.success.solid.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.success.solid.default.content}"
+    }
+  ],
+  "color.action.success.solid.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.success.solid.default.border}"
+    }
+  ],
+  "color.action.success.solid.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.800}"
+    }
+  ],
+  "color.action.success.solid.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.action.success.solid.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.800}"
+    }
+  ],
+  "color.action.success.outline.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.success.outline.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.300}"
+    }
+  ],
+  "color.action.success.outline.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.500}"
+    }
+  ],
+  "color.action.success.outline.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.950}"
+    }
+  ],
+  "color.action.success.outline.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.300}"
+    }
+  ],
+  "color.action.success.outline.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.400}"
+    }
+  ],
+  "color.action.success.outline.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.900}"
+    }
+  ],
+  "color.action.success.outline.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.200}"
+    }
+  ],
+  "color.action.success.outline.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.400}"
+    }
+  ],
+  "color.action.success.outline.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.success.outline.default.surface}"
+    }
+  ],
+  "color.action.success.outline.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.success.outline.default.content}"
+    }
+  ],
+  "color.action.success.outline.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.success.outline.default.border}"
+    }
+  ],
+  "color.action.success.outline.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.success.outline.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.action.success.outline.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.700}"
+    }
+  ],
+  "color.action.success.ghost.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.success.ghost.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.300}"
+    }
+  ],
+  "color.action.success.ghost.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.success.ghost.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.950}"
+    }
+  ],
+  "color.action.success.ghost.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.300}"
+    }
+  ],
+  "color.action.success.ghost.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.success.ghost.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.900}"
+    }
+  ],
+  "color.action.success.ghost.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.success.200}"
+    }
+  ],
+  "color.action.success.ghost.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.success.ghost.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.success.ghost.default.surface}"
+    }
+  ],
+  "color.action.success.ghost.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.success.ghost.default.content}"
+    }
+  ],
+  "color.action.success.ghost.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.success.ghost.default.border}"
+    }
+  ],
+  "color.action.success.ghost.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.success.ghost.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.action.success.ghost.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.warning.solid.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.600}"
+    }
+  ],
+  "color.action.warning.solid.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.warning.solid.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.600}"
+    }
+  ],
+  "color.action.warning.solid.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.700}"
+    }
+  ],
+  "color.action.warning.solid.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.warning.solid.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.700}"
+    }
+  ],
+  "color.action.warning.solid.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.800}"
+    }
+  ],
+  "color.action.warning.solid.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.0}"
+    }
+  ],
+  "color.action.warning.solid.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.800}"
+    }
+  ],
+  "color.action.warning.solid.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.warning.solid.default.surface}"
+    }
+  ],
+  "color.action.warning.solid.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.warning.solid.default.content}"
+    }
+  ],
+  "color.action.warning.solid.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.warning.solid.default.border}"
+    }
+  ],
+  "color.action.warning.solid.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.800}"
+    }
+  ],
+  "color.action.warning.solid.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.action.warning.solid.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.800}"
+    }
+  ],
+  "color.action.warning.outline.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.warning.outline.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.300}"
+    }
+  ],
+  "color.action.warning.outline.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.500}"
+    }
+  ],
+  "color.action.warning.outline.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.950}"
+    }
+  ],
+  "color.action.warning.outline.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.300}"
+    }
+  ],
+  "color.action.warning.outline.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.400}"
+    }
+  ],
+  "color.action.warning.outline.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.900}"
+    }
+  ],
+  "color.action.warning.outline.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.200}"
+    }
+  ],
+  "color.action.warning.outline.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.400}"
+    }
+  ],
+  "color.action.warning.outline.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.warning.outline.default.surface}"
+    }
+  ],
+  "color.action.warning.outline.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.warning.outline.default.content}"
+    }
+  ],
+  "color.action.warning.outline.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.warning.outline.default.border}"
+    }
+  ],
+  "color.action.warning.outline.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.warning.outline.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.action.warning.outline.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.700}"
+    }
+  ],
+  "color.action.warning.ghost.default.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.warning.ghost.default.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.300}"
+    }
+  ],
+  "color.action.warning.ghost.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.warning.ghost.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.950}"
+    }
+  ],
+  "color.action.warning.ghost.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.300}"
+    }
+  ],
+  "color.action.warning.ghost.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.warning.ghost.pressed.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.900}"
+    }
+  ],
+  "color.action.warning.ghost.pressed.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.warning.200}"
+    }
+  ],
+  "color.action.warning.ghost.pressed.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.warning.ghost.loading.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.warning.ghost.default.surface}"
+    }
+  ],
+  "color.action.warning.ghost.loading.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.warning.ghost.default.content}"
+    }
+  ],
+  "color.action.warning.ghost.loading.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.action.warning.ghost.default.border}"
+    }
+  ],
+  "color.action.warning.ghost.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.action.warning.ghost.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.action.warning.ghost.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{primitive.color.transparent}"
+    }
+  ],
+  "color.input.default.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "value": "{color.palette.neutral.900}"
     }
   ],
-  "color.field.invalid.content": [
+  "color.input.default.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "value": "{color.palette.neutral.100}"
     }
   ],
-  "color.field.invalid.border": [
+  "color.input.default.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.500}"
+    }
+  ],
+  "color.input.default.placeholder": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.input.hover.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.input.hover.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.input.hover.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.input.hover.placeholder": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.input.focus.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.input.focus.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.input.focus.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.accent.400}"
+    }
+  ],
+  "color.input.focus.placeholder": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.input.readonly.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.800}"
+    }
+  ],
+  "color.input.readonly.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.input.readonly.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.input.default.border}"
+    }
+  ],
+  "color.input.readonly.placeholder": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.400}"
+    }
+  ],
+  "color.input.disabled.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.800}"
+    }
+  ],
+  "color.input.disabled.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.input.disabled.border": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.700}"
+    }
+  ],
+  "color.input.disabled.placeholder": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.600}"
+    }
+  ],
+  "color.input.invalid.surface": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.900}"
+    }
+  ],
+  "color.input.invalid.content": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
+      "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.input.invalid.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "value": "{color.palette.danger.400}"
     }
   ],
-  "color.field.invalid.placeholder": [
+  "color.input.invalid.placeholder": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
       "value": "{color.palette.neutral.400}"
@@ -5370,91 +6198,91 @@
   "color.choice.off.default.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.default.surface}"
+      "value": "{color.input.default.surface}"
     }
   ],
   "color.choice.off.default.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.default.placeholder}"
+      "value": "{color.input.default.placeholder}"
     }
   ],
   "color.choice.off.default.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.default.border}"
+      "value": "{color.input.default.border}"
     }
   ],
   "color.choice.off.hover.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.hover.surface}"
+      "value": "{color.input.hover.surface}"
     }
   ],
   "color.choice.off.hover.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.hover.placeholder}"
+      "value": "{color.input.hover.placeholder}"
     }
   ],
   "color.choice.off.hover.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.hover.border}"
+      "value": "{color.input.hover.border}"
     }
   ],
   "color.choice.off.readonly.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.readonly.surface}"
+      "value": "{color.input.readonly.surface}"
     }
   ],
   "color.choice.off.readonly.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.readonly.placeholder}"
+      "value": "{color.input.readonly.placeholder}"
     }
   ],
   "color.choice.off.readonly.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.readonly.border}"
+      "value": "{color.input.readonly.border}"
     }
   ],
   "color.choice.off.disabled.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.disabled.surface}"
+      "value": "{color.input.disabled.surface}"
     }
   ],
   "color.choice.off.disabled.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.disabled.placeholder}"
+      "value": "{color.input.disabled.placeholder}"
     }
   ],
   "color.choice.off.disabled.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.disabled.border}"
+      "value": "{color.input.disabled.border}"
     }
   ],
   "color.choice.off.invalid.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.invalid.surface}"
+      "value": "{color.input.invalid.surface}"
     }
   ],
   "color.choice.off.invalid.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.invalid.placeholder}"
+      "value": "{color.input.invalid.placeholder}"
     }
   ],
   "color.choice.off.invalid.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.invalid.border}"
+      "value": "{color.input.invalid.border}"
     }
   ],
   "color.choice.on.default.surface": [
@@ -5496,43 +6324,43 @@
   "color.choice.on.readonly.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.readonly.surface}"
+      "value": "{color.input.readonly.surface}"
     }
   ],
   "color.choice.on.readonly.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.readonly.content}"
+      "value": "{color.input.readonly.content}"
     }
   ],
   "color.choice.on.readonly.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.readonly.border}"
+      "value": "{color.input.readonly.border}"
     }
   ],
   "color.choice.on.disabled.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.disabled.surface}"
+      "value": "{color.input.disabled.surface}"
     }
   ],
   "color.choice.on.disabled.content": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.disabled.content}"
+      "value": "{color.input.disabled.content}"
     }
   ],
   "color.choice.on.disabled.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.disabled.border}"
+      "value": "{color.input.disabled.border}"
     }
   ],
   "color.choice.on.invalid.surface": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.invalid.border}"
+      "value": "{color.input.invalid.border}"
     }
   ],
   "color.choice.on.invalid.content": [
@@ -5544,7 +6372,7 @@
   "color.choice.on.invalid.border": [
     {
       "source": "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "value": "{color.field.invalid.border}"
+      "value": "{color.input.invalid.border}"
     }
   ],
   "color.status.neutral.surface": [
@@ -6055,6 +6883,90 @@
     {
       "source": "foundations/tokens/base/semantic/density.standard.tokens.json",
       "value": "{primitive.dimension.v64}"
+    }
+  ],
+  "component.dialog.inline-size.sm": [
+    {
+      "source": "foundations/tokens/base/components/dialog.tokens.json",
+      "value": "{primitive.dimension.v400}"
+    }
+  ],
+  "component.dialog.inline-size.md": [
+    {
+      "source": "foundations/tokens/base/components/dialog.tokens.json",
+      "value": "{primitive.dimension.v560}"
+    }
+  ],
+  "component.dialog.inline-size.lg": [
+    {
+      "source": "foundations/tokens/base/components/dialog.tokens.json",
+      "value": "{primitive.dimension.v720}"
+    }
+  ],
+  "component.progress.thickness.sm": [
+    {
+      "source": "foundations/tokens/base/components/progress.tokens.json",
+      "value": "{primitive.dimension.v4}"
+    }
+  ],
+  "component.progress.thickness.md": [
+    {
+      "source": "foundations/tokens/base/components/progress.tokens.json",
+      "value": "{primitive.dimension.v6}"
+    }
+  ],
+  "component.progress.thickness.lg": [
+    {
+      "source": "foundations/tokens/base/components/progress.tokens.json",
+      "value": "{primitive.dimension.v8}"
+    }
+  ],
+  "component.progress.radius": [
+    {
+      "source": "foundations/tokens/base/components/progress.tokens.json",
+      "value": "{primitive.radius.full}"
+    }
+  ],
+  "component.spinner.duration": [
+    {
+      "source": "foundations/tokens/base/components/spinner.tokens.json",
+      "value": "{primitive.duration.700}"
+    }
+  ],
+  "component.spinner.track-opacity": [
+    {
+      "source": "foundations/tokens/base/components/spinner.tokens.json",
+      "value": "{primitive.opacity.20}"
+    }
+  ],
+  "component.switch.track-size.sm": [
+    {
+      "source": "foundations/tokens/base/components/switch.tokens.json",
+      "value": "{primitive.dimension.v16}"
+    }
+  ],
+  "component.switch.track-size.md": [
+    {
+      "source": "foundations/tokens/base/components/switch.tokens.json",
+      "value": "{primitive.dimension.v20}"
+    }
+  ],
+  "component.switch.track-size.lg": [
+    {
+      "source": "foundations/tokens/base/components/switch.tokens.json",
+      "value": "{primitive.dimension.v24}"
+    }
+  ],
+  "component.tooltip.delay": [
+    {
+      "source": "foundations/tokens/base/components/tooltip.tokens.json",
+      "value": "{primitive.duration.500}"
+    }
+  ],
+  "component.tooltip.max-inline-size": [
+    {
+      "source": "foundations/tokens/base/components/tooltip.tokens.json",
+      "value": "{primitive.dimension.v240}"
     }
   ]
 }

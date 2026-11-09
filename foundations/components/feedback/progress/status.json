@@ -1,0 +1,261 @@
+{
+  "formatStatus": "v1",
+  "componentId": "progress",
+  "family": "feedback",
+  "wave": 3,
+  "phase": "done",
+  "scope": {
+    "purpose": "Show how far a task of known size has gone, or that a longer task is under way.",
+    "useCases": [
+      "Upload or import with a known size.",
+      "A multi-step process (step 3 of 5 shown as a fraction).",
+      "An indeterminate long task (server processing)."
+    ],
+    "exclusions": [
+      "Circular progress: later on demand.",
+      "Steppers with labelled steps.",
+      "Meters (a static value in a range, like disk usage): a separate semantic, later."
+    ],
+    "alternatives": ["Spinner for a short wait in a small place.", "Skeleton for loading content."]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/feedback/progress/contract.json",
+      "sha256": "8b6ca20ad671c8df38376460897830a26eca055b1da47d5d054038461098585e"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/common.tokens.json",
+      "foundations/tokens/base/components/progress.tokens.json"
+    ],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "feedback/progress (407:114)",
+      "library": "Feedback (407:112), section Progress (413:2)",
+      "componentSet": "413:147",
+      "specification": "458:233",
+      "ledger": "reports/components/progress/figma/ledger.json",
+      "parity": "reports/components/progress/figma/parity.json",
+      "screenshots": [
+        "reports/components/progress/figma/master-set.png",
+        "reports/components/progress/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/progress/figma/blueprint-anatomy.png",
+          "node": "458:277"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/progress-master.plugin.js",
+        "authoring/adapters/figma/progress-spec.plugin.js",
+        "authoring/adapters/figma/progress-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/feedback/progress/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/progress",
+      "files": [
+        "packages/svelte/src/components/progress/Progress.svelte",
+        "packages/svelte/src/components/progress/types.ts",
+        "packages/svelte/src/components/progress/progress.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 Progress.Root"
+      },
+      "report": "reports/components/progress/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/progress",
+      "preview": "dist/previews/progress.html (npm run build && npm run build:preview progress)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page progress.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/feedback-simple.test.ts"],
+      "browser": ["tests/browser/progress.spec.ts"],
+      "evidence": "reports/components/progress/svelte/"
+    },
+    "humanDocs": "documentation/components/progress.md",
+    "agentDocs": "documentation/index.json (entry progress); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/progress.svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Progress contract: value, max, indeterminate, required label (showLabel), showValue, intent accent/success/warning/danger, size; indicator color.status.{intent}.icon on a color.surface.muted track with explicit 3:1 contrast pairs; component tokens component.progress.thickness.{sm,md,lg}; motion.duration.loop sweep.",
+      "revision": {
+        "paths": [
+          "foundations/components/feedback/progress/contract.json",
+          "foundations/tokens/base/components/progress.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/feedback/progress/contract.json": "8b6ca20ad671c8df38376460897830a26eca055b1da47d5d054038461098585e",
+          "foundations/tokens/base/components/progress.tokens.json": "5940280c0a6c7e01cec664daf9e1cce6ce712537189fc4b6d7d69f1164da829a"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 found or requested at the implementation review (User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqm…) accepted with the implementation: \"Je valide le reste\".",
+      "note": null
+    },
+    "implementation": {
+      "scope": "Progress on Bits UI Progress.Root: label (shown or hidden) as the name, percentage, clamping, indeterminate sweep, intents, thickness and component.progress.radius.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/progress/Progress.svelte",
+          "packages/svelte/src/components/progress/contract.generated.ts",
+          "packages/svelte/src/components/progress/progress.css",
+          "packages/svelte/src/components/progress/tokens.generated.css",
+          "packages/svelte/src/components/progress/types.ts",
+          "examples/progress/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/progress/Progress.svelte": "90c17c1305a4013a91d658aa16331326ea4f8edf07f8bdfc49f5ca735ecef007",
+          "packages/svelte/src/components/progress/contract.generated.ts": "401874e07910378f16f9298cdea8f6d71f2a1e8af9c4b2dd4e0d771a9b0badee",
+          "packages/svelte/src/components/progress/progress.css": "825376632e8f2d083b124e5b7c4c02edfc400c796e41e860fa0b6c91797fc4ca",
+          "packages/svelte/src/components/progress/tokens.generated.css": "9454d860c405d8742491e4cd0091ad53e1be1508213f433c91fa340bf62ce5fd",
+          "packages/svelte/src/components/progress/types.ts": "4005e7cc3a009176032b541bf27d941eb403afa1f7e25369b45e334bbc93c626",
+          "examples/progress/App.svelte": "98ec0b6598f4d20601cc560dceadd616340d5f799410a29476ebee32e7bcaeb2"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "note": null
+    },
+    "figmaParity": {
+      "scope": "Figma master 413:147 and specification frame 458:233 of the progress component, parity report (2376 records, 0 failures, 216 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/feedback/progress/figma-spec.md",
+          "reports/components/progress/figma/parity.json",
+          "reports/components/progress/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/feedback/progress/figma-spec.md": "070a0d95c6329173d44d0b136d37ac546932bb48d021e118027d07d0eedb6354",
+          "reports/components/progress/figma/parity.json": "0691ab2a10fd51142bf7235464a9bdf02013f004c8fd7fa70c52da0b560c427a",
+          "reports/components/progress/figma/ledger.json": "eda93390fe36b62e2a88e93caa5f26621d0662d36d412dbbd54f236dee6a6fbb"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "413:147",
+          "specificationFrame": "458:233"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of progress (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/progress.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/progress.svelte"
+        ],
+        "sha256": {
+          "documentation/components/progress.md": "27c7ef1f3673e0cbe19fedc8c19159cd4844eabaa48f496ed38a2cca8c5ddedc",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/progress.svelte": "3cc58d27d3b5e3ee773cc547db590f38c4b352224c78eae394a798398d848bd0"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/progress/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (2376 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/progress/svelte/"
+    },
+    {
+      "name": "npm run build:preview progress",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (2376 records, 0 failures, 216 justified)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/progress/figma/parity.json"
+    },
+    {
+      "name": "Figma parity after the review (Type variant removed, First line bound to Show label): 2376 records, 0 failures, 18 equal hashes",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/progress/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/progress/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/progress.md"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/progress.md"
+    }
+  ],
+  "decisionsTaken": [
+    "Linear bar only, with a required label shown above it by default (showLabel) and an optional percentage (showValue, tabular figures).",
+    "Indicator colors reuse color.status.{intent}.icon (accent, success, warning, danger): these roles already reach 3:1 on surfaces; the contract contrast block measures them against the track (color.surface.muted), surface.default and surface.overlay in 18 contexts: 0 failures.",
+    "Track color.surface.muted, fully rounded (radius.full).",
+    "Component tokens component.progress.thickness.{sm,md,lg} = 4, 6, 8 px (a value meaningful for Progress only).",
+    "Indeterminate: a one-third segment sweeping once per motion.duration.loop (new semantic role shared with Skeleton, 1500 ms), three times slower under reduced motion; value changes transition over motion.duration.base.",
+    "Corners: component token component.progress.radius, so that a brand can draw rectangular bars (user, 2026-11-03)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "Bits UI Progress.Root (2.19.3) does not render the id it receives: the component uses its child snippet to place the id on the progress bar itself.",
+    "The label stays in the DOM, visually hidden, when showLabel is false, and names the bar through aria-labelledby."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): \"Il faut aussi un token pour les border radius de la progress\" — radius now binds the component token component.progress.radius (primitive radius full in base; a brand overrides it, 0 for rectangular bars). To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/feedback/progress/contract.json": "8b6ca20ad671c8df38376460897830a26eca055b1da47d5d054038461098585e",
+        "foundations/tokens/base/components/progress.tokens.json": "5940280c0a6c7e01cec664daf9e1cce6ce712537189fc4b6d7d69f1164da829a"
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
+    }
+  ]
+}

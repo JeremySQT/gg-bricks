@@ -12,7 +12,7 @@ A checkbox group gathers several related checkboxes that answer one question, an
 | 2   | Checked  | state    | Any number of checkboxes can be checked, none included; the value lists them in the order of the page.          |
 | 3   | Order    | yes      | The checkboxes follow the order of the source; each one is a Tab stop and Space toggles it.                     |
 
-A gap: vertical, `space.content.sm` between checkboxes (4, 8 or 12 px in compact, standard and comfortable density); horizontal, `space.content.lg` between checkboxes (12, 16 or 24 px) and `space.content.sm` between lines.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/checkbox-group.json`.
 
 ## When to use
 

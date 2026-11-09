@@ -147,12 +147,12 @@
           "apps/docs/src/playgrounds/checkbox-group.svelte"
         ],
         "sha256": {
-          "documentation/components/checkbox-group.md": "193e93a138cd3351517aab7eb3644d09c338b272ea8515f0ae9e474179f94d5d",
-          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "documentation/components/checkbox-group.md": "b799c058b1b8ab8b3d978225d4b0df7825a20fc3d155c55b5284908db47919ae",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
           "apps/docs/src/playgrounds/checkbox-group.svelte": "b107b88c9e89c8f2afd2ed53d0ef6d0d5764d194384af1de583de524e250388a"
         }
       },
-      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded.",
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded. Re-recorded on 2026-11-09 with the wave 3 documentation review: User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\". The review covered the cross-references to the wave 3 components and the progressive detail rule (Anatomy in usage terms, the contract for tokens and measurements).",
       "note": null
     },
     "delivery": null
@@ -220,5 +220,24 @@
   "implementationNotes": [
     "Wave 2 addition, branch wave/2-form-foundations, contract drafted on 2026-10-28. Bits UI 2.19.3 provides Checkbox.Group (value string[], role group); its required puts aria-required on every checkbox, which the contract excludes.",
     "Implemented on 2026-10-28: CheckboxGroup.svelte, Checkbox value amendment, Field fixture; review page examples/checkbox-group."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-04",
+      "change": "Wave 3 documentation: documentation/index.json gains the ten wave 3 entries, and the existing entries no longer mark Menu, ButtonGroup, Tooltip, Spinner and Alert as planned. Cross-references only; the guidance is unchanged. To be re-presented with the wave 3 documentation review.",
+      "sha256": {
+        "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
+      },
+      "recorded": "Re-recorded with the wave 3 documentation approval of 2026-11-09."
+    },
+    {
+      "date": "2026-11-06",
+      "change": "User decision of 2026-11-06 (session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui vas-y, applique-le aux 25 pages\"), progressive detail: Anatomy lists the parts in usage terms without token names, measurements or colors and points to contracts/checkbox-group.json; token names and visual values removed from the rest of the page except where the reader acts on them. Guidance unchanged. To be re-presented with the wave 3 documentation review.",
+      "sha256": {
+        "documentation/components/checkbox-group.md": "b799c058b1b8ab8b3d978225d4b0df7825a20fc3d155c55b5284908db47919ae",
+        "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
+      },
+      "recorded": "Re-recorded with the wave 3 documentation approval of 2026-11-09."
+    }
   ]
 }

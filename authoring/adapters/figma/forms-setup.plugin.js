@@ -35,7 +35,7 @@ const ADAPTERS = {
   // Radio dot: 3/8 of size/choice/{sm,md,lg} (14, 16, 20).
   'radio/dot': { sm: 5.25, md: 6, lg: 7.5 },
   // Switch: track inline size 2 × trackSize − 4 × borderWidth, thumb trackSize − 4 × borderWidth, inset 2 × borderWidth
-  // (size/switch = 16, 20, 24; border/width/default = 1 in every brand).
+  // (component/switch/track-size = 16, 20, 24; border/width/default = 1 in every brand).
   'switch/track-width': { sm: 28, md: 36, lg: 44 },
   'switch/thumb': { sm: 12, md: 16, lg: 20 },
   'switch/inset': { sm: 2, md: 2, lg: 2 },

@@ -6,17 +6,17 @@ A button lets the user start an action or move to the next step of a task: save 
 
 ## Anatomy
 
-| #   | Part              | Required | Role                                                                                             |
-| --- | ----------------- | -------- | ------------------------------------------------------------------------------------------------ |
-| 1   | Root              | yes      | The element that reacts to clicks, taps and keys; its interaction target is at least 44 × 44 px. |
-| 2   | Container         | yes      | The visible button: background, border (outline only), corner radius, side padding.              |
-| 3   | Leading           | no       | One icon before the label. Decorative.                                                           |
-| 4   | Label             | yes      | The text and the accessible name, on one line, shortened with an ellipsis when space runs out.   |
-| 5   | Trailing          | no       | One icon, counter or keyboard shortcut after the label. Decorative.                              |
-| 6   | Loading indicator | state    | Centered while `loading` is set; the content keeps its place, so the width does not change.      |
-| 7   | Focus ring        | state    | Drawn outside the container on keyboard focus.                                                   |
+| #   | Part              | Required | Role                                                                                                           |
+| --- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------- |
+| 1   | Root              | yes      | The element that reacts to clicks, taps and keys; its interaction target is large enough to tap in every size. |
+| 2   | Container         | yes      | The visible button, styled by `intent`, `appearance` and `size`.                                               |
+| 3   | Leading           | no       | One icon before the label (an Icon), sized by the button. Decorative.                                          |
+| 4   | Label             | yes      | The text and the accessible name, on one line, shortened with an ellipsis when space runs out.                 |
+| 5   | Trailing          | no       | One icon, counter or keyboard shortcut after the label (an Icon, a Counter or a Shortcut). Decorative.         |
+| 6   | Loading indicator | state    | Shown only while `loading` is set, centered; the content keeps its place, so the width does not change.        |
+| 7   | Focus ring        | state    | Shown around the button on keyboard focus.                                                                     |
 
-Spacing, the same in every size and density: A side padding of the container, B margin on each side of the label, C margin on each side of slot content. An icon is placed by its drawing, not by its box.
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/button.json`.
 
 ## When to use
 
@@ -30,8 +30,8 @@ Spacing, the same in every size and density: A side padding of the container, B 
 - An action without visible text: IconButton.
 - A link inside a sentence: Link.
 - A toggle that stays pressed: SegmentedControl (planned).
-- A trigger that opens a menu or a split action: Menu (planned).
-- A group of buttons or a toolbar: compose buttons in your layout; there is no group component.
+- A list of actions behind one trigger: Menu, with the button as its trigger.
+- A row or a stack of related buttons: ButtonGroup, which gives them one size and spacing; a toolbar (planned).
 
 ## Best practices
 
@@ -163,7 +163,7 @@ With `href`, the button renders as a link. A disabled link keeps the appearance 
 
 - A long label in a narrow container ends with an ellipsis; the full label stays the accessible name.
 - A button stretched by its container keeps its height and centers its content.
-- A small button (28 to 36 px tall) still has a 44 px interaction target, so a row of small buttons is at least 44 px tall.
+- A small button still has a 44 px interaction target, larger than its visible box, so a row of small buttons is at least 44 px tall.
 
 ## API
 

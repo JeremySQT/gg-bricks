@@ -6,14 +6,14 @@ A link takes the reader to another page or resource from inside text: a guide, a
 
 ## Anatomy
 
-| #   | Part       | Required | Role                                                                                                   |
-| --- | ---------- | -------- | ------------------------------------------------------------------------------------------------------ |
-| 1   | Label      | yes      | The underlined words: the visible text and the start of the accessible name; wraps with the sentence.  |
-| 2   | Meta       | file     | The format and size of a file in parentheses, “(PDF, 2.4 MB)”, not underlined, in a quieter color.     |
-| 3   | Indicator  | no       | One glyph of the text size after the words: arrow, envelope, handset, printer or the format of a file. |
-| 4   | Focus ring | state    | Drawn around each line of the link on keyboard focus.                                                  |
+| #   | Part       | Required | Role                                                                                                                                           |
+| --- | ---------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Label      | yes      | The underlined words: the visible text and the start of the accessible name; wraps with the sentence.                                          |
+| 2   | Meta       | file     | With a file link: its format and size in parentheses, “(PDF, 2.4 MB)”, not underlined and quieter than the words; part of the accessible name. |
+| 3   | Indicator  | no       | One glyph after the words that shows where the link leads: arrow, envelope, handset, printer or the format of a file. Decorative.              |
+| 4   | Focus ring | state    | Shown around each line of the link on keyboard focus.                                                                                          |
 
-A gap before the indicator (2, 4 or 6 px with the density), B indicator size (one em: the font size of the text).
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/link.json`.
 
 ## When to use
 
@@ -125,7 +125,7 @@ With `tone="inherit"`, the link takes the color of the surrounding text.
 ### Difficult cases
 
 - In a narrow column the label wraps with the sentence; the meta and the glyph stay with the last word and never start a line alone (`#prose` on the review page).
-- On a muted surface in dark appearance, the quiet color of a file's meta measures 3.42:1, below 4.5:1: prefer `tone="inherit"` or leave out `fileType` and `fileSize` there (`#tones`).
+- On a muted surface in dark appearance, a file's meta falls below 4.5:1: prefer `tone="inherit"` or leave out `fileType` and `fileSize` there (`#tones`).
 
 ## API
 
@@ -160,7 +160,7 @@ The component provides:
 
 - A native `a`: role, Enter to follow, tab order and the browser's link behavior come from the platform.
 - An accessible name made of the label, the file meta and the destination suffix (“Svelte documentation (opens in a new tab)”).
-- The label underlined in every state (thicker on hover and press), the link color at least 4.8:1 on the system surfaces, a focus ring around each line, forced colors handled.
+- The label underlined in every state (more strongly on hover and press), the link color above 4.5:1 on the system surfaces, a focus ring around each line, forced colors handled.
 
 The integration provides:
 

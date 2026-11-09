@@ -1,0 +1,109 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "feedback/progress",
+      "id": "407:114"
+    },
+    "library": {
+      "name": "Feedback",
+      "id": "407:112"
+    }
+  },
+  "recordedOn": "2026-11-03",
+  "componentSet": {
+    "id": "413:147",
+    "name": "Progress",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=413-147"
+  },
+  "section": {
+    "name": "Progress",
+    "id": "413:2"
+  },
+  "properties": {
+    "Intent": {
+      "type": "VARIANT",
+      "default": "accent",
+      "options": [
+        "accent",
+        "success",
+        "warning",
+        "danger"
+      ]
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ]
+    },
+    "Show label#413:0": {
+      "type": "BOOLEAN",
+      "default": true
+    },
+    "Show value#413:25": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Label#413:50": {
+      "type": "TEXT",
+      "default": "Uploading report.pdf"
+    },
+    "Value text#413:75": {
+      "type": "TEXT",
+      "default": "60%"
+    },
+    "Track › Value": {
+      "type": "VARIANT (exposed nested instance)",
+      "default": "60",
+      "options": [
+        "0",
+        "10",
+        "20",
+        "30",
+        "40",
+        "50",
+        "60",
+        "70",
+        "80",
+        "90",
+        "100",
+        "indeterminate"
+      ]
+    }
+  },
+  "variants": {
+    "count": 12,
+    "first": "Intent=accent, Size=md 413:3"
+  },
+  "parts": {
+    "_Progress/Track": {
+      "id": "416:518",
+      "variants": "Value=60 416:494; Value=0 416:496; Value=10 416:498; Value=20 416:500; Value=30 416:502; Value=40 416:504; Value=50 416:506; Value=70 416:508; Value=80 416:510; Value=90 416:512; Value=100 416:514; Value=indeterminate 416:516"
+    }
+  },
+  "specification": {
+    "id": "458:233",
+    "name": "Progress — Specification",
+    "anatomyBoard": "458:277",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=458-233"
+  },
+  "adapterVariables": {},
+  "builders": [
+    "authoring/adapters/figma/progress-master.plugin.js",
+    "authoring/adapters/figma/progress-spec.plugin.js",
+    "authoring/adapters/figma/progress-parity.plugin.js",
+    "authoring/adapters/figma/wave3-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js"
+  ],
+  "notes": [
+    "An instance sublayer cannot be resized (the Indicator kept its 60 % share): the fraction is the Value variant of the exposed internal part _Progress/Track.",
+    "The indicator fill of each variant is bound with a resolved fallback color (an override identical to the main binding otherwise renders its black fallback).",
+    "2026-11-04, user review of the Figma parity: the Type variant was removed in place (indeterminate is a state, Value=indeterminate on the exposed Track, so a bar can start indeterminate and take a value) and the First line visibility is bound to Show label, so that hiding the label leaves no empty band; a percentage without a visible label keeps Show label on with an empty Label text. Parity rerun: unchanged (18 equal hashes)."
+  ],
+  "updatedOn": "2026-11-04"
+}

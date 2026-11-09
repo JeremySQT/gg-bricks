@@ -95,7 +95,7 @@
     "When loading and disabled are both true, interaction resolves to disabled and loadingIndicator stays visible in the resolved content color.",
     "Draw border only for the outline appearance; it never changes the outer dimensions.",
     "When focus is true and was reached by keyboard, draw a focus indicator of focusWidth in focusColor at focusOffset outside the container, with corners of focusRadius so that the indicator stays concentric with the container (focusRadius equals radius plus focusOffset).",
-    "Color changes between interaction states transition over motionDuration with easingStandard; no transition when reduced motion is requested. The loadingIndicator animation is implementation-defined and slowed or stopped under reduced motion.",
+    "Color changes between interaction states transition over motionDuration with easingStandard; no transition when reduced motion is requested. The loadingIndicator is a Spinner of the button size in the resolved content color; its turn and its reduced-motion behavior are the Spinner's.",
     "In forced-colors mode the container keeps a visible boundary and the focus indicator stays visible."
   ]
 }

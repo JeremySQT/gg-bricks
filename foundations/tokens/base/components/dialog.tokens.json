@@ -1,0 +1,22 @@
+{
+  "component": {
+    "dialog": {
+      "$description": "Dialog tokens. They do not change with density; the viewport caps them.",
+      "inline-size": {
+        "$description": "Panel inline size per dialog size.",
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v400}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v560}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v720}"
+        }
+      }
+    }
+  }
+}

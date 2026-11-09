@@ -147,12 +147,12 @@
           "apps/docs/src/playgrounds/radio-group.svelte"
         ],
         "sha256": {
-          "documentation/components/radio-group.md": "fa9f03c4172ed1bf1957957e8f9ebfaceab4168cc23e059bcfa54906d41bfca1",
-          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "documentation/components/radio-group.md": "b7a59be53cc6a1c96a185c33542857f214a5a466acaec5e6b977735eddec855a",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
           "apps/docs/src/playgrounds/radio-group.svelte": "2bdadbd6c8d473f8d42157c26696df441c1ded79d91a38019455195bb72a48f1"
         }
       },
-      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded.",
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded. Re-recorded on 2026-11-09 with the wave 3 documentation review: User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\". The review covered the cross-references to the wave 3 components and the progressive detail rule (Anatomy in usage terms, the contract for tokens and measurements).",
       "note": null
     },
     "delivery": null
@@ -255,5 +255,24 @@
     "Wave 2 (form foundations), branch wave/2-form-foundations, contract phase started 2026-10-26.",
     "Implemented on 2026-10-26 on the approved contract; see reports/components/radio-group/svelte/implementation.md for the rule-by-rule evidence and the limitations.",
     "Figma on 2026-10-27: component set 292:327 (6 variants) and specification 305:780 on page forms/radio-group; see foundations/components/forms/radio-group/figma-spec.md."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-04",
+      "change": "Wave 3 documentation: documentation/index.json gains the ten wave 3 entries, and the existing entries no longer mark Menu, ButtonGroup, Tooltip, Spinner and Alert as planned. Cross-references only; the guidance is unchanged. To be re-presented with the wave 3 documentation review.",
+      "sha256": {
+        "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
+      },
+      "recorded": "Re-recorded with the wave 3 documentation approval of 2026-11-09."
+    },
+    {
+      "date": "2026-11-06",
+      "change": "User decision of 2026-11-06 (session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui vas-y, applique-le aux 25 pages\"), progressive detail: Anatomy lists the parts in usage terms without token names, measurements or colors and points to contracts/radio-group.json; token names and visual values removed from the rest of the page except where the reader acts on them. Guidance unchanged. To be re-presented with the wave 3 documentation review.",
+      "sha256": {
+        "documentation/components/radio-group.md": "b7a59be53cc6a1c96a185c33542857f214a5a466acaec5e6b977735eddec855a",
+        "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
+      },
+      "recorded": "Re-recorded with the wave 3 documentation approval of 2026-11-09."
+    }
   ]
 }

@@ -1,0 +1,237 @@
+{
+  "formatStatus": "v1",
+  "componentId": "skeleton",
+  "family": "feedback",
+  "wave": 3,
+  "phase": "done",
+  "scope": {
+    "purpose": "Stand in for content that is loading with its shape and size, so that the layout does not move when it arrives.",
+    "useCases": ["Lines of text in a card or a list.", "An image or chart block.", "An avatar circle."],
+    "exclusions": [
+      "Composite skeletons (a card skeleton): compositions of Skeletons in examples.",
+      "Shimmer gradients: a pulse only."
+    ],
+    "alternatives": ["Spinner for a short action on existing content.", "Progress for a known amount."]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/feedback/skeleton/contract.json",
+      "sha256": "4bf3db0a1e4a047aca7f25a7b9c3309a9e7968f4fe39965176c1d9a5eb97ea24"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "feedback/skeleton (407:115)",
+      "library": "Feedback (407:112), section Skeleton (417:26)",
+      "componentSet": "417:74",
+      "specification": "458:860",
+      "ledger": "reports/components/skeleton/figma/ledger.json",
+      "parity": "reports/components/skeleton/figma/parity.json",
+      "screenshots": [
+        "reports/components/skeleton/figma/master-set.png",
+        "reports/components/skeleton/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/skeleton/figma/blueprint-anatomy.png",
+          "node": "458:918"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/skeleton-master.plugin.js",
+        "authoring/adapters/figma/skeleton-spec.plugin.js",
+        "authoring/adapters/figma/skeleton-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ],
+      "parts": ["453:1264 (_Skeleton/Text)"]
+    },
+    "figmaSpec": "foundations/components/feedback/skeleton/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/skeleton",
+      "files": [
+        "packages/svelte/src/components/skeleton/Skeleton.svelte",
+        "packages/svelte/src/components/skeleton/types.ts",
+        "packages/svelte/src/components/skeleton/skeleton.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/skeleton/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/skeleton",
+      "preview": "dist/previews/skeleton.html (npm run build && npm run build:preview skeleton)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page skeleton.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/feedback-simple.test.ts"],
+      "browser": ["tests/browser/skeleton.spec.ts"],
+      "evidence": "reports/components/skeleton/svelte/"
+    },
+    "humanDocs": "documentation/components/skeleton.md",
+    "agentDocs": "documentation/index.json (entry skeleton); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/skeleton.svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Skeleton contract: shape text/block/circle, lines, size (text lines on typography.body.{size}); color.surface.muted pulsing to opacity.muted once per motion.duration.loop, no pulse under reduced motion; hidden from assistive technology.",
+      "revision": {
+        "paths": ["foundations/components/feedback/skeleton/contract.json"],
+        "sha256": {
+          "foundations/components/feedback/skeleton/contract.json": "4bf3db0a1e4a047aca7f25a7b9c3309a9e7968f4fe39965176c1d9a5eb97ea24"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": null
+    },
+    "implementation": {
+      "scope": "Skeleton: text lines on the body typography, block and circle, in-phase pulse, hidden from assistive technology.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/skeleton/Skeleton.svelte",
+          "packages/svelte/src/components/skeleton/contract.generated.ts",
+          "packages/svelte/src/components/skeleton/skeleton.css",
+          "packages/svelte/src/components/skeleton/tokens.generated.css",
+          "packages/svelte/src/components/skeleton/types.ts",
+          "examples/skeleton/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/skeleton/Skeleton.svelte": "8067882432f9fe52931562617cdba7aa528bc8913911ccbc534c3a5717079d6c",
+          "packages/svelte/src/components/skeleton/contract.generated.ts": "27c0b070c7815243b28aab8a8fb0ac32a7753cbfc93e422c8d554a66aef1502f",
+          "packages/svelte/src/components/skeleton/skeleton.css": "141f7cf3e32d495b1975dbb99e1c7b2c627268ad13f7226fced5f506442a9ada",
+          "packages/svelte/src/components/skeleton/tokens.generated.css": "cdc3693b66321a38982b094c7d62919d2b9f6ed5554c16f3e03809ac2c67d283",
+          "packages/svelte/src/components/skeleton/types.ts": "ad126eb9b6943a887910fb620f4348dc752fa3af09b9c87d3271b8f625e75074",
+          "examples/skeleton/App.svelte": "0be8658bbd765a6a7a99eee3e9d82604ca758aa53a77e34a72901ba2e5bd103d"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "note": null
+    },
+    "figmaParity": {
+      "scope": "Figma master 417:74 and specification frame 458:860 of the skeleton component, parity report (558 records, 0 failures, 162 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/feedback/skeleton/figma-spec.md",
+          "reports/components/skeleton/figma/parity.json",
+          "reports/components/skeleton/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/feedback/skeleton/figma-spec.md": "7ebc335365b283a5f3eabaa74803757c3cd917b3162c77903db9173f23f11e98",
+          "reports/components/skeleton/figma/parity.json": "995ebe692012f92cc8de280c7a1962ea36e3bd28b517dad4ca2003f913d87574",
+          "reports/components/skeleton/figma/ledger.json": "fe0cda5d206af549bd3a86facfed765633f90faf3d3710522826d1af308a8a63"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "417:74",
+          "specificationFrame": "458:860",
+          "parts": ["453:1264"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of skeleton (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/skeleton.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/skeleton.svelte"
+        ],
+        "sha256": {
+          "documentation/components/skeleton.md": "4cf5fdf3bd047d80378b1922865912fa0a690502d1aa4ddcab35a2a60ad29e8d",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/skeleton.svelte": "a521b693dbaf272b45662e70241cf1dd88698136719149655631f5124bad43b5"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/skeleton/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (558 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/skeleton/svelte/"
+    },
+    {
+      "name": "npm run build:preview skeleton",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (558 records, 0 failures, 162 justified)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/skeleton/figma/parity.json"
+    },
+    {
+      "name": "Figma parity after the review (Size and Lines on the exposed _Skeleton/Text): 558 records, 0 failures, 18 equal hashes",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/skeleton/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/skeleton/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/skeleton.md"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/skeleton.md"
+    }
+  ],
+  "decisionsTaken": [
+    "Three shapes (text, block, circle); text lines follow typography.body.{size}: a bar of the font size centered in the line box, so that a skeleton paragraph has the height of the real one.",
+    "Painted in color.surface.muted, pulsing to opacity.muted (0.7) once per motion.duration.loop, no pulse under reduced motion.",
+    "Radii: radius.indicator for text, radius.container for blocks, radius.full for circles.",
+    "Hidden from assistive technology; the busy state belongs to the loading region (integration)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "Pulses stay in phase across the page: each pulse animation's startTime is set to 0 (the document timeline origin) when the skeleton mounts.",
+    "Text lines use the lh unit for the line box and a bar of 1em: the skeleton paragraph has the height of the real paragraph (checked against real text in the browser test)."
+  ]
+}

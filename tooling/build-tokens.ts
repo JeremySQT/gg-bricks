@@ -281,7 +281,7 @@ const rawIn = (ctxId: string, p: string): unknown => {
 const scopes = (p: string): string[] =>
   p.startsWith('primitive.')
     ? []
-    : p.startsWith('opacity.')
+    : isOpacity(p)
       ? ['OPACITY']
       : p.startsWith('layer.')
         ? []
@@ -319,8 +319,18 @@ const convert = (t: ResolvedToken): FigmaValue => {
   if (t.$type === 'number') return t.$value as number;
   return dimOf(t).value;
 };
-/** Figma reads a number bound to layer opacity as a percentage: opacity tokens are emitted ×100 (0.7 → 70). */
-const isOpacity = (p: string) => p.startsWith('opacity.') || p.startsWith('primitive.opacity.');
+/**
+ * Figma reads a number bound to layer opacity as a percentage: opacity tokens are emitted ×100 (0.7 → 70). That
+ * covers the semantic and primitive opacity scales and component tokens named after an opacity
+ * (component.spinner.track-opacity), whose alias to a primitive opacity would otherwise mix the two units.
+ */
+function isOpacity(p: string): boolean {
+  return (
+    p.startsWith('opacity.') ||
+    p.startsWith('primitive.opacity.') ||
+    (p.startsWith('component.') && /(^|-)opacity$/i.test(p.split('.').at(-1) ?? ''))
+  );
+}
 /** Line-height ratios are emitted as percentage strings ("140%"): Figma cannot bind a percentage, the text styles type it. */
 const isLineHeightRatio = (p: string) => p.startsWith('primitive.font.lineHeight.') || p.endsWith('.lineHeightRatio');
 const figmaTypeOf = (p: string, t: ResolvedToken): FigmaVariable['type'] =>

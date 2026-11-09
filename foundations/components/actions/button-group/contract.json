@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "button-group",
+  "props": {
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "orientation": {
+      "values": ["horizontal", "vertical"],
+      "default": "horizontal"
+    },
+    "align": {
+      "values": ["start", "center", "end", "stretch"],
+      "default": "start"
+    },
+    "label": {
+      "type": "string"
+    }
+  },
+  "parts": {
+    "container": {},
+    "items": {
+      "accepts": ["button", "icon-button"],
+      "min": 1
+    }
+  },
+  "states": {
+    "stacked": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "tokens": {
+    "gap": "space.control.gap.{size}"
+  },
+  "rules": [
+    "A button group places related actions together (a dialog footer, form actions, an alert or toast action, a card's actions) with a consistent spacing and size. Items are Buttons and IconButtons in source order; the group adds no surface, border or padding of its own.",
+    "size applies to every Button and IconButton of the group, so that all items share one height; an item's own size is ignored inside a group.",
+    "Items are separated by gap in both directions; the gap follows size and density.",
+    "orientation horizontal places the items on one line in source order. align start, center and end place the line at the start, the center or the end of the available inline size; stretch shares the inline size equally between the items.",
+    "orientation vertical stacks the items in source order, one per line: every Button takes the full inline size of the group whatever align says, and an IconButton keeps its square size at the inline start.",
+    "When a horizontal group does not fit its available inline size, it lays out as orientation vertical (stacked, full width), and stacked is true while it does; a group that fits again returns to its line. Items never wrap to a second line.",
+    "Order expresses priority in reading order; the group never reorders its items, whatever the alignment or the reflow.",
+    "Every enabled item is its own stop in sequential focus, in source order; the group adds no arrow-key navigation (a set of controls with one tab stop is a Toolbar) and does not join the items visually (attached buttons for a choice are a SegmentedControl).",
+    "When label is non-empty, the group is exposed as a group named by label; otherwise it adds no semantics, and the items are read as ordinary buttons."
+  ]
+}

@@ -34,7 +34,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/actions/link/contract.json",
-      "sha256": "d482a8b7b9ed7a260e1d184267b95dfd61d88dc662a77cb1f535fcbc010daaab"
+      "sha256": "141f976096aa10e19e3e4be0599e12c5fe3b2aec048d39e8c72f30133d2d413e"
     },
     "tokens": [],
     "figma": {
@@ -90,10 +90,10 @@
       "revision": {
         "paths": ["foundations/components/actions/link/contract.json"],
         "sha256": {
-          "foundations/components/actions/link/contract.json": "d482a8b7b9ed7a260e1d184267b95dfd61d88dc662a77cb1f535fcbc010daaab"
+          "foundations/components/actions/link/contract.json": "141f976096aa10e19e3e4be0599e12c5fe3b2aec048d39e8c72f30133d2d413e"
         }
       },
-      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: three review rounds (2026-10-15 to 2026-10-17); Link destinations requested at the first round, Badge simplified and given the accent intent at the third; final \"D'accord pour tout ! Tu peux commencer le reste je valide\" (2026-10-17) covering the remaining questions (Link destinations including phone and print as a printable version, dark link color A, simplified Badge). Amendment of 2026-10-19 (meta and glyph as a subtle complement: metaColor and indicatorColor color.content.tertiary with tone accent, the context color with tone inherit and the glyph at inheritIndicatorOpacity opacity.muted): user at the implementation review in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU, variant D chosen on the comparison page (\"je préfère la D\") with the remark that the meta did not look attenuated in dark; color.content.secondary measured 1.12:1 against the dark link color, so the meta uses color.content.tertiary like the glyph (1.40:1 against the link, 5.11:1 or more on canvas, default, subtle, raised and overlay). Digest re-recorded; to be confirmed on the republished review page.",
+      "provenance": "User at the grouped contract gate of IconButton, Link and Badge in the Claude Code session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: three review rounds (2026-10-15 to 2026-10-17); Link destinations requested at the first round, Badge simplified and given the accent intent at the third; final \"D'accord pour tout ! Tu peux commencer le reste je valide\" (2026-10-17) covering the remaining questions (Link destinations including phone and print as a printable version, dark link color A, simplified Badge). Amendment of 2026-10-19 (meta and glyph as a subtle complement: metaColor and indicatorColor color.content.tertiary with tone accent, the context color with tone inherit and the glyph at inheritIndicatorOpacity opacity.muted): user at the implementation review in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU, variant D chosen on the comparison page (\"je préfère la D\") with the remark that the meta did not look attenuated in dark; color.content.secondary measured 1.12:1 against the dark link color, so the meta uses color.content.tertiary like the glyph (1.40:1 against the link, 5.11:1 or more on canvas, default, subtle, raised and overlay). Digest re-recorded; to be confirmed on the republished review page. Amendment of 2026-11-03 (wave 3 implementation review, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Je valide le reste\"): a host (Alert) may ask links to inherit its color (context ggb:link-tone); an explicit tone wins. Digests re-recorded.",
       "note": null
     },
     "implementation": {
@@ -110,7 +110,7 @@
           "examples/link/App.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/components/link/Link.svelte": "a6791d5521304422d962afe133f018f116ac41056da472d9b11579d89b48c9a4",
+          "packages/svelte/src/components/link/Link.svelte": "903a7ba617e0dc6477b28d6d6dfb95246d8b77514f20439f2d8268ec47cdfb1f",
           "packages/svelte/src/components/link/contract.generated.ts": "e911e220fe1d07dbdcf57ef547aacb3a43760e14766cd5eac4ff11f5177896ec",
           "packages/svelte/src/components/link/destination.ts": "3e959dd8ed30605c5c927a4477aae74f52f7fbf750297621c7b6e0e99f2e6677",
           "packages/svelte/src/components/link/glyphs.ts": "d0cc407e56d33d343bc86ce7be6cadc5ec567fb449c0ac1e5e8b5fdb35191b39",
@@ -120,7 +120,7 @@
           "examples/link/App.svelte": "dd627deacc5ae26648fc49c764706260b1630b61f6f699074b9d1123d1d68131"
         }
       },
-      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/EVqNMf5jPq8hHjYH2yAJ5Y version 2. Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded.",
+      "provenance": "User at the grouped implementation gate of IconButton, Link and Badge in the session https://claude.ai/code/session_01KQ5qDJziTR2xrfyLuKzfiU: first review on 2026-10-17 (\"une super base\", adjustments asked for the Link glyph and the Badge descenders), comparison page and second round, then \"Ça me convient\" on 2026-10-19 after reviewing https://claude.ai/artifact/EVqNMf5jPq8hHjYH2yAJ5Y version 2. Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded. Amendment of 2026-11-03 (wave 3 implementation review, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Je valide le reste\"): a host (Alert) may ask links to inherit its color (context ggb:link-tone); an explicit tone wins. Digests re-recorded.",
       "note": "Automated evidence: Chromium only; Safari behavior of the label clip reasoned, not observed."
     },
     "figmaParity": {
@@ -258,7 +258,8 @@
     "User at the contract gate (2026-10-17): destinations confirmed as drafted (phone included, print = a link to a printable version); dark link color changed to color.palette.accent.300 (4.80:1 or more on every neutral backdrop in the 18 contexts; recommendation A).",
     "User at the implementation review (2026-10-19): variant D, glyph and meta as a subtle neutral complement; the meta in color.content.tertiary rather than color.content.secondary after the dark-mode remark. With tone inherit the meta keeps the context color at full strength (text contrast) and only the glyph is attenuated (opacity.muted).",
     "User at the Figma parity review (2026-10-20): the link is configured by variants rather than variable modes chosen by the designer (\"Est-ce qu'on ne pourrais pas gérer plutôt tout ça par des variantes plutôt que des modes ?\"), and the secondary and tertiary contexts are dropped (a dimmed link is harder to find). Recommendation A adopted (\"je suis tes recommendations, à voir à l'usage\"): variants Color (accent, on info, on success, on warning, on danger, on inverse) × Size (md, sm, lg) × State, the destination in the exposed nested part _Link/Destination; each variant sets the modes of the hidden Components · link size and Components · link color collections on itself.",
-    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size)."
+    "User at the wave 1 Figma parity review (2026-10-26): \"on expose la propriété Size des icônes dans les composants qui l'importent (genre badge) … la taille de l'icône ne devrait pas être modifiable dans ces composants mais décidée en amont et imposée dans le composant\". The Figma master no longer nests the Icon component: the Phosphor glyph sits directly in the variants at the size the component imposes, behind an instance-swap property of the component; designers choose the glyph only. No code change (the code already imposes the size).",
+    "Links inherit the color of an Alert (context ggb:link-tone) unless they set a tone (2026-11-03)."
   ],
   "openDecisions": [
     {
@@ -279,5 +280,16 @@
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
     "informational": []
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "User feedback at the wave 3 implementation review (2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB): \"Les links et buttons à l'intérieur d'une alert doivent suivre l'intent de cette alerte\" — a host (Alert) may ask its links to inherit (context key ggb:link-tone); a link that does not set tone then takes tone inherit; an explicit tone wins. New contract rule. To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/actions/link/contract.json": "141f976096aa10e19e3e4be0599e12c5fe3b2aec048d39e8c72f30133d2d413e",
+        "packages/svelte/src/components/link/Link.svelte": "903a7ba617e0dc6477b28d6d6dfb95246d8b77514f20439f2d8268ec47cdfb1f"
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
+    }
+  ]
 }

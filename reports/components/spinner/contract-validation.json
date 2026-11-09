@@ -1,0 +1,20 @@
+{
+  "valid": true,
+  "checks": {
+    "schema": "passed",
+    "consistency": "passed",
+    "tokenCoverage": "passed",
+    "dependencies": "not-provided",
+    "intrinsicRules": "manual-review-required"
+  },
+  "errors": [],
+  "requiredTokenPaths": [
+    "size.icon.sm",
+    "size.icon.md",
+    "size.icon.lg",
+    "size.icon.xl",
+    "component.spinner.track-opacity",
+    "component.spinner.duration"
+  ],
+  "dependencies": []
+}

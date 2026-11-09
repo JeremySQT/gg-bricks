@@ -6,16 +6,16 @@ An icon button starts an action from a compact square that shows only an icon: c
 
 ## Anatomy
 
-| #   | Part              | Required | Role                                                                                                  |
-| --- | ----------------- | -------- | ----------------------------------------------------------------------------------------------------- |
-| 1   | Target            | yes      | The area that reacts to clicks, taps and keys: at least 44 × 44 px, centered, taking no layout space. |
-| 2   | Container         | yes      | The visible square: background, border (outline only), corner radius; as tall as a Button.            |
-| 3   | Icon              | yes      | One decorative icon, centered by its box at the icon size of the button; the button sets its size.    |
-| 4   | Focus ring        | state    | Drawn outside the container on keyboard focus.                                                        |
-| —   | Loading indicator | state    | Replaces the icon at the same place and size while `loading` is set.                                  |
-| —   | Label             | yes      | The accessible name; never drawn.                                                                     |
+| #   | Part              | Required | Role                                                                                                                   |
+| --- | ----------------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
+| 1   | Target            | yes      | The area that reacts to clicks, taps and keys: larger than the visible square, centered on it, taking no layout space. |
+| 2   | Container         | yes      | The visible square, styled by `intent`, `appearance` and `size`; as tall as a Button of the same size.                 |
+| 3   | Icon              | yes      | The one icon you pass (an Icon), centered and sized by the button. Decorative.                                         |
+| 4   | Focus ring        | state    | Shown around the square on keyboard focus.                                                                             |
+| —   | Loading indicator | state    | Shown only while `loading` is set, in place of the icon.                                                               |
+| —   | Label             | yes      | The accessible name; never shown.                                                                                      |
 
-A side of the square (the Button height of the size, following the density: 32, 40 or 48 px in standard density), B icon size (16, 20 or 24 px in every density).
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/icon-button.json`.
 
 ## When to use
 
@@ -28,24 +28,24 @@ A side of the square (the Button height of the size, following the density: 32, 
 - When there is room for a visible label: Button with a leading icon is always clearer.
 - A link inside text: Link.
 - A toggle that stays pressed (bold, mute): SegmentedControl (planned).
-- A list of actions behind one trigger: Menu (planned).
-- A visible hint on hover: compose a Tooltip (planned); the icon button does not show its label.
+- A list of actions behind one trigger: Menu, with the icon button as its trigger.
+- A visible hint on hover: wrap it in a Tooltip; the icon button does not show its label.
 - A dot or a number over the icon: a later indicator (planned).
 
 ## Best practices
 
-| Guidance | Topic     | Practice                                                                                                                       |
-| -------- | --------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Do       | Label     | Name the action, not the icon: “Delete invoice”, not “Trash”; screen readers announce only the label.                          |
-| Do       | Icon      | Use icons people recognize without a caption (close, search, more, edit), and the same icon for the same action everywhere.    |
-| Do       | Hierarchy | Keep the default neutral ghost in toolbars and rows; use solid or outline only for the main action of a compact area.          |
-| Do       | Size      | Use the size of the Buttons and controls in the same row, so that they line up at the same height.                             |
-| Do       | Spacing   | Space neighbors with `space.control.gap` of their size, as for buttons; the 44 px target overlaps the gap without taking room. |
-| Do       | Loading   | Set `loading` while the action runs: the button keeps its focus and ignores presses.                                           |
-| Don't    | Label     | Leave the label empty or repeat the icon name: the label is the only name of the button.                                       |
-| Don't    | Meaning   | Use an icon button for a rare or ambiguous action: give it a visible label with Button.                                        |
-| Don't    | Tooltip   | Rely on the native `title` attribute as a hint: it is not shown on touch or keyboard focus; compose a tooltip.                 |
-| Don't    | Disabled  | Disable without a visible reason nearby, or add `disabled` to a loading button: it can no longer be reached by keyboard.       |
+| Guidance | Topic     | Practice                                                                                                                                                          |
+| -------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Do       | Label     | Name the action, not the icon: “Delete invoice”, not “Trash”; screen readers announce only the label.                                                             |
+| Do       | Icon      | Use icons people recognize without a caption (close, search, more, edit), and the same icon for the same action everywhere.                                       |
+| Do       | Hierarchy | Keep the default neutral ghost in toolbars and rows; use solid or outline only for the main action of a compact area.                                             |
+| Do       | Size      | Use the size of the Buttons and controls in the same row, so that they line up at the same height.                                                                |
+| Do       | Spacing   | Space neighbors with the control gap of their size (`--ggb-space-control-gap-sm`, `-md`, `-lg`), as for buttons; the target overlaps the gap without taking room. |
+| Do       | Loading   | Set `loading` while the action runs: the button keeps its focus and ignores presses.                                                                              |
+| Don't    | Label     | Leave the label empty or repeat the icon name: the label is the only name of the button.                                                                          |
+| Don't    | Meaning   | Use an icon button for a rare or ambiguous action: give it a visible label with Button.                                                                           |
+| Don't    | Tooltip   | Rely on the native `title` attribute as a hint: it is not shown on touch or keyboard focus; compose a tooltip.                                                    |
+| Don't    | Disabled  | Disable without a visible reason nearby, or add `disabled` to a loading button: it can no longer be reached by keyboard.                                          |
 
 ## Examples
 
@@ -90,7 +90,7 @@ The treatments are those of Button; the square is as tall as a Button of the sam
 
 ### A row of actions
 
-Neighbors are spaced with `space.control.gap` of their size.
+Neighbors are spaced with the control gap of their size, the custom property `--ggb-space-control-gap-<size>`.
 
 ```svelte live
 <script lang="ts">
@@ -132,7 +132,7 @@ Neighbors are spaced with `space.control.gap` of their size.
 
 ### Difficult cases
 
-- In compact density, `sm` icon buttons (28 px) sit 4 px apart and their 44 px targets reach 4 px into the neighbor's square; the squares stay above the 24 px minimum (`#alignment` on the review page).
+- In compact density, neighboring `sm` icon buttons sit so close that each target reaches slightly into the neighbor's square; the squares themselves stay above the WCAG minimum target size (`#alignment` on the review page).
 - A disabled icon button with `href` keeps its appearance and loses its destination; a loading one keeps focus and does not navigate (`#states`).
 
 ## API

@@ -1,0 +1,9 @@
+{
+  "result": "passed",
+  "checks": [
+    "default options as data attributes; no role or name without a label; not stacked on the server",
+    "group size sm, md, lg reaches the two Buttons (one asking for lg) and the IconButton",
+    "label: role group with that name; a blank label adds no semantics; options rendered",
+    "source order kept whatever the alignment"
+  ]
+}

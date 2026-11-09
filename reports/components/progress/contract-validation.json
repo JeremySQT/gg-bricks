@@ -1,0 +1,31 @@
+{
+  "valid": true,
+  "checks": {
+    "schema": "passed",
+    "consistency": "passed",
+    "tokenCoverage": "passed",
+    "dependencies": "not-provided",
+    "intrinsicRules": "manual-review-required"
+  },
+  "errors": [],
+  "requiredTokenPaths": [
+    "color.surface.muted",
+    "color.status.accent.icon",
+    "color.status.success.icon",
+    "color.status.warning.icon",
+    "color.status.danger.icon",
+    "color.content.primary",
+    "color.content.secondary",
+    "typography.label.md",
+    "typography.numeral.sm",
+    "component.progress.thickness.sm",
+    "component.progress.thickness.md",
+    "component.progress.thickness.lg",
+    "component.progress.radius",
+    "space.content.xs",
+    "motion.duration.base",
+    "motion.easing.standard",
+    "motion.duration.loop"
+  ],
+  "dependencies": []
+}

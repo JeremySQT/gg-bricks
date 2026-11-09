@@ -1,0 +1,104 @@
+/*
+ * Progress structure. Colors, typography, thickness, radius and motion come from tokens.generated.css; this file holds
+ * structural literals only. Label and percentage share the first line above the track; the indicator covers the
+ * fraction from the inline start; indeterminate sweeps a third of the track from start to end.
+ */
+@layer ggb {
+  .ggb-progress {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--ggb-progress-labelGap);
+    min-inline-size: 0;
+  }
+  .ggb-progress__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--ggb-progress-labelGap);
+    min-inline-size: 0;
+  }
+  .ggb-progress__label {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    overflow: hidden;
+    color: var(--ggb-progress-labelColor);
+    font: var(--ggb-progress-typography);
+    letter-spacing: var(--ggb-progress-typography-letterSpacing, normal);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .ggb-progress__label--hidden {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+  .ggb-progress__header:has(.ggb-progress__label--hidden) {
+    justify-content: flex-end;
+  }
+  .ggb-progress__valueText {
+    flex: none;
+    margin-inline-start: auto;
+    color: var(--ggb-progress-valueColor);
+    font: var(--ggb-progress-typographyValue);
+    letter-spacing: var(--ggb-progress-typographyValue-letterSpacing, normal);
+    font-feature-settings: var(--ggb-progress-typographyValue-fontFeatureSettings, 'tnum');
+    font-variant-numeric: tabular-nums;
+  }
+  .ggb-progress__track {
+    position: relative;
+    box-sizing: border-box;
+    inline-size: 100%;
+    block-size: var(--ggb-progress-thickness);
+    overflow: hidden;
+    border-radius: var(--ggb-progress-radius);
+    background: var(--ggb-progress-trackColor);
+  }
+  .ggb-progress__indicator {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    max-inline-size: 100%;
+    border-radius: var(--ggb-progress-radius);
+    background: var(--ggb-progress-indicatorColor);
+    transition: inline-size var(--ggb-progress-motionDuration) var(--ggb-progress-easingStandard);
+  }
+  .ggb-progress__indicator[hidden] {
+    display: none;
+  }
+  .ggb-progress__track[data-indeterminate] .ggb-progress__indicator {
+    inline-size: calc(100% / 3);
+    transition: none;
+    animation: ggb-progress-sweep var(--ggb-progress-motionLoop) linear infinite;
+  }
+  @keyframes ggb-progress-sweep {
+    from {
+      inset-inline-start: calc(-100% / 3);
+    }
+    to {
+      inset-inline-start: 100%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-progress__indicator {
+      transition: none;
+    }
+    .ggb-progress__track[data-indeterminate] .ggb-progress__indicator {
+      animation-duration: calc(3 * var(--ggb-progress-motionLoop));
+    }
+  }
+  @media (forced-colors: active) {
+    .ggb-progress__track {
+      border: 1px solid CanvasText;
+    }
+    .ggb-progress__indicator {
+      background: Highlight;
+    }
+  }
+}

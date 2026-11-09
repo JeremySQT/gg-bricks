@@ -103,7 +103,7 @@ test('track, thumb and inset follow the switch size; the thumb moves to the end;
     await settle(page);
     const bw = px(tokens['border.width.default']);
     for (const size of sizes) {
-      const track = px(tokens[`size.switch.${size}`]);
+      const track = px(tokens[`component.switch.track-size.${size}`]);
       const off = await measure(page, `#sw-default-off-${size}`);
       const on = await measure(page, `#sw-default-on-${size}`);
       expect(off.height, `${density} ${size}`).toBe(track);

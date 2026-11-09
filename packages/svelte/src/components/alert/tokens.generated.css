@@ -1,0 +1,49 @@
+/* Generated token bindings from the alert contract. Do not edit. */
+@layer ggb {
+.ggb-alert[data-intent="neutral"] {
+  --ggb-alert-surface: var(--ggb-color-status-neutral-surface);
+  --ggb-alert-content: var(--ggb-color-status-neutral-content);
+  --ggb-alert-edgeColor: var(--ggb-color-status-neutral-border);
+  --ggb-alert-iconColor: var(--ggb-color-status-neutral-icon);
+}
+.ggb-alert[data-intent="info"] {
+  --ggb-alert-surface: var(--ggb-color-status-info-surface);
+  --ggb-alert-content: var(--ggb-color-status-info-content);
+  --ggb-alert-edgeColor: var(--ggb-color-status-info-border);
+  --ggb-alert-iconColor: var(--ggb-color-status-info-icon);
+}
+.ggb-alert[data-intent="success"] {
+  --ggb-alert-surface: var(--ggb-color-status-success-surface);
+  --ggb-alert-content: var(--ggb-color-status-success-content);
+  --ggb-alert-edgeColor: var(--ggb-color-status-success-border);
+  --ggb-alert-iconColor: var(--ggb-color-status-success-icon);
+}
+.ggb-alert[data-intent="warning"] {
+  --ggb-alert-surface: var(--ggb-color-status-warning-surface);
+  --ggb-alert-content: var(--ggb-color-status-warning-content);
+  --ggb-alert-edgeColor: var(--ggb-color-status-warning-border);
+  --ggb-alert-iconColor: var(--ggb-color-status-warning-icon);
+}
+.ggb-alert[data-intent="danger"] {
+  --ggb-alert-surface: var(--ggb-color-status-danger-surface);
+  --ggb-alert-content: var(--ggb-color-status-danger-content);
+  --ggb-alert-edgeColor: var(--ggb-color-status-danger-border);
+  --ggb-alert-iconColor: var(--ggb-color-status-danger-icon);
+}
+.ggb-alert {
+  --ggb-alert-borderWidth: var(--ggb-border-width-default);
+  --ggb-alert-radius: var(--ggb-radius-container);
+  --ggb-alert-padding: var(--ggb-space-content-md);
+  --ggb-alert-iconGap: var(--ggb-space-content-sm);
+  --ggb-alert-titleGap: var(--ggb-space-content-xs);
+  --ggb-alert-actionsGap: var(--ggb-space-content-md);
+  --ggb-alert-actionsPaddingEnd: var(--ggb-space-content-lg);
+  --ggb-alert-typographyTitle: var(--ggb-typography-label-md);
+  --ggb-alert-typographyTitle-letterSpacing: var(--ggb-typography-label-md-letterSpacing);
+  --ggb-alert-typographyTitle-fontFeatureSettings: var(--ggb-typography-label-md-fontFeatureSettings);
+  --ggb-alert-typography: var(--ggb-typography-body-sm);
+  --ggb-alert-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-alert-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+  --ggb-alert-iconSize: var(--ggb-size-icon-md);
+}
+}

@@ -1,0 +1,108 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "feedback/toast",
+      "id": "407:117"
+    },
+    "library": {
+      "name": "Feedback",
+      "id": "407:112"
+    }
+  },
+  "recordedOn": "2026-11-03",
+  "componentSet": {
+    "id": "426:819",
+    "name": "Toast",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=426-819"
+  },
+  "section": {
+    "name": "Toast",
+    "id": "426:36"
+  },
+  "properties": {
+    "Layout": {
+      "type": "VARIANT",
+      "default": "single",
+      "options": [
+        "single",
+        "multi"
+      ]
+    },
+    "Appearance": {
+      "type": "VARIANT",
+      "default": "neutral",
+      "options": [
+        "neutral",
+        "intense"
+      ]
+    },
+    "Intent": {
+      "type": "VARIANT",
+      "default": "neutral",
+      "options": [
+        "neutral",
+        "info",
+        "success",
+        "warning",
+        "danger"
+      ]
+    },
+    "Title#426:0": {
+      "type": "TEXT"
+    },
+    "Description#426:21": {
+      "type": "TEXT",
+      "note": "multi only"
+    },
+    "Show action#426:42": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Closable#426:63": {
+      "type": "BOOLEAN",
+      "default": true
+    },
+    "Action": {
+      "type": "exposed nested Button sm (neutral outline by default)"
+    }
+  },
+  "variants": {
+    "count": 20,
+    "first": "Layout=single, Appearance=neutral, Intent=neutral 426:37"
+  },
+  "parts": {
+    "ToastRegion": {
+      "id": "455:1602",
+      "type": "COMPONENT",
+      "properties": {
+        "Toasts#455:0": "SLOT (Toast preferred and only, at least one); ordered by the designer",
+        "Label#455:1": "TEXT, hidden region name"
+      },
+      "previous": "set 426:1471 (Placement, 6 variants), removed 2026-11-04"
+    }
+  },
+  "specification": {
+    "id": "461:855",
+    "name": "Toast — Specification",
+    "anatomyBoard": "461:1116",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=461-855"
+  },
+  "adapterVariables": {
+    "Components · action family": "intense variants set the mode of their intent; neutral variants the default mode"
+  },
+  "builders": [
+    "authoring/adapters/figma/toast-master.plugin.js",
+    "authoring/adapters/figma/toast-spec.plugin.js",
+    "authoring/adapters/figma/toast-parity.plugin.js",
+    "authoring/adapters/figma/wave3-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js"
+  ],
+  "notes": [
+    "computed.json records only the danger neutral toast in the four representative contexts (36 records); 1548 extra checks in the 18 contexts: intense surface, edge, title and description colors per intent, action label and border and dismiss glyph in the action family of the intent, neutral appearance actions kept neutral, single layout centered, multi icon and dismiss on the title line.",
+    "2026-11-04, user review of the Figma parity: ToastRegion is a single component (455:1602) instead of six Placement variants, which changed nothing since a slot cannot reverse its order; the placement is where the designer puts the region, and the designer orders the toasts (newest nearest that edge).",
+    "2026-11-04, user request: a single toast keeps one height (size/control/sm plus padding) with or without action and dismiss; the Body of the ten single variants has minHeight size/control/sm and centers the text (in place). Parity rerun: 36 records, 0 failures; 1620 extra checks, the 72 new ones check the four single heights in the 18 contexts."
+  ],
+  "updatedOn": "2026-11-04"
+}

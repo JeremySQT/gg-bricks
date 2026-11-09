@@ -1,0 +1,203 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "menu",
+  "props": {
+    "open": {
+      "type": "boolean",
+      "default": false,
+      "bindable": true
+    },
+    "label": {
+      "type": "string"
+    },
+    "side": {
+      "values": ["bottom", "top"],
+      "default": "bottom"
+    },
+    "align": {
+      "values": ["start", "center", "end"],
+      "default": "start"
+    }
+  },
+  "parts": {
+    "trigger": {
+      "accepts": ["button", "icon-button"],
+      "min": 1,
+      "max": 1
+    },
+    "panel": {},
+    "items": {
+      "accepts": ["item", "separator", "group"],
+      "min": 1
+    }
+  },
+  "states": {},
+  "events": {
+    "openChange": {
+      "when": "The menu opens or closes because of the user: trigger activation or arrow keys on the trigger, an item activated, Escape, Tab, a press outside.",
+      "payload": "The new open state."
+    },
+    "select": {
+      "when": "The user activates an enabled item (pointer, Enter or Space).",
+      "payload": "The value of the activated item."
+    }
+  },
+  "tokens": {
+    "surface": "color.surface.overlay",
+    "elevationColor": "color.elevation.border",
+    "borderWidth": "border.width.default",
+    "shadow": "shadow.overlay",
+    "radius": "radius.overlay",
+    "padding": "space.content.xs",
+    "maxInlineSize": "size.overlay.panel",
+    "offset": "space.content.xs",
+    "enterDistance": "motion.distance.sm",
+    "motionDuration": "motion.duration.base",
+    "easingEnter": "motion.easing.enter",
+    "easingExit": "motion.easing.exit",
+    "layer": "layer.dropdown"
+  },
+  "children": {
+    "item": {
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "string",
+          "default": ""
+        },
+        "intent": {
+          "values": ["neutral", "danger"],
+          "default": "neutral"
+        },
+        "href": {
+          "type": "string"
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "parts": {
+        "container": {},
+        "leading": {
+          "accepts": ["icon"],
+          "max": 1
+        },
+        "label": {},
+        "trailing": {
+          "accepts": ["shortcut"],
+          "max": 1
+        }
+      },
+      "states": {
+        "interaction": {
+          "values": ["default", "hover", "disabled"],
+          "default": "default"
+        }
+      },
+      "tokens": {
+        "surface": "color.item.{interaction}.surface",
+        "content": "color.item.{interaction}.content",
+        "dangerColor": "color.status.danger.content",
+        "radius": "radius.container",
+        "minHeight": "size.control.sm",
+        "paddingInline": "space.control.padding-inline.sm",
+        "paddingBlock": "space.control.padding-block.sm",
+        "gap": "space.control.gap.sm",
+        "typography": "typography.body.sm",
+        "iconSize": "size.icon.sm",
+        "motionDuration": "motion.duration.fast",
+        "easingStandard": "motion.easing.standard"
+      },
+      "rules": [
+        "Arrange leading, label and trailing in that order; label is required plain text in typography, on one line, truncated with an ellipsis when maxInlineSize is reached, and is the accessible name of the item. trailing holds at most one Shortcut that shows the keyboard shortcut of the same action elsewhere in the page; it does not make the shortcut work.",
+        "The item block size is the greater of minHeight and its content plus paddingBlock; paddingInline on both sides, gap between parts, radius corners. A leading icon renders at iconSize in the item's content color and is decorative; when one item of the menu has a leading icon, items without one keep the same label alignment.",
+        "interaction hover is the highlighted item, reached by the pointer or by the keyboard: there is at most one highlighted item in the menu. interaction resolves in this order: disabled, hover, default. Colors change over motionDuration with easingStandard; no transition under reduced motion.",
+        "intent danger paints the label and the leading icon in dangerColor instead of content, in the default and hover interactions, for a destructive action (Delete); a disabled danger item uses the disabled content color.",
+        "value identifies the item in the select event; it defaults to the label.",
+        "When href is set and the item is not disabled, activating it navigates to href as a link and emits select; it keeps the item's appearance and keyboard behavior.",
+        "A disabled item stays in the menu, is reached by the arrow keys and is announced as unavailable, but activating it does nothing."
+      ]
+    },
+    "separator": {
+      "props": {},
+      "states": {},
+      "tokens": {
+        "lineColor": "color.border.subtle",
+        "thickness": "border.width.default",
+        "margin": "space.content.xs"
+      },
+      "rules": [
+        "A separator is a line of thickness in lineColor across the panel, with margin above and below, between two items or groups; it is exposed as a separator and is never focused or highlighted."
+      ]
+    },
+    "group": {
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "parts": {
+        "heading": {},
+        "items": {
+          "accepts": ["item"],
+          "min": 1
+        }
+      },
+      "states": {},
+      "tokens": {
+        "headingColor": "color.content.secondary",
+        "typography": "typography.caption.md",
+        "paddingInline": "space.control.padding-inline.sm",
+        "paddingBlock": "space.content.xs",
+        "leadingSize": "size.icon.sm",
+        "leadingGap": "space.control.gap.sm"
+      },
+      "rules": [
+        "A group gathers related items under a heading that shows label in typography and headingColor, with paddingInline and paddingBlock, aligned with the item labels: when items of the menu have a leading icon, the heading is indented by leadingSize plus leadingGap. The heading is not an item: it is never highlighted. The group is exposed as a group named by label."
+      ]
+    }
+  },
+  "contrast": [
+    {
+      "content": "item.content",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5,
+      "note": "Items are transparent by default and read on the panel."
+    },
+    {
+      "content": "item.dangerColor",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5
+    },
+    {
+      "content": "item.dangerColor",
+      "surface": "color.item.hover.surface",
+      "minimum": 4.5,
+      "note": "A highlighted danger item."
+    },
+    {
+      "content": "group.headingColor",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5
+    }
+  ],
+  "rules": [
+    "A menu offers a short list of actions or links in a panel opened from a trigger (row actions, an account menu, a More button). Activating an item performs it and closes the menu. A choice of value in a form is a Select; free content in an anchored panel is a Popover.",
+    "trigger is exactly one Button or IconButton; it exposes that it opens a menu and whether the menu is expanded. Activating it toggles the menu; Down Arrow on the trigger opens it and highlights the first enabled item, Up Arrow opens it and highlights the last.",
+    "The panel is exposed as a menu, named by label when it is non-empty and by the trigger otherwise. It is painted in surface with shadow, an edge of borderWidth in elevationColor and radius corners, with padding around the items. Its inline size is the widest item, at least the trigger's inline size and at most maxInlineSize; when the items are taller than the viewport allows, the panel scrolls and keeps the highlighted item visible.",
+    "The panel is placed at offset from the trigger on side, aligned with the trigger's start, center or end in the reading direction; it flips to the other side and shifts along the edge when the viewport lacks room.",
+    "Opening the menu by pointer moves focus into the menu without highlighting an item (the first arrow key highlights the first or last enabled item); opening it by keyboard highlights the first enabled item. Focus stays on the menu while it is open.",
+    "Keyboard: Down and Up Arrow move the highlight to the next or previous item, wrapping at the ends and skipping separators and headings; Home and End move it to the first and last item; typing a character moves it to the next item whose label starts with the typed characters; Enter and Space activate the highlighted item. Disabled items are reached but not activated.",
+    "Pointer: moving over an enabled or disabled item highlights it; leaving the panel removes the highlight; a press on an enabled item activates it.",
+    "Activating an enabled item emits select with its value, closes the menu and returns focus to the trigger, unless the item navigates. Escape closes the menu and returns focus to the trigger; Tab closes it and moves focus on from the trigger; a press outside closes it and leaves focus where the press put it.",
+    "The panel inherits the brand, appearance and density of the trigger's surroundings and appears above the page. Where the platform has no top layer, it is stacked at layer.",
+    "It enters by fading in and moving enterDistance away from the trigger over motionDuration with easingEnter and leaves by fading out over motionDuration with easingExit; under reduced motion it only fades.",
+    "Setting open from the application shows or hides the menu without emitting openChange.",
+    "In forced-colors mode the panel keeps a visible edge in the system text color and the highlighted item is shown in the system highlight colors."
+  ]
+}

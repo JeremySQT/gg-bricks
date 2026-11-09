@@ -1,0 +1,22 @@
+{
+  "component": {
+    "switch": {
+      "$description": "Switch tokens: values that mean something only for the Switch. They do not change with density.",
+      "track-size": {
+        "$description": "Block size of the track; the inline size (2 × track-size − 4 × border width) and the thumb (track-size − 4 × border width) are derived in the contract rules.",
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v16}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v20}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v24}"
+        }
+      }
+    }
+  }
+}

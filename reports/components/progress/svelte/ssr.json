@@ -1,0 +1,9 @@
+{
+  "result": "passed",
+  "checks": [
+    "role progressbar named by the label, value, min 0 and max; percentage from value / max",
+    "value clamped between 0 and max; a fraction of 0 renders no indicator",
+    "indeterminate: no current value, no percentage",
+    "showLabel false keeps the label as the visually hidden name; an empty label is rejected"
+  ]
+}

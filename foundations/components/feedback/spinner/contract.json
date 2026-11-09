@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "spinner",
+  "props": {
+    "size": {
+      "values": ["sm", "md", "lg", "xl"],
+      "default": "md"
+    },
+    "label": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "parts": {
+    "container": {},
+    "track": {},
+    "indicator": {}
+  },
+  "states": {},
+  "tokens": {
+    "size": "size.icon.{size}",
+    "trackOpacity": "component.spinner.track-opacity",
+    "motionDuration": "component.spinner.duration"
+  },
+  "rules": [
+    "A spinner shows that something is loading or working when its duration is unknown and its place is small (inside a control, next to a label, in an empty panel). A known amount of progress is a Progress; a placeholder of the content to come is a Skeleton.",
+    "The container is a square of size holding a 24-unit drawing scaled to size, the drawing of the Button loading indicator: track is a full ring of radius 9 and indicator a quarter arc of the same ring, both with a stroke of 2.5 units (2.5/24 of size) and rounded ends.",
+    "Both parts are drawn in the current content color, inherited from the surrounding content: indicator at full opacity, track at trackOpacity. The spinner therefore reads on any surface its parent's content color is designed for.",
+    "The indicator turns clockwise around the center at one turn per motionDuration, linearly and without end. When reduced motion is requested it turns three times slower.",
+    "Sizes follow the icon scale (sm 16, md 20, lg 24, xl 32 px in the reference set) and do not change with density.",
+    "With an empty label the spinner is decorative and hidden from assistive technology: the element that is loading states it (a busy Button, a busy region). With a non-empty label the spinner is exposed as a status whose accessible name is label, announced politely once when it appears.",
+    "The spinner is not interactive: it is never focusable and emits no events.",
+    "In forced-colors mode both parts are drawn in the system text color, the track keeping trackOpacity."
+  ]
+}

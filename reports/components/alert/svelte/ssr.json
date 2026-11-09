@@ -1,0 +1,10 @@
+{
+  "result": "passed",
+  "checks": [
+    "intent as data attribute; decorative intrinsic glyph (info, check-circle, warning, warning-circle)",
+    "title and content rendered; no role unless live",
+    "live: role alert for danger and warning, role status for the other intents",
+    "dismiss button: IconButton sm ghost neutral, accessible name from dismissLabel",
+    "the actions ButtonGroup and its buttons are small by default; an alert without title and content is rejected"
+  ]
+}

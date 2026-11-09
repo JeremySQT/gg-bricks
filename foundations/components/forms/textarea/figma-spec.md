@@ -26,7 +26,7 @@ Every color, dimension, radius, stroke and typography value of the masters is bo
 - **Block padding** (size/control − one line) / 2, which Figma cannot compute: the **Area** stacks a **First row** of `size/control/{size}` and **More rows** of `textarea/more-rows` (two lines); the **Text box** (`textarea/text-rows`, three lines) is centered on that stack, so its top sits at exactly the code's padding in every density.
 - The text is top aligned, fills the width and wraps; the Text box clips beyond 3 lines.
 
-- **Focus** is a property only (2026-10-28): the ring follows Focus and, on default and hover, a **Focus border** layer (inside stroke `color/field/focus/border`) follows it too; a disabled field is never focused.
+- **Focus** is a property only (2026-10-28): the ring follows Focus and, on default and hover, a **Focus border** layer (inside stroke `color/input/focus/border`) follows it too; a disabled field is never focused.
 
 ## Justified differences
 

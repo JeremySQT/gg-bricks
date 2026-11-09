@@ -1,0 +1,45 @@
+/*
+ * ButtonGroup structure. The gap comes from tokens.generated.css; this file holds structural literals only.
+ * Horizontal: one line, aligned start, center or end, or items sharing the line (stretch); a line that does not fit
+ * stacks (data-stacked, set by the component). Vertical and stacked: one item per line, Buttons at full width,
+ * IconButtons square at the inline start.
+ * Never reordered, never wrapped.
+ */
+@layer ggb {
+  .ggb-button-group {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--ggb-button-group-gap);
+    min-inline-size: 0;
+    max-inline-size: 100%;
+  }
+  .ggb-button-group[data-align='center'] {
+    justify-content: center;
+  }
+  .ggb-button-group[data-align='end'] {
+    justify-content: flex-end;
+  }
+  .ggb-button-group[data-align='stretch'] > * {
+    flex: 1 1 0;
+  }
+
+  .ggb-button-group[data-orientation='vertical'],
+  .ggb-button-group[data-stacked] {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+  .ggb-button-group[data-orientation='vertical'] > *,
+  .ggb-button-group[data-stacked] > * {
+    flex: 0 0 auto;
+  }
+  /* An icon button keeps its square size, at the inline start. */
+  .ggb-button-group[data-orientation='vertical'] > .ggb-icon-button,
+  .ggb-button-group[data-stacked] > .ggb-icon-button {
+    align-self: flex-start;
+  }
+}

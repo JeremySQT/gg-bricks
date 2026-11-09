@@ -1,0 +1,17 @@
+{
+  "component": {
+    "tooltip": {
+      "$description": "Tooltip tokens.",
+      "delay": {
+        "$type": "duration",
+        "$value": "{primitive.duration.500}",
+        "$description": "Hover delay before the tooltip opens; keyboard focus opens it at once."
+      },
+      "max-inline-size": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v240}",
+        "$description": "Maximum inline size; the text wraps beyond it."
+      }
+    }
+  }
+}

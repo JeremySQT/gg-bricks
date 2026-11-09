@@ -1,0 +1,258 @@
+{
+  "formatStatus": "v1",
+  "componentId": "tooltip",
+  "family": "overlays",
+  "wave": 3,
+  "phase": "done",
+  "scope": {
+    "purpose": "Show a short text about a control when the user points at it or focuses it.",
+    "useCases": [
+      "The name of an IconButton.",
+      "The keyboard shortcut of an action.",
+      "A short clarification of a truncated label."
+    ],
+    "exclusions": [
+      "Interactive or essential content: Popover or text on the page.",
+      "Rich tooltips with titles or images.",
+      "Arrows.",
+      "Tooltips on disabled controls."
+    ],
+    "alternatives": ["Popover for interactive content.", "Visible help text (Field description)."]
+  },
+  "dependencies": ["lib/overlay"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/overlays/tooltip/contract.json",
+      "sha256": "2f8e0068eaa703a98971b2ff23a5012f984b7b9c316df68234bf5578217276b9"
+    },
+    "tokens": [
+      "foundations/tokens/inventory.json",
+      "foundations/tokens/base/semantic/common.tokens.json",
+      "foundations/tokens/base/components/tooltip.tokens.json"
+    ],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "overlays/tooltip (407:123)",
+      "library": "Overlays (407:119), section Tooltip (430:2)",
+      "componentSet": "430:103",
+      "specification": "462:95",
+      "ledger": "reports/components/tooltip/figma/ledger.json",
+      "parity": "reports/components/tooltip/figma/parity.json",
+      "screenshots": [
+        "reports/components/tooltip/figma/master-set.png",
+        "reports/components/tooltip/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/tooltip/figma/blueprint-anatomy.png",
+          "node": "462:184"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/overlays-master.plugin.js",
+        "authoring/adapters/figma/overlays-spec.plugin.js",
+        "authoring/adapters/figma/overlays-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/overlays/tooltip/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/tooltip",
+      "files": [
+        "packages/svelte/src/components/tooltip/Tooltip.svelte",
+        "packages/svelte/src/components/tooltip/types.ts",
+        "packages/svelte/src/components/tooltip/tooltip.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/tooltip/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/tooltip",
+      "preview": "dist/previews/tooltip.html (npm run build && npm run build:preview tooltip)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page tooltip.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/overlays.test.ts"],
+      "browser": ["tests/browser/tooltip.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
+      "evidence": "reports/components/tooltip/svelte/"
+    },
+    "humanDocs": "documentation/components/tooltip.md",
+    "agentDocs": "documentation/index.json (entry tooltip); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/tooltip.svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Tooltip contract: required label, side top/bottom, align, bindable open; trigger Button, IconButton or Link; inverse surface, caption.md, component tokens component.tooltip.delay (500 ms) and component.tooltip.max-inline-size (240 px); focus opens at once; accessible description; top layer.",
+      "revision": {
+        "paths": [
+          "foundations/components/overlays/tooltip/contract.json",
+          "foundations/tokens/base/components/tooltip.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/overlays/tooltip/contract.json": "2f8e0068eaa703a98971b2ff23a5012f984b7b9c316df68234bf5578217276b9",
+          "foundations/tokens/base/components/tooltip.tokens.json": "0e02e9e8bbe8486e95cc20d80312449daa41a9a6adc87214072ebb2fc30eb1f6"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": null
+    },
+    "implementation": {
+      "scope": "Tooltip on lib/overlay: hover delay, focus at once, skip delay, Escape, description of the trigger, one at a time; visual pass later.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/tooltip/Tooltip.svelte",
+          "packages/svelte/src/components/tooltip/contract.generated.ts",
+          "packages/svelte/src/components/tooltip/tokens.generated.css",
+          "packages/svelte/src/components/tooltip/tooltip.css",
+          "packages/svelte/src/components/tooltip/types.ts",
+          "examples/tooltip/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/tooltip/Tooltip.svelte": "7f1073cc470eb742d31f707879b72bc1ce6b04b8850f75969c107642b65d21c6",
+          "packages/svelte/src/components/tooltip/contract.generated.ts": "8900e11a2168afe2b27fb6dd869aab8ee04935f21d15dbc875c3ac1487706b35",
+          "packages/svelte/src/components/tooltip/tokens.generated.css": "1241f0f483baf3c1645bfd14df26db75922869b89ade100f54c00b156e8f0c64",
+          "packages/svelte/src/components/tooltip/tooltip.css": "65326657fc7d2764e81dbfa821ceeaeb84d3f0c696f212c0155eebc87d6e2b54",
+          "packages/svelte/src/components/tooltip/types.ts": "ff627d35a51335440d50449c002cb686cf244d0628c47bb9df597c7c69d0a380",
+          "examples/tooltip/App.svelte": "56f26b3db4d4bd2e478329958da73c655b9eae4c092aca5ac1b52422c0580813"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui corrige les quatre points et ajoute-le au contrat\"): Escape closes only the tooltip; the key is consumed, so that a Popover, Menu or Dialog holding the trigger stays open until the next Escape (it closed both before). Review page: tooltips inside a Popover and a Dialog (#compositions); new browser test, which fails without the change. Digests re-recorded.",
+      "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
+    },
+    "figmaParity": {
+      "scope": "Figma master 430:103 and specification frame 462:95 of the tooltip component, parity report (32 records, 0 failures, 4 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/overlays/tooltip/figma-spec.md",
+          "reports/components/tooltip/figma/parity.json",
+          "reports/components/tooltip/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/overlays/tooltip/figma-spec.md": "cfe2a4f0b4e7ed0d72be6a0a16e748bc23df59efc7366c136e9560f3a2132383",
+          "reports/components/tooltip/figma/parity.json": "8dadee289e98781ced79d1790b5f829844deec1dc52ee010cd619de79699b62c",
+          "reports/components/tooltip/figma/ledger.json": "542ea034002527c79e1647d16fe34bdb66449bff4e5e81d594450947fa7e500e"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "430:103",
+          "specificationFrame": "462:95"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of tooltip (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/tooltip.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/tooltip.svelte"
+        ],
+        "sha256": {
+          "documentation/components/tooltip.md": "1c8103a502feda0fbe708effcc5e60b53d389e558c8c934a87066de411b8cf27",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/tooltip.svelte": "f60895ddfd393f37ae858560b225c5058dc7c63db07fe35ad14648566e261239"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/tooltip/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (32 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/tooltip/svelte/"
+    },
+    {
+      "name": "npm run build:preview tooltip",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (32 records, 0 failures, 4 justified; placement checks)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/tooltip/figma/parity.json"
+    },
+    {
+      "name": "Figma parity after the review (Show trigger, off by default): 32 records, 0 failures; 432 placement checks with the trigger on (with the Popover)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/tooltip/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/tooltip/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/tooltip.md"
+    },
+    {
+      "name": "Fix after the documentation review: Escape closes only the tooltip; the key is consumed, so that a Popover, Menu or Dialog holding the trigger stays open until the next Escape (it closed both befo",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "tests/browser/tooltip.spec.ts"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/tooltip.md"
+    }
+  ],
+  "decisionsTaken": [
+    "Inverse surface (color.surface.inverse, color.content.inverse), typography.caption.md, radius.control, padding space.content.sm × xs, max inline size component.tooltip.max-inline-size (component token, 240 px).",
+    "Side top or bottom (what lib/overlay positions today), align center by default; flips and shifts; no arrow.",
+    "Hover delay component.tooltip.delay (component token, 500 ms); focus opens at once; once one tooltip is open, the next opens at once.",
+    "Accessible description of the trigger, except when the text equals an IconButton's name.",
+    "Trigger restricted to Button, IconButton and Link (focusable components); other content gets a Popover or visible text.",
+    "Entry over motion.duration.fast with motion.distance.sm."
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "The trigger is the first element of the children snippet, wrapped in a display: contents span that listens to pointer and focus events; the tooltip is a manual popover placed by lib/overlay floating.",
+    "One tooltip at a time and the skip delay (300 ms after a tooltip closed, the next opens at once) are module-level state.",
+    "aria-describedby is added to the trigger unless its aria-label equals the tooltip text."
+  ]
+}

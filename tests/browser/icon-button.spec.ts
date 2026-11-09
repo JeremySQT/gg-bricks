@@ -52,7 +52,7 @@ async function measure(page: Page, selector: string) {
     const container = el.querySelector('.ggb-icon-button__container') as HTMLElement;
     const c = getComputedStyle(container);
     const r = container.getBoundingClientRect();
-    const glyph = el.querySelector('.ggb-icon-button__icon > svg, .ggb-icon-button__loadingIndicator > svg');
+    const glyph = el.querySelector('.ggb-icon-button__icon > svg, .ggb-icon-button__loadingIndicator svg');
     // The loading indicator rotates: its bounding box grows with the angle. Measure it at angle 0 (the test was
     // timing-dependent before, 20 px expected, 22.44 px observed mid-rotation).
     for (const animation of glyph?.getAnimations() ?? []) {
@@ -321,7 +321,12 @@ test('transitions follow the motion tokens and stop under reduced motion; forced
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(container).toHaveCSS('transition-duration', '0s');
   await page.check('#opt-loading');
-  await expect(page.locator('#play .ggb-icon-button__loadingIndicator svg')).toHaveCSS('animation-duration', '2.4s');
+  // The loading indicator is the Spinner: one turn per component.spinner.duration, three times slower here.
+  const spin = (tokens['component.spinner.duration'].$value as { value: number }).value;
+  await expect(page.locator('#play .ggb-icon-button__loadingIndicator svg')).toHaveCSS(
+    'animation-duration',
+    `${(3 * spin) / 1000}s`
+  );
 
   await page.emulateMedia({ forcedColors: 'active', reducedMotion: 'no-preference' });
   await expect(page.locator('#ib-accent-ghost-md .ggb-icon-button__container')).toHaveCSS('outline-style', 'solid');

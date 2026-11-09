@@ -1,0 +1,298 @@
+{
+  "formatStatus": "v1",
+  "componentId": "menu",
+  "family": "overlays",
+  "wave": 3,
+  "phase": "done",
+  "scope": {
+    "purpose": "Offer a short list of actions or links in a panel opened from a trigger.",
+    "useCases": [
+      "Row actions (More button).",
+      "An account menu with links.",
+      "A grouped action menu with a destructive item."
+    ],
+    "exclusions": [
+      "Choosing a form value: Select (wave 4).",
+      "Checkable items and submenus in v1 (open question 3).",
+      "Context menus on right-click.",
+      "Menubars."
+    ],
+    "alternatives": [
+      "Select for a value in a form.",
+      "Popover for free content.",
+      "ButtonGroup when the actions fit on screen."
+    ]
+  },
+  "dependencies": ["icon", "shortcut", "lib/overlay"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/overlays/menu/contract.json",
+      "sha256": "dd9d08534d616451c8061301deb10ffb9bd320fa323f9f7578dc2b12eafcf0f3"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "overlays/menu (407:121)",
+      "library": "Overlays (407:119), section Menu (437:273)",
+      "componentSet": "437:795",
+      "specification": "463:533",
+      "ledger": "reports/components/menu/figma/ledger.json",
+      "parity": "reports/components/menu/figma/parity.json",
+      "screenshots": [
+        "reports/components/menu/figma/master-set.png",
+        "reports/components/menu/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/menu/figma/blueprint-anatomy.png",
+          "node": "463:729"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/menu-master.plugin.js",
+        "authoring/adapters/figma/menu-spec.plugin.js",
+        "authoring/adapters/figma/menu-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/overlays/menu/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/menu",
+      "files": [
+        "packages/svelte/src/components/menu/Menu.svelte",
+        "packages/svelte/src/components/menu/MenuItem.svelte",
+        "packages/svelte/src/components/menu/MenuSeparator.svelte",
+        "packages/svelte/src/components/menu/MenuGroup.svelte",
+        "packages/svelte/src/components/menu/types.ts",
+        "packages/svelte/src/components/menu/menu.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/menu/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/menu",
+      "preview": "dist/previews/menu.html (npm run build && npm run build:preview menu)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page menu.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/overlays.test.ts"],
+      "browser": ["tests/browser/menu.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
+      "evidence": "reports/components/menu/svelte/"
+    },
+    "humanDocs": "documentation/components/menu.md",
+    "agentDocs": "documentation/index.json (entry menu); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/menu.svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Menu compound contract: bindable open, label, side, align; trigger Button or IconButton; children item (label, value, intent neutral/danger, href, disabled, leading Icon, trailing Shortcut), separator, group; color.item.* roles; WAI-ARIA menu button keyboard with typeahead; select event; v1 without checkable items or submenus.",
+      "revision": {
+        "paths": ["foundations/components/overlays/menu/contract.json"],
+        "sha256": {
+          "foundations/components/overlays/menu/contract.json": "dd9d08534d616451c8061301deb10ffb9bd320fa323f9f7578dc2b12eafcf0f3"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 found or requested at the implementation review (Contract fact found during implementation: group roles leadingSize (size.icon.sm) and leadingGap (space.control.gap.sm) …) accepted with the implementation: \"Je valide le reste\".",
+      "note": null
+    },
+    "implementation": {
+      "scope": "Menu (own primitive on the native popover): WAI-ARIA menu button keyboard, typeahead, pointer highlight, items, links, disabled, danger, separator, groups, room-limited height; visual pass and features later.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/menu/Menu.svelte",
+          "packages/svelte/src/components/menu/MenuGroup.svelte",
+          "packages/svelte/src/components/menu/MenuItem.svelte",
+          "packages/svelte/src/components/menu/MenuSeparator.svelte",
+          "packages/svelte/src/components/menu/contract.generated.ts",
+          "packages/svelte/src/components/menu/menu.css",
+          "packages/svelte/src/components/menu/tokens.generated.css",
+          "packages/svelte/src/components/menu/types.ts",
+          "examples/menu/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/menu/Menu.svelte": "fe6f09b2fc5d5d2058a612da50c88b8df002aa5507b8d36d87932b6f9753da75",
+          "packages/svelte/src/components/menu/MenuGroup.svelte": "5ddc02cca2e1946b8aa0557c0066da30ab201f7a9f2cf52d4d01dd0a98c51246",
+          "packages/svelte/src/components/menu/MenuItem.svelte": "fc793e6590e76c9f19d1945af9d1fd8e2d2258f28fee14264026c6ca3af9cee4",
+          "packages/svelte/src/components/menu/MenuSeparator.svelte": "b396588e41a299fb8c9259fd18b7030d2482b11964f523c3ad8bf87e4622d32d",
+          "packages/svelte/src/components/menu/contract.generated.ts": "977aed7865aece02d837177d3583ca9070a5e5d78852fe55e76c665400cc6c19",
+          "packages/svelte/src/components/menu/menu.css": "39c5297a18c82b8a593e5178318b26c967db0a310bc771c1d667e839b02c951e",
+          "packages/svelte/src/components/menu/tokens.generated.css": "1b04268a0b94e164e46e776b56ef5a29c50931c0314df4ded90917a593ef2ad8",
+          "packages/svelte/src/components/menu/types.ts": "a131e3b740f2b471b15d127f304613cb655623c6e5eac96a9ef9ced741814733",
+          "examples/menu/App.svelte": "cf2b27369d0e7725ffd8911965edbebe3b32a65970d079b46790490d14025dde"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB, on the gaps found while writing the documentation: \"Oui corrige les quatre points et ajoute-le au contrat\"): opening the menu by keyboard, and the first arrow key after opening by pointer, highlight the first or last enabled item as the contract says (the code started on a disabled item); disabled items stay reachable. Review page: a menu with disabled first and last items (#compositions); new browser test. Digests re-recorded. Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Chaque toast est un composant unitaire qui ne dépend que d'elle même, la seule limite est en effet qu'elle doit être placé dans une toastRegion\"): the generated bindings of the children sit on their own class (.ggb-menu__…) instead of being nested under the parent (tooling/lib/bindings.ts, authoring/decisions.md); values and rendering unchanged (computed values identical in the browser tests). Digests re-recorded. Amendment of 2026-11-04 (same decision, found by the repeated test): an arrow key on the trigger runs the opening at once instead of waiting for the toggle event, which the browser coalesces with the close when the menu is reopened right after Escape (the highlight was then lost); the Menu suite passed 60 times in a row. Digests re-recorded.",
+      "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
+    },
+    "figmaParity": {
+      "scope": "Figma master 437:795 and specification frame 463:533 of the menu component, parity report (60 records, 0 failures, 0 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/overlays/menu/figma-spec.md",
+          "reports/components/menu/figma/parity.json",
+          "reports/components/menu/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/overlays/menu/figma-spec.md": "4de9f02a60cc002021ec5b4b7018799714d951369de9b77f19fdda8231b3e3b5",
+          "reports/components/menu/figma/parity.json": "e82c1678e9e9a7312c26f81034bd3e01bd301d016c3426bb450a92f546899ec0",
+          "reports/components/menu/figma/ledger.json": "15b1dd815cfe1621465d5848f2b2ff2f7c2215ee76bbdc4087ffd552357bc100"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "437:795",
+          "specificationFrame": "463:533",
+          "children": ["437:343 Menu/Item", "437:344 Menu/Separator", "437:401 Menu/Group"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB, after the gate: \"Attention, tu as l'air d'avoir intégré un bug dans le composant figma du menu. Il fait 24px de large quand on l'importe.\"): the menu collapsed because its items filled a hugging panel; the six variants are now 240 px wide and resizable, the panel and the items fill them. Colors, heights, placements and the parity hashes are unchanged; a width check was added. To be shown to the user with the fix."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of menu (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/menu.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/menu.svelte"
+        ],
+        "sha256": {
+          "documentation/components/menu.md": "4c42aec6f339f7c81b5bba214f09279809383d8dffeb5571af41f3d1d93f812e",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/menu.svelte": "df77290d947e06e285909ce10f948ec979d476b94f42b349bda69d4264d46a5b"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/menu/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (60 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/menu/svelte/"
+    },
+    {
+      "name": "npm run build:preview menu",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (60 records, 0 failures; 270 extra checks)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/menu/figma/parity.json"
+    },
+    {
+      "name": "Figma parity after the review (Show trigger, off by default): 60 records, 0 failures; 270 extra checks",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/menu/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/menu/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/menu.md"
+    },
+    {
+      "name": "Figma: Menu width fixed (240 px, resizable; it collapsed to 32 px), parity rerun: 60 records, 0 failures; 288 extra checks",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/menu/figma/parity.json"
+    },
+    {
+      "name": "Fix after the documentation review: opening the menu by keyboard, and the first arrow key after opening by pointer, highlight the first or last enabled item as the contract says (the code started ",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "tests/browser/menu.spec.ts"
+    },
+    {
+      "name": "Children bindings on their own class: browser tests unchanged (computed values identical); a toast is styled outside a region",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "tests/browser/menu.spec.ts"
+    },
+    {
+      "name": "Menu: keyboard reopening right after Escape keeps the highlight (suite repeated 60 times); a menu in a dark section follows the section",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "tests/browser/menu.spec.ts"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/menu.md"
+    }
+  ],
+  "decisionsTaken": [
+    "One compound contract with children item, separator and group (decision of 2026-10-31).",
+    "Items use color.item.{default,hover,disabled}; hover is the single highlighted item (pointer or keyboard). intent danger paints the label in color.status.danger.content (contrast pairs on the panel and on the highlighted item: 0 failures).",
+    "Items 32 px minimum (size.control.sm), typography.body.sm, padding space.control.padding-inline.sm; item radius.container (8) inside a panel of radius.overlay (12) with space.content.xs padding, so that corners stay concentric.",
+    "Keyboard per the WAI-ARIA menu button pattern: arrows wrap, Home and End, typeahead, Enter and Space activate, Escape and Tab close; disabled items are reached but not activated.",
+    "Opening by pointer focuses the menu without a highlight; by keyboard highlights the first item.",
+    "Inline size: widest item, at least the trigger, at most size.overlay.panel (360 px).",
+    "Items accept a leading Icon and a trailing Shortcut (display only).",
+    "Open question 3 resolved (user, 2026-11-03: \"Ok\"): Menu v1 holds actions and links only (item, separator, group); checkable items and submenus come later, on demand, as new children of the same contract.",
+    "Open question 2 resolved (user, 2026-11-03: \"Ok\"): the contract wins over Bits UI DropdownMenu where they disagree, with a local, pinned and tested override.",
+    "Bits UI DropdownMenu is not used: its content unmounts when closed (no exit transition) and it manages focus in its own focus scope; decisions.md (2026-10-31) lets ggbrick write its own overlay primitive in that case. The Menu implements the WAI-ARIA menu button pattern on the native auto popover.",
+    "Contract fact added during implementation: group leadingSize and leadingGap roles (pending re-presentation)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "Exports Menu, MenuItem, MenuSeparator and MenuGroup.",
+    "The highlighted item is the focused item (roving focus through focus(), not aria-activedescendant); opening by pointer focuses the menu itself, so no item is highlighted until an arrow key or the pointer.",
+    "The trigger opens the menu through popovertarget; ArrowDown and ArrowUp on the trigger open it on the first or last item; Enter or Space mark a keyboard opening.",
+    "On opening, the panel is at least as wide as the trigger and never taller than the larger room above or below it."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-03",
+      "change": "Contract fact found during implementation: group roles leadingSize (size.icon.sm) and leadingGap (space.control.gap.sm) so that the group heading aligns with item labels when items have a leading icon (the item roles are scoped to items and invisible to the group). To be re-presented at the wave 3 implementation gate.",
+      "sha256": {
+        "foundations/components/overlays/menu/contract.json": "dd9d08534d616451c8061301deb10ffb9bd320fa323f9f7578dc2b12eafcf0f3"
+      },
+      "recorded": "Re-recorded with the approvals of 2026-11-03."
+    }
+  ]
+}

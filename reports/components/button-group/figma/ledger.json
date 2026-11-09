@@ -1,0 +1,108 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "actions/button-group",
+      "id": "407:110"
+    },
+    "library": {
+      "name": "Actions",
+      "id": "343:2"
+    }
+  },
+  "recordedOn": "2026-11-03",
+  "componentSet": {
+    "id": "419:2913",
+    "name": "ButtonGroup",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=419-2913"
+  },
+  "section": {
+    "name": "ButtonGroup",
+    "id": "419:2294"
+  },
+  "properties": {
+    "Orientation": {
+      "type": "VARIANT",
+      "default": "horizontal",
+      "options": [
+        "horizontal",
+        "vertical"
+      ]
+    },
+    "Align": {
+      "type": "VARIANT",
+      "default": "start",
+      "options": [
+        "start",
+        "center",
+        "end",
+        "stretch"
+      ],
+      "note": "vertical exists with Align=start only (Buttons always full width)"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "default": "md",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ]
+    },
+    "Items#419:63": {
+      "type": "SLOT",
+      "preferred": [
+        "Button 48:1586",
+        "IconButton 211:1167"
+      ],
+      "minChildren": 1,
+      "allowPreferredValuesOnly": true
+    },
+    "Label#419:64": {
+      "type": "TEXT",
+      "default": " ",
+      "note": "hidden group name"
+    }
+  },
+  "variants": {
+    "Orientation=horizontal, Align=start, Size=md": "419:2295",
+    "Orientation=horizontal, Align=center, Size=md": "419:2334",
+    "Orientation=horizontal, Align=end, Size=md": "419:2373",
+    "Orientation=horizontal, Align=stretch, Size=md": "419:2412",
+    "Orientation=horizontal, Align=start, Size=sm": "419:2451",
+    "Orientation=horizontal, Align=center, Size=sm": "419:2490",
+    "Orientation=horizontal, Align=end, Size=sm": "419:2529",
+    "Orientation=horizontal, Align=stretch, Size=sm": "419:2568",
+    "Orientation=horizontal, Align=start, Size=lg": "419:2607",
+    "Orientation=horizontal, Align=center, Size=lg": "419:2646",
+    "Orientation=horizontal, Align=end, Size=lg": "419:2685",
+    "Orientation=horizontal, Align=stretch, Size=lg": "419:2724",
+    "Orientation=vertical, Align=start, Size=md": "419:2763",
+    "Orientation=vertical, Align=start, Size=sm": "419:2813",
+    "Orientation=vertical, Align=start, Size=lg": "419:2863"
+  },
+  "parts": {
+    "Items": "SLOT, gap space/control/gap/{size}"
+  },
+  "specification": {
+    "id": "420:2",
+    "name": "ButtonGroup — Specification",
+    "anatomyBoard": "420:316",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=420-2"
+  },
+  "adapterVariables": {},
+  "builders": [
+    "authoring/adapters/figma/button-group-master.plugin.js",
+    "authoring/adapters/figma/button-group-spec.plugin.js",
+    "authoring/adapters/figma/button-group-parity.plugin.js",
+    "authoring/adapters/figma/wave3-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js"
+  ],
+  "notes": [
+    "Button instances in the slot clear their minimum height (size/target/min, 44 px) so that the gap separates the surfaces as in the code, where the target overflows the button.",
+    "Stretch and vertical Buttons fill the width: the instance and its Container are set to fill (the Button master hugs its label).",
+    "2026-11-04, user review of the Figma parity: the items of horizontal groups are centered on the cross axis, so that an IconButton dropped in lines up with the buttons (the slots aligned them at the top). Parity rerun: 216 records, 0 failures; 54 new checks that an IconButton dropped into each horizontal group is centered with the buttons in the 18 contexts."
+  ],
+  "updatedOn": "2026-11-04"
+}

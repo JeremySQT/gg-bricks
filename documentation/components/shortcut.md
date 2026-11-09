@@ -6,13 +6,13 @@ A shortcut shows a keyboard combination as a hint: ⌘K after a command, Ctrl+Sh
 
 ## Anatomy
 
-| #   | Part      | Required | Role                                                                                                   |
-| --- | --------- | -------- | ------------------------------------------------------------------------------------------------------ |
-| 1   | Container | yes      | The keys on one line, aligned on the text baseline.                                                    |
-| 2   | Key       | yes      | One per key, modifiers first. Plain: text. Keycap: a cap with a surface, a border and rounded corners. |
-| 3   | Separator | platform | The “+” between keys on other platforms; on a Mac the keys are juxtaposed.                             |
+| #   | Part      | Required | Role                                                                                              |
+| --- | --------- | -------- | ------------------------------------------------------------------------------------------------- |
+| 1   | Container | yes      | The keys of the combination, on one line, aligned with the text around it.                        |
+| 2   | Key       | yes      | One per key, modifiers first. Plain: the key as text. Keycap: each key drawn as a cap.            |
+| 3   | Separator | platform | The “+” between keys on platforms other than Mac; on a Mac the keys follow each other without it. |
 
-Keycap dimensions: A side padding and C gap between caps (2, 4 or 6 px with the density), B border (1 px), D cap height (the text line plus two borders).
+Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/shortcut.json`.
 
 ## When to use
 
@@ -124,7 +124,7 @@ Renders a `<kbd>` root holding a visually hidden `<span class="ggb-shortcut__nam
 | ------------ | -------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `keys`       | `string`                         | required  | Platform-neutral combination: names joined by `+` (`Mod+Shift+P`), matched ignoring case, aliases accepted; any other name is a literal key shown as written (a single letter uppercased). |
 | `platform`   | `'auto' \| 'mac' \| 'other'`     | `'auto'`  | `auto` renders the generic form first and switches to the Apple form after mount on Apple platforms; `mac` and `other` force the rendering.                                                |
-| `appearance` | `'plain' \| 'keycap'`            | `'plain'` | `plain`: text placed by its box at the muted opacity. `keycap`: one cap per key, for neutral surfaces only.                                                                                |
+| `appearance` | `'plain' \| 'keycap'`            | `'plain'` | `plain`: text, attenuated against the surrounding text. `keycap`: one cap per key, for neutral surfaces only.                                                                              |
 | `size`       | `'sm' \| 'md' \| 'lg'`           | `'md'`    | Typography size, named like the host: pass the host's size unchanged.                                                                                                                      |
 | `label`      | `string`                         | —         | Replaces the generated spoken equivalent as the accessible text (localization, product wording). A blank label is ignored.                                                                 |
 | `ref`        | `HTMLElement \| null` (bindable) | `null`    | The rendered root element.                                                                                                                                                                 |
@@ -140,7 +140,7 @@ The component provides:
 
 - A spoken equivalent in words (“Shift Command P”) or `label` as accessible text; glyphs and “+” are never read.
 - A `kbd` root with no role and no place in the tab order.
-- The text color of its context; keycaps keep a visible boundary in forced colors, where a plain shortcut is shown at full opacity.
+- The text color of its context; keycaps keep a visible boundary in forced colors, where a plain shortcut is no longer attenuated.
 
 The integration provides:
 

@@ -1,0 +1,773 @@
+{
+  "method": "hash of sorted field lines per context (wave3-parity-report.mjs)",
+  "records": [
+    {
+      "context": "base-light-standard",
+      "props": {
+        "item": "edit"
+      },
+      "state": "hover",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "compared as ecf2f9ff in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "item": "edit"
+      },
+      "state": "hover",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "compared as 181c21ff in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "item": "edit"
+      },
+      "state": "hover",
+      "part": "root",
+      "property": "height",
+      "expected": 33,
+      "observed": "33",
+      "passed": true,
+      "note": "compared as 33 in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "item": "share"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgba(0, 0, 0, 0)",
+      "observed": "00000000",
+      "passed": true,
+      "note": "compared as 00000000 in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "item": "share"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "compared as 181c21ff in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "item": "share"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "height",
+      "expected": 33,
+      "observed": "33",
+      "passed": true,
+      "note": "compared as 33 in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "item": "archive"
+      },
+      "state": "disabled",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgba(0, 0, 0, 0)",
+      "observed": "00000000",
+      "passed": true,
+      "note": "compared as 00000000 in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "item": "archive"
+      },
+      "state": "disabled",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(158, 164, 171)",
+      "observed": "9ea4abff",
+      "passed": true,
+      "note": "compared as 9ea4abff in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "item": "archive"
+      },
+      "state": "disabled",
+      "part": "root",
+      "property": "height",
+      "expected": 33,
+      "observed": "33",
+      "passed": true,
+      "note": "compared as 33 in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "item": "delete",
+        "intent": "danger"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgba(0, 0, 0, 0)",
+      "observed": "00000000",
+      "passed": true,
+      "note": "compared as 00000000 in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "item": "delete",
+        "intent": "danger"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(138, 0, 18)",
+      "observed": "8a0012ff",
+      "passed": true,
+      "note": "compared as 8a0012ff in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "item": "delete",
+        "intent": "danger"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "height",
+      "expected": 33,
+      "observed": "33",
+      "passed": true,
+      "note": "compared as 33 in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {},
+      "state": "panel",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgb(255, 255, 255)",
+      "observed": "ffffffff",
+      "passed": true,
+      "note": "compared as ffffffff in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {},
+      "state": "panel",
+      "part": "root",
+      "property": "radius",
+      "expected": "12px",
+      "observed": "12",
+      "passed": true,
+      "note": "compared as 12 in the context hash"
+    },
+    {
+      "context": "base-light-standard",
+      "props": {},
+      "state": "panel",
+      "part": "root",
+      "property": "padding",
+      "expected": "4px",
+      "observed": "4",
+      "passed": true,
+      "note": "compared as 4 in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "item": "edit"
+      },
+      "state": "hover",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgb(71, 76, 82)",
+      "observed": "474c52ff",
+      "passed": true,
+      "note": "compared as 474c52ff in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "item": "edit"
+      },
+      "state": "hover",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "compared as ecf2f9ff in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "item": "edit"
+      },
+      "state": "hover",
+      "part": "root",
+      "property": "height",
+      "expected": 33,
+      "observed": "33",
+      "passed": true,
+      "note": "compared as 33 in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "item": "share"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgba(0, 0, 0, 0)",
+      "observed": "00000000",
+      "passed": true,
+      "note": "compared as 00000000 in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "item": "share"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "compared as ecf2f9ff in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "item": "share"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "height",
+      "expected": 33,
+      "observed": "33",
+      "passed": true,
+      "note": "compared as 33 in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "item": "archive"
+      },
+      "state": "disabled",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgba(0, 0, 0, 0)",
+      "observed": "00000000",
+      "passed": true,
+      "note": "compared as 00000000 in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "item": "archive"
+      },
+      "state": "disabled",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(95, 100, 106)",
+      "observed": "5f646aff",
+      "passed": true,
+      "note": "compared as 5f646aff in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "item": "archive"
+      },
+      "state": "disabled",
+      "part": "root",
+      "property": "height",
+      "expected": 33,
+      "observed": "33",
+      "passed": true,
+      "note": "compared as 33 in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "item": "delete",
+        "intent": "danger"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgba(0, 0, 0, 0)",
+      "observed": "00000000",
+      "passed": true,
+      "note": "compared as 00000000 in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "item": "delete",
+        "intent": "danger"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(255, 205, 200)",
+      "observed": "ffcdc8ff",
+      "passed": true,
+      "note": "compared as ffcdc8ff in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "item": "delete",
+        "intent": "danger"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "height",
+      "expected": 33,
+      "observed": "33",
+      "passed": true,
+      "note": "compared as 33 in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {},
+      "state": "panel",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgb(46, 50, 56)",
+      "observed": "2e3238ff",
+      "passed": true,
+      "note": "compared as 2e3238ff in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {},
+      "state": "panel",
+      "part": "root",
+      "property": "radius",
+      "expected": "12px",
+      "observed": "12",
+      "passed": true,
+      "note": "compared as 12 in the context hash"
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {},
+      "state": "panel",
+      "part": "root",
+      "property": "padding",
+      "expected": "4px",
+      "observed": "4",
+      "passed": true,
+      "note": "compared as 4 in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "item": "edit"
+      },
+      "state": "hover",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "compared as ecf2f9ff in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "item": "edit"
+      },
+      "state": "hover",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "compared as 181c21ff in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "item": "edit"
+      },
+      "state": "hover",
+      "part": "root",
+      "property": "height",
+      "expected": 29,
+      "observed": "29",
+      "passed": true,
+      "note": "compared as 29 in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "item": "share"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgba(0, 0, 0, 0)",
+      "observed": "00000000",
+      "passed": true,
+      "note": "compared as 00000000 in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "item": "share"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "181c21ff",
+      "passed": true,
+      "note": "compared as 181c21ff in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "item": "share"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "height",
+      "expected": 29,
+      "observed": "29",
+      "passed": true,
+      "note": "compared as 29 in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "item": "archive"
+      },
+      "state": "disabled",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgba(0, 0, 0, 0)",
+      "observed": "00000000",
+      "passed": true,
+      "note": "compared as 00000000 in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "item": "archive"
+      },
+      "state": "disabled",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(158, 164, 171)",
+      "observed": "9ea4abff",
+      "passed": true,
+      "note": "compared as 9ea4abff in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "item": "archive"
+      },
+      "state": "disabled",
+      "part": "root",
+      "property": "height",
+      "expected": 29,
+      "observed": "29",
+      "passed": true,
+      "note": "compared as 29 in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "item": "delete",
+        "intent": "danger"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgba(0, 0, 0, 0)",
+      "observed": "00000000",
+      "passed": true,
+      "note": "compared as 00000000 in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "item": "delete",
+        "intent": "danger"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(138, 0, 18)",
+      "observed": "8a0012ff",
+      "passed": true,
+      "note": "compared as 8a0012ff in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "item": "delete",
+        "intent": "danger"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "height",
+      "expected": 29,
+      "observed": "29",
+      "passed": true,
+      "note": "compared as 29 in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {},
+      "state": "panel",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgb(255, 255, 255)",
+      "observed": "ffffffff",
+      "passed": true,
+      "note": "compared as ffffffff in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {},
+      "state": "panel",
+      "part": "root",
+      "property": "radius",
+      "expected": "6px",
+      "observed": "6",
+      "passed": true,
+      "note": "compared as 6 in the context hash"
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {},
+      "state": "panel",
+      "part": "root",
+      "property": "padding",
+      "expected": "2px",
+      "observed": "2",
+      "passed": true,
+      "note": "compared as 2 in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "item": "edit"
+      },
+      "state": "hover",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgb(71, 76, 82)",
+      "observed": "474c52ff",
+      "passed": true,
+      "note": "compared as 474c52ff in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "item": "edit"
+      },
+      "state": "hover",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "compared as ecf2f9ff in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "item": "edit"
+      },
+      "state": "hover",
+      "part": "root",
+      "property": "height",
+      "expected": 37,
+      "observed": "37",
+      "passed": true,
+      "note": "compared as 37 in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "item": "share"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgba(0, 0, 0, 0)",
+      "observed": "00000000",
+      "passed": true,
+      "note": "compared as 00000000 in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "item": "share"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "ecf2f9ff",
+      "passed": true,
+      "note": "compared as ecf2f9ff in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "item": "share"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "height",
+      "expected": 37,
+      "observed": "37",
+      "passed": true,
+      "note": "compared as 37 in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "item": "archive"
+      },
+      "state": "disabled",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgba(0, 0, 0, 0)",
+      "observed": "00000000",
+      "passed": true,
+      "note": "compared as 00000000 in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "item": "archive"
+      },
+      "state": "disabled",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(95, 100, 106)",
+      "observed": "5f646aff",
+      "passed": true,
+      "note": "compared as 5f646aff in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "item": "archive"
+      },
+      "state": "disabled",
+      "part": "root",
+      "property": "height",
+      "expected": 37,
+      "observed": "37",
+      "passed": true,
+      "note": "compared as 37 in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "item": "delete",
+        "intent": "danger"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgba(0, 0, 0, 0)",
+      "observed": "00000000",
+      "passed": true,
+      "note": "compared as 00000000 in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "item": "delete",
+        "intent": "danger"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "content",
+      "expected": "rgb(255, 205, 200)",
+      "observed": "ffcdc8ff",
+      "passed": true,
+      "note": "compared as ffcdc8ff in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "item": "delete",
+        "intent": "danger"
+      },
+      "state": "default",
+      "part": "root",
+      "property": "height",
+      "expected": 37,
+      "observed": "37",
+      "passed": true,
+      "note": "compared as 37 in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {},
+      "state": "panel",
+      "part": "root",
+      "property": "surface",
+      "expected": "rgb(46, 50, 56)",
+      "observed": "2e3238ff",
+      "passed": true,
+      "note": "compared as 2e3238ff in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {},
+      "state": "panel",
+      "part": "root",
+      "property": "radius",
+      "expected": "16px",
+      "observed": "16",
+      "passed": true,
+      "note": "compared as 16 in the context hash"
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {},
+      "state": "panel",
+      "part": "root",
+      "property": "padding",
+      "expected": "6px",
+      "observed": "6",
+      "passed": true,
+      "note": "compared as 6 in the context hash"
+    }
+  ]
+}

@@ -26,13 +26,14 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/switch/contract.json",
-      "sha256": "c43a5de4b9258453baf6ac46cbeee950dda8e5abfe28cd4a5e0805e8fc11d827"
+      "sha256": "27acd6aea528bfa235cd95c7591ee359bbe335d0a59559642c28ed6820cc6072"
     },
     "tokens": [
       "foundations/tokens/inventory.json",
       "foundations/tokens/base/semantic/appearance.light.tokens.json",
       "foundations/tokens/base/semantic/appearance.dark.tokens.json",
-      "foundations/tokens/base/semantic/common.tokens.json"
+      "foundations/tokens/base/semantic/common.tokens.json",
+      "foundations/tokens/base/components/switch.tokens.json"
     ],
     "figma": {
       "file": "TDPqojP4KvbWJlKSYc4zKC",
@@ -87,12 +88,16 @@
     "contract": {
       "scope": "Switch contract: bindable checked, required label, hideLabel, description, labelPosition end/start, size, disabled, readonly (no invalid, no required); track, thumb, label, description; selection, condition and focus states; checkedChange; color.choice.* roles, size.switch.{size}, radius.full, motion.duration.base. Foundation additions of the wave (color.choice, size.choice, size.switch, readonly border) recorded in the semantic approval.",
       "revision": {
-        "paths": ["foundations/components/forms/switch/contract.json"],
+        "paths": [
+          "foundations/components/forms/switch/contract.json",
+          "foundations/tokens/base/components/switch.tokens.json"
+        ],
         "sha256": {
-          "foundations/components/forms/switch/contract.json": "c43a5de4b9258453baf6ac46cbeee950dda8e5abfe28cd4a5e0805e8fc11d827"
+          "foundations/components/forms/switch/contract.json": "27acd6aea528bfa235cd95c7591ee359bbe335d0a59559642c28ed6820cc6072",
+          "foundations/tokens/base/components/switch.tokens.json": "f35adf456d988fac698ca85abf93d5f340cfa8114bb9c9f113790380ef3676c5"
         }
       },
-      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\"",
+      "provenance": "User at the grouped wave 2 contract gate in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-26): \"A pour 1, 2 je partirai sur B […] 3, ok, 4 ok. Je te fais confiance pour le reste du contrat, je me rendrais plus compte à l'implémentation si il y a des ajustements à faire.\" Amendment of 2026-11-01 (wave 3 contract gate, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Je suis ta recommandation, je préfère qu'on garde la structure propre. Tu peux aussi faire la modification pour switch\"): the track size moved from the semantic role size.switch.{size} to the component token component.switch.track-size.{size} (same primitives 16, 20, 24 px); rendering unchanged (tests/browser/switch.spec.ts, 5 passed); digests re-recorded.",
       "note": "Conversational approval of the whole wave contract set; the reviewer expects adjustments at the implementation review."
     },
     "implementation": {
@@ -110,12 +115,12 @@
           "packages/svelte/src/components/switch/Switch.svelte": "3f388f0bd30fe261cfe020647d9157514252f0978f717b185ca115480c01d3e3",
           "packages/svelte/src/components/switch/contract.generated.ts": "85bc9266fdf2025707b0572b6c1950f0a9c6ceb8aa495fa54e19b478968d4108",
           "packages/svelte/src/components/switch/switch.css": "26e10455d1e06b7a6517a755a02cbb38edf14334b8308b6bf51df1ed024181cb",
-          "packages/svelte/src/components/switch/tokens.generated.css": "9cb95686502b7c34cb29beaca9655ccb92164a54f34517f125e7a88c567e48db",
+          "packages/svelte/src/components/switch/tokens.generated.css": "5d189c81b3b028bf192b8dd6f6677c04804caddf99c02684fe40ca92021a2b33",
           "packages/svelte/src/components/switch/types.ts": "357abc1a0b857fd00133b2bf576f1147b69afc005b0e55a0356b634f97b41824",
           "examples/switch/App.svelte": "d0ad42fb3686ac64c101c4d4f0caf529f58cc47fbaa775f3e655a47dbc31433f"
         }
       },
-      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27). Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded.",
+      "provenance": "User at the grouped wave 2 implementation review in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx, on the previews of https://claude.ai/artifact/AZKkUxpX9KNpdy7tyRSfnz: round 1 (2026-10-27) asked for a centered Switch thumb, round Radio dots and rings, and lighter field borders; after version 2: \"Sinon le reste semble bon\", then \"tu peux rester sur cette valeur de contour si tu veux. Si jamais, à la fin je ferai une repasse globale sur les composants pour ajuster les styles\" (2026-10-27). Amendment of 2026-10-31 (audit lot 1, user \"Les trois à la suite\" in the session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): every component stylesheet wrapped in `@layer ggb` and the generated header names the family; no rendered value changes (browser suite green); digests re-recorded. Amendment of 2026-11-01 (wave 3 contract gate, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Je suis ta recommandation, je préfère qu'on garde la structure propre. Tu peux aussi faire la modification pour switch\"): the track size moved from the semantic role size.switch.{size} to the component token component.switch.track-size.{size} (same primitives 16, 20, 24 px); rendering unchanged (tests/browser/switch.spec.ts, 5 passed); digests re-recorded.",
       "note": "Visual adjustments (border strength, micro-interactions, animations) are deferred by the user to a global visual pass over all components before the first release (authoring/roadmap.md). The axe exception for text inside disabled components (tests/browser/helpers.ts) was presented at both rounds without objection; it is not an explicit approval."
     },
     "figmaParity": {
@@ -129,10 +134,10 @@
         "sha256": {
           "reports/components/switch/figma/parity.json": "6f7d0ab1d7498f4d31acb4fe4d6b4d89d1d1cc7c45e831e65e142bd15c778bcc",
           "reports/components/switch/figma/ledger.json": "34a2f94988e8bd9a37f170be159ca6d2f4b5a5f54e2507e8de43fbfaf7aa97eb",
-          "foundations/components/forms/switch/figma-spec.md": "eaa5826b93270118a35c51bd15c1164985627d976e8b2f542bc01f0b0b9197d2"
+          "foundations/components/forms/switch/figma-spec.md": "fed0eeb93c7c3416e375da62c834149702e514faee180eba8b91db35bf7bdbd9"
         }
       },
-      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\" Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged.",
+      "provenance": "User at the Figma parity gate of wave 2 in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Je valide la parité, tu peux passer à la documentation\" Amendment of 2026-10-31 (audit lot 1, session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): figma-spec.md and ledger.json re-digested after the library layout changes the user asked for on 2026-10-29/30 (family pages, section headers, specification header links; commits f347938, 8c3db62, 1749dc2, c14e6a2); parity.json unchanged. Amendment of 2026-11-01 (wave 3 contract gate, user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Je suis ta recommandation, je préfère qu'on garde la structure propre. Tu peux aussi faire la modification pour switch\"): the track size moved from the semantic role size.switch.{size} to the component token component.switch.track-size.{size} (same primitives 16, 20, 24 px); rendering unchanged (tests/browser/switch.spec.ts, 5 passed); Figma variables size/switch/{sm,md,lg} renamed component/switch/track-size/{sm,md,lg} in place (VariableID:286:7 to 286:9, IDs, values and the 48 track height bindings unchanged), WEB code syntax updated, the specification text 306:566 updated; parity.json unchanged (values identical); figma-spec.md re-digested.",
       "note": null
     },
     "documentation": {
@@ -144,12 +149,12 @@
           "apps/docs/src/playgrounds/switch.svelte"
         ],
         "sha256": {
-          "documentation/components/switch.md": "3a8caa41c4faa08d983b1ef1495a597f2c68f57374554be5ea4f0a700e0a9b3a",
-          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "documentation/components/switch.md": "be0bf2550217b788a03578120d28cb15fa4770678caa55ad517bb92c535aebf8",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
           "apps/docs/src/playgrounds/switch.svelte": "fbf232496bc1a8dcb3fef81f359e22b4a5d4cc5d7ee8981a9d1456449466ab6f"
         }
       },
-      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded.",
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded. Re-recorded on 2026-11-09 with the wave 3 documentation review: User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\". The review covered the cross-references to the wave 3 components and the progressive detail rule (Anatomy in usage terms, the contract for tokens and measurements).",
       "note": null
     },
     "delivery": null
@@ -234,7 +239,8 @@
     "Bits UI has no readonly switch: the component cancels click and Space/Enter before the primitive and sets aria-readonly. Enter also toggles (Bits UI, allowed by the WAI-ARIA switch pattern).",
     "Implementation review, round 1 (user, 2026-10-27): the field border was too contrasted; color.field.default.border in light moved to the new primitive step neutral.450 (3.43:1, still at least 3:1), hover to neutral.500; readonly and the off borders of checkbox, radio and switch follow (foundations change recorded in foundations/tokens/status.json pendingChanges).",
     "Implementation review, round 1 (user, 2026-10-27: the white thumb is not vertically centered): the thumb is drawn as an SVG circle over the track, centered by SVG geometry (antialiased) instead of a CSS box snapped to device pixels, which was off by one pixel at fractional display scales (125 %, 150 %); it moves by transitioning cx. Bits UI Switch.Thumb is no longer used.",
-    "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass."
+    "Field border contrast: option A kept, the light border on neutral.450 at 3.43:1 (user, 2026-10-27: \"tu peux rester sur cette valeur de contour\"); styles may be adjusted at the global visual pass.",
+    "Track size moved to the component token layer on 2026-11-01 (decisions.md, Semantic role or component token): size.switch.{sm,md,lg} became component.switch.track-size.{sm,md,lg}, same values; the Figma variables were renamed in place (IDs and bindings kept). Change record: reports/tokens/changes/2026-11-01-component-tokens.md."
   ],
   "openDecisions": [],
   "nextAction": "Delivery with wave 2: pull request of wave/2-form-foundations to main (user merge); publication needs explicit authorization.",
@@ -253,5 +259,24 @@
         "reason": "Accepted at the wave 2 contract gate (2026-10-26, \"4 ok\"), as for the Button outline border (2026-09-26): color.field.default.border (and the readonly border that now aliases it) reaches 2.06 on surface.muted in dark; muted is a de-emphasized backdrop where forms are not expected."
       }
     ]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-04",
+      "change": "Wave 3 documentation: documentation/index.json gains the ten wave 3 entries, and the existing entries no longer mark Menu, ButtonGroup, Tooltip, Spinner and Alert as planned. Cross-references only; the guidance is unchanged. To be re-presented with the wave 3 documentation review.",
+      "sha256": {
+        "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
+      },
+      "recorded": "Re-recorded with the wave 3 documentation approval of 2026-11-09."
+    },
+    {
+      "date": "2026-11-06",
+      "change": "User decision of 2026-11-06 (session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui vas-y, applique-le aux 25 pages\"), progressive detail: Anatomy lists the parts in usage terms without token names, measurements or colors and points to contracts/switch.json; token names and visual values removed from the rest of the page except where the reader acts on them. Guidance unchanged. To be re-presented with the wave 3 documentation review.",
+      "sha256": {
+        "documentation/components/switch.md": "be0bf2550217b788a03578120d28cb15fa4770678caa55ad517bb92c535aebf8",
+        "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
+      },
+      "recorded": "Re-recorded with the wave 3 documentation approval of 2026-11-09."
+    }
+  ]
 }

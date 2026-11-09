@@ -1,0 +1,238 @@
+{
+  "formatStatus": "v1",
+  "componentId": "popover",
+  "family": "overlays",
+  "wave": 3,
+  "phase": "done",
+  "scope": {
+    "purpose": "Show free, interactive content in a non-modal panel anchored to a trigger.",
+    "useCases": ["Filters next to a list.", "A short form (rename, share).", "Details of an item."],
+    "exclusions": [
+      "Action lists: Menu.",
+      "Blocking tasks: Dialog.",
+      "Hover-only content: Tooltip.",
+      "Arrows; open on hover."
+    ],
+    "alternatives": ["Menu for actions.", "Dialog for a task that must be finished.", "Tooltip for a short hint."]
+  },
+  "dependencies": ["lib/overlay"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/overlays/popover/contract.json",
+      "sha256": "d6b71e44809af5922418ef1942119938ff815302d988724dbada74eecfc93072"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "overlays/popover (407:122)",
+      "library": "Overlays (407:119), section Popover (430:104)",
+      "componentSet": "430:239",
+      "specification": "462:855",
+      "ledger": "reports/components/popover/figma/ledger.json",
+      "parity": "reports/components/popover/figma/parity.json",
+      "screenshots": [
+        "reports/components/popover/figma/master-set.png",
+        "reports/components/popover/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/popover/figma/blueprint-anatomy.png",
+          "node": "462:951"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/overlays-master.plugin.js",
+        "authoring/adapters/figma/overlays-spec.plugin.js",
+        "authoring/adapters/figma/overlays-parity.plugin.js",
+        "authoring/adapters/figma/wave3-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/overlays/popover/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/popover",
+      "files": [
+        "packages/svelte/src/components/popover/Popover.svelte",
+        "packages/svelte/src/components/popover/types.ts",
+        "packages/svelte/src/components/popover/popover.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/popover/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/popover",
+      "preview": "dist/previews/popover.html (npm run build && npm run build:preview popover)",
+      "artifact": "https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41, round 2, page popover.html)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/overlays.test.ts"],
+      "browser": ["tests/browser/popover.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
+      "evidence": "reports/components/popover/svelte/"
+    },
+    "humanDocs": "documentation/components/popover.md",
+    "agentDocs": "documentation/index.json (entry popover); copied into packages/svelte by npm run build:svelte",
+    "playground": "apps/docs/src/playgrounds/popover.svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Popover contract: bindable open, required label, side, align; trigger Button or IconButton; non-modal dialog panel on color.surface.overlay with size.overlay.panel maximum; focus moves into the content, Escape, outside press and focus leaving close it; top layer.",
+      "revision": {
+        "paths": ["foundations/components/overlays/popover/contract.json"],
+        "sha256": {
+          "foundations/components/overlays/popover/contract.json": "d6b71e44809af5922418ef1942119938ff815302d988724dbada74eecfc93072"
+        }
+      },
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "note": null
+    },
+    "implementation": {
+      "scope": "Popover on lib/overlay: popovertarget trigger, named non-modal dialog, focus into the content, Escape, outside press, focus leaving, nesting, room-limited height; visual pass later.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/popover/Popover.svelte",
+          "packages/svelte/src/components/popover/contract.generated.ts",
+          "packages/svelte/src/components/popover/popover.css",
+          "packages/svelte/src/components/popover/tokens.generated.css",
+          "packages/svelte/src/components/popover/types.ts",
+          "examples/popover/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/popover/Popover.svelte": "0e59038dd3d7e8afcc3ce85da623cacfc52f4b04efa08c5cfb1091b1afb30e9d",
+          "packages/svelte/src/components/popover/contract.generated.ts": "645112b62ca8f6df23f8a47b8e42bcbad4b9f3e6e8a50dabc58e0e1396a6db02",
+          "packages/svelte/src/components/popover/popover.css": "9fc56f7db2c5d5a898da420f4a5a1cffb7a500c27892d027a570546054713a3b",
+          "packages/svelte/src/components/popover/tokens.generated.css": "3544dc4ea4232588d2676cb74ad77e2542c720bdf1a0099071d035717d817322",
+          "packages/svelte/src/components/popover/types.ts": "110a47704c7b77ed70fdf55b462538d11c7bbc4d599a60a2f368143a8d45776a",
+          "examples/popover/App.svelte": "c7eef0b7cd15a4f125d0922eeec6af67d0f0fd10603136cba0320e1d34b3d30b"
+        }
+      },
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
+    },
+    "figmaParity": {
+      "scope": "Figma master 430:239 and specification frame 462:855 of the popover component, parity report (28 records, 0 failures, 0 justified differences) and the extra checks listed in figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/overlays/popover/figma-spec.md",
+          "reports/components/popover/figma/parity.json",
+          "reports/components/popover/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/overlays/popover/figma-spec.md": "2501c42d5a9c8df53a4eee74902a243a1161d239ba65b1d8914bf47154b8441e",
+          "reports/components/popover/figma/parity.json": "d0e06dd8b2dd73dd67f4b3dc0e584d02483d315e8ac5a70bfb0be6a8d70831b1",
+          "reports/components/popover/figma/ledger.json": "9424d9e1e21d44a4ad2f500f39d97c26d9931741c3674d405c38c29356e128b8"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "430:239",
+          "specificationFrame": "462:855"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of popover (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/popover.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/popover.svelte"
+        ],
+        "sha256": {
+          "documentation/components/popover.md": "a59c0eaed754125d5a48f1501dea5b450d27d17e911d39b3c1ca3582078a7088",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/popover.svelte": "18be87bc39f95ace99053ddb8931df10b4fbe1e33b3bc2ee80dce83090ac2ab5"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-01"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed",
+      "date": "2026-11-01",
+      "evidence": "reports/components/popover/"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 48, svelte-check, SSR 86, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox 155 and WebKit 26.6)",
+      "result": "213 passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Evidence: GGB_EVIDENCE=1 browser and SSR runs (28 computed records)",
+      "result": "written",
+      "date": "2026-11-03",
+      "evidence": "reports/components/popover/svelte/"
+    },
+    {
+      "name": "npm run build:preview popover",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Round 2 (user feedback of 2026-11-03): npm run verify passed; npm run test:browser 217 passed (Chromium, overlay smoke in Firefox and WebKit)",
+      "result": "passed",
+      "date": "2026-11-03"
+    },
+    {
+      "name": "Figma parity (28 records, 0 failures; placement checks)",
+      "result": "passed",
+      "date": "2026-11-03",
+      "evidence": "reports/components/popover/figma/parity.json"
+    },
+    {
+      "name": "Figma parity after the review (Show trigger, off by default): 28 records, 0 failures; 432 placement checks with the trigger on (with the Tooltip)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/popover/figma/parity.json"
+    },
+    {
+      "name": "Wave 3 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "reports/components/popover/figma/parity.json"
+    },
+    {
+      "name": "Documentation page, index entry and playground written; npm run build:svelte and build:docs pass (live examples compiled, page rendered without errors in Chromium)",
+      "result": "passed",
+      "date": "2026-11-04",
+      "evidence": "documentation/components/popover.md"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/popover.md"
+    }
+  ],
+  "decisionsTaken": [
+    "Focus policy for non-modal popovers (left open by the spike): focus moves to the first focusable element of the content, or to the panel; Tab order follows the trigger; focus leaving closes it.",
+    "label required: the panel is a named non-modal dialog.",
+    "Surface color.surface.overlay, shadow.overlay, elevation border, radius.overlay, padding space.content.md, max inline size size.overlay.panel (new semantic role, 360 px), offset space.content.xs.",
+    "Side bottom or top, align start by default; flips, shifts and follows the trigger on scroll.",
+    "No built-in close button: content adds one when it needs it (Escape and a press outside always close)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
+  "implementationNotes": [
+    "The trigger is rendered by a snippet that spreads popovertarget and the popup attributes on a Button or IconButton: the browser toggles the auto popover, which spares the trigger from light dismiss (no close-then-reopen on the same press) and restores focus to it on Escape.",
+    "On opening, the panel's max block size is the larger room above or below the trigger, so that it flips and scrolls instead of overflowing the viewport."
+  ]
+}
