@@ -3,7 +3,7 @@
   "componentId": "select",
   "family": "forms",
   "wave": 4,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Choose one value from a list of known options in a form, shown collapsed in a field.",
     "useCases": [
@@ -40,7 +40,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Select compound contract: bindable value and open, options records (value, label, disabled, group), placeholder, label, size, disabled, readonly, invalid, required; InputText-like trigger on color.input.*; children panel, option, group; WAI-ARIA select-only combobox keyboard; panel capped by size.overlay.list.",
+      "revision": {
+        "paths": ["foundations/components/forms/select/contract.json"],
+        "sha256": {
+          "foundations/components/forms/select/contract.json": "768030fa02a732683b35cb950290b86ff0b5ffe1fff26d284e540625e3734287"
+        }
+      },
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\".",
+      "note": "Tab behaviour (closes without choosing) may be revisited at the implementation review (user, 2026-11-09)."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -57,6 +67,12 @@
       "result": "passed (0 contrast failures)",
       "date": "2026-11-09",
       "evidence": "reports/components/select/"
+    },
+    {
+      "name": "Wave 4 contract gate approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
     }
   ],
   "decisionsTaken": [
@@ -68,10 +84,12 @@
     "Keyboard per the WAI-ARIA select-only combobox pattern: focus stays on the trigger, the highlighted option is the active descendant; no wrapping (like a native select); Page Up and Page Down; typeahead; disabled options reached but not chosen (as in Menu).",
     "Tab closes the list without choosing (the pattern allows choosing on Tab; not choosing avoids accidental changes when tabbing through a form).",
     "Panel: at least the trigger's width, up to max(trigger, size.overlay.panel); block size capped by the new role size.overlay.list (256 px, about 7.5 options visible so that the cut row signals the scroll) and by the viewport room.",
-    "The value never changes while the list is closed (arrow keys open it), unlike some native selects."
+    "The value never changes while the list is closed (arrow keys open it), unlike some native selects.",
+    "Gate question 1 resolved (user, 2026-11-09: \"ok pour tes 5 recommandations\"): the shift along the viewport edge is fixed in lib/overlay for every overlay (Popover, Menu, Tooltip, Select, Combobox), with a browser test per overlay near the edge, presented at the implementation gate.",
+    "Gate question 2 resolved (user, 2026-11-09): size.overlay.list = 256 px for Select and Combobox; Menu unchanged (viewport room only), to revisit at the visual pass (roadmap 4b)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 contract gate: present the contract to the user and record the approval.",
+  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 4 implementation gate.",
   "implementationNotes": [
     "Bits UI Select assumes its own portal and focus scope; as for Menu, the component is likely written on the native popover with lib/overlay (decided at implementation, contract versus Bits UI rule)."
   ],

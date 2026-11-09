@@ -3,7 +3,7 @@
   "componentId": "pagination",
   "family": "navigation",
   "wave": 4,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Move through a long list or table split into numbered pages.",
     "useCases": ["Paging through a table of results.", "Server-rendered pages with links (href with {page})."],
@@ -31,7 +31,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Pagination compound contract: bindable page, pageCount, siblingCount, href with {page}, size, label, previousLabel, nextLabel; children item (color.item, current page with an indicator edge) and ellipsis; constant item count; IconButton previous and next.",
+      "revision": {
+        "paths": ["foundations/components/navigation/pagination/contract.json"],
+        "sha256": {
+          "foundations/components/navigation/pagination/contract.json": "8e1321198a098a910c5c6c008b736b8248a3ba3eedc45366f818ca91cd575330"
+        }
+      },
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\".",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -48,6 +58,12 @@
       "result": "passed (0 contrast failures)",
       "date": "2026-11-09",
       "evidence": "reports/components/pagination/"
+    },
+    {
+      "name": "Wave 4 contract gate approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
     }
   ],
   "decisionsTaken": [
@@ -58,7 +74,7 @@
     "No roving focus: each control is a tab stop (WAI-ARIA has no pagination pattern; links in a navigation landmark)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 contract gate: present the contract to the user and record the approval.",
+  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 4 implementation gate.",
   "implementationNotes": [],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]

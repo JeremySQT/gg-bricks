@@ -3,7 +3,7 @@
   "componentId": "accordion",
   "family": "navigation",
   "wave": 4,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "A vertical stack of headings that each show or hide a section of content.",
     "useCases": [
@@ -38,7 +38,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Accordion compound contract: bindable value list, multiple, headingLevel; child item (value, label, disabled, leading Icon); one size; WAI-ARIA accordion keyboard with optional arrows.",
+      "revision": {
+        "paths": ["foundations/components/navigation/accordion/contract.json"],
+        "sha256": {
+          "foundations/components/navigation/accordion/contract.json": "1b9b0459f370a1c44d926e1ad9d069dc707206628c9917974e140f5da09adb9b"
+        }
+      },
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\".",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -55,6 +65,12 @@
       "result": "passed (0 contrast failures)",
       "date": "2026-11-09",
       "evidence": "reports/components/accordion/"
+    },
+    {
+      "name": "Wave 4 contract gate approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
     }
   ],
   "decisionsTaken": [
@@ -66,7 +82,7 @@
     "Expansion animates the block size and the chevron over motion.duration.base; immediate under reduced motion."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 contract gate: present the contract to the user and record the approval.",
+  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 4 implementation gate.",
   "implementationNotes": [
     "Bits UI Accordion is the probable base; the block-size animation in CSS (interpolate-size or grid rows) rather than JavaScript."
   ],

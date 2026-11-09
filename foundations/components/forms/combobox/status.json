@@ -3,7 +3,7 @@
   "componentId": "combobox",
   "family": "forms",
   "wave": 4,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Choose one value from a long list of options by typing to narrow it.",
     "useCases": [
@@ -39,7 +39,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Combobox compound contract: bindable value, inputValue and open, options records, filter contains/none, emptyLabel, placeholder, label, size, disabled, readonly, invalid, required; strict value; children panel (with empty state), option, group; WAI-ARIA combobox keyboard with the first match highlighted.",
+      "revision": {
+        "paths": ["foundations/components/forms/combobox/contract.json"],
+        "sha256": {
+          "foundations/components/forms/combobox/contract.json": "502803a86a1e3a4ad745f8e0b5b73c37810047e18be4651f7aae8c272e07156e"
+        }
+      },
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\".",
+      "note": "Tab behaviour (focus leaving restores the label or clears an empty value) may be revisited at the implementation review (user, 2026-11-09)."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -56,6 +66,12 @@
       "result": "passed (0 contrast failures)",
       "date": "2026-11-09",
       "evidence": "reports/components/combobox/"
+    },
+    {
+      "name": "Wave 4 contract gate approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
     }
   ],
   "decisionsTaken": [
@@ -64,10 +80,12 @@
     "Filtering: filter contains (label contains the text, case and accent insensitive, original order) or none (the application filters, for a server search).",
     "Typing highlights the first enabled match so that Enter chooses it (WAI-ARIA list autocomplete with automatic selection of the highlight, not of the value).",
     "Keyboard per the WAI-ARIA combobox pattern: focus stays in the input, the highlighted option is the active descendant; Home, End and horizontal arrows edit the text; no wrapping; Alt+Down opens.",
-    "Empty state: emptyLabel (default \"No results\") shown in the panel and announced politely; English default strings as for Dialog closeLabel and Alert dismissLabel."
+    "Empty state: emptyLabel (default \"No results\") shown in the panel and announced politely; English default strings as for Dialog closeLabel and Alert dismissLabel.",
+    "Gate question 1 resolved (user, 2026-11-09: \"ok pour tes 5 recommandations\"): the shift along the viewport edge is fixed in lib/overlay for every overlay (Popover, Menu, Tooltip, Select, Combobox), with a browser test per overlay near the edge, presented at the implementation gate.",
+    "Gate question 2 resolved (user, 2026-11-09): size.overlay.list = 256 px for Select and Combobox; Menu unchanged (viewport room only), to revisit at the visual pass (roadmap 4b)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 contract gate: present the contract to the user and record the approval.",
+  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 4 implementation gate.",
   "implementationNotes": [
     "Bits UI Combobox likely reused for roles only, or replaced by an own primitive on the native popover (decided at implementation)."
   ],

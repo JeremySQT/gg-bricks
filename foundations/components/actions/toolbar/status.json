@@ -3,7 +3,7 @@
   "componentId": "toolbar",
   "family": "actions",
   "wave": 4,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Group frequently used controls for one area into a single tab stop with arrow-key navigation.",
     "useCases": [
@@ -38,7 +38,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Toolbar compound contract: label (required), size, orientation; items Button, IconButton, Menu, Popover, Tooltip and the separator child; roving focus shared with Tabs; no toggle buttons in v1.",
+      "revision": {
+        "paths": ["foundations/components/actions/toolbar/contract.json"],
+        "sha256": {
+          "foundations/components/actions/toolbar/contract.json": "a17742098f5cb5edc806db16d6d86458c1c8e34a29e89543f449135205bac7c5"
+        }
+      },
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\".",
+      "note": null
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -55,6 +65,12 @@
       "result": "passed (0 contrast failures)",
       "date": "2026-11-09",
       "evidence": "reports/components/toolbar/"
+    },
+    {
+      "name": "Wave 4 contract gate approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
     }
   ],
   "decisionsTaken": [
@@ -63,9 +79,12 @@
     "Roving focus shared with Tabs (lib/roving-focus): remembers the last focused item, arrows wrap, disabled items and separators skipped.",
     "In a horizontal toolbar Down and Up Arrow on a Menu trigger still open its menu; in a vertical toolbar they move focus.",
     "Items wrap onto further lines when they do not fit; no overflow menu in v1.",
-    "Separator child: a 1 px color.border.subtle line perpendicular to the orientation."
+    "Separator child: a 1 px color.border.subtle line perpendicular to the orientation.",
+    "Gate question 3 resolved (user, 2026-11-09): the Tooltip skip and close delays become component tokens component.tooltip.skip-delay (300 ms) and component.tooltip.close-delay (100 ms) through a Tooltip Modify (rendering unchanged).",
+    "Gate question 4 resolved (user, 2026-11-09): the size a group imposes reaches Menu and Popover triggers; the same fix is applied to ButtonGroup, with a browser test in Toolbar and ButtonGroup.",
+    "Gate question 5 resolved (user, 2026-11-09): Toolbar v1 without toggle buttons; toggles later with a dedicated component or an IconButton pressed prop, on demand."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 contract gate: present the contract to the user and record the approval.",
+  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 4 implementation gate.",
   "implementationNotes": []
 }
