@@ -3,7 +3,7 @@
   "componentId": "menu",
   "family": "overlays",
   "wave": 3,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Offer a short list of actions or links in a panel opened from a trigger.",
     "useCases": [
@@ -152,7 +152,23 @@
       },
       "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB, after the gate: \"Attention, tu as l'air d'avoir intégré un bug dans le composant figma du menu. Il fait 24px de large quand on l'importe.\"): the menu collapsed because its items filled a hugging panel; the six variants are now 240 px wide and resizable, the panel and the items fill them. Colors, heights, placements and the parity hashes are unchanged; a width check was added. To be shown to the user with the fix."
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of menu (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/menu.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/menu.svelte"
+        ],
+        "sha256": {
+          "documentation/components/menu.md": "4c42aec6f339f7c81b5bba214f09279809383d8dffeb5571af41f3d1d93f812e",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/menu.svelte": "df77290d947e06e285909ce10f948ec979d476b94f42b349bda69d4264d46a5b"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [
@@ -240,6 +256,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "tests/browser/menu.spec.ts"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/menu.md"
     }
   ],
   "decisionsTaken": [
@@ -256,7 +278,7 @@
     "Contract fact added during implementation: group leadingSize and leadingGap roles (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
   "implementationNotes": [
     "Exports Menu, MenuItem, MenuSeparator and MenuGroup.",
     "The highlighted item is the focused item (roving focus through focus(), not aria-activedescendant); opening by pointer focuses the menu itself, so no item is highlighted until an arrow key or the pointer.",

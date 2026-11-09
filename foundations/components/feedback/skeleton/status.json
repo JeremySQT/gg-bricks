@@ -3,7 +3,7 @@
   "componentId": "skeleton",
   "family": "feedback",
   "wave": 3,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Stand in for content that is loading with its shape and size, so that the layout does not move when it arrives.",
     "useCases": ["Lines of text in a card or a list.", "An image or chart block.", "An avatar circle."],
@@ -134,7 +134,23 @@
       },
       "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of skeleton (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/skeleton.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/skeleton.svelte"
+        ],
+        "sha256": {
+          "documentation/components/skeleton.md": "4cf5fdf3bd047d80378b1922865912fa0a690502d1aa4ddcab35a2a60ad29e8d",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/skeleton.svelte": "a521b693dbaf272b45662e70241cf1dd88698136719149655631f5124bad43b5"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [
@@ -198,6 +214,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "documentation/components/skeleton.md"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/skeleton.md"
     }
   ],
   "decisionsTaken": [
@@ -207,7 +229,7 @@
     "Hidden from assistive technology; the busy state belongs to the loading region (integration)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
   "implementationNotes": [
     "Pulses stay in phase across the page: each pulse animation's startTime is set to 0 (the document timeline origin) when the skeleton mounts.",
     "Text lines use the lh unit for the line box and a bar of 1em: the skeleton paragraph has the height of the real paragraph (checked against real text in the browser test)."

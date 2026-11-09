@@ -149,12 +149,12 @@
           "apps/docs/src/playgrounds/switch.svelte"
         ],
         "sha256": {
-          "documentation/components/switch.md": "3a8caa41c4faa08d983b1ef1495a597f2c68f57374554be5ea4f0a700e0a9b3a",
-          "documentation/index.json": "b55583d5479ca1e22411d0161f50395ada4802a9f2d5ca1082ae98593f6efe9e",
+          "documentation/components/switch.md": "be0bf2550217b788a03578120d28cb15fa4770678caa55ad517bb92c535aebf8",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
           "apps/docs/src/playgrounds/switch.svelte": "fbf232496bc1a8dcb3fef81f359e22b4a5d4cc5d7ee8981a9d1456449466ab6f"
         }
       },
-      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded.",
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded. Re-recorded on 2026-11-09 with the wave 3 documentation review: User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\". The review covered the cross-references to the wave 3 components and the progressive detail rule (Anatomy in usage terms, the contract for tokens and measurements).",
       "note": null
     },
     "delivery": null
@@ -266,7 +266,8 @@
       "change": "Wave 3 documentation: documentation/index.json gains the ten wave 3 entries, and the existing entries no longer mark Menu, ButtonGroup, Tooltip, Spinner and Alert as planned. Cross-references only; the guidance is unchanged. To be re-presented with the wave 3 documentation review.",
       "sha256": {
         "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
-      }
+      },
+      "recorded": "Re-recorded with the wave 3 documentation approval of 2026-11-09."
     },
     {
       "date": "2026-11-06",
@@ -274,7 +275,8 @@
       "sha256": {
         "documentation/components/switch.md": "be0bf2550217b788a03578120d28cb15fa4770678caa55ad517bb92c535aebf8",
         "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
-      }
+      },
+      "recorded": "Re-recorded with the wave 3 documentation approval of 2026-11-09."
     }
   ]
 }

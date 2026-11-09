@@ -3,7 +3,7 @@
   "componentId": "dialog",
   "family": "overlays",
   "wave": 3,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Ask the user to complete or abandon a short task or decision before going back to the page.",
     "useCases": [
@@ -148,7 +148,23 @@
       },
       "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of dialog (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/dialog.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/dialog.svelte"
+        ],
+        "sha256": {
+          "documentation/components/dialog.md": "050a01794118e92d5a74f2a665f1ddb7534925b5b2f04e696ed38c67fe2d827f",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/dialog.svelte": "19136df9abb37947771a13578f673dada1fc6f4e0dc675c1178a993eab7cb410"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [
@@ -218,6 +234,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "tests/browser/dialog.spec.ts"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/dialog.md"
     }
   ],
   "decisionsTaken": [
@@ -233,7 +255,7 @@
     "Contract fact added during implementation: focusWidth and focusOffset roles for the body room (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
   "implementationNotes": [
     "lib/overlay modal gained a closeRequest option (closedby none and a cancelled cancel event) for a dialog that is not dismissible.",
     "The page does not scroll while a dialog is open (:root:has(dialog.ggb-dialog[open]) { overflow: hidden }).",

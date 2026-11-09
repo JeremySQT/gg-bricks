@@ -3,7 +3,7 @@
   "componentId": "toast",
   "family": "feedback",
   "wave": 3,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Notify briefly about something the user just did or that just happened, without blocking the page.",
     "useCases": ["Saved, Message sent.", "Upload failed with a Retry action.", "Item deleted with an Undo action."],
@@ -142,7 +142,23 @@
       },
       "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Pour continuer sur la Toast, un seul truc me dérange c'est que ça hauteur n'est pas fixe dans le cas où on est en mode \\\"single line\\\". Ce qui fait qu'ajouter une action fait varier sa hauteur. Il faudrait que le bouton d'action soit forcément un SM au vu du contexte, et qu'il ne fasse pas varier la hauteur du toast que ce soit avec ou sans.\"): the contract gains the role rowHeight (size.control.sm): on one row the toast is a small control high plus its padding whatever it holds, the action Button (always sm) keeping its 44 px target over the padding; the code sets it (toast.css), the review page adds a one-line toast with an action, a browser test checks both heights in the representative contexts (it fails on the previous CSS: 68 instead of 56 px); Figma: the single variants keep one height (72 parity checks). Digests re-recorded."
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of toast (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/toast.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/toast.svelte"
+        ],
+        "sha256": {
+          "documentation/components/toast.md": "91b77e190c1d3462358d13ea6d5ce279ed1a6867310ec3fd847f53b4ba703ac4",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/toast.svelte": "916bc61aa5047e011d8b79578e4f3aed8f120b039e7d48513ad8a956d2c1d342"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [
@@ -224,6 +240,12 @@
       "result": "passed",
       "date": "2026-11-06",
       "evidence": "tests/browser/toast.spec.ts"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/toast.md"
     }
   ],
   "decisionsTaken": [
@@ -240,7 +262,7 @@
     "Round 2 of the implementation review (2026-11-03) supersedes the entries above that say a toast with an action never dismisses itself: it leaves after 8 s (time to undo), a danger toast stays until dismissed, another leaves after 5 s, a set duration wins (contract, code and tests)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
   "implementationNotes": [
     "Exports ToastRegion (the region, root of the contract) and Toast (the item child).",
     "The region is a div with role region (not a section: an application's section styles moved it) shown as a manual popover in the top layer; it raises itself again whenever another overlay enters the top layer after it (a capture listener on toggle events).",

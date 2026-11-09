@@ -3,7 +3,7 @@
   "componentId": "progress",
   "family": "feedback",
   "wave": 3,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Show how far a task of known size has gone, or that a longer task is under way.",
     "useCases": [
@@ -145,7 +145,23 @@
       },
       "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of progress (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/progress.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/progress.svelte"
+        ],
+        "sha256": {
+          "documentation/components/progress.md": "27c7ef1f3673e0cbe19fedc8c19159cd4844eabaa48f496ed38a2cca8c5ddedc",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/progress.svelte": "3cc58d27d3b5e3ee773cc547db590f38c4b352224c78eae394a798398d848bd0"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [
@@ -209,6 +225,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "documentation/components/progress.md"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/progress.md"
     }
   ],
   "decisionsTaken": [
@@ -220,7 +242,7 @@
     "Corners: component token component.progress.radius, so that a brand can draw rectangular bars (user, 2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
   "implementationNotes": [
     "Bits UI Progress.Root (2.19.3) does not render the id it receives: the component uses its child snippet to place the id on the progress bar itself.",
     "The label stays in the DOM, visually hidden, when showLabel is false, and names the bar through aria-labelledby."

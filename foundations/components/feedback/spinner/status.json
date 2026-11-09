@@ -3,7 +3,7 @@
   "componentId": "spinner",
   "family": "feedback",
   "wave": 3,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Show that something is loading when the duration is unknown and the place is small.",
     "useCases": [
@@ -146,7 +146,23 @@
       },
       "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of spinner (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/spinner.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/spinner.svelte"
+        ],
+        "sha256": {
+          "documentation/components/spinner.md": "cd5e66ba8d0b28569cc1bf63073aff8e3a2995792c9de8a2a57a4814d6a3e8a5",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/spinner.svelte": "0b3f7a4709c1348e644a637bb54cb9db2384423cdeb157367039b85bc48cb673"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [
@@ -204,6 +220,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "documentation/components/spinner.md"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/spinner.md"
     }
   ],
   "decisionsTaken": [
@@ -216,7 +238,7 @@
     "Wave 3 implementation review (user, 2026-11-03, session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"c'est bien ce composant qu'on va utiliser dans les boutons\"): Button and IconButton compose the Spinner within wave 3, not after it (their loading indicator is a Spinner of their size; the Figma masters swap it too). Supersedes the timing of the previous entry."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
   "implementationNotes": [
     "A labelled spinner is a role status named by aria-label (a status takes no name from its content in Chromium) with the same text visually hidden inside it as the announced content. Whether a status inserted already filled is announced varies between screen readers: the application may keep a status region on the page and fill it instead."
   ]

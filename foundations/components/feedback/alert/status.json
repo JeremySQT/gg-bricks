@@ -3,7 +3,7 @@
   "componentId": "alert",
   "family": "feedback",
   "wave": 3,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Give a durable message about the page, a section or a task, in the flow of the page.",
     "useCases": [
@@ -146,7 +146,23 @@
       },
       "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-04, at the grouped wave 3 Figma parity gate (second round, after the changes asked at the first review: ButtonGroup centered items, Alert Show actions variant with actionsPaddingEnd, a single ToastRegion, Progress without the Type variant, Skeleton Size and Lines on _Skeleton/Text, optional triggers, a neutral Dialog example), after reviewing the review page https://claude.ai/artifact/MP9a3WyEf7xShiGeUwcv3a (version 2), the Figma pages and the parity reports: \"Je valide la parité figma\". Same message, on the proposed rename of the Menu children to Menu/Item, Menu/Separator and Menu/Group: \"Oui si ça te semble être une meilleure approche\" (renamed before this record)."
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of alert (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/alert.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/alert.svelte"
+        ],
+        "sha256": {
+          "documentation/components/alert.md": "b04734c8e04fa524c8390cec92a5d0ad3bca3ca921be25a60438748452e37ae2",
+          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "apps/docs/src/playgrounds/alert.svelte": "55e13e38557edc7139248c7575053d213e4a69955f907f6da9c417663905e434"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [
@@ -222,6 +238,12 @@
       "result": "passed",
       "date": "2026-11-04",
       "evidence": "tests/browser/alert.spec.ts"
+    },
+    {
+      "name": "Documentation approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "documentation/components/alert.md"
     }
   ],
   "decisionsTaken": [
@@ -235,7 +257,7 @@
     "Accent buttons follow the alert intent by pointing the accent action tokens at the intent family in the subtree (no Button change); links take tone inherit through the context ggb:link-tone (2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation review by the user, then the pull request of wave 3 to main.",
+  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
   "implementationNotes": [
     "Imports IconButton from ../icon-button (declared dependency; build:svelte now checks every import against the status dependencies).",
     "Title and content are div elements, not p: an application's unlayered element styles (paragraph margins and colors) would otherwise win over the component's cascade layer.",
