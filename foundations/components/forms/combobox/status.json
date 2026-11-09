@@ -1,0 +1,85 @@
+{
+  "formatStatus": "v1",
+  "componentId": "combobox",
+  "family": "forms",
+  "wave": 4,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Choose one value from a long list of options by typing to narrow it.",
+    "useCases": [
+      "A country or a city among hundreds.",
+      "A person or a project, filtered locally.",
+      "Options searched on a server (filter none, options updated from inputChange)."
+    ],
+    "exclusions": [
+      "Free text as a value (creatable options) in v1.",
+      "Multiple selection with tags (MultiSelect, later).",
+      "Inline autocompletion of the typed text.",
+      "Loading indicator inside the panel in v1 (the application can show it next to the field)."
+    ],
+    "alternatives": ["Select for a short list without search.", "InputText for free text."]
+  },
+  "dependencies": ["icon", "lib/overlay"],
+  "fixtures": [
+    "Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading icon example.",
+    "A country list fixture in examples for long lists."
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/combobox/contract.json",
+      "sha256": "502803a86a1e3a4ad745f8e0b5b73c37810047e18be4651f7aae8c272e07156e"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/combobox/"
+    }
+  ],
+  "decisionsTaken": [
+    "Same trigger look as InputText and the same panel, option and group children as Select, so that the two read as one family.",
+    "Strict value: the value is always one of the options; free text is restored to the selected label when focus leaves; emptying the input and leaving clears the value.",
+    "Filtering: filter contains (label contains the text, case and accent insensitive, original order) or none (the application filters, for a server search).",
+    "Typing highlights the first enabled match so that Enter chooses it (WAI-ARIA list autocomplete with automatic selection of the highlight, not of the value).",
+    "Keyboard per the WAI-ARIA combobox pattern: focus stays in the input, the highlighted option is the active descendant; Home, End and horizontal arrows edit the text; no wrapping; Alt+Down opens.",
+    "Empty state: emptyLabel (default \"No results\") shown in the panel and announced politely; English default strings as for Dialog closeLabel and Alert dismissLabel."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 4 contract gate: present the contract to the user and record the approval.",
+  "implementationNotes": [
+    "Bits UI Combobox likely reused for roles only, or replaced by an own primitive on the native popover (decided at implementation)."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Same trigger colors as InputText (color.input.*): its exemption accepted at the wave 2 contract gate (2026-10-26, \"4 ok\") applies; color.input.default.border reaches 2.06 on surface.muted in dark, a de-emphasized backdrop where forms are not expected."
+      }
+    ]
+  }
+}

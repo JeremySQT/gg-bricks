@@ -1,0 +1,76 @@
+{
+  "formatStatus": "v1",
+  "componentId": "accordion",
+  "family": "navigation",
+  "wave": 4,
+  "phase": "contract",
+  "scope": {
+    "purpose": "A vertical stack of headings that each show or hide a section of content.",
+    "useCases": [
+      "Questions and answers.",
+      "Settings or details sections on a long page.",
+      "Filters grouped in a sidebar (multiple)."
+    ],
+    "exclusions": [
+      "Nested accordions styled differently.",
+      "A card (contained) appearance in v1.",
+      "Sizes in v1 (one size; density adjusts spacing)."
+    ],
+    "alternatives": [
+      "Tabs when only one section is read at a time and sections are peers.",
+      "A Dialog or a page for long content."
+    ]
+  },
+  "dependencies": ["icon"],
+  "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading icon example."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/navigation/accordion/contract.json",
+      "sha256": "1b9b0459f370a1c44d926e1ad9d069dc707206628c9917974e140f5da09adb9b"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/accordion/"
+    }
+  ],
+  "decisionsTaken": [
+    "One size: trigger in typography.label.lg (16 px, medium) at least size.control.lg (48 px) tall, content in typography.body.md; density adjusts the spacing. Sizes can be added later without breaking the API.",
+    "value is a list of expanded values in both modes; multiple false allows at most one expanded item, which can be collapsed (always collapsible).",
+    "Line-separated items (color.border.subtle, also above the first and below the last), hover tint color.item.hover.surface with radius.control, chevron in color.content.secondary rotating 180°.",
+    "headingLevel (2 to 6, default 3) wraps each trigger in a heading, per the WAI-ARIA accordion pattern.",
+    "Optional WAI-ARIA arrow keys included (Down, Up wrapping, Home, End), as Bits UI Accordion provides them.",
+    "Expansion animates the block size and the chevron over motion.duration.base; immediate under reduced motion."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 4 contract gate: present the contract to the user and record the approval.",
+  "implementationNotes": [
+    "Bits UI Accordion is the probable base; the block-size animation in CSS (interpolate-size or grid rows) rather than JavaScript."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  }
+}

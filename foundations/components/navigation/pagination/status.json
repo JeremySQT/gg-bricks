@@ -1,0 +1,66 @@
+{
+  "formatStatus": "v1",
+  "componentId": "pagination",
+  "family": "navigation",
+  "wave": 4,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Move through a long list or table split into numbered pages.",
+    "useCases": ["Paging through a table of results.", "Server-rendered pages with links (href with {page})."],
+    "exclusions": [
+      "A page-size selector and a 'Page x of y' text (composition examples).",
+      "A compact mobile variant in v1.",
+      "Cursor-based paging without a page count (previous and next Buttons)."
+    ],
+    "alternatives": ["A Load more Button or infinite scrolling for feeds read in order."]
+  },
+  "dependencies": ["icon-button"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/navigation/pagination/contract.json",
+      "sha256": "8e1321198a098a910c5c6c008b736b8248a3ba3eedc45366f818ca91cd575330"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/pagination/"
+    }
+  ],
+  "decisionsTaken": [
+    "Pages are items painted with color.item.* (selected for the current page, with a 1 px inner edge in color.item.indicator so that the current page is not conveyed by the tint alone); square boxes of size.control.{size}, radius.control, typography.numeral.{size} (tabular figures).",
+    "Previous and next are IconButtons (neutral ghost, pagination's size) with intrinsic chevrons; they stay in place when disabled at the bounds.",
+    "Constant item count (siblingCount × 2 + 5): first, last, current and siblings, ellipses for gaps of two pages or more, so that the controls do not move while paging (the usual algorithm).",
+    "href with a {page} placeholder turns every control into a link; otherwise buttons and pageChange.",
+    "No roving focus: each control is a tab stop (WAI-ARIA has no pagination pattern; links in a navigation landmark)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 4 contract gate: present the contract to the user and record the approval.",
+  "implementationNotes": [],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  }
+}

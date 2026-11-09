@@ -1,0 +1,26 @@
+{
+  "valid": true,
+  "checks": {
+    "schema": "passed",
+    "consistency": "passed",
+    "tokenCoverage": "passed",
+    "dependencies": "not-provided",
+    "intrinsicRules": "manual-review-required"
+  },
+  "errors": [],
+  "requiredTokenPaths": [
+    "space.control.gap.sm",
+    "space.control.gap.md",
+    "space.control.gap.lg",
+    "color.border.subtle",
+    "border.width.default",
+    "space.content.xs"
+  ],
+  "dependencies": [
+    "button",
+    "icon-button",
+    "menu",
+    "popover",
+    "tooltip"
+  ]
+}

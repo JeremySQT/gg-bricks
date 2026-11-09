@@ -1,0 +1,33 @@
+{
+  "valid": true,
+  "checks": {
+    "schema": "passed",
+    "consistency": "passed",
+    "tokenCoverage": "passed",
+    "dependencies": "not-provided",
+    "intrinsicRules": "manual-review-required"
+  },
+  "errors": [],
+  "requiredTokenPaths": [
+    "color.content.tertiary",
+    "size.icon.sm",
+    "size.icon.md",
+    "space.content.xs",
+    "size.target.min",
+    "color.content.secondary",
+    "color.content.primary",
+    "typography.body.sm",
+    "typography.body.md",
+    "color.focus.ring",
+    "focus.width",
+    "focus.offset",
+    "radius.indicator",
+    "motion.duration.fast",
+    "motion.easing.standard"
+  ],
+  "dependencies": [
+    "icon-button",
+    "menu",
+    "icon"
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "tabs",
+  "props": {
+    "value": {
+      "type": "string",
+      "default": "",
+      "bindable": true
+    },
+    "label": {
+      "type": "string"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "orientation": {
+      "values": ["horizontal", "vertical"],
+      "default": "horizontal"
+    },
+    "activation": {
+      "values": ["automatic", "manual"],
+      "default": "automatic"
+    }
+  },
+  "parts": {
+    "container": {},
+    "list": {
+      "accepts": ["trigger"],
+      "min": 1
+    },
+    "panels": {
+      "accepts": ["panel"],
+      "min": 1
+    }
+  },
+  "states": {},
+  "events": {
+    "valueChange": {
+      "when": "The user selects another tab (pointer, an arrow key with automatic activation, Enter or Space).",
+      "payload": "The value of the selected tab."
+    }
+  },
+  "tokens": {
+    "lineColor": "color.border.subtle",
+    "lineThickness": "border.width.default",
+    "listGap": "space.content.xs",
+    "panelGap": "space.content.lg",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "focusRadius": "radius.focus"
+  },
+  "children": {
+    "trigger": {
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "string",
+          "required": true
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "parts": {
+        "container": {},
+        "leading": {
+          "accepts": ["icon"],
+          "max": 1
+        },
+        "label": {},
+        "trailing": {
+          "accepts": ["counter", "badge"],
+          "max": 1
+        },
+        "indicator": {}
+      },
+      "states": {
+        "interaction": {
+          "values": ["default", "hover", "disabled"],
+          "default": "default"
+        },
+        "selected": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "tokens": {
+        "surface": "color.item.{interaction}.surface",
+        "content": "color.item.{interaction}.content",
+        "idleColor": "color.content.secondary",
+        "indicatorColor": "color.item.indicator",
+        "indicatorThickness": "border.width.strong",
+        "radius": "radius.control",
+        "minHeight": "size.control.{size}",
+        "paddingInline": "space.control.padding-inline.{size}",
+        "gap": "space.control.gap.{size}",
+        "typography": "typography.label.{size}",
+        "iconSize": "size.icon.{size}",
+        "motionDuration": "motion.duration.fast",
+        "easingStandard": "motion.easing.standard"
+      },
+      "rules": [
+        "Arrange leading, label and trailing in that order, centered in the block dimension; label is required plain text in typography on one line, never truncated, and is the accessible name of the tab. leading holds at most one decorative icon of iconSize; trailing holds at most one Counter or Badge (a count of items in the panel, a New badge), sized by the tab.",
+        "The tab block size is minHeight; paddingInline on both sides, gap between parts, radius corners for its surface.",
+        "An unselected tab paints its label and icon in idleColor in the default interaction and in content otherwise; a selected tab paints them in content. interaction resolves in this order: disabled, hover, default; hover is the pointer over the tab, painting surface behind it.",
+        "The selected tab shows indicator, a bar of indicatorThickness in indicatorColor on the edge that faces the panels (the block end of a horizontal list, the inline end of a vertical list), over the list's line. Selection is never conveyed by color alone.",
+        "A disabled tab is shown in the disabled colors, cannot be selected, and is skipped by the arrow keys.",
+        "Colors and the indicator change over motionDuration with easingStandard; no transition under reduced motion."
+      ]
+    },
+    "panel": {
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "states": {},
+      "tokens": {},
+      "rules": [
+        "Each panel holds the free content of the tab with the same value; only the panel of the selected tab is shown, the others are hidden from every user. The panel is exposed as a tab panel named by its tab. When its content has no focusable element, the panel itself is a stop in sequential focus after the list and shows the focus indicator of the tabs."
+      ]
+    }
+  },
+  "contrast": [
+    {
+      "content": "trigger.idleColor",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "trigger.idleColor",
+      "surface": "color.surface.canvas",
+      "minimum": 4.5
+    },
+    {
+      "content": "trigger.content",
+      "surface": "trigger.surface",
+      "minimum": 4.5,
+      "note": "The label on its own surface in each interaction; disabled values are informational."
+    },
+    {
+      "content": "trigger.indicatorColor",
+      "surface": "color.surface.canvas",
+      "minimum": 3
+    },
+    {
+      "content": "trigger.indicatorColor",
+      "surface": "color.surface.default",
+      "minimum": 3
+    }
+  ],
+  "rules": [
+    "Tabs show one of several panels of related content at a time in the same place (sections of a settings page, views of a record), with a list of tabs to switch between them. They do not navigate to another page (that is a navigation menu with links), do not hold a form choice (that is a RadioGroup or a SegmentedControl) and never hide steps of a sequence.",
+    "list is exposed as a tab list named by label when it is non-empty; each trigger is a tab exposing whether it is selected and which panel it controls. There is always exactly one selected tab: value names it; when value matches no enabled tab, the first enabled tab is selected.",
+    "orientation horizontal places the tabs in a row in source order, separated by listGap, above the panels, with a line of lineThickness in lineColor along the list's block end across the whole width; panels start panelGap below the list. orientation vertical stacks the tabs at the inline start, each as wide as the widest tab, with the line along the list's inline end; panels start panelGap after the list.",
+    "When a horizontal list does not fit its inline size, it scrolls inline and keeps the focused tab and the selected tab visible; tabs never wrap or shrink.",
+    "Focus: the list is one stop in sequential focus, landing on the selected tab; Tab from the list moves to the selected panel (or its first focusable element). The roving focus rules are shared with Toolbar: in a horizontal list Right and Left Arrow (reversed in right-to-left text) move focus to the next and previous enabled tab, wrapping at the ends; in a vertical list Down and Up Arrow do; Home and End move it to the first and last enabled tab; disabled tabs are skipped.",
+    "With activation automatic, moving focus to a tab selects it; with activation manual, focus moves without selecting and Enter or Space selects the focused tab (for panels that are slow to show). A pointer press on an enabled tab selects it and focuses it. Selecting a tab emits valueChange when the value changed.",
+    "Each tab, and each panel that takes focus, shows a focus indicator of focusWidth in focusColor at focusOffset with focusRadius corners when focused by keyboard.",
+    "Setting value from the application selects the tab without emitting valueChange.",
+    "In forced-colors mode the list's line, the selected tab's indicator and the focus indicator stay visible in system colors, and disabled tabs use the system disabled text color."
+  ]
+}

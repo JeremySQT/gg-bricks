@@ -5960,6 +5960,29 @@
     },
     {
       "collection": "Foundations · Brand",
+      "name": "size/overlay/list",
+      "path": "size.overlay.list",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-overlay-list)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v256"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v256"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v256"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
       "name": "typography/display/xl/fontSize",
       "path": "typography.display.xl.fontSize",
       "type": "FLOAT",

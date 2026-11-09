@@ -1,0 +1,80 @@
+{
+  "formatStatus": "v1",
+  "componentId": "tabs",
+  "family": "navigation",
+  "wave": 4,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Show one of several panels of related content in the same place, with a list of tabs to switch between them.",
+    "useCases": [
+      "Sections of a settings page.",
+      "Views of a record (overview, activity, files).",
+      "A vertical list of sections beside their content."
+    ],
+    "exclusions": [
+      "Navigation between pages (links styled as tabs).",
+      "Closable, reorderable or added tabs.",
+      "Overflow menu or scroll buttons for many tabs (the list scrolls).",
+      "A contained (pill) appearance in v1."
+    ],
+    "alternatives": [
+      "SegmentedControl or RadioGroup for a choice of value.",
+      "Accordion to show several sections at once.",
+      "Separate pages for unrelated content."
+    ]
+  },
+  "dependencies": ["icon", "counter", "badge", "lib/roving-focus"],
+  "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading icon example."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/navigation/tabs/contract.json",
+      "sha256": "6bb10161e32cb027beba5c58edf022f78268594119a521002dcc82a19298c50a"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/tabs/"
+    }
+  ],
+  "decisionsTaken": [
+    "One appearance (line): the selected tab has a 2 px bar (border.width.strong) in color.item.indicator over a 1 px color.border.subtle line, on the edge facing the panels (block end horizontally, inline end vertically).",
+    "Unselected labels in color.content.secondary, selected and hovered labels in color.content.primary (color.item.*.content); hover paints color.item.hover.surface behind the tab with radius.control.",
+    "Tabs follow size (size.control.{size}, typography.label.{size}, padding and gap of controls) like Button.",
+    "Roving focus shared with Toolbar in a new copyable module lib/roving-focus (shared-code decision of 2026-10-31): arrows wrap, Home and End, right-to-left reversal, disabled items skipped.",
+    "Disabled tabs and toolbar items are skipped by the arrow keys (the WAI-ARIA patterns allow both); Menu keeps reaching disabled items, since its items are discovered by browsing a popup list.",
+    "activation automatic by default (WAI-ARIA recommendation when panels show at once), manual available for slow panels.",
+    "A horizontal list that overflows scrolls inline and keeps the focused and selected tab visible; no scroll buttons in v1.",
+    "Trigger trailing slot accepts a Counter or a Badge, sized by the tab."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 4 contract gate: present the contract to the user and record the approval.",
+  "implementationNotes": [
+    "Bits UI Tabs is the probable base (no overlay involved); overrides pinned and tested where the contract differs (disabled tabs skipped, wrapping)."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  }
+}

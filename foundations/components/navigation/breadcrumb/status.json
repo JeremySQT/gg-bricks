@@ -1,0 +1,70 @@
+{
+  "formatStatus": "v1",
+  "componentId": "breadcrumb",
+  "family": "navigation",
+  "wave": 4,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Show where the current page sits in the site hierarchy, with a link to each ancestor.",
+    "useCases": [
+      "Deep hierarchies in a back office (Projects / Acme / Settings / Members).",
+      "A long path collapsed behind an ellipsis menu (maxItems)."
+    ],
+    "exclusions": [
+      "A history of visited pages.",
+      "Steps of a process (a Stepper).",
+      "Dropdowns on each level (sibling pages) in v1."
+    ],
+    "alternatives": ["A back Link when only the parent matters.", "The page title alone for a flat site."]
+  },
+  "dependencies": ["icon", "icon-button", "menu"],
+  "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the home icon example."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/navigation/breadcrumb/contract.json",
+      "sha256": "c092bb9c2aea9fcc1735ea5f9c0eb178d57b6068524553be7d1a3b0e03ce1747"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/breadcrumb/"
+    }
+  ],
+  "decisionsTaken": [
+    "Two sizes, sm (default, body.sm) and md (body.md): a breadcrumb sits above a page title and is usually small.",
+    "Ancestors in color.content.secondary, underlined and in color.content.primary on hover; the current page in color.content.primary, never a link, exposed as the current page.",
+    "Separators: chevron (default) or slash, in color.content.tertiary, decorative, mirrored in right-to-left text; intrinsic Phosphor glyph caret-right.",
+    "Collapse: maxItems keeps the first and the last maxItems - 1 items and puts the hidden ones in a Menu opened by an ellipsis IconButton (neutral ghost, breadcrumb's size); 0 never collapses.",
+    "When the line lacks room, labels shrink with an ellipsis, ancestors first; the full label stays the accessible name.",
+    "Link targets meet 44 px in the block dimension without changing the line (invisible extension)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 4 contract gate: present the contract to the user and record the approval.",
+  "implementationNotes": [],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  }
+}

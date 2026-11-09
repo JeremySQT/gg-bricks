@@ -1,0 +1,89 @@
+{
+  "formatStatus": "v1",
+  "componentId": "select",
+  "family": "forms",
+  "wave": 4,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Choose one value from a list of known options in a form, shown collapsed in a field.",
+    "useCases": [
+      "A country, a language or a time zone among a known list (5 to about 25 options).",
+      "A sort order or a category in a filter bar.",
+      "Options grouped under headings (records with a group)."
+    ],
+    "exclusions": [
+      "Multiple selection (MultiSelect, later).",
+      "Searching or typing in the list (Combobox).",
+      "Free content in options (icons, descriptions) in v1: options are records with value, label, disabled and group.",
+      "Native mobile picker fallback."
+    ],
+    "alternatives": [
+      "RadioGroup under five options.",
+      "Combobox for a long list or a searched one.",
+      "Menu for actions."
+    ]
+  },
+  "dependencies": ["icon", "lib/overlay"],
+  "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading icon example."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/select/contract.json",
+      "sha256": "768030fa02a732683b35cb950290b86ff0b5ffe1fff26d284e540625e3734287"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/select/"
+    }
+  ],
+  "decisionsTaken": [
+    "The trigger is an InputText look-alike: same color.input.* roles, sizes, spacing and focus indicator; the chevron and the check mark are intrinsic Phosphor glyphs (caret-down, check) copied into the folder.",
+    "Options are records (value, label, disabled, group), per the records decision of 2026-10-31; consecutive records with the same group are gathered under a heading (child group).",
+    "One compound contract with children panel, option and group (decision of 2026-10-31); the panel is a child so that its surface roles do not collide with the trigger's.",
+    "Option rows reuse the Menu item geometry (32 px minimum, padding sm, radius.container in a radius.overlay panel); only the text follows the Select's size (typography.body.{size}), so that an lg select does not list small text.",
+    "Selected option: color.item.selected surface plus a check mark in color.item.indicator at the inline end, so that selection is not conveyed by color alone.",
+    "Keyboard per the WAI-ARIA select-only combobox pattern: focus stays on the trigger, the highlighted option is the active descendant; no wrapping (like a native select); Page Up and Page Down; typeahead; disabled options reached but not chosen (as in Menu).",
+    "Tab closes the list without choosing (the pattern allows choosing on Tab; not choosing avoids accidental changes when tabbing through a form).",
+    "Panel: at least the trigger's width, up to max(trigger, size.overlay.panel); block size capped by the new role size.overlay.list (256 px, about 7.5 options visible so that the cut row signals the scroll) and by the viewport room.",
+    "The value never changes while the list is closed (arrow keys open it), unlike some native selects."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 4 contract gate: present the contract to the user and record the approval.",
+  "implementationNotes": [
+    "Bits UI Select assumes its own portal and focus scope; as for Menu, the component is likely written on the native popover with lib/overlay (decided at implementation, contract versus Bits UI rule)."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Same trigger colors as InputText (color.input.*): its exemption accepted at the wave 2 contract gate (2026-10-26, \"4 ok\") applies; color.input.default.border reaches 2.06 on surface.muted in dark, a de-emphasized backdrop where forms are not expected."
+      }
+    ]
+  }
+}

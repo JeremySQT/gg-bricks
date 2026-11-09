@@ -349,6 +349,16 @@
       },
       "review": "Wave 3 implementation gate (round 2), pending.",
       "recorded": "approvals.semantic re-recorded on 2026-11-03."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Wave 4 contract addition: semantic role size.overlay.list (common axis, primitive.dimension.v256, 256 px), the maximum block size of a list of options opened from a field (Select, Combobox), beyond which the list scrolls; one inventory role; size.overlay description extended. No color role and no contrast pair added.",
+      "invalidates": "approvals.semantic for common.tokens.json and inventory.json until the wave 4 contract gate; the Figma variable is created at the wave 4 Figma parity phase.",
+      "sha256": {
+        "foundations/tokens/base/semantic/common.tokens.json": "63584e210c839bbaecd9489308e2ee41d9e07d276d708bc67b75943b3d947e3f",
+        "foundations/tokens/inventory.json": "a77d961642ea92973357fe1d3e6a7e02aaef4d9da49d3bc1c34fbd90c16adb48"
+      },
+      "review": "Wave 4 contract gate"
     }
   ]
 }

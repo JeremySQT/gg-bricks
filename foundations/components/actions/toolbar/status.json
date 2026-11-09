@@ -1,0 +1,71 @@
+{
+  "formatStatus": "v1",
+  "componentId": "toolbar",
+  "family": "actions",
+  "wave": 4,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Group frequently used controls for one area into a single tab stop with arrow-key navigation.",
+    "useCases": [
+      "Formatting actions of an editor (IconButtons with Tooltips).",
+      "Actions on a table selection, with a More menu.",
+      "Display options of a view (a Popover of filters, a Menu of sort orders)."
+    ],
+    "exclusions": [
+      "Toggle buttons (pressed state) in v1: Button and IconButton have no pressed state (open question).",
+      "Text entry, Select or other arrow-key controls inside the toolbar in v1.",
+      "Overflow menu for items that do not fit (they wrap)."
+    ],
+    "alternatives": [
+      "ButtonGroup for a few independent actions, each a tab stop.",
+      "SegmentedControl or RadioGroup for a choice."
+    ]
+  },
+  "dependencies": ["button", "icon-button", "menu", "popover", "tooltip", "lib/roving-focus"],
+  "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the icon examples."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/actions/toolbar/contract.json",
+      "sha256": "a17742098f5cb5edc806db16d6d86458c1c8e34a29e89543f449135205bac7c5"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/toolbar/"
+    }
+  ],
+  "decisionsTaken": [
+    "Like ButtonGroup, the toolbar has no surface and passes its size to every item, including Menu and Popover triggers and the controls inside Tooltips.",
+    "label is required: a toolbar is a composite widget whose purpose must be announced.",
+    "Roving focus shared with Tabs (lib/roving-focus): remembers the last focused item, arrows wrap, disabled items and separators skipped.",
+    "In a horizontal toolbar Down and Up Arrow on a Menu trigger still open its menu; in a vertical toolbar they move focus.",
+    "Items wrap onto further lines when they do not fit; no overflow menu in v1.",
+    "Separator child: a 1 px color.border.subtle line perpendicular to the orientation."
+  ],
+  "openDecisions": [],
+  "nextAction": "Wave 4 contract gate: present the contract to the user and record the approval.",
+  "implementationNotes": []
+}

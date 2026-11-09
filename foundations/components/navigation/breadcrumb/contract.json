@@ -1,0 +1,127 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "breadcrumb",
+  "props": {
+    "label": {
+      "type": "string",
+      "default": "Breadcrumb"
+    },
+    "size": {
+      "values": ["sm", "md"],
+      "default": "sm"
+    },
+    "separator": {
+      "values": ["chevron", "slash"],
+      "default": "chevron"
+    },
+    "maxItems": {
+      "type": "number",
+      "default": 0,
+      "min": 0
+    },
+    "moreLabel": {
+      "type": "string",
+      "default": "Show hidden pages"
+    }
+  },
+  "parts": {
+    "container": {},
+    "items": {
+      "accepts": ["item"],
+      "min": 1
+    },
+    "separator": {},
+    "more": {
+      "accepts": ["icon-button", "menu"],
+      "max": 1
+    }
+  },
+  "states": {},
+  "tokens": {
+    "separatorColor": "color.content.tertiary",
+    "separatorSize": "size.icon.{size}",
+    "gap": "space.content.xs",
+    "minTarget": "size.target.min"
+  },
+  "children": {
+    "item": {
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "href": {
+          "type": "string"
+        }
+      },
+      "parts": {
+        "leading": {
+          "accepts": ["icon"],
+          "max": 1
+        },
+        "label": {}
+      },
+      "states": {
+        "interaction": {
+          "values": ["default", "hover"],
+          "default": "default"
+        },
+        "current": {
+          "type": "boolean",
+          "default": false
+        },
+        "focus": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "tokens": {
+        "linkColor": "color.content.secondary",
+        "hoverColor": "color.content.primary",
+        "currentColor": "color.content.primary",
+        "typography": "typography.body.{size}",
+        "iconSize": "size.icon.{size}",
+        "gap": "space.content.xs",
+        "focusColor": "color.focus.ring",
+        "focusWidth": "focus.width",
+        "focusOffset": "focus.offset",
+        "focusRadius": "radius.indicator",
+        "motionDuration": "motion.duration.fast",
+        "easingStandard": "motion.easing.standard"
+      },
+      "rules": [
+        "An item shows leading, then label, in typography on one line, separated by gap; label is the accessible name. leading holds at most one decorative icon of iconSize in the item's color (a home icon on the first item); an item whose label is hidden is not allowed.",
+        "An item with href that is not current is a link painted in linkColor; in the hover interaction its label is underlined and painted in hoverColor. An item without href that is not current is plain text in linkColor (a level without its own page).",
+        "The current item is the last one: it is painted in currentColor, is never a link even when href is set, and is exposed as the current page.",
+        "When focus is true from the keyboard, the link shows a focus indicator of focusWidth in focusColor at focusOffset with focusRadius corners.",
+        "Colors change over motionDuration with easingStandard; no transition under reduced motion."
+      ]
+    }
+  },
+  "contrast": [
+    {
+      "content": "item.linkColor",
+      "surface": "color.surface.canvas",
+      "minimum": 4.5
+    },
+    {
+      "content": "item.linkColor",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "item.currentColor",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    }
+  ],
+  "rules": [
+    "A breadcrumb shows where the current page sits in the site hierarchy, from a top level to the current page, with a link to each ancestor. It is not a history of visited pages and not a list of steps; it complements the main navigation, never replaces it.",
+    "The breadcrumb is exposed as a navigation landmark named by label, holding an ordered list of items in hierarchy order, the current page last.",
+    "Items sit on one line in source order, each followed by separator except the last: a chevron or a slash of separatorSize in separatorColor, gap away from the items on both sides, decorative and hidden from assistive technology, mirrored in right-to-left text.",
+    "When the line lacks room, item labels shrink, ancestors first, the current item last, and are truncated with an ellipsis; the full label stays the accessible name and is shown on hover. Items never wrap to a second line.",
+    "When maxItems is greater than zero and there are more items than maxItems (counted at least 3), the breadcrumb keeps the first item and the last maxItems - 1 items, and replaces the hidden ones by more: an IconButton named moreLabel, of the breadcrumb's size, intent neutral and appearance ghost, showing an ellipsis, followed by a separator. It opens a Menu listing the hidden items as links, in order.",
+    "Every link is its own stop in sequential focus in source order; the breadcrumb adds no arrow-key navigation. The interaction target of each link meets minTarget in the block dimension without changing the line's layout.",
+    "In forced-colors mode links use the system link color, the current item the system text color, and the focus indicator stays visible."
+  ]
+}

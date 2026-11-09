@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "pagination",
+  "props": {
+    "page": {
+      "type": "number",
+      "default": 1,
+      "min": 1,
+      "bindable": true
+    },
+    "pageCount": {
+      "type": "number",
+      "default": 1,
+      "min": 1
+    },
+    "siblingCount": {
+      "type": "number",
+      "default": 1,
+      "min": 0
+    },
+    "href": {
+      "type": "string"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "label": {
+      "type": "string",
+      "default": "Pagination"
+    },
+    "previousLabel": {
+      "type": "string",
+      "default": "Previous page"
+    },
+    "nextLabel": {
+      "type": "string",
+      "default": "Next page"
+    }
+  },
+  "parts": {
+    "container": {},
+    "previous": {
+      "accepts": ["icon-button"],
+      "min": 1,
+      "max": 1
+    },
+    "items": {
+      "accepts": ["item", "ellipsis"],
+      "min": 1
+    },
+    "next": {
+      "accepts": ["icon-button"],
+      "min": 1,
+      "max": 1
+    }
+  },
+  "states": {},
+  "events": {
+    "pageChange": {
+      "when": "The user activates a page other than the current one, or the previous or next control.",
+      "payload": "The new page number."
+    }
+  },
+  "tokens": {
+    "gap": "space.content.xs"
+  },
+  "children": {
+    "item": {
+      "props": {},
+      "states": {
+        "interaction": {
+          "values": ["default", "hover", "selected", "selected-hover"],
+          "default": "default"
+        },
+        "focus": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "tokens": {
+        "surface": "color.item.{interaction}.surface",
+        "content": "color.item.{interaction}.content",
+        "indicatorColor": "color.item.indicator",
+        "indicatorThickness": "border.width.default",
+        "radius": "radius.control",
+        "minSize": "size.control.{size}",
+        "paddingInline": "space.control.label-inline.{size}",
+        "typography": "typography.numeral.{size}",
+        "focusColor": "color.focus.ring",
+        "focusWidth": "focus.width",
+        "focusOffset": "focus.offset",
+        "focusRadius": "radius.focus",
+        "motionDuration": "motion.duration.fast",
+        "easingStandard": "motion.easing.standard"
+      },
+      "rules": [
+        "An item is one page: it shows its number in typography with tabular figures, centered in a box at least minSize wide and exactly minSize tall, growing with paddingInline on both sides for long numbers, with radius corners. Its accessible name is the number.",
+        "The current page uses interaction selected (selected-hover under the pointer): surface and content of the selected item and an inner edge of indicatorThickness in indicatorColor, so that the current page is not conveyed by the tint alone; it is exposed as the current page. Other pages use default, and hover under the pointer.",
+        "When focus is true from the keyboard, a focus indicator of focusWidth in focusColor at focusOffset with focusRadius corners is drawn outside the box.",
+        "Colors change over motionDuration with easingStandard; no transition under reduced motion."
+      ]
+    },
+    "ellipsis": {
+      "props": {},
+      "states": {},
+      "tokens": {
+        "content": "color.content.secondary",
+        "minSize": "size.control.{size}",
+        "typography": "typography.numeral.{size}"
+      },
+      "rules": [
+        "An ellipsis stands for a run of hidden pages: a horizontal ellipsis in content and typography, centered in a box of minSize. It is not interactive, never focused, and hidden from assistive technology."
+      ]
+    }
+  },
+  "contrast": [
+    {
+      "content": "item.content",
+      "surface": "item.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "item.content",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "item.indicatorColor",
+      "surface": "color.item.selected.surface",
+      "minimum": 3
+    },
+    {
+      "content": "ellipsis.content",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    }
+  ],
+  "rules": [
+    "Pagination moves through a long list or table split into numbered pages, when the user benefits from knowing the position and jumping to a page. A feed read in order is better served by a Load more Button or by scrolling.",
+    "Pagination is exposed as a navigation landmark named by label holding, in a row in source order separated by gap: previous, the page items, next. It is centered in no particular way: it takes the inline size of its content and the application places it.",
+    "previous and next are IconButtons of the pagination's size, intent neutral and appearance ghost, named previousLabel and nextLabel, showing a chevron towards the start and the end (mirrored in right-to-left text). previous is disabled on page 1 and next on the last page; disabled, they stay in place.",
+    "The items show page 1, the last page, the current page and siblingCount pages on each side of it; a gap of hidden pages becomes an ellipsis, except a gap of a single page, which is shown as that page. The number of items is constant (siblingCount × 2 + 5, or pageCount when smaller), so that previous and next do not move while the user pages.",
+    "page is clamped between 1 and pageCount. Activating a page other than the current one, previous or next sets page and emits pageChange; activating the current page does nothing.",
+    "When href is set, each page, previous and next are links to href with every {page} replaced by their page number, and activating one navigates and emits pageChange; otherwise they are buttons. A disabled previous or next is never a link.",
+    "Every enabled page, previous and next is its own stop in sequential focus in source order; pagination adds no arrow-key navigation. After activation by keyboard, focus stays on the activated control when it remains, and moves to the new current page otherwise.",
+    "In forced-colors mode the current page keeps a visible edge in the system highlight color and the focus indicator stays visible."
+  ]
+}
