@@ -268,6 +268,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Wave 4 changes (implementation): computed.json unchanged by the evidence run of 2026-11-10, so the Figma master and its parity are unchanged; the changes (scrollbar inside the padding, room for the focus ring, group size of the triggers, delay tokens) have no static rendering in Figma",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/menu/svelte/computed.json"
     }
   ],
   "decisionsTaken": [
@@ -284,7 +290,7 @@
     "Contract fact added during implementation: group leadingSize and leadingGap roles (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 changes accepted with the wave 4 implementation gate; the Figma master and documentation are re-checked with the wave 4 Figma parity and documentation steps.",
+  "nextAction": "Wave 4 changes accepted with the wave 4 implementation gate; the Figma master was re-checked at the wave 4 Figma parity (unchanged); the documentation is re-checked with the wave 4 documentation step.",
   "implementationNotes": [
     "Exports Menu, MenuItem, MenuSeparator and MenuGroup.",
     "The highlighted item is the focused item (roving focus through focus(), not aria-activedescendant); opening by pointer focuses the menu itself, so no item is highlighted until an arrow key or the pointer.",

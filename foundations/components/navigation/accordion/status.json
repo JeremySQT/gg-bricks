@@ -29,8 +29,27 @@
       "sha256": "9800fb23ecb5bbec578283083c88644590c17691b055a46ba508cfd7f3f9dee5"
     },
     "tokens": [],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "navigation/accordion (495:17)",
+      "library": "Navigation (495:16), section Accordion (505:357)",
+      "component": "505:429",
+      "specification": "520:2",
+      "ledger": "reports/components/accordion/figma/ledger.json",
+      "parity": "reports/components/accordion/figma/parity.json",
+      "screenshots": [
+        "reports/components/accordion/figma/master-set.png",
+        "reports/components/accordion/figma/specification.png"
+      ],
+      "builders": [
+        "authoring/adapters/figma/accordion-master.plugin.js",
+        "authoring/adapters/figma/wave4-spec.plugin.js",
+        "authoring/adapters/figma/wave4-parity.plugin.js",
+        "authoring/adapters/figma/wave4-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/navigation/accordion/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/accordion",
@@ -154,6 +173,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Figma parity (116 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/accordion/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -167,7 +192,7 @@
     "The review page gains a Leading icons option (the slot existed but no option showed it)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity for the wave (skill ggb-figma), then documentation.",
+  "nextAction": "Wave 4 Figma parity gate: user review, then the approval is recorded; documentation next.",
   "implementationNotes": [
     "Exports Accordion and AccordionItem.",
     "The focus ring is drawn inside the trigger (outline-offset of minus its width) so that it stays inside the accordion inline size, as the contract asks.",

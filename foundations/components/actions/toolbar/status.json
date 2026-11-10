@@ -29,8 +29,27 @@
       "sha256": "5201226e16e2a4f4feda2cfbc7a5f41195bd9a71b7ce11e9c3f435fb845c3303"
     },
     "tokens": [],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "actions/toolbar (495:23)",
+      "library": "Actions (343:2), section Toolbar (506:1345)",
+      "componentSet": "506:1873",
+      "specification": "522:748",
+      "ledger": "reports/components/toolbar/figma/ledger.json",
+      "parity": "reports/components/toolbar/figma/parity.json",
+      "screenshots": [
+        "reports/components/toolbar/figma/master-set.png",
+        "reports/components/toolbar/figma/specification.png"
+      ],
+      "builders": [
+        "authoring/adapters/figma/toolbar-master.plugin.js",
+        "authoring/adapters/figma/wave4-spec.plugin.js",
+        "authoring/adapters/figma/wave4-parity.plugin.js",
+        "authoring/adapters/figma/wave4-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/actions/toolbar/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/toolbar",
@@ -155,6 +174,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Figma parity (60 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/toolbar/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -173,7 +198,7 @@
     "Round 3: overflow Menu (More) instead of wrapping; moved units are hidden in place and offered as menu items built from their accessible name, icon and disabled state; choosing one clicks the original control. Menu and Popover triggers never move. A horizontal toolbar fills its inline size (otherwise the hidden items would feed back into its width)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity for the wave (skill ggb-figma), then documentation.",
+  "nextAction": "Wave 4 Figma parity gate: user review, then the approval is recorded; documentation next.",
   "implementationNotes": [
     "Exports Toolbar and ToolbarSeparator.",
     "The module writes tabindex on the items (one 0, others -1) and keeps it in sync with a MutationObserver."

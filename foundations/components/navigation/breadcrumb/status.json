@@ -25,8 +25,27 @@
       "sha256": "4bc599222e0b111544e275c500e31340499943704a7a49ba629ed56e91ec7f9c"
     },
     "tokens": [],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "navigation/breadcrumb (495:18)",
+      "library": "Navigation (495:16), section Breadcrumb (503:164)",
+      "componentSet": "503:405",
+      "specification": "518:2",
+      "ledger": "reports/components/breadcrumb/figma/ledger.json",
+      "parity": "reports/components/breadcrumb/figma/parity.json",
+      "screenshots": [
+        "reports/components/breadcrumb/figma/master-set.png",
+        "reports/components/breadcrumb/figma/specification.png"
+      ],
+      "builders": [
+        "authoring/adapters/figma/breadcrumb-master.plugin.js",
+        "authoring/adapters/figma/wave4-spec.plugin.js",
+        "authoring/adapters/figma/wave4-parity.plugin.js",
+        "authoring/adapters/figma/wave4-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/navigation/breadcrumb/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/breadcrumb",
@@ -145,6 +164,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Figma parity (64 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/breadcrumb/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -163,7 +188,7 @@
     "Round 3: truncated labels are fitted to the characters that show (Range measurement), so that the ellipsis sits gap away from the separator like a whole label; the example's Home icon only shows the icon whatever Home icon says."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity for the wave (skill ggb-figma), then documentation.",
+  "nextAction": "Wave 4 Figma parity gate: user review, then the approval is recorded; documentation next.",
   "implementationNotes": [
     "Exports Breadcrumb and the BreadcrumbItem type.",
     "An ancestor keeps 4em of label before its ellipsis; the full label is set as title when truncated."

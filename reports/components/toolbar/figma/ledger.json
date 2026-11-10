@@ -1,0 +1,94 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "actions/toolbar",
+      "id": "495:23"
+    },
+    "library": {
+      "name": "Actions",
+      "id": "343:2"
+    }
+  },
+  "recordedOn": "2026-11-10",
+  "componentSet": {
+    "id": "506:1873",
+    "name": "Toolbar",
+    "key": "8e4700e9cc0beae09876ccfe8f9459a1dc94a5da",
+    "variants": 6,
+    "defaultVariant": "Orientation=horizontal, Size=md",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=506-1873"
+  },
+  "section": {
+    "name": "Toolbar",
+    "id": "506:1345"
+  },
+  "properties": {
+    "Items#506:6": {
+      "type": "SLOT",
+      "preferred": [
+        "COMPONENT_SET",
+        "COMPONENT_SET",
+        "COMPONENT_SET",
+        "COMPONENT_SET"
+      ]
+    },
+    "Show overflow#506:7": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Label#506:14": {
+      "type": "TEXT",
+      "default": "Selection actions"
+    },
+    "Orientation": {
+      "type": "VARIANT",
+      "options": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "horizontal"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ],
+      "default": "md"
+    }
+  },
+  "children": {
+    "Toolbar/Separator": {
+      "id": "506:1350",
+      "type": "COMPONENT_SET",
+      "key": "be1e2846213f4b77d30b5214907760d8f2c9c0e8",
+      "variants": 2,
+      "defaultVariant": "Orientation=horizontal",
+      "properties": {
+        "Orientation": {
+          "type": "VARIANT",
+          "options": [
+            "horizontal",
+            "vertical"
+          ],
+          "default": "horizontal"
+        }
+      }
+    }
+  },
+  "specification": {
+    "id": "522:748",
+    "name": "Toolbar — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=522-748"
+  },
+  "builders": [
+    "authoring/adapters/figma/toolbar-master.plugin.js",
+    "authoring/adapters/figma/wave4-spec.plugin.js",
+    "authoring/adapters/figma/wave4-parity.plugin.js",
+    "authoring/adapters/figma/wave4-parity-report.mjs"
+  ],
+  "published": false
+}

@@ -31,8 +31,27 @@
       "sha256": "20d78516734cc24f62a8b1c434c75768d3a28a498e70e8574beb5db70fb388d9"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/select (495:22)",
+      "library": "Forms (343:1640), section Select (496:1247)",
+      "componentSet": "497:2541",
+      "specification": "515:648",
+      "ledger": "reports/components/select/figma/ledger.json",
+      "parity": "reports/components/select/figma/parity.json",
+      "screenshots": [
+        "reports/components/select/figma/master-set.png",
+        "reports/components/select/figma/specification.png"
+      ],
+      "builders": [
+        "authoring/adapters/figma/listbox-select-master.plugin.js",
+        "authoring/adapters/figma/wave4-spec.plugin.js",
+        "authoring/adapters/figma/wave4-parity.plugin.js",
+        "authoring/adapters/figma/wave4-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/select/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/select",
@@ -153,6 +172,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Figma parity (204 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/select/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -173,7 +198,7 @@
     "Round 2: thin scrollbar in scrollbarColor on the list, which scrolls inside the panel padding (the scrollbar never meets the round corners)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity for the wave (skill ggb-figma), then documentation.",
+  "nextAction": "Wave 4 Figma parity gate: user review, then the approval is recorded; documentation next.",
   "implementationNotes": [
     "Exports Select and the SelectOptionsRecord type.",
     "The trigger toggles the panel through popovertarget (exempt from light dismiss); keys open it through the open state.",

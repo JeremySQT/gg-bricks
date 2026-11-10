@@ -154,3 +154,20 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - Properties of an exposed nested instance show on the host only in the variants that hold it (Size and Lines of `_Skeleton/Text`, only for Shape=text).
 - An overlay meant to sit over an existing control takes an optional trigger: a boolean bound to the visibility of its Trigger slot, off by default (Tooltip, Popover, Menu).
 - In-place changes keep node IDs and the instances placed by designers; the builders record the resulting structure for a rerun from scratch.
+
+## Wave 4 scripts (2026-11-10)
+
+- `wave4-pages.plugin.js`: the Navigation family page (`495:16`) after the Overlays group, its component pages and `forms/combobox`, `forms/select`, `actions/toolbar`. The variable delta (`primitive/dimension/v320`, `size/overlay/list`, `color/surface/inset`) was synced with the `sync-variables.plugin.js` body restricted to those manifest entries; the verification body ran without the name lists (they are the sorted names, so the hashes are the same) and excluded `checkbox/focus-radius`.
+- `listbox-select-master`, `combobox-master`, `tabs-master`, `breadcrumb-master`, `pagination-master`, `accordion-master`, `toolbar-master` (`.plugin.js`): one builder per section. `Listbox/Option`, `Listbox/Group` and `Listbox/Empty` are public components shared by Select and Combobox (identical contract children), in the Select section.
+- `wave4-spec.plugin.js`: the seven specification pages on `spec-lib` and the Master links (`spec-header-links.plugin.js` lists them too).
+- `wave4-parity.plugin.js` + `wave4-parity-report.mjs <id> <measured.json>`: parity by value. The bodies measure the masters in the four contexts of `computed.json` and return the rows (`PARITY:` or the compact `PARITY2:` form); the report compares every `computed.json` record (colors ±1, alpha ±0.01, lengths ±0.01 px, inset edges by color and width) and writes `parity.json`. 1524 records, 0 failures at the wave 4 gate.
+- `family-pages.plugin.js` and the stored `_Script/family-pages` (`440:2`, patched by `family-pages-wave4-patch.plugin.js`): the Navigation family, the wave 4 components and covers; a family component may be a single component (Accordion) as well as a component set.
+
+## Mechanics learned on 2026-11-10
+
+- **Text decoration is shared by every text layer bound to one Text property.** Binding a label resets its decoration to that of the other bound layers, and setting the decoration (with `textStyleId`) on one bound layer spreads it to all of them; text styles and sizes stay per layer. A per-variant underline (Breadcrumb hover) is a layer under the label. To repair spread formatting: unbind, delete the property, restore each layer, create a new property and bind again.
+- **A bound paint mirrors the variable alpha in its `opacity`.** Read a bound color from `resolveForConsumer` alone; multiplying by the paint opacity squares the alpha (0.05 read as 0.0025).
+- **`autoRename`**: a text layer named before its characters are set is renamed after its content; set `autoRename = false` or the name after the characters.
+- **`resize()` resets `primaryAxisSizingMode` to FIXED**, also after `combineAsVariants`: set AUTO on every variant afterwards when a variant must grow (an open Select).
+- **Choosing the default glyph again resets the glyph layer** (also through an instance property in a specification): the anatomy pins then miss the layer by name. Pass the swap only for another glyph.
+- **The `use_figma` return is limited to 48 KB**: group parity rows by context and abbreviate the props.

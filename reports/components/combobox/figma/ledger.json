@@ -1,0 +1,176 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "forms/combobox",
+      "id": "495:21"
+    },
+    "library": {
+      "name": "Forms",
+      "id": "343:1640"
+    }
+  },
+  "recordedOn": "2026-11-10",
+  "componentSet": {
+    "id": "499:2549",
+    "name": "Combobox",
+    "key": "3372b9a8e996b74fb173a8de5cbe049ad47336cc",
+    "variants": 30,
+    "defaultVariant": "Size=md, Content=placeholder, State=default",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=499-2549"
+  },
+  "section": {
+    "name": "Combobox",
+    "id": "499:1417"
+  },
+  "properties": {
+    "Options#499:30": {
+      "type": "SLOT",
+      "preferred": [
+        "COMPONENT_SET",
+        "COMPONENT",
+        "COMPONENT"
+      ]
+    },
+    "Text#499:31": {
+      "type": "TEXT",
+      "default": "France"
+    },
+    "Placeholder#499:62": {
+      "type": "TEXT",
+      "default": "Search a country"
+    },
+    "Label#499:93": {
+      "type": "TEXT",
+      "default": "Country"
+    },
+    "Focus#499:124": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Open#499:155": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Show leading#499:186": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Leading icon#499:217": {
+      "type": "INSTANCE_SWAP",
+      "default": "200:5872"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ],
+      "default": "md"
+    },
+    "Content": {
+      "type": "VARIANT",
+      "options": [
+        "placeholder",
+        "text"
+      ],
+      "default": "placeholder"
+    },
+    "State": {
+      "type": "VARIANT",
+      "options": [
+        "default",
+        "hover",
+        "readonly",
+        "disabled",
+        "invalid"
+      ],
+      "default": "default"
+    }
+  },
+  "children": {
+    "Listbox/Option": {
+      "id": "496:1323",
+      "type": "COMPONENT_SET",
+      "key": "a56f00e3313f3b7daa6f3e85e095c4b3f7c340b3",
+      "variants": 15,
+      "defaultVariant": "Size=md, State=default",
+      "properties": {
+        "Label#496:0": {
+          "type": "TEXT",
+          "default": "France"
+        },
+        "Size": {
+          "type": "VARIANT",
+          "options": [
+            "md",
+            "sm",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "State": {
+          "type": "VARIANT",
+          "options": [
+            "default",
+            "hover",
+            "selected",
+            "selected-hover",
+            "disabled"
+          ],
+          "default": "default"
+        }
+      }
+    },
+    "Listbox/Group": {
+      "id": "496:1324",
+      "type": "COMPONENT",
+      "key": "fced0a8f80cd5ef476eef1ab81a188f716c65f56",
+      "variants": 1,
+      "defaultVariant": null,
+      "properties": {
+        "Options#496:16": {
+          "type": "SLOT",
+          "preferred": [
+            "COMPONENT_SET"
+          ]
+        },
+        "Heading#496:17": {
+          "type": "TEXT",
+          "default": "Europe"
+        }
+      }
+    },
+    "Listbox/Empty": {
+      "id": "496:1338",
+      "type": "COMPONENT",
+      "key": "08096e1e0a7c90059f1dafd24dfe70c78a5410d6",
+      "variants": 1,
+      "defaultVariant": null,
+      "properties": {
+        "Label#496:18": {
+          "type": "TEXT",
+          "default": "No results"
+        }
+      }
+    }
+  },
+  "specification": {
+    "id": "516:2",
+    "name": "Combobox — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=516-2"
+  },
+  "builders": [
+    "authoring/adapters/figma/combobox-master.plugin.js",
+    "authoring/adapters/figma/listbox-select-master.plugin.js",
+    "authoring/adapters/figma/wave4-spec.plugin.js",
+    "authoring/adapters/figma/wave4-parity.plugin.js",
+    "authoring/adapters/figma/wave4-parity-report.mjs"
+  ],
+  "published": false,
+  "variables": {
+    "size/overlay/list": "VariableID:493:3"
+  }
+}

@@ -30,8 +30,28 @@
       "sha256": "1c643e2647888767834923c9106984a39ee300404c98e749ff60915d6437340a"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/combobox (495:21)",
+      "library": "Forms (343:1640), section Combobox (499:1417)",
+      "componentSet": "499:2549",
+      "specification": "516:2",
+      "ledger": "reports/components/combobox/figma/ledger.json",
+      "parity": "reports/components/combobox/figma/parity.json",
+      "screenshots": [
+        "reports/components/combobox/figma/master-set.png",
+        "reports/components/combobox/figma/specification.png"
+      ],
+      "builders": [
+        "authoring/adapters/figma/combobox-master.plugin.js",
+        "authoring/adapters/figma/listbox-select-master.plugin.js",
+        "authoring/adapters/figma/wave4-spec.plugin.js",
+        "authoring/adapters/figma/wave4-parity.plugin.js",
+        "authoring/adapters/figma/wave4-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/combobox/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/combobox",
@@ -152,6 +172,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Figma parity (108 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/combobox/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -168,7 +194,7 @@
     "Round 2: same scrollbar change as Select."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity for the wave (skill ggb-figma), then documentation.",
+  "nextAction": "Wave 4 Figma parity gate: user review, then the approval is recorded; documentation next.",
   "implementationNotes": [
     "Exports Combobox and the ComboboxOptionsRecord type.",
     "The empty state is a polite status kept in the panel; it takes no room while options match.",

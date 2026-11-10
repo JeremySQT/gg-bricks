@@ -233,6 +233,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Wave 4 changes (implementation): computed.json unchanged by the evidence run of 2026-11-10, so the Figma master and its parity are unchanged; the changes (scrollbar inside the padding, room for the focus ring, group size of the triggers, delay tokens) have no static rendering in Figma",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/button-group/svelte/computed.json"
     }
   ],
   "decisionsTaken": [
@@ -246,7 +252,7 @@
     "Vertical always stretched; no wrap: a line that does not fit stacks (user, 2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 changes accepted with the wave 4 implementation gate; the Figma master and documentation are re-checked with the wave 4 Figma parity and documentation steps.",
+  "nextAction": "Wave 4 changes accepted with the wave 4 implementation gate; the Figma master was re-checked at the wave 4 Figma parity (unchanged); the documentation is re-checked with the wave 4 documentation step.",
   "implementationNotes": [
     "Button and IconButton read the group size through the context key ggb:button-group (a string; each folder declares the shape again), so an item's own size is ignored inside a group.",
     "A host (Alert) may ask for a default size through the context key ggb:button-group-host; an explicit size on the group wins.",

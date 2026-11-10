@@ -229,6 +229,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Wave 4 changes (implementation): computed.json unchanged by the evidence run of 2026-11-10, so the Figma master and its parity are unchanged; the changes (scrollbar inside the padding, room for the focus ring, group size of the triggers, delay tokens) have no static rendering in Figma",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/popover/svelte/computed.json"
     }
   ],
   "decisionsTaken": [
@@ -239,7 +245,7 @@
     "No built-in close button: content adds one when it needs it (Escape and a press outside always close)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 changes accepted with the wave 4 implementation gate; the Figma master and documentation are re-checked with the wave 4 Figma parity and documentation steps.",
+  "nextAction": "Wave 4 changes accepted with the wave 4 implementation gate; the Figma master was re-checked at the wave 4 Figma parity (unchanged); the documentation is re-checked with the wave 4 documentation step.",
   "implementationNotes": [
     "The trigger is rendered by a snippet that spreads popovertarget and the popup attributes on a Button or IconButton: the browser toggles the auto popover, which spares the trigger from light dismiss (no close-then-reopen on the same press) and restores focus to it on Escape.",
     "On opening, the panel's max block size is the larger room above or below the trigger, so that it flips and scrolls instead of overflowing the viewport."
