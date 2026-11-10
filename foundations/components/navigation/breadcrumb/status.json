@@ -44,7 +44,7 @@
     "examples": {
       "page": "examples/breadcrumb",
       "preview": "dist/previews/breadcrumb.html (npm run build && npm run build:preview breadcrumb)",
-      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794320983-c775, round 2), page breadcrumb.html"
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794325069-dd7d, round 3), page breadcrumb.html"
     },
     "tests": {
       "ssr": ["tests/ssr/navigation.test.ts"],
@@ -108,6 +108,11 @@
       "name": "Round 2: npm run verify passed; npm run test:browser 303 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
       "result": "passed",
       "date": "2026-11-10"
+    },
+    {
+      "name": "Round 3: npm run verify passed; npm run test:browser 305 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
     }
   ],
   "decisionsTaken": [
@@ -126,7 +131,7 @@
     "Round 3: truncated labels are fitted to the characters that show (Range measurement), so that the ellipsis sits gap away from the separator like a whole label; the example's Home icon only shows the icon whatever Home icon says."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",
+  "nextAction": "Wave 4 implementation gate, round 3: user review, then the approval is recorded.",
   "implementationNotes": [
     "Exports Breadcrumb and the BreadcrumbItem type.",
     "An ancestor keeps 4em of label before its ellipsis; the full label is set as title when truncated."
