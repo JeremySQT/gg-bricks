@@ -143,7 +143,7 @@
     "Round 3: appearance contained (default, the user's reference: tabs as buttons in a container, the selected one raised) and line (the first design). In a horizontal contained list the tabs share the inline size equally, never below their content. In dark the raised tab is darker than the muted container (token values); to judge at the gate."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate, round 4: user review, then the approval is re-recorded.",
+  "nextAction": "Wave 4 implementation gate, round 5: confirm the gap between contained tabs, then the approval is recorded.",
   "implementationNotes": [
     "Exports Tabs, TabsTrigger and TabsPanel.",
     "Panels stay mounted and are hidden with the hidden attribute (form state is kept).",
@@ -180,6 +180,22 @@
         "packages/svelte/src/components/tabs/TabsTrigger.svelte": "59a32766f2d1b56ca5023c8bd2369c2e48741348bdcbcf14c2e5917258e8e101",
         "packages/svelte/src/components/tabs/contract.generated.ts": "1de3c089df65535fe7675587d7ab598dcf3eae65b074e6a75b02ea941ad0c599",
         "packages/svelte/src/components/tabs/tabs.css": "f784a9085a79a6ec0854a831151a38339fb56e9ac099bbfb0d029a338dece24c",
+        "packages/svelte/src/components/tabs/tokens.generated.css": "02f2a94f2607d1e6049af9fb571d28e81cc1c04a0e2b105cc748941cc7a99fbf",
+        "packages/svelte/src/components/tabs/types.ts": "b570eb5728daf0cd7395e450c2d452e1e561d5b8b8dff7936f0839182f839ab2",
+        "examples/tabs/App.svelte": "2343a3bbad29f480fcb7852ae38a3c76cbab9e99b32b176d7bdcd8b57a09770f"
+      },
+      "review": "Wave 4 implementation gate"
+    },
+    {
+      "date": "2026-11-10",
+      "change": "Round 5 of the wave 4 implementation review (user, 2026-11-10, on the round 4 page): \"Aujourd'hui deux tabs sont collées [...] Ce serait bien d'insérer un petit gap (2 / 4px)\"; the rest of the round approved (\"Je valide le reste\"). Contract: contained tabs are separated by listGap (space.content.xs: 4 px standard, 2 compact, 6 comfortable), so that a hovered tab and the selected tab never touch. To confirm at the implementation gate (round 5).",
+      "sha256": {
+        "foundations/components/navigation/tabs/contract.json": "414db6be0c75cfddf7567e756a7c93ad44bbe508e8d9b4e1ed6a8b2cbaddc5fa",
+        "packages/svelte/src/components/tabs/Tabs.svelte": "88d8a9f238954aa7fbf20f4d065a71d2669b3840c9c915627b104b6f09ae5b77",
+        "packages/svelte/src/components/tabs/TabsPanel.svelte": "de4862c80364ea80d2902996f1b5b104ea9e4412c650070b6450e35b02fddd3d",
+        "packages/svelte/src/components/tabs/TabsTrigger.svelte": "59a32766f2d1b56ca5023c8bd2369c2e48741348bdcbcf14c2e5917258e8e101",
+        "packages/svelte/src/components/tabs/contract.generated.ts": "1de3c089df65535fe7675587d7ab598dcf3eae65b074e6a75b02ea941ad0c599",
+        "packages/svelte/src/components/tabs/tabs.css": "55585117955f7f8489304d1e530cff55fcb8d0e5cdf9ffd39318cad840af7098",
         "packages/svelte/src/components/tabs/tokens.generated.css": "02f2a94f2607d1e6049af9fb571d28e81cc1c04a0e2b105cc748941cc7a99fbf",
         "packages/svelte/src/components/tabs/types.ts": "b570eb5728daf0cd7395e450c2d452e1e561d5b8b8dff7936f0839182f839ab2",
         "examples/tabs/App.svelte": "2343a3bbad29f480fcb7852ae38a3c76cbab9e99b32b176d7bdcd8b57a09770f"

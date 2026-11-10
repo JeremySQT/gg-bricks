@@ -23,3 +23,9 @@ Component: `packages/svelte/src/components/tabs/` (Svelte 5.57.1, Bits UI 2.19.3
 ## Round 2 (2026-11-10)
 
 Changes after the user's review: see the status decisionsTaken entries starting with "Round 2" and the pendingChanges entries (contract facts re-presented at the gate).
+
+## Rounds 3 to 5 (2026-11-10)
+
+- Round 3: appearance contained (default) and line; scroll buttons; see the status pendingChanges.
+- Round 4: the list clips only while it scrolls, with room for the focus indicator and the selected tab's shadow; an empty slot takes no room; list surface `color.surface.inset`, selected tab `color.surface.overlay`.
+- Round 5: contained tabs are separated by `listGap` (`space.content.xs`), so that a hovered tab and the selected tab never touch. The equal shares hold where the list has room; in a tight column a tab keeps its content width (browser test `contained (the default)`). Checked at 2× in light and dark, with hover next to the selected tab, keyboard focus, vertical orientation, the scrolling list and at 390 px.

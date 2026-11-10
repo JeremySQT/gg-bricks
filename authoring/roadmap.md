@@ -69,13 +69,13 @@ One row per component once its scope phase starts. Phase values: scope, contract
 | Popover       | overlays   | 3    | done                          | `foundations/components/overlays/popover/status.json`      |
 | Dialog        | overlays   | 3    | done                          | `foundations/components/overlays/dialog/status.json`       |
 | Menu          | overlays   | 3    | done                          | `foundations/components/overlays/menu/status.json`         |
-| Select        | forms      | 4    | implementation (gate pending) | `foundations/components/forms/select/status.json`          |
-| Combobox      | forms      | 4    | implementation (gate pending) | `foundations/components/forms/combobox/status.json`        |
+| Select        | forms      | 4    | figma                         | `foundations/components/forms/select/status.json`          |
+| Combobox      | forms      | 4    | figma                         | `foundations/components/forms/combobox/status.json`        |
 | Tabs          | navigation | 4    | implementation (gate pending) | `foundations/components/navigation/tabs/status.json`       |
-| Breadcrumb    | navigation | 4    | implementation (gate pending) | `foundations/components/navigation/breadcrumb/status.json` |
-| Pagination    | navigation | 4    | implementation (gate pending) | `foundations/components/navigation/pagination/status.json` |
-| Accordion     | navigation | 4    | implementation (gate pending) | `foundations/components/navigation/accordion/status.json`  |
-| Toolbar       | actions    | 4    | implementation (gate pending) | `foundations/components/actions/toolbar/status.json`       |
+| Breadcrumb    | navigation | 4    | figma                         | `foundations/components/navigation/breadcrumb/status.json` |
+| Pagination    | navigation | 4    | figma                         | `foundations/components/navigation/pagination/status.json` |
+| Accordion     | navigation | 4    | figma                         | `foundations/components/navigation/accordion/status.json`  |
+| Toolbar       | actions    | 4    | figma                         | `foundations/components/actions/toolbar/status.json`       |
 
 ## How a fresh session starts a task
 

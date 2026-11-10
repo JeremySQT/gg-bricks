@@ -3,7 +3,7 @@
   "componentId": "toolbar",
   "family": "actions",
   "wave": 4,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Group frequently used controls for one area into a single tab stop with arrow-key navigation.",
     "useCases": [
@@ -26,7 +26,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/actions/toolbar/contract.json",
-      "sha256": "a17742098f5cb5edc806db16d6d86458c1c8e34a29e89543f449135205bac7c5"
+      "sha256": "5201226e16e2a4f4feda2cfbc7a5f41195bd9a71b7ce11e9c3f435fb845c3303"
     },
     "tokens": [],
     "figma": null,
@@ -66,13 +66,38 @@
       "revision": {
         "paths": ["foundations/components/actions/toolbar/contract.json"],
         "sha256": {
-          "foundations/components/actions/toolbar/contract.json": "a17742098f5cb5edc806db16d6d86458c1c8e34a29e89543f449135205bac7c5"
+          "foundations/components/actions/toolbar/contract.json": "5201226e16e2a4f4feda2cfbc7a5f41195bd9a71b7ce11e9c3f435fb845c3303"
         }
       },
-      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\".",
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendment of 2026-11-10 (wave 4 implementation review, round 4): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Toolbar: roving focus, overflow Menu of the controls that do not fit (label, icon, disabled, danger intent), separators, sizes and orientations; fills its inline size (round 4).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/toolbar/Toolbar.svelte",
+          "packages/svelte/src/components/toolbar/ToolbarSeparator.svelte",
+          "packages/svelte/src/components/toolbar/types.ts",
+          "packages/svelte/src/components/toolbar/toolbar.css",
+          "packages/svelte/src/components/toolbar/roving-focus.ts",
+          "packages/svelte/src/components/toolbar/contract.generated.ts",
+          "packages/svelte/src/components/toolbar/tokens.generated.css",
+          "examples/toolbar/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/toolbar/Toolbar.svelte": "98738d9d0f578478d89a27ef46ccb0012b94a80b05641444a2447331fe46a3f4",
+          "packages/svelte/src/components/toolbar/ToolbarSeparator.svelte": "e7d759dea9db5ea91aa98f237425b66435171a0b71e48c542dd022ad9e221299",
+          "packages/svelte/src/components/toolbar/types.ts": "5795e42095790fa49961765f10ddf1ab0c3adf5a842e3aadc539a9003c4a3a43",
+          "packages/svelte/src/components/toolbar/toolbar.css": "74bc5fd680eef9b5a7f23081794291b2543c02601d96387e2ca0e8670dce8308",
+          "packages/svelte/src/components/toolbar/roving-focus.ts": "b41c75108cd4431ab4137b067d72e5182cfba41842bec442ec9a016807dacff2",
+          "packages/svelte/src/components/toolbar/contract.generated.ts": "f271be4cf7e4f03b256f2be5ebdff7e021110fa260ecb6bdf5c8455d3ae8356c",
+          "packages/svelte/src/components/toolbar/tokens.generated.css": "52c6e008958893ec44e9a91e8f4b65cdb945449e58330de00f11c71218b0d98b",
+          "examples/toolbar/App.svelte": "feb70f0b98515672abba89c99100726501f15b24c4be5f5179cf6a9ad124c75e"
+        }
+      },
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\"."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -124,6 +149,12 @@
       "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
       "result": "passed",
       "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
     }
   ],
   "decisionsTaken": [
@@ -142,7 +173,7 @@
     "Round 3: overflow Menu (More) instead of wrapping; moved units are hidden in place and offered as menu items built from their accessible name, icon and disabled state; choosing one clicks the original control. Menu and Popover triggers never move. A horizontal toolbar fills its inline size (otherwise the hidden items would feed back into its width)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate, round 4: user review, then the approval is re-recorded.",
+  "nextAction": "Figma parity for the wave (skill ggb-figma), then documentation.",
   "implementationNotes": [
     "Exports Toolbar and ToolbarSeparator.",
     "The module writes tabindex on the items (one 0, others -1) and keeps it in sync with a MutationObserver."
@@ -154,7 +185,8 @@
       "sha256": {
         "foundations/components/actions/toolbar/contract.json": "58e3b0fe784f9c11782acf1f5b2f33ed008fa612e3ff84e8853b24411abd7b9c"
       },
-      "review": "Wave 4 implementation gate"
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
     },
     {
       "date": "2026-11-09",
@@ -170,7 +202,8 @@
         "packages/svelte/src/components/toolbar/types.ts": "5795e42095790fa49961765f10ddf1ab0c3adf5a842e3aadc539a9003c4a3a43",
         "examples/toolbar/App.svelte": "feb70f0b98515672abba89c99100726501f15b24c4be5f5179cf6a9ad124c75e"
       },
-      "review": "Wave 4 implementation gate"
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
     }
   ]
 }

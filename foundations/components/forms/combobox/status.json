@@ -3,7 +3,7 @@
   "componentId": "combobox",
   "family": "forms",
   "wave": 4,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Choose one value from a long list of options by typing to narrow it.",
     "useCases": [
@@ -27,7 +27,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/combobox/contract.json",
-      "sha256": "502803a86a1e3a4ad745f8e0b5b73c37810047e18be4651f7aae8c272e07156e"
+      "sha256": "1c643e2647888767834923c9106984a39ee300404c98e749ff60915d6437340a"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
@@ -65,10 +65,10 @@
       "revision": {
         "paths": ["foundations/components/forms/combobox/contract.json"],
         "sha256": {
-          "foundations/components/forms/combobox/contract.json": "97779e60bcb080767cae20c15be0345910a2e09b5e470ed2c32a9ed3052f114a"
+          "foundations/components/forms/combobox/contract.json": "1c643e2647888767834923c9106984a39ee300404c98e749ff60915d6437340a"
         }
       },
-      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendments of 2026-11-09 and 2026-11-10 accepted with the round 2 implementation review (\"Je valide le second tour\"): panel role scrollbarColor. Digests re-recorded.",
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendments of 2026-11-09 and 2026-11-10 accepted with the round 2 implementation review (\"Je valide le second tour\"): panel role scrollbarColor. Digests re-recorded. Amendment of 2026-11-10 (wave 4 implementation review, round 4): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": "Tab behaviour (focus leaving restores the label or clears an empty value) may be revisited at the implementation review (user, 2026-11-09)."
     },
     "implementation": {
@@ -86,12 +86,12 @@
           "packages/svelte/src/components/combobox/Combobox.svelte": "69d9e6b6c4fe99d5de538d58d224256a95e2462791583b25f47d62e28cbe6c32",
           "packages/svelte/src/components/combobox/combobox.css": "4d8ffa83fe4f6bd53a4ad6917e7a279f51d2ffa6117b49ea7efb01d806b1b658",
           "packages/svelte/src/components/combobox/contract.generated.ts": "43149612dca5d13ed7e8786f79cb756e09348167c6dd317b5525ae09ecbc0380",
-          "packages/svelte/src/components/combobox/tokens.generated.css": "d953af3dc75fef6f6d3de199e4f7001acabe8940e0578296c51e822b2a1d8d9a",
+          "packages/svelte/src/components/combobox/tokens.generated.css": "fb2fd02968d1e5d55b6e096c957cc363011029558ba24cb95d9858c92869acb9",
           "packages/svelte/src/components/combobox/types.ts": "269f4267ca1d8c1183a8054119ef5bd56a4be202f4e9745e0b3f03f299c571e4",
           "examples/combobox/App.svelte": "5e5055929d3b69961374bc3a000098fcad09177a7b8106ad2db69c35478e83ab"
         }
       },
-      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794320983-c775, round 2), after round 1 feedback applied: \"Je valide le second tour et toutes tes recommandations de 1 à 6. Fait ce qui te semble le mieux\" (Tabs, Breadcrumb and Toolbar continued into a round 3).",
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
     "figmaParity": null,
@@ -146,6 +146,12 @@
       "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
       "result": "passed",
       "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
     }
   ],
   "decisionsTaken": [
@@ -162,7 +168,7 @@
     "Round 2: same scrollbar change as Select."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate, round 4: user review, then the approval is re-recorded.",
+  "nextAction": "Figma parity for the wave (skill ggb-figma), then documentation.",
   "implementationNotes": [
     "Exports Combobox and the ComboboxOptionsRecord type.",
     "The empty state is a polite status kept in the panel; it takes no room while options match.",
@@ -201,7 +207,8 @@
         "packages/svelte/src/components/combobox/types.ts": "269f4267ca1d8c1183a8054119ef5bd56a4be202f4e9745e0b3f03f299c571e4",
         "examples/combobox/App.svelte": "5e5055929d3b69961374bc3a000098fcad09177a7b8106ad2db69c35478e83ab"
       },
-      "review": "Wave 4 implementation gate"
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
     }
   ]
 }

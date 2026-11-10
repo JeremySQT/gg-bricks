@@ -186,9 +186,6 @@
     border-radius: var(--ggb-tabs-listRadius);
     background: var(--ggb-tabs-listSurfaceColor);
   }
-  .ggb-tabs[data-appearance='contained'] .ggb-tabs__list {
-    gap: 0;
-  }
   /* Equal shares of the list, never narrower than the content. */
   .ggb-tabs[data-appearance='contained'][data-orientation='horizontal'] .ggb-tabs__trigger {
     flex: 1 1 0;

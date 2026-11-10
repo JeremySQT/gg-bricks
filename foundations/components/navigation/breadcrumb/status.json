@@ -3,7 +3,7 @@
   "componentId": "breadcrumb",
   "family": "navigation",
   "wave": 4,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Show where the current page sits in the site hierarchy, with a link to each ancestor.",
     "useCases": [
@@ -22,7 +22,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/navigation/breadcrumb/contract.json",
-      "sha256": "c092bb9c2aea9fcc1735ea5f9c0eb178d57b6068524553be7d1a3b0e03ce1747"
+      "sha256": "4bc599222e0b111544e275c500e31340499943704a7a49ba629ed56e91ec7f9c"
     },
     "tokens": [],
     "figma": null,
@@ -60,13 +60,34 @@
       "revision": {
         "paths": ["foundations/components/navigation/breadcrumb/contract.json"],
         "sha256": {
-          "foundations/components/navigation/breadcrumb/contract.json": "8427f0218ff8fae63c15d08e3100976d7fcb12f6aeb32b837eb8ab89ef237baa"
+          "foundations/components/navigation/breadcrumb/contract.json": "4bc599222e0b111544e275c500e31340499943704a7a49ba629ed56e91ec7f9c"
         }
       },
-      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendment of 2026-11-10 accepted with the round 2 implementation review (\"Je valide le second tour\"): item prop iconOnly; more painted and spaced like an ancestor link; spacing rule. Digests re-recorded.",
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendment of 2026-11-10 accepted with the round 2 implementation review (\"Je valide le second tour\"): item prop iconOnly; more painted and spaced like an ancestor link; spacing rule. Digests re-recorded. Amendment of 2026-11-10 (wave 4 implementation review, round 4): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Breadcrumb: items records (label, href, hideLabel) with a leading snippet; fitted truncation, ancestors first; maxItems with a Menu of hidden items behind a text-like more button (round 4).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/breadcrumb/Breadcrumb.svelte",
+          "packages/svelte/src/components/breadcrumb/types.ts",
+          "packages/svelte/src/components/breadcrumb/breadcrumb.css",
+          "packages/svelte/src/components/breadcrumb/contract.generated.ts",
+          "packages/svelte/src/components/breadcrumb/tokens.generated.css",
+          "examples/breadcrumb/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/breadcrumb/Breadcrumb.svelte": "e60fc1c7891e52ee6c0c92063f92f9534d5866951e6c923e33acd626eff782a7",
+          "packages/svelte/src/components/breadcrumb/types.ts": "407ef17ee475c205b1f39e3bf78892177447ae503db90a204377c80b9a5f4103",
+          "packages/svelte/src/components/breadcrumb/breadcrumb.css": "070effa9e1685c409183e08e55b07466ac9b39d94c8e171071f95a201ed99ab3",
+          "packages/svelte/src/components/breadcrumb/contract.generated.ts": "45bca11624f64375f5597c7448e7750fe6cdf231cc18618a2dba1fe26c40cde4",
+          "packages/svelte/src/components/breadcrumb/tokens.generated.css": "bc296bacf5f25f01fbc09e58246ed33a0a8cfd1b7d94a7625e516bffa8f5815f",
+          "examples/breadcrumb/App.svelte": "5e18440f3ecaf22719d2a5138cef54f51ca26f68300306ab9ea9c107edb007d9"
+        }
+      },
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\"."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -118,6 +139,12 @@
       "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
       "result": "passed",
       "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
     }
   ],
   "decisionsTaken": [
@@ -136,7 +163,7 @@
     "Round 3: truncated labels are fitted to the characters that show (Range measurement), so that the ellipsis sits gap away from the separator like a whole label; the example's Home icon only shows the icon whatever Home icon says."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate, round 4: user review, then the approval is re-recorded.",
+  "nextAction": "Figma parity for the wave (skill ggb-figma), then documentation.",
   "implementationNotes": [
     "Exports Breadcrumb and the BreadcrumbItem type.",
     "An ancestor keeps 4em of label before its ellipsis; the full label is set as title when truncated."
@@ -166,7 +193,8 @@
         "packages/svelte/src/components/breadcrumb/types.ts": "407ef17ee475c205b1f39e3bf78892177447ae503db90a204377c80b9a5f4103",
         "examples/breadcrumb/App.svelte": "5e18440f3ecaf22719d2a5138cef54f51ca26f68300306ab9ea9c107edb007d9"
       },
-      "review": "Wave 4 implementation gate"
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
     }
   ]
 }

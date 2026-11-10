@@ -279,6 +279,12 @@ test('contained (the default): the list is a container; the selected tab is rais
     expect(bar.surface, context).toBe(rgb(tokens['color.surface.inset']));
     expect(bar.radius).toBe(`${px(tokens['radius.overlay'])}px`);
     expect(bar.padding).toBe(`${px(tokens['space.content.xs'])}px`);
+    // Tabs are listGap apart, so that a hovered tab and the selected tab never touch.
+    const between = await page.locator('#size-md').evaluate((r) => {
+      const [a, b] = [...r.querySelectorAll('.ggb-tabs__trigger')].map((t) => t.getBoundingClientRect());
+      return Math.round((b.left - a.right) * 100) / 100;
+    });
+    expect(between, context).toBe(px(tokens['space.content.xs']));
     const read = (id: string) =>
       page.locator(id).evaluate((t) => {
         const s = getComputedStyle(t);
@@ -308,10 +314,15 @@ test('contained (the default): the list is a container; the selected tab is rais
       '1'
     );
   }
-  // Tabs share the inline size of a horizontal contained list.
-  const widths = await page
-    .locator('#size-md .ggb-tabs__trigger')
-    .evaluateAll((t) => t.map((e) => Math.round(e.getBoundingClientRect().width)));
+  // Tabs share the inline size of a horizontal contained list equally where it has room (standard density), and are
+  // never narrower than their content (a tight column in comfortable density).
+  const shares = () =>
+    page
+      .locator('#size-md .ggb-tabs__trigger')
+      .evaluateAll((t) => t.map((e) => ({ width: e.getBoundingClientRect().width, content: e.scrollWidth })));
+  for (const tab of await shares()) expect(tab.width).toBeGreaterThanOrEqual(tab.content - 0.5);
+  await setContext(page, 'base', 'light', 'standard');
+  const widths = (await shares()).map((t) => t.width);
   expect(Math.max(...widths) - Math.min(...widths)).toBeLessThanOrEqual(1);
 });
 

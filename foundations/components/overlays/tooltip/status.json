@@ -24,7 +24,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/overlays/tooltip/contract.json",
-      "sha256": "2f8e0068eaa703a98971b2ff23a5012f984b7b9c316df68234bf5578217276b9"
+      "sha256": "a68acce9a5c02a7fbcf8b48cbe9ed1b05a0843627088133d5b90388702b91715"
     },
     "tokens": [
       "foundations/tokens/inventory.json",
@@ -114,15 +114,15 @@
           "examples/tooltip/App.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/components/tooltip/Tooltip.svelte": "7f1073cc470eb742d31f707879b72bc1ce6b04b8850f75969c107642b65d21c6",
+          "packages/svelte/src/components/tooltip/Tooltip.svelte": "41cff0752c6fdc6b31a6c24e1fd83af72596ebf20a37e4025c18d30e9ed47723",
           "packages/svelte/src/components/tooltip/contract.generated.ts": "8900e11a2168afe2b27fb6dd869aab8ee04935f21d15dbc875c3ac1487706b35",
-          "packages/svelte/src/components/tooltip/tokens.generated.css": "1241f0f483baf3c1645bfd14df26db75922869b89ade100f54c00b156e8f0c64",
+          "packages/svelte/src/components/tooltip/tokens.generated.css": "ebdef229ff632629896eefa926ff06ca3fd0be3b0c052af81bf1c6774d595d8e",
           "packages/svelte/src/components/tooltip/tooltip.css": "65326657fc7d2764e81dbfa821ceeaeb84d3f0c696f212c0155eebc87d6e2b54",
           "packages/svelte/src/components/tooltip/types.ts": "ff627d35a51335440d50449c002cb686cf244d0628c47bb9df597c7c69d0a380",
           "examples/tooltip/App.svelte": "56f26b3db4d4bd2e478329958da73c655b9eae4c092aca5ac1b52422c0580813"
         }
       },
-      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui corrige les quatre points et ajoute-le au contrat\"): Escape closes only the tooltip; the key is consumed, so that a Popover, Menu or Dialog holding the trigger stays open until the next Escape (it closed both before). Review page: tooltips inside a Popover and a Dialog (#compositions); new browser test, which fails without the change. Digests re-recorded.",
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Oui corrige les quatre points et ajoute-le au contrat\"): Escape closes only the tooltip; the key is consumed, so that a Popover, Menu or Dialog holding the trigger stays open until the next Escape (it closed both before). Review page: tooltips inside a Popover and a Dialog (#compositions); new browser test, which fails without the change. Digests re-recorded. Amendment of 2026-11-10 (wave 4 implementation review, round 4, change accepted with the wave): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
     "figmaParity": {
@@ -238,6 +238,12 @@
       "result": "passed",
       "date": "2026-11-09",
       "evidence": "documentation/components/tooltip.md"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
     }
   ],
   "decisionsTaken": [
@@ -249,7 +255,7 @@
     "Entry over motion.duration.fast with motion.distance.sm."
   ],
   "openDecisions": [],
-  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
+  "nextAction": "Wave 4 changes accepted with the wave 4 implementation gate; the Figma master and documentation are re-checked with the wave 4 Figma parity and documentation steps.",
   "implementationNotes": [
     "The trigger is the first element of the children snippet, wrapped in a display: contents span that listens to pointer and focus events; the tooltip is a manual popover placed by lib/overlay floating.",
     "One tooltip at a time and the skip delay (300 ms after a tooltip closed, the next opens at once) are module-level state.",
@@ -263,7 +269,8 @@
         "packages/svelte/src/components/tooltip/Tooltip.svelte": "41cff0752c6fdc6b31a6c24e1fd83af72596ebf20a37e4025c18d30e9ed47723",
         "packages/svelte/src/components/tooltip/tokens.generated.css": "ebdef229ff632629896eefa926ff06ca3fd0be3b0c052af81bf1c6774d595d8e"
       },
-      "review": "Wave 4 implementation gate"
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
     }
   ]
 }

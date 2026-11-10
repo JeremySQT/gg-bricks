@@ -3,7 +3,7 @@
   "componentId": "select",
   "family": "forms",
   "wave": 4,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Choose one value from a list of known options in a form, shown collapsed in a field.",
     "useCases": [
@@ -28,7 +28,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/select/contract.json",
-      "sha256": "768030fa02a732683b35cb950290b86ff0b5ffe1fff26d284e540625e3734287"
+      "sha256": "20d78516734cc24f62a8b1c434c75768d3a28a498e70e8574beb5db70fb388d9"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": null,
@@ -66,10 +66,10 @@
       "revision": {
         "paths": ["foundations/components/forms/select/contract.json"],
         "sha256": {
-          "foundations/components/forms/select/contract.json": "c61b460ab5b6b18b389dffb1ba2ee9fb90d61dbc7fc3e4c7c2b7f72e7b35fd31"
+          "foundations/components/forms/select/contract.json": "20d78516734cc24f62a8b1c434c75768d3a28a498e70e8574beb5db70fb388d9"
         }
       },
-      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendments of 2026-11-09 and 2026-11-10 accepted with the round 2 implementation review (\"Je valide le second tour\"): panel role scrollbarColor. Digests re-recorded.",
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendments of 2026-11-09 and 2026-11-10 accepted with the round 2 implementation review (\"Je valide le second tour\"): panel role scrollbarColor. Digests re-recorded. Amendment of 2026-11-10 (wave 4 implementation review, round 4): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": "Tab behaviour (closes without choosing) may be revisited at the implementation review (user, 2026-11-09)."
     },
     "implementation": {
@@ -87,12 +87,12 @@
           "packages/svelte/src/components/select/Select.svelte": "c3316fba20b30d25dbb5351c90bc3aeb9546e641e23cebb4a006a1ac32e1578c",
           "packages/svelte/src/components/select/contract.generated.ts": "f240973057451ed54f1f68bd69db64500e782fc28c903771e9c4c2b2a89fdb22",
           "packages/svelte/src/components/select/select.css": "28e8f305c0e0abdb9c6b3008a77b1111819dffeb48d575dc1a8d6e54a6312e18",
-          "packages/svelte/src/components/select/tokens.generated.css": "94f4e93d0404855f1f942c30897afcf50814af74eb42c3183be275bb72555e32",
+          "packages/svelte/src/components/select/tokens.generated.css": "a44399d40a2c3d8aa4c7b4feec9c530c5a1f6b229dac5b55c057f8a4d1c68da4",
           "packages/svelte/src/components/select/types.ts": "c3f46e6645e02dcfe5c4b15657a73eab7540c6c9871b7f2a34b100c6606dc86f",
           "examples/select/App.svelte": "5e59697c0ef140762684d927e7ee58c01e381e90469b71da95fadbe97ef3674b"
         }
       },
-      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794320983-c775, round 2), after round 1 feedback applied: \"Je valide le second tour et toutes tes recommandations de 1 à 6. Fait ce qui te semble le mieux\" (Tabs, Breadcrumb and Toolbar continued into a round 3).",
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
     "figmaParity": null,
@@ -147,6 +147,12 @@
       "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
       "result": "passed",
       "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
     }
   ],
   "decisionsTaken": [
@@ -167,7 +173,7 @@
     "Round 2: thin scrollbar in scrollbarColor on the list, which scrolls inside the panel padding (the scrollbar never meets the round corners)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate, round 4: user review, then the approval is re-recorded.",
+  "nextAction": "Figma parity for the wave (skill ggb-figma), then documentation.",
   "implementationNotes": [
     "Exports Select and the SelectOptionsRecord type.",
     "The trigger toggles the panel through popovertarget (exempt from light dismiss); keys open it through the open state.",
@@ -207,7 +213,8 @@
         "packages/svelte/src/components/select/types.ts": "c3f46e6645e02dcfe5c4b15657a73eab7540c6c9871b7f2a34b100c6606dc86f",
         "examples/select/App.svelte": "5e59697c0ef140762684d927e7ee58c01e381e90469b71da95fadbe97ef3674b"
       },
-      "review": "Wave 4 implementation gate"
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
     }
   ]
 }
