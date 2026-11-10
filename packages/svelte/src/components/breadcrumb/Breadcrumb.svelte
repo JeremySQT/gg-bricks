@@ -49,7 +49,7 @@
     const label = node.querySelector<HTMLElement>('.ggb-breadcrumb__item-label');
     const update = () => {
       if (!label) return;
-      const hidden = node.hasAttribute('data-icon-only');
+      const hidden = node.matches('[data-hide-label]:has(.ggb-breadcrumb__item-leading:not(:empty))');
       if (hidden || label.scrollWidth > label.clientWidth + 0.5) node.setAttribute('title', label.textContent ?? '');
       else node.removeAttribute('title');
     };
@@ -74,7 +74,9 @@
     const apply = () => {
       const entries = [...listNode.querySelectorAll<HTMLElement>('.ggb-breadcrumb__entry:not(.ggb-breadcrumb__more)')];
       const labels = entries.map((e) =>
-        e.querySelector('[data-icon-only]') ? null : e.querySelector<HTMLElement>('.ggb-breadcrumb__item-label')
+        e.querySelector('[data-hide-label] .ggb-breadcrumb__item-leading:not(:empty)')
+          ? null
+          : e.querySelector<HTMLElement>('.ggb-breadcrumb__item-label')
       );
       // 1. Minimums, measured on the whole labels.
       labels.forEach((label) => label?.style.removeProperty('max-inline-size'));
@@ -143,26 +145,31 @@
 
 {#snippet entry(item: BreadcrumbItem, index: number)}
   {@const current = index === lastIndex}
-  {@const iconOnly = !!item.iconOnly && !!leading}
+  {@const hideLabel = !!item.hideLabel && !!leading}
   <li class="ggb-breadcrumb__entry" data-current={current ? '' : undefined}>
     {#if current}
       <span
         class="ggb-breadcrumb__item"
         data-current=""
         aria-current="page"
-        data-icon-only={iconOnly ? '' : undefined}
+        data-hide-label={hideLabel ? '' : undefined}
         {@attach truncation}
       >
         {#if leading}<span class="ggb-breadcrumb__item-leading" aria-hidden="true">{@render leading(item, index)}</span
           >{/if}<span class="ggb-breadcrumb__item-label">{item.label}</span>
       </span>
     {:else if item.href}
-      <a class="ggb-breadcrumb__item" href={item.href} data-icon-only={iconOnly ? '' : undefined} {@attach truncation}>
+      <a
+        class="ggb-breadcrumb__item"
+        href={item.href}
+        data-hide-label={hideLabel ? '' : undefined}
+        {@attach truncation}
+      >
         {#if leading}<span class="ggb-breadcrumb__item-leading" aria-hidden="true">{@render leading(item, index)}</span
           >{/if}<span class="ggb-breadcrumb__item-label">{item.label}</span>
       </a>
     {:else}
-      <span class="ggb-breadcrumb__item" data-icon-only={iconOnly ? '' : undefined} {@attach truncation}>
+      <span class="ggb-breadcrumb__item" data-hide-label={hideLabel ? '' : undefined} {@attach truncation}>
         {#if leading}<span class="ggb-breadcrumb__item-leading" aria-hidden="true">{@render leading(item, index)}</span
           >{/if}<span class="ggb-breadcrumb__item-label">{item.label}</span>
       </span>

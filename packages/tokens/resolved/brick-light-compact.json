@@ -4679,6 +4679,19 @@
       "alpha": 1
     }
   },
+  "color.surface.inset": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.05
+    },
+    "$description": "A translucent tint that sets an area apart from whatever surface it sits on, darker in light and lighter in dark: the container of contained tabs (later a segmented control). Items lifted inside it use color.surface.overlay."
+  },
   "color.surface.raised": {
     "$type": "color",
     "$value": {

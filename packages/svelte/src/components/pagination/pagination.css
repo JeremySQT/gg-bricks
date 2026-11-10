@@ -4,9 +4,24 @@
  * it is not conveyed by the tint alone.
  */
 @layer ggb {
+  /* The navigation takes at most the inline size it is given; siblings are reduced so that the row fits it. */
+  .ggb-pagination {
+    min-inline-size: 0;
+    max-inline-size: 100%;
+  }
+  /* Last resort: the row scrolls inside its width, keeping room for the focus indicators (compensated by margins). */
+  .ggb-pagination[data-scrolling] {
+    --_ring: calc(var(--ggb-pagination-focusWidth) + var(--ggb-pagination-focusOffset));
+    margin: calc(-1 * var(--_ring));
+    padding: var(--_ring);
+    max-inline-size: calc(100% + 2 * var(--_ring));
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  /* One row: previous and next never move to another line. */
   .ggb-pagination__list {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     gap: var(--ggb-pagination-gap);
     margin: 0;

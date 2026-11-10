@@ -3,7 +3,7 @@
   "componentId": "combobox",
   "family": "forms",
   "wave": 4,
-  "phase": "figma",
+  "phase": "implementation",
   "scope": {
     "purpose": "Choose one value from a long list of options by typing to narrow it.",
     "useCases": [
@@ -157,7 +157,7 @@
     "Round 2: same scrollbar change as Select."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (skill ggb-figma), grouped with the rest of wave 4 once Tabs, Breadcrumb and Toolbar pass round 3.",
+  "nextAction": "Wave 4 implementation gate, round 4: re-present the round 4 changes, then re-record the approval.",
   "implementationNotes": [
     "Exports Combobox and the ComboboxOptionsRecord type.",
     "The empty state is a polite status kept in the panel; it takes no room while options match.",
@@ -183,6 +183,20 @@
       },
       "review": "Wave 4 implementation gate",
       "recorded": "Accepted with the round 2 implementation approval (2026-11-10)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: panel offset space.content.sm instead of space.content.xs, clear of the field's focus indicator. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/forms/combobox/contract.json": "1c643e2647888767834923c9106984a39ee300404c98e749ff60915d6437340a",
+        "packages/svelte/src/components/combobox/Combobox.svelte": "69d9e6b6c4fe99d5de538d58d224256a95e2462791583b25f47d62e28cbe6c32",
+        "packages/svelte/src/components/combobox/combobox.css": "4d8ffa83fe4f6bd53a4ad6917e7a279f51d2ffa6117b49ea7efb01d806b1b658",
+        "packages/svelte/src/components/combobox/contract.generated.ts": "43149612dca5d13ed7e8786f79cb756e09348167c6dd317b5525ae09ecbc0380",
+        "packages/svelte/src/components/combobox/tokens.generated.css": "fb2fd02968d1e5d55b6e096c957cc363011029558ba24cb95d9858c92869acb9",
+        "packages/svelte/src/components/combobox/types.ts": "269f4267ca1d8c1183a8054119ef5bd56a4be202f4e9745e0b3f03f299c571e4",
+        "examples/combobox/App.svelte": "5e5055929d3b69961374bc3a000098fcad09177a7b8106ad2db69c35478e83ab"
+      },
+      "review": "Wave 4 implementation gate"
     }
   ]
 }

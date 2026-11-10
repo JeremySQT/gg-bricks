@@ -185,6 +185,20 @@ test('panel: as wide as the trigger at least, wider for long labels; a long list
   expect(Number(after?.slice(-2))).toBeGreaterThan(21);
 });
 
+test('the panel opens offset below the trigger, clear of its focus indicator', async ({ page }) => {
+  const tokens = tokensFor('base-light-standard');
+  await page.focus('#play');
+  await page.keyboard.press('ArrowDown');
+  await expect.poll(() => isOpen(page, 'play')).toBe(true);
+  await settle(page);
+  const gap = await page.locator('#play').evaluate((t) => {
+    const panel = t.parentElement!.querySelector('.ggb-select__panel')!.getBoundingClientRect();
+    return panel.top - t.getBoundingClientRect().bottom;
+  });
+  expect(gap).toBeCloseTo(px(tokens['space.content.sm']), 0);
+  expect(gap).toBeGreaterThan(px(tokens['focus.width']) + px(tokens['focus.offset']));
+});
+
 test('inherits a dark subtree and escapes a clipping container', async ({ page }) => {
   await page.click('#dark');
   await expect.poll(() => isOpen(page, 'dark')).toBe(true);

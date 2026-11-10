@@ -10,6 +10,6 @@ export const defaults = {
 } as const;
 export const childDefaults = {
   "item": {
-    "iconOnly": false
+    "hideLabel": false
   }
 } as const;

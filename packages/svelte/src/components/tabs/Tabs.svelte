@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, setContext } from 'svelte';
+  import { onMount, setContext, tick } from 'svelte';
   import { SvelteMap } from 'svelte/reactivity';
   import { Tabs as Primitive } from 'bits-ui';
   import IconButton from '../icon-button/IconButton.svelte';
@@ -79,15 +79,24 @@
   let listElement = $state<HTMLElement | null>(null);
   let overflowStart = $state(false);
   let overflowEnd = $state(false);
+  let scrollable = $state(false);
   const measure = () => {
     const list = listElement;
     if (!list || orientation !== 'horizontal') {
-      overflowStart = overflowEnd = false;
+      overflowStart = overflowEnd = scrollable = false;
       return;
     }
+    // The tabs overflow when their extent exceeds the list's content box (measured also while the list does not clip).
+    const style = getComputedStyle(list);
+    const room = list.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+    const tabs = [...list.querySelectorAll<HTMLElement>('.ggb-tabs__trigger')];
+    const extent =
+      tabs.reduce((sum, t) => sum + t.getBoundingClientRect().width, 0) +
+      Math.max(0, tabs.length - 1) * (parseFloat(style.columnGap) || 0);
+    scrollable = extent > room + 0.5;
     const scrolled = Math.abs(list.scrollLeft);
-    overflowStart = scrolled > 1;
-    overflowEnd = scrolled + list.clientWidth < list.scrollWidth - 1;
+    overflowStart = scrollable && scrolled > 1;
+    overflowEnd = scrollable && scrolled + list.clientWidth < list.scrollWidth - 1;
   };
   $effect(() => {
     const list = listElement;
@@ -106,16 +115,20 @@
   $effect(() => {
     const list = listElement;
     const shown = current();
-    if (!list || orientation !== 'horizontal') return;
-    const tab = [...list.querySelectorAll<HTMLElement>('.ggb-tabs__trigger')].find((t) => t.dataset.value === shown);
-    if (!tab) return;
-    // Measured on screen so that right-to-left text (negative scroll positions) needs no special case.
-    // The tab clears the fade and the scroll button of the edge (its scroll margin, the fade size).
-    const box = list.getBoundingClientRect();
-    const t = tab.getBoundingClientRect();
-    const margin = parseFloat(getComputedStyle(tab).scrollMarginInlineStart) || 0;
-    if (t.left - margin < box.left) list.scrollLeft += t.left - margin - box.left;
-    else if (t.right + margin > box.right) list.scrollLeft += t.right + margin - box.right;
+    // Also when the list becomes scrollable (it clips and scrolls only then).
+    if (!list || orientation !== 'horizontal' || !scrollable) return;
+    // After the DOM update: the list clips (and so scrolls) once its data-scrollable attribute is rendered.
+    void tick().then(() => {
+      const tab = [...list.querySelectorAll<HTMLElement>('.ggb-tabs__trigger')].find((t) => t.dataset.value === shown);
+      if (!tab) return;
+      // Measured on screen so that right-to-left text (negative scroll positions) needs no special case.
+      // The tab clears the fade and the scroll button of the edge (its scroll margin, 1.5 × the fade size).
+      const box = list.getBoundingClientRect();
+      const t = tab.getBoundingClientRect();
+      const margin = parseFloat(getComputedStyle(tab).scrollMarginInlineStart) || 0;
+      if (t.left - margin < box.left) list.scrollLeft += t.left - margin - box.left;
+      else if (t.right + margin > box.right) list.scrollLeft += t.right + margin - box.right;
+    });
   });
   function scrollTowards(edge: 'start' | 'end') {
     const list = listElement;
@@ -172,6 +185,7 @@
 >
   <div
     class="ggb-tabs__bar"
+    data-scrollable={scrollable ? '' : undefined}
     data-overflow-start={overflowStart ? '' : undefined}
     data-overflow-end={overflowEnd ? '' : undefined}
   >

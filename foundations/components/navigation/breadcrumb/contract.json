@@ -53,7 +53,7 @@
         "href": {
           "type": "string"
         },
-        "iconOnly": {
+        "hideLabel": {
           "type": "boolean",
           "default": false
         }
@@ -94,7 +94,7 @@
         "easingStandard": "motion.easing.standard"
       },
       "rules": [
-        "An item shows leading, then label, in typography on one line, separated by gap; label is the accessible name. leading holds at most one decorative icon of iconSize in the item's color (a home icon on the first item). With iconOnly and a leading icon, the label is not displayed (it stays the accessible name and is shown on hover); iconOnly without a leading icon is ignored.",
+        "An item shows leading, then label, in typography on one line, separated by gap; label is the accessible name. leading holds at most one decorative icon of iconSize in the item's color (a home icon on the first item). With hideLabel and a leading icon, the label is not displayed (it stays the accessible name and is shown on hover), as hideLabel does for Checkbox and Switch; without a leading icon the label is always displayed.",
         "An item with href that is not current is a link painted in linkColor; in the hover interaction its label is underlined and painted in hoverColor. An item without href that is not current is plain text in linkColor (a level without its own page).",
         "The current item is the last one: it is painted in currentColor, is never a link even when href is set, and is exposed as the current page.",
         "When focus is true from the keyboard, the link shows a focus indicator of focusWidth in focusColor at focusOffset with focusRadius corners.",

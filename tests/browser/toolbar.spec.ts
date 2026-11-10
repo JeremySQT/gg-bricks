@@ -33,20 +33,20 @@ test('one tab stop; arrows wrap and skip the disabled item and the separator; Ho
   await page.keyboard.press('ArrowRight');
   expect(await focused(page)).toBe('t-filter-trigger');
   await page.keyboard.press('ArrowRight');
-  expect(await focused(page)).toBe('t-more-trigger');
+  expect(await focused(page)).toBe('t-sort-trigger');
   await page.keyboard.press('ArrowRight');
   expect(await focused(page)).toBe('t-copy');
   await page.keyboard.press('ArrowLeft');
-  expect(await focused(page)).toBe('t-more-trigger');
+  expect(await focused(page)).toBe('t-sort-trigger');
   await page.keyboard.press('Home');
   expect(await focused(page)).toBe('t-copy');
   await page.keyboard.press('End');
-  expect(await focused(page)).toBe('t-more-trigger');
+  expect(await focused(page)).toBe('t-sort-trigger');
   await page.keyboard.press('Tab');
   expect(await focused(page)).toBe('after');
   // The toolbar remembers the last focused item.
   await page.keyboard.press('Shift+Tab');
-  expect(await focused(page)).toBe('t-more-trigger');
+  expect(await focused(page)).toBe('t-sort-trigger');
   // An enabled Delete joins the sequence.
   await page.check('#opt-delete-disabled', { force: true });
   await page.uncheck('#opt-delete-disabled');
@@ -61,17 +61,17 @@ test('items keep their activation; a menu opens on Down Arrow and returns focus 
   await expect(page.getByTestId('last')).toHaveText('Last: copy');
   await page.keyboard.press('End');
   await page.keyboard.press('ArrowDown');
-  await expect.poll(() => focused(page)).toBe('t-more-archive');
+  await expect.poll(() => focused(page)).toBe('t-sort-name');
   await page.keyboard.press('Enter');
-  await expect(page.getByTestId('last')).toHaveText('Last: archive');
-  await expect.poll(() => focused(page)).toBe('t-more-trigger');
+  await expect(page.getByTestId('last')).toHaveText('Last: name');
+  await expect.poll(() => focused(page)).toBe('t-sort-trigger');
   // Arrow keys inside an open menu stay with the menu.
   await page.keyboard.press('ArrowDown');
-  await expect.poll(() => focused(page)).toBe('t-more-archive');
+  await expect.poll(() => focused(page)).toBe('t-sort-name');
   await page.keyboard.press('ArrowDown');
-  await expect.poll(() => focused(page)).toBe('t-more-share');
+  await expect.poll(() => focused(page)).toBe('t-sort-date');
   await page.keyboard.press('Escape');
-  await expect.poll(() => focused(page)).toBe('t-more-trigger');
+  await expect.poll(() => focused(page)).toBe('t-sort-trigger');
   // A popover opens with Enter and gives focus back to its trigger on Escape.
   await page.keyboard.press('ArrowLeft');
   await page.keyboard.press('Enter');
@@ -91,15 +91,15 @@ test('vertical: Down and Up move between items, also on a menu trigger', async (
   await page.keyboard.press('ArrowDown');
   expect(await focused(page)).toBe('t-filter-trigger');
   await page.keyboard.press('ArrowDown');
-  expect(await focused(page)).toBe('t-more-trigger');
+  expect(await focused(page)).toBe('t-sort-trigger');
   await page.keyboard.press('ArrowDown');
   expect(await focused(page)).toBe('t-copy');
-  expect(await isOpen(page, 't-more')).toBe(false);
+  expect(await isOpen(page, 't-sort')).toBe(false);
   await page.keyboard.press('ArrowUp');
-  expect(await focused(page)).toBe('t-more-trigger');
-  expect(await isOpen(page, 't-more')).toBe(false);
+  expect(await focused(page)).toBe('t-sort-trigger');
+  expect(await isOpen(page, 't-sort')).toBe(false);
   await page.keyboard.press('ArrowRight');
-  expect(await focused(page)).toBe('t-more-trigger');
+  expect(await focused(page)).toBe('t-sort-trigger');
 });
 
 test('the toolbar size reaches every button, the menu and popover triggers and the tooltip controls', async ({
@@ -107,7 +107,7 @@ test('the toolbar size reaches every button, the menu and popover triggers and t
 }) => {
   for (const size of sizes) {
     await page.selectOption('#opt-size', size);
-    for (const id of ['t-copy', 't-rename', 't-download', 't-filter-trigger', 't-more-trigger'])
+    for (const id of ['t-copy', 't-rename', 't-download', 't-filter-trigger', 't-sort-trigger'])
       await expect(page.locator(`#${id}`), `${size} ${id}`).toHaveAttribute('data-size', size);
   }
 });
@@ -191,6 +191,25 @@ test('overflow: items that do not fit move into the More menu, in order, and wor
   await page.setViewportSize({ width: 1280, height: 1000 });
   await expect(page.locator('#t-download')).toBeVisible();
   await expect(page.locator('#play .ggb-toolbar__overflow')).toBeHidden();
+});
+
+test('overflow: the More trigger stays inside the toolbar; a danger item keeps its intent in the menu', async ({
+  page
+}) => {
+  for (const width of [390, 340]) {
+    await page.setViewportSize({ width, height: 900 });
+    const fits = await page.locator('#play').evaluate((bar) => {
+      const more = bar.querySelector('.ggb-toolbar__overflow')!.getBoundingClientRect();
+      return more.right <= bar.getBoundingClientRect().right + 0.5;
+    });
+    expect(fits, `${width}`).toBe(true);
+  }
+  await page.setViewportSize({ width: 1280, height: 1000 });
+  await page.locator('#wrap .ggb-toolbar__overflow button').first().click();
+  await expect(page.locator('#wrap .ggb-toolbar__overflow [role="menuitem"]', { hasText: 'Delete' })).toHaveAttribute(
+    'data-intent',
+    'danger'
+  );
 });
 
 test('automated accessibility audit and screenshots in light and dark, desktop and mobile', async ({ page }) => {

@@ -98,8 +98,14 @@
     visibility: visible;
     transition-duration: var(--ggb-accordion-item-motionDuration), 0s;
   }
+  /* The body clips while the block size animates. It keeps room for the focus indicators of the content's controls:
+     inline and below through padding compensated by negative margins (nothing moves), above as a real start offset of
+     the content (the clip stays at the content's top edge, so nothing overlaps the trigger). */
   .ggb-accordion__item-body {
+    --_ring: calc(var(--ggb-accordion-item-focusWidth) + var(--ggb-accordion-item-focusOffset));
     min-block-size: 0;
+    margin: 0 calc(-1 * var(--_ring)) calc(-1 * var(--_ring));
+    padding: var(--_ring) var(--_ring) var(--_ring);
     overflow: hidden;
   }
   .ggb-accordion__item-inner {
@@ -109,6 +115,10 @@
     letter-spacing: var(--ggb-accordion-item-typographyBody-letterSpacing, normal);
   }
 
+  /* A slot whose snippet renders nothing takes no room (no gap beside it). */
+  .ggb-accordion__item-leading:empty {
+    display: none;
+  }
   @media (prefers-reduced-motion: reduce) {
     .ggb-accordion__trigger,
     .ggb-accordion__item-indicator,

@@ -3,7 +3,7 @@
   "componentId": "select",
   "family": "forms",
   "wave": 4,
-  "phase": "figma",
+  "phase": "implementation",
   "scope": {
     "purpose": "Choose one value from a list of known options in a form, shown collapsed in a field.",
     "useCases": [
@@ -162,7 +162,7 @@
     "Round 2: thin scrollbar in scrollbarColor on the list, which scrolls inside the panel padding (the scrollbar never meets the round corners)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (skill ggb-figma), grouped with the rest of wave 4 once Tabs, Breadcrumb and Toolbar pass round 3.",
+  "nextAction": "Wave 4 implementation gate, round 4: re-present the round 4 changes, then re-record the approval.",
   "implementationNotes": [
     "Exports Select and the SelectOptionsRecord type.",
     "The trigger toggles the panel through popovertarget (exempt from light dismiss); keys open it through the open state.",
@@ -189,6 +189,20 @@
       },
       "review": "Wave 4 implementation gate",
       "recorded": "Accepted with the round 2 implementation approval (2026-11-10)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: panel offset space.content.sm instead of space.content.xs, clear of the trigger's focus indicator. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/forms/select/contract.json": "20d78516734cc24f62a8b1c434c75768d3a28a498e70e8574beb5db70fb388d9",
+        "packages/svelte/src/components/select/Select.svelte": "c3316fba20b30d25dbb5351c90bc3aeb9546e641e23cebb4a006a1ac32e1578c",
+        "packages/svelte/src/components/select/contract.generated.ts": "f240973057451ed54f1f68bd69db64500e782fc28c903771e9c4c2b2a89fdb22",
+        "packages/svelte/src/components/select/select.css": "28e8f305c0e0abdb9c6b3008a77b1111819dffeb48d575dc1a8d6e54a6312e18",
+        "packages/svelte/src/components/select/tokens.generated.css": "a44399d40a2c3d8aa4c7b4feec9c530c5a1f6b229dac5b55c057f8a4d1c68da4",
+        "packages/svelte/src/components/select/types.ts": "c3f46e6645e02dcfe5c4b15657a73eab7540c6c9871b7f2a34b100c6606dc86f",
+        "examples/select/App.svelte": "5e59697c0ef140762684d927e7ee58c01e381e90469b71da95fadbe97ef3674b"
+      },
+      "review": "Wave 4 implementation gate"
     }
   ]
 }

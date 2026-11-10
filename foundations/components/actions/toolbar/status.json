@@ -150,6 +150,22 @@
         "foundations/components/actions/toolbar/contract.json": "58e3b0fe784f9c11782acf1f5b2f33ed008fa612e3ff84e8853b24411abd7b9c"
       },
       "review": "Wave 4 implementation gate"
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: danger intent carried into the overflow menu. Implementation: extent measured from the controls' boxes (Tooltip wrappers have no box; enlarged targets reach past the boxes) and including the More trigger; items without an icon get no leading slot. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/actions/toolbar/contract.json": "5201226e16e2a4f4feda2cfbc7a5f41195bd9a71b7ce11e9c3f435fb845c3303",
+        "packages/svelte/src/components/toolbar/Toolbar.svelte": "98738d9d0f578478d89a27ef46ccb0012b94a80b05641444a2447331fe46a3f4",
+        "packages/svelte/src/components/toolbar/ToolbarSeparator.svelte": "e7d759dea9db5ea91aa98f237425b66435171a0b71e48c542dd022ad9e221299",
+        "packages/svelte/src/components/toolbar/contract.generated.ts": "f271be4cf7e4f03b256f2be5ebdff7e021110fa260ecb6bdf5c8455d3ae8356c",
+        "packages/svelte/src/components/toolbar/roving-focus.ts": "b41c75108cd4431ab4137b067d72e5182cfba41842bec442ec9a016807dacff2",
+        "packages/svelte/src/components/toolbar/tokens.generated.css": "52c6e008958893ec44e9a91e8f4b65cdb945449e58330de00f11c71218b0d98b",
+        "packages/svelte/src/components/toolbar/toolbar.css": "74bc5fd680eef9b5a7f23081794291b2543c02601d96387e2ca0e8670dce8308",
+        "packages/svelte/src/components/toolbar/types.ts": "5795e42095790fa49961765f10ddf1ab0c3adf5a842e3aadc539a9003c4a3a43",
+        "examples/toolbar/App.svelte": "feb70f0b98515672abba89c99100726501f15b24c4be5f5179cf6a9ad124c75e"
+      },
+      "review": "Wave 4 implementation gate"
     }
   ]
 }

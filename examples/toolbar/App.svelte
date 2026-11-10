@@ -98,12 +98,10 @@
             {#snippet trigger(props)}<Button {...props} label="Filter" intent="neutral" appearance="ghost" />{/snippet}
             <InputText id="t-filter-name" label="Name contains" placeholder="Name contains" />
           </Popover>
-          <Menu id="t-more" onselect={(v) => act(v)()}>
-            {#snippet trigger(props)}<IconButton {...props} label="More actions"
-                >{#snippet icon()}{@render iconFor('dots-three')}{/snippet}</IconButton
-              >{/snippet}
-            <MenuItem id="t-more-archive" label="Archive" value="archive" />
-            <MenuItem id="t-more-share" label="Share" value="share" />
+          <Menu id="t-sort" onselect={(v) => act(v)()}>
+            {#snippet trigger(props)}<Button {...props} label="Sort" intent="neutral" appearance="ghost" />{/snippet}
+            <MenuItem id="t-sort-name" label="By name" value="name" />
+            <MenuItem id="t-sort-date" label="By date" value="date" />
           </Menu>
         </Toolbar>
         <button type="button" id="after">After</button>

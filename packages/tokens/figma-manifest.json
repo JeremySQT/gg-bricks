@@ -10026,6 +10026,27 @@
     },
     {
       "collection": "Foundations · Appearance",
+      "name": "color/surface/inset",
+      "path": "color.surface.inset",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-surface-inset)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Primitives:primitive/color/alpha/black/5"
+        },
+        "dark": {
+          "alias": "Foundations · Primitives:primitive/color/alpha/white/5"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
       "name": "color/surface/raised",
       "path": "color.surface.raised",
       "type": "COLOR",

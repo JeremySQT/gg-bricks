@@ -369,6 +369,17 @@
         "foundations/tokens/base/semantic/common.tokens.json": "1b45792a4750970aa939de2d6238e3b38cfefa370546a475c486c677f3b80c90"
       },
       "recorded": "Re-recorded with approvals.primitives and approvals.semantic on 2026-11-10."
+    },
+    {
+      "date": "2026-11-10",
+      "change": "New semantic role color.surface.inset (light primitive.color.alpha.black.5, dark primitive.color.alpha.white.5): a translucent tint that sets an area apart from whatever surface it sits on, darker in light and lighter in dark; the container of contained tabs. No existing pair of surface roles gives a container darker than its lifted item in both appearances (in dark, color.surface.raised is darker than muted and subtle; canvas equals raised in light). Inventory: the role and two contrast pairs (primary and secondary content on it): 0 failures. documentation/foundations/color.md updated.",
+      "invalidates": "approvals.semantic for both appearance files and inventory.json until the tokens review at the wave 4 implementation gate (round 4); Figma variable at the Figma parity phase.",
+      "sha256": {
+        "foundations/tokens/base/semantic/appearance.light.tokens.json": "c40bd07c9cf2c92e8435b29b23fc2da38bf6d6af312c680727d3c25b24ce865a",
+        "foundations/tokens/base/semantic/appearance.dark.tokens.json": "b237916a992d746fb77a701fee96994265b4e3fa2f77375391f1ea8e87578ed8",
+        "foundations/tokens/inventory.json": "8e9881612d127e4dbe4a9544652efe45759bbbb4838afd78660d88ac864d2dca"
+      },
+      "review": "Wave 4 implementation gate, round 4"
     }
   ]
 }

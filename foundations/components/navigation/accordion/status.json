@@ -3,7 +3,7 @@
   "componentId": "accordion",
   "family": "navigation",
   "wave": 4,
-  "phase": "figma",
+  "phase": "implementation",
   "scope": {
     "purpose": "A vertical stack of headings that each show or hide a section of content.",
     "useCases": [
@@ -156,7 +156,7 @@
     "The review page gains a Leading icons option (the slot existed but no option showed it)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (skill ggb-figma), grouped with the rest of wave 4 once Tabs, Breadcrumb and Toolbar pass round 3.",
+  "nextAction": "Wave 4 implementation gate, round 4: re-present the round 4 changes, then re-record the approval.",
   "implementationNotes": [
     "Exports Accordion and AccordionItem.",
     "The focus ring is drawn inside the trigger (outline-offset of minus its width) so that it stays inside the accordion inline size, as the contract asks.",
@@ -164,5 +164,22 @@
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: the content starts focusWidth plus focusOffset below the trigger. Implementation: the clipping body keeps room for the focus indicators of the content's controls without overlapping the trigger; an empty slot takes no room. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/navigation/accordion/contract.json": "9800fb23ecb5bbec578283083c88644590c17691b055a46ba508cfd7f3f9dee5",
+        "packages/svelte/src/components/accordion/Accordion.svelte": "48427946bed5ce898aed2963739878140e8c8f60933253728aff211f189f8bb7",
+        "packages/svelte/src/components/accordion/AccordionItem.svelte": "e0f2c25535e8e404855e2b87149773db6f6a8f7baadc2da2b9fc356ab966803d",
+        "packages/svelte/src/components/accordion/accordion.css": "aaf4d928cd379ce2b3ea9bf4eab05e60819aa53b34322a0408b236a04f759bec",
+        "packages/svelte/src/components/accordion/contract.generated.ts": "e9f042da5f6506c1d06ad6ee29475851fe3e2fcc6d0b68dace825384b703944d",
+        "packages/svelte/src/components/accordion/tokens.generated.css": "678a4ce15f419fe6a19d64d6eea36d16d4fe63fa2487e74cfa239de6d4ea4950",
+        "packages/svelte/src/components/accordion/types.ts": "2ccbbf854dc69c60cf6dc27e360554d170ef930e63a0f1bfe06865437442b464",
+        "examples/accordion/App.svelte": "ad72499dbece948255226ea42667fc04da9f71d7652e29ed07c57db5a99c3894"
+      },
+      "review": "Wave 4 implementation gate"
+    }
+  ]
 }

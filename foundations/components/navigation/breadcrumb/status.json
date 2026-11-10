@@ -148,6 +148,20 @@
       },
       "review": "Wave 4 implementation gate",
       "recorded": "Contract amendment accepted on 2026-11-10 (round 2)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: item prop iconOnly renamed hideLabel (as on Checkbox and Switch), effective only next to an icon that renders. Implementation: truncated labels fitted to their characters; an empty slot takes no room; review page options Show home icon and Show home label. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/navigation/breadcrumb/contract.json": "4bc599222e0b111544e275c500e31340499943704a7a49ba629ed56e91ec7f9c",
+        "packages/svelte/src/components/breadcrumb/Breadcrumb.svelte": "e60fc1c7891e52ee6c0c92063f92f9534d5866951e6c923e33acd626eff782a7",
+        "packages/svelte/src/components/breadcrumb/breadcrumb.css": "070effa9e1685c409183e08e55b07466ac9b39d94c8e171071f95a201ed99ab3",
+        "packages/svelte/src/components/breadcrumb/contract.generated.ts": "45bca11624f64375f5597c7448e7750fe6cdf231cc18618a2dba1fe26c40cde4",
+        "packages/svelte/src/components/breadcrumb/tokens.generated.css": "bc296bacf5f25f01fbc09e58246ed33a0a8cfd1b7d94a7625e516bffa8f5815f",
+        "packages/svelte/src/components/breadcrumb/types.ts": "407ef17ee475c205b1f39e3bf78892177447ae503db90a204377c80b9a5f4103",
+        "examples/breadcrumb/App.svelte": "5e18440f3ecaf22719d2a5138cef54f51ca26f68300306ab9ea9c107edb007d9"
+      },
+      "review": "Wave 4 implementation gate"
     }
   ]
 }

@@ -30,8 +30,50 @@
 
   const count = $derived(Math.max(1, Math.floor(Number(pageCount) || 1)));
   const current = $derived(Math.min(count, Math.max(1, Math.floor(Number(page) || 1))));
-  const siblings = $derived(Math.max(0, Math.floor(Number(siblingCount) || 0)));
+  const maxSiblings = $derived(Math.max(0, Math.floor(Number(siblingCount) || 0)));
+  // siblingCount is a maximum: when the row does not fit the inline size, fewer siblings are shown (down to none). The
+  // count then depends only on the size, never on the page, so that previous and next stay in place while paging.
+  let fitted = $state<number | null>(null);
+  const siblings = $derived(Math.min(maxSiblings, fitted ?? maxSiblings));
   const items = $derived(entries(current, count, siblings));
+  let listElement = $state<HTMLUListElement | null>(null);
+  let scrolling = $state(false);
+  $effect(() => {
+    const nav = ref;
+    const list = listElement;
+    void [maxSiblings, count, size, showEdges];
+    if (!nav || !list || typeof ResizeObserver === 'undefined') return;
+    let running = false;
+    const fit = async () => {
+      if (running) return;
+      running = true;
+      fitted = null;
+      await tick();
+      // The widest layout of each sibling count is the one with two ellipses; try from the maximum down.
+      scrolling = false;
+      await tick();
+      // The row's extent from its items' boxes: scrollWidth would also count the enlarged interaction targets of the
+      // IconButtons, which reach past their boxes.
+      const overflows = () => {
+        const boxes = [...list.children].map((c) => c.getBoundingClientRect());
+        const extent = Math.max(...boxes.map((b) => b.right)) - Math.min(...boxes.map((b) => b.left));
+        return extent > nav.clientWidth + 0.5;
+      };
+      for (let s = maxSiblings; s > 0 && overflows(); s--) {
+        fitted = s - 1;
+        await tick();
+      }
+      // Last resort, when even the row without siblings is wider than the room: the row scrolls inside its own width.
+      scrolling = overflows();
+      running = false;
+    };
+    // The parent too: a navigation sized by its (reduced) content would not grow when room comes back.
+    const observer = new ResizeObserver(() => void fit());
+    observer.observe(nav);
+    if (nav.parentElement) observer.observe(nav.parentElement);
+    void fit();
+    return () => observer.disconnect();
+  });
   const link = (n: number) => (href === undefined ? undefined : href.replaceAll('{page}', String(n)));
 
   async function go(target: number, control: HTMLElement | null) {
@@ -79,8 +121,15 @@
   </li>
 {/snippet}
 
-<nav {...rest} bind:this={ref} class={['ggb-pagination', className]} aria-label={label} data-size={size}>
-  <ul class="ggb-pagination__list">
+<nav
+  {...rest}
+  bind:this={ref}
+  class={['ggb-pagination', className]}
+  aria-label={label}
+  data-size={size}
+  data-scrolling={scrolling ? '' : undefined}
+>
+  <ul class="ggb-pagination__list" bind:this={listElement}>
     {#if showEdges}{@render edge('first')}{/if}
     <li class="ggb-pagination__control">
       <IconButton

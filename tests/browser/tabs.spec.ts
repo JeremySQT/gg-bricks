@@ -264,7 +264,7 @@ test('computed values match the resolved tokens: sizes, idle, selected, hover, d
   report.write('tabs');
 });
 
-test('contained (the default): the list is a container; the selected tab is raised; labels in content, no hover surface', async ({
+test('contained (the default): the list is a container; the selected tab is raised; labels in content, hover surface on unselected tabs', async ({
   page
 }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -276,7 +276,7 @@ test('contained (the default): the list is a container; the selected tab is rais
       const s = getComputedStyle(b);
       return { surface: s.backgroundColor, radius: s.borderTopLeftRadius, padding: s.paddingTop };
     });
-    expect(bar.surface, context).toBe(rgb(tokens['color.surface.muted']));
+    expect(bar.surface, context).toBe(rgb(tokens['color.surface.inset']));
     expect(bar.radius).toBe(`${px(tokens['radius.overlay'])}px`);
     expect(bar.padding).toBe(`${px(tokens['space.content.xs'])}px`);
     const read = (id: string) =>
@@ -285,7 +285,7 @@ test('contained (the default): the list is a container; the selected tab is rais
         return { surface: s.backgroundColor, content: s.color, radius: s.borderTopLeftRadius, shadow: s.boxShadow };
       });
     const selected = await read('#size-md-tab-general');
-    expect(selected.surface).toBe(rgb(tokens['color.surface.raised']));
+    expect(selected.surface).toBe(rgb(tokens['color.surface.overlay']));
     expect(selected.content).toBe(rgb(tokens['color.item.default.content']));
     expect(selected.radius).toBe(`${px(tokens['radius.container'])}px`);
     expect(
@@ -293,12 +293,12 @@ test('contained (the default): the list is a container; the selected tab is rais
         `${rgb(tokens['color.elevation.border'])} 0px 0px 0px ${px(tokens['border.width.default'])}px inset`
       )
     ).toBe(true);
-    // Every label in content; no hover surface (it would match the container).
+    // Every label in content; hover paints the item hover surface behind an unselected tab.
     const idle = await read('#size-md-tab-members');
     expect(idle.content).toBe(rgb(tokens['color.item.default.content']));
     await page.hover('#size-md-tab-members');
     const hover = await read('#size-md-tab-members');
-    expect(hover.surface).toBe(idle.surface);
+    expect(hover.surface).toBe(rgb(tokens['color.item.hover.surface']));
     await page.mouse.move(0, 0);
     // No indicator bar in a contained list; the line variant keeps it.
     expect(await page.locator('#size-md-tab-general').evaluate((t) => getComputedStyle(t, '::after').opacity)).toBe(
@@ -313,6 +313,28 @@ test('contained (the default): the list is a container; the selected tab is rais
     .locator('#size-md .ggb-tabs__trigger')
     .evaluateAll((t) => t.map((e) => Math.round(e.getBoundingClientRect().width)));
   expect(Math.max(...widths) - Math.min(...widths)).toBeLessThanOrEqual(1);
+});
+
+test('nothing is cut: the list clips only when it scrolls; an empty slot leaves the label centered', async ({
+  page
+}) => {
+  const tokens = tokensFor('base-light-standard');
+  const ring = px(tokens['focus.width']) + px(tokens['focus.offset']);
+  // A list that fits does not clip: the selected tab's shadow and the focus indicator paint freely.
+  expect(await page.locator('#size-md .ggb-tabs__list').evaluate((l) => getComputedStyle(l).overflowX)).toBe('visible');
+  // A list that scrolls keeps room for them: the ring inline, twice the ring in the block direction.
+  const scroll = await page.locator('#months-contained .ggb-tabs__list').evaluate((l) => {
+    const s = getComputedStyle(l);
+    return { overflow: s.overflowX, inline: s.paddingLeft, block: s.paddingTop };
+  });
+  expect(scroll).toEqual({ overflow: 'auto', inline: `${ring}px`, block: `${2 * ring}px` });
+  // Overview's leading snippet renders nothing (icons off): the label stays centered in the tab.
+  const pad = await page.locator('#play-tab-overview').evaluate((t) => {
+    const r = t.getBoundingClientRect();
+    const l = t.querySelector('.ggb-tabs__trigger-label')!.getBoundingClientRect();
+    return Math.abs(l.left - r.left - (r.right - l.right));
+  });
+  expect(pad).toBeLessThanOrEqual(0.5);
 });
 
 test('keyboard focus shows the ring; reduced motion removes transitions; forced colors keep the line and indicator', async ({

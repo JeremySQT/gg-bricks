@@ -1,8 +1,8 @@
 {
   "method": "WCAG 2 relative luminance and contrast ratio on resolved sRGB values. Content is composited on its surface; a translucent surface is first composited on color.surface.default (recorded as backdrop). Minimum 4.5 for text, 3 for borders, icons and focus indicators. Pairs come from foundations/tokens/inventory.json.",
   "contexts": 18,
-  "pairs": 188,
-  "checks": 3384,
+  "pairs": 190,
+  "checks": 3420,
   "failures": [],
   "results": [
     {
@@ -1698,6 +1698,24 @@
       "passed": true
     },
     {
+      "context": "base-light-compact",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 15.31,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 7.73,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "base-light-standard",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -3390,6 +3408,24 @@
       "passed": true
     },
     {
+      "context": "base-light-standard",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 15.31,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 7.73,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "base-light-comfortable",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -5082,6 +5118,24 @@
       "passed": true
     },
     {
+      "context": "base-light-comfortable",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 15.31,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 7.73,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "base-dark-compact",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -6774,6 +6828,24 @@
       "passed": true
     },
     {
+      "context": "base-dark-compact",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 13.22,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 9.6,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "base-dark-standard",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -8466,6 +8538,24 @@
       "passed": true
     },
     {
+      "context": "base-dark-standard",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 13.22,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 9.6,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "base-dark-comfortable",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -10154,6 +10244,24 @@
       "surface": "color.status.danger.surface",
       "backdrop": null,
       "ratio": 9.12,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 13.22,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 9.6,
       "minimum": 4.5,
       "passed": true
     },
@@ -11850,6 +11958,24 @@
       "passed": true
     },
     {
+      "context": "brick-light-compact",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 15.31,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 7.73,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "brick-light-standard",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -13542,6 +13668,24 @@
       "passed": true
     },
     {
+      "context": "brick-light-standard",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 15.31,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 7.73,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "brick-light-comfortable",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -15234,6 +15378,24 @@
       "passed": true
     },
     {
+      "context": "brick-light-comfortable",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 15.31,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 7.73,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "brick-dark-compact",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -16926,6 +17088,24 @@
       "passed": true
     },
     {
+      "context": "brick-dark-compact",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 13.22,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 9.6,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "brick-dark-standard",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -18618,6 +18798,24 @@
       "passed": true
     },
     {
+      "context": "brick-dark-standard",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 13.22,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 9.6,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "brick-dark-comfortable",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -20306,6 +20504,24 @@
       "surface": "color.status.danger.surface",
       "backdrop": null,
       "ratio": 9.12,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 13.22,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 9.6,
       "minimum": 4.5,
       "passed": true
     },
@@ -22002,6 +22218,24 @@
       "passed": true
     },
     {
+      "context": "orchid-light-compact",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 15.31,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 7.73,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "orchid-light-standard",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -23694,6 +23928,24 @@
       "passed": true
     },
     {
+      "context": "orchid-light-standard",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 15.31,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 7.73,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "orchid-light-comfortable",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -25386,6 +25638,24 @@
       "passed": true
     },
     {
+      "context": "orchid-light-comfortable",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 15.31,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 7.73,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "orchid-dark-compact",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -27078,6 +27348,24 @@
       "passed": true
     },
     {
+      "context": "orchid-dark-compact",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 13.22,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 9.6,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "orchid-dark-standard",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -28770,6 +29058,24 @@
       "passed": true
     },
     {
+      "context": "orchid-dark-standard",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 13.22,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 9.6,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
       "context": "orchid-dark-comfortable",
       "content": "color.content.primary",
       "surface": "color.surface.canvas",
@@ -30458,6 +30764,24 @@
       "surface": "color.status.danger.surface",
       "backdrop": null,
       "ratio": 9.12,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 13.22,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
+      "backdrop": "color.surface.default",
+      "ratio": 9.6,
       "minimum": 4.5,
       "passed": true
     }

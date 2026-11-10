@@ -135,3 +135,22 @@ test('forced colors keep an edge on the panel', async ({ page }) => {
 test('automated accessibility audit and screenshots in light and dark, desktop and mobile', async ({ page }) => {
   await auditAndCapture(page, 'popover');
 });
+
+test('the focus indicator of a control at the edge of the content is never cut by the scrolling area', async ({
+  page
+}) => {
+  await page.click('#rename-trigger');
+  await expect.poll(() => page.locator('#rename').evaluate((p) => p.matches(':popover-open'))).toBe(true);
+  await settle(page);
+  const fit = await page.locator('#rename').evaluate((panel) => {
+    const area = panel.querySelector('.ggb-popover__content')!;
+    const box = area.getBoundingClientRect();
+    const input = panel.querySelector('input')!.closest('.ggb-input-text')!.getBoundingClientRect();
+    const s = getComputedStyle(area);
+    const ring = parseFloat(s.paddingLeft);
+    return { ring, left: input.left - box.left, right: box.right - input.right };
+  });
+  expect(fit.ring).toBeGreaterThan(0);
+  expect(fit.left).toBeGreaterThanOrEqual(fit.ring - 0.5);
+  expect(fit.right).toBeGreaterThanOrEqual(fit.ring - 0.5);
+});

@@ -3,7 +3,7 @@
   "componentId": "pagination",
   "family": "navigation",
   "wave": 4,
-  "phase": "figma",
+  "phase": "implementation",
   "scope": {
     "purpose": "Move through a long list or table split into numbered pages.",
     "useCases": ["Paging through a table of results.", "Server-rendered pages with links (href with {page})."],
@@ -149,7 +149,7 @@
     "Round 2: showEdges adds first and last IconButtons (Phosphor caret-double glyphs), disabled at the ends and staying in place."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (skill ggb-figma), grouped with the rest of wave 4 once Tabs, Breadcrumb and Toolbar pass round 3.",
+  "nextAction": "Wave 4 implementation gate, round 4: re-present the round 4 changes, then re-record the approval.",
   "implementationNotes": [
     "Exports Pagination.",
     "The item algorithm lives in pages.ts with a unit test (tests/pagination-entries.test.ts) over every page of counts 1 to 40 and siblings 0 to 3.",
@@ -176,6 +176,21 @@
       },
       "review": "Wave 4 implementation gate",
       "recorded": "Accepted with the round 2 implementation approval (2026-11-10)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: a single row; siblingCount is a maximum reduced to fit the inline size; last resort, the row scrolls; roles focusWidth and focusOffset. Implementation accordingly; extent measured from the items' boxes. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/navigation/pagination/contract.json": "5d8514afadf0714f9ad3a39a5a7bd9e280c1448597b6c76ce5d819048c7e8448",
+        "packages/svelte/src/components/pagination/Pagination.svelte": "467c8503ce0bfc6a90ae600f011dbc09a8a7f3a61689a4d17bf3275ed6f98134",
+        "packages/svelte/src/components/pagination/contract.generated.ts": "ae4ec3dc003a3b2ec56c7f270e8d61f8424f73997f42665ef363a366ec8f8ce0",
+        "packages/svelte/src/components/pagination/pages.ts": "482a91b9bd25fc695aaee24c43cc942f714361041593ebb68e4191fe0ac3a75b",
+        "packages/svelte/src/components/pagination/pagination.css": "10191af5fc91410951af47b2f9f07e3914f77d1ad609024ac963e060cbc80be4",
+        "packages/svelte/src/components/pagination/tokens.generated.css": "b56da302b35753c63b2d30fcd91cb57b3559be0e287dff84289508171d2c8354",
+        "packages/svelte/src/components/pagination/types.ts": "11d36c188c6cb9b9ba00196a0bce68292c1640b3bfb1fb0cde4ea39127d5604a",
+        "examples/pagination/App.svelte": "ce6b5df184b1e0287274f38c1172efe9ae66f966903dc32d6924ef3e8626251f"
+      },
+      "review": "Wave 4 implementation gate"
     }
   ]
 }

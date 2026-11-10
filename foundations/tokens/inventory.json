@@ -737,6 +737,11 @@
       "axis": "appearance"
     },
     {
+      "path": "color.surface.inset",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
       "path": "color.surface.raised",
       "type": "color",
       "axis": "appearance"
@@ -3816,6 +3821,16 @@
     {
       "content": "color.action.danger.ghost.default.content",
       "surface": "color.status.danger.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
       "minimum": 4.5
     }
   ],

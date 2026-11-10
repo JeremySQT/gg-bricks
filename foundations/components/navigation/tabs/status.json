@@ -164,6 +164,22 @@
         "foundations/components/navigation/tabs/contract.json": "5c393b12b5f7de2785cba818fb8a9a5fbe4179925a141a97c00bf8455b1b0c27"
       },
       "review": "Wave 4 implementation gate"
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: listSurfaceColor color.surface.inset (new role), selectedSurfaceColor color.surface.overlay, hover surface on unselected contained tabs. Implementation: the list clips only while it scrolls, with room for the ring and the shadow; the selected tab scrolls into view once the list scrolls; an empty slot takes no room. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/navigation/tabs/contract.json": "7cdf330bdb761039d64cb38d35c23ffeab92e987116e17c1f0bc4c65cc6f355a",
+        "packages/svelte/src/components/tabs/Tabs.svelte": "88d8a9f238954aa7fbf20f4d065a71d2669b3840c9c915627b104b6f09ae5b77",
+        "packages/svelte/src/components/tabs/TabsPanel.svelte": "de4862c80364ea80d2902996f1b5b104ea9e4412c650070b6450e35b02fddd3d",
+        "packages/svelte/src/components/tabs/TabsTrigger.svelte": "59a32766f2d1b56ca5023c8bd2369c2e48741348bdcbcf14c2e5917258e8e101",
+        "packages/svelte/src/components/tabs/contract.generated.ts": "1de3c089df65535fe7675587d7ab598dcf3eae65b074e6a75b02ea941ad0c599",
+        "packages/svelte/src/components/tabs/tabs.css": "f784a9085a79a6ec0854a831151a38339fb56e9ac099bbfb0d029a338dece24c",
+        "packages/svelte/src/components/tabs/tokens.generated.css": "02f2a94f2607d1e6049af9fb571d28e81cc1c04a0e2b105cc748941cc7a99fbf",
+        "packages/svelte/src/components/tabs/types.ts": "b570eb5728daf0cd7395e450c2d452e1e561d5b8b8dff7936f0839182f839ab2",
+        "examples/tabs/App.svelte": "2343a3bbad29f480fcb7852ae38a3c76cbab9e99b32b176d7bdcd8b57a09770f"
+      },
+      "review": "Wave 4 implementation gate"
     }
   ]
 }

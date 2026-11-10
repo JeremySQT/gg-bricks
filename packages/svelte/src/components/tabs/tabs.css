@@ -21,11 +21,14 @@
     gap: var(--ggb-tabs-listGap);
     min-inline-size: 0;
   }
+  /* The list paints nothing outside the tabs' own boxes: it clips (to scroll) only while the tabs overflow it, and then
+     keeps room on every side for the focus indicator (inline) and for the selected tab's shadow (block, twice the
+     ring), so that neither is cut. Negative margins keep the tabs where they would be without that room. */
   .ggb-tabs[data-orientation='horizontal'] .ggb-tabs__list {
-    /* Room for the focus indicator inside the scrolling box; the line stays at the list's block end. */
-    padding: var(--_ring) var(--_ring) 0;
-    margin-block-start: calc(-1 * var(--_ring));
-    margin-inline: calc(-1 * var(--_ring));
+    padding: calc(2 * var(--_ring)) var(--_ring);
+    margin: calc(-2 * var(--_ring)) calc(-1 * var(--_ring));
+  }
+  .ggb-tabs[data-orientation='horizontal'] .ggb-tabs__bar[data-scrollable] .ggb-tabs__list {
     overflow-x: auto;
     overflow-y: hidden;
     /* No visible scrollbar: the overflowing edges fade and show scroll buttons. */
@@ -141,8 +144,6 @@
   @media (hover: hover) {
     .ggb-tabs__trigger:not(:disabled):hover {
       --_content: var(--ggb-tabs-trigger-content-hover);
-    }
-    .ggb-tabs[data-appearance='line'] .ggb-tabs__trigger:not(:disabled):hover {
       --_surface: var(--ggb-tabs-trigger-surface-hover);
     }
   }
@@ -244,6 +245,11 @@
     display: none;
   }
 
+  /* A slot whose snippet renders nothing takes no room (no gap beside it). */
+  .ggb-tabs__trigger-leading:empty,
+  .ggb-tabs__trigger-trailing:empty {
+    display: none;
+  }
   @media (prefers-reduced-motion: reduce) {
     .ggb-tabs__trigger,
     .ggb-tabs__trigger::after {

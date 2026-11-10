@@ -1,6 +1,6 @@
 {
   "method": "WCAG relative luminance; alpha composited on each color.surface.* backdrop of the status contrastScope (all of them when absent); the explicit pairs of the contract `contrast` block are measured against their surface role (composited on color.surface.default) or color token. Parameters valued \"disabled\" and contrastScope.informational pairs are informational (minimum null), not a conformance claim.",
-  "checks": 720,
+  "checks": 810,
   "failures": [],
   "minimumActiveText": 8.199574,
   "results": [
@@ -186,6 +186,51 @@
     },
     {
       "context": "base-light-compact",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 8.763244,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 8.199574,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 8.706255,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 9.277834,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -546,6 +591,51 @@
     },
     {
       "context": "base-light-standard",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 8.763244,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 8.199574,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 8.706255,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 9.277834,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -906,6 +996,51 @@
     },
     {
       "context": "base-light-comfortable",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 8.763244,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 8.199574,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 8.706255,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 9.277834,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -1266,6 +1401,51 @@
     },
     {
       "context": "base-dark-compact",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 10.043001,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 11.617371,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 11.575812,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 11.488884,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 11.658313,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -1626,6 +1806,51 @@
     },
     {
       "context": "base-dark-standard",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 10.043001,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 11.617371,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 11.575812,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 11.488884,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 11.658313,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -1986,6 +2211,51 @@
     },
     {
       "context": "base-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 10.043001,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 11.617371,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 11.575812,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 11.488884,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 11.658313,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -2346,6 +2616,51 @@
     },
     {
       "context": "brick-light-compact",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 8.763244,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 8.199574,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 8.706255,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 9.277834,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -2706,6 +3021,51 @@
     },
     {
       "context": "brick-light-standard",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 8.763244,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 8.199574,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 8.706255,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 9.277834,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -3066,6 +3426,51 @@
     },
     {
       "context": "brick-light-comfortable",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 8.763244,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 8.199574,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 8.706255,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 9.277834,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -3426,6 +3831,51 @@
     },
     {
       "context": "brick-dark-compact",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 10.043001,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 11.617371,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 11.575812,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 11.488884,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 11.658313,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -3786,6 +4236,51 @@
     },
     {
       "context": "brick-dark-standard",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 10.043001,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 11.617371,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 11.575812,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 11.488884,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 11.658313,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -4146,6 +4641,51 @@
     },
     {
       "context": "brick-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 10.043001,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 11.617371,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 11.575812,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 11.488884,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 11.658313,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -4506,6 +5046,51 @@
     },
     {
       "context": "orchid-light-compact",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 8.763244,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 8.199574,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 8.706255,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 9.277834,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -4866,6 +5451,51 @@
     },
     {
       "context": "orchid-light-standard",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 8.763244,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 8.199574,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 8.706255,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 9.277834,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -5218,6 +5848,51 @@
     {
       "context": "orchid-light-comfortable",
       "backdrop": "muted",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 9.277834,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 11.435315,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 8.763244,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 8.199574,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 8.706255,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "inset",
       "intent": "danger",
       "role": "content",
       "ratio": 9.277834,
@@ -5586,6 +6261,51 @@
     },
     {
       "context": "orchid-dark-compact",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 10.043001,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 11.617371,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 11.575812,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 11.488884,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 11.658313,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -5946,6 +6666,51 @@
     },
     {
       "context": "orchid-dark-standard",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 10.043001,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 11.617371,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 11.575812,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 11.488884,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "inset",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 11.658313,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
       "backdrop": "raised",
       "intent": "neutral",
       "role": "content",
@@ -6298,6 +7063,51 @@
     {
       "context": "orchid-dark-comfortable",
       "backdrop": "muted",
+      "intent": "danger",
+      "role": "content",
+      "ratio": 11.658313,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "neutral",
+      "role": "content",
+      "ratio": 10.043001,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "info",
+      "role": "content",
+      "ratio": 11.617371,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "success",
+      "role": "content",
+      "ratio": 11.575812,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "inset",
+      "intent": "warning",
+      "role": "content",
+      "ratio": 11.488884,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "inset",
       "intent": "danger",
       "role": "content",
       "ratio": 11.658313,

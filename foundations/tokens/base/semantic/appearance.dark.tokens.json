@@ -17,6 +17,11 @@
         "$type": "color",
         "$value": "{color.palette.neutral.700}"
       },
+      "inset": {
+        "$type": "color",
+        "$value": "{primitive.color.alpha.white.5}",
+        "$description": "A translucent tint that sets an area apart from whatever surface it sits on, darker in light and lighter in dark: the container of contained tabs (later a segmented control). Items lifted inside it use color.surface.overlay."
+      },
       "raised": {
         "$type": "color",
         "$value": "{color.palette.neutral.900}"

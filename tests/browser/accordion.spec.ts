@@ -96,6 +96,26 @@ test('collapsed content is hidden from every user; nested accordions keep their 
   );
 });
 
+test('the focus indicator of a control at the top of the content is never cut; the content starts a ring lower', async ({
+  page
+}) => {
+  const tokens = tokensFor('base-light-standard');
+  const ring = px(tokens['focus.width']) + px(tokens['focus.offset']);
+  const geometry = await page
+    .locator('#filters .ggb-accordion__item')
+    .first()
+    .evaluate((item) => {
+      const body = item.querySelector('.ggb-accordion__item-body')!.getBoundingClientRect();
+      const input = item.querySelector('.ggb-input-text')!.getBoundingClientRect();
+      const trigger = item.querySelector('.ggb-accordion__trigger')!.getBoundingClientRect();
+      return { top: input.top - body.top, left: input.left - body.left, gapToTrigger: body.top - trigger.bottom };
+    });
+  expect(geometry.top).toBeGreaterThanOrEqual(ring - 0.5);
+  expect(geometry.left).toBeGreaterThanOrEqual(ring - 0.5);
+  // The clipping box starts at the trigger's bottom edge: nothing in the content overlaps the trigger.
+  expect(geometry.gapToTrigger).toBeGreaterThanOrEqual(-0.5);
+});
+
 test('computed values match the resolved tokens: trigger, hover, disabled, indicator, content and lines', async ({
   page
 }) => {

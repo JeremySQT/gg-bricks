@@ -18,10 +18,11 @@
   let size = $state<BreadcrumbSize>('sm');
   let separator = $state<BreadcrumbSeparator>('chevron');
   let maxItems = $state(0);
-  let home = $state(true);
-  let homeOnly = $state(false);
+  // The two options mirror the API: a leading icon on the first item (the leading snippet) and its hideLabel.
+  let showHomeIcon = $state(true);
+  let showHomeLabel = $state(true);
   const path: BreadcrumbItem[] = $derived([
-    { label: 'Home', href: '#home', iconOnly: homeOnly },
+    { label: 'Home', href: '#home', hideLabel: !showHomeLabel },
     { label: 'Projects', href: '#projects' },
     { label: 'Acme website', href: '#acme' },
     { label: 'Settings', href: '#settings' },
@@ -38,7 +39,8 @@
   ];
 </script>
 
-{#snippet homeIcon(_item: BreadcrumbItem, index: number)}{#if index === 0}<Icon><path d={house} /></Icon>{/if}{/snippet}
+{#snippet houseIcon(_item: BreadcrumbItem, index: number)}{#if index === 0}<Icon><path d={house} /></Icon
+    >{/if}{/snippet}
 
 <div class="page" data-ggb-brand={brand} data-ggb-appearance={mode} data-ggb-density={density}>
   <header>
@@ -78,7 +80,7 @@
           {size}
           {separator}
           {maxItems}
-          leading={home || homeOnly ? homeIcon : undefined}
+          leading={showHomeIcon ? houseIcon : undefined}
         />
         <button type="button" id="after">After</button>
       </div>
@@ -99,9 +101,11 @@
             >{#each [0, 3, 4] as v (v)}<option value={v}>{v}</option>{/each}</select
           ></label
         >
-        <label><input type="checkbox" id="opt-home" bind:checked={home} /> Home icon</label>
-        <!-- Icon only needs an icon: checking it shows the home icon whatever Home icon says. -->
-        <label><input type="checkbox" id="opt-home-only" bind:checked={homeOnly} /> Home icon only</label>
+        <label><input type="checkbox" id="opt-home-icon" bind:checked={showHomeIcon} /> Show home icon</label>
+        <!-- A label can be hidden only next to an icon: without the icon the label shows, whatever this option says. -->
+        <label
+          ><input type="checkbox" id="opt-home-label" bind:checked={showHomeLabel} disabled={!showHomeIcon} /> Show home label</label
+        >
       </fieldset>
     </div>
   </section>

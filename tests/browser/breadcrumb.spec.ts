@@ -100,11 +100,13 @@ test('spacing is gap everywhere, the more button included; icon only keeps the n
     for (const g of gaps) expect(Math.abs(g - gap), `${id} ${gaps.join(' ')}`).toBeLessThanOrEqual(0.5);
   }
   await page.selectOption('#opt-max', '0');
-  // Icon only shows the icon even when Home icon is off.
-  await page.uncheck('#opt-home');
-  await page.check('#opt-home-only');
+  // Hiding the label needs the icon: the option is disabled without it, and the label then shows.
+  await page.uncheck('#opt-home-icon');
+  await expect(page.locator('#opt-home-label')).toBeDisabled();
+  await page.check('#opt-home-icon');
+  await page.uncheck('#opt-home-label');
   const home = page.locator('#play a.ggb-breadcrumb__item').first();
-  await expect(home).toHaveAttribute('data-icon-only', '');
+  await expect(home).toHaveAttribute('data-hide-label', '');
   await expect(home).toHaveAttribute('title', 'Home');
   expect((await accessible(page, '#play a.ggb-breadcrumb__item')).name).toBe('Home');
   const width = await home.evaluate((a) => a.getBoundingClientRect().width);

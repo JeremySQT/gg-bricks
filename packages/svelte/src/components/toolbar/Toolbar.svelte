@@ -53,6 +53,7 @@
     label: string;
     icon: string;
     disabled: boolean;
+    danger: boolean;
   }
   let moved = $state<Moved[]>([]);
   let overflowShown = $state(false);
@@ -84,11 +85,28 @@
     // A local, non-reactive set (the result is published through `moved`).
     // eslint-disable-next-line svelte/prefer-svelte-reactivity
     const hiddenUnits = new Set<HTMLElement>();
-    if (orientation === 'horizontal' && root.scrollWidth > root.clientWidth + 0.5) {
+    // The line's extent from the shown units' boxes: scrollWidth would also count the enlarged interaction targets of
+    // the buttons, which reach past their boxes.
+    // A unit's box is its control's (a Tooltip's wrapper has no box of its own: display contents).
+    const overflows = () => {
+      const overflowEl = root.querySelector<HTMLElement>(':scope > .ggb-toolbar__overflow');
+      const boxes = [...units, ...(overflowEl ? [overflowEl] : [])]
+        .map((unit) => (isSeparator(unit) ? unit : (controlOf(unit) ?? unit)))
+        .filter((el) => el.getClientRects().length > 0)
+        .map((el) => el.getBoundingClientRect());
+      if (!boxes.length) return false;
+      const extent = Math.max(...boxes.map((b) => b.right)) - Math.min(...boxes.map((b) => b.left));
+      return extent > root.clientWidth + 0.5;
+    };
+    const overflowEl = root.querySelector<HTMLElement>(':scope > .ggb-toolbar__overflow');
+    if (overflowEl) overflowEl.hidden = true;
+    if (orientation === 'horizontal' && overflows()) {
       overflowShown = true;
+      // Shown at once (not at the next render) so that the hiding below counts the trigger's own width.
+      if (overflowEl) overflowEl.hidden = false;
       root.dataset.overflowing = '';
       // Room for the overflow trigger, then hide movable units from the end until the line fits.
-      for (let i = units.length - 1; i >= 0 && root.scrollWidth > root.clientWidth + 0.5; i--) {
+      for (let i = units.length - 1; i >= 0 && overflows(); i--) {
         const unit = units[i];
         if (isSeparator(unit) || !movable(unit)) continue;
         unit.dataset.ggbOverflowed = '';
@@ -114,7 +132,8 @@
           index,
           label: nameOf(control),
           icon: control.querySelector('svg')?.outerHTML ?? '',
-          disabled: control.matches(':disabled, [aria-disabled="true"]')
+          disabled: control.matches(':disabled, [aria-disabled="true"]'),
+          danger: control.dataset.intent === 'danger'
         }
       ];
     });
@@ -177,15 +196,28 @@
         </IconButton>
       {/snippet}
       {#each moved as entry (entry.index)}
-        <MenuItem label={entry.label} value={String(entry.index)} disabled={entry.disabled}>
-          {#snippet leading()}
-            {#if entry.icon}
+        {#if entry.icon}
+          <MenuItem
+            label={entry.label}
+            value={String(entry.index)}
+            disabled={entry.disabled}
+            intent={entry.danger ? 'danger' : 'neutral'}
+          >
+            {#snippet leading()}
               <!-- The item's own icon, copied from the toolbar's DOM (markup the components rendered). -->
               <!-- eslint-disable-next-line svelte/no-at-html-tags -->
               {@html entry.icon}
-            {/if}
-          {/snippet}
-        </MenuItem>
+            {/snippet}
+          </MenuItem>
+        {:else}
+          <!-- No leading slot without an icon: the menu aligns labels only when an item has one. -->
+          <MenuItem
+            label={entry.label}
+            value={String(entry.index)}
+            disabled={entry.disabled}
+            intent={entry.danger ? 'danger' : 'neutral'}
+          />
+        {/if}
       {/each}
     </Menu>
   </div>

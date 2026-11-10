@@ -83,7 +83,9 @@
     }
   },
   "tokens": {
-    "gap": "space.content.xs"
+    "gap": "space.content.xs",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset"
   },
   "children": {
     "item": {
@@ -158,10 +160,10 @@
   ],
   "rules": [
     "Pagination moves through a long list or table split into numbered pages, when the user benefits from knowing the position and jumping to a page. A feed read in order is better served by a Load more Button or by scrolling.",
-    "Pagination is exposed as a navigation landmark named by label holding, in a row in source order separated by gap: first (with showEdges), previous, the page items, next, last (with showEdges). It is centered in no particular way: it takes the inline size of its content and the application places it.",
+    "Pagination is exposed as a navigation landmark named by label holding, in a single row (it never wraps) in source order separated by gap: first (with showEdges), previous, the page items, next, last (with showEdges). It is centered in no particular way: it takes the inline size of its content and the application places it.",
     "previous and next are IconButtons of the pagination's size, intent neutral and appearance ghost, named previousLabel and nextLabel, showing a chevron towards the start and the end (mirrored in right-to-left text). previous is disabled on page 1 and next on the last page; disabled, they stay in place.",
     "When showEdges is true, first comes before previous and last after next: IconButtons of the same size, intent and appearance, named firstLabel and lastLabel, showing a double chevron towards the start and the end (mirrored in right-to-left text), going to page 1 and to the last page; first is disabled on page 1 and last on the last page, and they stay in place. They help most with many pages and few visible items (siblingCount 0).",
-    "The items show page 1, the last page, the current page and siblingCount pages on each side of it; a gap of hidden pages becomes an ellipsis, except a gap of a single page, which is shown as that page. The number of items is constant (siblingCount × 2 + 5, or pageCount when smaller), so that previous and next do not move while the user pages.",
+    "The items show page 1, the last page, the current page and siblingCount pages on each side of it; a gap of hidden pages becomes an ellipsis, except a gap of a single page, which is shown as that page. The number of items is constant (siblingCount × 2 + 5, or pageCount when smaller), so that previous and next do not move while the user pages. siblingCount is a maximum: when the row does not fit the inline size the pagination is given, fewer siblings are shown, down to none, and the count then depends only on that size; when even that row is wider than the room, it scrolls inline inside its width, keeping room for the focus indicator (focusWidth plus focusOffset) on every side.",
     "page is clamped between 1 and pageCount. Activating a page other than the current one, first, previous, next or last sets page and emits pageChange; activating the current page does nothing.",
     "When href is set, each page, first, previous, next and last are links to href with every {page} replaced by their page number, and activating one navigates and emits pageChange; otherwise they are buttons. A disabled first, previous, next or last is never a link.",
     "Every enabled page, first, previous, next and last is its own stop in sequential focus in source order; pagination adds no arrow-key navigation. After activation by keyboard, focus stays on the activated control when it remains, and moves to the new current page otherwise.",

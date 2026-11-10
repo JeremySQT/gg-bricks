@@ -103,6 +103,20 @@ test('first and last buttons go to the ends, are disabled there and stay in plac
   expect(await pages(page, 'edges')).toBe('1 … 37 … 120');
 });
 
+test('siblingCount is a maximum: a narrow row shows fewer siblings, never wraps and never overflows the page', async ({
+  page
+}) => {
+  await page.setViewportSize({ width: 390, height: 900 });
+  await expect.poll(() => page.locator('#play .ggb-pagination__entry').count()).toBe(5);
+  const rows = await page
+    .locator('#play .ggb-pagination__list > li')
+    .evaluateAll((li) => [...new Set(li.map((e) => Math.round(e.getBoundingClientRect().top)))].length);
+  expect(rows).toBe(1);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(0);
+  await page.setViewportSize({ width: 1280, height: 1000 });
+  await expect.poll(() => page.locator('#play .ggb-pagination__entry').count()).toBe(7);
+});
+
 test('computed values match the resolved tokens: pages default, hover, current with its edge, ellipsis, sizes', async ({
   page
 }) => {

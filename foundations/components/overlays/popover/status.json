@@ -255,6 +255,21 @@
         "packages/svelte/src/components/popover/tokens.generated.css": "856c641c4173beaf0aed7c21168a37ff7037c457bf3588fe550c57617d496504"
       },
       "review": "Wave 4 implementation gate"
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: roles focusWidth and focusOffset; the scrolling area keeps room for the focus indicators of its controls (they were cut since round 3). Implementation accordingly. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/overlays/popover/contract.json": "4700f522ee2f9681507de082233f5f59a0833dcf54d8b06075331a34c723b8dc",
+        "packages/svelte/src/components/popover/Popover.svelte": "a4173300faa69a6b6e829115899751b14d553241a1d7a4b03acad24bec70c438",
+        "packages/svelte/src/components/popover/PopoverContent.svelte": "de4294e64bb4201c0d502d9a35ad2a9ed9990eddce674ca65969d7b5ab20a471",
+        "packages/svelte/src/components/popover/contract.generated.ts": "645112b62ca8f6df23f8a47b8e42bcbad4b9f3e6e8a50dabc58e0e1396a6db02",
+        "packages/svelte/src/components/popover/popover.css": "ea1cda8ee6b17ac34a2000e4547983a26631ad8050cca34e377c40716d505571",
+        "packages/svelte/src/components/popover/tokens.generated.css": "e9831d7e4cd302b19bbed0576947ad665c8f4514d70c2b43bd4950ae06be7ac5",
+        "packages/svelte/src/components/popover/types.ts": "110a47704c7b77ed70fdf55b462538d11c7bbc4d599a60a2f368143a8d45776a",
+        "examples/popover/App.svelte": "c7eef0b7cd15a4f125d0922eeec6af67d0f0fd10603136cba0320e1d34b3d30b"
+      },
+      "review": "Wave 4 implementation gate"
     }
   ]
 }

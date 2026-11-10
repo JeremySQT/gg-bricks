@@ -2,6 +2,8 @@
 @layer ggb {
 .ggb-pagination {
   --ggb-pagination-gap: var(--ggb-space-content-xs);
+  --ggb-pagination-focusWidth: var(--ggb-focus-width);
+  --ggb-pagination-focusOffset: var(--ggb-focus-offset);
 }
 .ggb-pagination__item {
   --ggb-pagination-item-surface-default: var(--ggb-color-item-default-surface);

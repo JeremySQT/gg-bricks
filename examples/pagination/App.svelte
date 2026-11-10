@@ -85,7 +85,7 @@
     <h2 id="compositions-title">Compositions</h2>
     <div class="grid">
       {#each ['sm', 'md', 'lg'] as s (s)}
-        <div class="panel">
+        <div class="panel wide">
           <p class="panel-title">Size {s}, page 50 of 100</p>
           <Pagination id={`size-${s}`} page={50} pageCount={100} size={s as PaginationSize} />
         </div>
@@ -94,7 +94,7 @@
         <p class="panel-title">First and last buttons, no siblings: many pages in little room</p>
         <Pagination id="edges" page={37} pageCount={120} siblingCount={0} showEdges size="sm" />
       </div>
-      <div class="panel">
+      <div class="panel wide">
         <p class="panel-title">Links: every control points to ?page=N</p>
         <Pagination id="links" bind:page={linked} pageCount={12} href={'#page-{page}'} />
       </div>
@@ -105,3 +105,10 @@
     </div>
   </section>
 </div>
+
+<style>
+  /* The size compositions need the width of the grid: a pagination stays on one row. */
+  .wide {
+    grid-column: 1 / -1;
+  }
+</style>
