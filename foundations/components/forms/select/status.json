@@ -50,7 +50,7 @@
     "examples": {
       "page": "examples/select",
       "preview": "dist/previews/select.html (npm run build && npm run build:preview select)",
-      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794320983-c775, round 2), page select.html"
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4), page select.html"
     },
     "tests": {
       "ssr": ["tests/ssr/choice.test.ts"],
@@ -142,6 +142,11 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr"
+    },
+    {
+      "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
     }
   ],
   "decisionsTaken": [
@@ -162,7 +167,7 @@
     "Round 2: thin scrollbar in scrollbarColor on the list, which scrolls inside the panel padding (the scrollbar never meets the round corners)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate, round 4: re-present the round 4 changes, then re-record the approval.",
+  "nextAction": "Wave 4 implementation gate, round 4: user review, then the approval is re-recorded.",
   "implementationNotes": [
     "Exports Select and the SelectOptionsRecord type.",
     "The trigger toggles the panel through popovertarget (exempt from light dismiss); keys open it through the open state.",

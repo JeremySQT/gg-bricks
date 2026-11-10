@@ -42,7 +42,7 @@
     "examples": {
       "page": "examples/pagination",
       "preview": "dist/previews/pagination.html (npm run build && npm run build:preview pagination)",
-      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794320983-c775, round 2), page pagination.html"
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4), page pagination.html"
     },
     "tests": {
       "ssr": ["tests/ssr/navigation.test.ts"],
@@ -137,6 +137,11 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr"
+    },
+    {
+      "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
     }
   ],
   "decisionsTaken": [
@@ -149,7 +154,7 @@
     "Round 2: showEdges adds first and last IconButtons (Phosphor caret-double glyphs), disabled at the ends and staying in place."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate, round 4: re-present the round 4 changes, then re-record the approval.",
+  "nextAction": "Wave 4 implementation gate, round 4: user review, then the approval is re-recorded.",
   "implementationNotes": [
     "Exports Pagination.",
     "The item algorithm lives in pages.ts with a unit test (tests/pagination-entries.test.ts) over every page of counts 1 to 40 and siblings 0 to 3.",

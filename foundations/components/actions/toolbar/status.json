@@ -50,7 +50,7 @@
     "examples": {
       "page": "examples/toolbar",
       "preview": "dist/previews/toolbar.html (npm run build && npm run build:preview toolbar)",
-      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794325069-dd7d, round 3), page toolbar.html"
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4), page toolbar.html"
     },
     "tests": {
       "ssr": ["tests/ssr/tabs-toolbar.test.ts"],
@@ -119,6 +119,11 @@
       "name": "Round 3: npm run verify passed; npm run test:browser 305 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
       "result": "passed",
       "date": "2026-11-10"
+    },
+    {
+      "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
     }
   ],
   "decisionsTaken": [
@@ -137,7 +142,7 @@
     "Round 3: overflow Menu (More) instead of wrapping; moved units are hidden in place and offered as menu items built from their accessible name, icon and disabled state; choosing one clicks the original control. Menu and Popover triggers never move. A horizontal toolbar fills its inline size (otherwise the hidden items would feed back into its width)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate, round 3: user review, then the approval is recorded.",
+  "nextAction": "Wave 4 implementation gate, round 4: user review, then the approval is re-recorded.",
   "implementationNotes": [
     "Exports Toolbar and ToolbarSeparator.",
     "The module writes tabindex on the items (one 0, others -1) and keeps it in sync with a MutationObserver."

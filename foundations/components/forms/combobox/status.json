@@ -49,7 +49,7 @@
     "examples": {
       "page": "examples/combobox",
       "preview": "dist/previews/combobox.html (npm run build && npm run build:preview combobox)",
-      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794320983-c775, round 2), page combobox.html"
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4), page combobox.html"
     },
     "tests": {
       "ssr": ["tests/ssr/choice.test.ts"],
@@ -141,6 +141,11 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr"
+    },
+    {
+      "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
     }
   ],
   "decisionsTaken": [
@@ -157,7 +162,7 @@
     "Round 2: same scrollbar change as Select."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate, round 4: re-present the round 4 changes, then re-record the approval.",
+  "nextAction": "Wave 4 implementation gate, round 4: user review, then the approval is re-recorded.",
   "implementationNotes": [
     "Exports Combobox and the ComboboxOptionsRecord type.",
     "The empty state is a polite status kept in the panel; it takes no room while options match.",

@@ -52,7 +52,7 @@
     "examples": {
       "page": "examples/tabs",
       "preview": "dist/previews/tabs.html (npm run build && npm run build:preview tabs)",
-      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794325069-dd7d, round 3), page tabs.html"
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4), page tabs.html"
     },
     "tests": {
       "ssr": ["tests/ssr/tabs-toolbar.test.ts"],
@@ -121,6 +121,11 @@
       "name": "Round 3: npm run verify passed; npm run test:browser 305 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
       "result": "passed",
       "date": "2026-11-10"
+    },
+    {
+      "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
     }
   ],
   "decisionsTaken": [
@@ -138,7 +143,7 @@
     "Round 3: appearance contained (default, the user's reference: tabs as buttons in a container, the selected one raised) and line (the first design). In a horizontal contained list the tabs share the inline size equally, never below their content. In dark the raised tab is darker than the muted container (token values); to judge at the gate."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate, round 3: user review, then the approval is recorded.",
+  "nextAction": "Wave 4 implementation gate, round 4: user review, then the approval is re-recorded.",
   "implementationNotes": [
     "Exports Tabs, TabsTrigger and TabsPanel.",
     "Panels stay mounted and are hidden with the hidden attribute (form state is kept).",

@@ -49,7 +49,7 @@
     "examples": {
       "page": "examples/accordion",
       "preview": "dist/previews/accordion.html (npm run build && npm run build:preview accordion)",
-      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794320983-c775, round 2), page accordion.html"
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4), page accordion.html"
     },
     "tests": {
       "ssr": ["tests/ssr/navigation.test.ts"],
@@ -143,6 +143,11 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr"
+    },
+    {
+      "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
     }
   ],
   "decisionsTaken": [
@@ -156,7 +161,7 @@
     "The review page gains a Leading icons option (the slot existed but no option showed it)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate, round 4: re-present the round 4 changes, then re-record the approval.",
+  "nextAction": "Wave 4 implementation gate, round 4: user review, then the approval is re-recorded.",
   "implementationNotes": [
     "Exports Accordion and AccordionItem.",
     "The focus ring is drawn inside the trigger (outline-offset of minus its width) so that it stays inside the accordion inline size, as the contract asks.",
