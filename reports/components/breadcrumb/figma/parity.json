@@ -1,0 +1,716 @@
+{
+  "method": "Figma masters measured with explicit Brand, Appearance and Density modes in the four contexts of the browser report (resolved variable values: fills, strokes, sizes, paddings, radii, typography), compared record by record with reports/components/breadcrumb/svelte/computed.json (authoring/adapters/figma/wave4-parity-report.mjs).",
+  "summary": {
+    "records": 64,
+    "passed": 64,
+    "justified": 0,
+    "failed": 0,
+    "missing": 0
+  },
+  "records": [
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "color",
+      "expected": "rgb(71, 76, 82)",
+      "observed": "rgb(71, 76, 82)",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "fontSize",
+      "expected": "14px",
+      "observed": "14px",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "separator",
+      "expected": "rgb(95, 100, 106)",
+      "observed": "rgb(95, 100, 106)",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "separatorSize",
+      "expected": "16px",
+      "observed": "16px",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "hover",
+      "property": "color",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "rgb(24, 28, 33)",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "hover",
+      "property": "underline",
+      "expected": "underline",
+      "observed": "underline",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "current",
+      "property": "color",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "rgb(24, 28, 33)",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "current",
+      "property": "fontSize",
+      "expected": "14px",
+      "observed": "14px",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "color",
+      "expected": "rgb(71, 76, 82)",
+      "observed": "rgb(71, 76, 82)",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "fontSize",
+      "expected": "16px",
+      "observed": "16px",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "separator",
+      "expected": "rgb(95, 100, 106)",
+      "observed": "rgb(95, 100, 106)",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "separatorSize",
+      "expected": "20px",
+      "observed": "20px",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "hover",
+      "property": "color",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "rgb(24, 28, 33)",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "hover",
+      "property": "underline",
+      "expected": "underline",
+      "observed": "underline",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "current",
+      "property": "color",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "rgb(24, 28, 33)",
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "current",
+      "property": "fontSize",
+      "expected": "16px",
+      "observed": "16px",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "color",
+      "expected": "rgb(202, 208, 215)",
+      "observed": "rgb(202, 208, 215)",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "fontSize",
+      "expected": "14px",
+      "observed": "14px",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "separator",
+      "expected": "rgb(158, 164, 171)",
+      "observed": "rgb(158, 164, 171)",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "separatorSize",
+      "expected": "16px",
+      "observed": "16px",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "hover",
+      "property": "color",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "rgb(236, 242, 249)",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "hover",
+      "property": "underline",
+      "expected": "underline",
+      "observed": "underline",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "current",
+      "property": "color",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "rgb(236, 242, 249)",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "sm"
+      },
+      "state": "current",
+      "property": "fontSize",
+      "expected": "14px",
+      "observed": "14px",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "color",
+      "expected": "rgb(202, 208, 215)",
+      "observed": "rgb(202, 208, 215)",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "fontSize",
+      "expected": "16px",
+      "observed": "16px",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "separator",
+      "expected": "rgb(158, 164, 171)",
+      "observed": "rgb(158, 164, 171)",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "separatorSize",
+      "expected": "20px",
+      "observed": "20px",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "hover",
+      "property": "color",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "rgb(236, 242, 249)",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "hover",
+      "property": "underline",
+      "expected": "underline",
+      "observed": "underline",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "current",
+      "property": "color",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "rgb(236, 242, 249)",
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "props": {
+        "size": "md"
+      },
+      "state": "current",
+      "property": "fontSize",
+      "expected": "16px",
+      "observed": "16px",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "color",
+      "expected": "rgb(71, 76, 82)",
+      "observed": "rgb(71, 76, 82)",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "fontSize",
+      "expected": "14px",
+      "observed": "14px",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "separator",
+      "expected": "rgb(95, 100, 106)",
+      "observed": "rgb(95, 100, 106)",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "separatorSize",
+      "expected": "16px",
+      "observed": "16px",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "hover",
+      "property": "color",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "rgb(24, 28, 33)",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "hover",
+      "property": "underline",
+      "expected": "underline",
+      "observed": "underline",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "current",
+      "property": "color",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "rgb(24, 28, 33)",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "sm"
+      },
+      "state": "current",
+      "property": "fontSize",
+      "expected": "14px",
+      "observed": "14px",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "color",
+      "expected": "rgb(71, 76, 82)",
+      "observed": "rgb(71, 76, 82)",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "fontSize",
+      "expected": "16px",
+      "observed": "16px",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "separator",
+      "expected": "rgb(95, 100, 106)",
+      "observed": "rgb(95, 100, 106)",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "separatorSize",
+      "expected": "20px",
+      "observed": "20px",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "hover",
+      "property": "color",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "rgb(24, 28, 33)",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "hover",
+      "property": "underline",
+      "expected": "underline",
+      "observed": "underline",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "current",
+      "property": "color",
+      "expected": "rgb(24, 28, 33)",
+      "observed": "rgb(24, 28, 33)",
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "props": {
+        "size": "md"
+      },
+      "state": "current",
+      "property": "fontSize",
+      "expected": "16px",
+      "observed": "16px",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "color",
+      "expected": "rgb(202, 208, 215)",
+      "observed": "rgb(202, 208, 215)",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "fontSize",
+      "expected": "14px",
+      "observed": "14px",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "separator",
+      "expected": "rgb(158, 164, 171)",
+      "observed": "rgb(158, 164, 171)",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "default",
+      "property": "separatorSize",
+      "expected": "16px",
+      "observed": "16px",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "hover",
+      "property": "color",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "rgb(236, 242, 249)",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "hover",
+      "property": "underline",
+      "expected": "underline",
+      "observed": "underline",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "current",
+      "property": "color",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "rgb(236, 242, 249)",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "sm"
+      },
+      "state": "current",
+      "property": "fontSize",
+      "expected": "14px",
+      "observed": "14px",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "color",
+      "expected": "rgb(202, 208, 215)",
+      "observed": "rgb(202, 208, 215)",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "fontSize",
+      "expected": "16px",
+      "observed": "16px",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "separator",
+      "expected": "rgb(158, 164, 171)",
+      "observed": "rgb(158, 164, 171)",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "default",
+      "property": "separatorSize",
+      "expected": "20px",
+      "observed": "20px",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "hover",
+      "property": "color",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "rgb(236, 242, 249)",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "hover",
+      "property": "underline",
+      "expected": "underline",
+      "observed": "underline",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "current",
+      "property": "color",
+      "expected": "rgb(236, 242, 249)",
+      "observed": "rgb(236, 242, 249)",
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "props": {
+        "size": "md"
+      },
+      "state": "current",
+      "property": "fontSize",
+      "expected": "16px",
+      "observed": "16px",
+      "passed": true
+    }
+  ]
+}

@@ -260,6 +260,39 @@ test('computed values match the resolved tokens: sizes, idle, selected, hover, d
     const panelGap = await page.locator('#line-md').evaluate((r) => getComputedStyle(r).rowGap);
     expect(panelGap).toBe(`${px(tokens['space.content.lg'])}px`);
     report.add(context, { size: 'md' }, 'list', { ...line, panelGap });
+    // Contained appearance (the default), recorded for the Figma parity check.
+    for (const size of sizes) {
+      const readC = (id: string) =>
+        page.locator(id).evaluate((t) => {
+          const s = getComputedStyle(t);
+          return {
+            surface: s.backgroundColor,
+            content: s.color,
+            height: t.getBoundingClientRect().height,
+            paddingInline: s.paddingLeft,
+            radius: s.borderTopLeftRadius,
+            edge: s.boxShadow.split(/,(?![^(]*\))/)[0].trim()
+          };
+        });
+      const selected = await readC(`#size-${size}-tab-general`);
+      const idle = await readC(`#size-${size}-tab-members`);
+      await page.hover(`#size-${size}-tab-members`);
+      const hover = await readC(`#size-${size}-tab-members`);
+      await page.mouse.move(0, 0);
+      report.add(context, { appearance: 'contained', size }, 'selected', selected);
+      report.add(context, { appearance: 'contained', size }, 'default', idle);
+      report.add(context, { appearance: 'contained', size }, 'hover', hover);
+    }
+    const bar = await page.locator('#size-md').evaluate((r) => {
+      const b = getComputedStyle(r.querySelector('.ggb-tabs__bar')!);
+      return {
+        surface: b.backgroundColor,
+        radius: b.borderTopLeftRadius,
+        padding: b.paddingTop,
+        gap: getComputedStyle(r.querySelector('.ggb-tabs__list')!).columnGap
+      };
+    });
+    report.add(context, { appearance: 'contained', size: 'md' }, 'list', bar);
   }
   report.write('tabs');
 });

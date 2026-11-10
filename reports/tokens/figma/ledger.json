@@ -4,7 +4,7 @@
     "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
     "plan": "team::1308046554739244831 (Jeremy SQT, pro)"
   },
-  "syncedOn": "2026-09-26 (primitives moved to their own collection the same day); wave 3 delta on 2026-11-03",
+  "syncedOn": "2026-09-26 (primitives moved to their own collection the same day); wave 3 delta on 2026-11-03; wave 4 delta on 2026-11-10",
   "source": {
     "manifest": "packages/tokens/figma-manifest.json",
     "expectations": "packages/tokens/figma-expectations.json",
@@ -70,7 +70,7 @@
     }
   },
   "variables": {
-    "total": 1011,
+    "total": 1104,
     "batches": [
       {
         "batch": 1,
@@ -120,6 +120,13 @@
         "content": "primitive/dimension/{v240,v360,v400,v560,v720}; size/overlay/panel; component/dialog/inline-size/{sm,md,lg}, component/progress/thickness/{sm,md,lg}, component/progress/radius, component/spinner/track-opacity, component/tooltip/max-inline-size (Brand); color/action/{info,success,warning}/{solid,outline,ghost}/{default,hover,pressed,loading,disabled}/{surface,content,border} (Appearance); updated: the 23 color/choice aliases to color/input",
         "count": 173,
         "ids": "created VariableID:404:2 to VariableID:404:151 (150); 23 updated in place; total local variables 1011 (all collections); verification 2026-11-03: 715 manifest semantic variables, 18 contexts, 0 failures (reports/tokens/figma/verification.json)"
+      },
+      {
+        "batch": "wave 4 delta (2026-11-10)",
+        "collection": "Primitives, Brand, Appearance",
+        "content": "primitive/dimension/v320 (Primitives); size/overlay/list, alias of v320 (Brand); color/surface/inset, alias of primitive/color/alpha/black/5 in light and primitive/color/alpha/white/5 in dark (Appearance)",
+        "count": 3,
+        "ids": "created VariableID:493:2 (v320), VariableID:493:3 (size/overlay/list), VariableID:493:4 (color/surface/inset) with the sync-variables.plugin.js body restricted to the three manifest entries; total local variables 1104 (all collections); verification 2026-11-10: 717 manifest semantic variables, 18 contexts, 0 failures (reports/tokens/figma/verification.json)"
       }
     ],
     "migrations": [
