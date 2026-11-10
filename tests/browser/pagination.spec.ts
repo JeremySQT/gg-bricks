@@ -13,7 +13,8 @@ import {
 
 const pages = (page: Page, id: string) =>
   page.locator(`#${id} .ggb-pagination__entry`).evaluateAll((e) => e.map((x) => x.textContent?.trim()).join(' '));
-const control = (id: string, direction: 'previous' | 'next') => `#${id} [data-direction="${direction}"]`;
+const control = (id: string, direction: 'first' | 'previous' | 'next' | 'last') =>
+  `#${id} [data-direction="${direction}"]`;
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/pagination/');
@@ -82,6 +83,24 @@ test('siblings and few pages; the application sets the page silently; links carr
       .first()
       .evaluate((c) => getComputedStyle(c).scale)
   ).toBe('-1 1');
+});
+
+test('first and last buttons go to the ends, are disabled there and stay in place', async ({ page }) => {
+  await expect(page.locator(control('play', 'first'))).toHaveCount(0);
+  await page.check('#opt-edges');
+  await expect(page.locator(control('play', 'first'))).toBeDisabled();
+  await expect(page.locator(control('play', 'first'))).toHaveAttribute('aria-label', 'First page');
+  const before = (await page.locator(control('play', 'last')).boundingBox())!;
+  await page.click(control('play', 'last'));
+  await expect(page.getByTestId('page')).toHaveText('Page: 20');
+  await expect(page.locator(control('play', 'last'))).toBeDisabled();
+  const after = (await page.locator(control('play', 'last')).boundingBox())!;
+  expect(Math.abs(after.x - before.x)).toBeLessThanOrEqual(1);
+  // Focus moves to the current page once the activated control is disabled.
+  await expect(page.locator('#play [aria-current="page"]')).toBeFocused();
+  await page.click(control('play', 'first'));
+  await expect(page.getByTestId('page')).toHaveText('Page: 1');
+  expect(await pages(page, 'edges')).toBe('1 … 37 … 120');
 });
 
 test('computed values match the resolved tokens: pages default, hover, current with its edge, ellipsis, sizes', async ({

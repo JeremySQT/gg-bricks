@@ -32,7 +32,7 @@
     },
     "separator": {},
     "more": {
-      "accepts": ["icon-button", "menu"],
+      "accepts": ["menu"],
       "max": 1
     }
   },
@@ -52,6 +52,10 @@
         },
         "href": {
           "type": "string"
+        },
+        "iconOnly": {
+          "type": "boolean",
+          "default": false
         }
       },
       "parts": {
@@ -90,7 +94,7 @@
         "easingStandard": "motion.easing.standard"
       },
       "rules": [
-        "An item shows leading, then label, in typography on one line, separated by gap; label is the accessible name. leading holds at most one decorative icon of iconSize in the item's color (a home icon on the first item); an item whose label is hidden is not allowed.",
+        "An item shows leading, then label, in typography on one line, separated by gap; label is the accessible name. leading holds at most one decorative icon of iconSize in the item's color (a home icon on the first item). With iconOnly and a leading icon, the label is not displayed (it stays the accessible name and is shown on hover); iconOnly without a leading icon is ignored.",
         "An item with href that is not current is a link painted in linkColor; in the hover interaction its label is underlined and painted in hoverColor. An item without href that is not current is plain text in linkColor (a level without its own page).",
         "The current item is the last one: it is painted in currentColor, is never a link even when href is set, and is exposed as the current page.",
         "When focus is true from the keyboard, the link shows a focus indicator of focusWidth in focusColor at focusOffset with focusRadius corners.",
@@ -119,8 +123,8 @@
     "A breadcrumb shows where the current page sits in the site hierarchy, from a top level to the current page, with a link to each ancestor. It is not a history of visited pages and not a list of steps; it complements the main navigation, never replaces it.",
     "The breadcrumb is exposed as a navigation landmark named by label, holding an ordered list of items in hierarchy order, the current page last.",
     "Items sit on one line in source order, each followed by separator except the last: a chevron or a slash of separatorSize in separatorColor, gap away from the items on both sides, decorative and hidden from assistive technology, mirrored in right-to-left text.",
-    "When the line lacks room, item labels shrink, ancestors first, the current item last, and are truncated with an ellipsis; the full label stays the accessible name and is shown on hover. Items never wrap to a second line.",
-    "When maxItems is greater than zero and there are more items than maxItems (counted at least 3), the breadcrumb keeps the first item and the last maxItems - 1 items, and replaces the hidden ones by more: an IconButton named moreLabel, of the breadcrumb's size, intent neutral and appearance ghost, showing an ellipsis, followed by a separator. It opens a Menu listing the hidden items as links, in order.",
+    "Items take the width of their content: the spacing between an item, its separator and the next item is gap everywhere. When the line lacks room, item labels shrink, ancestors first, the current item last, each down to three characters' width (1 em per character, or its full label when shorter), and are truncated with an ellipsis; the full label stays the accessible name and is shown on hover. Items never wrap to a second line.",
+    "When maxItems is greater than zero and there are more items than maxItems (counted at least 3), the breadcrumb keeps the first item and the last maxItems - 1 items, and replaces the hidden ones by more: a button showing an ellipsis, named moreLabel, painted and spaced like an ancestor link (linkColor, hoverColor, gap, focus indicator, minTarget), followed by a separator. It opens a Menu listing the hidden items as links, in order.",
     "Every link is its own stop in sequential focus in source order; the breadcrumb adds no arrow-key navigation. The interaction target of each link meets minTarget in the block dimension without changing the line's layout.",
     "In forced-colors mode links use the system link color, the current item the system text color, and the focus indicator stays visible."
   ]

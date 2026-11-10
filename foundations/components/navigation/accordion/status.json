@@ -42,7 +42,7 @@
       ],
       "versions": {
         "svelte": "5.57.1",
-        "bitsUi": "2.19.3 (not used)"
+        "bitsUi": "2.19.3 (used)"
       },
       "report": "reports/components/accordion/svelte/implementation.md"
     },
@@ -117,7 +117,8 @@
     "headingLevel (2 to 6, default 3) wraps each trigger in a heading, per the WAI-ARIA accordion pattern.",
     "Optional WAI-ARIA arrow keys included (Down, Up wrapping, Home, End), as Bits UI Accordion provides them.",
     "Expansion animates the block size and the chevron over motion.duration.base; immediate under reduced motion.",
-    "Bits UI Accordion is not used: a native button in a heading and a region are enough, and the block-size animation is CSS (grid rows 0fr to 1fr, visibility switching at the end of a collapse)."
+    "Round 2: Accordion now uses Bits UI Accordion (state, headings, triggers, always-mounted content). Overrides kept by the contract-over-Bits rule and covered by browser tests: arrow keys limited to this accordion's enabled triggers (Bits UI runs over nested and collapsed ones); the content exposed as a region named by its trigger and aria-controls on the trigger (Bits UI sets neither). Bits UI 2.19.3 pinned.",
+    "The review page gains a Leading icons option (the slot existed but no option showed it)."
   ],
   "openDecisions": [],
   "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",

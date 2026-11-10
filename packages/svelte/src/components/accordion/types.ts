@@ -34,6 +34,4 @@ export interface AccordionItemProps extends Omit<HTMLAttributes<HTMLDivElement>,
 /** Shared by Accordion and its items (context key `ggb:accordion`). */
 export interface AccordionContext {
   readonly headingLevel: number;
-  isExpanded(value: string): boolean;
-  toggle(value: string): void;
 }

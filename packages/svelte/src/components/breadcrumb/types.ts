@@ -8,6 +8,8 @@ export interface BreadcrumbItem {
   label: string;
   /** The ancestor's page; the last item (the current page) is never a link. */
   href?: string;
+  /** Shows only the leading icon (a home icon); the label stays the accessible name and is shown on hover. */
+  iconOnly?: boolean;
 }
 
 export interface BreadcrumbProps extends Omit<HTMLAttributes<HTMLElement>, 'children'> {

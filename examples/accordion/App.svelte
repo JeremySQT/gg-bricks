@@ -15,6 +15,7 @@
   let value = $state<string[]>(['shipping']);
   let multiple = $state(false);
   let headingLevel = $state(3);
+  let icons = $state(false);
   let changes = $state(0);
 </script>
 
@@ -54,14 +55,16 @@
         <button type="button" id="before">Before</button>
         <Accordion id="play" bind:value {multiple} {headingLevel} onvaluechange={() => changes++}>
           <AccordionItem id="shipping" value="shipping" label="How long does shipping take?">
+            {#snippet leading()}{#if icons}{@render iconFor('info')}{/if}{/snippet}
             <p>Orders leave our warehouse within two working days and arrive three to five days later.</p>
           </AccordionItem>
           <AccordionItem id="returns" value="returns" label="Can I return an item?">
-            {#snippet leading()}{@render iconFor('arrow-right')}{/snippet}
+            {#snippet leading()}{#if icons}{@render iconFor('arrow-right')}{/if}{/snippet}
             <p>Yes, within 30 days, in its original packaging.</p>
             <Button id="returns-start" label="Start a return" intent="neutral" appearance="outline" size="sm" />
           </AccordionItem>
           <AccordionItem id="gift" value="gift" label="Gift wrapping" disabled>
+            {#snippet leading()}{#if icons}{@render iconFor('star')}{/if}{/snippet}
             <p>Not available for this order.</p>
           </AccordionItem>
           <AccordionItem
@@ -81,6 +84,7 @@
       <fieldset class="options">
         <legend>Options</legend>
         <label><input type="checkbox" id="opt-multiple" bind:checked={multiple} /> Multiple</label>
+        <label><input type="checkbox" id="opt-icons" bind:checked={icons} /> Leading icons</label>
         <label
           >Heading level <select id="opt-level" bind:value={headingLevel}
             >{#each [2, 3, 4, 5, 6] as v (v)}<option value={v}>{v}</option>{/each}</select

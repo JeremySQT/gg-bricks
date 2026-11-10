@@ -125,7 +125,8 @@
     "Gate question 2 resolved (user, 2026-11-09): size.overlay.list = 256 px for Select and Combobox; Menu unchanged (viewport room only), to revisit at the visual pass (roadmap 4b).",
     "Bits UI Select is not used: its content assumes its own portal and focus scope, and it unmounts when closed (no exit transition); as for Menu (decision of 2026-10-31), the component is written on the native auto popover with lib/overlay. Recorded for the implementation gate.",
     "The trigger is a button with the combobox role (WAI-ARIA select-only combobox): it keeps focus; the highlighted option is aria-activedescendant; presses in the panel never take focus.",
-    "Options API: records (`options` prop) as the contract says; groups from consecutive records with the same group."
+    "Options API: records (`options` prop) as the contract says; groups from consecutive records with the same group.",
+    "Round 2: thin scrollbar in scrollbarColor on the list, which scrolls inside the panel padding (the scrollbar never meets the round corners)."
   ],
   "openDecisions": [],
   "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",
@@ -145,5 +146,15 @@
         "reason": "Same trigger colors as InputText (color.input.*): its exemption accepted at the wave 2 contract gate (2026-10-26, \"4 ok\") applies; color.input.default.border reaches 2.06 on surface.muted in dark, a de-emphasized backdrop where forms are not expected."
       }
     ]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Round 2 of the wave 4 implementation review (user, 2026-11-10): \"la scrollbar qui me parait pas très esthétique\". Contract fact: panel role scrollbarColor (color.border.default); the options scroll inside the panel padding with a thin scrollbar. To re-present at the implementation gate (round 2).",
+      "sha256": {
+        "foundations/components/forms/select/contract.json": "c61b460ab5b6b18b389dffb1ba2ee9fb90d61dbc7fc3e4c7c2b7f72e7b35fd31"
+      },
+      "review": "Wave 4 implementation gate"
+    }
+  ]
 }

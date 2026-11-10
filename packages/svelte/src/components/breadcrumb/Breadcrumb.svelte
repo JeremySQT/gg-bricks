@@ -1,5 +1,4 @@
 <script lang="ts">
-  import IconButton from '../icon-button/IconButton.svelte';
   import Menu from '../menu/Menu.svelte';
   import MenuItem from '../menu/MenuItem.svelte';
   import type { BreadcrumbItem, BreadcrumbProps } from './types.js';
@@ -43,13 +42,15 @@
   );
   const lastIndex = $derived(list.length - 1);
 
-  // The full label is shown on hover when the line truncates it (its accessible name is always the full label).
+  // The full label is shown on hover when the line truncates it or when only the icon shows (its accessible name is
+  // always the full label).
   function truncation(node: HTMLElement) {
     if (typeof ResizeObserver === 'undefined') return;
     const label = node.querySelector<HTMLElement>('.ggb-breadcrumb__item-label');
     const update = () => {
       if (!label) return;
-      if (label.scrollWidth > label.clientWidth + 0.5) node.setAttribute('title', label.textContent ?? '');
+      const hidden = node.hasAttribute('data-icon-only');
+      if (hidden || label.scrollWidth > label.clientWidth + 0.5) node.setAttribute('title', label.textContent ?? '');
       else node.removeAttribute('title');
     };
     const observer = new ResizeObserver(update);
@@ -57,6 +58,36 @@
     update();
     return () => observer.disconnect();
   }
+
+  // Each entry takes the width of its content, so that the spacing is gap everywhere; when the line lacks room it may
+  // shrink down to its label's first three characters (1 em each), or its whole label when shorter. The minimum is
+  // measured, since CSS has no minimum of "the smaller of a length and the content".
+  let listElement = $state<HTMLOListElement | null>(null);
+  $effect(() => {
+    const listNode = listElement;
+    void [list, size, separator, leading, keep];
+    if (!listNode || typeof ResizeObserver === 'undefined') return;
+    const apply = () => {
+      for (const entry of listNode.querySelectorAll<HTMLElement>('.ggb-breadcrumb__entry:not(.ggb-breadcrumb__more)')) {
+        const label = entry.querySelector<HTMLElement>('.ggb-breadcrumb__item-label');
+        if (!label || entry.querySelector('[data-icon-only]')) {
+          entry.style.removeProperty('min-inline-size');
+          continue;
+        }
+        // The fractional width when the label is whole (scrollWidth is rounded), its scroll width when truncated.
+        const box = label.getBoundingClientRect().width;
+        const full = label.scrollWidth > label.clientWidth ? label.scrollWidth : box;
+        const keepWidth = Math.min(full, 3 * parseFloat(getComputedStyle(label).fontSize));
+        const others = entry.getBoundingClientRect().width - box;
+        entry.style.minInlineSize = `${others + keepWidth}px`;
+      }
+    };
+    const observer = new ResizeObserver(apply);
+    observer.observe(listNode);
+    apply();
+    void document.fonts?.ready.then(apply);
+    return () => observer.disconnect();
+  });
 </script>
 
 {#snippet glyph()}
@@ -75,19 +106,26 @@
 
 {#snippet entry(item: BreadcrumbItem, index: number)}
   {@const current = index === lastIndex}
+  {@const iconOnly = !!item.iconOnly && !!leading}
   <li class="ggb-breadcrumb__entry" data-current={current ? '' : undefined}>
     {#if current}
-      <span class="ggb-breadcrumb__item" data-current="" aria-current="page" {@attach truncation}>
+      <span
+        class="ggb-breadcrumb__item"
+        data-current=""
+        aria-current="page"
+        data-icon-only={iconOnly ? '' : undefined}
+        {@attach truncation}
+      >
         {#if leading}<span class="ggb-breadcrumb__item-leading" aria-hidden="true">{@render leading(item, index)}</span
           >{/if}<span class="ggb-breadcrumb__item-label">{item.label}</span>
       </span>
     {:else if item.href}
-      <a class="ggb-breadcrumb__item" href={item.href} {@attach truncation}>
+      <a class="ggb-breadcrumb__item" href={item.href} data-icon-only={iconOnly ? '' : undefined} {@attach truncation}>
         {#if leading}<span class="ggb-breadcrumb__item-leading" aria-hidden="true">{@render leading(item, index)}</span
           >{/if}<span class="ggb-breadcrumb__item-label">{item.label}</span>
       </a>
     {:else}
-      <span class="ggb-breadcrumb__item" {@attach truncation}>
+      <span class="ggb-breadcrumb__item" data-icon-only={iconOnly ? '' : undefined} {@attach truncation}>
         {#if leading}<span class="ggb-breadcrumb__item-leading" aria-hidden="true">{@render leading(item, index)}</span
           >{/if}<span class="ggb-breadcrumb__item-label">{item.label}</span>
       </span>
@@ -97,23 +135,21 @@
 {/snippet}
 
 <nav {...rest} bind:this={ref} class={['ggb-breadcrumb', className]} aria-label={label} data-size={size}>
-  <ol class="ggb-breadcrumb__list">
+  <ol class="ggb-breadcrumb__list" bind:this={listElement}>
     {#each shown as { item, index }, position (index)}
       {@render entry(item, index)}
       {#if collapsed && position === 0}
         <li class="ggb-breadcrumb__entry ggb-breadcrumb__more">
           <Menu>
             {#snippet trigger(props)}
-              <IconButton {...props} label={moreLabel} {size} intent="neutral" appearance="ghost">
-                {#snippet icon()}
-                  <!-- Phosphor Icons 2.1.1 (MIT), dots-three, regular weight. -->
-                  <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true" focusable="false"
-                    ><path
-                      d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"
-                    /></svg
-                  >
-                {/snippet}
-              </IconButton>
+              <!-- Painted and spaced like an ancestor link (the contract), not an IconButton. -->
+              <button
+                {...props}
+                type="button"
+                class="ggb-breadcrumb__item ggb-breadcrumb__more-trigger"
+                aria-label={moreLabel}
+                title={moreLabel}><span class="ggb-breadcrumb__item-label" aria-hidden="true">…</span></button
+              >
             {/snippet}
             {#each hidden as h, i (i)}<MenuItem label={h.label} href={h.href} />{/each}
           </Menu>

@@ -15,6 +15,7 @@
   let pageCount = $state(20);
   let siblingCount = $state(1);
   let size = $state<PaginationSize>('md');
+  let showEdges = $state(false);
   let changes = $state(0);
   let linked = $state(4);
 </script>
@@ -51,7 +52,7 @@
     <div class="playground">
       <div class="stage">
         <button type="button" id="before">Before</button>
-        <Pagination id="play" bind:page {pageCount} {siblingCount} {size} onpagechange={() => changes++} />
+        <Pagination id="play" bind:page {pageCount} {siblingCount} {size} {showEdges} onpagechange={() => changes++} />
         <button type="button" id="after">After</button>
         <p class="readout">
           <span data-testid="page">Page: {page}</span> · <span data-testid="changes">Changes: {changes}</span>
@@ -74,6 +75,7 @@
             >{#each ['sm', 'md', 'lg'] as v (v)}<option value={v}>{v}</option>{/each}</select
           ></label
         >
+        <label><input type="checkbox" id="opt-edges" bind:checked={showEdges} /> First and last buttons</label>
         <button type="button" id="set-ten" onclick={() => (page = 10)}>Go to page 10 from the app</button>
       </fieldset>
     </div>
@@ -88,6 +90,10 @@
           <Pagination id={`size-${s}`} page={50} pageCount={100} size={s as PaginationSize} />
         </div>
       {/each}
+      <div class="panel">
+        <p class="panel-title">First and last buttons, no siblings: many pages in little room</p>
+        <Pagination id="edges" page={37} pageCount={120} siblingCount={0} showEdges size="sm" />
+      </div>
       <div class="panel">
         <p class="panel-title">Links: every control points to ?page=N</p>
         <Pagination id="links" bind:page={linked} pageCount={12} href={'#page-{page}'} />

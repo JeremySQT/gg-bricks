@@ -10,6 +10,15 @@
   --ggb-tabs-focusOffset: var(--ggb-focus-offset);
   --ggb-tabs-focusRadius: var(--ggb-radius-focus);
 }
+.ggb-tabs[data-size="sm"] {
+  --ggb-tabs-fadeSize: var(--ggb-size-control-sm);
+}
+.ggb-tabs[data-size="md"] {
+  --ggb-tabs-fadeSize: var(--ggb-size-control-md);
+}
+.ggb-tabs[data-size="lg"] {
+  --ggb-tabs-fadeSize: var(--ggb-size-control-lg);
+}
 .ggb-tabs__trigger {
   --ggb-tabs-trigger-surface-default: var(--ggb-color-item-default-surface);
   --ggb-tabs-trigger-surface-hover: var(--ggb-color-item-hover-surface);

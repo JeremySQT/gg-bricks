@@ -18,3 +18,7 @@ Component: `packages/svelte/src/components/combobox/` (Svelte 5.57.1, Bits UI 2.
 - `npm run verify`: passed (generate, lint, validate, unit tests 51, svelte-check 0 errors, SSR 98, build, docs build).
 - Browser (Chromium, Playwright 1.63): `tests/browser/combobox.spec.ts`, `tests/browser/overlays-smoke.spec.ts`; full suite run before the gate (see the status checks).
 - SSR: `tests/ssr/choice.test.ts`.
+
+## Round 2 (2026-11-10)
+
+Changes after the user's review: see the status decisionsTaken entries starting with "Round 2" and the pendingChanges entries (contract facts re-presented at the gate).

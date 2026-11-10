@@ -9,5 +9,7 @@ export const defaults = {
   "moreLabel": "Show hidden pages"
 } as const;
 export const childDefaults = {
-  "item": {}
+  "item": {
+    "iconOnly": false
+  }
 } as const;

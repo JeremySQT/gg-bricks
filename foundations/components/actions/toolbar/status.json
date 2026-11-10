@@ -21,7 +21,7 @@
       "SegmentedControl or RadioGroup for a choice."
     ]
   },
-  "dependencies": ["button", "icon-button", "menu", "popover", "tooltip", "lib/roving-focus"],
+  "dependencies": ["button", "icon-button", "menu", "popover", "tooltip"],
   "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the icon examples."],
   "artifacts": {
     "contract": {
@@ -38,7 +38,8 @@
         "packages/svelte/src/components/toolbar/Toolbar.svelte",
         "packages/svelte/src/components/toolbar/ToolbarSeparator.svelte",
         "packages/svelte/src/components/toolbar/types.ts",
-        "packages/svelte/src/components/toolbar/toolbar.css"
+        "packages/svelte/src/components/toolbar/toolbar.css",
+        "packages/svelte/src/components/toolbar/roving-focus.ts"
       ],
       "versions": {
         "svelte": "5.57.1",
@@ -121,7 +122,8 @@
     "Gate question 4 resolved (user, 2026-11-09): the size a group imposes reaches Menu and Popover triggers; the same fix is applied to ButtonGroup, with a browser test in Toolbar and ButtonGroup.",
     "Gate question 5 resolved (user, 2026-11-09): Toolbar v1 without toggle buttons; toggles later with a dedicated component or an IconButton pressed prop, on demand.",
     "The toolbar size reaches its items through the ButtonGroup context key (ggb:button-group); Popover content resets it and Menu no longer does (gate question 4).",
-    "Roving focus from lib/roving-focus: keys handled in the capture phase and only when they come from an item, so that a Menu trigger in a vertical toolbar moves focus instead of opening, and keys inside an open menu or popover stay with it."
+    "Roving focus from lib/roving-focus: keys handled in the capture phase and only when they come from an item, so that a Menu trigger in a vertical toolbar moves focus instead of opening, and keys inside an open menu or popover stay with it.",
+    "Round 2: the roving-focus module moved from src/lib into the Toolbar folder, Tabs using Bits UI Tabs; the shared rules (wrapping, Home and End, right-to-left, disabled items skipped) are checked by both browser suites."
   ],
   "openDecisions": [],
   "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",

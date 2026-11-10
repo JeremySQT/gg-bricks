@@ -140,6 +140,7 @@
         "padding": "space.content.xs",
         "maxInlineSize": "size.overlay.panel",
         "maxBlockSize": "size.overlay.list",
+        "scrollbarColor": "color.border.default",
         "offset": "space.content.xs",
         "emptyColor": "color.content.secondary",
         "typographyEmpty": "typography.body.{size}",
@@ -152,7 +153,7 @@
         "layer": "layer.dropdown"
       },
       "rules": [
-        "The panel holds the list of matching options. It is painted in surface with shadow, an edge of borderWidth in elevationColor and radius corners, with padding around the options. Its inline size is the combobox's inline size, wider when an option label needs it, up to the larger of the combobox's inline size and maxInlineSize. Its block size follows the options up to maxBlockSize and the room the viewport leaves; beyond it the list scrolls and keeps the highlighted option visible.",
+        "The panel holds the list of matching options. It is painted in surface with shadow, an edge of borderWidth in elevationColor and radius corners, with padding around the options. Its inline size is the combobox's inline size, wider when an option label needs it, up to the larger of the combobox's inline size and maxInlineSize. Its block size follows the options up to maxBlockSize and the room the viewport leaves; beyond it the options scroll inside the padding, with a thin scrollbar in scrollbarColor, and the highlighted option stays visible.",
         "When no option matches, the panel shows empty instead of the list: emptyLabel in typographyEmpty and emptyColor with emptyPaddingInline and emptyPaddingBlock. It is not an option, is never highlighted, and is announced politely when it appears.",
         "The panel is placed at offset below the combobox, aligned with its inline start; it flips above when the viewport lacks room below and shifts along the edge when it lacks room inline.",
         "The panel inherits the brand, appearance and density of the combobox's surroundings and appears above the page without taking focus from the input. Where the platform has no top layer, it is stacked at layer.",

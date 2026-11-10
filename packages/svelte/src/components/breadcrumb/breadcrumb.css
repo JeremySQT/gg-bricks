@@ -23,10 +23,6 @@
     flex: 0 1000 auto;
     min-inline-size: 0;
   }
-  /* An ancestor keeps a few characters and its ellipsis, so that the level stays recognizable. */
-  .ggb-breadcrumb__entry:not([data-current], .ggb-breadcrumb__more) {
-    min-inline-size: calc(4em + var(--ggb-breadcrumb-separatorSize) + var(--ggb-breadcrumb-gap));
-  }
   .ggb-breadcrumb__entry[data-current] {
     flex-shrink: 1;
   }
@@ -61,7 +57,7 @@
     transition: color var(--ggb-breadcrumb-item-motionDuration) var(--ggb-breadcrumb-item-easingStandard);
   }
   /* The interaction target meets the minimum height without changing the line. */
-  a.ggb-breadcrumb__item::before {
+  :is(a.ggb-breadcrumb__item, .ggb-breadcrumb__more-trigger)::before {
     content: '';
     position: absolute;
     inset-inline: 0;
@@ -70,10 +66,10 @@
     translate: 0 -50%;
   }
   @media (hover: hover) {
-    a.ggb-breadcrumb__item:hover {
+    :is(a.ggb-breadcrumb__item, .ggb-breadcrumb__more-trigger):hover {
       --_color: var(--ggb-breadcrumb-item-hoverColor);
     }
-    a.ggb-breadcrumb__item:hover .ggb-breadcrumb__item-label {
+    :is(a.ggb-breadcrumb__item, .ggb-breadcrumb__more-trigger):hover .ggb-breadcrumb__item-label {
       text-decoration: underline;
     }
   }
@@ -88,6 +84,26 @@
     min-inline-size: 0;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  /* Icon only: the label stays in the accessibility tree (the item's name) but takes no room. */
+  .ggb-breadcrumb__item[data-icon-only] .ggb-breadcrumb__item-label {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .ggb-breadcrumb__entry:has([data-icon-only]) {
+    flex-shrink: 0;
+  }
+  /* The more button resets the native button and reads as a link. */
+  .ggb-breadcrumb__more-trigger {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
   }
   .ggb-breadcrumb__item-leading {
     display: flex;
@@ -105,7 +121,7 @@
     }
   }
   @media (forced-colors: active) {
-    a.ggb-breadcrumb__item {
+    :is(a.ggb-breadcrumb__item, .ggb-breadcrumb__more-trigger) {
       color: LinkText;
     }
     .ggb-breadcrumb__item[data-current] {

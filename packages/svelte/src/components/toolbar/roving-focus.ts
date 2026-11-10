@@ -1,5 +1,5 @@
-// Roving focus for composite widgets that are one stop in sequential focus (Tabs, Toolbar): the rules the wave 4
-// contracts share (user, 2026-10-20: Toolbar shares the keyboard rules of Tabs).
+// Roving focus of the Toolbar: one stop in sequential focus, arrow keys between the items. The rules match those of
+// Bits UI Tabs, which Tabs uses (user, 2026-10-20: Toolbar shares the keyboard rules of Tabs).
 //   - One item has tabindex 0 (the current one), the others -1, so that Tab enters and leaves the widget once.
 //   - Horizontal: Right and Left Arrow move to the next and previous enabled item, reversed in right-to-left text;
 //     vertical: Down and Up Arrow. Both wrap at the ends. Home and End move to the first and last enabled item.

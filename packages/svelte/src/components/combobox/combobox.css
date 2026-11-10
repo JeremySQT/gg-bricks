@@ -162,8 +162,8 @@
       calc(var(--_room, 100vb) - var(--ggb-combobox-panel-offset) - var(--ggb-space-layout-sm))
     );
     padding: var(--ggb-combobox-panel-padding);
-    overflow: auto;
-    overscroll-behavior: contain;
+    /* The panel clips; the list scrolls inside the padding, so that the scrollbar never meets the round corners. */
+    overflow: hidden;
     border-radius: var(--ggb-combobox-panel-radius);
     background: var(--ggb-combobox-panel-surface);
     box-shadow:
@@ -178,6 +178,14 @@
   .ggb-combobox__group {
     display: flex;
     flex-direction: column;
+  }
+  .ggb-combobox__list {
+    flex: 1 1 auto;
+    min-block-size: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ggb-combobox-panel-scrollbarColor) transparent;
   }
   .ggb-combobox__group-heading {
     padding: var(--ggb-combobox-group-paddingBlock) var(--ggb-combobox-group-paddingInline);

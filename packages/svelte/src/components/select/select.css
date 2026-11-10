@@ -148,8 +148,8 @@
       calc(var(--_room, 100vb) - var(--ggb-select-panel-offset) - var(--ggb-space-layout-sm))
     );
     padding: var(--ggb-select-panel-padding);
-    overflow: auto;
-    overscroll-behavior: contain;
+    /* The panel clips; the list scrolls inside the padding, so that the scrollbar never meets the round corners. */
+    overflow: hidden;
     border-radius: var(--ggb-select-panel-radius);
     background: var(--ggb-select-panel-surface);
     box-shadow:
@@ -164,6 +164,14 @@
   .ggb-select__group {
     display: flex;
     flex-direction: column;
+  }
+  .ggb-select__list {
+    flex: 1 1 auto;
+    min-block-size: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ggb-select-panel-scrollbarColor) transparent;
   }
   .ggb-select__group-heading {
     padding: var(--ggb-select-group-paddingBlock) var(--ggb-select-group-paddingInline);

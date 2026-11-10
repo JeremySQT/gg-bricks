@@ -1,6 +1,6 @@
 # Accordion — Svelte implementation report
 
-Component: `packages/svelte/src/components/accordion/` (Svelte 5.57.1, Bits UI 2.19.3: not used). Dependencies: `icon`. Review page: `examples/accordion/`; preview `dist/previews/accordion.html`. Implemented on 2026-11-09; implementation approval pending (grouped wave 4 gate).
+Component: `packages/svelte/src/components/accordion/` (Svelte 5.57.1, Bits UI 2.19.3: used since round 2). Dependencies: `icon`. Review page: `examples/accordion/`; preview `dist/previews/accordion.html`. Implemented on 2026-11-09; implementation approval pending (grouped wave 4 gate).
 
 ## Notes
 
@@ -17,3 +17,7 @@ Component: `packages/svelte/src/components/accordion/` (Svelte 5.57.1, Bits UI 2
 - `npm run verify`: passed (generate, lint, validate, unit tests 51, svelte-check 0 errors, SSR 98, build, docs build).
 - Browser (Chromium, Playwright 1.63): `tests/browser/accordion.spec.ts`; full suite run before the gate (see the status checks).
 - SSR: `tests/ssr/navigation.test.ts`.
+
+## Round 2 (2026-11-10)
+
+Changes after the user's review: see the status decisionsTaken entries starting with "Round 2" and the pendingChanges entries (contract facts re-presented at the gate).

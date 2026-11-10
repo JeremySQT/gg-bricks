@@ -14,20 +14,25 @@ after(async () => {
   await closeServer();
 });
 
+const tag = (html: string, id: string) => html.match(new RegExp(`<[a-z]+[^>]* id="${id}"[^>]*>`))?.[0] ?? '';
+
 test('Accordion: triggers in headings of the level, expanded state and controlled regions', async () => {
   const html = await accordion({ value: ['returns'], headingLevel: 4 });
-  assert.equal(html.match(/<h4 class="ggb-accordion__item-heading">/g)?.length, 3);
-  assert.match(html, /id="a-trigger" aria-expanded="false" aria-controls="a-content"/);
-  assert.match(html, /id="c-trigger" aria-expanded="true" aria-controls="c-content"/);
-  assert.match(html, /id="b-trigger" aria-expanded="false" aria-controls="b-content" disabled/);
-  assert.match(html, /id="c-content" role="region" aria-labelledby="c-trigger" data-expanded=""/);
-  assert.match(html, /id="a-content" role="region" aria-labelledby="a-trigger">/);
+  assert.equal(html.match(/role="heading" aria-level="4"/g)?.length, 3);
+  for (const a of ['aria-expanded="false"', 'aria-controls="a-content"'])
+    assert.ok(tag(html, 'a-trigger').includes(a), a);
+  for (const a of ['aria-expanded="true"', 'aria-controls="c-content"'])
+    assert.ok(tag(html, 'c-trigger').includes(a), a);
+  assert.ok(tag(html, 'b-trigger').includes('disabled'));
+  for (const a of ['role="region"', 'aria-labelledby="c-trigger"', 'data-state="open"'])
+    assert.ok(tag(html, 'c-content').includes(a), a);
+  assert.ok(tag(html, 'a-content').includes('data-state="closed"'));
   const fallback = await accordion({ headingLevel: 9 });
-  assert.match(fallback, /<h3 class="ggb-accordion__item-heading">/);
+  assert.match(fallback, /role="heading" aria-level="3"/);
   await assert.rejects(accordion({ itemLabel: '' }), /non-empty label/);
   await assert.rejects(accordion({ lone: true }), /placed in an Accordion/);
   checks.accordion.push('each trigger in a heading of headingLevel (3 when out of range); expanded state exposed');
-  checks.accordion.push('content is a region labelled by its trigger; disabled trigger disabled');
+  checks.accordion.push('content is a region labelled by its trigger and controlled by it (completing Bits UI)');
   checks.accordion.push('blank label and an item outside an Accordion are rejected');
 });
 
@@ -61,12 +66,13 @@ test('Breadcrumb: maxItems keeps the first and the last items and puts the other
   const html = await breadcrumb({ items, maxItems: 4, moreLabel: 'More pages' });
   const shown = [...html.matchAll(/class="ggb-breadcrumb__item-label">(\w)/g)].map((m) => m[1]);
   assert.deepEqual(shown, ['A', 'D', 'E', 'F']);
-  assert.match(html, /aria-label="More pages"/);
+  assert.match(html, /class="ggb-breadcrumb__item ggb-breadcrumb__more-trigger" aria-label="More pages"/);
   assert.match(html, /aria-haspopup="menu"/);
   assert.match(html, /role="menuitem" tabindex="-1" href="#B"/);
   assert.match(html, /role="menuitem" tabindex="-1" href="#C"/);
   const small = await breadcrumb({ items, maxItems: 1 });
-  assert.equal([...small.matchAll(/class="ggb-breadcrumb__item-label"/g)].length, 3);
+  // Item labels, without the more button's ellipsis.
+  assert.equal([...small.matchAll(/class="ggb-breadcrumb__item-label">\w/g)].length, 3);
   checks.breadcrumb.push(
     'collapse: first item, more button named moreLabel opening a menu of the hidden links, last maxItems - 1'
   );

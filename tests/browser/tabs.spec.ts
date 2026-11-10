@@ -66,7 +66,8 @@ test('a panel with focusable content is not a stop; Tab goes to its first contro
   await page.click(tab('play', 'activity'));
   await page.keyboard.press('Tab');
   expect(await focused(page)).toBe('activity-more');
-  expect(await page.locator('#play-panel-activity').getAttribute('tabindex')).toBeNull();
+  // Not a stop in sequential focus (Bits UI renders tabindex -1 where the first version rendered none).
+  expect(await page.locator('#play-panel-activity').getAttribute('tabindex')).toBe('-1');
 });
 
 test('manual activation moves focus without selecting; Enter and Space select; pointer selects', async ({ page }) => {
@@ -140,6 +141,42 @@ test('a list that overflows scrolls and shows the selected tab; tabs never shrin
   expect(heights.length).toBe(1);
 });
 
+test('overflow: no scrollbar; edges with hidden tabs show a scroll button that scrolls; buttons are not stops', async ({
+  page
+}) => {
+  const list = page.locator('#months .ggb-tabs__list');
+  expect(await list.evaluate((l) => getComputedStyle(l).scrollbarWidth)).toBe('none');
+  // November is selected: tabs are hidden on both sides.
+  const bar = page.locator('#months .ggb-tabs__bar');
+  await expect(bar).toHaveAttribute('data-overflow-start', '');
+  const start = page.locator('#months .ggb-tabs__scroll--start button');
+  await expect(start).toHaveAttribute('tabindex', '-1');
+  await expect(start).toHaveAttribute('aria-hidden', 'true');
+  // The selected tab clears the scroll buttons.
+  const clear = await page.locator('#months').evaluate((root) => {
+    const tab = root.querySelector('#months-tab-November')!.getBoundingClientRect();
+    return [...root.querySelectorAll('.ggb-tabs__scroll')].every((b) => {
+      const r = b.getBoundingClientRect();
+      return r.right <= tab.left + 0.5 || r.left >= tab.right - 0.5;
+    });
+  });
+  expect(clear).toBe(true);
+  const before = await list.evaluate((l) => l.scrollLeft);
+  await start.click();
+  await expect.poll(() => list.evaluate((l) => l.scrollLeft)).toBeLessThan(before);
+  // Pressing until the start is reached: the start button goes away there.
+  for (let i = 0; i < 10 && (await page.locator('#months .ggb-tabs__scroll--start').count()); i++) {
+    await page.locator('#months .ggb-tabs__scroll--start button').click();
+    await page.waitForTimeout(400);
+  }
+  await expect.poll(() => list.evaluate((l) => l.scrollLeft)).toBeLessThanOrEqual(1);
+  await expect(bar).not.toHaveAttribute('data-overflow-start', '');
+  await expect(page.locator('#months .ggb-tabs__scroll--start')).toHaveCount(0);
+  await expect(page.locator('#months .ggb-tabs__scroll--end')).toHaveCount(1);
+  // The playground list fits: no scroll button.
+  await expect(page.locator('#play .ggb-tabs__scroll')).toHaveCount(0);
+});
+
 test('accessibility tree: tab list named, tabs selected and controlling their panels', async ({ page }) => {
   const list = await accessible(page, '#play .ggb-tabs__list');
   expect(list.role).toBe('tablist');
@@ -211,9 +248,11 @@ test('computed values match the resolved tokens: sizes, idle, selected, hover, d
       .evaluate((t) => ({ content: getComputedStyle(t).color, surface: getComputedStyle(t).backgroundColor }));
     expect(disabled.content).toBe(rgb(tokens['color.item.disabled.content']));
     report.add(context, { size: 'md' }, 'disabled', disabled);
-    const line = await page
-      .locator('#size-md .ggb-tabs__list')
-      .evaluate((l) => ({ line: getComputedStyle(l).boxShadow, gap: getComputedStyle(l).columnGap }));
+    const line = await page.locator('#size-md').evaluate((r) => ({
+      // The line belongs to the bar since round 2 (the fade of overflowing edges must not reach it).
+      line: getComputedStyle(r.querySelector('.ggb-tabs__bar')!).boxShadow,
+      gap: getComputedStyle(r.querySelector('.ggb-tabs__list')!).columnGap
+    }));
     expect(line.line).toBe(
       `${rgb(tokens['color.border.subtle'])} 0px -${px(tokens['border.width.default'])}px 0px 0px inset`
     );
@@ -247,7 +286,7 @@ test('keyboard focus shows the ring; reduced motion removes transitions; forced 
   );
   await page.emulateMedia({ forcedColors: 'active' });
   await settle(page);
-  expect(await page.locator('#play .ggb-tabs__list').evaluate((l) => getComputedStyle(l).borderBottomStyle)).toBe(
+  expect(await page.locator('#play .ggb-tabs__bar').evaluate((l) => getComputedStyle(l).borderBottomStyle)).toBe(
     'solid'
   );
   await capture(page, `${out}/forced-colors.png`);

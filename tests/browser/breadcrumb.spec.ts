@@ -35,7 +35,10 @@ test('a navigation landmark with a list; links are Tab stops; the current page i
 });
 
 test('collapse: the hidden levels are links in a menu opened by the ellipsis button', async ({ page }) => {
-  const labels = await page.locator('#long .ggb-breadcrumb__item-label').allTextContents();
+  // Item labels, without the more button's ellipsis (it reads as an ancestor link since round 2).
+  const labels = await page
+    .locator('#long .ggb-breadcrumb__item:not(.ggb-breadcrumb__more-trigger) .ggb-breadcrumb__item-label')
+    .allTextContents();
   expect(labels).toEqual(['Home', '2026', 'Spring launch', 'Assets']);
   const more = page.locator('#long .ggb-breadcrumb__more button');
   await expect(more).toHaveAttribute('aria-label', 'Show hidden pages');
@@ -53,11 +56,11 @@ test('collapse: the hidden levels are links in a menu opened by the ellipsis but
   await expect(more).toBeFocused();
   // maxItems on the playground.
   await page.selectOption('#opt-max', '3');
-  expect(await page.locator('#play .ggb-breadcrumb__item-label').allTextContents()).toEqual([
-    'Home',
-    'Settings',
-    'Members'
-  ]);
+  expect(
+    await page
+      .locator('#play .ggb-breadcrumb__item:not(.ggb-breadcrumb__more-trigger) .ggb-breadcrumb__item-label')
+      .allTextContents()
+  ).toEqual(['Home', 'Settings', 'Members']);
   expect(await isOpen(page, '#play .ggb-menu')).toBe(false);
 });
 
@@ -79,6 +82,31 @@ test('a narrow line truncates ancestors first and shows the full label on hover;
       .first()
       .evaluate((s) => getComputedStyle(s).scale)
   ).toBe('-1 1');
+});
+
+test('spacing is gap everywhere, the more button included; icon only keeps the name and shows it on hover', async ({
+  page
+}) => {
+  const tokens = tokensFor('base-light-standard');
+  const gap = px(tokens['space.content.xs']);
+  await page.selectOption('#opt-max', '3');
+  for (const id of ['play', 'long', 'md']) {
+    const gaps = await page.evaluate((id) => {
+      const r = [...document.querySelectorAll(`#${id} .ggb-breadcrumb__item, #${id} .ggb-breadcrumb__separator`)].map(
+        (e) => e.getBoundingClientRect()
+      );
+      return r.slice(1).map((b, i) => b.left - r[i].right);
+    }, id);
+    for (const g of gaps) expect(Math.abs(g - gap), `${id} ${gaps.join(' ')}`).toBeLessThanOrEqual(0.5);
+  }
+  await page.selectOption('#opt-max', '0');
+  await page.check('#opt-home-only');
+  const home = page.locator('#play a.ggb-breadcrumb__item').first();
+  await expect(home).toHaveAttribute('data-icon-only', '');
+  await expect(home).toHaveAttribute('title', 'Home');
+  expect((await accessible(page, '#play a.ggb-breadcrumb__item')).name).toBe('Home');
+  const width = await home.evaluate((a) => a.getBoundingClientRect().width);
+  expect(width).toBe(px(tokens['size.icon.sm']));
 });
 
 test('computed values match the resolved tokens: links, hover, current, separator, sizes and target', async ({

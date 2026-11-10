@@ -163,10 +163,19 @@ test('panel: as wide as the trigger at least, wider for long labels; a long list
   await page.click('#many');
   await expect.poll(() => isOpen(page, 'many')).toBe(true);
   await settle(page);
-  const long = await panelOf(page, 'many').evaluate((p) => ({
-    height: p.getBoundingClientRect().height,
-    scrolls: p.scrollHeight > p.clientHeight
-  }));
+  // Since round 2 the list scrolls inside the panel's padding, with a thin scrollbar in its token color.
+  const long = await panelOf(page, 'many').evaluate((p) => {
+    const list = p.querySelector('.ggb-select__list')!;
+    const s = getComputedStyle(list);
+    return {
+      height: p.getBoundingClientRect().height,
+      scrolls: list.scrollHeight > list.clientHeight,
+      width: s.scrollbarWidth,
+      color: s.scrollbarColor
+    };
+  });
+  expect(long.width).toBe('thin');
+  expect(long.color.startsWith(rgb(tokens['color.border.default']))).toBe(true);
   expect(long.scrolls).toBe(true);
   expect(long.height).toBeLessThanOrEqual(px(tokens['size.overlay.list']) + 0.5);
   // The selected option (Project 20) is scrolled into view.

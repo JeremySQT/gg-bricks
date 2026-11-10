@@ -110,7 +110,8 @@
     "Constant item count (siblingCount × 2 + 5): first, last, current and siblings, ellipses for gaps of two pages or more, so that the controls do not move while paging (the usual algorithm).",
     "href with a {page} placeholder turns every control into a link; otherwise buttons and pageChange.",
     "No roving focus: each control is a tab stop (WAI-ARIA has no pagination pattern; links in a navigation landmark).",
-    "Contract fact found during implementation: typography.numeral.{size} became typography.label.{size} (numeral.lg is 24 px), with tabular figures set by the component. Recorded in pendingChanges for the implementation gate."
+    "Contract fact found during implementation: typography.numeral.{size} became typography.label.{size} (numeral.lg is 24 px), with tabular figures set by the component. Recorded in pendingChanges for the implementation gate.",
+    "Round 2: showEdges adds first and last IconButtons (Phosphor caret-double glyphs), disabled at the ends and staying in place."
   ],
   "openDecisions": [],
   "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",
@@ -128,6 +129,14 @@
       "change": "Contract fact found during implementation: item and ellipsis typography typography.numeral.{size} -> typography.label.{size} (numeral.lg is 24 px, out of proportion with an lg control; label matches Button); the component sets tabular figures itself. To re-present at the wave 4 implementation gate.",
       "sha256": {
         "foundations/components/navigation/pagination/contract.json": "c0369d5ae7b339ae1a5f581e586f7e082a8b9eb0d27e3d3e0ae95188c35375e7"
+      },
+      "review": "Wave 4 implementation gate"
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 2 of the wave 4 implementation review (user, 2026-11-10): \"Il manque peut-être des boutons First page et last page\". Contract facts: showEdges, firstLabel, lastLabel, parts first and last. To re-present at the implementation gate (round 2).",
+      "sha256": {
+        "foundations/components/navigation/pagination/contract.json": "082d8e2b2a1100544c2fcd0ba8ee8427d705d81d237da89d9e81a78fc5a45dd7"
       },
       "review": "Wave 4 implementation gate"
     }

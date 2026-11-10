@@ -32,6 +32,10 @@
     "panels": {
       "accepts": ["panel"],
       "min": 1
+    },
+    "scrollButtons": {
+      "accepts": ["icon-button"],
+      "max": 2
     }
   },
   "states": {},
@@ -46,6 +50,7 @@
     "lineThickness": "border.width.default",
     "listGap": "space.content.xs",
     "panelGap": "space.content.lg",
+    "fadeSize": "size.control.{size}",
     "focusColor": "color.focus.ring",
     "focusWidth": "focus.width",
     "focusOffset": "focus.offset",
@@ -160,7 +165,7 @@
     "Tabs show one of several panels of related content at a time in the same place (sections of a settings page, views of a record), with a list of tabs to switch between them. They do not navigate to another page (that is a navigation menu with links), do not hold a form choice (that is a RadioGroup or a SegmentedControl) and never hide steps of a sequence.",
     "list is exposed as a tab list named by label when it is non-empty; each trigger is a tab exposing whether it is selected and which panel it controls. There is always exactly one selected tab: value names it; when value matches no enabled tab, the first enabled tab is selected.",
     "orientation horizontal places the tabs in a row in source order, separated by listGap, above the panels, with a line of lineThickness in lineColor along the list's block end across the whole width; panels start panelGap below the list. orientation vertical stacks the tabs at the inline start, each as wide as the widest tab, with the line along the list's inline end; panels start panelGap after the list.",
-    "When a horizontal list does not fit its inline size, it scrolls inline and keeps the focused tab and the selected tab visible; tabs never wrap or shrink.",
+    "When a horizontal list does not fit its inline size, it scrolls inline without a visible scrollbar and keeps the focused tab and the selected tab visible; tabs never wrap or shrink. Each edge beyond which tabs are hidden shows a scroll button there, the tabs being invisible under it (fadeSize from the edge) and fading in over half of fadeSize after it; a tab scrolled into view clears that area. The scroll button is an IconButton of the tabs' size, intent neutral and appearance ghost, with a chevron towards that edge (mirrored in right-to-left text), that scrolls the list by most of its visible width. Scroll buttons are not stops in sequential focus and are hidden from assistive technology, since the arrow keys reach every tab; pointer, touch and trackpad scrolling also work.",
     "Focus: the list is one stop in sequential focus, landing on the selected tab; Tab from the list moves to the selected panel (or its first focusable element). The roving focus rules are shared with Toolbar: in a horizontal list Right and Left Arrow (reversed in right-to-left text) move focus to the next and previous enabled tab, wrapping at the ends; in a vertical list Down and Up Arrow do; Home and End move it to the first and last enabled tab; disabled tabs are skipped.",
     "With activation automatic, moving focus to a tab selects it; with activation manual, focus moves without selecting and Enter or Space selects the focused tab (for panels that are slow to show). A pointer press on an enabled tab selects it and focuses it. Selecting a tab emits valueChange when the value changed.",
     "Each tab, and each panel that takes focus, shows a focus indicator of focusWidth in focusColor at focusOffset with focusRadius corners when focused by keyboard.",

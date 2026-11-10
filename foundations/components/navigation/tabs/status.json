@@ -23,7 +23,7 @@
       "Separate pages for unrelated content."
     ]
   },
-  "dependencies": ["icon", "counter", "badge", "lib/roving-focus"],
+  "dependencies": ["icon", "counter", "badge", "icon-button"],
   "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading icon example."],
   "artifacts": {
     "contract": {
@@ -45,7 +45,7 @@
       ],
       "versions": {
         "svelte": "5.57.1",
-        "bitsUi": "2.19.3 (not used)"
+        "bitsUi": "2.19.3 (used)"
       },
       "report": "reports/components/tabs/svelte/implementation.md"
     },
@@ -122,8 +122,9 @@
     "activation automatic by default (WAI-ARIA recommendation when panels show at once), manual available for slow panels.",
     "A horizontal list that overflows scrolls inline and keeps the focused and selected tab visible; no scroll buttons in v1.",
     "Trigger trailing slot accepts a Counter or a Badge, sized by the tab.",
-    "Bits UI Tabs is not used: the roving focus is shared with Toolbar in one module (lib/roving-focus), which Bits UI Toolbar cannot apply to ggbrick Buttons, Menus and Popovers; one implementation keeps the two components identical. Recorded for the implementation gate.",
-    "Svelte API: a `list` snippet holds the TabsTrigger children and `children` the TabsPanel children; triggers register in source order so that the fallback to the first enabled tab also works during server rendering (a value not registered yet is trusted until mount)."
+    "Svelte API: a `list` snippet holds the TabsTrigger children and `children` the TabsPanel children; triggers register in source order so that the fallback to the first enabled tab also works during server rendering (a value not registered yet is trusted until mount).",
+    "Round 2 (user: \"attention à ne pas réinventer la roue\"): Tabs now uses Bits UI Tabs (roles, ids, roving focus with right-to-left and disabled tabs, activation modes); ggbrick adds the fallback to the first enabled tab and renders the selection through the child snippets so that server rendering selects a tab (Bits UI reads the value before the triggers register). The roving-focus module moved into the Toolbar folder (its only user).",
+    "Bits UI decision for wave 4 reviewed: Tabs and Accordion use it; Select and Combobox keep the own primitive (Bits UI content positions with floating-ui and its own dismissal layers, against the native top layer); Pagination keeps its own algorithm (Bits UI shows 6 then 7 items, the contract asks a constant count) and its link mode; Toolbar keeps its roving focus (Bits UI Toolbar needs every item wrapped in Toolbar.Button)."
   ],
   "openDecisions": [],
   "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",
@@ -135,5 +136,15 @@
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Round 2 of the wave 4 implementation review (user, 2026-11-10): \"pas fan du scroll comme ça afficher dessous\". Contract facts: no visible scrollbar; each overflowing edge shows a scroll button (IconButton, not a focus stop, hidden from assistive technology) over a fade; part scrollButtons, role fadeSize (size.control.{size}); dependency icon-button. To re-present at the implementation gate (round 2).",
+      "sha256": {
+        "foundations/components/navigation/tabs/contract.json": "12bff75a00cb7ab2e6938a883ea4af72af89b3baafb37cd872deadec9e1076d8"
+      },
+      "review": "Wave 4 implementation gate"
+    }
+  ]
 }

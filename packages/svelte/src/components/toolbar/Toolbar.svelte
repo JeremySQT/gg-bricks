@@ -1,6 +1,6 @@
 <script lang="ts">
   import { setContext } from 'svelte';
-  import { rovingFocus } from '../../lib/roving-focus/index.js';
+  import { rovingFocus } from './roving-focus.js';
   import type { ToolbarProps } from './types.js';
   import { defaults } from './contract.generated.js';
   import './tokens.generated.css';

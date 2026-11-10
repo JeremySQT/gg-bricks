@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getContext, untrack } from 'svelte';
+  import { Tabs as Primitive } from 'bits-ui';
   import type { TabsContext, TabsPanelProps } from './types.js';
   import './tokens.generated.css';
   import './tabs.css';
@@ -11,9 +12,11 @@
   // Checked once: a tab's value does not change.
   if (typeof untrack(() => value) !== 'string') throw new Error('TabsPanel requires a value.');
 
+  // Shown from the ggbrick fallback (see TabsTrigger), also during server rendering.
   const shown = $derived(tabs.selected === value);
-  let ref = $state<HTMLDivElement | null>(null);
+
   // The panel is a stop in sequential focus only when its content has no focusable element (WAI-ARIA tabs pattern).
+  let ref = $state<HTMLElement | null>(null);
   let focusable = $state(true);
   $effect(() => {
     const el = ref;
@@ -30,15 +33,17 @@
   });
 </script>
 
-<div
+<Primitive.Content
   {...rest}
-  bind:this={ref}
-  class={['ggb-tabs__panel', className]}
-  role="tabpanel"
+  bind:ref
+  {value}
   id={tabs.panelId(value)}
-  aria-labelledby={tabs.tabId(value)}
-  tabindex={focusable ? 0 : undefined}
-  hidden={!shown}
+  class={['ggb-tabs__panel', className]}
+  tabindex={focusable ? 0 : -1}
 >
-  {@render children()}
-</div>
+  {#snippet child({ props })}
+    <div {...props} hidden={!shown} data-state={shown ? 'active' : 'inactive'}>
+      {@render children()}
+    </div>
+  {/snippet}
+</Primitive.Content>

@@ -13,6 +13,7 @@
     border-block-end: var(--ggb-accordion-lineThickness) solid var(--ggb-accordion-lineColor);
   }
   .ggb-accordion__item-heading {
+    display: block;
     margin: 0;
     font: inherit;
   }
@@ -92,7 +93,7 @@
       visibility var(--ggb-accordion-item-motionDuration);
   }
   /* Expanding shows the content at once (it can take focus right away); collapsing hides it at the end. */
-  .ggb-accordion__item-content[data-expanded] {
+  .ggb-accordion__item-content[data-state='open'] {
     grid-template-rows: 1fr;
     visibility: visible;
     transition-duration: var(--ggb-accordion-item-motionDuration), 0s;

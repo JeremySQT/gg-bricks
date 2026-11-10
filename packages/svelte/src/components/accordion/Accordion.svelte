@@ -1,5 +1,6 @@
 <script lang="ts">
   import { setContext } from 'svelte';
+  import { Accordion as Primitive } from 'bits-ui';
   import type { AccordionContext, AccordionProps } from './types.js';
   import { defaults } from './contract.generated.js';
   import './tokens.generated.css';
@@ -11,6 +12,7 @@
     headingLevel = defaults.headingLevel,
     children,
     onvaluechange,
+    id,
     ref = $bindable(null),
     class: className,
     ...rest
@@ -20,22 +22,21 @@
   const level = $derived(
     Number.isInteger(headingLevel) && headingLevel >= 2 && headingLevel <= 6 ? headingLevel : defaults.headingLevel
   );
-
   setContext<AccordionContext>('ggb:accordion', {
     get headingLevel() {
       return level;
-    },
-    isExpanded: (v) => value.includes(v),
-    toggle(v) {
-      const open = value.includes(v);
-      const next = open ? value.filter((x) => x !== v) : multiple ? [...value, v] : [v];
-      value = next;
-      onvaluechange?.(next);
     }
   });
 
-  // Down and Up Arrow move between the enabled triggers of this accordion (not of a nested one), wrapping; Home and
-  // End jump to the first and last (WAI-ARIA accordion pattern, optional keys).
+  function set(next: string[]) {
+    value = next;
+    onvaluechange?.(next);
+  }
+
+  // Bits UI Accordion owns the expanded state, the triggers and the headings. Its arrow keys run over every trigger
+  // below the root, nested accordions and collapsed (invisible) ones included; the contract keeps them to this
+  // accordion's enabled triggers, so the keys are handled here first, in the capture phase (contract over Bits UI,
+  // decision of 2026-11-03; covered by a browser test).
   function keydown(event: KeyboardEvent) {
     if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key) || event.altKey || event.ctrlKey || event.metaKey)
       return;
@@ -55,10 +56,39 @@
             ? triggers[0]
             : triggers.at(-1);
     event.preventDefault();
+    event.stopPropagation();
     next?.focus();
+  }
+  function capture(node: HTMLElement) {
+    node.addEventListener('keydown', keydown, true);
+    return () => node.removeEventListener('keydown', keydown, true);
   }
 </script>
 
-<div {...rest} bind:this={ref} class={['ggb-accordion', className]} onkeydown={keydown}>
-  {@render children()}
-</div>
+{#if multiple}
+  <Primitive.Root
+    {...rest}
+    bind:ref
+    id={id ?? undefined}
+    type="multiple"
+    class={['ggb-accordion', className]}
+    {value}
+    onValueChange={(next) => set(next)}
+    {@attach capture}
+  >
+    {@render children()}
+  </Primitive.Root>
+{:else}
+  <Primitive.Root
+    {...rest}
+    bind:ref
+    id={id ?? undefined}
+    type="single"
+    class={['ggb-accordion', className]}
+    value={value[0] ?? ''}
+    onValueChange={(next) => set(next ? [next] : [])}
+    {@attach capture}
+  >
+    {@render children()}
+  </Primitive.Root>
+{/if}

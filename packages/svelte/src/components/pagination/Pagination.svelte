@@ -12,10 +12,13 @@
     pageCount = defaults.pageCount,
     siblingCount = defaults.siblingCount,
     href,
+    showEdges = defaults.showEdges,
     size = defaults.size,
     label = defaults.label,
     previousLabel = defaults.previousLabel,
     nextLabel = defaults.nextLabel,
+    firstLabel = defaults.firstLabel,
+    lastLabel = defaults.lastLabel,
     onpagechange,
     ref = $bindable(null),
     class: className,
@@ -42,7 +45,11 @@
   }
 
   const caret = {
-    // Phosphor Icons 2.1.1 (MIT), caret-left and caret-right, regular weight; mirrored in right-to-left text.
+    // Phosphor Icons 2.1.1 (MIT), caret-left, caret-right, caret-double-left and caret-double-right, regular weight;
+    // mirrored in right-to-left text.
+    first:
+      'M205.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L131.31,128ZM51.31,128l74.35-74.34a8,8,0,0,0-11.32-11.32l-80,80a8,8,0,0,0,0,11.32l80,80a8,8,0,0,0,11.32-11.32Z',
+    last: 'M141.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L124.69,128,50.34,53.66A8,8,0,0,1,61.66,42.34l80,80A8,8,0,0,1,141.66,133.66Zm80-11.32-80-80a8,8,0,0,0-11.32,11.32L204.69,128l-74.35,74.34a8,8,0,0,0,11.32,11.32l80-80A8,8,0,0,0,221.66,122.34Z',
     start: 'M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z',
     end: 'M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z'
   };
@@ -54,8 +61,27 @@
   >
 {/snippet}
 
+{#snippet edge(direction: 'first' | 'last')}
+  {@const target = direction === 'first' ? 1 : count}
+  <li class="ggb-pagination__control">
+    <IconButton
+      label={direction === 'first' ? firstLabel : lastLabel}
+      {size}
+      intent="neutral"
+      appearance="ghost"
+      disabled={current === target}
+      href={current !== target ? link(target) : undefined}
+      data-direction={direction}
+      onactivate={(event) => go(target, event.currentTarget as HTMLElement)}
+    >
+      {#snippet icon()}{@render chevron(caret[direction])}{/snippet}
+    </IconButton>
+  </li>
+{/snippet}
+
 <nav {...rest} bind:this={ref} class={['ggb-pagination', className]} aria-label={label} data-size={size}>
   <ul class="ggb-pagination__list">
+    {#if showEdges}{@render edge('first')}{/if}
     <li class="ggb-pagination__control">
       <IconButton
         label={previousLabel}
@@ -107,5 +133,6 @@
         {#snippet icon()}{@render chevron(caret.end)}{/snippet}
       </IconButton>
     </li>
+    {#if showEdges}{@render edge('last')}{/if}
   </ul>
 </nav>

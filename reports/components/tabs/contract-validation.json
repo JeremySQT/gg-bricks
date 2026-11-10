@@ -13,6 +13,9 @@
     "border.width.default",
     "space.content.xs",
     "space.content.lg",
+    "size.control.sm",
+    "size.control.md",
+    "size.control.lg",
     "color.focus.ring",
     "focus.width",
     "focus.offset",
@@ -27,9 +30,6 @@
     "color.item.indicator",
     "border.width.strong",
     "radius.control",
-    "size.control.sm",
-    "size.control.md",
-    "size.control.lg",
     "space.control.padding-inline.sm",
     "space.control.padding-inline.md",
     "space.control.padding-inline.lg",
@@ -46,6 +46,7 @@
     "motion.easing.standard"
   ],
   "dependencies": [
+    "icon-button",
     "icon",
     "counter",
     "badge"
