@@ -49,7 +49,7 @@
     "examples": {
       "page": "examples/accordion",
       "preview": "dist/previews/accordion.html (npm run build && npm run build:preview accordion)",
-      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794240385-375a), page accordion.html"
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794320983-c775, round 2), page accordion.html"
     },
     "tests": {
       "ssr": ["tests/ssr/navigation.test.ts"],
@@ -108,6 +108,11 @@
       "name": "npm run build:preview accordion",
       "result": "mounts from file:// without errors",
       "date": "2026-11-09"
+    },
+    {
+      "name": "Round 2: npm run verify passed; npm run test:browser 303 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
     }
   ],
   "decisionsTaken": [

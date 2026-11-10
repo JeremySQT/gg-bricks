@@ -52,7 +52,7 @@
     "examples": {
       "page": "examples/tabs",
       "preview": "dist/previews/tabs.html (npm run build && npm run build:preview tabs)",
-      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794240385-375a), page tabs.html"
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794320983-c775, round 2), page tabs.html"
     },
     "tests": {
       "ssr": ["tests/ssr/tabs-toolbar.test.ts"],
@@ -111,6 +111,11 @@
       "name": "npm run build:preview tabs",
       "result": "mounts from file:// without errors",
       "date": "2026-11-09"
+    },
+    {
+      "name": "Round 2: npm run verify passed; npm run test:browser 303 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
     }
   ],
   "decisionsTaken": [
