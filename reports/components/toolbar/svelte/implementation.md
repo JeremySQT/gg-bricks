@@ -1,6 +1,6 @@
 # Toolbar — Svelte implementation report
 
-Component: `packages/svelte/src/components/toolbar/` (Svelte 5.57.1, Bits UI 2.19.3: not used). Dependencies: `button`, `icon-button`, `menu`, `popover`, `tooltip`, `lib/roving-focus`. Review page: `examples/toolbar/`; preview `dist/previews/toolbar.html`. Implemented on 2026-11-09; implementation approval pending (grouped wave 4 gate).
+Component: `packages/svelte/src/components/toolbar/` (Svelte 5.57.1, Bits UI 2.19.3: not used). Dependencies: `button`, `icon-button`, `menu`, `popover`, `tooltip`, `lib/roving-focus`. Review page: `examples/toolbar/`; preview `dist/previews/toolbar.html`. Implemented on 2026-11-09; implementation approved on 2026-11-10 (grouped wave 4 gate, round 4).
 
 ## Notes
 

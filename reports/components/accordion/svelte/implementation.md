@@ -1,6 +1,6 @@
 # Accordion — Svelte implementation report
 
-Component: `packages/svelte/src/components/accordion/` (Svelte 5.57.1, Bits UI 2.19.3: used since round 2). Dependencies: `icon`. Review page: `examples/accordion/`; preview `dist/previews/accordion.html`. Implemented on 2026-11-09; implementation approval pending (grouped wave 4 gate).
+Component: `packages/svelte/src/components/accordion/` (Svelte 5.57.1, Bits UI 2.19.3: used since round 2). Dependencies: `icon`. Review page: `examples/accordion/`; preview `dist/previews/accordion.html`. Implemented on 2026-11-09; implementation approved on 2026-11-10 (grouped wave 4 gate, round 4).
 
 ## Notes
 

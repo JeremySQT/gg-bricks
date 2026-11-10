@@ -42,40 +42,40 @@ Composition patterns (search/filter toolbar, form section, action placement on B
 
 One row per component once its scope phase starts. Phase values: scope, contract, implementation, figma, documentation, done; append "(gate pending)" while waiting for the reviewer.
 
-| Component     | Family     | Wave | Phase                         | Status file                                                |
-| ------------- | ---------- | ---- | ----------------------------- | ---------------------------------------------------------- |
-| Button        | actions    | 1    | done                          | `foundations/components/actions/button/status.json`        |
-| Icon          | content    | 1    | done                          | `foundations/components/content/icon/status.json`          |
-| Counter       | content    | 1    | done                          | `foundations/components/content/counter/status.json`       |
-| Shortcut      | content    | 1    | done                          | `foundations/components/content/shortcut/status.json`      |
-| IconButton    | actions    | 1    | done                          | `foundations/components/actions/icon-button/status.json`   |
-| Link          | actions    | 1    | done                          | `foundations/components/actions/link/status.json`          |
-| Badge         | content    | 1    | done                          | `foundations/components/content/badge/status.json`         |
-| Field         | forms      | 2    | done                          | `foundations/components/forms/field/status.json`           |
-| InputText     | forms      | 2    | done                          | `foundations/components/forms/input-text/status.json`      |
-| Textarea      | forms      | 2    | done                          | `foundations/components/forms/textarea/status.json`        |
-| Checkbox      | forms      | 2    | done                          | `foundations/components/forms/checkbox/status.json`        |
-| Switch        | forms      | 2    | done                          | `foundations/components/forms/switch/status.json`          |
-| RadioGroup    | forms      | 2    | done                          | `foundations/components/forms/radio-group/status.json`     |
-| Radio         | forms      | 2    | done                          | `foundations/components/forms/radio/status.json`           |
-| CheckboxGroup | forms      | 2    | done                          | `foundations/components/forms/checkbox-group/status.json`  |
-| ButtonGroup   | actions    | 3    | done                          | `foundations/components/actions/button-group/status.json`  |
-| Spinner       | feedback   | 3    | done                          | `foundations/components/feedback/spinner/status.json`      |
-| Progress      | feedback   | 3    | done                          | `foundations/components/feedback/progress/status.json`     |
-| Skeleton      | feedback   | 3    | done                          | `foundations/components/feedback/skeleton/status.json`     |
-| Alert         | feedback   | 3    | done                          | `foundations/components/feedback/alert/status.json`        |
-| Toast         | feedback   | 3    | done                          | `foundations/components/feedback/toast/status.json`        |
-| Tooltip       | overlays   | 3    | done                          | `foundations/components/overlays/tooltip/status.json`      |
-| Popover       | overlays   | 3    | done                          | `foundations/components/overlays/popover/status.json`      |
-| Dialog        | overlays   | 3    | done                          | `foundations/components/overlays/dialog/status.json`       |
-| Menu          | overlays   | 3    | done                          | `foundations/components/overlays/menu/status.json`         |
-| Select        | forms      | 4    | figma                         | `foundations/components/forms/select/status.json`          |
-| Combobox      | forms      | 4    | figma                         | `foundations/components/forms/combobox/status.json`        |
-| Tabs          | navigation | 4    | implementation (gate pending) | `foundations/components/navigation/tabs/status.json`       |
-| Breadcrumb    | navigation | 4    | figma                         | `foundations/components/navigation/breadcrumb/status.json` |
-| Pagination    | navigation | 4    | figma                         | `foundations/components/navigation/pagination/status.json` |
-| Accordion     | navigation | 4    | figma                         | `foundations/components/navigation/accordion/status.json`  |
-| Toolbar       | actions    | 4    | figma                         | `foundations/components/actions/toolbar/status.json`       |
+| Component     | Family     | Wave | Phase | Status file                                                |
+| ------------- | ---------- | ---- | ----- | ---------------------------------------------------------- |
+| Button        | actions    | 1    | done  | `foundations/components/actions/button/status.json`        |
+| Icon          | content    | 1    | done  | `foundations/components/content/icon/status.json`          |
+| Counter       | content    | 1    | done  | `foundations/components/content/counter/status.json`       |
+| Shortcut      | content    | 1    | done  | `foundations/components/content/shortcut/status.json`      |
+| IconButton    | actions    | 1    | done  | `foundations/components/actions/icon-button/status.json`   |
+| Link          | actions    | 1    | done  | `foundations/components/actions/link/status.json`          |
+| Badge         | content    | 1    | done  | `foundations/components/content/badge/status.json`         |
+| Field         | forms      | 2    | done  | `foundations/components/forms/field/status.json`           |
+| InputText     | forms      | 2    | done  | `foundations/components/forms/input-text/status.json`      |
+| Textarea      | forms      | 2    | done  | `foundations/components/forms/textarea/status.json`        |
+| Checkbox      | forms      | 2    | done  | `foundations/components/forms/checkbox/status.json`        |
+| Switch        | forms      | 2    | done  | `foundations/components/forms/switch/status.json`          |
+| RadioGroup    | forms      | 2    | done  | `foundations/components/forms/radio-group/status.json`     |
+| Radio         | forms      | 2    | done  | `foundations/components/forms/radio/status.json`           |
+| CheckboxGroup | forms      | 2    | done  | `foundations/components/forms/checkbox-group/status.json`  |
+| ButtonGroup   | actions    | 3    | done  | `foundations/components/actions/button-group/status.json`  |
+| Spinner       | feedback   | 3    | done  | `foundations/components/feedback/spinner/status.json`      |
+| Progress      | feedback   | 3    | done  | `foundations/components/feedback/progress/status.json`     |
+| Skeleton      | feedback   | 3    | done  | `foundations/components/feedback/skeleton/status.json`     |
+| Alert         | feedback   | 3    | done  | `foundations/components/feedback/alert/status.json`        |
+| Toast         | feedback   | 3    | done  | `foundations/components/feedback/toast/status.json`        |
+| Tooltip       | overlays   | 3    | done  | `foundations/components/overlays/tooltip/status.json`      |
+| Popover       | overlays   | 3    | done  | `foundations/components/overlays/popover/status.json`      |
+| Dialog        | overlays   | 3    | done  | `foundations/components/overlays/dialog/status.json`       |
+| Menu          | overlays   | 3    | done  | `foundations/components/overlays/menu/status.json`         |
+| Select        | forms      | 4    | figma | `foundations/components/forms/select/status.json`          |
+| Combobox      | forms      | 4    | figma | `foundations/components/forms/combobox/status.json`        |
+| Tabs          | navigation | 4    | figma | `foundations/components/navigation/tabs/status.json`       |
+| Breadcrumb    | navigation | 4    | figma | `foundations/components/navigation/breadcrumb/status.json` |
+| Pagination    | navigation | 4    | figma | `foundations/components/navigation/pagination/status.json` |
+| Accordion     | navigation | 4    | figma | `foundations/components/navigation/accordion/status.json`  |
+| Toolbar       | actions    | 4    | figma | `foundations/components/actions/toolbar/status.json`       |
 
 ## How a fresh session starts a task
 
