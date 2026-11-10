@@ -11,6 +11,7 @@
   let {
     value = $bindable(defaults.value),
     label,
+    appearance = defaults.appearance,
     size = defaults.size,
     orientation = defaults.orientation,
     activation = defaults.activation,
@@ -165,6 +166,7 @@
   {orientation}
   activationMode={activation}
   loop
+  data-appearance={appearance}
   data-size={size}
   data-activation={activation}
 >

@@ -2389,6 +2389,15 @@
       }
     }
   ],
+  "primitive.dimension.v320": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 320,
+        "unit": "px"
+      }
+    }
+  ],
   "primitive.dimension.v360": [
     {
       "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
@@ -3793,7 +3802,7 @@
   "size.overlay.list": [
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
-      "value": "{primitive.dimension.v256}"
+      "value": "{primitive.dimension.v320}"
     }
   ],
   "typography.display.xl": [

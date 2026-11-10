@@ -12,7 +12,7 @@
     TabsPanel,
     TabsTrigger
   } from '../../packages/svelte/src/index.ts';
-  import type { TabsActivation, TabsOrientation, TabsSize } from '../../packages/svelte/src/index.ts';
+  import type { TabsActivation, TabsAppearance, TabsOrientation, TabsSize } from '../../packages/svelte/src/index.ts';
   import { glyphs } from '../icon-button/glyphs.ts';
 
   const brands = ['base', 'brick', 'orchid'];
@@ -24,6 +24,7 @@
   let density = $state('standard');
 
   let value = $state('overview');
+  let appearance = $state<TabsAppearance>('contained');
   let size = $state<TabsSize>('md');
   let orientation = $state<TabsOrientation>('horizontal');
   let activation = $state<TabsActivation>('automatic');
@@ -85,7 +86,16 @@
     <div class="playground">
       <div class="stage stage-block">
         <button type="button" id="before">Before</button>
-        <Tabs id="play" label="Project" bind:value {size} {orientation} {activation} onvaluechange={change}>
+        <Tabs
+          id="play"
+          label="Project"
+          bind:value
+          {appearance}
+          {size}
+          {orientation}
+          {activation}
+          onvaluechange={change}
+        >
           {#snippet list()}
             <TabsTrigger label="Overview" value="overview">
               {#snippet leading()}{#if icons}{@render icon('info')}{/if}{/snippet}
@@ -124,6 +134,11 @@
       <fieldset class="options">
         <legend>Options</legend>
         <label
+          >Appearance <select id="opt-appearance" bind:value={appearance}
+            >{#each ['contained', 'line'] as v (v)}<option value={v}>{v}</option>{/each}</select
+          ></label
+        >
+        <label
           >Size <select id="opt-size" bind:value={size}
             >{#each sizes as v (v)}<option value={v}>{v}</option>{/each}</select
           ></label
@@ -149,7 +164,22 @@
     <div class="grid">
       {#each sizes as s (s)}
         <div class="panel">
-          <p class="panel-title">Size {s}</p>
+          <p class="panel-title">Line, size {s}</p>
+          <Tabs id={`line-${s}`} label={`Line, size ${s}`} appearance="line" size={s}>
+            {#snippet list()}
+              <TabsTrigger label="General" value="general" />
+              <TabsTrigger label="Members" value="members" />
+              <TabsTrigger label="Security" value="security" />
+            {/snippet}
+            <TabsPanel value="general"><p>General settings.</p></TabsPanel>
+            <TabsPanel value="members"><p>Members.</p></TabsPanel>
+            <TabsPanel value="security"><p>Security.</p></TabsPanel>
+          </Tabs>
+        </div>
+      {/each}
+      {#each sizes as s (s)}
+        <div class="panel">
+          <p class="panel-title">Contained, size {s}</p>
           <Tabs id={`size-${s}`} label={`Size ${s}`} size={s}>
             {#snippet list()}
               <TabsTrigger label="General" value="general" />
@@ -165,7 +195,18 @@
       <div class="panel">
         <p class="panel-title">A list that overflows its width scrolls; the selected tab stays visible</p>
         <div class="narrow">
-          <Tabs id="months" label="Month" value="November">
+          <Tabs id="months" label="Month" value="November" appearance="line">
+            {#snippet list()}
+              {#each many as m (m)}<TabsTrigger label={m} value={m} />{/each}
+            {/snippet}
+            {#each many as m (m)}<TabsPanel value={m}><p>Report for {m}.</p></TabsPanel>{/each}
+          </Tabs>
+        </div>
+      </div>
+      <div class="panel">
+        <p class="panel-title">Contained list that overflows</p>
+        <div class="narrow">
+          <Tabs id="months-contained" label="Month (contained)" value="November">
             {#snippet list()}
               {#each many as m (m)}<TabsTrigger label={m} value={m} />{/each}
             {/snippet}

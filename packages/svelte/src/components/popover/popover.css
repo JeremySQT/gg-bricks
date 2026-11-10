@@ -14,7 +14,7 @@
       calc(var(--_room, 100vb) - var(--ggb-popover-offset) - var(--ggb-space-layout-sm))
     );
     padding: var(--ggb-popover-padding);
-    overflow: auto;
+    overflow: hidden;
     border-radius: var(--ggb-popover-radius);
     background: var(--ggb-popover-surface);
     box-shadow:
@@ -28,7 +28,16 @@
     z-index: var(--ggb-popover-layer);
   }
   .ggb-popover:popover-open {
-    display: block;
+    display: flex;
+    flex-direction: column;
+  }
+  .ggb-popover__content {
+    flex: 1 1 auto;
+    min-block-size: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ggb-popover-scrollbarColor) transparent;
   }
   @media (forced-colors: active) {
     .ggb-popover {

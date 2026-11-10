@@ -72,7 +72,14 @@
     <div class="playground">
       <div class="stage stage-block">
         <button type="button" id="before">Before</button>
-        <Breadcrumb id="play" items={path} {size} {separator} {maxItems} leading={home ? homeIcon : undefined} />
+        <Breadcrumb
+          id="play"
+          items={path}
+          {size}
+          {separator}
+          {maxItems}
+          leading={home || homeOnly ? homeIcon : undefined}
+        />
         <button type="button" id="after">After</button>
       </div>
       <fieldset class="options">
@@ -93,6 +100,7 @@
           ></label
         >
         <label><input type="checkbox" id="opt-home" bind:checked={home} /> Home icon</label>
+        <!-- Icon only needs an icon: checking it shows the home icon whatever Home icon says. -->
         <label><input type="checkbox" id="opt-home-only" bind:checked={homeOnly} /> Home icon only</label>
       </fieldset>
     </div>

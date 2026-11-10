@@ -129,7 +129,8 @@
     "Trigger trailing slot accepts a Counter or a Badge, sized by the tab.",
     "Svelte API: a `list` snippet holds the TabsTrigger children and `children` the TabsPanel children; triggers register in source order so that the fallback to the first enabled tab also works during server rendering (a value not registered yet is trusted until mount).",
     "Round 2 (user: \"attention à ne pas réinventer la roue\"): Tabs now uses Bits UI Tabs (roles, ids, roving focus with right-to-left and disabled tabs, activation modes); ggbrick adds the fallback to the first enabled tab and renders the selection through the child snippets so that server rendering selects a tab (Bits UI reads the value before the triggers register). The roving-focus module moved into the Toolbar folder (its only user).",
-    "Bits UI decision for wave 4 reviewed: Tabs and Accordion use it; Select and Combobox keep the own primitive (Bits UI content positions with floating-ui and its own dismissal layers, against the native top layer); Pagination keeps its own algorithm (Bits UI shows 6 then 7 items, the contract asks a constant count) and its link mode; Toolbar keeps its roving focus (Bits UI Toolbar needs every item wrapped in Toolbar.Button)."
+    "Bits UI decision for wave 4 reviewed: Tabs and Accordion use it; Select and Combobox keep the own primitive (Bits UI content positions with floating-ui and its own dismissal layers, against the native top layer); Pagination keeps its own algorithm (Bits UI shows 6 then 7 items, the contract asks a constant count) and its link mode; Toolbar keeps its roving focus (Bits UI Toolbar needs every item wrapped in Toolbar.Button).",
+    "Round 3: appearance contained (default, the user's reference: tabs as buttons in a container, the selected one raised) and line (the first design). In a horizontal contained list the tabs share the inline size equally, never below their content. In dark the raised tab is darker than the muted container (token values); to judge at the gate."
   ],
   "openDecisions": [],
   "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",
@@ -148,6 +149,14 @@
       "change": "Round 2 of the wave 4 implementation review (user, 2026-11-10): \"pas fan du scroll comme ça afficher dessous\". Contract facts: no visible scrollbar; each overflowing edge shows a scroll button (IconButton, not a focus stop, hidden from assistive technology) over a fade; part scrollButtons, role fadeSize (size.control.{size}); dependency icon-button. To re-present at the implementation gate (round 2).",
       "sha256": {
         "foundations/components/navigation/tabs/contract.json": "12bff75a00cb7ab2e6938a883ea4af72af89b3baafb37cd872deadec9e1076d8"
+      },
+      "review": "Wave 4 implementation gate"
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 3 of the wave 4 implementation review (user, 2026-11-10): \"J'aime bien l'approche de bits UI avec des tabs en mode buttons ... l'affichage par défaut pourrait plutôt être un affichage comme ça ? Et on conserve le mode line comme une variante\". Contract facts: prop appearance contained (default) / line; roles listSurfaceColor, listRadius, listPadding, containedRadius, selectedSurfaceColor, shadowSelected, elevationColor, edgeThickness; contained labels in content without hover surface. To re-present at the implementation gate (round 3).",
+      "sha256": {
+        "foundations/components/navigation/tabs/contract.json": "5c393b12b5f7de2785cba818fb8a9a5fbe4179925a141a97c00bf8455b1b0c27"
       },
       "review": "Wave 4 implementation gate"
     }

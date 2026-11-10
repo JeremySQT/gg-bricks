@@ -5,9 +5,24 @@
 @layer ggb {
   .ggb-toolbar {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     gap: var(--ggb-toolbar-gap);
+    min-inline-size: 0;
+  }
+  /* Items moved into the overflow menu, and the overflow while nothing is moved. */
+  /* A horizontal toolbar fills the inline size it is given, so that the number of items that fit does not depend on
+     the items it shows (which would feed back into its own width). */
+  .ggb-toolbar[data-orientation='horizontal'] {
+    inline-size: 100%;
+  }
+  .ggb-toolbar [data-ggb-overflowed],
+  .ggb-toolbar__overflow[hidden] {
+    display: none;
+  }
+  .ggb-toolbar__overflow {
+    display: flex;
+    flex: none;
   }
   .ggb-toolbar[data-orientation='vertical'] {
     flex-direction: column;
@@ -16,7 +31,7 @@
     inline-size: max-content;
   }
   /* Wrappers (Tooltip) take no room of their own. */
-  .ggb-toolbar > :not(.ggb-toolbar__separator, button, a, [popover]) {
+  .ggb-toolbar > :not(.ggb-toolbar__separator, [popover]) {
     flex: none;
   }
 

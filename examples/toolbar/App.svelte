@@ -152,7 +152,7 @@
         </Toolbar>
       </div>
       <div class="panel">
-        <p class="panel-title">A narrow column: items wrap onto a second line in order</p>
+        <p class="panel-title">A narrow column: the items that do not fit move into the More menu</p>
         <div class="narrow">
           <Toolbar id="wrap" label="Bulk actions" size="sm">
             <Button label="Assign" intent="neutral" appearance="outline" />

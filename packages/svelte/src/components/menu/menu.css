@@ -17,7 +17,7 @@
       calc(var(--_room, 100vb) - var(--ggb-menu-offset) - var(--ggb-space-layout-sm))
     );
     padding: var(--ggb-menu-padding);
-    overflow: auto;
+    overflow: hidden;
     border-radius: var(--ggb-menu-radius);
     background: var(--ggb-menu-surface);
     box-shadow:
@@ -28,6 +28,16 @@
   }
   .ggb-menu:popover-open {
     display: flex;
+  }
+  .ggb-menu__list {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-block-size: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ggb-menu-scrollbarColor) transparent;
   }
 
   .ggb-menu__item {

@@ -85,10 +85,10 @@
       "revision": {
         "paths": ["foundations/components/overlays/popover/contract.json"],
         "sha256": {
-          "foundations/components/overlays/popover/contract.json": "d6b71e44809af5922418ef1942119938ff815302d988724dbada74eecfc93072"
+          "foundations/components/overlays/popover/contract.json": "7aa536be4613e10e9fe783bd0755a5dd4729ad099bba26369618eaafebb47662"
         }
       },
-      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendment of 2026-11-10 (wave 4 implementation review, round 2, recommendation 4; user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide le second tour et toutes tes recommandations de 1 à 6\"): role scrollbarColor (color.border.default); the content scrolls inside the padding with a thin scrollbar, as in Select and Combobox. Digests re-recorded.",
       "note": null
     },
     "implementation": {
@@ -243,6 +243,16 @@
       "sha256": {
         "packages/svelte/src/components/popover/Popover.svelte": "a4173300faa69a6b6e829115899751b14d553241a1d7a4b03acad24bec70c438",
         "packages/svelte/src/components/popover/PopoverContent.svelte": "32fcfbdd457680ddc004a7e8447aaa2e83e46f4e983fcd00c9f2b384c6f8a5c4"
+      },
+      "review": "Wave 4 implementation gate"
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Recommendation 4 of round 2: the content scrolls in an inner element (.ggb-popover__content) inside the padding with a thin scrollbar in scrollbarColor; rendering otherwise unchanged. To re-present at the wave 4 implementation gate.",
+      "sha256": {
+        "packages/svelte/src/components/popover/PopoverContent.svelte": "de4294e64bb4201c0d502d9a35ad2a9ed9990eddce674ca65969d7b5ab20a471",
+        "packages/svelte/src/components/popover/popover.css": "8d871fc896f612bf9858cd8b118b8c1e67ffe217cc995af28f9518064f53463c",
+        "packages/svelte/src/components/popover/tokens.generated.css": "856c641c4173beaf0aed7c21168a37ff7037c457bf3588fe550c57617d496504"
       },
       "review": "Wave 4 implementation gate"
     }

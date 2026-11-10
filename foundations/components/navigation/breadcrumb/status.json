@@ -60,10 +60,10 @@
       "revision": {
         "paths": ["foundations/components/navigation/breadcrumb/contract.json"],
         "sha256": {
-          "foundations/components/navigation/breadcrumb/contract.json": "c092bb9c2aea9fcc1735ea5f9c0eb178d57b6068524553be7d1a3b0e03ce1747"
+          "foundations/components/navigation/breadcrumb/contract.json": "8427f0218ff8fae63c15d08e3100976d7fcb12f6aeb32b837eb8ab89ef237baa"
         }
       },
-      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\".",
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendment of 2026-11-10 accepted with the round 2 implementation review (\"Je valide le second tour\"): item prop iconOnly; more painted and spaced like an ancestor link; spacing rule. Digests re-recorded.",
       "note": null
     },
     "implementation": null,
@@ -122,7 +122,8 @@
     "The slash separator is drawn on the 256-unit grid (Phosphor has no slash glyph); the chevron is Phosphor caret-right.",
     "Round 2: the minimum width of a shrinking entry is measured per label (three characters or the whole label) instead of a fixed 4em, which left large irregular blanks after short labels; spacing is now gap everywhere (browser test).",
     "Round 2: the more button is painted and spaced like an ancestor link instead of an IconButton (regular spacing, no ghost box on hover); iconOnly hides the label visually (accessible name and title kept).",
-    "Round 2: the house glyph (Phosphor) replaces the star in the review page home icon."
+    "Round 2: the house glyph (Phosphor) replaces the star in the review page home icon.",
+    "Round 3: truncated labels are fitted to the characters that show (Range measurement), so that the ellipsis sits gap away from the separator like a whole label; the example's Home icon only shows the icon whatever Home icon says."
   ],
   "openDecisions": [],
   "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",
@@ -140,7 +141,8 @@
       "sha256": {
         "foundations/components/navigation/breadcrumb/contract.json": "8427f0218ff8fae63c15d08e3100976d7fcb12f6aeb32b837eb8ab89ef237baa"
       },
-      "review": "Wave 4 implementation gate"
+      "review": "Wave 4 implementation gate",
+      "recorded": "Contract amendment accepted on 2026-11-10 (round 2)."
     }
   ]
 }

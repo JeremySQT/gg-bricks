@@ -7,4 +7,5 @@
   setContext('ggb:button-group', undefined);
 </script>
 
-{@render children()}
+<!-- The content scrolls inside the panel's padding, so that the scrollbar never meets the round corners. -->
+<div class="ggb-popover__content">{@render children()}</div>

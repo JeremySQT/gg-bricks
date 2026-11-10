@@ -95,10 +95,10 @@
       "revision": {
         "paths": ["foundations/components/overlays/menu/contract.json"],
         "sha256": {
-          "foundations/components/overlays/menu/contract.json": "dd9d08534d616451c8061301deb10ffb9bd320fa323f9f7578dc2b12eafcf0f3"
+          "foundations/components/overlays/menu/contract.json": "b722b65f4c666fb49c9a2fb048be6bf97fe464560f10f831925220e5fd93dfb6"
         }
       },
-      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 found or requested at the implementation review (Contract fact found during implementation: group roles leadingSize (size.icon.sm) and leadingGap (space.control.gap.sm) …) accepted with the implementation: \"Je valide le reste\".",
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 found or requested at the implementation review (Contract fact found during implementation: group roles leadingSize (size.icon.sm) and leadingGap (space.control.gap.sm) …) accepted with the implementation: \"Je valide le reste\". Amendment of 2026-11-10 (wave 4 implementation review, round 2, recommendation 4; user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide le second tour et toutes tes recommandations de 1 à 6\"): role scrollbarColor (color.border.default); the content scrolls inside the padding with a thin scrollbar, as in Select and Combobox. Digests re-recorded.",
       "note": null
     },
     "implementation": {
@@ -299,6 +299,16 @@
       "change": "Group size reaches the trigger (wave 4 contract gate, question 4): Menu no longer resets the ButtonGroup size (its items are not buttons), so that its trigger in a ButtonGroup or Toolbar takes the group size. To re-present at the wave 4 implementation gate.",
       "sha256": {
         "packages/svelte/src/components/menu/Menu.svelte": "d548c64d11a59478c4c9c2c38ea81186a210f22f1f6640021315c73e33841c08"
+      },
+      "review": "Wave 4 implementation gate"
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Recommendation 4 of round 2: the items scroll in an inner list (.ggb-menu__list) inside the padding with a thin scrollbar in scrollbarColor; rendering otherwise unchanged. To re-present at the wave 4 implementation gate.",
+      "sha256": {
+        "packages/svelte/src/components/menu/Menu.svelte": "67d7561848e406ab8941d0129b3228b783f1bee410b8c1f39bbee1760b8ca9d5",
+        "packages/svelte/src/components/menu/menu.css": "fc6dad46a462d49ecfa551dae565fbc740cf08b3671bb3e9ac0a3c2043ae5fd2",
+        "packages/svelte/src/components/menu/tokens.generated.css": "2f39388565de0e54641b34c14fe3c9211b7f7ef25dea53c103b8923294eb3500"
       },
       "review": "Wave 4 implementation gate"
     }

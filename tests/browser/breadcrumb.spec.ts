@@ -90,7 +90,7 @@ test('spacing is gap everywhere, the more button included; icon only keeps the n
   const tokens = tokensFor('base-light-standard');
   const gap = px(tokens['space.content.xs']);
   await page.selectOption('#opt-max', '3');
-  for (const id of ['play', 'long', 'md']) {
+  for (const id of ['play', 'long', 'md', 'narrow']) {
     const gaps = await page.evaluate((id) => {
       const r = [...document.querySelectorAll(`#${id} .ggb-breadcrumb__item, #${id} .ggb-breadcrumb__separator`)].map(
         (e) => e.getBoundingClientRect()
@@ -100,6 +100,8 @@ test('spacing is gap everywhere, the more button included; icon only keeps the n
     for (const g of gaps) expect(Math.abs(g - gap), `${id} ${gaps.join(' ')}`).toBeLessThanOrEqual(0.5);
   }
   await page.selectOption('#opt-max', '0');
+  // Icon only shows the icon even when Home icon is off.
+  await page.uncheck('#opt-home');
   await page.check('#opt-home-only');
   const home = page.locator('#play a.ggb-breadcrumb__item').first();
   await expect(home).toHaveAttribute('data-icon-only', '');

@@ -184,7 +184,11 @@ test('a link item navigates and reports its value; long labels truncate; long me
   await expect.poll(() => isOpen(page, 'long')).toBe(true);
   await settle(page);
   const long = await page.locator('#long').evaluate((menu) => ({
-    scrolls: menu.scrollHeight > menu.clientHeight,
+    // The items scroll in the inner list since wave 4 (thin scrollbar inside the padding).
+    scrolls: (() => {
+      const list = menu.querySelector('.ggb-menu__list')!;
+      return list.scrollHeight > list.clientHeight && getComputedStyle(list).scrollbarWidth === 'thin';
+    })(),
     width: menu.getBoundingClientRect().width,
     trigger: document.getElementById('long-trigger')!.getBoundingClientRect().width
   }));

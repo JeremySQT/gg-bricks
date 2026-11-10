@@ -3,6 +3,9 @@
 .ggb-tabs {
   --ggb-tabs-lineColor: var(--ggb-color-border-subtle);
   --ggb-tabs-lineThickness: var(--ggb-border-width-default);
+  --ggb-tabs-listSurfaceColor: var(--ggb-color-surface-muted);
+  --ggb-tabs-listRadius: var(--ggb-radius-overlay);
+  --ggb-tabs-listPadding: var(--ggb-space-content-xs);
   --ggb-tabs-listGap: var(--ggb-space-content-xs);
   --ggb-tabs-panelGap: var(--ggb-space-content-lg);
   --ggb-tabs-focusColor: var(--ggb-color-focus-ring);
@@ -30,6 +33,11 @@
   --ggb-tabs-trigger-indicatorColor: var(--ggb-color-item-indicator);
   --ggb-tabs-trigger-indicatorThickness: var(--ggb-border-width-strong);
   --ggb-tabs-trigger-radius: var(--ggb-radius-control);
+  --ggb-tabs-trigger-containedRadius: var(--ggb-radius-container);
+  --ggb-tabs-trigger-selectedSurfaceColor: var(--ggb-color-surface-raised);
+  --ggb-tabs-trigger-shadowSelected: var(--ggb-shadow-raised);
+  --ggb-tabs-trigger-elevationColor: var(--ggb-color-elevation-border);
+  --ggb-tabs-trigger-edgeThickness: var(--ggb-border-width-default);
   --ggb-tabs-trigger-motionDuration: var(--ggb-motion-duration-fast);
   --ggb-tabs-trigger-easingStandard: var(--ggb-motion-easing-standard);
 }

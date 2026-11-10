@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes, HTMLButtonAttributes } from 'svelte/elements';
-import type { TabsActivation, TabsOrientation, TabsSize } from './contract.generated.js';
+import type { TabsActivation, TabsAppearance, TabsOrientation, TabsSize } from './contract.generated.js';
 
 type Owned = 'children' | 'role' | 'id';
 
@@ -9,6 +9,9 @@ export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, Owned> {
   value?: string;
   /** Accessible name of the tab list (often the heading of the area the tabs switch). */
   label?: string;
+  /** contained: tabs as buttons in a container, the selected one raised; line: a line with a bar under the selected
+   * tab. Default contained. */
+  appearance?: TabsAppearance;
   /** Size of the tabs (height, text, padding). Default md. */
   size?: TabsSize;
   /** horizontal: a row above the panels; vertical: a column at the inline start. Default horizontal. */

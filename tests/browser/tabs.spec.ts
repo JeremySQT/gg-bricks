@@ -219,8 +219,8 @@ test('computed values match the resolved tokens: sizes, idle, selected, hover, d
             indicatorOpacity: a.opacity
           };
         });
-      const selected = await read(`#size-${size}-tab-general`);
-      const idle = await read(`#size-${size}-tab-members`);
+      const selected = await read(`#line-${size}-tab-general`);
+      const idle = await read(`#line-${size}-tab-members`);
       const typo = tokens[`typography.label.${size}`].$value as { fontSize: { value: number }; fontWeight: number };
       expect(selected.content, `${context} ${size}`).toBe(rgb(tokens['color.item.default.content']));
       expect(selected.indicator).toBe(rgb(tokens['color.item.indicator']));
@@ -234,8 +234,8 @@ test('computed values match the resolved tokens: sizes, idle, selected, hover, d
       expect(idle.fontSize).toBe(`${typo.fontSize.value}px`);
       expect(idle.fontWeight).toBe(String(typo.fontWeight));
       expect(idle.radius).toBe(`${px(tokens['radius.control'])}px`);
-      await page.hover(`#size-${size}-tab-security`);
-      const hover = await read(`#size-${size}-tab-security`);
+      await page.hover(`#line-${size}-tab-security`);
+      const hover = await read(`#line-${size}-tab-security`);
       expect(hover.surface).toBe(rgb(tokens['color.item.hover.surface']));
       expect(hover.content).toBe(rgb(tokens['color.item.hover.content']));
       report.add(context, { size }, 'selected', selected);
@@ -248,7 +248,7 @@ test('computed values match the resolved tokens: sizes, idle, selected, hover, d
       .evaluate((t) => ({ content: getComputedStyle(t).color, surface: getComputedStyle(t).backgroundColor }));
     expect(disabled.content).toBe(rgb(tokens['color.item.disabled.content']));
     report.add(context, { size: 'md' }, 'disabled', disabled);
-    const line = await page.locator('#size-md').evaluate((r) => ({
+    const line = await page.locator('#line-md').evaluate((r) => ({
       // The line belongs to the bar since round 2 (the fade of overflowing edges must not reach it).
       line: getComputedStyle(r.querySelector('.ggb-tabs__bar')!).boxShadow,
       gap: getComputedStyle(r.querySelector('.ggb-tabs__list')!).columnGap
@@ -257,11 +257,62 @@ test('computed values match the resolved tokens: sizes, idle, selected, hover, d
       `${rgb(tokens['color.border.subtle'])} 0px -${px(tokens['border.width.default'])}px 0px 0px inset`
     );
     expect(line.gap).toBe(`${px(tokens['space.content.xs'])}px`);
-    const panelGap = await page.locator('#size-md').evaluate((r) => getComputedStyle(r).rowGap);
+    const panelGap = await page.locator('#line-md').evaluate((r) => getComputedStyle(r).rowGap);
     expect(panelGap).toBe(`${px(tokens['space.content.lg'])}px`);
     report.add(context, { size: 'md' }, 'list', { ...line, panelGap });
   }
   report.write('tabs');
+});
+
+test('contained (the default): the list is a container; the selected tab is raised; labels in content, no hover surface', async ({
+  page
+}) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  for (const [brand, mode, density] of representative) {
+    const context = `${brand}-${mode}-${density}`;
+    const tokens = tokensFor(context);
+    await setContext(page, brand, mode, density);
+    const bar = await page.locator('#size-md .ggb-tabs__bar').evaluate((b) => {
+      const s = getComputedStyle(b);
+      return { surface: s.backgroundColor, radius: s.borderTopLeftRadius, padding: s.paddingTop };
+    });
+    expect(bar.surface, context).toBe(rgb(tokens['color.surface.muted']));
+    expect(bar.radius).toBe(`${px(tokens['radius.overlay'])}px`);
+    expect(bar.padding).toBe(`${px(tokens['space.content.xs'])}px`);
+    const read = (id: string) =>
+      page.locator(id).evaluate((t) => {
+        const s = getComputedStyle(t);
+        return { surface: s.backgroundColor, content: s.color, radius: s.borderTopLeftRadius, shadow: s.boxShadow };
+      });
+    const selected = await read('#size-md-tab-general');
+    expect(selected.surface).toBe(rgb(tokens['color.surface.raised']));
+    expect(selected.content).toBe(rgb(tokens['color.item.default.content']));
+    expect(selected.radius).toBe(`${px(tokens['radius.container'])}px`);
+    expect(
+      selected.shadow.startsWith(
+        `${rgb(tokens['color.elevation.border'])} 0px 0px 0px ${px(tokens['border.width.default'])}px inset`
+      )
+    ).toBe(true);
+    // Every label in content; no hover surface (it would match the container).
+    const idle = await read('#size-md-tab-members');
+    expect(idle.content).toBe(rgb(tokens['color.item.default.content']));
+    await page.hover('#size-md-tab-members');
+    const hover = await read('#size-md-tab-members');
+    expect(hover.surface).toBe(idle.surface);
+    await page.mouse.move(0, 0);
+    // No indicator bar in a contained list; the line variant keeps it.
+    expect(await page.locator('#size-md-tab-general').evaluate((t) => getComputedStyle(t, '::after').opacity)).toBe(
+      '0'
+    );
+    expect(await page.locator('#line-md-tab-general').evaluate((t) => getComputedStyle(t, '::after').opacity)).toBe(
+      '1'
+    );
+  }
+  // Tabs share the inline size of a horizontal contained list.
+  const widths = await page
+    .locator('#size-md .ggb-tabs__trigger')
+    .evaluateAll((t) => t.map((e) => Math.round(e.getBoundingClientRect().width)));
+  expect(Math.max(...widths) - Math.min(...widths)).toBeLessThanOrEqual(1);
 });
 
 test('keyboard focus shows the ring; reduced motion removes transitions; forced colors keep the line and indicator', async ({

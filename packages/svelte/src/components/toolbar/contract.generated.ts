@@ -3,7 +3,8 @@ export type ToolbarSize = "sm" | "md" | "lg";
 export type ToolbarOrientation = "horizontal" | "vertical";
 export const defaults = {
   "size": "md",
-  "orientation": "horizontal"
+  "orientation": "horizontal",
+  "overflowLabel": "More"
 } as const;
 export const childDefaults = {
   "separator": {}

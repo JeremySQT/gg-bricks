@@ -36,7 +36,8 @@ export const isDisabled = (item: Element): boolean =>
 export function itemsOf(container: HTMLElement, selector: string): HTMLElement[] {
   return [...container.querySelectorAll<HTMLElement>(selector)].filter((item) => {
     const overlay = item.parentElement?.closest('[popover], dialog');
-    return !overlay || !container.contains(overlay);
+    // Items moved out of view (a toolbar's overflow) are skipped.
+    return (!overlay || !container.contains(overlay)) && !item.closest('[data-ggb-overflowed], [hidden]');
   });
 }
 
@@ -106,7 +107,7 @@ export function rovingFocus(options: RovingFocusOptions) {
       subtree: true,
       childList: true,
       attributes: true,
-      attributeFilter: ['disabled', 'aria-disabled']
+      attributeFilter: ['disabled', 'aria-disabled', 'data-ggb-overflowed']
     });
     sync();
     return () => {

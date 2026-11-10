@@ -198,5 +198,6 @@
   onpointerleave={pointerleave}
   {@attach floating({ anchor, open: () => open, onOpenChange: toggled, side, align })}
 >
-  {@render children()}
+  <!-- The items scroll inside the panel's padding, so that the scrollbar never meets the round corners. -->
+  <div class="ggb-menu__list">{@render children()}</div>
 </div>

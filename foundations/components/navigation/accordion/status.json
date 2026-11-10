@@ -3,7 +3,7 @@
   "componentId": "accordion",
   "family": "navigation",
   "wave": 4,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "A vertical stack of headings that each show or hide a section of content.",
     "useCases": [
@@ -71,7 +71,31 @@
       "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\".",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Accordion on Bits UI Accordion with the contract overrides (arrow keys, region), leading icons, block-size animation (round 2).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/accordion/Accordion.svelte",
+          "packages/svelte/src/components/accordion/AccordionItem.svelte",
+          "packages/svelte/src/components/accordion/accordion.css",
+          "packages/svelte/src/components/accordion/contract.generated.ts",
+          "packages/svelte/src/components/accordion/tokens.generated.css",
+          "packages/svelte/src/components/accordion/types.ts",
+          "examples/accordion/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/accordion/Accordion.svelte": "48427946bed5ce898aed2963739878140e8c8f60933253728aff211f189f8bb7",
+          "packages/svelte/src/components/accordion/AccordionItem.svelte": "e0f2c25535e8e404855e2b87149773db6f6a8f7baadc2da2b9fc356ab966803d",
+          "packages/svelte/src/components/accordion/accordion.css": "871bb9cd452297507fa1273e966cf3cb6e119357d2c8796a2675a184597b0142",
+          "packages/svelte/src/components/accordion/contract.generated.ts": "e9f042da5f6506c1d06ad6ee29475851fe3e2fcc6d0b68dace825384b703944d",
+          "packages/svelte/src/components/accordion/tokens.generated.css": "678a4ce15f419fe6a19d64d6eea36d16d4fe63fa2487e74cfa239de6d4ea4950",
+          "packages/svelte/src/components/accordion/types.ts": "2ccbbf854dc69c60cf6dc27e360554d170ef930e63a0f1bfe06865437442b464",
+          "examples/accordion/App.svelte": "ad72499dbece948255226ea42667fc04da9f71d7652e29ed07c57db5a99c3894"
+        }
+      },
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794320983-c775, round 2), after round 1 feedback applied: \"Je valide le second tour et toutes tes recommandations de 1 à 6. Fait ce qui te semble le mieux\" (Tabs, Breadcrumb and Toolbar continued into a round 3).",
+      "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -113,6 +137,12 @@
       "name": "Round 2: npm run verify passed; npm run test:browser 303 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
       "result": "passed",
       "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr"
     }
   ],
   "decisionsTaken": [
@@ -126,7 +156,7 @@
     "The review page gains a Leading icons option (the slot existed but no option showed it)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",
+  "nextAction": "Figma parity (skill ggb-figma), grouped with the rest of wave 4 once Tabs, Breadcrumb and Toolbar pass round 3.",
   "implementationNotes": [
     "Exports Accordion and AccordionItem.",
     "The focus ring is drawn inside the trigger (outline-offset of minus its width) so that it stays inside the accordion inline size, as the contract asks.",

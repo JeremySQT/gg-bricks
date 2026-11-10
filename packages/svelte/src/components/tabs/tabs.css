@@ -32,12 +32,14 @@
     scrollbar-width: none;
   }
   /* The line belongs to the bar, so that the fade of the overflowing edges does not reach it. */
-  .ggb-tabs[data-orientation='horizontal'] > .ggb-tabs__bar {
+  .ggb-tabs[data-appearance='line'][data-orientation='horizontal'] > .ggb-tabs__bar {
     box-shadow: inset 0 calc(-1 * var(--ggb-tabs-lineThickness)) 0 var(--ggb-tabs-lineColor);
   }
   .ggb-tabs[data-orientation='vertical'] .ggb-tabs__list {
     flex-direction: column;
     flex: none;
+  }
+  .ggb-tabs[data-appearance='line'][data-orientation='vertical'] .ggb-tabs__list {
     border-inline-end: var(--ggb-tabs-lineThickness) solid var(--ggb-tabs-lineColor);
   }
 
@@ -84,6 +86,7 @@
   .ggb-tabs__scroll {
     position: absolute;
     inset-block-end: var(--ggb-tabs-lineThickness);
+    z-index: 1;
     display: flex;
     align-items: center;
     block-size: var(--ggb-tabs-fadeSize);
@@ -137,8 +140,10 @@
   }
   @media (hover: hover) {
     .ggb-tabs__trigger:not(:disabled):hover {
-      --_surface: var(--ggb-tabs-trigger-surface-hover);
       --_content: var(--ggb-tabs-trigger-content-hover);
+    }
+    .ggb-tabs[data-appearance='line'] .ggb-tabs__trigger:not(:disabled):hover {
+      --_surface: var(--ggb-tabs-trigger-surface-hover);
     }
   }
   .ggb-tabs__trigger:disabled {
@@ -170,8 +175,40 @@
     inset-inline-end: calc(-1 * var(--ggb-tabs-lineThickness));
     inline-size: var(--ggb-tabs-trigger-indicatorThickness);
   }
-  .ggb-tabs__trigger[aria-selected='true']::after {
+  .ggb-tabs[data-appearance='line'] .ggb-tabs__trigger[aria-selected='true']::after {
     opacity: 1;
+  }
+
+  /* Contained: the bar is the container; the selected tab is raised (surface, shadow and elevation edge). */
+  .ggb-tabs[data-appearance='contained'] > .ggb-tabs__bar {
+    padding: var(--ggb-tabs-listPadding);
+    border-radius: var(--ggb-tabs-listRadius);
+    background: var(--ggb-tabs-listSurfaceColor);
+  }
+  .ggb-tabs[data-appearance='contained'] .ggb-tabs__list {
+    gap: 0;
+  }
+  /* Equal shares of the list, never narrower than the content. */
+  .ggb-tabs[data-appearance='contained'][data-orientation='horizontal'] .ggb-tabs__trigger {
+    flex: 1 1 0;
+    min-inline-size: max-content;
+  }
+  .ggb-tabs[data-appearance='contained'] .ggb-tabs__trigger:not(:disabled) {
+    --_content: var(--ggb-tabs-trigger-content-default);
+  }
+  .ggb-tabs[data-appearance='contained'] .ggb-tabs__trigger {
+    border-radius: var(--ggb-tabs-trigger-containedRadius);
+    transition-property: background-color, color, box-shadow;
+  }
+  .ggb-tabs[data-appearance='contained'] .ggb-tabs__trigger[aria-selected='true'] {
+    --_surface: var(--ggb-tabs-trigger-selectedSurfaceColor);
+    box-shadow:
+      inset 0 0 0 var(--ggb-tabs-trigger-edgeThickness) var(--ggb-tabs-trigger-elevationColor),
+      var(--ggb-tabs-trigger-shadowSelected);
+  }
+  .ggb-tabs[data-appearance='contained'] .ggb-tabs__scroll {
+    inset-block: var(--ggb-tabs-listPadding);
+    block-size: auto;
   }
 
   .ggb-tabs__trigger-label {
@@ -214,8 +251,15 @@
     }
   }
   @media (forced-colors: active) {
-    .ggb-tabs[data-orientation='horizontal'] > .ggb-tabs__bar {
+    .ggb-tabs[data-appearance='line'][data-orientation='horizontal'] > .ggb-tabs__bar {
       border-block-end: 1px solid CanvasText;
+    }
+    .ggb-tabs[data-appearance='contained'] > .ggb-tabs__bar {
+      border: 1px solid CanvasText;
+    }
+    .ggb-tabs[data-appearance='contained'] .ggb-tabs__trigger[aria-selected='true'] {
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
     }
     .ggb-tabs__trigger::after {
       background: Highlight;

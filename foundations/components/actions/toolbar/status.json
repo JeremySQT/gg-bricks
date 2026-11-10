@@ -128,12 +128,23 @@
     "Gate question 5 resolved (user, 2026-11-09): Toolbar v1 without toggle buttons; toggles later with a dedicated component or an IconButton pressed prop, on demand.",
     "The toolbar size reaches its items through the ButtonGroup context key (ggb:button-group); Popover content resets it and Menu no longer does (gate question 4).",
     "Roving focus from lib/roving-focus: keys handled in the capture phase and only when they come from an item, so that a Menu trigger in a vertical toolbar moves focus instead of opening, and keys inside an open menu or popover stay with it.",
-    "Round 2: the roving-focus module moved from src/lib into the Toolbar folder, Tabs using Bits UI Tabs; the shared rules (wrapping, Home and End, right-to-left, disabled items skipped) are checked by both browser suites."
+    "Round 2: the roving-focus module moved from src/lib into the Toolbar folder, Tabs using Bits UI Tabs; the shared rules (wrapping, Home and End, right-to-left, disabled items skipped) are checked by both browser suites.",
+    "Round 3: overflow Menu (More) instead of wrapping; moved units are hidden in place and offered as menu items built from their accessible name, icon and disabled state; choosing one clicks the original control. Menu and Popover triggers never move. A horizontal toolbar fills its inline size (otherwise the hidden items would feed back into its width)."
   ],
   "openDecisions": [],
   "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",
   "implementationNotes": [
     "Exports Toolbar and ToolbarSeparator.",
     "The module writes tabindex on the items (one 0, others -1) and keeps it in sync with a MutationObserver."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Round 3 of the wave 4 implementation review (user, 2026-11-10), recommendation 3 approved (\"toutes tes recommandations de 1 à 6\"): overflow Menu instead of wrapping; prop overflowLabel, part overflow; a horizontal toolbar fills its inline size. To re-present at the implementation gate (round 3).",
+      "sha256": {
+        "foundations/components/actions/toolbar/contract.json": "58e3b0fe784f9c11782acf1f5b2f33ed008fa612e3ff84e8853b24411abd7b9c"
+      },
+      "review": "Wave 4 implementation gate"
+    }
   ]
 }

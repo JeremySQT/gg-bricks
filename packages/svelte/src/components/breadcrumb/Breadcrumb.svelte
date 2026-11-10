@@ -61,18 +61,28 @@
 
   // Each entry takes the width of its content, so that the spacing is gap everywhere; when the line lacks room it may
   // shrink down to its label's first three characters (1 em each), or its whole label when shorter. The minimum is
-  // measured, since CSS has no minimum of "the smaller of a length and the content".
+  // measured, since CSS has no minimum of "the smaller of a length and the content". A truncated label is then fitted
+  // to its text: the native ellipsis drops whole characters and would leave up to one character's width before the
+  // separator, so the label box is narrowed to the characters that fit plus the ellipsis (the browser then draws the
+  // same characters and the ellipsis flush against the separator's gap).
   let listElement = $state<HTMLOListElement | null>(null);
   $effect(() => {
     const listNode = listElement;
     void [list, size, separator, leading, keep];
     if (!listNode || typeof ResizeObserver === 'undefined') return;
+    const canvas = document.createElement('canvas').getContext('2d');
     const apply = () => {
-      for (const entry of listNode.querySelectorAll<HTMLElement>('.ggb-breadcrumb__entry:not(.ggb-breadcrumb__more)')) {
-        const label = entry.querySelector<HTMLElement>('.ggb-breadcrumb__item-label');
-        if (!label || entry.querySelector('[data-icon-only]')) {
+      const entries = [...listNode.querySelectorAll<HTMLElement>('.ggb-breadcrumb__entry:not(.ggb-breadcrumb__more)')];
+      const labels = entries.map((e) =>
+        e.querySelector('[data-icon-only]') ? null : e.querySelector<HTMLElement>('.ggb-breadcrumb__item-label')
+      );
+      // 1. Minimums, measured on the whole labels.
+      labels.forEach((label) => label?.style.removeProperty('max-inline-size'));
+      entries.forEach((entry, i) => {
+        const label = labels[i];
+        if (!label) {
           entry.style.removeProperty('min-inline-size');
-          continue;
+          return;
         }
         // The fractional width when the label is whole (scrollWidth is rounded), its scroll width when truncated.
         const box = label.getBoundingClientRect().width;
@@ -80,7 +90,34 @@
         const keepWidth = Math.min(full, 3 * parseFloat(getComputedStyle(label).fontSize));
         const others = entry.getBoundingClientRect().width - box;
         entry.style.minInlineSize = `${others + keepWidth}px`;
-      }
+      });
+      // 2. Truncated labels fitted to the characters that show.
+      labels.forEach((label, i) => {
+        if (!label || label.scrollWidth <= label.clientWidth + 0.5) return;
+        const text = label.firstChild;
+        if (!(text instanceof Text) || !canvas) return;
+        const style = getComputedStyle(label);
+        canvas.font = style.font;
+        const ellipsis = canvas.measureText('…').width;
+        const room = label.getBoundingClientRect().width;
+        const range = document.createRange();
+        let fit = 0;
+        for (let n = text.length; n > 0; n--) {
+          range.setStart(text, 0);
+          range.setEnd(text, n);
+          const width = range.getBoundingClientRect().width;
+          if (width + ellipsis <= room) {
+            fit = width;
+            break;
+          }
+        }
+        if (fit <= 0) return;
+        const fitted = Math.ceil((fit + ellipsis) * 2) / 2 + 0.5;
+        // The entry's minimum follows, so that the narrowed label leaves no room after the separator.
+        const others = entries[i].getBoundingClientRect().width - room;
+        label.style.maxInlineSize = `${fitted}px`;
+        entries[i].style.minInlineSize = `${others + fitted}px`;
+      });
     };
     const observer = new ResizeObserver(apply);
     observer.observe(listNode);

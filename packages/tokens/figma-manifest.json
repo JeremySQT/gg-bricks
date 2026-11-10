@@ -3157,6 +3157,19 @@
     },
     {
       "collection": "Foundations · Primitives",
+      "name": "primitive/dimension/v320",
+      "path": "primitive.dimension.v320",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-dimension-v320)"
+      },
+      "values": {
+        "default": 320
+      }
+    },
+    {
+      "collection": "Foundations · Primitives",
       "name": "primitive/dimension/v360",
       "path": "primitive.dimension.v360",
       "type": "FLOAT",
@@ -5971,13 +5984,13 @@
       },
       "values": {
         "base": {
-          "alias": "Foundations · Primitives:primitive/dimension/v256"
+          "alias": "Foundations · Primitives:primitive/dimension/v320"
         },
         "brick": {
-          "alias": "Foundations · Primitives:primitive/dimension/v256"
+          "alias": "Foundations · Primitives:primitive/dimension/v320"
         },
         "orchid": {
-          "alias": "Foundations · Primitives:primitive/dimension/v256"
+          "alias": "Foundations · Primitives:primitive/dimension/v320"
         }
       }
     },

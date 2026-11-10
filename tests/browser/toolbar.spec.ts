@@ -148,11 +148,49 @@ test('computed values match the resolved tokens: gap, separator, item heights; n
       report.add(context, { size }, 'default', values);
     }
   }
-  const lines = await page
-    .locator('#wrap .ggb-button')
-    .evaluateAll((b) => [...new Set(b.map((e) => Math.round(e.getBoundingClientRect().top)))].length);
-  expect(lines).toBeGreaterThan(1);
   report.write('toolbar');
+});
+
+test('overflow: items that do not fit move into the More menu, in order, and work from there; they come back', async ({
+  page
+}) => {
+  const wrap = page.locator('#wrap');
+  // The narrow column holds two buttons and the More trigger; the line never wraps.
+  const centers = await wrap
+    .locator('button:visible')
+    .evaluateAll((b) => b.map((e) => e.getBoundingClientRect().top + e.getBoundingClientRect().height / 2));
+  expect(Math.max(...centers) - Math.min(...centers)).toBeLessThanOrEqual(1);
+  const more = wrap.locator('.ggb-toolbar__overflow button').first();
+  await expect(more).toHaveAttribute('aria-label', 'More');
+  await more.click();
+  const items = wrap.locator('.ggb-toolbar__overflow [role="menuitem"]');
+  await expect.poll(() => items.count()).toBeGreaterThan(0);
+  const moved = (await items.allTextContents()).map((t) => t.trim());
+  const shown = (await wrap.locator('> button:visible').allTextContents()).map((t) => t.trim());
+  expect([...shown, ...moved]).toEqual(['Assign', 'Move', 'Label', 'Archive', 'Delete']);
+  // The playground: Download moves first at 390 px, and choosing it activates the button.
+  await page.keyboard.press('Escape');
+  await page.setViewportSize({ width: 390, height: 900 });
+  await expect(page.locator('#t-download')).toBeHidden();
+  await expect(page.locator('#t-filter-trigger')).toBeVisible();
+  await page.focus('#t-copy');
+  await page.keyboard.press('End');
+  await expect(page.locator('#play .ggb-toolbar__overflow button').first()).toBeFocused();
+  await page.keyboard.press('Enter');
+  await page.locator('#play .ggb-toolbar__overflow [role="menuitem"]', { hasText: 'Download' }).click();
+  await expect(page.getByTestId('last')).toHaveText('Last: download');
+  // The disabled Delete is offered disabled when it moves.
+  await page.setViewportSize({ width: 300, height: 900 });
+  await page.locator('#play .ggb-toolbar__overflow button').first().click();
+  await expect(page.locator('#play .ggb-toolbar__overflow [role="menuitem"]', { hasText: 'Delete' })).toHaveAttribute(
+    'aria-disabled',
+    'true'
+  );
+  await page.keyboard.press('Escape');
+  // Room returns: everything is back on the line and the More trigger goes away.
+  await page.setViewportSize({ width: 1280, height: 1000 });
+  await expect(page.locator('#t-download')).toBeVisible();
+  await expect(page.locator('#play .ggb-toolbar__overflow')).toBeHidden();
 });
 
 test('automated accessibility audit and screenshots in light and dark, desktop and mobile', async ({ page }) => {

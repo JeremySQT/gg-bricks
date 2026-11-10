@@ -3,7 +3,7 @@
   "componentId": "pagination",
   "family": "navigation",
   "wave": 4,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Move through a long list or table split into numbered pages.",
     "useCases": ["Paging through a table of results.", "Server-rendered pages with links (href with {page})."],
@@ -59,13 +59,37 @@
       "revision": {
         "paths": ["foundations/components/navigation/pagination/contract.json"],
         "sha256": {
-          "foundations/components/navigation/pagination/contract.json": "8e1321198a098a910c5c6c008b736b8248a3ba3eedc45366f818ca91cd575330"
+          "foundations/components/navigation/pagination/contract.json": "082d8e2b2a1100544c2fcd0ba8ee8427d705d81d237da89d9e81a78fc5a45dd7"
         }
       },
-      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\".",
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendments of 2026-11-09 and 2026-11-10 accepted with the round 2 implementation review (\"Je valide le second tour\"): typography.label.{size} instead of typography.numeral.{size}; showEdges, firstLabel, lastLabel, parts first and last. Digests re-recorded.",
       "note": null
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Pagination: constant item count, link mode, focus after activation, first and last buttons (showEdges, round 2).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/pagination/Pagination.svelte",
+          "packages/svelte/src/components/pagination/contract.generated.ts",
+          "packages/svelte/src/components/pagination/pages.ts",
+          "packages/svelte/src/components/pagination/pagination.css",
+          "packages/svelte/src/components/pagination/tokens.generated.css",
+          "packages/svelte/src/components/pagination/types.ts",
+          "examples/pagination/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/pagination/Pagination.svelte": "ec007e2bf23612910691aea754fb205e2138ed0e4b89f9243087cde9bae97fef",
+          "packages/svelte/src/components/pagination/contract.generated.ts": "ae4ec3dc003a3b2ec56c7f270e8d61f8424f73997f42665ef363a366ec8f8ce0",
+          "packages/svelte/src/components/pagination/pages.ts": "482a91b9bd25fc695aaee24c43cc942f714361041593ebb68e4191fe0ac3a75b",
+          "packages/svelte/src/components/pagination/pagination.css": "066fa9a86bd736460c9334eb364c2b486cec9d8d47b420ff8c0b9a89e1840991",
+          "packages/svelte/src/components/pagination/tokens.generated.css": "bca257e902ef9cea1da6a3406a584764b70dae72cfaeca8cc1142966feb4ab70",
+          "packages/svelte/src/components/pagination/types.ts": "11d36c188c6cb9b9ba00196a0bce68292c1640b3bfb1fb0cde4ea39127d5604a",
+          "examples/pagination/App.svelte": "cd6d459e6a8ecc9e20a51909a57f3dbde3b9d8d8110dddc0ed75cdf07c595c8b"
+        }
+      },
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794320983-c775, round 2), after round 1 feedback applied: \"Je valide le second tour et toutes tes recommandations de 1 à 6. Fait ce qui te semble le mieux\" (Tabs, Breadcrumb and Toolbar continued into a round 3).",
+      "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -107,6 +131,12 @@
       "name": "Round 2: npm run verify passed; npm run test:browser 303 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
       "result": "passed",
       "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr"
     }
   ],
   "decisionsTaken": [
@@ -119,7 +149,7 @@
     "Round 2: showEdges adds first and last IconButtons (Phosphor caret-double glyphs), disabled at the ends and staying in place."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 implementation gate pending: the user reviews the preview pages, then the approval is recorded.",
+  "nextAction": "Figma parity (skill ggb-figma), grouped with the rest of wave 4 once Tabs, Breadcrumb and Toolbar pass round 3.",
   "implementationNotes": [
     "Exports Pagination.",
     "The item algorithm lives in pages.ts with a unit test (tests/pagination-entries.test.ts) over every page of counts 1 to 40 and siblings 0 to 3.",
@@ -135,7 +165,8 @@
       "sha256": {
         "foundations/components/navigation/pagination/contract.json": "c0369d5ae7b339ae1a5f581e586f7e082a8b9eb0d27e3d3e0ae95188c35375e7"
       },
-      "review": "Wave 4 implementation gate"
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 2 implementation approval (2026-11-10)."
     },
     {
       "date": "2026-11-09",
@@ -143,7 +174,8 @@
       "sha256": {
         "foundations/components/navigation/pagination/contract.json": "082d8e2b2a1100544c2fcd0ba8ee8427d705d81d237da89d9e81a78fc5a45dd7"
       },
-      "review": "Wave 4 implementation gate"
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 2 implementation approval (2026-11-10)."
     }
   ]
 }

@@ -10,6 +10,10 @@
     "label": {
       "type": "string"
     },
+    "appearance": {
+      "values": ["contained", "line"],
+      "default": "contained"
+    },
     "size": {
       "values": ["sm", "md", "lg"],
       "default": "md"
@@ -48,6 +52,9 @@
   "tokens": {
     "lineColor": "color.border.subtle",
     "lineThickness": "border.width.default",
+    "listSurfaceColor": "color.surface.muted",
+    "listRadius": "radius.overlay",
+    "listPadding": "space.content.xs",
     "listGap": "space.content.xs",
     "panelGap": "space.content.lg",
     "fadeSize": "size.control.{size}",
@@ -102,6 +109,11 @@
         "indicatorColor": "color.item.indicator",
         "indicatorThickness": "border.width.strong",
         "radius": "radius.control",
+        "containedRadius": "radius.container",
+        "selectedSurfaceColor": "color.surface.raised",
+        "shadowSelected": "shadow.raised",
+        "elevationColor": "color.elevation.border",
+        "edgeThickness": "border.width.default",
         "minHeight": "size.control.{size}",
         "paddingInline": "space.control.padding-inline.{size}",
         "gap": "space.control.gap.{size}",
@@ -112,9 +124,9 @@
       },
       "rules": [
         "Arrange leading, label and trailing in that order, centered in the block dimension; label is required plain text in typography on one line, never truncated, and is the accessible name of the tab. leading holds at most one decorative icon of iconSize; trailing holds at most one Counter or Badge (a count of items in the panel, a New badge), sized by the tab.",
-        "The tab block size is minHeight; paddingInline on both sides, gap between parts, radius corners for its surface.",
-        "An unselected tab paints its label and icon in idleColor in the default interaction and in content otherwise; a selected tab paints them in content. interaction resolves in this order: disabled, hover, default; hover is the pointer over the tab, painting surface behind it.",
-        "The selected tab shows indicator, a bar of indicatorThickness in indicatorColor on the edge that faces the panels (the block end of a horizontal list, the inline end of a vertical list), over the list's line. Selection is never conveyed by color alone.",
+        "The tab block size is minHeight; paddingInline on both sides, gap between parts.",
+        "With appearance line, an unselected tab paints its label and icon in idleColor in the default interaction and in content otherwise, and a selected tab paints them in content; hover (the pointer over the tab) paints surface behind it with radius corners. With appearance contained, every tab paints its label and icon in content, the selected tab being shown by its raised surface; there is no hover surface (it would match the container). interaction resolves in this order: disabled, hover, default.",
+        "With appearance contained, the selected tab is raised: painted in selectedSurfaceColor with shadowSelected, an edge of edgeThickness in elevationColor and containedRadius corners. With appearance line, the selected tab shows indicator, a bar of indicatorThickness in indicatorColor on the edge that faces the panels (the block end of a horizontal list, the inline end of a vertical list), over the list's line. Selection is never conveyed by color alone.",
         "A disabled tab is shown in the disabled colors, cannot be selected, and is skipped by the arrow keys.",
         "Colors and the indicator change over motionDuration with easingStandard; no transition under reduced motion."
       ]
@@ -159,12 +171,24 @@
       "content": "trigger.indicatorColor",
       "surface": "color.surface.default",
       "minimum": 3
+    },
+    {
+      "content": "trigger.content",
+      "surface": "color.surface.raised",
+      "minimum": 4.5,
+      "note": "The selected tab of a contained list."
+    },
+    {
+      "content": "trigger.content",
+      "surface": "color.surface.muted",
+      "minimum": 4.5,
+      "note": "Unselected tabs on a contained list."
     }
   ],
   "rules": [
     "Tabs show one of several panels of related content at a time in the same place (sections of a settings page, views of a record), with a list of tabs to switch between them. They do not navigate to another page (that is a navigation menu with links), do not hold a form choice (that is a RadioGroup or a SegmentedControl) and never hide steps of a sequence.",
     "list is exposed as a tab list named by label when it is non-empty; each trigger is a tab exposing whether it is selected and which panel it controls. There is always exactly one selected tab: value names it; when value matches no enabled tab, the first enabled tab is selected.",
-    "orientation horizontal places the tabs in a row in source order, separated by listGap, above the panels, with a line of lineThickness in lineColor along the list's block end across the whole width; panels start panelGap below the list. orientation vertical stacks the tabs at the inline start, each as wide as the widest tab, with the line along the list's inline end; panels start panelGap after the list.",
+    "appearance contained (the default) shows the list as a container painted in listSurfaceColor with listRadius corners and listPadding around the tabs; in a horizontal list it fills the inline size it is given and the tabs share it equally, never narrower than their content; in a vertical list every tab is as wide as the widest. appearance line places the tabs on a line of lineThickness in lineColor along the edge that faces the panels, across the whole list, the tabs separated by listGap. orientation horizontal places the list above the panels, which start panelGap below it; orientation vertical places it at the inline start, the panels starting panelGap after it.",
     "When a horizontal list does not fit its inline size, it scrolls inline without a visible scrollbar and keeps the focused tab and the selected tab visible; tabs never wrap or shrink. Each edge beyond which tabs are hidden shows a scroll button there, the tabs being invisible under it (fadeSize from the edge) and fading in over half of fadeSize after it; a tab scrolled into view clears that area. The scroll button is an IconButton of the tabs' size, intent neutral and appearance ghost, with a chevron towards that edge (mirrored in right-to-left text), that scrolls the list by most of its visible width. Scroll buttons are not stops in sequential focus and are hidden from assistive technology, since the arrow keys reach every tab; pointer, touch and trackpad scrolling also work.",
     "Focus: the list is one stop in sequential focus, landing on the selected tab; Tab from the list moves to the selected panel (or its first focusable element). The roving focus rules are shared with Toolbar: in a horizontal list Right and Left Arrow (reversed in right-to-left text) move focus to the next and previous enabled tab, wrapping at the ends; in a vertical list Down and Up Arrow do; Home and End move it to the first and last enabled tab; disabled tabs are skipped.",
     "With activation automatic, moving focus to a tab selects it; with activation manual, focus moves without selecting and Enter or Space selects the focused tab (for panels that are slow to show). A pointer press on an enabled tab selects it and focuses it. Selecting a tab emits valueChange when the value changed.",

@@ -94,7 +94,12 @@ export { default as Tabs } from './components/tabs/Tabs.svelte';
 export { default as TabsTrigger } from './components/tabs/TabsTrigger.svelte';
 export { default as TabsPanel } from './components/tabs/TabsPanel.svelte';
 export type { TabsProps, TabsTriggerProps, TabsPanelProps } from './components/tabs/types.js';
-export type { TabsSize, TabsOrientation, TabsActivation } from './components/tabs/contract.generated.js';
+export type {
+  TabsAppearance,
+  TabsSize,
+  TabsOrientation,
+  TabsActivation
+} from './components/tabs/contract.generated.js';
 export { default as Toolbar } from './components/toolbar/Toolbar.svelte';
 export { default as ToolbarSeparator } from './components/toolbar/ToolbarSeparator.svelte';
 export type { ToolbarProps, ToolbarSeparatorProps } from './components/toolbar/types.js';
