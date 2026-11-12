@@ -3,7 +3,7 @@
   "componentId": "tabs",
   "family": "navigation",
   "wave": 4,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Show one of several panels of related content in the same place, with a list of tabs to switch between them.",
     "useCases": [
@@ -236,6 +236,22 @@
       "result": "passed",
       "date": "2026-11-12",
       "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build) and npm run check:approvals (438 digests, 0 errors)",
+      "result": "passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the forced-colors fixes",
+      "result": "319 passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "Documentation: npm run build:docs (48 pages, every live block compiled) and tests/browser/docs-site.spec.ts (37 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "reports/site/docs/"
     }
   ],
   "decisionsTaken": [
@@ -254,7 +270,7 @@
     "Wave 4 Figma parity gate (user, 2026-11-12): the Figma Tabs is the tab list only (the panels stay in the contract and the code, which link them to the tabs); the selected tab of a line list paints its label in the indicator color (option C, role selectedColor), and hover is painted behind unselected tabs only in both appearances."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (skill ggb-docs): the maintained page, the docs-site check, the site preview for the review; then the final consistency pass and the pull request of the wave.",
+  "nextAction": "Done (wave 4, 2026-11-12): pull request of branch wave/4 to main. Library publication and package release follow the delivery workflow (ggb-maintain) on explicit authorization.",
   "implementationNotes": [
     "Exports Tabs, TabsTrigger and TabsPanel.",
     "Panels stay mounted and are hidden with the hidden attribute (form state is kept).",

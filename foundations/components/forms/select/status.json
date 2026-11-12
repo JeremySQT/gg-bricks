@@ -3,7 +3,7 @@
   "componentId": "select",
   "family": "forms",
   "wave": 4,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Choose one value from a list of known options in a form, shown collapsed in a field.",
     "useCases": [
@@ -227,6 +227,22 @@
       "result": "passed",
       "date": "2026-11-12",
       "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build) and npm run check:approvals (438 digests, 0 errors)",
+      "result": "passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the forced-colors fixes",
+      "result": "319 passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "Documentation: npm run build:docs (48 pages, every live block compiled) and tests/browser/docs-site.spec.ts (37 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "reports/site/docs/"
     }
   ],
   "decisionsTaken": [
@@ -247,7 +263,7 @@
     "Round 2: thin scrollbar in scrollbarColor on the list, which scrolls inside the panel padding (the scrollbar never meets the round corners)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (skill ggb-docs): the maintained page, the docs-site check, the site preview for the review; then the final consistency pass and the pull request of the wave.",
+  "nextAction": "Done (wave 4, 2026-11-12): pull request of branch wave/4 to main. Library publication and package release follow the delivery workflow (ggb-maintain) on explicit authorization.",
   "implementationNotes": [
     "Exports Select and the SelectOptionsRecord type.",
     "The trigger toggles the panel through popovertarget (exempt from light dismiss); keys open it through the open state.",

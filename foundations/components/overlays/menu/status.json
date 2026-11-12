@@ -290,7 +290,7 @@
     "Contract fact added during implementation: group leadingSize and leadingGap roles (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 changes accepted with the wave 4 implementation gate; the Figma master was re-checked at the wave 4 Figma parity (unchanged); the documentation is re-checked with the wave 4 documentation step.",
+  "nextAction": "Wave 4 changes accepted with the wave 4 gates (implementation, Figma parity unchanged, documentation); forced-colors fixes of 2026-11-12 (focused label without backplate, disabled items in GrayText) accepted in the final consistency pass. Merged with the wave 4 pull request.",
   "implementationNotes": [
     "Exports Menu, MenuItem, MenuSeparator and MenuGroup.",
     "The highlighted item is the focused item (roving focus through focus(), not aria-activedescendant); opening by pointer focuses the menu itself, so no item is highlighted until an arrow key or the pointer.",
