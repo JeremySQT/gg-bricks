@@ -227,7 +227,7 @@ test('computed values match the resolved tokens: field sizes and conditions, pan
   report.write('combobox');
 });
 
-test('forced colors keep the field boundary and show the focus; capture with the list open', async ({ page }) => {
+test('forced colors keep the field boundary, show the focus and the highlighted label', async ({ page }) => {
   await page.emulateMedia({ forcedColors: 'active' });
   const field = root(page, 'size-md').locator('.ggb-combobox__field');
   const outline = () =>
@@ -244,6 +244,12 @@ test('forced colors keep the field boundary and show the focus; capture with the
   expect(focused.style).toBe('solid');
   expect(focused.width).toBeGreaterThanOrEqual(rest.width);
   expect(focused.color).not.toBe(rest.color);
+  // The highlighted option paints its own system colors: no Canvas backplate hides its HighlightText label.
+  await expect(panelOf(page, 'size-md').locator('.ggb-combobox__option[data-highlighted]')).toHaveCSS(
+    'forced-color-adjust',
+    'none'
+  );
+  await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'));
   await capture(page, 'reports/components/combobox/svelte/forced-colors.png');
 });
 

@@ -306,7 +306,9 @@ test('computed values match the resolved tokens: trigger sizes and conditions, p
   report.write('select');
 });
 
-test('focus ring whatever the modality; forced colors keep the boundary and show the highlight', async ({ page }) => {
+test('focus ring whatever the modality; forced colors keep the boundary and show the highlighted label', async ({
+  page
+}) => {
   const tokens = tokensFor('base-light-standard');
   await page.click('#size-md');
   await page.keyboard.press('Escape');
@@ -316,6 +318,9 @@ test('focus ring whatever the modality; forced colors keep the boundary and show
   expect(ring).toEqual({ style: 'solid', color: rgb(tokens['color.focus.ring']) });
   await page.emulateMedia({ forcedColors: 'active' });
   await page.keyboard.press('ArrowDown');
+  // The highlighted option paints its own system colors: no Canvas backplate hides its HighlightText label.
+  await expect(page.locator('.ggb-select__option[data-highlighted]').first()).toHaveCSS('forced-color-adjust', 'none');
+  await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'));
   await capture(page, `${out}/forced-colors.png`);
 });
 

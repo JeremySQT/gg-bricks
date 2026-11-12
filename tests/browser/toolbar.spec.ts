@@ -198,11 +198,18 @@ test('overflow: the More trigger stays inside the toolbar; a danger item keeps i
 }) => {
   for (const width of [390, 340]) {
     await page.setViewportSize({ width, height: 900 });
-    const fits = await page.locator('#play').evaluate((bar) => {
-      const more = bar.querySelector('.ggb-toolbar__overflow')!.getBoundingClientRect();
-      return more.right <= bar.getBoundingClientRect().right + 0.5;
-    });
-    expect(fits, `${width}`).toBe(true);
+    // Measured once the toolbar's resize observer has moved the controls (it runs before the next paint, so a reader
+    // never sees the intermediate layout; a measure taken right after the resize can).
+    await expect
+      .poll(
+        () =>
+          page.locator('#play').evaluate((bar) => {
+            const more = bar.querySelector('.ggb-toolbar__overflow')!.getBoundingClientRect();
+            return more.right <= bar.getBoundingClientRect().right + 0.5;
+          }),
+        { message: `${width}` }
+      )
+      .toBe(true);
   }
   await page.setViewportSize({ width: 1280, height: 1000 });
   await page.locator('#wrap .ggb-toolbar__overflow button').first().click();

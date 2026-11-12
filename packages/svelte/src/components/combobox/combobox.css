@@ -290,9 +290,12 @@
     .ggb-combobox__panel {
       border: 1px solid CanvasText;
     }
+    /* System colors already; none keeps the browser from painting a Canvas backplate behind the label, which
+       would hide the HighlightText. */
     .ggb-combobox__option[data-highlighted] {
       background: Highlight;
       color: HighlightText;
+      forced-color-adjust: none;
     }
     .ggb-combobox__option-check {
       color: currentColor;
