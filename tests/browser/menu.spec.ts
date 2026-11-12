@@ -246,11 +246,14 @@ test('computed values match the resolved tokens: panel, items default, highlight
   report.write('menu');
 });
 
-test('forced colors keep an edge on the panel and show the highlight', async ({ page }) => {
+test('forced colors keep an edge on the panel and show the highlighted label', async ({ page }) => {
   await page.focus('#actions-trigger');
   await page.keyboard.press('Enter');
   await page.emulateMedia({ forcedColors: 'active' });
   expect(await page.locator('#actions').evaluate((m) => getComputedStyle(m).borderTopStyle)).toBe('solid');
+  // The focused item paints its own system colors: no Canvas backplate hides its HighlightText label.
+  await expect(page.locator('#actions .ggb-menu__item:focus')).toHaveCSS('forced-color-adjust', 'none');
+  await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'));
   await capture(page, `${out}/forced-colors.png`);
 });
 

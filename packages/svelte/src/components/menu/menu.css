@@ -133,9 +133,12 @@
     .ggb-menu {
       border: 1px solid CanvasText;
     }
+    /* System colors already; none keeps the browser from painting a Canvas backplate behind the label, which
+       would hide the HighlightText. The value is inherited: the leading icon and the shortcut follow the item. */
     .ggb-menu__item:focus {
       background: Highlight;
       color: HighlightText;
+      forced-color-adjust: none;
     }
   }
 }
