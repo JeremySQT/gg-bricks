@@ -1,5 +1,5 @@
 // Family pages layout (use_figma body), 2026-10-30.
-// User request: the library pages (Actions, Content, Forms, and Feedback and Overlays since 2026-11-03) open with an overview frame (family description, an
+// User request: the library pages (Actions, Content, Forms, Feedback and Overlays since 2026-11-03, Navigation since 2026-11-10) open with an overview frame (family description, an
 // isometric cover of live instances, one card per component linking to its section and its specification) and each
 // component section starts with a header (name, short description, links). Set FAMILY and run once per family; a
 // rerun replaces the overview and the headers, never duplicates them. Masters keep their IDs: only their position
@@ -26,6 +26,13 @@ const FAMILIES = {
         '225:2',
         'Takes the reader to another page, a file, an email address, a phone number or a printable version.',
         ['_Link/Destination'],
+        {}
+      ],
+      [
+        'Toolbar',
+        '495:23',
+        'Groups controls that act on the same context, as one stop in sequential focus with the arrow keys inside.',
+        [],
         {}
       ]
     ]
@@ -84,10 +91,24 @@ const FAMILIES = {
         [],
         {}
       ],
+      [
+        'Combobox',
+        '495:21',
+        'Chooses one value from a long list of options by typing to narrow it.',
+        [],
+        { Content: 'text' }
+      ],
       ['Field', '288:4', 'Gives one form control its label, description, required asterisk and error message.', [], {}],
       ['InputText', '288:5', 'Takes one line of free text: a name, an email address, a search.', [], {}],
       ['Radio', '288:6', 'One option of a RadioGroup, never used on its own.', [], { Selection: 'on' }],
       ['RadioGroup', '288:7', 'Asks for exactly one choice among a few options that all stay visible.', [], {}],
+      [
+        'Select',
+        '495:22',
+        'Chooses one value from a list of options, shown collapsed in a field.',
+        [],
+        { Content: 'value' }
+      ],
       ['Switch', '288:8', 'Turns a setting on or off, with immediate effect.', [], { Selection: 'on' }],
       ['Textarea', '288:9', 'Takes free text on several lines: a comment, a description, an address.', [], {}]
     ]
@@ -134,6 +155,35 @@ const FAMILIES = {
       ]
     ]
   },
+  Navigation: {
+    page: '495:16',
+    description:
+      'Components that help people find their way and move through content: where they are in the site (Breadcrumb), which page of a long list (Pagination), which panel of related content (Tabs), which sections are open (Accordion).',
+    components: [
+      [
+        'Accordion',
+        '495:17',
+        'Shows or hides sections of content under headings, so that a long page can be scanned.',
+        [],
+        {}
+      ],
+      [
+        'Breadcrumb',
+        '495:18',
+        'Shows where the current page sits in the site hierarchy, with a link to each ancestor.',
+        ['_Breadcrumb/Slash', '_Breadcrumb/Separator'],
+        { Size: 'md' }
+      ],
+      ['Pagination', '495:19', 'Moves through a long list or table split into numbered pages.', [], {}],
+      [
+        'Tabs',
+        '495:20',
+        'Shows one of several panels of related content, with a list of tabs to switch between them.',
+        [],
+        {}
+      ]
+    ]
+  },
   Overlays: {
     page: '407:119',
     description:
@@ -164,9 +214,14 @@ const PAD = 72;
 const SECTION_PAD = 80;
 const GAP = 160;
 // Largest enlargement of the cover content and of the card previews: Content's components are small boxes.
-const ZOOM = { Actions: [1.5, 1.25], Content: [2.6, 2], Forms: [1.5, 1.25], Feedback: [1.2, 1], Overlays: [1.2, 0.8] }[
-  FAMILY
-];
+const ZOOM = {
+  Actions: [1.5, 1.25],
+  Content: [2.6, 2],
+  Forms: [1.5, 1.25],
+  Feedback: [1.2, 1],
+  Overlays: [1.2, 0.8],
+  Navigation: [1.2, 0.9]
+}[FAMILY];
 
 // Resources: variables, text styles, effect styles, collections, Phosphor glyphs.
 const vars = await figma.variables.getLocalVariablesAsync();
@@ -236,7 +291,8 @@ async function chip(label, target) {
 // SETS maps a component name of the family to its component set (filled from the sections below).
 function inst(name, props = {}) {
   const set = SETS[name];
-  const i = set.defaultVariant.createInstance();
+  // A single component (Accordion) or a component set.
+  const i = (set.type === 'COMPONENT_SET' ? set.defaultVariant : set).createInstance();
   const keys = Object.keys(i.componentProperties);
   const p = {};
   const nested = [];
@@ -307,7 +363,19 @@ function packVariants(set, gap) {
 const [B, IB, L] = ['Button', 'IconButton', 'Link'];
 const SETS = {};
 const COVERS = {
+  Navigation: [
+    [{}, () => inst('Tabs')],
+    [{ appearance: 'dark' }, () => inst('Breadcrumb', { Size: 'md' })],
+    [{ brand: 'brick' }, () => inst('Pagination')],
+    [{}, () => inst('Accordion')],
+    [{ brand: 'orchid' }, () => inst('Tabs', { Appearance: 'line' })],
+    [{ appearance: 'dark', brand: 'orchid' }, () => inst('Pagination', { Size: 'sm' })],
+    [{ brand: 'brick' }, () => inst('Breadcrumb', { Separator: 'slash' })],
+    [{ appearance: 'dark' }, () => inst('Tabs')],
+    [{ brand: 'orchid' }, () => inst('Accordion')]
+  ],
   Actions: [
+    [{ brand: 'orchid' }, () => inst('Toolbar')],
     [{}, () => inst(B, { Label: 'Create project', 'Show leading': true })],
     [
       { appearance: 'dark' },
@@ -533,6 +601,8 @@ const COVERS = {
     ]
   ],
   Forms: [
+    [{ appearance: 'dark' }, () => inst('Select', { Content: 'value' })],
+    [{ brand: 'orchid' }, () => inst('Combobox', { Content: 'text' })],
     [{}, () => inst('Field')],
     [{ appearance: 'dark' }, () => inst('Switch', { Label: 'Notifications', Selection: 'on' })],
     [{ brand: 'brick' }, () => inst('Checkbox', { Label: 'Remember me', Selection: 'on' })],
@@ -673,7 +743,9 @@ for (const [name, pid] of fam.components) {
   const p = await figma.getNodeByIdAsync(pid);
   await p.loadAsync();
   specRoot[name] = p.children.find((n) => n.name === `${name} — Specification`).id;
-  SETS[name] = sections[name].children.find((n) => n.type === 'COMPONENT_SET' && n.name === name);
+  SETS[name] = sections[name].children.find(
+    (n) => (n.type === 'COMPONENT_SET' || n.type === 'COMPONENT') && n.name === name
+  );
 }
 
 // 1. Overview frame at the top of the page.
@@ -723,7 +795,9 @@ for (const [name, , summary, , sampleProps] of fam.components) {
   preview.primaryAxisSizingMode = 'FIXED';
   preview.counterAxisSizingMode = 'FIXED';
   preview.resize(preview.width, 120);
-  const set = sections[name].children.find((n) => n.type === 'COMPONENT_SET' && n.name === name);
+  const set = sections[name].children.find(
+    (n) => (n.type === 'COMPONENT_SET' || n.type === 'COMPONENT') && n.name === name
+  );
   const sample = inst(name, sampleProps);
   preview.appendChild(sample);
   fit(sample, ZOOM[1], preview.width - 32, 96);
@@ -772,7 +846,7 @@ for (const [name, , summary, parts] of fam.components) {
       )
     );
   // The properties a designer sets on an instance, read from the component set.
-  const set = s.children.find((n) => n.type === 'COMPONENT_SET' && n.name === name);
+  const set = s.children.find((n) => (n.type === 'COMPONENT_SET' || n.type === 'COMPONENT') && n.name === name);
   const props = figma.createAutoLayout('VERTICAL', { name: 'Properties', itemSpacing: 10 });
   props.paddingLeft = props.paddingRight = props.paddingTop = props.paddingBottom = 24;
   props.cornerRadius = 16;

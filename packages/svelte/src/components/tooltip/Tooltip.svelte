@@ -3,7 +3,6 @@
   // another trigger opens its tooltip at once (no hover delay) for a short while.
   let current: (() => void) | null = null;
   let lastShown = 0;
-  const SKIP_DELAY = 300;
 </script>
 
 <script lang="ts">
@@ -68,10 +67,13 @@
     const el = anchor();
     return !el || el.matches(':disabled, [aria-disabled="true"], [data-disabled]');
   };
-  const delay = () => {
+  // Durations come from the tooltip's tokens (component.tooltip.delay, skip-delay, close-delay), in ms or s.
+  const duration = (role: string) => {
     const el = tip;
-    const ms = el ? parseFloat(getComputedStyle(el).getPropertyValue('--ggb-tooltip-motionDelay')) : 0;
-    return Number.isFinite(ms) ? ms : 0;
+    const raw = el ? getComputedStyle(el).getPropertyValue(`--ggb-tooltip-${role}`).trim() : '';
+    const value = parseFloat(raw);
+    if (!Number.isFinite(value)) return 0;
+    return raw.endsWith('ms') ? value : raw.endsWith('s') ? value * 1000 : value;
   };
 
   let openTimer: ReturnType<typeof setTimeout> | undefined;
@@ -84,16 +86,16 @@
     // On touch a press activates the trigger; the tooltip never opens.
     if (event.pointerType === 'touch' || blocked()) return;
     cancel();
-    const skip = current !== null || performance.now() - lastShown < SKIP_DELAY;
+    const skip = current !== null || performance.now() - lastShown < duration('motionSkipDelay');
     if (skip) set(true);
-    else openTimer = setTimeout(() => set(true), delay());
+    else openTimer = setTimeout(() => set(true), duration('motionDelay'));
   }
   function pointerLeave() {
     clearTimeout(openTimer);
     // A short grace lets the pointer travel to the tooltip, which keeps it open.
     closeTimer = setTimeout(() => {
       if (!wrapper?.matches(':focus-within')) close();
-    }, 100);
+    }, duration('motionCloseDelay'));
   }
   function focusIn(event: FocusEvent) {
     if (blocked()) return;

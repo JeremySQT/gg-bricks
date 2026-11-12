@@ -8,16 +8,17 @@ Color is organized in three layers. Primitive ramps are generated in OKLCH with 
 
 ## Surfaces
 
-| Role                    | Use for                                                                                                                                 |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `color.surface.canvas`  | The page background, the backmost layer.                                                                                                |
-| `color.surface.default` | Regions and cards placed on the canvas. Same as the canvas in light, one step lighter in dark: separate them with a border or a shadow. |
-| `color.surface.subtle`  | Secondary regions set slightly apart: sidebars, table headers, code blocks, read-only areas.                                            |
-| `color.surface.muted`   | De-emphasized backdrops: tracks, empty placeholders, skeletons. Only primary and secondary content are guaranteed on it.                |
-| `color.surface.raised`  | Elements lifted above the default surface with `shadow.raised`: cards that must stand out, sticky bars.                                 |
-| `color.surface.overlay` | Floating layers above the page: menus, popovers, dialogs, with `shadow.overlay` or `shadow.modal`.                                      |
-| `color.surface.inverse` | Small elements in the opposite appearance: tooltips, snackbars. Text on it uses `color.content.inverse`.                                |
-| `color.surface.scrim`   | The dimming layer behind a modal window: it darkens the page while a dialog is open. Never a background for content.                    |
+| Role                    | Use for                                                                                                                                                                                                                            |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `color.surface.canvas`  | The page background, the backmost layer.                                                                                                                                                                                           |
+| `color.surface.default` | Regions and cards placed on the canvas. Same as the canvas in light, one step lighter in dark: separate them with a border or a shadow.                                                                                            |
+| `color.surface.subtle`  | Secondary regions set slightly apart: sidebars, table headers, code blocks, read-only areas.                                                                                                                                       |
+| `color.surface.muted`   | De-emphasized backdrops: tracks, empty placeholders, skeletons. Only primary and secondary content are guaranteed on it.                                                                                                           |
+| `color.surface.inset`   | A translucent tint that sets an area apart from whatever it sits on (darker in light, lighter in dark): the container of contained tabs. An item lifted inside it uses `color.surface.overlay`.                                    |
+| `color.surface.raised`  | Elements lifted above the default surface with `shadow.raised`: cards that must stand out, sticky bars.                                                                                                                            |
+| `color.surface.overlay` | Floating layers above the page: menus, popovers, dialogs, with `shadow.overlay` or `shadow.modal`; also an item lifted inside `color.surface.inset` (the selected contained tab), the lightest opaque surface in both appearances. |
+| `color.surface.inverse` | Small elements in the opposite appearance: tooltips, snackbars. Text on it uses `color.content.inverse`.                                                                                                                           |
+| `color.surface.scrim`   | The dimming layer behind a modal window: it darkens the page while a dialog is open. Never a background for content.                                                                                                               |
 
 <!-- site:tokens preview=color -->
 

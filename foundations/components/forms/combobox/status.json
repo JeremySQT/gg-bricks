@@ -1,0 +1,305 @@
+{
+  "formatStatus": "v1",
+  "componentId": "combobox",
+  "family": "forms",
+  "wave": 4,
+  "phase": "done",
+  "scope": {
+    "purpose": "Choose one value from a long list of options by typing to narrow it.",
+    "useCases": [
+      "A country or a city among hundreds.",
+      "A person or a project, filtered locally.",
+      "Options searched on a server (filter none, options updated from inputChange)."
+    ],
+    "exclusions": [
+      "Free text as a value (creatable options) in v1.",
+      "Multiple selection with tags (MultiSelect, later).",
+      "Inline autocompletion of the typed text.",
+      "Loading indicator inside the panel in v1 (the application can show it next to the field)."
+    ],
+    "alternatives": ["Select for a short list without search.", "InputText for free text."]
+  },
+  "dependencies": ["icon", "lib/overlay"],
+  "fixtures": [
+    "Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading icon example.",
+    "A country list fixture in examples for long lists."
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/combobox/contract.json",
+      "sha256": "1c643e2647888767834923c9106984a39ee300404c98e749ff60915d6437340a"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/combobox (495:21)",
+      "library": "Forms (343:1640), section Combobox (499:1417)",
+      "componentSet": "499:2549",
+      "specification": "516:2",
+      "ledger": "reports/components/combobox/figma/ledger.json",
+      "parity": "reports/components/combobox/figma/parity.json",
+      "screenshots": [
+        "reports/components/combobox/figma/master-set.png",
+        "reports/components/combobox/figma/specification.png"
+      ],
+      "builders": [
+        "authoring/adapters/figma/combobox-master.plugin.js",
+        "authoring/adapters/figma/listbox-select-master.plugin.js",
+        "authoring/adapters/figma/wave4-spec.plugin.js",
+        "authoring/adapters/figma/wave4-parity.plugin.js",
+        "authoring/adapters/figma/wave4-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/combobox/figma/blueprint-anatomy.png",
+          "node": "516:210"
+        }
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/combobox/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/combobox",
+      "files": [
+        "packages/svelte/src/components/combobox/Combobox.svelte",
+        "packages/svelte/src/components/combobox/types.ts",
+        "packages/svelte/src/components/combobox/combobox.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/combobox/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/combobox",
+      "preview": "dist/previews/combobox.html (npm run build && npm run build:preview combobox)",
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4), page combobox.html"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/choice.test.ts"],
+      "browser": ["tests/browser/combobox.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
+      "evidence": "reports/components/combobox/svelte/"
+    },
+    "humanDocs": "documentation/components/combobox.md",
+    "agentDocs": "documentation/index.json (entry combobox); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Combobox compound contract: bindable value, inputValue and open, options records, filter contains/none, emptyLabel, placeholder, label, size, disabled, readonly, invalid, required; strict value; children panel (with empty state), option, group; WAI-ARIA combobox keyboard with the first match highlighted.",
+      "revision": {
+        "paths": ["foundations/components/forms/combobox/contract.json"],
+        "sha256": {
+          "foundations/components/forms/combobox/contract.json": "1c643e2647888767834923c9106984a39ee300404c98e749ff60915d6437340a"
+        }
+      },
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendments of 2026-11-09 and 2026-11-10 accepted with the round 2 implementation review (\"Je valide le second tour\"): panel role scrollbarColor. Digests re-recorded. Amendment of 2026-11-10 (wave 4 implementation review, round 4): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
+      "note": "Tab behaviour (focus leaving restores the label or clears an empty value) may be revisited at the implementation review (user, 2026-11-09)."
+    },
+    "implementation": {
+      "scope": "Combobox (own primitive, manual popover): filtering ignoring case and accents, strict value, empty state, server search (filter none), thin scrollbar (round 2).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/combobox/Combobox.svelte",
+          "packages/svelte/src/components/combobox/combobox.css",
+          "packages/svelte/src/components/combobox/contract.generated.ts",
+          "packages/svelte/src/components/combobox/tokens.generated.css",
+          "packages/svelte/src/components/combobox/types.ts",
+          "examples/combobox/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/combobox/Combobox.svelte": "24aea6bb49058685c3e8c890158ea25f00fea2a591ff8b5c890b5461bda89840",
+          "packages/svelte/src/components/combobox/combobox.css": "93e97b2cbbc480a6caff082e88ac64c80ff10649fb4274ee9fb6c7e8d9cc02f4",
+          "packages/svelte/src/components/combobox/contract.generated.ts": "43149612dca5d13ed7e8786f79cb756e09348167c6dd317b5525ae09ecbc0380",
+          "packages/svelte/src/components/combobox/tokens.generated.css": "fb2fd02968d1e5d55b6e096c957cc363011029558ba24cb95d9858c92869acb9",
+          "packages/svelte/src/components/combobox/types.ts": "269f4267ca1d8c1183a8054119ef5bd56a4be202f4e9745e0b3f03f299c571e4",
+          "examples/combobox/App.svelte": "5e5055929d3b69961374bc3a000098fcad09177a7b8106ad2db69c35478e83ab"
+        }
+      },
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremy-soquet.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): Combobox calls the consumer's oninput before its own handling, and remembers the selected option's label so that Escape or leaving the field restores it when a search on a server replaced options without it (browser test added). Digests re-recorded. Amendment of 2026-11-12 (final consistency pass, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Ok pour la correction en tous cas\"): in forced colors the highlighted option sets forced-color-adjust: none, so that the browser paints no Canvas backplate behind its HighlightText label (browser test and capture forced-colors.png updated). Digests re-recorded. Amendment of 2026-11-12 (wave 4 final consistency pass, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Oui, tu peux l'appliquer alors\", after confirming the change applies to forced colors only): in forced colors a disabled option is in GrayText, and a highlighted disabled option keeps the Canvas surface with a 2 px Highlight outline (browser test updated). Digests re-recorded.",
+      "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
+    },
+    "figmaParity": {
+      "scope": "Figma master 499:2549 and specification frame 516:2 of the combobox component, parity report (108 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/forms/combobox/figma-spec.md",
+          "reports/components/combobox/figma/parity.json",
+          "reports/components/combobox/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/forms/combobox/figma-spec.md": "d8a5ce455787a7a1bea4787a84cff453169866ac7924633a4e3b8bc690fd51e6",
+          "reports/components/combobox/figma/parity.json": "f888e014bd18edc8b6caf032e15fd49e348c136e3323bafd681ea5ab9881e765",
+          "reports/components/combobox/figma/ledger.json": "ca87a8da1fdb6a6d150fb8ece1fca6cca514a7b6121cfb255d72aa9d81c74b6a"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "499:2549",
+          "specificationFrame": "516:2",
+          "children": ["496:1323 Listbox/Option", "496:1324 Listbox/Group", "496:1338 Listbox/Empty"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of combobox (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/combobox.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/combobox.svelte"
+        ],
+        "sha256": {
+          "documentation/components/combobox.md": "14acda80b195ab2993b894403931a48c562d2fb40c52bc92391942c888becc8d",
+          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
+          "apps/docs/src/playgrounds/combobox.svelte": "c1d8a0c17ce066263c16e305a75bef03203b1b5b3d30a4f15a23ca212323ed1f"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, after reading the pages on the wave/4 preview of the documentation site (https://wave-4-design-system.jeremy-soquet.workers.dev): \"Je valide la doc, corrige aussi lib/overlay\". Amendment of 2026-11-12 (user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Oui, tu peux l'appliquer alors\"): the Accessibility section names the disabled color in forced colors. Digests re-recorded. Amendment of 2026-11-12 (CI fix under the pull request watch the user asked for in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je veux bien que tu surveilles la PR oui\"): the API table drops the sentence \"Bind it with bind:inputValue\" (the Type column says bindable), so that the table keeps room before scrolling horizontally (CI failure on JeremySQT/design-system#12). Digests re-recorded.",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/combobox/"
+    },
+    {
+      "name": "Wave 4 contract gate approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium, overlay smoke spec in Firefox and WebKit, docs site)",
+      "result": "300 passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:preview combobox",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "Round 2: npm run verify passed; npm run test:browser 303 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr"
+    },
+    {
+      "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Figma parity (108 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/combobox/figma/parity.json"
+    },
+    {
+      "name": "Wave 4 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build) and npm run check:approvals (438 digests, 0 errors)",
+      "result": "passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the forced-colors fixes",
+      "result": "319 passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "Documentation: npm run build:docs (48 pages, every live block compiled) and tests/browser/docs-site.spec.ts (37 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "reports/site/docs/"
+    }
+  ],
+  "decisionsTaken": [
+    "Same trigger look as InputText and the same panel, option and group children as Select, so that the two read as one family.",
+    "Strict value: the value is always one of the options; free text is restored to the selected label when focus leaves; emptying the input and leaving clears the value.",
+    "Filtering: filter contains (label contains the text, case and accent insensitive, original order) or none (the application filters, for a server search).",
+    "Typing highlights the first enabled match so that Enter chooses it (WAI-ARIA list autocomplete with automatic selection of the highlight, not of the value).",
+    "Keyboard per the WAI-ARIA combobox pattern: focus stays in the input, the highlighted option is the active descendant; Home, End and horizontal arrows edit the text; no wrapping; Alt+Down opens.",
+    "Empty state: emptyLabel (default \"No results\") shown in the panel and announced politely; English default strings as for Dialog closeLabel and Alert dismissLabel.",
+    "Gate question 1 resolved (user, 2026-11-09: \"ok pour tes 5 recommandations\"): the shift along the viewport edge is fixed in lib/overlay for every overlay (Popover, Menu, Tooltip, Select, Combobox), with a browser test per overlay near the edge, presented at the implementation gate.",
+    "Gate question 2 resolved (user, 2026-11-09): size.overlay.list = 256 px for Select and Combobox; Menu unchanged (viewport room only), to revisit at the visual pass (roadmap 4b).",
+    "Bits UI Combobox is not used, for the same reasons as Select; the panel is a manual popover (focus stays in the input, presses outside and focus leaving are handled by the component).",
+    "Filtering folds case and diacritics (Unicode NFD); filter none leaves the options to the application.",
+    "Round 2: same scrollbar change as Select."
+  ],
+  "openDecisions": [],
+  "nextAction": "Done (wave 4, 2026-11-12): pull request of branch wave/4 to main. Library publication and package release follow the delivery workflow (ggb-maintain) on explicit authorization.",
+  "implementationNotes": [
+    "Exports Combobox and the ComboboxOptionsRecord type.",
+    "The empty state is a polite status kept in the panel; it takes no room while options match.",
+    "`name` submits the value (not the text) through a hidden input."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Same trigger colors as InputText (color.input.*): its exemption accepted at the wave 2 contract gate (2026-10-26, \"4 ok\") applies; color.input.default.border reaches 2.06 on surface.muted in dark, a de-emphasized backdrop where forms are not expected."
+      }
+    ]
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Round 2 of the wave 4 implementation review (user, 2026-11-10): same scrollbar change as Select (panel role scrollbarColor). To re-present at the implementation gate (round 2).",
+      "sha256": {
+        "foundations/components/forms/combobox/contract.json": "97779e60bcb080767cae20c15be0345910a2e09b5e470ed2c32a9ed3052f114a"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 2 implementation approval (2026-11-10)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: panel offset space.content.sm instead of space.content.xs, clear of the field's focus indicator. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/forms/combobox/contract.json": "1c643e2647888767834923c9106984a39ee300404c98e749ff60915d6437340a",
+        "packages/svelte/src/components/combobox/Combobox.svelte": "69d9e6b6c4fe99d5de538d58d224256a95e2462791583b25f47d62e28cbe6c32",
+        "packages/svelte/src/components/combobox/combobox.css": "4d8ffa83fe4f6bd53a4ad6917e7a279f51d2ffa6117b49ea7efb01d806b1b658",
+        "packages/svelte/src/components/combobox/contract.generated.ts": "43149612dca5d13ed7e8786f79cb756e09348167c6dd317b5525ae09ecbc0380",
+        "packages/svelte/src/components/combobox/tokens.generated.css": "fb2fd02968d1e5d55b6e096c957cc363011029558ba24cb95d9858c92869acb9",
+        "packages/svelte/src/components/combobox/types.ts": "269f4267ca1d8c1183a8054119ef5bd56a4be202f4e9745e0b3f03f299c571e4",
+        "examples/combobox/App.svelte": "5e5055929d3b69961374bc3a000098fcad09177a7b8106ad2db69c35478e83ab"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+/* Generated token bindings from the tabs contract. Do not edit. */
+@layer ggb {
+.ggb-tabs {
+  --ggb-tabs-lineColor: var(--ggb-color-border-subtle);
+  --ggb-tabs-lineThickness: var(--ggb-border-width-default);
+  --ggb-tabs-listSurfaceColor: var(--ggb-color-surface-inset);
+  --ggb-tabs-listRadius: var(--ggb-radius-overlay);
+  --ggb-tabs-listPadding: var(--ggb-space-content-xs);
+  --ggb-tabs-listGap: var(--ggb-space-content-xs);
+  --ggb-tabs-panelGap: var(--ggb-space-content-lg);
+  --ggb-tabs-focusColor: var(--ggb-color-focus-ring);
+  --ggb-tabs-focusWidth: var(--ggb-focus-width);
+  --ggb-tabs-focusOffset: var(--ggb-focus-offset);
+  --ggb-tabs-focusRadius: var(--ggb-radius-focus);
+}
+.ggb-tabs[data-size="sm"] {
+  --ggb-tabs-fadeSize: var(--ggb-size-control-sm);
+}
+.ggb-tabs[data-size="md"] {
+  --ggb-tabs-fadeSize: var(--ggb-size-control-md);
+}
+.ggb-tabs[data-size="lg"] {
+  --ggb-tabs-fadeSize: var(--ggb-size-control-lg);
+}
+.ggb-tabs__trigger {
+  --ggb-tabs-trigger-surface-default: var(--ggb-color-item-default-surface);
+  --ggb-tabs-trigger-surface-hover: var(--ggb-color-item-hover-surface);
+  --ggb-tabs-trigger-surface-disabled: var(--ggb-color-item-disabled-surface);
+  --ggb-tabs-trigger-content-default: var(--ggb-color-item-default-content);
+  --ggb-tabs-trigger-content-hover: var(--ggb-color-item-hover-content);
+  --ggb-tabs-trigger-content-disabled: var(--ggb-color-item-disabled-content);
+  --ggb-tabs-trigger-idleColor: var(--ggb-color-content-secondary);
+  --ggb-tabs-trigger-selectedColor: var(--ggb-color-item-indicator);
+  --ggb-tabs-trigger-indicatorColor: var(--ggb-color-item-indicator);
+  --ggb-tabs-trigger-indicatorThickness: var(--ggb-border-width-strong);
+  --ggb-tabs-trigger-radius: var(--ggb-radius-control);
+  --ggb-tabs-trigger-containedRadius: var(--ggb-radius-container);
+  --ggb-tabs-trigger-selectedSurfaceColor: var(--ggb-color-surface-overlay);
+  --ggb-tabs-trigger-shadowSelected: var(--ggb-shadow-raised);
+  --ggb-tabs-trigger-elevationColor: var(--ggb-color-elevation-border);
+  --ggb-tabs-trigger-edgeThickness: var(--ggb-border-width-default);
+  --ggb-tabs-trigger-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-tabs-trigger-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-tabs[data-size="sm"] .ggb-tabs__trigger {
+  --ggb-tabs-trigger-minHeight: var(--ggb-size-control-sm);
+  --ggb-tabs-trigger-paddingInline: var(--ggb-space-control-padding-inline-sm);
+  --ggb-tabs-trigger-gap: var(--ggb-space-control-gap-sm);
+  --ggb-tabs-trigger-typography: var(--ggb-typography-label-sm);
+  --ggb-tabs-trigger-typography-letterSpacing: var(--ggb-typography-label-sm-letterSpacing);
+  --ggb-tabs-trigger-typography-fontFeatureSettings: var(--ggb-typography-label-sm-fontFeatureSettings);
+  --ggb-tabs-trigger-iconSize: var(--ggb-size-icon-sm);
+}
+.ggb-tabs[data-size="md"] .ggb-tabs__trigger {
+  --ggb-tabs-trigger-minHeight: var(--ggb-size-control-md);
+  --ggb-tabs-trigger-paddingInline: var(--ggb-space-control-padding-inline-md);
+  --ggb-tabs-trigger-gap: var(--ggb-space-control-gap-md);
+  --ggb-tabs-trigger-typography: var(--ggb-typography-label-md);
+  --ggb-tabs-trigger-typography-letterSpacing: var(--ggb-typography-label-md-letterSpacing);
+  --ggb-tabs-trigger-typography-fontFeatureSettings: var(--ggb-typography-label-md-fontFeatureSettings);
+  --ggb-tabs-trigger-iconSize: var(--ggb-size-icon-md);
+}
+.ggb-tabs[data-size="lg"] .ggb-tabs__trigger {
+  --ggb-tabs-trigger-minHeight: var(--ggb-size-control-lg);
+  --ggb-tabs-trigger-paddingInline: var(--ggb-space-control-padding-inline-lg);
+  --ggb-tabs-trigger-gap: var(--ggb-space-control-gap-lg);
+  --ggb-tabs-trigger-typography: var(--ggb-typography-label-lg);
+  --ggb-tabs-trigger-typography-letterSpacing: var(--ggb-typography-label-lg-letterSpacing);
+  --ggb-tabs-trigger-typography-fontFeatureSettings: var(--ggb-typography-label-lg-fontFeatureSettings);
+  --ggb-tabs-trigger-iconSize: var(--ggb-size-icon-lg);
+}
+}

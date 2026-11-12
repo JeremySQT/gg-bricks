@@ -385,10 +385,14 @@
       }
     },
     "overlay": {
-      "$description": "Inline size of floating panels: panel is the maximum of a popover and a menu and the width of a toast. It does not change with density.",
+      "$description": "Sizes of floating panels: panel is the maximum inline size of a popover and a menu and the width of a toast; list is the maximum block size of a list of options opened from a field (Select, Combobox), beyond which the list scrolls. They do not change with density.",
       "panel": {
         "$type": "dimension",
         "$value": "{primitive.dimension.v360}"
+      },
+      "list": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v320}"
       }
     }
   },

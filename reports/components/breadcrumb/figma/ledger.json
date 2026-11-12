@@ -1,0 +1,187 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "navigation/breadcrumb",
+      "id": "495:18"
+    },
+    "library": {
+      "name": "Navigation",
+      "id": "495:16"
+    }
+  },
+  "recordedOn": "2026-11-10",
+  "componentSet": {
+    "id": "503:405",
+    "name": "Breadcrumb",
+    "key": "6b3777284ba792463d6fe233eabcc991781514b1",
+    "variants": 4,
+    "defaultVariant": "Size=sm, Separator=chevron",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=503-405"
+  },
+  "section": {
+    "name": "Breadcrumb",
+    "id": "503:164"
+  },
+  "properties": {
+    "Items#503:68": {
+      "type": "SLOT",
+      "preferred": [
+        "COMPONENT_SET",
+        "COMPONENT_SET"
+      ]
+    },
+    "Label#503:69": {
+      "type": "TEXT",
+      "default": "Breadcrumb"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "options": [
+        "sm",
+        "md"
+      ],
+      "default": "sm"
+    },
+    "Separator": {
+      "type": "VARIANT",
+      "options": [
+        "chevron",
+        "slash"
+      ],
+      "default": "chevron"
+    }
+  },
+  "children": {
+    "Breadcrumb/Item": {
+      "id": "503:247",
+      "type": "COMPONENT_SET",
+      "key": "6b811cc647c7c9c324157f283cc3ea039b5880fc",
+      "variants": 8,
+      "defaultVariant": "Size=sm, State=link",
+      "properties": {
+        "Show leading#503:9": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Show label#503:18": {
+          "type": "BOOLEAN",
+          "default": true
+        },
+        "Show separator#503:27": {
+          "type": "BOOLEAN",
+          "default": true
+        },
+        "Focus#503:36": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Leading icon#503:45": {
+          "type": "INSTANCE_SWAP",
+          "default": "200:5200"
+        },
+        "Label#511:0": {
+          "type": "TEXT",
+          "default": "Projects"
+        },
+        "Size": {
+          "type": "VARIANT",
+          "options": [
+            "sm",
+            "md"
+          ],
+          "default": "sm"
+        },
+        "State": {
+          "type": "VARIANT",
+          "options": [
+            "link",
+            "hover",
+            "text",
+            "current"
+          ],
+          "default": "link"
+        }
+      }
+    },
+    "Breadcrumb/More": {
+      "id": "503:284",
+      "type": "COMPONENT_SET",
+      "key": "169c98772cb9eb490b8053c9cbd866ebb868192a",
+      "variants": 4,
+      "defaultVariant": "Size=sm, State=default",
+      "properties": {
+        "Focus#503:54": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Label#503:59": {
+          "type": "TEXT",
+          "default": "Show hidden pages"
+        },
+        "Size": {
+          "type": "VARIANT",
+          "options": [
+            "sm",
+            "md"
+          ],
+          "default": "sm"
+        },
+        "State": {
+          "type": "VARIANT",
+          "options": [
+            "default",
+            "hover"
+          ],
+          "default": "default"
+        }
+      }
+    },
+    "_Breadcrumb/Separator": {
+      "id": "503:180",
+      "type": "COMPONENT_SET",
+      "key": "408664e2285a5f5e25ef5dcbc9cce9ed11d70a2a",
+      "variants": 4,
+      "defaultVariant": "Size=sm, Shape=chevron",
+      "properties": {
+        "Size": {
+          "type": "VARIANT",
+          "options": [
+            "sm",
+            "md"
+          ],
+          "default": "sm"
+        },
+        "Shape": {
+          "type": "VARIANT",
+          "options": [
+            "chevron",
+            "slash"
+          ],
+          "default": "chevron"
+        }
+      }
+    },
+    "_Breadcrumb/Slash": {
+      "id": "503:167",
+      "type": "COMPONENT",
+      "key": "ce1b9bf7c369c59854bae7de582552257cba4f72",
+      "variants": 1,
+      "defaultVariant": null,
+      "properties": {}
+    }
+  },
+  "specification": {
+    "id": "518:2",
+    "name": "Breadcrumb — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=518-2"
+  },
+  "builders": [
+    "authoring/adapters/figma/breadcrumb-master.plugin.js",
+    "authoring/adapters/figma/wave4-spec.plugin.js",
+    "authoring/adapters/figma/wave4-parity.plugin.js",
+    "authoring/adapters/figma/wave4-parity-report.mjs"
+  ],
+  "published": false
+}

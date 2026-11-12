@@ -2,7 +2,7 @@
   // ButtonGroup implementation review: a playground with every option and a resizable container, sizes and
   // orientations, and the compositions the catalog names (dialog footer, form actions, a split footer of two groups,
   // icon buttons, a narrow column that stacks), in any brand, appearance and density.
-  import { Button, ButtonGroup, Icon, IconButton } from '../../packages/svelte/src/index.ts';
+  import { Button, ButtonGroup, Icon, IconButton, Menu, MenuItem, Popover } from '../../packages/svelte/src/index.ts';
   import type { ButtonGroupAlign, ButtonGroupOrientation, ButtonGroupSize } from '../../packages/svelte/src/index.ts';
   import { glyphs } from '../icon-button/glyphs.ts';
 
@@ -167,6 +167,23 @@
           <IconButton id="icons-delete" label="Delete" intent="danger" appearance="ghost"
             >{#snippet icon()}{@render iconFor('trash')}{/snippet}</IconButton
           >
+        </ButtonGroup>
+      </div>
+      <div class="panel">
+        <p class="panel-title">Menu and Popover triggers take the group size (lg); their content keeps its own</p>
+        <ButtonGroup id="triggers" size="lg">
+          <Button id="triggers-save" label="Save" />
+          <Popover id="triggers-pop" label="Share settings">
+            {#snippet trigger(props)}<Button {...props} label="Share" intent="neutral" appearance="outline" />{/snippet}
+            <Button id="triggers-pop-copy" label="Copy link" size="sm" />
+          </Popover>
+          <Menu id="triggers-menu">
+            {#snippet trigger(props)}<IconButton {...props} label="More actions" intent="neutral" appearance="outline"
+                >{#snippet icon()}{@render iconFor('dots-three')}{/snippet}</IconButton
+              >{/snippet}
+            <MenuItem label="Duplicate" />
+            <MenuItem label="Archive" />
+          </Menu>
         </ButtonGroup>
       </div>
       <div class="panel">

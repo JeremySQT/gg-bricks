@@ -1,0 +1,121 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "navigation/pagination",
+      "id": "495:19"
+    },
+    "library": {
+      "name": "Navigation",
+      "id": "495:16"
+    }
+  },
+  "recordedOn": "2026-11-10",
+  "componentSet": {
+    "id": "504:552",
+    "name": "Pagination",
+    "key": "db017d14a4c84df519c1338a475de2bd8c55a08a",
+    "variants": 3,
+    "defaultVariant": "Size=md",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=504-552"
+  },
+  "section": {
+    "name": "Pagination",
+    "id": "504:270"
+  },
+  "properties": {
+    "Items#504:29": {
+      "type": "SLOT",
+      "preferred": [
+        "COMPONENT_SET",
+        "COMPONENT_SET"
+      ]
+    },
+    "Show edges#504:30": {
+      "type": "BOOLEAN",
+      "default": false
+    },
+    "Label#504:34": {
+      "type": "TEXT",
+      "default": "Pagination"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ],
+      "default": "md"
+    }
+  },
+  "children": {
+    "Pagination/Item": {
+      "id": "504:307",
+      "type": "COMPONENT_SET",
+      "key": "24e8a8cb28a8814ab54be97d3bf6cb15964b4596",
+      "variants": 12,
+      "defaultVariant": "Size=md, State=default",
+      "properties": {
+        "Number#504:0": {
+          "type": "TEXT",
+          "default": "1"
+        },
+        "Focus#504:13": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Size": {
+          "type": "VARIANT",
+          "options": [
+            "md",
+            "sm",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "State": {
+          "type": "VARIANT",
+          "options": [
+            "default",
+            "hover",
+            "selected",
+            "selected-hover"
+          ],
+          "default": "default"
+        }
+      }
+    },
+    "Pagination/Ellipsis": {
+      "id": "504:314",
+      "type": "COMPONENT_SET",
+      "key": "5a4057ecf907a4ef6baa6e50781d1a12efa5e76b",
+      "variants": 3,
+      "defaultVariant": "Size=md",
+      "properties": {
+        "Size": {
+          "type": "VARIANT",
+          "options": [
+            "md",
+            "sm",
+            "lg"
+          ],
+          "default": "md"
+        }
+      }
+    }
+  },
+  "specification": {
+    "id": "519:2",
+    "name": "Pagination — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=519-2"
+  },
+  "builders": [
+    "authoring/adapters/figma/pagination-master.plugin.js",
+    "authoring/adapters/figma/wave4-spec.plugin.js",
+    "authoring/adapters/figma/wave4-parity.plugin.js",
+    "authoring/adapters/figma/wave4-parity-report.mjs"
+  ],
+  "published": false
+}

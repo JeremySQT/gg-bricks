@@ -1,0 +1,38 @@
+/* Generated token bindings from the breadcrumb contract. Do not edit. */
+@layer ggb {
+.ggb-breadcrumb {
+  --ggb-breadcrumb-separatorColor: var(--ggb-color-content-tertiary);
+  --ggb-breadcrumb-gap: var(--ggb-space-content-xs);
+  --ggb-breadcrumb-minTarget: var(--ggb-size-target-min);
+}
+.ggb-breadcrumb[data-size="sm"] {
+  --ggb-breadcrumb-separatorSize: var(--ggb-size-icon-sm);
+}
+.ggb-breadcrumb[data-size="md"] {
+  --ggb-breadcrumb-separatorSize: var(--ggb-size-icon-md);
+}
+.ggb-breadcrumb__item {
+  --ggb-breadcrumb-item-linkColor: var(--ggb-color-content-secondary);
+  --ggb-breadcrumb-item-hoverColor: var(--ggb-color-content-primary);
+  --ggb-breadcrumb-item-currentColor: var(--ggb-color-content-primary);
+  --ggb-breadcrumb-item-gap: var(--ggb-space-content-xs);
+  --ggb-breadcrumb-item-focusColor: var(--ggb-color-focus-ring);
+  --ggb-breadcrumb-item-focusWidth: var(--ggb-focus-width);
+  --ggb-breadcrumb-item-focusOffset: var(--ggb-focus-offset);
+  --ggb-breadcrumb-item-focusRadius: var(--ggb-radius-indicator);
+  --ggb-breadcrumb-item-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-breadcrumb-item-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-breadcrumb[data-size="sm"] .ggb-breadcrumb__item {
+  --ggb-breadcrumb-item-typography: var(--ggb-typography-body-sm);
+  --ggb-breadcrumb-item-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-breadcrumb-item-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+  --ggb-breadcrumb-item-iconSize: var(--ggb-size-icon-sm);
+}
+.ggb-breadcrumb[data-size="md"] .ggb-breadcrumb__item {
+  --ggb-breadcrumb-item-typography: var(--ggb-typography-body-md);
+  --ggb-breadcrumb-item-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-breadcrumb-item-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+  --ggb-breadcrumb-item-iconSize: var(--ggb-size-icon-md);
+}
+}

@@ -1,0 +1,17 @@
+/* Generated token bindings from the toolbar contract. Do not edit. */
+@layer ggb {
+.ggb-toolbar[data-size="sm"] {
+  --ggb-toolbar-gap: var(--ggb-space-control-gap-sm);
+}
+.ggb-toolbar[data-size="md"] {
+  --ggb-toolbar-gap: var(--ggb-space-control-gap-md);
+}
+.ggb-toolbar[data-size="lg"] {
+  --ggb-toolbar-gap: var(--ggb-space-control-gap-lg);
+}
+.ggb-toolbar__separator {
+  --ggb-toolbar-separator-lineColor: var(--ggb-color-border-subtle);
+  --ggb-toolbar-separator-thickness: var(--ggb-border-width-default);
+  --ggb-toolbar-separator-margin: var(--ggb-space-content-xs);
+}
+}

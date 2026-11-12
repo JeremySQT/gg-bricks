@@ -1,0 +1,295 @@
+{
+  "formatStatus": "v1",
+  "componentId": "breadcrumb",
+  "family": "navigation",
+  "wave": 4,
+  "phase": "done",
+  "scope": {
+    "purpose": "Show where the current page sits in the site hierarchy, with a link to each ancestor.",
+    "useCases": [
+      "Deep hierarchies in a back office (Projects / Acme / Settings / Members).",
+      "A long path collapsed behind an ellipsis menu (maxItems)."
+    ],
+    "exclusions": [
+      "A history of visited pages.",
+      "Steps of a process (a Stepper).",
+      "Dropdowns on each level (sibling pages) in v1."
+    ],
+    "alternatives": ["A back Link when only the parent matters.", "The page title alone for a flat site."]
+  },
+  "dependencies": ["icon", "menu"],
+  "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the home icon example."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/navigation/breadcrumb/contract.json",
+      "sha256": "4bc599222e0b111544e275c500e31340499943704a7a49ba629ed56e91ec7f9c"
+    },
+    "tokens": [],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "navigation/breadcrumb (495:18)",
+      "library": "Navigation (495:16), section Breadcrumb (503:164)",
+      "componentSet": "503:405",
+      "specification": "518:2",
+      "ledger": "reports/components/breadcrumb/figma/ledger.json",
+      "parity": "reports/components/breadcrumb/figma/parity.json",
+      "screenshots": [
+        "reports/components/breadcrumb/figma/master-set.png",
+        "reports/components/breadcrumb/figma/specification.png"
+      ],
+      "builders": [
+        "authoring/adapters/figma/breadcrumb-master.plugin.js",
+        "authoring/adapters/figma/wave4-spec.plugin.js",
+        "authoring/adapters/figma/wave4-parity.plugin.js",
+        "authoring/adapters/figma/wave4-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/breadcrumb/figma/blueprint-anatomy.png",
+          "node": "518:192"
+        }
+      ]
+    },
+    "figmaSpec": "foundations/components/navigation/breadcrumb/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/breadcrumb",
+      "files": [
+        "packages/svelte/src/components/breadcrumb/Breadcrumb.svelte",
+        "packages/svelte/src/components/breadcrumb/types.ts",
+        "packages/svelte/src/components/breadcrumb/breadcrumb.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/breadcrumb/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/breadcrumb",
+      "preview": "dist/previews/breadcrumb.html (npm run build && npm run build:preview breadcrumb)",
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4), page breadcrumb.html"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/navigation.test.ts"],
+      "browser": ["tests/browser/breadcrumb.spec.ts"],
+      "evidence": "reports/components/breadcrumb/svelte/"
+    },
+    "humanDocs": "documentation/components/breadcrumb.md",
+    "agentDocs": "documentation/index.json (entry breadcrumb); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Breadcrumb compound contract: label, size sm/md, separator chevron/slash, maxItems with a Menu of hidden items, moreLabel; child item (label, href, leading Icon); current page last.",
+      "revision": {
+        "paths": ["foundations/components/navigation/breadcrumb/contract.json"],
+        "sha256": {
+          "foundations/components/navigation/breadcrumb/contract.json": "4bc599222e0b111544e275c500e31340499943704a7a49ba629ed56e91ec7f9c"
+        }
+      },
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendment of 2026-11-10 accepted with the round 2 implementation review (\"Je valide le second tour\"): item prop iconOnly; more painted and spaced like an ancestor link; spacing rule. Digests re-recorded. Amendment of 2026-11-10 (wave 4 implementation review, round 4): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
+      "note": null
+    },
+    "implementation": {
+      "scope": "Breadcrumb: items records (label, href, hideLabel) with a leading snippet; fitted truncation, ancestors first; maxItems with a Menu of hidden items behind a text-like more button (round 4).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/breadcrumb/Breadcrumb.svelte",
+          "packages/svelte/src/components/breadcrumb/types.ts",
+          "packages/svelte/src/components/breadcrumb/breadcrumb.css",
+          "packages/svelte/src/components/breadcrumb/contract.generated.ts",
+          "packages/svelte/src/components/breadcrumb/tokens.generated.css",
+          "examples/breadcrumb/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/breadcrumb/Breadcrumb.svelte": "56723766f4d80467e858556bd5e1e13549c0e63125024f8539f6d5a364243cea",
+          "packages/svelte/src/components/breadcrumb/types.ts": "407ef17ee475c205b1f39e3bf78892177447ae503db90a204377c80b9a5f4103",
+          "packages/svelte/src/components/breadcrumb/breadcrumb.css": "070effa9e1685c409183e08e55b07466ac9b39d94c8e171071f95a201ed99ab3",
+          "packages/svelte/src/components/breadcrumb/contract.generated.ts": "45bca11624f64375f5597c7448e7750fe6cdf231cc18618a2dba1fe26c40cde4",
+          "packages/svelte/src/components/breadcrumb/tokens.generated.css": "bc296bacf5f25f01fbc09e58246ed33a0a8cfd1b7d94a7625e516bffa8f5815f",
+          "examples/breadcrumb/App.svelte": "5e18440f3ecaf22719d2a5138cef54f51ca26f68300306ab9ea9c107edb007d9"
+        }
+      },
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\". Amendment of 2026-11-12 (CI fix under the pull request watch the user asked for in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je veux bien que tu surveilles la PR oui\"): the fitting script clears the entries' previous minimums before measuring again, so that a minimum measured with the fallback font before the web font loaded no longer leaves extra room after a separator (found by CI on JeremySQT/design-system#12, where Inter is not installed on the system). Digests re-recorded."
+    },
+    "figmaParity": {
+      "scope": "Figma master 503:405 and specification frame 518:2 of the breadcrumb component, parity report (64 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/navigation/breadcrumb/figma-spec.md",
+          "reports/components/breadcrumb/figma/parity.json",
+          "reports/components/breadcrumb/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/navigation/breadcrumb/figma-spec.md": "df5c8987f79669326124bed08ef9f2578bdb149ec175d2e9e3bed1597f6dde4b",
+          "reports/components/breadcrumb/figma/parity.json": "0157d40ce7e300f805ba52450d5ba7fb576282062453d152638c50040150211c",
+          "reports/components/breadcrumb/figma/ledger.json": "620ea1c09b12b3a357b5dc86f1346ce579f3fcc8053ba76012c73439f10b6f9e"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "503:405",
+          "specificationFrame": "518:2",
+          "children": [
+            "503:247 Breadcrumb/Item",
+            "503:284 Breadcrumb/More",
+            "503:180 _Breadcrumb/Separator",
+            "503:167 _Breadcrumb/Slash"
+          ]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of breadcrumb (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/breadcrumb.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/breadcrumb.svelte"
+        ],
+        "sha256": {
+          "documentation/components/breadcrumb.md": "df69aea0586b228b18dbc20c162a0ccd046b115517277948cced0159f33ccf4f",
+          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
+          "apps/docs/src/playgrounds/breadcrumb.svelte": "f7ad61330c0257e7f8d6b34772748dcecd621a0b3e11e3b993ddea9440aea565"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, after reading the pages on the wave/4 preview of the documentation site (https://wave-4-design-system.jeremy-soquet.workers.dev): \"Je valide la doc, corrige aussi lib/overlay\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/breadcrumb/"
+    },
+    {
+      "name": "Wave 4 contract gate approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium, overlay smoke spec in Firefox and WebKit, docs site)",
+      "result": "300 passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:preview breadcrumb",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "Round 2: npm run verify passed; npm run test:browser 303 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Round 3: npm run verify passed; npm run test:browser 305 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Figma parity (64 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/breadcrumb/figma/parity.json"
+    },
+    {
+      "name": "Wave 4 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build) and npm run check:approvals (438 digests, 0 errors)",
+      "result": "passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the forced-colors fixes",
+      "result": "319 passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "Documentation: npm run build:docs (48 pages, every live block compiled) and tests/browser/docs-site.spec.ts (37 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "reports/site/docs/"
+    }
+  ],
+  "decisionsTaken": [
+    "Two sizes, sm (default, body.sm) and md (body.md): a breadcrumb sits above a page title and is usually small.",
+    "Ancestors in color.content.secondary, underlined and in color.content.primary on hover; the current page in color.content.primary, never a link, exposed as the current page.",
+    "Separators: chevron (default) or slash, in color.content.tertiary, decorative, mirrored in right-to-left text; intrinsic Phosphor glyph caret-right.",
+    "Collapse: maxItems keeps the first and the last maxItems - 1 items and puts the hidden ones in a Menu opened by an ellipsis IconButton (neutral ghost, breadcrumb's size); 0 never collapses.",
+    "When the line lacks room, labels shrink with an ellipsis, ancestors first; the full label stays the accessible name.",
+    "Link targets meet 44 px in the block dimension without changing the line (invisible extension).",
+    "Gate question 1 resolved (user, 2026-11-09: \"ok pour tes 5 recommandations\"): the shift along the viewport edge is fixed in lib/overlay for every overlay (Popover, Menu, Tooltip, Select, Combobox), with a browser test per overlay near the edge, presented at the implementation gate.",
+    "Svelte API: the items are an `items` array (label, href) with a `leading` snippet receiving the item and its index, instead of child components, so that the current page (last item) and the collapsed items are known during server rendering. The contract child item is unchanged. Recorded for the implementation gate.",
+    "The slash separator is drawn on the 256-unit grid (Phosphor has no slash glyph); the chevron is Phosphor caret-right.",
+    "Round 2: the minimum width of a shrinking entry is measured per label (three characters or the whole label) instead of a fixed 4em, which left large irregular blanks after short labels; spacing is now gap everywhere (browser test).",
+    "Round 2: the more button is painted and spaced like an ancestor link instead of an IconButton (regular spacing, no ghost box on hover); iconOnly hides the label visually (accessible name and title kept).",
+    "Round 2: the house glyph (Phosphor) replaces the star in the review page home icon.",
+    "Round 3: truncated labels are fitted to the characters that show (Range measurement), so that the ellipsis sits gap away from the separator like a whole label; the example's Home icon only shows the icon whatever Home icon says."
+  ],
+  "openDecisions": [],
+  "nextAction": "Done (wave 4, 2026-11-12): pull request of branch wave/4 to main. Library publication and package release follow the delivery workflow (ggb-maintain) on explicit authorization.",
+  "implementationNotes": [
+    "Exports Breadcrumb and the BreadcrumbItem type.",
+    "An ancestor keeps three characters of label (1 em each), or its whole label when shorter, before its ellipsis (round 2; 4em before); the full label is set as title when truncated."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Round 2 of the wave 4 implementation review (user, 2026-11-10): \"option Icon only pour la home\", \"espaces pas réguliers\". Contract facts: item prop iconOnly; more is a button painted and spaced like an ancestor link (part more accepts menu; IconButton dependency removed); spacing rule (gap everywhere; labels shrink to three characters or their full label). To re-present at the implementation gate (round 2).",
+      "sha256": {
+        "foundations/components/navigation/breadcrumb/contract.json": "8427f0218ff8fae63c15d08e3100976d7fcb12f6aeb32b837eb8ab89ef237baa"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Contract amendment accepted on 2026-11-10 (round 2)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: item prop iconOnly renamed hideLabel (as on Checkbox and Switch), effective only next to an icon that renders. Implementation: truncated labels fitted to their characters; an empty slot takes no room; review page options Show home icon and Show home label. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/navigation/breadcrumb/contract.json": "4bc599222e0b111544e275c500e31340499943704a7a49ba629ed56e91ec7f9c",
+        "packages/svelte/src/components/breadcrumb/Breadcrumb.svelte": "e60fc1c7891e52ee6c0c92063f92f9534d5866951e6c923e33acd626eff782a7",
+        "packages/svelte/src/components/breadcrumb/breadcrumb.css": "070effa9e1685c409183e08e55b07466ac9b39d94c8e171071f95a201ed99ab3",
+        "packages/svelte/src/components/breadcrumb/contract.generated.ts": "45bca11624f64375f5597c7448e7750fe6cdf231cc18618a2dba1fe26c40cde4",
+        "packages/svelte/src/components/breadcrumb/tokens.generated.css": "bc296bacf5f25f01fbc09e58246ed33a0a8cfd1b7d94a7625e516bffa8f5815f",
+        "packages/svelte/src/components/breadcrumb/types.ts": "407ef17ee475c205b1f39e3bf78892177447ae503db90a204377c80b9a5f4103",
+        "examples/breadcrumb/App.svelte": "5e18440f3ecaf22719d2a5138cef54f51ca26f68300306ab9ea9c107edb007d9"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
+    }
+  ]
+}

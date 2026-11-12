@@ -1,0 +1,211 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "navigation/tabs",
+      "id": "495:20"
+    },
+    "library": {
+      "name": "Navigation",
+      "id": "495:16"
+    }
+  },
+  "recordedOn": "2026-11-12",
+  "componentSet": {
+    "id": "502:530",
+    "name": "Tabs",
+    "key": "c82043e6d9e8462084d170cace749d640d15404e",
+    "variants": 12,
+    "defaultVariant": "Appearance=contained, Orientation=horizontal, Size=md",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=502-530"
+  },
+  "section": {
+    "name": "Tabs",
+    "id": "501:2"
+  },
+  "properties": {
+    "Tabs#502:24": {
+      "type": "SLOT",
+      "preferred": [
+        "COMPONENT_SET",
+        "COMPONENT_SET"
+      ]
+    },
+    "Label#502:26": {
+      "type": "TEXT",
+      "default": "Settings"
+    },
+    "Appearance": {
+      "type": "VARIANT",
+      "options": [
+        "contained",
+        "line"
+      ],
+      "default": "contained"
+    },
+    "Orientation": {
+      "type": "VARIANT",
+      "options": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "horizontal"
+    },
+    "Size": {
+      "type": "VARIANT",
+      "options": [
+        "md",
+        "sm",
+        "lg"
+      ],
+      "default": "md"
+    }
+  },
+  "children": {
+    "Tabs/Trigger": {
+      "id": "501:249",
+      "type": "COMPONENT_SET",
+      "key": "1f2e708d44d2438bc3ff720c46cd504d8000c6d9",
+      "variants": 24,
+      "defaultVariant": "Appearance=contained, Size=md, State=selected",
+      "properties": {
+        "Trailing#501:24": {
+          "type": "SLOT",
+          "preferred": [
+            "COMPONENT_SET",
+            "COMPONENT_SET",
+            "COMPONENT_SET"
+          ]
+        },
+        "Label#501:25": {
+          "type": "TEXT",
+          "default": "General"
+        },
+        "Show leading#501:50": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Show trailing#501:75": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Focus#501:100": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Leading icon#501:125": {
+          "type": "INSTANCE_SWAP",
+          "default": "200:5078"
+        },
+        "Appearance": {
+          "type": "VARIANT",
+          "options": [
+            "contained",
+            "line"
+          ],
+          "default": "contained"
+        },
+        "Size": {
+          "type": "VARIANT",
+          "options": [
+            "md",
+            "sm",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "State": {
+          "type": "VARIANT",
+          "options": [
+            "selected",
+            "default",
+            "hover",
+            "disabled"
+          ],
+          "default": "selected"
+        }
+      }
+    },
+    "Tabs/Vertical trigger": {
+      "id": "501:496",
+      "type": "COMPONENT_SET",
+      "key": "958d48faa1d2fce96af1ba7f7f40ae6705c02f64",
+      "variants": 24,
+      "defaultVariant": "Appearance=contained, Size=md, State=selected",
+      "properties": {
+        "Trailing#501:174": {
+          "type": "SLOT",
+          "preferred": [
+            "COMPONENT_SET",
+            "COMPONENT_SET",
+            "COMPONENT_SET"
+          ]
+        },
+        "Label#501:175": {
+          "type": "TEXT",
+          "default": "General"
+        },
+        "Show leading#501:200": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Show trailing#501:225": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Focus#501:250": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Leading icon#501:275": {
+          "type": "INSTANCE_SWAP",
+          "default": "200:5078"
+        },
+        "Appearance": {
+          "type": "VARIANT",
+          "options": [
+            "contained",
+            "line"
+          ],
+          "default": "contained"
+        },
+        "Size": {
+          "type": "VARIANT",
+          "options": [
+            "md",
+            "sm",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "State": {
+          "type": "VARIANT",
+          "options": [
+            "selected",
+            "default",
+            "hover",
+            "disabled"
+          ],
+          "default": "selected"
+        }
+      }
+    }
+  },
+  "specification": {
+    "id": "534:512",
+    "name": "Tabs — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=534-512"
+  },
+  "builders": [
+    "authoring/adapters/figma/tabs-master.plugin.js",
+    "authoring/adapters/figma/wave4-spec.plugin.js",
+    "authoring/adapters/figma/wave4-parity.plugin.js",
+    "authoring/adapters/figma/wave4-parity-report.mjs"
+  ],
+  "published": false,
+  "variables": {
+    "color/surface/inset": "VariableID:493:4"
+  },
+  "note": "The Tabs master is the tab list only since 2026-11-12 (Panel slot removed; user decision at the Figma parity gate)."
+}

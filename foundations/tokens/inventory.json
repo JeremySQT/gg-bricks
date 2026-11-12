@@ -447,6 +447,11 @@
       "axis": "common"
     },
     {
+      "path": "size.overlay.list",
+      "type": "dimension",
+      "axis": "common"
+    },
+    {
       "path": "typography.display.xl",
       "type": "typography",
       "axis": "common"
@@ -728,6 +733,11 @@
     },
     {
       "path": "color.surface.muted",
+      "type": "color",
+      "axis": "appearance"
+    },
+    {
+      "path": "color.surface.inset",
       "type": "color",
       "axis": "appearance"
     },
@@ -3811,6 +3821,16 @@
     {
       "content": "color.action.danger.ghost.default.content",
       "surface": "color.status.danger.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.primary",
+      "surface": "color.surface.inset",
+      "minimum": 4.5
+    },
+    {
+      "content": "color.content.secondary",
+      "surface": "color.surface.inset",
       "minimum": 4.5
     }
   ],

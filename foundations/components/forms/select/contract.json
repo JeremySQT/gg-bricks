@@ -1,0 +1,231 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "select",
+  "props": {
+    "value": {
+      "type": "string",
+      "default": "",
+      "bindable": true
+    },
+    "options": {
+      "type": "records",
+      "fields": {
+        "value": "string",
+        "label": "string",
+        "disabled": "boolean",
+        "group": "string"
+      },
+      "required": ["value", "label"],
+      "default": []
+    },
+    "placeholder": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "open": {
+      "type": "boolean",
+      "default": false,
+      "bindable": true
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "readonly": {
+      "type": "boolean",
+      "default": false
+    },
+    "invalid": {
+      "type": "boolean",
+      "default": false
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "container": {},
+    "leading": {
+      "accepts": ["icon"],
+      "max": 1
+    },
+    "value": {},
+    "indicator": {},
+    "panel": {
+      "accepts": ["panel"],
+      "min": 1,
+      "max": 1
+    },
+    "list": {
+      "accepts": ["option", "group"]
+    }
+  },
+  "states": {
+    "condition": {
+      "values": ["default", "hover", "focus", "readonly", "disabled", "invalid"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "events": {
+    "valueChange": {
+      "when": "The user chooses an enabled option other than the current value (pointer, Enter or Space on the highlighted option).",
+      "payload": "The value of the chosen option."
+    },
+    "openChange": {
+      "when": "The list opens or closes because of the user: trigger activation, an opening key, an option chosen, Escape, Tab, a press outside.",
+      "payload": "The new open state."
+    }
+  },
+  "tokens": {
+    "surface": "color.input.{condition}.surface",
+    "content": "color.input.{condition}.content",
+    "border": "color.input.{condition}.border",
+    "placeholderColor": "color.input.{condition}.placeholder",
+    "slotColor": "color.input.{condition}.placeholder",
+    "borderWidth": "border.width.default",
+    "radius": "radius.control",
+    "minHeight": "size.control.{size}",
+    "minTarget": "size.target.min",
+    "edgeInline": "space.control.edge-inline.{size}",
+    "textInline": "space.control.label-inline.{size}",
+    "slotInline": "space.control.slot-inline.{size}",
+    "typography": "typography.body.{size}",
+    "iconSize": "size.icon.{size}",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "focusRadius": "radius.focus",
+    "motionDuration": "motion.duration.fast",
+    "easingStandard": "motion.easing.standard"
+  },
+  "children": {
+    "panel": {
+      "props": {},
+      "states": {},
+      "tokens": {
+        "surface": "color.surface.overlay",
+        "elevationColor": "color.elevation.border",
+        "borderWidth": "border.width.default",
+        "shadow": "shadow.overlay",
+        "radius": "radius.overlay",
+        "padding": "space.content.xs",
+        "maxInlineSize": "size.overlay.panel",
+        "maxBlockSize": "size.overlay.list",
+        "scrollbarColor": "color.border.default",
+        "offset": "space.content.sm",
+        "enterDistance": "motion.distance.sm",
+        "motionDuration": "motion.duration.base",
+        "easingEnter": "motion.easing.enter",
+        "easingExit": "motion.easing.exit",
+        "layer": "layer.dropdown"
+      },
+      "rules": [
+        "The panel holds the list of options. It is painted in surface with shadow, an edge of borderWidth in elevationColor and radius corners, with padding around the options. Its inline size is the trigger's inline size, wider when an option label needs it, up to the larger of the trigger's inline size and maxInlineSize. Its block size follows the options up to maxBlockSize and the room the viewport leaves; beyond it the options scroll inside the padding, with a thin scrollbar in scrollbarColor, and the highlighted option stays visible.",
+        "The panel is placed at offset below the trigger, aligned with the trigger's inline start (offset clears the trigger's focus indicator, always shown while the list is open); it flips above when the viewport lacks room below and shifts along the edge when it lacks room inline.",
+        "The panel inherits the brand, appearance and density of the trigger's surroundings and appears above the page. Where the platform has no top layer, it is stacked at layer.",
+        "It enters by fading in and moving enterDistance away from the trigger over motionDuration with easingEnter and leaves by fading out over motionDuration with easingExit; under reduced motion it only fades.",
+        "In forced-colors mode the panel keeps a visible edge in the system text color."
+      ]
+    },
+    "option": {
+      "props": {},
+      "parts": {
+        "label": {},
+        "check": {}
+      },
+      "states": {
+        "interaction": {
+          "values": ["default", "hover", "selected", "selected-hover", "disabled"],
+          "default": "default"
+        }
+      },
+      "tokens": {
+        "surface": "color.item.{interaction}.surface",
+        "content": "color.item.{interaction}.content",
+        "checkColor": "color.item.indicator",
+        "radius": "radius.container",
+        "minHeight": "size.control.sm",
+        "paddingInline": "space.control.padding-inline.sm",
+        "paddingBlock": "space.control.padding-block.sm",
+        "gap": "space.control.gap.sm",
+        "typography": "typography.body.{size}",
+        "checkSize": "size.icon.sm",
+        "motionDuration": "motion.duration.fast",
+        "easingStandard": "motion.easing.standard"
+      },
+      "rules": [
+        "Each record of options renders one option, in order: label shows the record's label in typography (the Select's size), on one line, truncated with an ellipsis when the panel reaches its maximum inline size, and is the option's accessible name. The selected option shows check, a check mark of checkSize in checkColor at the inline end; other options keep its room so that labels do not move.",
+        "The option block size is the greater of minHeight and its content plus paddingBlock; paddingInline on both sides, gap between label and check, radius corners.",
+        "interaction hover is the highlighted option, reached by the pointer or the keyboard: at most one option is highlighted. interaction resolves in this order: disabled, selected-hover, selected, hover, default (selected-hover is the highlighted selected option). Colors change over motionDuration with easingStandard; no transition under reduced motion.",
+        "An option whose record is disabled stays in the list, is reached by the arrow keys and is announced as unavailable, but cannot be chosen."
+      ]
+    },
+    "group": {
+      "props": {},
+      "parts": {
+        "heading": {}
+      },
+      "states": {},
+      "tokens": {
+        "headingColor": "color.content.secondary",
+        "typography": "typography.caption.md",
+        "paddingInline": "space.control.padding-inline.sm",
+        "paddingBlock": "space.content.xs"
+      },
+      "rules": [
+        "Consecutive records that carry the same non-empty group are gathered under a heading showing that group in typography and headingColor, with paddingInline and paddingBlock, aligned with the option labels. The heading is never highlighted or chosen; the group is exposed as a group named by its heading. Records without group are not grouped."
+      ]
+    }
+  },
+  "contrast": [
+    {
+      "content": "option.content",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5,
+      "note": "Options are transparent by default and read on the panel."
+    },
+    {
+      "content": "option.checkColor",
+      "surface": "color.item.selected.surface",
+      "minimum": 3
+    },
+    {
+      "content": "option.checkColor",
+      "surface": "color.item.selected-hover.surface",
+      "minimum": 3
+    },
+    {
+      "content": "group.headingColor",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5
+    }
+  ],
+  "rules": [
+    "A select lets the user choose one value from a list of options in a form, shown collapsed in a field. It suits five to about twenty-five known options; under five, a RadioGroup shows them all; for a long list or one the user searches, use a Combobox; a list of actions is a Menu.",
+    "The trigger looks and sizes like an InputText of the same size: container, leading, value and indicator in that order. value shows the label of the selected option, or placeholder in placeholderColor while value matches no option; it is on one line, truncated with an ellipsis. indicator is a downward chevron of iconSize in slotColor at the inline end, decorative. leading holds at most one decorative icon of iconSize in slotColor.",
+    "Horizontal spacing matches InputText: container has edgeInline inline padding, value has textInline on both inline sides, leading and indicator have slotInline on both inline sides.",
+    "The container fills the inline size it is given; its block size is minHeight. The interaction target meets minTarget in the block dimension without enlarging the visible container. Paint container in surface with a border of borderWidth in border inside its boundary, corners of radius, and the value in content.",
+    "The accessible name is the label of the enclosing Field, otherwise the label prop; one of them is present and non-empty. label is not displayed; placeholder is never the accessible name. The trigger exposes that it opens a list box, whether it is expanded, and the selected option as its value.",
+    "Resolve condition in this order: disabled, readonly, invalid, focus, hover, default; focus is also an independent axis drawing a focus indicator of focusWidth in focusColor at focusOffset outside the container, with focusRadius corners, whatever the input modality. The trigger keeps focus while the list is open, and stays in the focus condition.",
+    "Pointer: a press on the trigger toggles the list; moving over an option highlights it; a press on an enabled option chooses it. Opening the list highlights the selected option, or the first enabled option when none is selected, and scrolls it into view.",
+    "Keyboard on the closed trigger: Down Arrow, Up Arrow, Enter and Space open the list; Home and End open it on the first and last option; typing a character opens it on the next option whose label starts with the typed characters. The value never changes while the list is closed.",
+    "Keyboard in the open list: Down and Up Arrow move the highlight to the next or previous option without wrapping; Home and End move it to the first and last option; Page Down and Page Up move it by the number of visible options; typing moves it as on the closed trigger; Enter and Space choose the highlighted enabled option. Disabled options are reached but not chosen.",
+    "Choosing an option sets value, emits valueChange when the value changed, closes the list and keeps focus on the trigger. Escape closes the list without changing the value; Tab closes it without changing the value and moves focus on; a press outside closes it.",
+    "A disabled select is removed from sequential focus and never opens. A readonly select stays focusable and shows its value, but never opens and its value cannot change; its value is submitted. Neither emits events.",
+    "Invalid and required are exposed to assistive technology; the visible error message and required marker belong to the enclosing Field, so an error is never conveyed by color alone.",
+    "Setting value or open from the application updates the select without emitting events. A value that matches no option shows the placeholder.",
+    "Color changes between conditions transition over motionDuration with easingStandard; the focus indicator appears without delay; no transition under reduced motion.",
+    "In forced-colors mode the container keeps a visible boundary in the system field colors, the placeholder stays distinguishable from a value, the disabled select uses the system disabled text color, the focus indicator stays visible and the highlighted option is shown in the system highlight colors."
+  ]
+}

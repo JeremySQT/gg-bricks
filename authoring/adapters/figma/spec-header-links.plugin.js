@@ -35,7 +35,14 @@ const SPECS = [
   ['407:120', 'Overlays', 'Dialog', 'dialog'],
   ['407:121', 'Overlays', 'Menu', 'menu'],
   ['407:122', 'Overlays', 'Popover', 'popover'],
-  ['407:123', 'Overlays', 'Tooltip', 'tooltip']
+  ['407:123', 'Overlays', 'Tooltip', 'tooltip'],
+  ['495:23', 'Actions', 'Toolbar', 'toolbar'],
+  ['495:21', 'Forms', 'Combobox', 'combobox'],
+  ['495:22', 'Forms', 'Select', 'select'],
+  ['495:17', 'Navigation', 'Accordion', 'accordion'],
+  ['495:18', 'Navigation', 'Breadcrumb', 'breadcrumb'],
+  ['495:19', 'Navigation', 'Pagination', 'pagination'],
+  ['495:20', 'Navigation', 'Tabs', 'tabs']
 ];
 const vars = await figma.variables.getLocalVariablesAsync();
 const V = (name) => vars.find((v) => v.name === name);
@@ -78,7 +85,7 @@ async function chip(label, target) {
 }
 const families = {};
 for (const p of figma.root.children)
-  if (['Actions', 'Content', 'Forms', 'Feedback', 'Overlays'].includes(p.name)) families[p.name] = p;
+  if (['Actions', 'Content', 'Forms', 'Feedback', 'Overlays', 'Navigation'].includes(p.name)) families[p.name] = p;
 const out = {};
 for (const [pid, family, name, id] of SPECS) {
   if (ONLY && !ONLY.includes(name)) continue;

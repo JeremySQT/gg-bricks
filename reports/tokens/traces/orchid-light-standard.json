@@ -2389,6 +2389,15 @@
       }
     }
   ],
+  "primitive.dimension.v320": [
+    {
+      "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
+      "value": {
+        "value": 320,
+        "unit": "px"
+      }
+    }
+  ],
   "primitive.dimension.v360": [
     {
       "source": "foundations/tokens/base/primitives/dimensions.tokens.json",
@@ -3789,6 +3798,12 @@
       "value": "{primitive.dimension.v360}"
     }
   ],
+  "size.overlay.list": [
+    {
+      "source": "foundations/tokens/base/semantic/common.tokens.json",
+      "value": "{primitive.dimension.v320}"
+    }
+  ],
   "typography.display.xl": [
     {
       "source": "foundations/tokens/base/semantic/common.tokens.json",
@@ -4315,6 +4330,12 @@
     {
       "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
       "value": "{color.palette.neutral.100}"
+    }
+  ],
+  "color.surface.inset": [
+    {
+      "source": "foundations/tokens/base/semantic/appearance.light.tokens.json",
+      "value": "{primitive.color.alpha.black.5}"
     }
   ],
   "color.surface.raised": [
@@ -6961,6 +6982,18 @@
     {
       "source": "foundations/tokens/base/components/tooltip.tokens.json",
       "value": "{primitive.duration.500}"
+    }
+  ],
+  "component.tooltip.skip-delay": [
+    {
+      "source": "foundations/tokens/base/components/tooltip.tokens.json",
+      "value": "{primitive.duration.300}"
+    }
+  ],
+  "component.tooltip.close-delay": [
+    {
+      "source": "foundations/tokens/base/components/tooltip.tokens.json",
+      "value": "{primitive.duration.100}"
     }
   ],
   "component.tooltip.max-inline-size": [

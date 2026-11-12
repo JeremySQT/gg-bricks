@@ -2019,6 +2019,13 @@
       "unit": "px"
     }
   },
+  "primitive.dimension.v320": {
+    "$type": "dimension",
+    "$value": {
+      "value": 320,
+      "unit": "px"
+    }
+  },
   "primitive.dimension.v360": {
     "$type": "dimension",
     "$value": {
@@ -3650,6 +3657,13 @@
       "unit": "px"
     }
   },
+  "size.overlay.list": {
+    "$type": "dimension",
+    "$value": {
+      "value": 320,
+      "unit": "px"
+    }
+  },
   "typography.display.xl": {
     "$type": "typography",
     "$value": {
@@ -4665,6 +4679,19 @@
       ],
       "alpha": 1
     }
+  },
+  "color.surface.inset": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.05
+    },
+    "$description": "A translucent tint that sets an area apart from whatever surface it sits on, darker in light and lighter in dark: the container of contained tabs (later a segmented control). Items lifted inside it use color.surface.overlay."
   },
   "color.surface.raised": {
     "$type": "color",
@@ -9733,6 +9760,22 @@
       "unit": "ms"
     },
     "$description": "Hover delay before the tooltip opens; keyboard focus opens it at once."
+  },
+  "component.tooltip.skip-delay": {
+    "$type": "duration",
+    "$value": {
+      "value": 300,
+      "unit": "ms"
+    },
+    "$description": "After a tooltip closed, moving to another trigger within this time opens its tooltip at once (no hover delay)."
+  },
+  "component.tooltip.close-delay": {
+    "$type": "duration",
+    "$value": {
+      "value": 100,
+      "unit": "ms"
+    },
+    "$description": "Grace after the pointer leaves the trigger, so that it can travel to the tooltip, which keeps it open."
   },
   "component.tooltip.max-inline-size": {
     "$type": "dimension",

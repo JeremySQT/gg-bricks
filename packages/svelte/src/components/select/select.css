@@ -1,0 +1,290 @@
+/*
+ * Select structure. Values come from tokens.generated.css; geometry, anchoring and entry/exit motion of the panel come
+ * from lib/overlay/overlay.css. The trigger reproduces InputText (surface, inner border, focus ring, spacing); the
+ * highlighted option is data-highlighted (focus stays on the trigger).
+ */
+@layer ggb {
+  .ggb-select {
+    --_surface: var(--ggb-select-surface-default);
+    --_content: var(--ggb-select-content-default);
+    --_border: var(--ggb-select-border-default);
+    --_placeholder: var(--ggb-select-placeholderColor-default);
+    --_slot: var(--ggb-select-slotColor-default);
+    position: relative;
+    display: flex;
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+  .ggb-select__trigger {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    min-inline-size: 0;
+    block-size: var(--ggb-select-minHeight);
+    margin: 0;
+    padding: 0 var(--ggb-select-edgeInline);
+    border: 0;
+    border-radius: var(--ggb-select-radius);
+    background-color: var(--_surface);
+    color: var(--_content);
+    box-shadow: inset 0 0 0 var(--ggb-select-borderWidth) var(--_border);
+    outline: var(--ggb-select-borderWidth) solid transparent;
+    outline-offset: calc(-1 * var(--ggb-select-borderWidth));
+    font: var(--ggb-select-typography);
+    letter-spacing: var(--ggb-select-typography-letterSpacing, normal);
+    text-align: start;
+    cursor: pointer;
+    transition-property: background-color, color, box-shadow;
+    transition-duration: var(--ggb-select-motionDuration);
+    transition-timing-function: var(--ggb-select-easingStandard);
+  }
+  /* Interaction target: at least minTarget tall, centered, without enlarging the visible field. */
+  .ggb-select__trigger::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 50%;
+    block-size: max(100%, var(--ggb-select-minTarget));
+    transform: translateY(-50%);
+  }
+  .ggb-select__value {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    padding: 0 var(--ggb-select-textInline);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .ggb-select__value[data-placeholder] {
+    color: var(--_placeholder);
+  }
+  .ggb-select__leading {
+    display: grid;
+    flex: none;
+    place-items: center;
+    margin-inline: var(--ggb-select-slotInline);
+    color: var(--_slot);
+  }
+  .ggb-select__leading > svg,
+  .ggb-select__indicator {
+    display: block;
+    flex: none;
+    inline-size: var(--ggb-select-iconSize);
+    block-size: var(--ggb-select-iconSize);
+    margin-inline: calc(var(--ggb-select-iconSize) / -8);
+  }
+  .ggb-select__indicator {
+    margin-inline: calc(var(--ggb-select-slotInline) - var(--ggb-select-iconSize) / 8);
+    color: var(--_slot);
+  }
+
+  /* Condition, lowest precedence first: hover, focus, invalid, readonly, disabled. */
+  @media (hover: hover) {
+    .ggb-select:where(:has(.ggb-select__trigger:hover)) {
+      --_surface: var(--ggb-select-surface-hover);
+      --_content: var(--ggb-select-content-hover);
+      --_border: var(--ggb-select-border-hover);
+      --_placeholder: var(--ggb-select-placeholderColor-hover);
+      --_slot: var(--ggb-select-slotColor-hover);
+    }
+  }
+  .ggb-select:where(:has(.ggb-select__trigger:focus)) {
+    --_surface: var(--ggb-select-surface-focus);
+    --_content: var(--ggb-select-content-focus);
+    --_border: var(--ggb-select-border-focus);
+    --_placeholder: var(--ggb-select-placeholderColor-focus);
+    --_slot: var(--ggb-select-slotColor-focus);
+  }
+  .ggb-select:where([data-invalid]) {
+    --_surface: var(--ggb-select-surface-invalid);
+    --_content: var(--ggb-select-content-invalid);
+    --_border: var(--ggb-select-border-invalid);
+    --_placeholder: var(--ggb-select-placeholderColor-invalid);
+    --_slot: var(--ggb-select-slotColor-invalid);
+  }
+  .ggb-select:where([data-readonly]) {
+    --_surface: var(--ggb-select-surface-readonly);
+    --_content: var(--ggb-select-content-readonly);
+    --_border: var(--ggb-select-border-readonly);
+    --_placeholder: var(--ggb-select-placeholderColor-readonly);
+    --_slot: var(--ggb-select-slotColor-readonly);
+  }
+  .ggb-select:where([data-readonly]) .ggb-select__trigger {
+    cursor: default;
+  }
+  .ggb-select:where([data-disabled]) {
+    --_surface: var(--ggb-select-surface-disabled);
+    --_content: var(--ggb-select-content-disabled);
+    --_border: var(--ggb-select-border-disabled);
+    --_placeholder: var(--ggb-select-placeholderColor-disabled);
+    --_slot: var(--ggb-select-slotColor-disabled);
+  }
+  .ggb-select[data-disabled] .ggb-select__trigger {
+    cursor: not-allowed;
+  }
+  /* Focus, whatever the modality: the ring is drawn outside with the concentric radius (radius.focus). */
+  .ggb-select__trigger:focus {
+    outline: var(--ggb-select-focusWidth) solid var(--ggb-select-focusColor);
+    outline-offset: var(--ggb-select-focusOffset);
+  }
+
+  /* Panel */
+  .ggb-select__panel {
+    --ggb-overlay-offset: var(--ggb-select-panel-offset);
+    --ggb-overlay-distance: var(--ggb-select-panel-enterDistance);
+    --ggb-overlay-duration: var(--ggb-select-panel-motionDuration);
+    box-sizing: border-box;
+    flex-direction: column;
+    min-inline-size: min(var(--_anchor-inline-size, 0px), calc(100vi - 2 * var(--ggb-space-layout-sm)));
+    max-inline-size: min(
+      max(var(--_anchor-inline-size, 0px), var(--ggb-select-panel-maxInlineSize)),
+      calc(100vi - 2 * var(--ggb-space-layout-sm))
+    );
+    max-block-size: min(
+      var(--ggb-select-panel-maxBlockSize),
+      calc(100vb - 2 * var(--ggb-space-layout-sm)),
+      calc(var(--_room, 100vb) - var(--ggb-select-panel-offset) - var(--ggb-space-layout-sm))
+    );
+    padding: var(--ggb-select-panel-padding);
+    /* The panel clips; the list scrolls inside the padding, so that the scrollbar never meets the round corners. */
+    overflow: hidden;
+    border-radius: var(--ggb-select-panel-radius);
+    background: var(--ggb-select-panel-surface);
+    box-shadow:
+      inset 0 0 0 var(--ggb-select-panel-borderWidth) var(--ggb-select-panel-elevationColor),
+      var(--ggb-select-panel-shadow);
+    z-index: var(--ggb-select-panel-layer);
+  }
+  .ggb-select__panel:popover-open {
+    display: flex;
+  }
+  .ggb-select__list,
+  .ggb-select__group {
+    display: flex;
+    flex-direction: column;
+  }
+  .ggb-select__list {
+    flex: 1 1 auto;
+    min-block-size: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ggb-select-panel-scrollbarColor) transparent;
+  }
+  .ggb-select__group-heading {
+    padding: var(--ggb-select-group-paddingBlock) var(--ggb-select-group-paddingInline);
+    color: var(--ggb-select-group-headingColor);
+    font: var(--ggb-select-group-typography);
+    letter-spacing: var(--ggb-select-group-typography-letterSpacing, normal);
+  }
+
+  .ggb-select__option {
+    --_o-surface: var(--ggb-select-option-surface-default);
+    --_o-content: var(--ggb-select-option-content-default);
+    box-sizing: border-box;
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: var(--ggb-select-option-gap);
+    min-block-size: var(--ggb-select-option-minHeight);
+    padding: var(--ggb-select-option-paddingBlock) var(--ggb-select-option-paddingInline);
+    border-radius: var(--ggb-select-option-radius);
+    background: var(--_o-surface);
+    color: var(--_o-content);
+    font: var(--ggb-select-option-typography);
+    letter-spacing: var(--ggb-select-option-typography-letterSpacing, normal);
+    cursor: default;
+    user-select: none;
+    transition-property: background-color, color;
+    transition-duration: var(--ggb-select-option-motionDuration);
+    transition-timing-function: var(--ggb-select-option-easingStandard);
+  }
+  .ggb-select__option[data-highlighted] {
+    --_o-surface: var(--ggb-select-option-surface-hover);
+    --_o-content: var(--ggb-select-option-content-hover);
+  }
+  .ggb-select__option[data-selected] {
+    --_o-surface: var(--ggb-select-option-surface-selected);
+    --_o-content: var(--ggb-select-option-content-selected);
+  }
+  .ggb-select__option[data-selected][data-highlighted] {
+    --_o-surface: var(--ggb-select-option-surface-selected-hover);
+    --_o-content: var(--ggb-select-option-content-selected-hover);
+  }
+  .ggb-select__option[data-disabled] {
+    --_o-surface: var(--ggb-select-option-surface-disabled);
+    --_o-content: var(--ggb-select-option-content-disabled);
+  }
+  .ggb-select__option[data-disabled][data-highlighted] {
+    --_o-surface: var(--ggb-select-option-surface-hover);
+  }
+  .ggb-select__option-label {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .ggb-select__option-check {
+    display: block;
+    flex: none;
+    inline-size: var(--ggb-select-option-checkSize);
+    block-size: var(--ggb-select-option-checkSize);
+    color: var(--ggb-select-option-checkColor);
+    visibility: hidden;
+  }
+  .ggb-select__option[data-selected] .ggb-select__option-check {
+    visibility: visible;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-select__trigger,
+    .ggb-select__option {
+      transition: none;
+    }
+  }
+  @media (forced-colors: active) {
+    .ggb-select__trigger {
+      box-shadow: none;
+      outline-color: FieldText;
+      background-color: Field;
+      color: FieldText;
+    }
+    .ggb-select__value[data-placeholder] {
+      color: GrayText;
+    }
+    .ggb-select[data-disabled] .ggb-select__trigger {
+      outline-color: GrayText;
+      color: GrayText;
+    }
+    .ggb-select__trigger:focus {
+      outline: var(--ggb-select-focusWidth) solid Highlight;
+    }
+    .ggb-select__panel {
+      border: 1px solid CanvasText;
+    }
+    /* System colors already; none keeps the browser from painting a Canvas backplate behind the label, which
+       would hide the HighlightText. */
+    .ggb-select__option[data-highlighted] {
+      background: Highlight;
+      color: HighlightText;
+      forced-color-adjust: none;
+    }
+    /* A disabled option in the system disabled color; highlighted, it keeps the normal surface with a Highlight
+       outline, so that both the highlight and the disabled state show. */
+    .ggb-select__option[data-disabled] {
+      color: GrayText;
+    }
+    .ggb-select__option[data-disabled][data-highlighted] {
+      background: Canvas;
+      color: GrayText;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .ggb-select__option-check {
+      color: currentColor;
+    }
+  }
+}

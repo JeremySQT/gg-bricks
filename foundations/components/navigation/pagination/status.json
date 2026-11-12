@@ -1,0 +1,298 @@
+{
+  "formatStatus": "v1",
+  "componentId": "pagination",
+  "family": "navigation",
+  "wave": 4,
+  "phase": "done",
+  "scope": {
+    "purpose": "Move through a long list or table split into numbered pages.",
+    "useCases": ["Paging through a table of results.", "Server-rendered pages with links (href with {page})."],
+    "exclusions": [
+      "A page-size selector and a 'Page x of y' text (composition examples).",
+      "A compact mobile variant in v1.",
+      "Cursor-based paging without a page count (previous and next Buttons)."
+    ],
+    "alternatives": ["A Load more Button or infinite scrolling for feeds read in order."]
+  },
+  "dependencies": ["icon-button"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/navigation/pagination/contract.json",
+      "sha256": "5d8514afadf0714f9ad3a39a5a7bd9e280c1448597b6c76ce5d819048c7e8448"
+    },
+    "tokens": [],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "navigation/pagination (495:19)",
+      "library": "Navigation (495:16), section Pagination (504:270)",
+      "componentSet": "504:552",
+      "specification": "519:2",
+      "ledger": "reports/components/pagination/figma/ledger.json",
+      "parity": "reports/components/pagination/figma/parity.json",
+      "screenshots": [
+        "reports/components/pagination/figma/master-set.png",
+        "reports/components/pagination/figma/specification.png"
+      ],
+      "builders": [
+        "authoring/adapters/figma/pagination-master.plugin.js",
+        "authoring/adapters/figma/wave4-spec.plugin.js",
+        "authoring/adapters/figma/wave4-parity.plugin.js",
+        "authoring/adapters/figma/wave4-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/pagination/figma/blueprint-anatomy.png",
+          "node": "519:320"
+        }
+      ]
+    },
+    "figmaSpec": "foundations/components/navigation/pagination/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/pagination",
+      "files": [
+        "packages/svelte/src/components/pagination/Pagination.svelte",
+        "packages/svelte/src/components/pagination/pages.ts",
+        "packages/svelte/src/components/pagination/types.ts",
+        "packages/svelte/src/components/pagination/pagination.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/pagination/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/pagination",
+      "preview": "dist/previews/pagination.html (npm run build && npm run build:preview pagination)",
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4), page pagination.html"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/navigation.test.ts"],
+      "browser": ["tests/browser/pagination.spec.ts"],
+      "evidence": "reports/components/pagination/svelte/",
+      "unit": ["tests/pagination-entries.test.ts"]
+    },
+    "humanDocs": "documentation/components/pagination.md",
+    "agentDocs": "documentation/index.json (entry pagination); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Pagination compound contract: bindable page, pageCount, siblingCount, href with {page}, size, label, previousLabel, nextLabel; children item (color.item, current page with an indicator edge) and ellipsis; constant item count; IconButton previous and next.",
+      "revision": {
+        "paths": ["foundations/components/navigation/pagination/contract.json"],
+        "sha256": {
+          "foundations/components/navigation/pagination/contract.json": "5d8514afadf0714f9ad3a39a5a7bd9e280c1448597b6c76ce5d819048c7e8448"
+        }
+      },
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendments of 2026-11-09 and 2026-11-10 accepted with the round 2 implementation review (\"Je valide le second tour\"): typography.label.{size} instead of typography.numeral.{size}; showEdges, firstLabel, lastLabel, parts first and last. Digests re-recorded. Amendment of 2026-11-10 (wave 4 implementation review, round 4): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
+      "note": null
+    },
+    "implementation": {
+      "scope": "Pagination: constant item count, link mode, focus after activation, first and last buttons (showEdges, round 2).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/pagination/Pagination.svelte",
+          "packages/svelte/src/components/pagination/contract.generated.ts",
+          "packages/svelte/src/components/pagination/pages.ts",
+          "packages/svelte/src/components/pagination/pagination.css",
+          "packages/svelte/src/components/pagination/tokens.generated.css",
+          "packages/svelte/src/components/pagination/types.ts",
+          "examples/pagination/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/pagination/Pagination.svelte": "467c8503ce0bfc6a90ae600f011dbc09a8a7f3a61689a4d17bf3275ed6f98134",
+          "packages/svelte/src/components/pagination/contract.generated.ts": "ae4ec3dc003a3b2ec56c7f270e8d61f8424f73997f42665ef363a366ec8f8ce0",
+          "packages/svelte/src/components/pagination/pages.ts": "482a91b9bd25fc695aaee24c43cc942f714361041593ebb68e4191fe0ac3a75b",
+          "packages/svelte/src/components/pagination/pagination.css": "10191af5fc91410951af47b2f9f07e3914f77d1ad609024ac963e060cbc80be4",
+          "packages/svelte/src/components/pagination/tokens.generated.css": "b56da302b35753c63b2d30fcd91cb57b3559be0e287dff84289508171d2c8354",
+          "packages/svelte/src/components/pagination/types.ts": "11d36c188c6cb9b9ba00196a0bce68292c1640b3bfb1fb0cde4ea39127d5604a",
+          "examples/pagination/App.svelte": "ce6b5df184b1e0287274f38c1172efe9ae66f966903dc32d6924ef3e8626251f"
+        }
+      },
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
+      "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
+    },
+    "figmaParity": {
+      "scope": "Figma master 504:552 and specification frame 519:2 of the pagination component, parity report (360 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/navigation/pagination/figma-spec.md",
+          "reports/components/pagination/figma/parity.json",
+          "reports/components/pagination/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/navigation/pagination/figma-spec.md": "fd6653152386608b9aa69cd130b930128b42cbfef599ef65a0dd03af8535e1f5",
+          "reports/components/pagination/figma/parity.json": "220c26ff1530ddf72777aefb0b5501d14b24407b6c267349e2cead2622e064a0",
+          "reports/components/pagination/figma/ledger.json": "09f70d1c8535ebb8fc5a3723ce1b62cb77a286a69ce474ea4d313a945b212280"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "504:552",
+          "specificationFrame": "519:2",
+          "children": ["504:307 Pagination/Item", "504:314 Pagination/Ellipsis"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of pagination (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/pagination.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/pagination.svelte"
+        ],
+        "sha256": {
+          "documentation/components/pagination.md": "6e69419c913652fde49bce10e521319593522ff444ebd7929a9954c6be114f6a",
+          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
+          "apps/docs/src/playgrounds/pagination.svelte": "3b7ea80caebcbb381832f010678c02deb99967bdfe2184c0ee64b1395c96f89b"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, after reading the pages on the wave/4 preview of the documentation site (https://wave-4-design-system.jeremy-soquet.workers.dev): \"Je valide la doc, corrige aussi lib/overlay\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/pagination/"
+    },
+    {
+      "name": "Wave 4 contract gate approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium, overlay smoke spec in Firefox and WebKit, docs site)",
+      "result": "300 passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:preview pagination",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "Round 2: npm run verify passed; npm run test:browser 303 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr"
+    },
+    {
+      "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Figma parity (360 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/pagination/figma/parity.json"
+    },
+    {
+      "name": "Wave 4 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build) and npm run check:approvals (438 digests, 0 errors)",
+      "result": "passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the forced-colors fixes",
+      "result": "319 passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "Documentation: npm run build:docs (48 pages, every live block compiled) and tests/browser/docs-site.spec.ts (37 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "reports/site/docs/"
+    }
+  ],
+  "decisionsTaken": [
+    "Pages are items painted with color.item.* (selected for the current page, with a 1 px inner edge in color.item.indicator so that the current page is not conveyed by the tint alone); square boxes of size.control.{size}, radius.control, typography.numeral.{size} (tabular figures).",
+    "Previous and next are IconButtons (neutral ghost, pagination's size) with intrinsic chevrons; they stay in place when disabled at the bounds.",
+    "Constant item count (siblingCount × 2 + 5): first, last, current and siblings, ellipses for gaps of two pages or more, so that the controls do not move while paging (the usual algorithm).",
+    "href with a {page} placeholder turns every control into a link; otherwise buttons and pageChange.",
+    "No roving focus: each control is a tab stop (WAI-ARIA has no pagination pattern; links in a navigation landmark).",
+    "Contract fact found during implementation: typography.numeral.{size} became typography.label.{size} (numeral.lg is 24 px), with tabular figures set by the component. Recorded in pendingChanges for the implementation gate.",
+    "Round 2: showEdges adds first and last IconButtons (Phosphor caret-double glyphs), disabled at the ends and staying in place."
+  ],
+  "openDecisions": [],
+  "nextAction": "Done (wave 4, 2026-11-12): pull request of branch wave/4 to main. Library publication and package release follow the delivery workflow (ggb-maintain) on explicit authorization.",
+  "implementationNotes": [
+    "Exports Pagination.",
+    "The item algorithm lives in pages.ts with a unit test (tests/pagination-entries.test.ts) over every page of counts 1 to 40 and siblings 0 to 3.",
+    "Previous and next reset the ButtonGroup size context (their size is the pagination size)."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Contract fact found during implementation: item and ellipsis typography typography.numeral.{size} -> typography.label.{size} (numeral.lg is 24 px, out of proportion with an lg control; label matches Button); the component sets tabular figures itself. To re-present at the wave 4 implementation gate.",
+      "sha256": {
+        "foundations/components/navigation/pagination/contract.json": "c0369d5ae7b339ae1a5f581e586f7e082a8b9eb0d27e3d3e0ae95188c35375e7"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 2 implementation approval (2026-11-10)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 2 of the wave 4 implementation review (user, 2026-11-10): \"Il manque peut-être des boutons First page et last page\". Contract facts: showEdges, firstLabel, lastLabel, parts first and last. To re-present at the implementation gate (round 2).",
+      "sha256": {
+        "foundations/components/navigation/pagination/contract.json": "082d8e2b2a1100544c2fcd0ba8ee8427d705d81d237da89d9e81a78fc5a45dd7"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 2 implementation approval (2026-11-10)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: a single row; siblingCount is a maximum reduced to fit the inline size; last resort, the row scrolls; roles focusWidth and focusOffset. Implementation accordingly; extent measured from the items' boxes. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/navigation/pagination/contract.json": "5d8514afadf0714f9ad3a39a5a7bd9e280c1448597b6c76ce5d819048c7e8448",
+        "packages/svelte/src/components/pagination/Pagination.svelte": "467c8503ce0bfc6a90ae600f011dbc09a8a7f3a61689a4d17bf3275ed6f98134",
+        "packages/svelte/src/components/pagination/contract.generated.ts": "ae4ec3dc003a3b2ec56c7f270e8d61f8424f73997f42665ef363a366ec8f8ce0",
+        "packages/svelte/src/components/pagination/pages.ts": "482a91b9bd25fc695aaee24c43cc942f714361041593ebb68e4191fe0ac3a75b",
+        "packages/svelte/src/components/pagination/pagination.css": "10191af5fc91410951af47b2f9f07e3914f77d1ad609024ac963e060cbc80be4",
+        "packages/svelte/src/components/pagination/tokens.generated.css": "b56da302b35753c63b2d30fcd91cb57b3559be0e287dff84289508171d2c8354",
+        "packages/svelte/src/components/pagination/types.ts": "11d36c188c6cb9b9ba00196a0bce68292c1640b3bfb1fb0cde4ea39127d5604a",
+        "examples/pagination/App.svelte": "ce6b5df184b1e0287274f38c1172efe9ae66f966903dc32d6924ef3e8626251f"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
+    }
+  ]
+}

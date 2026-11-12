@@ -1,0 +1,298 @@
+{
+  "formatStatus": "v1",
+  "componentId": "toolbar",
+  "family": "actions",
+  "wave": 4,
+  "phase": "done",
+  "scope": {
+    "purpose": "Group frequently used controls for one area into a single tab stop with arrow-key navigation.",
+    "useCases": [
+      "Formatting actions of an editor (IconButtons with Tooltips).",
+      "Actions on a table selection, with a More menu.",
+      "Display options of a view (a Popover of filters, a Menu of sort orders)."
+    ],
+    "exclusions": [
+      "Toggle buttons (pressed state) in v1: Button and IconButton have no pressed state (open question).",
+      "Text entry, Select or other arrow-key controls inside the toolbar in v1."
+    ],
+    "alternatives": [
+      "ButtonGroup for a few independent actions, each a tab stop.",
+      "SegmentedControl or RadioGroup for a choice."
+    ]
+  },
+  "dependencies": ["button", "icon-button", "menu", "popover", "tooltip"],
+  "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the icon examples."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/actions/toolbar/contract.json",
+      "sha256": "5201226e16e2a4f4feda2cfbc7a5f41195bd9a71b7ce11e9c3f435fb845c3303"
+    },
+    "tokens": [],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "actions/toolbar (495:23)",
+      "library": "Actions (343:2), section Toolbar (506:1345)",
+      "componentSet": "506:1873",
+      "specification": "522:748",
+      "ledger": "reports/components/toolbar/figma/ledger.json",
+      "parity": "reports/components/toolbar/figma/parity.json",
+      "screenshots": [
+        "reports/components/toolbar/figma/master-set.png",
+        "reports/components/toolbar/figma/specification.png"
+      ],
+      "builders": [
+        "authoring/adapters/figma/toolbar-master.plugin.js",
+        "authoring/adapters/figma/wave4-spec.plugin.js",
+        "authoring/adapters/figma/wave4-parity.plugin.js",
+        "authoring/adapters/figma/wave4-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/toolbar/figma/blueprint-anatomy.png",
+          "node": "522:1173"
+        }
+      ]
+    },
+    "figmaSpec": "foundations/components/actions/toolbar/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/toolbar",
+      "files": [
+        "packages/svelte/src/components/toolbar/Toolbar.svelte",
+        "packages/svelte/src/components/toolbar/ToolbarSeparator.svelte",
+        "packages/svelte/src/components/toolbar/types.ts",
+        "packages/svelte/src/components/toolbar/toolbar.css",
+        "packages/svelte/src/components/toolbar/roving-focus.ts"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/toolbar/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/toolbar",
+      "preview": "dist/previews/toolbar.html (npm run build && npm run build:preview toolbar)",
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4), page toolbar.html"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/tabs-toolbar.test.ts"],
+      "browser": ["tests/browser/toolbar.spec.ts"],
+      "evidence": "reports/components/toolbar/svelte/"
+    },
+    "humanDocs": "documentation/components/toolbar.md",
+    "agentDocs": "documentation/index.json (entry toolbar); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Toolbar compound contract: label (required), size, orientation; items Button, IconButton, Menu, Popover, Tooltip and the separator child; roving focus shared with Tabs; no toggle buttons in v1.",
+      "revision": {
+        "paths": ["foundations/components/actions/toolbar/contract.json"],
+        "sha256": {
+          "foundations/components/actions/toolbar/contract.json": "5201226e16e2a4f4feda2cfbc7a5f41195bd9a71b7ce11e9c3f435fb845c3303"
+        }
+      },
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendment of 2026-11-10 (wave 4 implementation review, round 4): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
+      "note": null
+    },
+    "implementation": {
+      "scope": "Toolbar: roving focus, overflow Menu of the controls that do not fit (label, icon, disabled, danger intent), separators, sizes and orientations; fills its inline size (round 4).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/toolbar/Toolbar.svelte",
+          "packages/svelte/src/components/toolbar/ToolbarSeparator.svelte",
+          "packages/svelte/src/components/toolbar/types.ts",
+          "packages/svelte/src/components/toolbar/toolbar.css",
+          "packages/svelte/src/components/toolbar/roving-focus.ts",
+          "packages/svelte/src/components/toolbar/contract.generated.ts",
+          "packages/svelte/src/components/toolbar/tokens.generated.css",
+          "examples/toolbar/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/toolbar/Toolbar.svelte": "98738d9d0f578478d89a27ef46ccb0012b94a80b05641444a2447331fe46a3f4",
+          "packages/svelte/src/components/toolbar/ToolbarSeparator.svelte": "e7d759dea9db5ea91aa98f237425b66435171a0b71e48c542dd022ad9e221299",
+          "packages/svelte/src/components/toolbar/types.ts": "5795e42095790fa49961765f10ddf1ab0c3adf5a842e3aadc539a9003c4a3a43",
+          "packages/svelte/src/components/toolbar/toolbar.css": "74bc5fd680eef9b5a7f23081794291b2543c02601d96387e2ca0e8670dce8308",
+          "packages/svelte/src/components/toolbar/roving-focus.ts": "b41c75108cd4431ab4137b067d72e5182cfba41842bec442ec9a016807dacff2",
+          "packages/svelte/src/components/toolbar/contract.generated.ts": "f271be4cf7e4f03b256f2be5ebdff7e021110fa260ecb6bdf5c8455d3ae8356c",
+          "packages/svelte/src/components/toolbar/tokens.generated.css": "52c6e008958893ec44e9a91e8f4b65cdb945449e58330de00f11c71218b0d98b",
+          "examples/toolbar/App.svelte": "feb70f0b98515672abba89c99100726501f15b24c4be5f5179cf6a9ad124c75e"
+        }
+      },
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\"."
+    },
+    "figmaParity": {
+      "scope": "Figma master 506:1873 and specification frame 522:748 of the toolbar component, parity report (60 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/actions/toolbar/figma-spec.md",
+          "reports/components/toolbar/figma/parity.json",
+          "reports/components/toolbar/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/actions/toolbar/figma-spec.md": "29b15073d75d62360ae54d21f219d7867f30155aa7dd043a89f331c787398817",
+          "reports/components/toolbar/figma/parity.json": "b4f890458d43ca335a64b2f8e114a42842f7fdca74156546e13a48a180304325",
+          "reports/components/toolbar/figma/ledger.json": "5e697111cdec4e84f6d3a0b35d46d272ccedcc250d23e76da3a1eacd4fab26c7"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "506:1873",
+          "specificationFrame": "522:748",
+          "children": ["506:1350 Toolbar/Separator"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of toolbar (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/toolbar.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/toolbar.svelte"
+        ],
+        "sha256": {
+          "documentation/components/toolbar.md": "59cfd868bec09d18465303db22247a48caddba3248d8a1ce8b42f06ad759cd72",
+          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
+          "apps/docs/src/playgrounds/toolbar.svelte": "009f609425a82e3eb1e0f06880955c687fa9e0de12d9642b3099cc0d779cf510"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, after reading the pages on the wave/4 preview of the documentation site (https://wave-4-design-system.jeremy-soquet.workers.dev): \"Je valide la doc, corrige aussi lib/overlay\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/toolbar/"
+    },
+    {
+      "name": "Wave 4 contract gate approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium, overlay smoke spec in Firefox and WebKit, docs site)",
+      "result": "300 passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:preview toolbar",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "Round 2: npm run verify passed; npm run test:browser 303 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Round 3: npm run verify passed; npm run test:browser 305 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Figma parity (60 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/toolbar/figma/parity.json"
+    },
+    {
+      "name": "Wave 4 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build) and npm run check:approvals (438 digests, 0 errors)",
+      "result": "passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the forced-colors fixes",
+      "result": "319 passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "Documentation: npm run build:docs (48 pages, every live block compiled) and tests/browser/docs-site.spec.ts (37 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "reports/site/docs/"
+    }
+  ],
+  "decisionsTaken": [
+    "Like ButtonGroup, the toolbar has no surface and passes its size to every item, including Menu and Popover triggers and the controls inside Tooltips.",
+    "label is required: a toolbar is a composite widget whose purpose must be announced.",
+    "Roving focus shared with Tabs (lib/roving-focus): remembers the last focused item, arrows wrap, disabled items and separators skipped.",
+    "In a horizontal toolbar Down and Up Arrow on a Menu trigger still open its menu; in a vertical toolbar they move focus.",
+    "Items wrap onto further lines when they do not fit; no overflow menu in v1. (Superseded at round 3 by the overflow Menu.)",
+    "Separator child: a 1 px color.border.subtle line perpendicular to the orientation.",
+    "Gate question 3 resolved (user, 2026-11-09): the Tooltip skip and close delays become component tokens component.tooltip.skip-delay (300 ms) and component.tooltip.close-delay (100 ms) through a Tooltip Modify (rendering unchanged).",
+    "Gate question 4 resolved (user, 2026-11-09): the size a group imposes reaches Menu and Popover triggers; the same fix is applied to ButtonGroup, with a browser test in Toolbar and ButtonGroup.",
+    "Gate question 5 resolved (user, 2026-11-09): Toolbar v1 without toggle buttons; toggles later with a dedicated component or an IconButton pressed prop, on demand.",
+    "The toolbar size reaches its items through the ButtonGroup context key (ggb:button-group); Popover content resets it and Menu no longer does (gate question 4).",
+    "Roving focus from lib/roving-focus: keys handled in the capture phase and only when they come from an item, so that a Menu trigger in a vertical toolbar moves focus instead of opening, and keys inside an open menu or popover stay with it.",
+    "Round 2: the roving-focus module moved from src/lib into the Toolbar folder, Tabs using Bits UI Tabs; the shared rules (wrapping, Home and End, right-to-left, disabled items skipped) are checked by both browser suites.",
+    "Round 3: overflow Menu (More) instead of wrapping; moved units are hidden in place and offered as menu items built from their accessible name, icon and disabled state; choosing one clicks the original control. Menu and Popover triggers never move. A horizontal toolbar fills its inline size (otherwise the hidden items would feed back into its width)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Done (wave 4, 2026-11-12): pull request of branch wave/4 to main. Library publication and package release follow the delivery workflow (ggb-maintain) on explicit authorization.",
+  "implementationNotes": [
+    "Exports Toolbar and ToolbarSeparator.",
+    "The module writes tabindex on the items (one 0, others -1) and keeps it in sync with a MutationObserver."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Round 3 of the wave 4 implementation review (user, 2026-11-10), recommendation 3 approved (\"toutes tes recommandations de 1 à 6\"): overflow Menu instead of wrapping; prop overflowLabel, part overflow; a horizontal toolbar fills its inline size. To re-present at the implementation gate (round 3).",
+      "sha256": {
+        "foundations/components/actions/toolbar/contract.json": "58e3b0fe784f9c11782acf1f5b2f33ed008fa612e3ff84e8853b24411abd7b9c"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: danger intent carried into the overflow menu. Implementation: extent measured from the controls' boxes (Tooltip wrappers have no box; enlarged targets reach past the boxes) and including the More trigger; items without an icon get no leading slot. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/actions/toolbar/contract.json": "5201226e16e2a4f4feda2cfbc7a5f41195bd9a71b7ce11e9c3f435fb845c3303",
+        "packages/svelte/src/components/toolbar/Toolbar.svelte": "98738d9d0f578478d89a27ef46ccb0012b94a80b05641444a2447331fe46a3f4",
+        "packages/svelte/src/components/toolbar/ToolbarSeparator.svelte": "e7d759dea9db5ea91aa98f237425b66435171a0b71e48c542dd022ad9e221299",
+        "packages/svelte/src/components/toolbar/contract.generated.ts": "f271be4cf7e4f03b256f2be5ebdff7e021110fa260ecb6bdf5c8455d3ae8356c",
+        "packages/svelte/src/components/toolbar/roving-focus.ts": "b41c75108cd4431ab4137b067d72e5182cfba41842bec442ec9a016807dacff2",
+        "packages/svelte/src/components/toolbar/tokens.generated.css": "52c6e008958893ec44e9a91e8f4b65cdb945449e58330de00f11c71218b0d98b",
+        "packages/svelte/src/components/toolbar/toolbar.css": "74bc5fd680eef9b5a7f23081794291b2543c02601d96387e2ca0e8670dce8308",
+        "packages/svelte/src/components/toolbar/types.ts": "5795e42095790fa49961765f10ddf1ab0c3adf5a842e3aadc539a9003c4a3a43",
+        "examples/toolbar/App.svelte": "feb70f0b98515672abba89c99100726501f15b24c4be5f5179cf6a9ad124c75e"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
+    }
+  ]
+}

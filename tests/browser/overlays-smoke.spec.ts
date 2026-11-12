@@ -83,3 +83,93 @@ test('toast: the region is in the top layer at its edge; a toast shows and is di
   await item.locator('.ggb-toast__dismiss button').click();
   await expect(item).toHaveCount(0);
 });
+
+// Shift along the edge (wave 4 contract gate, 2026-11-09): with its trigger against the inline end of a narrow
+// viewport, each anchored overlay stays inside the viewport instead of overflowing it, in every engine.
+async function pinToEnd(page: Page, selector: string) {
+  await page.setViewportSize({ width: 360, height: 640 });
+  await page.locator(selector).evaluate((el) => {
+    Object.assign((el as HTMLElement).style, { position: 'fixed', insetInlineEnd: '4px', insetBlockStart: '120px' });
+  });
+}
+async function insideViewport(page: Page, id: string) {
+  await settle(page);
+  const box = (await page.locator(`#${id}`).boundingBox())!;
+  const width = page.viewportSize()!.width;
+  expect(box.x).toBeGreaterThanOrEqual(-0.5);
+  expect(box.x + box.width).toBeLessThanOrEqual(width + 0.5);
+}
+
+test('edge: popover, menu and tooltip shift along the inline end of the viewport', async ({ page }) => {
+  await page.goto('/popover/');
+  await pinToEnd(page, '#filters-trigger');
+  await page.click('#filters-trigger');
+  await expect.poll(() => isOpen(page, 'filters')).toBe(true);
+  await insideViewport(page, 'filters');
+
+  await page.goto('/menu/');
+  await pinToEnd(page, '#actions-trigger');
+  await page.focus('#actions-trigger');
+  await page.keyboard.press('ArrowDown');
+  await expect.poll(() => isOpen(page, 'actions')).toBe(true);
+  await insideViewport(page, 'actions');
+
+  await page.goto('/tooltip/');
+  await pinToEnd(page, '#copy');
+  await page.focus('#before');
+  await page.keyboard.press('Tab');
+  await expect.poll(() => isOpen(page, 'tip-copy')).toBe(true);
+  await insideViewport(page, 'tip-copy');
+});
+
+// Wave 4 list panels in every engine: keyboard opening, choice, focus kept on the field, and the edge.
+test('select: Down Arrow opens on the first option, Enter chooses, focus stays on the trigger', async ({ page }) => {
+  await page.goto('/select/');
+  const panel = page.locator('#play ~ .ggb-select__panel');
+  await page.focus('#play');
+  await page.keyboard.press('ArrowDown');
+  await expect.poll(() => panel.evaluate((p) => p.matches(':popover-open'))).toBe(true);
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('Enter');
+  await expect(page.getByTestId('value')).toHaveText('Value: fr');
+  await expect.poll(() => panel.evaluate((p) => p.matches(':popover-open'))).toBe(false);
+  await expect.poll(() => focused(page)).toBe('play');
+});
+
+test('combobox: typing filters and Enter chooses; focus stays in the input', async ({ page }) => {
+  await page.goto('/combobox/');
+  await page.focus('#play');
+  await page.keyboard.type('jap');
+  await page.keyboard.press('Enter');
+  await expect(page.getByTestId('value')).toHaveText('Value: japan');
+  await expect(page.locator('#play')).toHaveValue('Japan');
+  await expect.poll(() => focused(page)).toBe('play');
+});
+
+test('edge: select and combobox panels stay inside a narrow viewport', async ({ page }) => {
+  await page.goto('/select/');
+  await pinToEnd(page, '#narrow');
+  await page.locator('#narrow').evaluate((el) => ((el as HTMLElement).style.inlineSize = '8rem'));
+  await page.focus('#narrow');
+  await page.keyboard.press('ArrowDown');
+  const select = page.locator('#narrow ~ .ggb-select__panel');
+  await expect.poll(() => select.evaluate((p) => p.matches(':popover-open'))).toBe(true);
+  await settle(page);
+  const box = (await select.boundingBox())!;
+  expect(box.x).toBeGreaterThanOrEqual(-0.5);
+  expect(box.x + box.width).toBeLessThanOrEqual(page.viewportSize()!.width + 0.5);
+
+  await page.goto('/combobox/');
+  await page.setViewportSize({ width: 360, height: 640 });
+  await page.focus('#people');
+  await page.keyboard.press('ArrowDown');
+  const combo = page
+    .locator('.ggb-combobox')
+    .filter({ has: page.locator('#people') })
+    .locator('.ggb-combobox__panel');
+  await expect.poll(() => combo.evaluate((p) => p.matches(':popover-open'))).toBe(true);
+  await settle(page);
+  const c = (await combo.boundingBox())!;
+  expect(c.x).toBeGreaterThanOrEqual(-0.5);
+  expect(c.x + c.width).toBeLessThanOrEqual(360.5);
+});

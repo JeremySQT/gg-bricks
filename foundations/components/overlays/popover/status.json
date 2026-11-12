@@ -20,7 +20,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/overlays/popover/contract.json",
-      "sha256": "d6b71e44809af5922418ef1942119938ff815302d988724dbada74eecfc93072"
+      "sha256": "4700f522ee2f9681507de082233f5f59a0833dcf54d8b06075331a34c723b8dc"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": {
@@ -55,6 +55,7 @@
       "folder": "packages/svelte/src/components/popover",
       "files": [
         "packages/svelte/src/components/popover/Popover.svelte",
+        "packages/svelte/src/components/popover/PopoverContent.svelte",
         "packages/svelte/src/components/popover/types.ts",
         "packages/svelte/src/components/popover/popover.css"
       ],
@@ -84,10 +85,10 @@
       "revision": {
         "paths": ["foundations/components/overlays/popover/contract.json"],
         "sha256": {
-          "foundations/components/overlays/popover/contract.json": "d6b71e44809af5922418ef1942119938ff815302d988724dbada74eecfc93072"
+          "foundations/components/overlays/popover/contract.json": "4700f522ee2f9681507de082233f5f59a0833dcf54d8b06075331a34c723b8dc"
         }
       },
-      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\".",
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendment of 2026-11-10 (wave 4 implementation review, round 2, recommendation 4; user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide le second tour et toutes tes recommandations de 1 à 6\"): role scrollbarColor (color.border.default); the content scrolls inside the padding with a thin scrollbar, as in Select and Combobox. Digests re-recorded. Amendment of 2026-11-10 (wave 4 implementation review, round 4): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": null
     },
     "implementation": {
@@ -99,18 +100,20 @@
           "packages/svelte/src/components/popover/popover.css",
           "packages/svelte/src/components/popover/tokens.generated.css",
           "packages/svelte/src/components/popover/types.ts",
-          "examples/popover/App.svelte"
+          "examples/popover/App.svelte",
+          "packages/svelte/src/components/popover/PopoverContent.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/components/popover/Popover.svelte": "0e59038dd3d7e8afcc3ce85da623cacfc52f4b04efa08c5cfb1091b1afb30e9d",
+          "packages/svelte/src/components/popover/Popover.svelte": "a4173300faa69a6b6e829115899751b14d553241a1d7a4b03acad24bec70c438",
           "packages/svelte/src/components/popover/contract.generated.ts": "645112b62ca8f6df23f8a47b8e42bcbad4b9f3e6e8a50dabc58e0e1396a6db02",
-          "packages/svelte/src/components/popover/popover.css": "9fc56f7db2c5d5a898da420f4a5a1cffb7a500c27892d027a570546054713a3b",
-          "packages/svelte/src/components/popover/tokens.generated.css": "3544dc4ea4232588d2676cb74ad77e2542c720bdf1a0099071d035717d817322",
+          "packages/svelte/src/components/popover/popover.css": "ea1cda8ee6b17ac34a2000e4547983a26631ad8050cca34e377c40716d505571",
+          "packages/svelte/src/components/popover/tokens.generated.css": "e9831d7e4cd302b19bbed0576947ad665c8f4514d70c2b43bd4950ae06be7ac5",
           "packages/svelte/src/components/popover/types.ts": "110a47704c7b77ed70fdf55b462538d11c7bbc4d599a60a2f368143a8d45776a",
-          "examples/popover/App.svelte": "c7eef0b7cd15a4f125d0922eeec6af67d0f0fd10603136cba0320e1d34b3d30b"
+          "examples/popover/App.svelte": "c7eef0b7cd15a4f125d0922eeec6af67d0f0fd10603136cba0320e1d34b3d30b",
+          "packages/svelte/src/components/popover/PopoverContent.svelte": "de4294e64bb4201c0d502d9a35ad2a9ed9990eddce674ca65969d7b5ab20a471"
         }
       },
-      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change). Amendment of 2026-11-10 (wave 4 implementation review, round 4, change accepted with the wave): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
     "figmaParity": {
@@ -143,12 +146,12 @@
           "apps/docs/src/playgrounds/popover.svelte"
         ],
         "sha256": {
-          "documentation/components/popover.md": "a59c0eaed754125d5a48f1501dea5b450d27d17e911d39b3c1ca3582078a7088",
-          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "documentation/components/popover.md": "8d3777c720ab55517bd223805176709a00add37857e247bcb24dfb1263169512",
+          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
           "apps/docs/src/playgrounds/popover.svelte": "18be87bc39f95ace99053ddb8931df10b4fbe1e33b3bc2ee80dce83090ac2ab5"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremy-soquet.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): documentation/index.json gained the seven wave 4 entries and lost the \"(planned)\" mentions of components now exported; documentation/components/popover.md no longer marks the wave 4 components it names as planned. Digests re-recorded.",
       "note": null
     },
     "delivery": null
@@ -220,6 +223,18 @@
       "result": "passed",
       "date": "2026-11-09",
       "evidence": "documentation/components/popover.md"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Wave 4 changes (implementation): computed.json unchanged by the evidence run of 2026-11-10, so the Figma master and its parity are unchanged; the changes (scrollbar inside the padding, room for the focus ring, group size of the triggers, delay tokens) have no static rendering in Figma",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/popover/svelte/computed.json"
     }
   ],
   "decisionsTaken": [
@@ -230,9 +245,48 @@
     "No built-in close button: content adds one when it needs it (Escape and a press outside always close)."
   ],
   "openDecisions": [],
-  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
+  "nextAction": "Wave 4 changes accepted with the wave 4 implementation gate; the Figma master was re-checked at the wave 4 Figma parity (unchanged); the documentation is re-checked with the wave 4 documentation step.",
   "implementationNotes": [
     "The trigger is rendered by a snippet that spreads popovertarget and the popup attributes on a Button or IconButton: the browser toggles the auto popover, which spares the trigger from light dismiss (no close-then-reopen on the same press) and restores focus to it on Escape.",
     "On opening, the panel's max block size is the larger room above or below the trigger, so that it flips and scrolls instead of overflowing the viewport."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Group size reaches the trigger (wave 4 contract gate, question 4): the reset of the ButtonGroup size moved from Popover.svelte into the new inner PopoverContent.svelte, so that a trigger in a ButtonGroup or Toolbar takes the group size while the content keeps its own (it was reset for the trigger too). To re-present at the wave 4 implementation gate.",
+      "sha256": {
+        "packages/svelte/src/components/popover/Popover.svelte": "a4173300faa69a6b6e829115899751b14d553241a1d7a4b03acad24bec70c438",
+        "packages/svelte/src/components/popover/PopoverContent.svelte": "32fcfbdd457680ddc004a7e8447aaa2e83e46f4e983fcd00c9f2b384c6f8a5c4"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Recommendation 4 of round 2: the content scrolls in an inner element (.ggb-popover__content) inside the padding with a thin scrollbar in scrollbarColor; rendering otherwise unchanged. To re-present at the wave 4 implementation gate.",
+      "sha256": {
+        "packages/svelte/src/components/popover/PopoverContent.svelte": "de4294e64bb4201c0d502d9a35ad2a9ed9990eddce674ca65969d7b5ab20a471",
+        "packages/svelte/src/components/popover/popover.css": "8d871fc896f612bf9858cd8b118b8c1e67ffe217cc995af28f9518064f53463c",
+        "packages/svelte/src/components/popover/tokens.generated.css": "856c641c4173beaf0aed7c21168a37ff7037c457bf3588fe550c57617d496504"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: roles focusWidth and focusOffset; the scrolling area keeps room for the focus indicators of its controls (they were cut since round 3). Implementation accordingly. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/overlays/popover/contract.json": "4700f522ee2f9681507de082233f5f59a0833dcf54d8b06075331a34c723b8dc",
+        "packages/svelte/src/components/popover/Popover.svelte": "a4173300faa69a6b6e829115899751b14d553241a1d7a4b03acad24bec70c438",
+        "packages/svelte/src/components/popover/PopoverContent.svelte": "de4294e64bb4201c0d502d9a35ad2a9ed9990eddce674ca65969d7b5ab20a471",
+        "packages/svelte/src/components/popover/contract.generated.ts": "645112b62ca8f6df23f8a47b8e42bcbad4b9f3e6e8a50dabc58e0e1396a6db02",
+        "packages/svelte/src/components/popover/popover.css": "ea1cda8ee6b17ac34a2000e4547983a26631ad8050cca34e377c40716d505571",
+        "packages/svelte/src/components/popover/tokens.generated.css": "e9831d7e4cd302b19bbed0576947ad665c8f4514d70c2b43bd4950ae06be7ac5",
+        "packages/svelte/src/components/popover/types.ts": "110a47704c7b77ed70fdf55b462538d11c7bbc4d599a60a2f368143a8d45776a",
+        "examples/popover/App.svelte": "c7eef0b7cd15a4f125d0922eeec6af67d0f0fd10603136cba0320e1d34b3d30b"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
+    }
   ]
 }

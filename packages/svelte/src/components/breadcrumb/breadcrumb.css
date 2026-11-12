@@ -1,0 +1,135 @@
+/*
+ * Breadcrumb structure. Colors, sizes, spacing, typography and motion come from tokens.generated.css. Items stay on
+ * one line; when room runs out the ancestors' labels shrink first (a much larger shrink factor), the current page's
+ * last, and each truncates with an ellipsis.
+ */
+@layer ggb {
+  .ggb-breadcrumb {
+    min-inline-size: 0;
+  }
+  .ggb-breadcrumb__list {
+    display: flex;
+    align-items: center;
+    gap: var(--ggb-breadcrumb-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+  }
+  .ggb-breadcrumb__entry {
+    display: flex;
+    align-items: center;
+    gap: var(--ggb-breadcrumb-gap);
+    flex: 0 1000 auto;
+    min-inline-size: 0;
+  }
+  .ggb-breadcrumb__entry[data-current] {
+    flex-shrink: 1;
+  }
+  .ggb-breadcrumb__more {
+    flex: none;
+  }
+  .ggb-breadcrumb__separator {
+    display: block;
+    flex: none;
+    inline-size: var(--ggb-breadcrumb-separatorSize);
+    block-size: var(--ggb-breadcrumb-separatorSize);
+    color: var(--ggb-breadcrumb-separatorColor);
+  }
+  .ggb-breadcrumb__separator:dir(rtl) {
+    scale: -1 1;
+  }
+
+  .ggb-breadcrumb__item {
+    --_color: var(--ggb-breadcrumb-item-linkColor);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ggb-breadcrumb-item-gap);
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    border-radius: var(--ggb-breadcrumb-item-focusRadius);
+    color: var(--_color);
+    font: var(--ggb-breadcrumb-item-typography);
+    letter-spacing: var(--ggb-breadcrumb-item-typography-letterSpacing, normal);
+    text-decoration: none;
+    outline: none;
+    transition: color var(--ggb-breadcrumb-item-motionDuration) var(--ggb-breadcrumb-item-easingStandard);
+  }
+  /* The interaction target meets the minimum height without changing the line. */
+  :is(a.ggb-breadcrumb__item, .ggb-breadcrumb__more-trigger)::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    inset-block: 50% auto;
+    block-size: var(--ggb-breadcrumb-minTarget);
+    translate: 0 -50%;
+  }
+  @media (hover: hover) {
+    :is(a.ggb-breadcrumb__item, .ggb-breadcrumb__more-trigger):hover {
+      --_color: var(--ggb-breadcrumb-item-hoverColor);
+    }
+    :is(a.ggb-breadcrumb__item, .ggb-breadcrumb__more-trigger):hover .ggb-breadcrumb__item-label {
+      text-decoration: underline;
+    }
+  }
+  .ggb-breadcrumb__item[data-current] {
+    --_color: var(--ggb-breadcrumb-item-currentColor);
+  }
+  .ggb-breadcrumb__item:focus-visible {
+    outline: var(--ggb-breadcrumb-item-focusWidth) solid var(--ggb-breadcrumb-item-focusColor);
+    outline-offset: var(--ggb-breadcrumb-item-focusOffset);
+  }
+  .ggb-breadcrumb__item-label {
+    min-inline-size: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  /* Hidden label (only next to an icon that renders): the label stays in the accessibility tree (the item's name) but takes no room. */
+  .ggb-breadcrumb__item[data-hide-label]:has(.ggb-breadcrumb__item-leading:not(:empty)) .ggb-breadcrumb__item-label {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .ggb-breadcrumb__entry:has([data-hide-label] .ggb-breadcrumb__item-leading:not(:empty)) {
+    flex-shrink: 0;
+  }
+  /* The more button resets the native button and reads as a link. */
+  .ggb-breadcrumb__more-trigger {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+  .ggb-breadcrumb__item-leading {
+    display: flex;
+    flex: none;
+  }
+  .ggb-breadcrumb__item-leading > svg {
+    display: block;
+    inline-size: var(--ggb-breadcrumb-item-iconSize);
+    block-size: var(--ggb-breadcrumb-item-iconSize);
+  }
+
+  /* A slot whose snippet renders nothing takes no room (no gap beside it). */
+  .ggb-breadcrumb__item-leading:empty {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-breadcrumb__item {
+      transition: none;
+    }
+  }
+  @media (forced-colors: active) {
+    :is(a.ggb-breadcrumb__item, .ggb-breadcrumb__more-trigger) {
+      color: LinkText;
+    }
+    .ggb-breadcrumb__item[data-current] {
+      color: CanvasText;
+    }
+  }
+}

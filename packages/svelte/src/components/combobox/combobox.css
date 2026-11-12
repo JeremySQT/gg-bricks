@@ -1,0 +1,315 @@
+/*
+ * Combobox structure. Values come from tokens.generated.css; geometry, anchoring and entry/exit motion of the panel come
+ * from lib/overlay/overlay.css. The field reproduces InputText (surface, inner border, focus ring, spacing); the
+ * highlighted option is data-highlighted (focus stays in the input).
+ */
+@layer ggb {
+  .ggb-combobox {
+    --_surface: var(--ggb-combobox-surface-default);
+    --_content: var(--ggb-combobox-content-default);
+    --_border: var(--ggb-combobox-border-default);
+    --_placeholder: var(--ggb-combobox-placeholderColor-default);
+    --_slot: var(--ggb-combobox-slotColor-default);
+    position: relative;
+    display: flex;
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+  .ggb-combobox__field {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    min-inline-size: 0;
+    block-size: var(--ggb-combobox-minHeight);
+    margin: 0;
+    padding: 0 var(--ggb-combobox-edgeInline);
+    border: 0;
+    border-radius: var(--ggb-combobox-radius);
+    background-color: var(--_surface);
+    color: var(--_content);
+    box-shadow: inset 0 0 0 var(--ggb-combobox-borderWidth) var(--_border);
+    outline: var(--ggb-combobox-borderWidth) solid transparent;
+    outline-offset: calc(-1 * var(--ggb-combobox-borderWidth));
+    font: var(--ggb-combobox-typography);
+    letter-spacing: var(--ggb-combobox-typography-letterSpacing, normal);
+    cursor: text;
+    transition-property: background-color, color, box-shadow;
+    transition-duration: var(--ggb-combobox-motionDuration);
+    transition-timing-function: var(--ggb-combobox-easingStandard);
+  }
+  /* Interaction target: at least minTarget tall, centered, without enlarging the visible field. */
+  .ggb-combobox__field::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 50%;
+    block-size: max(100%, var(--ggb-combobox-minTarget));
+    transform: translateY(-50%);
+  }
+  .ggb-combobox__input {
+    position: relative;
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    block-size: 100%;
+    margin: 0;
+    padding: 0 var(--ggb-combobox-textInline);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-overflow: ellipsis;
+    outline: none;
+    appearance: none;
+  }
+  .ggb-combobox__input::placeholder {
+    color: var(--_placeholder);
+    opacity: 1;
+  }
+  .ggb-combobox__leading {
+    display: grid;
+    flex: none;
+    place-items: center;
+    margin-inline: var(--ggb-combobox-slotInline);
+    color: var(--_slot);
+  }
+  .ggb-combobox__leading > svg,
+  .ggb-combobox__indicator > svg {
+    display: block;
+    flex: none;
+    inline-size: var(--ggb-combobox-iconSize);
+    block-size: var(--ggb-combobox-iconSize);
+    margin-inline: calc(var(--ggb-combobox-iconSize) / -8);
+  }
+  .ggb-combobox__indicator {
+    position: relative;
+    display: grid;
+    flex: none;
+    place-items: center;
+    margin-inline: var(--ggb-combobox-slotInline);
+    color: var(--_slot);
+    cursor: pointer;
+  }
+
+  /* Condition, lowest precedence first: hover, focus, invalid, readonly, disabled. */
+  @media (hover: hover) {
+    .ggb-combobox:where(:has(.ggb-combobox__field:hover)) {
+      --_surface: var(--ggb-combobox-surface-hover);
+      --_content: var(--ggb-combobox-content-hover);
+      --_border: var(--ggb-combobox-border-hover);
+      --_placeholder: var(--ggb-combobox-placeholderColor-hover);
+      --_slot: var(--ggb-combobox-slotColor-hover);
+    }
+  }
+  .ggb-combobox:where(:has(.ggb-combobox__input:focus)) {
+    --_surface: var(--ggb-combobox-surface-focus);
+    --_content: var(--ggb-combobox-content-focus);
+    --_border: var(--ggb-combobox-border-focus);
+    --_placeholder: var(--ggb-combobox-placeholderColor-focus);
+    --_slot: var(--ggb-combobox-slotColor-focus);
+  }
+  .ggb-combobox:where([data-invalid]) {
+    --_surface: var(--ggb-combobox-surface-invalid);
+    --_content: var(--ggb-combobox-content-invalid);
+    --_border: var(--ggb-combobox-border-invalid);
+    --_placeholder: var(--ggb-combobox-placeholderColor-invalid);
+    --_slot: var(--ggb-combobox-slotColor-invalid);
+  }
+  .ggb-combobox:where([data-readonly]) {
+    --_surface: var(--ggb-combobox-surface-readonly);
+    --_content: var(--ggb-combobox-content-readonly);
+    --_border: var(--ggb-combobox-border-readonly);
+    --_placeholder: var(--ggb-combobox-placeholderColor-readonly);
+    --_slot: var(--ggb-combobox-slotColor-readonly);
+  }
+  .ggb-combobox:where([data-readonly]) .ggb-combobox__indicator {
+    cursor: default;
+  }
+  .ggb-combobox:where([data-disabled]) {
+    --_surface: var(--ggb-combobox-surface-disabled);
+    --_content: var(--ggb-combobox-content-disabled);
+    --_border: var(--ggb-combobox-border-disabled);
+    --_placeholder: var(--ggb-combobox-placeholderColor-disabled);
+    --_slot: var(--ggb-combobox-slotColor-disabled);
+  }
+  .ggb-combobox[data-disabled] :is(.ggb-combobox__field, .ggb-combobox__input, .ggb-combobox__indicator) {
+    cursor: not-allowed;
+  }
+  /* Focus, whatever the modality: the ring is drawn outside with the concentric radius (radius.focus). */
+  .ggb-combobox__field:has(.ggb-combobox__input:focus) {
+    outline: var(--ggb-combobox-focusWidth) solid var(--ggb-combobox-focusColor);
+    outline-offset: var(--ggb-combobox-focusOffset);
+  }
+
+  /* Panel */
+  .ggb-combobox__panel {
+    --ggb-overlay-offset: var(--ggb-combobox-panel-offset);
+    --ggb-overlay-distance: var(--ggb-combobox-panel-enterDistance);
+    --ggb-overlay-duration: var(--ggb-combobox-panel-motionDuration);
+    box-sizing: border-box;
+    flex-direction: column;
+    min-inline-size: min(var(--_anchor-inline-size, 0px), calc(100vi - 2 * var(--ggb-space-layout-sm)));
+    max-inline-size: min(
+      max(var(--_anchor-inline-size, 0px), var(--ggb-combobox-panel-maxInlineSize)),
+      calc(100vi - 2 * var(--ggb-space-layout-sm))
+    );
+    max-block-size: min(
+      var(--ggb-combobox-panel-maxBlockSize),
+      calc(100vb - 2 * var(--ggb-space-layout-sm)),
+      calc(var(--_room, 100vb) - var(--ggb-combobox-panel-offset) - var(--ggb-space-layout-sm))
+    );
+    padding: var(--ggb-combobox-panel-padding);
+    /* The panel clips; the list scrolls inside the padding, so that the scrollbar never meets the round corners. */
+    overflow: hidden;
+    border-radius: var(--ggb-combobox-panel-radius);
+    background: var(--ggb-combobox-panel-surface);
+    box-shadow:
+      inset 0 0 0 var(--ggb-combobox-panel-borderWidth) var(--ggb-combobox-panel-elevationColor),
+      var(--ggb-combobox-panel-shadow);
+    z-index: var(--ggb-combobox-panel-layer);
+  }
+  .ggb-combobox__panel:popover-open {
+    display: flex;
+  }
+  .ggb-combobox__list,
+  .ggb-combobox__group {
+    display: flex;
+    flex-direction: column;
+  }
+  .ggb-combobox__list {
+    flex: 1 1 auto;
+    min-block-size: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ggb-combobox-panel-scrollbarColor) transparent;
+  }
+  .ggb-combobox__group-heading {
+    padding: var(--ggb-combobox-group-paddingBlock) var(--ggb-combobox-group-paddingInline);
+    color: var(--ggb-combobox-group-headingColor);
+    font: var(--ggb-combobox-group-typography);
+    letter-spacing: var(--ggb-combobox-group-typography-letterSpacing, normal);
+  }
+
+  .ggb-combobox__option {
+    --_o-surface: var(--ggb-combobox-option-surface-default);
+    --_o-content: var(--ggb-combobox-option-content-default);
+    box-sizing: border-box;
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: var(--ggb-combobox-option-gap);
+    min-block-size: var(--ggb-combobox-option-minHeight);
+    padding: var(--ggb-combobox-option-paddingBlock) var(--ggb-combobox-option-paddingInline);
+    border-radius: var(--ggb-combobox-option-radius);
+    background: var(--_o-surface);
+    color: var(--_o-content);
+    font: var(--ggb-combobox-option-typography);
+    letter-spacing: var(--ggb-combobox-option-typography-letterSpacing, normal);
+    cursor: default;
+    user-select: none;
+    transition-property: background-color, color;
+    transition-duration: var(--ggb-combobox-option-motionDuration);
+    transition-timing-function: var(--ggb-combobox-option-easingStandard);
+  }
+  .ggb-combobox__option[data-highlighted] {
+    --_o-surface: var(--ggb-combobox-option-surface-hover);
+    --_o-content: var(--ggb-combobox-option-content-hover);
+  }
+  .ggb-combobox__option[data-selected] {
+    --_o-surface: var(--ggb-combobox-option-surface-selected);
+    --_o-content: var(--ggb-combobox-option-content-selected);
+  }
+  .ggb-combobox__option[data-selected][data-highlighted] {
+    --_o-surface: var(--ggb-combobox-option-surface-selected-hover);
+    --_o-content: var(--ggb-combobox-option-content-selected-hover);
+  }
+  .ggb-combobox__option[data-disabled] {
+    --_o-surface: var(--ggb-combobox-option-surface-disabled);
+    --_o-content: var(--ggb-combobox-option-content-disabled);
+  }
+  .ggb-combobox__option[data-disabled][data-highlighted] {
+    --_o-surface: var(--ggb-combobox-option-surface-hover);
+  }
+  .ggb-combobox__option-label {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .ggb-combobox__option-check {
+    display: block;
+    flex: none;
+    inline-size: var(--ggb-combobox-option-checkSize);
+    block-size: var(--ggb-combobox-option-checkSize);
+    color: var(--ggb-combobox-option-checkColor);
+    visibility: hidden;
+  }
+  .ggb-combobox__option[data-selected] .ggb-combobox__option-check {
+    visibility: visible;
+  }
+
+  .ggb-combobox__empty {
+    padding: var(--ggb-combobox-panel-emptyPaddingBlock) var(--ggb-combobox-panel-emptyPaddingInline);
+    color: var(--ggb-combobox-panel-emptyColor);
+    font: var(--ggb-combobox-panel-typographyEmpty);
+    letter-spacing: var(--ggb-combobox-panel-typographyEmpty-letterSpacing, normal);
+  }
+  /* Kept in the accessibility tree (a polite live region) but takes no room while options match. */
+  .ggb-combobox__empty:empty {
+    padding: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-combobox__field,
+    .ggb-combobox__option {
+      transition: none;
+    }
+  }
+  @media (forced-colors: active) {
+    .ggb-combobox__field {
+      box-shadow: none;
+      outline-color: FieldText;
+      background-color: Field;
+      color: FieldText;
+    }
+    .ggb-combobox__input::placeholder {
+      color: GrayText;
+    }
+    .ggb-combobox[data-disabled] .ggb-combobox__field {
+      outline-color: GrayText;
+      color: GrayText;
+    }
+    .ggb-combobox__field:has(.ggb-combobox__input:focus) {
+      outline: var(--ggb-combobox-focusWidth) solid Highlight;
+    }
+    .ggb-combobox__panel {
+      border: 1px solid CanvasText;
+    }
+    /* System colors already; none keeps the browser from painting a Canvas backplate behind the label, which
+       would hide the HighlightText. */
+    .ggb-combobox__option[data-highlighted] {
+      background: Highlight;
+      color: HighlightText;
+      forced-color-adjust: none;
+    }
+    /* A disabled option in the system disabled color; highlighted, it keeps the normal surface with a Highlight
+       outline, so that both the highlight and the disabled state show. */
+    .ggb-combobox__option[data-disabled] {
+      color: GrayText;
+    }
+    .ggb-combobox__option[data-disabled][data-highlighted] {
+      background: Canvas;
+      color: GrayText;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .ggb-combobox__option-check {
+      color: currentColor;
+    }
+  }
+}

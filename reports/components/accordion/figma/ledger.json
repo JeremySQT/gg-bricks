@@ -1,0 +1,95 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "navigation/accordion",
+      "id": "495:17"
+    },
+    "library": {
+      "name": "Navigation",
+      "id": "495:16"
+    }
+  },
+  "recordedOn": "2026-11-12",
+  "component": {
+    "id": "505:429",
+    "name": "Accordion",
+    "key": "566f674882e5ec1114a314059b4273850576f989",
+    "variants": 1,
+    "defaultVariant": null,
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=505-429"
+  },
+  "section": {
+    "name": "Accordion",
+    "id": "505:357"
+  },
+  "properties": {
+    "Items#505:35": {
+      "type": "SLOT",
+      "preferred": [
+        "COMPONENT_SET"
+      ]
+    }
+  },
+  "children": {
+    "Accordion/Item": {
+      "id": "505:428",
+      "type": "COMPONENT_SET",
+      "key": "d090689791b220c210d401ef36cb9fdc0eb8cd57",
+      "variants": 6,
+      "defaultVariant": "State=default, Expanded=false",
+      "properties": {
+        "Content#505:6": {
+          "type": "SLOT",
+          "preferred": []
+        },
+        "Label#505:7": {
+          "type": "TEXT",
+          "default": "What is included in the plan?"
+        },
+        "Show leading#505:14": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Leading icon#505:21": {
+          "type": "INSTANCE_SWAP",
+          "default": "200:5476"
+        },
+        "Focus#505:28": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "State": {
+          "type": "VARIANT",
+          "options": [
+            "default",
+            "hover",
+            "disabled"
+          ],
+          "default": "default"
+        },
+        "Expanded": {
+          "type": "VARIANT",
+          "options": [
+            "false",
+            "true"
+          ],
+          "default": "false"
+        }
+      }
+    }
+  },
+  "specification": {
+    "id": "533:374",
+    "name": "Accordion — Specification",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=533-374"
+  },
+  "builders": [
+    "authoring/adapters/figma/accordion-master.plugin.js",
+    "authoring/adapters/figma/wave4-spec.plugin.js",
+    "authoring/adapters/figma/wave4-parity.plugin.js",
+    "authoring/adapters/figma/wave4-parity-report.mjs"
+  ],
+  "published": false
+}

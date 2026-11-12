@@ -1,0 +1,144 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "accordion",
+  "props": {
+    "value": {
+      "type": "list",
+      "default": [],
+      "bindable": true
+    },
+    "multiple": {
+      "type": "boolean",
+      "default": false
+    },
+    "headingLevel": {
+      "type": "number",
+      "default": 3,
+      "min": 2,
+      "max": 6
+    }
+  },
+  "parts": {
+    "container": {},
+    "items": {
+      "accepts": ["item"],
+      "min": 1
+    }
+  },
+  "states": {},
+  "events": {
+    "valueChange": {
+      "when": "The user expands or collapses an item (pointer, Enter or Space on its trigger).",
+      "payload": "The values of the expanded items."
+    }
+  },
+  "tokens": {
+    "lineColor": "color.border.subtle",
+    "lineThickness": "border.width.default"
+  },
+  "children": {
+    "item": {
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true
+        },
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "parts": {
+        "heading": {},
+        "trigger": {},
+        "leading": {
+          "accepts": ["icon"],
+          "max": 1
+        },
+        "label": {},
+        "indicator": {},
+        "content": {}
+      },
+      "states": {
+        "interaction": {
+          "values": ["default", "hover", "disabled"],
+          "default": "default"
+        },
+        "expanded": {
+          "type": "boolean",
+          "default": false
+        },
+        "focus": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "tokens": {
+        "surface": "color.item.{interaction}.surface",
+        "content": "color.item.{interaction}.content",
+        "indicatorColor": "color.content.secondary",
+        "bodyColor": "color.content.primary",
+        "radius": "radius.control",
+        "minHeight": "size.control.lg",
+        "paddingInline": "space.content.sm",
+        "paddingBlock": "space.control.padding-block.lg",
+        "gap": "space.control.gap.lg",
+        "typography": "typography.label.lg",
+        "typographyBody": "typography.body.md",
+        "iconSize": "size.icon.md",
+        "bodyPaddingBlockEnd": "space.content.lg",
+        "focusColor": "color.focus.ring",
+        "focusWidth": "focus.width",
+        "focusOffset": "focus.offset",
+        "focusRadius": "radius.focus",
+        "motionDuration": "motion.duration.base",
+        "easingStandard": "motion.easing.standard"
+      },
+      "rules": [
+        "An item is a heading holding a trigger, followed by content. The trigger fills the inline size: leading, label and indicator in that order, gap apart; label is required plain text in typography that wraps onto several lines when long, and is the trigger's accessible name; leading holds at most one decorative icon of iconSize; indicator is a chevron of iconSize in indicatorColor at the inline end, pointing down when collapsed and up when expanded, decorative.",
+        "The trigger block size is the greater of minHeight and its content plus paddingBlock, with paddingInline on both sides and radius corners for its surface. interaction resolves in this order: disabled, hover, default; hover paints surface behind the trigger and the label in content.",
+        "The trigger exposes whether the item is expanded and which content it controls; the content is exposed as a region named by the trigger. Enter, Space or a press on the trigger toggles the item, unless it is disabled.",
+        "Expanded content shows free content in typographyBody and bodyColor, aligned with the label (paddingInline on both sides), starting focusWidth plus focusOffset below the trigger and with bodyPaddingBlockEnd below, so that the focus indicator of a control at its edges is never cut. Collapsed content is hidden from every user.",
+        "Expanding and collapsing animate the content's block size and the indicator's rotation over motionDuration with easingStandard; under reduced motion the change is immediate.",
+        "A disabled item cannot be toggled, keeps its current expanded state, is shown in the disabled colors and is skipped by the arrow keys.",
+        "When focus is true from the keyboard, the trigger shows a focus indicator of focusWidth in focusColor at focusOffset with focusRadius corners, inside the accordion's inline size."
+      ]
+    }
+  },
+  "contrast": [
+    {
+      "content": "item.content",
+      "surface": "item.surface",
+      "minimum": 4.5,
+      "note": "The trigger label on its own surface in each interaction; disabled values are informational."
+    },
+    {
+      "content": "item.content",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "item.indicatorColor",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "item.indicatorColor",
+      "surface": "color.item.hover.surface",
+      "minimum": 3
+    }
+  ],
+  "rules": [
+    "An accordion is a vertical stack of headings that each show or hide a section of content, so that a long page can be scanned (questions and answers, settings sections, details). It is not navigation and not a selection; content needed by every user should not be hidden in it.",
+    "Items are stacked in source order and separated by lines of lineThickness in lineColor, also above the first item and below the last, across the accordion's inline size. The accordion takes the inline size it is given and adds no surface of its own.",
+    "value lists the values of the expanded items. With multiple false, at most one item is expanded: expanding one collapses the other; the expanded item can be collapsed, leaving none. With multiple true, items expand and collapse independently. Changing it by the user emits valueChange.",
+    "Each trigger sits inside a heading of level headingLevel, so that the accordion fits the page's heading outline.",
+    "Every enabled trigger is a stop in sequential focus in source order; Tab moves through the triggers and into expanded content. Down and Up Arrow move focus to the next and previous enabled trigger, wrapping at the ends; Home and End move it to the first and last enabled trigger.",
+    "Setting value from the application expands and collapses items without emitting valueChange.",
+    "In forced-colors mode the lines, the indicator and the focus indicator stay visible in system colors, and disabled triggers use the system disabled text color."
+  ]
+}

@@ -184,7 +184,11 @@ test('a link item navigates and reports its value; long labels truncate; long me
   await expect.poll(() => isOpen(page, 'long')).toBe(true);
   await settle(page);
   const long = await page.locator('#long').evaluate((menu) => ({
-    scrolls: menu.scrollHeight > menu.clientHeight,
+    // The items scroll in the inner list since wave 4 (thin scrollbar inside the padding).
+    scrolls: (() => {
+      const list = menu.querySelector('.ggb-menu__list')!;
+      return list.scrollHeight > list.clientHeight && getComputedStyle(list).scrollbarWidth === 'thin';
+    })(),
     width: menu.getBoundingClientRect().width,
     trigger: document.getElementById('long-trigger')!.getBoundingClientRect().width
   }));
@@ -242,11 +246,29 @@ test('computed values match the resolved tokens: panel, items default, highlight
   report.write('menu');
 });
 
-test('forced colors keep an edge on the panel and show the highlight', async ({ page }) => {
+test('forced colors keep an edge on the panel and show the highlighted label', async ({ page }) => {
   await page.focus('#actions-trigger');
   await page.keyboard.press('Enter');
   await page.emulateMedia({ forcedColors: 'active' });
   expect(await page.locator('#actions').evaluate((m) => getComputedStyle(m).borderTopStyle)).toBe('solid');
+  // The focused item paints its own system colors: no Canvas backplate hides its HighlightText label.
+  await expect(page.locator('#actions .ggb-menu__item:focus')).toHaveCSS('forced-color-adjust', 'none');
+  // Colors are read once the transitions into forced colors have ended.
+  await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'));
+  // A disabled item is in the system disabled color, unlike the others; focused, it shows a Highlight outline.
+  const itemColor = (selector: string) =>
+    page
+      .locator(`#actions ${selector}`)
+      .first()
+      .evaluate((i) => getComputedStyle(i).color);
+  const disabledColor = await itemColor('#mi-archive');
+  expect(disabledColor).not.toBe(await itemColor('.ggb-menu__item:not([data-disabled]):not(:focus)'));
+  await page.keyboard.type('a');
+  await expect(page.locator('#mi-archive')).toBeFocused();
+  await expect(page.locator('#mi-archive')).toHaveCSS('outline-style', 'solid');
+  await expect(page.locator('#mi-archive')).toHaveCSS('color', disabledColor);
+  await page.keyboard.press('Home');
+  await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'));
   await capture(page, `${out}/forced-colors.png`);
 });
 

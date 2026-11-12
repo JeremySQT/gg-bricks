@@ -1,0 +1,293 @@
+{
+  "formatStatus": "v1",
+  "componentId": "accordion",
+  "family": "navigation",
+  "wave": 4,
+  "phase": "done",
+  "scope": {
+    "purpose": "A vertical stack of headings that each show or hide a section of content.",
+    "useCases": [
+      "Questions and answers.",
+      "Settings or details sections on a long page.",
+      "Filters grouped in a sidebar (multiple)."
+    ],
+    "exclusions": [
+      "Nested accordions styled differently.",
+      "A card (contained) appearance in v1.",
+      "Sizes in v1 (one size; density adjusts spacing)."
+    ],
+    "alternatives": [
+      "Tabs when only one section is read at a time and sections are peers.",
+      "A Dialog or a page for long content."
+    ]
+  },
+  "dependencies": ["icon"],
+  "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading icon example."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/navigation/accordion/contract.json",
+      "sha256": "9800fb23ecb5bbec578283083c88644590c17691b055a46ba508cfd7f3f9dee5"
+    },
+    "tokens": [],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "navigation/accordion (495:17)",
+      "library": "Navigation (495:16), section Accordion (505:357)",
+      "component": "505:429",
+      "specification": "533:374",
+      "ledger": "reports/components/accordion/figma/ledger.json",
+      "parity": "reports/components/accordion/figma/parity.json",
+      "screenshots": [
+        "reports/components/accordion/figma/master-set.png",
+        "reports/components/accordion/figma/specification.png"
+      ],
+      "builders": [
+        "authoring/adapters/figma/accordion-master.plugin.js",
+        "authoring/adapters/figma/wave4-spec.plugin.js",
+        "authoring/adapters/figma/wave4-parity.plugin.js",
+        "authoring/adapters/figma/wave4-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/accordion/figma/blueprint-anatomy.png",
+          "node": "533:574"
+        }
+      ]
+    },
+    "figmaSpec": "foundations/components/navigation/accordion/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/accordion",
+      "files": [
+        "packages/svelte/src/components/accordion/Accordion.svelte",
+        "packages/svelte/src/components/accordion/AccordionItem.svelte",
+        "packages/svelte/src/components/accordion/types.ts",
+        "packages/svelte/src/components/accordion/accordion.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (used)"
+      },
+      "report": "reports/components/accordion/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/accordion",
+      "preview": "dist/previews/accordion.html (npm run build && npm run build:preview accordion)",
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4), page accordion.html"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/navigation.test.ts"],
+      "browser": ["tests/browser/accordion.spec.ts"],
+      "evidence": "reports/components/accordion/svelte/"
+    },
+    "humanDocs": "documentation/components/accordion.md",
+    "agentDocs": "documentation/index.json (entry accordion); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Accordion compound contract: bindable value list, multiple, headingLevel; child item (value, label, disabled, leading Icon); one size; WAI-ARIA accordion keyboard with optional arrows.",
+      "revision": {
+        "paths": ["foundations/components/navigation/accordion/contract.json"],
+        "sha256": {
+          "foundations/components/navigation/accordion/contract.json": "9800fb23ecb5bbec578283083c88644590c17691b055a46ba508cfd7f3f9dee5"
+        }
+      },
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendment of 2026-11-10 (wave 4 implementation review, round 4): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
+      "note": null
+    },
+    "implementation": {
+      "scope": "Accordion on Bits UI Accordion with the contract overrides (arrow keys, region), leading icons, block-size animation (round 2).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/accordion/Accordion.svelte",
+          "packages/svelte/src/components/accordion/AccordionItem.svelte",
+          "packages/svelte/src/components/accordion/accordion.css",
+          "packages/svelte/src/components/accordion/contract.generated.ts",
+          "packages/svelte/src/components/accordion/tokens.generated.css",
+          "packages/svelte/src/components/accordion/types.ts",
+          "examples/accordion/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/accordion/Accordion.svelte": "48427946bed5ce898aed2963739878140e8c8f60933253728aff211f189f8bb7",
+          "packages/svelte/src/components/accordion/AccordionItem.svelte": "e0f2c25535e8e404855e2b87149773db6f6a8f7baadc2da2b9fc356ab966803d",
+          "packages/svelte/src/components/accordion/accordion.css": "aaf4d928cd379ce2b3ea9bf4eab05e60819aa53b34322a0408b236a04f759bec",
+          "packages/svelte/src/components/accordion/contract.generated.ts": "e9f042da5f6506c1d06ad6ee29475851fe3e2fcc6d0b68dace825384b703944d",
+          "packages/svelte/src/components/accordion/tokens.generated.css": "678a4ce15f419fe6a19d64d6eea36d16d4fe63fa2487e74cfa239de6d4ea4950",
+          "packages/svelte/src/components/accordion/types.ts": "2ccbbf854dc69c60cf6dc27e360554d170ef930e63a0f1bfe06865437442b464",
+          "examples/accordion/App.svelte": "ad72499dbece948255226ea42667fc04da9f71d7652e29ed07c57db5a99c3894"
+        }
+      },
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
+      "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
+    },
+    "figmaParity": {
+      "scope": "Figma master 505:429 and specification frame 533:374 of the accordion component, parity report (116 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/navigation/accordion/figma-spec.md",
+          "reports/components/accordion/figma/parity.json",
+          "reports/components/accordion/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/navigation/accordion/figma-spec.md": "5f43c099e2b120c4538260ecd0601b10dfc57fa56cd03b9b3d405af033679e7c",
+          "reports/components/accordion/figma/parity.json": "aab496c54bdd015d6e3f25b26541f220a29dadf411e5c046911badcbe2dd0952",
+          "reports/components/accordion/figma/ledger.json": "ae8f5f0e53073d7380e033cd927ea3935e08f5a1d69e1443b975e71068afd8e2"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "component": "505:429",
+          "specificationFrame": "533:374",
+          "children": ["505:428 Accordion/Item"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of accordion (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/accordion.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/accordion.svelte"
+        ],
+        "sha256": {
+          "documentation/components/accordion.md": "60f88a79f36a378f5687ae87653f763429961b29807324db027b2f2c8cd875f1",
+          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
+          "apps/docs/src/playgrounds/accordion.svelte": "588796e333d9cefbadb438785820c6d859ba4865f10c0022299e3688a138d1c1"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, after reading the pages on the wave/4 preview of the documentation site (https://wave-4-design-system.jeremy-soquet.workers.dev): \"Je valide la doc, corrige aussi lib/overlay\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/accordion/"
+    },
+    {
+      "name": "Wave 4 contract gate approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium, overlay smoke spec in Firefox and WebKit, docs site)",
+      "result": "300 passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:preview accordion",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "Round 2: npm run verify passed; npm run test:browser 303 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr"
+    },
+    {
+      "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Figma parity (116 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/accordion/figma/parity.json"
+    },
+    {
+      "name": "Figma parity round 2 (user review of 2026-11-12): the anatomy board keeps the one-sided lines (spec-lib fix); specification rebuilt; parity unchanged (116 records, 0 failures)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "reports/components/accordion/figma/parity.json"
+    },
+    {
+      "name": "Wave 4 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build) and npm run check:approvals (438 digests, 0 errors)",
+      "result": "passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the forced-colors fixes",
+      "result": "319 passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "Documentation: npm run build:docs (48 pages, every live block compiled) and tests/browser/docs-site.spec.ts (37 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "reports/site/docs/"
+    }
+  ],
+  "decisionsTaken": [
+    "One size: trigger in typography.label.lg (16 px, medium) at least size.control.lg (48 px) tall, content in typography.body.md; density adjusts the spacing. Sizes can be added later without breaking the API.",
+    "value is a list of expanded values in both modes; multiple false allows at most one expanded item, which can be collapsed (always collapsible).",
+    "Line-separated items (color.border.subtle, also above the first and below the last), hover tint color.item.hover.surface with radius.control, chevron in color.content.secondary rotating 180°.",
+    "headingLevel (2 to 6, default 3) wraps each trigger in a heading, per the WAI-ARIA accordion pattern.",
+    "Optional WAI-ARIA arrow keys included (Down, Up wrapping, Home, End), as Bits UI Accordion provides them.",
+    "Expansion animates the block size and the chevron over motion.duration.base; immediate under reduced motion.",
+    "Round 2: Accordion now uses Bits UI Accordion (state, headings, triggers, always-mounted content). Overrides kept by the contract-over-Bits rule and covered by browser tests: arrow keys limited to this accordion's enabled triggers (Bits UI runs over nested and collapsed ones); the content exposed as a region named by its trigger and aria-controls on the trigger (Bits UI sets neither). Bits UI 2.19.3 pinned.",
+    "The review page gains a Leading icons option (the slot existed but no option showed it)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Done (wave 4, 2026-11-12): pull request of branch wave/4 to main. Library publication and package release follow the delivery workflow (ggb-maintain) on explicit authorization.",
+  "implementationNotes": [
+    "Exports Accordion and AccordionItem.",
+    "The focus ring is drawn inside the trigger (outline-offset of minus its width) so that it stays inside the accordion inline size, as the contract asks.",
+    "A heading level outside 2 to 6 falls back to 3."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: the content starts focusWidth plus focusOffset below the trigger. Implementation: the clipping body keeps room for the focus indicators of the content's controls without overlapping the trigger; an empty slot takes no room. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/navigation/accordion/contract.json": "9800fb23ecb5bbec578283083c88644590c17691b055a46ba508cfd7f3f9dee5",
+        "packages/svelte/src/components/accordion/Accordion.svelte": "48427946bed5ce898aed2963739878140e8c8f60933253728aff211f189f8bb7",
+        "packages/svelte/src/components/accordion/AccordionItem.svelte": "e0f2c25535e8e404855e2b87149773db6f6a8f7baadc2da2b9fc356ab966803d",
+        "packages/svelte/src/components/accordion/accordion.css": "aaf4d928cd379ce2b3ea9bf4eab05e60819aa53b34322a0408b236a04f759bec",
+        "packages/svelte/src/components/accordion/contract.generated.ts": "e9f042da5f6506c1d06ad6ee29475851fe3e2fcc6d0b68dace825384b703944d",
+        "packages/svelte/src/components/accordion/tokens.generated.css": "678a4ce15f419fe6a19d64d6eea36d16d4fe63fa2487e74cfa239de6d4ea4950",
+        "packages/svelte/src/components/accordion/types.ts": "2ccbbf854dc69c60cf6dc27e360554d170ef930e63a0f1bfe06865437442b464",
+        "examples/accordion/App.svelte": "ad72499dbece948255226ea42667fc04da9f71d7652e29ed07c57db5a99c3894"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
+    }
+  ]
+}

@@ -28,7 +28,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/overlays/menu/contract.json",
-      "sha256": "dd9d08534d616451c8061301deb10ffb9bd320fa323f9f7578dc2b12eafcf0f3"
+      "sha256": "b722b65f4c666fb49c9a2fb048be6bf97fe464560f10f831925220e5fd93dfb6"
     },
     "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
     "figma": {
@@ -95,10 +95,10 @@
       "revision": {
         "paths": ["foundations/components/overlays/menu/contract.json"],
         "sha256": {
-          "foundations/components/overlays/menu/contract.json": "dd9d08534d616451c8061301deb10ffb9bd320fa323f9f7578dc2b12eafcf0f3"
+          "foundations/components/overlays/menu/contract.json": "b722b65f4c666fb49c9a2fb048be6bf97fe464560f10f831925220e5fd93dfb6"
         }
       },
-      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 found or requested at the implementation review (Contract fact found during implementation: group roles leadingSize (size.icon.sm) and leadingGap (space.control.gap.sm) …) accepted with the implementation: \"Je valide le reste\".",
+      "provenance": "User at the grouped wave 3 contract gate in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/3WoVBXoZev2vBWUUJny9A8 (version 3): \"Je valide les 10 contrats. Ensuite : 1. ok (meme si le wording scrim n'est pas très parlant...) 2. Ok 3. Ok 4. Oui 5. Ok, à juger dans l'implémentation\". Amendments of 2026-11-03 found or requested at the implementation review (Contract fact found during implementation: group roles leadingSize (size.icon.sm) and leadingGap (space.control.gap.sm) …) accepted with the implementation: \"Je valide le reste\". Amendment of 2026-11-10 (wave 4 implementation review, round 2, recommendation 4; user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide le second tour et toutes tes recommandations de 1 à 6\"): role scrollbarColor (color.border.default); the content scrolls inside the padding with a thin scrollbar, as in Select and Combobox. Digests re-recorded.",
       "note": null
     },
     "implementation": {
@@ -116,18 +116,18 @@
           "examples/menu/App.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/components/menu/Menu.svelte": "fe6f09b2fc5d5d2058a612da50c88b8df002aa5507b8d36d87932b6f9753da75",
+          "packages/svelte/src/components/menu/Menu.svelte": "67d7561848e406ab8941d0129b3228b783f1bee410b8c1f39bbee1760b8ca9d5",
           "packages/svelte/src/components/menu/MenuGroup.svelte": "5ddc02cca2e1946b8aa0557c0066da30ab201f7a9f2cf52d4d01dd0a98c51246",
           "packages/svelte/src/components/menu/MenuItem.svelte": "fc793e6590e76c9f19d1945af9d1fd8e2d2258f28fee14264026c6ca3af9cee4",
           "packages/svelte/src/components/menu/MenuSeparator.svelte": "b396588e41a299fb8c9259fd18b7030d2482b11964f523c3ad8bf87e4622d32d",
           "packages/svelte/src/components/menu/contract.generated.ts": "977aed7865aece02d837177d3583ca9070a5e5d78852fe55e76c665400cc6c19",
-          "packages/svelte/src/components/menu/menu.css": "39c5297a18c82b8a593e5178318b26c967db0a310bc771c1d667e839b02c951e",
-          "packages/svelte/src/components/menu/tokens.generated.css": "1b04268a0b94e164e46e776b56ef5a29c50931c0314df4ded90917a593ef2ad8",
+          "packages/svelte/src/components/menu/menu.css": "42e8d722ed401ba2e751a396ab0abacc232e3c4a8c18caf83adcfa5065912438",
+          "packages/svelte/src/components/menu/tokens.generated.css": "2f39388565de0e54641b34c14fe3c9211b7f7ef25dea53c103b8923294eb3500",
           "packages/svelte/src/components/menu/types.ts": "a131e3b740f2b471b15d127f304613cb655623c6e5eac96a9ef9ced741814733",
           "examples/menu/App.svelte": "cf2b27369d0e7725ffd8911965edbebe3b32a65970d079b46790490d14025dde"
         }
       },
-      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB, on the gaps found while writing the documentation: \"Oui corrige les quatre points et ajoute-le au contrat\"): opening the menu by keyboard, and the first arrow key after opening by pointer, highlight the first or last enabled item as the contract says (the code started on a disabled item); disabled items stay reachable. Review page: a menu with disabled first and last items (#compositions); new browser test. Digests re-recorded. Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Chaque toast est un composant unitaire qui ne dépend que d'elle même, la seule limite est en effet qu'elle doit être placé dans une toastRegion\"): the generated bindings of the children sit on their own class (.ggb-menu__…) instead of being nested under the parent (tooling/lib/bindings.ts, authoring/decisions.md); values and rendering unchanged (computed values identical in the browser tests). Digests re-recorded. Amendment of 2026-11-04 (same decision, found by the repeated test): an arrow key on the trigger runs the opening at once instead of waiting for the toggle event, which the browser coalesces with the close when the menu is reopened right after Escape (the highlight was then lost); the Menu suite passed 60 times in a row. Digests re-recorded.",
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change). Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB, on the gaps found while writing the documentation: \"Oui corrige les quatre points et ajoute-le au contrat\"): opening the menu by keyboard, and the first arrow key after opening by pointer, highlight the first or last enabled item as the contract says (the code started on a disabled item); disabled items stay reachable. Review page: a menu with disabled first and last items (#compositions); new browser test. Digests re-recorded. Amendment of 2026-11-04 (user in the session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB: \"Chaque toast est un composant unitaire qui ne dépend que d'elle même, la seule limite est en effet qu'elle doit être placé dans une toastRegion\"): the generated bindings of the children sit on their own class (.ggb-menu__…) instead of being nested under the parent (tooling/lib/bindings.ts, authoring/decisions.md); values and rendering unchanged (computed values identical in the browser tests). Digests re-recorded. Amendment of 2026-11-04 (same decision, found by the repeated test): an arrow key on the trigger runs the opening at once instead of waiting for the toggle event, which the browser coalesces with the close when the menu is reopened right after Escape (the highlight was then lost); the Menu suite passed 60 times in a row. Digests re-recorded. Amendment of 2026-11-10 (wave 4 implementation review, round 4, change accepted with the wave): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\". Amendment of 2026-11-12 (wave 4 final consistency pass, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Oui tu peux appliquer la même correction\"): in forced colors the focused item sets forced-color-adjust: none, so that the browser paints no Canvas backplate behind its HighlightText label, icon and shortcut (browser test and capture forced-colors.png updated). Digests re-recorded. Amendment of 2026-11-12 (wave 4 final consistency pass, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Oui, tu peux l'appliquer alors\", after confirming the change applies to forced colors only): in forced colors a disabled item is in GrayText, and a focused disabled item keeps the Canvas surface with a 2 px Highlight outline (browser test updated). Digests re-recorded.",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
     "figmaParity": {
@@ -161,12 +161,12 @@
           "apps/docs/src/playgrounds/menu.svelte"
         ],
         "sha256": {
-          "documentation/components/menu.md": "4c42aec6f339f7c81b5bba214f09279809383d8dffeb5571af41f3d1d93f812e",
-          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "documentation/components/menu.md": "4704ebb59e0a1dbd51ed3486750dffbd3db44b0c6455cc98aab6cac68e0e827a",
+          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
           "apps/docs/src/playgrounds/menu.svelte": "df77290d947e06e285909ce10f948ec979d476b94f42b349bda69d4264d46a5b"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremy-soquet.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): documentation/index.json gained the seven wave 4 entries and lost the \"(planned)\" mentions of components now exported; documentation/components/menu.md no longer marks the wave 4 components it names as planned. Digests re-recorded. Amendment of 2026-11-12 (user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Oui, tu peux l'appliquer alors\"): the Accessibility section names the disabled color in forced colors. Digests re-recorded.",
       "note": null
     },
     "delivery": null
@@ -262,6 +262,18 @@
       "result": "passed",
       "date": "2026-11-09",
       "evidence": "documentation/components/menu.md"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Wave 4 changes (implementation): computed.json unchanged by the evidence run of 2026-11-10, so the Figma master and its parity are unchanged; the changes (scrollbar inside the padding, room for the focus ring, group size of the triggers, delay tokens) have no static rendering in Figma",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/menu/svelte/computed.json"
     }
   ],
   "decisionsTaken": [
@@ -278,7 +290,7 @@
     "Contract fact added during implementation: group leadingSize and leadingGap roles (pending re-presentation)."
   ],
   "openDecisions": [],
-  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
+  "nextAction": "Wave 4 changes accepted with the wave 4 gates (implementation, Figma parity unchanged, documentation); forced-colors fixes of 2026-11-12 (focused label without backplate, disabled items in GrayText) accepted in the final consistency pass. Merged with the wave 4 pull request.",
   "implementationNotes": [
     "Exports Menu, MenuItem, MenuSeparator and MenuGroup.",
     "The highlighted item is the focused item (roving focus through focus(), not aria-activedescendant); opening by pointer focuses the menu itself, so no item is highlighted until an arrow key or the pointer.",
@@ -293,6 +305,26 @@
         "foundations/components/overlays/menu/contract.json": "dd9d08534d616451c8061301deb10ffb9bd320fa323f9f7578dc2b12eafcf0f3"
       },
       "recorded": "Re-recorded with the approvals of 2026-11-03."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Group size reaches the trigger (wave 4 contract gate, question 4): Menu no longer resets the ButtonGroup size (its items are not buttons), so that its trigger in a ButtonGroup or Toolbar takes the group size. To re-present at the wave 4 implementation gate.",
+      "sha256": {
+        "packages/svelte/src/components/menu/Menu.svelte": "d548c64d11a59478c4c9c2c38ea81186a210f22f1f6640021315c73e33841c08"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Recommendation 4 of round 2: the items scroll in an inner list (.ggb-menu__list) inside the padding with a thin scrollbar in scrollbarColor; rendering otherwise unchanged. To re-present at the wave 4 implementation gate.",
+      "sha256": {
+        "packages/svelte/src/components/menu/Menu.svelte": "67d7561848e406ab8941d0129b3228b783f1bee410b8c1f39bbee1760b8ca9d5",
+        "packages/svelte/src/components/menu/menu.css": "fc6dad46a462d49ecfa551dae565fbc740cf08b3671bb3e9ac0a3c2043ae5fd2",
+        "packages/svelte/src/components/menu/tokens.generated.css": "2f39388565de0e54641b34c14fe3c9211b7f7ef25dea53c103b8923294eb3500"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
     }
   ]
 }

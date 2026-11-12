@@ -102,7 +102,7 @@
       "import": "Link",
       "from": "@ggbrick/svelte",
       "purpose": "Navigates to another page or resource from inside text: underlined words in the font of the context, with a destination (page, external in a new tab, email, phone, file with visible format and size, printable version) shown by a glyph and announced; tone inherit for colored surfaces.",
-      "whenNotToUse": "Navigation that reads like an action (Button with href), icon-only links (IconButton with href), actions such as printing or sending (Button), destinations that cannot be followed (plain text), structured navigation (Breadcrumb, Tabs, Pagination, planned).",
+      "whenNotToUse": "Navigation that reads like an action (Button with href), icon-only links (IconButton with href), actions such as printing or sending (Button), destinations that cannot be followed (plain text), structured navigation (Breadcrumb, Tabs, Pagination).",
       "documentation": "link.md",
       "contract": "foundations/components/actions/link/contract.json",
       "sections": [
@@ -159,7 +159,7 @@
       "import": "InputText",
       "from": "@ggbrick/svelte",
       "purpose": "Lets the user type a short value on one line (text, email, password, search, phone, URL) at the height of a Button of the same size, with an optional decorative leading or trailing icon or one IconButton action (clear, show password) at md and lg.",
-      "whenNotToUse": "Multi-line text (Textarea), a choice among known options (RadioGroup, Select planned), numbers with steppers and dates (NumberInput, DatePicker planned), a value that cannot change (plain text).",
+      "whenNotToUse": "Multi-line text (Textarea), a choice among known options (RadioGroup, Select, Combobox), numbers with steppers and dates (NumberInput, DatePicker planned), a value that cannot change (plain text).",
       "documentation": "input-text.md",
       "contract": "foundations/components/forms/input-text/contract.json",
       "sections": [
@@ -254,7 +254,7 @@
       "import": "RadioGroup",
       "from": "@ggbrick/svelte",
       "purpose": "Asks for exactly one choice among a few options that all stay visible (Radio children with labels and descriptions), stacked or on a wrapping row; one tab stop with arrow keys; no return to no selection.",
-      "whenNotToUse": "Many options or known names (Select, planned), several answers (CheckboxGroup), one on/off option (Checkbox or Switch), options as buttons or cards (SegmentedControl, planned).",
+      "whenNotToUse": "Many options or known names (Select, Combobox), several answers (CheckboxGroup), one on/off option (Checkbox or Switch), options as buttons or cards (SegmentedControl, planned).",
       "documentation": "radio-group.md",
       "contract": "foundations/components/forms/radio-group/contract.json",
       "sections": [
@@ -292,7 +292,7 @@
       "import": "ButtonGroup",
       "from": "@ggbrick/svelte",
       "purpose": "Places related Buttons and IconButtons together (dialog footer, form actions, alert or card actions) with one size passed to every item, a density-aware gap and items centered on the cross axis; aligned start, center, end or stretched, or vertical at full width; a line that does not fit stacks at full width and is never reordered; a named group with label.",
-      "whenNotToUse": "Controls acting on one object with one tab stop (Toolbar, planned), attached buttons for a single choice (SegmentedControl, planned), overflow actions behind a trigger (Menu next to the group), a single action (Button), a split footer (two groups in a layout).",
+      "whenNotToUse": "Controls acting on one object with one tab stop (Toolbar), attached buttons for a single choice (SegmentedControl, planned), overflow actions behind a trigger (Menu next to the group), a single action (Button), a split footer (two groups in a layout).",
       "documentation": "button-group.md",
       "contract": "foundations/components/actions/button-group/contract.json",
       "sections": [
@@ -425,7 +425,7 @@
       "import": "Popover",
       "from": "@ggbrick/svelte",
       "purpose": "Opens a non-modal panel of free content (filters, a short form, details) anchored to one Button or IconButton rendered by a trigger snippet that spreads popovertarget and the popup attributes; the panel is a dialog named by label in the browser top layer, at most 360 px wide, side bottom or top, align start, center or end, flips; focus moves into the content, and Escape (back to the trigger), a press outside or focus leaving closes it; nests; bindable open.",
-      "whenNotToUse": "Lists of actions (Menu), blocking tasks and confirmations (Dialog), text on hover or focus (Tooltip), one choice in a list (RadioGroup, Select planned, Combobox planned), long forms or wide content (Dialog, Drawer planned).",
+      "whenNotToUse": "Lists of actions (Menu), blocking tasks and confirmations (Dialog), text on hover or focus (Tooltip), one choice in a list (RadioGroup, Select, Combobox), long forms or wide content (Dialog, Drawer planned).",
       "documentation": "popover.md",
       "contract": "foundations/components/overlays/popover/contract.json",
       "sections": [
@@ -463,9 +463,142 @@
       "import": "Menu, MenuItem, MenuSeparator, MenuGroup",
       "from": "@ggbrick/svelte",
       "purpose": "Offers a short list of actions or links in a top-layer panel opened from one Button or IconButton trigger, with the menu button keyboard pattern (arrows, Home, End, typeahead, Escape and Tab close); items with a leading icon, a trailing Shortcut, danger intent, disabled state or href, separators and labelled groups; reports the value of the activated item and closes.",
-      "whenNotToUse": "Choosing a value in a form (RadioGroup, Select, planned), free content or forms in an anchored panel (Popover), actions that fit on screen (ButtonGroup), checkable items and submenus (not built in), right-click menus (ContextMenu, planned), bars of controls (Toolbar, planned).",
+      "whenNotToUse": "Choosing a value in a form (RadioGroup, Select), free content or forms in an anchored panel (Popover), actions that fit on screen (ButtonGroup), checkable items and submenus (not built in), right-click menus (ContextMenu, planned), bars of controls (Toolbar).",
       "documentation": "menu.md",
       "contract": "foundations/components/overlays/menu/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "toolbar",
+      "import": "Toolbar, ToolbarSeparator",
+      "from": "@ggbrick/svelte",
+      "purpose": "Groups controls that act on the same context (Button, IconButton, Menu, Popover triggers) as one tab stop with arrow-key navigation (roving focus), separated by ToolbarSeparator; imposes its size on the controls; a horizontal toolbar fills its width and moves the controls that do not fit, from the end, into an overflow Menu that keeps their label, icon, disabled state and danger intent; required label.",
+      "whenNotToUse": "A row of unrelated or few buttons (ButtonGroup or a layout), a list of actions in a panel (Menu), toggle buttons and formatting states (not in v1; SegmentedControl, planned), navigation between pages or panels (Tabs, links).",
+      "documentation": "toolbar.md",
+      "contract": "foundations/components/actions/toolbar/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "select",
+      "import": "Select",
+      "from": "@ggbrick/svelte",
+      "purpose": "Chooses one value from about five to twenty-five known options shown collapsed in an InputText-like field: options as records (value, label, disabled, group), placeholder, size, readonly, disabled, invalid, required, leading icon; the select-only combobox keyboard pattern with typeahead; a top-layer list panel that scrolls past a fixed height; bindable value and open, valueChange and openChange events.",
+      "whenNotToUse": "Fewer than five options (RadioGroup), a long list or one the user searches (Combobox), free text with suggestions (InputText), a list of actions (Menu), several values (CheckboxGroup).",
+      "documentation": "select.md",
+      "contract": "foundations/components/forms/select/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "combobox",
+      "import": "Combobox",
+      "from": "@ggbrick/svelte",
+      "purpose": "Chooses one value from a long list by typing to narrow it (a country, a person, a project): an InputText-like field with a list panel that filters options by label (contains, ignoring case and accents) or shows options the application supplies (filter none), an empty label, groups, disabled options; the value is always an option (free text is not a value); bindable value, inputValue and open with valueChange, inputChange and openChange events.",
+      "whenNotToUse": "A short list without search (Select), free text with suggestions (InputText), few options visible at once (RadioGroup), several values (planned).",
+      "documentation": "combobox.md",
+      "contract": "foundations/components/forms/combobox/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "accordion",
+      "import": "Accordion, AccordionItem",
+      "from": "@ggbrick/svelte",
+      "purpose": "Stacks headings that each show or hide a section of content (questions and answers, settings sections, details): items with a label, an optional leading icon and free content, inside headings of a chosen level; one or several expanded at a time (multiple), disabled items; arrow keys between triggers; bindable value list with valueChange.",
+      "whenNotToUse": "Navigation between pages (links, Breadcrumb), panels switched in place with a visible list (Tabs), content every user needs (show it), a single show-or-hide toggle (Disclosure, planned).",
+      "documentation": "accordion.md",
+      "contract": "foundations/components/navigation/accordion/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "breadcrumb",
+      "import": "Breadcrumb",
+      "from": "@ggbrick/svelte",
+      "purpose": "Shows where the current page sits in the site hierarchy as a navigation landmark: items as records (label, href, hideLabel) from a top level to the current page, a leading snippet (a home icon), chevron or slash separators, size sm or md; labels truncate ancestors first on one line; maxItems collapses hidden items behind a “…” button that opens a Menu of them.",
+      "whenNotToUse": "A history of visited pages (not a breadcrumb), the steps of a task (Stepper, planned), the main navigation (a navigation bar), a single back link (Link).",
+      "documentation": "breadcrumb.md",
+      "contract": "foundations/components/navigation/breadcrumb/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "pagination",
+      "import": "Pagination",
+      "from": "@ggbrick/svelte",
+      "purpose": "Moves through a long list or table split into numbered pages: page items (current page marked), ellipses for hidden runs, Previous and Next IconButtons, optional First and Last (showEdges); a constant number of items so the controls do not move; one row that reduces siblings when narrow; buttons or links (href with {page}); bindable page with pageChange.",
+      "whenNotToUse": "A feed read in order (a Load more Button or infinite scrolling), steps of a task (Stepper, planned), panels of related content (Tabs).",
+      "documentation": "pagination.md",
+      "contract": "foundations/components/navigation/pagination/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "tabs",
+      "import": "Tabs, TabsTrigger, TabsPanel",
+      "from": "@ggbrick/svelte",
+      "purpose": "Shows one of several panels of related content in the same place with a list of tabs: appearance contained (default, the list as a container, the selected tab raised) or line (the selected tab marked by an indicator and its label in the indicator color), horizontal or vertical, sizes, leading icon and trailing Counter or Badge per tab, disabled tabs, automatic or manual activation; the list scrolls with faded edges and scroll buttons when the tabs do not fit; bindable value with valueChange.",
+      "whenNotToUse": "Navigation between pages (links styled as navigation), several sections shown at once (Accordion), a choice of value (RadioGroup, SegmentedControl planned), steps of a task (Stepper, planned).",
+      "documentation": "tabs.md",
+      "contract": "foundations/components/navigation/tabs/contract.json",
       "sections": [
         "Overview",
         "Anatomy",

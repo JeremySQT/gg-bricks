@@ -1,0 +1,280 @@
+/*
+ * Tabs structure. Colors, sizes, spacing, typography and motion come from tokens.generated.css. The list's line is
+ * an inset shadow (horizontal: the list scrolls inline, so nothing may overflow it) or the inline-end border
+ * (vertical); the selected tab's indicator sits on that line, on the edge that faces the panels.
+ */
+@layer ggb {
+  .ggb-tabs {
+    --_ring: calc(var(--ggb-tabs-focusWidth) + var(--ggb-tabs-focusOffset));
+    display: flex;
+    flex-direction: column;
+    gap: var(--ggb-tabs-panelGap);
+    min-inline-size: 0;
+  }
+  .ggb-tabs[data-orientation='vertical'] {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .ggb-tabs__list {
+    display: flex;
+    gap: var(--ggb-tabs-listGap);
+    min-inline-size: 0;
+  }
+  /* The list paints nothing outside the tabs' own boxes: it clips (to scroll) only while the tabs overflow it, and then
+     keeps room on every side for the focus indicator (inline) and for the selected tab's shadow (block, twice the
+     ring), so that neither is cut. Negative margins keep the tabs where they would be without that room. */
+  .ggb-tabs[data-orientation='horizontal'] .ggb-tabs__list {
+    padding: calc(2 * var(--_ring)) var(--_ring);
+    margin: calc(-2 * var(--_ring)) calc(-1 * var(--_ring));
+  }
+  .ggb-tabs[data-orientation='horizontal'] .ggb-tabs__bar[data-scrollable] .ggb-tabs__list {
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* No visible scrollbar: the overflowing edges fade and show scroll buttons. */
+    scrollbar-width: none;
+  }
+  /* The line belongs to the bar, so that the fade of the overflowing edges does not reach it. */
+  .ggb-tabs[data-appearance='line'][data-orientation='horizontal'] > .ggb-tabs__bar {
+    box-shadow: inset 0 calc(-1 * var(--ggb-tabs-lineThickness)) 0 var(--ggb-tabs-lineColor);
+  }
+  .ggb-tabs[data-orientation='vertical'] .ggb-tabs__list {
+    flex-direction: column;
+    flex: none;
+  }
+  .ggb-tabs[data-appearance='line'][data-orientation='vertical'] .ggb-tabs__list {
+    border-inline-end: var(--ggb-tabs-lineThickness) solid var(--ggb-tabs-lineColor);
+  }
+
+  .ggb-tabs[data-orientation='horizontal'] .ggb-tabs__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* The bar holds the list and the scroll buttons that appear over its overflowing edges. */
+  .ggb-tabs__bar {
+    /* Tabs are hidden under the scroll button (fadeSize from the edge) and fade in over half of it after. */
+    --_hide: calc(var(--_ring) + var(--ggb-tabs-fadeSize));
+    --_show: calc(var(--_ring) + var(--ggb-tabs-fadeSize) * 1.5);
+    position: relative;
+    display: flex;
+    min-inline-size: 0;
+  }
+  .ggb-tabs[data-orientation='vertical'] .ggb-tabs__bar {
+    flex: none;
+  }
+  .ggb-tabs[data-orientation='horizontal'] .ggb-tabs__list {
+    flex: 1 1 auto;
+  }
+  .ggb-tabs__bar[data-overflow-start] .ggb-tabs__list {
+    mask-image: linear-gradient(to right, transparent var(--_hide), currentColor var(--_show));
+  }
+  .ggb-tabs__bar[data-overflow-end] .ggb-tabs__list {
+    mask-image: linear-gradient(to left, transparent var(--_hide), currentColor var(--_show));
+  }
+  .ggb-tabs__bar[data-overflow-start][data-overflow-end] .ggb-tabs__list {
+    mask-image: linear-gradient(
+      to right,
+      transparent var(--_hide),
+      currentColor var(--_show),
+      currentColor calc(100% - var(--_show)),
+      transparent calc(100% - var(--_hide))
+    );
+  }
+  .ggb-tabs__bar:dir(rtl)[data-overflow-start]:not([data-overflow-end]) .ggb-tabs__list {
+    mask-image: linear-gradient(to left, transparent var(--_hide), currentColor var(--_show));
+  }
+  .ggb-tabs__bar:dir(rtl)[data-overflow-end]:not([data-overflow-start]) .ggb-tabs__list {
+    mask-image: linear-gradient(to right, transparent var(--_hide), currentColor var(--_show));
+  }
+  .ggb-tabs__scroll {
+    position: absolute;
+    inset-block-end: var(--ggb-tabs-lineThickness);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    block-size: var(--ggb-tabs-fadeSize);
+  }
+  .ggb-tabs__scroll--start {
+    inset-inline-start: 0;
+  }
+  .ggb-tabs__scroll--end {
+    inset-inline-end: 0;
+  }
+  .ggb-tabs__scroll-icon:dir(rtl) {
+    scale: -1 1;
+  }
+
+  .ggb-tabs__trigger {
+    --_surface: var(--ggb-tabs-trigger-surface-default);
+    --_content: var(--ggb-tabs-trigger-idleColor);
+    position: relative;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ggb-tabs-trigger-gap);
+    min-block-size: var(--ggb-tabs-trigger-minHeight);
+    margin: 0;
+    padding: 0 var(--ggb-tabs-trigger-paddingInline);
+    border: 0;
+    border-radius: var(--ggb-tabs-trigger-radius);
+    background: var(--_surface);
+    color: var(--_content);
+    font: var(--ggb-tabs-trigger-typography);
+    letter-spacing: var(--ggb-tabs-trigger-typography-letterSpacing, normal);
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    transition-property: background-color, color;
+    transition-duration: var(--ggb-tabs-trigger-motionDuration);
+    transition-timing-function: var(--ggb-tabs-trigger-easingStandard);
+  }
+  /* A tab scrolled into view (focus, selection) clears the fade and the scroll button of the edge. */
+  .ggb-tabs[data-orientation='horizontal'] .ggb-tabs__trigger {
+    scroll-margin-inline: calc(var(--ggb-tabs-fadeSize) * 1.5);
+  }
+  .ggb-tabs[data-orientation='vertical'] .ggb-tabs__trigger {
+    justify-content: flex-start;
+    inline-size: 100%;
+  }
+  .ggb-tabs__trigger[aria-selected='true'] {
+    --_content: var(--ggb-tabs-trigger-content-default);
+  }
+  /* Line: the selected label takes the color of its indicator (wave 4 Figma parity gate, 2026-11-12). */
+  .ggb-tabs[data-appearance='line'] .ggb-tabs__trigger[aria-selected='true'] {
+    --_content: var(--ggb-tabs-trigger-selectedColor);
+  }
+  /* Hover only on an unselected tab: the selected tab keeps its look under the pointer (activating it does nothing). */
+  @media (hover: hover) {
+    .ggb-tabs__trigger:not(:disabled):not([aria-selected='true']):hover {
+      --_content: var(--ggb-tabs-trigger-content-hover);
+      --_surface: var(--ggb-tabs-trigger-surface-hover);
+    }
+  }
+  .ggb-tabs__trigger:disabled {
+    --_surface: var(--ggb-tabs-trigger-surface-disabled);
+    --_content: var(--ggb-tabs-trigger-content-disabled);
+    cursor: default;
+  }
+  .ggb-tabs__trigger:focus-visible {
+    outline: var(--ggb-tabs-focusWidth) solid var(--ggb-tabs-focusColor);
+    outline-offset: var(--ggb-tabs-focusOffset);
+  }
+
+  /* The selected tab's indicator, on the line: block end (horizontal) or inline end (vertical). */
+  .ggb-tabs__trigger::after {
+    content: '';
+    position: absolute;
+    background: var(--ggb-tabs-trigger-indicatorColor);
+    opacity: 0;
+    transition: opacity var(--ggb-tabs-trigger-motionDuration) var(--ggb-tabs-trigger-easingStandard);
+    pointer-events: none;
+  }
+  .ggb-tabs[data-orientation='horizontal'] .ggb-tabs__trigger::after {
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: var(--ggb-tabs-trigger-indicatorThickness);
+  }
+  .ggb-tabs[data-orientation='vertical'] .ggb-tabs__trigger::after {
+    inset-block: 0;
+    inset-inline-end: calc(-1 * var(--ggb-tabs-lineThickness));
+    inline-size: var(--ggb-tabs-trigger-indicatorThickness);
+  }
+  .ggb-tabs[data-appearance='line'] .ggb-tabs__trigger[aria-selected='true']::after {
+    opacity: 1;
+  }
+
+  /* Contained: the bar is the container; the selected tab is raised (surface, shadow and elevation edge). */
+  .ggb-tabs[data-appearance='contained'] > .ggb-tabs__bar {
+    padding: var(--ggb-tabs-listPadding);
+    border-radius: var(--ggb-tabs-listRadius);
+    background: var(--ggb-tabs-listSurfaceColor);
+  }
+  /* Equal shares of the list, never narrower than the content. */
+  .ggb-tabs[data-appearance='contained'][data-orientation='horizontal'] .ggb-tabs__trigger {
+    flex: 1 1 0;
+    min-inline-size: max-content;
+  }
+  .ggb-tabs[data-appearance='contained'] .ggb-tabs__trigger:not(:disabled) {
+    --_content: var(--ggb-tabs-trigger-content-default);
+  }
+  .ggb-tabs[data-appearance='contained'] .ggb-tabs__trigger {
+    border-radius: var(--ggb-tabs-trigger-containedRadius);
+    transition-property: background-color, color, box-shadow;
+  }
+  .ggb-tabs[data-appearance='contained'] .ggb-tabs__trigger[aria-selected='true'] {
+    --_surface: var(--ggb-tabs-trigger-selectedSurfaceColor);
+    box-shadow:
+      inset 0 0 0 var(--ggb-tabs-trigger-edgeThickness) var(--ggb-tabs-trigger-elevationColor),
+      var(--ggb-tabs-trigger-shadowSelected);
+  }
+  .ggb-tabs[data-appearance='contained'] .ggb-tabs__scroll {
+    inset-block: var(--ggb-tabs-listPadding);
+    block-size: auto;
+  }
+
+  .ggb-tabs__trigger-label {
+    display: block;
+  }
+  .ggb-tabs__trigger-leading,
+  .ggb-tabs__trigger-trailing {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    color: inherit;
+  }
+  .ggb-tabs__trigger-leading > svg {
+    display: block;
+    inline-size: var(--ggb-tabs-trigger-iconSize);
+    block-size: var(--ggb-tabs-trigger-iconSize);
+    /* Phosphor glyphs draw 1/8 inside their box: the drawing, not the box, sits at the padding. */
+    margin-inline: calc(var(--ggb-tabs-trigger-iconSize) / -8);
+  }
+
+  .ggb-tabs__panels {
+    min-inline-size: 0;
+    flex: 1 1 auto;
+  }
+  .ggb-tabs__panel {
+    outline: none;
+  }
+  .ggb-tabs__panel:focus-visible {
+    outline: var(--ggb-tabs-focusWidth) solid var(--ggb-tabs-focusColor);
+    outline-offset: var(--ggb-tabs-focusOffset);
+  }
+  .ggb-tabs__panel[hidden] {
+    display: none;
+  }
+
+  /* A slot whose snippet renders nothing takes no room (no gap beside it). */
+  .ggb-tabs__trigger-leading:empty,
+  .ggb-tabs__trigger-trailing:empty {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-tabs__trigger,
+    .ggb-tabs__trigger::after {
+      transition: none;
+    }
+  }
+  @media (forced-colors: active) {
+    .ggb-tabs[data-appearance='line'][data-orientation='horizontal'] > .ggb-tabs__bar {
+      border-block-end: 1px solid CanvasText;
+    }
+    .ggb-tabs[data-appearance='contained'] > .ggb-tabs__bar {
+      border: 1px solid CanvasText;
+    }
+    .ggb-tabs[data-appearance='contained'] .ggb-tabs__trigger[aria-selected='true'] {
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .ggb-tabs__trigger::after {
+      background: Highlight;
+      forced-color-adjust: none;
+    }
+    .ggb-tabs__trigger:disabled {
+      color: GrayText;
+    }
+  }
+}

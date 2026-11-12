@@ -25,7 +25,7 @@ Measurements and tokens, including the lettered dimensions of the blueprint: `co
 - A list of actions or commands behind a button: Menu.
 - A task that must be completed or abandoned before going on, or a confirmation: Dialog.
 - A few words about a control on hover or focus: Tooltip.
-- One choice in a list of options: RadioGroup, or Select (planned) and Combobox (planned) for long lists.
+- One choice in a list of options: RadioGroup, or Select, and Combobox for long lists.
 - A long form or content wider than a narrow panel: Dialog, or Drawer (planned).
 
 ## Best practices

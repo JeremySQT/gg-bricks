@@ -50,6 +50,7 @@
     "radius": "radius.overlay",
     "padding": "space.content.xs",
     "maxInlineSize": "size.overlay.panel",
+    "scrollbarColor": "color.border.default",
     "offset": "space.content.xs",
     "enterDistance": "motion.distance.sm",
     "motionDuration": "motion.duration.base",
@@ -189,7 +190,7 @@
   "rules": [
     "A menu offers a short list of actions or links in a panel opened from a trigger (row actions, an account menu, a More button). Activating an item performs it and closes the menu. A choice of value in a form is a Select; free content in an anchored panel is a Popover.",
     "trigger is exactly one Button or IconButton; it exposes that it opens a menu and whether the menu is expanded. Activating it toggles the menu; Down Arrow on the trigger opens it and highlights the first enabled item, Up Arrow opens it and highlights the last.",
-    "The panel is exposed as a menu, named by label when it is non-empty and by the trigger otherwise. It is painted in surface with shadow, an edge of borderWidth in elevationColor and radius corners, with padding around the items. Its inline size is the widest item, at least the trigger's inline size and at most maxInlineSize; when the items are taller than the viewport allows, the panel scrolls and keeps the highlighted item visible.",
+    "The panel is exposed as a menu, named by label when it is non-empty and by the trigger otherwise. It is painted in surface with shadow, an edge of borderWidth in elevationColor and radius corners, with padding around the items. Its inline size is the widest item, at least the trigger's inline size and at most maxInlineSize; when the items are taller than the viewport allows, they scroll inside the padding, with a thin scrollbar in scrollbarColor, and the highlighted item stays visible.",
     "The panel is placed at offset from the trigger on side, aligned with the trigger's start, center or end in the reading direction; it flips to the other side and shifts along the edge when the viewport lacks room.",
     "Opening the menu by pointer moves focus into the menu without highlighting an item (the first arrow key highlights the first or last enabled item); opening it by keyboard highlights the first enabled item. Focus stays on the menu while it is open.",
     "Keyboard: Down and Up Arrow move the highlight to the next or previous item, wrapping at the ends and skipping separators and headings; Home and End move it to the first and last item; typing a character moves it to the next item whose label starts with the typed characters; Enter and Space activate the highlighted item. Disabled items are reached but not activated.",

@@ -3157,6 +3157,19 @@
     },
     {
       "collection": "Foundations · Primitives",
+      "name": "primitive/dimension/v320",
+      "path": "primitive.dimension.v320",
+      "type": "FLOAT",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-primitive-dimension-v320)"
+      },
+      "values": {
+        "default": 320
+      }
+    },
+    {
+      "collection": "Foundations · Primitives",
       "name": "primitive/dimension/v360",
       "path": "primitive.dimension.v360",
       "type": "FLOAT",
@@ -5955,6 +5968,29 @@
         },
         "orchid": {
           "alias": "Foundations · Primitives:primitive/dimension/v360"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "size/overlay/list",
+      "path": "size.overlay.list",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-overlay-list)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v320"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v320"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v320"
         }
       }
     },
@@ -9985,6 +10021,27 @@
         },
         "dark": {
           "alias": "Foundations · Brand:color/palette/neutral/700"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Appearance",
+      "name": "color/surface/inset",
+      "path": "color.surface.inset",
+      "type": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-color-surface-inset)"
+      },
+      "values": {
+        "light": {
+          "alias": "Foundations · Primitives:primitive/color/alpha/black/5"
+        },
+        "dark": {
+          "alias": "Foundations · Primitives:primitive/color/alpha/white/5"
         }
       }
     },

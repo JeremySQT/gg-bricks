@@ -27,7 +27,7 @@ Measurements and tokens, including the lettered dimensions of the blueprint: `co
 - An icon-only link: IconButton with `href`.
 - Opening the print dialog, sending a form or copying an address: Button, since these are actions.
 - A destination that cannot be followed: plain text (a link has no disabled state).
-- Structured navigation: Breadcrumb, Tabs and Pagination (planned).
+- Structured navigation: Breadcrumb, Tabs and Pagination.
 
 ## Best practices
 

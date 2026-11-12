@@ -1,0 +1,135 @@
+/* Generated token bindings from the select contract. Do not edit. */
+@layer ggb {
+.ggb-select {
+  --ggb-select-surface-default: var(--ggb-color-input-default-surface);
+  --ggb-select-surface-hover: var(--ggb-color-input-hover-surface);
+  --ggb-select-surface-focus: var(--ggb-color-input-focus-surface);
+  --ggb-select-surface-readonly: var(--ggb-color-input-readonly-surface);
+  --ggb-select-surface-disabled: var(--ggb-color-input-disabled-surface);
+  --ggb-select-surface-invalid: var(--ggb-color-input-invalid-surface);
+  --ggb-select-content-default: var(--ggb-color-input-default-content);
+  --ggb-select-content-hover: var(--ggb-color-input-hover-content);
+  --ggb-select-content-focus: var(--ggb-color-input-focus-content);
+  --ggb-select-content-readonly: var(--ggb-color-input-readonly-content);
+  --ggb-select-content-disabled: var(--ggb-color-input-disabled-content);
+  --ggb-select-content-invalid: var(--ggb-color-input-invalid-content);
+  --ggb-select-border-default: var(--ggb-color-input-default-border);
+  --ggb-select-border-hover: var(--ggb-color-input-hover-border);
+  --ggb-select-border-focus: var(--ggb-color-input-focus-border);
+  --ggb-select-border-readonly: var(--ggb-color-input-readonly-border);
+  --ggb-select-border-disabled: var(--ggb-color-input-disabled-border);
+  --ggb-select-border-invalid: var(--ggb-color-input-invalid-border);
+  --ggb-select-placeholderColor-default: var(--ggb-color-input-default-placeholder);
+  --ggb-select-placeholderColor-hover: var(--ggb-color-input-hover-placeholder);
+  --ggb-select-placeholderColor-focus: var(--ggb-color-input-focus-placeholder);
+  --ggb-select-placeholderColor-readonly: var(--ggb-color-input-readonly-placeholder);
+  --ggb-select-placeholderColor-disabled: var(--ggb-color-input-disabled-placeholder);
+  --ggb-select-placeholderColor-invalid: var(--ggb-color-input-invalid-placeholder);
+  --ggb-select-slotColor-default: var(--ggb-color-input-default-placeholder);
+  --ggb-select-slotColor-hover: var(--ggb-color-input-hover-placeholder);
+  --ggb-select-slotColor-focus: var(--ggb-color-input-focus-placeholder);
+  --ggb-select-slotColor-readonly: var(--ggb-color-input-readonly-placeholder);
+  --ggb-select-slotColor-disabled: var(--ggb-color-input-disabled-placeholder);
+  --ggb-select-slotColor-invalid: var(--ggb-color-input-invalid-placeholder);
+  --ggb-select-borderWidth: var(--ggb-border-width-default);
+  --ggb-select-radius: var(--ggb-radius-control);
+  --ggb-select-minTarget: var(--ggb-size-target-min);
+  --ggb-select-focusColor: var(--ggb-color-focus-ring);
+  --ggb-select-focusWidth: var(--ggb-focus-width);
+  --ggb-select-focusOffset: var(--ggb-focus-offset);
+  --ggb-select-focusRadius: var(--ggb-radius-focus);
+  --ggb-select-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-select-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-select[data-size="sm"] {
+  --ggb-select-minHeight: var(--ggb-size-control-sm);
+  --ggb-select-edgeInline: var(--ggb-space-control-edge-inline-sm);
+  --ggb-select-textInline: var(--ggb-space-control-label-inline-sm);
+  --ggb-select-slotInline: var(--ggb-space-control-slot-inline-sm);
+  --ggb-select-typography: var(--ggb-typography-body-sm);
+  --ggb-select-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-select-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+  --ggb-select-iconSize: var(--ggb-size-icon-sm);
+}
+.ggb-select[data-size="md"] {
+  --ggb-select-minHeight: var(--ggb-size-control-md);
+  --ggb-select-edgeInline: var(--ggb-space-control-edge-inline-md);
+  --ggb-select-textInline: var(--ggb-space-control-label-inline-md);
+  --ggb-select-slotInline: var(--ggb-space-control-slot-inline-md);
+  --ggb-select-typography: var(--ggb-typography-body-md);
+  --ggb-select-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-select-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+  --ggb-select-iconSize: var(--ggb-size-icon-md);
+}
+.ggb-select[data-size="lg"] {
+  --ggb-select-minHeight: var(--ggb-size-control-lg);
+  --ggb-select-edgeInline: var(--ggb-space-control-edge-inline-lg);
+  --ggb-select-textInline: var(--ggb-space-control-label-inline-lg);
+  --ggb-select-slotInline: var(--ggb-space-control-slot-inline-lg);
+  --ggb-select-typography: var(--ggb-typography-body-lg);
+  --ggb-select-typography-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);
+  --ggb-select-typography-fontFeatureSettings: var(--ggb-typography-body-lg-fontFeatureSettings);
+  --ggb-select-iconSize: var(--ggb-size-icon-lg);
+}
+.ggb-select__panel {
+  --ggb-select-panel-surface: var(--ggb-color-surface-overlay);
+  --ggb-select-panel-elevationColor: var(--ggb-color-elevation-border);
+  --ggb-select-panel-borderWidth: var(--ggb-border-width-default);
+  --ggb-select-panel-shadow: var(--ggb-shadow-overlay);
+  --ggb-select-panel-radius: var(--ggb-radius-overlay);
+  --ggb-select-panel-padding: var(--ggb-space-content-xs);
+  --ggb-select-panel-maxInlineSize: var(--ggb-size-overlay-panel);
+  --ggb-select-panel-maxBlockSize: var(--ggb-size-overlay-list);
+  --ggb-select-panel-scrollbarColor: var(--ggb-color-border-default);
+  --ggb-select-panel-offset: var(--ggb-space-content-sm);
+  --ggb-select-panel-enterDistance: var(--ggb-motion-distance-sm);
+  --ggb-select-panel-motionDuration: var(--ggb-motion-duration-base);
+  --ggb-select-panel-easingEnter: var(--ggb-motion-easing-enter);
+  --ggb-select-panel-easingExit: var(--ggb-motion-easing-exit);
+  --ggb-select-panel-layer: var(--ggb-layer-dropdown);
+}
+.ggb-select__option {
+  --ggb-select-option-surface-default: var(--ggb-color-item-default-surface);
+  --ggb-select-option-surface-hover: var(--ggb-color-item-hover-surface);
+  --ggb-select-option-surface-selected: var(--ggb-color-item-selected-surface);
+  --ggb-select-option-surface-selected-hover: var(--ggb-color-item-selected-hover-surface);
+  --ggb-select-option-surface-disabled: var(--ggb-color-item-disabled-surface);
+  --ggb-select-option-content-default: var(--ggb-color-item-default-content);
+  --ggb-select-option-content-hover: var(--ggb-color-item-hover-content);
+  --ggb-select-option-content-selected: var(--ggb-color-item-selected-content);
+  --ggb-select-option-content-selected-hover: var(--ggb-color-item-selected-hover-content);
+  --ggb-select-option-content-disabled: var(--ggb-color-item-disabled-content);
+  --ggb-select-option-checkColor: var(--ggb-color-item-indicator);
+  --ggb-select-option-radius: var(--ggb-radius-container);
+  --ggb-select-option-minHeight: var(--ggb-size-control-sm);
+  --ggb-select-option-paddingInline: var(--ggb-space-control-padding-inline-sm);
+  --ggb-select-option-paddingBlock: var(--ggb-space-control-padding-block-sm);
+  --ggb-select-option-gap: var(--ggb-space-control-gap-sm);
+  --ggb-select-option-checkSize: var(--ggb-size-icon-sm);
+  --ggb-select-option-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-select-option-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-select[data-size="sm"] .ggb-select__option {
+  --ggb-select-option-typography: var(--ggb-typography-body-sm);
+  --ggb-select-option-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-select-option-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+}
+.ggb-select[data-size="md"] .ggb-select__option {
+  --ggb-select-option-typography: var(--ggb-typography-body-md);
+  --ggb-select-option-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-select-option-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+}
+.ggb-select[data-size="lg"] .ggb-select__option {
+  --ggb-select-option-typography: var(--ggb-typography-body-lg);
+  --ggb-select-option-typography-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);
+  --ggb-select-option-typography-fontFeatureSettings: var(--ggb-typography-body-lg-fontFeatureSettings);
+}
+.ggb-select__group {
+  --ggb-select-group-headingColor: var(--ggb-color-content-secondary);
+  --ggb-select-group-typography: var(--ggb-typography-caption-md);
+  --ggb-select-group-typography-letterSpacing: var(--ggb-typography-caption-md-letterSpacing);
+  --ggb-select-group-typography-fontFeatureSettings: var(--ggb-typography-caption-md-fontFeatureSettings);
+  --ggb-select-group-paddingInline: var(--ggb-space-control-padding-inline-sm);
+  --ggb-select-group-paddingBlock: var(--ggb-space-content-xs);
+}
+}

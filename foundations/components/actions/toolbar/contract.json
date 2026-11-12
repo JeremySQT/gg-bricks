@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "toolbar",
+  "props": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "orientation": {
+      "values": ["horizontal", "vertical"],
+      "default": "horizontal"
+    },
+    "overflowLabel": {
+      "type": "string",
+      "default": "More"
+    }
+  },
+  "parts": {
+    "container": {},
+    "items": {
+      "accepts": ["button", "icon-button", "menu", "popover", "tooltip", "separator"],
+      "min": 2
+    },
+    "overflow": {
+      "accepts": ["menu", "icon-button"],
+      "max": 1
+    }
+  },
+  "states": {},
+  "tokens": {
+    "gap": "space.control.gap.{size}"
+  },
+  "children": {
+    "separator": {
+      "props": {},
+      "states": {},
+      "tokens": {
+        "lineColor": "color.border.subtle",
+        "thickness": "border.width.default",
+        "margin": "space.content.xs"
+      },
+      "rules": [
+        "A separator is a line of thickness in lineColor between two sets of items, perpendicular to the orientation (vertical in a horizontal toolbar), as long as the items' block size, with margin on both sides in addition to gap. It is exposed as a separator and is never focused."
+      ]
+    }
+  },
+  "rules": [
+    "A toolbar groups a set of frequently used controls for one area (the formatting of an editor, the actions on a selection, a view's display options) into a single stop in sequential focus, with arrow keys to move between them. A few independent actions are a ButtonGroup; a choice among options is a SegmentedControl or a RadioGroup.",
+    "The toolbar is exposed as a toolbar named by label, with its orientation. Items are Buttons and IconButtons, Menus and Popovers through their trigger, IconButtons wrapped in a Tooltip, and separators, in source order; the toolbar adds no surface, border or padding of its own.",
+    "size applies to every Button and IconButton of the toolbar, including the triggers of its Menus and Popovers and the controls inside its Tooltips, so that all items share one height; an item's own size is ignored inside a toolbar. Items are separated by gap.",
+    "orientation horizontal places the items on one line, from the start of the inline size the toolbar fills, and never wraps; orientation vertical stacks them in one column. When a horizontal toolbar does not fit its inline size, the items that do not fit, taken from the end, move into an overflow Menu opened by an IconButton named overflowLabel, of the toolbar's size, intent neutral and appearance ghost, showing three dots, placed last on the line. A Button or IconButton becomes a menu item with its label, its icon, its disabled state and, for intent danger, the danger intent, and choosing it activates the item; a Menu or Popover trigger never moves (its panel needs it on the line), so items before it move first; a separator next to a moved item is hidden. Items come back to the line, in order, when room returns.",
+    "Focus: the toolbar is one stop in sequential focus, landing on the last focused item, or on the first enabled item the first time. The roving focus rules are shared with Tabs: in a horizontal toolbar Right and Left Arrow (reversed in right-to-left text) move focus to the next and previous enabled item, wrapping at the ends; in a vertical toolbar Down and Up Arrow do; Home and End move it to the first and last enabled item; disabled items, separators and moved items are skipped; the overflow trigger is the last item.",
+    "Each item keeps its own activation (Enter or Space) and behavior. A Menu or Popover trigger opens with Enter or Space; in a horizontal toolbar Down and Up Arrow on a Menu trigger open its menu as they do outside a toolbar, while in a vertical toolbar they move focus. When the menu or popover closes, focus returns to its trigger, which stays the toolbar's focus stop.",
+    "A toolbar contains no text entry, Select or other control that uses the arrow keys itself in v1, so that the arrow keys always move between items."
+  ]
+}

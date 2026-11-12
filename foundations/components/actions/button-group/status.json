@@ -114,10 +114,10 @@
           "packages/svelte/src/components/button-group/contract.generated.ts": "fb91000ccae536935fcbe97a8c0dcce61a77d5f9989440802251e43bc48dcbf2",
           "packages/svelte/src/components/button-group/tokens.generated.css": "0e22838a03e486e410bc9a991fd4c40fc0d7df867921f51f1e80a280922161fe",
           "packages/svelte/src/components/button-group/types.ts": "6de7d270e18f7768bcce9be9f393914c6fdb8d71e53a055186f03979e6b06556",
-          "examples/button-group/App.svelte": "d57908bbb3bbc50b8b11d410bafad1b7d5fcd6bb9e74f3bcd2351da8b4a41835"
+          "examples/button-group/App.svelte": "9606c812642f09c47fa081276c8ccf86090a45b876cd5694575bddcf66a3bfc1"
         }
       },
-      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change).",
+      "provenance": "User at the grouped wave 3 implementation review (round 2) in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB (2026-11-03), on the review page https://claude.ai/artifact/Aiq2iwyMsxybxfhUqGrGdn (version 1793718263-1d41), after round 1 feedback applied: \"Je valide le reste\" (Alert and Toast kept open for a last change). Amendment of 2026-11-10 (wave 4 implementation review, round 4, change accepted with the wave): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": null
     },
     "figmaParity": {
@@ -150,12 +150,12 @@
           "apps/docs/src/playgrounds/button-group.svelte"
         ],
         "sha256": {
-          "documentation/components/button-group.md": "030ed925d10701424fc27ed47b68afd1d26838230b72191be0ea0812cd970a8f",
-          "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145",
+          "documentation/components/button-group.md": "3f9992a34b2bb7d883857b55a4bc74eddc4adae9f5983069a996ab6dc6bdc297",
+          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
           "apps/docs/src/playgrounds/button-group.svelte": "9d2de3db2be1c79d07f6c7a798653c415e4fc2d3dbd91385c39f3cad92a9776d"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\".",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremy-soquet.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): documentation/index.json gained the seven wave 4 entries and lost the \"(planned)\" mentions of components now exported; documentation/components/button-group.md no longer marks the wave 4 components it names as planned. Digests re-recorded.",
       "note": null
     },
     "delivery": null
@@ -227,6 +227,18 @@
       "result": "passed",
       "date": "2026-11-09",
       "evidence": "documentation/components/button-group.md"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Wave 4 changes (implementation): computed.json unchanged by the evidence run of 2026-11-10, so the Figma master and its parity are unchanged; the changes (scrollbar inside the padding, room for the focus ring, group size of the triggers, delay tokens) have no static rendering in Figma",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/button-group/svelte/computed.json"
     }
   ],
   "decisionsTaken": [
@@ -240,7 +252,7 @@
     "Vertical always stretched; no wrap: a line that does not fit stacks (user, 2026-11-03)."
   ],
   "openDecisions": [],
-  "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
+  "nextAction": "Wave 4 changes accepted with the wave 4 implementation gate; the Figma master was re-checked at the wave 4 Figma parity (unchanged); the documentation is re-checked with the wave 4 documentation step.",
   "implementationNotes": [
     "Button and IconButton read the group size through the context key ggb:button-group (a string; each folder declares the shape again), so an item's own size is ignored inside a group.",
     "A host (Alert) may ask for a default size through the context key ggb:button-group-host; an explicit size on the group wins.",
@@ -255,6 +267,15 @@
         "foundations/components/actions/button-group/contract.json": "849371cd8815a83dc9435064918892a90022f94ac29602f38b1f9332d1cf634b"
       },
       "recorded": "Re-recorded with the approvals of 2026-11-03."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Wave 4 contract gate, question 4: review page panel with Menu and Popover triggers in an lg group, and a browser test that they take the group size while the popover content keeps its own. ButtonGroup code unchanged (the fix is in Popover and Menu). To re-present at the wave 4 implementation gate.",
+      "sha256": {
+        "examples/button-group/App.svelte": "9606c812642f09c47fa081276c8ccf86090a45b876cd5694575bddcf66a3bfc1"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
     }
   ]
 }

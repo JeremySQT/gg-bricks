@@ -1,0 +1,310 @@
+{
+  "formatStatus": "v1",
+  "componentId": "select",
+  "family": "forms",
+  "wave": 4,
+  "phase": "done",
+  "scope": {
+    "purpose": "Choose one value from a list of known options in a form, shown collapsed in a field.",
+    "useCases": [
+      "A country, a language or a time zone among a known list (5 to about 25 options).",
+      "A sort order or a category in a filter bar.",
+      "Options grouped under headings (records with a group)."
+    ],
+    "exclusions": [
+      "Multiple selection (MultiSelect, later).",
+      "Searching or typing in the list (Combobox).",
+      "Free content in options (icons, descriptions) in v1: options are records with value, label, disabled and group.",
+      "Native mobile picker fallback."
+    ],
+    "alternatives": [
+      "RadioGroup under five options.",
+      "Combobox for a long list or a searched one.",
+      "Menu for actions."
+    ]
+  },
+  "dependencies": ["icon", "lib/overlay"],
+  "fixtures": ["Phosphor glyphs re-exported by examples/icon/glyphs.ts for the leading icon example."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/select/contract.json",
+      "sha256": "20d78516734cc24f62a8b1c434c75768d3a28a498e70e8574beb5db70fb388d9"
+    },
+    "tokens": ["foundations/tokens/inventory.json", "foundations/tokens/base/semantic/common.tokens.json"],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "forms/select (495:22)",
+      "library": "Forms (343:1640), section Select (496:1247)",
+      "componentSet": "497:2541",
+      "specification": "515:648",
+      "ledger": "reports/components/select/figma/ledger.json",
+      "parity": "reports/components/select/figma/parity.json",
+      "screenshots": [
+        "reports/components/select/figma/master-set.png",
+        "reports/components/select/figma/specification.png"
+      ],
+      "builders": [
+        "authoring/adapters/figma/listbox-select-master.plugin.js",
+        "authoring/adapters/figma/wave4-spec.plugin.js",
+        "authoring/adapters/figma/wave4-parity.plugin.js",
+        "authoring/adapters/figma/wave4-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/select/figma/blueprint-anatomy.png",
+          "node": "515:828"
+        }
+      ]
+    },
+    "figmaSpec": "foundations/components/forms/select/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/select",
+      "files": [
+        "packages/svelte/src/components/select/Select.svelte",
+        "packages/svelte/src/components/select/types.ts",
+        "packages/svelte/src/components/select/select.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (not used)"
+      },
+      "report": "reports/components/select/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/select",
+      "preview": "dist/previews/select.html (npm run build && npm run build:preview select)",
+      "artifact": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4), page select.html"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/choice.test.ts"],
+      "browser": ["tests/browser/select.spec.ts", "tests/browser/overlays-smoke.spec.ts"],
+      "evidence": "reports/components/select/svelte/"
+    },
+    "humanDocs": "documentation/components/select.md",
+    "agentDocs": "documentation/index.json (entry select); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Select compound contract: bindable value and open, options records (value, label, disabled, group), placeholder, label, size, disabled, readonly, invalid, required; InputText-like trigger on color.input.*; children panel, option, group; WAI-ARIA select-only combobox keyboard; panel capped by size.overlay.list.",
+      "revision": {
+        "paths": ["foundations/components/forms/select/contract.json"],
+        "sha256": {
+          "foundations/components/forms/select/contract.json": "20d78516734cc24f62a8b1c434c75768d3a28a498e70e8574beb5db70fb388d9"
+        }
+      },
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendments of 2026-11-09 and 2026-11-10 accepted with the round 2 implementation review (\"Je valide le second tour\"): panel role scrollbarColor. Digests re-recorded. Amendment of 2026-11-10 (wave 4 implementation review, round 4): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
+      "note": "Tab behaviour (closes without choosing) may be revisited at the implementation review (user, 2026-11-09)."
+    },
+    "implementation": {
+      "scope": "Select (own primitive on the native popover): select-only combobox keyboard, typeahead, groups, readonly and disabled, thin scrollbar inside the padding (round 2).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/select/Select.svelte",
+          "packages/svelte/src/components/select/contract.generated.ts",
+          "packages/svelte/src/components/select/select.css",
+          "packages/svelte/src/components/select/tokens.generated.css",
+          "packages/svelte/src/components/select/types.ts",
+          "examples/select/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/select/Select.svelte": "d4abe4c69dd4102c37e34d15ae5f1715039ad535d1217dcfc1510c8966332a0c",
+          "packages/svelte/src/components/select/contract.generated.ts": "f240973057451ed54f1f68bd69db64500e782fc28c903771e9c4c2b2a89fdb22",
+          "packages/svelte/src/components/select/select.css": "5a21e1fb5373516701a5d6021be2557a4ee57acf9f8482f761f2e429b78339af",
+          "packages/svelte/src/components/select/tokens.generated.css": "a44399d40a2c3d8aa4c7b4feec9c530c5a1f6b229dac5b55c057f8a4d1c68da4",
+          "packages/svelte/src/components/select/types.ts": "c3f46e6645e02dcfe5c4b15657a73eab7540c6c9871b7f2a34b100c6606dc86f",
+          "examples/select/App.svelte": "5e59697c0ef140762684d927e7ee58c01e381e90469b71da95fadbe97ef3674b"
+        }
+      },
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremy-soquet.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): Select calls the consumer's onkeyup before its own handling, like its onkeydown. Digests re-recorded. Amendment of 2026-11-12 (final consistency pass, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Ok pour la correction en tous cas\"): in forced colors the highlighted option sets forced-color-adjust: none, so that the browser paints no Canvas backplate behind its HighlightText label (browser test and capture forced-colors.png updated). Digests re-recorded. Amendment of 2026-11-12 (wave 4 final consistency pass, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Oui, tu peux l'appliquer alors\", after confirming the change applies to forced colors only): in forced colors a disabled option is in GrayText, and a highlighted disabled option keeps the Canvas surface with a 2 px Highlight outline (browser test updated). Digests re-recorded.",
+      "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
+    },
+    "figmaParity": {
+      "scope": "Figma master 497:2541 and specification frame 515:648 of the select component, parity report (204 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/forms/select/figma-spec.md",
+          "reports/components/select/figma/parity.json",
+          "reports/components/select/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/forms/select/figma-spec.md": "1ca05e7b0fac4cb89f0009c1d482c956bb07cf4262733a3b2d83fea0d87bff41",
+          "reports/components/select/figma/parity.json": "4591f89a382f840e3788c1482aa2f2281272e2d1f3182e1099cf05ab4cbf72fe",
+          "reports/components/select/figma/ledger.json": "1ff4809e743d24f053da872abef3d8b9891fa411aea0d428af40350daf61d667"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "497:2541",
+          "specificationFrame": "515:648",
+          "children": ["496:1323 Listbox/Option", "496:1324 Listbox/Group", "496:1338 Listbox/Empty"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of select (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/select.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/select.svelte"
+        ],
+        "sha256": {
+          "documentation/components/select.md": "2e4eff2cec2e3bc2fbe183774797026118a6caed2fe020b3ed937a7e227093e3",
+          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
+          "apps/docs/src/playgrounds/select.svelte": "a15510a7531890ea4e095e8b80ca3f6900d975e073a780bec0e7017aab020b43"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, after reading the pages on the wave/4 preview of the documentation site (https://wave-4-design-system.jeremy-soquet.workers.dev): \"Je valide la doc, corrige aussi lib/overlay\". Amendment of 2026-11-12 (user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Oui, tu peux l'appliquer alors\"): the Accessibility section names the disabled color in forced colors. Digests re-recorded.",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-09",
+      "evidence": "reports/components/select/"
+    },
+    {
+      "name": "Wave 4 contract gate approved",
+      "result": "passed",
+      "date": "2026-11-09",
+      "evidence": "https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium, overlay smoke spec in Firefox and WebKit, docs site)",
+      "result": "300 passed",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "npm run build:preview select",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-09"
+    },
+    {
+      "name": "Round 2: npm run verify passed; npm run test:browser 303 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr"
+    },
+    {
+      "name": "Round 4: npm run verify passed; npm run test:browser 311 passed (Chromium, overlay smoke in Firefox and WebKit, docs site); previews mount from file://",
+      "result": "passed",
+      "date": "2026-11-10"
+    },
+    {
+      "name": "Wave 4 implementation gate approved (round 4)",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4)"
+    },
+    {
+      "name": "Figma parity (204 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
+      "result": "passed",
+      "date": "2026-11-10",
+      "evidence": "reports/components/select/figma/parity.json"
+    },
+    {
+      "name": "Wave 4 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 98, build, docs build) and npm run check:approvals (438 digests, 0 errors)",
+      "result": "passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the forced-colors fixes",
+      "result": "319 passed",
+      "date": "2026-11-12"
+    },
+    {
+      "name": "Documentation: npm run build:docs (48 pages, every live block compiled) and tests/browser/docs-site.spec.ts (37 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "reports/site/docs/"
+    }
+  ],
+  "decisionsTaken": [
+    "The trigger is an InputText look-alike: same color.input.* roles, sizes, spacing and focus indicator; the chevron and the check mark are intrinsic Phosphor glyphs (caret-down, check) copied into the folder.",
+    "Options are records (value, label, disabled, group), per the records decision of 2026-10-31; consecutive records with the same group are gathered under a heading (child group).",
+    "One compound contract with children panel, option and group (decision of 2026-10-31); the panel is a child so that its surface roles do not collide with the trigger's.",
+    "Option rows reuse the Menu item geometry (32 px minimum, padding sm, radius.container in a radius.overlay panel); only the text follows the Select's size (typography.body.{size}), so that an lg select does not list small text.",
+    "Selected option: color.item.selected surface plus a check mark in color.item.indicator at the inline end, so that selection is not conveyed by color alone.",
+    "Keyboard per the WAI-ARIA select-only combobox pattern: focus stays on the trigger, the highlighted option is the active descendant; no wrapping (like a native select); Page Up and Page Down; typeahead; disabled options reached but not chosen (as in Menu).",
+    "Tab closes the list without choosing (the pattern allows choosing on Tab; not choosing avoids accidental changes when tabbing through a form).",
+    "Panel: at least the trigger's width, up to max(trigger, size.overlay.panel); block size capped by the new role size.overlay.list (256 px, about 7.5 options visible so that the cut row signals the scroll) and by the viewport room.",
+    "The value never changes while the list is closed (arrow keys open it), unlike some native selects.",
+    "Gate question 1 resolved (user, 2026-11-09: \"ok pour tes 5 recommandations\"): the shift along the viewport edge is fixed in lib/overlay for every overlay (Popover, Menu, Tooltip, Select, Combobox), with a browser test per overlay near the edge, presented at the implementation gate.",
+    "Gate question 2 resolved (user, 2026-11-09): size.overlay.list = 256 px for Select and Combobox; Menu unchanged (viewport room only), to revisit at the visual pass (roadmap 4b).",
+    "Bits UI Select is not used: its content assumes its own portal and focus scope, and it unmounts when closed (no exit transition); as for Menu (decision of 2026-10-31), the component is written on the native auto popover with lib/overlay. Recorded for the implementation gate.",
+    "The trigger is a button with the combobox role (WAI-ARIA select-only combobox): it keeps focus; the highlighted option is aria-activedescendant; presses in the panel never take focus.",
+    "Options API: records (`options` prop) as the contract says; groups from consecutive records with the same group.",
+    "Round 2: thin scrollbar in scrollbarColor on the list, which scrolls inside the panel padding (the scrollbar never meets the round corners)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Done (wave 4, 2026-11-12): pull request of branch wave/4 to main. Library publication and package release follow the delivery workflow (ggb-maintain) on explicit authorization.",
+  "implementationNotes": [
+    "Exports Select and the SelectOptionsRecord type.",
+    "The trigger toggles the panel through popovertarget (exempt from light dismiss); keys open it through the open state.",
+    "`name` submits the value through a hidden input.",
+    "A press on the Field label activates the trigger, as for any button, and opens the list."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Same trigger colors as InputText (color.input.*): its exemption accepted at the wave 2 contract gate (2026-10-26, \"4 ok\") applies; color.input.default.border reaches 2.06 on surface.muted in dark, a de-emphasized backdrop where forms are not expected."
+      }
+    ]
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-09",
+      "change": "Round 2 of the wave 4 implementation review (user, 2026-11-10): \"la scrollbar qui me parait pas très esthétique\". Contract fact: panel role scrollbarColor (color.border.default); the options scroll inside the panel padding with a thin scrollbar. To re-present at the implementation gate (round 2).",
+      "sha256": {
+        "foundations/components/forms/select/contract.json": "c61b460ab5b6b18b389dffb1ba2ee9fb90d61dbc7fc3e4c7c2b7f72e7b35fd31"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 2 implementation approval (2026-11-10)."
+    },
+    {
+      "date": "2026-11-09",
+      "change": "Round 4 of the wave 4 implementation review (user, 2026-11-10: shadow of the selected contained tab cut, label not centered, dark contained tabs, popover focus cut, breadcrumb options structure, \"Soit plus minutieux\"). Contract: panel offset space.content.sm instead of space.content.xs, clear of the trigger's focus indicator. To re-present at the implementation gate (round 4).",
+      "sha256": {
+        "foundations/components/forms/select/contract.json": "20d78516734cc24f62a8b1c434c75768d3a28a498e70e8574beb5db70fb388d9",
+        "packages/svelte/src/components/select/Select.svelte": "c3316fba20b30d25dbb5351c90bc3aeb9546e641e23cebb4a006a1ac32e1578c",
+        "packages/svelte/src/components/select/contract.generated.ts": "f240973057451ed54f1f68bd69db64500e782fc28c903771e9c4c2b2a89fdb22",
+        "packages/svelte/src/components/select/select.css": "28e8f305c0e0abdb9c6b3008a77b1111819dffeb48d575dc1a8d6e54a6312e18",
+        "packages/svelte/src/components/select/tokens.generated.css": "a44399d40a2c3d8aa4c7b4feec9c530c5a1f6b229dac5b55c057f8a4d1c68da4",
+        "packages/svelte/src/components/select/types.ts": "c3f46e6645e02dcfe5c4b15657a73eab7540c6c9871b7f2a34b100c6606dc86f",
+        "examples/select/App.svelte": "5e59697c0ef140762684d927e7ee58c01e381e90469b71da95fadbe97ef3674b"
+      },
+      "review": "Wave 4 implementation gate",
+      "recorded": "Accepted with the round 4 implementation approval (2026-11-10)."
+    }
+  ]
+}
