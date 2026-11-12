@@ -13,8 +13,7 @@
     ],
     "exclusions": [
       "Toggle buttons (pressed state) in v1: Button and IconButton have no pressed state (open question).",
-      "Text entry, Select or other arrow-key controls inside the toolbar in v1.",
-      "Overflow menu for items that do not fit (they wrap)."
+      "Text entry, Select or other arrow-key controls inside the toolbar in v1."
     ],
     "alternatives": [
       "ButtonGroup for a few independent actions, each a tab stop.",
@@ -220,7 +219,7 @@
     "label is required: a toolbar is a composite widget whose purpose must be announced.",
     "Roving focus shared with Tabs (lib/roving-focus): remembers the last focused item, arrows wrap, disabled items and separators skipped.",
     "In a horizontal toolbar Down and Up Arrow on a Menu trigger still open its menu; in a vertical toolbar they move focus.",
-    "Items wrap onto further lines when they do not fit; no overflow menu in v1.",
+    "Items wrap onto further lines when they do not fit; no overflow menu in v1. (Superseded at round 3 by the overflow Menu.)",
     "Separator child: a 1 px color.border.subtle line perpendicular to the orientation.",
     "Gate question 3 resolved (user, 2026-11-09): the Tooltip skip and close delays become component tokens component.tooltip.skip-delay (300 ms) and component.tooltip.close-delay (100 ms) through a Tooltip Modify (rendering unchanged).",
     "Gate question 4 resolved (user, 2026-11-09): the size a group imposes reaches Menu and Popover triggers; the same fix is applied to ButtonGroup, with a browser test in Toolbar and ButtonGroup.",
