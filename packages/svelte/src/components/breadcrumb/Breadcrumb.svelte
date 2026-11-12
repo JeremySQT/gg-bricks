@@ -78,14 +78,13 @@
           ? null
           : e.querySelector<HTMLElement>('.ggb-breadcrumb__item-label')
       );
-      // 1. Minimums, measured on the whole labels.
+      // 1. Minimums, measured on the whole labels. The previous minimums are cleared first: an entry held at a minimum
+      // measured earlier (with a fallback font, before the web font loaded) would otherwise keep that width.
       labels.forEach((label) => label?.style.removeProperty('max-inline-size'));
+      entries.forEach((entry) => entry.style.removeProperty('min-inline-size'));
       entries.forEach((entry, i) => {
         const label = labels[i];
-        if (!label) {
-          entry.style.removeProperty('min-inline-size');
-          return;
-        }
+        if (!label) return;
         // The fractional width when the label is whole (scrollWidth is rounded), its scroll width when truncated.
         const box = label.getBoundingClientRect().width;
         const full = label.scrollWidth > label.clientWidth ? label.scrollWidth : box;

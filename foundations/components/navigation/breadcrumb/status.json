@@ -103,7 +103,7 @@
           "examples/breadcrumb/App.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/components/breadcrumb/Breadcrumb.svelte": "e60fc1c7891e52ee6c0c92063f92f9534d5866951e6c923e33acd626eff782a7",
+          "packages/svelte/src/components/breadcrumb/Breadcrumb.svelte": "56723766f4d80467e858556bd5e1e13549c0e63125024f8539f6d5a364243cea",
           "packages/svelte/src/components/breadcrumb/types.ts": "407ef17ee475c205b1f39e3bf78892177447ae503db90a204377c80b9a5f4103",
           "packages/svelte/src/components/breadcrumb/breadcrumb.css": "070effa9e1685c409183e08e55b07466ac9b39d94c8e171071f95a201ed99ab3",
           "packages/svelte/src/components/breadcrumb/contract.generated.ts": "45bca11624f64375f5597c7448e7750fe6cdf231cc18618a2dba1fe26c40cde4",
@@ -111,7 +111,7 @@
           "examples/breadcrumb/App.svelte": "5e18440f3ecaf22719d2a5138cef54f51ca26f68300306ab9ea9c107edb007d9"
         }
       },
-      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\"."
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\". Amendment of 2026-11-12 (CI fix under the pull request watch the user asked for in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je veux bien que tu surveilles la PR oui\"): the fitting script clears the entries' previous minimums before measuring again, so that a minimum measured with the fallback font before the web font loaded no longer leaves extra room after a separator (found by CI on JeremySQT/design-system#12, where Inter is not installed on the system). Digests re-recorded."
     },
     "figmaParity": {
       "scope": "Figma master 503:405 and specification frame 518:2 of the breadcrumb component, parity report (64 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
