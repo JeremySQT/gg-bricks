@@ -171,3 +171,8 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - **`resize()` resets `primaryAxisSizingMode` to FIXED**, also after `combineAsVariants`: set AUTO on every variant afterwards when a variant must grow (an open Select).
 - **Choosing the default glyph again resets the glyph layer** (also through an instance property in a specification): the anatomy pins then miss the layer by name. Pass the swap only for another glyph.
 - **The `use_figma` return is limited to 48 KB**: group parity rows by context and abbreviate the props.
+
+## Mechanics learned on 2026-11-12 (user review of the wave 4 Figma parity)
+
+- The anatomy drawing of `spec-lib` set one uniform stroke weight on every stroked frame, so a stroke on some sides only (the Accordion's lines) became a full outline. `weight()` now keeps the sides that had a stroke (dashed layout boxes stay outlined); the stored copy `411:2` was patched the same day. Boards already drawn change only when their specification is rebuilt.
+- The Figma Tabs is the tab list only (user request): the panel is functional logic placed by the designer; `wave4-parity-report.mjs` records `panelGap` as a justified difference.

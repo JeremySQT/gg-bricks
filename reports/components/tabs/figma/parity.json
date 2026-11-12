@@ -2,10 +2,10 @@
   "method": "Figma masters measured with explicit Brand, Appearance and Density modes in the four contexts of the browser report (resolved variable values: fills, strokes, sizes, paddings, radii, typography), compared record by record with reports/components/tabs/svelte/computed.json (authoring/adapters/figma/wave4-parity-report.mjs).",
   "summary": {
     "records": 612,
-    "passed": 612,
-    "justified": 0,
+    "passed": 608,
+    "justified": 4,
     "failed": 0,
-    "missing": 0
+    "missing": 4
   },
   "records": [
     {
@@ -1050,8 +1050,9 @@
       "state": "list",
       "property": "panelGap",
       "expected": "16px",
-      "observed": "16px",
-      "passed": true
+      "observed": null,
+      "passed": false,
+      "note": "The Figma Tabs is the tab list only (user request at the Figma parity gate, 2026-11-12): the designer places the content of the selected tab space/content/lg from the list; the code renders the panels. Not part of the master."
     },
     {
       "context": "base-light-standard",
@@ -2791,8 +2792,9 @@
       "state": "list",
       "property": "panelGap",
       "expected": "16px",
-      "observed": "16px",
-      "passed": true
+      "observed": null,
+      "passed": false,
+      "note": "The Figma Tabs is the tab list only (user request at the Figma parity gate, 2026-11-12): the designer places the content of the selected tab space/content/lg from the list; the code renders the panels. Not part of the master."
     },
     {
       "context": "base-dark-standard",
@@ -4532,8 +4534,9 @@
       "state": "list",
       "property": "panelGap",
       "expected": "12px",
-      "observed": "12px",
-      "passed": true
+      "observed": null,
+      "passed": false,
+      "note": "The Figma Tabs is the tab list only (user request at the Figma parity gate, 2026-11-12): the designer places the content of the selected tab space/content/lg from the list; the code renders the panels. Not part of the master."
     },
     {
       "context": "brick-light-compact",
@@ -6273,8 +6276,9 @@
       "state": "list",
       "property": "panelGap",
       "expected": "24px",
-      "observed": "24px",
-      "passed": true
+      "observed": null,
+      "passed": false,
+      "note": "The Figma Tabs is the tab list only (user request at the Figma parity gate, 2026-11-12): the designer places the content of the selected tab space/content/lg from the list; the code renders the panels. Not part of the master."
     },
     {
       "context": "orchid-dark-comfortable",

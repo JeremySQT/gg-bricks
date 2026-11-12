@@ -441,3 +441,37 @@ return {
   props: Object.keys(set.componentPropertyDefinitions),
   sizes: set.children.slice(0, 6).map((v) => [v.name, Math.round(v.width), Math.round(v.height)])
 };
+
+// ---- Part 3: the Tabs master becomes the tab list only (2026-11-12, user review of the Figma parity) ----
+const page = await figma.getNodeByIdAsync('495:16');
+await figma.setCurrentPageAsync(page);
+const set = await figma.getNodeByIdAsync('502:530');
+const kPanel = Object.keys(set.componentPropertyDefinitions).find((k) => k.split('#')[0] === 'Panel');
+const res = [];
+for (const v of set.children) {
+  const p = v.findChild((n) => n.type === 'SLOT' && n.name === 'Panel');
+  if (p) p.remove();
+  v.setBoundVariable('itemSpacing', null);
+  v.itemSpacing = 0;
+  const hz = v.name.includes('horizontal');
+  if (hz) {
+    v.primaryAxisSizingMode = 'AUTO';
+    v.counterAxisSizingMode = 'FIXED';
+  } else {
+    v.primaryAxisSizingMode = 'AUTO';
+    v.counterAxisSizingMode = 'AUTO';
+  }
+  res.push([v.name, Math.round(v.width), Math.round(v.height)]);
+}
+if (kPanel && set.componentPropertyDefinitions[kPanel]) set.deleteComponentProperty(kPanel);
+set.description =
+  'Tabs (navigation/tabs): the list of tabs that switches between panels of related content shown in the same place. In Figma the component is the tab list only (user decision, 2026-11-12): place the content of the selected tab yourself, space/content/lg below the list (after it when vertical); the code renders the panels and links them to the tabs. Appearance contained (the default): the list is a container in color/surface/inset with radius/overlay corners and space/content/xs padding, the selected tab raised; in a horizontal list it fills the width it is given and the tabs share it equally (the code keeps each tab at least as wide as its content). Appearance line: the tabs sit on a line of border/width/default in color/border/subtle, the selected tab marked by its indicator. Tabs are space/content/xs apart in both appearances. Orientation vertical: every tab as wide as the list (set the list width on the instance). Size sets the tabs size. Label (hidden) names the list. Overflow scrolling with faded edges and scroll buttons, roving focus and activation are behaviors of the code.';
+// Re-lay the set: the variants are shorter now.
+const Hh = Math.max(...set.children.map((v) => v.height));
+set.children.forEach((v, k) => {
+  v.x = 32 + (k % 3) * 600;
+  v.y = 32 + Math.floor(k / 3) * (Hh + 48);
+});
+set.resizeWithoutConstraints(64 + 3 * 600 - 40, 64 + 4 * (Hh + 48) - 48);
+await set.screenshot({ scale: 1 });
+return { res, props: Object.keys(set.componentPropertyDefinitions) };

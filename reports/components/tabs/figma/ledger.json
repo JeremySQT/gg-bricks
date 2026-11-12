@@ -11,7 +11,7 @@
       "id": "495:16"
     }
   },
-  "recordedOn": "2026-11-10",
+  "recordedOn": "2026-11-12",
   "componentSet": {
     "id": "502:530",
     "name": "Tabs",
@@ -31,10 +31,6 @@
         "COMPONENT_SET",
         "COMPONENT_SET"
       ]
-    },
-    "Panel#502:25": {
-      "type": "SLOT",
-      "preferred": []
     },
     "Label#502:26": {
       "type": "TEXT",
@@ -197,9 +193,9 @@
     }
   },
   "specification": {
-    "id": "517:2",
+    "id": "534:512",
     "name": "Tabs — Specification",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=517-2"
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=534-512"
   },
   "builders": [
     "authoring/adapters/figma/tabs-master.plugin.js",
@@ -210,5 +206,6 @@
   "published": false,
   "variables": {
     "color/surface/inset": "VariableID:493:4"
-  }
+  },
+  "note": "The Tabs master is the tab list only since 2026-11-12 (Panel slot removed; user decision at the Figma parity gate)."
 }

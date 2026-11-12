@@ -34,7 +34,7 @@
       "page": "navigation/accordion (495:17)",
       "library": "Navigation (495:16), section Accordion (505:357)",
       "component": "505:429",
-      "specification": "520:2",
+      "specification": "533:374",
       "ledger": "reports/components/accordion/figma/ledger.json",
       "parity": "reports/components/accordion/figma/parity.json",
       "screenshots": [
@@ -178,6 +178,12 @@
       "name": "Figma parity (116 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
       "result": "passed",
       "date": "2026-11-10",
+      "evidence": "reports/components/accordion/figma/parity.json"
+    },
+    {
+      "name": "Figma parity round 2 (user review of 2026-11-12): the anatomy board keeps the one-sided lines (spec-lib fix); specification rebuilt; parity unchanged (116 records, 0 failures)",
+      "result": "passed",
+      "date": "2026-11-12",
       "evidence": "reports/components/accordion/figma/parity.json"
     }
   ],

@@ -522,3 +522,102 @@ for (const [b, a, d] of CTX) {
   f.remove();
 }
 return 'PARITY2:toolbar ' + JSON.stringify(out);
+
+// ---- Tabs re-measured after the list-only change (2026-11-12, user review of the Figma parity) ----
+figma.skipInvisibleInstanceChildren = false;
+const page = await figma.getNodeByIdAsync('495:16');
+await figma.setCurrentPageAsync(page);
+const cols = await figma.variables.getLocalVariableCollectionsAsync();
+const col = (n) => cols.find((c) => c.name === 'Foundations · ' + n);
+const mode = (c, n) => c.modes.find((m) => m.name === n).modeId;
+const CTX = [
+  ['base', 'light', 'standard'],
+  ['base', 'dark', 'standard'],
+  ['brick', 'light', 'compact'],
+  ['orchid', 'dark', 'comfortable']
+];
+const rgb = (c, a) =>
+  a === 0
+    ? 'rgba(0, 0, 0, 0)'
+    : a < 1
+      ? `rgba(${Math.round(c.r * 255)}, ${Math.round(c.g * 255)}, ${Math.round(c.b * 255)}, ${Math.round(a * 100) / 100})`
+      : `rgb(${Math.round(c.r * 255)}, ${Math.round(c.g * 255)}, ${Math.round(c.b * 255)})`;
+const paintOf = async (node, key = 'fills') => {
+  const p = (node[key] || []).find((x) => x.visible !== false);
+  if (!p) return 'rgba(0, 0, 0, 0)';
+  if (p.boundVariables && p.boundVariables.color) {
+    const v = await figma.variables.getVariableByIdAsync(p.boundVariables.color.id);
+    const r = v.resolveForConsumer(node).value;
+    return rgb(r, r.a ?? 1);
+  }
+  return rgb(p.color, p.opacity ?? 1);
+};
+const edge = async (n) =>
+  (n.strokes || []).length && n.strokeTopWeight > 0
+    ? `${await paintOf(n, 'strokes')} 0px 0px 0px ${n.strokeTopWeight}px inset`
+    : 'none';
+const W = { Regular: '400', Medium: '500', 'Semi Bold': '600', Bold: '700' };
+const out = {};
+let cur;
+const add = (props, state, prop, val) => cur.push([props, state, prop, String(val)]);
+const TR = await figma.getNodeByIdAsync('501:249');
+const TABS = await figma.getNodeByIdAsync('502:530');
+for (const [b, a, d] of CTX) {
+  const ctx = `${b}-${a}-${d}`;
+  cur = out[ctx] = [];
+  const f = figma.createAutoLayout('VERTICAL', { name: '_parity ' + ctx });
+  f.x = 6000;
+  f.y = 0;
+  f.setExplicitVariableModeForCollection(col('Brand'), mode(col('Brand'), b));
+  f.setExplicitVariableModeForCollection(col('Appearance'), mode(col('Appearance'), a));
+  f.setExplicitVariableModeForCollection(col('Density'), mode(col('Density'), d));
+  const mk = (set, name) => {
+    const i = set.children.find((v) => v.name === name).createInstance();
+    f.appendChild(i);
+    return i;
+  };
+  for (const s of ['sm', 'md', 'lg'])
+    for (const st of ['selected', 'default', 'hover']) {
+      const i = mk(TR, `Appearance=line, Size=${s}, State=${st}`);
+      const t = i.findChild((n) => n.name === 'Label');
+      const ind = i.findChild((n) => n.name === 'Indicator');
+      const P = 'size=' + s;
+      add(P, st, 'surface', await paintOf(i));
+      add(P, st, 'content', await paintOf(t));
+      add(P, st, 'height', i.height);
+      add(P, st, 'paddingInline', i.paddingLeft + 'px');
+      add(P, st, 'fontSize', t.fontSize + 'px');
+      add(P, st, 'fontWeight', W[t.fontName.style]);
+      add(P, st, 'radius', i.topLeftRadius + 'px');
+      add(P, st, 'indicator', await paintOf(ind));
+      add(P, st, 'indicatorThickness', ind.height + 'px');
+      add(P, st, 'indicatorOpacity', ind.visible ? '1' : '0');
+      const c = mk(TR, `Appearance=contained, Size=${s}, State=${st}`);
+      const Q = 'appearance=contained,size=' + s;
+      add(Q, st, 'surface', await paintOf(c));
+      add(Q, st, 'content', await paintOf(c.findChild((n) => n.name === 'Label')));
+      add(Q, st, 'height', c.height);
+      add(Q, st, 'paddingInline', c.paddingLeft + 'px');
+      add(Q, st, 'radius', c.topLeftRadius + 'px');
+      add(Q, st, 'edge', await edge(c));
+    }
+  const dis = mk(TR, 'Appearance=line, Size=md, State=disabled');
+  add('size=md', 'disabled', 'content', await paintOf(dis.findChild((n) => n.name === 'Label')));
+  add('size=md', 'disabled', 'surface', await paintOf(dis));
+  const ln = mk(TABS, 'Appearance=line, Orientation=horizontal, Size=md');
+  const bar = ln.findChild((n) => n.name === 'Bar');
+  const line = bar.findChild((n) => n.name === 'Line');
+  const sl = bar.findChild((n) => n.type === 'SLOT');
+  add('size=md', 'list', 'line', `${await paintOf(line)} 0px -${line.height}px 0px 0px inset`);
+  add('size=md', 'list', 'gap', sl.itemSpacing + 'px');
+  const cn = mk(TABS, 'Appearance=contained, Orientation=horizontal, Size=md');
+  const cb = cn.findChild((n) => n.name === 'Bar');
+  const cs = cb.findChild((n) => n.type === 'SLOT');
+  const Q = 'appearance=contained,size=md';
+  add(Q, 'list', 'surface', await paintOf(cb));
+  add(Q, 'list', 'radius', cb.topLeftRadius + 'px');
+  add(Q, 'list', 'padding', cb.paddingTop + 'px');
+  add(Q, 'list', 'gap', cs.itemSpacing + 'px');
+  f.remove();
+}
+return 'PARITY2:tabs ' + JSON.stringify(out);

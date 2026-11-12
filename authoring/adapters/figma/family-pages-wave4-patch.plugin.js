@@ -59,3 +59,20 @@ return {
     s.split(k).length - 1
   ])
 };
+
+// ---- The spec-lib patch of the same day (one-sided strokes in the anatomy drawing) (2026-11-12, user review of the Figma parity) ----
+const node = await figma.getNodeByIdAsync('411:2');
+await figma.loadFontAsync(node.fontName);
+let s = node.characters;
+const a =
+  "const weight = (n, w) => { for (const f of ['strokeTopWeight', 'strokeRightWeight', 'strokeBottomWeight', 'strokeLeftWeight']) if (n.boundVariables && n.boundVariables[f]) n.setBoundVariable(f, null); n.strokeWeight = w; };";
+const b =
+  "const weight = (n, w, all = false) => { const F = ['strokeTopWeight', 'strokeRightWeight', 'strokeBottomWeight', 'strokeLeftWeight']; const sides = F.map((f) => ('strokeTopWeight' in n ? n[f] : 1)); for (const f of F) if (n.boundVariables && n.boundVariables[f]) n.setBoundVariable(f, null); if (all || sides.every((x) => x === sides[0])) { n.strokeWeight = w; return; } F.forEach((f, i) => { n[f] = sides[i] > 0 ? w : 0; }); };";
+if (!s.includes(a)) throw new Error('weight helper not found');
+s = s.replace(a, b);
+// Dashed layout boxes keep a full outline.
+const c = 'weight(n, 1);';
+const cnt = s.split(c).length - 1;
+s = s.split(c).join('weight(n, 1, true);');
+node.characters = s;
+return { replacedDashed: cnt, len: s.length };

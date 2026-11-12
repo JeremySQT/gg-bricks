@@ -36,7 +36,7 @@
       "page": "navigation/tabs (495:20)",
       "library": "Navigation (495:16), section Tabs (501:2)",
       "componentSet": "502:530",
-      "specification": "517:2",
+      "specification": "534:512",
       "ledger": "reports/components/tabs/figma/ledger.json",
       "parity": "reports/components/tabs/figma/parity.json",
       "screenshots": [
@@ -181,6 +181,12 @@
       "name": "Figma parity (612 records, 0 failures) in the four browser-report contexts; real dimensions of the inserted default instance checked",
       "result": "passed",
       "date": "2026-11-10",
+      "evidence": "reports/components/tabs/figma/parity.json"
+    },
+    {
+      "name": "Figma parity round 2 (user review of 2026-11-12): the Tabs master is the tab list only; 612 records, 608 passed, 4 justified (panelGap, the panel is placed by the designer), 0 failures; specification rebuilt",
+      "result": "passed",
+      "date": "2026-11-12",
       "evidence": "reports/components/tabs/figma/parity.json"
     }
   ],

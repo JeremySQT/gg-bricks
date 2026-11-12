@@ -4,7 +4,7 @@
 
 - File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), component page **navigation/accordion** (`495:17`). Masters: library page **Navigation** (`495:16`), section **Accordion** (`505:357`).
 - Masters: **Accordion** ([`505:429`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=505-429)), a component with the slot Items; **Accordion/Item** (`505:428`, 6 variants: State × Expanded). Built by `authoring/adapters/figma/accordion-master.plugin.js`.
-- Specification frame: **Accordion — Specification** ([`520:2`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=520-2)); built by `wave4-spec.plugin.js` on `spec-lib.plugin.js`, with the Master link of `spec-header-links.plugin.js`.
+- Specification frame: **Accordion — Specification** ([`533:374`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=520-2)); built by `wave4-spec.plugin.js` on `spec-lib.plugin.js`, with the Master link of `spec-header-links.plugin.js`.
 - Reproduces: contract `foundations/components/navigation/accordion/contract.json` and the implementation approved on 2026-11-10 at the grouped wave 4 implementation gate (`packages/svelte/src/components/accordion`).
 - Node IDs: `reports/components/accordion/figma/ledger.json`. Parity: `reports/components/accordion/figma/parity.json` (116 records, 116 passed, 0 failures). Screenshots: `master-set.png`, `specification.png`.
 - The library is not published (publication needs explicit authorization).
@@ -22,6 +22,7 @@
 
 ## Construction notes
 
+- The anatomy board draws the lines above and below the items only: `spec-lib` drew a one-sided stroke as a full outline (reported at the Figma parity gate, 2026-11-12) and now keeps the sides of the stroke (rebuilt specification `533:374`).
 - The content starts `focus/width` + `focus/offset` below the trigger: two nested paddings (Content, then Body), since one padding binds one variable.
 - The lines are the item's bottom stroke and the Accordion's top stroke, included in the layout (the code's borders).
 - The family layout script now accepts a single component (the Accordion) as well as a component set.

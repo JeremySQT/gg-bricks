@@ -27,6 +27,7 @@
 
 ## Construction notes
 
+- **Will Select and Combobox options diverge?** Reviewed at the Figma parity gate (2026-11-12, the user accepts the sharing if they are unlikely to change separately). Likely evolutions apply to both lists: richer options (a description, an avatar, a leading icon) would be a property of Listbox/Option. The one plausible Combobox-only change is the highlight of the typed text inside the label, which would be a variant or a boolean of the same part, unused by Select. The sharing stays; the parts are split only if a change contradicts it.
 - Listbox/Option, Listbox/Group and Listbox/Empty are the contract children `option`, `group` and the part `empty`; Select and Combobox define them identically, so the two share one set of public components, built in the Select section (named under Listbox in the Assets panel; instance layers keep the names Option, Group, Empty for the specification helpers).
 - The field reproduces the InputText: Leading and Indicator are slot frames with `space/control/slot-inline/{size}` and a drawing box of `input-text/icon-box` (the glyph's drawing, iconSize − iconSize/4, as the code's negative margins), so that the spacing matches the code.
 - The Panel follows the field at `space/content/sm` (a vertical auto layout: the variant grows when Open is on); its height is capped by `size/overlay/list` (maxHeight) and it clips.

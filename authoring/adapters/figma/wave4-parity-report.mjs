@@ -14,8 +14,14 @@ if (!id || !files.length) {
   console.error('usage: wave4-parity-report.mjs <id> <measured.json>…');
   process.exit(2);
 }
-// Differences Figma cannot express, recorded rather than hidden: key `${property}` or `${state}:${property}`.
-const JUSTIFIED = {};
+// Differences recorded rather than hidden, per component: key `${property}` or `${state}:${property}`.
+const JUSTIFIED =
+  {
+    tabs: {
+      'list:panelGap':
+        'The Figma Tabs is the tab list only (user request at the Figma parity gate, 2026-11-12): the designer places the content of the selected tab space/content/lg from the list; the code renders the panels. Not part of the master.'
+    }
+  }[id] ?? {};
 const norm = (props) =>
   JSON.stringify(Object.fromEntries(Object.entries(props || {}).sort(([a], [b]) => (a < b ? -1 : 1))));
 const measured = new Map();

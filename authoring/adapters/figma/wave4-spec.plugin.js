@@ -1515,3 +1515,414 @@ for (const [pid, family, name] of SPECS) {
   out[name] = { spec: root.id, section: section.id };
 }
 return out;
+
+// ---- Accordion specification rebuilt with the one-sided lines (2026-11-12, user review of the Figma parity) ----
+const libNode = await figma.getNodeByIdAsync('411:2');
+const CFG = { PAGES: { accordion: ['495:17', 'Accordion', '505:428'] } };
+const H = await eval('(' + libNode.characters + ')')(figma, CFG);
+const { mk, card, caption, contexts, densities, surface, text } = H;
+const ACC = await figma.getNodeByIdAsync('505:429');
+const CARD = '200:4833',
+  USER = '200:5808',
+  BELL = '200:4596';
+const item = (v = {}, p = {}, w = 520) => {
+  const i = mk('accordion', v, p);
+  i.resize(w, i.height);
+  return i;
+};
+const acc = (list, w = 520) => {
+  const a = ACC.createInstance();
+  a.resize(w, a.height);
+  const sl = a.findOne((n) => n.type === 'SLOT');
+  for (const c of [...sl.children]) c.remove();
+  for (const e of list) {
+    const p = { Label: e.label };
+    if (e.icon) p['Show leading'] = true;
+    if (typeof e.icon === 'string') p['Leading icon'] = e.icon;
+    if (e.focus) p.Focus = true;
+    const i = mk('accordion', { State: e.st || 'default', Expanded: e.ex ? 'true' : 'false' }, p);
+    i.name = 'AccordionItem';
+    sl.appendChild(i);
+    i.layoutSizingHorizontal = 'FILL';
+  }
+  return a;
+};
+const faq = [
+  { label: 'What is included in the plan?', ex: true },
+  { label: 'Can I change plans later?' },
+  { label: 'How does billing work?' }
+];
+const spec = {
+  path: 'NAVIGATION / ACCORDION',
+  repo: 'foundations/components/navigation/accordion',
+  intro:
+    'An accordion is a vertical stack of headings that each show or hide a section of content, so that a long page can be scanned: questions and answers, settings sections, details. It is not navigation and not a selection; content needed by every user should not be hidden in it.',
+  hero: () => [acc(faq, 560)],
+  anatomy: {
+    intro: 'How an accordion is built. The instance is enlarged; its parts are shown underneath.',
+    zoom: 1.5,
+    dashed: ['Content slot'],
+    instance: () =>
+      acc(
+        [{ label: 'What is included in the plan?', ex: true, icon: true }, { label: 'Can I change plans later?' }],
+        520
+      ),
+    pins: [
+      [1, 'Trigger', 'left', 0],
+      [2, 'Leading', 'top', 0],
+      [3, 'Label', 'top', 0],
+      [4, 'Indicator', 'right', 0],
+      [5, 'Body', 'left', 0]
+    ],
+    dims: [{ k: 'y', a: ['Trigger', 'b'], b: ['Body text', 't'], c: 'A', side: 'right' }],
+    legend: [
+      [
+        '1',
+        'Trigger: inside a heading of level headingLevel; min height size/control/lg, padding space/control/padding-block/lg × space/content/sm, gap space/control/gap/lg, radius/control; hover paints color/item/hover/surface. It exposes whether the item is expanded and which content it controls.'
+      ],
+      ['2', 'Leading (Show leading, Leading icon): a decorative icon of size/icon/md.'],
+      ['3', 'Label: label/lg, wraps onto several lines when long; the accessible name of the trigger.'],
+      [
+        '4',
+        'Indicator: a chevron of size/icon/md in color/content/secondary, down when collapsed and up when expanded.'
+      ],
+      [
+        '5',
+        'Content (Expanded): free content in body/md and color/content/primary, aligned with the label, with space/content/lg below; exposed as a region named by the trigger. Lines of border/width/default in color/border/subtle separate the items, also above the first and below the last (no side edges).'
+      ],
+      [
+        'A',
+        'Start of the content: focus/width + focus/offset below the trigger, so that the focus indicator of a control at its edge is never cut.'
+      ]
+    ],
+    real: () => [
+      [item({ State: 'default' }, {}, 300), 'collapsed'],
+      [item({ State: 'hover' }, {}, 300), 'hover'],
+      [item({ State: 'disabled' }, {}, 300), 'disabled']
+    ],
+    figma:
+      'The Accordion holds the Items slot; fill it with Accordion/Item, filling the width. Expanded shows the Content slot of an item; with multiple off, keep at most one item expanded. Resize the Accordion instance to set the width. The heading level, single or multiple expansion, keyboard navigation (Tab through triggers and content, arrows between triggers) and the expand animation are behaviors of the code.'
+  },
+  sections: [
+    [
+      'Variants',
+      'One size. An item can show a leading icon; its label wraps when long. Brand and appearance come from the context.',
+      (c) => {
+        const m = card('Items', 'VERTICAL', 20);
+        m.appendChild(
+          caption(
+            acc([
+              { label: 'Profile', icon: USER, ex: true },
+              { label: 'Billing', icon: CARD },
+              { label: 'Notifications', icon: BELL }
+            ]),
+            'with leading icons'
+          )
+        );
+        m.appendChild(
+          caption(
+            acc(
+              [
+                {
+                  label:
+                    'How are the projects of a workspace shared with external collaborators who do not have an account yet?'
+                }
+              ],
+              520
+            ),
+            'a long label wraps'
+          )
+        );
+        c.appendChild(m);
+        m.layoutSizingHorizontal = 'FILL';
+        const ctx = contexts(c, () => [
+          acc(
+            [
+              { label: 'What is included?', ex: true },
+              { label: 'Billing', st: 'hover' }
+            ],
+            300
+          )
+        ]);
+        ctx.layoutWrap = 'WRAP';
+        ctx.counterAxisSpacing = 24;
+        for (const cd of ctx.children) {
+          cd.layoutSizingHorizontal = 'FIXED';
+          cd.resize(346, cd.height);
+        }
+      }
+    ],
+    [
+      'States',
+      'An item is collapsed or expanded; its trigger is idle, hovered (color/item/hover/surface) or disabled (cannot be toggled, keeps its expanded state, skipped by the arrow keys). Focus shows the keyboard ring inside the trigger.',
+      (c) => {
+        const m = card('Triggers', 'VERTICAL', 16);
+        for (const [st, ex, f, cap] of [
+          ['default', 'false', false, 'collapsed'],
+          ['default', 'true', false, 'expanded'],
+          ['hover', 'false', false, 'hover'],
+          ['default', 'false', true, 'focus'],
+          ['disabled', 'false', false, 'disabled']
+        ])
+          m.appendChild(caption(item({ State: st, Expanded: ex }, { Focus: f }), cap));
+        c.appendChild(m);
+        m.layoutSizingHorizontal = 'FILL';
+      }
+    ],
+    [
+      'Behavior & sizing',
+      'The accordion takes the width it is given and adds no surface of its own. With multiple off, expanding an item collapses the other, and the expanded item can be collapsed, leaving none; with multiple on, items expand independently. The density changes the trigger height and spacing.',
+      (c) => {
+        densities(c, () => [acc([{ label: 'Plans', ex: true }, { label: 'Billing' }], 300)], {
+          compact: 'size/control/lg: 40 px',
+          standard: 'size/control/lg: 48 px',
+          comfortable: 'size/control/lg: 56 px'
+        });
+      }
+    ],
+    [
+      'Usage examples',
+      'Write labels that tell what the section holds; keep content needed by every user out of an accordion. The full guidance will be in the documentation page of the component.',
+      (c) => {
+        const ex = card('Examples', 'HORIZONTAL', 24);
+        ex.counterAxisAlignItems = 'MIN';
+        const pg = surface('FAQ', 'VERTICAL', 16, 24);
+        pg.appendChild(text('Frequently asked questions', 'heading/sm'));
+        pg.appendChild(acc(faq, 560));
+        ex.appendChild(caption(pg, 'questions and answers'));
+        c.appendChild(ex);
+        ex.layoutSizingHorizontal = 'FILL';
+      }
+    ]
+  ]
+};
+const r = await H.build('accordion', spec);
+const board = await figma.getNodeByIdAsync(r.board);
+await board.screenshot({ scale: 1 });
+return r;
+
+// ---- Tabs specification rebuilt for the list-only master (2026-11-12, user review of the Figma parity) ----
+const libNode = await figma.getNodeByIdAsync('411:2');
+const CFG = {
+  PAGES: {
+    tabs: ['495:20', 'Tabs', '502:530'],
+    trigger: ['495:20', 'Tabs/Trigger', '501:249'],
+    vtrigger: ['495:20', 'Tabs/Vertical trigger', '501:496']
+  }
+};
+const H = await eval('(' + libNode.characters + ')')(figma, CFG);
+const { mk, card, caption, contexts, densities, surface, text, stack } = H;
+const GEAR = '200:5078',
+  USERS = '200:5811',
+  LOCK = '200:5869',
+  FILE = '200:4974';
+const tabsOf = (v, list, w) => {
+  const i = mk('tabs', v);
+  if (w) i.resize(w, i.height);
+  const vert = (v.Orientation || 'horizontal') === 'vertical';
+  const a = v.Appearance || 'contained',
+    s = v.Size || 'md';
+  if (list) {
+    const sl = i.findOne((n) => n.type === 'SLOT' && n.name === 'Tabs');
+    for (const c of [...sl.children]) c.remove();
+    for (const e of list) {
+      const t = mk(
+        vert ? 'vtrigger' : 'trigger',
+        { Appearance: a, Size: s, State: e.st || 'default' },
+        {
+          Label: e.label,
+          ...(e.icon ? { 'Show leading': true, 'Leading icon': e.icon } : {}),
+          ...(e.count ? { 'Show trailing': true } : {}),
+          ...(e.focus ? { Focus: true } : {})
+        }
+      );
+      t.name = 'TabsTrigger';
+      sl.appendChild(t);
+      if (vert || a === 'contained') t.layoutSizingHorizontal = 'FILL';
+    }
+  }
+  return i;
+};
+// The content of the selected tab, placed by the designer space/content/lg from the list.
+const withContent = (tabs, vertical, w) => {
+  const box = stack('Tabs and content', vertical ? 'HORIZONTAL' : 'VERTICAL', 0);
+  box.fills = [];
+  box.setBoundVariable('itemSpacing', H.V('space/content/lg'));
+  box.appendChild(tabs);
+  box.appendChild(
+    text('General settings of the workspace: name, language and time zone.', 'body/md', 'color/content/primary', w)
+  );
+  return box;
+};
+const std = [{ label: 'General', st: 'selected' }, { label: 'Members' }, { label: 'Security' }];
+const trig = (v, p = {}) => mk('trigger', v, p);
+const spec = {
+  path: 'NAVIGATION / TABS',
+  repo: 'foundations/components/navigation/tabs',
+  intro:
+    'Tabs show one of several panels of related content in the same place, with a list of tabs to switch between them: the sections of a settings page, the views of a record. They are not navigation between pages; to show several sections at once, use an Accordion; to choose a value, a SegmentedControl or a RadioGroup.',
+  hero: () => [
+    tabsOf({}, [{ label: 'General', st: 'selected' }, { label: 'Members', st: 'hover' }, { label: 'Security' }], 420),
+    tabsOf({ Appearance: 'line' }, std, 420)
+  ],
+  anatomy: {
+    intro: 'How the tab list is built. The instance is enlarged twice; its parts are shown underneath.',
+    zoom: 2,
+    dashed: ['Tabs'],
+    instance: () =>
+      tabsOf(
+        {},
+        [{ label: 'Overview', st: 'selected', icon: FILE }, { label: 'Activity', count: true }, { label: 'Settings' }],
+        400
+      ),
+    pins: [
+      [1, 'Bar', 'left', 0],
+      [2, 'TabsTrigger', 'top', 0],
+      [3, 'Leading', 'bottom', 0],
+      [4, 'Trailing', 'top', 0]
+    ],
+    dims: [],
+    legend: [
+      [
+        '1',
+        'List (Bar): contained, a container in color/surface/inset with radius/overlay corners and space/content/xs padding; line, the tabs on a line of border/width/default in color/border/subtle. Tabs are space/content/xs apart.'
+      ],
+      [
+        '2',
+        'Tab (Tabs/Trigger): the selected tab is raised (contained: color/surface/overlay, edge color/elevation/border, shadow/raised) or marked by its indicator (line: color/item/indicator, border/width/strong). Label in label/{size}; min height size/control/{size}, padding space/control/padding-inline/{size}.'
+      ],
+      ['3', 'Leading (Show leading, Leading icon): a decorative icon of size/icon/{size}.'],
+      ['4', 'Trailing (Show trailing): one Counter or Badge of the same size, part of the accessible name.']
+    ],
+    real: () => [
+      [trig({ Appearance: 'contained', State: 'selected' }), 'contained, selected'],
+      [trig({ Appearance: 'contained', State: 'hover' }), 'contained, hover'],
+      [trig({ Appearance: 'line', State: 'selected' }), 'line, selected'],
+      [trig({ Appearance: 'line', State: 'default' }), 'line, idle'],
+      [trig({ Appearance: 'line', State: 'disabled' }), 'disabled']
+    ],
+    figma:
+      'The Figma component is the tab list only: place the content of the selected tab yourself, space/content/lg below the list (after it when vertical). The code renders the panels and links each one to its tab. Fill the Tabs slot with Tabs/Trigger (horizontal) or Tabs/Vertical trigger (vertical) of the same Appearance and Size, exactly one selected; in a contained horizontal list set each tab to fill, so that they share the width. Overflow (the list scrolls, its edges fade and show scroll buttons), roving focus with the arrow keys and activation are behaviors of the code.'
+  },
+  sections: [
+    [
+      'Variants',
+      'Appearance contained (the default) or line; Orientation horizontal (above the content) or vertical (at its inline start); Size sm, md (default) or lg sets the tabs. Leading icons and a trailing Counter or Badge are options of each tab.',
+      (c) => {
+        const m = card('Appearance and orientation', 'HORIZONTAL', 40);
+        m.counterAxisAlignItems = 'MIN';
+        m.layoutWrap = 'WRAP';
+        m.counterAxisSpacing = 32;
+        m.appendChild(caption(tabsOf({}, std, 440), 'contained, horizontal'));
+        m.appendChild(caption(tabsOf({ Appearance: 'line' }, std, 440), 'line, horizontal'));
+        m.appendChild(caption(tabsOf({ Orientation: 'vertical' }, std), 'contained, vertical'));
+        m.appendChild(caption(tabsOf({ Appearance: 'line', Orientation: 'vertical' }, std), 'line, vertical'));
+        c.appendChild(m);
+        m.layoutSizingHorizontal = 'FILL';
+        const s = card('Sizes', 'VERTICAL', 20);
+        for (const z of ['sm', 'md', 'lg']) s.appendChild(caption(tabsOf({ Size: z }, std, 440), 'Size ' + z));
+        c.appendChild(s);
+        s.layoutSizingHorizontal = 'FILL';
+        const ctx = contexts(c, () => [
+          tabsOf(
+            {},
+            [{ label: 'General', st: 'selected' }, { label: 'Members', st: 'hover' }, { label: 'Security' }],
+            300
+          )
+        ]);
+        ctx.layoutWrap = 'WRAP';
+        ctx.counterAxisSpacing = 24;
+        for (const cd of ctx.children) {
+          cd.layoutSizingHorizontal = 'FIXED';
+          cd.resize(346, cd.height);
+        }
+      }
+    ],
+    [
+      'States',
+      'One tab is selected. An unselected tab is idle or hovered (hover paints color/item/hover/surface behind it); a disabled tab is never selected or focused and is skipped by the arrow keys. Focus shows the keyboard ring. Selection is never conveyed by color alone: the selected tab is raised (contained) or marked (line).',
+      (c) => {
+        for (const a of ['contained', 'line']) {
+          const m = card(a, 'HORIZONTAL', 20);
+          m.counterAxisAlignItems = 'MAX';
+          for (const [st, f] of [
+            ['selected', false],
+            ['default', false],
+            ['hover', false],
+            ['disabled', false],
+            ['default', true]
+          ]) {
+            const t = trig({ Appearance: a, State: st }, { Focus: f, Label: 'Members' });
+            if (a === 'contained') {
+              const w = stack('Well', 'HORIZONTAL', 0, 4);
+              w.fills = [H.paint('color/surface/inset')];
+              w.cornerRadius = 12;
+              w.appendChild(t);
+              m.appendChild(caption(w, f ? 'focus' : st));
+            } else m.appendChild(caption(t, f ? 'focus' : st));
+          }
+          c.appendChild(m);
+          m.layoutSizingHorizontal = 'FILL';
+        }
+      }
+    ],
+    [
+      'Behavior & sizing',
+      'A contained horizontal list fills the width it is given and its tabs share it equally, never narrower than their content; a line list takes the width of its tabs, its line across the width given. In a vertical list every tab is as wide as the widest. The content of the selected tab starts space/content/lg from the list. When the tabs do not fit, the list scrolls inline: its edges fade and scroll buttons appear (a behavior of the code). The density changes heights and spacing.',
+      (c) => {
+        const m = card('Width and content', 'VERTICAL', 24);
+        m.appendChild(
+          caption(
+            withContent(tabsOf({}, std, 640), false, 640),
+            'contained: equal shares of the width; the content space/content/lg below'
+          )
+        );
+        m.appendChild(
+          caption(
+            withContent(tabsOf({ Appearance: 'line', Orientation: 'vertical' }, std), true, 360),
+            'vertical: the content space/content/lg after the list'
+          )
+        );
+        c.appendChild(m);
+        m.layoutSizingHorizontal = 'FILL';
+        densities(c, () => [tabsOf({}, std, 300)], {
+          compact: 'size/control/md: 32 px',
+          standard: 'size/control/md: 40 px',
+          comfortable: 'size/control/md: 44 px'
+        });
+      }
+    ],
+    [
+      'Usage examples',
+      'Name the list with Label. Keep labels short and parallel; a few tabs (two to six) read best. Use a Counter or Badge for a count or a status, an icon only when it helps recognition. The full guidance will be in the documentation page of the component.',
+      (c) => {
+        const ex = card('Examples', 'HORIZONTAL', 24);
+        ex.counterAxisAlignItems = 'MIN';
+        const pg = surface('Settings', 'VERTICAL', 16, 24);
+        pg.appendChild(text('Workspace settings', 'heading/sm'));
+        pg.appendChild(
+          withContent(
+            tabsOf(
+              { Appearance: 'line' },
+              [
+                { label: 'General', st: 'selected', icon: GEAR },
+                { label: 'Members', icon: USERS, count: true },
+                { label: 'Security', icon: LOCK }
+              ],
+              520
+            ),
+            false,
+            520
+          )
+        );
+        ex.appendChild(caption(pg, 'a settings page with icons and a counter'));
+        c.appendChild(ex);
+        ex.layoutSizingHorizontal = 'FILL';
+      }
+    ]
+  ]
+};
+const r = await H.build('tabs', spec);
+const root = await figma.getNodeByIdAsync(r.root);
+await root.screenshot({ scale: 0.35 });
+return r;

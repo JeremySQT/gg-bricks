@@ -303,10 +303,18 @@ const lib = async function (figma, CFG) {
     const v = (await figma.variables.getVariableByIdAsync(id)).resolveForConsumer(node).value;
     return (p.opacity ?? 1) * (v.a ?? 1);
   };
-  const weight = (n, w) => {
-    for (const f of ['strokeTopWeight', 'strokeRightWeight', 'strokeBottomWeight', 'strokeLeftWeight'])
-      if (n.boundVariables && n.boundVariables[f]) n.setBoundVariable(f, null);
-    n.strokeWeight = w;
+  // A stroke drawn on some sides only (the Accordion lines) keeps those sides; dashed layout boxes (all) are outlined.
+  const weight = (n, w, all = false) => {
+    const F = ['strokeTopWeight', 'strokeRightWeight', 'strokeBottomWeight', 'strokeLeftWeight'];
+    const sides = F.map((f) => ('strokeTopWeight' in n ? n[f] : 1));
+    for (const f of F) if (n.boundVariables && n.boundVariables[f]) n.setBoundVariable(f, null);
+    if (all || sides.every((x) => x === sides[0])) {
+      n.strokeWeight = w;
+      return;
+    }
+    F.forEach((f, i) => {
+      n[f] = sides[i] > 0 ? w : 0;
+    });
   };
   const SHAPES = ['VECTOR', 'ELLIPSE', 'BOOLEAN_OPERATION', 'STAR', 'POLYGON', 'RECTANGLE', 'LINE'];
   const inkDrawing = async (root, dashed = [], muted = ['Description', 'Placeholder']) => {
@@ -333,7 +341,7 @@ const lib = async function (figma, CFG) {
       } else if (n.strokes && n.strokes.length) n.strokes = [];
       if (dashed.includes(n.name)) {
         n.strokes = [paint('wireframe/tint/48')];
-        weight(n, 1);
+        weight(n, 1, true);
         n.dashPattern = [4, 3];
         n.strokeAlign = 'INSIDE';
         if (n.layoutMode && n.layoutMode !== 'NONE') n.strokesIncludedInLayout = false;
