@@ -144,7 +144,23 @@
       },
       "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of toolbar (progressive detail: the page is the recipe, the contract the technical detail).",
+      "revision": {
+        "paths": [
+          "documentation/components/toolbar.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/toolbar.svelte"
+        ],
+        "sha256": {
+          "documentation/components/toolbar.md": "59cfd868bec09d18465303db22247a48caddba3248d8a1ce8b42f06ad759cd72",
+          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
+          "apps/docs/src/playgrounds/toolbar.svelte": "009f609425a82e3eb1e0f06880955c687fa9e0de12d9642b3099cc0d779cf510"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, after reading the pages on the wave/4 preview of the documentation site (https://wave-4-design-system.jeremy-soquet.workers.dev): \"Je valide la doc, corrige aussi lib/overlay\".",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [

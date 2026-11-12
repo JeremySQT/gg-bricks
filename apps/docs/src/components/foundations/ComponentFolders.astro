@@ -1,6 +1,7 @@
 ---
-// What each component folder needs besides tokens.css and bits-ui: the components it imports (read from
-// its sources) and the optional slot contents declared in its status file.
+// What each component folder needs besides tokens.css and bits-ui: the components and shared modules (src/lib/)
+// it imports, read from its sources, and the optional slot contents declared in its status file. A shared module is
+// never a slot content: it is listed only where the sources import it.
 import { readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { repoRoot } from '../../lib/root';
@@ -15,6 +16,7 @@ const rows = index.components.map((c) => {
     .map((f) => readFileSync(join(folder, f), 'utf8'))
     .join('\n');
   const imports = [...sources.matchAll(/from '\.\.\/([a-z0-9-]+)\//g)].map((m) => m[1]);
+  const modules = [...sources.matchAll(/from '\.\.\/\.\.\/lib\/([a-z0-9-]+)\//g)].map((m) => `lib/${m[1]}`);
   const status = JSON.parse(readFileSync(join(repoRoot, dirname(c.contract), 'status.json'), 'utf8')) as {
     dependencies: string[];
   };
@@ -22,8 +24,8 @@ const rows = index.components.map((c) => {
   return {
     name: c.import,
     id: c.id,
-    imports: [...new Set(imports)].map(name),
-    slots: status.dependencies.filter((d) => !imports.includes(d)).map(name)
+    imports: [...new Set(imports.map(name)), ...new Set(modules)],
+    slots: status.dependencies.filter((d) => !imports.includes(d) && !d.startsWith('lib/')).map(name)
   };
 });
 ---

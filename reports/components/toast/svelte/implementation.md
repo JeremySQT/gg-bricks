@@ -1,6 +1,6 @@
 # Toast — Svelte implementation report
 
-Component: `packages/svelte/src/components/toast/` (Svelte 5.57.1, Bits UI 2.19.3: not used). Dependencies: `icon`, `icon-button`, `button`, `lib/overlay`. Review page: `examples/toast/`; preview `dist/previews/toast.html`. Implemented on 2026-11-03; implementation approval pending (grouped wave 3 gate).
+Component: `packages/svelte/src/components/toast/` (Svelte 5.57.1, Bits UI 2.19.3: not used). Dependencies: `icon`, `icon-button`, `button` (the region uses the top layer directly, not `lib/overlay`). Review page: `examples/toast/`; preview `dist/previews/toast.html`. Implemented on 2026-11-03; implementation approval pending (grouped wave 3 gate).
 
 ## Notes
 
