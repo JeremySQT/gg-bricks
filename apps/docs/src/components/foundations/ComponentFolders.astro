@@ -21,7 +21,7 @@ const rows = index.components.map((c) => {
   const name = (id: string) => index.components.find((x) => x.id === id)?.import ?? id;
   return {
     name: c.import,
-    folder: `src/components/${c.id}/`,
+    id: c.id,
     imports: [...new Set(imports)].map(name),
     slots: status.dependencies.filter((d) => !imports.includes(d)).map(name)
   };
@@ -42,7 +42,7 @@ const rows = index.components.map((c) => {
       <tr>
         <td>{r.name}</td>
         <td>
-          <code>{r.folder}</code>
+          <code>{['src/components/', <wbr />, `${r.id}/`]}</code>
         </td>
         <td>{r.imports.length ? r.imports.join(', ') : 'none'}</td>
         <td>{r.slots.length ? r.slots.join(', ') : '—'}</td>

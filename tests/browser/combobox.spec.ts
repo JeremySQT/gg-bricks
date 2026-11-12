@@ -3,6 +3,7 @@ import {
   ComputedReport,
   accessible,
   auditAndCapture,
+  capture,
   px,
   representative,
   rgb,
@@ -130,6 +131,14 @@ test('filter none: the application supplies the options; groups; readonly and di
   await page.keyboard.press('ArrowDown');
   await page.keyboard.press('Enter');
   await expect(page.locator('#remote')).toHaveValue('Poland');
+  // The new results no longer include the selected option: Escape and leaving the field still restore its label.
+  await page.keyboard.type('x');
+  await expect.poll(() => shown(page, 'remote')).toEqual([]);
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#remote')).toHaveValue('Poland');
+  await page.keyboard.type('x');
+  await page.keyboard.press('Tab');
+  await expect(page.locator('#remote')).toHaveValue('Poland');
   await page.click('#people');
   expect(await panelOf(page, 'people').locator('.ggb-combobox__group-heading').allTextContents()).toEqual([
     'Design',
@@ -216,6 +225,26 @@ test('computed values match the resolved tokens: field sizes and conditions, pan
     await page.focus('#before');
   }
   report.write('combobox');
+});
+
+test('forced colors keep the field boundary and show the focus; capture with the list open', async ({ page }) => {
+  await page.emulateMedia({ forcedColors: 'active' });
+  const field = root(page, 'size-md').locator('.ggb-combobox__field');
+  const outline = () =>
+    field.evaluate((f) => {
+      const s = getComputedStyle(f);
+      return { style: s.outlineStyle, width: parseFloat(s.outlineWidth), color: s.outlineColor };
+    });
+  const rest = await outline();
+  expect(rest.style).toBe('solid');
+  expect(rest.width).toBeGreaterThan(0);
+  await page.focus('#size-md');
+  await page.keyboard.press('ArrowDown');
+  const focused = await outline();
+  expect(focused.style).toBe('solid');
+  expect(focused.width).toBeGreaterThanOrEqual(rest.width);
+  expect(focused.color).not.toBe(rest.color);
+  await capture(page, 'reports/components/combobox/svelte/forced-colors.png');
 });
 
 test('automated accessibility audit and screenshots in light and dark, desktop and mobile', async ({ page }) => {

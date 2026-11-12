@@ -243,6 +243,7 @@
   }
   // A consumed Space must not activate the button on key release (which would toggle the list again).
   function keyup(event: KeyboardEvent) {
+    (rest.onkeyup as ((e: KeyboardEvent) => void) | undefined)?.(event);
     if (consumed && (event.key === ' ' || event.key === 'Enter')) event.preventDefault();
   }
 

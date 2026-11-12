@@ -74,7 +74,14 @@
   const isReadonly = $derived(readonly && !isDisabled);
   const describedByIds = $derived([field?.describedBy, describedBy].filter(Boolean).join(' ') || undefined);
 
-  const labelOf = (v: string) => list.find((o) => o.value === v)?.label ?? '';
+  // The selected option's label is remembered, so that Escape or leaving the field restores it even when a search on
+  // a server (filter none) has replaced `options` with results that no longer include it.
+  let remembered = { value: '', label: '' };
+  const labelOf = (v: string) => {
+    const option = list.find((o) => o.value === v);
+    if (option) remembered = { value: option.value, label: option.label };
+    return option?.label ?? (v && remembered.value === v ? remembered.label : '');
+  };
 
   // Filtering applies only once the user typed since the list opened or the last choice.
   let filtering = $state(false);
@@ -178,6 +185,7 @@
     if (!entry || entry.option.disabled) return;
     filtering = false;
     inputValue = entry.option.label;
+    remembered = { value: entry.option.value, label: entry.option.label };
     hide();
     if (entry.option.value !== value) {
       value = entry.option.value;
@@ -201,6 +209,7 @@
   }
 
   function handleInput(event: Event & { currentTarget: HTMLInputElement }) {
+    (rest.oninput as ((e: Event) => void) | undefined)?.(event);
     inputValue = event.currentTarget.value;
     filtering = true;
     oninputchange?.(inputValue);

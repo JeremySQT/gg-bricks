@@ -45,7 +45,6 @@ Measurements and tokens, including the lettered dimensions of the blueprint: `co
 | Do       | Size        | Use the size of the InputTexts and Buttons in the same form or row, so that they line up at the same height.                           |
 | Don't    | Free text   | Read `inputValue` as the user's answer: only a chosen option sets `value`, and other text is restored when focus leaves.               |
 | Don't    | Short lists | Use a combobox for a handful of options: a Select shows them all without typing.                                                       |
-| Don't    | Selection   | Drop the selected option from `options` during a server search: Escape and leaving the field restore the text from its record.         |
 | Don't    | Disabled    | Fill the list with disabled options: remove what can never be chosen, and say elsewhere why an option is unavailable.                  |
 | Don't    | Loading     | Expect a loading indicator in the panel: show progress or a failed search next to the field, in the application.                       |
 
@@ -126,7 +125,7 @@ Consecutive records with the same `group` share a heading. A disabled option is 
 
 ### A search on a server
 
-With `filter="none"` the combobox shows `options` as given; the application searches from `oninputchange` and replaces them. The selected option stays among them so that its label can be restored.
+With `filter="none"` the combobox shows `options` as given; the application searches from `oninputchange` and replaces them. The selected option's label is kept even when the new results no longer include it.
 
 ```svelte live
 <script lang="ts">
@@ -144,22 +143,17 @@ With `filter="none"` the combobox shows `options` as given; the application sear
     );
   }
 
-  let results = $state<ComboboxOptionsRecord[]>([]);
-  let selected = $state<ComboboxOptionsRecord>();
+  let options = $state<ComboboxOptionsRecord[]>([]);
   let value = $state('');
   let timer: ReturnType<typeof setTimeout> | undefined;
   let latest = '';
-
-  const options = $derived(
-    selected && !results.some((o) => o.value === selected?.value) ? [...results, selected] : results
-  );
 
   function search(text: string) {
     clearTimeout(timer);
     latest = text;
     timer = setTimeout(async () => {
       const found = await api(text);
-      if (text === latest) results = found;
+      if (text === latest) options = found;
     }, 150);
   }
 </script>
@@ -173,7 +167,6 @@ With `filter="none"` the combobox shows `options` as given; the application sear
       emptyLabel="No city starts with these letters"
       bind:value
       oninputchange={search}
-      onvaluechange={(v) => (selected = options.find((o) => o.value === v))}
     />
   </Field>
 </div>
@@ -318,7 +311,7 @@ Renders a container `<div class="ggb-combobox">` (plus any class you pass) with 
 | `ref`           | `HTMLInputElement \| null` (bindable) | `null`         | The text input.                                                                                                                       |
 | `class`         | `string`                              | —              | Class of the container.                                                                                                               |
 
-Every other attribute of `HTMLInputAttributes` (`autofocus`, `onfocus`, `onblur`, `data-*`…) goes to the text `<input>`, except those the component owns: `children`, `role`, `value`, `type`, `size`, `disabled`, `readonly`, `required`, `aria-autocomplete`, `aria-expanded`, `aria-controls` and `aria-activedescendant`. The component also sets `autocomplete="off"`, `aria-label`, `aria-labelledby`, `aria-invalid` and its own `oninput` (use `oninputchange`); an `onkeydown` you pass runs before the component handles the key, and an `aria-describedby` you pass is joined to the Field's description. Inside a Field, the combobox takes the field's id, its label (for the input and the list box), its description and message, and its required, invalid and disabled state. An `options` that is not an array, or a record without a string `value`, throws as well, on the server and in the browser. The platform-independent contract, with its `panel`, `option` and `group` children, ships as `contracts/combobox.json`.
+Every other attribute of `HTMLInputAttributes` (`autofocus`, `onfocus`, `onblur`, `data-*`…) goes to the text `<input>`, except those the component owns: `children`, `role`, `value`, `type`, `size`, `disabled`, `readonly`, `required`, `aria-autocomplete`, `aria-expanded`, `aria-controls` and `aria-activedescendant`. The component also sets `autocomplete="off"`, `aria-label`, `aria-labelledby` and `aria-invalid`; an `oninput` or `onkeydown` you pass runs before the component handles the event (`oninputchange` gives the text directly), and an `aria-describedby` you pass is joined to the Field's description. Inside a Field, the combobox takes the field's id, its label (for the input and the list box), its description and message, and its required, invalid and disabled state. An `options` that is not an array, or a record without a string `value`, throws as well, on the server and in the browser. The platform-independent contract, with its `panel`, `option` and `group` children, ships as `contracts/combobox.json`.
 
 ## Accessibility
 
@@ -336,7 +329,7 @@ The integration provides:
 
 - A visible label (Field) whenever the context does not name the combobox, and option labels that make sense on their own.
 - Validation, error messages through the Field, and a translated `emptyLabel`.
-- For a server search, a message when a request is slow or fails, and the selected option kept among `options`.
+- For a server search, a message when a request is slow or fails.
 
 | WCAG 2.2 criterion                                                                                                 | Level | Responsibility                                                                               |
 | ------------------------------------------------------------------------------------------------------------------ | ----- | -------------------------------------------------------------------------------------------- |
@@ -359,4 +352,4 @@ The integration provides:
 
 Beyond A and AA, the fade without movement under reduced motion serves [2.3.3 Animation from Interactions](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html) (AAA).
 
-Validated by automated checks in Chromium (filtering that ignores case and accents with the first match highlighted, choosing by Enter and by pointer, arrows without wrapping, disabled options reached but not chosen, Escape, leaving that restores the label or clears the value, the empty label as a status, the indicator toggle and a press outside, `filter="none"`, groups, readonly and disabled, a silent application value, role, name, autocomplete and expanded state, axe-core in light and dark, no horizontal overflow on a phone, computed values in four representative contexts), by server rendering tests, and by a smoke test in Chromium, Firefox and WebKit (typing and Enter choose with focus kept in the input; the panel stays inside a narrow viewport). Forced colors are handled in CSS but not yet checked by a test; no assistive-technology test yet. This list is not a conformance claim.
+Validated by automated checks in Chromium (filtering that ignores case and accents with the first match highlighted, choosing by Enter and by pointer, arrows without wrapping, disabled options reached but not chosen, Escape, leaving that restores the label or clears the value, the empty label as a status, the indicator toggle and a press outside, `filter="none"`, groups, readonly and disabled, a silent application value, role, name, autocomplete and expanded state, axe-core in light and dark, no horizontal overflow on a phone, computed values in four representative contexts, the field boundary and focus in forced colors with a capture), by server rendering tests, and by a smoke test in Chromium, Firefox and WebKit (typing and Enter choose with focus kept in the input; the panel stays inside a narrow viewport); no assistive-technology test yet. This list is not a conformance claim.
