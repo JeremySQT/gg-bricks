@@ -320,6 +320,21 @@ test('focus ring whatever the modality; forced colors keep the boundary and show
   await page.keyboard.press('ArrowDown');
   // The highlighted option paints its own system colors: no Canvas backplate hides its HighlightText label.
   await expect(page.locator('.ggb-select__option[data-highlighted]').first()).toHaveCSS('forced-color-adjust', 'none');
+  // Colors are read once the transitions into forced colors have ended.
+  await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'));
+  // A disabled option is in the system disabled color, unlike the others; highlighted, it shows a Highlight outline.
+  const optionColor = (selector: string) =>
+    page
+      .locator(`.ggb-select__panel:popover-open ${selector}`)
+      .first()
+      .evaluate((o) => getComputedStyle(o).color);
+  const disabledColor = await optionColor('.ggb-select__option[data-disabled]');
+  expect(disabledColor).not.toBe(await optionColor('.ggb-select__option:not([data-disabled]):not([data-highlighted])'));
+  await page.keyboard.type('it');
+  const highlightedDisabled = page.locator('.ggb-select__option[data-highlighted][data-disabled]');
+  await expect(highlightedDisabled).toHaveCSS('outline-style', 'solid');
+  await expect(highlightedDisabled).toHaveCSS('color', disabledColor);
+  await page.keyboard.press('Home');
   await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'));
   await capture(page, `${out}/forced-colors.png`);
 });

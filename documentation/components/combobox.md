@@ -323,7 +323,7 @@ The component provides:
 - In the open list, Down and Up Arrow move the highlight without wrapping, Page Down and Page Up move it by the visible options, and Enter chooses; disabled options are reached and announced unavailable but not chosen. Home, End and the horizontal arrows keep editing the text.
 - Escape closes the list and restores the text; Tab closes it and moves on without choosing; a press outside closes it. Leaving restores the selected label, or clears the value when the text is empty.
 - The indicator toggles the list by pointer and is not a separate tab stop; the empty label is a polite status; the highlighted option is kept visible in a scrolling panel.
-- A visible focus ring on the field whatever the input modality, the system highlight colors in forced colors, and motion reduced to a fade under reduced motion.
+- A visible focus ring on the field whatever the input modality, the system highlight colors and disabled options in the system disabled color in forced colors, and motion reduced to a fade under reduced motion.
 
 The integration provides:
 

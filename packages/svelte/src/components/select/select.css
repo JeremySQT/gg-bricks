@@ -272,6 +272,17 @@
       color: HighlightText;
       forced-color-adjust: none;
     }
+    /* A disabled option in the system disabled color; highlighted, it keeps the normal surface with a Highlight
+       outline, so that both the highlight and the disabled state show. */
+    .ggb-select__option[data-disabled] {
+      color: GrayText;
+    }
+    .ggb-select__option[data-disabled][data-highlighted] {
+      background: Canvas;
+      color: GrayText;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
     .ggb-select__option-check {
       color: currentColor;
     }

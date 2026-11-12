@@ -249,6 +249,16 @@ test('forced colors keep the field boundary, show the focus and the highlighted 
     'forced-color-adjust',
     'none'
   );
+  // A disabled option is in the system disabled color, unlike the others; highlighted, it shows a Highlight outline.
+  const optionColor = (selector: string) =>
+    panelOf(page, 'size-md')
+      .locator(selector)
+      .first()
+      .evaluate((o) => getComputedStyle(o).color);
+  const disabledColor = await optionColor('.ggb-combobox__option[data-disabled]');
+  expect(disabledColor).not.toBe(
+    await optionColor('.ggb-combobox__option:not([data-disabled]):not([data-highlighted])')
+  );
   await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'));
   await capture(page, 'reports/components/combobox/svelte/forced-colors.png');
 });

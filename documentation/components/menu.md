@@ -233,7 +233,7 @@ The component provides:
 - Opening by keyboard (Enter, Space or Down Arrow) highlights the first enabled item, Up Arrow the last enabled one; opening by pointer focuses the menu without a highlight, and the first arrow key then highlights the first or last enabled item. The highlighted item is the focused one, and only one item is highlighted.
 - Down and Up Arrow move the highlight and wrap, skipping separators and headings; Home and End go to the first and last item; typing characters moves to the next item whose label starts with them; Enter and Space activate. Disabled items are reached and announced unavailable, but not activated.
 - Activating an item closes the menu and returns focus to the trigger, unless it navigates; Escape closes back to the trigger; Tab closes and moves focus on from the trigger; a press outside closes the menu.
-- The highlighted item kept visible in a scrolling panel; a visible panel edge and the system highlight colors in forced colors; motion reduced to a fade under reduced motion.
+- The highlighted item kept visible in a scrolling panel; a visible panel edge, the system highlight colors and disabled items in the system disabled color in forced colors; motion reduced to a fade under reduced motion.
 
 The integration provides:
 

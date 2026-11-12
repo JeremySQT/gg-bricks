@@ -140,5 +140,16 @@
       color: HighlightText;
       forced-color-adjust: none;
     }
+    /* A disabled item in the system disabled color; focused, it keeps the normal surface with a Highlight outline,
+       so that both the focus and the disabled state show. */
+    .ggb-menu__item[data-disabled] {
+      color: GrayText;
+    }
+    .ggb-menu__item[data-disabled]:focus {
+      background: Canvas;
+      color: GrayText;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
   }
 }

@@ -297,7 +297,7 @@ The component provides:
 - On the closed trigger, Down Arrow, Up Arrow, Enter and Space open the list on the selected option, or on the first enabled one; Home and End open it on the first or last enabled option; typing characters opens it on the next option whose label starts with them. The value never changes while the list is closed.
 - In the open list, Down and Up Arrow move the highlight without wrapping; Home and End go to the first and last option; Page Down and Page Up move by the number of visible options; typing moves to the matching option; Enter and Space choose the highlighted option. Disabled options are reached and announced unavailable, but not chosen.
 - Choosing closes the list and keeps focus on the trigger; Escape closes without changing the value; Tab closes without changing the value and moves focus on; a press outside closes the list.
-- A selected option marked by a check mark as well as its color; the highlighted option kept visible in a scrolling list; a visible focus ring whatever the input modality, kept while the list is open; an interaction target taller than the field where needed; system colors and the system highlight in forced colors; no transitions and a fade only under reduced motion.
+- A selected option marked by a check mark as well as its color; the highlighted option kept visible in a scrolling list; a visible focus ring whatever the input modality, kept while the list is open; an interaction target taller than the field where needed; system colors and the system highlight in forced colors, disabled options in the system disabled color; no transitions and a fade only under reduced motion.
 
 The integration provides:
 
