@@ -1,11 +1,11 @@
 # Breadcrumb — Svelte implementation report
 
-Component: `packages/svelte/src/components/breadcrumb/` (Svelte 5.57.1, Bits UI 2.19.3: not used). Dependencies: `icon`, `icon-button`, `menu`. Review page: `examples/breadcrumb/`; preview `dist/previews/breadcrumb.html`. Implemented on 2026-11-09; implementation approved on 2026-11-10 (grouped wave 4 gate, round 4).
+Component: `packages/svelte/src/components/breadcrumb/` (Svelte 5.57.1, Bits UI 2.19.3: not used). Dependencies: `icon`, `menu` (the more button is a plain button painted like an ancestor link since round 2; `icon-button` is no longer used). Review page: `examples/breadcrumb/`; preview `dist/previews/breadcrumb.html`. Implemented on 2026-11-09; implementation approved on 2026-11-10 (grouped wave 4 gate, round 4).
 
 ## Notes
 
 - Exports Breadcrumb and the BreadcrumbItem type.
-- An ancestor keeps 4em of label before its ellipsis; the full label is set as title when truncated.
+- An ancestor keeps three characters of label (1 em each), or its whole label when shorter, before its ellipsis (round 2; 4em before); the full label is set as title when truncated.
 
 ## Decisions taken during implementation
 

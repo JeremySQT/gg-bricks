@@ -10,7 +10,7 @@ Component: `packages/svelte/src/components/accordion/` (Svelte 5.57.1, Bits UI 2
 
 ## Decisions taken during implementation
 
-- Bits UI Accordion is not used: a native button in a heading and a region are enough, and the block-size animation is CSS (grid rows 0fr to 1fr, visibility switching at the end of a collapse).
+- Bits UI Accordion is used since round 2 (user: do not reinvent the wheel), with local overrides: arrow keys limited to the accordion's own enabled triggers, `aria-controls` and the region named by the trigger. The block-size animation is CSS (grid rows 0fr to 1fr, visibility switching at the end of a collapse).
 
 ## Checks (2026-11-09)
 

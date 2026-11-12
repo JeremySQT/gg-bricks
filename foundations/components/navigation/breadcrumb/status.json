@@ -229,7 +229,7 @@
   "nextAction": "Documentation (skill ggb-docs): the maintained page, the docs-site check, the site preview for the review; then the final consistency pass and the pull request of the wave.",
   "implementationNotes": [
     "Exports Breadcrumb and the BreadcrumbItem type.",
-    "An ancestor keeps 4em of label before its ellipsis; the full label is set as title when truncated."
+    "An ancestor keeps three characters of label (1 em each), or its whole label when shorter, before its ellipsis (round 2; 4em before); the full label is set as title when truncated."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
