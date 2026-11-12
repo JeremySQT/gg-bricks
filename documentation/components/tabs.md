@@ -6,13 +6,13 @@ Tabs show one of several panels of related content in the same place, with a lis
 
 ## Anatomy
 
-| #   | Part     | Required | Role                                                                                                                                                                                               |
-| --- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | List     | yes      | The row of tabs, or column when vertical, named by `label`: a container where the selected tab is raised, or a line where it is marked by a bar. A horizontal list too long for its width scrolls. |
-| 2   | Tab      | yes      | One TabsTrigger, its label on one line and never shortened; exactly one tab is selected, and a disabled tab cannot be.                                                                             |
-| 3   | Leading  | no       | One decorative icon before the label, sized by the tab.                                                                                                                                            |
-| 4   | Trailing | no       | One Counter or Badge after the label, in the tab's size: a count of items in the panel, a New badge. It is read with the tab's name.                                                               |
-| 5   | Panel    | yes      | One TabsPanel per tab, holding any content; only the panel of the selected tab is shown, below the list or after it when vertical.                                                                 |
+| #   | Part     | Required | Role                                                                                                                                                                                                  |
+| --- | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | List     | yes      | The row of tabs, or column when vertical, named by `label`: a container where the selected tab is raised, or a line where it is marked by a bar. A horizontal list too long for its width scrolls.    |
+| 2   | Tab      | yes      | One TabsTrigger, its label on one line and never shortened; exactly one tab is selected, and a disabled tab cannot be.                                                                                |
+| 3   | Leading  | no       | One decorative icon before the label, sized by the tab.                                                                                                                                               |
+| 4   | Trailing | no       | One Counter or Badge after the label, in the tab's size: a count of items in the panel, a New badge. It is read with the tab's name.                                                                  |
+| —   | Panel    | yes      | One TabsPanel per tab, holding any content; only the panel of the selected tab is shown, below the list or after it when vertical. The Figma component is the list only: designers place the content. |
 
 Measurements and tokens, including the lettered dimensions of the blueprint: `contracts/tabs.json`.
 
