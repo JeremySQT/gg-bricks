@@ -3,7 +3,7 @@
   "componentId": "pagination",
   "family": "navigation",
   "wave": 4,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Move through a long list or table split into numbered pages.",
     "useCases": ["Paging through a table of results.", "Server-rendered pages with links (href with {page})."],
@@ -109,7 +109,28 @@
       "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 504:552 and specification frame 519:2 of the pagination component, parity report (360 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/navigation/pagination/figma-spec.md",
+          "reports/components/pagination/figma/parity.json",
+          "reports/components/pagination/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/navigation/pagination/figma-spec.md": "fd6653152386608b9aa69cd130b930128b42cbfef599ef65a0dd03af8535e1f5",
+          "reports/components/pagination/figma/parity.json": "220c26ff1530ddf72777aefb0b5501d14b24407b6c267349e2cead2622e064a0",
+          "reports/components/pagination/figma/ledger.json": "09f70d1c8535ebb8fc5a3723ce1b62cb77a286a69ce474ea4d313a945b212280"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "504:552",
+          "specificationFrame": "519:2",
+          "children": ["504:307 Pagination/Item", "504:314 Pagination/Ellipsis"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -173,6 +194,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "reports/components/pagination/figma/parity.json"
+    },
+    {
+      "name": "Wave 4 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
     }
   ],
   "decisionsTaken": [
@@ -185,7 +212,7 @@
     "Round 2: showEdges adds first and last IconButtons (Phosphor caret-double glyphs), disabled at the ends and staying in place."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 Figma parity gate: user review, then the approval is recorded; documentation next.",
+  "nextAction": "Documentation (skill ggb-docs): the maintained page, the docs-site check, the site preview for the review; then the final consistency pass and the pull request of the wave.",
   "implementationNotes": [
     "Exports Pagination.",
     "The item algorithm lives in pages.ts with a unit test (tests/pagination-entries.test.ts) over every page of counts 1 to 40 and siblings 0 to 3.",

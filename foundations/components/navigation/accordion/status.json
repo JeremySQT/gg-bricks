@@ -3,7 +3,7 @@
   "componentId": "accordion",
   "family": "navigation",
   "wave": 4,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "A vertical stack of headings that each show or hide a section of content.",
     "useCases": [
@@ -115,7 +115,28 @@
       "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 505:429 and specification frame 533:374 of the accordion component, parity report (116 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/navigation/accordion/figma-spec.md",
+          "reports/components/accordion/figma/parity.json",
+          "reports/components/accordion/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/navigation/accordion/figma-spec.md": "5f43c099e2b120c4538260ecd0601b10dfc57fa56cd03b9b3d405af033679e7c",
+          "reports/components/accordion/figma/parity.json": "aab496c54bdd015d6e3f25b26541f220a29dadf411e5c046911badcbe2dd0952",
+          "reports/components/accordion/figma/ledger.json": "ae8f5f0e53073d7380e033cd927ea3935e08f5a1d69e1443b975e71068afd8e2"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "component": "505:429",
+          "specificationFrame": "533:374",
+          "children": ["505:428 Accordion/Item"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -185,6 +206,12 @@
       "result": "passed",
       "date": "2026-11-12",
       "evidence": "reports/components/accordion/figma/parity.json"
+    },
+    {
+      "name": "Wave 4 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
     }
   ],
   "decisionsTaken": [
@@ -198,7 +225,7 @@
     "The review page gains a Leading icons option (the slot existed but no option showed it)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 Figma parity gate: user review, then the approval is recorded; documentation next.",
+  "nextAction": "Documentation (skill ggb-docs): the maintained page, the docs-site check, the site preview for the review; then the final consistency pass and the pull request of the wave.",
   "implementationNotes": [
     "Exports Accordion and AccordionItem.",
     "The focus ring is drawn inside the trigger (outline-offset of minus its width) so that it stays inside the accordion inline size, as the contract asks.",

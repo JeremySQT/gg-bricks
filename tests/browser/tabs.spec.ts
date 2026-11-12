@@ -222,7 +222,8 @@ test('computed values match the resolved tokens: sizes, idle, selected, hover, d
       const selected = await read(`#line-${size}-tab-general`);
       const idle = await read(`#line-${size}-tab-members`);
       const typo = tokens[`typography.label.${size}`].$value as { fontSize: { value: number }; fontWeight: number };
-      expect(selected.content, `${context} ${size}`).toBe(rgb(tokens['color.item.default.content']));
+      // The selected label takes the color of its indicator (wave 4 Figma parity gate, 2026-11-12).
+      expect(selected.content, `${context} ${size}`).toBe(rgb(tokens['color.item.indicator']));
       expect(selected.indicator).toBe(rgb(tokens['color.item.indicator']));
       expect(selected.indicatorThickness).toBe(`${px(tokens['border.width.strong'])}px`);
       expect(selected.indicatorOpacity).toBe('1');
@@ -241,6 +242,11 @@ test('computed values match the resolved tokens: sizes, idle, selected, hover, d
       report.add(context, { size }, 'selected', selected);
       report.add(context, { size }, 'default', idle);
       report.add(context, { size }, 'hover', hover);
+      // The selected tab keeps its look under the pointer: no hover surface, the label in the indicator color.
+      await page.hover(`#line-${size}-tab-general`);
+      const selectedHover = await read(`#line-${size}-tab-general`);
+      expect(selectedHover.surface).toBe(selected.surface);
+      expect(selectedHover.content).toBe(rgb(tokens['color.item.indicator']));
       await page.mouse.move(0, 0);
     }
     const disabled = await page

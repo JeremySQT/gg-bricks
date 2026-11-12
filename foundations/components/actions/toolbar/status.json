@@ -3,7 +3,7 @@
   "componentId": "toolbar",
   "family": "actions",
   "wave": 4,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Group frequently used controls for one area into a single tab stop with arrow-key navigation.",
     "useCases": [
@@ -117,7 +117,28 @@
       },
       "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\"."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 506:1873 and specification frame 522:748 of the toolbar component, parity report (60 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/actions/toolbar/figma-spec.md",
+          "reports/components/toolbar/figma/parity.json",
+          "reports/components/toolbar/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/actions/toolbar/figma-spec.md": "29b15073d75d62360ae54d21f219d7867f30155aa7dd043a89f331c787398817",
+          "reports/components/toolbar/figma/parity.json": "b4f890458d43ca335a64b2f8e114a42842f7fdca74156546e13a48a180304325",
+          "reports/components/toolbar/figma/ledger.json": "5e697111cdec4e84f6d3a0b35d46d272ccedcc250d23e76da3a1eacd4fab26c7"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "506:1873",
+          "specificationFrame": "522:748",
+          "children": ["506:1350 Toolbar/Separator"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -180,6 +201,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "reports/components/toolbar/figma/parity.json"
+    },
+    {
+      "name": "Wave 4 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
     }
   ],
   "decisionsTaken": [
@@ -198,7 +225,7 @@
     "Round 3: overflow Menu (More) instead of wrapping; moved units are hidden in place and offered as menu items built from their accessible name, icon and disabled state; choosing one clicks the original control. Menu and Popover triggers never move. A horizontal toolbar fills its inline size (otherwise the hidden items would feed back into its width)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 Figma parity gate: user review, then the approval is recorded; documentation next.",
+  "nextAction": "Documentation (skill ggb-docs): the maintained page, the docs-site check, the site preview for the review; then the final consistency pass and the pull request of the wave.",
   "implementationNotes": [
     "Exports Toolbar and ToolbarSeparator.",
     "The module writes tabindex on the items (one 0, others -1) and keeps it in sync with a MutationObserver."

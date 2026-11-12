@@ -3,7 +3,7 @@
   "componentId": "combobox",
   "family": "forms",
   "wave": 4,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Choose one value from a long list of options by typing to narrow it.",
     "useCases": [
@@ -114,7 +114,28 @@
       "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 499:2549 and specification frame 516:2 of the combobox component, parity report (108 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/forms/combobox/figma-spec.md",
+          "reports/components/combobox/figma/parity.json",
+          "reports/components/combobox/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/forms/combobox/figma-spec.md": "d8a5ce455787a7a1bea4787a84cff453169866ac7924633a4e3b8bc690fd51e6",
+          "reports/components/combobox/figma/parity.json": "f888e014bd18edc8b6caf032e15fd49e348c136e3323bafd681ea5ab9881e765",
+          "reports/components/combobox/figma/ledger.json": "ca87a8da1fdb6a6d150fb8ece1fca6cca514a7b6121cfb255d72aa9d81c74b6a"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "499:2549",
+          "specificationFrame": "516:2",
+          "children": ["496:1323 Listbox/Option", "496:1324 Listbox/Group", "496:1338 Listbox/Empty"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -178,6 +199,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "reports/components/combobox/figma/parity.json"
+    },
+    {
+      "name": "Wave 4 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
     }
   ],
   "decisionsTaken": [
@@ -194,7 +221,7 @@
     "Round 2: same scrollbar change as Select."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 Figma parity gate: user review, then the approval is recorded; documentation next.",
+  "nextAction": "Documentation (skill ggb-docs): the maintained page, the docs-site check, the site preview for the review; then the final consistency pass and the pull request of the wave.",
   "implementationNotes": [
     "Exports Combobox and the ComboboxOptionsRecord type.",
     "The empty state is a polite status kept in the panel; it takes no room while options match.",

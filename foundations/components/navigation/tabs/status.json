@@ -3,7 +3,7 @@
   "componentId": "tabs",
   "family": "navigation",
   "wave": 4,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Show one of several panels of related content in the same place, with a list of tabs to switch between them.",
     "useCases": [
@@ -28,7 +28,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/navigation/tabs/contract.json",
-      "sha256": "414db6be0c75cfddf7567e756a7c93ad44bbe508e8d9b4e1ed6a8b2cbaddc5fa"
+      "sha256": "91e820f10df20768c0727cefa7185af5965384ddc43c4fddf588da5f9f83e161"
     },
     "tokens": [],
     "figma": {
@@ -87,10 +87,10 @@
       "revision": {
         "paths": ["foundations/components/navigation/tabs/contract.json"],
         "sha256": {
-          "foundations/components/navigation/tabs/contract.json": "414db6be0c75cfddf7567e756a7c93ad44bbe508e8d9b4e1ed6a8b2cbaddc5fa"
+          "foundations/components/navigation/tabs/contract.json": "91e820f10df20768c0727cefa7185af5965384ddc43c4fddf588da5f9f83e161"
         }
       },
-      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendment of 2026-11-10 (wave 4 implementation review, rounds 2 to 5: appearance contained by default and line, inset list surface, listGap between contained tabs): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794329677-8ebb, round 5), after round 4 (\"Je valide le reste\") and the gap between contained tabs (round 5): \"Tout me semble bon pour le moment, je valide\".",
+      "provenance": "User at the grouped wave 4 contract gate in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-09), on the review page https://claude.ai/artifact/45bt9Z9oFJapeibjHBH3nd (version 1794221707-e1d2): \"Je valide les 7 contrats, ok pour tes 5 recommandations. Si besoin on reverra les comportement au tab au moment de l'implémentation\". Amendment of 2026-11-10 (wave 4 implementation review, rounds 2 to 5: appearance contained by default and line, inset list surface, listGap between contained tabs): User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794329677-8ebb, round 5), after round 4 (\"Je valide le reste\") and the gap between contained tabs (round 5): \"Tout me semble bon pour le moment, je valide\". Amendment of 2026-11-12 (wave 4 Figma parity gate, option C): role trigger.selectedColor (color.item.indicator) for the label of the selected tab of a line list, hover painted behind unselected tabs only (the selected tab keeps its look under the pointer, so the accent label never sits on the hover surface: 3.3:1 in dark otherwise), contrast pairs for selectedColor. User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\".",
       "note": null
     },
     "implementation": {
@@ -111,15 +111,36 @@
           "packages/svelte/src/components/tabs/TabsPanel.svelte": "de4862c80364ea80d2902996f1b5b104ea9e4412c650070b6450e35b02fddd3d",
           "packages/svelte/src/components/tabs/TabsTrigger.svelte": "59a32766f2d1b56ca5023c8bd2369c2e48741348bdcbcf14c2e5917258e8e101",
           "packages/svelte/src/components/tabs/contract.generated.ts": "1de3c089df65535fe7675587d7ab598dcf3eae65b074e6a75b02ea941ad0c599",
-          "packages/svelte/src/components/tabs/tabs.css": "55585117955f7f8489304d1e530cff55fcb8d0e5cdf9ffd39318cad840af7098",
-          "packages/svelte/src/components/tabs/tokens.generated.css": "02f2a94f2607d1e6049af9fb571d28e81cc1c04a0e2b105cc748941cc7a99fbf",
+          "packages/svelte/src/components/tabs/tabs.css": "2a19aa7b822343c99e09e72a759b18b04a8d7929fb4d15b10bde2388c6cb074b",
+          "packages/svelte/src/components/tabs/tokens.generated.css": "e2fd7171ee1ed0b06a4256632eb0f200038f475f0023c6d32c638abba76ab9ba",
           "packages/svelte/src/components/tabs/types.ts": "b570eb5728daf0cd7395e450c2d452e1e561d5b8b8dff7936f0839182f839ab2",
           "examples/tabs/App.svelte": "2343a3bbad29f480fcb7852ae38a3c76cbab9e99b32b176d7bdcd8b57a09770f"
         }
       },
-      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794329677-8ebb, round 5), after round 4 (\"Je valide le reste\") and the gap between contained tabs (round 5): \"Tout me semble bon pour le moment, je valide\"."
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794329677-8ebb, round 5), after round 4 (\"Je valide le reste\") and the gap between contained tabs (round 5): \"Tout me semble bon pour le moment, je valide\". Amendment of 2026-11-12 (option C): the selected label of a line list in selectedColor; hover on unselected tabs only; browser tests updated (selected label color, selected tab under the pointer). User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 502:530 and specification frame 534:512 of the tabs component, parity report (612 records, 0 failures, 4 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/navigation/tabs/figma-spec.md",
+          "reports/components/tabs/figma/parity.json",
+          "reports/components/tabs/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/navigation/tabs/figma-spec.md": "01988929acf4cac5abd6ab68f1af5d2cb5a3f48edef56a694fd2e8ffcf724a78",
+          "reports/components/tabs/figma/parity.json": "ad1dc72b240bd2a70c8e1291753cfc66a9c85e7a83a120e4b6dfe4636102f8dd",
+          "reports/components/tabs/figma/ledger.json": "2126a2524a841ddfc6361912220aaa125448d44d0d38a31278355b7f85a96a70"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "502:530",
+          "specificationFrame": "534:512",
+          "children": ["501:249 Tabs/Trigger", "501:496 Tabs/Vertical trigger"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -188,6 +209,12 @@
       "result": "passed",
       "date": "2026-11-12",
       "evidence": "reports/components/tabs/figma/parity.json"
+    },
+    {
+      "name": "Wave 4 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
     }
   ],
   "decisionsTaken": [
@@ -202,10 +229,11 @@
     "Svelte API: a `list` snippet holds the TabsTrigger children and `children` the TabsPanel children; triggers register in source order so that the fallback to the first enabled tab also works during server rendering (a value not registered yet is trusted until mount).",
     "Round 2 (user: \"attention à ne pas réinventer la roue\"): Tabs now uses Bits UI Tabs (roles, ids, roving focus with right-to-left and disabled tabs, activation modes); ggbrick adds the fallback to the first enabled tab and renders the selection through the child snippets so that server rendering selects a tab (Bits UI reads the value before the triggers register). The roving-focus module moved into the Toolbar folder (its only user).",
     "Bits UI decision for wave 4 reviewed: Tabs and Accordion use it; Select and Combobox keep the own primitive (Bits UI content positions with floating-ui and its own dismissal layers, against the native top layer); Pagination keeps its own algorithm (Bits UI shows 6 then 7 items, the contract asks a constant count) and its link mode; Toolbar keeps its roving focus (Bits UI Toolbar needs every item wrapped in Toolbar.Button).",
-    "Round 3: appearance contained (default, the user's reference: tabs as buttons in a container, the selected one raised) and line (the first design). In a horizontal contained list the tabs share the inline size equally, never below their content. In dark the raised tab is darker than the muted container (token values); to judge at the gate."
+    "Round 3: appearance contained (default, the user's reference: tabs as buttons in a container, the selected one raised) and line (the first design). In a horizontal contained list the tabs share the inline size equally, never below their content. In dark the raised tab is darker than the muted container (token values); to judge at the gate.",
+    "Wave 4 Figma parity gate (user, 2026-11-12): the Figma Tabs is the tab list only (the panels stay in the contract and the code, which link them to the tabs); the selected tab of a line list paints its label in the indicator color (option C, role selectedColor), and hover is painted behind unselected tabs only in both appearances."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 Figma parity gate: user review, then the approval is recorded; documentation next.",
+  "nextAction": "Documentation (skill ggb-docs): the maintained page, the docs-site check, the site preview for the review; then the final consistency pass and the pull request of the wave.",
   "implementationNotes": [
     "Exports Tabs, TabsTrigger and TabsPanel.",
     "Panels stay mounted and are hidden with the hidden attribute (form state is kept).",

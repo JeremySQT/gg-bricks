@@ -19,7 +19,7 @@ const JUSTIFIED =
   {
     tabs: {
       'list:panelGap':
-        'The Figma Tabs is the tab list only (user request at the Figma parity gate, 2026-11-12): the designer places the content of the selected tab space/content/lg from the list; the code renders the panels. Not part of the master.'
+        'The Figma Tabs is the tab list only (user decision at the Figma parity gate, 2026-11-12): the designer places the content of the selected tab space/content/lg from the list; the code renders the panels. Not part of the master.'
     }
   }[id] ?? {};
 const norm = (props) =>

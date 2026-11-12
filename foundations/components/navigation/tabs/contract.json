@@ -106,6 +106,7 @@
         "surface": "color.item.{interaction}.surface",
         "content": "color.item.{interaction}.content",
         "idleColor": "color.content.secondary",
+        "selectedColor": "color.item.indicator",
         "indicatorColor": "color.item.indicator",
         "indicatorThickness": "border.width.strong",
         "radius": "radius.control",
@@ -125,7 +126,7 @@
       "rules": [
         "Arrange leading, label and trailing in that order, centered in the block dimension; label is required plain text in typography on one line, never truncated, and is the accessible name of the tab. leading holds at most one decorative icon of iconSize; trailing holds at most one Counter or Badge (a count of items in the panel, a New badge), sized by the tab.",
         "The tab block size is minHeight; paddingInline on both sides, gap between parts.",
-        "With appearance line, an unselected tab paints its label and icon in idleColor in the default interaction and in content otherwise, and a selected tab paints them in content; hover (the pointer over the tab) paints surface behind it with radius corners. With appearance contained, every tab paints its label and icon in content, the selected tab being shown by its raised surface; hover paints surface behind an unselected tab with containedRadius corners. interaction resolves in this order: disabled, hover, default.",
+        "With appearance line, an unselected tab paints its label and icon in idleColor in the default interaction and in content otherwise, and the selected tab paints them in selectedColor, the color of its indicator (user decision at the wave 4 Figma parity gate, 2026-11-12: the selected tab stands out from the others beyond its indicator); hover (the pointer over an unselected tab) paints surface behind it with radius corners. With appearance contained, every tab paints its label and icon in content, the selected tab being shown by its raised surface; hover paints surface behind an unselected tab with containedRadius corners. In both appearances the selected tab keeps its look under the pointer (activating it does nothing). interaction resolves in this order: disabled, hover, default.",
         "With appearance contained, the selected tab is raised: painted in selectedSurfaceColor with shadowSelected, an edge of edgeThickness in elevationColor and containedRadius corners. With appearance line, the selected tab shows indicator, a bar of indicatorThickness in indicatorColor on the edge that faces the panels (the block end of a horizontal list, the inline end of a vertical list), over the list's line. Selection is never conveyed by color alone.",
         "A disabled tab is shown in the disabled colors, cannot be selected, and is skipped by the arrow keys.",
         "Colors and the indicator change over motionDuration with easingStandard; no transition under reduced motion."
@@ -153,6 +154,17 @@
     },
     {
       "content": "trigger.idleColor",
+      "surface": "color.surface.canvas",
+      "minimum": 4.5
+    },
+    {
+      "content": "trigger.selectedColor",
+      "surface": "color.surface.default",
+      "minimum": 4.5,
+      "note": "The label of the selected tab in a line list."
+    },
+    {
+      "content": "trigger.selectedColor",
       "surface": "color.surface.canvas",
       "minimum": 4.5
     },

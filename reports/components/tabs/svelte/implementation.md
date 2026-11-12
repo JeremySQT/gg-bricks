@@ -29,3 +29,7 @@ Changes after the user's review: see the status decisionsTaken entries starting 
 - Round 3: appearance contained (default) and line; scroll buttons; see the status pendingChanges.
 - Round 4: the list clips only while it scrolls, with room for the focus indicator and the selected tab's shadow; an empty slot takes no room; list surface `color.surface.inset`, selected tab `color.surface.overlay`.
 - Round 5: contained tabs are separated by `listGap` (`space.content.xs`), so that a hovered tab and the selected tab never touch. The equal shares hold where the list has room; in a tight column a tab keeps its content width (browser test `contained (the default)`). Checked at 2× in light and dark, with hover next to the selected tab, keyboard focus, vertical orientation, the scrolling list and at 390 px.
+
+## Figma parity gate (2026-11-12)
+
+- Line: the selected label (and its icon) takes the indicator color, through the contract role `selectedColor` (user's option C). Hover is painted behind unselected tabs only, in both appearances: the selected tab keeps its look under the pointer, so the accent label never sits on the hover surface (3.3:1 in dark). Browser tests check the selected label color and the selected tab under the pointer.

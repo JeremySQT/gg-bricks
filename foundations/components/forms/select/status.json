@@ -3,7 +3,7 @@
   "componentId": "select",
   "family": "forms",
   "wave": 4,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Choose one value from a list of known options in a form, shown collapsed in a field.",
     "useCases": [
@@ -114,7 +114,28 @@
       "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\".",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma master 497:2541 and specification frame 515:648 of the select component, parity report (204 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/forms/select/figma-spec.md",
+          "reports/components/select/figma/parity.json",
+          "reports/components/select/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/forms/select/figma-spec.md": "1ca05e7b0fac4cb89f0009c1d482c956bb07cf4262733a3b2d83fea0d87bff41",
+          "reports/components/select/figma/parity.json": "4591f89a382f840e3788c1482aa2f2281272e2d1f3182e1099cf05ab4cbf72fe",
+          "reports/components/select/figma/ledger.json": "1ff4809e743d24f053da872abef3d8b9891fa411aea0d428af40350daf61d667"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "497:2541",
+          "specificationFrame": "515:648",
+          "children": ["496:1323 Listbox/Option", "496:1324 Listbox/Group", "496:1338 Listbox/Empty"]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, at the grouped wave 4 Figma parity gate (second round, after the changes asked at the first review: the Figma Tabs reduced to the tab list, the one-sided lines of the anatomy boards, the analysis of the shared Listbox parts), after reviewing the review page https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2), the Figma pages and the parity reports: \"Option C pour la tab active, Je valide le reste\"."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -178,6 +199,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "reports/components/select/figma/parity.json"
+    },
+    {
+      "name": "Wave 4 Figma parity gate approved (second round)",
+      "result": "passed",
+      "date": "2026-11-12",
+      "evidence": "https://claude.ai/artifact/7ik6b7tMDkbHX6tJKp1fTU (version 1794479121-c00f, round 2)"
     }
   ],
   "decisionsTaken": [
@@ -198,7 +225,7 @@
     "Round 2: thin scrollbar in scrollbarColor on the list, which scrolls inside the panel padding (the scrollbar never meets the round corners)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 4 Figma parity gate: user review, then the approval is recorded; documentation next.",
+  "nextAction": "Documentation (skill ggb-docs): the maintained page, the docs-site check, the site preview for the review; then the final consistency pass and the pull request of the wave.",
   "implementationNotes": [
     "Exports Select and the SelectOptionsRecord type.",
     "The trigger toggles the panel through popovertarget (exempt from light dismiss); keys open it through the open state.",

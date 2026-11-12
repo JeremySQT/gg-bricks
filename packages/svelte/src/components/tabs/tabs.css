@@ -141,8 +141,13 @@
   .ggb-tabs__trigger[aria-selected='true'] {
     --_content: var(--ggb-tabs-trigger-content-default);
   }
+  /* Line: the selected label takes the color of its indicator (wave 4 Figma parity gate, 2026-11-12). */
+  .ggb-tabs[data-appearance='line'] .ggb-tabs__trigger[aria-selected='true'] {
+    --_content: var(--ggb-tabs-trigger-selectedColor);
+  }
+  /* Hover only on an unselected tab: the selected tab keeps its look under the pointer (activating it does nothing). */
   @media (hover: hover) {
-    .ggb-tabs__trigger:not(:disabled):hover {
+    .ggb-tabs__trigger:not(:disabled):not([aria-selected='true']):hover {
       --_content: var(--ggb-tabs-trigger-content-hover);
       --_surface: var(--ggb-tabs-trigger-surface-hover);
     }
