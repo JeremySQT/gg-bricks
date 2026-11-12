@@ -110,14 +110,14 @@
         ],
         "sha256": {
           "packages/svelte/src/components/combobox/Combobox.svelte": "24aea6bb49058685c3e8c890158ea25f00fea2a591ff8b5c890b5461bda89840",
-          "packages/svelte/src/components/combobox/combobox.css": "4d8ffa83fe4f6bd53a4ad6917e7a279f51d2ffa6117b49ea7efb01d806b1b658",
+          "packages/svelte/src/components/combobox/combobox.css": "e431f0718406732f225dc4704d8561c98be5563f23a04f4282e04500a8ed9855",
           "packages/svelte/src/components/combobox/contract.generated.ts": "43149612dca5d13ed7e8786f79cb756e09348167c6dd317b5525ae09ecbc0380",
           "packages/svelte/src/components/combobox/tokens.generated.css": "fb2fd02968d1e5d55b6e096c957cc363011029558ba24cb95d9858c92869acb9",
           "packages/svelte/src/components/combobox/types.ts": "269f4267ca1d8c1183a8054119ef5bd56a4be202f4e9745e0b3f03f299c571e4",
           "examples/combobox/App.svelte": "5e5055929d3b69961374bc3a000098fcad09177a7b8106ad2db69c35478e83ab"
         }
       },
-      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremy-soquet.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): Combobox calls the consumer's oninput before its own handling, and remembers the selected option's label so that Escape or leaving the field restores it when a search on a server replaced options without it (browser test added). Digests re-recorded.",
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremy-soquet.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): Combobox calls the consumer's oninput before its own handling, and remembers the selected option's label so that Escape or leaving the field restores it when a search on a server replaced options without it (browser test added). Digests re-recorded. Amendment of 2026-11-12 (final consistency pass, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Ok pour la correction en tous cas\"): in forced colors the highlighted option sets forced-color-adjust: none, so that the browser paints no Canvas backplate behind its HighlightText label (browser test and capture forced-colors.png updated). Digests re-recorded.",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
     "figmaParity": {

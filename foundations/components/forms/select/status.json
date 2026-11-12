@@ -111,13 +111,13 @@
         "sha256": {
           "packages/svelte/src/components/select/Select.svelte": "d4abe4c69dd4102c37e34d15ae5f1715039ad535d1217dcfc1510c8966332a0c",
           "packages/svelte/src/components/select/contract.generated.ts": "f240973057451ed54f1f68bd69db64500e782fc28c903771e9c4c2b2a89fdb22",
-          "packages/svelte/src/components/select/select.css": "28e8f305c0e0abdb9c6b3008a77b1111819dffeb48d575dc1a8d6e54a6312e18",
+          "packages/svelte/src/components/select/select.css": "ec2748556a1fe3c49321c26c049261c84e7686a39f7769d34b2bc590e3163c34",
           "packages/svelte/src/components/select/tokens.generated.css": "a44399d40a2c3d8aa4c7b4feec9c530c5a1f6b229dac5b55c057f8a4d1c68da4",
           "packages/svelte/src/components/select/types.ts": "c3f46e6645e02dcfe5c4b15657a73eab7540c6c9871b7f2a34b100c6606dc86f",
           "examples/select/App.svelte": "5e59697c0ef140762684d927e7ee58c01e381e90469b71da95fadbe97ef3674b"
         }
       },
-      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremy-soquet.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): Select calls the consumer's onkeyup before its own handling, like its onkeydown. Digests re-recorded.",
+      "provenance": "User at the grouped wave 4 implementation review in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd (2026-11-10), on the review page https://claude.ai/artifact/1WuXsqWn4uXxB1YE3Evabr (version 1794328769-7bf2, round 4): \"Dernier petit retour pour tabs et je pense qu'on sera bon. [...] Je valide le reste\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremy-soquet.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): Select calls the consumer's onkeyup before its own handling, like its onkeydown. Digests re-recorded. Amendment of 2026-11-12 (final consistency pass, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Ok pour la correction en tous cas\"): in forced colors the highlighted option sets forced-color-adjust: none, so that the browser paints no Canvas backplate behind its HighlightText label (browser test and capture forced-colors.png updated). Digests re-recorded.",
       "note": "Visual adjustments may come with the global visual pass before the first release (roadmap 4b)."
     },
     "figmaParity": {
