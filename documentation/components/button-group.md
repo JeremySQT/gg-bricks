@@ -22,7 +22,7 @@ Measurements and tokens, including the lettered dimensions of the blueprint: `co
 
 ## When not to use
 
-- A set of controls acting on one object, with one tab stop and arrow keys: Toolbar (planned).
+- A set of controls acting on one object, with one tab stop and arrow keys: Toolbar.
 - Attached buttons for a single choice among options: SegmentedControl (planned).
 - More actions than the space holds, behind a trigger: Menu, composed next to the group.
 - A single action on its own: Button.
@@ -176,7 +176,7 @@ Renders a `<div class="ggb-button-group">` (plus any class you pass) with `data-
 | `children`    | `Snippet`                                   | required       | One or more Buttons and IconButtons, in priority reading order.                                                                                                   |
 | `ref`         | `HTMLDivElement \| null` (bindable)         | `null`         | The group element.                                                                                                                                                |
 
-Every other attribute of `HTMLAttributes<HTMLDivElement>` (`id`, `class`, `style`, `aria-describedby`…) goes to the group element, except those the component owns: `children`, `role` and `aria-label`. The group emits no event; each item keeps its own `onactivate`. The size reaches the items through Svelte context: a Popover, Dialog, Menu or Alert declared inside a group does not pass it to the buttons of its own content. A horizontal group measures its items with a `ResizeObserver` to decide when to stack; nothing is measured on the server. The platform-independent contract ships as `contracts/button-group.json`.
+Every other attribute of `HTMLAttributes<HTMLDivElement>` (`id`, `class`, `style`, `aria-describedby`…) goes to the group element, except those the component owns: `children`, `role` and `aria-label`. The group emits no event; each item keeps its own `onactivate`. The size reaches the items through Svelte context: the trigger of a Menu or Popover placed in the group takes it, but a Popover, Dialog, Menu or Alert declared inside a group does not pass it to the buttons of its own content. A horizontal group measures its items with a `ResizeObserver` to decide when to stack; nothing is measured on the server. The platform-independent contract ships as `contracts/button-group.json`.
 
 ## Accessibility
 

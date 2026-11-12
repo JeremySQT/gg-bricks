@@ -22,7 +22,7 @@ Measurements and tokens, including the lettered dimensions of the blueprint: `co
 
 ## When not to use
 
-- Many options, or options the user knows by name (a country): Select (planned).
+- Many options, or options the user knows by name (a country): Select, or Combobox when the list is long enough to search.
 - Several options that can all be checked: CheckboxGroup.
 - One on/off option: Checkbox, or Switch for a setting applied at once.
 - Options shown as buttons or cards: SegmentedControl or card selection (planned).

@@ -24,12 +24,12 @@ Measurements and tokens, including the lettered dimensions of the blueprint: `co
 
 ## When not to use
 
-- Choosing a value in a form: RadioGroup for a few options, Select (planned) for more.
+- Choosing a value in a form: RadioGroup for a few options, Select for more.
 - Free content, a form or controls in a panel next to a button: Popover.
 - Two or three actions that fit on screen: Buttons in a ButtonGroup.
 - Options that stay checked, or nested submenus: not built in; Menu holds actions and links only.
 - A menu opened by a right click: ContextMenu (planned).
-- A bar of controls with arrow-key navigation: Toolbar (planned).
+- A bar of controls with arrow-key navigation: Toolbar.
 
 ## Best practices
 

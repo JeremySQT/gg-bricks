@@ -25,7 +25,7 @@ Measurements and tokens, including the lettered dimensions of the blueprint: `co
 ## When not to use
 
 - Text that can span several lines (a comment, an address): Textarea.
-- A choice among known options: RadioGroup for a few, Select (planned) for many.
+- A choice among known options: RadioGroup for a few, Select for many, Combobox for a long list the user searches.
 - Numbers with steppers, dates and times: NumberInput, DatePicker (planned).
 - A value the user cannot change: show it as text; use `readonly` only when it must stay selectable and submitted with the form.
 
