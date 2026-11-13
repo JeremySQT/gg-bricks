@@ -15,7 +15,7 @@
     "exclusions": [
       "Editing in place: the integration switches to a Field with its control.",
       "A copy button or actions on the value: composed by the integration.",
-      "A container giving description list semantics and columns (DataList): question at the contract gate.",
+      "A container giving description list semantics and columns (DataList): later, on demand.",
       "Large figures with trends (metric tiles): a later composition.",
       "Disabled or readonly controls used to display values."
     ],
@@ -69,12 +69,11 @@
     "Horizontal labels in a column of component.data-field.label-inline-size = 160 px, so that separate fields align without a container; below twice that width the field stacks (container query).",
     "Empty value: an em dash in color.content.tertiary, hidden from assistive technology, with emptyLabel (No value) announced instead.",
     "Semantics in v1: the field is a group named by its label (works anywhere, without a parent); see the open question on a description list container.",
-    "No new semantic role."
+    "No new semantic role.",
+    "Option A (user at the wave 5 contract gate, round 1 (2026-11-13): \"Oui, restons sur la A, on verra si on fait évoluer plus tard\"): DataField alone, a group named by its label; a DataList container may come later."
   ],
-  "openDecisions": [
-    "Semantics and layout of a set of fields: (A) DataField alone in v1, a group named by its label, laid out by the integration; (B) add a container (DataList) giving description list semantics, columns and aligned labels, in which DataField renders a term and its definition. Recommendation: A in v1; B can be added later without breaking the API."
-  ],
-  "nextAction": "Contract gate (wave 5).",
+  "openDecisions": [],
+  "nextAction": "Contract gate (wave 5, round 2).",
   "implementationNotes": [],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]

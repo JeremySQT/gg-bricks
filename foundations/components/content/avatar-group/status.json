@@ -1,0 +1,76 @@
+{
+  "formatStatus": "v1",
+  "componentId": "avatar-group",
+  "family": "content",
+  "wave": 5,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Show the people (or teams) involved in an object as a compact row of overlapping avatars, with a count of the others.",
+    "useCases": [
+      "The assignees of a task or the reviewers of a document in a table cell or a card.",
+      "The participants of a meeting or the members of a project, capped by max with a +N count.",
+      "A count of everyone when the application shows only the first few (total)."
+    ],
+    "exclusions": [
+      "A list of everyone or a profile on activation: composed by the integration (Popover or Tooltip on a wrapping button).",
+      "Interactive avatars or +N inside the group in this version.",
+      "Wrapping onto several lines."
+    ],
+    "alternatives": [
+      "A single Avatar with the name beside it.",
+      "A list of people with names (a table, a list) when every person matters.",
+      "A Counter with a label when only the number matters."
+    ]
+  },
+  "dependencies": ["avatar"],
+  "fixtures": ["Portrait pictures of the Avatar examples."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/content/avatar-group/contract.json",
+      "sha256": "e4b030d7afc0c6fcc20217919f8a4b340f51e80e8c23355a66dd302156ca443b"
+    },
+    "tokens": ["foundations/tokens/base/components/avatar-group.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run build:tokens (coverage)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "reports/components/avatar-group/"
+    }
+  ],
+  "decisionsTaken": [
+    "Built in wave 5 together with Avatar (user at the wave 5 contract gate, round 1 (2026-11-13): \"AvatarGroup, je pense que c'est une bonne idée de le faire maintenant en même temps que Avatar, au moins ce sera fait\").",
+    "A component of its own (like ButtonGroup), family content, depending on Avatar; it passes size and shape to its avatars.",
+    "Overlap of a quarter of the avatar size (component.avatar-group.overlap.{size} = 6, 8, 10, 12, 16 px); the first avatar is on top (reading order).",
+    "Ring of border.width.strong (2 px) in color.surface.default around each avatar; on another surface the integration sets the ring color (custom property). A cut-out mask was considered: it works on any backdrop but is harder to reproduce in Figma and for square shapes.",
+    "max 5 by default and counted with the +N box (the group never shows more than max boxes, as in common libraries); total for a number known by the application beyond the avatars given.",
+    "The +N box is an Avatar whose new initials prop holds the text, so that it shares the Avatar typography and colors without binding Avatar tokens; capped at +99.",
+    "Exposed as a list named by label; the +N box is named \"3 more\" (count followed by moreLabel)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Contract gate (wave 5, round 2).",
+  "implementationNotes": [],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  }
+}

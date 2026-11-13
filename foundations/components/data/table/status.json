@@ -29,7 +29,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/data/table/contract.json",
-      "sha256": "e08d4f72da75f2dddd4104d78ad181a4b41342f2b40dd3ae9e41ffd4ba0b8c4b"
+      "sha256": "0e9cb01b745595a9dadc0e5745efd404e1eb2cbb3aa66f00b207c386737ad096"
     },
     "tokens": [],
     "figma": null,
@@ -62,17 +62,18 @@
   ],
   "decisionsTaken": [
     "Compound contract with children header, body, footer, row, heading (column header cell) and cell, so that cells hold free content (the semantic table of the catalog); no records API in v1 (row fields are not known in advance).",
-    "Header band in color.surface.subtle with a line in color.border.default; lines between body rows in color.border.subtle; no outer frame (the integration places the table in a card when it wants one).",
     "Headers in typography.label.md and color.content.secondary; cells in typography.body.sm with tabular figures; the typography does not change with size or density.",
     "size sm, md, lg sets the minimum row height (size.control.{size}: 32, 40, 48 px in standard density); cells center one line and keep that block padding when they wrap.",
     "Cell inline padding space.content.md (12 px in standard).",
     "Visible caption by default (typography.heading.xs), hideCaption when a heading next to the table already names it; caption is required as the accessible name.",
     "Inline overflow scrolls in the table's own area, which becomes a focus stop named by the caption only while it overflows; the header sticks to the top of that area when the integration limits its height.",
     "A cell with rowHeader is exposed as the header of its row and looks like the other cells.",
-    "No new token."
+    "No new token.",
+    "Round 2 style (user at the wave 5 contract gate, round 1 (2026-11-13), with three reference screenshots: \"J'aime bien l'entête en gris léger avec des bordures en gris léger également\"): header band in color.surface.subtle; every line in color.border.subtle (header, rows, footer); a frame of border.width.default in color.border.subtle with radius.container corners around the table (two of the three references are framed).",
+    "Optional columnLines (false by default): vertical lines between columns, as in two of the references."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (wave 5).",
+  "nextAction": "Contract gate (wave 5, round 2).",
   "implementationNotes": [],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]

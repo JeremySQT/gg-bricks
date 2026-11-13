@@ -19112,6 +19112,121 @@
     },
     {
       "collection": "Foundations · Brand",
+      "name": "component/avatar-group/overlap/xs",
+      "path": "component.avatar-group.overlap.xs",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-group-overlap-xs)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v6"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v6"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v6"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar-group/overlap/sm",
+      "path": "component.avatar-group.overlap.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-group-overlap-sm)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v8"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v8"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v8"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar-group/overlap/md",
+      "path": "component.avatar-group.overlap.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-group-overlap-md)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v10"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v10"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v10"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar-group/overlap/lg",
+      "path": "component.avatar-group.overlap.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-group-overlap-lg)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v12"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v12"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v12"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar-group/overlap/xl",
+      "path": "component.avatar-group.overlap.xl",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-group-overlap-xl)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
       "name": "component/avatar/size/xs",
       "path": "component.avatar.size.xs",
       "type": "FLOAT",
@@ -20194,6 +20309,29 @@
         },
         "orchid": {
           "alias": "Foundations · Primitives:primitive/dimension/v720"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/divider/thickness",
+      "path": "component.divider.thickness",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-divider-thickness)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/border/1"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/border/1"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/border/1"
         }
       }
     },

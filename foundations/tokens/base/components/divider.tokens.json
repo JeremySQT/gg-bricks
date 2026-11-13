@@ -1,0 +1,12 @@
+{
+  "component": {
+    "divider": {
+      "$description": "Divider tokens: values that mean something only for the Divider. They do not change with density.",
+      "thickness": {
+        "$type": "dimension",
+        "$value": "{primitive.border.1}",
+        "$description": "Thickness of the line: 1 px in the base brand, independent of border.width.default so that a brand can change dividers without changing the borders of controls and surfaces."
+      }
+    }
+  }
+}

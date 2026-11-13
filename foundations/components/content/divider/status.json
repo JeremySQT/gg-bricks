@@ -23,9 +23,9 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/content/divider/contract.json",
-      "sha256": "c528d091324c105136351d69dcdedc90a150b2ae7c9b9d9d04da5e00f1d496cd"
+      "sha256": "8626902fbd8a41594d64ceafc1ebc311b66f49f7ca407683c4be7b3b8bc579b8"
     },
-    "tokens": [],
+    "tokens": ["foundations/tokens/base/components/divider.tokens.json"],
     "figma": null,
     "figmaSpec": null,
     "svelte": null,
@@ -55,13 +55,14 @@
     }
   ],
   "decisionsTaken": [
-    "Line in color.border.subtle and border.width.default, the roles of the Menu and Toolbar separators and the Tabs line, so that every separator of the system looks the same.",
+    "Line in color.border.subtle, the color of the Menu and Toolbar separators and of the Tabs line.",
     "No margin of its own (the catalog: prefer layout primitives for spacing).",
     "Optional label on horizontal dividers only, centered, typography.caption.md in color.content.secondary, space.content.sm on both sides.",
-    "Semantic separator by default; decorative hides it from assistive technology (Bits UI Separator)."
+    "Semantic separator by default; decorative hides it from assistive technology (Bits UI Separator).",
+    "Thickness tokenized (user at the wave 5 contract gate, round 1 (2026-11-13): \"l'épaisseur du trait devrait être tokenisée, tout en restant sur 1px par défaut. Mais certaines brands pourraient vouloir mettre autre chose\"): component token component.divider.thickness = 1 px (primitive.border.1), so that a brand changes dividers without touching border.width.default (every control border). Menu and Toolbar separators and table lines keep border.width.default."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (wave 5).",
+  "nextAction": "Contract gate (wave 5, round 2).",
   "implementationNotes": [],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]

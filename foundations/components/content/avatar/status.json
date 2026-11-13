@@ -14,8 +14,7 @@
     ],
     "exclusions": [
       "A presence or status dot over the avatar (online, busy): a later composition with Badge.",
-      "A stack of overlapping avatars with a +N count (AvatarGroup): later, on demand (question at the contract gate).",
-      "Colors derived from the name: needs a categorical palette the foundations do not have (question at the contract gate).",
+      "Colors derived from the name: needs a categorical palette the foundations do not have.",
       "Upload or cropping of a picture.",
       "Interactivity of its own: the integration wraps the avatar in a button or a link."
     ],
@@ -30,7 +29,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/content/avatar/contract.json",
-      "sha256": "1f5412ed5206f1b5ff19cb2781e0c87f7dc2cc6efd0c870b74d72abfa1e5927f"
+      "sha256": "0aa0ef6d61130eb46e6dbdd81c69e529aac4f20e5d4adae1c6e9482eb2a18882"
     },
     "tokens": ["foundations/tokens/base/components/avatar.tokens.json"],
     "figma": null,
@@ -70,14 +69,13 @@
     "Square corners proportional to the size (component.avatar.radius.{size} = 4, 6, 8, 8, 12 px) rather than one radius for all sizes.",
     "Generic glyph: Phosphor user (regular), copied into the component folder as an intrinsic glyph, box component.avatar.icon-size.{size} = 16, 20, 24, 28, 40 px.",
     "No edge around pictures in v1 (a translucent edge would need a role the foundations do not have); an edge only in forced colors.",
-    "The fallback stays visible while the picture loads; the picture replaces it once loaded (no fade in v1). Bits UI Avatar provides the loading status."
+    "The fallback stays visible while the picture loads; the picture replaces it once loaded (no fade in v1). Bits UI Avatar provides the loading status.",
+    "Neutral avatars only (user at the wave 5 contract gate, round 1 (2026-11-13): \"Reste sur des avatars neutre, c'est à chaque application de faire ensuite la logique désirée\"): colors, generated portraits or illustrations belong to the application (it can pass a picture or set the colors).",
+    "An avatar that opens a menu is wrapped by the integration in a button or another interactive area; no slot in Button or IconButton (user at the wave 5 contract gate, round 1 (2026-11-13): \"Plutôt bouton ... A toi de suivre ta recommandation\"); shown as a documentation example.",
+    "Round 2: new prop initials (at most three characters, shown as given) replacing the computed initials, for an organization's abbreviation and for the +N box of AvatarGroup."
   ],
-  "openDecisions": [
-    "AvatarGroup (overlapping avatars with a +N count): now or later? Recommendation: later, on demand.",
-    "Colors derived from the name: would need a categorical palette (a foundations change). Recommendation: neutral only in v1.",
-    "An avatar inside Button or IconButton (account menu trigger): today the integration wraps the avatar; a slot would change wave 1 components. Recommendation: wrap, documented as an example; a slot later on demand."
-  ],
-  "nextAction": "Contract gate (wave 5).",
+  "openDecisions": [],
+  "nextAction": "Contract gate (wave 5, round 2).",
   "implementationNotes": [],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
