@@ -1,0 +1,85 @@
+{
+  "formatStatus": "v1",
+  "componentId": "avatar",
+  "family": "content",
+  "wave": 5,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Represent a person, or an organization, a team or a project, with a picture, their initials or a generic glyph, in a small box of fixed size beside or instead of their name.",
+    "useCases": [
+      "The author of a comment, the assignee of a task, the owner of a record (beside the name, decorative).",
+      "A person alone where the name does not fit (a table cell, a compact list), named for assistive technology.",
+      "An organization, a team or a project with the square shape.",
+      "The current user in an application header, wrapped by the integration in the button that opens the account menu."
+    ],
+    "exclusions": [
+      "A presence or status dot over the avatar (online, busy): a later composition with Badge.",
+      "A stack of overlapping avatars with a +N count (AvatarGroup): later, on demand (question at the contract gate).",
+      "Colors derived from the name: needs a categorical palette the foundations do not have (question at the contract gate).",
+      "Upload or cropping of a picture.",
+      "Interactivity of its own: the integration wraps the avatar in a button or a link."
+    ],
+    "alternatives": [
+      "Icon for a symbol that does not represent an identity.",
+      "Badge or Counter for a status or a quantity.",
+      "Plain text when the name alone is enough."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": ["Portrait pictures for the examples (local files under examples/avatar/, no network)."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/content/avatar/contract.json",
+      "sha256": "1f5412ed5206f1b5ff19cb2781e0c87f7dc2cc6efd0c870b74d72abfa1e5927f"
+    },
+    "tokens": ["foundations/tokens/base/components/avatar.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-13",
+      "evidence": "reports/components/avatar/"
+    }
+  ],
+  "decisionsTaken": [
+    "Sizes xs to xl as the component tokens recorded in the catalog: component.avatar.size.{xs,sm,md,lg,xl} = 24, 32, 40, 48, 64 px.",
+    "Initials in a component typography component.avatar.typography.{size} (Inter medium 500, line height 1): 11, 13, 16, 18, 24 px (about 0.4 of the box). No semantic typography maps the five sizes; a component token is the naming rule's answer for a value only the Avatar needs. Generated as a Figma text style by the existing manifest (generic).",
+    "xs shows one initial: two medium initials at 11 px leave no margin in a 24 px circle (WM is about 20 px wide).",
+    "Initials: first grapheme of the first and of the last word, uppercased with the platform's locale rules; a single word gives one character.",
+    "Fallback in color.surface.muted with color.content.secondary (a measured pair of the semantic inventory); no colors from the name in v1.",
+    "Square corners proportional to the size (component.avatar.radius.{size} = 4, 6, 8, 8, 12 px) rather than one radius for all sizes.",
+    "Generic glyph: Phosphor user (regular), copied into the component folder as an intrinsic glyph, box component.avatar.icon-size.{size} = 16, 20, 24, 28, 40 px.",
+    "No edge around pictures in v1 (a translucent edge would need a role the foundations do not have); an edge only in forced colors.",
+    "The fallback stays visible while the picture loads; the picture replaces it once loaded (no fade in v1). Bits UI Avatar provides the loading status."
+  ],
+  "openDecisions": [
+    "AvatarGroup (overlapping avatars with a +N count): now or later? Recommendation: later, on demand.",
+    "Colors derived from the name: would need a categorical palette (a foundations change). Recommendation: neutral only in v1.",
+    "An avatar inside Button or IconButton (account menu trigger): today the integration wraps the avatar; a slot would change wave 1 components. Recommendation: wrap, documented as an example; a slot later on demand."
+  ],
+  "nextAction": "Contract gate (wave 5).",
+  "implementationNotes": [],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  }
+}

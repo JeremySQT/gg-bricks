@@ -1,0 +1,55 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "avatar",
+  "props": {
+    "name": {
+      "type": "string"
+    },
+    "src": {
+      "type": "string"
+    },
+    "size": {
+      "values": ["xs", "sm", "md", "lg", "xl"],
+      "default": "md"
+    },
+    "shape": {
+      "values": ["circle", "square"],
+      "default": "circle"
+    },
+    "decorative": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "container": {},
+    "image": {},
+    "initials": {},
+    "fallbackIcon": {}
+  },
+  "states": {
+    "imageStatus": {
+      "values": ["none", "loading", "loaded", "error"],
+      "default": "none"
+    }
+  },
+  "tokens": {
+    "surface": "color.surface.muted",
+    "content": "color.content.secondary",
+    "size": "component.avatar.size.{size}",
+    "typography": "component.avatar.typography.{size}",
+    "iconSize": "component.avatar.icon-size.{size}",
+    "squareRadius": "component.avatar.radius.{size}",
+    "circleRadius": "radius.full",
+    "borderWidth": "border.width.default"
+  },
+  "rules": [
+    "An avatar represents a person (circle) or an organization, a team or a project (square) with a picture, their initials or a generic glyph, in a box of size by size that neither shrinks nor stretches in a flexible layout. Sizes and their typography do not change with density.",
+    "The container clips its content to its shape: radius circleRadius for circle, squareRadius for square (the radius of the size, so that every size keeps the same proportions).",
+    "When src is set and the picture has loaded (imageStatus loaded), image covers the whole box, cropped to fill it without distortion and centered. While it loads (imageStatus loading), when it fails (imageStatus error) or without src (imageStatus none), the box shows the fallback instead, so that a broken picture is never shown and the layout does not move when the picture arrives.",
+    "The fallback is painted in surface. With a name that yields initials, initials shows them in typography and content, centered on their capital height: the first character of the first word and the first character of the last word, uppercased (one character for a single word); the xs size shows the first character only. Characters are whole graphemes, so that accented letters, scripts without case and emoji are never split. Without a name, or with a name without letters or digits, fallbackIcon shows a generic person glyph of iconSize in content, centered and placed by its drawing.",
+    "The accessible name is name: the avatar is exposed as an image named by name, whatever it shows (picture, initials or glyph); the initials and the glyph themselves are hidden from assistive technology. When decorative is true (the name is already written next to the avatar, as in a list of people) the avatar is hidden from assistive technology; without a name it is hidden as well, since it then conveys nothing.",
+    "The avatar is not interactive: it is never focusable and emits no events. An avatar that opens a menu or a profile is wrapped by the integration in a button or a link that carries the accessible name; the avatar inside it is then decorative.",
+    "In forced-colors mode the container shows an edge of borderWidth inside its boundary in the system text color, and the initials and the glyph use the system text color, so that the fallback stays visible."
+  ]
+}

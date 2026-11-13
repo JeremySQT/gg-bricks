@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "divider",
+  "props": {
+    "orientation": {
+      "values": ["horizontal", "vertical"],
+      "default": "horizontal"
+    },
+    "label": {
+      "type": "string"
+    },
+    "decorative": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "parts": {
+    "line": {},
+    "label": {}
+  },
+  "states": {},
+  "tokens": {
+    "lineColor": "color.border.subtle",
+    "thickness": "border.width.default",
+    "labelColor": "color.content.secondary",
+    "typography": "typography.caption.md",
+    "labelGap": "space.content.sm"
+  },
+  "contrast": [
+    {
+      "content": "labelColor",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "labelColor",
+      "surface": "color.surface.subtle",
+      "minimum": 4.5
+    }
+  ],
+  "rules": [
+    "A divider is a line of thickness in lineColor that separates two groups of content (sections of a panel, groups of fields, the items of a vertical list). Spacing around it comes from the layout that holds it: the divider adds no margin of its own. Space alone, or a container edge, is preferred where it is enough; a divider is not drawn between every block.",
+    "horizontal spans the inline size it is given. vertical separates items laid out in a row (a toolbar of filters, metadata on one line): it spans the block size of the row, or the line box of the surrounding text when the row gives it none, and keeps its thickness when space runs out.",
+    "label, when set on a horizontal divider, shows short plain text centered on the line (Or, Today) in typography and labelColor, on one line, with labelGap between the text and the line on both sides; the line is drawn on both sides of the text. A vertical divider ignores label.",
+    "By default the divider is exposed as a separator with its orientation (and its label as its accessible name when set). When decorative is true it is hidden from assistive technology, for a line that only repeats the structure the content already gives (between items of a list that is announced as a list).",
+    "The divider is never focusable, emits no events and has no state; it is not a resize handle.",
+    "In forced-colors mode the line and the label use the system text color, so that the line stays visible."
+  ]
+}

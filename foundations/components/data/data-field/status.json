@@ -1,0 +1,82 @@
+{
+  "formatStatus": "v1",
+  "componentId": "data-field",
+  "family": "data",
+  "wave": 5,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Show one piece of information about an object as a label and its value, for reading, in detail panels, summaries and record pages.",
+    "useCases": [
+      "The properties of a record (owner, status, created on) in a side panel or a page.",
+      "A read-only summary of a form before submission.",
+      "A grid of key facts in a card (plan, renewal date, seats).",
+      "Rich values: a Badge, a Link, an Avatar with a name."
+    ],
+    "exclusions": [
+      "Editing in place: the integration switches to a Field with its control.",
+      "A copy button or actions on the value: composed by the integration.",
+      "A container giving description list semantics and columns (DataList): question at the contract gate.",
+      "Large figures with trends (metric tiles): a later composition.",
+      "Disabled or readonly controls used to display values."
+    ],
+    "alternatives": [
+      "Field with an entry control for a value the user changes.",
+      "Table for several records compared by column.",
+      "Plain text in a sentence."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": [
+    "Badge, Link and Avatar in the examples of rich values (wave 1 and wave 5 components, used as content, not dependencies)."
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/data/data-field/contract.json",
+      "sha256": "3694e46edb1e032e1cf6feb399f557fce412c403b6ba8e33b29e2e952c39a514"
+    },
+    "tokens": ["foundations/tokens/base/components/data-field.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-13",
+      "evidence": "reports/components/data-field/"
+    }
+  ],
+  "decisionsTaken": [
+    "Label in typography.label.{size} and color.content.secondary, value in typography.body.{size} and color.content.primary: the value is the information, the label is quieter.",
+    "Sizes sm and md (md by default, the same typographies as a Field label and an md InputText, so that a form and its read-only view match).",
+    "Horizontal labels in a column of component.data-field.label-inline-size = 160 px, so that separate fields align without a container; below twice that width the field stacks (container query).",
+    "Empty value: an em dash in color.content.tertiary, hidden from assistive technology, with emptyLabel (No value) announced instead.",
+    "Semantics in v1: the field is a group named by its label (works anywhere, without a parent); see the open question on a description list container.",
+    "No new semantic role."
+  ],
+  "openDecisions": [
+    "Semantics and layout of a set of fields: (A) DataField alone in v1, a group named by its label, laid out by the integration; (B) add a container (DataList) giving description list semantics, columns and aligned labels, in which DataField renders a term and its definition. Recommendation: A in v1; B can be added later without breaking the API."
+  ],
+  "nextAction": "Contract gate (wave 5).",
+  "implementationNotes": [],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  }
+}

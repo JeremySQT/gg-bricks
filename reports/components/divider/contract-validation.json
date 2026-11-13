@@ -1,0 +1,19 @@
+{
+  "valid": true,
+  "checks": {
+    "schema": "passed",
+    "consistency": "passed",
+    "tokenCoverage": "passed",
+    "dependencies": "not-provided",
+    "intrinsicRules": "manual-review-required"
+  },
+  "errors": [],
+  "requiredTokenPaths": [
+    "color.border.subtle",
+    "border.width.default",
+    "color.content.secondary",
+    "typography.caption.md",
+    "space.content.sm"
+  ],
+  "dependencies": []
+}

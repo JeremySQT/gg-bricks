@@ -1,0 +1,1304 @@
+{
+  "method": "WCAG relative luminance; alpha composited on each color.surface.* backdrop of the status contrastScope (all of them when absent); the explicit pairs of the contract `contrast` block are measured against their surface role (composited on color.surface.default) or color token. Parameters valued \"disabled\" and contrastScope.informational pairs are informational (minimum null), not a conformance claim.",
+  "checks": 162,
+  "failures": [],
+  "minimumActiveText": null,
+  "results": [
+    {
+      "context": "base-light-compact",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 5.324588,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 5.324588,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 5.087264,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 4.715309,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 5.324588,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 5.324588,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.251293,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-compact",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 5.324588,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 5.324588,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 5.087264,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 4.715309,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 5.324588,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 5.324588,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.251293,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-standard",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 5.324588,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 5.324588,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 5.087264,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 4.715309,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 5.324588,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 5.324588,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.251293,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-light-comfortable",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 7.829185,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 6.849775,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 5.173691,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 3.460192,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 6.849775,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 5.173691,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-compact",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 7.829185,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 6.849775,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 5.173691,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 3.460192,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 6.849775,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 5.173691,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-standard",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 7.829185,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 6.849775,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 5.173691,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 3.460192,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 6.849775,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 5.173691,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "base-dark-comfortable",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 5.458983,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 5.458983,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 5.215669,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 4.834326,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 5.458983,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 5.458983,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.251293,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-compact",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 5.458983,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 5.458983,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 5.215669,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 4.834326,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 5.458983,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 5.458983,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.251293,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-standard",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 5.458983,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 5.458983,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 5.215669,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 4.834326,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 5.458983,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 5.458983,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.251293,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-light-comfortable",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 7.472417,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 6.537638,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 4.93793,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 3.302514,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 6.537638,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 4.93793,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-compact",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 7.472417,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 6.537638,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 4.93793,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 3.302514,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 6.537638,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 4.93793,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-standard",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 7.472417,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 6.537638,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 4.93793,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 3.302514,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 6.537638,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 4.93793,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "brick-dark-comfortable",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 5.670165,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 5.670165,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 5.417438,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 5.021343,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 5.670165,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 5.670165,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.251293,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-compact",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 5.670165,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 5.670165,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 5.417438,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 5.021343,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 5.670165,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 5.670165,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.251293,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-standard",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 5.670165,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 5.670165,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 5.417438,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 5.021343,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 5.670165,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 5.670165,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.251293,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-light-comfortable",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 17.096209,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 7.460401,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 6.527125,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 4.92999,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 3.297204,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 6.527125,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 4.92999,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-compact",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 7.460401,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 6.527125,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 4.92999,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 3.297204,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 6.527125,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 4.92999,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-standard",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "canvas",
+      "role": "focus",
+      "ratio": 7.460401,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "default",
+      "role": "focus",
+      "ratio": 6.527125,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "subtle",
+      "role": "focus",
+      "ratio": 4.92999,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "muted",
+      "role": "focus",
+      "ratio": 3.297204,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "raised",
+      "role": "focus",
+      "ratio": 6.527125,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "overlay",
+      "role": "focus",
+      "ratio": 4.92999,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "header.surface",
+      "role": "heading.content",
+      "ratio": 8.30762,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "color.surface.default",
+      "role": "cell.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "context": "orchid-dark-comfortable",
+      "backdrop": "color.surface.default",
+      "role": "footer.content",
+      "ratio": 15.139935,
+      "minimum": 4.5,
+      "passed": true
+    }
+  ]
+}

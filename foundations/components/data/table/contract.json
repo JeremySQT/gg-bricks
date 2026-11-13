@@ -1,0 +1,189 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "table",
+  "props": {
+    "caption": {
+      "type": "string",
+      "required": true
+    },
+    "hideCaption": {
+      "type": "boolean",
+      "default": false
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    }
+  },
+  "parts": {
+    "container": {},
+    "caption": {},
+    "header": {
+      "accepts": ["header"],
+      "max": 1
+    },
+    "body": {
+      "accepts": ["body"],
+      "min": 1,
+      "max": 1
+    },
+    "footer": {
+      "accepts": ["footer"],
+      "max": 1
+    }
+  },
+  "states": {
+    "scrollable": {
+      "type": "boolean",
+      "default": false
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "tokens": {
+    "captionColor": "color.content.primary",
+    "typographyCaption": "typography.heading.xs",
+    "captionGap": "space.content.sm",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width"
+  },
+  "children": {
+    "header": {
+      "props": {},
+      "parts": {
+        "rows": {
+          "accepts": ["row"],
+          "min": 1
+        }
+      },
+      "states": {},
+      "tokens": {
+        "surface": "color.surface.subtle",
+        "lineColor": "color.border.default",
+        "lineWidth": "border.width.default"
+      },
+      "rules": [
+        "The header holds the row of column headers, painted in surface with a line of lineWidth in lineColor along its block end. When the table scrolls in the block direction, the header stays at the top of the scroll area, above the rows."
+      ]
+    },
+    "body": {
+      "props": {},
+      "parts": {
+        "rows": {
+          "accepts": ["row"]
+        }
+      },
+      "states": {},
+      "tokens": {},
+      "rules": [
+        "The body holds the data rows in order. When there is no data, the integration shows one row whose single cell spans every column with a short message; the header stays, so that the columns remain readable."
+      ]
+    },
+    "footer": {
+      "props": {},
+      "parts": {
+        "rows": {
+          "accepts": ["row"],
+          "min": 1
+        }
+      },
+      "states": {},
+      "tokens": {
+        "content": "color.content.primary",
+        "typography": "typography.label.md",
+        "lineColor": "color.border.default",
+        "lineWidth": "border.width.default"
+      },
+      "rules": [
+        "The footer holds summary rows (totals) after the body, separated from it by a line of lineWidth in lineColor; its cells are set in typography and content."
+      ]
+    },
+    "row": {
+      "props": {},
+      "parts": {
+        "cells": {
+          "accepts": ["heading", "cell"],
+          "min": 1
+        }
+      },
+      "states": {},
+      "tokens": {
+        "lineColor": "color.border.subtle",
+        "lineWidth": "border.width.default"
+      },
+      "rules": [
+        "A row holds its cells in column order. Every row of the body except the last draws a line of lineWidth in lineColor along its block end. A row is not interactive and has no hover or selected state in this version."
+      ]
+    },
+    "heading": {
+      "props": {
+        "align": {
+          "values": ["start", "center", "end"],
+          "default": "start"
+        }
+      },
+      "states": {},
+      "tokens": {
+        "content": "color.content.secondary",
+        "typography": "typography.label.md",
+        "minHeight": "size.control.{size}",
+        "paddingInline": "space.content.md"
+      },
+      "rules": [
+        "A column header names the column below it and is exposed as the header of that column. Its text is set in typography and content, aligned by align (end for a column of numbers, like its cells), and wraps.",
+        "Column headers and cells share the geometry of the table size: a block size of at least minHeight with the content centered in the block direction, paddingInline on both inline sides; content that needs more lines keeps the block padding that centers one line in minHeight."
+      ]
+    },
+    "cell": {
+      "props": {
+        "align": {
+          "values": ["start", "center", "end"],
+          "default": "start"
+        },
+        "rowHeader": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "states": {},
+      "tokens": {
+        "content": "color.content.primary",
+        "typography": "typography.body.sm",
+        "minHeight": "size.control.{size}",
+        "paddingInline": "space.content.md"
+      },
+      "rules": [
+        "A cell holds plain text or free content (a Badge, a Link, an Avatar with a name, an IconButton or a Menu for row actions) in typography and content, aligned by align, with the geometry of the column headers. Text wraps; figures have tabular widths so that numbers aligned at the end line up.",
+        "A cell with rowHeader names its row (the first column of a list of people or invoices): it is exposed as the header of that row and looks like the other cells."
+      ]
+    }
+  },
+  "contrast": [
+    {
+      "content": "heading.content",
+      "surface": "header.surface",
+      "minimum": 4.5
+    },
+    {
+      "content": "cell.content",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "footer.content",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    }
+  ],
+  "rules": [
+    "A table shows a set of records in rows and columns so that values can be read and compared along both. Layout is never built with a table. A single record is shown with DataFields; a list of items each made of several lines is a list, not a table.",
+    "The table is a native data table: caption, then header (one row of column headers), body (the rows) and footer (summary rows), each optional except body and caption. caption is required and is the table's accessible name; it is displayed above the table in typographyCaption and captionColor, at the inline start, captionGap above the header, unless hideCaption is true, in which case it is only announced (a heading next to the table already names it).",
+    "The table fills the inline size it is given; columns take the width their content needs, and the remaining space is shared among them. size sets the minimum block size of rows (sm for dense lists, md by default, lg for spacious ones); the typography does not change with size or density.",
+    "When the table is wider than the space it is given, container scrolls inline (scrollable is true) instead of squeezing the columns; the scroll area is then a stop in sequential focus named by caption and draws a focus indicator of focusWidth in focusColor inside its boundary when focus is true from the keyboard, so that keyboard users can scroll it. When the integration limits the table's block size, it also scrolls in the block direction and the header stays visible.",
+    "The table itself is not interactive: rows and cells are never focusable; only the content of cells (links, buttons) and the scroll area receive focus. Sorting, row selection, expandable rows, column resizing, pagination and virtualization are not part of this version; pagination is composed below the table with Pagination.",
+    "In right-to-left text the columns run from right to left and start and end alignments follow the text direction.",
+    "In forced-colors mode lines use the system text color, header and cells the system text color, and the focus indicator of the scroll area stays visible."
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "data-field",
+  "props": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string"
+    },
+    "orientation": {
+      "values": ["vertical", "horizontal"],
+      "default": "vertical"
+    },
+    "size": {
+      "values": ["sm", "md"],
+      "default": "md"
+    },
+    "emptyLabel": {
+      "type": "string",
+      "default": "No value"
+    }
+  },
+  "parts": {
+    "container": {},
+    "label": {},
+    "value": {},
+    "empty": {}
+  },
+  "states": {},
+  "tokens": {
+    "labelColor": "color.content.secondary",
+    "valueColor": "color.content.primary",
+    "emptyColor": "color.content.tertiary",
+    "typographyLabel": "typography.label.{size}",
+    "typography": "typography.body.{size}",
+    "gap": "space.content.xs",
+    "columnGap": "space.content.md",
+    "labelInlineSize": "component.data-field.label-inline-size"
+  },
+  "contrast": [
+    {
+      "content": "labelColor",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "valueColor",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "emptyColor",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    },
+    {
+      "content": "labelColor",
+      "surface": "color.surface.subtle",
+      "minimum": 4.5
+    },
+    {
+      "content": "valueColor",
+      "surface": "color.surface.subtle",
+      "minimum": 4.5
+    },
+    {
+      "content": "emptyColor",
+      "surface": "color.surface.subtle",
+      "minimum": 4.5
+    }
+  ],
+  "rules": [
+    "A data field shows one piece of information about an object as a label and its value (an email, a status, an owner, a creation date) for reading, not for editing. A value the user can change is an entry control in a Field; a disabled or readonly control is never used to display a value.",
+    "label is required and non-empty, set in typographyLabel in labelColor; it wraps. value is set in typography in valueColor and wraps, breaking long words (identifiers, addresses) rather than overflowing.",
+    "value holds the value prop as plain text, or free content given by the integration instead (a Badge, a Link, an Avatar followed by a name, several lines); the content inherits typography and valueColor.",
+    "When value is empty and no content is given, empty shows an em dash in emptyColor, hidden from assistive technology, followed by emptyLabel, which is announced and not displayed; the label never disappears, so that fields keep their place in a layout.",
+    "vertical stacks label above value, aligned at the inline start, gap apart. horizontal places label at the inline start in a column of labelInlineSize and value beside it after columnGap, both aligned on their first baselines; when the field is narrower than twice labelInlineSize, horizontal stacks like vertical. Fields of the same layout therefore align their values without a shared container.",
+    "The relation between label and value is exposed: the field is a group named by its label, and the value follows the label in reading order. A set of fields is laid out by the integration (a grid of columns, a list); the data field adds no margin around itself.",
+    "The data field is not interactive and has no state: it is never focusable and emits no events; interactive content in value (a Link) keeps its own behavior. Copying, editing in place and actions belong to the integration.",
+    "Sizes change the typographies (sm for dense panels and tables of properties, md by default); the typographies do not change with density, the gaps do.",
+    "In forced-colors mode label, value and the em dash use the system text color."
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "formatStatus": "v1",
+  "componentId": "divider",
+  "family": "content",
+  "wave": 5,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Separate two groups of content with a thin line, horizontally or vertically, optionally with a short centered label.",
+    "useCases": [
+      "Between sections of a panel, a card or a form.",
+      "Between groups of items laid out in a row (filters, metadata on one line).",
+      "A labeled break (Or, Today) between two blocks."
+    ],
+    "exclusions": [
+      "Spacing: the layout's gap provides it; the divider adds no margin.",
+      "Resize handles between panes.",
+      "Separators inside Menu and Toolbar: those components keep their own child separator (same roles)."
+    ],
+    "alternatives": ["Space alone (layout gap) or a container edge (card).", "A heading to start a new section."]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/content/divider/contract.json",
+      "sha256": "c528d091324c105136351d69dcdedc90a150b2ae7c9b9d9d04da5e00f1d496cd"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-13",
+      "evidence": "reports/components/divider/"
+    }
+  ],
+  "decisionsTaken": [
+    "Line in color.border.subtle and border.width.default, the roles of the Menu and Toolbar separators and the Tabs line, so that every separator of the system looks the same.",
+    "No margin of its own (the catalog: prefer layout primitives for spacing).",
+    "Optional label on horizontal dividers only, centered, typography.caption.md in color.content.secondary, space.content.sm on both sides.",
+    "Semantic separator by default; decorative hides it from assistive technology (Bits UI Separator)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Contract gate (wave 5).",
+  "implementationNotes": [],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  }
+}

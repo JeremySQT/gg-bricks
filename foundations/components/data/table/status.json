@@ -1,0 +1,80 @@
+{
+  "formatStatus": "v1",
+  "componentId": "table",
+  "family": "data",
+  "wave": 5,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Show a set of records in rows and columns so that values can be read and compared, as a native semantic data table.",
+    "useCases": [
+      "A list of invoices, users or orders with a few columns, numbers aligned at the end.",
+      "Rich cells: a Badge for a status, a Link to the record, an Avatar with a name, a Menu of row actions.",
+      "A totals row in the footer.",
+      "A wide table that scrolls inline on a narrow screen; a table of limited height whose header stays visible."
+    ],
+    "exclusions": [
+      "Sorting, row selection, expandable rows, column resizing or reordering, virtualization, inline editing: separately scoped enhancements (catalog), toward a later DataGrid.",
+      "Pagination inside the table: composed below with Pagination.",
+      "Loading state: composed with Skeleton rows.",
+      "Row hover and clickable rows in v1."
+    ],
+    "alternatives": [
+      "DataField for the properties of a single record.",
+      "A list for items made of several lines of text.",
+      "DataGrid (later) for editing and large data sets."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": ["Badge, Link, Avatar, Menu and Pagination in the examples (content and composition, not dependencies)."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/data/table/contract.json",
+      "sha256": "e08d4f72da75f2dddd4104d78ad181a4b41342f2b40dd3ae9e41ffd4ba0b8c4b"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-13",
+      "evidence": "reports/components/table/"
+    }
+  ],
+  "decisionsTaken": [
+    "Compound contract with children header, body, footer, row, heading (column header cell) and cell, so that cells hold free content (the semantic table of the catalog); no records API in v1 (row fields are not known in advance).",
+    "Header band in color.surface.subtle with a line in color.border.default; lines between body rows in color.border.subtle; no outer frame (the integration places the table in a card when it wants one).",
+    "Headers in typography.label.md and color.content.secondary; cells in typography.body.sm with tabular figures; the typography does not change with size or density.",
+    "size sm, md, lg sets the minimum row height (size.control.{size}: 32, 40, 48 px in standard density); cells center one line and keep that block padding when they wrap.",
+    "Cell inline padding space.content.md (12 px in standard).",
+    "Visible caption by default (typography.heading.xs), hideCaption when a heading next to the table already names it; caption is required as the accessible name.",
+    "Inline overflow scrolls in the table's own area, which becomes a focus stop named by the caption only while it overflows; the header sticks to the top of that area when the integration limits its height.",
+    "A cell with rowHeader is exposed as the header of its row and looks like the other cells.",
+    "No new token."
+  ],
+  "openDecisions": [],
+  "nextAction": "Contract gate (wave 5).",
+  "implementationNotes": [],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  }
+}
