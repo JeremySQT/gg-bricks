@@ -3,7 +3,7 @@
   "componentId": "data-field",
   "family": "data",
   "wave": 5,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Show one piece of information about an object as a label and its value, for reading, in detail panels, summaries and record pages.",
     "useCases": [
@@ -44,7 +44,21 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "DataField contract (option A): required label, value or free content, orientation vertical or horizontal (label column component.data-field.label-inline-size, stacking below twice its width), size sm or md (typography.label.{size} secondary, typography.body.{size} primary), emptyLabel with an em dash; group named by its label; not interactive.",
+      "revision": {
+        "paths": [
+          "foundations/components/data/data-field/contract.json",
+          "foundations/tokens/base/components/data-field.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/data/data-field/contract.json": "3694e46edb1e032e1cf6feb399f557fce412c403b6ba8e33b29e2e952c39a514",
+          "foundations/tokens/base/components/data-field.tokens.json": "2cd9146bb55eb3eaf3db7fb46d8414b0d9b6112d2ba71becd40d61e961d03c2b"
+        }
+      },
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\".",
+      "note": "The user expects most adjustments at the implementation review."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -61,6 +75,12 @@
       "result": "passed (0 contrast failures)",
       "date": "2026-11-13",
       "evidence": "reports/components/data-field/"
+    },
+    {
+      "name": "Wave 5 contract gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
     }
   ],
   "decisionsTaken": [
@@ -73,7 +93,7 @@
     "Option A (user at the wave 5 contract gate, round 1 (2026-11-13): \"Oui, restons sur la A, on verra si on fait évoluer plus tard\"): DataField alone, a group named by its label; a DataList container may come later."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (wave 5, round 2).",
+  "nextAction": "Implementation (ggb-svelte), then the grouped wave 5 implementation gate.",
   "implementationNotes": [],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]

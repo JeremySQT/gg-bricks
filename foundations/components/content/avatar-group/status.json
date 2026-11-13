@@ -3,7 +3,7 @@
   "componentId": "avatar-group",
   "family": "content",
   "wave": 5,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Show the people (or teams) involved in an object as a compact row of overlapping avatars, with a count of the others.",
     "useCases": [
@@ -39,7 +39,21 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "AvatarGroup contract: required label, size and shape passed to its avatars, max (5, counted with the +N box), total, moreLabel; overlap component.avatar-group.overlap.* (a quarter of the size), first avatar on top, ring of border.width.strong in color.surface.default; +N box as an Avatar with initials; list named by label; not interactive.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/avatar-group/contract.json",
+          "foundations/tokens/base/components/avatar-group.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/content/avatar-group/contract.json": "e4b030d7afc0c6fcc20217919f8a4b340f51e80e8c23355a66dd302156ca443b",
+          "foundations/tokens/base/components/avatar-group.tokens.json": "cc5eae261effa3cbf610d4722358aaf2336cd458896ae456c6b9ddf53b4eb2c6"
+        }
+      },
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\".",
+      "note": "The user expects most adjustments at the implementation review."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -56,6 +70,12 @@
       "result": "passed",
       "date": "2026-11-13",
       "evidence": "reports/components/avatar-group/"
+    },
+    {
+      "name": "Wave 5 contract gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
     }
   ],
   "decisionsTaken": [
@@ -68,7 +88,7 @@
     "Exposed as a list named by label; the +N box is named \"3 more\" (count followed by moreLabel)."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (wave 5, round 2).",
+  "nextAction": "Implementation (ggb-svelte), then the grouped wave 5 implementation gate.",
   "implementationNotes": [],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]

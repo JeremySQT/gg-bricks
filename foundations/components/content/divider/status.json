@@ -3,7 +3,7 @@
   "componentId": "divider",
   "family": "content",
   "wave": 5,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Separate two groups of content with a thin line, horizontally or vertically, optionally with a short centered label.",
     "useCases": [
@@ -35,7 +35,21 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Divider contract: orientation, optional centered label (horizontal only, typography.caption.md secondary), decorative; line in color.border.subtle of component.divider.thickness (1 px, round 2); no margin; separator semantics by default.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/divider/contract.json",
+          "foundations/tokens/base/components/divider.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/content/divider/contract.json": "8626902fbd8a41594d64ceafc1ebc311b66f49f7ca407683c4be7b3b8bc579b8",
+          "foundations/tokens/base/components/divider.tokens.json": "b4c75d826694f4a883412746494a37f654865d8d13e3aa82502f6d7c780c00d9"
+        }
+      },
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\".",
+      "note": "The user expects most adjustments at the implementation review."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -52,6 +66,12 @@
       "result": "passed (0 contrast failures)",
       "date": "2026-11-13",
       "evidence": "reports/components/divider/"
+    },
+    {
+      "name": "Wave 5 contract gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
     }
   ],
   "decisionsTaken": [
@@ -62,7 +82,7 @@
     "Thickness tokenized (user at the wave 5 contract gate, round 1 (2026-11-13): \"l'épaisseur du trait devrait être tokenisée, tout en restant sur 1px par défaut. Mais certaines brands pourraient vouloir mettre autre chose\"): component token component.divider.thickness = 1 px (primitive.border.1), so that a brand changes dividers without touching border.width.default (every control border). Menu and Toolbar separators and table lines keep border.width.default."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (wave 5, round 2).",
+  "nextAction": "Implementation (ggb-svelte), then the grouped wave 5 implementation gate.",
   "implementationNotes": [],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]

@@ -3,7 +3,7 @@
   "componentId": "avatar",
   "family": "content",
   "wave": 5,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Represent a person, or an organization, a team or a project, with a picture, their initials or a generic glyph, in a small box of fixed size beside or instead of their name.",
     "useCases": [
@@ -41,7 +41,21 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Avatar contract: name, initials (at most three characters, round 2), src, size xs to xl (component.avatar.size.* 24 to 64 px), shape circle or square (component.avatar.radius.*), decorative; picture shown only once loaded, initials (component.avatar.typography.*, one at xs) or a generic person glyph (component.avatar.icon-size.*) on color.surface.muted with color.content.secondary; image named by name; not interactive; forced colors edge.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/avatar/contract.json",
+          "foundations/tokens/base/components/avatar.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/content/avatar/contract.json": "0aa0ef6d61130eb46e6dbdd81c69e529aac4f20e5d4adae1c6e9482eb2a18882",
+          "foundations/tokens/base/components/avatar.tokens.json": "07b87a1d515d21a64481235195e53d25b7cabefd45ddfecf9f6ded87e82f22e0"
+        }
+      },
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\".",
+      "note": "The user expects most adjustments at the implementation review."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -58,6 +72,12 @@
       "result": "passed (0 contrast failures)",
       "date": "2026-11-13",
       "evidence": "reports/components/avatar/"
+    },
+    {
+      "name": "Wave 5 contract gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
     }
   ],
   "decisionsTaken": [
@@ -75,7 +95,7 @@
     "Round 2: new prop initials (at most three characters, shown as given) replacing the computed initials, for an organization's abbreviation and for the +N box of AvatarGroup."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (wave 5, round 2).",
+  "nextAction": "Implementation (ggb-svelte), then the grouped wave 5 implementation gate.",
   "implementationNotes": [],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]

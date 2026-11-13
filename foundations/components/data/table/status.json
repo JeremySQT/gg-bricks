@@ -3,7 +3,7 @@
   "componentId": "table",
   "family": "data",
   "wave": 5,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Show a set of records in rows and columns so that values can be read and compared, as a native semantic data table.",
     "useCases": [
@@ -41,7 +41,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Table contract: required caption, hideCaption, size sm/md/lg (minimum row height size.control.{size}), columnLines (round 2); children header, body, footer, row, heading, cell (align, rowHeader); frame of border.width.default in color.border.subtle with radius.container, header band color.surface.subtle, every line color.border.subtle (round 2), headers typography.label.md secondary, cells typography.body.sm tabular; inline scroll area focusable while it overflows, sticky header; always framed (recommendation accepted).",
+      "revision": {
+        "paths": ["foundations/components/data/table/contract.json"],
+        "sha256": {
+          "foundations/components/data/table/contract.json": "0e9cb01b745595a9dadc0e5745efd404e1eb2cbb3aa66f00b207c386737ad096"
+        }
+      },
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\".",
+      "note": "The user expects most adjustments at the implementation review."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -58,6 +68,12 @@
       "result": "passed (0 contrast failures)",
       "date": "2026-11-13",
       "evidence": "reports/components/table/"
+    },
+    {
+      "name": "Wave 5 contract gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
     }
   ],
   "decisionsTaken": [
@@ -73,7 +89,7 @@
     "Optional columnLines (false by default): vertical lines between columns, as in two of the references."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (wave 5, round 2).",
+  "nextAction": "Implementation (ggb-svelte), then the grouped wave 5 implementation gate.",
   "implementationNotes": [],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
