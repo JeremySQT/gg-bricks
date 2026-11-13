@@ -1,0 +1,47 @@
+/*
+ * AvatarGroup structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * A row of avatars, each sliding under the previous one by the overlap of the size and surrounded by a ring in the
+ * color of the surface, so that neighbours stay distinct. The first avatar is on top.
+ */
+@layer ggb {
+  .ggb-avatar-group {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    vertical-align: middle;
+    isolation: isolate;
+    margin: 0;
+    /* No padding for the ring: it is drawn outside the avatars, so the group aligns with the content beside it. */
+    padding: 0;
+    list-style: none;
+  }
+
+  .ggb-avatar-group__item {
+    position: relative;
+    display: flex;
+    flex: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ggb-avatar-group__item + .ggb-avatar-group__item {
+    margin-inline-start: calc(-1 * var(--ggb-avatar-group-overlap));
+  }
+
+  .ggb-avatar-group__item > .ggb-avatar {
+    box-shadow: 0 0 0 var(--ggb-avatar-group-ringWidth) var(--ggb-avatar-group-ringColor);
+  }
+
+  @media (forced-colors: active) {
+    .ggb-avatar-group__item > .ggb-avatar {
+      box-shadow: none;
+    }
+    /* Shadows are not painted: the ring becomes an outline in the system background color around the item. */
+    .ggb-avatar-group[data-shape='circle'] .ggb-avatar-group__item {
+      border-radius: 50%;
+    }
+    .ggb-avatar-group__item {
+      outline: var(--ggb-avatar-group-ringWidth) solid Canvas;
+    }
+  }
+}

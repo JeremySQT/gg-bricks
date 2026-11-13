@@ -1,0 +1,69 @@
+/*
+ * Avatar structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * The root element is the container part: a fixed square box that clips the picture to its shape and paints the
+ * fallback (initials or the generic glyph) on its surface.
+ */
+@layer ggb {
+  .ggb-avatar {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    inline-size: var(--ggb-avatar-size);
+    block-size: var(--ggb-avatar-size);
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--ggb-avatar-circleRadius);
+    background-color: var(--ggb-avatar-surface);
+    color: var(--ggb-avatar-content);
+    /* Transparent edge: invisible normally, painted by the system in forced-colors mode. */
+    outline: var(--ggb-avatar-borderWidth) solid transparent;
+    outline-offset: calc(-1 * var(--ggb-avatar-borderWidth));
+    user-select: none;
+  }
+
+  .ggb-avatar[data-shape='square'] {
+    border-radius: var(--ggb-avatar-squareRadius);
+  }
+
+  .ggb-avatar__image {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .ggb-avatar__initials {
+    display: block;
+    font: var(--ggb-avatar-typography);
+    letter-spacing: var(--ggb-avatar-typography-letterSpacing, normal);
+    font-feature-settings: var(--ggb-avatar-typography-fontFeatureSettings, normal);
+    white-space: nowrap;
+  }
+
+  /* Centered on the capital height: the box of the initials is trimmed to cap height and baseline. */
+  @supports (text-box: trim-both cap alphabetic) {
+    .ggb-avatar__initials {
+      text-box: trim-both cap alphabetic;
+    }
+  }
+
+  .ggb-avatar__icon {
+    display: block;
+    flex: none;
+    inline-size: var(--ggb-avatar-iconSize);
+    block-size: var(--ggb-avatar-iconSize);
+  }
+
+  @media (forced-colors: active) {
+    .ggb-avatar {
+      outline-color: CanvasText;
+      color: CanvasText;
+    }
+  }
+}

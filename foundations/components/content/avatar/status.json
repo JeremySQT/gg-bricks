@@ -34,9 +34,30 @@
     "tokens": ["foundations/tokens/base/components/avatar.tokens.json"],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/avatar",
+      "files": [
+        "packages/svelte/src/components/avatar/Avatar.svelte",
+        "packages/svelte/src/components/avatar/types.ts",
+        "packages/svelte/src/components/avatar/initials.ts",
+        "packages/svelte/src/components/avatar/avatar.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (Avatar: loading status of the picture)"
+      },
+      "report": "reports/components/avatar/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/avatar",
+      "preview": "dist/previews/avatar.html (npm run build && npm run build:preview avatar)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/data-structure.test.ts"],
+      "browser": ["tests/browser/avatar.spec.ts"],
+      "evidence": "reports/components/avatar/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -78,6 +99,22 @@
       "result": "passed",
       "date": "2026-11-13",
       "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Browser tests/browser/avatar.spec.ts (Chromium), also with a CI-like font set (no system Inter)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "reports/components/avatar/svelte/"
+    },
+    {
+      "name": "npm run build:preview avatar",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-13"
     }
   ],
   "decisionsTaken": [
@@ -92,11 +129,18 @@
     "The fallback stays visible while the picture loads; the picture replaces it once loaded (no fade in v1). Bits UI Avatar provides the loading status.",
     "Neutral avatars only (user at the wave 5 contract gate, round 1 (2026-11-13): \"Reste sur des avatars neutre, c'est à chaque application de faire ensuite la logique désirée\"): colors, generated portraits or illustrations belong to the application (it can pass a picture or set the colors).",
     "An avatar that opens a menu is wrapped by the integration in a button or another interactive area; no slot in Button or IconButton (user at the wave 5 contract gate, round 1 (2026-11-13): \"Plutôt bouton ... A toi de suivre ta recommandation\"); shown as a documentation example.",
-    "Round 2: new prop initials (at most three characters, shown as given) replacing the computed initials, for an organization's abbreviation and for the +N box of AvatarGroup."
+    "Round 2: new prop initials (at most three characters, shown as given) replacing the computed initials, for an organization's abbreviation and for the +N box of AvatarGroup.",
+    "Implementation: Svelte API: role img named by name on the root span; decorative or nameless avatars get aria-hidden; consumer attributes go to the root after Bits UI's."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (ggb-svelte), then the grouped wave 5 implementation gate.",
-  "implementationNotes": [],
+  "nextAction": "Wave 5 implementation gate (grouped review).",
+  "implementationNotes": [
+    "Exports Avatar and the types AvatarProps, AvatarImageStatus.",
+    "Bits UI Avatar reports the loading status; ggbrick keeps it per source (a new src starts again from loading, since Bits UI does not reload once a picture has loaded) and renders the picture only without Bits UI's fallback part: the initials or the glyph are drawn while imageStatus is not loaded.",
+    "Initials: Intl.Segmenter graphemes (fallback to code points), leading punctuation skipped, words without letters or digits ignored, toLocaleUpperCase; initials.ts in the component folder.",
+    "The generic glyph is Phosphor user (regular) inline, attributed in the markup.",
+    "Initials are centered on their capital height with text-box trim (browsers without it center the line box)."
+  ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
   }

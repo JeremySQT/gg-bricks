@@ -1,0 +1,68 @@
+/*
+ * Divider structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * The line is a border, so that forced-colors mode paints it in the system color; the divider adds no margin.
+ */
+@layer ggb {
+  .ggb-divider {
+    box-sizing: border-box;
+    flex: none;
+    margin: 0;
+    padding: 0;
+    border: 0 solid var(--ggb-divider-lineColor);
+  }
+
+  .ggb-divider[data-orientation='horizontal'] {
+    display: block;
+    inline-size: auto;
+    align-self: stretch;
+    block-size: 0;
+    border-block-start-width: var(--ggb-divider-thickness);
+  }
+
+  /* In a row the layout stretches it to the row's block size; in running text it spans the line box. */
+  .ggb-divider[data-orientation='vertical'] {
+    display: inline-block;
+    align-self: stretch;
+    inline-size: 0;
+    block-size: auto;
+    min-block-size: 1lh;
+    vertical-align: top;
+    border-inline-start-width: var(--ggb-divider-thickness);
+  }
+
+  .ggb-divider[data-labelled] {
+    display: flex;
+    align-items: center;
+    gap: var(--ggb-divider-labelGap);
+    block-size: auto;
+    border-width: 0;
+    font: var(--ggb-divider-typography);
+    letter-spacing: var(--ggb-divider-typography-letterSpacing, normal);
+    color: var(--ggb-divider-labelColor);
+  }
+
+  .ggb-divider[data-labelled]::before,
+  .ggb-divider[data-labelled]::after {
+    content: '';
+    flex: 1 1 0;
+    min-inline-size: 0;
+    border-block-start: var(--ggb-divider-thickness) solid var(--ggb-divider-lineColor);
+  }
+
+  .ggb-divider__label {
+    flex: none;
+    max-inline-size: 100%;
+    white-space: nowrap;
+  }
+
+  @media (forced-colors: active) {
+    .ggb-divider,
+    .ggb-divider[data-labelled]::before,
+    .ggb-divider[data-labelled]::after {
+      border-color: CanvasText;
+    }
+    .ggb-divider[data-labelled] {
+      color: CanvasText;
+    }
+  }
+}

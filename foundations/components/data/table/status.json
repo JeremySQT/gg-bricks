@@ -34,9 +34,35 @@
     "tokens": [],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/table",
+      "files": [
+        "packages/svelte/src/components/table/Table.svelte",
+        "packages/svelte/src/components/table/TableHeader.svelte",
+        "packages/svelte/src/components/table/TableBody.svelte",
+        "packages/svelte/src/components/table/TableFooter.svelte",
+        "packages/svelte/src/components/table/TableRow.svelte",
+        "packages/svelte/src/components/table/TableHeading.svelte",
+        "packages/svelte/src/components/table/TableCell.svelte",
+        "packages/svelte/src/components/table/types.ts",
+        "packages/svelte/src/components/table/table.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (native table)"
+      },
+      "report": "reports/components/table/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/table",
+      "preview": "dist/previews/table.html (npm run build && npm run build:preview table)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/data-structure.test.ts"],
+      "browser": ["tests/browser/table.spec.ts"],
+      "evidence": "reports/components/table/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -74,6 +100,22 @@
       "result": "passed",
       "date": "2026-11-13",
       "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Browser tests/browser/table.spec.ts (Chromium), also with a CI-like font set (no system Inter)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "reports/components/table/svelte/"
+    },
+    {
+      "name": "npm run build:preview table",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-13"
     }
   ],
   "decisionsTaken": [
@@ -86,12 +128,31 @@
     "A cell with rowHeader is exposed as the header of its row and looks like the other cells.",
     "No new token.",
     "Round 2 style (user at the wave 5 contract gate, round 1 (2026-11-13), with three reference screenshots: \"J'aime bien l'entête en gris léger avec des bordures en gris léger également\"): header band in color.surface.subtle; every line in color.border.subtle (header, rows, footer); a frame of border.width.default in color.border.subtle with radius.container corners around the table (two of the three references are framed).",
-    "Optional columnLines (false by default): vertical lines between columns, as in two of the references."
+    "Optional columnLines (false by default): vertical lines between columns, as in two of the references.",
+    "Implementation: Svelte API: compound children as components (TableHeader, TableBody, TableFooter, TableRow, TableHeading, TableCell); align on cells and headings; rowHeader renders a th scope row.",
+    "Implementation: Contract amendments recorded in pendingChanges (paddingBlock, columns on one line)."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (ggb-svelte), then the grouped wave 5 implementation gate.",
-  "implementationNotes": [],
+  "nextAction": "Wave 5 implementation gate (grouped review).",
+  "implementationNotes": [
+    "Exports Table, TableHeader, TableBody, TableFooter, TableRow, TableHeading and TableCell.",
+    "The native caption is visually hidden and names the table; the visible caption above the frame is a copy hidden from assistive technology, so that it sits outside the frame.",
+    "The frame and the focus indicator are drawn by ::after on a frame wrapper, above the scroll area and the sticky header; the scroll area clips the table to the rounded corners.",
+    "Lines are inset box-shadows (rows keep minHeight whether they draw a line or not), replaced by borders in forced colors.",
+    "The scroll area becomes role region, named by the caption, with tabindex 0, only while it overflows (ResizeObserver on the area and the table).",
+    "The table is max-content wide with a minimum of 100%: columns keep their content on one line and the area scrolls."
+  ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-13",
+      "change": "Contract facts found during implementation: (1) role paddingBlock (space.content.sm) on heading and cell; the block padding is reduced where needed so that one line fits in minHeight (sm), and content taller than one line grows the row and keeps that padding (with the padding that centers one line in minHeight, an Avatar or two lines in an md row would get 9.5 px above and below, and the sm row could not hold an sm Avatar). (2) Columns take the width of their content on one line and the table scrolls instead of squeezing them; text wraps where the integration limits a column's width (the first rendering wrapped identifiers such as SO-101 at their hyphen in a narrow column). To re-present at the wave 5 implementation gate.",
+      "sha256": {
+        "foundations/components/data/table/contract.json": "aa1316d12934ecbefcef636343f67d030282e04c55f9ccfb8d1659a8762ce9cc"
+      },
+      "review": "Wave 5 implementation gate"
+    }
+  ]
 }

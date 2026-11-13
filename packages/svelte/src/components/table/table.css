@@ -1,0 +1,183 @@
+/*
+ * Table structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * Root: the visible caption, then the frame. The frame holds the scroll area (container, which clips the table to
+ * its rounded corners) and draws the edge and the focus indicator above it, so that neither scrolls nor hides under
+ * the sticky header. Lines are inset shadows, so that a row is minHeight high whether it draws a line or not; in
+ * forced-colors mode, where shadows are not painted, they become borders.
+ */
+@layer ggb {
+  /* A column: when the integration limits the table's block size, the frame takes what the caption leaves. */
+  .ggb-table {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+    margin: 0;
+  }
+
+  .ggb-table__caption {
+    margin-block-end: var(--ggb-table-captionGap);
+    font: var(--ggb-table-typographyCaption);
+    letter-spacing: var(--ggb-table-typographyCaption-letterSpacing, normal);
+    color: var(--ggb-table-captionColor);
+    text-align: start;
+  }
+
+  .ggb-table__frame {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-block-size: 0;
+    border-radius: var(--ggb-table-radius);
+  }
+
+  .ggb-table__frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border: var(--ggb-table-frameWidth) solid var(--ggb-table-frameColor);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .ggb-table__frame:has(> .ggb-table__container:focus-visible)::after {
+    outline: var(--ggb-table-focusWidth) solid var(--ggb-table-focusColor);
+    outline-offset: calc(-1 * var(--ggb-table-focusWidth));
+  }
+
+  .ggb-table__container {
+    flex: 1 1 auto;
+    min-block-size: 0;
+    overflow: auto;
+    border-radius: inherit;
+    outline: none;
+  }
+
+  /*
+   * Columns take the width of their content on one line, and share the remaining space when the table is narrower
+   * than its frame; wider, the container scrolls instead of squeezing them. Text wraps where the integration limits
+   * a column's width.
+   */
+  .ggb-table__table {
+    inline-size: max-content;
+    min-inline-size: 100%;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .ggb-table__hidden {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .ggb-table__heading,
+  .ggb-table__cell {
+    --_line-block: 0 0 transparent;
+    --_line-inline: 0 0 transparent;
+    box-sizing: border-box;
+    block-size: var(--_min-height);
+    padding-inline: var(--_padding-inline);
+    padding-block: min(var(--_padding-block), (var(--_min-height) - 1lh) / 2);
+    vertical-align: middle;
+    text-align: start;
+    box-shadow: var(--_line-block), var(--_line-inline);
+  }
+
+  .ggb-table__heading {
+    --_min-height: var(--ggb-table-heading-minHeight);
+    --_padding-inline: var(--ggb-table-heading-paddingInline);
+    --_padding-block: var(--ggb-table-heading-paddingBlock);
+    font: var(--ggb-table-heading-typography);
+    letter-spacing: var(--ggb-table-heading-typography-letterSpacing, normal);
+    color: var(--ggb-table-heading-content);
+  }
+
+  .ggb-table__cell {
+    --_min-height: var(--ggb-table-cell-minHeight);
+    --_padding-inline: var(--ggb-table-cell-paddingInline);
+    --_padding-block: var(--ggb-table-cell-paddingBlock);
+    font: var(--ggb-table-cell-typography);
+    letter-spacing: var(--ggb-table-cell-typography-letterSpacing, normal);
+    font-variant-numeric: tabular-nums;
+    color: var(--ggb-table-cell-content);
+  }
+
+  .ggb-table__heading[data-align='center'],
+  .ggb-table__cell[data-align='center'] {
+    text-align: center;
+  }
+
+  .ggb-table__heading[data-align='end'],
+  .ggb-table__cell[data-align='end'] {
+    text-align: end;
+  }
+
+  /* Header: a light band with a line along its block end, kept at the top of the scroll area. */
+  .ggb-table__header :is(.ggb-table__heading, .ggb-table__cell) {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 1;
+    background-color: var(--ggb-table-header-surface);
+    --_line-block: inset 0 calc(-1 * var(--ggb-table-header-lineWidth)) 0 0 var(--ggb-table-header-lineColor);
+  }
+
+  /* Body: a line under every row but the last. */
+  .ggb-table__body > .ggb-table__row:not(:last-child) > :is(.ggb-table__heading, .ggb-table__cell) {
+    --_line-block: inset 0 calc(-1 * var(--ggb-table-row-lineWidth)) 0 0 var(--ggb-table-row-lineColor);
+  }
+
+  /* Footer: summary rows set in the footer typography, separated from the body by a line. */
+  .ggb-table__footer .ggb-table__cell {
+    font: var(--ggb-table-footer-typography);
+    letter-spacing: var(--ggb-table-footer-typography-letterSpacing, normal);
+    color: var(--ggb-table-footer-content);
+  }
+
+  .ggb-table__footer > .ggb-table__row:first-child > :is(.ggb-table__heading, .ggb-table__cell) {
+    --_line-block: inset 0 var(--ggb-table-footer-lineWidth) 0 0 var(--ggb-table-footer-lineColor);
+  }
+
+  /* Column lines along the inline end of every cell but the last of its row. */
+  .ggb-table[data-column-lines] .ggb-table__row > :is(.ggb-table__heading, .ggb-table__cell):not(:last-child) {
+    --_line-inline: inset calc(-1 * var(--ggb-table-row-lineWidth)) 0 0 0 var(--ggb-table-row-lineColor);
+  }
+
+  .ggb-table[data-column-lines]:dir(rtl) .ggb-table__row > :is(.ggb-table__heading, .ggb-table__cell):not(:last-child) {
+    --_line-inline: inset var(--ggb-table-row-lineWidth) 0 0 0 var(--ggb-table-row-lineColor);
+  }
+
+  @media (forced-colors: active) {
+    .ggb-table__heading,
+    .ggb-table__cell {
+      box-shadow: none;
+      color: CanvasText;
+    }
+    .ggb-table__caption {
+      color: CanvasText;
+    }
+    .ggb-table__header :is(.ggb-table__heading, .ggb-table__cell) {
+      border-block-end: var(--ggb-table-header-lineWidth) solid CanvasText;
+    }
+    .ggb-table__body > .ggb-table__row:not(:last-child) > :is(.ggb-table__heading, .ggb-table__cell) {
+      border-block-end: var(--ggb-table-row-lineWidth) solid CanvasText;
+    }
+    .ggb-table__footer > .ggb-table__row:first-child > :is(.ggb-table__heading, .ggb-table__cell) {
+      border-block-start: var(--ggb-table-footer-lineWidth) solid CanvasText;
+    }
+    .ggb-table[data-column-lines] .ggb-table__row > :is(.ggb-table__heading, .ggb-table__cell):not(:last-child) {
+      border-inline-end: var(--ggb-table-row-lineWidth) solid CanvasText;
+    }
+    .ggb-table__frame::after {
+      border-color: CanvasText;
+    }
+    .ggb-table__frame:has(> .ggb-table__container:focus-visible)::after {
+      outline-color: Highlight;
+    }
+  }
+}

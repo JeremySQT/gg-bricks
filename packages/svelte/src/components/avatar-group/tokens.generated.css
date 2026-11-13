@@ -1,0 +1,22 @@
+/* Generated token bindings from the avatar-group contract. Do not edit. */
+@layer ggb {
+.ggb-avatar-group[data-size="xs"] {
+  --ggb-avatar-group-overlap: var(--ggb-component-avatar-group-overlap-xs);
+}
+.ggb-avatar-group[data-size="sm"] {
+  --ggb-avatar-group-overlap: var(--ggb-component-avatar-group-overlap-sm);
+}
+.ggb-avatar-group[data-size="md"] {
+  --ggb-avatar-group-overlap: var(--ggb-component-avatar-group-overlap-md);
+}
+.ggb-avatar-group[data-size="lg"] {
+  --ggb-avatar-group-overlap: var(--ggb-component-avatar-group-overlap-lg);
+}
+.ggb-avatar-group[data-size="xl"] {
+  --ggb-avatar-group-overlap: var(--ggb-component-avatar-group-overlap-xl);
+}
+.ggb-avatar-group {
+  --ggb-avatar-group-ringColor: var(--ggb-color-surface-default);
+  --ggb-avatar-group-ringWidth: var(--ggb-border-width-strong);
+}
+}

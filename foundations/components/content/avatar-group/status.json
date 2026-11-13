@@ -32,9 +32,29 @@
     "tokens": ["foundations/tokens/base/components/avatar-group.tokens.json"],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/avatar-group",
+      "files": [
+        "packages/svelte/src/components/avatar-group/AvatarGroup.svelte",
+        "packages/svelte/src/components/avatar-group/types.ts",
+        "packages/svelte/src/components/avatar-group/avatar-group.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used"
+      },
+      "report": "reports/components/avatar-group/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/avatar-group",
+      "preview": "dist/previews/avatar-group.html (npm run build && npm run build:preview avatar-group)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/data-structure.test.ts"],
+      "browser": ["tests/browser/avatar-group.spec.ts"],
+      "evidence": "reports/components/avatar-group/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -76,6 +96,22 @@
       "result": "passed",
       "date": "2026-11-13",
       "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Browser tests/browser/avatar-group.spec.ts (Chromium), also with a CI-like font set (no system Inter)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "reports/components/avatar-group/svelte/"
+    },
+    {
+      "name": "npm run build:preview avatar-group",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-13"
     }
   ],
   "decisionsTaken": [
@@ -85,11 +121,17 @@
     "Ring of border.width.strong (2 px) in color.surface.default around each avatar; on another surface the integration sets the ring color (custom property). A cut-out mask was considered: it works on any backdrop but is harder to reproduce in Figma and for square shapes.",
     "max 5 by default and counted with the +N box (the group never shows more than max boxes, as in common libraries); total for a number known by the application beyond the avatars given.",
     "The +N box is an Avatar whose new initials prop holds the text, so that it shares the Avatar typography and colors without binding Avatar tokens; capped at +99.",
-    "Exposed as a list named by label; the +N box is named \"3 more\" (count followed by moreLabel)."
+    "Exposed as a list named by label; the +N box is named \"3 more\" (count followed by moreLabel).",
+    "Implementation: Svelte API: the people are an `avatars` array (name, src, initials) rather than Avatar children, so that max, total and the +N box are known during server rendering; the contract part avatars accepts Avatar, which the group renders."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (ggb-svelte), then the grouped wave 5 implementation gate.",
-  "implementationNotes": [],
+  "nextAction": "Wave 5 implementation gate (grouped review).",
+  "implementationNotes": [
+    "Exports AvatarGroup and the types AvatarGroupProps, AvatarGroupItem.",
+    "The first avatar is on top through decreasing z-index on the items (isolated stacking context); the +N box is last and lowest.",
+    "The ring is a box-shadow outside each avatar; the group has no padding for it, so that it aligns with neighbouring content. In forced colors the ring becomes a Canvas outline on the item.",
+    "The ring color is the custom property --ggb-avatar-group-ringColor, which an integration sets on the group for another surface."
+  ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
   }

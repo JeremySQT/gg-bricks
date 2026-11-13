@@ -37,9 +37,29 @@
     "tokens": ["foundations/tokens/base/components/data-field.tokens.json"],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/data-field",
+      "files": [
+        "packages/svelte/src/components/data-field/DataField.svelte",
+        "packages/svelte/src/components/data-field/types.ts",
+        "packages/svelte/src/components/data-field/data-field.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (no native semantics to borrow)"
+      },
+      "report": "reports/components/data-field/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/data-field",
+      "preview": "dist/previews/data-field.html (npm run build && npm run build:preview data-field)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/data-structure.test.ts"],
+      "browser": ["tests/browser/data-field.spec.ts"],
+      "evidence": "reports/components/data-field/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -81,6 +101,22 @@
       "result": "passed",
       "date": "2026-11-13",
       "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Browser tests/browser/data-field.spec.ts (Chromium), also with a CI-like font set (no system Inter)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "reports/components/data-field/svelte/"
+    },
+    {
+      "name": "npm run build:preview data-field",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-13"
     }
   ],
   "decisionsTaken": [
@@ -90,11 +126,16 @@
     "Empty value: an em dash in color.content.tertiary, hidden from assistive technology, with emptyLabel (No value) announced instead.",
     "Semantics in v1: the field is a group named by its label (works anywhere, without a parent); see the open question on a description list container.",
     "No new semantic role.",
-    "Option A (user at the wave 5 contract gate, round 1 (2026-11-13): \"Oui, restons sur la A, on verra si on fait évoluer plus tard\"): DataField alone, a group named by its label; a DataList container may come later."
+    "Option A (user at the wave 5 contract gate, round 1 (2026-11-13): \"Oui, restons sur la A, on verra si on fait évoluer plus tard\"): DataField alone, a group named by its label; a DataList container may come later.",
+    "Implementation: Svelte API: `children` replaces value; the group is named through aria-labelledby on the visible label."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (ggb-svelte), then the grouped wave 5 implementation gate.",
-  "implementationNotes": [],
+  "nextAction": "Wave 5 implementation gate (grouped review).",
+  "implementationNotes": [
+    "Exports DataField and the type DataFieldProps.",
+    "Horizontal layout without a container query (custom properties are not allowed in container conditions): a wrapping flex line where the label is min(100%, max(labelInlineSize, (2 × labelInlineSize − 100%) × 999)) wide, so it is labelInlineSize from twice that width and the whole line below; the value then wraps under it.",
+    "Rich values are the `children` snippet; value is plain text."
+  ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
   }

@@ -1,0 +1,82 @@
+/*
+ * DataField structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * vertical: label above value. horizontal: label in a column of labelInlineSize and value beside it, aligned on
+ * their first baselines; below twice labelInlineSize the label takes the whole line and the value wraps under it.
+ */
+@layer ggb {
+  .ggb-data-field {
+    box-sizing: border-box;
+    display: block;
+    min-inline-size: 0;
+    margin: 0;
+  }
+
+  .ggb-data-field__layout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ggb-data-field-gap);
+  }
+
+  .ggb-data-field__label {
+    min-inline-size: 0;
+    font: var(--ggb-data-field-typographyLabel);
+    letter-spacing: var(--ggb-data-field-typographyLabel-letterSpacing, normal);
+    color: var(--ggb-data-field-labelColor);
+    overflow-wrap: break-word;
+  }
+
+  .ggb-data-field__value {
+    min-inline-size: 0;
+    font: var(--ggb-data-field-typography);
+    letter-spacing: var(--ggb-data-field-typography-letterSpacing, normal);
+    color: var(--ggb-data-field-valueColor);
+    overflow-wrap: anywhere;
+  }
+
+  /*
+   * Horizontal: one flex line that wraps. The label is labelInlineSize wide while the field is at least twice
+   * that wide, and the whole line below it (a huge negative or positive value bounded by min and max), so the value
+   * wraps under it.
+   */
+  .ggb-data-field[data-orientation='horizontal'] .ggb-data-field__layout {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    row-gap: var(--ggb-data-field-gap);
+    column-gap: var(--ggb-data-field-columnGap);
+  }
+
+  .ggb-data-field[data-orientation='horizontal'] .ggb-data-field__label {
+    flex: none;
+    inline-size: min(
+      100%,
+      max(var(--ggb-data-field-labelInlineSize), (2 * var(--ggb-data-field-labelInlineSize) - 100%) * 999)
+    );
+  }
+
+  .ggb-data-field[data-orientation='horizontal'] .ggb-data-field__value {
+    flex: 1 1 0;
+  }
+
+  .ggb-data-field__empty {
+    color: var(--ggb-data-field-emptyColor);
+  }
+
+  .ggb-data-field__hidden {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (forced-colors: active) {
+    .ggb-data-field__label,
+    .ggb-data-field__value,
+    .ggb-data-field__empty {
+      color: CanvasText;
+    }
+  }
+}
