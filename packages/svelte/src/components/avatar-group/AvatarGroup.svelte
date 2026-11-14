@@ -48,12 +48,12 @@
   data-shape={shape}
 >
   {#each visible as person, index (index)}
-    <li class="ggb-avatar-group__item" style:z-index={visible.length + 1 - index}>
+    <li class="ggb-avatar-group__item">
       <Avatar name={person.name} src={person.src} initials={person.initials} {size} {shape} />
     </li>
   {/each}
   {#if others > 0}
-    <li class="ggb-avatar-group__item ggb-avatar-group__overflow" style:z-index={0}>
+    <li class="ggb-avatar-group__item ggb-avatar-group__overflow">
       <Avatar name={`${others} ${word}`} initials={`+${Math.min(others, 99)}`} {size} {shape} />
     </li>
   {/if}

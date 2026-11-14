@@ -1,7 +1,8 @@
 /*
  * AvatarGroup structure. Values come from tokens.generated.css; this file holds structural literals only.
- * A row of avatars, each sliding under the previous one by the overlap of the size and surrounded by a ring in the
- * color of the surface, so that neighbours stay distinct. The first avatar is on top.
+ * A row of avatars, each overlapping the previous one by the overlap of the size and drawn above it (document order),
+ * surrounded by a ring in the color of the surface so that neighbours stay distinct: every avatar keeps its leading
+ * side whole and the +N box, last, is never covered.
  */
 @layer ggb {
   .ggb-avatar-group {

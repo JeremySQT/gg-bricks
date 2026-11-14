@@ -133,7 +133,8 @@
     "Semantics in v1: the field is a group named by its label (works anywhere, without a parent); see the open question on a description list container.",
     "No new semantic role.",
     "Option A (user at the wave 5 contract gate, round 1 (2026-11-13): \"Oui, restons sur la A, on verra si on fait évoluer plus tard\"): DataField alone, a group named by its label; a DataList container may come later.",
-    "Implementation: Svelte API: `children` replaces value; the group is named through aria-labelledby on the visible label."
+    "Implementation: Svelte API: `children` replaces value; the group is named through aria-labelledby on the visible label.",
+    "Round 2: label in color.content.tertiary (user request for more contrast between label and value); contrast pairs on default and subtle unchanged and passing."
   ],
   "openDecisions": [],
   "nextAction": "Wave 5 implementation gate (grouped review).",
@@ -144,5 +145,15 @@
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-14",
+      "change": "Round 2 (user at the wave 5 implementation review, round 1 (2026-11-14): \"pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? Ça manque un peu de contraste entre le contenu et le label\"): labelColor becomes color.content.tertiary (#5f646a in base light), the lightest content role that stays accessible: at least 5.1:1 on the default, subtle, canvas and raised surfaces in every context (secondary was 8.3:1 at least). On color.surface.muted it falls to 3.4:1 in dark, so labels are not placed on muted surfaces (documentation).",
+      "sha256": {
+        "foundations/components/data/data-field/contract.json": "b23cd375d6aa7a77e1e620d2780d829a0e3a77d36d90286329d7d9bbc514302c"
+      },
+      "review": "Wave 5 implementation gate, round 2"
+    }
+  ]
 }

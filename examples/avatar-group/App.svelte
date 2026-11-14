@@ -34,9 +34,9 @@
     <p class="eyebrow">ggbrick · implementation review</p>
     <h1>AvatarGroup</h1>
     <p class="lede">
-      The people (or teams) involved in an object as a row of overlapping avatars, the first on top, each with a ring in
-      the surface color, then a +N box for the others. max counts the +N box; total is a number the application knows
-      beyond the avatars it passes. Not interactive.
+      The people (or teams) involved in an object as a row of overlapping avatars, each drawn over the previous one,
+      with a ring in the surface color, then a +N box for the others. max counts the +N box; total is a number the
+      application knows beyond the avatars it passes. Not interactive.
     </p>
     <div class="controls" role="group" aria-label="Context">
       <label
@@ -139,29 +139,6 @@
     </div>
   </section>
 
-  <section id="stacking" aria-labelledby="stacking-title">
-    <h2 id="stacking-title">Stacking (question for the review)</h2>
-    <p>
-      The contract puts the first avatar on top: the leading side of every following avatar, and the plus sign of the +N
-      box, slide under the previous one. The alternative puts each avatar on top of the previous one: every avatar keeps
-      its leading side and the +N box is whole, the trailing side of each avatar slides under the next.
-    </p>
-    <div class="grid">
-      <div class="panel stack">
-        <p class="panel-title">A · first on top (contract)</p>
-        {#each ['sm', 'md', 'lg'] as const as s (s)}
-          <AvatarGroup id={`stack-a-${s}`} label="Team" avatars={people.slice(0, 6)} size={s} />
-        {/each}
-      </div>
-      <div class="panel stack last-on-top">
-        <p class="panel-title">B · each avatar on top of the previous one</p>
-        {#each ['sm', 'md', 'lg'] as const as s (s)}
-          <AvatarGroup id={`stack-b-${s}`} label="Team" avatars={people.slice(0, 6)} size={s} />
-        {/each}
-      </div>
-    </div>
-  </section>
-
   <section id="surfaces" aria-labelledby="surfaces-title">
     <h2 id="surfaces-title">Ring and surfaces</h2>
     <p>The ring is the default surface. On another surface the integration sets the ring color to that surface.</p>
@@ -218,10 +195,6 @@
   }
   .size {
     inline-size: 2rem;
-  }
-  /* Review only: option B of the stacking question (document order, each avatar above the previous one). */
-  .last-on-top :global(.ggb-avatar-group__item) {
-    z-index: auto !important;
   }
   .subtle {
     background: var(--ggb-color-surface-subtle);

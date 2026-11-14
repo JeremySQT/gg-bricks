@@ -19,7 +19,7 @@ test.beforeEach(async ({ page }) => {
   await page.evaluate(() => document.fonts.ready);
 });
 
-test('overlap, ring, size and shape follow the tokens in every representative context; the first avatar is on top', async ({
+test('overlap, ring, size and shape follow the tokens in every representative context; each avatar is drawn above the previous one', async ({
   page
 }) => {
   const report = new ComputedReport();
@@ -44,7 +44,7 @@ test('overlap, ring, size and shape follow the tokens in every representative co
             width: first.width,
             overlap: first.right - second.left,
             shadow: getComputedStyle(avatars[1]).boxShadow,
-            firstOnTop: top === avatars[0]
+            secondOnTop: top === avatars[1]
           };
         });
         const side = px(t[`component.avatar.size.${size}`]);
@@ -53,7 +53,7 @@ test('overlap, ring, size and shape follow the tokens in every representative co
         expect(m.width).toBe(side);
         expect(m.overlap).toBeCloseTo(overlap, 3);
         expect(m.shadow).toBe(ring);
-        expect(m.firstOnTop).toBe(true);
+        expect(m.secondOnTop).toBe(true);
         expect(new Set(m.sizes)).toEqual(new Set([size]));
         expect(new Set(m.shapes)).toEqual(new Set([shape]));
         report.add(context, { size, shape }, 'default', {

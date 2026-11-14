@@ -63,7 +63,7 @@ test('typographies, colors and gaps follow the tokens in both orientations and s
         const vt = t[`typography.body.${size}`].$value as Typography;
         expect(m.labelFont).toBe(`${lt.fontSize.value}px ${lt.fontWeight}`);
         expect(m.valueFont).toBe(`${vt.fontSize.value}px ${vt.fontWeight}`);
-        expect(m.labelColor).toBe(rgb(t['color.content.secondary']));
+        expect(m.labelColor).toBe(rgb(t['color.content.tertiary']));
         expect(m.valueColor).toBe(rgb(t['color.content.primary']));
         if (orientation === 'vertical') {
           expect(m.value.top - m.label.bottom).toBeCloseTo(px(t['space.content.xs']), 1);

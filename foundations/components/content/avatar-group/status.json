@@ -128,7 +128,8 @@
     "max 5 by default and counted with the +N box (the group never shows more than max boxes, as in common libraries); total for a number known by the application beyond the avatars given.",
     "The +N box is an Avatar whose new initials prop holds the text, so that it shares the Avatar typography and colors without binding Avatar tokens; capped at +99.",
     "Exposed as a list named by label; the +N box is named \"3 more\" (count followed by moreLabel).",
-    "Implementation: Svelte API: the people are an `avatars` array (name, src, initials) rather than Avatar children, so that max, total and the +N box are known during server rendering; the contract part avatars accepts Avatar, which the group renders."
+    "Implementation: Svelte API: the people are an `avatars` array (name, src, initials) rather than Avatar children, so that max, total and the +N box are known during server rendering; the contract part avatars accepts Avatar, which the group renders.",
+    "Round 2: stacking B, each avatar above the previous one (document order, no z-index)."
   ],
   "openDecisions": [],
   "nextAction": "Wave 5 implementation gate (grouped review).",
@@ -140,5 +141,16 @@
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-14",
+      "change": "Round 2 (user at the wave 5 implementation review, round 1 (2026-11-14): \"RAS pour le reste c'est validé à première vue\", taken as the acceptance of recommendation B, to confirm at round 2): each avatar overlaps the previous one and is drawn above it, so that every avatar keeps its leading side and the +N box is whole (the first-on-top order cut the plus sign and the start of wide initials). Rule and overlap token description reworded.",
+      "sha256": {
+        "foundations/components/content/avatar-group/contract.json": "de8b338599cf886e06092a9c46db7912a6cc2f3241d1604468581d13aa216db0",
+        "foundations/tokens/base/components/avatar-group.tokens.json": "9a6e9005df7ad1b1cf1042b837922e900fd9051ba181f4325e1091a9a23c89c3"
+      },
+      "review": "Wave 5 implementation gate, round 2"
+    }
+  ]
 }
