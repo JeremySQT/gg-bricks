@@ -3,7 +3,7 @@
   "componentId": "avatar",
   "family": "content",
   "wave": 5,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Represent a person, or an organization, a team or a project, with a picture, their initials or a generic glyph, in a small box of fixed size beside or instead of their name.",
     "useCases": [
@@ -52,7 +52,7 @@
     "examples": {
       "page": "examples/avatar",
       "preview": "dist/previews/avatar.html (npm run build && npm run build:preview avatar)",
-      "artifact": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794570220-8cab, round 1), page avatar.html"
+      "artifact": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2), page avatar.html"
     },
     "tests": {
       "ssr": ["tests/ssr/data-structure.test.ts"],
@@ -78,7 +78,31 @@
       "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\".",
       "note": "The user expects most adjustments at the implementation review."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Avatar: Bits UI Avatar loading status kept per source, picture shown only once loaded, grapheme initials centered on the cap height, generic Phosphor user glyph, decorative and nameless avatars hidden, forced-colors edge.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/avatar/Avatar.svelte",
+          "packages/svelte/src/components/avatar/avatar.css",
+          "packages/svelte/src/components/avatar/contract.generated.ts",
+          "packages/svelte/src/components/avatar/initials.ts",
+          "packages/svelte/src/components/avatar/tokens.generated.css",
+          "packages/svelte/src/components/avatar/types.ts",
+          "examples/avatar/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/avatar/Avatar.svelte": "b9de422f4df561d3679f8dbff21674ebb4e3b7c6e6e3239fe49af9414b43d78d",
+          "packages/svelte/src/components/avatar/avatar.css": "9e14d431d2453fd89652e7d830ee0cd80146c1bdfbe503e4ae871e591337e4f6",
+          "packages/svelte/src/components/avatar/contract.generated.ts": "9f641d7bea19445a813d544809eb747cef9bfd99a9d6b932ee6486bb910e4c3f",
+          "packages/svelte/src/components/avatar/initials.ts": "e9af63605253e25baeecc6ef8ee8a4e64bbe2e7979938990997f309bd05547a9",
+          "packages/svelte/src/components/avatar/tokens.generated.css": "e47767790d205469c52d302d11fcc043f94e7ee007202aa8bc0486927d60dd24",
+          "packages/svelte/src/components/avatar/types.ts": "1fa4d8d175745e9b120663e1dbc1fd089a39131b98d50c01aa8819865950dba8",
+          "examples/avatar/App.svelte": "bd04651ab4771db47f6215b36d17eb0f9a1a44ce8bcc724145a10dba08818f8a"
+        }
+      },
+      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\".",
+      "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -121,6 +145,12 @@
       "name": "npm run test:browser (full suite: Chromium 328 passed, docs site included; overlay smoke spec in Firefox and WebKit 20 passed after installing those browsers in the session)",
       "result": "348 passed",
       "date": "2026-11-13"
+    },
+    {
+      "name": "Wave 5 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2)"
     }
   ],
   "decisionsTaken": [
@@ -139,7 +169,7 @@
     "Implementation: Svelte API: role img named by name on the root span; decorative or nameless avatars get aria-hidden; consumer attributes go to the root after Bits UI's."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 implementation gate (grouped review).",
+  "nextAction": "Figma parity (ggb-figma), then the grouped wave 5 Figma parity gate.",
   "implementationNotes": [
     "Exports Avatar and the types AvatarProps, AvatarImageStatus.",
     "Bits UI Avatar reports the loading status; ggbrick keeps it per source (a new src starts again from loading, since Bits UI does not reload once a picture has loaded) and renders the picture only without Bits UI's fallback part: the initials or the glyph are drawn while imageStatus is not loaded.",

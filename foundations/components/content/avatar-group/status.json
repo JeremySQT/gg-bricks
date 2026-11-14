@@ -3,7 +3,7 @@
   "componentId": "avatar-group",
   "family": "content",
   "wave": 5,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Show the people (or teams) involved in an object as a compact row of overlapping avatars, with a count of the others.",
     "useCases": [
@@ -49,7 +49,7 @@
     "examples": {
       "page": "examples/avatar-group",
       "preview": "dist/previews/avatar-group.html (npm run build && npm run build:preview avatar-group)",
-      "artifact": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794570220-8cab, round 1), page avatar-group.html"
+      "artifact": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2), page avatar-group.html"
     },
     "tests": {
       "ssr": ["tests/ssr/data-structure.test.ts"],
@@ -68,14 +68,36 @@
           "foundations/tokens/base/components/avatar-group.tokens.json"
         ],
         "sha256": {
-          "foundations/components/content/avatar-group/contract.json": "e4b030d7afc0c6fcc20217919f8a4b340f51e80e8c23355a66dd302156ca443b",
-          "foundations/tokens/base/components/avatar-group.tokens.json": "cc5eae261effa3cbf610d4722358aaf2336cd458896ae456c6b9ddf53b4eb2c6"
+          "foundations/components/content/avatar-group/contract.json": "de8b338599cf886e06092a9c46db7912a6cc2f3241d1604468581d13aa216db0",
+          "foundations/tokens/base/components/avatar-group.tokens.json": "9a6e9005df7ad1b1cf1042b837922e900fd9051ba181f4325e1091a9a23c89c3"
         }
       },
-      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\".",
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\". Amendments accepted at the wave 5 implementation gate (2026-11-14, \"C'est validé tu peux passer à la suite\"): Round 2 (user at the wave 5 implementation review, round 1 (2026-11-14); digests re-recorded.",
       "note": "The user expects most adjustments at the implementation review."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "AvatarGroup: avatars array API, max counted with the +N box (an Avatar with initials), total, +99 cap, overlap of a quarter of the size, each avatar drawn above the previous one (round 2), ring in the surface color settable by the integration, named list.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/avatar-group/AvatarGroup.svelte",
+          "packages/svelte/src/components/avatar-group/avatar-group.css",
+          "packages/svelte/src/components/avatar-group/contract.generated.ts",
+          "packages/svelte/src/components/avatar-group/tokens.generated.css",
+          "packages/svelte/src/components/avatar-group/types.ts",
+          "examples/avatar-group/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/avatar-group/AvatarGroup.svelte": "2bd211bd3667619ea5d3e3b07580880b9cbc2987821f21518bd2b1b5830135d7",
+          "packages/svelte/src/components/avatar-group/avatar-group.css": "f77c0b62302659666aeb34b0da2b28141ec86eaebb67efce545d6f0e17713ae3",
+          "packages/svelte/src/components/avatar-group/contract.generated.ts": "61ea031f61216ea95a97b8bfead587957ffe246ca9016dc68f6fcc8c538aec15",
+          "packages/svelte/src/components/avatar-group/tokens.generated.css": "88e7e7b2d348ae0a62fcd93c28b8fdc0aee8df3381ec38711200a07d72423c4f",
+          "packages/svelte/src/components/avatar-group/types.ts": "650d0e4ff55cd73066ea0f2fb8c994eab33fe52ea00c026a527941e7cd42e209",
+          "examples/avatar-group/App.svelte": "f592b9cf248b907d38facd06beeb97fdf369c18bf1fd8b035365c0ca81a84cd4"
+        }
+      },
+      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\".",
+      "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -118,6 +140,12 @@
       "name": "npm run test:browser (full suite: Chromium 328 passed, docs site included; overlay smoke spec in Firefox and WebKit 20 passed after installing those browsers in the session)",
       "result": "348 passed",
       "date": "2026-11-13"
+    },
+    {
+      "name": "Wave 5 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2)"
     }
   ],
   "decisionsTaken": [
@@ -132,7 +160,7 @@
     "Round 2: stacking B, each avatar above the previous one (document order, no z-index)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 implementation gate (grouped review).",
+  "nextAction": "Figma parity (ggb-figma), then the grouped wave 5 Figma parity gate.",
   "implementationNotes": [
     "Exports AvatarGroup and the types AvatarGroupProps, AvatarGroupItem.",
     "The first avatar is on top through decreasing z-index on the items (isolated stacking context); the +N box is last and lowest.",
@@ -150,7 +178,8 @@
         "foundations/components/content/avatar-group/contract.json": "de8b338599cf886e06092a9c46db7912a6cc2f3241d1604468581d13aa216db0",
         "foundations/tokens/base/components/avatar-group.tokens.json": "9a6e9005df7ad1b1cf1042b837922e900fd9051ba181f4325e1091a9a23c89c3"
       },
-      "review": "Wave 5 implementation gate, round 2"
+      "review": "Wave 5 implementation gate, round 2",
+      "recorded": "Re-recorded with the implementation approval (2026-11-14)."
     }
   ]
 }

@@ -3,7 +3,7 @@
   "componentId": "data-field",
   "family": "data",
   "wave": 5,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Show one piece of information about an object as a label and its value, for reading, in detail panels, summaries and record pages.",
     "useCases": [
@@ -54,7 +54,7 @@
     "examples": {
       "page": "examples/data-field",
       "preview": "dist/previews/data-field.html (npm run build && npm run build:preview data-field)",
-      "artifact": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794570220-8cab, round 1), page data-field.html"
+      "artifact": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2), page data-field.html"
     },
     "tests": {
       "ssr": ["tests/ssr/data-structure.test.ts"],
@@ -73,14 +73,36 @@
           "foundations/tokens/base/components/data-field.tokens.json"
         ],
         "sha256": {
-          "foundations/components/data/data-field/contract.json": "3694e46edb1e032e1cf6feb399f557fce412c403b6ba8e33b29e2e952c39a514",
+          "foundations/components/data/data-field/contract.json": "b23cd375d6aa7a77e1e620d2780d829a0e3a77d36d90286329d7d9bbc514302c",
           "foundations/tokens/base/components/data-field.tokens.json": "2cd9146bb55eb3eaf3db7fb46d8414b0d9b6112d2ba71becd40d61e961d03c2b"
         }
       },
-      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\".",
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\". Amendments accepted at the wave 5 implementation gate (2026-11-14, \"C'est validé tu peux passer à la suite\"): Round 2 (user at the wave 5 implementation review, round 1 (2026-11-14); digests re-recorded.",
       "note": "The user expects most adjustments at the implementation review."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "DataField: named group, value or children, em dash and announced emptyLabel, vertical and horizontal (160 px label column, stacking below 320 px without container query), label in color.content.tertiary (round 2).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/data-field/DataField.svelte",
+          "packages/svelte/src/components/data-field/contract.generated.ts",
+          "packages/svelte/src/components/data-field/data-field.css",
+          "packages/svelte/src/components/data-field/tokens.generated.css",
+          "packages/svelte/src/components/data-field/types.ts",
+          "examples/data-field/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/data-field/DataField.svelte": "c3eac50c4a14699cee126a67d64ea76d0142e2700239a3a4d97c005c48a93096",
+          "packages/svelte/src/components/data-field/contract.generated.ts": "e8e6732dfc88de26865f7a0cf70e6df1b8f2c00e82318a4cb7bc690ac83d093f",
+          "packages/svelte/src/components/data-field/data-field.css": "b29a2f297f52069da15d6cf0dfcf4e14d11c4fde65f62351992f410d3f01dc5b",
+          "packages/svelte/src/components/data-field/tokens.generated.css": "16b7e82303b142b959fee6467e72f23dc015b21b85b98d25c9430903475e9a0f",
+          "packages/svelte/src/components/data-field/types.ts": "50b10604fe5604ab67c772d1b30a359aeb8c10933c0bf886d0f1263e18d193c8",
+          "examples/data-field/App.svelte": "421983186ae018366542a9009d5cda6ea38df23f07f0ede789ba963d4c1df254"
+        }
+      },
+      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\".",
+      "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -123,6 +145,12 @@
       "name": "npm run test:browser (full suite: Chromium 328 passed, docs site included; overlay smoke spec in Firefox and WebKit 20 passed after installing those browsers in the session)",
       "result": "348 passed",
       "date": "2026-11-13"
+    },
+    {
+      "name": "Wave 5 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2)"
     }
   ],
   "decisionsTaken": [
@@ -137,7 +165,7 @@
     "Round 2: label in color.content.tertiary (user request for more contrast between label and value); contrast pairs on default and subtle unchanged and passing."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 implementation gate (grouped review).",
+  "nextAction": "Figma parity (ggb-figma), then the grouped wave 5 Figma parity gate.",
   "implementationNotes": [
     "Exports DataField and the type DataFieldProps.",
     "Horizontal layout without a container query (custom properties are not allowed in container conditions): a wrapping flex line where the label is min(100%, max(labelInlineSize, (2 × labelInlineSize − 100%) × 999)) wide, so it is labelInlineSize from twice that width and the whole line below; the value then wraps under it.",
@@ -153,7 +181,8 @@
       "sha256": {
         "foundations/components/data/data-field/contract.json": "b23cd375d6aa7a77e1e620d2780d829a0e3a77d36d90286329d7d9bbc514302c"
       },
-      "review": "Wave 5 implementation gate, round 2"
+      "review": "Wave 5 implementation gate, round 2",
+      "recorded": "Re-recorded with the implementation approval (2026-11-14)."
     }
   ]
 }

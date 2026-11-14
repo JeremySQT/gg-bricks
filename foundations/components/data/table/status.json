@@ -3,7 +3,7 @@
   "componentId": "table",
   "family": "data",
   "wave": 5,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Show a set of records in rows and columns so that values can be read and compared, as a native semantic data table.",
     "useCases": [
@@ -57,7 +57,7 @@
     "examples": {
       "page": "examples/table",
       "preview": "dist/previews/table.html (npm run build && npm run build:preview table)",
-      "artifact": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794570220-8cab, round 1), page table.html"
+      "artifact": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2), page table.html"
     },
     "tests": {
       "ssr": ["tests/ssr/data-structure.test.ts"],
@@ -73,13 +73,47 @@
       "revision": {
         "paths": ["foundations/components/data/table/contract.json"],
         "sha256": {
-          "foundations/components/data/table/contract.json": "0e9cb01b745595a9dadc0e5745efd404e1eb2cbb3aa66f00b207c386737ad096"
+          "foundations/components/data/table/contract.json": "aa1316d12934ecbefcef636343f67d030282e04c55f9ccfb8d1659a8762ce9cc"
         }
       },
-      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\".",
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\". Amendments accepted at the wave 5 implementation gate (2026-11-14, \"C'est validé tu peux passer à la suite\"): Contract facts found during implementation; digests re-recorded.",
       "note": "The user expects most adjustments at the implementation review."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "Table: seven components, hidden native caption with a visible copy, frame and focus indicator drawn above the scroll area, inset-shadow lines (borders in forced colors), sticky header, focusable named scroll area only while it overflows, columns on one line (max-content), paddingBlock reduced to fit one line in minHeight.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/table/Table.svelte",
+          "packages/svelte/src/components/table/TableBody.svelte",
+          "packages/svelte/src/components/table/TableCell.svelte",
+          "packages/svelte/src/components/table/TableFooter.svelte",
+          "packages/svelte/src/components/table/TableHeader.svelte",
+          "packages/svelte/src/components/table/TableHeading.svelte",
+          "packages/svelte/src/components/table/TableRow.svelte",
+          "packages/svelte/src/components/table/contract.generated.ts",
+          "packages/svelte/src/components/table/table.css",
+          "packages/svelte/src/components/table/tokens.generated.css",
+          "packages/svelte/src/components/table/types.ts",
+          "examples/table/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/table/Table.svelte": "8b2471a11666bad24d54e4a6028df6499ab6773d218d5fa8e0922fefbcaa90ee",
+          "packages/svelte/src/components/table/TableBody.svelte": "90ce4bc5f3ff5716ac6dea3828d3a57621903cde18b5743439b2868378f86d60",
+          "packages/svelte/src/components/table/TableCell.svelte": "5dc03819062012ec4502658e9a8ca27135ac434d898d97d5ac906812e299080b",
+          "packages/svelte/src/components/table/TableFooter.svelte": "c22587cd7468c379763e3ad1ae5f3bcacec3c7682400940c4778089427bb8d0b",
+          "packages/svelte/src/components/table/TableHeader.svelte": "2f523f81d2e6aed94980a7071077ff79478642014b2ba7ceeb90e84440e8d53e",
+          "packages/svelte/src/components/table/TableHeading.svelte": "332c7683213a1e4b59c6e07240a7b1ff72515c6d9cf28984011bb7c6c461c704",
+          "packages/svelte/src/components/table/TableRow.svelte": "b265c9fd8110b4a1a590b00080afcf93cce7435be586c1524b027d512de4026a",
+          "packages/svelte/src/components/table/contract.generated.ts": "e92515c48f07a111cbf9ac104943426082ae00c5d31b2055f4de0b196b5f5291",
+          "packages/svelte/src/components/table/table.css": "159fc783b16614f3c39a0084799a951bded7244b4cf3d60987034a9c834012c7",
+          "packages/svelte/src/components/table/tokens.generated.css": "3d5eca68a7df454f8f1722300ca7e12ee0c349e9f039c86f8205612182065353",
+          "packages/svelte/src/components/table/types.ts": "15eca1797b5aa73b6b9b815a0e711a12e0d8033b5f8119ab4ee963d4efa393e9",
+          "examples/table/App.svelte": "1d80a9cfbdfa6ac7279e86922ffc785d44ccce8eb5403e610f379da7b356fa8c"
+        }
+      },
+      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\".",
+      "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -122,6 +156,12 @@
       "name": "npm run test:browser (full suite: Chromium 328 passed, docs site included; overlay smoke spec in Firefox and WebKit 20 passed after installing those browsers in the session)",
       "result": "348 passed",
       "date": "2026-11-13"
+    },
+    {
+      "name": "Wave 5 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2)"
     }
   ],
   "decisionsTaken": [
@@ -139,7 +179,7 @@
     "Implementation: Contract amendments recorded in pendingChanges (paddingBlock, columns on one line)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 implementation gate (grouped review).",
+  "nextAction": "Figma parity (ggb-figma), then the grouped wave 5 Figma parity gate.",
   "implementationNotes": [
     "Exports Table, TableHeader, TableBody, TableFooter, TableRow, TableHeading and TableCell.",
     "The native caption is visually hidden and names the table; the visible caption above the frame is a copy hidden from assistive technology, so that it sits outside the frame.",
@@ -159,7 +199,8 @@
         "foundations/components/data/table/contract.json": "aa1316d12934ecbefcef636343f67d030282e04c55f9ccfb8d1659a8762ce9cc"
       },
       "review": "Wave 5 implementation gate",
-      "accepted": "Taken as accepted by the user at round 1 of the implementation review (2026-11-14: \"RAS pour le reste c'est validé à première vue\"); to confirm at round 2."
+      "accepted": "Taken as accepted by the user at round 1 of the implementation review (2026-11-14: \"RAS pour le reste c'est validé à première vue\"); to confirm at round 2.",
+      "recorded": "Re-recorded with the implementation approval (2026-11-14)."
     }
   ]
 }
