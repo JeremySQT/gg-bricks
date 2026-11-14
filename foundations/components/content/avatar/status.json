@@ -32,8 +32,33 @@
       "sha256": "0aa0ef6d61130eb46e6dbdd81c69e529aac4f20e5d4adae1c6e9482eb2a18882"
     },
     "tokens": ["foundations/tokens/base/components/avatar.tokens.json"],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "content/avatar (540:59)",
+      "library": "Content (343:1635), section Avatar (542:495)",
+      "componentSet": "543:605",
+      "specification": "551:2",
+      "ledger": "reports/components/avatar/figma/ledger.json",
+      "parity": "reports/components/avatar/figma/parity.json",
+      "screenshots": [
+        "reports/components/avatar/figma/master-set.png",
+        "reports/components/avatar/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/avatar/figma/blueprint-anatomy.png",
+          "node": "551:39"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/wave5-avatar-master.plugin.js",
+        "authoring/adapters/figma/wave5-parity.plugin.js",
+        "authoring/adapters/figma/wave5-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js",
+        "authoring/adapters/figma/spec-header-links.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/content/avatar/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/avatar",
@@ -151,6 +176,12 @@
       "result": "passed",
       "date": "2026-11-14",
       "evidence": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2)"
+    },
+    {
+      "name": "Figma parity by hash (360 records, 0 failures) in the four browser-report contexts",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "reports/components/avatar/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -169,7 +200,7 @@
     "Implementation: Svelte API: role img named by name on the root span; decorative or nameless avatars get aria-hidden; consumer attributes go to the root after Bits UI's."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (ggb-figma), then the grouped wave 5 Figma parity gate.",
+  "nextAction": "Wave 5 Figma parity gate (grouped review).",
   "implementationNotes": [
     "Exports Avatar and the types AvatarProps, AvatarImageStatus.",
     "Bits UI Avatar reports the loading status; ggbrick keeps it per source (a new src starts again from loading, since Bits UI does not reload once a picture has loaded) and renders the picture only without Bits UI's fallback part: the initials or the glyph are drawn while imageStatus is not loaded.",

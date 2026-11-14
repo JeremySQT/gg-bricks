@@ -14,8 +14,11 @@ const SPECS = [
   ['144:2', 'Actions', 'Button', 'button'],
   ['211:2', 'Actions', 'IconButton', 'icon-button'],
   ['225:2', 'Actions', 'Link', 'link'],
+  ['540:59', 'Content', 'Avatar', 'avatar'],
+  ['540:60', 'Content', 'AvatarGroup', 'avatar-group'],
   ['220:2', 'Content', 'Badge', 'badge'],
   ['149:1547', 'Content', 'Counter', 'counter'],
+  ['540:61', 'Content', 'Divider', 'divider'],
   ['149:4', 'Content', 'Icon', 'icon'],
   ['149:1569', 'Content', 'Shortcut', 'shortcut'],
   ['288:3', 'Forms', 'Checkbox', 'checkbox'],
@@ -42,7 +45,9 @@ const SPECS = [
   ['495:17', 'Navigation', 'Accordion', 'accordion'],
   ['495:18', 'Navigation', 'Breadcrumb', 'breadcrumb'],
   ['495:19', 'Navigation', 'Pagination', 'pagination'],
-  ['495:20', 'Navigation', 'Tabs', 'tabs']
+  ['495:20', 'Navigation', 'Tabs', 'tabs'],
+  ['540:64', 'Data', 'DataField', 'data-field'],
+  ['540:65', 'Data', 'Table', 'table']
 ];
 const vars = await figma.variables.getLocalVariablesAsync();
 const V = (name) => vars.find((v) => v.name === name);
@@ -85,7 +90,8 @@ async function chip(label, target) {
 }
 const families = {};
 for (const p of figma.root.children)
-  if (['Actions', 'Content', 'Forms', 'Feedback', 'Overlays', 'Navigation'].includes(p.name)) families[p.name] = p;
+  if (['Actions', 'Content', 'Forms', 'Feedback', 'Overlays', 'Navigation', 'Data'].includes(p.name))
+    families[p.name] = p;
 const out = {};
 for (const [pid, family, name, id] of SPECS) {
   if (ONLY && !ONLY.includes(name)) continue;

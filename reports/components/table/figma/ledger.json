@@ -1,0 +1,60 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "data/table",
+      "id": "540:65"
+    },
+    "library": {
+      "name": "Data",
+      "id": "540:63"
+    }
+  },
+  "recordedOn": "2026-11-14",
+  "componentSet": {
+    "id": "548:414",
+    "name": "Table",
+    "key": "a5ae782a6cf208d027831296131a63923e5f9b07",
+    "variants": 3,
+    "defaultVariant": "Size=md (top-left)",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=548-414"
+  },
+  "section": {
+    "name": "Table",
+    "id": "547:5"
+  },
+  "properties": {
+    "Size": "md, sm, lg",
+    "Show caption": "boolean (on)",
+    "Caption": "text (Invoices)",
+    "Columns": "slot (Table/Column)"
+  },
+  "specification": {
+    "id": "555:3502",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=555-3502"
+  },
+  "blueprints": [
+    {
+      "name": "Anatomy",
+      "id": "555:3788",
+      "path": "reports/components/table/figma/blueprint-anatomy.png"
+    }
+  ],
+  "builders": [
+    "authoring/adapters/figma/wave5-table-master.plugin.js",
+    "authoring/adapters/figma/wave5-parity.plugin.js",
+    "authoring/adapters/figma/wave5-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js (stored _Script/spec-lib 411:2; wave 5 specification bodies run inline in the session)",
+    "authoring/adapters/figma/spec-header-links.plugin.js"
+  ],
+  "children": {
+    "Table/Column": "548:173 (Size × Align, 9 variants; Cells slot, Show footer, Column line)",
+    "Table/Cell": "547:96 (Size × Align × Line, 18 variants; Content slot)",
+    "Table/Heading": "547:97 (Size × Align, 9 variants; Label)",
+    "Table/Footer cell": "547:98 (Size × Align, 9 variants; Text)"
+  },
+  "figmaOnlyVariables": [
+    "Foundations · Density:table/padding-block/{sm,md,lg}"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "content/avatar",
+      "id": "540:59"
+    },
+    "library": {
+      "name": "Content",
+      "id": "343:1635"
+    }
+  },
+  "recordedOn": "2026-11-14",
+  "componentSet": {
+    "id": "543:605",
+    "name": "Avatar",
+    "key": "fb330d952b1143b9b1a4b99b8091bd10a1e05abd",
+    "variants": 30,
+    "defaultVariant": "Size=md, Shape=circle, Content=initials (top-left)",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=543-605"
+  },
+  "section": {
+    "name": "Avatar",
+    "id": "542:495"
+  },
+  "properties": {
+    "Size": "xs, sm, md, lg, xl (default md)",
+    "Shape": "circle, square",
+    "Content": "initials, picture, glyph",
+    "Initials": "text (OR)"
+  },
+  "specification": {
+    "id": "551:2",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=551-2"
+  },
+  "blueprints": [
+    {
+      "name": "Anatomy",
+      "id": "551:39",
+      "path": "reports/components/avatar/figma/blueprint-anatomy.png"
+    }
+  ],
+  "builders": [
+    "authoring/adapters/figma/wave5-avatar-master.plugin.js",
+    "authoring/adapters/figma/wave5-parity.plugin.js",
+    "authoring/adapters/figma/wave5-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js (stored _Script/spec-lib 411:2; wave 5 specification bodies run inline in the session)",
+    "authoring/adapters/figma/spec-header-links.plugin.js"
+  ],
+  "textStyles": [
+    "component/avatar/typography/{xs,sm,md,lg,xl}"
+  ]
+}

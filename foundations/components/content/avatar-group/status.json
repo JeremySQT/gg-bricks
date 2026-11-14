@@ -30,8 +30,33 @@
       "sha256": "e4b030d7afc0c6fcc20217919f8a4b340f51e80e8c23355a66dd302156ca443b"
     },
     "tokens": ["foundations/tokens/base/components/avatar-group.tokens.json"],
-    "figma": null,
-    "figmaSpec": null,
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "content/avatar-group (540:60)",
+      "library": "Content (343:1635), section AvatarGroup (544:510)",
+      "componentSet": "544:721",
+      "specification": "553:554",
+      "ledger": "reports/components/avatar-group/figma/ledger.json",
+      "parity": "reports/components/avatar-group/figma/parity.json",
+      "screenshots": [
+        "reports/components/avatar-group/figma/master-set.png",
+        "reports/components/avatar-group/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/avatar-group/figma/blueprint-anatomy.png",
+          "node": "553:638"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/wave5-avatar-group-master.plugin.js",
+        "authoring/adapters/figma/wave5-parity.plugin.js",
+        "authoring/adapters/figma/wave5-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js",
+        "authoring/adapters/figma/spec-header-links.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/content/avatar-group/figma-spec.md",
     "svelte": {
       "package": "packages/svelte",
       "folder": "packages/svelte/src/components/avatar-group",
@@ -146,6 +171,12 @@
       "result": "passed",
       "date": "2026-11-14",
       "evidence": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2)"
+    },
+    {
+      "name": "Figma parity by hash (120 records, 0 failures) in the four browser-report contexts",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "reports/components/avatar-group/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -160,7 +191,7 @@
     "Round 2: stacking B, each avatar above the previous one (document order, no z-index)."
   ],
   "openDecisions": [],
-  "nextAction": "Figma parity (ggb-figma), then the grouped wave 5 Figma parity gate.",
+  "nextAction": "Wave 5 Figma parity gate (grouped review).",
   "implementationNotes": [
     "Exports AvatarGroup and the types AvatarGroupProps, AvatarGroupItem.",
     "The first avatar is on top through decreasing z-index on the items (isolated stacking context); the +N box is last and lowest.",

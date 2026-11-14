@@ -1,0 +1,50 @@
+{
+  "file": {
+    "key": "TDPqojP4KvbWJlKSYc4zKC",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system",
+    "page": {
+      "name": "content/divider",
+      "id": "540:61"
+    },
+    "library": {
+      "name": "Content",
+      "id": "343:1635"
+    }
+  },
+  "recordedOn": "2026-11-14",
+  "componentSet": {
+    "id": "545:652",
+    "name": "Divider",
+    "key": "698bbf9b302c4fea98f53bd92826582d0125268e",
+    "variants": 2,
+    "defaultVariant": "Orientation=horizontal (top-left)",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=545-652"
+  },
+  "section": {
+    "name": "Divider",
+    "id": "545:645"
+  },
+  "properties": {
+    "Orientation": "horizontal, vertical",
+    "Show label": "boolean (off)",
+    "Label": "text (Or)"
+  },
+  "specification": {
+    "id": "552:703",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=552-703"
+  },
+  "blueprints": [
+    {
+      "name": "Anatomy",
+      "id": "552:732",
+      "path": "reports/components/divider/figma/blueprint-anatomy.png"
+    }
+  ],
+  "builders": [
+    "authoring/adapters/figma/wave5-divider-master.plugin.js",
+    "authoring/adapters/figma/wave5-parity.plugin.js",
+    "authoring/adapters/figma/wave5-parity-report.mjs",
+    "authoring/adapters/figma/spec-lib.plugin.js (stored _Script/spec-lib 411:2; wave 5 specification bodies run inline in the session)",
+    "authoring/adapters/figma/spec-header-links.plugin.js"
+  ]
+}

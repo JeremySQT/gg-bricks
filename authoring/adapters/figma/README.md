@@ -176,3 +176,19 @@ The Plugin API script bodies inherited from the reference kit were removed after
 
 - The anatomy drawing of `spec-lib` set one uniform stroke weight on every stroked frame, so a stroke on some sides only (the Accordion's lines) became a full outline. `weight()` now keeps the sides that had a stroke (dashed layout boxes stay outlined); the stored copy `411:2` was patched the same day. Boards already drawn change only when their specification is rebuilt.
 - The Figma Tabs is the tab list only (user decision): the panel is functional logic placed by the designer; `wave4-parity-report.mjs` records `panelGap` as a justified difference.
+
+## Wave 5 scripts (2026-11-14)
+
+- `wave5-pages.plugin.js`: the Data family page (`540:63`) after the Navigation group, its component pages, and `content/avatar`, `content/avatar-group`, `content/divider`. The 52 component variables of wave 5 (`component/avatar*`, `component/data-field/*`, `component/divider/*`) were synced with the `sync-variables` mechanics restricted to those manifest entries, and the five `component/avatar/typography/*` text styles with the `sync-styles` mechanics (a component typography token becomes a text style like a semantic one).
+- `wave5-avatar-master`, `wave5-avatar-group-master`, `wave5-divider-master`, `wave5-data-field-master`, `wave5-table-master` (`.plugin.js`): one builder per section (Content: Avatar, AvatarGroup, Divider; Data: DataField, Table). The Table builder's part 2 (Table/Column and Table, run the same day) is summarized in its file: Table/Column = Table/Heading instance, a Cells slot of Table/Cell instances, a Table/Footer cell (Show footer) and an absolute Column line (Column line); Table = Caption, a Frame (inside stroke, radius/container, clipping) holding a Columns slot.
+- Specifications: the five bodies follow `wave4-spec.plugin.js` on the stored `_Script/spec-lib` and were run inline in the session (frames `551:2`, `553:554`, `552:703`, `555:5755`, `555:3502`); Master links with the wave 5 entries of `spec-header-links.plugin.js`. The stored `_Script/family-pages` (`440:2`) was patched for the Content components and the Data family, then run for Content and Data.
+- Parity: `wave5-parity.plugin.js` + `wave5-parity-report.mjs <result.json>` (parity by hash, one FNV-1a hash per context and component); 724 records, 0 failures.
+
+## Mechanics learned on 2026-11-14
+
+- Figma cannot negate a variable: the negative auto layout spacing of AvatarGroup comes from Figma-only Brand variables `avatar-group/spacing/{size}` (hidden from publishing); add them to the prune keep list with `checkbox/focus-radius`.
+- Figma has no `min()`: the Table cell block padding comes from Figma-only Density variables `table/padding-block/{size}` (min(space/content/sm, (size/control/{size} − 21) / 2) per density); keep them in the prune keep list too.
+- `leadingTrim = 'CAP_HEIGHT'` on a text layer reproduces the code's `text-box: trim-both cap alphabetic`: centered initials sit on the cap height.
+- `figma.createImage(figma.base64Decode(…))` needs the bytes in the script; pictures in masters are SVG nodes (`createNodeFromSvg`) that designers replace with an image fill.
+- The blueprint ink of `spec-lib` paints SVG pictures as solid tint disks: anatomy instances use initials avatars.
+- A Figma table is built from columns (each a vertical stack of cells) so that cells share their column width; spec boards keep tables narrow (two columns) in context cards, or the specification frame widens beyond 1232 px.
