@@ -187,7 +187,7 @@ The Plugin API script bodies inherited from the reference kit were removed after
 ## Mechanics learned on 2026-11-14
 
 - Figma cannot negate a variable: the negative auto layout spacing of AvatarGroup comes from Figma-only Brand variables `avatar-group/spacing/{size}` (hidden from publishing); add them to the prune keep list with `checkbox/focus-radius`.
-- Figma has no `min()`: the Table cell block padding comes from Figma-only Density variables `table/padding-block/{size}` (min(space/content/sm, (size/control/{size} − 21) / 2) per density); keep them in the prune keep list too.
+- Figma has no `min()`: the Table cell block padding comes from the Figma-only Density variable `table/padding-block` (min(space/content/sm, (size/control/md − 21) / 2) per density; a single variable since the table lost its size on 2026-11-17); keep it in the prune keep list too.
 - `leadingTrim = 'CAP_HEIGHT'` on a text layer reproduces the code's `text-box: trim-both cap alphabetic`: centered initials sit on the cap height.
 - `figma.createImage(figma.base64Decode(…))` needs the bytes in the script; pictures in masters are SVG nodes (`createNodeFromSvg`) that designers replace with an image fill.
 - The blueprint ink of `spec-lib` paints SVG pictures as solid tint disks: anatomy instances use initials avatars.
@@ -195,7 +195,7 @@ The Plugin API script bodies inherited from the reference kit were removed after
 
 ## Mechanics learned on 2026-11-17 (user review of the wave 5 Figma parity)
 
-- **Slot content survives a variant switch**: a Size variant on a host whose children sit in a slot changes nothing for them (Table). Drive such a size through a mode of the hidden Components collection set by the host variant (`table/min-height`, `table/padding-block`): modes reach the instances placed in the slot.
+- **Slot content survives a variant switch**: a variant on a host whose children sit in a slot changes nothing for them (the Table Size variant of the first build). A Components collection mode set by the host was tried, then removed at the user's request the same day: a designer must only see the three Foundations collections, and the table has no size at all (density only). Do not add mode collections for a component.
 - The same holds for an instance in a slot whose own slot content was overridden: switching its variant keeps the old content; replace the instance instead (Table/Cell).
 - A variant and a slot can share a name (Content): `setProperties` must pick the key whose type is not SLOT.
 - A slot switched to a horizontal layout after creation needs `counterAxisSizingMode = 'AUTO'` again, or it keeps the default 100 px height (DataField avatar).

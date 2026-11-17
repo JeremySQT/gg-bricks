@@ -1,14 +1,12 @@
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes, HTMLTdAttributes, HTMLThAttributes } from 'svelte/elements';
-import type { TableCellAlign, TableHeadingAlign, TableSize } from './contract.generated.js';
+import type { TableCellAlign, TableHeadingAlign } from './contract.generated.js';
 
 export interface TableProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'role' | 'tabindex'> {
   /** The table's accessible name; shown above the table unless hideCaption. Required and non-empty. */
   caption: string;
   /** Announce the caption without showing it, when a heading next to the table already names it. Default false. */
   hideCaption?: boolean;
-  /** Minimum row height: sm 32, md 40, lg 48 px in the standard density. Default md. */
-  size?: TableSize;
   /** Vertical lines between columns. Default false. */
   columnLines?: boolean;
   /** TableHeader (optional), TableBody, TableFooter (optional), in that order. */

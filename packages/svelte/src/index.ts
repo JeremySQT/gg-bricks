@@ -145,4 +145,4 @@ export type {
   TableHeadingProps,
   TableCellProps
 } from './components/table/types.js';
-export type { TableSize, TableHeadingAlign, TableCellAlign } from './components/table/contract.generated.js';
+export type { TableHeadingAlign, TableCellAlign } from './components/table/contract.generated.js';

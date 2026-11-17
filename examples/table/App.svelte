@@ -1,5 +1,5 @@
 <script lang="ts">
-  // Table implementation review: a playground (size, column lines, caption, footer, empty, height, width), rich cells
+  // Table implementation review: a playground (column lines, caption, footer, empty, height, width), rich cells
   // (Avatar with a name and an email, Badge, Link, row actions in a Menu), numbers aligned at the end, a totals footer,
   // a wide table that scrolls inline, a table of limited height whose header stays, an empty table and right-to-left,
   // in any brand, appearance and density.
@@ -20,7 +20,7 @@
     MenuItem,
     Pagination
   } from '../../packages/svelte/src/index.ts';
-  import type { BadgeIntent, TableSize } from '../../packages/svelte/src/index.ts';
+  import type { BadgeIntent } from '../../packages/svelte/src/index.ts';
   import { people } from '../avatar/portraits.ts';
   import { glyphs } from '../icon-button/glyphs.ts';
 
@@ -30,7 +30,6 @@
   let brand = $state('base');
   let mode = $state('light');
   let density = $state('standard');
-  let size = $state<TableSize>('md');
   let columnLines = $state(false);
   let hideCaption = $state(false);
   let showFooter = $state(true);
@@ -112,25 +111,13 @@
     <div class="playground-stack">
       <fieldset class="options inline">
         <legend>Options</legend>
-        <label
-          >Size <select id="opt-size" bind:value={size}
-            ><option value="sm">sm</option><option value="md">md</option><option value="lg">lg</option></select
-          ></label
-        >
         <label class="check"><input id="opt-lines" type="checkbox" bind:checked={columnLines} /> Column lines</label>
         <label class="check"><input id="opt-hide" type="checkbox" bind:checked={hideCaption} /> Hide caption</label>
         <label class="check"><input id="opt-footer" type="checkbox" bind:checked={showFooter} /> Footer</label>
         <label class="check"><input id="opt-empty" type="checkbox" bind:checked={empty} /> Empty</label>
         <label class="check"><input id="opt-height" type="checkbox" bind:checked={limitHeight} /> Limited height</label>
       </fieldset>
-      <Table
-        id="play"
-        caption="Invoices"
-        {size}
-        {columnLines}
-        {hideCaption}
-        class={limitHeight ? 'limited' : undefined}
-      >
+      <Table id="play" caption="Invoices" {columnLines} {hideCaption} class={limitHeight ? 'limited' : undefined}>
         <TableHeader>
           <TableRow>
             <TableHeading>Invoice</TableHeading>
@@ -154,7 +141,7 @@
                 <TableCell><Badge size="sm" intent={r.status[1]} label={r.status[0]} /></TableCell>
                 <TableCell>
                   <span class="person">
-                    <Avatar name={r.person.name} src={r.person.src} size={size === 'lg' ? 'md' : 'sm'} decorative />
+                    <Avatar name={r.person.name} src={r.person.src} size="sm" decorative />
                     <span class="who"
                       ><span class="who-name">{r.person.name}</span><span class="who-mail">{r.person.email}</span></span
                     >
@@ -180,28 +167,33 @@
     </div>
   </section>
 
-  <section id="sizes" aria-labelledby="sizes-title">
-    <h2 id="sizes-title">Sizes</h2>
-    <p>Minimum row height 32, 40 and 48 px (standard density); the text stays 14 px. Default: md.</p>
+  <section id="densities" aria-labelledby="densities-title">
+    <h2 id="densities-title">Densities</h2>
+    <p>
+      The table has no size of its own: rows follow the density of the interface (32, 40 and 44 px in compact, standard
+      and comfortable); the text stays 14 px.
+    </p>
     <div class="grid">
-      {#each ['sm', 'md', 'lg'] as const as s (s)}
-        <Table id={`size-${s}`} data-testid="matrix" caption={`Size ${s}`} size={s}>
-          <TableHeader>
-            <TableRow
-              ><TableHeading>Company</TableHeading><TableHeading>Domain</TableHeading><TableHeading align="end"
-                >Seats</TableHeading
-              ></TableRow
-            >
-          </TableHeader>
-          <TableBody>
-            {#each [['Johnson & Johnson', 'jnj.com', 120], ['Adidas', 'adidas.com', 48], ['Nike', 'nike.com', 7]] as [c, d, n] (c)}
+      {#each ['compact', 'standard', 'comfortable'] as const as d (d)}
+        <div data-ggb-density={d}>
+          <Table id={`density-${d}`} data-testid="matrix" caption={d}>
+            <TableHeader>
               <TableRow
-                ><TableCell rowHeader>{c}</TableCell><TableCell>{d}</TableCell><TableCell align="end">{n}</TableCell
+                ><TableHeading>Company</TableHeading><TableHeading>Domain</TableHeading><TableHeading align="end"
+                  >Seats</TableHeading
                 ></TableRow
               >
-            {/each}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {#each [['Johnson & Johnson', 'jnj.com', 120], ['Adidas', 'adidas.com', 48], ['Nike', 'nike.com', 7]] as [c, d, n] (c)}
+                <TableRow
+                  ><TableCell rowHeader>{c}</TableCell><TableCell>{d}</TableCell><TableCell align="end">{n}</TableCell
+                  ></TableRow
+                >
+              {/each}
+            </TableBody>
+          </Table>
+        </div>
       {/each}
     </div>
   </section>
@@ -236,7 +228,7 @@
       </div>
       <div>
         <p>Limited height: the header stays at the top of the scroll area.</p>
-        <Table id="tall" caption="Activity" size="sm" class="limited">
+        <Table id="tall" caption="Activity" class="limited">
           <TableHeader
             ><TableRow><TableHeading>Event</TableHeading><TableHeading align="end">Time</TableHeading></TableRow
             ></TableHeader

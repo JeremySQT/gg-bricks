@@ -13,31 +13,30 @@
   },
   "recordedOn": "2026-11-17",
   "componentSet": {
-    "id": "561:3026",
+    "id": "571:4860",
     "name": "Table",
-    "key": "32ee0a6937c9820cbf2e3636f95f5f4ea79def8f",
-    "variants": 3,
-    "defaultVariant": "Size=md (top-left)",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=561-3026"
+    "key": "90e7fa3276c10c050db1552193e0b1a83c22388e",
+    "variants": 0,
+    "type": "single component (no variant)",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=571-4860"
   },
   "section": {
     "name": "Table",
     "id": "547:5"
   },
   "properties": {
-    "Size": "md, sm, lg (sets the Components mode)",
     "Show caption": "boolean (on)",
     "Caption": "text (Invoices)",
     "Columns": "slot (Table/Column)"
   },
   "specification": {
-    "id": "566:1538",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=566-1538"
+    "id": "572:1519",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=572-1519"
   },
   "blueprints": [
     {
       "name": "Anatomy",
-      "id": "566:2034",
+      "id": "572:2131",
       "path": "reports/components/table/figma/blueprint-anatomy.png"
     }
   ],
@@ -55,14 +54,12 @@
     "Table/Footer cell": "558:2606 (Align, 3 variants; Text)"
   },
   "figmaOnlyVariables": [
-    "Foundations · Density:table/padding-block/{sm,md,lg}"
+    "Foundations · Density:table/padding-block (8, 4, 11.5 in standard, compact, comfortable; hidden from publishing)"
   ],
-  "adapterVariables": [
-    "Components:table/min-height (modes sm, md, lg: size/control/{size})",
-    "Components:table/padding-block (modes sm, md, lg: table/padding-block/{size})"
-  ],
+  "adapterVariables": [],
   "history": [
     "2026-11-14: first build.",
-    "2026-11-17: rebuilt after the user review of the Figma parity (the table size is a Components mode set by each Table variant, so it reaches the columns in the slot; Table/Cell Content variants text, badge, avatar, link, actions; a middle cell outlined and pinned in the anatomy)."
+    "2026-11-17: rebuilt after the user review of the Figma parity (the table size is a Components mode set by each Table variant, so it reaches the columns in the slot; Table/Cell Content variants text, badge, avatar, link, actions; a middle cell outlined and pinned in the anatomy).",
+    "2026-11-17 (later): the table has no size (user): Table rebuilt as a single component, cells bound to size/control/md and the Density variable table/padding-block; Components variables table/min-height and table/padding-block and Density variables table/padding-block/{sm,md,lg} removed; specification and anatomy rebuilt."
   ]
 }

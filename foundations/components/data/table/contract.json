@@ -10,10 +10,6 @@
       "type": "boolean",
       "default": false
     },
-    "size": {
-      "values": ["sm", "md", "lg"],
-      "default": "md"
-    },
     "columnLines": {
       "type": "boolean",
       "default": false
@@ -135,13 +131,13 @@
       "tokens": {
         "content": "color.content.secondary",
         "typography": "typography.label.md",
-        "minHeight": "size.control.{size}",
+        "minHeight": "size.control.md",
         "paddingInline": "space.content.md",
         "paddingBlock": "space.content.sm"
       },
       "rules": [
         "A column header names the column below it and is exposed as the header of that column. Its text is set in typography and content, aligned by align (end for a column of numbers, like its cells), and wraps.",
-        "Column headers and cells share the geometry of the table size: a block size of at least minHeight with the content centered in the block direction, paddingInline on both inline sides and paddingBlock above and below, reduced where needed so that one line of text fits in minHeight (sm). Content taller than one line (wrapped text, an Avatar, two lines of text) grows the row and keeps that block padding."
+        "Column headers and cells share the geometry of the table: a block size of at least minHeight (which follows the density) with the content centered in the block direction, paddingInline on both inline sides and paddingBlock above and below, reduced where needed so that one line of text fits in minHeight. Content taller than one line (wrapped text, an Avatar, two lines of text) grows the row and keeps that block padding."
       ]
     },
     "cell": {
@@ -159,7 +155,7 @@
       "tokens": {
         "content": "color.content.primary",
         "typography": "typography.body.sm",
-        "minHeight": "size.control.{size}",
+        "minHeight": "size.control.md",
         "paddingInline": "space.content.md",
         "paddingBlock": "space.content.sm"
       },
@@ -189,7 +185,7 @@
   "rules": [
     "A table shows a set of records in rows and columns so that values can be read and compared along both. Layout is never built with a table. A single record is shown with DataFields; a list of items each made of several lines is a list, not a table.",
     "The table is a native data table: caption, then header (one row of column headers), body (the rows) and footer (summary rows), each optional except body and caption. caption is required and is the table's accessible name; it is displayed above the table in typographyCaption and captionColor, at the inline start, captionGap above the header, unless hideCaption is true, in which case it is only announced (a heading next to the table already names it).",
-    "The table fills the inline size it is given; columns take the width of their content on one line, and the remaining space is shared among them; the integration may limit a column's width, in which case its text wraps. container is framed by an edge of frameWidth in frameColor inside its boundary with radius corners, which clip the header band and the rows. Every line of the table (header, rows, footer, columns) is light, so that the content stays dominant. size sets the minimum block size of rows (sm for dense lists, md by default, lg for spacious ones); the typography does not change with size or density.",
+    "The table fills the inline size it is given; columns take the width of their content on one line, and the remaining space is shared among them; the integration may limit a column's width, in which case its text wraps. container is framed by an edge of frameWidth in frameColor inside its boundary with radius corners, which clip the header band and the rows. Every line of the table (header, rows, footer, columns) is light, so that the content stays dominant. The table has no size of its own: the minimum block size of rows follows the density of the interface (compact, standard, comfortable); the typography does not change with density.",
     "When the table is wider than the space it is given, container scrolls inline (scrollable is true) instead of squeezing the columns; the scroll area is then a stop in sequential focus named by caption and draws a focus indicator of focusWidth in focusColor inside its boundary when focus is true from the keyboard, so that keyboard users can scroll it. When the integration limits the table's block size, it also scrolls in the block direction and the header stays visible.",
     "The table itself is not interactive: rows and cells are never focusable; only the content of cells (links, buttons) and the scroll area receive focus. Sorting, row selection, expandable rows, column resizing, pagination and virtualization are not part of this version; pagination is composed below the table with Pagination.",
     "In right-to-left text the columns run from right to left and start and end alignments follow the text direction.",

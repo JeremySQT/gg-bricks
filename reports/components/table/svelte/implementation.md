@@ -15,6 +15,7 @@ Component: `packages/svelte/src/components/table/` (Svelte 5.57.1, Bits UI not u
 
 - Svelte API: compound children as components (TableHeader, TableBody, TableFooter, TableRow, TableHeading, TableCell); align on cells and headings; rowHeader renders a th scope row.
 - Contract amendments recorded in pendingChanges (paddingBlock, columns on one line).
+- 2026-11-17 (user, Figma parity review): the table has no size; rows follow the density only (minHeight size.control.md: 32, 40, 44 px in compact, standard, comfortable). The size prop and data-size were removed; the review page shows the three densities.
 
 ## Checks (2026-11-13)
 

@@ -7,7 +7,6 @@
   let {
     caption,
     hideCaption = defaults.hideCaption,
-    size = defaults.size,
     columnLines = defaults.columnLines,
     children,
     ref = $bindable(null),
@@ -43,7 +42,6 @@
   {...rest}
   bind:this={ref}
   class={['ggb-table', className]}
-  data-size={size}
   data-column-lines={columnLines ? '' : undefined}
   data-scrollable={scrollable ? '' : undefined}
 >

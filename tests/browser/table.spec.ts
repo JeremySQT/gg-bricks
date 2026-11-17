@@ -20,7 +20,7 @@ test.beforeEach(async ({ page }) => {
   await page.evaluate(() => document.fonts.ready);
 });
 
-test('frame, header band, lines, typographies and row heights follow the tokens in every representative context', async ({
+test('frame, header band, lines, typographies and row heights follow the tokens and the density in every representative context', async ({
   page
 }) => {
   const report = new ComputedReport();
@@ -28,8 +28,8 @@ test('frame, header band, lines, typographies and row heights follow the tokens 
     const context = `${brand}-${mode}-${density}`;
     const t = tokensFor(context);
     await setContext(page, brand, mode, density);
-    for (const size of ['sm', 'md', 'lg']) {
-      const m = await page.locator(`#size-${size}`).evaluate((el) => {
+    {
+      const m = await page.locator(`#density-${density}`).evaluate((el) => {
         const frame = getComputedStyle(el.querySelector('.ggb-table__frame')!, '::after');
         const heading = el.querySelector('.ggb-table__heading') as HTMLElement;
         const hc = getComputedStyle(heading);
@@ -52,7 +52,7 @@ test('frame, header band, lines, typographies and row heights follow the tokens 
           captionFont: `${caption.fontSize} ${caption.fontWeight}`
         };
       });
-      const height = px(t[`size.control.${size}`]);
+      const height = px(t['size.control.md']);
       const ht = t['typography.label.md'].$value as Typography;
       const ct = t['typography.body.sm'].$value as Typography;
       const subtle = rgb(t['color.border.subtle']);
@@ -70,7 +70,7 @@ test('frame, header band, lines, typographies and row heights follow the tokens 
       expect(m.cellNumeric).toBe('tabular-nums');
       expect(m.rowShadows[0]).toBe(line(subtle, -w));
       expect(m.rowShadows[2]).toBe('rgba(0, 0, 0, 0) 0px 0px 0px 0px');
-      report.add(context, { size }, 'default', {
+      report.add(context, {}, 'default', {
         'frame-width': m.frame[0],
         'frame-color': m.frame[1],
         radius: m.frame[2],
@@ -170,7 +170,7 @@ test('with a limited block size the header stays at the top of the scroll area',
 
 test('forced colors: frame and lines become borders in the system text color', async ({ page }) => {
   await page.emulateMedia({ forcedColors: 'active' });
-  const m = await page.locator('#size-md').evaluate((el) => {
+  const m = await page.locator('#density-standard').evaluate((el) => {
     const heading = getComputedStyle(el.querySelector('thead th')!);
     const cell = getComputedStyle(el.querySelector('tbody tr:first-child > *')!);
     return {
@@ -183,7 +183,7 @@ test('forced colors: frame and lines become borders in the system text color', a
   expect(m.row[0]).toBe('solid');
   expect(m.row[1]).toBe(m.row[2]);
   expect(m.frame).toBe('solid');
-  await page.locator('#sizes').scrollIntoViewIfNeeded();
+  await page.locator('#densities').scrollIntoViewIfNeeded();
   await capture(page, `${out}/forced-colors.png`);
 });
 

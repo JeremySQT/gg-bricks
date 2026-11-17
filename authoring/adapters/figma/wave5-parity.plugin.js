@@ -108,37 +108,37 @@ for (const [b, a, d] of CTX) {
     add(ctx, 'divider', P, 'color', await paintOf(lb));
     add(ctx, 'divider', P, 'font', font(lb));
   }
-  if (IDS.includes('table'))
-    for (const s of ['sm', 'md', 'lg']) {
-      const i = await mk('561:3026', `Size=${s}`);
-      const fr = i.findOne((n) => n.name === 'Frame');
-      // The Amount column (text cells): the other default columns hold a Link, an Avatar or a Badge.
-      const col0 = i.findOne((n) => n.type === 'SLOT' && n.name === 'Columns').children[3];
-      const h = col0.findOne((n) => n.name === 'Heading');
-      const ht = h.findOne((n) => n.type === 'TEXT');
-      const cells = col0.findOne((n) => n.type === 'SLOT').children;
-      const c0 = cells[0];
-      const ct = c0.findOne((n) => n.type === 'TEXT');
-      const P = { size: s };
-      add(ctx, 'table', P, 'frame-width', fr.strokeTopWeight + 'px');
-      add(ctx, 'table', P, 'frame-color', await paintOf(fr, 'strokes'));
-      add(ctx, 'table', P, 'radius', fr.topLeftRadius + 'px');
-      add(ctx, 'table', P, 'header-background', await paintOf(h));
-      add(
-        ctx,
-        'table',
-        P,
-        'header-line',
-        `${await paintOf(h, 'strokes')} 0px -${h.strokeBottomWeight}px 0px 0px inset`
-      );
-      add(ctx, 'table', P, 'heading-font', font(ht));
-      add(ctx, 'table', P, 'heading-color', await paintOf(ht));
-      add(ctx, 'table', P, 'padding-inline', h.paddingLeft + 'px');
-      add(ctx, 'table', P, 'row-height', c0.height);
-      add(ctx, 'table', P, 'cell-font', font(ct));
-      add(ctx, 'table', P, 'cell-color', await paintOf(ct));
-      add(ctx, 'table', P, 'row-line', `${await paintOf(c0, 'strokes')} 0px -${c0.strokeBottomWeight}px 0px 0px inset`);
-    }
+  if (IDS.includes('table')) {
+    // The table has no size (2026-11-17): one record set per context, rows of size/control/md in its density.
+    const i = (await figma.getNodeByIdAsync('571:4860')).createInstance();
+    f.appendChild(i);
+    const fr = i.findOne((n) => n.name === 'Frame');
+    // The Amount column (text cells): the other default columns hold a Link, an Avatar or a Badge.
+    const col0 = i.findOne((n) => n.type === 'SLOT' && n.name === 'Columns').children[3];
+    const hd = col0.findOne((n) => n.name === 'Heading');
+    const ht = hd.findOne((n) => n.type === 'TEXT');
+    const c0 = col0.findOne((n) => n.type === 'SLOT').children[0];
+    const ct = c0.findOne((n) => n.type === 'TEXT');
+    const P = {};
+    add(ctx, 'table', P, 'frame-width', fr.strokeTopWeight + 'px');
+    add(ctx, 'table', P, 'frame-color', await paintOf(fr, 'strokes'));
+    add(ctx, 'table', P, 'radius', fr.topLeftRadius + 'px');
+    add(ctx, 'table', P, 'header-background', await paintOf(hd));
+    add(
+      ctx,
+      'table',
+      P,
+      'header-line',
+      `${await paintOf(hd, 'strokes')} 0px -${hd.strokeBottomWeight}px 0px 0px inset`
+    );
+    add(ctx, 'table', P, 'heading-font', font(ht));
+    add(ctx, 'table', P, 'heading-color', await paintOf(ht));
+    add(ctx, 'table', P, 'padding-inline', hd.paddingLeft + 'px');
+    add(ctx, 'table', P, 'row-height', c0.height);
+    add(ctx, 'table', P, 'cell-font', font(ct));
+    add(ctx, 'table', P, 'cell-color', await paintOf(ct));
+    add(ctx, 'table', P, 'row-line', `${await paintOf(c0, 'strokes')} 0px -${c0.strokeBottomWeight}px 0px 0px inset`);
+  }
   f.remove();
 }
 // Hash return (parity by hash, as in waves 1 and 2): per context and component, the FNV-1a hash of the sorted lines

@@ -1,47 +1,25 @@
 // Wave 5 (use_figma bodies), 2026-11-17, session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT.
-// Table section of the Data page, rebuilt after the user review of the Figma parity (2026-11-17): the table size is a
-// mode, not a variant of the cells. Part 1: adapter variables table/min-height and table/padding-block in the hidden
-// Components collection (modes sm, md, lg; aliases of size/control/{size} and of the Figma-only Density variables
-// table/padding-block/{size} = min(space/content/sm, (size/control/{size} − 21) / 2)), then Table/Cell (Align × Line ×
-// Content: text, badge, avatar, link, actions), Table/Heading (Align) and Table/Footer cell (Align). Part 2:
-// Table/Column (Align) and Table (Size; each variant sets the Components mode, which reaches the cells in its slot).
+// Table section of the Data page. The table has no size (user, 2026-11-17): rows follow the Density mode only. Cells,
+// headers and footer cells bind minHeight to size/control/md and their block padding to the Figma-only Density variable
+// table/padding-block (hidden from publishing; min(space/content/sm, (size/control/md − 21) / 2) = 8, 4, 11.5 in
+// standard, compact, comfortable: Figma has no min()). No Components collection mode is used (a mode of a hidden
+// adapter collection on the Table was tried on 2026-11-17 and removed the same day at the user's request). Part 1:
+// Table/Cell (Align × Content × Line: text, badge, avatar, link, actions), Table/Heading (Align), Table/Footer cell
+// (Align). Part 2: Table/Column (Align) and Table, a single component (Caption, Frame, Columns slot).
 // ---- Part 1 ----
 const page = await figma.getNodeByIdAsync('540:63');
 await figma.setCurrentPageAsync(page);
 let vars = await figma.variables.getLocalVariablesAsync();
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
 const dens = cols.find((c) => c.name === 'Foundations · Density');
-const comp = cols.find((c) => c.name === 'Components');
-const PB = {
-  standard: { sm: 5.5, md: 8, lg: 8 },
-  compact: { sm: 3.5, md: 4, lg: 4 },
-  comfortable: { sm: 7.5, md: 11.5, lg: 12 }
-};
 const get = (name, col, type) =>
   vars.find((x) => x.name === name && x.variableCollectionId === col.id) ||
   figma.variables.createVariable(name, col, type);
-for (const s of ['sm', 'md', 'lg']) {
-  const v = get('table/padding-block/' + s, dens, 'FLOAT');
-  v.scopes = ['GAP'];
-  v.hiddenFromPublishing = true;
-  v.description =
-    'Figma only: min(space/content/sm, (size/control/' + s + ' − 21) / 2), the cell block padding of the code (Table).';
-  for (const m of dens.modes) v.setValueForMode(m.modeId, PB[m.name][s]);
-}
-vars = await figma.variables.getLocalVariablesAsync();
-const byName = (n) => vars.find((x) => x.name === n);
-const minH = get('table/min-height', comp, 'FLOAT');
-const padB = get('table/padding-block', comp, 'FLOAT');
-minH.scopes = ['WIDTH_HEIGHT'];
-padB.scopes = ['GAP'];
-minH.description =
-  'Table: minimum row height of the table size (size/control/{size}); the Table variant sets the mode.';
-padB.description =
-  'Table: cell block padding of the table size (table/padding-block/{size}); the Table variant sets the mode.';
-for (const m of comp.modes) {
-  minH.setValueForMode(m.modeId, { type: 'VARIABLE_ALIAS', id: byName('size/control/' + m.name).id });
-  padB.setValueForMode(m.modeId, { type: 'VARIABLE_ALIAS', id: byName('table/padding-block/' + m.name).id });
-}
+const pb = get('table/padding-block', dens, 'FLOAT');
+pb.scopes = ['GAP'];
+pb.hiddenFromPublishing = true;
+const VAL = { standard: 8, compact: 4, comfortable: 11.5 };
+for (const m of dens.modes) pb.setValueForMode(m.modeId, VAL[m.name]);
 vars = await figma.variables.getLocalVariablesAsync();
 const V = (n) => {
   const v = vars.find((x) => x.name === n);
@@ -86,7 +64,7 @@ const cell = (name, a, kind) => {
   c.counterAxisSizingMode = 'AUTO';
   c.primaryAxisAlignItems = ALIGN[a];
   c.counterAxisAlignItems = 'CENTER';
-  bind(c, ['minHeight'], 'table/min-height');
+  bind(c, ['minHeight'], 'size/control/md');
   bind(c, ['paddingTop', 'paddingBottom'], 'table/padding-block');
   bind(c, ['paddingLeft', 'paddingRight'], 'space/content/md');
   c.fills = kind === 'heading' ? [paint('color/surface/subtle', c)] : [];
@@ -208,7 +186,7 @@ const finish = (list, name, desc, prop) => {
 const cellSet = finish(
   cells,
   'Table/Cell',
-  'Table cell (data/table, child cell). Content: text (body/sm in color/content/primary, tabular figures in the code), badge (Badge sm), avatar (Avatar xs and a name), link (Link sm) or actions (an IconButton ghost sm opening a Menu); the Content slot takes any content. Align start, center or end (end for numbers). Height at least table/min-height and block padding table/padding-block, both from the table size (Components mode set by the Table); padding space/content/md inline. Line draws the row line (border/width/default, color/border/subtle) at the bottom: off for the last row.'
+  'Table cell (data/table, child cell). Content: text (body/sm in color/content/primary, tabular figures in the code), badge (Badge sm), avatar (Avatar xs and a name), link (Link sm) or actions (an IconButton ghost sm opening a Menu); the Content slot takes any content. Align start, center or end (end for numbers). Height at least size/control/md and block padding from the density mode (8, 4, 11.5 px in standard, compact, comfortable); padding space/content/md inline. Line draws the row line (border/width/default, color/border/subtle) at the bottom: off for the last row.'
 );
 const headSet = finish(
   heads,
@@ -242,7 +220,6 @@ await figma.setCurrentPageAsync(page);
 figma.skipInvisibleInstanceChildren = false;
 const vars = await figma.variables.getLocalVariablesAsync();
 const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const comp = cols.find((c) => c.name === 'Components');
 const V = (n) => {
   const v = vars.find((x) => x.name === n);
   if (!v) throw new Error('missing ' + n);
@@ -274,7 +251,7 @@ const setP = (i, name, val) => {
   i.setProperties({ [k]: val });
 };
 for (const n of section.children.filter(
-  (n) => n.name === 'Table/Column' || n.name === 'Table' || /^(Align|Size)=/.test(n.name)
+  (n) => n.name === 'Table/Column' || n.name === 'Table' || /^Align=/.test(n.name)
 ))
   n.remove();
 const colsList = [];
@@ -349,7 +326,7 @@ for (const v of colSet.children) {
   v.findChild((n) => n.name === 'Column line').componentPropertyReferences = { visible: pLine };
 }
 colSet.description =
-  'Table column (data/table): a column header (Table/Heading), the cells of the column in the Cells slot (Table/Cell, one per row) and an optional footer cell, aligned by Align; sized by the table (Components mode). Resize the column to its content. Column line draws the vertical line of columnLines at the inline end (off for the last column).';
+  'Table column (data/table): a column header (Table/Heading), the cells of the column in the Cells slot (Table/Cell, one per row) and an optional footer cell, aligned by Align; row heights follow the density mode. Resize the column to its content. Column line draws the vertical line of columnLines at the inline end (off for the last column).';
 colSet.children.forEach((v, j) => {
   v.x = 24 + j * 184;
   v.y = 24;
@@ -358,6 +335,7 @@ colSet.resizeWithoutConstraints(24 + 3 * 184, 24 + 300);
 colSet.fills = [];
 colSet.x = 80;
 colSet.y = Math.max(...section.children.filter((n) => n !== colSet).map((n) => n.y + n.height)) + 80;
+let table;
 const COLS = [
   ['Invoice', 'start', 110, 'link', ['#3066', '#3065', '#3064', '#3063']],
   ['Customer', 'start', 200, 'avatar', ['Olivia Rhye', 'Phoenix Baker', 'Lana Steiner', 'Demi Wilkinson']],
@@ -375,12 +353,10 @@ const COLS = [
   ],
   ['Amount', 'end', 130, 'text', ['1,240.00', '89.50', '420.00', '12,500.00']]
 ];
-const tables = [];
-for (const s of ['md', 'sm', 'lg']) {
+{
   const t = figma.createComponent();
-  t.name = `Size=${s}`;
+  t.name = 'Table';
   section.appendChild(t);
-  t.setExplicitVariableModeForCollection(comp, comp.modes.find((m) => m.name === s).modeId);
   t.layoutMode = 'VERTICAL';
   t.primaryAxisSizingMode = 'AUTO';
   t.counterAxisSizingMode = 'AUTO';
@@ -447,43 +423,28 @@ for (const s of ['md', 'sm', 'lg']) {
         }
       });
   }
-  tables.push(t);
+  const ts = Object.entries(t.componentPropertyDefinitions)
+    .filter(([, d]) => d.type === 'SLOT')
+    .map(([k]) => k);
+  t.editComponentProperty(ts[0], {
+    name: 'Columns',
+    description: 'Table/Column instances in column order.',
+    preferredValues: [{ type: 'COMPONENT_SET', key: colSet.key }],
+    slotSettings: { minChildren: 1 }
+  });
+  const pShow = t.addComponentProperty('Show caption', 'BOOLEAN', true);
+  const pCap = t.addComponentProperty('Caption', 'TEXT', 'Invoices');
+  cap.componentPropertyReferences = { visible: pShow, characters: pCap };
+  t.description =
+    'Table (data/table): a native data table in a frame of border/width/default in color/border/subtle with radius/container corners; caption above in heading/xs (Show caption off for hideCaption), space/content/sm above the frame. Columns slot: Table/Column instances (header band, cells, optional footer, optional column lines). The table has no size: rows are at least size/control/md, which follows the density mode (32, 40, 44 px); text stays body/sm and label/md. An avatar or row actions make a row taller than size/control/md in some densities, as in the code: use them in every column of the row or not at all. Inline scrolling, the sticky header, row headers and the focusable scroll area are behaviors of the code.';
+  t.x = colSet.x + colSet.width + 80;
+  t.y = colSet.y;
+  table = t;
 }
-const tSet = figma.combineAsVariants(tables, section);
-tSet.name = 'Table';
-for (const v of tSet.children) {
-  v.primaryAxisSizingMode = 'AUTO';
-  v.counterAxisSizingMode = 'AUTO';
-}
-const ts = Object.entries(tSet.componentPropertyDefinitions)
-  .filter(([, d]) => d.type === 'SLOT')
-  .map(([k]) => k);
-for (const v of tSet.children)
-  v.findOne((n) => n.type === 'SLOT').componentPropertyReferences = { slotContentId: ts[0] };
-for (const k of ts.slice(1)) if (tSet.componentPropertyDefinitions[k]) tSet.deleteComponentProperty(k);
-tSet.editComponentProperty(ts[0], {
-  name: 'Columns',
-  description: 'Table/Column instances in column order; the table size reaches them through the Components mode.',
-  preferredValues: [{ type: 'COMPONENT_SET', key: colSet.key }],
-  slotSettings: { minChildren: 1 }
-});
-const pShow = tSet.addComponentProperty('Show caption', 'BOOLEAN', true);
-const pCap = tSet.addComponentProperty('Caption', 'TEXT', 'Invoices');
-for (const v of tSet.children)
-  v.findChild((n) => n.name === 'Caption').componentPropertyReferences = { visible: pShow, characters: pCap };
-tSet.description =
-  'Table (data/table): a native data table in a frame of border/width/default in color/border/subtle with radius/container corners; caption above in heading/xs (Show caption off for hideCaption), space/content/sm above the frame. Columns slot: Table/Column instances (header band, cells, optional footer, optional column lines). Size sets the minimum row height (size/control/{size}) through the Components mode, so it applies to the columns placed in the slot; text stays body/sm and label/md. Inline scrolling, the sticky header, row headers and the focusable scroll area are behaviors of the code.';
-tSet.children.forEach((v, j) => {
-  v.x = 24;
-  v.y = 24 + j * 360;
-});
-tSet.resizeWithoutConstraints(24 + Math.max(...tSet.children.map((v) => v.width)) + 24, 24 + 3 * 360);
-tSet.fills = [];
-tSet.x = colSet.x + colSet.width + 80;
-tSet.y = colSet.y;
 section.resizeWithoutConstraints(
   Math.max(...section.children.map((n) => n.x + n.width)) + 80,
   Math.max(...section.children.map((n) => n.y + n.height)) + 80
 );
-await tSet.screenshot({ scale: 1 });
-return { column: colSet.id, table: tSet.id, key: tSet.key, h: tSet.children.map((v) => v.name + ':' + v.height) };
+await table.screenshot({ scale: 1 });
+return { column: colSet.id, table: table.id, key: table.key, h: table.height };
+// Built on 2026-11-17: Table 571:4860, Table/Column 561:2359, Table/Cell 558:2604, Table/Heading 558:2605, Table/Footer cell 558:2606.

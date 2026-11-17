@@ -3,9 +3,7 @@
  "records": [
   {
    "context": "base-light-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "frame-width",
@@ -16,9 +14,7 @@
   },
   {
    "context": "base-light-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "frame-color",
@@ -29,9 +25,7 @@
   },
   {
    "context": "base-light-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "radius",
@@ -42,9 +36,7 @@
   },
   {
    "context": "base-light-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "header-background",
@@ -55,9 +47,7 @@
   },
   {
    "context": "base-light-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "header-line",
@@ -68,9 +58,7 @@
   },
   {
    "context": "base-light-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "heading-font",
@@ -81,9 +69,7 @@
   },
   {
    "context": "base-light-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "heading-color",
@@ -94,9 +80,7 @@
   },
   {
    "context": "base-light-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "padding-inline",
@@ -107,165 +91,7 @@
   },
   {
    "context": "base-light-standard",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-height",
-   "expected": 32,
-   "observed": 32,
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-font",
-   "expected": "14px 400",
-   "observed": "14px 400",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-color",
-   "expected": "rgb(24, 28, 33)",
-   "observed": "rgb(24, 28, 33)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-line",
-   "expected": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "observed": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-width",
-   "expected": "1px",
-   "observed": "1px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-color",
-   "expected": "rgb(236, 242, 249)",
-   "observed": "rgb(236, 242, 249)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "radius",
-   "expected": "8px",
-   "observed": "8px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-background",
-   "expected": "rgb(246, 250, 255)",
-   "observed": "rgb(246, 250, 255)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-line",
-   "expected": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "observed": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-font",
-   "expected": "14px 500",
-   "observed": "14px 500",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-color",
-   "expected": "rgb(71, 76, 82)",
-   "observed": "rgb(71, 76, 82)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "padding-inline",
-   "expected": "12px",
-   "observed": "12px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "md"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "row-height",
@@ -276,9 +102,7 @@
   },
   {
    "context": "base-light-standard",
-   "props": {
-    "size": "md"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "cell-font",
@@ -289,9 +113,7 @@
   },
   {
    "context": "base-light-standard",
-   "props": {
-    "size": "md"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "cell-color",
@@ -302,165 +124,7 @@
   },
   {
    "context": "base-light-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-line",
-   "expected": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "observed": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-width",
-   "expected": "1px",
-   "observed": "1px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-color",
-   "expected": "rgb(236, 242, 249)",
-   "observed": "rgb(236, 242, 249)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "radius",
-   "expected": "8px",
-   "observed": "8px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-background",
-   "expected": "rgb(246, 250, 255)",
-   "observed": "rgb(246, 250, 255)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-line",
-   "expected": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "observed": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-font",
-   "expected": "14px 500",
-   "observed": "14px 500",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-color",
-   "expected": "rgb(71, 76, 82)",
-   "observed": "rgb(71, 76, 82)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "padding-inline",
-   "expected": "12px",
-   "observed": "12px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-height",
-   "expected": 48,
-   "observed": 48,
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-font",
-   "expected": "14px 400",
-   "observed": "14px 400",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-color",
-   "expected": "rgb(24, 28, 33)",
-   "observed": "rgb(24, 28, 33)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-light-standard",
-   "props": {
-    "size": "lg"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "row-line",
@@ -471,9 +135,7 @@
   },
   {
    "context": "base-dark-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "frame-width",
@@ -484,9 +146,7 @@
   },
   {
    "context": "base-dark-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "frame-color",
@@ -497,9 +157,7 @@
   },
   {
    "context": "base-dark-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "radius",
@@ -510,9 +168,7 @@
   },
   {
    "context": "base-dark-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "header-background",
@@ -523,9 +179,7 @@
   },
   {
    "context": "base-dark-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "header-line",
@@ -536,9 +190,7 @@
   },
   {
    "context": "base-dark-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "heading-font",
@@ -549,9 +201,7 @@
   },
   {
    "context": "base-dark-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "heading-color",
@@ -562,9 +212,7 @@
   },
   {
    "context": "base-dark-standard",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "padding-inline",
@@ -575,165 +223,7 @@
   },
   {
    "context": "base-dark-standard",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-height",
-   "expected": 32,
-   "observed": 32,
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-font",
-   "expected": "14px 400",
-   "observed": "14px 400",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-color",
-   "expected": "rgb(236, 242, 249)",
-   "observed": "rgb(236, 242, 249)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-line",
-   "expected": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "observed": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-width",
-   "expected": "1px",
-   "observed": "1px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-color",
-   "expected": "rgb(46, 50, 56)",
-   "observed": "rgb(46, 50, 56)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "radius",
-   "expected": "8px",
-   "observed": "8px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-background",
-   "expected": "rgb(46, 50, 56)",
-   "observed": "rgb(46, 50, 56)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-line",
-   "expected": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "observed": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-font",
-   "expected": "14px 500",
-   "observed": "14px 500",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-color",
-   "expected": "rgb(202, 208, 215)",
-   "observed": "rgb(202, 208, 215)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "padding-inline",
-   "expected": "12px",
-   "observed": "12px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "md"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "row-height",
@@ -744,9 +234,7 @@
   },
   {
    "context": "base-dark-standard",
-   "props": {
-    "size": "md"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "cell-font",
@@ -757,9 +245,7 @@
   },
   {
    "context": "base-dark-standard",
-   "props": {
-    "size": "md"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "cell-color",
@@ -770,165 +256,7 @@
   },
   {
    "context": "base-dark-standard",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-line",
-   "expected": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "observed": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-width",
-   "expected": "1px",
-   "observed": "1px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-color",
-   "expected": "rgb(46, 50, 56)",
-   "observed": "rgb(46, 50, 56)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "radius",
-   "expected": "8px",
-   "observed": "8px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-background",
-   "expected": "rgb(46, 50, 56)",
-   "observed": "rgb(46, 50, 56)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-line",
-   "expected": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "observed": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-font",
-   "expected": "14px 500",
-   "observed": "14px 500",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-color",
-   "expected": "rgb(202, 208, 215)",
-   "observed": "rgb(202, 208, 215)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "padding-inline",
-   "expected": "12px",
-   "observed": "12px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-height",
-   "expected": 48,
-   "observed": 48,
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-font",
-   "expected": "14px 400",
-   "observed": "14px 400",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-color",
-   "expected": "rgb(236, 242, 249)",
-   "observed": "rgb(236, 242, 249)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "base-dark-standard",
-   "props": {
-    "size": "lg"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "row-line",
@@ -939,9 +267,7 @@
   },
   {
    "context": "brick-light-compact",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "frame-width",
@@ -952,9 +278,7 @@
   },
   {
    "context": "brick-light-compact",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "frame-color",
@@ -965,9 +289,7 @@
   },
   {
    "context": "brick-light-compact",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "radius",
@@ -978,9 +300,7 @@
   },
   {
    "context": "brick-light-compact",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "header-background",
@@ -991,9 +311,7 @@
   },
   {
    "context": "brick-light-compact",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "header-line",
@@ -1004,9 +322,7 @@
   },
   {
    "context": "brick-light-compact",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "heading-font",
@@ -1017,9 +333,7 @@
   },
   {
    "context": "brick-light-compact",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "heading-color",
@@ -1030,9 +344,7 @@
   },
   {
    "context": "brick-light-compact",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "padding-inline",
@@ -1043,165 +355,7 @@
   },
   {
    "context": "brick-light-compact",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-height",
-   "expected": 28,
-   "observed": 28,
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-font",
-   "expected": "14px 400",
-   "observed": "14px 400",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-color",
-   "expected": "rgb(24, 28, 33)",
-   "observed": "rgb(24, 28, 33)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-line",
-   "expected": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "observed": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-width",
-   "expected": "1px",
-   "observed": "1px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-color",
-   "expected": "rgb(236, 242, 249)",
-   "observed": "rgb(236, 242, 249)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "radius",
-   "expected": "4px",
-   "observed": "4px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-background",
-   "expected": "rgb(246, 250, 255)",
-   "observed": "rgb(246, 250, 255)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-line",
-   "expected": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "observed": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-font",
-   "expected": "14px 500",
-   "observed": "14px 500",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-color",
-   "expected": "rgb(71, 76, 82)",
-   "observed": "rgb(71, 76, 82)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "padding-inline",
-   "expected": "8px",
-   "observed": "8px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "md"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "row-height",
@@ -1212,9 +366,7 @@
   },
   {
    "context": "brick-light-compact",
-   "props": {
-    "size": "md"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "cell-font",
@@ -1225,9 +377,7 @@
   },
   {
    "context": "brick-light-compact",
-   "props": {
-    "size": "md"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "cell-color",
@@ -1238,165 +388,7 @@
   },
   {
    "context": "brick-light-compact",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-line",
-   "expected": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "observed": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-width",
-   "expected": "1px",
-   "observed": "1px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-color",
-   "expected": "rgb(236, 242, 249)",
-   "observed": "rgb(236, 242, 249)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "radius",
-   "expected": "4px",
-   "observed": "4px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-background",
-   "expected": "rgb(246, 250, 255)",
-   "observed": "rgb(246, 250, 255)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-line",
-   "expected": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "observed": "rgb(236, 242, 249) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-font",
-   "expected": "14px 500",
-   "observed": "14px 500",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-color",
-   "expected": "rgb(71, 76, 82)",
-   "observed": "rgb(71, 76, 82)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "padding-inline",
-   "expected": "8px",
-   "observed": "8px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-height",
-   "expected": 40,
-   "observed": 40,
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-font",
-   "expected": "14px 400",
-   "observed": "14px 400",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-color",
-   "expected": "rgb(24, 28, 33)",
-   "observed": "rgb(24, 28, 33)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "brick-light-compact",
-   "props": {
-    "size": "lg"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "row-line",
@@ -1407,9 +399,7 @@
   },
   {
    "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "frame-width",
@@ -1420,9 +410,7 @@
   },
   {
    "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "frame-color",
@@ -1433,9 +421,7 @@
   },
   {
    "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "radius",
@@ -1446,9 +432,7 @@
   },
   {
    "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "header-background",
@@ -1459,9 +443,7 @@
   },
   {
    "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "header-line",
@@ -1472,9 +454,7 @@
   },
   {
    "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "heading-font",
@@ -1485,9 +465,7 @@
   },
   {
    "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "heading-color",
@@ -1498,9 +476,7 @@
   },
   {
    "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "sm"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "padding-inline",
@@ -1511,165 +487,7 @@
   },
   {
    "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-height",
-   "expected": 36,
-   "observed": 36,
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-font",
-   "expected": "14px 400",
-   "observed": "14px 400",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-color",
-   "expected": "rgb(236, 242, 249)",
-   "observed": "rgb(236, 242, 249)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "sm"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-line",
-   "expected": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "observed": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-width",
-   "expected": "1px",
-   "observed": "1px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-color",
-   "expected": "rgb(46, 50, 56)",
-   "observed": "rgb(46, 50, 56)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "radius",
-   "expected": "16px",
-   "observed": "16px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-background",
-   "expected": "rgb(46, 50, 56)",
-   "observed": "rgb(46, 50, 56)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-line",
-   "expected": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "observed": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-font",
-   "expected": "14px 500",
-   "observed": "14px 500",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-color",
-   "expected": "rgb(202, 208, 215)",
-   "observed": "rgb(202, 208, 215)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "padding-inline",
-   "expected": "16px",
-   "observed": "16px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "md"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "row-height",
@@ -1680,9 +498,7 @@
   },
   {
    "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "md"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "cell-font",
@@ -1693,9 +509,7 @@
   },
   {
    "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "md"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "cell-color",
@@ -1706,165 +520,7 @@
   },
   {
    "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "md"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-line",
-   "expected": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "observed": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-width",
-   "expected": "1px",
-   "observed": "1px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "frame-color",
-   "expected": "rgb(46, 50, 56)",
-   "observed": "rgb(46, 50, 56)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "radius",
-   "expected": "16px",
-   "observed": "16px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-background",
-   "expected": "rgb(46, 50, 56)",
-   "observed": "rgb(46, 50, 56)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "header-line",
-   "expected": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "observed": "rgb(46, 50, 56) 0px -1px 0px 0px inset",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-font",
-   "expected": "14px 500",
-   "observed": "14px 500",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "heading-color",
-   "expected": "rgb(202, 208, 215)",
-   "observed": "rgb(202, 208, 215)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "padding-inline",
-   "expected": "16px",
-   "observed": "16px",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "row-height",
-   "expected": 56,
-   "observed": 56,
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-font",
-   "expected": "14px 400",
-   "observed": "14px 400",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "lg"
-   },
-   "state": "default",
-   "part": null,
-   "property": "cell-color",
-   "expected": "rgb(236, 242, 249)",
-   "observed": "rgb(236, 242, 249)",
-   "passed": true,
-   "note": "hash equal for the context"
-  },
-  {
-   "context": "orchid-dark-comfortable",
-   "props": {
-    "size": "lg"
-   },
+   "props": {},
    "state": "default",
    "part": null,
    "property": "row-line",
