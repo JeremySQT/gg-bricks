@@ -36,8 +36,8 @@
       "file": "TDPqojP4KvbWJlKSYc4zKC",
       "page": "data/table (540:65)",
       "library": "Data (540:63), section Table (547:5)",
-      "componentSet": "548:414",
-      "specification": "555:3502",
+      "componentSet": "561:3026",
+      "specification": "566:1538",
       "ledger": "reports/components/table/figma/ledger.json",
       "parity": "reports/components/table/figma/parity.json",
       "screenshots": [
@@ -47,7 +47,7 @@
       "blueprints": [
         {
           "path": "reports/components/table/figma/blueprint-anatomy.png",
-          "node": "555:3788"
+          "node": "566:2034"
         }
       ],
       "builders": [
@@ -193,6 +193,12 @@
       "result": "passed",
       "date": "2026-11-14",
       "evidence": "reports/components/table/figma/parity.json"
+    },
+    {
+      "name": "Figma rebuild after the user review of 2026-11-17 (size as a Components mode, cell Content variants, anatomy); parity by hash re-measured: hashes unchanged, 0 failures",
+      "result": "passed",
+      "date": "2026-11-17",
+      "evidence": "reports/components/table/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -207,7 +213,8 @@
     "Round 2 style (user at the wave 5 contract gate, round 1 (2026-11-13), with three reference screenshots: \"J'aime bien l'entête en gris léger avec des bordures en gris léger également\"): header band in color.surface.subtle; every line in color.border.subtle (header, rows, footer); a frame of border.width.default in color.border.subtle with radius.container corners around the table (two of the three references are framed).",
     "Optional columnLines (false by default): vertical lines between columns, as in two of the references.",
     "Implementation: Svelte API: compound children as components (TableHeader, TableBody, TableFooter, TableRow, TableHeading, TableCell); align on cells and headings; rowHeader renders a th scope row.",
-    "Implementation: Contract amendments recorded in pendingChanges (paddingBlock, columns on one line)."
+    "Implementation: Contract amendments recorded in pendingChanges (paddingBlock, columns on one line).",
+    "Figma review (user, 2026-11-17): \"La propriété Size du Table ne change rien\": slot content survives a variant switch, so the size is now a mode of the hidden Components collection set by each Table variant (table/min-height, table/padding-block); prebuilt cell contents (text, badge, avatar, link, actions); a middle cell outlined and pinned in the anatomy. An avatar row (sm) and row actions (md) are taller than the row size, as in the code: kept out of the default table to keep its rows aligned."
   ],
   "openDecisions": [],
   "nextAction": "Wave 5 Figma parity gate (grouped review).",

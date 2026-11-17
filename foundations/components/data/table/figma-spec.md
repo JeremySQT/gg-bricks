@@ -3,8 +3,8 @@
 ## Overview
 
 - File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), component page **data/table** (`540:65`). Masters: library page **Data** (`540:63`), section **Table** (`547:5`).
-- Master: **Table** ([`548:414`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=548-414)), 3 variants, with **Table/Column** (`548:173`), **Table/Cell** (`547:96`), **Table/Heading** (`547:97`), **Table/Footer cell** (`547:98`). Built by `authoring/adapters/figma/wave5-table-master.plugin.js`.
-- Specification frame: **Table — Specification** ([`555:3502`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=555-3502)); built on `spec-lib.plugin.js` (stored `_Script/spec-lib`, bodies run in the wave 5 session), with the Master link of `spec-header-links.plugin.js`.
+- Master: **Table** ([`561:3026`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=561-3026)), 3 variants, with **Table/Column** (`561:2359`), **Table/Cell** (`558:2604`), **Table/Heading** (`558:2605`), **Table/Footer cell** (`558:2606`). Built by `authoring/adapters/figma/wave5-table-master.plugin.js`.
+- Specification frame: **Table — Specification** ([`566:1538`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=566-1538)); built on `spec-lib.plugin.js` (stored `_Script/spec-lib`, bodies run in the wave 5 session), with the Master link of `spec-header-links.plugin.js`.
 - Reproduces: contract `foundations/components/data/table/contract.json` and the implementation approved on 2026-11-14 at the grouped wave 5 implementation gate (`packages/svelte/src/components/table`).
 - Node IDs: `reports/components/table/figma/ledger.json`. Parity: `reports/components/table/figma/parity.json` (144 records, 0 failures). Screenshots: `master-set.png`, `specification.png`, `blueprint-anatomy.png`.
 - The library is not published (publication needs explicit authorization).
@@ -21,6 +21,8 @@
 | cell `rowHeader`, scrolling, sticky header, focusable scroll area | Not drawn: behaviors of the code                                                                                                |
 
 ## Construction notes
+
+- Rebuilt on 2026-11-17 (user review): a variant switch keeps the content of a slot, so a Size variant on the children never followed the table; the size is now a Components mode set by each Table variant. Table/Cell has Content variants text, badge (Badge sm), avatar (Avatar xs and a name), link (Link sm) and actions (IconButton ghost sm). An avatar makes an sm row 35 px and row actions an md row 48 px, as in the code; the default table keeps them out so that its columns stay aligned.
 
 - Figma builds a table from columns (each column a vertical stack of its cells) so that the cells of a column share its width; rows align because every cell keeps the row minimum height.
 - The block padding comes from the Figma-only Density variables table/padding-block/{size} (hidden from publishing): min(space/content/sm, (size/control/{size} − 21) / 2), the value of the code (Figma has no min()).

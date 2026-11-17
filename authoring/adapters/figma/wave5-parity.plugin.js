@@ -86,7 +86,7 @@ for (const [b, a, d] of CTX) {
   if (IDS.includes('data-field'))
     for (const o of ['vertical', 'horizontal'])
       for (const s of ['sm', 'md']) {
-        const i = await mk('546:31', `Orientation=${o}, Size=${s}, Empty=false`);
+        const i = await mk('562:2786', `Orientation=${o}, Size=${s}, Content=text`);
         const l = i.findOne((n) => n.name === 'Label'),
           v = i.findOne((n) => n.name === 'Value text');
         const P = { orientation: o, size: s };
@@ -110,9 +110,10 @@ for (const [b, a, d] of CTX) {
   }
   if (IDS.includes('table'))
     for (const s of ['sm', 'md', 'lg']) {
-      const i = await mk('548:414', `Size=${s}`);
+      const i = await mk('561:3026', `Size=${s}`);
       const fr = i.findOne((n) => n.name === 'Frame');
-      const col0 = i.findOne((n) => n.type === 'SLOT' && n.name === 'Columns').children[0];
+      // The Amount column (text cells): the other default columns hold a Link, an Avatar or a Badge.
+      const col0 = i.findOne((n) => n.type === 'SLOT' && n.name === 'Columns').children[3];
       const h = col0.findOne((n) => n.name === 'Heading');
       const ht = h.findOne((n) => n.type === 'TEXT');
       const cells = col0.findOne((n) => n.type === 'SLOT').children;

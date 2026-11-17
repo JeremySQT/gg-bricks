@@ -11,14 +11,14 @@
       "id": "540:63"
     }
   },
-  "recordedOn": "2026-11-14",
+  "recordedOn": "2026-11-17",
   "componentSet": {
-    "id": "546:31",
+    "id": "562:2786",
     "name": "DataField",
-    "key": "94c26316258a30192f51aa334b9dbde90bc5bbea",
-    "variants": 8,
-    "defaultVariant": "Orientation=vertical, Size=md, Empty=false (top-left)",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=546-31"
+    "key": "530d40e1227692610966c5146852b6018e855b74",
+    "variants": 20,
+    "defaultVariant": "Orientation=vertical, Size=md, Content=text (top-left)",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=562-2786"
   },
   "section": {
     "name": "DataField",
@@ -27,18 +27,18 @@
   "properties": {
     "Orientation": "vertical, horizontal",
     "Size": "md, sm",
-    "Empty": "false, true",
+    "Content": "text, empty, badge, link, avatar",
     "Label": "text (Email)",
-    "Value": "slot (body text by default)"
+    "Value": "slot"
   },
   "specification": {
-    "id": "555:5755",
-    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=555-5755"
+    "id": "564:80",
+    "url": "https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=564-80"
   },
   "blueprints": [
     {
       "name": "Anatomy",
-      "id": "555:5791",
+      "id": "564:142",
       "path": "reports/components/data-field/figma/blueprint-anatomy.png"
     }
   ],
@@ -48,5 +48,9 @@
     "authoring/adapters/figma/wave5-parity-report.mjs",
     "authoring/adapters/figma/spec-lib.plugin.js (stored _Script/spec-lib 411:2; wave 5 specification bodies run inline in the session)",
     "authoring/adapters/figma/spec-header-links.plugin.js"
+  ],
+  "history": [
+    "2026-11-14: first build.",
+    "2026-11-17: rebuilt after the user review of the Figma parity (Content variants, vertical anatomy, content examples in the specification)."
   ]
 }

@@ -39,8 +39,8 @@
       "file": "TDPqojP4KvbWJlKSYc4zKC",
       "page": "data/data-field (540:64)",
       "library": "Data (540:63), section DataField (546:2)",
-      "componentSet": "546:31",
-      "specification": "555:5755",
+      "componentSet": "562:2786",
+      "specification": "564:80",
       "ledger": "reports/components/data-field/figma/ledger.json",
       "parity": "reports/components/data-field/figma/parity.json",
       "screenshots": [
@@ -50,7 +50,7 @@
       "blueprints": [
         {
           "path": "reports/components/data-field/figma/blueprint-anatomy.png",
-          "node": "555:5791"
+          "node": "564:142"
         }
       ],
       "builders": [
@@ -182,6 +182,12 @@
       "result": "passed",
       "date": "2026-11-14",
       "evidence": "reports/components/data-field/figma/parity.json"
+    },
+    {
+      "name": "Figma rebuild after the user review of 2026-11-17 (Content variants, anatomy and examples); parity by hash re-measured: hashes unchanged, 0 failures",
+      "result": "passed",
+      "date": "2026-11-17",
+      "evidence": "reports/components/data-field/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -193,7 +199,8 @@
     "No new semantic role.",
     "Option A (user at the wave 5 contract gate, round 1 (2026-11-13): \"Oui, restons sur la A, on verra si on fait évoluer plus tard\"): DataField alone, a group named by its label; a DataList container may come later.",
     "Implementation: Svelte API: `children` replaces value; the group is named through aria-labelledby on the visible label.",
-    "Round 2: label in color.content.tertiary (user request for more contrast between label and value); contrast pairs on default and subtle unchanged and passing."
+    "Round 2: label in color.content.tertiary (user request for more contrast between label and value); contrast pairs on default and subtle unchanged and passing.",
+    "Figma review (user, 2026-11-17): content variants as a design aid (Content text, empty, badge, link, avatar); anatomy redrawn on a vertical field; content examples in the specification."
   ],
   "openDecisions": [],
   "nextAction": "Wave 5 Figma parity gate (grouped review).",

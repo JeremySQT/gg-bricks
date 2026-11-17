@@ -192,3 +192,11 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - `figma.createImage(figma.base64Decode(…))` needs the bytes in the script; pictures in masters are SVG nodes (`createNodeFromSvg`) that designers replace with an image fill.
 - The blueprint ink of `spec-lib` paints SVG pictures as solid tint disks: anatomy instances use initials avatars.
 - A Figma table is built from columns (each a vertical stack of cells) so that cells share their column width; spec boards keep tables narrow (two columns) in context cards, or the specification frame widens beyond 1232 px.
+
+## Mechanics learned on 2026-11-17 (user review of the wave 5 Figma parity)
+
+- **Slot content survives a variant switch**: a Size variant on a host whose children sit in a slot changes nothing for them (Table). Drive such a size through a mode of the hidden Components collection set by the host variant (`table/min-height`, `table/padding-block`): modes reach the instances placed in the slot.
+- The same holds for an instance in a slot whose own slot content was overridden: switching its variant keeps the old content; replace the instance instead (Table/Cell).
+- A variant and a slot can share a name (Content): `setProperties` must pick the key whose type is not SLOT.
+- A slot switched to a horizontal layout after creation needs `counterAxisSizingMode = 'AUTO'` again, or it keeps the default 100 px height (DataField avatar).
+- Baseline alignment of a horizontal auto layout does not reach into a slot whose first child is an instance: center those variants instead.

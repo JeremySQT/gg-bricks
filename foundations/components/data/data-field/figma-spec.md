@@ -3,8 +3,8 @@
 ## Overview
 
 - File: [GG.Bricks — Design system](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system), component page **data/data-field** (`540:64`). Masters: library page **Data** (`540:63`), section **DataField** (`546:2`).
-- Master: **DataField** ([`546:31`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=546-31)), 8 variants. Built by `authoring/adapters/figma/wave5-data-field-master.plugin.js`.
-- Specification frame: **DataField — Specification** ([`555:5755`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=555-5755)); built on `spec-lib.plugin.js` (stored `_Script/spec-lib`, bodies run in the wave 5 session), with the Master link of `spec-header-links.plugin.js`.
+- Master: **DataField** ([`562:2786`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=562-2786)), 20 variants. Built by `authoring/adapters/figma/wave5-data-field-master.plugin.js`.
+- Specification frame: **DataField — Specification** ([`564:80`](https://www.figma.com/design/TDPqojP4KvbWJlKSYc4zKC/GG.Bricks---Design-system?node-id=564-80)); built on `spec-lib.plugin.js` (stored `_Script/spec-lib`, bodies run in the wave 5 session), with the Master link of `spec-header-links.plugin.js`.
 - Reproduces: contract `foundations/components/data/data-field/contract.json` and the implementation approved on 2026-11-14 at the grouped wave 5 implementation gate (`packages/svelte/src/components/data-field`).
 - Node IDs: `reports/components/data-field/figma/ledger.json`. Parity: `reports/components/data-field/figma/parity.json` (80 records, 0 failures). Screenshots: `master-set.png`, `specification.png`, `blueprint-anatomy.png`.
 - The library is not published (publication needs explicit authorization).

@@ -1,6 +1,7 @@
-// Wave 5 (use_figma body), 2026-11-14, session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT.
-// DataField section of the Data page: the DataField component set (Orientation × Size × Empty, 8 variants). Label text
-// property; Value slot (free content, a body text by default); Empty shows the em dash in color/content/tertiary.
+// Wave 5 (use_figma body), 2026-11-14, rebuilt on 2026-11-17 (user review: content variants), session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT.
+// DataField section of the Data page: the DataField component set (Orientation × Size × Content, 20 variants). Label text
+// property; Value slot (free content, a body text by default); Content: text, empty (the em dash in
+// color/content/tertiary), badge (Badge md), link (Link) or avatar (Avatar xs and a name), as a design aid.
 const page = await figma.getNodeByIdAsync('540:63');
 await figma.setCurrentPageAsync(page);
 const vars = await figma.variables.getLocalVariablesAsync();
@@ -43,12 +44,25 @@ const text = (parent, name, st, chars, color) => {
   t.fills = [paint(color, t)];
   return t;
 };
+const BADGE = await figma.getNodeByIdAsync('220:293');
+const LINK = await figma.getNodeByIdAsync('232:659');
+const AV = await figma.getNodeByIdAsync('543:605');
+await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
+const pick = (set, want) =>
+  set.children.find((v) => Object.entries(want).every(([k, x]) => v.name.includes(`${k}=${x}`)));
+const setP = (i, name, val) => {
+  const k = Object.keys(i.componentProperties).find(
+    (x) => x.split('#')[0] === name && i.componentProperties[x].type !== 'SLOT'
+  );
+  i.setProperties({ [k]: val });
+};
+const KINDS = ['text', 'empty', 'badge', 'link', 'avatar'];
 const variants = [];
 for (const o of ['vertical', 'horizontal'])
   for (const s of ['md', 'sm'])
-    for (const empty of ['false', 'true']) {
+    for (const kind of KINDS) {
       const c = figma.createComponent();
-      c.name = `Orientation=${o}, Size=${s}, Empty=${empty}`;
+      c.name = `Orientation=${o}, Size=${s}, Content=${kind}`;
       section.appendChild(c);
       c.layoutMode = o === 'vertical' ? 'VERTICAL' : 'HORIZONTAL';
       c.primaryAxisSizingMode = o === 'vertical' ? 'AUTO' : 'FIXED';
@@ -72,7 +86,7 @@ for (const o of ['vertical', 'horizontal'])
         l.setBoundVariable('width', V('component/data-field/label-inline-size'));
         l.textAutoResize = 'HEIGHT';
       }
-      if (empty === 'true') {
+      if (kind === 'empty') {
         text(c, 'Empty', 'body/' + s, '—', 'color/content/tertiary');
       } else {
         const sl = c.createSlot();
@@ -84,9 +98,28 @@ for (const o of ['vertical', 'horizontal'])
         sl.counterAxisSizingMode = 'AUTO';
         c.appendChild(sl);
         sl.layoutSizingHorizontal = 'FILL';
-        const v = text(sl, 'Value text', 'body/' + s, 'olivia@example.com', 'color/content/primary');
-        v.layoutSizingHorizontal = 'FILL';
-        v.textAutoResize = 'HEIGHT';
+        if (kind === 'text') {
+          const v = text(sl, 'Value text', 'body/' + s, 'olivia@example.com', 'color/content/primary');
+          v.layoutSizingHorizontal = 'FILL';
+          v.textAutoResize = 'HEIGHT';
+        } else if (kind === 'badge') {
+          const b = pick(BADGE, { Intent: 'success', Appearance: 'subtle', Size: 'md' }).createInstance();
+          sl.appendChild(b);
+          setP(b, 'Label', 'Active');
+        } else if (kind === 'link') {
+          const ln = pick(LINK, { Color: 'accent', Size: s, State: 'default' }).createInstance();
+          sl.appendChild(ln);
+          setP(ln, 'Label', 'acme.example.com');
+        } else {
+          sl.layoutMode = 'HORIZONTAL';
+          sl.counterAxisSizingMode = 'AUTO';
+          sl.counterAxisAlignItems = 'CENTER';
+          sl.itemSpacing = 8;
+          const av = pick(AV, { Size: 'xs', Shape: 'circle', Content: 'picture' }).createInstance();
+          av.name = 'Avatar';
+          sl.appendChild(av);
+          text(sl, 'Name', 'body/' + s, 'Olivia Rhye', 'color/content/primary');
+        }
       }
       variants.push(c);
     }
@@ -114,16 +147,19 @@ const pLabel = set.addComponentProperty('Label', 'TEXT', 'Email');
 for (const v of set.children)
   v.findChild((n) => n.name === 'Label').componentPropertyReferences = { characters: pLabel };
 set.children.forEach((v) => {
-  const [o, s, e] = v.name.split(', ').map((p) => p.split('=')[1]);
-  v.x = 24 + (e === 'true' ? 560 : 0);
+  const [o, s, k] = v.name.split(', ').map((p) => p.split('=')[1]);
+  v.x = 24 + KINDS.indexOf(k) * 520;
   v.y = 24 + (o === 'horizontal' ? 2 : 0) * 88 + (s === 'sm' ? 88 : 0);
 });
-set.resizeWithoutConstraints(24 + 560 + 480 + 24, 24 + 4 * 88);
+// Horizontal avatar variants center the label on the avatar row (a baseline would sit it at the avatar bottom).
+for (const v of set.children.filter((v) => v.name.includes('horizontal') && v.name.includes('Content=avatar')))
+  v.counterAxisAlignItems = 'CENTER';
+set.resizeWithoutConstraints(24 + 4 * 520 + 480 + 24, 24 + 4 * 88);
 set.fills = [];
 set.x = 80;
 set.y = 80;
 set.description =
-  'DataField (data/data-field): one piece of information as a label and its value, for reading (never a disabled input). Label in label/{size} and color/content/tertiary, value in body/{size} and color/content/primary; both wrap. Vertical: label above value, space/content/xs apart (320 px wide by default, resize the instance). Horizontal: label in a column of component/data-field/label-inline-size (160 px), value beside it after space/content/md, aligned on their first baselines; the code stacks it below 320 px. Empty: an em dash in color/content/tertiary (the code announces emptyLabel). Sizes sm and md; typographies do not follow density.';
+  'DataField (data/data-field): one piece of information as a label and its value, for reading (never a disabled input). Label in label/{size} and color/content/tertiary, value in body/{size} and color/content/primary; both wrap. Vertical: label above value, space/content/xs apart (320 px wide by default, resize the instance). Horizontal: label in a column of component/data-field/label-inline-size (160 px), value beside it after space/content/md, aligned on their first baselines; the code stacks it below 320 px. Content: text, empty (an em dash in color/content/tertiary; the code announces emptyLabel), badge, link or avatar with a name, as starting points; the Value slot takes any content. Sizes sm and md; typographies do not follow density.';
 section.resizeWithoutConstraints(set.x + set.width + 80, set.y + set.height + 80);
-await set.screenshot({ scale: 2 });
+await set.screenshot({ scale: 0.6 });
 return { section: section.id, set: set.id, key: set.key, n: set.children.length, first: set.children[0].name };
