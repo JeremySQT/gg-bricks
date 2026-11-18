@@ -222,7 +222,7 @@ const D = ['page', 'external', 'email', 'phone', 'file', 'print'];
 const DLABEL = {
   page: 'Pricing',
   external: 'Status page',
-  email: 'support@ggbrick.io',
+  email: 'support@ggbrick.design',
   phone: '+33 1 23 45 67 89',
   file: 'Annual report',
   print: 'Printable version'
@@ -270,7 +270,7 @@ hero.counterAxisAlignItems = 'CENTER';
 const h1 = row('Hero row 1', 32, [
   lk({ label: 'Pricing', size: 'lg' }),
   lk({ d: 'external', label: 'Status page', size: 'lg' }),
-  lk({ d: 'email', label: 'support@ggbrick.io', size: 'lg' })
+  lk({ d: 'email', label: 'support@ggbrick.design', size: 'lg' })
 ]);
 const h2 = row('Hero row 2', 32, [
   lk({ d: 'file', label: 'Annual report', size: 'lg' }),
@@ -628,7 +628,7 @@ fill(contact, 'color/surface/raised');
 stroke(contact, 'color/border/subtle');
 contact.cornerRadius = 12;
 contact.appendChild(text('Contact support', 'heading/sm'));
-contact.appendChild(lk({ d: 'email', label: 'support@ggbrick.io' }));
+contact.appendChild(lk({ d: 'email', label: 'support@ggbrick.design' }));
 contact.appendChild(lk({ d: 'phone', label: '+33 1 23 45 67 89' }));
 contact.appendChild(lk({ d: 'external', label: 'Community forum' }));
 colB.appendChild(caption(contact, 'contact details: the label is the address or the number'));

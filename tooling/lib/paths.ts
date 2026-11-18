@@ -35,6 +35,11 @@ export function write(p: string, content: unknown): void {
   fs.writeFileSync(target, typeof content === 'string' ? content : JSON.stringify(content, null, 2) + '\n');
 }
 
+/** Notices every packed package ships: copied from the repository root at build time (decisions.md, License). */
+export function copyNotices(packageDir: string, files: string[] = ['LICENSE', 'THIRD-PARTY-NOTICES.md']): void {
+  for (const file of files) fs.copyFileSync(abs(file), abs(packageDir, file));
+}
+
 export function exists(p: string): boolean {
   return fs.existsSync(abs(p));
 }
