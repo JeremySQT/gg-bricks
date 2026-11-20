@@ -26,7 +26,7 @@
       "import": "Icon",
       "from": "@ggbrick/svelte",
       "purpose": "Shows a vector glyph from the application's icon set (Phosphor conventions) at one of five system sizes in the current text color; decorative unless it carries a label, which makes it a named image; content of Button slots.",
-      "whenNotToUse": "Actions without visible text (IconButton), multi-color artwork, logos and avatars (Avatar, planned), activity indicators (Spinner), statuses with text (Badge), icon fonts and sprite sheets.",
+      "whenNotToUse": "Actions without visible text (IconButton), multi-color artwork, logos and avatars (Avatar), activity indicators (Spinner), statuses with text (Badge), icon fonts and sprite sheets.",
       "documentation": "icon.md",
       "contract": "foundations/components/content/icon/contract.json",
       "sections": [
