@@ -36,3 +36,4 @@ Read `docs/index.json` first, then the component page (`docs/<id>.md`). `docs/AG
 - `src/index.ts`: public exports.
 - `src/components/<id>/`: `<Name>.svelte`, `types.ts`, `<id>.css`, generated `contract.generated.ts` and `tokens.generated.css`.
 - `tokens.css`, `contracts/`, `docs/`: copies generated at build time from `packages/tokens` and `documentation/`.
+- `LICENSE`, `THIRD-PARTY-NOTICES.md`: MIT license of ggbrick and the notice of the Phosphor Icons paths used as intrinsic glyphs, copied at build time from the repository root.

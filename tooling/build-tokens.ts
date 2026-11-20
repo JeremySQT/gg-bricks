@@ -1,7 +1,7 @@
 // Generate distributable token outputs and per-component token evidence from the JSON sources.
 // Outputs: packages/tokens/* (resolved maps, CSS, Figma manifest and expectations),
 // reports/tokens/traces/* and reports/components/<id>/* for every component contract.
-import { paths, write } from './lib/paths.ts';
+import { copyNotices, paths, write } from './lib/paths.ts';
 import { resolveAllContexts, config, cssVariable } from './lib/tokens.ts';
 import { buildLayeredCss } from './lib/css.ts';
 import { checkContract, expandCombinations, resolveTemplate } from './lib/contract.ts';
@@ -114,6 +114,7 @@ for (const ctx of contexts) {
   write(`${paths.reports}/tokens/traces/${ctx.id}.json`, ctx.trace);
 }
 write(`${paths.tokensPackage}/tokens.css`, buildLayeredCss(cfg));
+copyNotices(paths.tokensPackage, ['LICENSE']); // tokens copy no third-party material
 
 // 3. Per-component evidence: coverage, contrast on documented backdrops, minimum target.
 const summary: Record<string, { requiredPaths: number; contrastChecks: number; contrastFailures: number }> = {};

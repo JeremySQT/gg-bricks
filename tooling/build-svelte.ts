@@ -1,8 +1,8 @@
 // Generate the Svelte adapter's mechanical artifacts from every component contract:
 // enum types + defaults and CSS custom-property bindings (tooling/lib/bindings.ts), and the consumer copies
-// (tokens.css, contracts/, docs/) shipped inside packages/svelte. Implementations live in packages/svelte/src/components/<id>/.
+// (tokens.css, contracts/, docs/, LICENSE, THIRD-PARTY-NOTICES.md) shipped inside packages/svelte. Implementations live in packages/svelte/src/components/<id>/.
 import fs from 'node:fs';
-import { abs, paths, write, readJson, readText, exists } from './lib/paths.ts';
+import { abs, copyNotices, paths, write, readJson, readText, exists } from './lib/paths.ts';
 import { listComponents } from './lib/catalog.ts';
 import { generateCss, generateTypes } from './lib/bindings.ts';
 
@@ -49,6 +49,7 @@ for (const c of components) {
 
 // Consumer copies. The maintained sources stay in documentation/ and packages/tokens.
 fs.copyFileSync(abs(paths.tokensPackage, 'tokens.css'), abs(pkg, 'tokens.css'));
+copyNotices(pkg); // components carry Phosphor paths: the package ships the license and the third-party notices
 fs.rmSync(abs(pkg, 'docs'), { recursive: true, force: true });
 fs.mkdirSync(abs(pkg, 'docs'), { recursive: true });
 const index = readJson<DocIndex>(`${paths.documentation}/index.json`);

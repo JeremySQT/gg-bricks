@@ -6,5 +6,9 @@ playwright-report/
 packages/svelte/docs/
 packages/svelte/contracts/
 packages/svelte/tokens.css
+# License and notices copied from the root into the packed packages by `npm run generate`
+packages/svelte/LICENSE
+packages/svelte/THIRD-PARTY-NOTICES.md
+packages/tokens/LICENSE
 # Worktrees of parallel agents (git tracks them in .git; their files are never part of this tree)
 .claude/worktrees/
