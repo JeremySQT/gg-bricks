@@ -3,7 +3,7 @@
   "componentId": "avatar-group",
   "family": "content",
   "wave": 5,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Show the people (or teams) involved in an object as a compact row of overlapping avatars, with a count of the others.",
     "useCases": [
@@ -123,7 +123,27 @@
       "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\".",
       "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma component set 544:721 and specification frame 553:554 of the avatar-group component, parity report (120 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/avatar-group/figma-spec.md",
+          "reports/components/avatar-group/figma/parity.json",
+          "reports/components/avatar-group/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/content/avatar-group/figma-spec.md": "f6b799e2499b7ca9fb0dbbd15c7ca511d3767de6d7f061d41e197dec4ffb6c54",
+          "reports/components/avatar-group/figma/parity.json": "7481bbd59ca7ad3e211bc15c5055a02f56eb720bcd3a8aa45d60e8b2f67d914b",
+          "reports/components/avatar-group/figma/ledger.json": "00227c245750a479171ba4da07b09028d65ce0987e1a2d16a5a0732fd5d22e20"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "544:721",
+          "specificationFrame": "553:554"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -177,6 +197,12 @@
       "result": "passed",
       "date": "2026-11-14",
       "evidence": "reports/components/avatar-group/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 Figma parity gate approved (third round)",
+      "result": "passed",
+      "date": "2026-11-20",
+      "evidence": "Figma file TDPqojP4KvbWJlKSYc4zKC, specification 553:554; reports/components/avatar-group/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -191,7 +217,7 @@
     "Round 2: stacking B, each avatar above the previous one (document order, no z-index)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 Figma parity gate (grouped review).",
+  "nextAction": "Documentation (ggb-docs), then the wave 5 documentation gate.",
   "implementationNotes": [
     "Exports AvatarGroup and the types AvatarGroupProps, AvatarGroupItem.",
     "The first avatar is on top through decreasing z-index on the items (isolated stacking context); the +N box is last and lowest.",

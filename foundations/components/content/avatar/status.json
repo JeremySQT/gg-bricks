@@ -3,7 +3,7 @@
   "componentId": "avatar",
   "family": "content",
   "wave": 5,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Represent a person, or an organization, a team or a project, with a picture, their initials or a generic glyph, in a small box of fixed size beside or instead of their name.",
     "useCases": [
@@ -128,7 +128,27 @@
       "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\".",
       "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma component set 543:605 and specification frame 551:2 of the avatar component, parity report (360 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/avatar/figma-spec.md",
+          "reports/components/avatar/figma/parity.json",
+          "reports/components/avatar/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/content/avatar/figma-spec.md": "593ec4d2deae281dbf55995d276fbdffa21ddb7922ebcba94a12d471d56e9ce6",
+          "reports/components/avatar/figma/parity.json": "32b2e88065c085df43237d6dd5d503d0042ec61b4069b237656832ca55f4ac7c",
+          "reports/components/avatar/figma/ledger.json": "95284940dc3d36e161b2e419ad4cf76bb74b6530766a2ac6f13ee6bd5609e4a3"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "543:605",
+          "specificationFrame": "551:2"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -182,6 +202,12 @@
       "result": "passed",
       "date": "2026-11-14",
       "evidence": "reports/components/avatar/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 Figma parity gate approved (third round)",
+      "result": "passed",
+      "date": "2026-11-20",
+      "evidence": "Figma file TDPqojP4KvbWJlKSYc4zKC, specification 551:2; reports/components/avatar/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -200,7 +226,7 @@
     "Implementation: Svelte API: role img named by name on the root span; decorative or nameless avatars get aria-hidden; consumer attributes go to the root after Bits UI's."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 Figma parity gate (grouped review).",
+  "nextAction": "Documentation (ggb-docs), then the wave 5 documentation gate.",
   "implementationNotes": [
     "Exports Avatar and the types AvatarProps, AvatarImageStatus.",
     "Bits UI Avatar reports the loading status; ggbrick keeps it per source (a new src starts again from loading, since Bits UI does not reload once a picture has loaded) and renders the picture only without Bits UI's fallback part: the initials or the glyph are drawn while imageStatus is not loaded.",

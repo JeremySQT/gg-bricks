@@ -3,7 +3,7 @@
   "componentId": "divider",
   "family": "content",
   "wave": 5,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Separate two groups of content with a thin line, horizontally or vertically, optionally with a short centered label.",
     "useCases": [
@@ -119,7 +119,27 @@
       "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\".",
       "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma component set 545:652 and specification frame 552:703 of the divider component, parity report (20 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/divider/figma-spec.md",
+          "reports/components/divider/figma/parity.json",
+          "reports/components/divider/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/content/divider/figma-spec.md": "f5ffa362fad9d4349506082523d9725b24ef677e315075121f43d9c1cdce9c66",
+          "reports/components/divider/figma/parity.json": "bc7f44c76ea0490abeefa83f2d33de14c5dc1a9d1fe82269caf89d0bc824c90d",
+          "reports/components/divider/figma/ledger.json": "5a16d1c70fc987794d8e766177f387ef4550cc161469b31995f5a8f4b36d8f63"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "545:652",
+          "specificationFrame": "552:703"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -173,6 +193,12 @@
       "result": "passed",
       "date": "2026-11-14",
       "evidence": "reports/components/divider/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 Figma parity gate approved (third round)",
+      "result": "passed",
+      "date": "2026-11-20",
+      "evidence": "Figma file TDPqojP4KvbWJlKSYc4zKC, specification 552:703; reports/components/divider/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -183,7 +209,7 @@
     "Thickness tokenized (user at the wave 5 contract gate, round 1 (2026-11-13): \"l'épaisseur du trait devrait être tokenisée, tout en restant sur 1px par défaut. Mais certaines brands pourraient vouloir mettre autre chose\"): component token component.divider.thickness = 1 px (primitive.border.1), so that a brand changes dividers without touching border.width.default (every control border). Menu and Toolbar separators and table lines keep border.width.default."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 Figma parity gate (grouped review).",
+  "nextAction": "Documentation (ggb-docs), then the wave 5 documentation gate.",
   "implementationNotes": [
     "Exports Divider and the type DividerProps.",
     "The line is a border (painted by the system in forced colors); a labeled divider draws its two lines with ::before and ::after.",

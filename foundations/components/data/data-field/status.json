@@ -3,7 +3,7 @@
   "componentId": "data-field",
   "family": "data",
   "wave": 5,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Show one piece of information about an object as a label and its value, for reading, in detail panels, summaries and record pages.",
     "useCases": [
@@ -128,7 +128,27 @@
       "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\".",
       "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma component set 562:2786 and specification frame 564:80 of the data-field component, parity report (80 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/data/data-field/figma-spec.md",
+          "reports/components/data-field/figma/parity.json",
+          "reports/components/data-field/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/data/data-field/figma-spec.md": "5a0cf7a27bc86faca99083fd55f8d3c744035895fce66cc4ede390ca9ce98941",
+          "reports/components/data-field/figma/parity.json": "41467a3312d86b57c7ab53fb090aa993db2109ebb4236d61b360a5f3a57cc9f8",
+          "reports/components/data-field/figma/ledger.json": "ec01c20d68e585459a80b46b28908c7f00ae108720291a05c40ff6950b245de5"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "562:2786",
+          "specificationFrame": "564:80"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -188,6 +208,12 @@
       "result": "passed",
       "date": "2026-11-17",
       "evidence": "reports/components/data-field/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 Figma parity gate approved (third round)",
+      "result": "passed",
+      "date": "2026-11-20",
+      "evidence": "Figma file TDPqojP4KvbWJlKSYc4zKC, specification 564:80; reports/components/data-field/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -203,7 +229,7 @@
     "Figma review (user, 2026-11-17): content variants as a design aid (Content text, empty, badge, link, avatar); anatomy redrawn on a vertical field; content examples in the specification."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 Figma parity gate (grouped review).",
+  "nextAction": "Documentation (ggb-docs), then the wave 5 documentation gate.",
   "implementationNotes": [
     "Exports DataField and the type DataFieldProps.",
     "Horizontal layout without a container query (custom properties are not allowed in container conditions): a wrapping flex line where the label is min(100%, max(labelInlineSize, (2 × labelInlineSize − 100%) × 999)) wide, so it is labelInlineSize from twice that width and the whole line below; the value then wraps under it.",

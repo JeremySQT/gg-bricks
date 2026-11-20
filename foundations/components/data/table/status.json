@@ -3,7 +3,7 @@
   "componentId": "table",
   "family": "data",
   "wave": 5,
-  "phase": "figma",
+  "phase": "documentation",
   "scope": {
     "purpose": "Show a set of records in rows and columns so that values can be read and compared, as a native semantic data table.",
     "useCases": [
@@ -139,7 +139,33 @@
       "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\". Amendment of 2026-11-17 (size removed: Table.svelte, types.ts, generated files, example) requested by the user at the wave 5 Figma parity review: \"Table : Mais je me répète, mais un tableau n'a pas besoin d'avoir de sélecteur de size en variante ! Garde uniquement les modes, il va automatiquement être plus petit car plus dense. C'est donc vrai également pour ces sous composants ! D'ailleurs c'est vrai pour tous les composants du DS, pas tous les composants nécessites systématiquement plusieurs variantes de tailles.\" Digests re-recorded.",
       "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
     },
-    "figmaParity": null,
+    "figmaParity": {
+      "scope": "Figma component 571:4860 and specification frame 572:1519 of the table component, parity report (48 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/data/table/figma-spec.md",
+          "reports/components/table/figma/parity.json",
+          "reports/components/table/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/data/table/figma-spec.md": "0ef3dbb31912f4702e400bdfb9340cef47bbfc04fb882c5bbd033b41eabde732",
+          "reports/components/table/figma/parity.json": "86511be28c5e89939359ef975116275e8dda9a0dfae91d2499c2a7e065bd52a7",
+          "reports/components/table/figma/ledger.json": "204237f114957de2b5282b7510ccb71e00de4e180468567ac17664d92c884018"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "571:4860",
+          "specificationFrame": "572:1519",
+          "children": [
+            "561:2359 Table/Column",
+            "558:2604 Table/Cell",
+            "558:2605 Table/Heading",
+            "558:2606 Table/Footer cell"
+          ]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording."
+    },
     "documentation": null,
     "delivery": null
   },
@@ -205,6 +231,12 @@
       "result": "passed",
       "date": "2026-11-17",
       "evidence": "reports/components/table/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 Figma parity gate approved (third round)",
+      "result": "passed",
+      "date": "2026-11-20",
+      "evidence": "Figma file TDPqojP4KvbWJlKSYc4zKC, specification 572:1519; reports/components/table/figma/parity.json"
     }
   ],
   "decisionsTaken": [
@@ -221,10 +253,11 @@
     "Implementation: Svelte API: compound children as components (TableHeader, TableBody, TableFooter, TableRow, TableHeading, TableCell); align on cells and headings; rowHeader renders a th scope row.",
     "Implementation: Contract amendments recorded in pendingChanges (paddingBlock, columns on one line).",
     "Figma review (user, 2026-11-17): \"La propriété Size du Table ne change rien\": slot content survives a variant switch, so the size is now a mode of the hidden Components collection set by each Table variant (table/min-height, table/padding-block); prebuilt cell contents (text, badge, avatar, link, actions); a middle cell outlined and pinned in the anatomy. An avatar row (sm) and row actions (md) are taller than the row size, as in the code: kept out of the default table to keep its rows aligned.",
-    "Figma review (user, 2026-11-17): \"Table : Mais je me répète, mais un tableau n'a pas besoin d'avoir de sélecteur de size en variante ! Garde uniquement les modes, il va automatiquement être plus petit car plus dense. C'est donc vrai également pour ces sous composants ! D'ailleurs c'est vrai pour tous les composants du DS, pas tous les composants nécessites systématiquement plusieurs variantes de tailles.\" Size removed from the contract, the code and every Figma master of the table (Table, Table/Column, Table/Cell, Table/Heading, Table/Footer cell); rows follow the Density mode only (size/control/md, block padding from the Figma-only Density variable table/padding-block = 8, 4, 11.5 px). The Components collection mode of the earlier round and its variables table/min-height and table/padding-block were removed, as were the Density variables table/padding-block/{sm,md,lg}. An avatar row is 47 px against 44 px in comfortable density, as in the code (rows grow as a whole there; in Figma the column alone grows)."
+    "Figma review (user, 2026-11-17): \"Table : Mais je me répète, mais un tableau n'a pas besoin d'avoir de sélecteur de size en variante ! Garde uniquement les modes, il va automatiquement être plus petit car plus dense. C'est donc vrai également pour ces sous composants ! D'ailleurs c'est vrai pour tous les composants du DS, pas tous les composants nécessites systématiquement plusieurs variantes de tailles.\" Size removed from the contract, the code and every Figma master of the table (Table, Table/Column, Table/Cell, Table/Heading, Table/Footer cell); rows follow the Density mode only (size/control/md, block padding from the Figma-only Density variable table/padding-block = 8, 4, 11.5 px). The Components collection mode of the earlier round and its variables table/min-height and table/padding-block were removed, as were the Density variables table/padding-block/{sm,md,lg}. An avatar row is 47 px against 44 px in comfortable density, as in the code (rows grow as a whole there; in Figma the column alone grows).",
+    "Figma parity gate (user, 2026-11-20): decision A, the comfortable avatar row (47 px against 44 px) stays as in the code and is documented; the anatomy highlight frames the whole cell; the specification density examples use text cells in the Customer column."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 Figma parity gate (grouped review).",
+  "nextAction": "Documentation (ggb-docs), then the wave 5 documentation gate.",
   "implementationNotes": [
     "Exports Table, TableHeader, TableBody, TableFooter, TableRow, TableHeading and TableCell.",
     "The native caption is visually hidden and names the table; the visible caption above the frame is a copy hidden from assistive technology, so that it sits outside the frame.",

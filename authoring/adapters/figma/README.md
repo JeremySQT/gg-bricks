@@ -199,4 +199,5 @@ The Plugin API script bodies inherited from the reference kit were removed after
 - The same holds for an instance in a slot whose own slot content was overridden: switching its variant keeps the old content; replace the instance instead (Table/Cell).
 - A variant and a slot can share a name (Content): `setProperties` must pick the key whose type is not SLOT.
 - A slot switched to a horizontal layout after creation needs `counterAxisSizingMode = 'AUTO'` again, or it keeps the default 100 px height (DataField avatar).
+- To point at one cell of a table in an anatomy board, draw a Highlight rectangle on the board around the whole cell (4 px outside it, 1.5 px stroke and a light fill in the blueprint ink) instead of stroking the cell: a dashed stroke on the cell replaces its row line (user review, 2026-11-20).
 - Baseline alignment of a horizontal auto layout does not reach into a slot whose first child is an instance: center those variants instead.
