@@ -609,6 +609,82 @@
         "API",
         "Accessibility"
       ]
+    },
+    {
+      "id": "avatar",
+      "import": "Avatar",
+      "from": "@ggbrick/svelte",
+      "purpose": "Represents a person (circle) or an organization, a team or a project (square) by a picture shown only once loaded, initials from the name (two, one at xs, or up to three given) or a generic person glyph, in a fixed box of five sizes (xs 24 to xl 64 px); an image named by name, decorative when the name is written beside it; neutral colors, never interactive.",
+      "whenNotToUse": "Several people in little room (AvatarGroup), symbols that are not an identity (Icon), statuses or quantities (Badge, Counter), presence or status dots over the avatar (planned), a name alone (plain text), logos or illustrations at a free size (an image), clickable avatars (wrap it in a button or a link).",
+      "documentation": "avatar.md",
+      "contract": "foundations/components/content/avatar/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "avatar-group",
+      "import": "AvatarGroup",
+      "from": "@ggbrick/svelte",
+      "purpose": "Shows the people or teams involved in an object (assignees, participants, members) as a row of overlapping Avatars from an avatars array (name, src, initials), each drawn above the previous one with a ring in the surface color settable on the group; five sizes and two shapes passed to every avatar; max (5) counts the +N box, total extends the count, +99 at most; a list named by label, the +N box named by the count and moreLabel (3 more); never interactive, never wraps.",
+      "whenNotToUse": "A single person or organization (Avatar), people who all matter with names and details (a list or Table), a number without faces (Counter with a label), clickable avatars or the full list on activation (composed by the integration with Popover or Tooltip), several lines of people (lower max).",
+      "documentation": "avatar-group.md",
+      "contract": "foundations/components/content/avatar-group/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "data-field",
+      "import": "DataField",
+      "from": "@ggbrick/svelte",
+      "purpose": "Shows one piece of information about an object as a label and its value, for reading (owner, status, created on): value as plain text or free content as children (Badge, Link, Avatar with a name, several lines), orientation vertical (label above) or horizontal (label in a fixed column so separate fields align, stacking when the field is narrower than twice that column), size sm or md; an empty value shows an em dash and announces emptyLabel; a group named by its label, never focusable.",
+      "whenNotToUse": "A value the user changes (Field with its control), several records compared by column (Table), a value inside a sentence (plain text), a large figure with a trend (metric tile, planned), a set of fields announced as a description list (DataList, planned); never a disabled or read-only input to display a value.",
+      "documentation": "data-field.md",
+      "contract": "foundations/components/data/data-field/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
+    },
+    {
+      "id": "divider",
+      "import": "Divider",
+      "from": "@ggbrick/svelte",
+      "purpose": "Separates two groups of content with a thin line (sections of a panel, groups of items in a row, a labeled break such as Or or Today), horizontal or vertical, with an optional short centered label on horizontal dividers; adds no margin (spacing comes from the layout); a separator with its orientation by default, named by its label, hidden from assistive technology when decorative; never interactive.",
+      "whenNotToUse": "Spacing alone (the layout gap or a container edge), the start of a section (a heading), separators inside a Menu or a Toolbar (MenuSeparator, ToolbarSeparator), lines of tabular data (Table), resize handles between panes (not built in).",
+      "documentation": "divider.md",
+      "contract": "foundations/components/content/divider/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
     }
   ],
   "foundations": [
