@@ -250,6 +250,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "reports/components/tooltip/svelte/computed.json"
+    },
+    {
+      "name": "Test change (user request, 2026-11-20, after an intermittent CI failure on main): the hover delay and the close delay are measured in the page (the pointer entering or leaving the trigger and the tooltip opening or closing, stamped with performance.now()) instead of a wait followed by a check of the state, which failed when the runner paused between two commands. Stronger assertions: the tooltip opens and closes no earlier than the whole delay (the previous ones only checked it at a third and at half of it); the next trigger opens in less than half the delay. The component is unchanged.",
+      "result": "passed",
+      "date": "2026-11-20",
+      "evidence": "tests/browser/tooltip.spec.ts"
     }
   ],
   "decisionsTaken": [

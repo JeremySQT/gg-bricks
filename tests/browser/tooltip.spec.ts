@@ -15,6 +15,47 @@ import {
 const out = 'reports/components/tooltip/svelte';
 const isOpen = (page: Page, id: string) => page.locator(`#${id}`).evaluate((t) => t.matches(':popover-open'));
 
+// Delays are measured in the page: listeners stamp the pointer entering and leaving each trigger and tooltip, and each
+// tooltip opening and closing, with performance.now(). A pause of the test runner between two commands cannot change
+// these intervals, unlike a wait followed by a check of the state.
+// The pointer marks are taken in the capture phase at the document, on the element that carries the component's own
+// listeners (the trigger wrapper, named after the control it holds): a mark is never later than the timer it starts.
+type Mark = { id: string; type: string; at: number };
+const watch = (page: Page) =>
+  page.evaluate(() => {
+    const marks: Mark[] = [];
+    (window as unknown as { tooltipMarks: Mark[] }).tooltipMarks = marks;
+    const stamp = (id: string | undefined, type: string) => id && marks.push({ id, type, at: performance.now() });
+    for (const type of ['pointerenter', 'pointerleave'])
+      document.addEventListener(
+        type,
+        ({ target }) => {
+          if (!(target instanceof Element)) return;
+          if (target.matches('.ggb-tooltip')) stamp(target.id, type);
+          else if (target.matches('.ggb-tooltip-trigger'))
+            stamp(target.querySelector('[id]:not(.ggb-tooltip)')?.id, type);
+        },
+        true
+      );
+    // beforetoggle fires in the call that shows or hides the popover: 'open' or 'closed'.
+    for (const tip of document.querySelectorAll('.ggb-tooltip'))
+      tip.addEventListener('beforetoggle', (event) => stamp(tip.id, (event as ToggleEvent).newState));
+  });
+/** Milliseconds from the last `from` mark to the last `to` mark; NaN when one is missing or they are out of order. */
+const between = (page: Page, from: [id: string, type: string], to: [id: string, type: string]) =>
+  page.evaluate(
+    ([from, to]) => {
+      const marks = (window as unknown as { tooltipMarks: Mark[] }).tooltipMarks;
+      const at = ([id, type]: string[]) => marks.filter((m) => m.id === id && m.type === type).at(-1)?.at ?? NaN;
+      const elapsed = at(to) - at(from);
+      return elapsed >= 0 ? elapsed : NaN;
+    },
+    [from, to]
+  );
+// A timer never fires early; the margin covers the rounding of performance.now().
+const margin = 20;
+const ms = (tokens: ReturnType<typeof tokensFor>, path: string) => (tokens[path].$value as { value: number }).value;
+
 test.beforeEach(async ({ page }) => {
   await page.goto('/tooltip/');
   await page.evaluate(() => document.fonts.ready);
@@ -77,15 +118,16 @@ test('hover opens after the delay, then at once on the next trigger; leaving and
   page
 }) => {
   const tokens = tokensFor('base-light-standard');
-  const delay = (tokens['component.tooltip.delay'].$value as { value: number }).value;
+  const delay = ms(tokens, 'component.tooltip.delay');
+  await watch(page);
+  // Not before the delay: the tooltip opens the whole delay after the pointer entered the trigger.
   await page.hover('#save');
-  await page.waitForTimeout(delay / 3);
-  expect(await isOpen(page, 'tip-save')).toBe(false);
   await expect.poll(() => isOpen(page, 'tip-save'), { timeout: delay * 3 }).toBe(true);
-  // The next trigger opens without delay.
+  expect(await between(page, ['save', 'pointerenter'], ['tip-save', 'open'])).toBeGreaterThanOrEqual(delay - margin);
+  // The next trigger opens without delay, and closes the first tooltip.
   await page.hover('#edit');
-  await page.waitForTimeout(120);
-  expect(await isOpen(page, 'tip-edit')).toBe(true);
+  await expect.poll(() => isOpen(page, 'tip-edit')).toBe(true);
+  expect(await between(page, ['edit', 'pointerenter'], ['tip-edit', 'open'])).toBeLessThan(delay / 2);
   expect(await isOpen(page, 'tip-save')).toBe(false);
   // Pointing at the tooltip keeps it open.
   const tip = (await page.locator('#tip-edit').boundingBox())!;
@@ -112,6 +154,7 @@ test('the skip and close delays follow their tokens (component.tooltip.skip-dela
       (tip as HTMLElement).style.setProperty('--ggb-tooltip-motionSkipDelay', '2s');
     })
   );
+  await watch(page);
   await page.focus('#before');
   await page.keyboard.press('Tab');
   expect(await isOpen(page, 'tip-copy')).toBe(true);
@@ -119,10 +162,10 @@ test('the skip and close delays follow their tokens (component.tooltip.skip-dela
   await page.hover('#save');
   await page.waitForTimeout(150);
   expect(await isOpen(page, 'tip-save')).toBe(true);
+  // Not before the lengthened close delay: the tooltip closes the whole 600 ms after the pointer left the trigger.
   await page.mouse.move(5, 5);
-  await page.waitForTimeout(300);
-  expect(await isOpen(page, 'tip-save')).toBe(true);
   await expect.poll(() => isOpen(page, 'tip-save')).toBe(false);
+  expect(await between(page, ['save', 'pointerleave'], ['tip-save', 'closed'])).toBeGreaterThanOrEqual(600 - margin);
   // Closed for more than the default 300 ms window, yet within the 2 s one: the next tooltip opens at once.
   await page.waitForTimeout(500);
   await page.hover('#edit');
