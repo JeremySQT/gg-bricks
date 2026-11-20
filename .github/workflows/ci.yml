@@ -19,6 +19,9 @@ jobs:
     # the pull_request run is kept for forks only, so that a branch is not verified twice.
     if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     runs-on: ubuntu-latest
+    # A full run takes about 15 minutes; a step that hangs (a browser download, for instance) stops here instead of
+    # holding the branch's next runs for the six hours GitHub allows by default.
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
