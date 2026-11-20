@@ -33,7 +33,7 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Each one says which `authoring/
 - The repository is public (decisions.md): never write a secret or personal data beyond the GitHub handle (real name, e-mail address, account identifier) in a file, a commit message or pull request text. Record third-party material copied into the repository in `THIRD-PARTY-NOTICES.md`.
 - Publication (npm, Figma library, site) needs explicit authorization for that destination and version. Never modify Figma objects the design system does not own.
 - Until a ggbrick component is done, the archived kit shows the artifact structure; afterwards the most recently completed component is the example. Use the deterministic TypeScript scripts in `tooling/` (run directly by Node; erasable syntax only, shared types in `tooling/lib/types.ts`). Extend them generically; no component-specific branches in shared tooling.
-- The pre-ggbrick reference kit is archived at git tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history). Read it with `git show cd0a2a2:<path>`; useful paths: `packages/svelte/src/components/button/`, `examples/button/App.svelte`, `tests/browser/button.spec.ts`, `documentation/components/button.md`, `foundations/components/actions/button/status.json`. Nothing from it is a decision for ggbrick.
+- The pre-ggbrick reference kit is archived at commit cd0a2a2 (always reachable in the branch history). Read it with `git show cd0a2a2:<path>`; useful paths: `packages/svelte/src/components/button/`, `examples/button/App.svelte`, `tests/browser/button.spec.ts`, `documentation/components/button.md`, `foundations/components/actions/button/status.json`. Nothing from it is a decision for ggbrick.
 
 ## Branches
 

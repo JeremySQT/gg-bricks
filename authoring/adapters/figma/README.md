@@ -1,6 +1,6 @@
 # Figma adapter notes
 
-The Plugin API script bodies inherited from the reference kit were removed after the foundations review (2026-09-26): they encoded the kit's Button node IDs and are still readable at tag `reference-kit-2026-09` (`git show cd0a2a2:authoring/adapters/figma/<name>.plugin.js`, names: helpers, sync-variables, verify-resolution, build-button-skin, review-helpers, group-slot-fixtures, configure-slot-context, migrate-button-slot-context, verify-button-slot-context). ggbrick scripts are written per task through the Figma MCP server, following `authoring/figma.md`; new reusable script bodies written for ggbrick live in this folder.
+The Plugin API script bodies inherited from the reference kit were removed after the foundations review (2026-09-26): they encoded the kit's Button node IDs and are still readable at commit cd0a2a2 (`git show cd0a2a2:authoring/adapters/figma/<name>.plugin.js`, names: helpers, sync-variables, verify-resolution, build-button-skin, review-helpers, group-slot-fixtures, configure-slot-context, migrate-button-slot-context, verify-button-slot-context). ggbrick scripts are written per task through the Figma MCP server, following `authoring/figma.md`; new reusable script bodies written for ggbrick live in this folder.
 
 ## Inputs
 

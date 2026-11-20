@@ -64,7 +64,7 @@ Node 22.18 or newer (scripts and tests are TypeScript run natively by Node). The
 
 ## Working with agents
 
-Open the repository with Claude Code and ask for a task in plain words ("define the foundations", "do the Button", "build wave 2"). `AGENTS.md` routes the request to a skill; the skill stops at the review gates listed in [authoring/workflow.md](authoring/workflow.md) and records approvals and evidence in status files. The pre-ggbrick reference kit is archived at git tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history).
+Open the repository with Claude Code and ask for a task in plain words ("define the foundations", "do the Button", "build wave 2"). `AGENTS.md` routes the request to a skill; the skill stops at the review gates listed in [authoring/workflow.md](authoring/workflow.md) and records approvals and evidence in status files. The pre-ggbrick reference kit is archived at commit cd0a2a2 (always reachable in the branch history).
 
 ## Contributing
 
