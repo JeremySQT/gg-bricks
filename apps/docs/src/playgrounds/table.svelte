@@ -29,32 +29,35 @@
     bottomEnd: [{ label: 'Footer', options: ['on', 'off'], value: footer, onchange: (v) => (footer = v) }]
   }}
 >
-  <div data-ggb-density={density}>
-    <Table caption="Invoices" hideCaption={caption === 'hidden'} columnLines={columnLines === 'on'}>
-      <TableHeader>
+  <Table
+    data-ggb-density={density}
+    caption="Invoices"
+    hideCaption={caption === 'hidden'}
+    columnLines={columnLines === 'on'}
+  >
+    <TableHeader>
+      <TableRow>
+        <TableHeading>Invoice</TableHeading>
+        <TableHeading>Customer</TableHeading>
+        <TableHeading align="end">Amount</TableHeading>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {#each rows as row (row.id)}
         <TableRow>
-          <TableHeading>Invoice</TableHeading>
-          <TableHeading>Customer</TableHeading>
-          <TableHeading align="end">Amount</TableHeading>
+          <TableCell rowHeader>{row.id}</TableCell>
+          <TableCell>{row.customer}</TableCell>
+          <TableCell align="end">{row.amount}</TableCell>
         </TableRow>
-      </TableHeader>
-      <TableBody>
-        {#each rows as row (row.id)}
-          <TableRow>
-            <TableCell rowHeader>{row.id}</TableCell>
-            <TableCell>{row.customer}</TableCell>
-            <TableCell align="end">{row.amount}</TableCell>
-          </TableRow>
-        {/each}
-      </TableBody>
-      {#if footer === 'on'}
-        <TableFooter>
-          <TableRow>
-            <TableCell colspan={2}>Total</TableCell>
-            <TableCell align="end">1,749.50</TableCell>
-          </TableRow>
-        </TableFooter>
-      {/if}
-    </Table>
-  </div>
+      {/each}
+    </TableBody>
+    {#if footer === 'on'}
+      <TableFooter>
+        <TableRow>
+          <TableCell colspan={2}>Total</TableCell>
+          <TableCell align="end">1,749.50</TableCell>
+        </TableRow>
+      </TableFooter>
+    {/if}
+  </Table>
 </PlaygroundFrame>

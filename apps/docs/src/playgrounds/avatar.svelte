@@ -5,7 +5,7 @@
   import PlaygroundFrame from '../components/PlaygroundFrame.svelte';
   import { portraits } from '../../../../examples/avatar/portraits.ts';
 
-  let size = $state<AvatarSize>('xl');
+  let size = $state<AvatarSize>('lg');
   let shape = $state<AvatarShape>('circle');
   let content = $state('picture');
   const person = $derived(
