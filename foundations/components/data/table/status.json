@@ -89,8 +89,8 @@
       "browser": ["tests/browser/table.spec.ts"],
       "evidence": "reports/components/table/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/table.md",
+    "agentDocs": "documentation/index.json (entry table); copied into packages/svelte by npm run build:svelte"
   },
   "approvals": {
     "contract": {
@@ -257,7 +257,7 @@
     "Figma parity gate (user, 2026-11-20): decision A, the comfortable avatar row (47 px against 44 px) stays as in the code and is documented; the anatomy highlight frames the whole cell; the specification density examples use text cells in the Customer column."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the wave 5 documentation gate.",
+  "nextAction": "Wave 5 documentation gate (grouped review on the preview site).",
   "implementationNotes": [
     "Exports Table, TableHeader, TableBody, TableFooter, TableRow, TableHeading and TableCell.",
     "The native caption is visually hidden and names the table; the visible caption above the frame is a copy hidden from assistive technology, so that it sits outside the frame.",

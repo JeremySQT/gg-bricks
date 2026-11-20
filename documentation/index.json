@@ -685,6 +685,25 @@
         "API",
         "Accessibility"
       ]
+    },
+    {
+      "id": "table",
+      "import": "Table, TableHeader, TableBody, TableFooter, TableRow, TableHeading, TableCell",
+      "from": "@ggbrick/svelte",
+      "purpose": "Shows a set of records in rows and columns so that values can be read and compared (invoices, orders, users), as a native data table: required caption as the accessible name (shown above or hidden with hideCaption), header of column headers on a light band, body rows whose cells hold text with tabular figures or free content (Badge, Link, Avatar with a name, row actions), aligned start, center or end, a cell as row header (rowHeader), optional totals footer, optional column lines, a light rounded frame; no size, rows follow the density; a wide table scrolls inline in its own area, a focus stop named by the caption only while it overflows; with a limited height the header stays visible; not interactive itself.",
+      "whenNotToUse": "The properties of a single record (DataField), items of several lines of text (list, planned), sorting, selection, inline editing or large data sets (DataGrid, planned), page or form layout (CSS layout); pagination and loading are composed around it (Pagination, Skeleton).",
+      "documentation": "table.md",
+      "contract": "foundations/components/data/table/contract.json",
+      "sections": [
+        "Overview",
+        "Anatomy",
+        "When to use",
+        "When not to use",
+        "Best practices",
+        "Examples",
+        "API",
+        "Accessibility"
+      ]
     }
   ],
   "foundations": [

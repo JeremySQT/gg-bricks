@@ -233,5 +233,15 @@
   "implementationNotes": [
     "Pulses stay in phase across the page: each pulse animation's startTime is set to 0 (the document timeline origin) when the skeleton mounts.",
     "Text lines use the lh unit for the line box and a bar of 1em: the skeleton paragraph has the height of the real paragraph (checked against real text in the browser test)."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-20",
+      "change": "documentation/index.json gained the five wave 5 entries (avatar, avatar-group, data-field, divider, table) and lost the \"(planned)\" mention of Avatar in the icon entry. To re-record at the wave 5 documentation gate.",
+      "sha256": {
+        "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9"
+      },
+      "review": "Wave 5 documentation gate"
+    }
   ]
 }

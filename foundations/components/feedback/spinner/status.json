@@ -241,5 +241,15 @@
   "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
   "implementationNotes": [
     "A labelled spinner is a role status named by aria-label (a status takes no name from its content in Chromium) with the same text visually hidden inside it as the announced content. Whether a status inserted already filled is announced varies between screen readers: the application may keep a status region on the page and fill it instead."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-20",
+      "change": "documentation/index.json gained the five wave 5 entries (avatar, avatar-group, data-field, divider, table) and lost the \"(planned)\" mention of Avatar in the icon entry. To re-record at the wave 5 documentation gate.",
+      "sha256": {
+        "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9"
+      },
+      "review": "Wave 5 documentation gate"
+    }
   ]
 }

@@ -84,8 +84,8 @@
       "browser": ["tests/browser/avatar.spec.ts"],
       "evidence": "reports/components/avatar/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/avatar.md",
+    "agentDocs": "documentation/index.json (entry avatar); copied into packages/svelte by npm run build:svelte"
   },
   "approvals": {
     "contract": {
@@ -226,7 +226,7 @@
     "Implementation: Svelte API: role img named by name on the root span; decorative or nameless avatars get aria-hidden; consumer attributes go to the root after Bits UI's."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the wave 5 documentation gate.",
+  "nextAction": "Wave 5 documentation gate (grouped review on the preview site).",
   "implementationNotes": [
     "Exports Avatar and the types AvatarProps, AvatarImageStatus.",
     "Bits UI Avatar reports the loading status; ggbrick keeps it per source (a new src starts again from loading, since Bits UI does not reload once a picture has loaded) and renders the picture only without Bits UI's fallback part: the initials or the glyph are drawn while imageStatus is not loaded.",

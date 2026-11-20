@@ -81,8 +81,8 @@
       "browser": ["tests/browser/avatar-group.spec.ts"],
       "evidence": "reports/components/avatar-group/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/avatar-group.md",
+    "agentDocs": "documentation/index.json (entry avatar-group); copied into packages/svelte by npm run build:svelte"
   },
   "approvals": {
     "contract": {
@@ -217,7 +217,7 @@
     "Round 2: stacking B, each avatar above the previous one (document order, no z-index)."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the wave 5 documentation gate.",
+  "nextAction": "Wave 5 documentation gate (grouped review on the preview site).",
   "implementationNotes": [
     "Exports AvatarGroup and the types AvatarGroupProps, AvatarGroupItem.",
     "The first avatar is on top through decreasing z-index on the items (isolated stacking context); the +N box is last and lowest.",

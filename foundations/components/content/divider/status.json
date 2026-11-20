@@ -77,8 +77,8 @@
       "browser": ["tests/browser/divider.spec.ts"],
       "evidence": "reports/components/divider/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/divider.md",
+    "agentDocs": "documentation/index.json (entry divider); copied into packages/svelte by npm run build:svelte"
   },
   "approvals": {
     "contract": {
@@ -209,7 +209,7 @@
     "Thickness tokenized (user at the wave 5 contract gate, round 1 (2026-11-13): \"l'épaisseur du trait devrait être tokenisée, tout en restant sur 1px par défaut. Mais certaines brands pourraient vouloir mettre autre chose\"): component token component.divider.thickness = 1 px (primitive.border.1), so that a brand changes dividers without touching border.width.default (every control border). Menu and Toolbar separators and table lines keep border.width.default."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the wave 5 documentation gate.",
+  "nextAction": "Wave 5 documentation gate (grouped review on the preview site).",
   "implementationNotes": [
     "Exports Divider and the type DividerProps.",
     "The line is a border (painted by the system in forced colors); a labeled divider draws its two lines with ::before and ::after.",

@@ -86,8 +86,8 @@
       "browser": ["tests/browser/data-field.spec.ts"],
       "evidence": "reports/components/data-field/svelte/"
     },
-    "humanDocs": null,
-    "agentDocs": null
+    "humanDocs": "documentation/components/data-field.md",
+    "agentDocs": "documentation/index.json (entry data-field); copied into packages/svelte by npm run build:svelte"
   },
   "approvals": {
     "contract": {
@@ -229,7 +229,7 @@
     "Figma review (user, 2026-11-17): content variants as a design aid (Content text, empty, badge, link, avatar); anatomy redrawn on a vertical field; content examples in the specification."
   ],
   "openDecisions": [],
-  "nextAction": "Documentation (ggb-docs), then the wave 5 documentation gate.",
+  "nextAction": "Wave 5 documentation gate (grouped review on the preview site).",
   "implementationNotes": [
     "Exports DataField and the type DataFieldProps.",
     "Horizontal layout without a container query (custom properties are not allowed in container conditions): a wrapping flex line where the label is min(100%, max(labelInlineSize, (2 × labelInlineSize − 100%) × 999)) wide, so it is labelInlineSize from twice that width and the whole line below; the value then wraps under it.",
