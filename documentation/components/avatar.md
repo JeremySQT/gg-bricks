@@ -179,7 +179,7 @@ Renders a `<span>` that is the container, with `role="img"` and `aria-label` set
 | `ref`        | `HTMLSpanElement \| null` (bindable)   | `null`     | The rendered element.                                                                         |
 | `class`      | `string`                               | —          | Merged with `ggb-avatar`.                                                                     |
 
-Every other attribute of `HTMLAttributes<HTMLSpanElement>` is forwarded to the element, except those the component owns: `children`, `role` and `tabindex`. The component also sets `aria-label`, `aria-hidden` and its `data-*` attributes after yours: use `name` and `decorative`. There are no events.
+Every other attribute of `HTMLAttributes<HTMLSpanElement>` is forwarded to the element, except those the component owns: `children`, `role`, `tabindex`, `aria-label` and `aria-hidden` (use `name` and `decorative`). Its own `data-*` attributes take precedence over those you pass. There are no events.
 
 Brand, appearance and density apply through the tokens, without any prop. The platform-independent contract ships as `contracts/avatar.json`.
 

@@ -1,3 +1,16 @@
+/** The first `count` graphemes of a text, so that an emoji or a combined character is never split. */
+export function graphemes(text: string, count: number): string {
+  if (typeof Intl !== 'undefined' && 'Segmenter' in Intl) {
+    const out: string[] = [];
+    for (const { segment } of new Intl.Segmenter(undefined, { granularity: 'grapheme' }).segment(text)) {
+      if (out.length === count) break;
+      out.push(segment);
+    }
+    return out.join('');
+  }
+  return Array.from(text).slice(0, count).join('');
+}
+
 /**
  * Initials of a name: the first grapheme of the first word and of the last word, uppercased (one for a single
  * word, or when `one` is set). Leading punctuation of a word is skipped; a word without letters or digits does not

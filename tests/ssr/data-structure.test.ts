@@ -50,7 +50,9 @@ test('Avatar: initials from graphemes, one at xs, given initials, glyph without 
     [{ name: '(Ann) Lee' }, 'AL'],
     [{ name: '🎉 Party Team' }, 'PT'],
     [{ name: 'Olivia Rhye', size: 'xs' }, 'O'],
-    [{ name: 'Acme Corporation', initials: 'ACME' }, 'ACM']
+    [{ name: 'Acme Corporation', initials: 'ACME' }, 'ACM'],
+    // Given initials are cut by graphemes: an emoji with a skin tone stays whole.
+    [{ name: 'Thumbs', initials: '👍🏽xyz' }, '👍🏽xy']
   ];
   for (const [props, text] of cases)
     assert.match(strip(await avatar(props)), new RegExp(`ggb-avatar__initials" aria-hidden="true">${text}<`), text);
@@ -65,7 +67,7 @@ test('Avatar: initials from graphemes, one at xs, given initials, glyph without 
   assert.match(dec, /^<span[^>]*aria-hidden="true"/);
   assert.doesNotMatch(dec, /role="img"|aria-label/);
   checks.avatar.push(
-    'initials: hyphen, one word, accents, CJK, punctuation, emoji, xs, given initials; glyph; decorative'
+    'initials: hyphen, one word, accents, CJK, punctuation, emoji, xs, given initials cut by graphemes; glyph; decorative'
   );
 });
 

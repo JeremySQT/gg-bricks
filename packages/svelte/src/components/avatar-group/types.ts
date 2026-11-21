@@ -12,12 +12,12 @@ export interface AvatarGroupItem {
 }
 
 /** The group renders its list of avatars from `avatars`: no children, role or tab stop from outside. */
-type Owned = 'children' | 'role' | 'tabindex';
+type Owned = 'children' | 'role' | 'tabindex' | 'aria-label';
 
 export interface AvatarGroupProps extends Omit<HTMLAttributes<HTMLUListElement>, Owned> {
   /** Accessible name of the list (Assignees, Participants). Required. */
   label: string;
-  /** The people of the group, in order; the first is drawn on top. At least one. */
+  /** The people of the group, in order; each avatar is drawn above the previous one. At least one. */
   avatars: AvatarGroupItem[];
   /** Size of every avatar, 24 to 64 px. Default md. */
   size?: AvatarGroupSize;

@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'svelte/elements';
 import type { DataFieldOrientation, DataFieldSize } from './contract.generated.js';
 
 /** The field is a named group with a fixed structure: no role or tab stop from outside. */
-type Owned = 'role' | 'tabindex';
+type Owned = 'role' | 'tabindex' | 'aria-labelledby';
 
 export interface DataFieldProps extends Omit<HTMLAttributes<HTMLDivElement>, Owned | 'children'> {
   /** The name of the information (Email, Owner, Created on). Required and non-empty; it names the group. */

@@ -213,7 +213,7 @@ Renders a `<ul class="ggb-avatar-group" role="list">` (plus any class you pass) 
 
 The number of people is `total` when it is greater than the number of avatars, otherwise the number of avatars. When `max` is above 0 and that number exceeds it, the group shows the first `max - 1` avatars and the +N box; the box shows +99 at most, but its accessible name keeps the full number (“1197 more”).
 
-Every other attribute of `HTMLAttributes<HTMLUListElement>` (`id`, `style`, `aria-describedby`…) goes to the list, except those the component owns: `children`, `role` and `tabindex`; `aria-label` always comes from `label`. There are no events and no snippets. The ring around each avatar takes the color of the custom property `--ggb-avatar-group-ringColor`, the default surface unless you set it on the group (with `style` or a class) for another surface. The platform-independent contract ships as `contracts/avatar-group.json`.
+Every other attribute of `HTMLAttributes<HTMLUListElement>` (`id`, `style`, `aria-describedby`…) goes to the list, except those the component owns: `children`, `role`, `tabindex` and `aria-label` (from `label`). There are no events and no snippets. The ring around each avatar takes the color of the custom property `--ggb-avatar-group-ringColor`, the default surface unless you set it on the group (with `style` or a class) for another surface. The platform-independent contract ships as `contracts/avatar-group.json`.
 
 ## Accessibility
 

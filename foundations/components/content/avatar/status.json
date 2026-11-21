@@ -149,7 +149,23 @@
       },
       "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording."
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of avatar (progressive detail: the page is the recipe, the contract the technical detail; Anatomy numbered like the Figma blueprint).",
+      "revision": {
+        "paths": [
+          "documentation/components/avatar.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/avatar.svelte"
+        ],
+        "sha256": {
+          "documentation/components/avatar.md": "f4b24114d608833cae8fe9b1d0e84604780126305ab80e32ef470c571b508f26",
+          "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
+          "apps/docs/src/playgrounds/avatar.svelte": "6d8a66a0259507227be5da92a2e688cbe76d454b50e06c3da5fe133f2b403d09"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\".",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [
@@ -208,6 +224,12 @@
       "result": "passed",
       "date": "2026-11-20",
       "evidence": "Figma file TDPqojP4KvbWJlKSYc4zKC, specification 551:2; reports/components/avatar/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 documentation gate approved",
+      "result": "passed",
+      "date": "2026-11-21",
+      "evidence": "https://wave-5-design-system.jeremysqt.workers.dev/components/avatar/; tests/browser/docs-site.spec.ts (42 passed, CI-like font set)"
     }
   ],
   "decisionsTaken": [
@@ -226,7 +248,7 @@
     "Implementation: Svelte API: role img named by name on the root span; decorative or nameless avatars get aria-hidden; consumer attributes go to the root after Bits UI's."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 documentation gate (grouped review on the preview site); then the final consistency pass listed in authoring/roadmap.md (Wave 5 final consistency pass).",
+  "nextAction": "Wave 5 final consistency pass (authoring/roadmap.md), full browser suite, pull request to main.",
   "implementationNotes": [
     "Exports Avatar and the types AvatarProps, AvatarImageStatus.",
     "Bits UI Avatar reports the loading status; ggbrick keeps it per source (a new src starts again from loading, since Bits UI does not reload once a picture has loaded) and renders the picture only without Bits UI's fallback part: the initials or the glyph are drawn while imageStatus is not loaded.",
@@ -236,5 +258,18 @@
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-21",
+      "change": "Final consistency pass (authoring/roadmap.md): given initials are cut by graphemes (an emoji is never split; SSR test added); aria-label and aria-hidden are owned attributes in AvatarProps (the component sets them from name and decorative); the size comment no longer mentions AvatarGroup; the API section of the page lists the owned attributes.",
+      "sha256": {
+        "packages/svelte/src/components/avatar/Avatar.svelte": "a8f187d02128aab70a3a7cf9b78cff170090522d12884bfd606083032aa6a4d6",
+        "packages/svelte/src/components/avatar/initials.ts": "136f52ed4ea99640df6d24505c7165fe95f74fa18a5639dc2de5ed7f3cea3179",
+        "packages/svelte/src/components/avatar/types.ts": "cd6c1c64a0cbadff0189feb000ff1bac485f2b02a6373ff505f714dc65ace65f",
+        "documentation/components/avatar.md": "176c6bb9188c4ab81848a5aff227033527f6ef3564b5e66c1c4fad19b7337511"
+      },
+      "review": "Wave 5 final consistency pass, presented with the pull request"
+    }
+  ]
 }

@@ -2,7 +2,7 @@
   import { Avatar as AvatarPrimitive } from 'bits-ui';
   import type { AvatarImageStatus, AvatarProps } from './types.js';
   import { defaults } from './contract.generated.js';
-  import { initialsOf } from './initials.js';
+  import { graphemes, initialsOf } from './initials.js';
   import './tokens.generated.css';
   import './avatar.css';
 
@@ -19,7 +19,7 @@
   }: AvatarProps = $props();
 
   const label = $derived(typeof name === 'string' && name.trim() ? name.trim() : undefined);
-  const given = $derived(typeof initials === 'string' && initials.trim() ? initials.trim().slice(0, 3) : '');
+  const given = $derived(typeof initials === 'string' && initials.trim() ? graphemes(initials.trim(), 3) : '');
   const text = $derived(given || initialsOf(label, size === 'xs'));
   const source = $derived(typeof src === 'string' && src.trim() ? src : undefined);
 

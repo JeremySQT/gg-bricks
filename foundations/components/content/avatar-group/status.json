@@ -144,7 +144,23 @@
       },
       "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording."
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of avatar-group (progressive detail: the page is the recipe, the contract the technical detail; Anatomy numbered like the Figma blueprint).",
+      "revision": {
+        "paths": [
+          "documentation/components/avatar-group.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/avatar-group.svelte"
+        ],
+        "sha256": {
+          "documentation/components/avatar-group.md": "b66dd2c3f85432b2084866f00d76c2627e1088d8470b6c913bc65bb6434f2569",
+          "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
+          "apps/docs/src/playgrounds/avatar-group.svelte": "bf802e63fb68ac1ce30da02577f68d62d0c00e8e7df44aefa0352f41f29f6ade"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\".",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [
@@ -203,6 +219,12 @@
       "result": "passed",
       "date": "2026-11-20",
       "evidence": "Figma file TDPqojP4KvbWJlKSYc4zKC, specification 553:554; reports/components/avatar-group/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 documentation gate approved",
+      "result": "passed",
+      "date": "2026-11-21",
+      "evidence": "https://wave-5-design-system.jeremysqt.workers.dev/components/avatar-group/; tests/browser/docs-site.spec.ts (42 passed, CI-like font set)"
     }
   ],
   "decisionsTaken": [
@@ -217,10 +239,10 @@
     "Round 2: stacking B, each avatar above the previous one (document order, no z-index)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 documentation gate (grouped review on the preview site); then the final consistency pass listed in authoring/roadmap.md (Wave 5 final consistency pass).",
+  "nextAction": "Wave 5 final consistency pass (authoring/roadmap.md), full browser suite, pull request to main.",
   "implementationNotes": [
     "Exports AvatarGroup and the types AvatarGroupProps, AvatarGroupItem.",
-    "The first avatar is on top through decreasing z-index on the items (isolated stacking context); the +N box is last and lowest.",
+    "Each avatar is drawn above the previous one by document order (no z-index; round 2 of the implementation review); the +N box, last, is drawn above the others.",
     "The ring is a box-shadow outside each avatar; the group has no padding for it, so that it aligns with neighbouring content. In forced colors the ring becomes a Canvas outline on the item.",
     "The ring color is the custom property --ggb-avatar-group-ringColor, which an integration sets on the group for another surface."
   ],
@@ -237,6 +259,16 @@
       },
       "review": "Wave 5 implementation gate, round 2",
       "recorded": "Re-recorded with the implementation approval (2026-11-14)."
+    },
+    {
+      "date": "2026-11-21",
+      "change": "Final consistency pass (authoring/roadmap.md): the contract rule no longer suggests a button wrapping the group (a list inside a button loses its structure and names): the interaction opens from a button placed beside it; aria-label is an owned attribute; the stacking comment and notes follow the approved order (each avatar above the previous one).",
+      "sha256": {
+        "foundations/components/content/avatar-group/contract.json": "6f95f5608ce51a0a6c29a221836d5154f907bcf6a74124ad549328e9996ba701",
+        "packages/svelte/src/components/avatar-group/types.ts": "e9d3e08f7ff0f08e49aa3f0efcf6627aba3ba1a993cff6374ab55494d72e87c0",
+        "documentation/components/avatar-group.md": "0b50cdbdea39e09eea2c4a00873caa708a14e57fde4681b3cd4633ed6ba7bc64"
+      },
+      "review": "Wave 5 final consistency pass, presented with the pull request"
     }
   ]
 }

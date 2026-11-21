@@ -154,7 +154,7 @@ Built on the Bits UI Separator. Renders one `<div class="ggb-divider">` (plus an
 | `ref`         | `HTMLDivElement \| null` (bindable) | `null`         | The rendered element.                                                           |
 | `class`       | `string`                            | —              | Merged with `ggb-divider`.                                                      |
 
-Every other attribute of `HTMLAttributes<HTMLDivElement>` (`id`, `style`, `data-*`…) is forwarded to the root, except those the component owns: `children`, `role` and `tabindex`; the component also sets `aria-label` from `label`. There are no snippets and no events. The thickness (1 px by default) and the colors apply through the tokens, so a brand can change every divider at once; appearance and density need no prop. The platform-independent contract ships as `contracts/divider.json`.
+Every other attribute of `HTMLAttributes<HTMLDivElement>` (`id`, `style`, `data-*`…) is forwarded to the root, except those the component owns: `children`, `role`, `tabindex`, `aria-label` (from `label`), `aria-hidden` and `aria-orientation` (from `decorative` and `orientation`). There are no snippets and no events. The thickness (1 px by default) and the colors apply through the tokens, so a brand can change every divider at once; appearance and density need no prop. The platform-independent contract ships as `contracts/divider.json`.
 
 ## Accessibility
 

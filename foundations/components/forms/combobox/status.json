@@ -152,11 +152,11 @@
         ],
         "sha256": {
           "documentation/components/combobox.md": "14acda80b195ab2993b894403931a48c562d2fb40c52bc92391942c888becc8d",
-          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
+          "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
           "apps/docs/src/playgrounds/combobox.svelte": "c1d8a0c17ce066263c16e305a75bef03203b1b5b3d30a4f15a23ca212323ed1f"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, after reading the pages on the wave/4 preview of the documentation site (https://wave-4-design-system.jeremy-soquet.workers.dev): \"Je valide la doc, corrige aussi lib/overlay\". Amendment of 2026-11-12 (user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Oui, tu peux l'appliquer alors\"): the Accessibility section names the disabled color in forced colors. Digests re-recorded. Amendment of 2026-11-12 (CI fix under the pull request watch the user asked for in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je veux bien que tu surveilles la PR oui\"): the API table drops the sentence \"Bind it with bind:inputValue\" (the Type column says bindable), so that the table keeps room before scrolling horizontally (CI failure on JeremySQT/design-system#12). Digests re-recorded.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd on 2026-11-12, after reading the pages on the wave/4 preview of the documentation site (https://wave-4-design-system.jeremy-soquet.workers.dev): \"Je valide la doc, corrige aussi lib/overlay\". Amendment of 2026-11-12 (user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Oui, tu peux l'appliquer alors\"): the Accessibility section names the disabled color in forced colors. Digests re-recorded. Amendment of 2026-11-12 (CI fix under the pull request watch the user asked for in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je veux bien que tu surveilles la PR oui\"): the API table drops the sentence \"Bind it with bind:inputValue\" (the Type column says bindable), so that the table keeps room before scrolling horizontally (CI failure on JeremySQT/design-system#12). Digests re-recorded. Amendment of 2026-11-21 (wave 5 documentation review on https://wave-5-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Je valide la documentation\"): documentation/index.json gained the five wave 5 entries and lost the \"(planned)\" mention of Avatar. Digests re-recorded.",
       "note": null
     },
     "delivery": null
@@ -307,7 +307,9 @@
       "sha256": {
         "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9"
       },
-      "review": "Wave 5 documentation gate"
+      "review": "Wave 5 documentation gate",
+      "accepted": "User on 2026-11-21: \"Je valide la documentation\"",
+      "recorded": "Re-recorded with the documentation approval (2026-11-21)."
     }
   ]
 }

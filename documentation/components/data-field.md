@@ -184,7 +184,7 @@ Renders a `<div class="ggb-data-field">` (plus any class you pass) with `role="g
 | `ref`         | `HTMLDivElement \| null` (bindable) | `null`       | The rendered root element.                                                                                      |
 | `class`       | `string`                            | —            | Merged with `ggb-data-field`.                                                                                   |
 
-The horizontal layout stacks from the width of the field itself, not of a container or the viewport, so it works anywhere. Every other attribute of `HTMLAttributes<HTMLDivElement>` is forwarded to the root, except `children`, `role` and `tabindex`; the component's own `aria-labelledby`, `data-orientation` and `data-size` take precedence over those you pass. There are no events. The platform-independent contract ships as `contracts/data-field.json`.
+The horizontal layout stacks from the width of the field itself, not of a container or the viewport, so it works anywhere. Every other attribute of `HTMLAttributes<HTMLDivElement>` is forwarded to the root, except those the component owns: `children`, `role`, `tabindex` and `aria-labelledby` (the label names the field). Its own `data-orientation` and `data-size` take precedence over those you pass. There are no events. The platform-independent contract ships as `contracts/data-field.json`.
 
 ## Accessibility
 

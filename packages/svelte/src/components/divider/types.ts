@@ -1,8 +1,11 @@
 import type { HTMLAttributes } from 'svelte/elements';
 import type { DividerOrientation } from './contract.generated.js';
 
-/** The divider draws its own line and label: no children, role or tab stop from outside. */
-type Owned = 'children' | 'role' | 'tabindex';
+/**
+ * The divider draws its own line and label: no children, role or tab stop from outside; its name comes from label and
+ * its separator semantics (orientation, decorative) from the props.
+ */
+type Owned = 'children' | 'role' | 'tabindex' | 'aria-label' | 'aria-hidden' | 'aria-orientation';
 
 export interface DividerProps extends Omit<HTMLAttributes<HTMLDivElement>, Owned> {
   /** horizontal spans the inline size; vertical separates items laid out in a row. Default horizontal. */

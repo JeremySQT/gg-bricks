@@ -166,7 +166,23 @@
       },
       "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording."
     },
-    "documentation": null,
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of table (progressive detail: the page is the recipe, the contract the technical detail; Anatomy numbered like the Figma blueprint).",
+      "revision": {
+        "paths": [
+          "documentation/components/table.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/table.svelte"
+        ],
+        "sha256": {
+          "documentation/components/table.md": "04f97d16b9febfb2730c0dcaa0100821e558218fb730b68028057b7e10dbcdde",
+          "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
+          "apps/docs/src/playgrounds/table.svelte": "6c265f6c95b62c086eb9cb25f7435e9b7bc066956b9944855a7a04481913b895"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\".",
+      "note": null
+    },
     "delivery": null
   },
   "checks": [
@@ -243,6 +259,12 @@
       "result": "passed",
       "date": "2026-11-21",
       "evidence": "tests/ssr/data-structure.test.ts, tests/browser/table.spec.ts"
+    },
+    {
+      "name": "Wave 5 documentation gate approved",
+      "result": "passed",
+      "date": "2026-11-21",
+      "evidence": "https://wave-5-design-system.jeremysqt.workers.dev/components/table/; tests/browser/docs-site.spec.ts (42 passed, CI-like font set)"
     }
   ],
   "decisionsTaken": [
@@ -264,7 +286,7 @@
     "Documentation gate (user, 2026-11-21): option A, the scroll area is a named focus stop until the overflow is measured, so that server-rendered or not yet hydrated tables that overflow stay reachable from the keyboard (axe scrollable-region-focusable on the documentation site)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 documentation gate (grouped review on the preview site); then the final consistency pass listed in authoring/roadmap.md (Wave 5 final consistency pass).",
+  "nextAction": "Wave 5 final consistency pass (authoring/roadmap.md), full browser suite, pull request to main.",
   "implementationNotes": [
     "Exports Table, TableHeader, TableBody, TableFooter, TableRow, TableHeading and TableCell.",
     "The native caption is visually hidden and names the table; the visible caption above the frame is a copy hidden from assistive technology, so that it sits outside the frame.",
@@ -306,6 +328,14 @@
       "review": "Wave 5 documentation gate",
       "accepted": "User on 2026-11-21 in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour ta question, va pour la A, on suit ta recommandation.\"",
       "recorded": "Re-recorded with the contract and implementation approvals (2026-11-21)."
+    },
+    {
+      "date": "2026-11-21",
+      "change": "Final consistency pass (authoring/roadmap.md): figma-spec.md explains that the Figma Link of the link cells has an explicit size (sm) because Figma has no inherited typography, while the code Link takes the typography of the cell.",
+      "sha256": {
+        "foundations/components/data/table/figma-spec.md": "bad2fe9e9800e20193b16e4ba731425ff9bebec5afd04c1fc6904793aabc1a12"
+      },
+      "review": "Wave 5 final consistency pass, presented with the pull request"
     }
   ]
 }

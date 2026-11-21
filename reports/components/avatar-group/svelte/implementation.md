@@ -5,7 +5,7 @@ Component: `packages/svelte/src/components/avatar-group/` (Svelte 5.57.1, Bits U
 ## Notes
 
 - Exports AvatarGroup and the types AvatarGroupProps, AvatarGroupItem.
-- The first avatar is on top through decreasing z-index on the items (isolated stacking context); the +N box is last and lowest.
+- Each avatar is drawn above the previous one by document order (no z-index; round 2 of the implementation review); the +N box, last, is drawn above the others.
 - The ring is a box-shadow outside each avatar; the group has no padding for it, so that it aligns with neighbouring content. In forced colors the ring becomes a Canvas outline on the item.
 - The ring color is the custom property --ggb-avatar-group-ringColor, which an integration sets on the group for another surface.
 
