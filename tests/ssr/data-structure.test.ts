@@ -150,13 +150,15 @@ test('Table: native table named by its caption, sections, scopes, alignments, op
   assert.match(html, /<th scope="row" class="ggb-table__cell" data-align="start" data-row-header="">#3066<\/th>/);
   assert.match(html, /<td class="ggb-table__cell" data-align="end">1,240.00<\/td>/);
   assert.match(html, /<tfoot class="ggb-table__footer">/);
-  assert.doesNotMatch(html, /tabindex|role="region"|data-column-lines/);
+  // Overflow cannot be measured on the server: the scroll area is a named focus stop until the browser measures it.
+  assert.match(html, /<div class="ggb-table__container" role="region" aria-label="Invoices" tabindex="0">/);
+  assert.doesNotMatch(html, /data-scrollable|data-column-lines/);
   const options = strip(await table({ hideCaption: true, columnLines: true, bare: true }));
   assert.match(options, /data-column-lines=""/);
   assert.doesNotMatch(options, /ggb-table__caption|<thead|<tfoot/);
   assert.match(options, /<caption class="ggb-table__hidden">Invoices<\/caption>/);
   for (const caption of [undefined, '', ' ']) await assert.rejects(() => table({ caption }), /non-empty caption/);
   checks.table.push(
-    'caption names the table (visible copy hidden), sections, column and row scopes, alignment, no size (density only), column lines, hideCaption, invalid caption'
+    'caption names the table (visible copy hidden), sections, column and row scopes, alignment, no size (density only), scroll area a named focus stop until measured, column lines, hideCaption, invalid caption'
   );
 });

@@ -20,9 +20,12 @@
     return caption.trim();
   });
 
-  // The scroll area is a stop in sequential focus, named by the caption, only while the table overflows it.
+  // The scroll area is a stop in sequential focus, named by the caption, only while the table overflows it. Until the
+  // overflow is measured (server rendering, before hydration, without ResizeObserver) it is one by default, so that a
+  // table that does overflow is never a scroll area out of keyboard reach; the measure removes it when the table fits.
   let container = $state<HTMLDivElement | null>(null);
-  let scrollable = $state(false);
+  let scrollable = $state<boolean | null>(null);
+  const focusStop = $derived(scrollable !== false);
   $effect(() => {
     const element = container;
     if (!element || typeof ResizeObserver === 'undefined') return;
@@ -52,9 +55,9 @@
     <div
       bind:this={container}
       class="ggb-table__container"
-      role={scrollable ? 'region' : undefined}
-      aria-label={scrollable ? name : undefined}
-      tabindex={scrollable ? 0 : undefined}
+      role={focusStop ? 'region' : undefined}
+      aria-label={focusStop ? name : undefined}
+      tabindex={focusStop ? 0 : undefined}
     >
       <table class="ggb-table__table">
         <caption class="ggb-table__hidden">{name}</caption>

@@ -8,7 +8,7 @@ Component: `packages/svelte/src/components/table/` (Svelte 5.57.1, Bits UI not u
 - The native caption is visually hidden and names the table; the visible caption above the frame is a copy hidden from assistive technology, so that it sits outside the frame.
 - The frame and the focus indicator are drawn by ::after on a frame wrapper, above the scroll area and the sticky header; the scroll area clips the table to the rounded corners.
 - Lines are inset box-shadows (rows keep minHeight whether they draw a line or not), replaced by borders in forced colors.
-- The scroll area becomes role region, named by the caption, with tabindex 0, only while it overflows (ResizeObserver on the area and the table).
+- The scroll area becomes role region, named by the caption, with tabindex 0, only while it overflows (ResizeObserver on the area and the table). Until the overflow is measured (server rendering, before hydration) it has them by default and loses them when the table is measured to fit (user decision A at the documentation gate, 2026-11-21).
 - The table is max-content wide with a minimum of 100%: columns keep their content on one line and the area scrolls.
 
 ## Decisions taken during implementation

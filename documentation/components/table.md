@@ -388,7 +388,7 @@ import type {
 } from '@ggbrick/svelte';
 ```
 
-Table renders a `<div class="ggb-table">` (plus any class you pass) with `data-column-lines` when `columnLines` is set and `data-scrollable` while the table overflows its area. It holds the visible caption, a `<div class="ggb-table__caption" aria-hidden="true">` left out with `hideCaption`, then a `<div class="ggb-table__frame">` that draws the frame around the scroll area, a `<div class="ggb-table__container">`, which holds the `<table class="ggb-table__table">`. The table's native `<caption>` is visually hidden and names it. While the table overflows its area, in either direction, the scroll area gets `role="region"`, `aria-label` set to the caption and `tabindex="0"`. The root is a column: a `max-block-size` on it limits the scroll area, and the header cells stick to its top. The table takes the inline size it is given, and its columns the width of their content on one line.
+Table renders a `<div class="ggb-table">` (plus any class you pass) with `data-column-lines` when `columnLines` is set and `data-scrollable` while the table overflows its area. It holds the visible caption, a `<div class="ggb-table__caption" aria-hidden="true">` left out with `hideCaption`, then a `<div class="ggb-table__frame">` that draws the frame around the scroll area, a `<div class="ggb-table__container">`, which holds the `<table class="ggb-table__table">`. The table's native `<caption>` is visually hidden and names it. While the table overflows its area, in either direction, the scroll area gets `role="region"`, `aria-label` set to the caption and `tabindex="0"`; it also has them until the overflow is measured (in server-rendered HTML, before the component runs), and loses them as soon as the table is measured to fit. The root is a column: a `max-block-size` on it limits the scroll area, and the header cells stick to its top. The table takes the inline size it is given, and its columns the width of their content on one line.
 
 | Prop          | Type                                | Default  | Description                                                |
 | ------------- | ----------------------------------- | -------- | ---------------------------------------------------------- |
@@ -450,7 +450,7 @@ The component provides:
 
 - A native data table named by its caption, shown or hidden; column headers exposed as the headers of their columns, and a cell with `rowHeader` as the header of its row.
 - A table that is not interactive itself: rows and cells never take focus; only the content of cells and the scroll area do.
-- While the table overflows its area, a scroll area that is a focus stop, exposed as a region named by the caption, with a focus indicator inside the frame, so that keyboard users can scroll it with the arrow keys; it is no focus stop when the table fits.
+- While the table overflows its area, a scroll area that is a focus stop, exposed as a region named by the caption, with a focus indicator inside the frame, so that keyboard users can scroll it with the arrow keys; it is no focus stop once the table is measured to fit (server-rendered HTML keeps it focusable until then).
 - A header that stays visible when the rows scroll, columns and alignments that follow the text direction, and the frame, lines, text and focus indicator kept visible in forced colors.
 
 The integration provides:
