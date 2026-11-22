@@ -3,7 +3,7 @@
   "componentId": "avatar-group",
   "family": "content",
   "wave": 5,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Show the people (or teams) involved in an object as a compact row of overlapping avatars, with a count of the others.",
     "useCases": [
@@ -27,7 +27,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/content/avatar-group/contract.json",
-      "sha256": "e4b030d7afc0c6fcc20217919f8a4b340f51e80e8c23355a66dd302156ca443b"
+      "sha256": "2a524848368d72a1debd8653f95819313de721bf398b7443203dd39b9819b20c"
     },
     "tokens": ["foundations/tokens/base/components/avatar-group.tokens.json"],
     "figma": {
@@ -93,11 +93,11 @@
           "foundations/tokens/base/components/avatar-group.tokens.json"
         ],
         "sha256": {
-          "foundations/components/content/avatar-group/contract.json": "de8b338599cf886e06092a9c46db7912a6cc2f3241d1604468581d13aa216db0",
+          "foundations/components/content/avatar-group/contract.json": "2a524848368d72a1debd8653f95819313de721bf398b7443203dd39b9819b20c",
           "foundations/tokens/base/components/avatar-group.tokens.json": "9a6e9005df7ad1b1cf1042b837922e900fd9051ba181f4325e1091a9a23c89c3"
         }
       },
-      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\". Amendments accepted at the wave 5 implementation gate (2026-11-14, \"C'est validé tu peux passer à la suite\"): Round 2 (user at the wave 5 implementation review, round 1 (2026-11-14); digests re-recorded.",
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\". Amendments accepted at the wave 5 implementation gate (2026-11-14, \"C'est validé tu peux passer à la suite\"): Round 2 (user at the wave 5 implementation review, round 1 (2026-11-14); digests re-recorded. Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
       "note": "The user expects most adjustments at the implementation review."
     },
     "implementation": {
@@ -116,11 +116,11 @@
           "packages/svelte/src/components/avatar-group/avatar-group.css": "f77c0b62302659666aeb34b0da2b28141ec86eaebb67efce545d6f0e17713ae3",
           "packages/svelte/src/components/avatar-group/contract.generated.ts": "61ea031f61216ea95a97b8bfead587957ffe246ca9016dc68f6fcc8c538aec15",
           "packages/svelte/src/components/avatar-group/tokens.generated.css": "88e7e7b2d348ae0a62fcd93c28b8fdc0aee8df3381ec38711200a07d72423c4f",
-          "packages/svelte/src/components/avatar-group/types.ts": "650d0e4ff55cd73066ea0f2fb8c994eab33fe52ea00c026a527941e7cd42e209",
+          "packages/svelte/src/components/avatar-group/types.ts": "e9d3e08f7ff0f08e49aa3f0efcf6627aba3ba1a993cff6374ab55494d72e87c0",
           "examples/avatar-group/App.svelte": "f592b9cf248b907d38facd06beeb97fdf369c18bf1fd8b035365c0ca81a84cd4"
         }
       },
-      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\".",
+      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\". Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
       "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
     },
     "figmaParity": {
@@ -153,12 +153,12 @@
           "apps/docs/src/playgrounds/avatar-group.svelte"
         ],
         "sha256": {
-          "documentation/components/avatar-group.md": "b66dd2c3f85432b2084866f00d76c2627e1088d8470b6c913bc65bb6434f2569",
+          "documentation/components/avatar-group.md": "3c81ee8927ad8ab00a89f4fc852ded14fbef7555b0adf2152989207d8d24d1d0",
           "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
           "apps/docs/src/playgrounds/avatar-group.svelte": "bf802e63fb68ac1ce30da02577f68d62d0c00e8e7df44aefa0352f41f29f6ade"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\".",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\". Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
       "note": null
     },
     "delivery": null
@@ -225,6 +225,27 @@
       "result": "passed",
       "date": "2026-11-21",
       "evidence": "https://wave-5-design-system.jeremysqt.workers.dev/components/avatar-group/; tests/browser/docs-site.spec.ts (42 passed, CI-like font set)"
+    },
+    {
+      "name": "Wave 5 final consistency pass accepted (roadmap checklist complete)",
+      "result": "passed",
+      "date": "2026-11-22",
+      "evidence": "authoring/roadmap.md (Wave 5 final consistency pass)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build) and npm run check:approvals (514 digests, 0 errors, 0 warnings)",
+      "result": "passed",
+      "date": "2026-11-22"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the consistency pass",
+      "result": "353 passed",
+      "date": "2026-11-21"
+    },
+    {
+      "name": "Documentation: npm run build:docs (every live block compiled) and tests/browser/docs-site.spec.ts with a CI-like font set (42 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-21"
     }
   ],
   "decisionsTaken": [
@@ -236,10 +257,11 @@
     "The +N box is an Avatar whose new initials prop holds the text, so that it shares the Avatar typography and colors without binding Avatar tokens; capped at +99.",
     "Exposed as a list named by label; the +N box is named \"3 more\" (count followed by moreLabel).",
     "Implementation: Svelte API: the people are an `avatars` array (name, src, initials) rather than Avatar children, so that max, total and the +N box are known during server rendering; the contract part avatars accepts Avatar, which the group renders.",
-    "Round 2: stacking B, each avatar above the previous one (document order, no z-index)."
+    "Round 2: stacking B, each avatar above the previous one (document order, no z-index).",
+    "Final consistency pass (user, 2026-11-22): option A, a max of 1 counts as 2 (one avatar and the +N box)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 final consistency pass (authoring/roadmap.md), full browser suite, pull request to main.",
+  "nextAction": "Pull request wave/5 to main; Done once merged.",
   "implementationNotes": [
     "Exports AvatarGroup and the types AvatarGroupProps, AvatarGroupItem.",
     "Each avatar is drawn above the previous one by document order (no z-index; round 2 of the implementation review); the +N box, last, is drawn above the others.",
@@ -268,7 +290,20 @@
         "packages/svelte/src/components/avatar-group/types.ts": "e9d3e08f7ff0f08e49aa3f0efcf6627aba3ba1a993cff6374ab55494d72e87c0",
         "documentation/components/avatar-group.md": "0b50cdbdea39e09eea2c4a00873caa708a14e57fde4681b3cd4633ed6ba7bc64"
       },
-      "review": "Wave 5 final consistency pass, presented with the pull request"
+      "review": "Wave 5 final consistency pass, presented with the pull request",
+      "accepted": "User on 2026-11-22: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"",
+      "recorded": "Re-recorded with the approvals it touches (2026-11-22)."
+    },
+    {
+      "date": "2026-11-22",
+      "change": "Option A for max 1: a max of 1 counts as 2 (one avatar and overflow), since a single box cannot show a person and the count; written in the contract rule and the page, SSR test added. No code change.",
+      "sha256": {
+        "foundations/components/content/avatar-group/contract.json": "2a524848368d72a1debd8653f95819313de721bf398b7443203dd39b9819b20c",
+        "documentation/components/avatar-group.md": "3c81ee8927ad8ab00a89f4fc852ded14fbef7555b0adf2152989207d8d24d1d0"
+      },
+      "review": "Wave 5 final consistency pass",
+      "accepted": "User on 2026-11-22: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"",
+      "recorded": "Re-recorded with the approvals it touches (2026-11-22)."
     }
   ]
 }

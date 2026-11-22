@@ -88,12 +88,16 @@ test('AvatarGroup: a named list, size and shape passed down, max counts the +N b
     await group({ label: 'T', avatars: people.slice(0, 4), total: 1200, max: 4, moreLabel: 'de plus' })
   );
   assert.match(cap, /aria-label="1197 de plus"[^]*>\+99</);
+  // max 1 counts as 2: one box cannot show a person and the count.
+  const one = strip(await group({ label: 'T', avatars: people.slice(0, 3), max: 1 }));
+  assert.equal((one.match(/<li /g) ?? []).length, 2);
+  assert.match(one, /aria-label="2 more"[^]*>\+2</);
   const all = strip(await group({ label: 'T', avatars: people, max: 0 }));
   assert.equal((all.match(/<li /g) ?? []).length, 7);
   await assert.rejects(() => group({ label: ' ', avatars: people }), /non-empty label/);
   await assert.rejects(() => group({ label: 'T', avatars: [] }), /at least one avatar/);
   checks['avatar-group'].push(
-    'named list, size and shape on every avatar, max with +N, total, +99 cap, max 0, invalid input'
+    'named list, size and shape on every avatar, max with +N, max 1 counted as 2, total, +99 cap, max 0, invalid input'
   );
 });
 

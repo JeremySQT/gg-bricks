@@ -3,7 +3,7 @@
   "componentId": "table",
   "family": "data",
   "wave": 5,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Show a set of records in rows and columns so that values can be read and compared, as a native semantic data table.",
     "useCases": [
@@ -148,7 +148,7 @@
           "reports/components/table/figma/ledger.json"
         ],
         "sha256": {
-          "foundations/components/data/table/figma-spec.md": "0ef3dbb31912f4702e400bdfb9340cef47bbfc04fb882c5bbd033b41eabde732",
+          "foundations/components/data/table/figma-spec.md": "bad2fe9e9800e20193b16e4ba731425ff9bebec5afd04c1fc6904793aabc1a12",
           "reports/components/table/figma/parity.json": "86511be28c5e89939359ef975116275e8dda9a0dfae91d2499c2a7e065bd52a7",
           "reports/components/table/figma/ledger.json": "204237f114957de2b5282b7510ccb71e00de4e180468567ac17664d92c884018"
         },
@@ -164,7 +164,7 @@
           ]
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording."
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording. Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded."
     },
     "documentation": {
       "scope": "Documentation page, index entry and site playground of table (progressive detail: the page is the recipe, the contract the technical detail; Anatomy numbered like the Figma blueprint).",
@@ -265,6 +265,27 @@
       "result": "passed",
       "date": "2026-11-21",
       "evidence": "https://wave-5-design-system.jeremysqt.workers.dev/components/table/; tests/browser/docs-site.spec.ts (42 passed, CI-like font set)"
+    },
+    {
+      "name": "Wave 5 final consistency pass accepted (roadmap checklist complete)",
+      "result": "passed",
+      "date": "2026-11-22",
+      "evidence": "authoring/roadmap.md (Wave 5 final consistency pass)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build) and npm run check:approvals (514 digests, 0 errors, 0 warnings)",
+      "result": "passed",
+      "date": "2026-11-22"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the consistency pass",
+      "result": "353 passed",
+      "date": "2026-11-21"
+    },
+    {
+      "name": "Documentation: npm run build:docs (every live block compiled) and tests/browser/docs-site.spec.ts with a CI-like font set (42 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-21"
     }
   ],
   "decisionsTaken": [
@@ -286,7 +307,7 @@
     "Documentation gate (user, 2026-11-21): option A, the scroll area is a named focus stop until the overflow is measured, so that server-rendered or not yet hydrated tables that overflow stay reachable from the keyboard (axe scrollable-region-focusable on the documentation site)."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 final consistency pass (authoring/roadmap.md), full browser suite, pull request to main.",
+  "nextAction": "Pull request wave/5 to main; Done once merged.",
   "implementationNotes": [
     "Exports Table, TableHeader, TableBody, TableFooter, TableRow, TableHeading and TableCell.",
     "The native caption is visually hidden and names the table; the visible caption above the frame is a copy hidden from assistive technology, so that it sits outside the frame.",
@@ -335,7 +356,9 @@
       "sha256": {
         "foundations/components/data/table/figma-spec.md": "bad2fe9e9800e20193b16e4ba731425ff9bebec5afd04c1fc6904793aabc1a12"
       },
-      "review": "Wave 5 final consistency pass, presented with the pull request"
+      "review": "Wave 5 final consistency pass, presented with the pull request",
+      "accepted": "User on 2026-11-22: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"",
+      "recorded": "Re-recorded with the approvals it touches (2026-11-22)."
     }
   ]
 }

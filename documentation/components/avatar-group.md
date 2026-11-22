@@ -197,7 +197,7 @@ Renders a `<ul class="ggb-avatar-group" role="list">` (plus any class you pass) 
 | `avatars`   | `AvatarGroupItem[]`                    | required   | The people, in order. An empty array throws.                                                      |
 | `size`      | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`     | Size of every avatar and of the +N box, from 24 to 64 px.                                         |
 | `shape`     | `'circle' \| 'square'`                 | `'circle'` | Shape of every avatar and of the +N box: circle for people, square for teams or organizations.    |
-| `max`       | `number`                               | `5`        | Most boxes shown, the +N box included; 0 shows every avatar. At least one avatar is always shown. |
+| `max`       | `number`                               | `5`        | Most boxes shown, the +N box included; 0 shows every avatar, and 1 counts as 2.                   |
 | `total`     | `number`                               | `0`        | Number of people, when greater than the avatars passed; 0 counts the avatars.                     |
 | `moreLabel` | `string`                               | `'more'`   | Word after the number of the others in the name of the +N box (3 more); blank falls back to more. |
 | `ref`       | `HTMLUListElement \| null` (bindable)  | `null`     | The list element.                                                                                 |
@@ -211,7 +211,7 @@ Renders a `<ul class="ggb-avatar-group" role="list">` (plus any class you pass) 
 | `src`      | `string` | —        | Picture URL; the initials stay while it loads or if it fails.                         |
 | `initials` | `string` | —        | Text shown instead of the computed initials, such as an abbreviation (three at most). |
 
-The number of people is `total` when it is greater than the number of avatars, otherwise the number of avatars. When `max` is above 0 and that number exceeds it, the group shows the first `max - 1` avatars and the +N box; the box shows +99 at most, but its accessible name keeps the full number (“1197 more”).
+The number of people is `total` when it is greater than the number of avatars, otherwise the number of avatars. When `max` is above 0 and that number exceeds it, the group shows the first `max - 1` avatars and the +N box (a `max` of 1 counts as 2: one box cannot show a person and the count); the box shows +99 at most, but its accessible name keeps the full number (“1197 more”).
 
 Every other attribute of `HTMLAttributes<HTMLUListElement>` (`id`, `style`, `aria-describedby`…) goes to the list, except those the component owns: `children`, `role`, `tabindex` and `aria-label` (from `label`). There are no events and no snippets. The ring around each avatar takes the color of the custom property `--ggb-avatar-group-ringColor`, the default surface unless you set it on the group (with `style` or a class) for another surface. The platform-independent contract ships as `contracts/avatar-group.json`.
 

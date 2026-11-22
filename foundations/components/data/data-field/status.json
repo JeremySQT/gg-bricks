@@ -3,7 +3,7 @@
   "componentId": "data-field",
   "family": "data",
   "wave": 5,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Show one piece of information about an object as a label and its value, for reading, in detail panels, summaries and record pages.",
     "useCases": [
@@ -121,11 +121,11 @@
           "packages/svelte/src/components/data-field/contract.generated.ts": "e8e6732dfc88de26865f7a0cf70e6df1b8f2c00e82318a4cb7bc690ac83d093f",
           "packages/svelte/src/components/data-field/data-field.css": "b29a2f297f52069da15d6cf0dfcf4e14d11c4fde65f62351992f410d3f01dc5b",
           "packages/svelte/src/components/data-field/tokens.generated.css": "16b7e82303b142b959fee6467e72f23dc015b21b85b98d25c9430903475e9a0f",
-          "packages/svelte/src/components/data-field/types.ts": "50b10604fe5604ab67c772d1b30a359aeb8c10933c0bf886d0f1263e18d193c8",
+          "packages/svelte/src/components/data-field/types.ts": "78d66891abdcb90faf63a923e43f7ac10e8773d2c03a03ef88eb22bc765af90f",
           "examples/data-field/App.svelte": "421983186ae018366542a9009d5cda6ea38df23f07f0ede789ba963d4c1df254"
         }
       },
-      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\".",
+      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\". Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
       "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
     },
     "figmaParity": {
@@ -158,12 +158,12 @@
           "apps/docs/src/playgrounds/data-field.svelte"
         ],
         "sha256": {
-          "documentation/components/data-field.md": "a4002463a69964d22b6ad1d8f8eb8352db5acbd402080c8217e4e0714247e3c6",
+          "documentation/components/data-field.md": "9f4ad23f96ef6b89067e45d646cb4ec81d10faf37b48a93cae75fab83a35a698",
           "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
           "apps/docs/src/playgrounds/data-field.svelte": "9a3dc968ac0bb272ce4aa596164a101512ae298894a1659b789352f96c49e9ba"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\".",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\". Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
       "note": null
     },
     "delivery": null
@@ -236,6 +236,27 @@
       "result": "passed",
       "date": "2026-11-21",
       "evidence": "https://wave-5-design-system.jeremysqt.workers.dev/components/data-field/; tests/browser/docs-site.spec.ts (42 passed, CI-like font set)"
+    },
+    {
+      "name": "Wave 5 final consistency pass accepted (roadmap checklist complete)",
+      "result": "passed",
+      "date": "2026-11-22",
+      "evidence": "authoring/roadmap.md (Wave 5 final consistency pass)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build) and npm run check:approvals (514 digests, 0 errors, 0 warnings)",
+      "result": "passed",
+      "date": "2026-11-22"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the consistency pass",
+      "result": "353 passed",
+      "date": "2026-11-21"
+    },
+    {
+      "name": "Documentation: npm run build:docs (every live block compiled) and tests/browser/docs-site.spec.ts with a CI-like font set (42 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-21"
     }
   ],
   "decisionsTaken": [
@@ -251,7 +272,7 @@
     "Figma review (user, 2026-11-17): content variants as a design aid (Content text, empty, badge, link, avatar); anatomy redrawn on a vertical field; content examples in the specification."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 final consistency pass (authoring/roadmap.md), full browser suite, pull request to main.",
+  "nextAction": "Pull request wave/5 to main; Done once merged.",
   "implementationNotes": [
     "Exports DataField and the type DataFieldProps.",
     "Horizontal layout without a container query (custom properties are not allowed in container conditions): a wrapping flex line where the label is min(100%, max(labelInlineSize, (2 × labelInlineSize − 100%) × 999)) wide, so it is labelInlineSize from twice that width and the whole line below; the value then wraps under it.",
@@ -277,7 +298,9 @@
         "packages/svelte/src/components/data-field/types.ts": "78d66891abdcb90faf63a923e43f7ac10e8773d2c03a03ef88eb22bc765af90f",
         "documentation/components/data-field.md": "9f4ad23f96ef6b89067e45d646cb4ec81d10faf37b48a93cae75fab83a35a698"
       },
-      "review": "Wave 5 final consistency pass, presented with the pull request"
+      "review": "Wave 5 final consistency pass, presented with the pull request",
+      "accepted": "User on 2026-11-22: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"",
+      "recorded": "Re-recorded with the approvals it touches (2026-11-22)."
     }
   ]
 }

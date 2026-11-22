@@ -3,7 +3,7 @@
   "componentId": "avatar",
   "family": "content",
   "wave": 5,
-  "phase": "documentation",
+  "phase": "done",
   "scope": {
     "purpose": "Represent a person, or an organization, a team or a project, with a picture, their initials or a generic glyph, in a small box of fixed size beside or instead of their name.",
     "useCases": [
@@ -116,16 +116,16 @@
           "examples/avatar/App.svelte"
         ],
         "sha256": {
-          "packages/svelte/src/components/avatar/Avatar.svelte": "b9de422f4df561d3679f8dbff21674ebb4e3b7c6e6e3239fe49af9414b43d78d",
+          "packages/svelte/src/components/avatar/Avatar.svelte": "a8f187d02128aab70a3a7cf9b78cff170090522d12884bfd606083032aa6a4d6",
           "packages/svelte/src/components/avatar/avatar.css": "9e14d431d2453fd89652e7d830ee0cd80146c1bdfbe503e4ae871e591337e4f6",
           "packages/svelte/src/components/avatar/contract.generated.ts": "9f641d7bea19445a813d544809eb747cef9bfd99a9d6b932ee6486bb910e4c3f",
-          "packages/svelte/src/components/avatar/initials.ts": "e9af63605253e25baeecc6ef8ee8a4e64bbe2e7979938990997f309bd05547a9",
+          "packages/svelte/src/components/avatar/initials.ts": "136f52ed4ea99640df6d24505c7165fe95f74fa18a5639dc2de5ed7f3cea3179",
           "packages/svelte/src/components/avatar/tokens.generated.css": "e47767790d205469c52d302d11fcc043f94e7ee007202aa8bc0486927d60dd24",
-          "packages/svelte/src/components/avatar/types.ts": "1fa4d8d175745e9b120663e1dbc1fd089a39131b98d50c01aa8819865950dba8",
+          "packages/svelte/src/components/avatar/types.ts": "cd6c1c64a0cbadff0189feb000ff1bac485f2b02a6373ff505f714dc65ace65f",
           "examples/avatar/App.svelte": "bd04651ab4771db47f6215b36d17eb0f9a1a44ce8bcc724145a10dba08818f8a"
         }
       },
-      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\".",
+      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\". Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
       "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
     },
     "figmaParity": {
@@ -158,12 +158,12 @@
           "apps/docs/src/playgrounds/avatar.svelte"
         ],
         "sha256": {
-          "documentation/components/avatar.md": "f4b24114d608833cae8fe9b1d0e84604780126305ab80e32ef470c571b508f26",
+          "documentation/components/avatar.md": "176c6bb9188c4ab81848a5aff227033527f6ef3564b5e66c1c4fad19b7337511",
           "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
           "apps/docs/src/playgrounds/avatar.svelte": "6d8a66a0259507227be5da92a2e688cbe76d454b50e06c3da5fe133f2b403d09"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\".",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\". Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
       "note": null
     },
     "delivery": null
@@ -230,6 +230,27 @@
       "result": "passed",
       "date": "2026-11-21",
       "evidence": "https://wave-5-design-system.jeremysqt.workers.dev/components/avatar/; tests/browser/docs-site.spec.ts (42 passed, CI-like font set)"
+    },
+    {
+      "name": "Wave 5 final consistency pass accepted (roadmap checklist complete)",
+      "result": "passed",
+      "date": "2026-11-22",
+      "evidence": "authoring/roadmap.md (Wave 5 final consistency pass)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build) and npm run check:approvals (514 digests, 0 errors, 0 warnings)",
+      "result": "passed",
+      "date": "2026-11-22"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the consistency pass",
+      "result": "353 passed",
+      "date": "2026-11-21"
+    },
+    {
+      "name": "Documentation: npm run build:docs (every live block compiled) and tests/browser/docs-site.spec.ts with a CI-like font set (42 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-21"
     }
   ],
   "decisionsTaken": [
@@ -248,7 +269,7 @@
     "Implementation: Svelte API: role img named by name on the root span; decorative or nameless avatars get aria-hidden; consumer attributes go to the root after Bits UI's."
   ],
   "openDecisions": [],
-  "nextAction": "Wave 5 final consistency pass (authoring/roadmap.md), full browser suite, pull request to main.",
+  "nextAction": "Pull request wave/5 to main; Done once merged.",
   "implementationNotes": [
     "Exports Avatar and the types AvatarProps, AvatarImageStatus.",
     "Bits UI Avatar reports the loading status; ggbrick keeps it per source (a new src starts again from loading, since Bits UI does not reload once a picture has loaded) and renders the picture only without Bits UI's fallback part: the initials or the glyph are drawn while imageStatus is not loaded.",
@@ -269,7 +290,9 @@
         "packages/svelte/src/components/avatar/types.ts": "cd6c1c64a0cbadff0189feb000ff1bac485f2b02a6373ff505f714dc65ace65f",
         "documentation/components/avatar.md": "176c6bb9188c4ab81848a5aff227033527f6ef3564b5e66c1c4fad19b7337511"
       },
-      "review": "Wave 5 final consistency pass, presented with the pull request"
+      "review": "Wave 5 final consistency pass, presented with the pull request",
+      "accepted": "User on 2026-11-22: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"",
+      "recorded": "Re-recorded with the approvals it touches (2026-11-22)."
     }
   ]
 }
