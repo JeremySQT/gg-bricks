@@ -75,7 +75,7 @@ test('a spin button named by the Field label, exposing value, bounds and formatt
   await expect(page.locator('#play')).toHaveAttribute('aria-valuemin', '0');
   await expect(page.locator('#play')).toHaveAttribute('aria-valuemax', '99');
   expect((await accessible(page, '#size-md')).name).toBe('Guests (md)');
-  await expect(page.locator('#locale-fr')).toHaveAttribute('aria-valuetext', '1 234 567,89');
+  await expect(page.locator('#locale-fr')).toHaveAttribute('aria-valuetext', '1\u202f234\u202f567,89');
   // The steppers are named buttons outside the tab order: Tab goes from one field to the next.
   await expect(page.getByRole('button', { name: 'Increase' }).first()).toHaveAttribute('tabindex', '-1');
   await page.focus('#size-sm');
@@ -153,7 +153,7 @@ test('typing commits on Enter or blur: clamped, unreadable text reverted, empty 
   const fr = page.locator('#form-amount');
   await fr.fill('12345,6');
   await fr.press('Tab');
-  await expect(fr).toHaveValue('12 345,60');
+  await expect(fr).toHaveValue('12\u202f345,60');
   await fr.fill('7.5');
   await fr.blur();
   await expect(fr).toHaveValue('7,50');

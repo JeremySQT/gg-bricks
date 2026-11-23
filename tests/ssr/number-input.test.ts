@@ -25,11 +25,11 @@ test('renders a spin button between two steppers, formatted for the locale, with
   assert.match(input, /type="text"/);
   assert.match(input, /role="spinbutton"/);
   assert.match(input, /inputmode="decimal"/);
-  assert.match(input, /value="1 234,50"/);
+  assert.match(input, /value="1\u202f234,50"/);
   assert.match(input, /aria-valuenow="1234.5"/);
   assert.match(input, /aria-valuemin="0"/);
   assert.match(input, /aria-valuemax="5000"/);
-  assert.match(input, /aria-valuetext="1 234,50"/);
+  assert.match(input, /aria-valuetext="1\u202f234,50"/);
   assert.match(input, /aria-label="Quantity"/);
   assert.doesNotMatch(html, /type="hidden"|aria-invalid|disabled|readonly/);
   checks.push(

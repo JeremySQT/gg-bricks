@@ -36,7 +36,7 @@ export function symbolsOf(locale: string): Symbols {
   return s;
 }
 
-const spaces = /[\s   ]/g;
+const spaces = /[\s\u00a0\u202f\u2009]/g;
 
 /**
  * Reads a typed text as a number for a locale: grouping separators and spaces are ignored, the locale's decimal
@@ -48,11 +48,11 @@ export function parseNumber(text: string, locale: string): number | undefined {
   let t = text.trim();
   if (t === '') return undefined;
   t = [...t].map((ch) => digits.get(ch) ?? ch).join('');
-  t = t.replace(/^[−‒–﹣－]/, '-');
+  t = t.replace(/^[\u2212\u2012\u2013\uFE63\uFF0D]/, '-');
   // A grouping separator that is a space (narrow or not) is removed with the spaces.
   t = t.replace(spaces, '');
   // Swiss grouping is an apostrophe, typographic or straight depending on the platform's data: accept both.
-  const groupChars = group.replace(spaces, '') === '' ? [] : /^['’]$/.test(group) ? ["'", '’'] : [group];
+  const groupChars = group.replace(spaces, '') === '' ? [] : /^['\u2019]$/.test(group) ? ["'", '\u2019'] : [group];
   for (const g of groupChars) if (g !== decimal) t = t.split(g).join('');
   if (decimal !== '.') t = t.split(decimal).join('.');
   if (!/^-?(\d+\.?\d*|\.\d+)$/.test(t)) return NaN;

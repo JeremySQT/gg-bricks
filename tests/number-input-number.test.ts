@@ -11,16 +11,16 @@ import {
 
 test('reads typed text for the locale: grouping and spaces ignored, decimal separator, period, minus', () => {
   assert.equal(parseNumber('1 234,5', 'fr'), 1234.5);
-  assert.equal(parseNumber('1 234,5', 'fr'), 1234.5);
+  assert.equal(parseNumber('1\u202f234,5', 'fr'), 1234.5);
   assert.equal(parseNumber('1234.5', 'fr'), 1234.5, 'the period is accepted where it does not group');
   assert.equal(parseNumber('1.234,5', 'de'), 1234.5);
   assert.equal(parseNumber('1.5', 'de'), 15, 'in German the period groups digits');
   assert.equal(parseNumber("1'234.5", 'de-CH'), 1234.5);
-  assert.equal(parseNumber('1’234.5', 'de-CH'), 1234.5);
+  assert.equal(parseNumber('1\u2019234.5', 'de-CH'), 1234.5);
   assert.equal(parseNumber('1,234.5', 'en'), 1234.5);
   assert.equal(parseNumber('-3', 'en'), -3);
-  assert.equal(parseNumber('−3', 'en'), -3);
-  assert.equal(parseNumber('١٢٣', 'ar-EG'), 123, 'the locale digits are read');
+  assert.equal(parseNumber('\u22123', 'en'), -3);
+  assert.equal(parseNumber('\u0661\u0662\u0663', 'ar-EG'), 123, 'the locale digits are read');
   assert.equal(parseNumber('', 'en'), undefined);
   assert.equal(parseNumber('   ', 'en'), undefined);
   for (const bad of ['abc', '1e3', '--1', '1.2.3', '1-'])
