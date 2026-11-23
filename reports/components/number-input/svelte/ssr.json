@@ -1,0 +1,10 @@
+{
+  "result": "passed",
+  "checks": [
+    "spin button with value, min, max and formatted text in fr; steppers out of the tab order; no hidden input without name",
+    "empty field without aria-value*; inputmode text, numeric or decimal",
+    "steppers disabled at min and max, readonly and disabled; custom labels; hideSteppers; disabled wins over readonly",
+    "three sizes; hidden input with a plain decimal, empty, disabled; id, class and autocomplete placed",
+    "invalid label rejected on the server"
+  ]
+}

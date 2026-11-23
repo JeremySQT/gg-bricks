@@ -1,0 +1,10 @@
+{
+  "result": "passed",
+  "checks": [
+    "en, fr, de, th-TH (Gregorian), ar-EG digits, French placeholders rendered on the server",
+    "group, named spin buttons (part names in the locale), calendar button controlling a dialog popover, no calendar before opening",
+    "empty parts without value, no self-invalid, readonly and disabled disable the button, three sizes",
+    "hidden input ISO, disabled; 2026-02-30 shows empty",
+    "invalid label rejected on the server"
+  ]
+}

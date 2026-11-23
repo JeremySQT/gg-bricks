@@ -426,7 +426,8 @@ test('forced colors: selected day and focused part in Highlight, disabled in Gra
   await page.selectOption('#ctx-mode', 'light');
   await page.emulateMedia({ forcedColors: 'active', reducedMotion: 'reduce' });
   await openCalendar(page, 'bounded');
-  await page.waitForTimeout(50);
+  // The capture waits for the end of the entry transition (the panel fades in).
+  await expect(page.locator(panel)).toHaveCSS('opacity', '1');
   const colors = await page.evaluate(() => {
     const probe = document.createElement('span');
     document.body.append(probe);

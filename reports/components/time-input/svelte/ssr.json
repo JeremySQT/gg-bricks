@@ -1,0 +1,10 @@
+{
+  "result": "passed",
+  "checks": [
+    "en, fr, fr h12, ko (오후), seconds, Arabic-Indic digits rendered on the server",
+    "group named by the label, spin buttons named by label and part (in the locale), empty parts without value",
+    "readonly, disabled (wins over readonly), invalid, required, three sizes",
+    "hidden input HH:mm, HH:mm:ss, disabled; an invalid value shows empty and submits empty",
+    "invalid label rejected on the server"
+  ]
+}

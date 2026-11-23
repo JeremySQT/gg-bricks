@@ -49,7 +49,8 @@
     },
     "examples": {
       "page": "examples/number-input",
-      "preview": "dist/previews/number-input.html (npm run build && npm run build:preview number-input)"
+      "preview": "dist/previews/number-input.html (npm run build && npm run build:preview number-input)",
+      "artifact": "https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795449428-49dc), page number-input.html"
     },
     "tests": {
       "ssr": ["tests/number-input-number.test.ts", "tests/ssr/number-input.test.ts"],
@@ -76,7 +77,52 @@
     "documentation": null,
     "delivery": null
   },
-  "checks": [],
+  "checks": [
+    {
+      "name": "npm run validate and npm run build:tokens (schema, consistency, coverage in 18 contexts, contrast)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-23",
+      "evidence": "reports/components/number-input/"
+    },
+    {
+      "name": "Wave 6 contract gate",
+      "result": "approved",
+      "date": "2026-11-23",
+      "evidence": "https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2"
+    },
+    {
+      "name": "npm run verify",
+      "result": "passed (check:approvals 0 errors; contract amendments recorded in pendingChanges are warnings)",
+      "date": "2026-11-23"
+    },
+    {
+      "name": "Browser, tests/browser/number-input.spec.ts (Chromium)",
+      "result": "passed (9 tests), also with a CI-like font set (fontconfig limited to DejaVu, Liberation and Noto)",
+      "date": "2026-11-23",
+      "evidence": "reports/components/number-input/svelte/"
+    },
+    {
+      "name": "SSR, tests/ssr/number-input.test.ts",
+      "result": "passed (5 tests)",
+      "date": "2026-11-23",
+      "evidence": "reports/components/number-input/svelte/ssr.json"
+    },
+    {
+      "name": "Unit tests, tests/number-input-number.test.ts",
+      "result": "passed (3 tests)",
+      "date": "2026-11-23"
+    },
+    {
+      "name": "Full browser suite (npm run test:browser, Chromium, Firefox and WebKit smoke)",
+      "result": "389 passed, 1 failed: tests/browser/popover.spec.ts (Escape returns focus…) under load, 40 of 40 alone; plausible cause in lib/overlay raised at the gate",
+      "date": "2026-11-23"
+    },
+    {
+      "name": "Preview dist/previews/number-input.html",
+      "result": "built, mounts from file:// without errors",
+      "date": "2026-11-23"
+    }
+  ],
   "decisionsTaken": [
     "Values are ISO strings where a date or time is involved; @internationalized/date (a peer dependency of Bits UI) is declared as a peer dependency of the package and used internally only (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping, T1: \"Ok pour moi, les dates font partie de ces choses difficiles à traiter sans dépendance externe\").",
     "Locale is a prop (BCP 47, default \"en\"), deterministic on the server; no application-wide locale provider: components are delivered as units with settings only, each project integrates its global logic (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping, T2).",

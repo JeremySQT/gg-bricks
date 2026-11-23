@@ -44,7 +44,8 @@
     },
     "examples": {
       "page": "examples/slider",
-      "preview": "dist/previews/slider.html (npm run build && npm run build:preview slider)"
+      "preview": "dist/previews/slider.html (npm run build && npm run build:preview slider)",
+      "artifact": "https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795449428-49dc), page slider.html"
     },
     "tests": {
       "ssr": ["tests/ssr/slider.test.ts"],
@@ -74,7 +75,47 @@
     "documentation": null,
     "delivery": null
   },
-  "checks": [],
+  "checks": [
+    {
+      "name": "npm run validate and npm run build:tokens (schema, consistency, coverage in 18 contexts, contrast)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-23",
+      "evidence": "reports/components/slider/"
+    },
+    {
+      "name": "Wave 6 contract gate",
+      "result": "approved",
+      "date": "2026-11-23",
+      "evidence": "https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2"
+    },
+    {
+      "name": "npm run verify",
+      "result": "passed (check:approvals 0 errors; contract amendments recorded in pendingChanges are warnings)",
+      "date": "2026-11-23"
+    },
+    {
+      "name": "Browser, tests/browser/slider.spec.ts (Chromium)",
+      "result": "passed (8 tests), also with a CI-like font set (fontconfig limited to DejaVu, Liberation and Noto)",
+      "date": "2026-11-23",
+      "evidence": "reports/components/slider/svelte/"
+    },
+    {
+      "name": "SSR, tests/ssr/slider.test.ts",
+      "result": "passed (4 tests)",
+      "date": "2026-11-23",
+      "evidence": "reports/components/slider/svelte/ssr.json"
+    },
+    {
+      "name": "Full browser suite (npm run test:browser, Chromium, Firefox and WebKit smoke)",
+      "result": "389 passed, 1 failed: tests/browser/popover.spec.ts (Escape returns focus…) under load, 40 of 40 alone; plausible cause in lib/overlay raised at the gate",
+      "date": "2026-11-23"
+    },
+    {
+      "name": "Preview dist/previews/slider.html",
+      "result": "built, mounts from file:// without errors",
+      "date": "2026-11-23"
+    }
+  ],
   "decisionsTaken": [
     "Locale is a prop (BCP 47, default \"en\") for the value text (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping, T2).",
     "One thumb, horizontal, showValue at the inline end of the track (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping: \"Slider : Ok\").",
