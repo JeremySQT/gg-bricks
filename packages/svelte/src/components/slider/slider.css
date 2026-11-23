@@ -1,0 +1,196 @@
+/*
+ * Slider structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * The thumb and the range are placed from the value alone (--_fraction, written by the component), with
+ * logical properties, so that they are in place before any script runs, in either reading direction. The control
+ * (the Bits UI root, whose box maps the pointer) is the track inset by half a thumb at both ends, so that the thumb
+ * stays inside the container at min and max; its hit area extends over that inset.
+ */
+@layer ggb {
+  .ggb-slider {
+    --_track: var(--ggb-slider-trackColor-default);
+    --_range: var(--ggb-slider-rangeColor-default);
+    --_thumb-fill: var(--ggb-slider-thumbFillColor-default);
+    --_thumb-border: var(--ggb-slider-thumbBorderColor-default);
+    --_motion: var(--ggb-slider-motionDuration);
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: var(--ggb-slider-valueGap);
+    inline-size: 100%;
+    min-inline-size: 0;
+    block-size: var(--ggb-slider-minTarget);
+  }
+
+  .ggb-slider__control {
+    position: relative;
+    flex: 1 1 auto;
+    align-self: stretch;
+    min-inline-size: 0;
+    margin-inline: calc(var(--ggb-slider-thumbSize) / 2);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ggb-slider__control::before {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline: calc(var(--ggb-slider-thumbSize) / -2);
+  }
+
+  .ggb-slider__track {
+    position: absolute;
+    inset-inline: 0;
+    top: 50%; /* physical on purpose: centering is symmetric */
+    block-size: var(--ggb-slider-thickness);
+    border-radius: var(--ggb-slider-radius);
+    background-color: var(--_track);
+    transform: translateY(-50%);
+  }
+  .ggb-slider__range {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: calc(var(--_fraction) * 100%);
+    border-radius: inherit;
+    background-color: var(--_range);
+  }
+
+  .ggb-slider__thumb {
+    position: absolute;
+    top: 50%;
+    inset-inline-start: calc(var(--_fraction) * 100%);
+    box-sizing: border-box;
+    inline-size: var(--ggb-slider-thumbSize);
+    block-size: var(--ggb-slider-thumbSize);
+    margin-block-start: calc(var(--ggb-slider-thumbSize) / -2);
+    margin-inline-start: calc(var(--ggb-slider-thumbSize) / -2);
+    border: var(--ggb-slider-thumbBorderWidth) solid var(--_thumb-border);
+    border-radius: var(--ggb-slider-radius);
+    background-color: var(--_thumb-fill);
+    box-shadow: var(--ggb-slider-shadow);
+    outline: none;
+  }
+  /* Interaction target: minTarget in both dimensions, centered, without enlarging the thumb. */
+  .ggb-slider__thumb::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    inline-size: var(--ggb-slider-minTarget);
+    block-size: var(--ggb-slider-minTarget);
+    transform: translate(-50%, -50%);
+  }
+
+  /* A jump (a press on the track, a key) moves over motionDuration; a drag follows the pointer. */
+  .ggb-slider__thumb,
+  .ggb-slider__range {
+    transition-duration: var(--_motion);
+    transition-timing-function: var(--ggb-slider-easingStandard);
+  }
+  .ggb-slider__thumb {
+    transition-property: inset-inline-start, background-color, border-color;
+  }
+  .ggb-slider__range {
+    transition-property: inline-size, background-color;
+  }
+  .ggb-slider__track {
+    transition: background-color var(--_motion) var(--ggb-slider-easingStandard);
+  }
+  .ggb-slider[data-dragging] {
+    --_motion: 0s;
+  }
+
+  /* Focus on the thumb, whatever the modality: the ring is drawn outside its border. */
+  .ggb-slider__thumb:focus {
+    outline: var(--ggb-slider-focusWidth) solid var(--ggb-slider-focusColor);
+    outline-offset: var(--ggb-slider-focusOffset);
+  }
+
+  .ggb-slider__value {
+    display: grid;
+    flex: none;
+    justify-items: end;
+    font: var(--ggb-slider-typographyValue);
+    letter-spacing: var(--ggb-slider-typographyValue-letterSpacing, normal);
+    font-variant-numeric: tabular-nums;
+    color: var(--ggb-slider-valueColor);
+    white-space: nowrap;
+  }
+  /* The text and the formatted min and max share one cell: the cell is as wide as the widest. */
+  .ggb-slider__value > span {
+    grid-area: 1 / 1;
+  }
+  .ggb-slider__value-sizer {
+    visibility: hidden;
+  }
+
+  /* Condition, lowest precedence first: hover (pointer over the container or a drag), disabled. */
+  @media (hover: hover) {
+    .ggb-slider:where(:hover) {
+      --_track: var(--ggb-slider-trackColor-hover);
+      --_range: var(--ggb-slider-rangeColor-hover);
+      --_thumb-fill: var(--ggb-slider-thumbFillColor-hover);
+      --_thumb-border: var(--ggb-slider-thumbBorderColor-hover);
+    }
+  }
+  .ggb-slider:where([data-dragging]) {
+    --_track: var(--ggb-slider-trackColor-hover);
+    --_range: var(--ggb-slider-rangeColor-hover);
+    --_thumb-fill: var(--ggb-slider-thumbFillColor-hover);
+    --_thumb-border: var(--ggb-slider-thumbBorderColor-hover);
+  }
+  .ggb-slider:where([data-disabled]) {
+    --_track: var(--ggb-slider-trackColor-disabled);
+    --_range: var(--ggb-slider-rangeColor-disabled);
+    --_thumb-fill: var(--ggb-slider-thumbFillColor-disabled);
+    --_thumb-border: var(--ggb-slider-thumbBorderColor-disabled);
+  }
+  .ggb-slider[data-disabled] .ggb-slider__control {
+    cursor: not-allowed;
+  }
+  .ggb-slider[data-disabled] .ggb-slider__value {
+    color: var(--ggb-slider-disabledColor);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-slider {
+      --_motion: 0s;
+    }
+  }
+
+  /* Forced colors: the browser would flatten the backgrounds that draw the track, the range and the thumb; they are
+     painted in system colors instead. */
+  @media (forced-colors: active) {
+    .ggb-slider__track,
+    .ggb-slider__thumb {
+      forced-color-adjust: none;
+    }
+    .ggb-slider__track {
+      background-color: CanvasText;
+    }
+    .ggb-slider__range {
+      background-color: Highlight;
+    }
+    .ggb-slider__thumb {
+      border-color: Highlight;
+      background-color: Canvas;
+      box-shadow: none;
+    }
+    .ggb-slider__thumb:focus {
+      outline-color: CanvasText;
+    }
+    .ggb-slider[data-disabled] .ggb-slider__track,
+    .ggb-slider[data-disabled] .ggb-slider__range,
+    .ggb-slider[data-disabled] .ggb-slider__thumb {
+      border-color: GrayText;
+      background-color: GrayText;
+    }
+    .ggb-slider[data-disabled] .ggb-slider__thumb {
+      background-color: Canvas;
+    }
+    .ggb-slider[data-disabled] .ggb-slider__value {
+      color: GrayText;
+    }
+  }
+}

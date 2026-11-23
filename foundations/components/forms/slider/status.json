@@ -65,7 +65,14 @@
   "openDecisions": [],
   "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 6 implementation review.",
   "implementationNotes": [
-    "valueChange during the drag and valueCommit on release map to Bits UI onValueChange and onValueCommit; a key emits both."
+    "Built on bits-ui 2.19.3 Slider (type single), pinned; the component completes it where it disagrees with the contract (decision Contract versus Bits UI), each covered by a browser or SSR test:",
+    "- Steps are passed as an array counted from min that always ends with max: Bits UI's own steps (normalizeSteps, helpers.js:161) leave max out when the range is not a multiple of step.",
+    "- The value passed to Bits UI is already within min and max and on a step: Bits UI rewrites a value that is not on a step (watch in slider.svelte.js), which would change the application's value and emit valueChange without a user action.",
+    "- Page Up and Page Down (ten steps), aria-valuetext (the value formatted for the locale) and the hidden form input are added: Bits UI has none of them.",
+    "- valueCommit is emitted only after a change: Bits UI commits on every key, also when the value did not change (End at max).",
+    "- The thumb and the range are positioned in CSS from a --_fraction custom property with logical properties (correct before hydration and in right-to-left); Bits UI's inline left/translate styles are dropped. The Bits UI root is the track inset by half a thumb, so that its box maps the pointer to the value; its hit area extends over the inset. The reading direction is measured once mounted and passed to Bits UI for the pointer.",
+    "valueChange during the drag and valueCommit on release map to Bits UI onValueChange and onValueCommit.",
+    "Other attributes go to the thumb (the focused element); the consumer's onkeydown runs before the component's (mergeProps composeHandlers stops when the event is handled)."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
