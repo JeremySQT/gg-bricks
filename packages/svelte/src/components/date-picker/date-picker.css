@@ -221,13 +221,21 @@
   .ggb-date-picker__caret:dir(rtl) {
     transform: scaleX(-1);
   }
+  /* Columns are cellPitch wide; on a screen too narrow for seven of them inside the panel's margins (under about
+     356 px), they share the room left (about 39 px at 320 px) and keep cellPitch in height. */
+  .ggb-date-picker__panel {
+    --_column: min(
+      var(--ggb-date-picker-panel-cellPitch),
+      calc((100vi - 2 * var(--ggb-space-layout-sm) - 2 * var(--ggb-date-picker-panel-padding)) / 7)
+    );
+  }
   .ggb-date-picker__grid {
     border-collapse: collapse;
     border-spacing: 0;
     table-layout: fixed;
   }
   .ggb-date-picker__weekday {
-    inline-size: var(--ggb-date-picker-panel-cellPitch);
+    inline-size: var(--_column);
     padding: 0;
     font: var(--ggb-date-picker-panel-typographyWeekday);
     letter-spacing: var(--ggb-date-picker-panel-typographyWeekday-letterSpacing, normal);
@@ -235,7 +243,7 @@
     text-align: center;
   }
   .ggb-date-picker__cell {
-    inline-size: var(--ggb-date-picker-panel-cellPitch);
+    inline-size: var(--_column);
     block-size: var(--ggb-date-picker-panel-cellPitch);
     padding: 0;
     text-align: center;
@@ -271,7 +279,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    inline-size: var(--ggb-date-picker-panel-cellPitch);
+    inline-size: var(--_column);
     block-size: var(--ggb-date-picker-panel-cellPitch);
     transform: translate(-50%, -50%);
   }

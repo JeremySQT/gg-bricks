@@ -32,9 +32,30 @@
     "tokens": [],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/number-input",
+      "files": [
+        "packages/svelte/src/components/number-input/NumberInput.svelte",
+        "packages/svelte/src/components/number-input/number.ts",
+        "packages/svelte/src/components/number-input/types.ts",
+        "packages/svelte/src/components/number-input/number-input.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (no number input in Bits UI)"
+      },
+      "report": "reports/components/number-input/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/number-input",
+      "preview": "dist/previews/number-input.html (npm run build && npm run build:preview number-input)"
+    },
+    "tests": {
+      "ssr": ["tests/number-input-number.test.ts", "tests/ssr/number-input.test.ts"],
+      "browser": ["tests/browser/number-input.spec.ts"],
+      "evidence": "reports/components/number-input/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -68,7 +89,7 @@
     "Shift+Up/Down Arrow change the value by ten steps, like Page Up/Down, as in Figma's numeric fields (user at the contract gate, 2026-11-23)."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 6 implementation review.",
+  "nextAction": "Implementation gate (wave 6, grouped): present the review pages, the exercise list and the limits; record the approval with source digests.",
   "implementationNotes": [
     "Parsing and formatting through Intl.NumberFormat(locale).formatToParts to learn the grouping and decimal separators.",
     "Decimal stepping without floating error: round to the larger number of fraction digits of the value and of step."

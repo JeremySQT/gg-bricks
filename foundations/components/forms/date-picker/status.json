@@ -29,14 +29,34 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/date-picker/contract.json",
-      "sha256": "20b1eeecab5c4cce4d0bfe21f9c275789a5ec90ca88b6ab2812446aa7d5a1244"
+      "sha256": "13aba58f4a7bf1c983ff5f86a4d6d2ef16e7000939c7ac8d983db440d19e3cb7"
     },
     "tokens": [],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/date-picker",
+      "files": [
+        "packages/svelte/src/components/date-picker/DatePicker.svelte",
+        "packages/svelte/src/components/date-picker/types.ts",
+        "packages/svelte/src/components/date-picker/date-picker.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (DatePicker root, input, segments, calendar; completed locally)"
+      },
+      "report": "reports/components/date-picker/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/date-picker",
+      "preview": "dist/previews/date-picker.html (npm run build && npm run build:preview date-picker)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/date-picker.test.ts"],
+      "browser": ["tests/browser/date-picker.spec.ts"],
+      "evidence": "reports/components/date-picker/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -71,7 +91,7 @@
     "The week starts on the first day of the week of the locale (Intl.Locale weekInfo), Monday when the platform does not expose it; Bits UI defaults to Sunday whatever the locale."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 6 implementation review.",
+  "nextAction": "Implementation gate (wave 6, grouped): present the review pages, the exercise list and the limits; record the approval with source digests.",
   "implementationNotes": [
     "Built on bits-ui 2.19.3 DatePicker.Root, DatePicker.Input with its segments, and DatePicker.Calendar with its grid, inside a native auto popover placed by lib/overlay floating (the button toggles it with popovertarget, which spares it from light dismiss); DatePicker.Content (a Bits UI Popover with a portal) is not used. Pinned version; each completion below is covered by a browser or SSR test (decision Contract versus Bits UI):",
     "- Segments: aria-labelledby (the Field label or a hidden span holding the label prop, then a hidden span holding the part name from Intl.DisplayNames) replaces the English aria-label; an empty part has no aria-valuenow or aria-valuetext (Bits UI says \"Empty\"); the first part is described by the Field description instead of Bits UI's hidden \"Selected Date:\" element; aria-invalid follows the invalid prop only (Bits UI marks a date outside min..max invalid, also on the separators).",
@@ -111,6 +131,15 @@
       "invalidates": "approvals.contract until the wave 6 implementation gate",
       "sha256": {
         "foundations/components/forms/date-picker/contract.json": "20b1eeecab5c4cce4d0bfe21f9c275789a5ec90ca88b6ab2812446aa7d5a1244"
+      },
+      "review": "Wave 6 implementation gate"
+    },
+    {
+      "date": "2026-11-23",
+      "change": "Narrow viewports: under about 356 px the seven columns share the room left inside the panel (about 39 px each at 320 px; rows keep 44 px), so that the grid is never cut; the 44 px target is not met in width on those screens only (question for the implementation gate).",
+      "invalidates": "approvals.contract until the wave 6 implementation gate",
+      "sha256": {
+        "foundations/components/forms/date-picker/contract.json": "13aba58f4a7bf1c983ff5f86a4d6d2ef16e7000939c7ac8d983db440d19e3cb7"
       },
       "review": "Wave 6 implementation gate"
     }

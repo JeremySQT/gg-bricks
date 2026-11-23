@@ -28,9 +28,30 @@
     "tokens": [],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/time-input",
+      "files": [
+        "packages/svelte/src/components/time-input/TimeInput.svelte",
+        "packages/svelte/src/components/time-input/time.ts",
+        "packages/svelte/src/components/time-input/types.ts",
+        "packages/svelte/src/components/time-input/time-input.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (TimeField rejected at implementation, see decisionsTaken)"
+      },
+      "report": "reports/components/time-input/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/time-input",
+      "preview": "dist/previews/time-input.html (npm run build && npm run build:preview time-input)"
+    },
+    "tests": {
+      "ssr": ["tests/time-input-time.test.ts", "tests/ssr/time-input.test.ts"],
+      "browser": ["tests/browser/time-input.spec.ts"],
+      "evidence": "reports/components/time-input/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -61,7 +82,7 @@
     "Bits UI TimeField is not used (implementation, 2026-11-23; to confirm at the implementation gate): in bits-ui 2.19.3 the day period is read as `value === \"PM\" ? \"PM\" : \"AM\"` (internal/date-time/formatter.js:146), so every 12-hour locale whose period is not written PM (ko 오후, ja 午後, ar م, en-GB pm, es p. m.) shows an afternoon time as morning, and two presses on the period go through a wrong value; h12 forced on a 24-hour locale (fr, de) renders no day period at all, so an afternoon time cannot be typed. The component writes its parts itself (time.ts: layout from Intl.DateTimeFormat.formatToParts, typing, stepping), as Select and Combobox do (decision Contract versus Bits UI). It therefore uses neither Bits UI nor @internationalized/date."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 6 implementation review.",
+  "nextAction": "Implementation gate (wave 6, grouped): present the review pages, the exercise list and the limits; record the approval with source digests.",
   "implementationNotes": [
     "Each part is a contenteditable span exposed as a spin button (inputmode numeric, or text for the day period) so that mobile keyboards open; text arrives through beforeinput (mobile keyboards send no usable key) and is never applied by the browser. Arrow keys come from keydown.",
     "Parts are named by aria-labelledby: the Field label (or a hidden span holding the label prop) and a hidden span holding the part name from Intl.DisplayNames(locale, dateTimeField).",

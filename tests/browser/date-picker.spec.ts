@@ -451,6 +451,28 @@ test('forced colors: selected day and focused part in Highlight, disabled in Gra
   await capture(page, `${out}/forced-colors.png`, { fullPage: false });
 });
 
+test('a 320 px screen: the seven columns share the room inside the panel, nothing is cut', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 });
+  await openCalendar(page, 'play');
+  const box = await page.locator(panel).evaluate((p) => {
+    const r = p.getBoundingClientRect();
+    const last = p.querySelector('tbody tr td:last-child')!.getBoundingClientRect();
+    return {
+      left: r.left,
+      right: r.right,
+      overflow: p.scrollWidth - p.clientWidth,
+      lastRight: last.right,
+      cell: last.width
+    };
+  });
+  expect(box.overflow).toBeLessThanOrEqual(0);
+  expect(box.left).toBeGreaterThanOrEqual(0);
+  expect(box.right).toBeLessThanOrEqual(320);
+  expect(box.lastRight).toBeLessThanOrEqual(box.right);
+  expect(box.cell).toBeLessThan(44);
+  expect(box.cell).toBeGreaterThan(36);
+});
+
 test('automated accessibility audit and screenshots in light and dark, desktop and mobile', async ({ page }) => {
   await auditAndCapture(page, 'date-picker');
 });

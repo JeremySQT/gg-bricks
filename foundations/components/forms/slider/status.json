@@ -28,9 +28,29 @@
     "tokens": ["foundations/tokens/base/components/slider.tokens.json"],
     "figma": null,
     "figmaSpec": null,
-    "svelte": null,
-    "examples": null,
-    "tests": null,
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/slider",
+      "files": [
+        "packages/svelte/src/components/slider/Slider.svelte",
+        "packages/svelte/src/components/slider/types.ts",
+        "packages/svelte/src/components/slider/slider.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (Slider, completed locally)"
+      },
+      "report": "reports/components/slider/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/slider",
+      "preview": "dist/previews/slider.html (npm run build && npm run build:preview slider)"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/slider.test.ts"],
+      "browser": ["tests/browser/slider.spec.ts"],
+      "evidence": "reports/components/slider/svelte/"
+    },
     "humanDocs": null,
     "agentDocs": null
   },
@@ -63,7 +83,7 @@
     "The thumb is positioned in CSS from the value (track inset by half a thumb), never with thumbPositioning contain, which measures on the client and would be wrong before hydration."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 6 implementation review.",
+  "nextAction": "Implementation gate (wave 6, grouped): present the review pages, the exercise list and the limits; record the approval with source digests.",
   "implementationNotes": [
     "Built on bits-ui 2.19.3 Slider (type single), pinned; the component completes it where it disagrees with the contract (decision Contract versus Bits UI), each covered by a browser or SSR test:",
     "- Steps are passed as an array counted from min that always ends with max: Bits UI's own steps (normalizeSteps, helpers.js:161) leave max out when the range is not a multiple of step.",
