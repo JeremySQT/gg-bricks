@@ -160,7 +160,7 @@
           "apps/docs/src/playgrounds/tooltip.svelte": "f60895ddfd393f37ae858560b225c5058dc7c63db07fe35ad14648566e261239"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremy-soquet.workers.dev): \"Je valide la documentation, tu peux faire une PR\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremy-soquet.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): documentation/index.json gained the seven wave 4 entries and lost the \"(planned)\" mentions of components now exported. Digests re-recorded. Amendment of 2026-11-21 (wave 5 documentation review on https://wave-5-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Je valide la documentation\"): documentation/index.json gained the five wave 5 entries and lost the \"(planned)\" mention of Avatar. Digests re-recorded.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremysqt.workers.dev): \"Je valide la documentation, tu peux faire une PR\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): documentation/index.json gained the seven wave 4 entries and lost the \"(planned)\" mentions of components now exported. Digests re-recorded. Amendment of 2026-11-21 (wave 5 documentation review on https://wave-5-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Je valide la documentation\"): documentation/index.json gained the five wave 5 entries and lost the \"(planned)\" mention of Avatar. Digests re-recorded.",
       "note": null
     },
     "delivery": null
@@ -250,6 +250,12 @@
       "result": "passed",
       "date": "2026-11-10",
       "evidence": "reports/components/tooltip/svelte/computed.json"
+    },
+    {
+      "name": "Test change (user request, 2026-11-20, after an intermittent CI failure on main): the hover delay and the close delay are measured in the page (the pointer entering or leaving the trigger and the tooltip opening or closing, stamped with performance.now()) instead of a wait followed by a check of the state, which failed when the runner paused between two commands. Stronger assertions: the tooltip opens and closes no earlier than the whole delay (the previous ones only checked it at a third and at half of it); the next trigger opens in less than half the delay. The component is unchanged.",
+      "result": "passed",
+      "date": "2026-11-20",
+      "evidence": "tests/browser/tooltip.spec.ts"
     }
   ],
   "decisionsTaken": [

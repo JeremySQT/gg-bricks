@@ -12,7 +12,8 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 - The production branch of the sites is `release`, not `main`: the Deliver procedure merges the released revision of `main` into `release`, so docs.ggbrick.design always matches the published package and publishing the site stays an explicit, versioned act. `release` is created at the first Deliver; until then the site exists only as branch previews (user decision, 2026-10-15).
 - Phase 1 delivers the design system (foundations, components, Figma library, docs, marketing site). Phase 2 delivers the theme builder (a web form producing a brand overlay) and the Figma import (plugin and/or Claude skill). The overlay format is the sparse brand folder already defined by the token architecture.
 - Versioning proposal (adopt at first Deliver): semantic versioning, one version shared by tokens, Svelte package and Figma library; 0.x while the catalog grows.
-- License: not decided; ask at the first Deliver.
+- License: MIT for the code (user, 2026-11-18, before the repository became public): `LICENSE` at the root and a `license` field in every manifest. Third-party material copied into the repository (the Phosphor paths) is listed with its notice in `THIRD-PARTY-NOTICES.md`; keep that file current when copying anything else. The packed packages ship them: `npm run generate` copies both into `packages/svelte` and the license into `packages/tokens` (ignored copies, like the other consumer copies), and CI checks the packed Svelte package. The license of the Figma library is still open.
+- The repository is public and read-only for outsiders (user, 2026-11-18): no outside issues or pull requests for now, as `CONTRIBUTING.md` says; security reports go through GitHub private vulnerability reporting (`SECURITY.md`). Everything committed is public, with its history: no secret, and no personal data beyond the GitHub handle (no real name, e-mail address or account identifier) in files, commit messages or pull request text.
 
 ## Sources and tokens
 
@@ -67,7 +68,7 @@ Settled decisions are not reopened. Open decisions are resolved only when they b
 - Figma is operated through the Figma MCP server. Reconstruction scripts are Plugin API bodies written per task (reusable ones kept in `authoring/adapters/figma`); IDs are read from the destination file, never guessed. Skills in `.claude/skills` are the executable procedures; `authoring/workflows/*.md` hold the rationale and checks.
 - Figma masters are configured from their properties only (variants, booleans, text, exposed nested instances): adapter variable modes are set by the variants themselves, never chosen by a designer on an instance (user, 2026-10-20, at the Figma parity review of Link).
 - A component that shows an icon imposes its size: its Figma master places the Phosphor glyph instance directly (bound to the size it imposes) behind an instance-swap property of its own, and never nests the Icon component, whose Size would show on the instance (user, 2026-10-26, at the wave 1 Figma parity review). Icon is the component for an icon on its own. An instance-swap property has one default for the whole set. The same holds for the components a host holds: inside a host, Counter and Shortcut are replaced by the internal parts `_Counter/Nested` and `_Shortcut/Nested`, sized by the host's Components mode and without Size; Counter and Shortcut keep their Size for use on their own (user, 2026-10-26).
-- The pre-ggbrick reference kit (tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history)) is a model of artifact structure only. ggbrick starts from zero, Button included, so that everything is unified.
+- The pre-ggbrick reference kit (commit cd0a2a2, always reachable in the branch history) is a model of artifact structure only. ggbrick starts from zero, Button included, so that everything is unified.
 
 ## Overlays, composition and shared code (pre-wave 3, 2026-10-31)
 
@@ -87,5 +88,5 @@ Decided by the user point by point in the Claude Code session https://claude.ai/
 
 ## Open decisions
 
-1. License for code and Figma library (first Deliver).
+1. License for the Figma library (first Deliver); the code is MIT.
 2. Figma library file organization and publishing mechanism (first Figma task).

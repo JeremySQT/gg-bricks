@@ -8,9 +8,20 @@ on:
 permissions:
   contents: read
 
+# A newer commit on the same branch or pull request replaces the run in progress; runs on main always finish.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   verify:
+    # Every branch of this repository is verified by its push run, which also reports on its pull request:
+    # the pull_request run is kept for forks only, so that a branch is not verified twice.
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     runs-on: ubuntu-latest
+    # A full run takes about 15 minutes; a step that hangs (a browser download, for instance) stops here instead of
+    # holding the branch's next runs for the six hours GitHub allows by default.
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -37,6 +48,7 @@ jobs:
           mkdir -p /tmp/consumer && cd /tmp/consumer
           npm init -y >/dev/null
           npm install --no-audit --no-fund svelte@5.57.1 "$GITHUB_WORKSPACE"/dist/ggbrick-svelte-*.tgz
+          test -f node_modules/@ggbrick/svelte/LICENSE && test -f node_modules/@ggbrick/svelte/THIRD-PARTY-NOTICES.md
           node -e "const fs=require('fs');const idx=JSON.parse(fs.readFileSync('node_modules/@ggbrick/svelte/docs/index.json'));const {compile}=require('svelte/compiler');const imports=idx.components.map(c=>c.import).join(', ');const r=compile('<script>import {'+imports+'} from \"@ggbrick/svelte\";</script>',{generate:'server'});if(r.warnings.length)throw new Error(JSON.stringify(r.warnings));console.log('consumer ok:',idx.components.length,'components')"
       - name: Working tree clean after the full run (evidence is written only with GGB_EVIDENCE=1)
         run: |

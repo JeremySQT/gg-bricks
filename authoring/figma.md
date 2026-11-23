@@ -20,7 +20,7 @@ Figma is the validated visual representation of ggbrick. It is operated through 
 
 ## Reference scripts
 
-`authoring/adapters/figma/README.md` lists the mechanics learned with the reference kit (ID-preserving variable sync, native resolution verification, hidden instance children, fallback paints, slot foreground inheritance). The kit's own script bodies stay readable at tag `reference-kit-2026-09`; scripts for ggbrick are written per task and, when reusable, kept in that folder.
+`authoring/adapters/figma/README.md` lists the mechanics learned with the reference kit (ID-preserving variable sync, native resolution verification, hidden instance children, fallback paints, slot foreground inheritance). The kit's own script bodies stay readable at commit cd0a2a2; scripts for ggbrick are written per task and, when reusable, kept in that folder.
 
 ## One file
 

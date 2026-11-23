@@ -1,5 +1,7 @@
 # ggbrick
 
+[![CI](https://github.com/JeremySQT/gg-bricks/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/JeremySQT/gg-bricks/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 ggbrick is a design system built for AI-assisted authoring and delivered as three products generated from the same JSON sources:
 
 1. **Figma library**: the validated visual representation, driven by generated variables.
@@ -10,7 +12,7 @@ Sources of truth: DTCG tokens in `foundations/tokens` and one compact contract p
 
 ## Status
 
-The repository structure, tooling, procedures and skills are in place. The foundations (primitives, semantic tokens, two demonstration brands) are approved and synced to the Figma library. Components are built wave by wave. See [authoring/roadmap.md](authoring/roadmap.md).
+Version 0.x, not published to npm yet: the API can change between waves. The repository structure, tooling, procedures and skills are in place. The foundations (primitives, semantic tokens, two demonstration brands) are approved and synced to the Figma library. Components are built wave by wave. See [authoring/roadmap.md](authoring/roadmap.md).
 
 ## Layout
 
@@ -62,4 +64,12 @@ Node 22.18 or newer (scripts and tests are TypeScript run natively by Node). The
 
 ## Working with agents
 
-Open the repository with Claude Code and ask for a task in plain words ("define the foundations", "do the Button", "build wave 2"). `AGENTS.md` routes the request to a skill; the skill stops at the review gates listed in [authoring/workflow.md](authoring/workflow.md) and records approvals and evidence in status files. The pre-ggbrick reference kit is archived at git tag `reference-kit-2026-09` (commit cd0a2a2, always reachable in the branch history).
+Open the repository with Claude Code and ask for a task in plain words ("define the foundations", "do the Button", "build wave 2"). `AGENTS.md` routes the request to a skill; the skill stops at the review gates listed in [authoring/workflow.md](authoring/workflow.md) and records approvals and evidence in status files. The pre-ggbrick reference kit is archived at commit cd0a2a2 (always reachable in the branch history).
+
+## Contributing
+
+The repository is public to be read, forked and used; it does not take outside issues or pull requests yet. See [CONTRIBUTING.md](CONTRIBUTING.md). Report a security problem privately as described in [SECURITY.md](SECURITY.md).
+
+## License
+
+[MIT](LICENSE). Third-party material copied into the repository (the Phosphor Icons paths used as intrinsic glyphs and in examples) is listed in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
