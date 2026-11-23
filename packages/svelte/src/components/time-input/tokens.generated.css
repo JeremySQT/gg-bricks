@@ -1,0 +1,65 @@
+/* Generated token bindings from the time-input contract. Do not edit. */
+@layer ggb {
+.ggb-time-input {
+  --ggb-time-input-surface-default: var(--ggb-color-input-default-surface);
+  --ggb-time-input-surface-hover: var(--ggb-color-input-hover-surface);
+  --ggb-time-input-surface-focus: var(--ggb-color-input-focus-surface);
+  --ggb-time-input-surface-readonly: var(--ggb-color-input-readonly-surface);
+  --ggb-time-input-surface-disabled: var(--ggb-color-input-disabled-surface);
+  --ggb-time-input-surface-invalid: var(--ggb-color-input-invalid-surface);
+  --ggb-time-input-content-default: var(--ggb-color-input-default-content);
+  --ggb-time-input-content-hover: var(--ggb-color-input-hover-content);
+  --ggb-time-input-content-focus: var(--ggb-color-input-focus-content);
+  --ggb-time-input-content-readonly: var(--ggb-color-input-readonly-content);
+  --ggb-time-input-content-disabled: var(--ggb-color-input-disabled-content);
+  --ggb-time-input-content-invalid: var(--ggb-color-input-invalid-content);
+  --ggb-time-input-border-default: var(--ggb-color-input-default-border);
+  --ggb-time-input-border-hover: var(--ggb-color-input-hover-border);
+  --ggb-time-input-border-focus: var(--ggb-color-input-focus-border);
+  --ggb-time-input-border-readonly: var(--ggb-color-input-readonly-border);
+  --ggb-time-input-border-disabled: var(--ggb-color-input-disabled-border);
+  --ggb-time-input-border-invalid: var(--ggb-color-input-invalid-border);
+  --ggb-time-input-placeholderColor-default: var(--ggb-color-input-default-placeholder);
+  --ggb-time-input-placeholderColor-hover: var(--ggb-color-input-hover-placeholder);
+  --ggb-time-input-placeholderColor-focus: var(--ggb-color-input-focus-placeholder);
+  --ggb-time-input-placeholderColor-readonly: var(--ggb-color-input-readonly-placeholder);
+  --ggb-time-input-placeholderColor-disabled: var(--ggb-color-input-disabled-placeholder);
+  --ggb-time-input-placeholderColor-invalid: var(--ggb-color-input-invalid-placeholder);
+  --ggb-time-input-segmentFocusFillColor: var(--ggb-color-selection-surface);
+  --ggb-time-input-segmentFocusTextColor: var(--ggb-color-selection-content);
+  --ggb-time-input-segmentRadius: var(--ggb-radius-indicator);
+  --ggb-time-input-borderWidth: var(--ggb-border-width-default);
+  --ggb-time-input-radius: var(--ggb-radius-control);
+  --ggb-time-input-minTarget: var(--ggb-size-target-min);
+  --ggb-time-input-focusColor: var(--ggb-color-focus-ring);
+  --ggb-time-input-focusWidth: var(--ggb-focus-width);
+  --ggb-time-input-focusOffset: var(--ggb-focus-offset);
+  --ggb-time-input-focusRadius: var(--ggb-radius-focus);
+  --ggb-time-input-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-time-input-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-time-input[data-size="sm"] {
+  --ggb-time-input-minHeight: var(--ggb-size-control-sm);
+  --ggb-time-input-edgeInline: var(--ggb-space-control-edge-inline-sm);
+  --ggb-time-input-textInline: var(--ggb-space-control-label-inline-sm);
+  --ggb-time-input-typography: var(--ggb-typography-body-sm);
+  --ggb-time-input-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-time-input-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+}
+.ggb-time-input[data-size="md"] {
+  --ggb-time-input-minHeight: var(--ggb-size-control-md);
+  --ggb-time-input-edgeInline: var(--ggb-space-control-edge-inline-md);
+  --ggb-time-input-textInline: var(--ggb-space-control-label-inline-md);
+  --ggb-time-input-typography: var(--ggb-typography-body-md);
+  --ggb-time-input-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-time-input-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+}
+.ggb-time-input[data-size="lg"] {
+  --ggb-time-input-minHeight: var(--ggb-size-control-lg);
+  --ggb-time-input-edgeInline: var(--ggb-space-control-edge-inline-lg);
+  --ggb-time-input-textInline: var(--ggb-space-control-label-inline-lg);
+  --ggb-time-input-typography: var(--ggb-typography-body-lg);
+  --ggb-time-input-typography-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);
+  --ggb-time-input-typography-fontFeatureSettings: var(--ggb-typography-body-lg-fontFeatureSettings);
+}
+}

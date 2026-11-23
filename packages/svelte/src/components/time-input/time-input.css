@@ -1,0 +1,155 @@
+/*
+ * TimeInput structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * The container is the visible field (surface, inner border, focus ring), as InputText, and is also the group of
+ * the editable parts. Empty parts, and the separators of an incomplete time, take the placeholder color.
+ */
+@layer ggb {
+  .ggb-time-input {
+    --_surface: var(--ggb-time-input-surface-default);
+    --_content: var(--ggb-time-input-content-default);
+    --_border: var(--ggb-time-input-border-default);
+    --_placeholder: var(--ggb-time-input-placeholderColor-default);
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    min-inline-size: 0;
+    block-size: var(--ggb-time-input-minHeight);
+    padding-inline: var(--ggb-time-input-edgeInline);
+    border-radius: var(--ggb-time-input-radius);
+    background-color: var(--_surface);
+    color: var(--_content);
+    box-shadow: inset 0 0 0 var(--ggb-time-input-borderWidth) var(--_border);
+    /* Transparent outline: invisible normally, drawn by the system in forced-colors mode. */
+    outline: var(--ggb-time-input-borderWidth) solid transparent;
+    outline-offset: calc(-1 * var(--ggb-time-input-borderWidth));
+    font: var(--ggb-time-input-typography);
+    letter-spacing: var(--ggb-time-input-typography-letterSpacing, normal);
+    cursor: text;
+    transition-property: background-color, color, box-shadow;
+    transition-duration: var(--ggb-time-input-motionDuration);
+    transition-timing-function: var(--ggb-time-input-easingStandard);
+  }
+
+  /* Interaction target: at least minTarget tall, centered, without enlarging the visible field. */
+  .ggb-time-input::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 50%; /* physical on purpose: centering is symmetric */
+    block-size: max(100%, var(--ggb-time-input-minTarget));
+    transform: translateY(-50%);
+  }
+
+  /* Inline content, not flex items: the separators keep their spaces and the bidirectional algorithm orders the
+     parts as it orders the same time written as text (a right-to-left page keeps 09:30 in that order). The parts
+     never wrap; a field too narrow scrolls inline, and the browser keeps the focused part in view. */
+  .ggb-time-input__segments {
+    position: relative; /* above the target extension */
+    display: block;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    padding-inline: var(--ggb-time-input-textInline);
+    overflow-x: auto;
+    scrollbar-width: none;
+    white-space: pre;
+    font-variant-numeric: tabular-nums;
+    color: var(--_placeholder);
+  }
+  .ggb-time-input[data-complete] .ggb-time-input__segments {
+    color: var(--_content);
+  }
+  .ggb-time-input__segment {
+    border-radius: var(--ggb-time-input-segmentRadius);
+    outline: none;
+  }
+  .ggb-time-input__segment[role='spinbutton'] {
+    color: var(--_content);
+  }
+  .ggb-time-input__segment[data-empty] {
+    color: var(--_placeholder);
+  }
+  .ggb-time-input__segment[role='spinbutton']:focus {
+    background-color: var(--ggb-time-input-segmentFocusFillColor);
+    color: var(--ggb-time-input-segmentFocusTextColor);
+  }
+
+  /* Condition, lowest precedence first: hover, focus, invalid, readonly, disabled. */
+  @media (hover: hover) {
+    .ggb-time-input:where(:hover) {
+      --_surface: var(--ggb-time-input-surface-hover);
+      --_content: var(--ggb-time-input-content-hover);
+      --_border: var(--ggb-time-input-border-hover);
+      --_placeholder: var(--ggb-time-input-placeholderColor-hover);
+    }
+  }
+  .ggb-time-input:where(:focus-within) {
+    --_surface: var(--ggb-time-input-surface-focus);
+    --_content: var(--ggb-time-input-content-focus);
+    --_border: var(--ggb-time-input-border-focus);
+    --_placeholder: var(--ggb-time-input-placeholderColor-focus);
+  }
+  .ggb-time-input:where([data-invalid]) {
+    --_surface: var(--ggb-time-input-surface-invalid);
+    --_content: var(--ggb-time-input-content-invalid);
+    --_border: var(--ggb-time-input-border-invalid);
+    --_placeholder: var(--ggb-time-input-placeholderColor-invalid);
+  }
+  .ggb-time-input:where([data-readonly]) {
+    --_surface: var(--ggb-time-input-surface-readonly);
+    --_content: var(--ggb-time-input-content-readonly);
+    --_border: var(--ggb-time-input-border-readonly);
+    --_placeholder: var(--ggb-time-input-placeholderColor-readonly);
+  }
+  .ggb-time-input:where([data-disabled]) {
+    --_surface: var(--ggb-time-input-surface-disabled);
+    --_content: var(--ggb-time-input-content-disabled);
+    --_border: var(--ggb-time-input-border-disabled);
+    --_placeholder: var(--ggb-time-input-placeholderColor-disabled);
+    cursor: not-allowed;
+  }
+
+  /* Focus on a part, whatever the modality: the ring is drawn outside, with the concentric radius. */
+  .ggb-time-input:focus-within {
+    outline: var(--ggb-time-input-focusWidth) solid var(--ggb-time-input-focusColor);
+    outline-offset: var(--ggb-time-input-focusOffset);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-time-input {
+      transition: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .ggb-time-input {
+      box-shadow: none;
+      outline-color: FieldText;
+      background-color: Field;
+      color: FieldText;
+    }
+    .ggb-time-input__segments,
+    .ggb-time-input__segment[data-empty] {
+      color: GrayText;
+    }
+    .ggb-time-input[data-complete] .ggb-time-input__segments,
+    .ggb-time-input__segment[role='spinbutton']:not([data-empty]) {
+      color: FieldText;
+    }
+    .ggb-time-input__segment[role='spinbutton']:focus {
+      forced-color-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+    }
+    .ggb-time-input[data-disabled],
+    .ggb-time-input[data-disabled] .ggb-time-input__segment {
+      outline-color: GrayText;
+      color: GrayText;
+    }
+    .ggb-time-input:focus-within {
+      outline: var(--ggb-time-input-focusWidth) solid Highlight;
+      outline-offset: var(--ggb-time-input-focusOffset);
+    }
+  }
+}

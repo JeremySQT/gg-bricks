@@ -32,6 +32,9 @@ export type { InputTextType, InputTextSize } from './components/input-text/contr
 export { default as NumberInput } from './components/number-input/NumberInput.svelte';
 export type { NumberInputProps } from './components/number-input/types.js';
 export type { NumberInputSize } from './components/number-input/contract.generated.js';
+export { default as TimeInput } from './components/time-input/TimeInput.svelte';
+export type { TimeInputProps } from './components/time-input/types.js';
+export type { TimeInputSize, TimeInputHourCycle } from './components/time-input/contract.generated.js';
 export { default as Textarea } from './components/textarea/Textarea.svelte';
 export type { TextareaProps } from './components/textarea/types.js';
 export type { TextareaSize, TextareaResize } from './components/textarea/contract.generated.js';

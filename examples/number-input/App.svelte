@@ -256,9 +256,7 @@
       class="stack narrow-form"
       onsubmit={(event) => {
         event.preventDefault();
-        submitted = new URLSearchParams(
-          [...new FormData(event.currentTarget)].map(([k, v]) => [k, String(v)])
-        ).toString();
+        submitted = [...new FormData(event.currentTarget)].map(([k, v]) => `${k}=${String(v)}`).join('&');
       }}
     >
       <Field label="Amount (fr)">
