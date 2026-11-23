@@ -1,0 +1,130 @@
+/* Generated token bindings from the date-picker contract. Do not edit. */
+@layer ggb {
+.ggb-date-picker {
+  --ggb-date-picker-surface-default: var(--ggb-color-input-default-surface);
+  --ggb-date-picker-surface-hover: var(--ggb-color-input-hover-surface);
+  --ggb-date-picker-surface-focus: var(--ggb-color-input-focus-surface);
+  --ggb-date-picker-surface-readonly: var(--ggb-color-input-readonly-surface);
+  --ggb-date-picker-surface-disabled: var(--ggb-color-input-disabled-surface);
+  --ggb-date-picker-surface-invalid: var(--ggb-color-input-invalid-surface);
+  --ggb-date-picker-content-default: var(--ggb-color-input-default-content);
+  --ggb-date-picker-content-hover: var(--ggb-color-input-hover-content);
+  --ggb-date-picker-content-focus: var(--ggb-color-input-focus-content);
+  --ggb-date-picker-content-readonly: var(--ggb-color-input-readonly-content);
+  --ggb-date-picker-content-disabled: var(--ggb-color-input-disabled-content);
+  --ggb-date-picker-content-invalid: var(--ggb-color-input-invalid-content);
+  --ggb-date-picker-border-default: var(--ggb-color-input-default-border);
+  --ggb-date-picker-border-hover: var(--ggb-color-input-hover-border);
+  --ggb-date-picker-border-focus: var(--ggb-color-input-focus-border);
+  --ggb-date-picker-border-readonly: var(--ggb-color-input-readonly-border);
+  --ggb-date-picker-border-disabled: var(--ggb-color-input-disabled-border);
+  --ggb-date-picker-border-invalid: var(--ggb-color-input-invalid-border);
+  --ggb-date-picker-placeholderColor-default: var(--ggb-color-input-default-placeholder);
+  --ggb-date-picker-placeholderColor-hover: var(--ggb-color-input-hover-placeholder);
+  --ggb-date-picker-placeholderColor-focus: var(--ggb-color-input-focus-placeholder);
+  --ggb-date-picker-placeholderColor-readonly: var(--ggb-color-input-readonly-placeholder);
+  --ggb-date-picker-placeholderColor-disabled: var(--ggb-color-input-disabled-placeholder);
+  --ggb-date-picker-placeholderColor-invalid: var(--ggb-color-input-invalid-placeholder);
+  --ggb-date-picker-segmentFocusFillColor: var(--ggb-color-selection-surface);
+  --ggb-date-picker-segmentFocusTextColor: var(--ggb-color-selection-content);
+  --ggb-date-picker-segmentRadius: var(--ggb-radius-indicator);
+  --ggb-date-picker-borderWidth: var(--ggb-border-width-default);
+  --ggb-date-picker-radius: var(--ggb-radius-control);
+  --ggb-date-picker-minTarget: var(--ggb-size-target-min);
+  --ggb-date-picker-buttonFillColor-default: var(--ggb-color-action-neutral-ghost-default-surface);
+  --ggb-date-picker-buttonFillColor-hover: var(--ggb-color-action-neutral-ghost-hover-surface);
+  --ggb-date-picker-buttonFillColor-pressed: var(--ggb-color-action-neutral-ghost-pressed-surface);
+  --ggb-date-picker-buttonFillColor-disabled: var(--ggb-color-action-neutral-ghost-disabled-surface);
+  --ggb-date-picker-buttonIconColor-default: var(--ggb-color-action-neutral-ghost-default-content);
+  --ggb-date-picker-buttonIconColor-hover: var(--ggb-color-action-neutral-ghost-hover-content);
+  --ggb-date-picker-buttonIconColor-pressed: var(--ggb-color-action-neutral-ghost-pressed-content);
+  --ggb-date-picker-buttonIconColor-disabled: var(--ggb-color-action-neutral-ghost-disabled-content);
+  --ggb-date-picker-buttonRadius: var(--ggb-radius-control);
+  --ggb-date-picker-focusColor: var(--ggb-color-focus-ring);
+  --ggb-date-picker-focusWidth: var(--ggb-focus-width);
+  --ggb-date-picker-focusOffset: var(--ggb-focus-offset);
+  --ggb-date-picker-focusRadius: var(--ggb-radius-focus);
+  --ggb-date-picker-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-date-picker-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-date-picker[data-size="sm"] {
+  --ggb-date-picker-minHeight: var(--ggb-size-control-sm);
+  --ggb-date-picker-edgeInline: var(--ggb-space-control-edge-inline-sm);
+  --ggb-date-picker-textInline: var(--ggb-space-control-label-inline-sm);
+  --ggb-date-picker-typography: var(--ggb-typography-body-sm);
+  --ggb-date-picker-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-date-picker-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+  --ggb-date-picker-buttonSize: var(--ggb-size-control-nested-sm);
+  --ggb-date-picker-iconSize: var(--ggb-size-icon-sm);
+}
+.ggb-date-picker[data-size="md"] {
+  --ggb-date-picker-minHeight: var(--ggb-size-control-md);
+  --ggb-date-picker-edgeInline: var(--ggb-space-control-edge-inline-md);
+  --ggb-date-picker-textInline: var(--ggb-space-control-label-inline-md);
+  --ggb-date-picker-typography: var(--ggb-typography-body-md);
+  --ggb-date-picker-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-date-picker-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+  --ggb-date-picker-buttonSize: var(--ggb-size-control-nested-md);
+  --ggb-date-picker-iconSize: var(--ggb-size-icon-md);
+}
+.ggb-date-picker[data-size="lg"] {
+  --ggb-date-picker-minHeight: var(--ggb-size-control-lg);
+  --ggb-date-picker-edgeInline: var(--ggb-space-control-edge-inline-lg);
+  --ggb-date-picker-textInline: var(--ggb-space-control-label-inline-lg);
+  --ggb-date-picker-typography: var(--ggb-typography-body-lg);
+  --ggb-date-picker-typography-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);
+  --ggb-date-picker-typography-fontFeatureSettings: var(--ggb-typography-body-lg-fontFeatureSettings);
+  --ggb-date-picker-buttonSize: var(--ggb-size-control-nested-lg);
+  --ggb-date-picker-iconSize: var(--ggb-size-icon-lg);
+}
+.ggb-date-picker__panel {
+  --ggb-date-picker-panel-surface: var(--ggb-color-surface-overlay);
+  --ggb-date-picker-panel-elevationColor: var(--ggb-color-elevation-border);
+  --ggb-date-picker-panel-borderWidth: var(--ggb-border-width-default);
+  --ggb-date-picker-panel-shadow: var(--ggb-shadow-overlay);
+  --ggb-date-picker-panel-radius: var(--ggb-radius-overlay);
+  --ggb-date-picker-panel-padding: var(--ggb-space-content-sm);
+  --ggb-date-picker-panel-headerGap: var(--ggb-space-content-xs);
+  --ggb-date-picker-panel-headingColor: var(--ggb-color-content-primary);
+  --ggb-date-picker-panel-typographyHeading: var(--ggb-typography-label-md);
+  --ggb-date-picker-panel-typographyHeading-letterSpacing: var(--ggb-typography-label-md-letterSpacing);
+  --ggb-date-picker-panel-typographyHeading-fontFeatureSettings: var(--ggb-typography-label-md-fontFeatureSettings);
+  --ggb-date-picker-panel-weekdayColor: var(--ggb-color-content-secondary);
+  --ggb-date-picker-panel-typographyWeekday: var(--ggb-typography-caption-md);
+  --ggb-date-picker-panel-typographyWeekday-letterSpacing: var(--ggb-typography-caption-md-letterSpacing);
+  --ggb-date-picker-panel-typographyWeekday-fontFeatureSettings: var(--ggb-typography-caption-md-fontFeatureSettings);
+  --ggb-date-picker-panel-cellPitch: var(--ggb-size-target-min);
+  --ggb-date-picker-panel-offset: var(--ggb-space-content-sm);
+  --ggb-date-picker-panel-enterDistance: var(--ggb-motion-distance-sm);
+  --ggb-date-picker-panel-motionDuration: var(--ggb-motion-duration-base);
+  --ggb-date-picker-panel-easingEnter: var(--ggb-motion-easing-enter);
+  --ggb-date-picker-panel-easingExit: var(--ggb-motion-easing-exit);
+  --ggb-date-picker-panel-layer: var(--ggb-layer-dropdown);
+}
+.ggb-date-picker__day {
+  --ggb-date-picker-day-surface-default: var(--ggb-color-item-default-surface);
+  --ggb-date-picker-day-surface-hover: var(--ggb-color-item-hover-surface);
+  --ggb-date-picker-day-surface-disabled: var(--ggb-color-item-disabled-surface);
+  --ggb-date-picker-day-content-default: var(--ggb-color-item-default-content);
+  --ggb-date-picker-day-content-hover: var(--ggb-color-item-hover-content);
+  --ggb-date-picker-day-content-disabled: var(--ggb-color-item-disabled-content);
+  --ggb-date-picker-day-selectedFillColor-default: var(--ggb-color-choice-on-default-surface);
+  --ggb-date-picker-day-selectedFillColor-hover: var(--ggb-color-choice-on-hover-surface);
+  --ggb-date-picker-day-selectedFillColor-disabled: var(--ggb-color-choice-on-disabled-surface);
+  --ggb-date-picker-day-selectedTextColor-default: var(--ggb-color-choice-on-default-content);
+  --ggb-date-picker-day-selectedTextColor-hover: var(--ggb-color-choice-on-hover-content);
+  --ggb-date-picker-day-selectedTextColor-disabled: var(--ggb-color-choice-on-disabled-content);
+  --ggb-date-picker-day-todayColor: var(--ggb-color-item-indicator);
+  --ggb-date-picker-day-todayWidth: var(--ggb-border-width-strong);
+  --ggb-date-picker-day-boxSize: var(--ggb-size-control-sm);
+  --ggb-date-picker-day-radius: var(--ggb-radius-full);
+  --ggb-date-picker-day-typography: var(--ggb-typography-numeral-sm);
+  --ggb-date-picker-day-typography-letterSpacing: var(--ggb-typography-numeral-sm-letterSpacing);
+  --ggb-date-picker-day-typography-fontFeatureSettings: var(--ggb-typography-numeral-sm-fontFeatureSettings);
+  --ggb-date-picker-day-focusColor: var(--ggb-color-focus-ring);
+  --ggb-date-picker-day-focusWidth: var(--ggb-focus-width);
+  --ggb-date-picker-day-focusOffset: var(--ggb-focus-offset);
+  --ggb-date-picker-day-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-date-picker-day-easingStandard: var(--ggb-motion-easing-standard);
+}
+}

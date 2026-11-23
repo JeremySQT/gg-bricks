@@ -103,6 +103,9 @@ Found while writing the wave 5 documentation (2026-11-20); the user asked to kee
 
 Gaps found along the way (code, contract, documentation) are listed here as they appear, at the user's request (2026-11-23), and handled before the pull request. Each fix updates the component, its tests and its documentation page, and re-records the approvals it touches.
 
+- [ ] DatePicker contract, child day: "reached by the arrow keys but never chosen" contradicts the parent rule "Focus never moves before min or after max"; in v1 the only disabled days are those outside min and max (unavailable dates are out of scope), so they are never focused. Reword the day rule. `foundations/components/forms/date-picker/contract.json`.
+- [ ] TimeInput contract: min and max have no effect (invalid belongs to the application, no step); decide with the user whether to keep them as informative props or remove them. `foundations/components/forms/time-input/contract.json`.
+
 ## How a fresh session starts a task
 
 1. Read `AGENTS.md`, this file, `decisions.md` and the relevant status file.

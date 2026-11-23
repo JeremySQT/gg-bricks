@@ -29,7 +29,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/date-picker/contract.json",
-      "sha256": "1389b58e0ca54d8cff3af82344839d79d3e69dcf8d5cb0299af8df8fc751f046"
+      "sha256": "20b1eeecab5c4cce4d0bfe21f9c275789a5ec90ca88b6ab2812446aa7d5a1244"
     },
     "tokens": [],
     "figma": null,
@@ -73,11 +73,16 @@
   "openDecisions": [],
   "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 6 implementation review.",
   "implementationNotes": [
-    "Bits UI 2.19.3 date-field.svelte.js:1153: on the day period segment, the condition `e.key === kbd.A || e.key === kbd.P || kbd.a || kbd.p` is always true, so arrows, Backspace or Enter set PM. Irrelevant here (date only, no day period) but a reason not to add a time to this component.",
-    "Bits UI segments carry English names (`day, `, `Empty`) and a hidden `Selected Date: ...` description appended to body; the component overrides aria-label, aria-valuetext and aria-describedby through the child snippets and covers the override with a browser test (decision Contract versus Bits UI).",
-    "Bits UI calendar keys are the arrows, Enter and Space only (calendar-helpers.svelte.js:221-238) and Left/Right ignore the reading direction: Page Up/Down, Shift+Page Up/Down, Home/End and RTL are added by the component, with tests.",
-    "Locale passed to Bits UI with -u-ca-gregory so that a locale whose default calendar is not Gregorian still shows Gregorian dates.",
-    "The calendar is rendered only while open, on the client, so that today and the current month come from the device clock and never cause a hydration mismatch."
+    "Built on bits-ui 2.19.3 DatePicker.Root, DatePicker.Input with its segments, and DatePicker.Calendar with its grid, inside a native auto popover placed by lib/overlay floating (the button toggles it with popovertarget, which spares it from light dismiss); DatePicker.Content (a Bits UI Popover with a portal) is not used. Pinned version; each completion below is covered by a browser or SSR test (decision Contract versus Bits UI):",
+    "- Segments: aria-labelledby (the Field label or a hidden span holding the label prop, then a hidden span holding the part name from Intl.DisplayNames) replaces the English aria-label; an empty part has no aria-valuenow or aria-valuetext (Bits UI says \"Empty\"); the first part is described by the Field description instead of Bits UI's hidden \"Selected Date:\" element; aria-invalid follows the invalid prop only (Bits UI marks a date outside min..max invalid, also on the separators).",
+    "- Backspace empties the whole part: Bits UI removes one digit at a time; its handler runs as many times as needed, intermediate dates are not emitted.",
+    "- Parts written with Latin digits by Bits UI (the year in ar-EG) are shown in the locale's digits.",
+    "- Grid keyboard handled before Bits UI (whose keys are the arrows, Enter and Space, ignoring the reading direction): Page Up/Down, Shift+Page Up/Down, Home/End and right-to-left arrows; focus is clamped to min..max and waits for the new month's grid to exist before moving.",
+    "- Choosing a day closes the calendar through the component (closeOnDateSelect off): Bits UI closes it internally without calling onOpenChange, and not at all when the chosen day is already the value (preventDeselect).",
+    "- Week start from Intl.Locale weekInfo (Monday where the platform has none; Bits UI defaults to Sunday); weekday names short, narrow where the locale's short names are longer than four characters (Arabic).",
+    "- Locale passed with -u-ca-gregory (Gregorian whatever the locale's default calendar).",
+    "The calendar is rendered from the first opening, on the client only; the displayed month (placeholder) is a fixed date on the server and the current month once mounted, so that neither the server clock nor its time zone reaches the markup.",
+    "The month heading is a div, not a p, so that a page's own paragraph rules do not restyle it (seen on the review page)."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
@@ -97,6 +102,15 @@
       "invalidates": "approvals.contract until the wave 6 implementation gate",
       "sha256": {
         "foundations/components/forms/date-picker/contract.json": "1389b58e0ca54d8cff3af82344839d79d3e69dcf8d5cb0299af8df8fc751f046"
+      },
+      "review": "Wave 6 implementation gate"
+    },
+    {
+      "date": "2026-11-23",
+      "change": "Weekday names: narrow names where the locale's short names are longer than four characters (Arabic short names are full names and overlapped in 44 px columns, seen on the review page).",
+      "invalidates": "approvals.contract until the wave 6 implementation gate",
+      "sha256": {
+        "foundations/components/forms/date-picker/contract.json": "20b1eeecab5c4cce4d0bfe21f9c275789a5ec90ca88b6ab2812446aa7d5a1244"
       },
       "review": "Wave 6 implementation gate"
     }

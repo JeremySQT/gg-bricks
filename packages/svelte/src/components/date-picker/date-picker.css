@@ -1,0 +1,385 @@
+/*
+ * DatePicker structure. Values come from tokens.generated.css; geometry, anchoring and the entry/exit motion of the
+ * panel come from lib/overlay/overlay.css. The field is an InputText look-alike (surface, inner border, focus ring)
+ * holding the editable parts and the calendar button, centered in a square as tall as the field at its end, like the
+ * action of an InputText. The panel has no size option: it follows density only.
+ */
+@layer ggb {
+  .ggb-date-picker {
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .ggb-date-picker__field {
+    --_surface: var(--ggb-date-picker-surface-default);
+    --_content: var(--ggb-date-picker-content-default);
+    --_border: var(--ggb-date-picker-border-default);
+    --_placeholder: var(--ggb-date-picker-placeholderColor-default);
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    min-inline-size: 0;
+    block-size: var(--ggb-date-picker-minHeight);
+    padding-inline-start: var(--ggb-date-picker-edgeInline);
+    border-radius: var(--ggb-date-picker-radius);
+    background-color: var(--_surface);
+    color: var(--_content);
+    box-shadow: inset 0 0 0 var(--ggb-date-picker-borderWidth) var(--_border);
+    /* Transparent outline: invisible normally, drawn by the system in forced-colors mode. */
+    outline: var(--ggb-date-picker-borderWidth) solid transparent;
+    outline-offset: calc(-1 * var(--ggb-date-picker-borderWidth));
+    font: var(--ggb-date-picker-typography);
+    letter-spacing: var(--ggb-date-picker-typography-letterSpacing, normal);
+    cursor: text;
+    transition-property: background-color, color, box-shadow;
+    transition-duration: var(--ggb-date-picker-motionDuration);
+    transition-timing-function: var(--ggb-date-picker-easingStandard);
+  }
+  /* Interaction target: at least minTarget tall, centered, without enlarging the visible field. */
+  .ggb-date-picker__field::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 50%; /* physical on purpose: centering is symmetric */
+    block-size: max(100%, var(--ggb-date-picker-minTarget));
+    transform: translateY(-50%);
+  }
+
+  /* Inline content, not flex items: the separators keep their spaces and the bidirectional algorithm orders the
+     parts as it orders the same date written as text. The parts never wrap; a narrow field scrolls inline. */
+  .ggb-date-picker__segments {
+    position: relative; /* above the target extension */
+    display: block;
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    padding-inline: var(--ggb-date-picker-textInline);
+    overflow-x: auto;
+    scrollbar-width: none;
+    white-space: pre;
+    font-variant-numeric: tabular-nums;
+    color: var(--_placeholder);
+  }
+  .ggb-date-picker__field[data-complete] .ggb-date-picker__segments {
+    color: var(--_content);
+  }
+  .ggb-date-picker__segment {
+    border-radius: var(--ggb-date-picker-segmentRadius);
+    outline: none;
+  }
+  .ggb-date-picker__segment[role='spinbutton'] {
+    color: var(--_content);
+  }
+  .ggb-date-picker__segment[data-empty] {
+    color: var(--_placeholder);
+  }
+  .ggb-date-picker__segment[role='spinbutton']:focus {
+    background-color: var(--ggb-date-picker-segmentFocusFillColor);
+    color: var(--ggb-date-picker-segmentFocusTextColor);
+  }
+
+  /* The calendar button: a square as tall as the field; the visible button (::after) is buttonSize, the target
+     (::before) minTarget, both centered. */
+  .ggb-date-picker__button {
+    --_fill: var(--ggb-date-picker-buttonFillColor-default);
+    --_icon: var(--ggb-date-picker-buttonIconColor-default);
+    position: relative;
+    display: grid;
+    flex: none;
+    place-items: center;
+    align-self: stretch;
+    aspect-ratio: 1;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--_icon);
+    cursor: default;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: color var(--ggb-date-picker-motionDuration) var(--ggb-date-picker-easingStandard);
+  }
+  .ggb-date-picker__button::after {
+    content: '';
+    position: absolute;
+    inset: 50% auto auto 50%; /* physical on purpose: centering is symmetric */
+    inline-size: var(--ggb-date-picker-buttonSize);
+    block-size: var(--ggb-date-picker-buttonSize);
+    border-radius: var(--ggb-date-picker-buttonRadius);
+    background-color: var(--_fill);
+    transform: translate(-50%, -50%);
+    transition: background-color var(--ggb-date-picker-motionDuration) var(--ggb-date-picker-easingStandard);
+  }
+  .ggb-date-picker__button::before {
+    content: '';
+    position: absolute;
+    inset: 50% auto auto 50%;
+    inline-size: max(var(--ggb-date-picker-buttonSize), var(--ggb-date-picker-minTarget));
+    block-size: max(var(--ggb-date-picker-buttonSize), var(--ggb-date-picker-minTarget));
+    transform: translate(-50%, -50%);
+  }
+  .ggb-date-picker__button > svg {
+    position: relative;
+    z-index: 1;
+    display: block;
+    inline-size: var(--ggb-date-picker-iconSize);
+    block-size: var(--ggb-date-picker-iconSize);
+  }
+  /* The button's own focus indicator, around its visible box. */
+  .ggb-date-picker__button:focus-visible::after {
+    outline: var(--ggb-date-picker-focusWidth) solid var(--ggb-date-picker-focusColor);
+    outline-offset: var(--ggb-date-picker-focusOffset);
+  }
+  @media (hover: hover) {
+    .ggb-date-picker__button:where(:hover) {
+      --_fill: var(--ggb-date-picker-buttonFillColor-hover);
+      --_icon: var(--ggb-date-picker-buttonIconColor-hover);
+    }
+  }
+  .ggb-date-picker__button:where(:active) {
+    --_fill: var(--ggb-date-picker-buttonFillColor-pressed);
+    --_icon: var(--ggb-date-picker-buttonIconColor-pressed);
+  }
+  .ggb-date-picker__button:where(:disabled) {
+    --_fill: var(--ggb-date-picker-buttonFillColor-disabled);
+    --_icon: var(--ggb-date-picker-buttonIconColor-disabled);
+    cursor: not-allowed;
+  }
+
+  /* Condition of the field, lowest precedence first: hover, focus (a part has focus), invalid, readonly, disabled. */
+  @media (hover: hover) {
+    .ggb-date-picker__field:where(:hover) {
+      --_surface: var(--ggb-date-picker-surface-hover);
+      --_content: var(--ggb-date-picker-content-hover);
+      --_border: var(--ggb-date-picker-border-hover);
+      --_placeholder: var(--ggb-date-picker-placeholderColor-hover);
+    }
+  }
+  .ggb-date-picker__field:where(:has(.ggb-date-picker__segment:focus)) {
+    --_surface: var(--ggb-date-picker-surface-focus);
+    --_content: var(--ggb-date-picker-content-focus);
+    --_border: var(--ggb-date-picker-border-focus);
+    --_placeholder: var(--ggb-date-picker-placeholderColor-focus);
+  }
+  .ggb-date-picker__field:where([data-invalid]) {
+    --_surface: var(--ggb-date-picker-surface-invalid);
+    --_content: var(--ggb-date-picker-content-invalid);
+    --_border: var(--ggb-date-picker-border-invalid);
+    --_placeholder: var(--ggb-date-picker-placeholderColor-invalid);
+  }
+  .ggb-date-picker__field:where([data-readonly]) {
+    --_surface: var(--ggb-date-picker-surface-readonly);
+    --_content: var(--ggb-date-picker-content-readonly);
+    --_border: var(--ggb-date-picker-border-readonly);
+    --_placeholder: var(--ggb-date-picker-placeholderColor-readonly);
+  }
+  .ggb-date-picker__field:where([data-disabled]) {
+    --_surface: var(--ggb-date-picker-surface-disabled);
+    --_content: var(--ggb-date-picker-content-disabled);
+    --_border: var(--ggb-date-picker-border-disabled);
+    --_placeholder: var(--ggb-date-picker-placeholderColor-disabled);
+    cursor: not-allowed;
+  }
+  /* Focus on a part, whatever the modality: the ring is drawn outside, with the concentric radius. */
+  .ggb-date-picker__field:has(.ggb-date-picker__segment:focus) {
+    outline: var(--ggb-date-picker-focusWidth) solid var(--ggb-date-picker-focusColor);
+    outline-offset: var(--ggb-date-picker-focusOffset);
+  }
+
+  /* Panel: surface, edge, shadow, padding; anchored and animated by overlay.css. */
+  .ggb-date-picker__panel {
+    --ggb-overlay-offset: var(--ggb-date-picker-panel-offset);
+    --ggb-overlay-distance: var(--ggb-date-picker-panel-enterDistance);
+    --ggb-overlay-duration: var(--ggb-date-picker-panel-motionDuration);
+    box-sizing: border-box;
+    padding: var(--ggb-date-picker-panel-padding);
+    border-radius: var(--ggb-date-picker-panel-radius);
+    background: var(--ggb-date-picker-panel-surface);
+    box-shadow:
+      inset 0 0 0 var(--ggb-date-picker-panel-borderWidth) var(--ggb-date-picker-panel-elevationColor),
+      var(--ggb-date-picker-panel-shadow);
+    color: var(--ggb-date-picker-panel-headingColor);
+    outline: none;
+    /* Stacking where the platform has no top layer. */
+    z-index: var(--ggb-date-picker-panel-layer);
+  }
+  .ggb-date-picker__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-end: var(--ggb-date-picker-panel-headerGap);
+  }
+  .ggb-date-picker__heading {
+    flex: 1 1 auto;
+    margin: 0;
+    text-align: center;
+    font: var(--ggb-date-picker-panel-typographyHeading);
+    letter-spacing: var(--ggb-date-picker-panel-typographyHeading-letterSpacing, normal);
+    color: var(--ggb-date-picker-panel-headingColor);
+  }
+  .ggb-date-picker__caret:dir(rtl) {
+    transform: scaleX(-1);
+  }
+  .ggb-date-picker__grid {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+  }
+  .ggb-date-picker__weekday {
+    inline-size: var(--ggb-date-picker-panel-cellPitch);
+    padding: 0;
+    font: var(--ggb-date-picker-panel-typographyWeekday);
+    letter-spacing: var(--ggb-date-picker-panel-typographyWeekday-letterSpacing, normal);
+    color: var(--ggb-date-picker-panel-weekdayColor);
+    text-align: center;
+  }
+  .ggb-date-picker__cell {
+    inline-size: var(--ggb-date-picker-panel-cellPitch);
+    block-size: var(--ggb-date-picker-panel-cellPitch);
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  /* A day: a round box of boxSize centered in its cell, the whole cell being the interaction target. */
+  .ggb-date-picker__day {
+    --_surface: var(--ggb-date-picker-day-surface-default);
+    --_content: var(--ggb-date-picker-day-content-default);
+    position: relative;
+    box-sizing: border-box;
+    display: inline-grid;
+    place-items: center;
+    inline-size: var(--ggb-date-picker-day-boxSize);
+    block-size: var(--ggb-date-picker-day-boxSize);
+    border-radius: var(--ggb-date-picker-day-radius);
+    background-color: var(--_surface);
+    color: var(--_content);
+    font: var(--ggb-date-picker-day-typography);
+    letter-spacing: var(--ggb-date-picker-day-typography-letterSpacing, normal);
+    font-variant-numeric: tabular-nums;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition-property: background-color, color, box-shadow;
+    transition-duration: var(--ggb-date-picker-day-motionDuration);
+    transition-timing-function: var(--ggb-date-picker-day-easingStandard);
+  }
+  .ggb-date-picker__day::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    inline-size: var(--ggb-date-picker-panel-cellPitch);
+    block-size: var(--ggb-date-picker-panel-cellPitch);
+    transform: translate(-50%, -50%);
+  }
+  @media (hover: hover) {
+    .ggb-date-picker__day:where(:hover) {
+      --_surface: var(--ggb-date-picker-day-surface-hover);
+      --_content: var(--ggb-date-picker-day-content-hover);
+    }
+    .ggb-date-picker__day:where([data-selected]:hover) {
+      --_surface: var(--ggb-date-picker-day-selectedFillColor-hover);
+      --_content: var(--ggb-date-picker-day-selectedTextColor-hover);
+    }
+  }
+  .ggb-date-picker__day:where([data-selected]) {
+    --_surface: var(--ggb-date-picker-day-selectedFillColor-default);
+    --_content: var(--ggb-date-picker-day-selectedTextColor-default);
+  }
+  .ggb-date-picker__day:where([data-disabled]) {
+    --_surface: var(--ggb-date-picker-day-surface-disabled);
+    --_content: var(--ggb-date-picker-day-content-disabled);
+    cursor: not-allowed;
+  }
+  .ggb-date-picker__day:where([data-disabled][data-selected]) {
+    --_surface: var(--ggb-date-picker-day-selectedFillColor-disabled);
+    --_content: var(--ggb-date-picker-day-selectedTextColor-disabled);
+  }
+  /* Today: a ring inside the box, in the selected text color on the selected day. */
+  .ggb-date-picker__day[data-today] {
+    box-shadow: inset 0 0 0 var(--ggb-date-picker-day-todayWidth) var(--ggb-date-picker-day-todayColor);
+  }
+  .ggb-date-picker__day[data-today][data-selected] {
+    box-shadow: inset 0 0 0 var(--ggb-date-picker-day-todayWidth) var(--_content);
+  }
+  .ggb-date-picker__day:focus-visible,
+  .ggb-date-picker__day:focus {
+    outline: var(--ggb-date-picker-day-focusWidth) solid var(--ggb-date-picker-day-focusColor);
+    outline-offset: var(--ggb-date-picker-day-focusOffset);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-date-picker__field,
+    .ggb-date-picker__button,
+    .ggb-date-picker__button::after,
+    .ggb-date-picker__day {
+      transition: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .ggb-date-picker__field {
+      box-shadow: none;
+      outline-color: FieldText;
+      background-color: Field;
+      color: FieldText;
+    }
+    .ggb-date-picker__segments,
+    .ggb-date-picker__segment[data-empty] {
+      color: GrayText;
+    }
+    .ggb-date-picker__field[data-complete] .ggb-date-picker__segments,
+    .ggb-date-picker__segment[role='spinbutton']:not([data-empty]) {
+      color: FieldText;
+    }
+    .ggb-date-picker__segment[role='spinbutton']:focus {
+      forced-color-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+    }
+    .ggb-date-picker__field[data-disabled],
+    .ggb-date-picker__field[data-disabled] .ggb-date-picker__segment {
+      outline-color: GrayText;
+      color: GrayText;
+    }
+    .ggb-date-picker__field:has(.ggb-date-picker__segment:focus) {
+      outline: var(--ggb-date-picker-focusWidth) solid Highlight;
+      outline-offset: var(--ggb-date-picker-focusOffset);
+    }
+    .ggb-date-picker__button {
+      color: ButtonText;
+    }
+    .ggb-date-picker__button::after {
+      background-color: transparent;
+    }
+    .ggb-date-picker__button:disabled {
+      color: GrayText;
+    }
+    .ggb-date-picker__button:focus-visible::after {
+      outline-color: Highlight;
+    }
+    .ggb-date-picker__panel {
+      border: 1px solid CanvasText;
+    }
+    .ggb-date-picker__day[data-selected] {
+      forced-color-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+    }
+    .ggb-date-picker__day[data-today] {
+      box-shadow: inset 0 0 0 var(--ggb-date-picker-day-todayWidth) CanvasText;
+    }
+    .ggb-date-picker__day[data-today][data-selected] {
+      box-shadow: inset 0 0 0 var(--ggb-date-picker-day-todayWidth) HighlightText;
+    }
+    .ggb-date-picker__day[data-disabled] {
+      color: GrayText;
+    }
+    .ggb-date-picker__day:focus {
+      outline-color: Highlight;
+    }
+  }
+}
