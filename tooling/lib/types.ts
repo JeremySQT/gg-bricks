@@ -87,7 +87,8 @@ export interface StringDecl {
 }
 export interface NumberDecl {
   type: 'number';
-  default: number;
+  /** Absent: the prop has no value until one is given (an empty number field, an optional bound). */
+  default?: number;
   min?: number;
   max?: number;
   bindable?: boolean;

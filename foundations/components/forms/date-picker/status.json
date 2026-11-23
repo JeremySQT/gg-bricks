@@ -1,0 +1,83 @@
+{
+  "formatStatus": "v1",
+  "componentId": "date-picker",
+  "family": "forms",
+  "wave": 6,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Let the user enter one calendar date in a form, by typing it in a segmented field or by choosing it in a calendar opened beside the field.",
+    "useCases": [
+      "An appointment or a deadline, chosen in the calendar near today.",
+      "A date of birth, typed in the segments.",
+      "A date bounded by min and max (no date in the past, no date beyond a year).",
+      "Composed with a TimeInput for a date and a time."
+    ],
+    "exclusions": [
+      "A range of dates (DateRangePicker, later), several dates, several months shown at once.",
+      "A time in the same field (compose a TimeInput).",
+      "Arbitrary unavailable dates (weekends, booked days): out of v1 (user, 2026-11-23); min and max only.",
+      "Month and year lists in the calendar; non-Gregorian calendars; pasting a whole date.",
+      "A size option for the calendar panel: it follows density only (user, 2026-11-23, as for Table)."
+    ],
+    "alternatives": [
+      "InputText for a free-form date text the application parses (not recommended).",
+      "Three Selects (day, month, year) when the platform lacks a picker (not recommended)."
+    ]
+  },
+  "dependencies": ["icon-button", "lib/overlay"],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/date-picker/contract.json",
+      "sha256": "c9843cf12d6bd8ffab8c3a8b5a4e4feb7ce69eeee2844ae96b4554d2ce851c12"
+    },
+    "tokens": [],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [],
+  "decisionsTaken": [
+    "Values are ISO strings where a date or time is involved; @internationalized/date (a peer dependency of Bits UI) is declared as a peer dependency of the package and used internally only (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping, T1: \"Ok pour moi, les dates font partie de ces choses difficiles à traiter sans dépendance externe\").",
+    "Locale is a prop (BCP 47, default \"en\"), deterministic on the server; no application-wide locale provider: components are delivered as units with settings only, each project integrates its global logic (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping, T2).",
+    "Segment names come from Intl.DisplayNames(locale, dateTimeField) and button labels are props with English defaults, replacing the English strings hard-coded in Bits UI (contract over Bits UI; User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping, T3).",
+    "Invalid belongs to the application: min and max limit the controls but never set invalid by themselves (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping, T5).",
+    "Size sm, md, lg like InputText and Select, for the field only; the calendar panel has no size option and follows density only; its inner buttons are IconButtons sm (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping, T4: \"pas d'option de tailles pour la popover du datepicker [...] on peut partir sur des sm à l'intérieur\").",
+    "Built on Bits UI DatePicker.Root, its segments and DatePicker.Calendar, inside a native popover from lib/overlay instead of DatePicker.Content (which is a Bits UI Popover with a portal, excluded by the overlay decision of 2026-10-31); DatePicker.Calendar only reads the root context (bits-ui 2.19.3, date-picker-calendar.svelte).",
+    "The calendar button is an internal part, not an IconButton: in an sm field (32 px) the smallest IconButton (32 px) does not fit inside the border. Its box is the new semantic role size.control.nested.{size} (one step below the field: 24, 32, 40 px in standard), the same box as the IconButton InputText places in md and lg fields.",
+    "Days outside the displayed month leave their cells empty and the grid always has six rows, so the panel keeps its block size; cells have the pitch of size.target.min (44 px) for the decision's minimum target, days a round box of size.control.sm.",
+    "Selected day in color.choice.on.* (a chosen value, like a checked Checkbox); other days in color.item.*; today marked by a ring in color.item.indicator.",
+    "The week starts on the first day of the week of the locale (Intl.Locale weekInfo), Monday when the platform does not expose it; Bits UI defaults to Sunday whatever the locale."
+  ],
+  "openDecisions": [],
+  "nextAction": "Contract gate (wave 6, grouped): present the contract and the token additions, record the approval.",
+  "implementationNotes": [
+    "Bits UI 2.19.3 date-field.svelte.js:1153: on the day period segment, the condition `e.key === kbd.A || e.key === kbd.P || kbd.a || kbd.p` is always true, so arrows, Backspace or Enter set PM. Irrelevant here (date only, no day period) but a reason not to add a time to this component.",
+    "Bits UI segments carry English names (`day, `, `Empty`) and a hidden `Selected Date: ...` description appended to body; the component overrides aria-label, aria-valuetext and aria-describedby through the child snippets and covers the override with a browser test (decision Contract versus Bits UI).",
+    "Bits UI calendar keys are the arrows, Enter and Space only (calendar-helpers.svelte.js:221-238) and Left/Right ignore the reading direction: Page Up/Down, Shift+Page Up/Down, Home/End and RTL are added by the component, with tests.",
+    "Locale passed to Bits UI with -u-ca-gregory so that a locale whose default calendar is not Gregorian still shows Gregorian dates.",
+    "The calendar is rendered only while open, on the client, so that today and the current month come from the device clock and never cause a hydration mismatch."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": [
+      {
+        "role": "border",
+        "backdrop": "muted",
+        "appearance": "dark",
+        "reason": "Same field colors as InputText (color.input.*): its exemption accepted at the wave 2 contract gate (2026-10-26, \"4 ok\") applies; color.input.default.border reaches 2.06 on surface.muted in dark, a de-emphasized backdrop where forms are not expected."
+      }
+    ]
+  }
+}

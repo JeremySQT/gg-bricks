@@ -240,7 +240,7 @@
     "number": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["type", "default"],
+      "required": ["type"],
       "properties": {
         "type": {
           "const": "number"
@@ -257,7 +257,8 @@
         "bindable": {
           "type": "boolean"
         }
-      }
+      },
+      "description": "A number. Without default, the prop has no value until one is given (an empty number field, an optional bound)."
     },
     "event": {
       "type": "object",

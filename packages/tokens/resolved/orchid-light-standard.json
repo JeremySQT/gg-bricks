@@ -9466,6 +9466,27 @@
       "unit": "px"
     }
   },
+  "size.control.nested.sm": {
+    "$type": "dimension",
+    "$value": {
+      "value": 24,
+      "unit": "px"
+    }
+  },
+  "size.control.nested.md": {
+    "$type": "dimension",
+    "$value": {
+      "value": 32,
+      "unit": "px"
+    }
+  },
+  "size.control.nested.lg": {
+    "$type": "dimension",
+    "$value": {
+      "value": 40,
+      "unit": "px"
+    }
+  },
   "space.control.padding-inline.sm": {
     "$type": "dimension",
     "$value": {
@@ -9989,6 +10010,22 @@
       "unit": "px"
     },
     "$description": "Corners of the track and the indicator: fully rounded in the base brand; a brand overrides it in its own components/progress.tokens.json (0 for rectangular bars)."
+  },
+  "component.slider.track-thickness": {
+    "$type": "dimension",
+    "$value": {
+      "value": 4,
+      "unit": "px"
+    },
+    "$description": "Block size of the track and of the filled range."
+  },
+  "component.slider.thumb-size": {
+    "$type": "dimension",
+    "$value": {
+      "value": 20,
+      "unit": "px"
+    },
+    "$description": "Diameter of the thumb; its interaction target is size.target.min."
   },
   "component.spinner.duration": {
     "$type": "duration",

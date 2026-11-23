@@ -391,6 +391,19 @@
       },
       "review": "Wave 4 implementation gate, round 4",
       "recorded": "Re-recorded with approvals.semantic on 2026-11-10 (wave 4 implementation gate, round 4)."
+    },
+    {
+      "date": "2026-11-23",
+      "change": "Wave 6 contracts: new semantic role size.control.nested.{sm,md,lg} in the three density files (standard 24/32/40, compact 20/28/32, comfortable 28/36/44 px; nested.md equals control.sm and nested.lg equals control.md), the box of a button placed inside a control of that size (DatePicker calendar button, NumberInput steppers), with inventory entries and a line in documentation/foundations/spacing.md. New component tokens component.slider.track-thickness (4 px) and component.slider.thumb-size (20 px) in base/components/slider.tokens.json. Existing roles unchanged.",
+      "invalidates": "approvals.semantic for foundations/tokens/inventory.json and the three density files until the wave 6 contract gate; Figma variables at the wave 6 Figma parity phase.",
+      "sha256": {
+        "foundations/tokens/inventory.json": "3f39a632d9cc1fe82cd8e7551200a2b2930cff94c885736094c6c0bcc0b259af",
+        "foundations/tokens/base/semantic/density.standard.tokens.json": "9777cf1218e5e2457db6dd00261bcde5bb5234d5760669984b43bbc7f526dbb2",
+        "foundations/tokens/base/semantic/density.compact.tokens.json": "f23b62325ada878eae7af36f943892587213d456717ed3cade982dc68d859678",
+        "foundations/tokens/base/semantic/density.comfortable.tokens.json": "0c56072eefd1b1c503dc1a69fdf4ccc0a357219141c3997fe44f6733f8e54bef",
+        "foundations/tokens/base/components/slider.tokens.json": "085fc8347519d21a31bfac7ce9b4a09a783cda112e62fa078075b076dd5d435d"
+      },
+      "review": "Wave 6 contract gate"
     }
   ]
 }

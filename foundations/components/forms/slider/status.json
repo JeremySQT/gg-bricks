@@ -1,0 +1,61 @@
+{
+  "formatStatus": "v1",
+  "componentId": "slider",
+  "family": "forms",
+  "wave": 6,
+  "phase": "contract",
+  "scope": {
+    "purpose": "Let the user pick one number in a bounded range by moving a thumb along a track.",
+    "useCases": [
+      "A volume or zoom level.",
+      "A price ceiling in a filter, with the value shown.",
+      "A setting from 0 to 100 in steps of 5."
+    ],
+    "exclusions": [
+      "Two thumbs (RangeSlider, later), vertical orientation, tick marks and labels, a tooltip over the thumb.",
+      "Readonly and invalid: a slider always holds a value within its range; show a read-only value with DataField or Progress.",
+      "A size option: one track, density through the Density modes."
+    ],
+    "alternatives": ["NumberInput for an exact number.", "Progress to show a measure without input."]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/forms/slider/contract.json",
+      "sha256": "f83ee01d56bdde3dcbaa3fd2dbbb252f13b78b17ef72844e23a1c86f77d9713c"
+    },
+    "tokens": ["foundations/tokens/base/components/slider.tokens.json"],
+    "figma": null,
+    "figmaSpec": null,
+    "svelte": null,
+    "examples": null,
+    "tests": null,
+    "humanDocs": null,
+    "agentDocs": null
+  },
+  "approvals": {
+    "contract": null,
+    "implementation": null,
+    "figmaParity": null,
+    "documentation": null,
+    "delivery": null
+  },
+  "checks": [],
+  "decisionsTaken": [
+    "Locale is a prop (BCP 47, default \"en\") for the value text (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping, T2).",
+    "One thumb, horizontal, showValue at the inline end of the track (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping: \"Slider : Ok\").",
+    "Built on Bits UI Slider (type single); Page Up/Page Down, aria-valuetext and the hidden form input are added by the component (absent from bits-ui 2.19.3 slider.svelte.js), with tests.",
+    "Track in color.choice.off.*.border, range and thumb border in color.choice.on.*.surface (a selection control, like Checkbox and Switch); thumb size and track thickness are component tokens (component.slider.thumb-size 20 px, track-thickness 4 px), not affected by density.",
+    "The thumb is positioned in CSS from the value (track inset by half a thumb), never with thumbPositioning contain, which measures on the client and would be wrong before hydration."
+  ],
+  "openDecisions": [],
+  "nextAction": "Contract gate (wave 6, grouped): present the contract and the token additions, record the approval.",
+  "implementationNotes": [
+    "valueChange during the drag and valueCommit on release map to Bits UI onValueChange and onValueCommit; a key emits both."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
+    "informational": []
+  }
+}

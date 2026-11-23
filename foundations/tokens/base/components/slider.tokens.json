@@ -1,0 +1,17 @@
+{
+  "component": {
+    "slider": {
+      "$description": "Slider tokens: values that mean something only for the Slider. They do not change with density.",
+      "track-thickness": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v4}",
+        "$description": "Block size of the track and of the filled range."
+      },
+      "thumb-size": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v20}",
+        "$description": "Diameter of the thumb; its interaction target is size.target.min."
+      }
+    }
+  }
+}

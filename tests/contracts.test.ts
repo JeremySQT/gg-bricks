@@ -105,6 +105,11 @@ test('number props, bindable props, events and open-ended slots validate', () =>
   assert.equal(checkContract(c).valid, true);
   c.props.value.default = 200;
   assert.ok(checkContract(c).errors.some((e) => e.code === 'number-range'));
+  // A number without default has no value until one is given (NumberInput, 2026-11-23); its bounds are still checked.
+  c.props.value = { type: 'number', min: 0, max: 100, bindable: true };
+  assert.equal(checkContract(c).valid, true);
+  c.props.value = { type: 'number', min: 10, max: 0 };
+  assert.ok(checkContract(c).errors.some((e) => e.code === 'number-range'));
   const d = copy();
   d.states.focus.bindable = true;
   assert.ok(checkContract(d).errors.some((e) => e.code === 'state-bindable'));

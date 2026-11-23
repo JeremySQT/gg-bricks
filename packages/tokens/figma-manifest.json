@@ -18445,6 +18445,75 @@
     },
     {
       "collection": "Foundations · Density",
+      "name": "size/control/nested/sm",
+      "path": "size.control.nested.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-control-nested-sm)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        },
+        "standard": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
+        },
+        "comfortable": {
+          "alias": "Foundations · Primitives:primitive/dimension/v28"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Density",
+      "name": "size/control/nested/md",
+      "path": "size.control.nested.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-control-nested-md)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Foundations · Primitives:primitive/dimension/v28"
+        },
+        "standard": {
+          "alias": "Foundations · Primitives:primitive/dimension/v32"
+        },
+        "comfortable": {
+          "alias": "Foundations · Primitives:primitive/dimension/v36"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Density",
+      "name": "size/control/nested/lg",
+      "path": "size.control.nested.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-size-control-nested-lg)"
+      },
+      "values": {
+        "compact": {
+          "alias": "Foundations · Primitives:primitive/dimension/v32"
+        },
+        "standard": {
+          "alias": "Foundations · Primitives:primitive/dimension/v40"
+        },
+        "comfortable": {
+          "alias": "Foundations · Primitives:primitive/dimension/v44"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Density",
       "name": "space/control/padding-inline/sm",
       "path": "space.control.padding-inline.sm",
       "type": "FLOAT",
@@ -20424,6 +20493,52 @@
         },
         "orchid": {
           "alias": "Foundations · Primitives:primitive/radius/full"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/slider/track-thickness",
+      "path": "component.slider.track-thickness",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-slider-track-thickness)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v4"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v4"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v4"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/slider/thumb-size",
+      "path": "component.slider.thumb-size",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-slider-thumb-size)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
         }
       }
     },

@@ -1,0 +1,114 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "time-input",
+  "props": {
+    "value": {
+      "type": "string",
+      "default": "",
+      "bindable": true
+    },
+    "min": {
+      "type": "string"
+    },
+    "max": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string",
+      "default": "en"
+    },
+    "hourCycle": {
+      "values": ["auto", "h12", "h23"],
+      "default": "auto"
+    },
+    "seconds": {
+      "type": "boolean",
+      "default": false
+    },
+    "label": {
+      "type": "string"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "readonly": {
+      "type": "boolean",
+      "default": false
+    },
+    "invalid": {
+      "type": "boolean",
+      "default": false
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "parts": {
+    "container": {},
+    "segments": {}
+  },
+  "states": {
+    "condition": {
+      "values": ["default", "hover", "focus", "readonly", "disabled", "invalid"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "events": {
+    "valueChange": {
+      "when": "The user completes, changes or clears the time by typing in the segments.",
+      "payload": "The new value: a 24-hour time (HH:mm, or HH:mm:ss with seconds), or empty."
+    }
+  },
+  "tokens": {
+    "surface": "color.input.{condition}.surface",
+    "content": "color.input.{condition}.content",
+    "border": "color.input.{condition}.border",
+    "placeholderColor": "color.input.{condition}.placeholder",
+    "segmentFocusFillColor": "color.selection.surface",
+    "segmentFocusTextColor": "color.selection.content",
+    "segmentRadius": "radius.indicator",
+    "borderWidth": "border.width.default",
+    "radius": "radius.control",
+    "minHeight": "size.control.{size}",
+    "minTarget": "size.target.min",
+    "edgeInline": "space.control.edge-inline.{size}",
+    "textInline": "space.control.label-inline.{size}",
+    "typography": "typography.body.{size}",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "focusRadius": "radius.focus",
+    "motionDuration": "motion.duration.fast",
+    "easingStandard": "motion.easing.standard"
+  },
+  "rules": [
+    "A time input lets the user type one time of day in a form (an opening hour, an appointment time). The time is a wall-clock time without date or time zone; a duration is a NumberInput with its unit, a choice among a few fixed times is a Select. A list of times to pick from is out of scope.",
+    "value is a 24-hour time, HH:mm, or HH:mm:ss when seconds is true, or empty; min and max, when given, use the same format and min is not after max (a range across midnight is out of scope). A value the application sets that is not a valid time shows as empty; with seconds false, the seconds of a value set by the application are dropped at the first edit.",
+    "The field looks and sizes like an InputText of the same size, without slots: container, then segments. container has edgeInline inline padding and segments has textInline on both inline sides. The container fills the inline size it is given; its block size is minHeight; the interaction target meets minTarget in the block dimension without enlarging the visible container. Paint container in surface with a border of borderWidth in border inside its boundary, corners of radius.",
+    "segments shows hour, minute, then second when seconds is true, and the day period when the hour cycle has 12 hours, as separate editable parts in the order and with the separators of locale, in typography. The hour cycle is the one of locale when hourCycle is auto; h12 shows hours 1 to 12 with a day period, h23 hours 00 to 23. An empty part shows two dashes in placeholderColor; a filled part and the separators of a complete time show in content. The focused part is highlighted in segmentFocusFillColor with segmentFocusTextColor and segmentRadius corners. The parts never wrap.",
+    "Each part is exposed as a spin button named by the field's accessible name and the name of the part in locale (hour, minute, second, day period in English; heure, minute, seconde, cadran in French), with its numeric value, its range and its value as text, or empty. The parts form a group named by the field's accessible name.",
+    "Keyboard in the parts: digits fill the focused part and move to the next part when no further digit can follow; Up and Down Arrow increase and decrease the part by one, wrapping within its range; on the day period, Up and Down Arrow switch it, and A and P choose the first and second period; Left and Right Arrow move to the previous and next part in the reading direction; Backspace clears the part, then moves to the previous one. There is no step: every minute can be typed.",
+    "value is set when every part is filled, and emptied when a part is cleared; valueChange is emitted each time value changes. While the time is incomplete the entered parts are kept and value stays empty. A typed time before min or after max is kept: invalid belongs to the application.",
+    "The accessible name is the label of the enclosing Field, otherwise the label prop; one of them is present and non-empty. label is not displayed.",
+    "Resolve condition in this order: disabled, readonly, invalid, focus, hover, default; focus is true while a part has focus, and is also an independent axis drawing a focus indicator of focusWidth in focusColor at focusOffset outside the container, with focusRadius corners, whatever the input modality.",
+    "A disabled time input is removed from sequential focus; its value cannot be edited and is not submitted. A readonly time input keeps its parts focusable and announces its value, but no part can be edited; its value is submitted. Neither emits valueChange.",
+    "Invalid and required are exposed to assistive technology; the visible error message and required marker belong to the enclosing Field, so an error is never conveyed by color alone. The time input never marks itself invalid.",
+    "When name is given, value is submitted with the form under name, in the format of value.",
+    "Setting value from the application updates the time input without emitting valueChange.",
+    "Color changes between conditions transition over motionDuration with easingStandard; the focus indicator appears without delay; no transition under reduced motion.",
+    "In forced-colors mode the container keeps a visible boundary in the system field colors, empty parts stay distinguishable from filled ones, the focused part and the focus indicator are shown in the system highlight colors, and the disabled time input uses the system disabled text color."
+  ]
+}

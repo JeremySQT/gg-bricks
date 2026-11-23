@@ -178,8 +178,8 @@ export function checkContract(
         if ('type' in decl && decl.type === 'number') {
           const n = decl as NumberDecl;
           if (
-            (n.min !== undefined && n.default < n.min) ||
-            (n.max !== undefined && n.default > n.max) ||
+            (n.min !== undefined && n.default !== undefined && n.default < n.min) ||
+            (n.max !== undefined && n.default !== undefined && n.default > n.max) ||
             (n.min !== undefined && n.max !== undefined && n.min > n.max)
           )
             errors.push({

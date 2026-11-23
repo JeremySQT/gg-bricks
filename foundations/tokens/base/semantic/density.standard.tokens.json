@@ -12,6 +12,21 @@
       "lg": {
         "$type": "dimension",
         "$value": "{primitive.dimension.v48}"
+      },
+      "nested": {
+        "$description": "Box of a button placed inside a control of that size (the calendar button of a DatePicker, the steppers of a NumberInput): one step below the control, so that it sits inside the control's border with a small inset. nested.md equals control.sm and nested.lg equals control.md.",
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v24}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v32}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v40}"
+        }
       }
     }
   },

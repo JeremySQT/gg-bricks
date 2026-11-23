@@ -18,19 +18,20 @@ Spacing comes in three families: layout spacing separates regions of a page, con
 
 ## Controls
 
-| Role                                  | Use for                                                                                         |
-| ------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `size.control.sm` / `md` / `lg`       | Heights of controls (buttons, fields, segmented items) at each size.                            |
-| `space.control.padding-inline.{size}` | Inline padding of a text-only control or a field.                                               |
-| `space.control.padding-block.{size}`  | Block padding of controls whose height follows their content.                                   |
-| `space.control.gap.{size}`            | Gap between controls in a group and between items inside a composite control.                   |
-| `space.control.edge-inline.{size}`    | Inline padding of a control's container, before any content.                                    |
-| `space.control.label-inline.{size}`   | Inline space on both sides of a control's label; `edge-inline + label-inline = padding-inline`. |
-| `space.control.slot-inline.{size}`    | Inline space on both sides of a slot's content (a leading or trailing icon).                    |
-| `size.target.min`                     | The minimum interaction target, 44 × 44 CSS px, whatever the visible size of the control.       |
+| Role                                  | Use for                                                                                                |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `size.control.sm` / `md` / `lg`       | Heights of controls (buttons, fields, segmented items) at each size.                                   |
+| `size.control.nested.{size}`          | Box of a button placed inside a control of that size (a calendar button, steppers): one step below it. |
+| `space.control.padding-inline.{size}` | Inline padding of a text-only control or a field.                                                      |
+| `space.control.padding-block.{size}`  | Block padding of controls whose height follows their content.                                          |
+| `space.control.gap.{size}`            | Gap between controls in a group and between items inside a composite control.                          |
+| `space.control.edge-inline.{size}`    | Inline padding of a control's container, before any content.                                           |
+| `space.control.label-inline.{size}`   | Inline space on both sides of a control's label; `edge-inline + label-inline = padding-inline`.        |
+| `space.control.slot-inline.{size}`    | Inline space on both sides of a slot's content (a leading or trailing icon).                           |
+| `size.target.min`                     | The minimum interaction target, 44 × 44 CSS px, whatever the visible size of the control.              |
 
 <!-- site:tokens prefix=space.control preview=width -->
-<!-- site:tokens paths=size.control.sm,size.control.md,size.control.lg,size.target.min preview=width -->
+<!-- site:tokens paths=size.control.sm,size.control.md,size.control.lg,size.control.nested.sm,size.control.nested.md,size.control.nested.lg,size.target.min preview=width -->
 
 ## Icons
 

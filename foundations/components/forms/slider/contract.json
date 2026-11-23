@@ -1,0 +1,131 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "slider",
+  "props": {
+    "value": {
+      "type": "number",
+      "default": 0,
+      "bindable": true
+    },
+    "min": {
+      "type": "number",
+      "default": 0
+    },
+    "max": {
+      "type": "number",
+      "default": 100
+    },
+    "step": {
+      "type": "number",
+      "default": 1
+    },
+    "label": {
+      "type": "string"
+    },
+    "showValue": {
+      "type": "boolean",
+      "default": false
+    },
+    "locale": {
+      "type": "string",
+      "default": "en"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "parts": {
+    "container": {},
+    "track": {},
+    "range": {},
+    "thumb": {},
+    "valueText": {}
+  },
+  "states": {
+    "condition": {
+      "values": ["default", "hover", "disabled"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    },
+    "dragging": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "events": {
+    "valueChange": {
+      "when": "The value changes because of the user: each step of a drag, a press on the track, a key.",
+      "payload": "The new value."
+    },
+    "valueCommit": {
+      "when": "The user ends a change: the pointer is released after a press or a drag, or a key changed the value.",
+      "payload": "The committed value."
+    }
+  },
+  "tokens": {
+    "trackColor": "color.choice.off.{condition}.border",
+    "rangeColor": "color.choice.on.{condition}.surface",
+    "thumbFillColor": "color.choice.off.{condition}.surface",
+    "thumbBorderColor": "color.choice.on.{condition}.surface",
+    "thumbBorderWidth": "border.width.strong",
+    "shadow": "shadow.raised",
+    "thickness": "component.slider.track-thickness",
+    "thumbSize": "component.slider.thumb-size",
+    "radius": "radius.full",
+    "minTarget": "size.target.min",
+    "valueGap": "space.control.gap.md",
+    "valueColor": "color.content.primary",
+    "disabledColor": "color.content.disabled",
+    "typographyValue": "typography.numeral.sm",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "motionDuration": "motion.duration.fast",
+    "easingStandard": "motion.easing.standard"
+  },
+  "contrast": [
+    {
+      "content": "trackColor",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "rangeColor",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "thumbBorderColor",
+      "surface": "color.surface.default",
+      "minimum": 3
+    },
+    {
+      "content": "valueColor",
+      "surface": "color.surface.default",
+      "minimum": 4.5
+    }
+  ],
+  "rules": [
+    "A slider lets the user pick one number in a bounded range by moving a thumb along a track (a volume, a zoom level, a price ceiling in a filter), when the position in the range matters more than the exact figure. For an exact number, use a NumberInput; for an estimate of progress, a Progress. Two thumbs (a range), a vertical slider, tick marks and labels along the track are out of scope.",
+    "min is less than max and step is greater than zero. The slider shows value brought within min and max and to the nearest multiple of step counted from min (max is always reachable); the application's value is not rewritten until the user changes it.",
+    "container fills the inline size it is given; its block size is minTarget, so the whole height is the interaction target. It holds track and, when showValue is true, valueText at the inline end with valueGap before it. valueText reserves the inline size of the wider of min and max formatted, so that the track does not move as the value changes.",
+    "track is a line of thickness in trackColor with radius ends, centered in the block dimension and inset by half of thumbSize at both ends, so that the thumb stays inside the container at min and max. range covers the track from its start to the thumb in rangeColor. Positions run in the reading direction: min at the inline start.",
+    "thumb is a circle of thumbSize filled with thumbFillColor, with a border of thumbBorderWidth in thumbBorderColor and shadow, centered on the position of value on the track; its interaction target meets minTarget in both dimensions without enlarging it. The thumb is placed from the value alone, without measuring, so that it is in place before any script runs.",
+    "valueText shows value formatted for locale in typographyValue and valueColor, with tabular figures. The same text is exposed to assistive technology as the value as text.",
+    "The thumb is the only stop in sequential focus. It is exposed as a slider named by the label of the enclosing Field, otherwise by the label prop; one of them is present and non-empty, and label is not displayed. It exposes value, min, max and the value as text.",
+    "Keyboard on the thumb: Right and Up Arrow increase by one step and Left and Down Arrow decrease by one step, Left and Right following the reading direction; Page Up and Page Down change by ten steps; Home and End set min and max. Each key that changes the value emits valueChange and valueCommit.",
+    "Pointer: a press anywhere on the container moves the thumb to the nearest step under the pointer and starts a drag; dragging moves it step by step, also when the pointer leaves the container, and focuses the thumb. Each change emits valueChange; releasing the pointer emits valueCommit. On touch, a horizontal drag moves the thumb and a vertical one scrolls the page.",
+    "Resolve condition in this order: disabled, hover, default; hover is true while the pointer is over the container or a drag is in progress. When the thumb has focus, whatever the input modality, it draws a focus indicator of focusWidth in focusColor at focusOffset outside its border.",
+    "A disabled slider is removed from sequential focus, ignores the pointer and the keyboard, and its value is not submitted; valueText takes disabledColor. It emits no events.",
+    "When name is given, value is submitted with the form under name as a plain decimal number.",
+    "Setting value from the application moves the thumb without emitting events. The thumb and range follow value without transition during a drag; a jump caused by a press on the track or by a key moves them over motionDuration with easingStandard; no transition under reduced motion.",
+    "In forced-colors mode the track keeps a visible line in the system text color, the range and the thumb border use the system highlight color, the focus indicator stays visible, and the disabled slider uses the system disabled text color."
+  ]
+}

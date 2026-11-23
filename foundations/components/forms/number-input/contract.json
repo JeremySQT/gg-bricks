@@ -1,0 +1,135 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "number-input",
+  "props": {
+    "value": {
+      "type": "number",
+      "bindable": true
+    },
+    "min": {
+      "type": "number"
+    },
+    "max": {
+      "type": "number"
+    },
+    "step": {
+      "type": "number",
+      "default": 1
+    },
+    "locale": {
+      "type": "string",
+      "default": "en"
+    },
+    "placeholder": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "hideSteppers": {
+      "type": "boolean",
+      "default": false
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "readonly": {
+      "type": "boolean",
+      "default": false
+    },
+    "invalid": {
+      "type": "boolean",
+      "default": false
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    },
+    "name": {
+      "type": "string"
+    },
+    "decreaseLabel": {
+      "type": "string",
+      "default": "Decrease"
+    },
+    "increaseLabel": {
+      "type": "string",
+      "default": "Increase"
+    }
+  },
+  "parts": {
+    "container": {},
+    "decrease": {},
+    "input": {},
+    "increase": {}
+  },
+  "states": {
+    "condition": {
+      "values": ["default", "hover", "focus", "readonly", "disabled", "invalid"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    },
+    "stepperInteraction": {
+      "values": ["default", "hover", "pressed", "disabled"],
+      "default": "default"
+    }
+  },
+  "events": {
+    "valueChange": {
+      "when": "The user commits a new number (Enter, focus leaving the input, an arrow or page key, Home or End, a stepper press) or clears it.",
+      "payload": "The new value: a number, or no value."
+    }
+  },
+  "tokens": {
+    "surface": "color.input.{condition}.surface",
+    "content": "color.input.{condition}.content",
+    "border": "color.input.{condition}.border",
+    "placeholderColor": "color.input.{condition}.placeholder",
+    "borderWidth": "border.width.default",
+    "radius": "radius.control",
+    "minHeight": "size.control.{size}",
+    "minTarget": "size.target.min",
+    "edgeInline": "space.control.edge-inline.{size}",
+    "textInline": "space.control.label-inline.{size}",
+    "slotInline": "space.control.slot-inline.{size}",
+    "typography": "typography.body.{size}",
+    "stepperFillColor": "color.action.neutral.ghost.{stepperInteraction}.surface",
+    "stepperIconColor": "color.action.neutral.ghost.{stepperInteraction}.content",
+    "stepperSize": "size.control.nested.{size}",
+    "stepperRadius": "radius.control",
+    "iconSize": "size.icon.{size}",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "focusRadius": "radius.focus",
+    "motionDuration": "motion.duration.fast",
+    "easingStandard": "motion.easing.standard"
+  },
+  "rules": [
+    "A number input lets the user enter one number in a form (a quantity, an amount, a measure), by typing it or by stepping it. Use a Slider when the user picks a value in a bounded range by eye and the exact figure matters less; use an InputText for digits that are not a quantity (a postal code, a card or telephone number). Currencies, units and percentages shown in the field are out of scope.",
+    "value is a number or no value (an empty field); min and max, when given, bound it and min is not greater than max; step is greater than zero.",
+    "The field looks and sizes like an InputText of the same size: container, then decrease, input and increase in that order. container has edgeInline inline padding; input has textInline on both inline sides; decrease and increase have slotInline on both inline sides. The container fills the inline size it is given; its block size is minHeight; the interaction target meets minTarget in the block dimension without enlarging the visible container. Paint container in surface with a border of borderWidth in border inside its boundary, corners of radius, and the text in content.",
+    "input holds the number on one line, aligned at the inline start, with tabular figures; it never wraps and scrolls inline to keep the caret visible. placeholder in placeholderColor shows only while the field is empty; it is never the accessible name.",
+    "Outside editing, the number is shown formatted for locale: its grouping and decimal separators, and as many fraction digits as step has, more when the value has more (step 0.01 shows 2.50 for 2.5 in English, 2,50 in French). The value itself is never rounded for display.",
+    "Typing edits the text freely. When the text is committed (Enter, focus leaving the input), it is read as a number for locale: grouping separators and spaces are ignored, the decimal separator of locale is accepted, and the period too when it is not the locale's grouping separator, and a leading minus sign is accepted. A number below min or above max becomes min or max. Text that is not a number returns to the last value. An empty text clears the value. Then the text is formatted again.",
+    "Stepping moves the value to the next multiple of step, counted from min when min is given and from zero otherwise, in the direction of the step, then within min and max; from no value, stepping up starts at min, otherwise at zero, and stepping down at max, otherwise at zero. Stepping computes in decimals: 0.1 plus 0.2 is 0.3.",
+    "Keyboard in the input: Up and Down Arrow step up and down by one step; Page Up and Page Down by ten steps; Home and End set min and max when they are given. A turn of the mouse wheel never changes the value.",
+    "decrease and increase are squares of stepperSize showing a minus and a plus of iconSize, painted in stepperFillColor with the icon in stepperIconColor and stepperRadius corners, centered in the block dimension; decrease sits at the inline start of the container and increase at its inline end, each at the same distance from the container edge as its block inset (half of minHeight minus stepperSize). Their interaction targets meet minTarget without enlarging them. A press steps once and keeps focus in the input, or moves it there; they are not stops in sequential focus, since the arrow keys do the same; they are named decreaseLabel and increaseLabel. decrease is disabled at min and increase at max. With hideSteppers they are not rendered and the input starts after edgeInline, as in an InputText.",
+    "The input is exposed as a spin button named by the label of the enclosing Field, otherwise by the label prop; one of them is present and non-empty, and label is not displayed. It exposes the value, min and max, and the value as formatted text.",
+    "Resolve condition in this order: disabled, readonly, invalid, focus, hover, default; focus is also an independent axis drawing a focus indicator of focusWidth in focusColor at focusOffset outside the container, with focusRadius corners, whatever the input modality. stepperInteraction resolves in this order: disabled, pressed, hover, default.",
+    "A disabled number input is removed from sequential focus, its steppers are disabled; its value cannot be edited and is not submitted. A readonly number input stays focusable and its text can be selected and copied, but neither typing, keys nor steppers change it, and its steppers are disabled; its value is submitted. Neither emits valueChange.",
+    "valueChange is emitted when a commit or a step changes the value; typing alone does not emit it. Setting value from the application updates the text without emitting valueChange; such a value is not clamped.",
+    "Invalid and required are exposed to assistive technology; the visible error message and required marker belong to the enclosing Field, so an error is never conveyed by color alone.",
+    "When name is given, value is submitted with the form under name as a plain decimal number (a period as decimal separator, no grouping), or empty.",
+    "Color changes between conditions transition over motionDuration with easingStandard; the focus indicator appears without delay; no transition under reduced motion.",
+    "In forced-colors mode the container keeps a visible boundary in the system field colors, the placeholder stays distinguishable from a value, the steppers keep their icon in the system button text color, the focus indicator stays visible, and the disabled number input and disabled steppers use the system disabled text color."
+  ]
+}

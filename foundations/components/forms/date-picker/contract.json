@@ -1,0 +1,270 @@
+{
+  "$schema": "../../../../authoring/schemas/component-contract.schema.json",
+  "id": "date-picker",
+  "props": {
+    "value": {
+      "type": "string",
+      "default": "",
+      "bindable": true
+    },
+    "min": {
+      "type": "string"
+    },
+    "max": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string",
+      "default": "en"
+    },
+    "label": {
+      "type": "string"
+    },
+    "size": {
+      "values": ["sm", "md", "lg"],
+      "default": "md"
+    },
+    "open": {
+      "type": "boolean",
+      "default": false,
+      "bindable": true
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "readonly": {
+      "type": "boolean",
+      "default": false
+    },
+    "invalid": {
+      "type": "boolean",
+      "default": false
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    },
+    "name": {
+      "type": "string"
+    },
+    "openLabel": {
+      "type": "string",
+      "default": "Choose date"
+    },
+    "previousLabel": {
+      "type": "string",
+      "default": "Previous month"
+    },
+    "nextLabel": {
+      "type": "string",
+      "default": "Next month"
+    }
+  },
+  "parts": {
+    "container": {},
+    "segments": {},
+    "button": {},
+    "panel": {
+      "accepts": ["panel"],
+      "min": 1,
+      "max": 1
+    },
+    "grid": {
+      "accepts": ["day"]
+    }
+  },
+  "states": {
+    "condition": {
+      "values": ["default", "hover", "focus", "readonly", "disabled", "invalid"],
+      "default": "default"
+    },
+    "focus": {
+      "type": "boolean",
+      "default": false
+    },
+    "buttonInteraction": {
+      "values": ["default", "hover", "pressed", "disabled"],
+      "default": "default"
+    }
+  },
+  "events": {
+    "valueChange": {
+      "when": "The user completes, changes or clears the date, by typing in the segments or by choosing a day in the calendar.",
+      "payload": "The new value: an ISO 8601 date (YYYY-MM-DD), or empty."
+    },
+    "openChange": {
+      "when": "The calendar opens or closes because of the user: button activation, a day chosen, Escape, focus leaving, a press outside.",
+      "payload": "The new open state."
+    }
+  },
+  "tokens": {
+    "surface": "color.input.{condition}.surface",
+    "content": "color.input.{condition}.content",
+    "border": "color.input.{condition}.border",
+    "placeholderColor": "color.input.{condition}.placeholder",
+    "segmentFocusFillColor": "color.selection.surface",
+    "segmentFocusTextColor": "color.selection.content",
+    "segmentRadius": "radius.indicator",
+    "borderWidth": "border.width.default",
+    "radius": "radius.control",
+    "minHeight": "size.control.{size}",
+    "minTarget": "size.target.min",
+    "edgeInline": "space.control.edge-inline.{size}",
+    "textInline": "space.control.label-inline.{size}",
+    "slotInline": "space.control.slot-inline.{size}",
+    "typography": "typography.body.{size}",
+    "buttonFillColor": "color.action.neutral.ghost.{buttonInteraction}.surface",
+    "buttonIconColor": "color.action.neutral.ghost.{buttonInteraction}.content",
+    "buttonSize": "size.control.nested.{size}",
+    "buttonRadius": "radius.control",
+    "iconSize": "size.icon.{size}",
+    "focusColor": "color.focus.ring",
+    "focusWidth": "focus.width",
+    "focusOffset": "focus.offset",
+    "focusRadius": "radius.focus",
+    "motionDuration": "motion.duration.fast",
+    "easingStandard": "motion.easing.standard"
+  },
+  "children": {
+    "panel": {
+      "props": {},
+      "parts": {
+        "header": {},
+        "previous": {
+          "accepts": ["icon-button"],
+          "min": 1,
+          "max": 1
+        },
+        "heading": {},
+        "next": {
+          "accepts": ["icon-button"],
+          "min": 1,
+          "max": 1
+        },
+        "weekdays": {}
+      },
+      "states": {},
+      "tokens": {
+        "surface": "color.surface.overlay",
+        "elevationColor": "color.elevation.border",
+        "borderWidth": "border.width.default",
+        "shadow": "shadow.overlay",
+        "radius": "radius.overlay",
+        "padding": "space.content.sm",
+        "headerGap": "space.content.xs",
+        "headingColor": "color.content.primary",
+        "typographyHeading": "typography.label.md",
+        "weekdayColor": "color.content.secondary",
+        "typographyWeekday": "typography.caption.md",
+        "cellPitch": "size.target.min",
+        "offset": "space.content.sm",
+        "enterDistance": "motion.distance.sm",
+        "motionDuration": "motion.duration.base",
+        "easingEnter": "motion.easing.enter",
+        "easingExit": "motion.easing.exit",
+        "layer": "layer.dropdown"
+      },
+      "rules": [
+        "The panel holds header, weekdays and the grid of days, in that order. It is painted in surface with shadow, an edge of borderWidth in elevationColor and radius corners, with padding on every side. It has no size option: its dimensions follow density only.",
+        "header has previous at the inline start, heading in the middle and next at the inline end, centered in the block dimension, with headerGap below. previous and next are IconButtons of size sm, intent neutral and appearance ghost, showing a chevron toward the inline start and toward the inline end, named previousLabel and nextLabel; they keep their own tokens and behavior. heading shows the displayed month and year, formatted for locale, in typographyHeading and headingColor, centered; it is announced when the month changes.",
+        "weekdays shows the seven days of the week as short names formatted for locale, in typographyWeekday and weekdayColor, each centered in a column; the week starts on the first day of the week of locale (Monday when the platform does not tell). Each column has the full name of its day for assistive technology.",
+        "The grid has seven columns and six rows of cellPitch, so the panel keeps the same block size from month to month; its inline size is seven cellPitch plus padding. Cells of days outside the displayed month stay empty.",
+        "The panel is placed at offset below the field, aligned with the field's inline start; it flips above when the viewport lacks room below and shifts along the edge when it lacks room inline.",
+        "The panel is exposed as a non-modal dialog named by heading. It inherits the brand, appearance and density of the field's surroundings and appears above the page. Where the platform has no top layer, it is stacked at layer.",
+        "It enters by fading in and moving enterDistance away from the field over motionDuration with easingEnter and leaves by fading out over motionDuration with easingExit; under reduced motion it only fades.",
+        "In forced-colors mode the panel keeps a visible edge in the system text color."
+      ]
+    },
+    "day": {
+      "props": {},
+      "states": {
+        "interaction": {
+          "values": ["default", "hover", "disabled"],
+          "default": "default"
+        },
+        "selected": {
+          "type": "boolean",
+          "default": false
+        },
+        "today": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "tokens": {
+        "surface": "color.item.{interaction}.surface",
+        "content": "color.item.{interaction}.content",
+        "selectedFillColor": "color.choice.on.{interaction}.surface",
+        "selectedTextColor": "color.choice.on.{interaction}.content",
+        "todayColor": "color.item.indicator",
+        "todayWidth": "border.width.strong",
+        "boxSize": "size.control.sm",
+        "radius": "radius.full",
+        "typography": "typography.numeral.sm",
+        "focusColor": "color.focus.ring",
+        "focusWidth": "focus.width",
+        "focusOffset": "focus.offset",
+        "motionDuration": "motion.duration.fast",
+        "easingStandard": "motion.easing.standard"
+      },
+      "rules": [
+        "Each day of the displayed month shows its number formatted for locale in typography, centered in a round box of boxSize, itself centered in its cell of cellPitch so that the interaction target is the whole cell. Its accessible name is the full date formatted for locale.",
+        "interaction resolves in this order: disabled, hover, default; hover is the day under the pointer. A selected day is painted in selectedFillColor with its number in selectedTextColor, in the colors of its interaction; other days use surface and content. Colors change over motionDuration with easingStandard; no transition under reduced motion.",
+        "today marks the current date of the user's device with a ring of todayWidth inside the box, in todayColor, or in selectedTextColor when the day is selected; it is exposed as the current date. today is known only where the device clock is: it is not drawn before the calendar opens.",
+        "A day before min or after max is disabled: drawn in the disabled colors, announced as unavailable, reached by the arrow keys but never chosen.",
+        "When the grid has focus, the focused day draws a focus indicator of focusWidth in focusColor at focusOffset outside its box."
+      ]
+    }
+  },
+  "contrast": [
+    {
+      "content": "day.content",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5,
+      "note": "Days are transparent by default and read on the panel."
+    },
+    {
+      "content": "day.selectedTextColor",
+      "surface": "day.selectedFillColor",
+      "minimum": 4.5
+    },
+    {
+      "content": "day.todayColor",
+      "surface": "color.surface.overlay",
+      "minimum": 3
+    },
+    {
+      "content": "panel.weekdayColor",
+      "surface": "color.surface.overlay",
+      "minimum": 4.5
+    },
+    {
+      "content": "day.todayColor",
+      "surface": "color.item.hover.surface",
+      "minimum": 3
+    }
+  ],
+  "rules": [
+    "A date picker lets the user enter one calendar date in a form, by typing it or by choosing it in a calendar. It suits dates near the present (an appointment, a deadline) as well as distant ones the user knows (a date of birth, typed). A range of dates, a date with a time and several dates are out of scope; compose a TimeInput beside it for a time.",
+    "value is the date as an ISO 8601 calendar date (YYYY-MM-DD) or empty; min and max, when given, use the same format. Dates use the Gregorian calendar whatever the default calendar of locale. A value the application sets that is not a valid date shows as empty.",
+    "The field looks and sizes like an InputText of the same size: container, segments and button in that order. Horizontal spacing matches InputText: container has edgeInline inline padding, segments has textInline on both inline sides, button has slotInline on both inline sides. The container fills the inline size it is given; its block size is minHeight; the interaction target meets minTarget in the block dimension without enlarging the visible container. Paint container in surface with a border of borderWidth in border inside its boundary, corners of radius.",
+    "segments shows day, month and year as separate editable parts, in the order and with the separators of locale, in typography. An empty part shows the placeholder of locale for that part (dd, mm, yyyy in English; jj, mm, aaaa in French) in placeholderColor; a filled part and the separators of a complete date show in content. The focused part is highlighted in segmentFocusFillColor with segmentFocusTextColor and segmentRadius corners. The parts never wrap.",
+    "Each part is exposed as a spin button named by the field's accessible name and the name of the part in locale (day, month, year in English; jour, mois, année in French), with its numeric value, its range and its value as text, or empty. The parts form a group named by the field's accessible name.",
+    "Keyboard in the parts: digits fill the focused part and move to the next part when no further digit can follow; Up and Down Arrow increase and decrease the part, wrapping within its range; Left and Right Arrow move to the previous and next part in the reading direction; Backspace clears the part, then moves to the previous one; Tab moves to the button. The day is limited to the days of the entered month and year.",
+    "value is set when every part is filled with a valid date, and emptied when a part is cleared; valueChange is emitted each time value changes. While the date is incomplete the entered parts are kept and value stays empty. A typed date before min or after max is kept: invalid belongs to the application.",
+    "button is a square of buttonSize showing a calendar of iconSize, painted in buttonFillColor with the icon in buttonIconColor and buttonRadius corners, centered in the block dimension; its inline-end edge sits at the same distance from the container edge as its block inset (half of minHeight minus buttonSize). Its interaction target meets minTarget without enlarging it. It is a separate stop in sequential focus after the parts, named openLabel, and exposes that it opens a dialog and whether it is expanded.",
+    "The accessible name of the field is the label of the enclosing Field, otherwise the label prop; one of them is present and non-empty. label is not displayed.",
+    "Resolve condition in this order: disabled, readonly, invalid, focus, hover, default; focus is true while a part has focus, and is also an independent axis drawing a focus indicator of focusWidth in focusColor at focusOffset outside the container, with focusRadius corners. The button draws its own focus indicator, around its box, when it has focus. buttonInteraction resolves in this order: disabled, pressed, hover, default.",
+    "Activating the button toggles the calendar. On opening, the calendar shows the month of value, otherwise the current month brought within min and max, and focus moves to the selected day, otherwise today, otherwise the first enabled day of the month.",
+    "Keyboard in the grid: Left and Right Arrow move focus to the previous and next day in the reading direction, Up and Down Arrow to the same day of the previous and next week, crossing into the adjacent month when needed; Page Up and Page Down move to the same day of the previous and next month, Shift with Page Up and Page Down of the previous and next year (the last day of a shorter month); Home and End move to the first and last day of the week; Enter and Space choose the focused enabled day. Focus never moves before min or after max.",
+    "previous and next show the previous and next month and keep focus where it is; each is disabled when that month lies entirely before min or after max.",
+    "Choosing a day sets value, emits valueChange when the value changed, closes the calendar and returns focus to the button. Escape closes the calendar without changing the value and returns focus to the button. Tab moves through previous, next and the grid; when focus leaves the panel and the field, or on a press outside both, the calendar closes without changing the value and focus stays where it went.",
+    "A disabled date picker is removed from sequential focus, its button is disabled and it never opens; its value is not submitted. A readonly date picker keeps its parts focusable and announces its value, but no part can be edited and its button is disabled; its value is submitted. Neither emits events.",
+    "Invalid and required are exposed to assistive technology; the visible error message and required marker belong to the enclosing Field, so an error is never conveyed by color alone. The date picker never marks itself invalid.",
+    "When name is given, value is submitted with the form under name, as an ISO 8601 date or empty.",
+    "Setting value or open from the application updates the date picker without emitting events.",
+    "Color changes between conditions transition over motionDuration with easingStandard; the focus indicator appears without delay; no transition under reduced motion.",
+    "In forced-colors mode the container keeps a visible boundary in the system field colors, empty parts stay distinguishable from filled ones, the focused part, the selected day and the focus indicators are shown in the system highlight colors, today keeps its ring in the system text color, and disabled days, the disabled button and the disabled date picker use the system disabled text color."
+  ]
+}
