@@ -1,0 +1,221 @@
+/*
+ * NumberInput structure. Values come from tokens.generated.css; this file holds structural literals only.
+ * The container is the visible field (surface, inner border, focus ring), as InputText; the text input inside is
+ * transparent. Each stepper is centered in a square as tall as the field, at the field's edge, like the action of
+ * an InputText: it sits at the same distance from the inline edge as from the block edges.
+ */
+@layer ggb {
+  .ggb-number-input {
+    --_surface: var(--ggb-number-input-surface-default);
+    --_content: var(--ggb-number-input-content-default);
+    --_border: var(--ggb-number-input-border-default);
+    --_placeholder: var(--ggb-number-input-placeholderColor-default);
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    min-inline-size: 0;
+    block-size: var(--ggb-number-input-minHeight);
+    padding-inline: var(--ggb-number-input-edgeInline);
+    border-radius: var(--ggb-number-input-radius);
+    background-color: var(--_surface);
+    color: var(--_content);
+    box-shadow: inset 0 0 0 var(--ggb-number-input-borderWidth) var(--_border);
+    /* Transparent outline: invisible normally, drawn by the system in forced-colors mode. */
+    outline: var(--ggb-number-input-borderWidth) solid transparent;
+    outline-offset: calc(-1 * var(--ggb-number-input-borderWidth));
+    font: var(--ggb-number-input-typography);
+    letter-spacing: var(--ggb-number-input-typography-letterSpacing, normal);
+    cursor: text;
+    transition-property: background-color, color, box-shadow;
+    transition-duration: var(--ggb-number-input-motionDuration);
+    transition-timing-function: var(--ggb-number-input-easingStandard);
+  }
+  .ggb-number-input[data-steppers] {
+    padding-inline: 0;
+  }
+
+  /* Interaction target: at least minTarget tall, centered, without enlarging the visible field. */
+  .ggb-number-input::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 50%; /* physical on purpose: centering is symmetric */
+    block-size: max(100%, var(--ggb-number-input-minTarget));
+    transform: translateY(-50%);
+  }
+
+  .ggb-number-input__input {
+    position: relative; /* above the target extension */
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    block-size: 100%;
+    margin: 0;
+    padding: 0 var(--ggb-number-input-textInline);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: inherit;
+    text-align: start;
+    text-overflow: ellipsis;
+    outline: none;
+    appearance: none;
+  }
+  .ggb-number-input__input::placeholder {
+    color: var(--_placeholder);
+    opacity: 1;
+  }
+
+  /* The stepper's box is a square as tall as the field; the visible button is drawn by ::after at stepperSize and
+     the interaction target by ::before at minTarget, both centered. */
+  .ggb-number-input__stepper {
+    --_fill: var(--ggb-number-input-stepperFillColor-default);
+    --_icon: var(--ggb-number-input-stepperIconColor-default);
+    position: relative;
+    display: grid;
+    flex: none;
+    place-items: center;
+    align-self: stretch;
+    aspect-ratio: 1;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--_icon);
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
+    transition-property: color;
+    transition-duration: var(--ggb-number-input-motionDuration);
+    transition-timing-function: var(--ggb-number-input-easingStandard);
+  }
+  .ggb-number-input__stepper::after {
+    content: '';
+    position: absolute;
+    inset: 50% auto auto 50%; /* physical on purpose: centering is symmetric */
+    inline-size: var(--ggb-number-input-stepperSize);
+    block-size: var(--ggb-number-input-stepperSize);
+    border-radius: var(--ggb-number-input-stepperRadius);
+    background-color: var(--_fill);
+    transform: translate(-50%, -50%);
+    transition-property: background-color;
+    transition-duration: inherit;
+    transition-timing-function: inherit;
+  }
+  .ggb-number-input__stepper::before {
+    content: '';
+    position: absolute;
+    inset: 50% auto auto 50%;
+    inline-size: max(var(--ggb-number-input-stepperSize), var(--ggb-number-input-minTarget));
+    block-size: max(var(--ggb-number-input-stepperSize), var(--ggb-number-input-minTarget));
+    transform: translate(-50%, -50%);
+  }
+  .ggb-number-input__stepper > svg {
+    position: relative;
+    z-index: 1;
+    display: block;
+    inline-size: var(--ggb-number-input-iconSize);
+    block-size: var(--ggb-number-input-iconSize);
+  }
+
+  /* Stepper interaction, lowest precedence first: hover, pressed, disabled. */
+  @media (hover: hover) {
+    .ggb-number-input__stepper:where(:hover) {
+      --_fill: var(--ggb-number-input-stepperFillColor-hover);
+      --_icon: var(--ggb-number-input-stepperIconColor-hover);
+    }
+  }
+  .ggb-number-input__stepper:where(:active) {
+    --_fill: var(--ggb-number-input-stepperFillColor-pressed);
+    --_icon: var(--ggb-number-input-stepperIconColor-pressed);
+  }
+  .ggb-number-input__stepper:where(:disabled) {
+    --_fill: var(--ggb-number-input-stepperFillColor-disabled);
+    --_icon: var(--ggb-number-input-stepperIconColor-disabled);
+    cursor: not-allowed;
+  }
+
+  /* Condition, lowest precedence first: hover, focus, invalid, readonly, disabled. */
+  @media (hover: hover) {
+    .ggb-number-input:where(:hover) {
+      --_surface: var(--ggb-number-input-surface-hover);
+      --_content: var(--ggb-number-input-content-hover);
+      --_border: var(--ggb-number-input-border-hover);
+      --_placeholder: var(--ggb-number-input-placeholderColor-hover);
+    }
+  }
+  .ggb-number-input:where(:has(.ggb-number-input__input:focus)) {
+    --_surface: var(--ggb-number-input-surface-focus);
+    --_content: var(--ggb-number-input-content-focus);
+    --_border: var(--ggb-number-input-border-focus);
+    --_placeholder: var(--ggb-number-input-placeholderColor-focus);
+  }
+  .ggb-number-input:where([data-invalid]) {
+    --_surface: var(--ggb-number-input-surface-invalid);
+    --_content: var(--ggb-number-input-content-invalid);
+    --_border: var(--ggb-number-input-border-invalid);
+    --_placeholder: var(--ggb-number-input-placeholderColor-invalid);
+  }
+  .ggb-number-input:where([data-readonly]) {
+    --_surface: var(--ggb-number-input-surface-readonly);
+    --_content: var(--ggb-number-input-content-readonly);
+    --_border: var(--ggb-number-input-border-readonly);
+    --_placeholder: var(--ggb-number-input-placeholderColor-readonly);
+  }
+  .ggb-number-input:where([data-disabled]) {
+    --_surface: var(--ggb-number-input-surface-disabled);
+    --_content: var(--ggb-number-input-content-disabled);
+    --_border: var(--ggb-number-input-border-disabled);
+    --_placeholder: var(--ggb-number-input-placeholderColor-disabled);
+    cursor: not-allowed;
+  }
+  .ggb-number-input[data-disabled] .ggb-number-input__input {
+    cursor: not-allowed;
+  }
+
+  /* Focus on the input, whatever the modality: the ring is drawn outside, with the concentric radius. */
+  .ggb-number-input:has(.ggb-number-input__input:focus) {
+    outline: var(--ggb-number-input-focusWidth) solid var(--ggb-number-input-focusColor);
+    outline-offset: var(--ggb-number-input-focusOffset);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ggb-number-input,
+    .ggb-number-input__stepper,
+    .ggb-number-input__stepper::after {
+      transition: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .ggb-number-input {
+      box-shadow: none;
+      outline-color: FieldText;
+      background-color: Field;
+      color: FieldText;
+    }
+    .ggb-number-input__input::placeholder {
+      color: GrayText;
+    }
+    .ggb-number-input__stepper {
+      color: ButtonText;
+    }
+    .ggb-number-input__stepper::after {
+      background-color: transparent;
+    }
+    .ggb-number-input__stepper:disabled,
+    .ggb-number-input[data-disabled] {
+      color: GrayText;
+    }
+    .ggb-number-input[data-disabled] {
+      outline-color: GrayText;
+    }
+    .ggb-number-input:has(.ggb-number-input__input:focus) {
+      outline: var(--ggb-number-input-focusWidth) solid Highlight;
+      outline-offset: var(--ggb-number-input-focusOffset);
+    }
+  }
+}

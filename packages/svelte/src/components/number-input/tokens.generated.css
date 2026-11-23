@@ -1,0 +1,77 @@
+/* Generated token bindings from the number-input contract. Do not edit. */
+@layer ggb {
+.ggb-number-input {
+  --ggb-number-input-surface-default: var(--ggb-color-input-default-surface);
+  --ggb-number-input-surface-hover: var(--ggb-color-input-hover-surface);
+  --ggb-number-input-surface-focus: var(--ggb-color-input-focus-surface);
+  --ggb-number-input-surface-readonly: var(--ggb-color-input-readonly-surface);
+  --ggb-number-input-surface-disabled: var(--ggb-color-input-disabled-surface);
+  --ggb-number-input-surface-invalid: var(--ggb-color-input-invalid-surface);
+  --ggb-number-input-content-default: var(--ggb-color-input-default-content);
+  --ggb-number-input-content-hover: var(--ggb-color-input-hover-content);
+  --ggb-number-input-content-focus: var(--ggb-color-input-focus-content);
+  --ggb-number-input-content-readonly: var(--ggb-color-input-readonly-content);
+  --ggb-number-input-content-disabled: var(--ggb-color-input-disabled-content);
+  --ggb-number-input-content-invalid: var(--ggb-color-input-invalid-content);
+  --ggb-number-input-border-default: var(--ggb-color-input-default-border);
+  --ggb-number-input-border-hover: var(--ggb-color-input-hover-border);
+  --ggb-number-input-border-focus: var(--ggb-color-input-focus-border);
+  --ggb-number-input-border-readonly: var(--ggb-color-input-readonly-border);
+  --ggb-number-input-border-disabled: var(--ggb-color-input-disabled-border);
+  --ggb-number-input-border-invalid: var(--ggb-color-input-invalid-border);
+  --ggb-number-input-placeholderColor-default: var(--ggb-color-input-default-placeholder);
+  --ggb-number-input-placeholderColor-hover: var(--ggb-color-input-hover-placeholder);
+  --ggb-number-input-placeholderColor-focus: var(--ggb-color-input-focus-placeholder);
+  --ggb-number-input-placeholderColor-readonly: var(--ggb-color-input-readonly-placeholder);
+  --ggb-number-input-placeholderColor-disabled: var(--ggb-color-input-disabled-placeholder);
+  --ggb-number-input-placeholderColor-invalid: var(--ggb-color-input-invalid-placeholder);
+  --ggb-number-input-borderWidth: var(--ggb-border-width-default);
+  --ggb-number-input-radius: var(--ggb-radius-control);
+  --ggb-number-input-minTarget: var(--ggb-size-target-min);
+  --ggb-number-input-stepperFillColor-default: var(--ggb-color-action-neutral-ghost-default-surface);
+  --ggb-number-input-stepperFillColor-hover: var(--ggb-color-action-neutral-ghost-hover-surface);
+  --ggb-number-input-stepperFillColor-pressed: var(--ggb-color-action-neutral-ghost-pressed-surface);
+  --ggb-number-input-stepperFillColor-disabled: var(--ggb-color-action-neutral-ghost-disabled-surface);
+  --ggb-number-input-stepperIconColor-default: var(--ggb-color-action-neutral-ghost-default-content);
+  --ggb-number-input-stepperIconColor-hover: var(--ggb-color-action-neutral-ghost-hover-content);
+  --ggb-number-input-stepperIconColor-pressed: var(--ggb-color-action-neutral-ghost-pressed-content);
+  --ggb-number-input-stepperIconColor-disabled: var(--ggb-color-action-neutral-ghost-disabled-content);
+  --ggb-number-input-stepperRadius: var(--ggb-radius-control);
+  --ggb-number-input-focusColor: var(--ggb-color-focus-ring);
+  --ggb-number-input-focusWidth: var(--ggb-focus-width);
+  --ggb-number-input-focusOffset: var(--ggb-focus-offset);
+  --ggb-number-input-focusRadius: var(--ggb-radius-focus);
+  --ggb-number-input-motionDuration: var(--ggb-motion-duration-fast);
+  --ggb-number-input-easingStandard: var(--ggb-motion-easing-standard);
+}
+.ggb-number-input[data-size="sm"] {
+  --ggb-number-input-minHeight: var(--ggb-size-control-sm);
+  --ggb-number-input-edgeInline: var(--ggb-space-control-edge-inline-sm);
+  --ggb-number-input-textInline: var(--ggb-space-control-label-inline-sm);
+  --ggb-number-input-typography: var(--ggb-typography-body-sm);
+  --ggb-number-input-typography-letterSpacing: var(--ggb-typography-body-sm-letterSpacing);
+  --ggb-number-input-typography-fontFeatureSettings: var(--ggb-typography-body-sm-fontFeatureSettings);
+  --ggb-number-input-stepperSize: var(--ggb-size-control-nested-sm);
+  --ggb-number-input-iconSize: var(--ggb-size-icon-sm);
+}
+.ggb-number-input[data-size="md"] {
+  --ggb-number-input-minHeight: var(--ggb-size-control-md);
+  --ggb-number-input-edgeInline: var(--ggb-space-control-edge-inline-md);
+  --ggb-number-input-textInline: var(--ggb-space-control-label-inline-md);
+  --ggb-number-input-typography: var(--ggb-typography-body-md);
+  --ggb-number-input-typography-letterSpacing: var(--ggb-typography-body-md-letterSpacing);
+  --ggb-number-input-typography-fontFeatureSettings: var(--ggb-typography-body-md-fontFeatureSettings);
+  --ggb-number-input-stepperSize: var(--ggb-size-control-nested-md);
+  --ggb-number-input-iconSize: var(--ggb-size-icon-md);
+}
+.ggb-number-input[data-size="lg"] {
+  --ggb-number-input-minHeight: var(--ggb-size-control-lg);
+  --ggb-number-input-edgeInline: var(--ggb-space-control-edge-inline-lg);
+  --ggb-number-input-textInline: var(--ggb-space-control-label-inline-lg);
+  --ggb-number-input-typography: var(--ggb-typography-body-lg);
+  --ggb-number-input-typography-letterSpacing: var(--ggb-typography-body-lg-letterSpacing);
+  --ggb-number-input-typography-fontFeatureSettings: var(--ggb-typography-body-lg-fontFeatureSettings);
+  --ggb-number-input-stepperSize: var(--ggb-size-control-nested-lg);
+  --ggb-number-input-iconSize: var(--ggb-size-icon-lg);
+}
+}

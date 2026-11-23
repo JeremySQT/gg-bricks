@@ -27,7 +27,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/number-input/contract.json",
-      "sha256": "348bf714f07839d65e5091c9bebccd212214c629f07ab00f2abd9650beb96d53"
+      "sha256": "44770d1e8a7e97b7a412d8666d33a8daa14741d938f07e15b7ebd05931ae33c6"
     },
     "tokens": [],
     "figma": null,
@@ -83,5 +83,16 @@
         "reason": "Same field colors as InputText (color.input.*): its exemption accepted at the wave 2 contract gate (2026-10-26, \"4 ok\") applies; color.input.default.border reaches 2.06 on surface.muted in dark, a de-emphasized backdrop where forms are not expected."
       }
     ]
-  }
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-23",
+      "change": "Spacing rule clarified: the two approved statements (slotInline around each stepper and an inline inset equal to the block inset) cannot both hold; each stepper is now centered in a square as tall as the container at its edge, as the action of an InputText, and the container keeps edgeInline only on a side without stepper. Role slotInline removed (unused).",
+      "invalidates": "approvals.contract until the wave 6 implementation gate",
+      "sha256": {
+        "foundations/components/forms/number-input/contract.json": "44770d1e8a7e97b7a412d8666d33a8daa14741d938f07e15b7ebd05931ae33c6"
+      },
+      "review": "Wave 6 implementation gate"
+    }
+  ]
 }
