@@ -3,7 +3,7 @@
   "componentId": "time-input",
   "family": "forms",
   "wave": 6,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Let the user type one wall-clock time of day in a form, in the hour cycle of the locale or a forced one.",
     "useCases": [
@@ -35,7 +35,16 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "TimeInput contract: value HH:mm or HH:mm:ss, min, max, locale, hourCycle auto|h12|h23, seconds, size, disabled, readonly, invalid, required, name; segmented field without slot and without step.",
+      "revision": {
+        "paths": ["foundations/components/forms/time-input/contract.json"],
+        "sha256": {
+          "foundations/components/forms/time-input/contract.json": "61f80c56c1f273a78fa278beace795e24d1390f38b5a3d76a105ea068acd8f65"
+        }
+      },
+      "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\"."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -52,7 +61,7 @@
     "Built on Bits UI TimeField (its day period bug of DateField is fixed there, time-field.svelte.js:898)."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (wave 6, grouped): present the contract and the token additions, record the approval.",
+  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 6 implementation review.",
   "implementationNotes": [
     "Bits UI TimeField segments carry English names (`hour, `, `AM/PM`, `Empty`) and a hidden `Selected Time: ...` description; overridden as for DatePicker, with a browser test.",
     "Bits UI Time.toString() always has seconds; the component converts to HH:mm or HH:mm:ss and submits its own hidden input."

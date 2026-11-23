@@ -3,7 +3,7 @@
   "componentId": "slider",
   "family": "forms",
   "wave": 6,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Let the user pick one number in a bounded range by moving a thumb along a track.",
     "useCases": [
@@ -35,7 +35,20 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "Slider contract: one thumb, horizontal, value, min, max, step, label, showValue, locale, disabled, name; track color.choice.off border, range and thumb border color.choice.on, component.slider tokens; valueChange and valueCommit.",
+      "revision": {
+        "paths": [
+          "foundations/components/forms/slider/contract.json",
+          "foundations/tokens/base/components/slider.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/forms/slider/contract.json": "f83ee01d56bdde3dcbaa3fd2dbbb252f13b78b17ef72844e23a1c86f77d9713c",
+          "foundations/tokens/base/components/slider.tokens.json": "085fc8347519d21a31bfac7ce9b4a09a783cda112e62fa078075b076dd5d435d"
+        }
+      },
+      "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\"."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -50,7 +63,7 @@
     "The thumb is positioned in CSS from the value (track inset by half a thumb), never with thumbPositioning contain, which measures on the client and would be wrong before hydration."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (wave 6, grouped): present the contract and the token additions, record the approval.",
+  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 6 implementation review.",
   "implementationNotes": [
     "valueChange during the drag and valueCommit on release map to Bits UI onValueChange and onValueCommit; a key emits both."
   ],

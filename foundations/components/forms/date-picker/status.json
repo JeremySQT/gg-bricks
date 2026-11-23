@@ -3,7 +3,7 @@
   "componentId": "date-picker",
   "family": "forms",
   "wave": 6,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Let the user enter one calendar date in a form, by typing it in a segmented field or by choosing it in a calendar opened beside the field.",
     "useCases": [
@@ -41,7 +41,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "DatePicker contract: ISO value YYYY-MM-DD, min, max, locale, size (field only), bindable open, disabled, readonly, invalid, required, name, button labels; segmented field and internal calendar button on size.control.nested; children panel (no size, density only, IconButton sm month navigation) and day (44 px pitch, color.item and color.choice.on, today ring).",
+      "revision": {
+        "paths": ["foundations/components/forms/date-picker/contract.json"],
+        "sha256": {
+          "foundations/components/forms/date-picker/contract.json": "c9843cf12d6bd8ffab8c3a8b5a4e4feb7ce69eeee2844ae96b4554d2ce851c12"
+        }
+      },
+      "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\".",
+      "note": "Point 2 (calendar cell pitch, round days, selected and today treatment, empty outside days) approved in principle, to be judged on the real rendering at the implementation review."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -61,7 +71,7 @@
     "The week starts on the first day of the week of the locale (Intl.Locale weekInfo), Monday when the platform does not expose it; Bits UI defaults to Sunday whatever the locale."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (wave 6, grouped): present the contract and the token additions, record the approval.",
+  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 6 implementation review.",
   "implementationNotes": [
     "Bits UI 2.19.3 date-field.svelte.js:1153: on the day period segment, the condition `e.key === kbd.A || e.key === kbd.P || kbd.a || kbd.p` is always true, so arrows, Backspace or Enter set PM. Irrelevant here (date only, no day period) but a reason not to add a time to this component.",
     "Bits UI segments carry English names (`day, `, `Empty`) and a hidden `Selected Date: ...` description appended to body; the component overrides aria-label, aria-valuetext and aria-describedby through the child snippets and covers the override with a browser test (decision Contract versus Bits UI).",

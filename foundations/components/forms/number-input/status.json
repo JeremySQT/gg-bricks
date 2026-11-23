@@ -3,7 +3,7 @@
   "componentId": "number-input",
   "family": "forms",
   "wave": 6,
-  "phase": "contract",
+  "phase": "implementation",
   "scope": {
     "purpose": "Let the user enter one number in a form by typing it, formatted for the locale, or by stepping it with the arrow keys or two steppers.",
     "useCases": [
@@ -27,7 +27,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/number-input/contract.json",
-      "sha256": "9f3e73540a1b1a77c3890f3a6a403fb1e34819b82837d60c31c6044edd81a2b7"
+      "sha256": "348bf714f07839d65e5091c9bebccd212214c629f07ab00f2abd9650beb96d53"
     },
     "tokens": [],
     "figma": null,
@@ -39,7 +39,17 @@
     "agentDocs": null
   },
   "approvals": {
-    "contract": null,
+    "contract": {
+      "scope": "NumberInput contract: number value without default, optional min and max, step, locale, placeholder, size, hideSteppers, disabled, readonly, invalid, required, name, stepper labels; spin button formatted for the locale, decrease at the inline start and increase at the inline end on size.control.nested; Shift+Up/Down and Page Up/Down by ten steps.",
+      "revision": {
+        "paths": ["foundations/components/forms/number-input/contract.json"],
+        "sha256": {
+          "foundations/components/forms/number-input/contract.json": "348bf714f07839d65e5091c9bebccd212214c629f07ab00f2abd9650beb96d53"
+        }
+      },
+      "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\".",
+      "note": "Amended at the gate before recording: Shift with Up and Down Arrow changes the value by ten steps, as Page Up and Page Down (user: \"flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma)\"); Up and Down Arrow change it by one step (1 with the default step)."
+    },
     "implementation": null,
     "figmaParity": null,
     "documentation": null,
@@ -54,10 +64,11 @@
     "Number props may have no default (schema change accepted by the user in User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping): value has no value until one is given, min and max are optional.",
     "Steppers in every size, including sm (user question at the scoping: \"pourquoi masquer les boutons en SM ?\"): they are internal parts on size.control.nested.{size}, not IconButtons, so they fit inside an sm field; decrease at the inline start and increase at the inline end, so that their 44 px targets do not overlap; hideSteppers removes them.",
     "Written without Bits UI (it has no number input): a text input with inputmode decimal exposed as a spin button, not input type number (wheel changes, accepts e, empties its value on invalid text, cannot be formatted).",
-    "Values clamp to min and max on commit; typed values are not snapped to step, stepping goes to the next multiple of step."
+    "Values clamp to min and max on commit; typed values are not snapped to step, stepping goes to the next multiple of step.",
+    "Shift+Up/Down Arrow change the value by ten steps, like Page Up/Down, as in Figma's numeric fields (user at the contract gate, 2026-11-23)."
   ],
   "openDecisions": [],
-  "nextAction": "Contract gate (wave 6, grouped): present the contract and the token additions, record the approval.",
+  "nextAction": "Implementation (skill ggb-svelte), then the grouped wave 6 implementation review.",
   "implementationNotes": [
     "Parsing and formatting through Intl.NumberFormat(locale).formatToParts to learn the grouping and decimal separators.",
     "Decimal stepping without floating error: round to the larger number of fraction digits of the value and of step."
