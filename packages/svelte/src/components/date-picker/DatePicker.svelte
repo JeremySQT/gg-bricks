@@ -433,6 +433,16 @@
       tabindex="-1"
       popover="auto"
       onfocusout={focusOut}
+      ontoggle={(event) => {
+        // The browser coalesces the toggle events of a panel closed and opened again in the same task (a press
+        // outside, then at once on the button): the event says open to open, and lib/overlay sees no change. Both
+        // changes are reported here.
+        const toggle = event as ToggleEvent;
+        if (toggle.oldState === 'open' && toggle.newState === 'open' && open) {
+          setOpen(false);
+          void opened(true);
+        }
+      }}
       {@attach floating({ anchor: () => field_, open: () => open, onOpenChange: opened })}
     >
       {#if rendered}
