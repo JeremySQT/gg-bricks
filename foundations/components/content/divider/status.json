@@ -1,0 +1,277 @@
+{
+  "formatStatus": "v1",
+  "componentId": "divider",
+  "family": "content",
+  "wave": 5,
+  "phase": "done",
+  "scope": {
+    "purpose": "Separate two groups of content with a thin line, horizontally or vertically, optionally with a short centered label.",
+    "useCases": [
+      "Between sections of a panel, a card or a form.",
+      "Between groups of items laid out in a row (filters, metadata on one line).",
+      "A labeled break (Or, Today) between two blocks."
+    ],
+    "exclusions": [
+      "Spacing: the layout's gap provides it; the divider adds no margin.",
+      "Resize handles between panes.",
+      "Separators inside Menu and Toolbar: those components keep their own child separator (same roles)."
+    ],
+    "alternatives": ["Space alone (layout gap) or a container edge (card).", "A heading to start a new section."]
+  },
+  "dependencies": [],
+  "fixtures": [],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/content/divider/contract.json",
+      "sha256": "8626902fbd8a41594d64ceafc1ebc311b66f49f7ca407683c4be7b3b8bc579b8"
+    },
+    "tokens": ["foundations/tokens/base/components/divider.tokens.json"],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "content/divider (540:61)",
+      "library": "Content (343:1635), section Divider (545:645)",
+      "componentSet": "545:652",
+      "specification": "552:703",
+      "ledger": "reports/components/divider/figma/ledger.json",
+      "parity": "reports/components/divider/figma/parity.json",
+      "screenshots": [
+        "reports/components/divider/figma/master-set.png",
+        "reports/components/divider/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/divider/figma/blueprint-anatomy.png",
+          "node": "552:732"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/wave5-divider-master.plugin.js",
+        "authoring/adapters/figma/wave5-parity.plugin.js",
+        "authoring/adapters/figma/wave5-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js",
+        "authoring/adapters/figma/spec-header-links.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/content/divider/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/divider",
+      "files": [
+        "packages/svelte/src/components/divider/Divider.svelte",
+        "packages/svelte/src/components/divider/types.ts",
+        "packages/svelte/src/components/divider/divider.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (Separator: role, orientation, decorative)"
+      },
+      "report": "reports/components/divider/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/divider",
+      "preview": "dist/previews/divider.html (npm run build && npm run build:preview divider)",
+      "artifact": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2), page divider.html"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/data-structure.test.ts"],
+      "browser": ["tests/browser/divider.spec.ts"],
+      "evidence": "reports/components/divider/svelte/"
+    },
+    "humanDocs": "documentation/components/divider.md",
+    "agentDocs": "documentation/index.json (entry divider); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Divider contract: orientation, optional centered label (horizontal only, typography.caption.md secondary), decorative; line in color.border.subtle of component.divider.thickness (1 px, round 2); no margin; separator semantics by default.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/divider/contract.json",
+          "foundations/tokens/base/components/divider.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/content/divider/contract.json": "8626902fbd8a41594d64ceafc1ebc311b66f49f7ca407683c4be7b3b8bc579b8",
+          "foundations/tokens/base/components/divider.tokens.json": "b4c75d826694f4a883412746494a37f654865d8d13e3aa82502f6d7c780c00d9"
+        }
+      },
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\".",
+      "note": "The user expects most adjustments at the implementation review."
+    },
+    "implementation": {
+      "scope": "Divider: Bits UI Separator, border line of component.divider.thickness, centered label on horizontal dividers, vertical stretched to the row or the line box, decorative.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/divider/Divider.svelte",
+          "packages/svelte/src/components/divider/contract.generated.ts",
+          "packages/svelte/src/components/divider/divider.css",
+          "packages/svelte/src/components/divider/tokens.generated.css",
+          "packages/svelte/src/components/divider/types.ts",
+          "examples/divider/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/divider/Divider.svelte": "ca71da81caf507a505c83e3043df144f213ae700882392ae0d355473c1fa617e",
+          "packages/svelte/src/components/divider/contract.generated.ts": "12a4610583aeee3a16a6b52a4580e17b0dea0d35c3b2cf6bf1baff5918ccdcaf",
+          "packages/svelte/src/components/divider/divider.css": "4b0601c676d589c7bfb4f91727e9449f7b807f8951431b45a1ec3316e45fba4a",
+          "packages/svelte/src/components/divider/tokens.generated.css": "fd20af4766009e8a10fc410bd8f3f58e7253e662f36da48d4bcf7c3fd81d300f",
+          "packages/svelte/src/components/divider/types.ts": "bfd48d828ac665f539a0f73e3facb67467c813ed9be12ecee1beef7442ebf92a",
+          "examples/divider/App.svelte": "cc6a6a4c1dc269068d71003d73d1dc38f47ac681e4f78964129f3ce07e77af21"
+        }
+      },
+      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\". Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
+      "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
+    },
+    "figmaParity": {
+      "scope": "Figma component set 545:652 and specification frame 552:703 of the divider component, parity report (20 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/divider/figma-spec.md",
+          "reports/components/divider/figma/parity.json",
+          "reports/components/divider/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/content/divider/figma-spec.md": "f5ffa362fad9d4349506082523d9725b24ef677e315075121f43d9c1cdce9c66",
+          "reports/components/divider/figma/parity.json": "bc7f44c76ea0490abeefa83f2d33de14c5dc1a9d1fe82269caf89d0bc824c90d",
+          "reports/components/divider/figma/ledger.json": "5a16d1c70fc987794d8e766177f387ef4550cc161469b31995f5a8f4b36d8f63"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "545:652",
+          "specificationFrame": "552:703"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of divider (progressive detail: the page is the recipe, the contract the technical detail; Anatomy numbered like the Figma blueprint).",
+      "revision": {
+        "paths": [
+          "documentation/components/divider.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/divider.svelte"
+        ],
+        "sha256": {
+          "documentation/components/divider.md": "d3459b25064875c857b61616f88654e6c18c96535d82875f86ba08c9517219cd",
+          "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
+          "apps/docs/src/playgrounds/divider.svelte": "887934b7a5d8e9599fffc66d079230a0c37311631feb2aceb6a7f3a4b90d9994"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\". Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-13",
+      "evidence": "reports/components/divider/"
+    },
+    {
+      "name": "Wave 5 contract gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Browser tests/browser/divider.spec.ts (Chromium), also with a CI-like font set (no system Inter)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "reports/components/divider/svelte/"
+    },
+    {
+      "name": "npm run build:preview divider",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium 328 passed, docs site included; overlay smoke spec in Firefox and WebKit 20 passed after installing those browsers in the session)",
+      "result": "348 passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Wave 5 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2)"
+    },
+    {
+      "name": "Figma parity by hash (20 records, 0 failures) in the four browser-report contexts",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "reports/components/divider/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 Figma parity gate approved (third round)",
+      "result": "passed",
+      "date": "2026-11-20",
+      "evidence": "Figma file TDPqojP4KvbWJlKSYc4zKC, specification 552:703; reports/components/divider/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 documentation gate approved",
+      "result": "passed",
+      "date": "2026-11-21",
+      "evidence": "https://wave-5-design-system.jeremysqt.workers.dev/components/divider/; tests/browser/docs-site.spec.ts (42 passed, CI-like font set)"
+    },
+    {
+      "name": "Wave 5 final consistency pass accepted (roadmap checklist complete)",
+      "result": "passed",
+      "date": "2026-11-22",
+      "evidence": "authoring/roadmap.md (Wave 5 final consistency pass)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build) and npm run check:approvals (514 digests, 0 errors, 0 warnings)",
+      "result": "passed",
+      "date": "2026-11-22"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the consistency pass",
+      "result": "353 passed",
+      "date": "2026-11-21"
+    },
+    {
+      "name": "Documentation: npm run build:docs (every live block compiled) and tests/browser/docs-site.spec.ts with a CI-like font set (42 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-21"
+    }
+  ],
+  "decisionsTaken": [
+    "Line in color.border.subtle, the color of the Menu and Toolbar separators and of the Tabs line.",
+    "No margin of its own (the catalog: prefer layout primitives for spacing).",
+    "Optional label on horizontal dividers only, centered, typography.caption.md in color.content.secondary, space.content.sm on both sides.",
+    "Semantic separator by default; decorative hides it from assistive technology (Bits UI Separator).",
+    "Thickness tokenized (user at the wave 5 contract gate, round 1 (2026-11-13): \"l'épaisseur du trait devrait être tokenisée, tout en restant sur 1px par défaut. Mais certaines brands pourraient vouloir mettre autre chose\"): component token component.divider.thickness = 1 px (primitive.border.1), so that a brand changes dividers without touching border.width.default (every control border). Menu and Toolbar separators and table lines keep border.width.default."
+  ],
+  "openDecisions": [],
+  "nextAction": "Pull request wave/5 to main; Done once merged.",
+  "implementationNotes": [
+    "Exports Divider and the type DividerProps.",
+    "The line is a border (painted by the system in forced colors); a labeled divider draws its two lines with ::before and ::after.",
+    "A vertical divider is an inline-block of 1lh minimum, stretched by a flex row (align-self: stretch)."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-21",
+      "change": "Final consistency pass (authoring/roadmap.md): aria-label, aria-hidden and aria-orientation are owned attributes in DividerProps (the component sets them from label, decorative and orientation); the page lists them.",
+      "sha256": {
+        "packages/svelte/src/components/divider/types.ts": "bfd48d828ac665f539a0f73e3facb67467c813ed9be12ecee1beef7442ebf92a",
+        "documentation/components/divider.md": "d3459b25064875c857b61616f88654e6c18c96535d82875f86ba08c9517219cd"
+      },
+      "review": "Wave 5 final consistency pass, presented with the pull request",
+      "accepted": "User on 2026-11-22: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"",
+      "recorded": "Re-recorded with the approvals it touches (2026-11-22)."
+    }
+  ]
+}

@@ -150,11 +150,11 @@
         ],
         "sha256": {
           "documentation/components/field.md": "8ce71df3ef1ce9f60910898e0a16557e66bd480bbfdc18dea714c60b8fd5a673",
-          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
+          "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
           "apps/docs/src/playgrounds/field.svelte": "0bd4d021c60d878f0fd7aeab8ea6a7b7d50b0fc67081377c92afe7b3561fc87e"
         }
       },
-      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded. Re-recorded on 2026-11-09 with the wave 3 documentation review: User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremysqt.workers.dev): \"Je valide la documentation, tu peux faire une PR\". The review covered the cross-references to the wave 3 components and the progressive detail rule (Anatomy in usage terms, the contract for tokens and measurements). Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): documentation/index.json gained the seven wave 4 entries and lost the \"(planned)\" mentions of components now exported. Digests re-recorded.",
+      "provenance": "User after reading the documentation pages in the Claude Code session https://claude.ai/code/session_01AzyApFChs2AgUq6EwCQmCx (2026-10-30): \"Sinon je valide la documentation je vais fusionner la PR\" Amendment of 2026-10-31 (audit lot 1, same session https://claude.ai/code/session_0156c5459xsSFh6jdvshCSsu): the Examples sentence names the review page as a repository file not shipped in the package; digests re-recorded. Re-recorded on 2026-11-09 with the wave 3 documentation review: User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremysqt.workers.dev): \"Je valide la documentation, tu peux faire une PR\". The review covered the cross-references to the wave 3 components and the progressive detail rule (Anatomy in usage terms, the contract for tokens and measurements). Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): documentation/index.json gained the seven wave 4 entries and lost the \"(planned)\" mentions of components now exported. Digests re-recorded. Amendment of 2026-11-21 (wave 5 documentation review on https://wave-5-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Je valide la documentation\"): documentation/index.json gained the five wave 5 entries and lost the \"(planned)\" mention of Avatar. Digests re-recorded.",
       "note": null
     },
     "delivery": null
@@ -270,6 +270,16 @@
         "documentation/index.json": "e73ef4792c0b1f49c410fd577c1e9b23419c90779b93f339d2da6bbb1421d145"
       },
       "recorded": "Re-recorded with the wave 3 documentation approval of 2026-11-09."
+    },
+    {
+      "date": "2026-11-20",
+      "change": "documentation/index.json gained the five wave 5 entries (avatar, avatar-group, data-field, divider, table) and lost the \"(planned)\" mention of Avatar in the icon entry. To re-record at the wave 5 documentation gate.",
+      "sha256": {
+        "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9"
+      },
+      "review": "Wave 5 documentation gate",
+      "accepted": "User on 2026-11-21: \"Je valide la documentation\"",
+      "recorded": "Re-recorded with the documentation approval (2026-11-21)."
     }
   ]
 }

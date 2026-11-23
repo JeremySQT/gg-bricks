@@ -144,11 +144,11 @@
         ],
         "sha256": {
           "documentation/components/skeleton.md": "4cf5fdf3bd047d80378b1922865912fa0a690502d1aa4ddcab35a2a60ad29e8d",
-          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
+          "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
           "apps/docs/src/playgrounds/skeleton.svelte": "a521b693dbaf272b45662e70241cf1dd88698136719149655631f5124bad43b5"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremysqt.workers.dev): \"Je valide la documentation, tu peux faire une PR\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): documentation/index.json gained the seven wave 4 entries and lost the \"(planned)\" mentions of components now exported. Digests re-recorded.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremysqt.workers.dev): \"Je valide la documentation, tu peux faire une PR\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): documentation/index.json gained the seven wave 4 entries and lost the \"(planned)\" mentions of components now exported. Digests re-recorded. Amendment of 2026-11-21 (wave 5 documentation review on https://wave-5-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Je valide la documentation\"): documentation/index.json gained the five wave 5 entries and lost the \"(planned)\" mention of Avatar. Digests re-recorded.",
       "note": null
     },
     "delivery": null
@@ -233,5 +233,17 @@
   "implementationNotes": [
     "Pulses stay in phase across the page: each pulse animation's startTime is set to 0 (the document timeline origin) when the skeleton mounts.",
     "Text lines use the lh unit for the line box and a bar of 1em: the skeleton paragraph has the height of the real paragraph (checked against real text in the browser test)."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-20",
+      "change": "documentation/index.json gained the five wave 5 entries (avatar, avatar-group, data-field, divider, table) and lost the \"(planned)\" mention of Avatar in the icon entry. To re-record at the wave 5 documentation gate.",
+      "sha256": {
+        "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9"
+      },
+      "review": "Wave 5 documentation gate",
+      "accepted": "User on 2026-11-21: \"Je valide la documentation\"",
+      "recorded": "Re-recorded with the documentation approval (2026-11-21)."
+    }
   ]
 }

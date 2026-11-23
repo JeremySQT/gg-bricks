@@ -1,0 +1,129 @@
+{
+  "component": {
+    "avatar": {
+      "$description": "Avatar tokens: values that mean something only for the Avatar, indexed by its size. They do not change with density.",
+      "size": {
+        "$description": "Inline and block size of the square box (the former semantic size.avatar.*, removed on 2026-11-01 by the naming rule).",
+        "xs": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v24}"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v32}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v40}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v48}"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v64}"
+        }
+      },
+      "typography": {
+        "$description": "Initials: medium weight, about 0.4 of the box (0.46 at xs, which shows one initial), line height 1 so that the box centers them.",
+        "xs": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{primitive.font.family.sans}",
+            "fontWeight": "{primitive.font.weight.500}",
+            "fontSize": "{primitive.font.size.11}",
+            "lineHeight": "{primitive.font.lineHeight.none}",
+            "letterSpacing": "{primitive.font.tracking.normal}"
+          }
+        },
+        "sm": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{primitive.font.family.sans}",
+            "fontWeight": "{primitive.font.weight.500}",
+            "fontSize": "{primitive.font.size.13}",
+            "lineHeight": "{primitive.font.lineHeight.none}",
+            "letterSpacing": "{primitive.font.tracking.normal}"
+          }
+        },
+        "md": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{primitive.font.family.sans}",
+            "fontWeight": "{primitive.font.weight.500}",
+            "fontSize": "{primitive.font.size.16}",
+            "lineHeight": "{primitive.font.lineHeight.none}",
+            "letterSpacing": "{primitive.font.tracking.normal}"
+          }
+        },
+        "lg": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{primitive.font.family.sans}",
+            "fontWeight": "{primitive.font.weight.500}",
+            "fontSize": "{primitive.font.size.18}",
+            "lineHeight": "{primitive.font.lineHeight.none}",
+            "letterSpacing": "{primitive.font.tracking.normal}"
+          }
+        },
+        "xl": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{primitive.font.family.sans}",
+            "fontWeight": "{primitive.font.weight.500}",
+            "fontSize": "{primitive.font.size.24}",
+            "lineHeight": "{primitive.font.lineHeight.none}",
+            "letterSpacing": "{primitive.font.tracking.normal}"
+          }
+        }
+      },
+      "icon-size": {
+        "$description": "Box of the generic person glyph shown without a name; the reference set draws 1/8 inside it, so the drawing covers about half of the avatar.",
+        "xs": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v16}"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v20}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v24}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v28}"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v40}"
+        }
+      },
+      "radius": {
+        "$description": "Corners of the square shape, proportional to the size (about 1/6) so that every size reads as the same shape.",
+        "xs": {
+          "$type": "dimension",
+          "$value": "{primitive.radius.sm}"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.radius.md}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.radius.lg}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.radius.lg}"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "{primitive.radius.xl}"
+        }
+      }
+    }
+  }
+}

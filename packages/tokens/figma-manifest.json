@@ -19112,6 +19112,1139 @@
     },
     {
       "collection": "Foundations · Brand",
+      "name": "component/avatar-group/overlap/xs",
+      "path": "component.avatar-group.overlap.xs",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-group-overlap-xs)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v6"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v6"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v6"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar-group/overlap/sm",
+      "path": "component.avatar-group.overlap.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-group-overlap-sm)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v8"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v8"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v8"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar-group/overlap/md",
+      "path": "component.avatar-group.overlap.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-group-overlap-md)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v10"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v10"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v10"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar-group/overlap/lg",
+      "path": "component.avatar-group.overlap.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-group-overlap-lg)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v12"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v12"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v12"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar-group/overlap/xl",
+      "path": "component.avatar-group.overlap.xl",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-group-overlap-xl)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/size/xs",
+      "path": "component.avatar.size.xs",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-size-xs)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/size/sm",
+      "path": "component.avatar.size.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-size-sm)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v32"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v32"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v32"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/size/md",
+      "path": "component.avatar.size.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-size-md)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v40"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v40"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v40"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/size/lg",
+      "path": "component.avatar.size.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-size-lg)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v48"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v48"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v48"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/size/xl",
+      "path": "component.avatar.size.xl",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-size-xl)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v64"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v64"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v64"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/xs/fontSize",
+      "path": "component.avatar.typography.xs.fontSize",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_SIZE"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-xs-fontSize)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/size/11"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/size/11"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/size/11"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/xs/lineHeight",
+      "path": "component.avatar.typography.xs.lineHeight",
+      "type": "FLOAT",
+      "scopes": [
+        "LINE_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-xs-lineHeight)"
+      },
+      "values": {
+        "base": 11,
+        "brick": 11,
+        "orchid": 11
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/xs/letterSpacing",
+      "path": "component.avatar.typography.xs.letterSpacing",
+      "type": "FLOAT",
+      "scopes": [
+        "LETTER_SPACING"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-xs-letterSpacing)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/xs/fontFamily",
+      "path": "component.avatar.typography.xs.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-xs-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/xs/fontWeight",
+      "path": "component.avatar.typography.xs.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-xs-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/xs/lineHeightRatio",
+      "path": "component.avatar.typography.xs.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-xs-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/sm/fontSize",
+      "path": "component.avatar.typography.sm.fontSize",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_SIZE"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-sm-fontSize)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/size/13"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/size/13"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/size/13"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/sm/lineHeight",
+      "path": "component.avatar.typography.sm.lineHeight",
+      "type": "FLOAT",
+      "scopes": [
+        "LINE_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-sm-lineHeight)"
+      },
+      "values": {
+        "base": 13,
+        "brick": 13,
+        "orchid": 13
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/sm/letterSpacing",
+      "path": "component.avatar.typography.sm.letterSpacing",
+      "type": "FLOAT",
+      "scopes": [
+        "LETTER_SPACING"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-sm-letterSpacing)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/sm/fontFamily",
+      "path": "component.avatar.typography.sm.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-sm-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/sm/fontWeight",
+      "path": "component.avatar.typography.sm.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-sm-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/sm/lineHeightRatio",
+      "path": "component.avatar.typography.sm.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-sm-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/md/fontSize",
+      "path": "component.avatar.typography.md.fontSize",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_SIZE"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-md-fontSize)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/size/16"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/size/16"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/size/16"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/md/lineHeight",
+      "path": "component.avatar.typography.md.lineHeight",
+      "type": "FLOAT",
+      "scopes": [
+        "LINE_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-md-lineHeight)"
+      },
+      "values": {
+        "base": 16,
+        "brick": 16,
+        "orchid": 16
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/md/letterSpacing",
+      "path": "component.avatar.typography.md.letterSpacing",
+      "type": "FLOAT",
+      "scopes": [
+        "LETTER_SPACING"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-md-letterSpacing)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/md/fontFamily",
+      "path": "component.avatar.typography.md.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-md-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/md/fontWeight",
+      "path": "component.avatar.typography.md.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-md-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/md/lineHeightRatio",
+      "path": "component.avatar.typography.md.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-md-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/lg/fontSize",
+      "path": "component.avatar.typography.lg.fontSize",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_SIZE"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-lg-fontSize)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/size/18"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/size/18"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/size/18"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/lg/lineHeight",
+      "path": "component.avatar.typography.lg.lineHeight",
+      "type": "FLOAT",
+      "scopes": [
+        "LINE_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-lg-lineHeight)"
+      },
+      "values": {
+        "base": 18,
+        "brick": 18,
+        "orchid": 18
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/lg/letterSpacing",
+      "path": "component.avatar.typography.lg.letterSpacing",
+      "type": "FLOAT",
+      "scopes": [
+        "LETTER_SPACING"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-lg-letterSpacing)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/lg/fontFamily",
+      "path": "component.avatar.typography.lg.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-lg-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/lg/fontWeight",
+      "path": "component.avatar.typography.lg.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-lg-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/lg/lineHeightRatio",
+      "path": "component.avatar.typography.lg.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-lg-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/xl/fontSize",
+      "path": "component.avatar.typography.xl.fontSize",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_SIZE"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-xl-fontSize)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/size/24"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/size/24"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/size/24"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/xl/lineHeight",
+      "path": "component.avatar.typography.xl.lineHeight",
+      "type": "FLOAT",
+      "scopes": [
+        "LINE_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-xl-lineHeight)"
+      },
+      "values": {
+        "base": 24,
+        "brick": 24,
+        "orchid": 24
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/xl/letterSpacing",
+      "path": "component.avatar.typography.xl.letterSpacing",
+      "type": "FLOAT",
+      "scopes": [
+        "LETTER_SPACING"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-xl-letterSpacing)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/tracking/normal"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/xl/fontFamily",
+      "path": "component.avatar.typography.xl.fontFamily",
+      "type": "STRING",
+      "scopes": [
+        "FONT_FAMILY"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-xl-fontFamily)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/family/sans"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/xl/fontWeight",
+      "path": "component.avatar.typography.xl.fontWeight",
+      "type": "FLOAT",
+      "scopes": [
+        "FONT_WEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-xl-fontWeight)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/weight/500"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/typography/xl/lineHeightRatio",
+      "path": "component.avatar.typography.xl.lineHeightRatio",
+      "type": "STRING",
+      "scopes": [],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-typography-xl-lineHeightRatio)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/font/lineHeight/none"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/icon-size/xs",
+      "path": "component.avatar.icon-size.xs",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-icon-size-xs)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v16"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/icon-size/sm",
+      "path": "component.avatar.icon-size.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-icon-size-sm)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v20"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/icon-size/md",
+      "path": "component.avatar.icon-size.md",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-icon-size-md)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v24"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/icon-size/lg",
+      "path": "component.avatar.icon-size.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-icon-size-lg)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v28"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v28"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v28"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/icon-size/xl",
+      "path": "component.avatar.icon-size.xl",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-icon-size-xl)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v40"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v40"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v40"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/radius/xs",
+      "path": "component.avatar.radius.xs",
+      "type": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-radius-xs)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/radius/sm"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/radius/sm"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/radius/sm"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/radius/sm",
+      "path": "component.avatar.radius.sm",
+      "type": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-radius-sm)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/radius/md"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/radius/md"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/radius/md"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/radius/md",
+      "path": "component.avatar.radius.md",
+      "type": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-radius-md)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/radius/lg"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/radius/lg"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/radius/lg"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/radius/lg",
+      "path": "component.avatar.radius.lg",
+      "type": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-radius-lg)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/radius/lg"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/radius/lg"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/radius/lg"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/avatar/radius/xl",
+      "path": "component.avatar.radius.xl",
+      "type": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-avatar-radius-xl)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/radius/xl"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/radius/xl"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/radius/xl"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/data-field/label-inline-size",
+      "path": "component.data-field.label-inline-size",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-data-field-label-inline-size)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/dimension/v160"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/dimension/v160"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/dimension/v160"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
       "name": "component/dialog/inline-size/sm",
       "path": "component.dialog.inline-size.sm",
       "type": "FLOAT",
@@ -19176,6 +20309,29 @@
         },
         "orchid": {
           "alias": "Foundations · Primitives:primitive/dimension/v720"
+        }
+      }
+    },
+    {
+      "collection": "Foundations · Brand",
+      "name": "component/divider/thickness",
+      "path": "component.divider.thickness",
+      "type": "FLOAT",
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {
+        "WEB": "var(--ggb-component-divider-thickness)"
+      },
+      "values": {
+        "base": {
+          "alias": "Foundations · Primitives:primitive/border/1"
+        },
+        "brick": {
+          "alias": "Foundations · Primitives:primitive/border/1"
+        },
+        "orchid": {
+          "alias": "Foundations · Primitives:primitive/border/1"
         }
       }
     },
@@ -19846,6 +21002,86 @@
         "fontWeight": "typography/indicator/lg/fontWeight",
         "fontSize": "typography/indicator/lg/fontSize",
         "letterSpacing": "typography/indicator/lg/letterSpacing"
+      }
+    },
+    {
+      "name": "component/avatar/typography/xs",
+      "family": "Inter",
+      "style": "Medium",
+      "size": 11,
+      "lineHeight": 11,
+      "lineHeightPercent": 100,
+      "letterSpacing": 0,
+      "features": [],
+      "variables": {
+        "fontFamily": "component/avatar/typography/xs/fontFamily",
+        "fontWeight": "component/avatar/typography/xs/fontWeight",
+        "fontSize": "component/avatar/typography/xs/fontSize",
+        "letterSpacing": "component/avatar/typography/xs/letterSpacing"
+      }
+    },
+    {
+      "name": "component/avatar/typography/sm",
+      "family": "Inter",
+      "style": "Medium",
+      "size": 13,
+      "lineHeight": 13,
+      "lineHeightPercent": 100,
+      "letterSpacing": 0,
+      "features": [],
+      "variables": {
+        "fontFamily": "component/avatar/typography/sm/fontFamily",
+        "fontWeight": "component/avatar/typography/sm/fontWeight",
+        "fontSize": "component/avatar/typography/sm/fontSize",
+        "letterSpacing": "component/avatar/typography/sm/letterSpacing"
+      }
+    },
+    {
+      "name": "component/avatar/typography/md",
+      "family": "Inter",
+      "style": "Medium",
+      "size": 16,
+      "lineHeight": 16,
+      "lineHeightPercent": 100,
+      "letterSpacing": 0,
+      "features": [],
+      "variables": {
+        "fontFamily": "component/avatar/typography/md/fontFamily",
+        "fontWeight": "component/avatar/typography/md/fontWeight",
+        "fontSize": "component/avatar/typography/md/fontSize",
+        "letterSpacing": "component/avatar/typography/md/letterSpacing"
+      }
+    },
+    {
+      "name": "component/avatar/typography/lg",
+      "family": "Inter",
+      "style": "Medium",
+      "size": 18,
+      "lineHeight": 18,
+      "lineHeightPercent": 100,
+      "letterSpacing": 0,
+      "features": [],
+      "variables": {
+        "fontFamily": "component/avatar/typography/lg/fontFamily",
+        "fontWeight": "component/avatar/typography/lg/fontWeight",
+        "fontSize": "component/avatar/typography/lg/fontSize",
+        "letterSpacing": "component/avatar/typography/lg/letterSpacing"
+      }
+    },
+    {
+      "name": "component/avatar/typography/xl",
+      "family": "Inter",
+      "style": "Medium",
+      "size": 24,
+      "lineHeight": 24,
+      "lineHeightPercent": 100,
+      "letterSpacing": 0,
+      "features": [],
+      "variables": {
+        "fontFamily": "component/avatar/typography/xl/fontFamily",
+        "fontWeight": "component/avatar/typography/xl/fontWeight",
+        "fontSize": "component/avatar/typography/xl/fontSize",
+        "letterSpacing": "component/avatar/typography/xl/letterSpacing"
       }
     }
   ],

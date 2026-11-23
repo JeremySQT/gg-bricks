@@ -1,0 +1,298 @@
+{
+  "formatStatus": "v1",
+  "componentId": "avatar",
+  "family": "content",
+  "wave": 5,
+  "phase": "done",
+  "scope": {
+    "purpose": "Represent a person, or an organization, a team or a project, with a picture, their initials or a generic glyph, in a small box of fixed size beside or instead of their name.",
+    "useCases": [
+      "The author of a comment, the assignee of a task, the owner of a record (beside the name, decorative).",
+      "A person alone where the name does not fit (a table cell, a compact list), named for assistive technology.",
+      "An organization, a team or a project with the square shape.",
+      "The current user in an application header, wrapped by the integration in the button that opens the account menu."
+    ],
+    "exclusions": [
+      "A presence or status dot over the avatar (online, busy): a later composition with Badge.",
+      "Colors derived from the name: needs a categorical palette the foundations do not have.",
+      "Upload or cropping of a picture.",
+      "Interactivity of its own: the integration wraps the avatar in a button or a link."
+    ],
+    "alternatives": [
+      "Icon for a symbol that does not represent an identity.",
+      "Badge or Counter for a status or a quantity.",
+      "Plain text when the name alone is enough."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": ["Portrait pictures for the examples (local files under examples/avatar/, no network)."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/content/avatar/contract.json",
+      "sha256": "0aa0ef6d61130eb46e6dbdd81c69e529aac4f20e5d4adae1c6e9482eb2a18882"
+    },
+    "tokens": ["foundations/tokens/base/components/avatar.tokens.json"],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "content/avatar (540:59)",
+      "library": "Content (343:1635), section Avatar (542:495)",
+      "componentSet": "543:605",
+      "specification": "551:2",
+      "ledger": "reports/components/avatar/figma/ledger.json",
+      "parity": "reports/components/avatar/figma/parity.json",
+      "screenshots": [
+        "reports/components/avatar/figma/master-set.png",
+        "reports/components/avatar/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/avatar/figma/blueprint-anatomy.png",
+          "node": "551:39"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/wave5-avatar-master.plugin.js",
+        "authoring/adapters/figma/wave5-parity.plugin.js",
+        "authoring/adapters/figma/wave5-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js",
+        "authoring/adapters/figma/spec-header-links.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/content/avatar/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/avatar",
+      "files": [
+        "packages/svelte/src/components/avatar/Avatar.svelte",
+        "packages/svelte/src/components/avatar/types.ts",
+        "packages/svelte/src/components/avatar/initials.ts",
+        "packages/svelte/src/components/avatar/avatar.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "2.19.3 (Avatar: loading status of the picture)"
+      },
+      "report": "reports/components/avatar/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/avatar",
+      "preview": "dist/previews/avatar.html (npm run build && npm run build:preview avatar)",
+      "artifact": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2), page avatar.html"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/data-structure.test.ts"],
+      "browser": ["tests/browser/avatar.spec.ts"],
+      "evidence": "reports/components/avatar/svelte/"
+    },
+    "humanDocs": "documentation/components/avatar.md",
+    "agentDocs": "documentation/index.json (entry avatar); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Avatar contract: name, initials (at most three characters, round 2), src, size xs to xl (component.avatar.size.* 24 to 64 px), shape circle or square (component.avatar.radius.*), decorative; picture shown only once loaded, initials (component.avatar.typography.*, one at xs) or a generic person glyph (component.avatar.icon-size.*) on color.surface.muted with color.content.secondary; image named by name; not interactive; forced colors edge.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/avatar/contract.json",
+          "foundations/tokens/base/components/avatar.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/content/avatar/contract.json": "0aa0ef6d61130eb46e6dbdd81c69e529aac4f20e5d4adae1c6e9482eb2a18882",
+          "foundations/tokens/base/components/avatar.tokens.json": "07b87a1d515d21a64481235195e53d25b7cabefd45ddfecf9f6ded87e82f22e0"
+        }
+      },
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\".",
+      "note": "The user expects most adjustments at the implementation review."
+    },
+    "implementation": {
+      "scope": "Avatar: Bits UI Avatar loading status kept per source, picture shown only once loaded, grapheme initials centered on the cap height, generic Phosphor user glyph, decorative and nameless avatars hidden, forced-colors edge.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/avatar/Avatar.svelte",
+          "packages/svelte/src/components/avatar/avatar.css",
+          "packages/svelte/src/components/avatar/contract.generated.ts",
+          "packages/svelte/src/components/avatar/initials.ts",
+          "packages/svelte/src/components/avatar/tokens.generated.css",
+          "packages/svelte/src/components/avatar/types.ts",
+          "examples/avatar/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/avatar/Avatar.svelte": "a8f187d02128aab70a3a7cf9b78cff170090522d12884bfd606083032aa6a4d6",
+          "packages/svelte/src/components/avatar/avatar.css": "9e14d431d2453fd89652e7d830ee0cd80146c1bdfbe503e4ae871e591337e4f6",
+          "packages/svelte/src/components/avatar/contract.generated.ts": "9f641d7bea19445a813d544809eb747cef9bfd99a9d6b932ee6486bb910e4c3f",
+          "packages/svelte/src/components/avatar/initials.ts": "136f52ed4ea99640df6d24505c7165fe95f74fa18a5639dc2de5ed7f3cea3179",
+          "packages/svelte/src/components/avatar/tokens.generated.css": "e47767790d205469c52d302d11fcc043f94e7ee007202aa8bc0486927d60dd24",
+          "packages/svelte/src/components/avatar/types.ts": "cd6c1c64a0cbadff0189feb000ff1bac485f2b02a6373ff505f714dc65ace65f",
+          "examples/avatar/App.svelte": "bd04651ab4771db47f6215b36d17eb0f9a1a44ce8bcc724145a10dba08818f8a"
+        }
+      },
+      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\". Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
+      "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
+    },
+    "figmaParity": {
+      "scope": "Figma component set 543:605 and specification frame 551:2 of the avatar component, parity report (360 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/content/avatar/figma-spec.md",
+          "reports/components/avatar/figma/parity.json",
+          "reports/components/avatar/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/content/avatar/figma-spec.md": "593ec4d2deae281dbf55995d276fbdffa21ddb7922ebcba94a12d471d56e9ce6",
+          "reports/components/avatar/figma/parity.json": "32b2e88065c085df43237d6dd5d503d0042ec61b4069b237656832ca55f4ac7c",
+          "reports/components/avatar/figma/ledger.json": "95284940dc3d36e161b2e419ad4cf76bb74b6530766a2ac6f13ee6bd5609e4a3"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "543:605",
+          "specificationFrame": "551:2"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of avatar (progressive detail: the page is the recipe, the contract the technical detail; Anatomy numbered like the Figma blueprint).",
+      "revision": {
+        "paths": [
+          "documentation/components/avatar.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/avatar.svelte"
+        ],
+        "sha256": {
+          "documentation/components/avatar.md": "176c6bb9188c4ab81848a5aff227033527f6ef3564b5e66c1c4fad19b7337511",
+          "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
+          "apps/docs/src/playgrounds/avatar.svelte": "6d8a66a0259507227be5da92a2e688cbe76d454b50e06c3da5fe133f2b403d09"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\". Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-13",
+      "evidence": "reports/components/avatar/"
+    },
+    {
+      "name": "Wave 5 contract gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Browser tests/browser/avatar.spec.ts (Chromium), also with a CI-like font set (no system Inter)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "reports/components/avatar/svelte/"
+    },
+    {
+      "name": "npm run build:preview avatar",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium 328 passed, docs site included; overlay smoke spec in Firefox and WebKit 20 passed after installing those browsers in the session)",
+      "result": "348 passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Wave 5 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2)"
+    },
+    {
+      "name": "Figma parity by hash (360 records, 0 failures) in the four browser-report contexts",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "reports/components/avatar/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 Figma parity gate approved (third round)",
+      "result": "passed",
+      "date": "2026-11-20",
+      "evidence": "Figma file TDPqojP4KvbWJlKSYc4zKC, specification 551:2; reports/components/avatar/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 documentation gate approved",
+      "result": "passed",
+      "date": "2026-11-21",
+      "evidence": "https://wave-5-design-system.jeremysqt.workers.dev/components/avatar/; tests/browser/docs-site.spec.ts (42 passed, CI-like font set)"
+    },
+    {
+      "name": "Wave 5 final consistency pass accepted (roadmap checklist complete)",
+      "result": "passed",
+      "date": "2026-11-22",
+      "evidence": "authoring/roadmap.md (Wave 5 final consistency pass)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build) and npm run check:approvals (514 digests, 0 errors, 0 warnings)",
+      "result": "passed",
+      "date": "2026-11-22"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the consistency pass",
+      "result": "353 passed",
+      "date": "2026-11-21"
+    },
+    {
+      "name": "Documentation: npm run build:docs (every live block compiled) and tests/browser/docs-site.spec.ts with a CI-like font set (42 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-21"
+    }
+  ],
+  "decisionsTaken": [
+    "Sizes xs to xl as the component tokens recorded in the catalog: component.avatar.size.{xs,sm,md,lg,xl} = 24, 32, 40, 48, 64 px.",
+    "Initials in a component typography component.avatar.typography.{size} (Inter medium 500, line height 1): 11, 13, 16, 18, 24 px (about 0.4 of the box). No semantic typography maps the five sizes; a component token is the naming rule's answer for a value only the Avatar needs. Generated as a Figma text style by the existing manifest (generic).",
+    "xs shows one initial: two medium initials at 11 px leave no margin in a 24 px circle (WM is about 20 px wide).",
+    "Initials: first grapheme of the first and of the last word, uppercased with the platform's locale rules; a single word gives one character.",
+    "Fallback in color.surface.muted with color.content.secondary (a measured pair of the semantic inventory); no colors from the name in v1.",
+    "Square corners proportional to the size (component.avatar.radius.{size} = 4, 6, 8, 8, 12 px) rather than one radius for all sizes.",
+    "Generic glyph: Phosphor user (regular), copied into the component folder as an intrinsic glyph, box component.avatar.icon-size.{size} = 16, 20, 24, 28, 40 px.",
+    "No edge around pictures in v1 (a translucent edge would need a role the foundations do not have); an edge only in forced colors.",
+    "The fallback stays visible while the picture loads; the picture replaces it once loaded (no fade in v1). Bits UI Avatar provides the loading status.",
+    "Neutral avatars only (user at the wave 5 contract gate, round 1 (2026-11-13): \"Reste sur des avatars neutre, c'est à chaque application de faire ensuite la logique désirée\"): colors, generated portraits or illustrations belong to the application (it can pass a picture or set the colors).",
+    "An avatar that opens a menu is wrapped by the integration in a button or another interactive area; no slot in Button or IconButton (user at the wave 5 contract gate, round 1 (2026-11-13): \"Plutôt bouton ... A toi de suivre ta recommandation\"); shown as a documentation example.",
+    "Round 2: new prop initials (at most three characters, shown as given) replacing the computed initials, for an organization's abbreviation and for the +N box of AvatarGroup.",
+    "Implementation: Svelte API: role img named by name on the root span; decorative or nameless avatars get aria-hidden; consumer attributes go to the root after Bits UI's."
+  ],
+  "openDecisions": [],
+  "nextAction": "Pull request wave/5 to main; Done once merged.",
+  "implementationNotes": [
+    "Exports Avatar and the types AvatarProps, AvatarImageStatus.",
+    "Bits UI Avatar reports the loading status; ggbrick keeps it per source (a new src starts again from loading, since Bits UI does not reload once a picture has loaded) and renders the picture only without Bits UI's fallback part: the initials or the glyph are drawn while imageStatus is not loaded.",
+    "Initials: Intl.Segmenter graphemes (fallback to code points), leading punctuation skipped, words without letters or digits ignored, toLocaleUpperCase; initials.ts in the component folder.",
+    "The generic glyph is Phosphor user (regular) inline, attributed in the markup.",
+    "Initials are centered on their capital height with text-box trim (browsers without it center the line box)."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-21",
+      "change": "Final consistency pass (authoring/roadmap.md): given initials are cut by graphemes (an emoji is never split; SSR test added); aria-label and aria-hidden are owned attributes in AvatarProps (the component sets them from name and decorative); the size comment no longer mentions AvatarGroup; the API section of the page lists the owned attributes.",
+      "sha256": {
+        "packages/svelte/src/components/avatar/Avatar.svelte": "a8f187d02128aab70a3a7cf9b78cff170090522d12884bfd606083032aa6a4d6",
+        "packages/svelte/src/components/avatar/initials.ts": "136f52ed4ea99640df6d24505c7165fe95f74fa18a5639dc2de5ed7f3cea3179",
+        "packages/svelte/src/components/avatar/types.ts": "cd6c1c64a0cbadff0189feb000ff1bac485f2b02a6373ff505f714dc65ace65f",
+        "documentation/components/avatar.md": "176c6bb9188c4ab81848a5aff227033527f6ef3564b5e66c1c4fad19b7337511"
+      },
+      "review": "Wave 5 final consistency pass, presented with the pull request",
+      "accepted": "User on 2026-11-22: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"",
+      "recorded": "Re-recorded with the approvals it touches (2026-11-22)."
+    }
+  ]
+}

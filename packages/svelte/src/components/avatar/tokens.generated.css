@@ -1,0 +1,49 @@
+/* Generated token bindings from the avatar contract. Do not edit. */
+@layer ggb {
+.ggb-avatar {
+  --ggb-avatar-surface: var(--ggb-color-surface-muted);
+  --ggb-avatar-content: var(--ggb-color-content-secondary);
+  --ggb-avatar-circleRadius: var(--ggb-radius-full);
+  --ggb-avatar-borderWidth: var(--ggb-border-width-default);
+}
+.ggb-avatar[data-size="xs"] {
+  --ggb-avatar-size: var(--ggb-component-avatar-size-xs);
+  --ggb-avatar-typography: var(--ggb-component-avatar-typography-xs);
+  --ggb-avatar-typography-letterSpacing: var(--ggb-component-avatar-typography-xs-letterSpacing);
+  --ggb-avatar-typography-fontFeatureSettings: var(--ggb-component-avatar-typography-xs-fontFeatureSettings);
+  --ggb-avatar-iconSize: var(--ggb-component-avatar-icon-size-xs);
+  --ggb-avatar-squareRadius: var(--ggb-component-avatar-radius-xs);
+}
+.ggb-avatar[data-size="sm"] {
+  --ggb-avatar-size: var(--ggb-component-avatar-size-sm);
+  --ggb-avatar-typography: var(--ggb-component-avatar-typography-sm);
+  --ggb-avatar-typography-letterSpacing: var(--ggb-component-avatar-typography-sm-letterSpacing);
+  --ggb-avatar-typography-fontFeatureSettings: var(--ggb-component-avatar-typography-sm-fontFeatureSettings);
+  --ggb-avatar-iconSize: var(--ggb-component-avatar-icon-size-sm);
+  --ggb-avatar-squareRadius: var(--ggb-component-avatar-radius-sm);
+}
+.ggb-avatar[data-size="md"] {
+  --ggb-avatar-size: var(--ggb-component-avatar-size-md);
+  --ggb-avatar-typography: var(--ggb-component-avatar-typography-md);
+  --ggb-avatar-typography-letterSpacing: var(--ggb-component-avatar-typography-md-letterSpacing);
+  --ggb-avatar-typography-fontFeatureSettings: var(--ggb-component-avatar-typography-md-fontFeatureSettings);
+  --ggb-avatar-iconSize: var(--ggb-component-avatar-icon-size-md);
+  --ggb-avatar-squareRadius: var(--ggb-component-avatar-radius-md);
+}
+.ggb-avatar[data-size="lg"] {
+  --ggb-avatar-size: var(--ggb-component-avatar-size-lg);
+  --ggb-avatar-typography: var(--ggb-component-avatar-typography-lg);
+  --ggb-avatar-typography-letterSpacing: var(--ggb-component-avatar-typography-lg-letterSpacing);
+  --ggb-avatar-typography-fontFeatureSettings: var(--ggb-component-avatar-typography-lg-fontFeatureSettings);
+  --ggb-avatar-iconSize: var(--ggb-component-avatar-icon-size-lg);
+  --ggb-avatar-squareRadius: var(--ggb-component-avatar-radius-lg);
+}
+.ggb-avatar[data-size="xl"] {
+  --ggb-avatar-size: var(--ggb-component-avatar-size-xl);
+  --ggb-avatar-typography: var(--ggb-component-avatar-typography-xl);
+  --ggb-avatar-typography-letterSpacing: var(--ggb-component-avatar-typography-xl-letterSpacing);
+  --ggb-avatar-typography-fontFeatureSettings: var(--ggb-component-avatar-typography-xl-fontFeatureSettings);
+  --ggb-avatar-iconSize: var(--ggb-component-avatar-icon-size-xl);
+  --ggb-avatar-squareRadius: var(--ggb-component-avatar-radius-xl);
+}
+}

@@ -1,0 +1,306 @@
+{
+  "formatStatus": "v1",
+  "componentId": "data-field",
+  "family": "data",
+  "wave": 5,
+  "phase": "done",
+  "scope": {
+    "purpose": "Show one piece of information about an object as a label and its value, for reading, in detail panels, summaries and record pages.",
+    "useCases": [
+      "The properties of a record (owner, status, created on) in a side panel or a page.",
+      "A read-only summary of a form before submission.",
+      "A grid of key facts in a card (plan, renewal date, seats).",
+      "Rich values: a Badge, a Link, an Avatar with a name."
+    ],
+    "exclusions": [
+      "Editing in place: the integration switches to a Field with its control.",
+      "A copy button or actions on the value: composed by the integration.",
+      "A container giving description list semantics and columns (DataList): later, on demand.",
+      "Large figures with trends (metric tiles): a later composition.",
+      "Disabled or readonly controls used to display values."
+    ],
+    "alternatives": [
+      "Field with an entry control for a value the user changes.",
+      "Table for several records compared by column.",
+      "Plain text in a sentence."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": [
+    "Badge, Link and Avatar in the examples of rich values (wave 1 and wave 5 components, used as content, not dependencies)."
+  ],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/data/data-field/contract.json",
+      "sha256": "3694e46edb1e032e1cf6feb399f557fce412c403b6ba8e33b29e2e952c39a514"
+    },
+    "tokens": ["foundations/tokens/base/components/data-field.tokens.json"],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "data/data-field (540:64)",
+      "library": "Data (540:63), section DataField (546:2)",
+      "componentSet": "562:2786",
+      "specification": "564:80",
+      "ledger": "reports/components/data-field/figma/ledger.json",
+      "parity": "reports/components/data-field/figma/parity.json",
+      "screenshots": [
+        "reports/components/data-field/figma/master-set.png",
+        "reports/components/data-field/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/data-field/figma/blueprint-anatomy.png",
+          "node": "564:142"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/wave5-data-field-master.plugin.js",
+        "authoring/adapters/figma/wave5-parity.plugin.js",
+        "authoring/adapters/figma/wave5-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js",
+        "authoring/adapters/figma/spec-header-links.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/data/data-field/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/data-field",
+      "files": [
+        "packages/svelte/src/components/data-field/DataField.svelte",
+        "packages/svelte/src/components/data-field/types.ts",
+        "packages/svelte/src/components/data-field/data-field.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (no native semantics to borrow)"
+      },
+      "report": "reports/components/data-field/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/data-field",
+      "preview": "dist/previews/data-field.html (npm run build && npm run build:preview data-field)",
+      "artifact": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2), page data-field.html"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/data-structure.test.ts"],
+      "browser": ["tests/browser/data-field.spec.ts"],
+      "evidence": "reports/components/data-field/svelte/"
+    },
+    "humanDocs": "documentation/components/data-field.md",
+    "agentDocs": "documentation/index.json (entry data-field); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "DataField contract (option A): required label, value or free content, orientation vertical or horizontal (label column component.data-field.label-inline-size, stacking below twice its width), size sm or md (typography.label.{size} secondary, typography.body.{size} primary), emptyLabel with an em dash; group named by its label; not interactive.",
+      "revision": {
+        "paths": [
+          "foundations/components/data/data-field/contract.json",
+          "foundations/tokens/base/components/data-field.tokens.json"
+        ],
+        "sha256": {
+          "foundations/components/data/data-field/contract.json": "b23cd375d6aa7a77e1e620d2780d829a0e3a77d36d90286329d7d9bbc514302c",
+          "foundations/tokens/base/components/data-field.tokens.json": "2cd9146bb55eb3eaf3db7fb46d8414b0d9b6112d2ba71becd40d61e961d03c2b"
+        }
+      },
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\". Amendments accepted at the wave 5 implementation gate (2026-11-14, \"C'est validé tu peux passer à la suite\"): Round 2 (user at the wave 5 implementation review, round 1 (2026-11-14); digests re-recorded.",
+      "note": "The user expects most adjustments at the implementation review."
+    },
+    "implementation": {
+      "scope": "DataField: named group, value or children, em dash and announced emptyLabel, vertical and horizontal (160 px label column, stacking below 320 px without container query), label in color.content.tertiary (round 2).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/data-field/DataField.svelte",
+          "packages/svelte/src/components/data-field/contract.generated.ts",
+          "packages/svelte/src/components/data-field/data-field.css",
+          "packages/svelte/src/components/data-field/tokens.generated.css",
+          "packages/svelte/src/components/data-field/types.ts",
+          "examples/data-field/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/data-field/DataField.svelte": "c3eac50c4a14699cee126a67d64ea76d0142e2700239a3a4d97c005c48a93096",
+          "packages/svelte/src/components/data-field/contract.generated.ts": "e8e6732dfc88de26865f7a0cf70e6df1b8f2c00e82318a4cb7bc690ac83d093f",
+          "packages/svelte/src/components/data-field/data-field.css": "b29a2f297f52069da15d6cf0dfcf4e14d11c4fde65f62351992f410d3f01dc5b",
+          "packages/svelte/src/components/data-field/tokens.generated.css": "16b7e82303b142b959fee6467e72f23dc015b21b85b98d25c9430903475e9a0f",
+          "packages/svelte/src/components/data-field/types.ts": "78d66891abdcb90faf63a923e43f7ac10e8773d2c03a03ef88eb22bc765af90f",
+          "examples/data-field/App.svelte": "421983186ae018366542a9009d5cda6ea38df23f07f0ede789ba963d4c1df254"
+        }
+      },
+      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\". Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
+      "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
+    },
+    "figmaParity": {
+      "scope": "Figma component set 562:2786 and specification frame 564:80 of the data-field component, parity report (80 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/data/data-field/figma-spec.md",
+          "reports/components/data-field/figma/parity.json",
+          "reports/components/data-field/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/data/data-field/figma-spec.md": "5a0cf7a27bc86faca99083fd55f8d3c744035895fce66cc4ede390ca9ce98941",
+          "reports/components/data-field/figma/parity.json": "41467a3312d86b57c7ab53fb090aa993db2109ebb4236d61b360a5f3a57cc9f8",
+          "reports/components/data-field/figma/ledger.json": "ec01c20d68e585459a80b46b28908c7f00ae108720291a05c40ff6950b245de5"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "562:2786",
+          "specificationFrame": "564:80"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of data-field (progressive detail: the page is the recipe, the contract the technical detail; Anatomy numbered like the Figma blueprint).",
+      "revision": {
+        "paths": [
+          "documentation/components/data-field.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/data-field.svelte"
+        ],
+        "sha256": {
+          "documentation/components/data-field.md": "9f4ad23f96ef6b89067e45d646cb4ec81d10faf37b48a93cae75fab83a35a698",
+          "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
+          "apps/docs/src/playgrounds/data-field.svelte": "9a3dc968ac0bb272ce4aa596164a101512ae298894a1659b789352f96c49e9ba"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\". Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded.",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-13",
+      "evidence": "reports/components/data-field/"
+    },
+    {
+      "name": "Wave 5 contract gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Browser tests/browser/data-field.spec.ts (Chromium), also with a CI-like font set (no system Inter)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "reports/components/data-field/svelte/"
+    },
+    {
+      "name": "npm run build:preview data-field",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium 328 passed, docs site included; overlay smoke spec in Firefox and WebKit 20 passed after installing those browsers in the session)",
+      "result": "348 passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Wave 5 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2)"
+    },
+    {
+      "name": "Figma parity by hash (80 records, 0 failures) in the four browser-report contexts",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "reports/components/data-field/figma/parity.json"
+    },
+    {
+      "name": "Figma rebuild after the user review of 2026-11-17 (Content variants, anatomy and examples); parity by hash re-measured: hashes unchanged, 0 failures",
+      "result": "passed",
+      "date": "2026-11-17",
+      "evidence": "reports/components/data-field/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 Figma parity gate approved (third round)",
+      "result": "passed",
+      "date": "2026-11-20",
+      "evidence": "Figma file TDPqojP4KvbWJlKSYc4zKC, specification 564:80; reports/components/data-field/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 documentation gate approved",
+      "result": "passed",
+      "date": "2026-11-21",
+      "evidence": "https://wave-5-design-system.jeremysqt.workers.dev/components/data-field/; tests/browser/docs-site.spec.ts (42 passed, CI-like font set)"
+    },
+    {
+      "name": "Wave 5 final consistency pass accepted (roadmap checklist complete)",
+      "result": "passed",
+      "date": "2026-11-22",
+      "evidence": "authoring/roadmap.md (Wave 5 final consistency pass)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build) and npm run check:approvals (514 digests, 0 errors, 0 warnings)",
+      "result": "passed",
+      "date": "2026-11-22"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the consistency pass",
+      "result": "353 passed",
+      "date": "2026-11-21"
+    },
+    {
+      "name": "Documentation: npm run build:docs (every live block compiled) and tests/browser/docs-site.spec.ts with a CI-like font set (42 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-21"
+    }
+  ],
+  "decisionsTaken": [
+    "Label in typography.label.{size} and color.content.secondary, value in typography.body.{size} and color.content.primary: the value is the information, the label is quieter.",
+    "Sizes sm and md (md by default, the same typographies as a Field label and an md InputText, so that a form and its read-only view match).",
+    "Horizontal labels in a column of component.data-field.label-inline-size = 160 px, so that separate fields align without a container; below twice that width the field stacks (container query).",
+    "Empty value: an em dash in color.content.tertiary, hidden from assistive technology, with emptyLabel (No value) announced instead.",
+    "Semantics in v1: the field is a group named by its label (works anywhere, without a parent); see the open question on a description list container.",
+    "No new semantic role.",
+    "Option A (user at the wave 5 contract gate, round 1 (2026-11-13): \"Oui, restons sur la A, on verra si on fait évoluer plus tard\"): DataField alone, a group named by its label; a DataList container may come later.",
+    "Implementation: Svelte API: `children` replaces value; the group is named through aria-labelledby on the visible label.",
+    "Round 2: label in color.content.tertiary (user request for more contrast between label and value); contrast pairs on default and subtle unchanged and passing.",
+    "Figma review (user, 2026-11-17): content variants as a design aid (Content text, empty, badge, link, avatar); anatomy redrawn on a vertical field; content examples in the specification."
+  ],
+  "openDecisions": [],
+  "nextAction": "Pull request wave/5 to main; Done once merged.",
+  "implementationNotes": [
+    "Exports DataField and the type DataFieldProps.",
+    "Horizontal layout without a container query (custom properties are not allowed in container conditions): a wrapping flex line where the label is min(100%, max(labelInlineSize, (2 × labelInlineSize − 100%) × 999)) wide, so it is labelInlineSize from twice that width and the whole line below; the value then wraps under it.",
+    "Rich values are the `children` snippet; value is plain text."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-14",
+      "change": "Round 2 (user at the wave 5 implementation review, round 1 (2026-11-14): \"pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? Ça manque un peu de contraste entre le contenu et le label\"): labelColor becomes color.content.tertiary (#5f646a in base light), the lightest content role that stays accessible: at least 5.1:1 on the default, subtle, canvas and raised surfaces in every context (secondary was 8.3:1 at least). On color.surface.muted it falls to 3.4:1 in dark, so labels are not placed on muted surfaces (documentation).",
+      "sha256": {
+        "foundations/components/data/data-field/contract.json": "b23cd375d6aa7a77e1e620d2780d829a0e3a77d36d90286329d7d9bbc514302c"
+      },
+      "review": "Wave 5 implementation gate, round 2",
+      "recorded": "Re-recorded with the implementation approval (2026-11-14)."
+    },
+    {
+      "date": "2026-11-21",
+      "change": "Final consistency pass (authoring/roadmap.md): aria-labelledby is an owned attribute in DataFieldProps (the label names the field); the page lists it.",
+      "sha256": {
+        "packages/svelte/src/components/data-field/types.ts": "78d66891abdcb90faf63a923e43f7ac10e8773d2c03a03ef88eb22bc765af90f",
+        "documentation/components/data-field.md": "9f4ad23f96ef6b89067e45d646cb4ec81d10faf37b48a93cae75fab83a35a698"
+      },
+      "review": "Wave 5 final consistency pass, presented with the pull request",
+      "accepted": "User on 2026-11-22: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"",
+      "recorded": "Re-recorded with the approvals it touches (2026-11-22)."
+    }
+  ]
+}

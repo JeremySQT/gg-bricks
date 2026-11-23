@@ -1,0 +1,12 @@
+{
+  "component": {
+    "data-field": {
+      "$description": "DataField tokens: values that mean something only for the DataField. They do not change with density.",
+      "label-inline-size": {
+        "$type": "dimension",
+        "$value": "{primitive.dimension.v160}",
+        "$description": "Inline size of the label column in the horizontal orientation, so that the values of separate fields line up; labels wrap within it. Below twice this size the field stacks."
+      }
+    }
+  }
+}

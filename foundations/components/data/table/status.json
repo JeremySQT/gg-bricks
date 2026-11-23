@@ -1,0 +1,364 @@
+{
+  "formatStatus": "v1",
+  "componentId": "table",
+  "family": "data",
+  "wave": 5,
+  "phase": "done",
+  "scope": {
+    "purpose": "Show a set of records in rows and columns so that values can be read and compared, as a native semantic data table.",
+    "useCases": [
+      "A list of invoices, users or orders with a few columns, numbers aligned at the end.",
+      "Rich cells: a Badge for a status, a Link to the record, an Avatar with a name, a Menu of row actions.",
+      "A totals row in the footer.",
+      "A wide table that scrolls inline on a narrow screen; a table of limited height whose header stays visible."
+    ],
+    "exclusions": [
+      "Sorting, row selection, expandable rows, column resizing or reordering, virtualization, inline editing: separately scoped enhancements (catalog), toward a later DataGrid.",
+      "Pagination inside the table: composed below with Pagination.",
+      "Loading state: composed with Skeleton rows.",
+      "Row hover and clickable rows in v1."
+    ],
+    "alternatives": [
+      "DataField for the properties of a single record.",
+      "A list for items made of several lines of text.",
+      "DataGrid (later) for editing and large data sets."
+    ]
+  },
+  "dependencies": [],
+  "fixtures": ["Badge, Link, Avatar, Menu and Pagination in the examples (content and composition, not dependencies)."],
+  "artifacts": {
+    "contract": {
+      "path": "foundations/components/data/table/contract.json",
+      "sha256": "afb9de628d9b1bc6d1ab12a4a3699247a9fc9dcce96bd3da1757caeb4637ffab"
+    },
+    "tokens": [],
+    "figma": {
+      "file": "TDPqojP4KvbWJlKSYc4zKC",
+      "page": "data/table (540:65)",
+      "library": "Data (540:63), section Table (547:5)",
+      "componentSet": "571:4860",
+      "specification": "572:1519",
+      "ledger": "reports/components/table/figma/ledger.json",
+      "parity": "reports/components/table/figma/parity.json",
+      "screenshots": [
+        "reports/components/table/figma/master-set.png",
+        "reports/components/table/figma/specification.png"
+      ],
+      "blueprints": [
+        {
+          "path": "reports/components/table/figma/blueprint-anatomy.png",
+          "node": "572:2131"
+        }
+      ],
+      "builders": [
+        "authoring/adapters/figma/wave5-table-master.plugin.js",
+        "authoring/adapters/figma/wave5-parity.plugin.js",
+        "authoring/adapters/figma/wave5-parity-report.mjs",
+        "authoring/adapters/figma/spec-lib.plugin.js",
+        "authoring/adapters/figma/spec-header-links.plugin.js"
+      ]
+    },
+    "figmaSpec": "foundations/components/data/table/figma-spec.md",
+    "svelte": {
+      "package": "packages/svelte",
+      "folder": "packages/svelte/src/components/table",
+      "files": [
+        "packages/svelte/src/components/table/Table.svelte",
+        "packages/svelte/src/components/table/TableHeader.svelte",
+        "packages/svelte/src/components/table/TableBody.svelte",
+        "packages/svelte/src/components/table/TableFooter.svelte",
+        "packages/svelte/src/components/table/TableRow.svelte",
+        "packages/svelte/src/components/table/TableHeading.svelte",
+        "packages/svelte/src/components/table/TableCell.svelte",
+        "packages/svelte/src/components/table/types.ts",
+        "packages/svelte/src/components/table/table.css"
+      ],
+      "versions": {
+        "svelte": "5.57.1",
+        "bitsUi": "not used (native table)"
+      },
+      "report": "reports/components/table/svelte/implementation.md"
+    },
+    "examples": {
+      "page": "examples/table",
+      "preview": "dist/previews/table.html (npm run build && npm run build:preview table)",
+      "artifact": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2), page table.html"
+    },
+    "tests": {
+      "ssr": ["tests/ssr/data-structure.test.ts"],
+      "browser": ["tests/browser/table.spec.ts"],
+      "evidence": "reports/components/table/svelte/"
+    },
+    "humanDocs": "documentation/components/table.md",
+    "agentDocs": "documentation/index.json (entry table); copied into packages/svelte by npm run build:svelte"
+  },
+  "approvals": {
+    "contract": {
+      "scope": "Table contract: required caption, hideCaption, no size (minimum row height size.control.md, following the density; amendment of 2026-11-17), columnLines (round 2); children header, body, footer, row, heading, cell (align, rowHeader); frame of border.width.default in color.border.subtle with radius.container, header band color.surface.subtle, every line color.border.subtle (round 2), headers typography.label.md secondary, cells typography.body.sm tabular; inline scroll area focusable while it overflows, sticky header; always framed (recommendation accepted).",
+      "revision": {
+        "paths": ["foundations/components/data/table/contract.json"],
+        "sha256": {
+          "foundations/components/data/table/contract.json": "afb9de628d9b1bc6d1ab12a4a3699247a9fc9dcce96bd3da1757caeb4637ffab"
+        }
+      },
+      "provenance": "User at the grouped wave 5 contract gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK: round 1 on 2026-11-13 (DataField option A, AvatarGroup added to the wave, neutral avatars, avatar wrapped by a button, Divider thickness tokenized, Table style from three reference screenshots); round 2 (version 2) approved on 2026-11-13: \"Je valide les contrats et la reco, tu peux passer à l'implémentation, c'est là qu'on fera le plus gros des ajustements\". Amendments accepted at the wave 5 implementation gate (2026-11-14, \"C'est validé tu peux passer à la suite\"): Contract facts found during implementation; digests re-recorded. Amendment requested by the user at the wave 5 Figma parity review (2026-11-17): the table and its sub-components have no size, density only: \"Table : Mais je me répète, mais un tableau n'a pas besoin d'avoir de sélecteur de size en variante ! Garde uniquement les modes, il va automatiquement être plus petit car plus dense. C'est donc vrai également pour ces sous composants ! D'ailleurs c'est vrai pour tous les composants du DS, pas tous les composants nécessites systématiquement plusieurs variantes de tailles.\" Digests re-recorded. Amendment chosen by the user at the wave 5 documentation gate (2026-11-21, option A: the scroll area is a named focus stop until the overflow is measured): \"Pour ta question, va pour la A, on suit ta recommandation.\" Digests re-recorded.",
+      "note": "The user expects most adjustments at the implementation review."
+    },
+    "implementation": {
+      "scope": "Table: seven components, hidden native caption with a visible copy, frame and focus indicator drawn above the scroll area, inset-shadow lines (borders in forced colors), sticky header, focusable named scroll area only while it overflows, columns on one line (max-content), paddingBlock reduced to fit one line in minHeight.",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/table/Table.svelte",
+          "packages/svelte/src/components/table/TableBody.svelte",
+          "packages/svelte/src/components/table/TableCell.svelte",
+          "packages/svelte/src/components/table/TableFooter.svelte",
+          "packages/svelte/src/components/table/TableHeader.svelte",
+          "packages/svelte/src/components/table/TableHeading.svelte",
+          "packages/svelte/src/components/table/TableRow.svelte",
+          "packages/svelte/src/components/table/contract.generated.ts",
+          "packages/svelte/src/components/table/table.css",
+          "packages/svelte/src/components/table/tokens.generated.css",
+          "packages/svelte/src/components/table/types.ts",
+          "examples/table/App.svelte"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/table/Table.svelte": "54a972e9f6b94134cc03810feb40fb0159a0c7462e3b00030813ab867eac74ea",
+          "packages/svelte/src/components/table/TableBody.svelte": "90ce4bc5f3ff5716ac6dea3828d3a57621903cde18b5743439b2868378f86d60",
+          "packages/svelte/src/components/table/TableCell.svelte": "5dc03819062012ec4502658e9a8ca27135ac434d898d97d5ac906812e299080b",
+          "packages/svelte/src/components/table/TableFooter.svelte": "c22587cd7468c379763e3ad1ae5f3bcacec3c7682400940c4778089427bb8d0b",
+          "packages/svelte/src/components/table/TableHeader.svelte": "2f523f81d2e6aed94980a7071077ff79478642014b2ba7ceeb90e84440e8d53e",
+          "packages/svelte/src/components/table/TableHeading.svelte": "332c7683213a1e4b59c6e07240a7b1ff72515c6d9cf28984011bb7c6c461c704",
+          "packages/svelte/src/components/table/TableRow.svelte": "b265c9fd8110b4a1a590b00080afcf93cce7435be586c1524b027d512de4026a",
+          "packages/svelte/src/components/table/contract.generated.ts": "00c632432c198f982f987b32dd77637cee1e2728b740d88575cde134e6b7fd8d",
+          "packages/svelte/src/components/table/table.css": "159fc783b16614f3c39a0084799a951bded7244b4cf3d60987034a9c834012c7",
+          "packages/svelte/src/components/table/tokens.generated.css": "6554bf14e36aac4cdf9deb2877982b8f04e543a6483f7cd6fe9535bd049bd5fd",
+          "packages/svelte/src/components/table/types.ts": "6176bf4d7f7d32bd8cc10c9fb749b5c22d9b30c145c70a41305f19d21103be75",
+          "examples/table/App.svelte": "7e9c0a412ee2b383564b426221e5d1067187e609c9bfad06daa72c1d9099c1dc"
+        }
+      },
+      "provenance": "User at the grouped wave 5 implementation gate in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT, on the review page https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo: round 1 (version 2, 2026-11-14): \"Super boulot ... pour le data field je me demandais si on avait pas un gris un peu plus léger qui reste accessible ? ... RAS pour le reste c'est validé à première vue\"; round 2 (version 3, 2026-11-14, DataField label in color.content.tertiary, AvatarGroup stacking B, Table amendments): \"C'est validé tu peux passer à la suite\". Amendment of 2026-11-17 (size removed: Table.svelte, types.ts, generated files, example) requested by the user at the wave 5 Figma parity review: \"Table : Mais je me répète, mais un tableau n'a pas besoin d'avoir de sélecteur de size en variante ! Garde uniquement les modes, il va automatiquement être plus petit car plus dense. C'est donc vrai également pour ces sous composants ! D'ailleurs c'est vrai pour tous les composants du DS, pas tous les composants nécessites systématiquement plusieurs variantes de tailles.\" Digests re-recorded. Amendment of 2026-11-21 (Table.svelte: the scroll area is a named focus stop until the overflow is measured; generated files) chosen by the user at the wave 5 documentation gate: \"Pour ta question, va pour la A, on suit ta recommandation.\" Digests re-recorded.",
+      "note": "Automated evidence in Chromium (CI-like font set included); overlay smoke spec in Firefox and WebKit not concerned."
+    },
+    "figmaParity": {
+      "scope": "Figma component 571:4860 and specification frame 572:1519 of the table component, parity report (48 records, 0 failures, 0 justified differences) and the construction notes and justified differences of figma-spec.md.",
+      "revision": {
+        "paths": [
+          "foundations/components/data/table/figma-spec.md",
+          "reports/components/table/figma/parity.json",
+          "reports/components/table/figma/ledger.json"
+        ],
+        "sha256": {
+          "foundations/components/data/table/figma-spec.md": "bad2fe9e9800e20193b16e4ba731425ff9bebec5afd04c1fc6904793aabc1a12",
+          "reports/components/table/figma/parity.json": "86511be28c5e89939359ef975116275e8dda9a0dfae91d2499c2a7e065bd52a7",
+          "reports/components/table/figma/ledger.json": "204237f114957de2b5282b7510ccb71e00de4e180468567ac17664d92c884018"
+        },
+        "figma": {
+          "fileKey": "TDPqojP4KvbWJlKSYc4zKC",
+          "componentSet": "571:4860",
+          "specificationFrame": "572:1519",
+          "children": [
+            "561:2359 Table/Column",
+            "558:2604 Table/Cell",
+            "558:2605 Table/Heading",
+            "558:2606 Table/Footer cell"
+          ]
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-20, at the grouped wave 5 Figma parity gate (third round, after the reviews of 2026-11-17: DataField content variants and anatomy; Table without size, density only, cell content variants, anatomy pointing at a middle cell), after reviewing the Figma pages, specifications and parity reports: \"C'est mieux comme ça pour la spec mais il y a un truc chelou sur la case \"highlight\". Tu devrais plutôt essayer de l'encadrer complétement comme sur le deuxième screenshot. Pour ta question je serai plutôt d'avis de conserver le comportement A. Là on touche aux limites de figma en tant que soft, on ne pourra jamais avoir quelque chose de parfait pour construire un tableau. Pour les collections compoments, on les gardes et on s'assure que ce n'est pas distribué. Le reste est validé\" The Table anatomy highlight was redrawn as asked and the density examples kept aligned (decision A) before recording. Amendment of 2026-11-22 (wave 5 final consistency pass, items listed in authoring/roadmap.md, accepted by the user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"). Digests re-recorded."
+    },
+    "documentation": {
+      "scope": "Documentation page, index entry and site playground of table (progressive detail: the page is the recipe, the contract the technical detail; Anatomy numbered like the Figma blueprint).",
+      "revision": {
+        "paths": [
+          "documentation/components/table.md",
+          "documentation/index.json",
+          "apps/docs/src/playgrounds/table.svelte"
+        ],
+        "sha256": {
+          "documentation/components/table.md": "04f97d16b9febfb2730c0dcaa0100821e558218fb730b68028057b7e10dbcdde",
+          "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
+          "apps/docs/src/playgrounds/table.svelte": "6c265f6c95b62c086eb9cb25f7435e9b7bc066956b9944855a7a04481913b895"
+        }
+      },
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT on 2026-11-21, after reading the pages on the wave/5 preview of the documentation site (https://wave-5-design-system.jeremysqt.workers.dev), with option A chosen for the Table scroll area: \"Je valide la documentation\".",
+      "note": null
+    },
+    "delivery": null
+  },
+  "checks": [
+    {
+      "name": "npm run validate (schema, consistency, token coverage in 18 contexts, dependencies)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run build:tokens (coverage and contrast evidence)",
+      "result": "passed (0 contrast failures)",
+      "date": "2026-11-13",
+      "evidence": "reports/components/table/"
+    },
+    {
+      "name": "Wave 5 contract gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "https://claude.ai/artifact/3zhu1MY2D2DXTQhCzWtAsK (version 2)"
+    },
+    {
+      "name": "npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build)",
+      "result": "passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Browser tests/browser/table.spec.ts (Chromium), also with a CI-like font set (no system Inter)",
+      "result": "passed",
+      "date": "2026-11-13",
+      "evidence": "reports/components/table/svelte/"
+    },
+    {
+      "name": "npm run build:preview table",
+      "result": "mounts from file:// without errors",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "npm run test:browser (full suite: Chromium 328 passed, docs site included; overlay smoke spec in Firefox and WebKit 20 passed after installing those browsers in the session)",
+      "result": "348 passed",
+      "date": "2026-11-13"
+    },
+    {
+      "name": "Wave 5 implementation gate approved (round 2)",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "https://claude.ai/artifact/WAVB5VmfbLWURtQvVKQzvo (version 1794644803-bf6b, round 2)"
+    },
+    {
+      "name": "Figma parity by hash (144 records, 0 failures) in the four browser-report contexts",
+      "result": "passed",
+      "date": "2026-11-14",
+      "evidence": "reports/components/table/figma/parity.json"
+    },
+    {
+      "name": "Figma rebuild after the user review of 2026-11-17 (size as a Components mode, cell Content variants, anatomy); parity by hash re-measured: hashes unchanged, 0 failures",
+      "result": "passed",
+      "date": "2026-11-17",
+      "evidence": "reports/components/table/figma/parity.json"
+    },
+    {
+      "name": "The table has no size (user, 2026-11-17): contract, code, tests and example updated; Figma rebuilt as the single component Table (571:4860), cells bound to size/control/md and the Figma-only Density variable table/padding-block; the Components collection adapter variables of the earlier round removed; parity by hash re-measured: 48 records, 0 failures",
+      "result": "passed",
+      "date": "2026-11-17",
+      "evidence": "reports/components/table/figma/parity.json"
+    },
+    {
+      "name": "Wave 5 Figma parity gate approved (third round)",
+      "result": "passed",
+      "date": "2026-11-20",
+      "evidence": "Figma file TDPqojP4KvbWJlKSYc4zKC, specification 572:1519; reports/components/table/figma/parity.json"
+    },
+    {
+      "name": "Scroll area a named focus stop until the overflow is measured (option A): SSR test (server HTML focusable and named), browser tests (a fitting table loses it once measured, a wide one keeps it), CI-like font set",
+      "result": "passed",
+      "date": "2026-11-21",
+      "evidence": "tests/ssr/data-structure.test.ts, tests/browser/table.spec.ts"
+    },
+    {
+      "name": "Wave 5 documentation gate approved",
+      "result": "passed",
+      "date": "2026-11-21",
+      "evidence": "https://wave-5-design-system.jeremysqt.workers.dev/components/table/; tests/browser/docs-site.spec.ts (42 passed, CI-like font set)"
+    },
+    {
+      "name": "Wave 5 final consistency pass accepted (roadmap checklist complete)",
+      "result": "passed",
+      "date": "2026-11-22",
+      "evidence": "authoring/roadmap.md (Wave 5 final consistency pass)"
+    },
+    {
+      "name": "Final consistency pass: npm run verify (generate, lint, validate, unit 51, svelte-check, SSR 104, build, docs build) and npm run check:approvals (514 digests, 0 errors, 0 warnings)",
+      "result": "passed",
+      "date": "2026-11-22"
+    },
+    {
+      "name": "npm run test:browser (full suite, Chromium; overlay smoke spec in Firefox and WebKit), after the documentation review and the consistency pass",
+      "result": "353 passed",
+      "date": "2026-11-21"
+    },
+    {
+      "name": "Documentation: npm run build:docs (every live block compiled) and tests/browser/docs-site.spec.ts with a CI-like font set (42 passed, axe-core in light and dark)",
+      "result": "passed",
+      "date": "2026-11-21"
+    }
+  ],
+  "decisionsTaken": [
+    "Compound contract with children header, body, footer, row, heading (column header cell) and cell, so that cells hold free content (the semantic table of the catalog); no records API in v1 (row fields are not known in advance).",
+    "Headers in typography.label.md and color.content.secondary; cells in typography.body.sm with tabular figures; the typography does not change with size or density.",
+    "size sm, md, lg sets the minimum row height (size.control.{size}: 32, 40, 48 px in standard density); cells center one line and keep that block padding when they wrap.",
+    "Cell inline padding space.content.md (12 px in standard).",
+    "Visible caption by default (typography.heading.xs), hideCaption when a heading next to the table already names it; caption is required as the accessible name.",
+    "Inline overflow scrolls in the table's own area, which becomes a focus stop named by the caption only while it overflows; the header sticks to the top of that area when the integration limits its height.",
+    "A cell with rowHeader is exposed as the header of its row and looks like the other cells.",
+    "No new token.",
+    "Round 2 style (user at the wave 5 contract gate, round 1 (2026-11-13), with three reference screenshots: \"J'aime bien l'entête en gris léger avec des bordures en gris léger également\"): header band in color.surface.subtle; every line in color.border.subtle (header, rows, footer); a frame of border.width.default in color.border.subtle with radius.container corners around the table (two of the three references are framed).",
+    "Optional columnLines (false by default): vertical lines between columns, as in two of the references.",
+    "Implementation: Svelte API: compound children as components (TableHeader, TableBody, TableFooter, TableRow, TableHeading, TableCell); align on cells and headings; rowHeader renders a th scope row.",
+    "Implementation: Contract amendments recorded in pendingChanges (paddingBlock, columns on one line).",
+    "Figma review (user, 2026-11-17): \"La propriété Size du Table ne change rien\": slot content survives a variant switch, so the size is now a mode of the hidden Components collection set by each Table variant (table/min-height, table/padding-block); prebuilt cell contents (text, badge, avatar, link, actions); a middle cell outlined and pinned in the anatomy. An avatar row (sm) and row actions (md) are taller than the row size, as in the code: kept out of the default table to keep its rows aligned.",
+    "Figma review (user, 2026-11-17): \"Table : Mais je me répète, mais un tableau n'a pas besoin d'avoir de sélecteur de size en variante ! Garde uniquement les modes, il va automatiquement être plus petit car plus dense. C'est donc vrai également pour ces sous composants ! D'ailleurs c'est vrai pour tous les composants du DS, pas tous les composants nécessites systématiquement plusieurs variantes de tailles.\" Size removed from the contract, the code and every Figma master of the table (Table, Table/Column, Table/Cell, Table/Heading, Table/Footer cell); rows follow the Density mode only (size/control/md, block padding from the Figma-only Density variable table/padding-block = 8, 4, 11.5 px). The Components collection mode of the earlier round and its variables table/min-height and table/padding-block were removed, as were the Density variables table/padding-block/{sm,md,lg}. An avatar row is 47 px against 44 px in comfortable density, as in the code (rows grow as a whole there; in Figma the column alone grows).",
+    "Figma parity gate (user, 2026-11-20): decision A, the comfortable avatar row (47 px against 44 px) stays as in the code and is documented; the anatomy highlight frames the whole cell; the specification density examples use text cells in the Customer column.",
+    "Documentation gate (user, 2026-11-21): option A, the scroll area is a named focus stop until the overflow is measured, so that server-rendered or not yet hydrated tables that overflow stay reachable from the keyboard (axe scrollable-region-focusable on the documentation site)."
+  ],
+  "openDecisions": [],
+  "nextAction": "Pull request wave/5 to main; Done once merged.",
+  "implementationNotes": [
+    "Exports Table, TableHeader, TableBody, TableFooter, TableRow, TableHeading and TableCell.",
+    "The native caption is visually hidden and names the table; the visible caption above the frame is a copy hidden from assistive technology, so that it sits outside the frame.",
+    "The frame and the focus indicator are drawn by ::after on a frame wrapper, above the scroll area and the sticky header; the scroll area clips the table to the rounded corners.",
+    "Lines are inset box-shadows (rows keep minHeight whether they draw a line or not), replaced by borders in forced colors.",
+    "The scroll area becomes role region, named by the caption, with tabindex 0, only while it overflows (ResizeObserver on the area and the table).",
+    "The table is max-content wide with a minimum of 100%: columns keep their content on one line and the area scrolls."
+  ],
+  "contrastScope": {
+    "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"]
+  },
+  "pendingChanges": [
+    {
+      "date": "2026-11-13",
+      "change": "Contract facts found during implementation: (1) role paddingBlock (space.content.sm) on heading and cell; the block padding is reduced where needed so that one line fits in minHeight (sm), and content taller than one line grows the row and keeps that padding (with the padding that centers one line in minHeight, an Avatar or two lines in an md row would get 9.5 px above and below, and the sm row could not hold an sm Avatar). (2) Columns take the width of their content on one line and the table scrolls instead of squeezing them; text wraps where the integration limits a column's width (the first rendering wrapped identifiers such as SO-101 at their hyphen in a narrow column). To re-present at the wave 5 implementation gate.",
+      "sha256": {
+        "foundations/components/data/table/contract.json": "aa1316d12934ecbefcef636343f67d030282e04c55f9ccfb8d1659a8762ce9cc"
+      },
+      "review": "Wave 5 implementation gate",
+      "accepted": "Taken as accepted by the user at round 1 of the implementation review (2026-11-14: \"RAS pour le reste c'est validé à première vue\"); to confirm at round 2.",
+      "recorded": "Re-recorded with the implementation approval (2026-11-14)."
+    },
+    {
+      "date": "2026-11-17",
+      "change": "The table has no size (user decision at the Figma parity review): prop size removed; heading and cell minHeight is size.control.md, which follows the density mode (32, 40, 44 px), and the block padding is reduced where needed so that one line of text fits in it. The sub-components have no size either.",
+      "sha256": {
+        "foundations/components/data/table/contract.json": "709d250b4e1cb564ff02ccac92ae039edc86c7a3e2bc5327abb0a0e6ef3ad4a5"
+      },
+      "review": "Wave 5 Figma parity gate (round 3)",
+      "accepted": "Requested by the user on 2026-11-17 in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Table : Mais je me répète, mais un tableau n'a pas besoin d'avoir de sélecteur de size en variante ! Garde uniquement les modes, il va automatiquement être plus petit car plus dense. C'est donc vrai également pour ces sous composants ! D'ailleurs c'est vrai pour tous les composants du DS, pas tous les composants nécessites systématiquement plusieurs variantes de tailles.\"",
+      "recorded": "Re-recorded with the contract and implementation approvals (2026-11-17)."
+    },
+    {
+      "date": "2026-11-21",
+      "change": "Option A at the wave 5 documentation gate: until the overflow can be measured (server rendering, before the component runs in the browser), the scroll area is a named focus stop by default (role region, caption as name, tabindex 0), and stops being one as soon as the table is measured to fit. Found by axe (scrollable-region-focusable) on the documentation site, whose examples hydrate when they become visible.",
+      "sha256": {
+        "foundations/components/data/table/contract.json": "afb9de628d9b1bc6d1ab12a4a3699247a9fc9dcce96bd3da1757caeb4637ffab"
+      },
+      "review": "Wave 5 documentation gate",
+      "accepted": "User on 2026-11-21 in the Claude Code session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Pour ta question, va pour la A, on suit ta recommandation.\"",
+      "recorded": "Re-recorded with the contract and implementation approvals (2026-11-21)."
+    },
+    {
+      "date": "2026-11-21",
+      "change": "Final consistency pass (authoring/roadmap.md): figma-spec.md explains that the Figma Link of the link cells has an explicit size (sm) because Figma has no inherited typography, while the code Link takes the typography of the cell.",
+      "sha256": {
+        "foundations/components/data/table/figma-spec.md": "bad2fe9e9800e20193b16e4ba731425ff9bebec5afd04c1fc6904793aabc1a12"
+      },
+      "review": "Wave 5 final consistency pass, presented with the pull request",
+      "accepted": "User on 2026-11-22: \"Pour avatar groupe je suis d'accord avec toi, on part sur la A et je valide les corrections de la repasse\"",
+      "recorded": "Re-recorded with the approvals it touches (2026-11-22)."
+    }
+  ]
+}

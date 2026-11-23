@@ -119,3 +119,30 @@ export type { SelectSize } from './components/select/contract.generated.js';
 export { default as Combobox } from './components/combobox/Combobox.svelte';
 export type { ComboboxProps, ComboboxOptionsRecord } from './components/combobox/types.js';
 export type { ComboboxSize, ComboboxFilter } from './components/combobox/contract.generated.js';
+export { default as Avatar } from './components/avatar/Avatar.svelte';
+export type { AvatarProps, AvatarImageStatus } from './components/avatar/types.js';
+export type { AvatarSize, AvatarShape } from './components/avatar/contract.generated.js';
+export { default as AvatarGroup } from './components/avatar-group/AvatarGroup.svelte';
+export type { AvatarGroupProps, AvatarGroupItem } from './components/avatar-group/types.js';
+export type { AvatarGroupSize, AvatarGroupShape } from './components/avatar-group/contract.generated.js';
+export { default as DataField } from './components/data-field/DataField.svelte';
+export type { DataFieldProps } from './components/data-field/types.js';
+export type { DataFieldOrientation, DataFieldSize } from './components/data-field/contract.generated.js';
+export { default as Divider } from './components/divider/Divider.svelte';
+export type { DividerProps } from './components/divider/types.js';
+export type { DividerOrientation } from './components/divider/contract.generated.js';
+export { default as Table } from './components/table/Table.svelte';
+export { default as TableHeader } from './components/table/TableHeader.svelte';
+export { default as TableBody } from './components/table/TableBody.svelte';
+export { default as TableFooter } from './components/table/TableFooter.svelte';
+export { default as TableRow } from './components/table/TableRow.svelte';
+export { default as TableHeading } from './components/table/TableHeading.svelte';
+export { default as TableCell } from './components/table/TableCell.svelte';
+export type {
+  TableProps,
+  TableSectionProps,
+  TableRowProps,
+  TableHeadingProps,
+  TableCellProps
+} from './components/table/types.js';
+export type { TableHeadingAlign, TableCellAlign } from './components/table/contract.generated.js';

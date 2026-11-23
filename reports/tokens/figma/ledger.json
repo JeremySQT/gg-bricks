@@ -274,7 +274,9 @@
   "limitations": [
     "OpenType features (tnum on typography/numeral/*) cannot be set on text styles through the Plugin API; the style description records them and the text layer sets them.",
     "Style IDs are file-local (S:… keys) and are read from the file when needed.",
-    "checkbox/focus-radius is an adapter variable kept in Foundations · Brand (its value changes with the brand; see authoring/adapters/figma/checkbox-focus-radius.plugin.js). Since 2026-11-01 the verification hashes exactly the manifest variables and lists it under unexpected instead of failing."
+    "checkbox/focus-radius is an adapter variable kept in Foundations · Brand (its value changes with the brand; see authoring/adapters/figma/checkbox-focus-radius.plugin.js). Since 2026-11-01 the verification hashes exactly the manifest variables and lists it under unexpected instead of failing.",
+    "Figma-only adapter variables hidden from publishing, kept by the prune script: Foundations · Brand checkbox/focus-radius and avatar-group/spacing/{xs,sm,md,lg,xl} (negative spacing: Figma cannot negate an alias); Foundations · Density table/padding-block (Figma has no min()). Verified on 2026-11-20: 6 hidden variables in Brand, 1 in Density.",
+    "Distribution is checked in this file only (the hiddenFromPublishing flags): what a consumer file shows after publishing the library can be verified only once a publication is authorized."
   ],
   "scripts": {
     "_Script/spec-lib": {
@@ -302,7 +304,85 @@
       "variables": 90,
       "hiddenFromPublishing": true,
       "created": "2026-11-03",
-      "builder": "authoring/adapters/figma/action-family.plugin.js"
+      "builder": "authoring/adapters/figma/action-family.plugin.js",
+      "verified": "2026-11-20: hiddenFromPublishing verified on the collection and on every variable (user decision at the wave 5 Figma parity gate: keep the Components collections and make sure they are not distributed)"
+    },
+    "Components": {
+      "id": "VariableCollectionId:181:2",
+      "modeNames": [
+        "md",
+        "sm",
+        "lg"
+      ],
+      "variables": 22,
+      "hiddenFromPublishing": true,
+      "verified": "2026-11-20: hiddenFromPublishing verified on the collection and on every variable (user decision at the wave 5 Figma parity gate: keep the Components collections and make sure they are not distributed)"
+    },
+    "Components · button state": {
+      "id": "VariableCollectionId:90:2",
+      "modeNames": [
+        "default",
+        "hover",
+        "pressed",
+        "loading",
+        "disabled"
+      ],
+      "variables": 9,
+      "hiddenFromPublishing": true,
+      "verified": "2026-11-20: hiddenFromPublishing verified on the collection and on every variable (user decision at the wave 5 Figma parity gate: keep the Components collections and make sure they are not distributed)"
+    },
+    "Components · button style": {
+      "id": "VariableCollectionId:90:12",
+      "modeNames": [
+        "accent-solid",
+        "accent-outline",
+        "accent-ghost",
+        "neutral-solid",
+        "neutral-outline",
+        "neutral-ghost",
+        "danger-solid",
+        "danger-outline",
+        "danger-ghost"
+      ],
+      "variables": 1,
+      "hiddenFromPublishing": true,
+      "verified": "2026-11-20: hiddenFromPublishing verified on the collection and on every variable (user decision at the wave 5 Figma parity gate: keep the Components collections and make sure they are not distributed)"
+    },
+    "Components · link size": {
+      "id": "VariableCollectionId:232:400",
+      "modeNames": [
+        "md",
+        "sm",
+        "lg"
+      ],
+      "variables": 5,
+      "hiddenFromPublishing": true,
+      "verified": "2026-11-20: hiddenFromPublishing verified on the collection and on every variable (user decision at the wave 5 Figma parity gate: keep the Components collections and make sure they are not distributed)"
+    },
+    "Components · link color": {
+      "id": "VariableCollectionId:232:406",
+      "modeNames": [
+        "accent",
+        "on-info",
+        "on-success",
+        "on-warning",
+        "on-danger",
+        "on-inverse"
+      ],
+      "variables": 3,
+      "hiddenFromPublishing": true,
+      "verified": "2026-11-20: hiddenFromPublishing verified on the collection and on every variable (user decision at the wave 5 Figma parity gate: keep the Components collections and make sure they are not distributed)"
+    },
+    "Wireframe": {
+      "id": "VariableCollectionId:105:1565",
+      "modeNames": [
+        "light",
+        "blueprint"
+      ],
+      "variables": 17,
+      "hiddenFromPublishing": true,
+      "note": "Specification ink (light and blueprint boards); the collection is hidden, its variables are not individually hidden.",
+      "verified": "2026-11-20: collection hiddenFromPublishing verified."
     }
   }
 }

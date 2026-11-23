@@ -156,11 +156,11 @@
         ],
         "sha256": {
           "documentation/components/spinner.md": "cd5e66ba8d0b28569cc1bf63073aff8e3a2995792c9de8a2a57a4814d6a3e8a5",
-          "documentation/index.json": "1c235c7e0e69d18d8750fea5169aa875d0cf1e9d96d5629733f00a2b33d18ce8",
+          "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9",
           "apps/docs/src/playgrounds/spinner.svelte": "0b3f7a4709c1348e644a637bb54cb9db2384423cdeb157367039b85bc48cb673"
         }
       },
-      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremysqt.workers.dev): \"Je valide la documentation, tu peux faire une PR\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): documentation/index.json gained the seven wave 4 entries and lost the \"(planned)\" mentions of components now exported. Digests re-recorded.",
+      "provenance": "User in the Claude Code session https://claude.ai/code/session_0156c543GZBnpgBmqmSNfDLB on 2026-11-09, after reading the pages on the wave/3 preview of the documentation site (https://wave-3-design-system.jeremysqt.workers.dev): \"Je valide la documentation, tu peux faire une PR\". Amendment of 2026-11-12 (wave 4 documentation review on https://wave-4-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c545pPRcTHotAjG2D8Qd: \"Je valide la doc, corrige aussi lib/overlay\"): documentation/index.json gained the seven wave 4 entries and lost the \"(planned)\" mentions of components now exported. Digests re-recorded. Amendment of 2026-11-21 (wave 5 documentation review on https://wave-5-design-system.jeremysqt.workers.dev, user in the session https://claude.ai/code/session_0156c544Edt5ENkFjvmrgUAT: \"Je valide la documentation\"): documentation/index.json gained the five wave 5 entries and lost the \"(planned)\" mention of Avatar. Digests re-recorded.",
       "note": null
     },
     "delivery": null
@@ -241,5 +241,17 @@
   "nextAction": "Delivery with wave 3: pull request of wave/3 to main (user merge); publication needs explicit authorization.",
   "implementationNotes": [
     "A labelled spinner is a role status named by aria-label (a status takes no name from its content in Chromium) with the same text visually hidden inside it as the announced content. Whether a status inserted already filled is announced varies between screen readers: the application may keep a status region on the page and fill it instead."
+  ],
+  "pendingChanges": [
+    {
+      "date": "2026-11-20",
+      "change": "documentation/index.json gained the five wave 5 entries (avatar, avatar-group, data-field, divider, table) and lost the \"(planned)\" mention of Avatar in the icon entry. To re-record at the wave 5 documentation gate.",
+      "sha256": {
+        "documentation/index.json": "995892b05276a325447ba5ec887baac62a40baa9b994e8ccb3192b5d5d3739f9"
+      },
+      "review": "Wave 5 documentation gate",
+      "accepted": "User on 2026-11-21: \"Je valide la documentation\"",
+      "recorded": "Re-recorded with the documentation approval (2026-11-21)."
+    }
   ]
 }

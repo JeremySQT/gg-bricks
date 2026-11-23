@@ -1,0 +1,30 @@
+{
+  "component": {
+    "avatar-group": {
+      "$description": "AvatarGroup tokens: values that mean something only for the AvatarGroup, indexed by its size. They do not change with density.",
+      "overlap": {
+        "$description": "How far each avatar overlaps the previous one: a quarter of the avatar size.",
+        "xs": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v6}"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v8}"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v10}"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v12}"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "{primitive.dimension.v16}"
+        }
+      }
+    }
+  }
+}

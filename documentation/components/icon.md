@@ -22,7 +22,7 @@ Measurements and tokens, including the lettered dimensions of the blueprint: `co
 ## When not to use
 
 - An action without visible text: IconButton.
-- Multi-color artwork, logos, photographs; avatars: Avatar (planned).
+- Multi-color artwork, logos, photographs; avatars: Avatar.
 - A loading indicator: Spinner; Button and IconButton show it with `loading`.
 - A status or a category in words: Badge.
 - Icon fonts and sprite sheets: the component takes inline vector content.
