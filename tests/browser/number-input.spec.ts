@@ -1,4 +1,4 @@
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, webkit, devices, type Page } from '@playwright/test';
 import {
   ComputedReport,
   accessible,
@@ -194,6 +194,33 @@ test('steppers: a press steps and keeps focus in the input; disabled at the boun
   const sm = (await page.locator('#size-sm >> xpath=.. >> .ggb-number-input__increase').boundingBox())!;
   await page.mouse.click(sm.x + sm.width / 2, sm.y + sm.height / 2 - 20);
   await expect(page.locator('#size-sm')).toHaveValue('3');
+});
+
+test('touch: a tap on a stepper steps in WebKit (iPhone) without moving focus to the input; the number is centered', async ({
+  baseURL
+}) => {
+  // WebKit drops the click after a pointerdown whose default is prevented: the steppers step on pointerup.
+  // The configuration's Chromium launch options would otherwise apply to this launch too.
+  const browser = await webkit.launch({ executablePath: webkit.executablePath(), args: [] });
+  try {
+    const context = await browser.newContext({ ...devices['iPhone 13'], baseURL });
+    const page = await context.newPage();
+    await page.goto('/number-input/');
+    const increase = page.locator('#play ~ .ggb-number-input__increase');
+    const decrease = page.locator('.ggb-number-input__decrease:has(~ #play)');
+    await increase.scrollIntoViewIfNeeded();
+    await increase.tap();
+    await increase.tap();
+    await decrease.tap();
+    await expect(page.getByTestId('value')).toHaveText('Value: 4');
+    await expect(page.getByTestId('changes')).toHaveText('Changes: 3');
+    await expect(page.locator('#play')).not.toBeFocused();
+    await expect(page.locator('#play')).toHaveCSS('text-align', 'center');
+    await expect(page.locator('#plain-md')).toHaveCSS('text-align', 'start');
+    await expect(increase).toHaveCSS('touch-action', 'manipulation');
+  } finally {
+    await browser.close();
+  }
 });
 
 test('the consumer onkeydown runs before the component; the form submits plain decimals', async ({ page }) => {

@@ -153,11 +153,42 @@
     commit();
   }
 
-  // A press on a stepper steps once and keeps focus in the input (or moves it there) without moving the caret.
-  function stepperDown(event: PointerEvent) {
-    if (event.button !== 0) return;
-    event.preventDefault();
-    ref?.focus();
+  // A press on a stepper steps once, on release. A mouse press keeps focus in the input, or moves it there; a touch
+  // leaves focus where it is (moving it to the input would open the keyboard). The step is taken on pointerup, not
+  // on click: WebKit drops the click after a pointerdown whose default is prevented. A click without a pointer press
+  // (assistive technology) still steps.
+  let pressed: { count: number; pointer: number } | null = null;
+  function stepperDown(event: PointerEvent, count: number) {
+    if (event.button !== 0 || isDisabled || isReadonly) return;
+    pressed = { count, pointer: event.pointerId };
+    if (event.pointerType === 'mouse') {
+      event.preventDefault();
+      ref?.focus();
+    } else if (document.activeElement === ref) event.preventDefault();
+  }
+  function stepperUp(event: PointerEvent & { currentTarget: HTMLButtonElement }, count: number) {
+    if (!pressed || pressed.pointer !== event.pointerId || pressed.count !== count) return;
+    pressed = null;
+    const box = event.currentTarget.getBoundingClientRect();
+    const inside =
+      event.clientX >= box.left &&
+      event.clientX <= box.right &&
+      event.clientY >= box.top &&
+      event.clientY <= box.bottom;
+    if (inside || event.pointerType !== 'mouse') {
+      stepBy(count);
+      clickHandled = true;
+      // The click that may follow belongs to this press.
+      setTimeout(() => (clickHandled = false), 400);
+    }
+  }
+  let clickHandled = false;
+  function stepperClick(count: number) {
+    if (clickHandled) {
+      clickHandled = false;
+      return;
+    }
+    stepBy(count);
   }
 
   // A press on the container (padding, extended target) focuses the input.
@@ -201,8 +232,10 @@
       tabindex="-1"
       aria-label={decreaseLabel}
       disabled={steppersOff || atMin}
-      onpointerdown={stepperDown}
-      onclick={() => stepBy(-1)}>{@render minus()}</button
+      onpointerdown={(event) => stepperDown(event, -1)}
+      onpointerup={(event) => stepperUp(event, -1)}
+      onpointercancel={() => (pressed = null)}
+      onclick={() => stepperClick(-1)}>{@render minus()}</button
     >
   {/if}
   <input
@@ -238,8 +271,10 @@
       tabindex="-1"
       aria-label={increaseLabel}
       disabled={steppersOff || atMax}
-      onpointerdown={stepperDown}
-      onclick={() => stepBy(1)}>{@render plus()}</button
+      onpointerdown={(event) => stepperDown(event, 1)}
+      onpointerup={(event) => stepperUp(event, 1)}
+      onpointercancel={() => (pressed = null)}
+      onclick={() => stepperClick(1)}>{@render plus()}</button
     >
   {/if}
   {#if name}

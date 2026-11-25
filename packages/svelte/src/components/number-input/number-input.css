@@ -65,6 +65,10 @@
     outline: none;
     appearance: none;
   }
+  /* Between the steppers the number is centered; without them it starts like the text of an InputText. */
+  .ggb-number-input[data-steppers] .ggb-number-input__input {
+    text-align: center;
+  }
   .ggb-number-input__input::placeholder {
     color: var(--_placeholder);
     opacity: 1;
@@ -87,6 +91,8 @@
     background: transparent;
     color: var(--_icon);
     cursor: default;
+    /* No double-tap zoom on repeated presses. */
+    touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
     transition-property: color;
     transition-duration: var(--ggb-number-input-motionDuration);

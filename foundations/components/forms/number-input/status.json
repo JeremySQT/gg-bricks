@@ -27,7 +27,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/number-input/contract.json",
-      "sha256": "44770d1e8a7e97b7a412d8666d33a8daa14741d938f07e15b7ebd05931ae33c6"
+      "sha256": "431817e6e29d60e0f02f041fef61ee1525b82e7356002324145c46394fa2ebb3"
     },
     "tokens": [],
     "figma": null,
@@ -50,7 +50,7 @@
     "examples": {
       "page": "examples/number-input",
       "preview": "dist/previews/number-input.html (npm run build && npm run build:preview number-input)",
-      "artifact": "https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795587797-5387, navigation between pages), page number-input.html"
+      "artifact": "https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795589131-541a, navigation between pages, NumberInput touch fix), page number-input.html"
     },
     "tests": {
       "ssr": ["tests/number-input-number.test.ts", "tests/ssr/number-input.test.ts"],
@@ -138,7 +138,8 @@
   "nextAction": "Implementation gate (wave 6, grouped): present the review pages, the exercise list and the limits; record the approval with source digests.",
   "implementationNotes": [
     "Parsing and formatting through Intl.NumberFormat(locale).formatToParts to learn the grouping and decimal separators.",
-    "Decimal stepping without floating error: round to the larger number of fraction digits of the value and of step."
+    "Decimal stepping without floating error: round to the larger number of fraction digits of the value and of step.",
+    "Steppers step on pointerup, not on click: WebKit (Safari, iOS) drops the click that follows a pointerdown whose default is prevented. A WebKit iPhone test in tests/browser/number-input.spec.ts covers it (the configuration's Chromium launch options are overridden for that launch)."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],
@@ -158,6 +159,15 @@
       "invalidates": "approvals.contract until the wave 6 implementation gate",
       "sha256": {
         "foundations/components/forms/number-input/contract.json": "44770d1e8a7e97b7a412d8666d33a8daa14741d938f07e15b7ebd05931ae33c6"
+      },
+      "review": "Wave 6 implementation gate"
+    },
+    {
+      "date": "2026-11-25",
+      "change": "User review on a phone (2026-11-25): the number is centered between the steppers (at the inline start without them); a press on a stepper steps on release, and a touch leaves focus where it is (moving it to the input opened the keyboard). The steppers did not step in Safari: WebKit drops the click after a pointerdown whose default is prevented; they now step on pointerup (a click without a pointer press, from assistive technology, still steps), with touch-action manipulation.",
+      "invalidates": "approvals.contract until the wave 6 implementation gate",
+      "sha256": {
+        "foundations/components/forms/number-input/contract.json": "431817e6e29d60e0f02f041fef61ee1525b82e7356002324145c46394fa2ebb3"
       },
       "review": "Wave 6 implementation gate"
     }
