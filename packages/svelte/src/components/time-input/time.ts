@@ -110,3 +110,81 @@ export function typeDigit(
   const complete = text.length === 2 || n * 10 > hi;
   return { value: value ?? null, buffer: complete ? '' : text, complete };
 }
+
+/** Seconds since midnight of HH:mm or HH:mm:ss; undefined for anything else. */
+export function secondsOf(text: string | undefined): number | undefined {
+  const m = /^(\d{2}):(\d{2})(?::(\d{2}))?$/.exec(text ?? '');
+  if (!m) return undefined;
+  const [h, mi, s] = [Number(m[1]), Number(m[2]), Number(m[3] ?? 0)];
+  if (h > 23 || mi > 59 || s > 59) return undefined;
+  return h * 3600 + mi * 60 + s;
+}
+
+export interface Bounds {
+  min?: number; // seconds since midnight
+  max?: number;
+}
+
+/** 24-hour hours the shown parts may stand for (both periods while the day period is empty on a 12-hour clock). */
+function hoursOf(parts: Parts, twelve: boolean): number[] {
+  if (parts.hour === null) return [];
+  if (!twelve) return [parts.hour];
+  const base = parts.hour % 12;
+  return parts.dayPeriod === null ? [base, base + 12] : [base + (parts.dayPeriod === 'pm' ? 12 : 0)];
+}
+
+/**
+ * Whether parts may still stand for a time within the bounds: a complete time is compared to min and max; an
+ * incomplete one only by its hour (an hour whose 60 minutes all fall outside is out).
+ */
+export function withinBounds(parts: Parts, twelve: boolean, seconds: boolean, bounds: Bounds): boolean {
+  const lo = bounds.min ?? 0;
+  const hi = bounds.max ?? 24 * 3600 - 1;
+  const full = valueOf(parts, twelve, seconds);
+  if (full) {
+    const s = secondsOf(full)!;
+    return s >= lo && s <= hi;
+  }
+  const hours = hoursOf(parts, twelve);
+  if (!hours.length) return true;
+  return hours.some((h) => h * 3600 + 3599 >= lo && h * 3600 <= hi);
+}
+
+/**
+ * Up or Down on a part within the bounds: steps as stepPart does, skipping the values that would put the time
+ * outside min and max; when no other value is allowed the parts are unchanged.
+ */
+export function stepPartWithin(
+  parts: Parts,
+  part: Part,
+  delta: 1 | -1,
+  twelve: boolean,
+  seconds: boolean,
+  bounds: Bounds
+): Parts {
+  if (bounds.min === undefined && bounds.max === undefined) return stepPart(parts, part, delta, twelve);
+  let next = parts;
+  for (let i = 0; i < 61; i++) {
+    next = stepPart(next, part, delta, twelve);
+    if (withinBounds(next, twelve, seconds, bounds)) return next;
+    if (next[part] === parts[part] && parts[part] !== null) break;
+  }
+  return parts;
+}
+
+/** A complete value outside the bounds becomes the nearest bound, in the value's format; otherwise unchanged. */
+export function clampValue(value: string, bounds: Bounds, seconds: boolean): string {
+  const s = secondsOf(value);
+  if (s === undefined) return value;
+  const target =
+    bounds.min !== undefined && s < bounds.min
+      ? bounds.min
+      : bounds.max !== undefined && s > bounds.max
+        ? bounds.max
+        : s;
+  if (target === s) return value;
+  const pad = (n: number) => String(n).padStart(2, '0');
+  const h = Math.floor(target / 3600);
+  const m = Math.floor((target % 3600) / 60);
+  return `${pad(h)}:${pad(m)}${seconds ? `:${pad(target % 60)}` : ''}`;
+}

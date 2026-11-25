@@ -58,3 +58,32 @@ test('digits fill a part and complete it when no further digit can follow', () =
   assert.deepEqual(typeDigit('hour', '', 0, true), { value: null, buffer: '0', complete: false });
   assert.deepEqual(typeDigit('hour', '0', 0, true), { value: 12, buffer: '', complete: true }, '00 is 12');
 });
+
+test('bounds: Up and Down skip the times outside min and max; a typed time outside becomes the nearest bound', async () => {
+  const { secondsOf, stepPartWithin, clampValue, withinBounds } =
+    await import('../packages/svelte/src/components/time-input/time.ts');
+  const bounds = { min: secondsOf('09:00'), max: secondsOf('18:00') };
+  const empty24 = partsOf('', false);
+  assert.equal(stepPartWithin(empty24, 'hour', 1, false, false, bounds).hour, 9, 'from empty, Up starts at min');
+  assert.equal(stepPartWithin(empty24, 'hour', -1, false, false, bounds).hour, 18, 'from empty, Down starts at max');
+  assert.equal(stepPartWithin(partsOf('18:00', false), 'hour', 1, false, false, bounds).hour, 9, 'wraps within bounds');
+  assert.equal(stepPartWithin(partsOf('18:00', false), 'minute', 1, false, false, bounds).minute, 0, 'no later minute');
+  assert.equal(
+    stepPartWithin(partsOf('10:00', true), 'dayPeriod', 1, true, false, bounds).dayPeriod,
+    'am',
+    '22:00 is outside: the period does not change'
+  );
+  assert.equal(stepPartWithin(partsOf('10:00', false), 'hour', 1, false, false, {}).hour, 11, 'no bounds');
+  assert.equal(withinBounds(partsOf('07:30', false), false, false, bounds), false);
+  assert.equal(withinBounds({ hour: 8, minute: null, second: null, dayPeriod: null }, false, false, bounds), false);
+  assert.equal(
+    withinBounds({ hour: 6, minute: null, second: null, dayPeriod: null }, true, false, bounds),
+    true,
+    '6 PM'
+  );
+  assert.equal(clampValue('19:30', bounds, false), '18:00');
+  assert.equal(clampValue('07:05', bounds, false), '09:00');
+  assert.equal(clampValue('12:00', bounds, false), '12:00');
+  assert.equal(clampValue('19:30:15', bounds, true), '18:00:00');
+  assert.equal(clampValue('', bounds, false), '');
+});

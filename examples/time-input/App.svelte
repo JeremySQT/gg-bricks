@@ -34,6 +34,7 @@
   let submitted = $state('');
   let external = $state('18:45');
   let afternoonKo = $state('14:05');
+  let opening = $state('');
   let afternoonFr = $state('14:05');
 </script>
 
@@ -253,6 +254,13 @@
       <div class="panel">
         <p class="panel-title">Narrow (7rem), seconds, 12 hours</p>
         <div class="narrow"><TimeInput id="narrow" label="Lap" value="23:59:59" seconds hourCycle="h12" /></div>
+      </div>
+      <div class="panel">
+        <p class="panel-title">Bounded, 09:00 to 18:00</p>
+        <Field label="Pick-up time" description="Between 9:00 and 18:00.">
+          <TimeInput id="bounded" bind:value={opening} min="09:00" max="18:00" hourCycle="h23" />
+        </Field>
+        <p class="readout" data-testid="bounded">Value: “{opening}”</p>
       </div>
       <div class="panel">
         <p class="panel-title">Afternoon on a 12-hour clock</p>

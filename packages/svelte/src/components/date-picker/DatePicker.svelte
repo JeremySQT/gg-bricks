@@ -325,6 +325,15 @@
     };
   }
 
+  // A complete date typed before min or after max becomes the nearest bound when focus leaves the parts; while typing
+  // it is left alone, and a value set by the application is never changed.
+  function partsFocusout(event: FocusEvent & { currentTarget: EventTarget & HTMLElement }) {
+    const next = event.relatedTarget as Node | null;
+    if ((next && event.currentTarget.contains(next)) || !date || isReadonly || isDisabled) return;
+    const clamped = clampDate(date);
+    if (clamped.compare(date) !== 0) handleValueChange(clamped);
+  }
+
   // A press on the field outside the parts and the button focuses the first part.
   function handlePointerdown(event: PointerEvent & { currentTarget: EventTarget & HTMLDivElement }) {
     onpointerdown?.(event);
@@ -406,7 +415,7 @@
             ref = node;
           }}
         >
-          <span class="ggb-date-picker__segments"
+          <span class="ggb-date-picker__segments" onfocusout={partsFocusout}
             >{#each segments as { part, value: text }, i (i)}<DatePicker.Segment {part}
                 >{#snippet child({ props: segment })}<span
                     {...segmentProps(segment, part, i === firstEditable, text)}

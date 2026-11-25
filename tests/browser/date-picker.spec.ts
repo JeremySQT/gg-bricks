@@ -225,6 +225,21 @@ test('bounds: days outside min..max are disabled and never focused; month button
   await expect(page.getByTestId('bounded')).toHaveText('Value: “2026-12-10”');
 });
 
+test('bounds: a typed date outside min..max becomes the nearest bound when focus leaves the parts', async ({
+  page
+}) => {
+  await page.locator(seg('bounded', 'month')).click();
+  await page.keyboard.type('01012026');
+  await expect(page.getByTestId('bounded')).toHaveText('Value: “2026-01-01”'); // typing is free
+  await page.keyboard.press('Tab'); // to the calendar button: focus left the parts
+  await expect(page.getByTestId('bounded')).toHaveText('Value: “2026-11-10”');
+  await page.locator(seg('bounded', 'month')).click();
+  await page.keyboard.type('12312026');
+  await page.click('body', { position: { x: 5, y: 5 } });
+  await expect(page.getByTestId('bounded')).toHaveText('Value: “2026-12-10”');
+  await expect(page.locator('#bounded .ggb-date-picker__segments')).toHaveText('12/10/2026');
+});
+
 test('today, the first day of the week, Gregorian Thai, right to left', async ({ page }) => {
   await openCalendar(page, 'cond-default-empty');
   await expect(page.locator(day('2026-11-23'))).toHaveAttribute('data-today', '');

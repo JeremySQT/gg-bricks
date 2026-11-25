@@ -7,9 +7,9 @@ type Owned = 'children' | 'role' | 'aria-label' | 'aria-labelledby' | 'aria-inva
 export interface TimeInputOptions {
   /** The time, 24-hour HH:mm (HH:mm:ss with seconds), or empty; bind it (`bind:value`). Default empty. */
   value?: string;
-  /** Earliest expected time (HH:mm). Informative: the application decides what is invalid. */
+  /** Earliest time (HH:mm): Up and Down skip earlier times; a typed earlier time becomes min when focus leaves. */
   min?: string;
-  /** Latest expected time (HH:mm), not before min. Informative: the application decides what is invalid. */
+  /** Latest time (HH:mm), not before min: Up and Down skip later times; a typed later time becomes max on leaving. */
   max?: string;
   /** BCP 47 locale: order and separators of the parts, hour cycle when hourCycle is auto. Default "en". */
   locale?: string;

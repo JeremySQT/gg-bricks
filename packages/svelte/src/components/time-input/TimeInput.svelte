@@ -2,7 +2,18 @@
   import { getContext } from 'svelte';
   import type { TimeInputProps } from './types.js';
   import { defaults } from './contract.generated.js';
-  import { layoutOf, partsOf, rangeOf, stepPart, typeDigit, valueOf, type Part, type Parts } from './time.js';
+  import {
+    clampValue,
+    layoutOf,
+    partsOf,
+    rangeOf,
+    secondsOf,
+    stepPartWithin,
+    typeDigit,
+    valueOf,
+    type Part,
+    type Parts
+  } from './time.js';
   import './tokens.generated.css';
   import './time-input.css';
 
@@ -19,11 +30,8 @@
 
   let {
     value = $bindable(defaults.value),
-    // min and max are informative (the application owns invalid): taken out of the attributes, not used.
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    min: _min,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    max: _max,
+    min,
+    max,
     locale = defaults.locale,
     hourCycle = defaults.hourCycle,
     seconds = defaults.seconds,
@@ -40,6 +48,7 @@
     id,
     'aria-describedby': describedBy,
     onpointerdown,
+    onfocusout,
     ...rest
   }: TimeInputProps = $props();
 
@@ -66,6 +75,9 @@
   const describedByIds = $derived([field?.describedBy, describedBy].filter(Boolean).join(' ') || undefined);
 
   const layout = $derived(layoutOf(locale, hourCycle, seconds));
+  // Bounds: Up and Down skip the times outside them; a complete time typed outside becomes the nearest bound when
+  // focus leaves the field.
+  const bounds = $derived({ min: secondsOf(min), max: secondsOf(max) });
   const editable = $derived(layout.items.flatMap((item) => ('part' in item ? [item.part] : [])));
 
   // The parts follow the value; while the user types an incomplete time they hold what was typed and value stays
@@ -154,7 +166,7 @@
         event.preventDefault();
         if (isReadonly) return;
         buffer = '';
-        update(stepPart(parts, part, event.key === 'ArrowUp' ? 1 : -1, layout.twelve));
+        update(stepPartWithin(parts, part, event.key === 'ArrowUp' ? 1 : -1, layout.twelve, seconds, bounds));
         return;
       case 'ArrowLeft':
       case 'ArrowRight':
@@ -200,6 +212,16 @@
     }
   }
 
+  function handleFocusout(event: FocusEvent & { currentTarget: EventTarget & HTMLDivElement }) {
+    onfocusout?.(event);
+    const next = event.relatedTarget as Node | null;
+    if (next && event.currentTarget.contains(next)) return;
+    const current = valueOf(parts, layout.twelve, seconds);
+    if (!current || isReadonly || isDisabled) return;
+    const clamped = clampValue(current, bounds, seconds);
+    if (clamped !== current) update(partsOf(clamped, layout.twelve));
+  }
+
   // A press on the container outside the parts focuses the first part (a press on a part focuses that part).
   function handlePointerdown(event: PointerEvent & { currentTarget: EventTarget & HTMLDivElement }) {
     onpointerdown?.(event);
@@ -227,6 +249,7 @@
   aria-describedby={describedByIds}
   aria-disabled={isDisabled ? 'true' : undefined}
   onpointerdown={handlePointerdown}
+  onfocusout={handleFocusout}
 >
   <span class="ggb-time-input__segments"
     >{#each layout.items as item, i (i)}{#if 'part' in item}{@const part = item.part}{@const t = textOf(

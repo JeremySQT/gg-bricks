@@ -156,6 +156,29 @@ test('afternoon on a 12-hour clock in Korean and in French h12: right period, va
   await expect(page.getByTestId('pm-ko')).toHaveText('Value: “02:05”');
 });
 
+test('bounds 09:00 to 18:00: Up starts at 9 and skips later hours; a typed time outside becomes the bound on leaving', async ({
+  page
+}) => {
+  await page.locator(seg('bounded', 'hour')).click();
+  await page.keyboard.press('ArrowUp');
+  await expect(page.locator(seg('bounded', 'hour'))).toHaveText('09');
+  await page.keyboard.press('ArrowDown');
+  await expect(page.locator(seg('bounded', 'hour'))).toHaveText('18');
+  await page.keyboard.press('ArrowUp');
+  await expect(page.locator(seg('bounded', 'hour'))).toHaveText('09');
+  // Typing is free; leaving the field brings a complete time back within the bounds.
+  await page.keyboard.type('1930');
+  await expect(page.getByTestId('bounded')).toHaveText('Value: “19:30”');
+  await page.keyboard.press('Tab');
+  await expect(page.getByTestId('bounded')).toHaveText('Value: “18:00”');
+  await page.locator(seg('bounded', 'hour')).click();
+  await page.keyboard.type('0705');
+  await page.locator(seg('bounded', 'minute')).click(); // focus stays in the field: unchanged
+  await expect(page.getByTestId('bounded')).toHaveText('Value: “07:05”');
+  await page.click('body', { position: { x: 5, y: 5 } });
+  await expect(page.getByTestId('bounded')).toHaveText('Value: “09:00”');
+});
+
 test('value set by the application, form submission, a press beside the parts focuses the first part', async ({
   page
 }) => {

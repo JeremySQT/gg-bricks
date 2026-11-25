@@ -23,7 +23,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/time-input/contract.json",
-      "sha256": "61f80c56c1f273a78fa278beace795e24d1390f38b5a3d76a105ea068acd8f65"
+      "sha256": "a21db1acd88b5a902fd69b9e74e7c25ce2b80dc7026af0cb3484e4f996eb74e2"
     },
     "tokens": [],
     "figma": null,
@@ -46,7 +46,7 @@
     "examples": {
       "page": "examples/time-input",
       "preview": "dist/previews/time-input.html (npm run build && npm run build:preview time-input)",
-      "artifact": "https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795589131-541a, navigation between pages, NumberInput touch fix), page time-input.html"
+      "artifact": "https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795593276-4977, navigation between pages, NumberInput touch fix, bounds), page time-input.html"
     },
     "tests": {
       "ssr": ["tests/time-input-time.test.ts", "tests/ssr/time-input.test.ts"],
@@ -62,10 +62,10 @@
       "revision": {
         "paths": ["foundations/components/forms/time-input/contract.json"],
         "sha256": {
-          "foundations/components/forms/time-input/contract.json": "61f80c56c1f273a78fa278beace795e24d1390f38b5a3d76a105ea068acd8f65"
+          "foundations/components/forms/time-input/contract.json": "a21db1acd88b5a902fd69b9e74e7c25ce2b80dc7026af0cb3484e4f996eb74e2"
         }
       },
-      "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\"."
+      "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\". Amendment of 2026-11-25: min and max bound the value: Up and Down skip the times outside them (from an empty part, Up starts at the first allowed value), and a complete time typed outside becomes the nearest bound when focus leaves the field; a value set by the application is not changed. User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-25), answering the min and max question of the implementation gate: \"Je n'avais pas compris ça du tout pour le datepicker désolé. Bien sûr qu'il faut pouvoir borner et qu'une date saisie hors borne se rapproche de la borne la plus proche. Donc la 2 aussi pour le TimeInput\" Digests re-recorded."
     },
     "implementation": null,
     "figmaParity": null,
@@ -126,7 +126,8 @@
     "hourCycle prop auto, h12, h23 (auto follows the locale) and seconds boolean (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping: \"hourcycle comme paramètre\"). Enum values must start with a letter, hence h12 and h23, the names Intl uses for 1-12 and 00-23.",
     "Size sm, md, lg like InputText and Select; no slot and no button: there is nothing to open.",
     "Bits UI TimeField is not used (implementation, 2026-11-23; to confirm at the implementation gate): in bits-ui 2.19.3 the day period is read as `value === \"PM\" ? \"PM\" : \"AM\"` (internal/date-time/formatter.js:146), so every 12-hour locale whose period is not written PM (ko 오후, ja 午後, ar م, en-GB pm, es p. m.) shows an afternoon time as morning, and two presses on the period go through a wrong value; h12 forced on a 24-hour locale (fr, de) renders no day period at all, so an afternoon time cannot be typed. The component writes its parts itself (time.ts: layout from Intl.DateTimeFormat.formatToParts, typing, stepping), as Select and Combobox do (decision Contract versus Bits UI). It therefore uses neither Bits UI nor @internationalized/date.",
-    "Bits UI TimeField not used, segments written by the component from Intl (accepted at the implementation gate, 2026-11-25: \"Ok pour les autres points hormis les props min and max de TimeInput\"); min and max still open."
+    "Bits UI TimeField not used, segments written by the component from Intl (accepted at the implementation gate, 2026-11-25: \"Ok pour les autres points hormis les props min and max de TimeInput\"); min and max still open.",
+    "min and max bound the value: Up and Down skip the times outside them (from an empty part, Up starts at the first allowed value), and a complete time typed outside becomes the nearest bound when focus leaves the field; a value set by the application is not changed. (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf, 2026-11-25: \"Je n'avais pas compris ça du tout pour le datepicker désolé. Bien sûr qu'il faut pouvoir borner et qu'une date saisie hors borne se rapproche de la borne la plus proche. Donc la 2 aussi pour le TimeInput\")."
   ],
   "openDecisions": [],
   "nextAction": "Implementation gate: decide min and max (user question of 2026-11-25), then record the TimeInput implementation approval; the other parts of the gate are approved.",
@@ -136,7 +137,7 @@
     "Left and Right Arrow go to the nearest part on that side on screen (bounding boxes), so they follow the reading direction and the bidirectional order of a time in a right-to-left page.",
     "Digits are shown in the locale's numbering system (Arabic-Indic in ar-EG) and accepted when typed in it.",
     "Enter submits the enclosing form, as in a text input.",
-    "min and max are taken out of the attributes and not used: the contract leaves invalid to the application (question for the implementation gate: keep or remove them)."
+    "min and max bound the value (time.ts: stepPartWithin, clampValue); the clamp runs on focusout of the field when focus leaves it; an incomplete time is never changed."
   ],
   "contrastScope": {
     "backdrops": ["canvas", "default", "subtle", "muted", "raised", "overlay"],

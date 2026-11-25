@@ -29,7 +29,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/date-picker/contract.json",
-      "sha256": "3a070f3f423a6a4033bb8d438a5514cad7427d61ced9fd620013fa1258927b0b"
+      "sha256": "32886d2d9cb58ddf55b878721efcca8d55bb2e83fb1b573ccb496e06449abc26"
     },
     "tokens": [],
     "figma": null,
@@ -51,7 +51,7 @@
     "examples": {
       "page": "examples/date-picker",
       "preview": "dist/previews/date-picker.html (npm run build && npm run build:preview date-picker)",
-      "artifact": "https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795589131-541a, navigation between pages, NumberInput touch fix), page date-picker.html"
+      "artifact": "https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795593276-4977, navigation between pages, NumberInput touch fix, bounds), page date-picker.html"
     },
     "tests": {
       "ssr": ["tests/ssr/date-picker.test.ts"],
@@ -67,10 +67,10 @@
       "revision": {
         "paths": ["foundations/components/forms/date-picker/contract.json"],
         "sha256": {
-          "foundations/components/forms/date-picker/contract.json": "3a070f3f423a6a4033bb8d438a5514cad7427d61ced9fd620013fa1258927b0b"
+          "foundations/components/forms/date-picker/contract.json": "32886d2d9cb58ddf55b878721efcca8d55bb2e83fb1b573ccb496e06449abc26"
         }
       },
-      "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\". Amendments accepted at the implementation gate (2026-11-25): spacing of the calendar button stated as the InputText action (slotInline removed), narrow weekday names where the locale's short names are longer than four characters, columns sharing the room under about 356 px. The day rule rewording (a disabled day is never focused; final consistency pass, 2026-11-25) is included. User at the grouped wave 6 implementation gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-25), after a review on a phone of https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795589131-541a): \"Slider : ok on garde le locale, datepicker ok pour la popover en v1 avec amélioration en drawer plus tard. Ok pour les autres points hormis les props min and max de TimeInput. Pourquoi ils ne fonctionnent pas ? Ça serait pourtant pratique non de pouvoir borner les heures ?\" Digests re-recorded.",
+      "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\". Amendments accepted at the implementation gate (2026-11-25): spacing of the calendar button stated as the InputText action (slotInline removed), narrow weekday names where the locale's short names are longer than four characters, columns sharing the room under about 356 px. The day rule rewording (a disabled day is never focused; final consistency pass, 2026-11-25) is included. User at the grouped wave 6 implementation gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-25), after a review on a phone of https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795589131-541a): \"Slider : ok on garde le locale, datepicker ok pour la popover en v1 avec amélioration en drawer plus tard. Ok pour les autres points hormis les props min and max de TimeInput. Pourquoi ils ne fonctionnent pas ? Ça serait pourtant pratique non de pouvoir borner les heures ?\" Digests re-recorded. Amendment of 2026-11-25: A complete date typed before min or after max becomes the nearest bound when focus leaves the parts (instead of being kept); a value set by the application is not changed. User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-25), answering the min and max question of the implementation gate: \"Je n'avais pas compris ça du tout pour le datepicker désolé. Bien sûr qu'il faut pouvoir borner et qu'une date saisie hors borne se rapproche de la borne la plus proche. Donc la 2 aussi pour le TimeInput\" Digests re-recorded.",
       "note": "Point 2 (calendar cell pitch, round days, selected and today treatment, empty outside days) approved in principle, to be judged on the real rendering at the implementation review."
     },
     "implementation": {
@@ -148,7 +148,8 @@
     "Selected day in color.choice.on.* (a chosen value, like a checked Checkbox); other days in color.item.*; today marked by a ring in color.item.indicator.",
     "The week starts on the first day of the week of the locale (Intl.Locale weekInfo), Monday when the platform does not expose it; Bits UI defaults to Sunday whatever the locale.",
     "The calendar stays a popover in v1; on small screens it will open in a Drawer (bottom sheet) once that component is defined (user at the implementation gate, 2026-11-25: \"ok pour la popover en v1 avec amélioration en drawer plus tard\"). Recorded in authoring/component-catalog.md.",
-    "The calendar is rendered before it is first shown (pointer over or focus in the field, or opened by the application) so that it never appears empty; coalesced toggle events (close and reopen, or open and close, in one task) are reported locally."
+    "The calendar is rendered before it is first shown (pointer over or focus in the field, or opened by the application) so that it never appears empty; coalesced toggle events (close and reopen, or open and close, in one task) are reported locally.",
+    "A complete date typed before min or after max becomes the nearest bound when focus leaves the parts (instead of being kept); a value set by the application is not changed. (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf, 2026-11-25: \"Je n'avais pas compris ça du tout pour le datepicker désolé. Bien sûr qu'il faut pouvoir borner et qu'une date saisie hors borne se rapproche de la borne la plus proche. Donc la 2 aussi pour le TimeInput\")."
   ],
   "openDecisions": [],
   "nextAction": "Figma parity (skill ggb-figma), then the grouped wave 6 Figma parity gate.",
@@ -205,6 +206,18 @@
       },
       "review": "Wave 6 implementation gate",
       "recorded": "Re-recorded with approvals.contract on 2026-11-25 (wave 6 implementation gate)."
+    },
+    {
+      "date": "2026-11-25",
+      "change": "Implementation: a complete date typed outside min..max becomes the nearest bound when focus leaves the parts (decision of 2026-11-25), with a browser test.",
+      "invalidates": "approvals.implementation until the user sees the updated review page",
+      "sha256": {
+        "packages/svelte/src/components/date-picker/DatePicker.svelte": "fc8ae290e5f73d67cc8120ca4e028db84ef12d356aac3f2b00150b407606a32a",
+        "packages/svelte/src/components/date-picker/date-picker.css": "1be38eaa354de88906b644b0a4f4cf36d8b2c3a7d0b1d38262f7eedc8399dc0f",
+        "packages/svelte/src/components/date-picker/types.ts": "4f621394b602b1222491fe2f004726d4363e38cca2eafca4c7224328f3270b55",
+        "foundations/components/forms/date-picker/contract.json": "32886d2d9cb58ddf55b878721efcca8d55bb2e83fb1b573ccb496e06449abc26"
+      },
+      "review": "Wave 6, TimeInput implementation review"
     }
   ]
 }
