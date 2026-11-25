@@ -3,7 +3,7 @@
   "componentId": "number-input",
   "family": "forms",
   "wave": 6,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Let the user enter one number in a form by typing it, formatted for the locale, or by stepping it with the arrow keys or two steppers.",
     "useCases": [
@@ -66,13 +66,32 @@
       "revision": {
         "paths": ["foundations/components/forms/number-input/contract.json"],
         "sha256": {
-          "foundations/components/forms/number-input/contract.json": "348bf714f07839d65e5091c9bebccd212214c629f07ab00f2abd9650beb96d53"
+          "foundations/components/forms/number-input/contract.json": "431817e6e29d60e0f02f041fef61ee1525b82e7356002324145c46394fa2ebb3"
         }
       },
-      "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\".",
+      "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\". Amendments accepted at the implementation gate (2026-11-25): spacing of the steppers stated as the InputText action (slotInline removed); the number centered between the steppers; a stepper steps on release and a touch leaves focus where it is. User at the grouped wave 6 implementation gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-25), after a review on a phone of https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795589131-541a): \"Slider : ok on garde le locale, datepicker ok pour la popover en v1 avec amélioration en drawer plus tard. Ok pour les autres points hormis les props min and max de TimeInput. Pourquoi ils ne fonctionnent pas ? Ça serait pourtant pratique non de pouvoir borner les heures ?\" Digests re-recorded.",
       "note": "Amended at the gate before recording: Shift with Up and Down Arrow changes the value by ten steps, as Page Up and Page Down (user: \"flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma)\"); Up and Down Arrow change it by one step (1 with the default step)."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "number-input Svelte implementation, review page and tests as reviewed, including the fixes from the phone review (NumberInput steppers on WebKit, centered number; DatePicker calendar rendered before it is shown, coalesced toggle events handled locally).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/number-input/NumberInput.svelte",
+          "packages/svelte/src/components/number-input/number-input.css",
+          "packages/svelte/src/components/number-input/number.ts",
+          "packages/svelte/src/components/number-input/types.ts",
+          "foundations/components/forms/number-input/contract.json"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/number-input/NumberInput.svelte": "0366b6316be2b3e98d6d57b9787d7467318c44995ffb096ae13fed4d4131b178",
+          "packages/svelte/src/components/number-input/number-input.css": "01eaf55018d54537f11165eca4a9a8853a63ac9646028d6656a2f6557587f245",
+          "packages/svelte/src/components/number-input/number.ts": "3bf2825afa43c4cd1e4e08e8c21603cfc89add124231c9e13b82882edbb06d5c",
+          "packages/svelte/src/components/number-input/types.ts": "39fa2cffebed4cd6bc8c00c2663aa311f11daf65778552b64342798429f94234",
+          "foundations/components/forms/number-input/contract.json": "431817e6e29d60e0f02f041fef61ee1525b82e7356002324145c46394fa2ebb3"
+        }
+      },
+      "provenance": "User at the grouped wave 6 implementation gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-25), after a review on a phone of https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795589131-541a): \"Slider : ok on garde le locale, datepicker ok pour la popover en v1 avec amélioration en drawer plus tard. Ok pour les autres points hormis les props min and max de TimeInput. Pourquoi ils ne fonctionnent pas ? Ça serait pourtant pratique non de pouvoir borner les heures ?\""
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -135,7 +154,7 @@
     "Shift+Up/Down Arrow change the value by ten steps, like Page Up/Down, as in Figma's numeric fields (user at the contract gate, 2026-11-23)."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation gate (wave 6, grouped): present the review pages, the exercise list and the limits; record the approval with source digests.",
+  "nextAction": "Figma parity (skill ggb-figma), then the grouped wave 6 Figma parity gate.",
   "implementationNotes": [
     "Parsing and formatting through Intl.NumberFormat(locale).formatToParts to learn the grouping and decimal separators.",
     "Decimal stepping without floating error: round to the larger number of fraction digits of the value and of step.",
@@ -160,7 +179,8 @@
       "sha256": {
         "foundations/components/forms/number-input/contract.json": "44770d1e8a7e97b7a412d8666d33a8daa14741d938f07e15b7ebd05931ae33c6"
       },
-      "review": "Wave 6 implementation gate"
+      "review": "Wave 6 implementation gate",
+      "recorded": "Re-recorded with approvals.contract on 2026-11-25 (wave 6 implementation gate)."
     },
     {
       "date": "2026-11-25",
@@ -169,7 +189,8 @@
       "sha256": {
         "foundations/components/forms/number-input/contract.json": "431817e6e29d60e0f02f041fef61ee1525b82e7356002324145c46394fa2ebb3"
       },
-      "review": "Wave 6 implementation gate"
+      "review": "Wave 6 implementation gate",
+      "recorded": "Re-recorded with approvals.contract on 2026-11-25 (wave 6 implementation gate)."
     }
   ]
 }

@@ -3,7 +3,7 @@
   "componentId": "slider",
   "family": "forms",
   "wave": 6,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Let the user pick one number in a bounded range by moving a thumb along a track.",
     "useCases": [
@@ -70,7 +70,24 @@
       },
       "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\"."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "slider Svelte implementation, review page and tests as reviewed, including the fixes from the phone review (NumberInput steppers on WebKit, centered number; DatePicker calendar rendered before it is shown, coalesced toggle events handled locally).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/slider/Slider.svelte",
+          "packages/svelte/src/components/slider/slider.css",
+          "packages/svelte/src/components/slider/types.ts",
+          "foundations/components/forms/slider/contract.json"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/slider/Slider.svelte": "9f157a2157eff4a41f9b00b68f4ab0bc8100e017929afd8201b03cf368ac566e",
+          "packages/svelte/src/components/slider/slider.css": "091326f78b0d7403165a1d188520aae6c8e67aed19702620a01a7f2d5746db71",
+          "packages/svelte/src/components/slider/types.ts": "2c9a7ea1ef78b968dd0137f5127b246f9b2a1d1e17f2f535063b10ae59e3662a",
+          "foundations/components/forms/slider/contract.json": "f83ee01d56bdde3dcbaa3fd2dbbb252f13b78b17ef72844e23a1c86f77d9713c"
+        }
+      },
+      "provenance": "User at the grouped wave 6 implementation gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-25), after a review on a phone of https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795589131-541a): \"Slider : ok on garde le locale, datepicker ok pour la popover en v1 avec amélioration en drawer plus tard. Ok pour les autres points hormis les props min and max de TimeInput. Pourquoi ils ne fonctionnent pas ? Ça serait pourtant pratique non de pouvoir borner les heures ?\""
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -121,10 +138,11 @@
     "One thumb, horizontal, showValue at the inline end of the track (User in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), wave 6 scoping: \"Slider : Ok\").",
     "Built on Bits UI Slider (type single); Page Up/Page Down, aria-valuetext and the hidden form input are added by the component (absent from bits-ui 2.19.3 slider.svelte.js), with tests.",
     "Track in color.choice.off.*.border, range and thumb border in color.choice.on.*.surface (a selection control, like Checkbox and Switch); thumb size and track thickness are component tokens (component.slider.thumb-size 20 px, track-thickness 4 px), not affected by density.",
-    "The thumb is positioned in CSS from the value (track inset by half a thumb), never with thumbPositioning contain, which measures on the client and would be wrong before hydration."
+    "The thumb is positioned in CSS from the value (track inset by half a thumb), never with thumbPositioning contain, which measures on the client and would be wrong before hydration.",
+    "The locale prop is kept: it writes the shown and announced value (0,5 in French, Arabic-Indic digits) (user at the implementation gate, 2026-11-25: \"Slider : ok on garde le locale\")."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation gate (wave 6, grouped): present the review pages, the exercise list and the limits; record the approval with source digests.",
+  "nextAction": "Figma parity (skill ggb-figma), then the grouped wave 6 Figma parity gate.",
   "implementationNotes": [
     "Built on bits-ui 2.19.3 Slider (type single), pinned; the component completes it where it disagrees with the contract (decision Contract versus Bits UI), each covered by a browser or SSR test:",
     "- Steps are passed as an array counted from min that always ends with max: Bits UI's own steps (normalizeSteps, helpers.js:161) leave max out when the range is not a multiple of step.",

@@ -211,7 +211,7 @@
         "Each day of the displayed month shows its number formatted for locale in typography, centered in a round box of boxSize, itself centered in its cell of cellPitch so that the interaction target is the whole cell. Its accessible name is the full date formatted for locale.",
         "interaction resolves in this order: disabled, hover, default; hover is the day under the pointer. A selected day is painted in selectedFillColor with its number in selectedTextColor, in the colors of its interaction; other days use surface and content. Colors change over motionDuration with easingStandard; no transition under reduced motion.",
         "today marks the current date of the user's device with a ring of todayWidth inside the box, in todayColor, or in selectedTextColor when the day is selected; it is exposed as the current date. today is known only where the device clock is: it is not drawn before the calendar opens.",
-        "A day before min or after max is disabled: drawn in the disabled colors, announced as unavailable, reached by the arrow keys but never chosen.",
+        "A day before min or after max is disabled: drawn in the disabled colors, announced as unavailable, never focused (focus stays within min and max) and never chosen.",
         "When the grid has focus, the focused day draws a focus indicator of focusWidth in focusColor at focusOffset outside its box."
       ]
     }

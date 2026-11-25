@@ -3,7 +3,7 @@
   "componentId": "date-picker",
   "family": "forms",
   "wave": 6,
-  "phase": "implementation",
+  "phase": "figma",
   "scope": {
     "purpose": "Let the user enter one calendar date in a form, by typing it in a segmented field or by choosing it in a calendar opened beside the field.",
     "useCases": [
@@ -29,7 +29,7 @@
   "artifacts": {
     "contract": {
       "path": "foundations/components/forms/date-picker/contract.json",
-      "sha256": "13aba58f4a7bf1c983ff5f86a4d6d2ef16e7000939c7ac8d983db440d19e3cb7"
+      "sha256": "3a070f3f423a6a4033bb8d438a5514cad7427d61ced9fd620013fa1258927b0b"
     },
     "tokens": [],
     "figma": null,
@@ -67,13 +67,30 @@
       "revision": {
         "paths": ["foundations/components/forms/date-picker/contract.json"],
         "sha256": {
-          "foundations/components/forms/date-picker/contract.json": "c9843cf12d6bd8ffab8c3a8b5a4e4feb7ce69eeee2844ae96b4554d2ce851c12"
+          "foundations/components/forms/date-picker/contract.json": "3a070f3f423a6a4033bb8d438a5514cad7427d61ced9fd620013fa1258927b0b"
         }
       },
-      "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\".",
+      "provenance": "User at the grouped wave 6 contract gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-23), on the review page https://claude.ai/artifact/4GYW7vKacsTMookDzhFsA2 (version 1795428233-4cd9): \"1. Ok, 2. À voir à l'implémentation je ne me rends pas trop compte à l'écrit, 3. Ok pour les boutons séparés. Est-ce qu'on pourrait faire en sorte que flèche du haut et flèche du bas change de 1, et que shift + flèche du haut de 10 (comme sur figma). 4. Ok 5. Ok. Pour le reste, je valide les contrats\". Amendments accepted at the implementation gate (2026-11-25): spacing of the calendar button stated as the InputText action (slotInline removed), narrow weekday names where the locale's short names are longer than four characters, columns sharing the room under about 356 px. The day rule rewording (a disabled day is never focused; final consistency pass, 2026-11-25) is included. User at the grouped wave 6 implementation gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-25), after a review on a phone of https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795589131-541a): \"Slider : ok on garde le locale, datepicker ok pour la popover en v1 avec amélioration en drawer plus tard. Ok pour les autres points hormis les props min and max de TimeInput. Pourquoi ils ne fonctionnent pas ? Ça serait pourtant pratique non de pouvoir borner les heures ?\" Digests re-recorded.",
       "note": "Point 2 (calendar cell pitch, round days, selected and today treatment, empty outside days) approved in principle, to be judged on the real rendering at the implementation review."
     },
-    "implementation": null,
+    "implementation": {
+      "scope": "date-picker Svelte implementation, review page and tests as reviewed, including the fixes from the phone review (NumberInput steppers on WebKit, centered number; DatePicker calendar rendered before it is shown, coalesced toggle events handled locally).",
+      "revision": {
+        "paths": [
+          "packages/svelte/src/components/date-picker/DatePicker.svelte",
+          "packages/svelte/src/components/date-picker/date-picker.css",
+          "packages/svelte/src/components/date-picker/types.ts",
+          "foundations/components/forms/date-picker/contract.json"
+        ],
+        "sha256": {
+          "packages/svelte/src/components/date-picker/DatePicker.svelte": "a6989120427a0d4b045b8f27de7f2d9b197f884c363e44d7ab9c952dcab04b34",
+          "packages/svelte/src/components/date-picker/date-picker.css": "1be38eaa354de88906b644b0a4f4cf36d8b2c3a7d0b1d38262f7eedc8399dc0f",
+          "packages/svelte/src/components/date-picker/types.ts": "4f621394b602b1222491fe2f004726d4363e38cca2eafca4c7224328f3270b55",
+          "foundations/components/forms/date-picker/contract.json": "3a070f3f423a6a4033bb8d438a5514cad7427d61ced9fd620013fa1258927b0b"
+        }
+      },
+      "provenance": "User at the grouped wave 6 implementation gate in the Claude Code session https://claude.ai/code/session_0156c545WiY1DREDPLwwFQEf (2026-11-25), after a review on a phone of https://claude.ai/artifact/XpcQJL7y57E3eaDyXEXPuR (version 1795589131-541a): \"Slider : ok on garde le locale, datepicker ok pour la popover en v1 avec amélioration en drawer plus tard. Ok pour les autres points hormis les props min and max de TimeInput. Pourquoi ils ne fonctionnent pas ? Ça serait pourtant pratique non de pouvoir borner les heures ?\""
+    },
     "figmaParity": null,
     "documentation": null,
     "delivery": null
@@ -129,10 +146,12 @@
     "The calendar button is an internal part, not an IconButton: in an sm field (32 px) the smallest IconButton (32 px) does not fit inside the border. Its box is the new semantic role size.control.nested.{size} (one step below the field: 24, 32, 40 px in standard), the same box as the IconButton InputText places in md and lg fields.",
     "Days outside the displayed month leave their cells empty and the grid always has six rows, so the panel keeps its block size; cells have the pitch of size.target.min (44 px) for the decision's minimum target, days a round box of size.control.sm.",
     "Selected day in color.choice.on.* (a chosen value, like a checked Checkbox); other days in color.item.*; today marked by a ring in color.item.indicator.",
-    "The week starts on the first day of the week of the locale (Intl.Locale weekInfo), Monday when the platform does not expose it; Bits UI defaults to Sunday whatever the locale."
+    "The week starts on the first day of the week of the locale (Intl.Locale weekInfo), Monday when the platform does not expose it; Bits UI defaults to Sunday whatever the locale.",
+    "The calendar stays a popover in v1; on small screens it will open in a Drawer (bottom sheet) once that component is defined (user at the implementation gate, 2026-11-25: \"ok pour la popover en v1 avec amélioration en drawer plus tard\"). Recorded in authoring/component-catalog.md.",
+    "The calendar is rendered before it is first shown (pointer over or focus in the field, or opened by the application) so that it never appears empty; coalesced toggle events (close and reopen, or open and close, in one task) are reported locally."
   ],
   "openDecisions": [],
-  "nextAction": "Implementation gate (wave 6, grouped): present the review pages, the exercise list and the limits; record the approval with source digests.",
+  "nextAction": "Figma parity (skill ggb-figma), then the grouped wave 6 Figma parity gate.",
   "implementationNotes": [
     "Built on bits-ui 2.19.3 DatePicker.Root, DatePicker.Input with its segments, and DatePicker.Calendar with its grid, inside a native auto popover placed by lib/overlay floating (the button toggles it with popovertarget, which spares it from light dismiss); DatePicker.Content (a Bits UI Popover with a portal) is not used. Pinned version; each completion below is covered by a browser or SSR test (decision Contract versus Bits UI):",
     "- Segments: aria-labelledby (the Field label or a hidden span holding the label prop, then a hidden span holding the part name from Intl.DisplayNames) replaces the English aria-label; an empty part has no aria-valuenow or aria-valuetext (Bits UI says \"Empty\"); the first part is described by the Field description instead of Bits UI's hidden \"Selected Date:\" element; aria-invalid follows the invalid prop only (Bits UI marks a date outside min..max invalid, also on the separators).",
@@ -164,7 +183,8 @@
       "sha256": {
         "foundations/components/forms/date-picker/contract.json": "1389b58e0ca54d8cff3af82344839d79d3e69dcf8d5cb0299af8df8fc751f046"
       },
-      "review": "Wave 6 implementation gate"
+      "review": "Wave 6 implementation gate",
+      "recorded": "Re-recorded with approvals.contract on 2026-11-25 (wave 6 implementation gate)."
     },
     {
       "date": "2026-11-23",
@@ -173,7 +193,8 @@
       "sha256": {
         "foundations/components/forms/date-picker/contract.json": "20b1eeecab5c4cce4d0bfe21f9c275789a5ec90ca88b6ab2812446aa7d5a1244"
       },
-      "review": "Wave 6 implementation gate"
+      "review": "Wave 6 implementation gate",
+      "recorded": "Re-recorded with approvals.contract on 2026-11-25 (wave 6 implementation gate)."
     },
     {
       "date": "2026-11-23",
@@ -182,7 +203,8 @@
       "sha256": {
         "foundations/components/forms/date-picker/contract.json": "13aba58f4a7bf1c983ff5f86a4d6d2ef16e7000939c7ac8d983db440d19e3cb7"
       },
-      "review": "Wave 6 implementation gate"
+      "review": "Wave 6 implementation gate",
+      "recorded": "Re-recorded with approvals.contract on 2026-11-25 (wave 6 implementation gate)."
     }
   ]
 }

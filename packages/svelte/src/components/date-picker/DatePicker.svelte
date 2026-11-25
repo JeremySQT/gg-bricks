@@ -139,6 +139,14 @@
     open = next;
     onopenchange?.(next);
   }
+  // The calendar is rendered on the client before it is first shown, so that it never appears empty: as soon as the
+  // user shows an intent (pointer over or focus in the field) or the application opens it.
+  const prepare = () => {
+    if (!rendered) rendered = true;
+  };
+  $effect(() => {
+    if (open) prepare();
+  });
   async function opened(isOpen: boolean) {
     if (isOpen) {
       placeholder = date ?? clampDate(today(getLocalTimeZone()));
@@ -392,6 +400,8 @@
           aria-labelledby={labelledBy}
           aria-describedby={describedByIds}
           onpointerdown={handlePointerdown}
+          onpointerenter={prepare}
+          onfocusin={prepare}
           {@attach (node) => {
             ref = node;
           }}
@@ -435,12 +445,21 @@
       onfocusout={focusOut}
       ontoggle={(event) => {
         // The browser coalesces the toggle events of a panel closed and opened again in the same task (a press
-        // outside, then at once on the button): the event says open to open, and lib/overlay sees no change. Both
-        // changes are reported here.
+        // outside, then at once on the button: open to open), or opened and closed again (two quick presses on the
+        // button: closed to closed); lib/overlay then sees no change. Both changes are reported here.
         const toggle = event as ToggleEvent;
         if (toggle.oldState === 'open' && toggle.newState === 'open' && open) {
           setOpen(false);
           void opened(true);
+        } else if (
+          toggle.oldState === 'closed' &&
+          toggle.newState === 'closed' &&
+          !open &&
+          !isDisabled &&
+          !isReadonly
+        ) {
+          setOpen(true);
+          setOpen(false);
         }
       }}
       {@attach floating({ anchor: () => field_, open: () => open, onOpenChange: opened })}
